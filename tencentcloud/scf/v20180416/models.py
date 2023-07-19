@@ -880,6 +880,8 @@ class CreateTriggerRequest(AbstractModel):
         :type Enable: str
         :param _CustomArgument: Custom argument, supporting only the timer trigger.
         :type CustomArgument: str
+        :param _Description: Trigger description
+        :type Description: str
         """
         self._FunctionName = None
         self._TriggerName = None
@@ -889,6 +891,7 @@ class CreateTriggerRequest(AbstractModel):
         self._Qualifier = None
         self._Enable = None
         self._CustomArgument = None
+        self._Description = None
 
     @property
     def FunctionName(self):
@@ -954,6 +957,14 @@ class CreateTriggerRequest(AbstractModel):
     def CustomArgument(self, CustomArgument):
         self._CustomArgument = CustomArgument
 
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._FunctionName = params.get("FunctionName")
@@ -964,6 +975,7 @@ class CreateTriggerRequest(AbstractModel):
         self._Qualifier = params.get("Qualifier")
         self._Enable = params.get("Enable")
         self._CustomArgument = params.get("CustomArgument")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1636,7 +1648,8 @@ class Function(AbstractModel):
         :type ModTime: str
         :param _AddTime: Creation time
         :type AddTime: str
-        :param _Runtime: Running
+        :param _Runtime: Runtime 
+Note: This parameter may return null, indicating that no valid values can be obtained.
         :type Runtime: str
         :param _FunctionName: Function name
         :type FunctionName: str
@@ -4832,8 +4845,9 @@ class ListTriggersRequest(AbstractModel):
         :type OrderBy: str
         :param _Order: Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC. Default value: DESC
         :type Order: str
-        :param _Filters: * Qualifier:
-Function version, alias
+        :param _Filters: * Qualifier: Version/Alias of trigger function 
+*TriggerName: Name of the trigger 
+*Description: Function trigger description
         :type Filters: list of Filter
         """
         self._FunctionName = None
@@ -5764,7 +5778,8 @@ class PublishVersionResponse(AbstractModel):
         :type Handler: str
         :param _Timeout: Function timeout
         :type Timeout: int
-        :param _Runtime: Function running environment
+        :param _Runtime: Function running environment 
+Note: This parameter may return null, indicating that no valid values can be obtained.
         :type Runtime: str
         :param _Namespace: Function namespace
         :type Namespace: str
@@ -6809,6 +6824,8 @@ class Trigger(AbstractModel):
         :type TriggerAttribute: str
         :param _Qualifier: The alias or version bound with the trigger
         :type Qualifier: str
+        :param _Description: Trigger description
+        :type Description: str
         """
         self._ModTime = None
         self._Type = None
@@ -6822,6 +6839,7 @@ class Trigger(AbstractModel):
         self._BindStatus = None
         self._TriggerAttribute = None
         self._Qualifier = None
+        self._Description = None
 
     @property
     def ModTime(self):
@@ -6889,26 +6907,38 @@ class Trigger(AbstractModel):
 
     @property
     def ResourceId(self):
+        warnings.warn("parameter `ResourceId` is deprecated", DeprecationWarning) 
+
         return self._ResourceId
 
     @ResourceId.setter
     def ResourceId(self, ResourceId):
+        warnings.warn("parameter `ResourceId` is deprecated", DeprecationWarning) 
+
         self._ResourceId = ResourceId
 
     @property
     def BindStatus(self):
+        warnings.warn("parameter `BindStatus` is deprecated", DeprecationWarning) 
+
         return self._BindStatus
 
     @BindStatus.setter
     def BindStatus(self, BindStatus):
+        warnings.warn("parameter `BindStatus` is deprecated", DeprecationWarning) 
+
         self._BindStatus = BindStatus
 
     @property
     def TriggerAttribute(self):
+        warnings.warn("parameter `TriggerAttribute` is deprecated", DeprecationWarning) 
+
         return self._TriggerAttribute
 
     @TriggerAttribute.setter
     def TriggerAttribute(self, TriggerAttribute):
+        warnings.warn("parameter `TriggerAttribute` is deprecated", DeprecationWarning) 
+
         self._TriggerAttribute = TriggerAttribute
 
     @property
@@ -6918,6 +6948,14 @@ class Trigger(AbstractModel):
     @Qualifier.setter
     def Qualifier(self, Qualifier):
         self._Qualifier = Qualifier
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
@@ -6933,6 +6971,7 @@ class Trigger(AbstractModel):
         self._BindStatus = params.get("BindStatus")
         self._TriggerAttribute = params.get("TriggerAttribute")
         self._Qualifier = params.get("Qualifier")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7214,6 +7253,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type BindStatus: str
         :param _TriggerAttribute: Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
         :type TriggerAttribute: str
+        :param _Description: Description of a custom trigger 
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :type Description: str
         """
         self._Enable = None
         self._Qualifier = None
@@ -7227,6 +7269,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._ResourceId = None
         self._BindStatus = None
         self._TriggerAttribute = None
+        self._Description = None
 
     @property
     def Enable(self):
@@ -7302,27 +7345,47 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceId(self):
+        warnings.warn("parameter `ResourceId` is deprecated", DeprecationWarning) 
+
         return self._ResourceId
 
     @ResourceId.setter
     def ResourceId(self, ResourceId):
+        warnings.warn("parameter `ResourceId` is deprecated", DeprecationWarning) 
+
         self._ResourceId = ResourceId
 
     @property
     def BindStatus(self):
+        warnings.warn("parameter `BindStatus` is deprecated", DeprecationWarning) 
+
         return self._BindStatus
 
     @BindStatus.setter
     def BindStatus(self, BindStatus):
+        warnings.warn("parameter `BindStatus` is deprecated", DeprecationWarning) 
+
         self._BindStatus = BindStatus
 
     @property
     def TriggerAttribute(self):
+        warnings.warn("parameter `TriggerAttribute` is deprecated", DeprecationWarning) 
+
         return self._TriggerAttribute
 
     @TriggerAttribute.setter
     def TriggerAttribute(self, TriggerAttribute):
+        warnings.warn("parameter `TriggerAttribute` is deprecated", DeprecationWarning) 
+
         self._TriggerAttribute = TriggerAttribute
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
@@ -7338,6 +7401,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._ResourceId = params.get("ResourceId")
         self._BindStatus = params.get("BindStatus")
         self._TriggerAttribute = params.get("TriggerAttribute")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

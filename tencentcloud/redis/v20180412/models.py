@@ -25,23 +25,23 @@ class Account(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceId: Instance ID 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type InstanceId: str
-        :param _AccountName: Account name (`root` for a root account)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AccountName: Account name 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type AccountName: str
-        :param _Remark: Account description information
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Remark: Account description information 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type Remark: str
-        :param _Privilege: Read/write policy. r: read-only; w: write-only; rw: read/write
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Privilege: Read/write permission policy. Valid values: `r` (read-only),  `w` (write-only),  `rw`  (read/write). 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type Privilege: str
-        :param _ReadonlyPolicy: Routing policy. master: master node; replication: secondary node
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ReadonlyPolicy: Read-only routing policy. Valid values: `master` (master node),  `replication`  (replica node). 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type ReadonlyPolicy: list of str
-        :param _Status: Sub-account status. 1: account is being changed; 2: account is valid; -4: account has been deleted
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Status: Sub-account status. Valid values:  `1` (being changed),  `2` (valid). `4` (deleted). 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type Status: int
         """
         self._InstanceId = None
@@ -810,9 +810,10 @@ class ChangeReplicaToMasterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: ID of the specified instance,  such as  "crs-xjhsdj****" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
+
         :type InstanceId: str
-        :param _GroupId: Replica group ID, which is required for multi-AZ instances.
+        :param _GroupId: ID of the replica node group. You can get more ID information of the multi-AZ replica node group though the [DescribeInstanceZoneInfo](https://intl.cloud.tencent.com/document/product/239/50312?from_cn_redirect=1) API.  This parameter is not required for a single-AZ replica node group.
         :type GroupId: int
         """
         self._InstanceId = None
@@ -2138,15 +2139,9 @@ class DelayDistribution(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ladder: Delay distribution. The mapping between delay range and `Ladder` value is as follows:
-[0ms,1ms]: 1;
-[1ms,5ms]: 5;
-[5ms,10ms]: 10;
-[10ms,50ms]: 50;
-[50ms,200ms]: 200;
-[200ms,∞]: -1.
+        :param _Ladder: The delay distribution. The mapping between delay range and `Ladder` value is as follows:  - `1`: [0ms,1ms]. - `5`: [1ms,5ms]. - `10`: [5ms,10ms]. - `50`: [10ms,50ms]. - `200`:  [50ms,200ms]. - `-1`: [200ms,∞].
         :type Ladder: int
-        :param _Size: The number of commands whose delay falls within the current delay range
+        :param _Size: The number of commands with delay falling within the current delay range -
         :type Size: int
         :param _Updatetime: Modification time
         :type Updatetime: int
@@ -2341,7 +2336,7 @@ class DescribeAutoBackupConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: ID of the specified instance,  such as  "crs-xjhsdj****" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
         :type InstanceId: str
         """
         self._InstanceId = None
@@ -2374,15 +2369,15 @@ class DescribeAutoBackupConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoBackupType: Backup type. Automatic backup type: 1 (scheduled rollback)
+        :param _AutoBackupType: This parameter is retained due to compatibility and can be ignored.
         :type AutoBackupType: int
-        :param _WeekDays: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
+        :param _WeekDays: Backup cycle, which will be daily by default. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.
         :type WeekDays: list of str
-        :param _TimePeriod: Time period.
+        :param _TimePeriod: Time period for backup task initialization
         :type TimePeriod: str
-        :param _BackupStorageDays: Number of days to retain full backup files
+        :param _BackupStorageDays: Retention time of full backup files in days.  Default value: `7`.  To retain the files for more days, [submit a ticket](https://console.cloud.tencent.com/workorder/category) for application.
         :type BackupStorageDays: int
-        :param _BinlogStorageDays: Number of days to retain Tendis binlog backup files
+        :param _BinlogStorageDays: This parameter has been disused.
         :type BinlogStorageDays: int
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3098,7 +3093,8 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
         r"""
         :param _Product: Database engine name, which is `redis` for this API.
         :type Product: str
-        :param _InstanceId: Instance ID in the format of cdb-c1nl9rpv or cdbro-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :param _InstanceId: ID of the specified instance,  such as  "crs-xjhsdj****" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
+
         :type InstanceId: str
         """
         self._Product = None
@@ -3143,9 +3139,9 @@ class DescribeDBSecurityGroupsResponse(AbstractModel):
         r"""
         :param _Groups: Security group rules
         :type Groups: list of SecurityGroup
-        :param _VIP: Private IP for which the security group takes effect
+        :param _VIP: Private IPv4 address of an instance
         :type VIP: str
-        :param _VPort: Private port for which the security group takes effect
+        :param _VPort: Private network port
         :type VPort: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3207,11 +3203,11 @@ class DescribeInstanceAccountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: ID of a specified instance,  such as  "crs-xjhsdj****" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
         :type InstanceId: str
         :param _Limit: Number of entries per page
         :type Limit: int
-        :param _Offset: Page offset
+        :param _Offset: Pagination offset,  which is an integral multiple of `Limit`.  Calculation formula:  `offset` = `limit` * (page number - 1).
         :type Offset: int
         """
         self._InstanceId = None
@@ -3264,11 +3260,11 @@ class DescribeInstanceAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Accounts: Account details
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Accounts: Account details 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type Accounts: list of Account
-        :param _TotalCount: Number of accounts
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TotalCount: Number of accounts 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type TotalCount: int
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -4559,11 +4555,11 @@ class DescribeInstanceNodeInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: ID of a specified instance,  such as  "crs-xjhsdj****" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
         :type InstanceId: str
-        :param _Limit: List size
+        :param _Limit: List size Size of node information returned per page.  Default value: `20`. Maximum value: `1000`.  This field has been disused.
         :type Limit: int
-        :param _Offset: The offset value
+        :param _Offset: Pagination offset, which is an integral multiple of `Limit`. Calculation formula:  `offset` = `limit` * (page number - 1). This field has been disused.
         :type Offset: int
         """
         self._InstanceId = None
@@ -4618,18 +4614,18 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
         r"""
         :param _ProxyCount: The number of proxy nodes
         :type ProxyCount: int
-        :param _Proxy: Proxy node information
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _Proxy: Proxy node information 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type Proxy: list of ProxyNodes
-        :param _RedisCount: The number of redis nodes
+        :param _RedisCount: The number of Redis nodes
         :type RedisCount: int
-        :param _Redis: Redis node information
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _Redis: Redis node information 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type Redis: list of RedisNodes
-        :param _TendisCount: The number of tendis nodes
+        :param _TendisCount: This parameter has been disused.
         :type TendisCount: int
-        :param _Tendis: Tendis node information
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _Tendis: This parameter has been disused. 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type Tendis: list of TendisNodes
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -4842,7 +4838,7 @@ class DescribeInstanceParamsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: ID of a specified instance,  such as  "crs-xjhsdj****" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
         :type InstanceId: str
         """
         self._InstanceId = None
@@ -4875,7 +4871,7 @@ class DescribeInstanceParamsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Number of instance parameters
+        :param _TotalCount: Total number of the parameter lists
         :type TotalCount: int
         :param _InstanceEnumParam: Instance parameter in Enum type
         :type InstanceEnumParam: list of InstanceEnumParam
@@ -4980,7 +4976,7 @@ class DescribeInstanceSecurityGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: List of instances
+        :param _InstanceIds: List of instance IDs,  such as "crs-f2ho5rsz\n".
         :type InstanceIds: list of str
         """
         self._InstanceIds = None
@@ -5013,7 +5009,7 @@ class DescribeInstanceSecurityGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceSecurityGroupsDetail: Security group information of the instance
+        :param _InstanceSecurityGroupsDetail: Security group information of an instance
         :type InstanceSecurityGroupsDetail: list of InstanceSecurityGroupDetail
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5055,9 +5051,9 @@ class DescribeInstanceShardsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: ID of a specified instance,  such as  "crs-xjhsdj****" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
         :type InstanceId: str
-        :param _FilterSlave: Whether to filter out the replica node information
+        :param _FilterSlave: Whether to filter out the replica node information. Valid values: `true` (yes),  `false` (no).
         :type FilterSlave: bool
         """
         self._InstanceId = None
@@ -5100,9 +5096,9 @@ class DescribeInstanceShardsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceShards: Information list of instance shards
+        :param _InstanceShards: List information of the instance shards, which includes  node information, node ID, key count, used capacity, and capacity slope.
         :type InstanceShards: list of InstanceClusterShard
-        :param _TotalCount: Total number of instance shard nodes
+        :param _TotalCount: Number of instance shard nodes
         :type TotalCount: int
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5154,7 +5150,7 @@ class DescribeInstanceZoneInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID, such as crs-6ubhgouj
+        :param _InstanceId: ID of a specified instance,  such as  "crs-xjhsdj****" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
         :type InstanceId: str
         """
         self._InstanceId = None
@@ -5243,11 +5239,13 @@ class DescribeInstancesRequest(AbstractModel):
         r"""
         :param _Limit: Number of instances returned per page. Default value: `20`. Maximum value: `1000`.
         :type Limit: int
-        :param _Offset: Pagination offset, which is an integral multiple of `Limit`.
+        :param _Offset: Pagination offset, which is an integral multiple of `Limit`. Calculation formula:  `offset` = `limit` * (page number - 1).
         :type Offset: int
-        :param _InstanceId: Instance ID, such as crs-6ubhgouj.
+        :param _InstanceId: ID of a specified instance,  such as  "crs-xjhsdj****" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
+
+
         :type InstanceId: str
-        :param _OrderBy: Instance sorting criteria. The enumerated values are as listed below: <ul><li>projectId: Project ID. </li><li>createtime: Instance creation time. </li><li>instancename: Instance name. </li><li>type: Instance type. </li><li>curDeadline: Instance expiration time. </li></ul>
+        :param _OrderBy: Instance list sorting criteria. The enumerated values are as listed below:  <ul><li>`projectId`:  Project ID.  </li><li>`createtime`:  Instance creation time.  </li><li>`instancename`:  Instance name.  </li><li>`type`:  Instance type. </li><li>`curDeadline`:  Instance expiration time. </li></ul>
         :type OrderBy: str
         :param _OrderType: Instance sorting order. <ul><li>`1`: Descending. </li><li>`0`: Ascending. Default value: `1`.</li></ul>
         :type OrderType: int
@@ -5273,11 +5271,11 @@ class DescribeInstancesRequest(AbstractModel):
         :type TypeVersion: int
         :param _EngineName: Storage engine information. Valid values: `Redis-2.8`, `Redis-4.0`, `Redis-5.0`, `Redis-6.0` or `CKV`.
         :type EngineName: str
-        :param _AutoRenew: Renewal mode. <ul><li>`0`: Manual renewal (default). </li><li>`1`: Auto-renewal. </li><li>`2`: No auto-renewal (set by user)</ul>
+        :param _AutoRenew: Renewal mode. Valid values:  <ul><li>`0`:  Manual renewal </li><li>`1`:  Auto-renewal </li><li>`2`:  No renewal upon expiration </ul>
         :type AutoRenew: list of int
         :param _BillingMode: Billing mode. Only pay-as-you-go billing is supported.
         :type BillingMode: str
-        :param _Type: Instance type. <ul><li>`1`: Legacy Redis cluster edition. </li><li>`2`: Redis 2.8 master-replica edition. </li><li>`3`: CKV master-replica edition. </li><li>`4`: CKV cluster edition. </li><li>`5`: Redis 2.8 standalone edition. </li><li>`6`: Redis 4.0 master-replica edition. </li><li>`7`: Redis 4.0 cluster edition. </li><li>8: Redis 5.0 master-replica edition. </li><li>`9`: Redis 5.0 cluster edition. </li></ul>
+        :param _Type: Instance type. Valid values:  - `2`: Redis 2.8 Memory Edition (Standard Architecture). - `3`: CKV 3.2 Memory Edition (Standard Architecture). - `4`: CKV 3.2 Memory Edition (Cluster Architecture). - `5`: Redis 2.8 Memory Edition (Standalone). - `6`: Redis 4.0 Memory Edition (Standard Architecture). - `7`: Redis 4.0 Memory Edition (Cluster Architecture). - `8`: Redis 5.0 Memory Edition (Standard Architecture). - `9`: Redis 5.0 Memory Edition (Cluster Architecture). - `15`: Redis 6.2 Memory Edition (Standard Architecture). - `16`: Redis 6.2 Memory Edition (Cluster Architecture).
         :type Type: int
         :param _SearchKeys: Array of the search keywords, which can query the instance by its ID, name, IP address.
         :type SearchKeys: list of str
@@ -5289,7 +5287,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type InstanceTags: list of InstanceTagInfo
         :param _TagKeys: Resources filter by tag key. If this parameter is not specified or is an empty array, resources will not be filtered.
         :type TagKeys: list of str
-        :param _ProductVersions: Instance product version. If this parameter is not passed in or the array is empty, the instances will not be filtered based this parameter by default. <ul><li>`local`: local disk edition. </li><li>`cloud`: Cloud disk edition. </li><li>`cdc`: Dedicated cluster edition. </li></ul>
+        :param _ProductVersions: Instance product version.  If this parameter is not passed in or the array is empty, the instances will not be filtered based this parameter by default.  <ul><li>`local`:  Local disk edition.  </li><li>`cdc`:  Dedicated cluster edition.  </li></ul>
         :type ProductVersions: list of str
         :param _InstanceIds: Batch query of the specified instances ID. The number of results returned is based on `Limit`.
         :type InstanceIds: list of str
@@ -6253,15 +6251,16 @@ class DescribeProxySlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: ID of a specified instance,  such as  "crs-xjhsdj****" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
+
         :type InstanceId: str
-        :param _BeginTime: Start time
+        :param _BeginTime: Start time of slow query
         :type BeginTime: str
-        :param _EndTime: End time
+        :param _EndTime: End time of slow query
         :type EndTime: str
-        :param _MinQueryTime: Slow query threshold in milliseconds
+        :param _MinQueryTime: Slow query threshold  in milliseconds
         :type MinQueryTime: int
-        :param _Limit: Maximum number of results returned per page
+        :param _Limit: Number of results per page.  Default value: `20`. Value range: [20,1000].
         :type Limit: int
         :param _Offset: Offset, which is an integral multiple of `Limit`.
         :type Offset: int
@@ -6647,17 +6646,18 @@ class DescribeSlowLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: ID of a specified instance,  such as  "crs-xjhsdj****" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
+
         :type InstanceId: str
-        :param _BeginTime: The start time
+        :param _BeginTime: Start time for prequerying a slow log
         :type BeginTime: str
-        :param _EndTime: The end time
+        :param _EndTime: End time for prequerying a slow log
         :type EndTime: str
-        :param _MinQueryTime: The average execution time threshold of slow query in ms.
+        :param _MinQueryTime: The average execution time threshold of slow query  in microseconds
         :type MinQueryTime: int
-        :param _Limit: Number of slow queries displayed per page. Default value: `20`.
+        :param _Limit: Number of slow queries displayed per page. Default value: `20`. Value range:  [20,1000].
         :type Limit: int
-        :param _Offset: Slow query offset, which is an integral multiple of `Limit`.
+        :param _Offset: Slow query offset, which is an integral multiple of `Limit`. Calculation formula:  `offset` = `limit` * (page number - 1).
         :type Offset: int
         :param _Role: Node role. <ul><li>`Master`: Master node</li><li>`Slave`: Replica node</li></ul>
         :type Role: str
@@ -6924,29 +6924,29 @@ class DescribeTaskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: ID of a specified instance,  such as  "crs-xjhsdj****" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
         :type InstanceId: str
         :param _InstanceName: Instance name
         :type InstanceName: str
-        :param _Limit: Maximum number of results returned per page. Default value: 20. Maximum value: 100.
+        :param _Limit: Number of taskss returned per page.  Default value: `20`. Maximum value: `100`.
         :type Limit: int
-        :param _Offset: Offset, which is an integral multiple of `Limit` (rounded down automatically).
+        :param _Offset: Pagination offset, which is an integral multiple of `Limit`. Calculation formula:  `offset` = `limit` * (page number - 1).
         :type Offset: int
-        :param _ProjectIds: Project ID
+        :param _ProjectIds: Project ID Log in to the [Redis console](https://console.cloud.tencent.com/redis#/), go to the account information menu in the top-right corner, and select **Project Management** to query the project ID.
         :type ProjectIds: list of int
-        :param _TaskTypes: Task type
+        :param _TaskTypes: Task type. Valid values:  - `FLOW_CREATE`: Create an instance. - `FLOW_MODIFYCONNECTIONCONFIG`: Adjust the number of bandwidth connections. - `FLOW_MODIFYINSTANCEPASSWORDFREE`: Modify the process of password-free access. - `FLOW_CLEARNETWORK`: Returning VPC - `FLOW_SETPWD`: Set the access password. - `FLOW_EXPORSHR`: Expand or reduce the capacity. - `FLOW_UpgradeArch`: Upgrade the instance architecture. - `FLOW_MODIFYINSTANCEPARAMS`: Modify the instance parameters. - `FLOW_MODIFYINSTACEREADONLY`: Modify read-only process. - `FLOW_CLOSE`: Disable the instance. - `FLOW_DELETE`: Delete the instance. - `FLOW_OPEN_WAN`: Enable the public network. - `FLOW_FLOW_CLEAN`: Clear the instance. - `FLOW_MODIFYINSTANCEACCOUNT`: Modify the instance account. - `FLOW_ENABLEINSTANCE_REPLICATE`: Enable the replica read-only feature. - `FLOW_DISABLEINSTANCE_REPLICATE`: Disable the replica read-only feature. - `FLOW_SWITCHINSTANCEVIP`: Swap the VIPs of instances. - FLOW_CHANGE_REPLICA_TO_MSTER: Promote the replica node to the mater node. - `FLOW_BACKUPINSTANCE`: Back up an instance.
         :type TaskTypes: list of str
-        :param _BeginTime: Start time
+        :param _BeginTime: Start time for executing a task,  in the format of  “2020-10-12 00:00:00”.
         :type BeginTime: str
-        :param _EndTime: End time
+        :param _EndTime: End time for executing a task,  in the format of  “2021-12-30 20:59:35”.
         :type EndTime: str
-        :param _TaskStatus: Task status
+        :param _TaskStatus: This parameter is only for internal use and can be ignored.
         :type TaskStatus: list of int
-        :param _Result: Task status
+        :param _Result: Task execution status. Valid values: - `0` (initilized) - `1` (executing) - `2` (completed) - `4` (failed)
         :type Result: list of int
         :param _OperatorUin: The field `OperatorUin` has been disused and replaced by `OperateUin`.
         :type OperatorUin: list of int
-        :param _OperateUin: Operator Uin
+        :param _OperateUin: Operator account ID or UIN
         :type OperateUin: list of str
         """
         self._InstanceId = None
@@ -8302,25 +8302,25 @@ class InstanceClusterNode(AbstractModel):
         r"""
         :param _Name: Node name
         :type Name: str
-        :param _RunId: ID of the runtime node of the instance
+        :param _RunId: ID of the runtime node of an instance
         :type RunId: str
-        :param _Role: Cluster role. 0: master; 1: replica
+        :param _Role: Cluster role. Valid values:  - `0` (master) - `1` (replica)
         :type Role: int
-        :param _Status: Node status. 0: readwrite; 1: read; 2: backup
+        :param _Status: Node status. Valid values:  - `0` (read/write) - `1` (read) - `2` (backup)
         :type Status: int
-        :param _Connected: Service status. 0: down; 1: on
+        :param _Connected: Service status. Valid values: `0` (down), `1` (on).
         :type Connected: int
         :param _CreateTime: Node creation time
         :type CreateTime: str
         :param _DownTime: Node elimination time
         :type DownTime: str
-        :param _Slots: Distribution of node slots
+        :param _Slots: Node slot distribution range
         :type Slots: str
         :param _Keys: Distribution of node keys
         :type Keys: int
-        :param _Qps: Node QPS
+        :param _Qps: Node QPS Number of executions per second on sharded nodes Unit: Counts/sec
         :type Qps: int
-        :param _QpsSlope: Node QPS slope
+        :param _QpsSlope: QPS slope of a node
         :type QpsSlope: float
         :param _Storage: Node storage
         :type Storage: int
@@ -8612,19 +8612,19 @@ class InstanceEnumParam(AbstractModel):
         r"""
         :param _ParamName: Parameter name
         :type ParamName: str
-        :param _ValueType: Parameter type: Enum
+        :param _ValueType: Parameter type, such as `Enum`.
         :type ValueType: str
-        :param _NeedRestart: Whether restart is required after a modification is made. Valid values: true, false
+        :param _NeedRestart: Whether to restart the database after modifying the parameters. Valid values: - `true` (required) - `false` (not required)
         :type NeedRestart: str
         :param _DefaultValue: Default value of the parameter
         :type DefaultValue: str
         :param _CurrentValue: Current value
         :type CurrentValue: str
-        :param _Tips: Parameter description
+        :param _Tips: Description
         :type Tips: str
-        :param _EnumValue: Valid values of the parameter
+        :param _EnumValue: Acceptable values for the parameter
         :type EnumValue: list of str
-        :param _Status: Parameter status. 1: modifying; 2: modified
+        :param _Status: Parameter modification status. Valid values: - `1` (modifying) - `2` (modified)
         :type Status: int
         """
         self._ParamName = None
@@ -8871,19 +8871,19 @@ class InstanceMultiParam(AbstractModel):
         r"""
         :param _ParamName: Parameter name
         :type ParamName: str
-        :param _ValueType: Parameter type: Multi
+        :param _ValueType: Parameter Type such as  `MULTI`
         :type ValueType: str
-        :param _NeedRestart: Whether restart is required after a modification is made. Valid values: true, false
+        :param _NeedRestart: Whether to restart the database after modifying the parameter. Valid values:  - `true` (required) - `false` (not required)
         :type NeedRestart: str
         :param _DefaultValue: Default value of the parameter
         :type DefaultValue: str
         :param _CurrentValue: Current value
         :type CurrentValue: str
-        :param _Tips: Parameter description
+        :param _Tips: Description
         :type Tips: str
-        :param _EnumValue: Parameter description
+        :param _EnumValue: Description
         :type EnumValue: list of str
-        :param _Status: Parameter status. 1: modifying; 2: modified
+        :param _Status: Parameter modification status. Valid values: - `1` (modifying) - `2` (modified)
         :type Status: int
         """
         self._ParamName = None
@@ -8986,7 +8986,7 @@ class InstanceNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Id
+        :param _Id: Instance ID
         :type Id: int
         :param _InstanceClusterNode: Node details
         :type InstanceClusterNode: list of InstanceClusterNode
@@ -9248,7 +9248,7 @@ class InstanceSecurityGroupDetail(AbstractModel):
         r"""
         :param _InstanceId: Instance ID
         :type InstanceId: str
-        :param _SecurityGroupDetails: Security group information
+        :param _SecurityGroupDetails: Security group information, which includes  security group ID, name, outbound and inbound rules.
         :type SecurityGroupDetails: list of SecurityGroupDetail
         """
         self._InstanceId = None
@@ -10165,19 +10165,19 @@ class InstanceTextParam(AbstractModel):
         r"""
         :param _ParamName: Parameter name
         :type ParamName: str
-        :param _ValueType: Parameter type: Text
+        :param _ValueType: Parameter type such as  `Text`.
         :type ValueType: str
-        :param _NeedRestart: Whether restart is required after a modification is made. Valid values: true, false
+        :param _NeedRestart: Whether to restart the database after modifying the parameter. Valid values:  - `true` (required) - `false` (not required)
         :type NeedRestart: str
         :param _DefaultValue: Default value of the parameter
         :type DefaultValue: str
         :param _CurrentValue: Current value
         :type CurrentValue: str
-        :param _Tips: Parameter description
+        :param _Tips: Description
         :type Tips: str
-        :param _TextValue: Valid values of the parameter
+        :param _TextValue: Acceptable values of the parameter
         :type TextValue: list of str
-        :param _Status: Parameter status. 1: modifying; 2: modified
+        :param _Status: Parameter modification status. Valid values: - `1` (modifying) - `2` (modified)
         :type Status: int
         """
         self._ParamName = None
@@ -10553,17 +10553,11 @@ class KillMasterGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: ID of a specified instance,  such as  "crs-xjhsdj****" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
         :type InstanceId: str
-        :param _Password: 1. The password must contain 8–30 characters. A password of 12 or more characters is recommended.
-2. It cannot start with a slash (/).
-3. It must contain characters in at least two of the following types:
-    a. Lowercase letters (a–z)
-    b. Uppercase letters (A–Z)
-    c. Digits (0–9)
-    d. ()`~!@#$%^&*-+=_|{}[]:;<>,.?/
+        :param _Password: A parameter used to configure the access password for a specified instance. If password-free authentication is enabled, this parameter will not be required. Required password strength. - It must contains 8-30 characters. We recommend that you use a password of more than 12 characters. - It must contain at least two of the following types: lowercase letters, uppercase letters, digits, and symbols (()`~!@#$%^&*-+=_|{}[]:;<>,.?/), and it cannot start with a slash (/).
         :type Password: str
-        :param _ShardIds: Node information of a single-AZ deployed instance
+        :param _ShardIds: Shard ID of a sharded cluster
         :type ShardIds: list of int
         """
         self._InstanceId = None
@@ -10653,11 +10647,11 @@ class ManualBackupInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ID of the instance to be operated on, which can be obtained through the `InstanceId` field in the return value of the `DescribeInstance` API.
+        :param _InstanceId: ID of a specified instance,  such as  "crs-xjhsdj****" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
         :type InstanceId: str
-        :param _Remark: Backup remarks
+        :param _Remark: Remarks for manual backup task
         :type Remark: str
-        :param _StorageDays: Retention time in days. 0 indicates the default retention time.
+        :param _StorageDays: Retention period of backup data in days.  Default value: 7 days.  Value range: [0,1825].  If the value exceeds 7 days, [submit a ticket](https://console.cloud.tencent.com/workorder/category) for application. - If this parameter is not configured, it will set to be the same as the period of automatic backup retention. - If automatic backup is not set, the default value will be 7 days.
         :type StorageDays: int
         """
         self._InstanceId = None
@@ -10844,13 +10838,14 @@ class ModifyAutoBackupConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID
+        :param _InstanceId: ID of a specified instance,  such as  "crs-xjhsdj****" Log in to the [Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
+
         :type InstanceId: str
         :param _WeekDays: Automatic backup cycle. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`. This parameter currently cannot be modified.
         :type WeekDays: list of str
         :param _TimePeriod: Automatic backup time in the format of 00:00-01:00, 01:00-02:00... 23:00-00:00.
         :type TimePeriod: str
-        :param _AutoBackupType: Automatic backup type. `1`: Scheduled rollback.
+        :param _AutoBackupType: Automatic backup type.  Valid value:  `1` (scheduled backup).
         :type AutoBackupType: int
         """
         self._InstanceId = None
@@ -10913,11 +10908,11 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoBackupType: Automatic backup type: 1 (scheduled rollback)
+        :param _AutoBackupType: Automatic backup type.  Valid value:  `1` (scheduled backup).
         :type AutoBackupType: int
         :param _WeekDays: Automatic backup cycle. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.
         :type WeekDays: list of str
-        :param _TimePeriod: Automatic backup time in the format of 00:00-01:00, 01:00-02:00... 23:00-00:00.
+        :param _TimePeriod: Time period for automatic scheduled backup  in the format of  “00:00-01:00, 01:00-02:00...... 23:00-00:00”.
         :type TimePeriod: str
         :param _BackupStorageDays: Retention time of full backup files in days
         :type BackupStorageDays: int
@@ -12685,27 +12680,15 @@ class RedisBackupSet(AbstractModel):
         r"""
         :param _StartTime: Backup start time
         :type StartTime: str
-        :param _BackupId: Backup ID
+        :param _BackupId: Backup task ID
         :type BackupId: str
-        :param _BackupType: Backup type
-
-- `1`: Manual backup initiated by the user.
-- `0`: Automatic backup in the early morning initiated by the system.
+        :param _BackupType: Backup type. Valid values:  `1` (Automatic backup in the early morning initiated by the system.) `0`: Manual backup initiated by the user.
         :type BackupType: str
-        :param _Status: Backup status 
-
-- `1`: The backup is locked by another process.
-- `2`: The backup is normal and not locked by any process.
-- `-1`: The backup expired.
-- `3`: The backup is being exported.
-- `4`: The backup was exported successfully.
+        :param _Status: Backup status. Valid values:  - `1`: The backup is locked by another process. - `2`: The backup is normal and not locked by any process. - `-1`: The backup is expired. - `3`: The backup is being exported. - `4`: Exported the backup successfully.
         :type Status: int
         :param _Remark: Backup remarks
         :type Remark: str
-        :param _Locked: Whether the backup is locked
-
-- `0`: Not locked.
-- `1`: Locked.
+        :param _Locked: Whether the backup is locked. Valid values:  - `0` (no) - `1` (yes)
         :type Locked: int
         :param _BackupSize: Internal field, which can be ignored.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -13097,11 +13080,11 @@ class RedisNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Keys: Number of keys on the node
+        :param _Keys: Number of keys on Redis nodes
         :type Keys: int
-        :param _Slot: Distribution of node slots
+        :param _Slot: Slot distribution range for Redis node.  Value range:  0-5460.
         :type Slot: str
-        :param _NodeId: Node ID
+        :param _NodeId: Node sequence ID
         :type NodeId: str
         :param _Status: Node status
         :type Status: str
@@ -13180,7 +13163,7 @@ class RedisNodeInfo(AbstractModel):
         r"""
         :param _NodeType: Node type. <ul><li>`0`: Master node.</li><li>`1`: Replica node.</li></ul>
         :type NodeType: int
-        :param _NodeId: Master or replica node ID. <ul><li>This parameter is optional when the [CreateInstances](https://intl.cloud.tencent.com/document/product/239/20026?from_cn_redirect=1) API is used to create a TencentDB for Redis instance, but it is required when the [UpgradeInstance](https://intl.cloud.tencent.com/document/product/239/20013?from_cn_redirect=1) API is used to adjust the configuration of an instance. </li><li>You can use the [DescribeInstances](https://intl.cloud.tencent.com/document/product/239/20018?from_cn_redirect=1) API to get the node ID of integer type. </li></ul>
+        :param _NodeId: ID of the master or replica node <ul><li>This parameter is optional when the [CreateInstances](https://intl.cloud.tencent.com/document/product/239/20026?from_cn_redirect=1) API is used to create a TencentDB for Redis instance, but it is required when the [UpgradeInstance](https://intl.cloud.tencent.com/document/product/239/20013?from_cn_redirect=1) API is used to adjust the configuration of an instance by deleting a replica.  </li><li>You can use the [DescribeInstances](https://intl.cloud.tencent.com/document/product/239/20018?from_cn_redirect=1) API to get the node ID of integer type. </li></ul> </li></ul>
         :type NodeId: int
         :param _ZoneId: ID of the AZ of the master or replica node
         :type ZoneId: int
@@ -13666,7 +13649,7 @@ class RenewInstanceResponse(AbstractModel):
 
 
 class ReplicaGroup(AbstractModel):
-    """Instance node information
+    """Information of the instance node group
 
     """
 
@@ -14108,7 +14091,7 @@ class SecurityGroupDetail(AbstractModel):
         r"""
         :param _ProjectId: Project ID
         :type ProjectId: int
-        :param _CreateTime: Creation time
+        :param _CreateTime: Security group creation time
         :type CreateTime: str
         :param _SecurityGroupId: Security group ID
         :type SecurityGroupId: str
@@ -14116,7 +14099,7 @@ class SecurityGroupDetail(AbstractModel):
         :type SecurityGroupName: str
         :param _SecurityGroupRemark: Security group remarks
         :type SecurityGroupRemark: str
-        :param _InboundRule: Security group inbound rule
+        :param _InboundRule: Inbound rules of the security group, which control the access source to the database.
         :type InboundRule: list of SecurityGroupsInboundAndOutbound
         :param _OutboundRule: Security group outbound rule
         :type OutboundRule: list of SecurityGroupsInboundAndOutbound
@@ -14221,9 +14204,9 @@ class SecurityGroupsInboundAndOutbound(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Action: Action to be executed
+        :param _Action: Identify whether the IP and port for accessing the database are allowed
         :type Action: str
-        :param _Ip: IP addresses
+        :param _Ip: IP address for accessing the database
         :type Ip: str
         :param _Port: Port number
         :type Port: str
@@ -14650,32 +14633,32 @@ class TaskInfoDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: Task ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TaskId: Task ID 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type TaskId: int
-        :param _StartTime: Start time
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _StartTime: Task start time 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type StartTime: str
-        :param _TaskType: Task type
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TaskType: Task type. Valid values:  - `FLOW_CREATE`: Create an instance. - `FLOW_MODIFYCONNECTIONCONFIG`: Adjust the number of bandwidth connections. - `FLOW_MODIFYINSTANCEPASSWORDFREE`: Modify the process of password-free access. - `FLOW_CLEARNETWORK`: Returning VPC - `FLOW_SETPWD`: Set the access password. - `FLOW_EXPORSHR`: Expand or reduce the capacity. - `FLOW_UpgradeArch`: Upgrade the instance architecture. - `FLOW_MODIFYINSTANCEPARAMS`: Modify the instance parameters. - `FLOW_MODIFYINSTACEREADONLY`: Modify read-only process. - `FLOW_CLOSE`: Disable the instance. - `FLOW_DELETE`: Delete the instance. - `FLOW_OPEN_WAN`: Enable the public network. - `FLOW_FLOW_CLEAN`: Clear the instance. - `FLOW_MODIFYINSTANCEACCOUNT`: Modify the instance account. - `FLOW_ENABLEINSTANCE_REPLICATE`: Enable the replica read-only feature. - `FLOW_DISABLEINSTANCE_REPLICATE`: Disable the replica read-only feature. - `FLOW_SWITCHINSTANCEVIP`: Swap the VIPs of instances. - FLOW_CHANGE_REPLICA_TO_MSTER: Promote the replica node to the mater node. Backup instance 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type TaskType: str
-        :param _InstanceName: Instance name
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceName: Instance name 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type InstanceName: str
-        :param _InstanceId: Instance ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceId: Instance ID 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type InstanceId: str
-        :param _ProjectId: Project ID
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProjectId: Project ID 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type ProjectId: int
-        :param _Progress: Task progress
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Progress: Task progress 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type Progress: float
-        :param _EndTime: End time
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _EndTime: Task end time 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type EndTime: str
-        :param _Result: Task status
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Result: Task execution status. Valid values: - `0` (initilized) - `1` (executing) - `2` (completed) - `4` (failed) 
+Note:  This field may return null, indicating that no valid values can be obtained.
         :type Result: int
         """
         self._TaskId = None
