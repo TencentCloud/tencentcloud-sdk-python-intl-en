@@ -459,6 +459,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDatabase(self, request):
+        """This API is used to create a database in a TencentDB instance.
+
+        :param request: Request instance for CreateDatabase.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.CreateDatabaseRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.CreateDatabaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDatabase", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDatabaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateParamTemplate(self, request):
         """This API is used to create a parameter template. The common request parameter `Region` can only be set to `ap-guangzhou`.
 
@@ -2135,7 +2158,7 @@ class CdbClient(AbstractClient):
 
 
     def ModifyBackupEncryptionStatus(self, request):
-        """This API is used to set the default encryption status of an instance backup.
+        """This API is used to set the encryption status of an instance backup.
 
         :param request: Request instance for ModifyBackupEncryptionStatus.
         :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyBackupEncryptionStatusRequest`

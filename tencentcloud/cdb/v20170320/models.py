@@ -4331,7 +4331,7 @@ class CreateCdbProxyAddressRequest(AbstractModel):
         :type VPort: int
         :param _SecurityGroup: Security group
         :type SecurityGroup: list of str
-        :param _ConnectionPoolType: 
+        :param _ConnectionPoolType: Connection pool type, which will take effect only when `ConnectionPool` is `true`. Valid values:  `transaction` (transaction-level), `connection` (session-level).
         :type ConnectionPoolType: str
         """
         self._ProxyGroupId = None
@@ -6223,6 +6223,88 @@ class CreateDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self._DealIds = params.get("DealIds")
         self._InstanceIds = params.get("InstanceIds")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDatabaseRequest(AbstractModel):
+    """CreateDatabase request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID in the format of `cdb-c1nl9rpv`,  which is the same as the one displayed in the TencentDB console.
+        :type InstanceId: str
+        :param _DBName: 
+        :type DBName: str
+        :param _CharacterSetName: Character set. Valid values:  `utf8`, `gbk`, `latin1`, `utf8mb4`.
+        :type CharacterSetName: str
+        """
+        self._InstanceId = None
+        self._DBName = None
+        self._CharacterSetName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DBName(self):
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def CharacterSetName(self):
+        return self._CharacterSetName
+
+    @CharacterSetName.setter
+    def CharacterSetName(self, CharacterSetName):
+        self._CharacterSetName = CharacterSetName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DBName = params.get("DBName")
+        self._CharacterSetName = params.get("CharacterSetName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDatabaseResponse(AbstractModel):
+    """CreateDatabase response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -8740,9 +8822,9 @@ class DescribeBinlogsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: Number of entries per page. Value range: 1-100. Default value: 20.
         :type Limit: int
-        :param _MinStartTime: Earliest Binlog start time in the format of  2016-03-17 02:10:37
+        :param _MinStartTime: The earliest start time of binlog  in the format of 2016-03-17 02:10:37.
         :type MinStartTime: str
-        :param _MaxStartTime: Latest binlog start time in the format of  2016-03-17 02:10:37
+        :param _MaxStartTime: The latest start time of binlog  in the format of 2016-03-17 02:10:37.
         :type MaxStartTime: str
         """
         self._InstanceId = None
@@ -21019,8 +21101,8 @@ class ProxyInst(AbstractModel):
         :type InstanceId: str
         :param _InstanceName: Instance name Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceName: str
-        :param _InstanceType: Instance type Note: This field may return null, indicating that no valid values can be obtained.
-        :type InstanceType: str
+        :param _InstanceType: Instance type. Valid values:  `master` (source instance), `ro` (read-only instance), `dr` (disaster recovery instance), `sdr` (disaster recovery instance of small specifications). Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceType: int
         :param _Status: Instance status. Valid values:  `0` (creating), `1` (running), `4` (isolating), `5` (isolated). Note: This field may return null, indicating that no valid values can be obtained.
         :type Status: int
         :param _Weight: Read weight. If it is assigned by the system automatically, the modification will not take effect but represents whether the instance is enabled. Note: This field may return null, indicating that no valid values can be obtained.
