@@ -72,6 +72,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckRechargeKafkaServer(self, request):
+        """This API is used to check whether the Kafka service cluster is accessible.
+
+        :param request: Request instance for CheckRechargeKafkaServer.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CheckRechargeKafkaServerRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CheckRechargeKafkaServerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckRechargeKafkaServer", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckRechargeKafkaServerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloseKafkaConsumer(self, request):
         """This API is used to disable Kafka consumption.
 
@@ -210,6 +233,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDataTransform(self, request):
+        """This API is used to create a data processing task.
+
+        :param request: Request instance for CreateDataTransform.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateDataTransformRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateDataTransformResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDataTransform", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDataTransformResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateExport(self, request):
         """This API is used to create a download task. To get the returned download address, call `DescribeExports` to view the task list. The `CosPath` parameter is also included for download address. For more information, visit https://intl.cloud.tencent.com/document/product/614/56449.?from_cn_redirect=1
 
@@ -247,6 +293,29 @@ class ClsClient(AbstractClient):
             body = self.call("CreateIndex", params, headers=headers)
             response = json.loads(body)
             model = models.CreateIndexResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateKafkaRecharge(self, request):
+        """This API is used to create a Kafka data subscription task.
+
+        :param request: Request instance for CreateKafkaRecharge.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateKafkaRechargeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateKafkaRechargeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateKafkaRecharge", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateKafkaRechargeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -463,6 +532,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteDataTransform(self, request):
+        """This API is used to delete a data processing task.
+
+        :param request: Request instance for DeleteDataTransform.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteDataTransformRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteDataTransformResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDataTransform", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDataTransformResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteExport(self, request):
         """This API is used to delete a log download task.
 
@@ -500,6 +592,29 @@ class ClsClient(AbstractClient):
             body = self.call("DeleteIndex", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteIndexResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteKafkaRecharge(self, request):
+        """This API is used to delete a Kafka data subscription task.
+
+        :param request: Request instance for DeleteKafkaRecharge.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteKafkaRechargeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteKafkaRechargeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteKafkaRecharge", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteKafkaRechargeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -579,7 +694,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteShipper(self, request):
-        """This API is used to delete a shipping rule.
+        """This API is used to delete a COS shipping task.
 
         :param request: Request instance for DeleteShipper.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteShipperRequest`
@@ -785,6 +900,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDataTransformInfo(self, request):
+        """This API is used to get the basic information of data processing tasks.
+
+        :param request: Request instance for DescribeDataTransformInfo.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeDataTransformInfoRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeDataTransformInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataTransformInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataTransformInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeExports(self, request):
         """This API is used to get the list of log download tasks.
 
@@ -822,6 +960,29 @@ class ClsClient(AbstractClient):
             body = self.call("DescribeIndex", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeIndexResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeKafkaRecharges(self, request):
+        """This API is used to get the list of Kafka data subscription tasks.
+
+        :param request: Request instance for DescribeKafkaRecharges.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaRechargesRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaRechargesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKafkaRecharges", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKafkaRechargesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1222,6 +1383,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDataTransform(self, request):
+        """This API is used to modify a data processing task.
+
+        :param request: Request instance for ModifyDataTransform.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyDataTransformRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyDataTransformResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDataTransform", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDataTransformResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyIndex(self, request):
         """This API is used to modify the index configuration. It is subject to the default request frequency limit, and the number of concurrent requests to the same log topic cannot exceed 1, i.e., the index configuration of only one log topic can be modified at a time.
 
@@ -1236,6 +1420,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyIndex", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyIndexResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyKafkaRecharge(self, request):
+        """This API is used to modify a Kafka data subscription task.
+
+        :param request: Request instance for ModifyKafkaRecharge.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyKafkaRechargeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyKafkaRechargeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyKafkaRecharge", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyKafkaRechargeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1351,6 +1558,29 @@ class ClsClient(AbstractClient):
             body = self.call("OpenKafkaConsumer", params, headers=headers)
             response = json.loads(body)
             model = models.OpenKafkaConsumerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def PreviewKafkaRecharge(self, request):
+        """This API is used to preview the logs of Kafka data subscription tasks.
+
+        :param request: Request instance for PreviewKafkaRecharge.
+        :type request: :class:`tencentcloud.cls.v20201016.models.PreviewKafkaRechargeRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.PreviewKafkaRechargeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PreviewKafkaRecharge", params, headers=headers)
+            response = json.loads(body)
+            model = models.PreviewKafkaRechargeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

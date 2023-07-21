@@ -2671,7 +2671,7 @@ class DescribeBillSummaryByPayModeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first. Wait for 5-10 minutes and try again.
+        :param _Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
         :type Ready: int
         :param _SummaryOverview: Detailed cost distribution for all billing modes
 Note: This field may return null, indicating that no valid value was found.
@@ -2800,7 +2800,7 @@ class DescribeBillSummaryByProductResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first. Wait for 5-10 minutes and try again.
+        :param _Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
         :type Ready: int
         :param _SummaryTotal: Total cost details
 Note: This field may return null, indicating that no valid value was found.
@@ -2927,7 +2927,7 @@ class DescribeBillSummaryByProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first. Wait for 5-10 minutes and try again.
+        :param _Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
         :type Ready: int
         :param _SummaryOverview: Detailed cost distribution for all projects
 Note: This field may return null, indicating that no valid value was found.
@@ -3039,7 +3039,7 @@ class DescribeBillSummaryByRegionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first. Wait for 5-10 minutes and try again.
+        :param _Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
         :type Ready: int
         :param _SummaryOverview: Detailed cost distribution for all regions
 Note: This field may return null, indicating that no valid value was found.
@@ -3175,7 +3175,7 @@ class DescribeBillSummaryByTagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first. Wait for 5-10 minutes and try again.
+        :param _Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
         :type Ready: int
         :param _SummaryOverview: Details about cost distribution over different tags
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -3302,7 +3302,7 @@ class DescribeBillSummaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates the current UIN is initializing for the first billing. Wait for 5-10 minutes and try again.
+        :param _Ready: Indicates whether the data is ready. `0`: Not ready. `1`: Ready. If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
         :type Ready: int
         :param _SummaryDetail: Detailed summary of costs by multiple dimensions
         :type SummaryDetail: list of SummaryDetail

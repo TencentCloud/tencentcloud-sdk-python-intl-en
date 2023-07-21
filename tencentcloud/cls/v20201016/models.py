@@ -1155,6 +1155,127 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         
 
 
+class CheckRechargeKafkaServerRequest(AbstractModel):
+    """CheckRechargeKafkaServer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KafkaType: Kafka type. Valid values: 0 (Tencent Cloud CKafka) and 1 (customer's Kafka).
+        :type KafkaType: int
+        :param _KafkaInstance: CKafka instance ID, which is required when `KafkaType` is set to `0`
+        :type KafkaInstance: str
+        :param _ServerAddr: Service address
+        :type ServerAddr: str
+        :param _IsEncryptionAddr: Whether the service address uses an encrypted connection
+        :type IsEncryptionAddr: bool
+        :param _Protocol: Encryption access protocol, which is required when `IsEncryptionAddr` is set to `true`
+        :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
+        """
+        self._KafkaType = None
+        self._KafkaInstance = None
+        self._ServerAddr = None
+        self._IsEncryptionAddr = None
+        self._Protocol = None
+
+    @property
+    def KafkaType(self):
+        return self._KafkaType
+
+    @KafkaType.setter
+    def KafkaType(self, KafkaType):
+        self._KafkaType = KafkaType
+
+    @property
+    def KafkaInstance(self):
+        return self._KafkaInstance
+
+    @KafkaInstance.setter
+    def KafkaInstance(self, KafkaInstance):
+        self._KafkaInstance = KafkaInstance
+
+    @property
+    def ServerAddr(self):
+        return self._ServerAddr
+
+    @ServerAddr.setter
+    def ServerAddr(self, ServerAddr):
+        self._ServerAddr = ServerAddr
+
+    @property
+    def IsEncryptionAddr(self):
+        return self._IsEncryptionAddr
+
+    @IsEncryptionAddr.setter
+    def IsEncryptionAddr(self, IsEncryptionAddr):
+        self._IsEncryptionAddr = IsEncryptionAddr
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+
+    def _deserialize(self, params):
+        self._KafkaType = params.get("KafkaType")
+        self._KafkaInstance = params.get("KafkaInstance")
+        self._ServerAddr = params.get("ServerAddr")
+        self._IsEncryptionAddr = params.get("IsEncryptionAddr")
+        if params.get("Protocol") is not None:
+            self._Protocol = KafkaProtocolInfo()
+            self._Protocol._deserialize(params.get("Protocol"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckRechargeKafkaServerResponse(AbstractModel):
+    """CheckRechargeKafkaServer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Kafka cluster accessibility. 0: Accessible.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class Ckafka(AbstractModel):
     """Information of the CKafka instance to ship to
 
@@ -2266,6 +2387,8 @@ class CreateConfigRequest(AbstractModel):
         :type ExcludePaths: list of ExcludePathInfo
         :param _UserDefineRule: Custom collection rule, which is a serialized JSON string
         :type UserDefineRule: str
+        :param _AdvancedConfig: Advanced collection configuration
+        :type AdvancedConfig: str
         """
         self._Name = None
         self._Output = None
@@ -2274,6 +2397,7 @@ class CreateConfigRequest(AbstractModel):
         self._ExtractRule = None
         self._ExcludePaths = None
         self._UserDefineRule = None
+        self._AdvancedConfig = None
 
     @property
     def Name(self):
@@ -2331,6 +2455,14 @@ class CreateConfigRequest(AbstractModel):
     def UserDefineRule(self, UserDefineRule):
         self._UserDefineRule = UserDefineRule
 
+    @property
+    def AdvancedConfig(self):
+        return self._AdvancedConfig
+
+    @AdvancedConfig.setter
+    def AdvancedConfig(self, AdvancedConfig):
+        self._AdvancedConfig = AdvancedConfig
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2347,6 +2479,7 @@ class CreateConfigRequest(AbstractModel):
                 obj._deserialize(item)
                 self._ExcludePaths.append(obj)
         self._UserDefineRule = params.get("UserDefineRule")
+        self._AdvancedConfig = params.get("AdvancedConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2674,6 +2807,170 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class CreateDataTransformRequest(AbstractModel):
+    """CreateDataTransform request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FuncType: Task type. Valid values: 1 (specified topic) and 2 (dynamically created).
+        :type FuncType: int
+        :param _SrcTopicId: Source log topic
+        :type SrcTopicId: str
+        :param _Name: Data processing task name
+        :type Name: str
+        :param _EtlContent: Data processing statement
+        :type EtlContent: str
+        :param _TaskType: Data processing type. Valid values: `1`: Use random data from the source log topic for processing preview. `2`: Use user-defined test data for processing preview. `3`: Create a real processing task.
+        :type TaskType: int
+        :param _EnableFlag: Task status. Valid values: 1 (enabled) and 2 (disabled).
+        :type EnableFlag: int
+        :param _DstResources: Target topic ID and alias of the data processing task
+        :type DstResources: list of DataTransformResouceInfo
+        :param _PreviewLogStatistics: Test data used for previewing the processing result
+        :type PreviewLogStatistics: list of PreviewLogStatistic
+        """
+        self._FuncType = None
+        self._SrcTopicId = None
+        self._Name = None
+        self._EtlContent = None
+        self._TaskType = None
+        self._EnableFlag = None
+        self._DstResources = None
+        self._PreviewLogStatistics = None
+
+    @property
+    def FuncType(self):
+        return self._FuncType
+
+    @FuncType.setter
+    def FuncType(self, FuncType):
+        self._FuncType = FuncType
+
+    @property
+    def SrcTopicId(self):
+        return self._SrcTopicId
+
+    @SrcTopicId.setter
+    def SrcTopicId(self, SrcTopicId):
+        self._SrcTopicId = SrcTopicId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def EtlContent(self):
+        return self._EtlContent
+
+    @EtlContent.setter
+    def EtlContent(self, EtlContent):
+        self._EtlContent = EtlContent
+
+    @property
+    def TaskType(self):
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def EnableFlag(self):
+        return self._EnableFlag
+
+    @EnableFlag.setter
+    def EnableFlag(self, EnableFlag):
+        self._EnableFlag = EnableFlag
+
+    @property
+    def DstResources(self):
+        return self._DstResources
+
+    @DstResources.setter
+    def DstResources(self, DstResources):
+        self._DstResources = DstResources
+
+    @property
+    def PreviewLogStatistics(self):
+        return self._PreviewLogStatistics
+
+    @PreviewLogStatistics.setter
+    def PreviewLogStatistics(self, PreviewLogStatistics):
+        self._PreviewLogStatistics = PreviewLogStatistics
+
+
+    def _deserialize(self, params):
+        self._FuncType = params.get("FuncType")
+        self._SrcTopicId = params.get("SrcTopicId")
+        self._Name = params.get("Name")
+        self._EtlContent = params.get("EtlContent")
+        self._TaskType = params.get("TaskType")
+        self._EnableFlag = params.get("EnableFlag")
+        if params.get("DstResources") is not None:
+            self._DstResources = []
+            for item in params.get("DstResources"):
+                obj = DataTransformResouceInfo()
+                obj._deserialize(item)
+                self._DstResources.append(obj)
+        if params.get("PreviewLogStatistics") is not None:
+            self._PreviewLogStatistics = []
+            for item in params.get("PreviewLogStatistics"):
+                obj = PreviewLogStatistic()
+                obj._deserialize(item)
+                self._PreviewLogStatistics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDataTransformResponse(AbstractModel):
+    """CreateDataTransform response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID
+        :type TaskId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateExportRequest(AbstractModel):
     """CreateExport request structure.
 
@@ -2926,6 +3223,200 @@ class CreateIndexResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateKafkaRechargeRequest(AbstractModel):
+    """CreateKafkaRecharge request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: Target topic ID
+        :type TopicId: str
+        :param _Name: Kafka data import configuration name
+        :type Name: str
+        :param _KafkaType: Kafka type. Valid values: 0 (Tencent Cloud CKafka) and 1 (customer's Kafka).
+        :type KafkaType: int
+        :param _UserKafkaTopics: List of Kafka topics to import data from. Separate multiple topics with commas (,).
+        :type UserKafkaTopics: str
+        :param _Offset: Position for data import. Valid values: -2 (earliest, default) and -1 (latest).
+        :type Offset: int
+        :param _KafkaInstance: CKafka instance ID, which is required when `KafkaType` is set to `0`
+        :type KafkaInstance: str
+        :param _ServerAddr: Service address, which is required when `KafkaType` is set to `1`
+        :type ServerAddr: str
+        :param _IsEncryptionAddr: Whether the service address uses an encrypted connection, which is required when `KafkaType` is set to `1`
+        :type IsEncryptionAddr: bool
+        :param _Protocol: Encryption access protocol, which is required when `IsEncryptionAddr` is set to `true`
+        :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
+        :param _ConsumerGroupName: Kafka consumer group name
+        :type ConsumerGroupName: str
+        :param _LogRechargeRule: Log import rule
+        :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
+        """
+        self._TopicId = None
+        self._Name = None
+        self._KafkaType = None
+        self._UserKafkaTopics = None
+        self._Offset = None
+        self._KafkaInstance = None
+        self._ServerAddr = None
+        self._IsEncryptionAddr = None
+        self._Protocol = None
+        self._ConsumerGroupName = None
+        self._LogRechargeRule = None
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def KafkaType(self):
+        return self._KafkaType
+
+    @KafkaType.setter
+    def KafkaType(self, KafkaType):
+        self._KafkaType = KafkaType
+
+    @property
+    def UserKafkaTopics(self):
+        return self._UserKafkaTopics
+
+    @UserKafkaTopics.setter
+    def UserKafkaTopics(self, UserKafkaTopics):
+        self._UserKafkaTopics = UserKafkaTopics
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def KafkaInstance(self):
+        return self._KafkaInstance
+
+    @KafkaInstance.setter
+    def KafkaInstance(self, KafkaInstance):
+        self._KafkaInstance = KafkaInstance
+
+    @property
+    def ServerAddr(self):
+        return self._ServerAddr
+
+    @ServerAddr.setter
+    def ServerAddr(self, ServerAddr):
+        self._ServerAddr = ServerAddr
+
+    @property
+    def IsEncryptionAddr(self):
+        return self._IsEncryptionAddr
+
+    @IsEncryptionAddr.setter
+    def IsEncryptionAddr(self, IsEncryptionAddr):
+        self._IsEncryptionAddr = IsEncryptionAddr
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def ConsumerGroupName(self):
+        return self._ConsumerGroupName
+
+    @ConsumerGroupName.setter
+    def ConsumerGroupName(self, ConsumerGroupName):
+        self._ConsumerGroupName = ConsumerGroupName
+
+    @property
+    def LogRechargeRule(self):
+        return self._LogRechargeRule
+
+    @LogRechargeRule.setter
+    def LogRechargeRule(self, LogRechargeRule):
+        self._LogRechargeRule = LogRechargeRule
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        self._KafkaType = params.get("KafkaType")
+        self._UserKafkaTopics = params.get("UserKafkaTopics")
+        self._Offset = params.get("Offset")
+        self._KafkaInstance = params.get("KafkaInstance")
+        self._ServerAddr = params.get("ServerAddr")
+        self._IsEncryptionAddr = params.get("IsEncryptionAddr")
+        if params.get("Protocol") is not None:
+            self._Protocol = KafkaProtocolInfo()
+            self._Protocol._deserialize(params.get("Protocol"))
+        self._ConsumerGroupName = params.get("ConsumerGroupName")
+        if params.get("LogRechargeRule") is not None:
+            self._LogRechargeRule = LogRechargeRuleInfo()
+            self._LogRechargeRule._deserialize(params.get("LogRechargeRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateKafkaRechargeResponse(AbstractModel):
+    """CreateKafkaRecharge response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Kafka data import configuration ID
+        :type Id: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
         self._RequestId = params.get("RequestId")
 
 
@@ -3199,7 +3690,7 @@ class CreateShipperRequest(AbstractModel):
         :type ShipperName: str
         :param _Interval: Interval between shipping tasks (in sec). Default value: 300. Value range: 300-900
         :type Interval: int
-        :param _MaxSize: Maximum size of a file to be shipped, in MB. Default value: 256. Value range: 100-256
+        :param _MaxSize: Maximum size of a file to be shipped, in MB. Default value: 256. Value range: 5-256
         :type MaxSize: int
         :param _FilterRules: Filter rules for shipped logs. Only logs matching the rules can be shipped. All rules are in the AND relationship, and up to five rules can be added. If the array is empty, no filtering will be performed, and all logs will be shipped.
         :type FilterRules: list of FilterRuleInfo
@@ -3683,6 +4174,233 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         
 
 
+class DataTransformResouceInfo(AbstractModel):
+    """Information about the resource for data processing
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: Target topic ID
+        :type TopicId: str
+        :param _Alias: Alias
+        :type Alias: str
+        """
+        self._TopicId = None
+        self._Alias = None
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Alias(self):
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Alias = params.get("Alias")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataTransformTaskInfo(AbstractModel):
+    """Basic information of a data processing task
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Data processing task name
+        :type Name: str
+        :param _TaskId: Data processing task ID
+        :type TaskId: str
+        :param _EnableFlag: Task status. Valid values: 1 (enabled) and 2 (disabled).
+        :type EnableFlag: int
+        :param _Type: Task type. Valid values: 1 (DSL) and 2 (SQL).
+        :type Type: int
+        :param _SrcTopicId: Source log topic
+        :type SrcTopicId: str
+        :param _Status: Current task status. Valid values: 1 (preparing), 2 (in progress), 3 (being stopped), and 4 (stopped).
+        :type Status: int
+        :param _CreateTime: Task creation time
+        :type CreateTime: str
+        :param _UpdateTime: Last modified time
+        :type UpdateTime: str
+        :param _LastEnableTime: Last enabled time. If you need to rebuild a cluster, modify this time.
+        :type LastEnableTime: str
+        :param _SrcTopicName: Log topic name
+        :type SrcTopicName: str
+        :param _LogsetId: Logset ID
+        :type LogsetId: str
+        :param _DstResources: Target topic ID and alias of the data processing task
+        :type DstResources: list of DataTransformResouceInfo
+        :param _EtlContent: Logical function for data processing
+        :type EtlContent: str
+        """
+        self._Name = None
+        self._TaskId = None
+        self._EnableFlag = None
+        self._Type = None
+        self._SrcTopicId = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._LastEnableTime = None
+        self._SrcTopicName = None
+        self._LogsetId = None
+        self._DstResources = None
+        self._EtlContent = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def EnableFlag(self):
+        return self._EnableFlag
+
+    @EnableFlag.setter
+    def EnableFlag(self, EnableFlag):
+        self._EnableFlag = EnableFlag
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SrcTopicId(self):
+        return self._SrcTopicId
+
+    @SrcTopicId.setter
+    def SrcTopicId(self, SrcTopicId):
+        self._SrcTopicId = SrcTopicId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def LastEnableTime(self):
+        return self._LastEnableTime
+
+    @LastEnableTime.setter
+    def LastEnableTime(self, LastEnableTime):
+        self._LastEnableTime = LastEnableTime
+
+    @property
+    def SrcTopicName(self):
+        return self._SrcTopicName
+
+    @SrcTopicName.setter
+    def SrcTopicName(self, SrcTopicName):
+        self._SrcTopicName = SrcTopicName
+
+    @property
+    def LogsetId(self):
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def DstResources(self):
+        return self._DstResources
+
+    @DstResources.setter
+    def DstResources(self, DstResources):
+        self._DstResources = DstResources
+
+    @property
+    def EtlContent(self):
+        return self._EtlContent
+
+    @EtlContent.setter
+    def EtlContent(self, EtlContent):
+        self._EtlContent = EtlContent
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._TaskId = params.get("TaskId")
+        self._EnableFlag = params.get("EnableFlag")
+        self._Type = params.get("Type")
+        self._SrcTopicId = params.get("SrcTopicId")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._LastEnableTime = params.get("LastEnableTime")
+        self._SrcTopicName = params.get("SrcTopicName")
+        self._LogsetId = params.get("LogsetId")
+        if params.get("DstResources") is not None:
+            self._DstResources = []
+            for item in params.get("DstResources"):
+                obj = DataTransformResouceInfo()
+                obj._deserialize(item)
+                self._DstResources.append(obj)
+        self._EtlContent = params.get("EtlContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAlarmNoticeRequest(AbstractModel):
     """DeleteAlarmNotice request structure.
 
@@ -3985,6 +4703,64 @@ class DeleteConsumerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteDataTransformRequest(AbstractModel):
+    """DeleteDataTransform request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Data processing task ID
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDataTransformResponse(AbstractModel):
+    """DeleteDataTransform response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteExportRequest(AbstractModel):
     """DeleteExport request structure.
 
@@ -4078,6 +4854,76 @@ class DeleteIndexRequest(AbstractModel):
 
 class DeleteIndexResponse(AbstractModel):
     """DeleteIndex response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteKafkaRechargeRequest(AbstractModel):
+    """DeleteKafkaRecharge request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Kafka data import configuration ID
+        :type Id: str
+        :param _TopicId: Target CLS log topic ID
+        :type TopicId: str
+        """
+        self._Id = None
+        self._TopicId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteKafkaRechargeResponse(AbstractModel):
+    """DeleteKafkaRecharge response structure.
 
     """
 
@@ -5254,6 +6100,167 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDataTransformInfoRequest(AbstractModel):
+    """DescribeDataTransformInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <br><li>taskName
+
+Filter by **processing task name**.
+Type: String
+
+Required: No
+
+<br><li>taskId
+
+Filter by **processing task ID**.
+Type: String
+
+Required: No
+
+<br><li>srctopicId
+
+Filter by **source topic ID**.
+Type: String
+
+Required: No
+
+Each request can have up to 10 `Filters` and 100 `Filter.Values`.
+        :type Filters: list of Filter
+        :param _Offset: The pagination offset. Default value: 0.
+        :type Offset: int
+        :param _Limit: Maximum number of entries per page. Default value: 20. Maximum value: 100.
+        :type Limit: int
+        :param _Type: Task type. Valid values: 1: Get the details of a single task. 2 (default): Get the task list.
+        :type Type: int
+        :param _TaskId: Task ID, which is required when `Type` is set to `1`
+        :type TaskId: str
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._Type = None
+        self._TaskId = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Type = params.get("Type")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataTransformInfoResponse(AbstractModel):
+    """DescribeDataTransformInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataTransformTaskInfos: List of data processing tasks
+        :type DataTransformTaskInfos: list of DataTransformTaskInfo
+        :param _TotalCount: Total tasks
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DataTransformTaskInfos = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DataTransformTaskInfos(self):
+        return self._DataTransformTaskInfos
+
+    @DataTransformTaskInfos.setter
+    def DataTransformTaskInfos(self, DataTransformTaskInfos):
+        self._DataTransformTaskInfos = DataTransformTaskInfos
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataTransformTaskInfos") is not None:
+            self._DataTransformTaskInfos = []
+            for item in params.get("DataTransformTaskInfos"):
+                obj = DataTransformTaskInfo()
+                obj._deserialize(item)
+                self._DataTransformTaskInfos.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeExportsRequest(AbstractModel):
     """DescribeExports request structure.
 
@@ -5502,6 +6509,117 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ModifyTime = params.get("ModifyTime")
         self._IncludeInternalFields = params.get("IncludeInternalFields")
         self._MetadataFlag = params.get("MetadataFlag")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeKafkaRechargesRequest(AbstractModel):
+    """DescribeKafkaRecharges request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: Log topic ID
+        :type TopicId: str
+        :param _Id: Import configuration ID
+        :type Id: str
+        :param _Status: Status. Valid values: 1 (running) and 2 (suspended).
+        :type Status: int
+        """
+        self._TopicId = None
+        self._Id = None
+        self._Status = None
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Id = params.get("Id")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKafkaRechargesResponse(AbstractModel):
+    """DescribeKafkaRecharges response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: KafkaRechargeInfo list
+        :type Infos: list of KafkaRechargeInfo
+        :param _TotalCount: Total Kafka data records imported
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = KafkaRechargeInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -6612,16 +7730,29 @@ class DescribeTopicsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: <br><li> `topicName` filters by **log topic name**. Type: String. Required: No<br><li> `logsetName` filters by **logset name**. Type: String. Required: No<br><li> `topicId` filters by **log topic ID**. Type: String. Required: No<br><li> `logsetId` filters by **logset ID**. You can call the `DescribeLogsets` API to query the list of created logsets or log in to the console to view them. You can also call the `CreateLogset` API to create a logset. Type: String. Required: No<br><li> `tagKey` filters by **tag key**. Type: String. Required: No<br><li> `tag:tagKey` filters by **tag key-value pair**. The tagKey should be replaced with a specified tag key, such as “tag:exampleKey”. Type: String. Required: No<br><li> `storageType` filters by **log topic storage type**. Valid values: `hot` (STANDARD storage); `cold`: (IA storage). Type: String. Required: No. Each request can contain up to 10 `Filters` and 100 `Filter.Values`.
+        :param _Filters: <li>topicName: Filter by **log topic name**. Fuzzy match is implemented by default. You can use the `PreciseSearch` parameter to set exact match. Type: String. Required. No. <br><li>logsetName: Filter by **logset name**. Fuzzy match is implemented by default. You can use the `PreciseSearch` parameter to set exact match. Type: String. Required: No. <br><li>topicId: Filter by **log topic ID**. Type: String. Required: No. <br><li>logsetId: Filter by **logset ID**. You can call `DescribeLogsets` to query the list of created logsets or log in to the console to view them. You can also call `CreateLogset` to create a logset. Type: String. Required: No. <br><li>tagKey: Filter by **tag key**. Type: String. Required: No. <br><li>tag:tagKey: Filter by **tag key-value pair**. The `tagKey` should be replaced with a specified tag key, such as `tag:exampleKey`. Type: String. Required: No. <br><li>storageType: Filter by **log topic storage type**. Valid values: `hot` (standard storage) and `cold` (IA storage). Type: String. Required: No. Each request can have up to 10 `Filters` and 100 `Filter.Values`.
         :type Filters: list of Filter
         :param _Offset: Page offset. Default value: 0.
         :type Offset: int
         :param _Limit: Maximum number of entries per page. Default value: 20. Maximum value: 100.
         :type Limit: int
+        :param _PreciseSearch: Match mode for `Filters` fields.
+- 0: Fuzzy match for `topicName` and `logsetName`. This is the default value.
+- 1: Exact match for `topicName`.
+- 2: Exact match for `logsetName`.
+- 3: Exact match for `topicName` and `logsetName`.
+        :type PreciseSearch: int
+        :param _BizType: Topic type
+- 0 (default): Log topic.
+- 1: Metric topic.
+
+        :type BizType: int
         """
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._PreciseSearch = None
+        self._BizType = None
 
     @property
     def Filters(self):
@@ -6647,6 +7778,22 @@ class DescribeTopicsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def PreciseSearch(self):
+        return self._PreciseSearch
+
+    @PreciseSearch.setter
+    def PreciseSearch(self, PreciseSearch):
+        self._PreciseSearch = PreciseSearch
+
+    @property
+    def BizType(self):
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -6657,6 +7804,8 @@ class DescribeTopicsRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._PreciseSearch = params.get("PreciseSearch")
+        self._BizType = params.get("BizType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6723,6 +7872,8 @@ class DescribeTopicsResponse(AbstractModel):
 
 class DynamicIndex(AbstractModel):
     """Dynamic index configuration
+
+    Note: This feature is currently in a beta test. To use it, please contact technical support.
 
     """
 
@@ -6999,8 +8150,8 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param _BeginRegex: First-Line matching rule, which is valid only if `log_type` is `multiline_log` or `fullregex_log`
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type BeginRegex: str
-        :param _Keys: Key name of each extracted field. An empty key indicates to discard the field. This parameter is valid only if `log_type` is `delimiter_log`. `json_log` logs use the key of JSON itself
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Keys: Key name of each extracted field. An empty key indicates to discard the field. This parameter is valid only if `log_type` is `delimiter_log`. `json_log` logs use the key of JSON itself. A maximum of 100 keys are supported.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Keys: list of str
         :param _FilterKeyRegex: Log keys to be filtered and the corresponding regex
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -7040,7 +8191,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 2: Use user-defined metadata.
 3: Use the collection path to extract metadata.
         :type MetadataType: int
-        :param _PathRegex: Regular expression of the collection path, which is required when `MetadataType` is set to `3`.
+        :param _PathRegex: Regular expression of the collection configuration path, which is required when `MetadataType` is set to `3`
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PathRegex: str
         :param _MetaTags: User-defined metadata, which is required when `MetadataType` is set to `2`.
@@ -7806,6 +8957,387 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class KafkaConsumerContent(AbstractModel):
+    """Kafka consumer content
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Format: Format. Valid values: 0 (full-text) and 1 (JSON).
+        :type Format: int
+        :param _EnableTag: Whether to ship tag information
+This parameter does not need to be set when `Format` is set to `0`.
+        :type EnableTag: bool
+        :param _MetaFields: Metadata information list. Valid values: \_\_SOURCE\_\_, \_\_FILENAME\_\_,
+\_\_TIMESTAMP\_\_, \_\_HOSTNAME\_\_, and \_\_PKGID\_\_.
+This parameter does not need to be set when `Format` is set to `0`.
+        :type MetaFields: list of str
+        :param _TagTransaction: Tag data processing mode. Valid values:
+1 (default): Do not tile data.
+2: Tile data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagTransaction: int
+        :param _JsonType: JSON data format. Valid values:
+1 (default): Not escaped.
+2: Escaped.
+        :type JsonType: int
+        """
+        self._Format = None
+        self._EnableTag = None
+        self._MetaFields = None
+        self._TagTransaction = None
+        self._JsonType = None
+
+    @property
+    def Format(self):
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def EnableTag(self):
+        return self._EnableTag
+
+    @EnableTag.setter
+    def EnableTag(self, EnableTag):
+        self._EnableTag = EnableTag
+
+    @property
+    def MetaFields(self):
+        return self._MetaFields
+
+    @MetaFields.setter
+    def MetaFields(self, MetaFields):
+        self._MetaFields = MetaFields
+
+    @property
+    def TagTransaction(self):
+        return self._TagTransaction
+
+    @TagTransaction.setter
+    def TagTransaction(self, TagTransaction):
+        self._TagTransaction = TagTransaction
+
+    @property
+    def JsonType(self):
+        return self._JsonType
+
+    @JsonType.setter
+    def JsonType(self, JsonType):
+        self._JsonType = JsonType
+
+
+    def _deserialize(self, params):
+        self._Format = params.get("Format")
+        self._EnableTag = params.get("EnableTag")
+        self._MetaFields = params.get("MetaFields")
+        self._TagTransaction = params.get("TagTransaction")
+        self._JsonType = params.get("JsonType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KafkaProtocolInfo(AbstractModel):
+    """Kafka access protocol
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Protocol: Protocol type. Valid values: `plaintext`, `sasl_plaintext`, and `sasl_ssl`. `sasl_ssl` is recommended. Using this protocol will encrypt the connection and implement user authentication.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Protocol: str
+        :param _Mechanism: Encryption type. Valid values: `PLAIN`, `SCRAM-SHA-256`, and SCRAM-SHA-512`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Mechanism: str
+        :param _UserName: Username
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserName: str
+        :param _Password: User password
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Password: str
+        """
+        self._Protocol = None
+        self._Mechanism = None
+        self._UserName = None
+        self._Password = None
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Mechanism(self):
+        return self._Mechanism
+
+    @Mechanism.setter
+    def Mechanism(self, Mechanism):
+        self._Mechanism = Mechanism
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+
+    def _deserialize(self, params):
+        self._Protocol = params.get("Protocol")
+        self._Mechanism = params.get("Mechanism")
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KafkaRechargeInfo(AbstractModel):
+    """Kafka data import configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Primary key ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Id: str
+        :param _TopicId: Log topic ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TopicId: str
+        :param _Name: Kafka data import task name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _KafkaType: Kafka type. Valid values: 0 (Tencent Cloud CKafka) and 1 (customer's Kafka).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type KafkaType: int
+        :param _KafkaInstance: CKafka instance ID, which is required when `KafkaType` is set to `0`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type KafkaInstance: str
+        :param _ServerAddr: Service address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ServerAddr: str
+        :param _IsEncryptionAddr: Whether the service address uses an encrypted connection	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsEncryptionAddr: bool
+        :param _Protocol: Encryption access protocol, which is required when `IsEncryptionAddr` is set to `true`
+        :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
+        :param _UserKafkaTopics: List of Kafka topics to import data from. Separate multiple topics with commas (,).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserKafkaTopics: str
+        :param _ConsumerGroupName: Kafka consumer group name	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConsumerGroupName: str
+        :param _Status: Status. Valid values: 1 (running) and 2 (suspended).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param _Offset: Position for data import. Valid values: -2 (earliest, default) and -1 (latest).  
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Offset: int
+        :param _CreateTime: Creation time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param _UpdateTime: Update time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        :param _LogRechargeRule: Log import rule
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
+        """
+        self._Id = None
+        self._TopicId = None
+        self._Name = None
+        self._KafkaType = None
+        self._KafkaInstance = None
+        self._ServerAddr = None
+        self._IsEncryptionAddr = None
+        self._Protocol = None
+        self._UserKafkaTopics = None
+        self._ConsumerGroupName = None
+        self._Status = None
+        self._Offset = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._LogRechargeRule = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def KafkaType(self):
+        return self._KafkaType
+
+    @KafkaType.setter
+    def KafkaType(self, KafkaType):
+        self._KafkaType = KafkaType
+
+    @property
+    def KafkaInstance(self):
+        return self._KafkaInstance
+
+    @KafkaInstance.setter
+    def KafkaInstance(self, KafkaInstance):
+        self._KafkaInstance = KafkaInstance
+
+    @property
+    def ServerAddr(self):
+        return self._ServerAddr
+
+    @ServerAddr.setter
+    def ServerAddr(self, ServerAddr):
+        self._ServerAddr = ServerAddr
+
+    @property
+    def IsEncryptionAddr(self):
+        return self._IsEncryptionAddr
+
+    @IsEncryptionAddr.setter
+    def IsEncryptionAddr(self, IsEncryptionAddr):
+        self._IsEncryptionAddr = IsEncryptionAddr
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def UserKafkaTopics(self):
+        return self._UserKafkaTopics
+
+    @UserKafkaTopics.setter
+    def UserKafkaTopics(self, UserKafkaTopics):
+        self._UserKafkaTopics = UserKafkaTopics
+
+    @property
+    def ConsumerGroupName(self):
+        return self._ConsumerGroupName
+
+    @ConsumerGroupName.setter
+    def ConsumerGroupName(self, ConsumerGroupName):
+        self._ConsumerGroupName = ConsumerGroupName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def LogRechargeRule(self):
+        return self._LogRechargeRule
+
+    @LogRechargeRule.setter
+    def LogRechargeRule(self, LogRechargeRule):
+        self._LogRechargeRule = LogRechargeRule
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        self._KafkaType = params.get("KafkaType")
+        self._KafkaInstance = params.get("KafkaInstance")
+        self._ServerAddr = params.get("ServerAddr")
+        self._IsEncryptionAddr = params.get("IsEncryptionAddr")
+        if params.get("Protocol") is not None:
+            self._Protocol = KafkaProtocolInfo()
+            self._Protocol._deserialize(params.get("Protocol"))
+        self._UserKafkaTopics = params.get("UserKafkaTopics")
+        self._ConsumerGroupName = params.get("ConsumerGroupName")
+        self._Status = params.get("Status")
+        self._Offset = params.get("Offset")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("LogRechargeRule") is not None:
+            self._LogRechargeRule = LogRechargeRuleInfo()
+            self._LogRechargeRule._deserialize(params.get("LogRechargeRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KeyRegexInfo(AbstractModel):
     """Log keys to be filtered and the corresponding regex
 
@@ -8266,6 +9798,205 @@ class LogItems(AbstractModel):
                 obj = LogItem()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogRechargeRuleInfo(AbstractModel):
+    """Log import rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RechargeType: Import type. Valid values: `json_log` (JSON logs), `minimalist_log` (single-line full text), and fullregex_log u200d(single-line full regex)
+        :type RechargeType: str
+        :param _EncodingFormat: Encoding format. Valid values: 0 (default, UTF-8) and 1 GBK).
+        :type EncodingFormat: int
+        :param _DefaultTimeSwitch: Whether to use the default time. Valid values: `true` (default) and `false`.
+        :type DefaultTimeSwitch: bool
+        :param _LogRegex: Full log matching rule, which is valid only if `RechargeType` is `fullregex_log`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LogRegex: str
+        :param _UnMatchLogSwitch: Whether to upload the logs that failed to be parsed. Valid values: `true` and `false`.
+        :type UnMatchLogSwitch: bool
+        :param _UnMatchLogKey: Key of the log that failed to be parsed
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UnMatchLogKey: str
+        :param _UnMatchLogTimeSrc: Time source of the log that failed to be parsed. Valid values: 0 (current system time) and 1 (Kafka message timestamp).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UnMatchLogTimeSrc: int
+        :param _DefaultTimeSrc: Default time source. Valid values: 0 (current system time) and 1 (Kafka message timestamp).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DefaultTimeSrc: int
+        :param _TimeKey: Time field
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TimeKey: str
+        :param _TimeRegex: Time regular expression
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TimeRegex: str
+        :param _TimeFormat: Time field format
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TimeFormat: str
+        :param _TimeZone: Time zone
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TimeZone: str
+        :param _Metadata: Metadata information. Kafka supports import of kafka_topic, kafka_partition, kafka_offset, and kafka_timestamp.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Metadata: list of str
+        :param _Keys: List of log keys, which is required when `RechargeType` is set to `full_regex_log`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Keys: list of str
+        """
+        self._RechargeType = None
+        self._EncodingFormat = None
+        self._DefaultTimeSwitch = None
+        self._LogRegex = None
+        self._UnMatchLogSwitch = None
+        self._UnMatchLogKey = None
+        self._UnMatchLogTimeSrc = None
+        self._DefaultTimeSrc = None
+        self._TimeKey = None
+        self._TimeRegex = None
+        self._TimeFormat = None
+        self._TimeZone = None
+        self._Metadata = None
+        self._Keys = None
+
+    @property
+    def RechargeType(self):
+        return self._RechargeType
+
+    @RechargeType.setter
+    def RechargeType(self, RechargeType):
+        self._RechargeType = RechargeType
+
+    @property
+    def EncodingFormat(self):
+        return self._EncodingFormat
+
+    @EncodingFormat.setter
+    def EncodingFormat(self, EncodingFormat):
+        self._EncodingFormat = EncodingFormat
+
+    @property
+    def DefaultTimeSwitch(self):
+        return self._DefaultTimeSwitch
+
+    @DefaultTimeSwitch.setter
+    def DefaultTimeSwitch(self, DefaultTimeSwitch):
+        self._DefaultTimeSwitch = DefaultTimeSwitch
+
+    @property
+    def LogRegex(self):
+        return self._LogRegex
+
+    @LogRegex.setter
+    def LogRegex(self, LogRegex):
+        self._LogRegex = LogRegex
+
+    @property
+    def UnMatchLogSwitch(self):
+        return self._UnMatchLogSwitch
+
+    @UnMatchLogSwitch.setter
+    def UnMatchLogSwitch(self, UnMatchLogSwitch):
+        self._UnMatchLogSwitch = UnMatchLogSwitch
+
+    @property
+    def UnMatchLogKey(self):
+        return self._UnMatchLogKey
+
+    @UnMatchLogKey.setter
+    def UnMatchLogKey(self, UnMatchLogKey):
+        self._UnMatchLogKey = UnMatchLogKey
+
+    @property
+    def UnMatchLogTimeSrc(self):
+        return self._UnMatchLogTimeSrc
+
+    @UnMatchLogTimeSrc.setter
+    def UnMatchLogTimeSrc(self, UnMatchLogTimeSrc):
+        self._UnMatchLogTimeSrc = UnMatchLogTimeSrc
+
+    @property
+    def DefaultTimeSrc(self):
+        return self._DefaultTimeSrc
+
+    @DefaultTimeSrc.setter
+    def DefaultTimeSrc(self, DefaultTimeSrc):
+        self._DefaultTimeSrc = DefaultTimeSrc
+
+    @property
+    def TimeKey(self):
+        return self._TimeKey
+
+    @TimeKey.setter
+    def TimeKey(self, TimeKey):
+        self._TimeKey = TimeKey
+
+    @property
+    def TimeRegex(self):
+        return self._TimeRegex
+
+    @TimeRegex.setter
+    def TimeRegex(self, TimeRegex):
+        self._TimeRegex = TimeRegex
+
+    @property
+    def TimeFormat(self):
+        return self._TimeFormat
+
+    @TimeFormat.setter
+    def TimeFormat(self, TimeFormat):
+        self._TimeFormat = TimeFormat
+
+    @property
+    def TimeZone(self):
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def Metadata(self):
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+    @property
+    def Keys(self):
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+
+    def _deserialize(self, params):
+        self._RechargeType = params.get("RechargeType")
+        self._EncodingFormat = params.get("EncodingFormat")
+        self._DefaultTimeSwitch = params.get("DefaultTimeSwitch")
+        self._LogRegex = params.get("LogRegex")
+        self._UnMatchLogSwitch = params.get("UnMatchLogSwitch")
+        self._UnMatchLogKey = params.get("UnMatchLogKey")
+        self._UnMatchLogTimeSrc = params.get("UnMatchLogTimeSrc")
+        self._DefaultTimeSrc = params.get("DefaultTimeSrc")
+        self._TimeKey = params.get("TimeKey")
+        self._TimeRegex = params.get("TimeRegex")
+        self._TimeFormat = params.get("TimeFormat")
+        self._TimeZone = params.get("TimeZone")
+        self._Metadata = params.get("Metadata")
+        self._Keys = params.get("Keys")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9528,6 +11259,117 @@ class ModifyCosRechargeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDataTransformRequest(AbstractModel):
+    """ModifyDataTransform request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Data processing task ID
+        :type TaskId: str
+        :param _Name: Data processing task name
+        :type Name: str
+        :param _EtlContent: Data processing statement
+        :type EtlContent: str
+        :param _EnableFlag: Task status. Valid values: 1 (enabled) and 2 (disabled).
+        :type EnableFlag: int
+        :param _DstResources: Destination topic ID and alias of the data processing task
+        :type DstResources: list of DataTransformResouceInfo
+        """
+        self._TaskId = None
+        self._Name = None
+        self._EtlContent = None
+        self._EnableFlag = None
+        self._DstResources = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def EtlContent(self):
+        return self._EtlContent
+
+    @EtlContent.setter
+    def EtlContent(self, EtlContent):
+        self._EtlContent = EtlContent
+
+    @property
+    def EnableFlag(self):
+        return self._EnableFlag
+
+    @EnableFlag.setter
+    def EnableFlag(self, EnableFlag):
+        self._EnableFlag = EnableFlag
+
+    @property
+    def DstResources(self):
+        return self._DstResources
+
+    @DstResources.setter
+    def DstResources(self, DstResources):
+        self._DstResources = DstResources
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Name = params.get("Name")
+        self._EtlContent = params.get("EtlContent")
+        self._EnableFlag = params.get("EnableFlag")
+        if params.get("DstResources") is not None:
+            self._DstResources = []
+            for item in params.get("DstResources"):
+                obj = DataTransformResouceInfo()
+                obj._deserialize(item)
+                self._DstResources.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDataTransformResponse(AbstractModel):
+    """ModifyDataTransform response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyIndexRequest(AbstractModel):
     """ModifyIndex request structure.
 
@@ -9618,6 +11460,200 @@ class ModifyIndexRequest(AbstractModel):
 
 class ModifyIndexResponse(AbstractModel):
     """ModifyIndex response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyKafkaRechargeRequest(AbstractModel):
+    """ModifyKafkaRecharge request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Kafka data import configuration ID
+        :type Id: str
+        :param _TopicId: Target topic ID
+        :type TopicId: str
+        :param _Name: Kafka data import configuration name
+        :type Name: str
+        :param _KafkaType: Kafka type. Valid values: 0 (Tencent Cloud CKafka) and 1 (customer's Kafka)
+        :type KafkaType: int
+        :param _KafkaInstance: CKafka instance ID, which is required when `KafkaType` is set to `0`
+        :type KafkaInstance: str
+        :param _ServerAddr: Service address
+        :type ServerAddr: str
+        :param _IsEncryptionAddr: Whether the service address uses an encrypted connection
+        :type IsEncryptionAddr: bool
+        :param _Protocol: Encryption access protocol, which is required when IsEncryptionAddr` is set to `true`
+        :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
+        :param _UserKafkaTopics: List of Kafka topics to import data from. Separate multiple topics with commas (,).
+        :type UserKafkaTopics: str
+        :param _ConsumerGroupName: Kafka consumer group name
+        :type ConsumerGroupName: str
+        :param _LogRechargeRule: Log import rule
+        :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
+        :param _StatusControl: Import control. Valid values: 1 (suspend) and 2 (resume).
+        :type StatusControl: int
+        """
+        self._Id = None
+        self._TopicId = None
+        self._Name = None
+        self._KafkaType = None
+        self._KafkaInstance = None
+        self._ServerAddr = None
+        self._IsEncryptionAddr = None
+        self._Protocol = None
+        self._UserKafkaTopics = None
+        self._ConsumerGroupName = None
+        self._LogRechargeRule = None
+        self._StatusControl = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def KafkaType(self):
+        return self._KafkaType
+
+    @KafkaType.setter
+    def KafkaType(self, KafkaType):
+        self._KafkaType = KafkaType
+
+    @property
+    def KafkaInstance(self):
+        return self._KafkaInstance
+
+    @KafkaInstance.setter
+    def KafkaInstance(self, KafkaInstance):
+        self._KafkaInstance = KafkaInstance
+
+    @property
+    def ServerAddr(self):
+        return self._ServerAddr
+
+    @ServerAddr.setter
+    def ServerAddr(self, ServerAddr):
+        self._ServerAddr = ServerAddr
+
+    @property
+    def IsEncryptionAddr(self):
+        return self._IsEncryptionAddr
+
+    @IsEncryptionAddr.setter
+    def IsEncryptionAddr(self, IsEncryptionAddr):
+        self._IsEncryptionAddr = IsEncryptionAddr
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def UserKafkaTopics(self):
+        return self._UserKafkaTopics
+
+    @UserKafkaTopics.setter
+    def UserKafkaTopics(self, UserKafkaTopics):
+        self._UserKafkaTopics = UserKafkaTopics
+
+    @property
+    def ConsumerGroupName(self):
+        return self._ConsumerGroupName
+
+    @ConsumerGroupName.setter
+    def ConsumerGroupName(self, ConsumerGroupName):
+        self._ConsumerGroupName = ConsumerGroupName
+
+    @property
+    def LogRechargeRule(self):
+        return self._LogRechargeRule
+
+    @LogRechargeRule.setter
+    def LogRechargeRule(self, LogRechargeRule):
+        self._LogRechargeRule = LogRechargeRule
+
+    @property
+    def StatusControl(self):
+        return self._StatusControl
+
+    @StatusControl.setter
+    def StatusControl(self, StatusControl):
+        self._StatusControl = StatusControl
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        self._KafkaType = params.get("KafkaType")
+        self._KafkaInstance = params.get("KafkaInstance")
+        self._ServerAddr = params.get("ServerAddr")
+        self._IsEncryptionAddr = params.get("IsEncryptionAddr")
+        if params.get("Protocol") is not None:
+            self._Protocol = KafkaProtocolInfo()
+            self._Protocol._deserialize(params.get("Protocol"))
+        self._UserKafkaTopics = params.get("UserKafkaTopics")
+        self._ConsumerGroupName = params.get("ConsumerGroupName")
+        if params.get("LogRechargeRule") is not None:
+            self._LogRechargeRule = LogRechargeRuleInfo()
+            self._LogRechargeRule._deserialize(params.get("LogRechargeRule"))
+        self._StatusControl = params.get("StatusControl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyKafkaRechargeResponse(AbstractModel):
+    """ModifyKafkaRecharge response structure.
 
     """
 
@@ -9913,7 +11949,7 @@ class ModifyShipperRequest(AbstractModel):
         :type ShipperName: str
         :param _Interval: Shipping time interval in seconds. Default value: 300. Value range: 300–900
         :type Interval: int
-        :param _MaxSize: Maximum size of a file to be shipped, in MB. Default value: 256. Value range: 100–256
+        :param _MaxSize: Maximum size of a file to be shipped, in MB. Default value: 256. Value range: 5-256
         :type MaxSize: int
         :param _FilterRules: Filter rules for shipped logs. Only logs matching the rules can be shipped. All rules are in the AND relationship, and up to five rules can be added. If the array is empty, no filtering will be performed, and all logs will be shipped.
         :type FilterRules: list of FilterRuleInfo
@@ -10312,6 +12348,51 @@ class MonitorTime(AbstractModel):
         
 
 
+class MultiTopicSearchInformation(AbstractModel):
+    """Log topic search information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: ID of the log topic to be searched for
+        :type TopicId: str
+        :param _Context: You can pass through the `Context` value (validity: 1 hour) returned by the last API to continue to get logs, which can get up to 10,000 raw logs.
+        :type Context: str
+        """
+        self._TopicId = None
+        self._Context = None
+
+    @property
+    def TopicId(self):
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Context(self):
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Context = params.get("Context")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NoticeReceiver(AbstractModel):
     """Alarm notification recipient information
 
@@ -10423,9 +12504,12 @@ class OpenKafkaConsumerRequest(AbstractModel):
         :type FromTopicId: str
         :param _Compression: Compression mode. Valid values: `0` (no compression); `2` (snappy); `3` (LZ4)
         :type Compression: int
+        :param _ConsumerContent: Kafka consumer data format
+        :type ConsumerContent: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
         """
         self._FromTopicId = None
         self._Compression = None
+        self._ConsumerContent = None
 
     @property
     def FromTopicId(self):
@@ -10443,10 +12527,21 @@ class OpenKafkaConsumerRequest(AbstractModel):
     def Compression(self, Compression):
         self._Compression = Compression
 
+    @property
+    def ConsumerContent(self):
+        return self._ConsumerContent
+
+    @ConsumerContent.setter
+    def ConsumerContent(self, ConsumerContent):
+        self._ConsumerContent = ConsumerContent
+
 
     def _deserialize(self, params):
         self._FromTopicId = params.get("FromTopicId")
         self._Compression = params.get("Compression")
+        if params.get("ConsumerContent") is not None:
+            self._ConsumerContent = KafkaConsumerContent()
+            self._ConsumerContent._deserialize(params.get("ConsumerContent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10684,6 +12779,295 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         
 
 
+class PreviewKafkaRechargeRequest(AbstractModel):
+    """PreviewKafkaRecharge request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PreviewType: Preview type. Valid values: 1 (source data preview) and 2 (result preview).
+        :type PreviewType: int
+        :param _KafkaType: Kafka type. Valid values: 0 (Tencent Cloud CKafka) and 1 (customer's Kafka)
+        :type KafkaType: int
+        :param _UserKafkaTopics: List of Kafka topics to import data from. Separate multiple topics with commas (,).
+        :type UserKafkaTopics: str
+        :param _Offset: Position for data import. Valid values: -2 (earliest, default) and -1 (latest).
+        :type Offset: int
+        :param _KafkaInstance: CKafka instance ID, which is required when `KafkaType` is set to `0`
+        :type KafkaInstance: str
+        :param _ServerAddr: Service address
+        :type ServerAddr: str
+        :param _IsEncryptionAddr: Whether the service address uses an encrypted connection
+        :type IsEncryptionAddr: bool
+        :param _Protocol: Encryption access protocol, which is required when `IsEncryptionAddr` is set to `true`
+        :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
+        :param _ConsumerGroupName: Kafka consumer group name
+        :type ConsumerGroupName: str
+        :param _LogRechargeRule: Log import rule
+        :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
+        """
+        self._PreviewType = None
+        self._KafkaType = None
+        self._UserKafkaTopics = None
+        self._Offset = None
+        self._KafkaInstance = None
+        self._ServerAddr = None
+        self._IsEncryptionAddr = None
+        self._Protocol = None
+        self._ConsumerGroupName = None
+        self._LogRechargeRule = None
+
+    @property
+    def PreviewType(self):
+        return self._PreviewType
+
+    @PreviewType.setter
+    def PreviewType(self, PreviewType):
+        self._PreviewType = PreviewType
+
+    @property
+    def KafkaType(self):
+        return self._KafkaType
+
+    @KafkaType.setter
+    def KafkaType(self, KafkaType):
+        self._KafkaType = KafkaType
+
+    @property
+    def UserKafkaTopics(self):
+        return self._UserKafkaTopics
+
+    @UserKafkaTopics.setter
+    def UserKafkaTopics(self, UserKafkaTopics):
+        self._UserKafkaTopics = UserKafkaTopics
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def KafkaInstance(self):
+        return self._KafkaInstance
+
+    @KafkaInstance.setter
+    def KafkaInstance(self, KafkaInstance):
+        self._KafkaInstance = KafkaInstance
+
+    @property
+    def ServerAddr(self):
+        return self._ServerAddr
+
+    @ServerAddr.setter
+    def ServerAddr(self, ServerAddr):
+        self._ServerAddr = ServerAddr
+
+    @property
+    def IsEncryptionAddr(self):
+        return self._IsEncryptionAddr
+
+    @IsEncryptionAddr.setter
+    def IsEncryptionAddr(self, IsEncryptionAddr):
+        self._IsEncryptionAddr = IsEncryptionAddr
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def ConsumerGroupName(self):
+        return self._ConsumerGroupName
+
+    @ConsumerGroupName.setter
+    def ConsumerGroupName(self, ConsumerGroupName):
+        self._ConsumerGroupName = ConsumerGroupName
+
+    @property
+    def LogRechargeRule(self):
+        return self._LogRechargeRule
+
+    @LogRechargeRule.setter
+    def LogRechargeRule(self, LogRechargeRule):
+        self._LogRechargeRule = LogRechargeRule
+
+
+    def _deserialize(self, params):
+        self._PreviewType = params.get("PreviewType")
+        self._KafkaType = params.get("KafkaType")
+        self._UserKafkaTopics = params.get("UserKafkaTopics")
+        self._Offset = params.get("Offset")
+        self._KafkaInstance = params.get("KafkaInstance")
+        self._ServerAddr = params.get("ServerAddr")
+        self._IsEncryptionAddr = params.get("IsEncryptionAddr")
+        if params.get("Protocol") is not None:
+            self._Protocol = KafkaProtocolInfo()
+            self._Protocol._deserialize(params.get("Protocol"))
+        self._ConsumerGroupName = params.get("ConsumerGroupName")
+        if params.get("LogRechargeRule") is not None:
+            self._LogRechargeRule = LogRechargeRuleInfo()
+            self._LogRechargeRule._deserialize(params.get("LogRechargeRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PreviewKafkaRechargeResponse(AbstractModel):
+    """PreviewKafkaRecharge response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogSample: Log sample, which is returned when `PreviewType` is set to `2`
+        :type LogSample: str
+        :param _LogData: Log preview result
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LogData: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._LogSample = None
+        self._LogData = None
+        self._RequestId = None
+
+    @property
+    def LogSample(self):
+        return self._LogSample
+
+    @LogSample.setter
+    def LogSample(self, LogSample):
+        self._LogSample = LogSample
+
+    @property
+    def LogData(self):
+        return self._LogData
+
+    @LogData.setter
+    def LogData(self, LogData):
+        self._LogData = LogData
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LogSample = params.get("LogSample")
+        self._LogData = params.get("LogData")
+        self._RequestId = params.get("RequestId")
+
+
+class PreviewLogStatistic(AbstractModel):
+    """Preview data details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogContent: Log content
+        :type LogContent: str
+        :param _LineNum: Line number
+        :type LineNum: int
+        :param _DstTopicId: Target log topic
+        :type DstTopicId: str
+        :param _FailReason: Error code. An empty string "" indicates no error.
+        :type FailReason: str
+        :param _Time: Log timestamp
+        :type Time: str
+        :param _DstTopicName: Target topic name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DstTopicName: str
+        """
+        self._LogContent = None
+        self._LineNum = None
+        self._DstTopicId = None
+        self._FailReason = None
+        self._Time = None
+        self._DstTopicName = None
+
+    @property
+    def LogContent(self):
+        return self._LogContent
+
+    @LogContent.setter
+    def LogContent(self, LogContent):
+        self._LogContent = LogContent
+
+    @property
+    def LineNum(self):
+        return self._LineNum
+
+    @LineNum.setter
+    def LineNum(self, LineNum):
+        self._LineNum = LineNum
+
+    @property
+    def DstTopicId(self):
+        return self._DstTopicId
+
+    @DstTopicId.setter
+    def DstTopicId(self, DstTopicId):
+        self._DstTopicId = DstTopicId
+
+    @property
+    def FailReason(self):
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def DstTopicName(self):
+        return self._DstTopicName
+
+    @DstTopicName.setter
+    def DstTopicName(self, DstTopicName):
+        self._DstTopicName = DstTopicName
+
+
+    def _deserialize(self, params):
+        self._LogContent = params.get("LogContent")
+        self._LineNum = params.get("LineNum")
+        self._DstTopicId = params.get("DstTopicId")
+        self._FailReason = params.get("FailReason")
+        self._Time = params.get("Time")
+        self._DstTopicName = params.get("DstTopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RetryShipperTaskRequest(AbstractModel):
     """RetryShipperTask request structure.
 
@@ -10771,7 +13155,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Tag: :class:`tencentcloud.cls.v20201016.models.RuleTagInfo`
         :param _DynamicIndex: Dynamic index configuration. If the configuration is empty, dynamic indexing is not enabled.
-Note: This field may return null, indicating that no valid values can be obtained.
+
+Note: This feature is currently in a beta test. To use it, please contact technical support.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type DynamicIndex: :class:`tencentcloud.cls.v20201016.models.DynamicIndex`
         """
         self._FullText = None
@@ -10950,7 +13336,8 @@ class SearchLogRequest(AbstractModel):
 A statement is in the format of <a href="https://intl.cloud.tencent.com/document/product/614/47044?from_cn_redirect=1" target="_blank">[search criteria]</a> | <a href="https://intl.cloud.tencent.com/document/product/614/44061?from_cn_redirect=1" target="_blank">[SQL statement]</a>. You can omit the pipe symbol <code> | </code> and SQL statement when log analysis is not required.
 Queries all logs using * or an empty string
         :type Query: str
-        :param _TopicId: ID of the log topic to be searched
+        :param _TopicId: - The ID of the log topic to be searched for. Only one log topic can be specified.
+- To search for multiple log topics at a time, use the `Topics` parameter.
         :type TopicId: str
         :param _Limit: The number of raw logs returned by a single query. Maximum value: 1000. You need to use `Context` to continue to get logs.
 Notes:
@@ -10982,6 +13369,10 @@ Default value: `1`
 `0` (default): Lucene; `1`: CQL.
 For more information, see <a href="https://intl.cloud.tencent.com/document/product/614/47044?from_cn_redirect=1#RetrievesConditionalRules" target="_blank">Syntax Rules</a>
         :type SyntaxRule: int
+        :param _Topics: - The IDs of the log topics (up to 20) to be searched for.
+- To search for a single log topic, use the `TopicId` parameter.
+- You cannot use both `TopicId` and `Topics`.
+        :type Topics: list of MultiTopicSearchInformation
         """
         self._From = None
         self._To = None
@@ -10993,6 +13384,7 @@ For more information, see <a href="https://intl.cloud.tencent.com/document/produ
         self._UseNewAnalysis = None
         self._SamplingRate = None
         self._SyntaxRule = None
+        self._Topics = None
 
     @property
     def From(self):
@@ -11074,6 +13466,14 @@ For more information, see <a href="https://intl.cloud.tencent.com/document/produ
     def SyntaxRule(self, SyntaxRule):
         self._SyntaxRule = SyntaxRule
 
+    @property
+    def Topics(self):
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
 
     def _deserialize(self, params):
         self._From = params.get("From")
@@ -11086,6 +13486,12 @@ For more information, see <a href="https://intl.cloud.tencent.com/document/produ
         self._UseNewAnalysis = params.get("UseNewAnalysis")
         self._SamplingRate = params.get("SamplingRate")
         self._SyntaxRule = params.get("SyntaxRule")
+        if params.get("Topics") is not None:
+            self._Topics = []
+            for item in params.get("Topics"):
+                obj = MultiTopicSearchInformation()
+                obj._deserialize(item)
+                self._Topics.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
