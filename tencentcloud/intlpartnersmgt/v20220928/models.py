@@ -941,6 +941,522 @@ class CreateAccountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CustomerBillDetailData(AbstractModel):
+    """Customer bill details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayerAccountId: Reseller account
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PayerAccountId: int
+        :param _OwnerAccountId: Customer account
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OwnerAccountId: int
+        :param _OperatorAccountId: Operator account
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OperatorAccountId: int
+        :param _ProductName: Product name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProductName: str
+        :param _BillingMode: Billing mode
+`Monthly subscription` (Monthly subscription)
+`Pay-As-You-Go resources` (Pay-as-you-go)
+`Standard RI` (Reserved instance)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BillingMode: str
+        :param _ProjectName: Project name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectName: str
+        :param _Region: Resource region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Region: str
+        :param _AvailabilityZone: Resource AZ
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AvailabilityZone: str
+        :param _InstanceId: Instance ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param _InstanceName: Instance name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceName: str
+        :param _SubProductName: Subproduct name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubProductName: str
+        :param _TransactionType: Settlement type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TransactionType: str
+        :param _TransactionId: Transaction ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TransactionId: str
+        :param _TransactionTime: Settlement time
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TransactionTime: str
+        :param _UsageStartTime: Start time of resource use
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UsageStartTime: str
+        :param _UsageEndTime: End time of resource use
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UsageEndTime: str
+        :param _ComponentType: Component
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComponentType: str
+        :param _ComponentName: Component name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComponentName: str
+        :param _ComponentListPrice: Component list price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComponentListPrice: str
+        :param _ComponentPriceMeasurementUnit: Price unit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComponentPriceMeasurementUnit: str
+        :param _ComponentUsage: Component usage
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComponentUsage: str
+        :param _ComponentUsageUnit: Component usage unit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComponentUsageUnit: str
+        :param _UsageDuration: Resource usage duration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UsageDuration: str
+        :param _DurationUnit: Duration unit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DurationUnit: str
+        :param _OriginalCost: Original cost
+Original cost = component list price * component usage * usage duration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginalCost: str
+        :param _Currency: Currency
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Currency: str
+        :param _TotalCost: Total cost = discounted total - voucher deduction
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCost: str
+        """
+        self._PayerAccountId = None
+        self._OwnerAccountId = None
+        self._OperatorAccountId = None
+        self._ProductName = None
+        self._BillingMode = None
+        self._ProjectName = None
+        self._Region = None
+        self._AvailabilityZone = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._SubProductName = None
+        self._TransactionType = None
+        self._TransactionId = None
+        self._TransactionTime = None
+        self._UsageStartTime = None
+        self._UsageEndTime = None
+        self._ComponentType = None
+        self._ComponentName = None
+        self._ComponentListPrice = None
+        self._ComponentPriceMeasurementUnit = None
+        self._ComponentUsage = None
+        self._ComponentUsageUnit = None
+        self._UsageDuration = None
+        self._DurationUnit = None
+        self._OriginalCost = None
+        self._Currency = None
+        self._TotalCost = None
+
+    @property
+    def PayerAccountId(self):
+        return self._PayerAccountId
+
+    @PayerAccountId.setter
+    def PayerAccountId(self, PayerAccountId):
+        self._PayerAccountId = PayerAccountId
+
+    @property
+    def OwnerAccountId(self):
+        return self._OwnerAccountId
+
+    @OwnerAccountId.setter
+    def OwnerAccountId(self, OwnerAccountId):
+        self._OwnerAccountId = OwnerAccountId
+
+    @property
+    def OperatorAccountId(self):
+        return self._OperatorAccountId
+
+    @OperatorAccountId.setter
+    def OperatorAccountId(self, OperatorAccountId):
+        self._OperatorAccountId = OperatorAccountId
+
+    @property
+    def ProductName(self):
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def BillingMode(self):
+        return self._BillingMode
+
+    @BillingMode.setter
+    def BillingMode(self, BillingMode):
+        self._BillingMode = BillingMode
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def AvailabilityZone(self):
+        return self._AvailabilityZone
+
+    @AvailabilityZone.setter
+    def AvailabilityZone(self, AvailabilityZone):
+        self._AvailabilityZone = AvailabilityZone
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def SubProductName(self):
+        return self._SubProductName
+
+    @SubProductName.setter
+    def SubProductName(self, SubProductName):
+        self._SubProductName = SubProductName
+
+    @property
+    def TransactionType(self):
+        return self._TransactionType
+
+    @TransactionType.setter
+    def TransactionType(self, TransactionType):
+        self._TransactionType = TransactionType
+
+    @property
+    def TransactionId(self):
+        return self._TransactionId
+
+    @TransactionId.setter
+    def TransactionId(self, TransactionId):
+        self._TransactionId = TransactionId
+
+    @property
+    def TransactionTime(self):
+        return self._TransactionTime
+
+    @TransactionTime.setter
+    def TransactionTime(self, TransactionTime):
+        self._TransactionTime = TransactionTime
+
+    @property
+    def UsageStartTime(self):
+        return self._UsageStartTime
+
+    @UsageStartTime.setter
+    def UsageStartTime(self, UsageStartTime):
+        self._UsageStartTime = UsageStartTime
+
+    @property
+    def UsageEndTime(self):
+        return self._UsageEndTime
+
+    @UsageEndTime.setter
+    def UsageEndTime(self, UsageEndTime):
+        self._UsageEndTime = UsageEndTime
+
+    @property
+    def ComponentType(self):
+        return self._ComponentType
+
+    @ComponentType.setter
+    def ComponentType(self, ComponentType):
+        self._ComponentType = ComponentType
+
+    @property
+    def ComponentName(self):
+        return self._ComponentName
+
+    @ComponentName.setter
+    def ComponentName(self, ComponentName):
+        self._ComponentName = ComponentName
+
+    @property
+    def ComponentListPrice(self):
+        return self._ComponentListPrice
+
+    @ComponentListPrice.setter
+    def ComponentListPrice(self, ComponentListPrice):
+        self._ComponentListPrice = ComponentListPrice
+
+    @property
+    def ComponentPriceMeasurementUnit(self):
+        return self._ComponentPriceMeasurementUnit
+
+    @ComponentPriceMeasurementUnit.setter
+    def ComponentPriceMeasurementUnit(self, ComponentPriceMeasurementUnit):
+        self._ComponentPriceMeasurementUnit = ComponentPriceMeasurementUnit
+
+    @property
+    def ComponentUsage(self):
+        return self._ComponentUsage
+
+    @ComponentUsage.setter
+    def ComponentUsage(self, ComponentUsage):
+        self._ComponentUsage = ComponentUsage
+
+    @property
+    def ComponentUsageUnit(self):
+        return self._ComponentUsageUnit
+
+    @ComponentUsageUnit.setter
+    def ComponentUsageUnit(self, ComponentUsageUnit):
+        self._ComponentUsageUnit = ComponentUsageUnit
+
+    @property
+    def UsageDuration(self):
+        return self._UsageDuration
+
+    @UsageDuration.setter
+    def UsageDuration(self, UsageDuration):
+        self._UsageDuration = UsageDuration
+
+    @property
+    def DurationUnit(self):
+        return self._DurationUnit
+
+    @DurationUnit.setter
+    def DurationUnit(self, DurationUnit):
+        self._DurationUnit = DurationUnit
+
+    @property
+    def OriginalCost(self):
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def Currency(self):
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def TotalCost(self):
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
+
+
+    def _deserialize(self, params):
+        self._PayerAccountId = params.get("PayerAccountId")
+        self._OwnerAccountId = params.get("OwnerAccountId")
+        self._OperatorAccountId = params.get("OperatorAccountId")
+        self._ProductName = params.get("ProductName")
+        self._BillingMode = params.get("BillingMode")
+        self._ProjectName = params.get("ProjectName")
+        self._Region = params.get("Region")
+        self._AvailabilityZone = params.get("AvailabilityZone")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._SubProductName = params.get("SubProductName")
+        self._TransactionType = params.get("TransactionType")
+        self._TransactionId = params.get("TransactionId")
+        self._TransactionTime = params.get("TransactionTime")
+        self._UsageStartTime = params.get("UsageStartTime")
+        self._UsageEndTime = params.get("UsageEndTime")
+        self._ComponentType = params.get("ComponentType")
+        self._ComponentName = params.get("ComponentName")
+        self._ComponentListPrice = params.get("ComponentListPrice")
+        self._ComponentPriceMeasurementUnit = params.get("ComponentPriceMeasurementUnit")
+        self._ComponentUsage = params.get("ComponentUsage")
+        self._ComponentUsageUnit = params.get("ComponentUsageUnit")
+        self._UsageDuration = params.get("UsageDuration")
+        self._DurationUnit = params.get("DurationUnit")
+        self._OriginalCost = params.get("OriginalCost")
+        self._Currency = params.get("Currency")
+        self._TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillDetailRequest(AbstractModel):
+    """DescribeBillDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: The queried month in u200dthe format of “YYYY-MM”, such as 2023-01.
+        :type Month: str
+        :param _PageSize: A pagination parameter that specifies the number of entries per page
+        :type PageSize: int
+        :param _Page: A pagination parameter that specifies the current page number
+        :type Page: int
+        :param _PayMode: Billing mode. Valid values: `prePay` (Monthly subscription), postPay` (Pay-As-You-Go resources).
+        :type PayMode: str
+        :param _ActionType: Transaction type. Valid values: `prepay_purchase` (Purchase), `prepay_renew` (Renewal), `prepay_modify` (Upgrade/Downgrade), `prepay_return` ( Monthly subscription refund), `postpay_deduct` (Pay-as-you-go), `postpay_deduct_h` (Hourly settlement), `postpay_deduct_d` (Daily settlement), `postpay_deduct_m` (Monthly settlement), `offline_deduct` (Offline project deduction), `online_deduct` (Offline product deduction), `recon_deduct` (Adjustment - deduction), `recon_increase` (Adjustment - compensation), `ripay_purchase` (One-off RI Fee), `postpay_deduct_s` (Spot), `ri_hour_pay` (Hourly RI fee), `prePurchase` (New monthly subscription), `preRenew` (Monthly subscription renewal), `preUpgrade` (Upgrade/Downgrade), `preDowngrade` (Upgrade/Downgrade), `svp_hour_pay` (Hourly Savings Plan fee), `recon_guarantee` (Minimum spend deduction), `pre_purchase` (New monthly subscription), `pre_renew` (Monthly subscription renewal), `pre_upgrade` (Upgrade/Downgrade), `pre_downgrade` (Upgrade/Downgrade).
+        :type ActionType: str
+        """
+        self._Month = None
+        self._PageSize = None
+        self._Page = None
+        self._PayMode = None
+        self._ActionType = None
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        self._PageSize = params.get("PageSize")
+        self._Page = params.get("Page")
+        self._PayMode = params.get("PayMode")
+        self._ActionType = params.get("ActionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillDetailResponse(AbstractModel):
+    """DescribeBillDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DetailSet: Data details
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DetailSet: list of CustomerBillDetailData
+        :param _Total: Total number of data entries
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Total: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DetailSet = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def DetailSet(self):
+        return self._DetailSet
+
+    @DetailSet.setter
+    def DetailSet(self, DetailSet):
+        self._DetailSet = DetailSet
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DetailSet") is not None:
+            self._DetailSet = []
+            for item in params.get("DetailSet"):
+                obj = CustomerBillDetailData()
+                obj._deserialize(item)
+                self._DetailSet.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBillSummaryByPayModeRequest(AbstractModel):
     """DescribeBillSummaryByPayMode request structure.
 

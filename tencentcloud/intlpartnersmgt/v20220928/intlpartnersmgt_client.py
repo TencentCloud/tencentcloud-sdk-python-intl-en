@@ -80,6 +80,29 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBillDetail(self, request):
+        """This API is used to query the customer bill details.
+
+        :param request: Request instance for DescribeBillDetail.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillDetailRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBillSummaryByPayMode(self, request):
         """This API is used to obtain the total amount of customer bills by payment mode.
 

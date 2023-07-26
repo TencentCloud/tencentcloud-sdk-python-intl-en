@@ -2019,6 +2019,32 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRecordTask(self, request):
+        """This API is used to retrieve a list of recording tasks that were started and ended within a specified time range.
+        - Prerequisites:
+        1. This API is only used to query recording tasks created by the CreateRecordTask interface.
+        2. It cannot retrieve recording tasks that have been deleted by the DeleteRecordTask interface or tasks that have expired (platform retains for 3 months).
+
+        :param request: Request instance for DescribeRecordTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeRecordTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeRecordTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecordTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRecordTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeScreenShotSheetNumList(self, request):
         """The API is used to query the number of screenshots as an LVB value-added service.
 

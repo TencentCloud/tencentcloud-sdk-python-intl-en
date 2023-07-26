@@ -10693,6 +10693,153 @@ class DescribeProvinceIspPlayInfoListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRecordTaskRequest(AbstractModel):
+    """DescribeRecordTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: The start time of the tasks to retrieve in Unix timestamp. The time range should not be earlier than 90 days before the current time, and the query span should not exceed one week.
+        :type StartTime: int
+        :param _EndTime: The end time of the tasks to retrieve in Unix timestamp. The EndTime must be greater than the StartTime. The time range should not be earlier than 90 days before the current time, and the query span should not exceed one week. (Note: the start and end times of the task must be within the query time range).
+        :type EndTime: int
+        :param _StreamName: Stream name.
+        :type StreamName: str
+        :param _DomainName: Push domain name.
+        :type DomainName: str
+        :param _AppName: Push path.
+        :type AppName: str
+        :param _ScrollToken: Page token used for batch retrieval: If a single request cannot retrieve all data, the interface will return a ScrollToken. The next request carrying this token will start retrieving from the next record.
+        :type ScrollToken: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._StreamName = None
+        self._DomainName = None
+        self._AppName = None
+        self._ScrollToken = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def ScrollToken(self):
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._StreamName = params.get("StreamName")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._ScrollToken = params.get("ScrollToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordTaskResponse(AbstractModel):
+    """DescribeRecordTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScrollToken: Page token: When the request does not return all data, this field indicates the token of the next record. When this field is empty, it means there is no more data.
+        :type ScrollToken: str
+        :param _TaskList: List of recording tasks. When this field is empty, it means all data has been returned.
+        :type TaskList: list of RecordTask
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ScrollToken = None
+        self._TaskList = None
+        self._RequestId = None
+
+    @property
+    def ScrollToken(self):
+        return self._ScrollToken
+
+    @ScrollToken.setter
+    def ScrollToken(self, ScrollToken):
+        self._ScrollToken = ScrollToken
+
+    @property
+    def TaskList(self):
+        return self._TaskList
+
+    @TaskList.setter
+    def TaskList(self, TaskList):
+        self._TaskList = TaskList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ScrollToken = params.get("ScrollToken")
+        if params.get("TaskList") is not None:
+            self._TaskList = []
+            for item in params.get("TaskList"):
+                obj = RecordTask()
+                obj._deserialize(item)
+                self._TaskList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeScreenShotSheetNumListRequest(AbstractModel):
     """DescribeScreenShotSheetNumList request structure.
 
@@ -17210,6 +17357,123 @@ Note: this field may return `null`, indicating that no valid value is obtained.
         self._Procedure = params.get("Procedure")
         self._StorageMode = params.get("StorageMode")
         self._ClassId = params.get("ClassId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecordTask(AbstractModel):
+    """Recording task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Recording task ID.
+        :type TaskId: str
+        :param _DomainName: Push domain name.
+        :type DomainName: str
+        :param _AppName: Push path.
+        :type AppName: str
+        :param _StreamName: Stream name.
+        :type StreamName: str
+        :param _StartTime: The start time of the recording task in Unix timestamp. 
+        :type StartTime: int
+        :param _EndTime: The end time of the recording task in Unix timestamp. 
+        :type EndTime: int
+        :param _TemplateId: Recording template ID.
+        :type TemplateId: int
+        :param _Stopped: The StopRecordTask API call stops the task at the Unix timestamp. A value of 0 indicates that the API has not been called to stop the task.
+        :type Stopped: int
+        """
+        self._TaskId = None
+        self._DomainName = None
+        self._AppName = None
+        self._StreamName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._TemplateId = None
+        self._Stopped = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def Stopped(self):
+        return self._Stopped
+
+    @Stopped.setter
+    def Stopped(self, Stopped):
+        self._Stopped = Stopped
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TemplateId = params.get("TemplateId")
+        self._Stopped = params.get("Stopped")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
