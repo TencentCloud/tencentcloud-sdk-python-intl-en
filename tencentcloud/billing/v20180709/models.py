@@ -557,9 +557,9 @@ class BillDetailComponent(AbstractModel):
         :type UsedAmount: str
         :param _UsedAmountUnit: Component usage unit: The unit of measurement for component usage
         :type UsedAmountUnit: str
-        :param _RealTotalMeasure: 
+        :param _RealTotalMeasure: Raw usage/duration: The raw usage/duration of a component before deduction. Note: This field may return null, indicating that no valid values can be obtained.
         :type RealTotalMeasure: str
-        :param _DeductedMeasure: 
+        :param _DeductedMeasure: Deducted usage/duration (including packages): The usage/duration deducted with a package. Note: This field may return null, indicating that no valid values can be obtained.
         :type DeductedMeasure: str
         :param _TimeSpan: Usage duration: The resource usage duration
         :type TimeSpan: str
@@ -2158,7 +2158,7 @@ Note: To query the product codes used in the current month, call <a href="https:
         :type BusinessCode: str
         :param _Context: Context information returned by the last request. You can set `Month` to `2023-05` or later to accelerate queries. We recommend users whose data volume is over 100 thousand entries use the paginated query feature, which can help greatly speed up your queries.
         :type Context: str
-        :param _PayerUin: 
+        :param _PayerUin: The account ID of the payer, which is the unique identifier of a Tencent Cloud user. This account is allowed to query its own bills by default. If an organization admin account needs to query the self-pay bills of members, this field should be specified as the member account ID.
         :type PayerUin: str
         """
         self._Offset = None
@@ -2437,7 +2437,7 @@ Monthly subscription refund
         :param _BusinessCode: Product code
 Note: To query the product codes used in the current month, call <a href="https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1">DescribeBillSummaryByProduct</a>.
         :type BusinessCode: str
-        :param _PayerUin: 
+        :param _PayerUin: The account ID of the payer, which is the unique identifier of a Tencent Cloud user. This account is allowed to query its own bills by default. If an organization admin account needs to query the self-pay bills of members, this field should be specified as the member account ID.
         :type PayerUin: str
         """
         self._Offset = None

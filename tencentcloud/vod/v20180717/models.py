@@ -8440,10 +8440,13 @@ class AsrFullTextConfigureInfo(AbstractModel):
 <li>srt</li>
 <font color='red'>Note: This parameter has been deprecated. Please use `SubtitleFormats` instead.</font>
         :type SubtitleFormat: str
+        :param _SrcLanguage: Media source language value range: <li>zh: Mandarin </li> <li>en: English</li> <li>ja: Japanese </li> <li>zh-ca: Cantonese</li><font color=red>Note：</font> If it fills in an empty string or leave this parameter blank, it will be automatically recognized (it is recommended to fill in the language corresponding to the media to improve the recognition accuracy).
+        :type SrcLanguage: str
         """
         self._Switch = None
         self._SubtitleFormats = None
         self._SubtitleFormat = None
+        self._SrcLanguage = None
 
     @property
     def Switch(self):
@@ -8469,11 +8472,20 @@ class AsrFullTextConfigureInfo(AbstractModel):
     def SubtitleFormat(self, SubtitleFormat):
         self._SubtitleFormat = SubtitleFormat
 
+    @property
+    def SrcLanguage(self):
+        return self._SrcLanguage
+
+    @SrcLanguage.setter
+    def SrcLanguage(self, SrcLanguage):
+        self._SrcLanguage = SrcLanguage
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._SubtitleFormats = params.get("SubtitleFormats")
         self._SubtitleFormat = params.get("SubtitleFormat")
+        self._SrcLanguage = params.get("SrcLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8502,10 +8514,13 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
 <li>srt</li>
 <font color='red'>Note: This parameter has been deprecated. Please use `SubtitleFormatsOperation` instead.</font>
         :type SubtitleFormat: str
+        :param _SrcLanguage: Media source language value range: <li>zh: Mandarin </li> <li>en: English</li> <li>ja: Japanese </li> <li>zh-ca: Cantonese</li>
+        :type SrcLanguage: str
         """
         self._Switch = None
         self._SubtitleFormatsOperation = None
         self._SubtitleFormat = None
+        self._SrcLanguage = None
 
     @property
     def Switch(self):
@@ -8531,6 +8546,14 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
     def SubtitleFormat(self, SubtitleFormat):
         self._SubtitleFormat = SubtitleFormat
 
+    @property
+    def SrcLanguage(self):
+        return self._SrcLanguage
+
+    @SrcLanguage.setter
+    def SrcLanguage(self, SrcLanguage):
+        self._SrcLanguage = SrcLanguage
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
@@ -8538,6 +8561,7 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
             self._SubtitleFormatsOperation = SubtitleFormatsOperation()
             self._SubtitleFormatsOperation._deserialize(params.get("SubtitleFormatsOperation"))
         self._SubtitleFormat = params.get("SubtitleFormat")
+        self._SrcLanguage = params.get("SrcLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
