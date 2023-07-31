@@ -2712,7 +2712,7 @@ Note: By default, the traffic goes to the primary AZ. The secondary AZs only car
         :type MasterZoneId: str
         :param _ZoneId: Specifies an AZ ID for creating a CLB instance, such as `ap-guangzhou-1`, which is applicable only to public network CLB instances.
         :type ZoneId: str
-        :param _InternetAccessible: CLB network billing mode. This parameter is applicable only to public network CLB instances.
+        :param _InternetAccessible: It only works on LCU-supported instances on private networks and all instances on public networks.
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
         :param _VipIsp: This parameter is applicable only to public network CLB instances. Valid values: CMCC (China Mobile), CTCC (China Telecom), CUCC (China Unicom). If this parameter is not specified, BGP will be used by default. ISPs supported in a region can be queried with the `DescribeSingleIsp` API. If an ISP is specified, only bill-by-bandwidth-package (BANDWIDTH_PACKAGE) can be used as the network billing mode.
         :type VipIsp: str
@@ -2727,8 +2727,8 @@ Note: If the specified VIP is occupied or is not within the IP range of the spec
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
         :param _SlaType: Creates an LCU-supported instance.
 <ul><li>To create an LCU-supported instance, set this parameter to `SLA`, which indicates that an LCU-supported instance is created with the default specification in pay-as-you-go mode.
-<ul><li>If you enable general LCU-supported instances, `SLA` corresponds to the Super Large 1 specification. General LCU-supported instances are in beta testing, [submit a ticket](https://intl.cloud.tencent.com/apply/p/hf45esx99lf?from_cn_redirect=1) for application.</li>
-<li>If you enable ultra-large LCU-supported instances, `SLA` corresponds to the Super Large 4 specification. Ultra-large LCU-supported instances are in beta testing, [submit a ticket](https://console.cloud.tencent.com/workorder/category) for application.</li></ul></li><li>This parameter is not required when you create a shared instance.</li></ul>
+<ul><li>The default specification is Super Large 1.
+<li>If you have enabled Super u200dLarge LCU-supported instances, `SLA` corresponds to the Super Large 4 specification. Super u200dLarge LCU-supported specification is in beta now. u200cu200dTo join the beta, [submit a ticket](https://console.cloud.tencent.com/workorder/category). </li></ul></li><li>It’s not required for a shared CLB instance. </li></ul>
         :type SlaType: str
         :param _ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
         :type ClientToken: str
@@ -2745,6 +2745,8 @@ Note: The traffic only goes to the secondary AZ when the primary AZ is unavailab
         :type EipAddressId: str
         :param _LoadBalancerPassToTarget: Whether to allow CLB traffic to the target group. `true`: allows CLB traffic to the target group and verifies security groups only on CLB; `false`: denies CLB traffic to the target group and verifies security groups on both CLB and backend instances.
         :type LoadBalancerPassToTarget: bool
+        :param _DynamicVip: Upgrades to domain name-based CLB
+        :type DynamicVip: bool
         """
         self._LoadBalancerType = None
         self._Forward = None
@@ -2770,6 +2772,7 @@ Note: The traffic only goes to the secondary AZ when the primary AZ is unavailab
         self._SlaveZoneId = None
         self._EipAddressId = None
         self._LoadBalancerPassToTarget = None
+        self._DynamicVip = None
 
     @property
     def LoadBalancerType(self):
@@ -2963,6 +2966,14 @@ Note: The traffic only goes to the secondary AZ when the primary AZ is unavailab
     def LoadBalancerPassToTarget(self, LoadBalancerPassToTarget):
         self._LoadBalancerPassToTarget = LoadBalancerPassToTarget
 
+    @property
+    def DynamicVip(self):
+        return self._DynamicVip
+
+    @DynamicVip.setter
+    def DynamicVip(self, DynamicVip):
+        self._DynamicVip = DynamicVip
+
 
     def _deserialize(self, params):
         self._LoadBalancerType = params.get("LoadBalancerType")
@@ -3003,6 +3014,7 @@ Note: The traffic only goes to the secondary AZ when the primary AZ is unavailab
         self._SlaveZoneId = params.get("SlaveZoneId")
         self._EipAddressId = params.get("EipAddressId")
         self._LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
+        self._DynamicVip = params.get("DynamicVip")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7859,7 +7871,8 @@ class HealthCheck(AbstractModel):
         :param _TimeOut: Health check response timeout period in seconds (applicable only to layer-4 listeners). Value range: 2-60. Default value: 2. This parameter should be less than the check interval.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TimeOut: int
-        :param _IntervalTime: Health check interval in seconds. Value range: 5-300. Default value: 5.
+        :param _IntervalTime: Health check probing interval period. It defaults to `5`. For IPv4 CLB instances, the range is 2-300. u200dFor IPv6 CLB instances, the range is 5-300. Unit: second
+Note: For some IPv4 CLB instances created long ago, the range is 5-300.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IntervalTime: int
         :param _HealthNum: Health threshold. Default value: 3, indicating that if a forward is found healthy three consecutive times, it is considered to be normal. Value range: 2-10
@@ -8218,7 +8231,12 @@ class InternetAccessible(AbstractModel):
         :param _InternetChargeType: TRAFFIC_POSTPAID_BY_HOUR: hourly pay-as-you-go by traffic; BANDWIDTH_POSTPAID_BY_HOUR: hourly pay-as-you-go by bandwidth;
 BANDWIDTH_PACKAGE: billed by bandwidth package (currently, this method is supported only if the ISP is specified)
         :type InternetChargeType: str
-        :param _InternetMaxBandwidthOut: Maximum outbound bandwidth in Mbps, which applies only to public network CLB. Value range: 0-65,535. Default value: 10.
+        :param _InternetMaxBandwidthOut: Maximum outgoing bandwidth in Mbps. It works on LCU-supported instances on private networks and all instances on public networks.
+- For shared and dedicated CLB instances on public networks, the range is 1Mbps-2048Mbps.
+- For all LCU-supported CLB instances:
+  - It defaults to General LCU-supported instance. SLA corresponds to Super Large 1, and the range of maximum outgoing bandwidth is 1 Mbps - 10240 Mbps.
+  - If you have enabled Super Large specification, the range of maximum outgoing bandwidth is 1 Mbps - 61440 Mbps Super u200dLarge LCU-supported specification is in beta now. u200cu200dTo join the beta, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+Note: This field may return null, indicating that no valid values can be obtained.
         :type InternetMaxBandwidthOut: int
         :param _BandwidthpkgSubType: Bandwidth package type, such as SINGLEISP
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -11551,6 +11569,8 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         :type SnatPro: bool
         :param _DeleteProtect: Specifies whether to enable deletion protection.
         :type DeleteProtect: bool
+        :param _ModifyClassicDomain: Modifies the second-level domain name of CLB from mycloud.com to tencentclb.com. Note that the sub-domain names will be changed as well. After the modification, mycloud.com will be invalidated. 
+        :type ModifyClassicDomain: bool
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
@@ -11559,6 +11579,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         self._LoadBalancerPassToTarget = None
         self._SnatPro = None
         self._DeleteProtect = None
+        self._ModifyClassicDomain = None
 
     @property
     def LoadBalancerId(self):
@@ -11616,6 +11637,14 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
     def DeleteProtect(self, DeleteProtect):
         self._DeleteProtect = DeleteProtect
 
+    @property
+    def ModifyClassicDomain(self):
+        return self._ModifyClassicDomain
+
+    @ModifyClassicDomain.setter
+    def ModifyClassicDomain(self, ModifyClassicDomain):
+        self._ModifyClassicDomain = ModifyClassicDomain
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -11629,6 +11658,7 @@ class ModifyLoadBalancerAttributesRequest(AbstractModel):
         self._LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
         self._SnatPro = params.get("SnatPro")
         self._DeleteProtect = params.get("DeleteProtect")
+        self._ModifyClassicDomain = params.get("ModifyClassicDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11764,9 +11794,9 @@ They represent weighted round robin, least connections, and IP hash, respectivel
         :type SessionExpireTime: int
         :param _ForwardType: Forwarding protocol between CLB instance and real server. Default value: HTTP. Valid values: HTTP, HTTPS, and TRPC.
         :type ForwardType: str
-        :param _TrpcCallee: TRPC callee server route, which is required when `ForwardType` is "TRPC".
+        :param _TrpcCallee: TRPC callee server route, which is required when `ForwardType` is "TRPC". This is now only for internal usage.
         :type TrpcCallee: str
-        :param _TrpcFunc: TRPC calling service API, which is required when `ForwardType` is "TRPC".
+        :param _TrpcFunc: TRPC calling service API, which is required when `ForwardType` is "TRPC". This is now only for internal usage.
         :type TrpcFunc: str
         """
         self._LoadBalancerId = None
@@ -13008,10 +13038,14 @@ class Resource(AbstractModel):
         :param _AvailabilitySet: Available resources
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type AvailabilitySet: list of ResourceAvailability
+        :param _TypeSet: ISP Type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TypeSet: list of TypeInfo
         """
         self._Type = None
         self._Isp = None
         self._AvailabilitySet = None
+        self._TypeSet = None
 
     @property
     def Type(self):
@@ -13037,6 +13071,14 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     def AvailabilitySet(self, AvailabilitySet):
         self._AvailabilitySet = AvailabilitySet
 
+    @property
+    def TypeSet(self):
+        return self._TypeSet
+
+    @TypeSet.setter
+    def TypeSet(self, TypeSet):
+        self._TypeSet = TypeSet
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -13047,6 +13089,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
                 obj = ResourceAvailability()
                 obj._deserialize(item)
                 self._AvailabilitySet.append(obj)
+        if params.get("TypeSet") is not None:
+            self._TypeSet = []
+            for item in params.get("TypeSet"):
+                obj = TypeInfo()
+                obj._deserialize(item)
+                self._TypeSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13466,7 +13514,7 @@ class RuleInput(AbstractModel):
         :param _Scheduler: Request forwarding method of the rule. Value range: WRR, LEAST_CONN, IP_HASH
 They represent weighted round robin, least connections, and IP hash, respectively. Default value: WRR.
         :type Scheduler: str
-        :param _ForwardType: Forwarding protocol between the CLB instance and real server. Currently, HTTP/HTTPS/TRPC are supported.
+        :param _ForwardType: Forwarding protocol between the CLB instance and real server. HTTP/HTTPS/TRPC are supported. TRPC is now only available for internal usage.
         :type ForwardType: str
         :param _DefaultServer: Whether to set this domain name as the default domain name. Note: Only one default domain name can be set under one listener.
         :type DefaultServer: bool
@@ -13474,9 +13522,9 @@ They represent weighted round robin, least connections, and IP hash, respectivel
         :type Http2: bool
         :param _TargetType: Target real server type. NODE: binding a general node; TARGETGROUP: binding a target group.
         :type TargetType: str
-        :param _TrpcCallee: TRPC callee server route, which is required when `ForwardType` is `TRPC`.
+        :param _TrpcCallee: TRPC callee server route, which is required when `ForwardType` is "TRPC". This is now only for internal usage.
         :type TrpcCallee: str
-        :param _TrpcFunc: TRPC calling service API, which is required when `ForwardType` is `TRPC`.
+        :param _TrpcFunc: TRPC calling service API, which is required when `ForwardType` is "TRPC". This is now only for internal usage.
         :type TrpcFunc: str
         :param _Quic: Whether to enable QUIC. Note: QUIC can be enabled only for HTTPS domain names
         :type Quic: bool
@@ -13704,11 +13752,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _WafDomainId: WAF instance ID
 Note: This field may return null, indicating that no valid values can be obtained.
         :type WafDomainId: str
-        :param _TrpcCallee: TRPC callee server route, which is valid when `ForwardType` is `TRPC`.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _TrpcCallee: TRPC callee server route, which is valid when `ForwardType` is `TRPC`. This is now only for internal usage.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TrpcCallee: str
-        :param _TrpcFunc: TRPC calling service API, which is valid when `ForwardType` is `TRPC`.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _TrpcFunc: TRPC calling service API, which is valid when `ForwardType` is `TRPC`. This is now only for internal usage.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TrpcFunc: str
         :param _QuicStatus: QUIC status
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -14607,6 +14655,53 @@ class SnatIp(AbstractModel):
         
 
 
+class SpecAvailability(AbstractModel):
+    """Specification availability
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpecType: Specification type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SpecType: str
+        :param _Availability: Specification availability
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Availability: str
+        """
+        self._SpecType = None
+        self._Availability = None
+
+    @property
+    def SpecType(self):
+        return self._SpecType
+
+    @SpecType.setter
+    def SpecType(self, SpecType):
+        self._SpecType = SpecType
+
+    @property
+    def Availability(self):
+        return self._Availability
+
+    @Availability.setter
+    def Availability(self, Availability):
+        self._Availability = Availability
+
+
+    def _deserialize(self, params):
+        self._SpecType = params.get("SpecType")
+        self._Availability = params.get("Availability")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TagInfo(AbstractModel):
     """CLB tag information
 
@@ -15166,7 +15261,7 @@ class TargetHealth(AbstractModel):
         :type TargetId: str
         :param _HealthStatusDetail: Detailed information about the current health status. Alive: healthy; Dead: exceptional; Unknown: check not started/checking/unknown status.
         :type HealthStatusDetail: str
-        :param _HealthStatusDetial: Detailed information about the current health status. Alive: healthy; Dead: exceptional; Unknown: check not started/checking/unknown status. This parameter will be discarded soon. We recommend that you use the HealthStatusDetail parameter.
+        :param _HealthStatusDetial: (**This parameter will be disused soon. Please use `HealthStatusDetail` instead.**) Details of the current health status. Values: `Alive` (healthy), `Dead` (abnormal), `Unknown` (Health check not started/checking/unknown status)
         :type HealthStatusDetial: str
         """
         self._IP = None
@@ -15218,10 +15313,14 @@ class TargetHealth(AbstractModel):
 
     @property
     def HealthStatusDetial(self):
+        warnings.warn("parameter `HealthStatusDetial` is deprecated", DeprecationWarning) 
+
         return self._HealthStatusDetial
 
     @HealthStatusDetial.setter
     def HealthStatusDetial(self, HealthStatusDetial):
+        warnings.warn("parameter `HealthStatusDetial` is deprecated", DeprecationWarning) 
+
         self._HealthStatusDetial = HealthStatusDetial
 
 
@@ -15277,6 +15376,58 @@ class TargetRegionInfo(AbstractModel):
     def _deserialize(self, params):
         self._Region = params.get("Region")
         self._VpcId = params.get("VpcId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TypeInfo(AbstractModel):
+    """ISP Type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: ISP Type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _SpecAvailabilitySet: Specification availability
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SpecAvailabilitySet: list of SpecAvailability
+        """
+        self._Type = None
+        self._SpecAvailabilitySet = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SpecAvailabilitySet(self):
+        return self._SpecAvailabilitySet
+
+    @SpecAvailabilitySet.setter
+    def SpecAvailabilitySet(self, SpecAvailabilitySet):
+        self._SpecAvailabilitySet = SpecAvailabilitySet
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("SpecAvailabilitySet") is not None:
+            self._SpecAvailabilitySet = []
+            for item in params.get("SpecAvailabilitySet"):
+                obj = SpecAvailability()
+                obj._deserialize(item)
+                self._SpecAvailabilitySet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

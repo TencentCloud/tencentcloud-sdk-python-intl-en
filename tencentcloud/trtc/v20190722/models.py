@@ -2872,6 +2872,8 @@ Grey: `0x999999`
         :type BackgroundImageUrl: str
         :param _CustomCrop: Custom cropping.
         :type CustomCrop: :class:`tencentcloud.trtc.v20190722.models.McuCustomCrop`
+        :param _BackgroundRenderMode: The display mode of the sub-background image during output: 0 for cropping, 1 for scaling and displaying the background, 2 for scaling and displaying the black background, 3 for proportional scaling. If not filled in, the default is 3.
+        :type BackgroundRenderMode: int
         """
         self._UserMediaStream = None
         self._ImageWidth = None
@@ -2883,6 +2885,7 @@ Grey: `0x999999`
         self._BackGroundColor = None
         self._BackgroundImageUrl = None
         self._CustomCrop = None
+        self._BackgroundRenderMode = None
 
     @property
     def UserMediaStream(self):
@@ -2964,6 +2967,14 @@ Grey: `0x999999`
     def CustomCrop(self, CustomCrop):
         self._CustomCrop = CustomCrop
 
+    @property
+    def BackgroundRenderMode(self):
+        return self._BackgroundRenderMode
+
+    @BackgroundRenderMode.setter
+    def BackgroundRenderMode(self, BackgroundRenderMode):
+        self._BackgroundRenderMode = BackgroundRenderMode
+
 
     def _deserialize(self, params):
         if params.get("UserMediaStream") is not None:
@@ -2980,6 +2991,7 @@ Grey: `0x999999`
         if params.get("CustomCrop") is not None:
             self._CustomCrop = McuCustomCrop()
             self._CustomCrop._deserialize(params.get("CustomCrop"))
+        self._BackgroundRenderMode = params.get("BackgroundRenderMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3382,12 +3394,15 @@ Grey: 0x999999
         :type BackgroundImageUrl: str
         :param _WaterMarkList: The watermark information for the mixed stream.
         :type WaterMarkList: list of McuWaterMarkParams
+        :param _BackgroundRenderMode: Background image display mode during output: 0 for crop, 1 for scale and display with black background, 2 for proportional scaling. The backend default is proportional scaling.
+        :type BackgroundRenderMode: int
         """
         self._VideoEncode = None
         self._LayoutParams = None
         self._BackGroundColor = None
         self._BackgroundImageUrl = None
         self._WaterMarkList = None
+        self._BackgroundRenderMode = None
 
     @property
     def VideoEncode(self):
@@ -3429,6 +3444,14 @@ Grey: 0x999999
     def WaterMarkList(self, WaterMarkList):
         self._WaterMarkList = WaterMarkList
 
+    @property
+    def BackgroundRenderMode(self):
+        return self._BackgroundRenderMode
+
+    @BackgroundRenderMode.setter
+    def BackgroundRenderMode(self, BackgroundRenderMode):
+        self._BackgroundRenderMode = BackgroundRenderMode
+
 
     def _deserialize(self, params):
         if params.get("VideoEncode") is not None:
@@ -3445,6 +3468,7 @@ Grey: 0x999999
                 obj = McuWaterMarkParams()
                 obj._deserialize(item)
                 self._WaterMarkList.append(obj)
+        self._BackgroundRenderMode = params.get("BackgroundRenderMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
