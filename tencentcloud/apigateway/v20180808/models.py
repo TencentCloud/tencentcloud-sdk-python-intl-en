@@ -801,6 +801,7 @@ class ApiIdStatus(AbstractModel):
         :param _ApiId: Unique API ID.
         :type ApiId: str
         :param _ApiDesc: API description
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ApiDesc: str
         :param _Path: API path.
         :type Path: str
@@ -985,10 +986,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RelationBuniessApiIds(self):
+        warnings.warn("parameter `RelationBuniessApiIds` is deprecated", DeprecationWarning) 
+
         return self._RelationBuniessApiIds
 
     @RelationBuniessApiIds.setter
     def RelationBuniessApiIds(self, RelationBuniessApiIds):
+        warnings.warn("parameter `RelationBuniessApiIds` is deprecated", DeprecationWarning) 
+
         self._RelationBuniessApiIds = RelationBuniessApiIds
 
     @property
@@ -3675,13 +3680,17 @@ class ConstantParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Constant parameter name, which is used only if `ServiceType` is `HTTP`.
+        :param _Name: Constant parameter name This is only applicable when `ServiceType` is `HTTP`.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Name: str
-        :param _Desc: Constant parameter description, which is used only if `ServiceType` is `HTTP`.
+        :param _Desc: Constant parameter description This is only applicable when `ServiceType` is `HTTP`.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Desc: str
-        :param _Position: Constant parameter position, which is used only if `ServiceType` is `HTTP`.
+        :param _Position: Constant paramter location This is only applicable when `ServiceType` is `HTTP`.
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Position: str
-        :param _DefaultValue: Default value of constant parameter, which is used only if `ServiceType` is `HTTP`.
+        :param _DefaultValue: Default value of the constant parameter This is only applicable when `ServiceType` is `HTTP`.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DefaultValue: str
         """
         self._Name = None
@@ -11686,51 +11695,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
-class DocumentSDK(AbstractModel):
-    """API document download
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _DocumentURL: Download link of generated file. Generated documents will be stored in COS.
-        :type DocumentURL: str
-        :param _SdkURL: Download link of generated SDK file. Generated SDK files will be stored in COS.
-        :type SdkURL: str
-        """
-        self._DocumentURL = None
-        self._SdkURL = None
-
-    @property
-    def DocumentURL(self):
-        return self._DocumentURL
-
-    @DocumentURL.setter
-    def DocumentURL(self, DocumentURL):
-        self._DocumentURL = DocumentURL
-
-    @property
-    def SdkURL(self):
-        return self._SdkURL
-
-    @SdkURL.setter
-    def SdkURL(self, SdkURL):
-        self._SdkURL = SdkURL
-
-
-    def _deserialize(self, params):
-        self._DocumentURL = params.get("DocumentURL")
-        self._SdkURL = params.get("SdkURL")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class DomainSetList(AbstractModel):
     """Custom service domain name list
 
@@ -12230,102 +12194,6 @@ class Filter(AbstractModel):
         
 
 
-class GenerateApiDocumentRequest(AbstractModel):
-    """GenerateApiDocument request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ServiceId: Unique service ID of the document to be created.
-        :type ServiceId: str
-        :param _GenEnvironment: Environment of the service for which to create an SDK.
-        :type GenEnvironment: str
-        :param _GenLanguage: Programming language of the SDK to be created. Currently, only Python and JavaScript are supported.
-        :type GenLanguage: str
-        """
-        self._ServiceId = None
-        self._GenEnvironment = None
-        self._GenLanguage = None
-
-    @property
-    def ServiceId(self):
-        return self._ServiceId
-
-    @ServiceId.setter
-    def ServiceId(self, ServiceId):
-        self._ServiceId = ServiceId
-
-    @property
-    def GenEnvironment(self):
-        return self._GenEnvironment
-
-    @GenEnvironment.setter
-    def GenEnvironment(self, GenEnvironment):
-        self._GenEnvironment = GenEnvironment
-
-    @property
-    def GenLanguage(self):
-        return self._GenLanguage
-
-    @GenLanguage.setter
-    def GenLanguage(self, GenLanguage):
-        self._GenLanguage = GenLanguage
-
-
-    def _deserialize(self, params):
-        self._ServiceId = params.get("ServiceId")
-        self._GenEnvironment = params.get("GenEnvironment")
-        self._GenLanguage = params.get("GenLanguage")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class GenerateApiDocumentResponse(AbstractModel):
-    """GenerateApiDocument response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Result: API document and SDK link.
-        :type Result: :class:`tencentcloud.apigateway.v20180808.models.DocumentSDK`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Result = None
-        self._RequestId = None
-
-    @property
-    def Result(self):
-        return self._Result
-
-    @Result.setter
-    def Result(self, Result):
-        self._Result = Result
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Result") is not None:
-            self._Result = DocumentSDK()
-            self._Result._deserialize(params.get("Result"))
-        self._RequestId = params.get("RequestId")
-
-
 class HealthCheckConf(AbstractModel):
     """Health check configuration, including `TsfHealthCheckConf` and `TargetServicesHealthCheckConf`
 
@@ -12334,12 +12202,16 @@ class HealthCheckConf(AbstractModel):
     def __init__(self):
         r"""
         :param _IsHealthCheck: Whether health check is enabled.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type IsHealthCheck: bool
-        :param _RequestVolumeThreshold: Health check threshold.
+        :param _RequestVolumeThreshold: Health check threshold. 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type RequestVolumeThreshold: int
-        :param _SleepWindowInMilliseconds: Window size.
+        :param _SleepWindowInMilliseconds: Window size. 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SleepWindowInMilliseconds: int
         :param _ErrorThresholdPercentage: Threshold percentage.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ErrorThresholdPercentage: int
         """
         self._IsHealthCheck = None
@@ -18674,7 +18546,8 @@ class UsagePlan(AbstractModel):
         :type UsagePlanId: str
         :param _UsagePlanName: Usage plan name.
         :type UsagePlanName: str
-        :param _UsagePlanDesc: Usage plan description.
+        :param _UsagePlanDesc: Usage plan description. 
+Note: This field may return null, indicating that no valid values can be obtained.
         :type UsagePlanDesc: str
         :param _MaxRequestNumPreSec: Usage plan QPS. `-1` indicates no limit.
         :type MaxRequestNumPreSec: int

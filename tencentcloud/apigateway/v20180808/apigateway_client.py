@@ -1586,29 +1586,6 @@ class ApigatewayClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def GenerateApiDocument(self, request):
-        """This API is used to automatically generate API documents and SDKs. One document and one SDK will be generated for each environment under each service, respectively.
-
-        :param request: Request instance for GenerateApiDocument.
-        :type request: :class:`tencentcloud.apigateway.v20180808.models.GenerateApiDocumentRequest`
-        :rtype: :class:`tencentcloud.apigateway.v20180808.models.GenerateApiDocumentResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GenerateApiDocument", params, headers=headers)
-            response = json.loads(body)
-            model = models.GenerateApiDocumentResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ImportOpenApi(self, request):
         """This API is used to import an OpenAPI to API gateway.
 
@@ -2142,7 +2119,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def UpdateService(self, request):
-        """This API is used to switch the running version of a service published in an environment to a specified version. After you create a service by using API Gateway and publish it to an environment, multiple versions will be generated during development. In this case, you can call this API to switch versions.
+        """u200dThis API is used to switch the running version of a service published in an environment to a specified version. After you create a service by using API Gateway and publish it to an environment, multiple versions will be generated during development. In this case, you can call this API to switch versions.
 
         :param request: Request instance for UpdateService.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.UpdateServiceRequest`
