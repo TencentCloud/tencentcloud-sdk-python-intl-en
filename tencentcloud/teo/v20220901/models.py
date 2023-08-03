@@ -19,13 +19,15 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class AccelerateMainland(AbstractModel):
-    """
+    """Cross-MLC-border acceleration.
 
     """
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: Whether to enable Cross-MLC-border acceleration. Valid values: 
+<li>`on`: Enable;</li>
+<li>`off`: Disable.</li>
         :type Switch: str
         """
         self._Switch = None
@@ -1348,6 +1350,8 @@ This field indicates the unique ID of the subdomain name.
         :type UpdateTime: str
         :param _ApplicationProxyRules: List of rules.
         :type ApplicationProxyRules: list of ApplicationProxyRule
+        :param _AccelerateMainland: Cross-MLC-border acceleration.
+        :type AccelerateMainland: :class:`tencentcloud.teo.v20220901.models.AccelerateMainland`
         """
         self._ZoneId = None
         self._ZoneName = None
@@ -1366,6 +1370,7 @@ This field indicates the unique ID of the subdomain name.
         self._Ipv6 = None
         self._UpdateTime = None
         self._ApplicationProxyRules = None
+        self._AccelerateMainland = None
 
     @property
     def ZoneId(self):
@@ -1503,6 +1508,14 @@ This field indicates the unique ID of the subdomain name.
     def ApplicationProxyRules(self, ApplicationProxyRules):
         self._ApplicationProxyRules = ApplicationProxyRules
 
+    @property
+    def AccelerateMainland(self):
+        return self._AccelerateMainland
+
+    @AccelerateMainland.setter
+    def AccelerateMainland(self, AccelerateMainland):
+        self._AccelerateMainland = AccelerateMainland
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -1529,6 +1542,9 @@ This field indicates the unique ID of the subdomain name.
                 obj = ApplicationProxyRule()
                 obj._deserialize(item)
                 self._ApplicationProxyRules.append(obj)
+        if params.get("AccelerateMainland") is not None:
+            self._AccelerateMainland = AccelerateMainland()
+            self._AccelerateMainland._deserialize(params.get("AccelerateMainland"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1954,15 +1970,14 @@ class BotExtendAction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Action: The action. Values:
-<li>`monitor`: Observe</li>
-<li>`trans`: Allow</li>
-<li>`alg`: JavaScript challenge</li>
-<li>`captcha`: Managed challenge</li>
-<li>`random`: Weighted random. Actions are executed based on the percentage specified in `ExtendActions`.</li>
-<li>`silence`: Drop w/o response</li>
-<li>`shortdelay`: Add short latency</li>
-<li>`longdelay`: Add long latency</li>
+        :param _Action: Action. Valid values: 
+<li>`monitor`: Observe;</li>
+<li>`alg`: JavaScript challenge;</li>
+<li>`captcha`: Managed challenge;</li>
+<li>`random`: Actions are executed based on the percentage specified in `ExtendActions`;</li>
+<li>`silence`: Silence;</li>
+<li>`shortdelay`: Add short latency;</li>
+<li>`longdelay`: Add long latency.</li>
         :type Action: str
         :param _Percent: The probability for triggering the action. Value range: 0-100.
 Note: This field may return `null`, indicating that no valid values can be obtained.
@@ -2223,15 +2238,16 @@ class BotUserRule(AbstractModel):
         r"""
         :param _RuleName: 
         :type RuleName: str
-        :param _Action: The action. Values:
-<li>`drop`: Block</li>
-<li>`monitor`: Observe</li>
-<li>`trans`: Allow</li>
-<li>`alg`: JavaScript challenge</li>
-<li>`captcha`: Managed challenge</li>
-<li>`silence`: Drop w/o response</li>
-<li>`shortdelay`: Add short latency</li>
-<li>`longdelay`: Add long latency</li>
+        :param _Action: Action. Valid values: 
+<li>`drop`: Block;</li>
+<li>`monitor`: Observe;</li>
+<li>`trans`: Allow;</li>
+<li>`alg`: JavaScript challenge;</li>
+<li>`captcha`: Managed challenge;</li>
+<li>`random`: Random action;</li>
+<li>`silence`: Silence;</li>
+<li>`shortdelay`: Add short latency;</li>
+<li>`longdelay`: Add long latency.</li>
         :type Action: str
         :param _RuleStatus: The rule status. Values:
 <li>`on`: Enabled</li>
@@ -2576,8 +2592,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 <li>`off`: Not ignore</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IgnoreCase: str
-        :param _QueryString: Request parameter contained in `CacheKey`
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _QueryString: Request parameter contained in `CacheKey`. 
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type QueryString: :class:`tencentcloud.teo.v20220901.models.QueryString`
         """
         self._FullUrlCache = None
@@ -2673,76 +2689,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
-class CheckCertificateRequest(AbstractModel):
-    """CheckCertificate request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Certificate: Content of the certificate.
-        :type Certificate: str
-        :param _PrivateKey: Content of the private key.
-        :type PrivateKey: str
-        """
-        self._Certificate = None
-        self._PrivateKey = None
-
-    @property
-    def Certificate(self):
-        return self._Certificate
-
-    @Certificate.setter
-    def Certificate(self, Certificate):
-        self._Certificate = Certificate
-
-    @property
-    def PrivateKey(self):
-        return self._PrivateKey
-
-    @PrivateKey.setter
-    def PrivateKey(self, PrivateKey):
-        self._PrivateKey = PrivateKey
-
-
-    def _deserialize(self, params):
-        self._Certificate = params.get("Certificate")
-        self._PrivateKey = params.get("PrivateKey")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CheckCertificateResponse(AbstractModel):
-    """CheckCertificate response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class ClientIpCountry(AbstractModel):
     """Location information of the client IP carried in origin-pull. It is formatted as a two-letter ISO-3166-1 country/region code.
 
@@ -2754,8 +2700,8 @@ class ClientIpCountry(AbstractModel):
 <li>`on`: Enable</li>
 <li>`off`: Disable</li>
         :type Switch: str
-        :param _HeaderName: Header name of ClientIpCountry. This field is valid only when `Switch=on`.
-If it is left empty, the default value `EO-Client-IPCountry` will be used.
+        :param _HeaderName: Name of the request header that contains the client IP region. It is valid when `Switch=on`. 
+The default value `EO-Client-IPCountry` is used when it is not specified.
         :type HeaderName: str
         """
         self._Switch = None
@@ -2802,9 +2748,9 @@ class ClientIpHeader(AbstractModel):
 <li>`on`: Enable</li>
 <li>`off`: Disable</li>
         :type Switch: str
-        :param _HeaderName: The name of the HTTP header that contains the client IP, which is used for forwarding.
-If this field is not specified, the default value `X-Forwarded-IP` will be used.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _HeaderName: Name of the request header that contains the client IP for origin-pull. 
+The default value `X-Forwarded-IP` is used when it is not specified. 
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type HeaderName: str
         """
         self._Switch = None
@@ -2830,312 +2776,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._HeaderName = params.get("HeaderName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ClientRule(AbstractModel):
-    """The client rule information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ClientIp: The client IP.
-        :type ClientIp: str
-        :param _RuleType: The rule type.
-        :type RuleType: str
-        :param _RuleId: The rule ID.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type RuleId: int
-        :param _Description: The rule description.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Description: str
-        :param _IpStatus: The blocking status. Values:
-<li>`block`: Block;</li>
-<li>`allow`: Allow.</li>
-        :type IpStatus: str
-        :param _BlockTime: The blocking time recorded in UNIX timestamp.
-        :type BlockTime: int
-        :param _Id: The data entry ID.
-        :type Id: str
-        """
-        self._ClientIp = None
-        self._RuleType = None
-        self._RuleId = None
-        self._Description = None
-        self._IpStatus = None
-        self._BlockTime = None
-        self._Id = None
-
-    @property
-    def ClientIp(self):
-        return self._ClientIp
-
-    @ClientIp.setter
-    def ClientIp(self, ClientIp):
-        self._ClientIp = ClientIp
-
-    @property
-    def RuleType(self):
-        return self._RuleType
-
-    @RuleType.setter
-    def RuleType(self, RuleType):
-        self._RuleType = RuleType
-
-    @property
-    def RuleId(self):
-        return self._RuleId
-
-    @RuleId.setter
-    def RuleId(self, RuleId):
-        self._RuleId = RuleId
-
-    @property
-    def Description(self):
-        return self._Description
-
-    @Description.setter
-    def Description(self, Description):
-        self._Description = Description
-
-    @property
-    def IpStatus(self):
-        return self._IpStatus
-
-    @IpStatus.setter
-    def IpStatus(self, IpStatus):
-        self._IpStatus = IpStatus
-
-    @property
-    def BlockTime(self):
-        return self._BlockTime
-
-    @BlockTime.setter
-    def BlockTime(self, BlockTime):
-        self._BlockTime = BlockTime
-
-    @property
-    def Id(self):
-        return self._Id
-
-    @Id.setter
-    def Id(self, Id):
-        self._Id = Id
-
-
-    def _deserialize(self, params):
-        self._ClientIp = params.get("ClientIp")
-        self._RuleType = params.get("RuleType")
-        self._RuleId = params.get("RuleId")
-        self._Description = params.get("Description")
-        self._IpStatus = params.get("IpStatus")
-        self._BlockTime = params.get("BlockTime")
-        self._Id = params.get("Id")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ClsLogTopicInfo(AbstractModel):
-    """The log topic information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TaskName: Name of the task.
-        :type TaskName: str
-        :param _ZoneName: Name of the site.
-        :type ZoneName: str
-        :param _LogSetId: ID of the logset.
-        :type LogSetId: str
-        :param _TopicId: ID of the log topic.
-        :type TopicId: str
-        :param _EntityType: Type of the task.
-        :type EntityType: str
-        :param _Period: Retention period of the log topic.
-        :type Period: int
-        :param _Enabled: Whether the log topic is enabled.
-        :type Enabled: bool
-        :param _Deleted: Whether the log topic is deleted.
-        :type Deleted: str
-        :param _CreateTime: Creation time.
-        :type CreateTime: str
-        :param _Target: Target location. Values:
-<li>`cls`: Ship logs to CLS;</li>
-<li>`custom_enpoint`: Ship logs to a custom address.</li>
-        :type Target: str
-        :param _LogSetRegion: Region of the logset.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type LogSetRegion: str
-        :param _ZoneId: ID of the site.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type ZoneId: str
-        :param _Area: Acceleration region. Values:
-<li>`mainland`: Chinese mainland;</li>
-<li>`overseas`: Global (outside the Chinese mainland).</li>
-        :type Area: str
-        :param _LogSetType: Type of the shipping task. Values:
-<li>`cls`: Ship logs to CLS.</li>
-<li>`custom_endpoint`: Ship logs to custom APIs.</li>
-        :type LogSetType: str
-        """
-        self._TaskName = None
-        self._ZoneName = None
-        self._LogSetId = None
-        self._TopicId = None
-        self._EntityType = None
-        self._Period = None
-        self._Enabled = None
-        self._Deleted = None
-        self._CreateTime = None
-        self._Target = None
-        self._LogSetRegion = None
-        self._ZoneId = None
-        self._Area = None
-        self._LogSetType = None
-
-    @property
-    def TaskName(self):
-        return self._TaskName
-
-    @TaskName.setter
-    def TaskName(self, TaskName):
-        self._TaskName = TaskName
-
-    @property
-    def ZoneName(self):
-        return self._ZoneName
-
-    @ZoneName.setter
-    def ZoneName(self, ZoneName):
-        self._ZoneName = ZoneName
-
-    @property
-    def LogSetId(self):
-        return self._LogSetId
-
-    @LogSetId.setter
-    def LogSetId(self, LogSetId):
-        self._LogSetId = LogSetId
-
-    @property
-    def TopicId(self):
-        return self._TopicId
-
-    @TopicId.setter
-    def TopicId(self, TopicId):
-        self._TopicId = TopicId
-
-    @property
-    def EntityType(self):
-        return self._EntityType
-
-    @EntityType.setter
-    def EntityType(self, EntityType):
-        self._EntityType = EntityType
-
-    @property
-    def Period(self):
-        return self._Period
-
-    @Period.setter
-    def Period(self, Period):
-        self._Period = Period
-
-    @property
-    def Enabled(self):
-        return self._Enabled
-
-    @Enabled.setter
-    def Enabled(self, Enabled):
-        self._Enabled = Enabled
-
-    @property
-    def Deleted(self):
-        return self._Deleted
-
-    @Deleted.setter
-    def Deleted(self, Deleted):
-        self._Deleted = Deleted
-
-    @property
-    def CreateTime(self):
-        return self._CreateTime
-
-    @CreateTime.setter
-    def CreateTime(self, CreateTime):
-        self._CreateTime = CreateTime
-
-    @property
-    def Target(self):
-        return self._Target
-
-    @Target.setter
-    def Target(self, Target):
-        self._Target = Target
-
-    @property
-    def LogSetRegion(self):
-        return self._LogSetRegion
-
-    @LogSetRegion.setter
-    def LogSetRegion(self, LogSetRegion):
-        self._LogSetRegion = LogSetRegion
-
-    @property
-    def ZoneId(self):
-        return self._ZoneId
-
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-    @property
-    def Area(self):
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-    @property
-    def LogSetType(self):
-        return self._LogSetType
-
-    @LogSetType.setter
-    def LogSetType(self, LogSetType):
-        self._LogSetType = LogSetType
-
-
-    def _deserialize(self, params):
-        self._TaskName = params.get("TaskName")
-        self._ZoneName = params.get("ZoneName")
-        self._LogSetId = params.get("LogSetId")
-        self._TopicId = params.get("TopicId")
-        self._EntityType = params.get("EntityType")
-        self._Period = params.get("Period")
-        self._Enabled = params.get("Enabled")
-        self._Deleted = params.get("Deleted")
-        self._CreateTime = params.get("CreateTime")
-        self._Target = params.get("Target")
-        self._LogSetRegion = params.get("LogSetRegion")
-        self._ZoneId = params.get("ZoneId")
-        self._Area = params.get("Area")
-        self._LogSetType = params.get("LogSetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3445,10 +3085,10 @@ class CreateApplicationProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: The site ID.
+        :param _ZoneId: Site ID.
         :type ZoneId: str
-        :param _ProxyName: When `ProxyType=hostname`, this field indicates a domain name or subdomain name.
-When `ProxyType=instance`, it indicates a proxy instance.
+        :param _ProxyName: Domain name or subdomain name when `ProxyType=hostname`; 
+Instance name when `ProxyType=instance`.
         :type ProxyName: str
         :param _PlatType: The scheduling mode. Values:
 <li>`ip`: Schedule via Anycast IP.</li>
@@ -3469,12 +3109,14 @@ When `ProxyType=instance`, it indicates a proxy instance.
         :param _SessionPersistTime: The session persistence duration. Value range: 30-3600 (in seconds).
 If not specified, this field uses the default value 600.
         :type SessionPersistTime: int
-        :param _Ipv6: The IPv6 access configuration.
-If this field is not specified, IPv6 access will be disabled.
+        :param _Ipv6: Ipv6 access configuration. 
+IPv6 access is disabled if it is not specified.
         :type Ipv6: :class:`tencentcloud.teo.v20220901.models.Ipv6`
         :param _ApplicationProxyRules: The rule details.
 If this field is not specified, an application proxy rule will not be created.
         :type ApplicationProxyRules: list of ApplicationProxyRule
+        :param _AccelerateMainland: Cross-MLC-border acceleration. It is disabled if this parameter is not specified.
+        :type AccelerateMainland: :class:`tencentcloud.teo.v20220901.models.AccelerateMainland`
         """
         self._ZoneId = None
         self._ProxyName = None
@@ -3485,6 +3127,7 @@ If this field is not specified, an application proxy rule will not be created.
         self._SessionPersistTime = None
         self._Ipv6 = None
         self._ApplicationProxyRules = None
+        self._AccelerateMainland = None
 
     @property
     def ZoneId(self):
@@ -3558,6 +3201,14 @@ If this field is not specified, an application proxy rule will not be created.
     def ApplicationProxyRules(self, ApplicationProxyRules):
         self._ApplicationProxyRules = ApplicationProxyRules
 
+    @property
+    def AccelerateMainland(self):
+        return self._AccelerateMainland
+
+    @AccelerateMainland.setter
+    def AccelerateMainland(self, AccelerateMainland):
+        self._AccelerateMainland = AccelerateMainland
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -3576,6 +3227,9 @@ If this field is not specified, an application proxy rule will not be created.
                 obj = ApplicationProxyRule()
                 obj._deserialize(item)
                 self._ApplicationProxyRules.append(obj)
+        if params.get("AccelerateMainland") is not None:
+            self._AccelerateMainland = AccelerateMainland()
+            self._AccelerateMainland._deserialize(params.get("AccelerateMainland"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3802,37 +3456,6 @@ class CreateApplicationProxyRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
-        self._RequestId = params.get("RequestId")
-
-
-class CreateCredentialRequest(AbstractModel):
-    """CreateCredential request structure.
-
-    """
-
-
-class CreateCredentialResponse(AbstractModel):
-    """CreateCredential response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -4092,8 +3715,9 @@ class CreatePrefetchTaskRequest(AbstractModel):
         r"""
         :param _ZoneId: ID of the site.
         :type ZoneId: str
-        :param _Targets: List of resources to be pre-warmed, for example:
-http://www.example.com/example.txt
+        :param _Targets: Resources to be pre-warmed, for example: 
+http://www.example.com/example.txt 
+Note: The number of submitted tasks is limited by the quota of the plan. For details, see [Billing Overview](https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1).
         :type Targets: list of str
         :param _EncodeUrl: Whether to encode a URL according to RFC3986. Enable this field when the URL contains non-ASCII characters.
         :type EncodeUrl: bool
@@ -4222,24 +3846,27 @@ class CreatePurgeTaskRequest(AbstractModel):
         r"""
         :param _ZoneId: ID of the site.
         :type ZoneId: str
-        :param _Type: Mode of cache purging. Values:
-<li>`purge_url`: Purge by URL</li>
-<li>`purge_prefix`: Purge by prefix</li>
-<li>`purge_host`: Purge by hostname</li>
-<li>`purge_all`: Purge all caches</li>
-<li>`purge_cache_tag`: Purge by cache tag</li>
+        :param _Type: Purging mode. Valid values: 
+<li>`purge_url`: Purge by URL;</li>
+<li>`purge_prefix`: Purge by directory;</li>
+<li>`purge_host`: Purge by hostname;</li>
+<li>`purge_all`: Puege all cache;</li>
+<li>`purge_cache_tag`: Purge by cache tag.</li>
         :type Type: str
-        :param _Targets: Target resource to be purged, which depends on the `Type` field.
-1. When `Type = purge_host`:
-Enter the hostname, such as www.example.com and foo.bar.example.com.
-2. When `Type = purge_prefix`:
-Enter the prefix, such as http://www.example.com/example.
-3. When `Type = purge_url`:
-Enter the URL, such as https://www.example.com/example.jpg.
-4. When `Type = purge_all`:
-This field can be left empty.
-5. When `Type = purge_cache_tag`:
-Enter the cache tag, such as tag1.
+        :param _Method: 
+        :type Method: str
+        :param _Targets: Resource to be purged, which depends on the `Type` field. 
+1. When `Type = purge_host`: 
+Enter the hostname, such as www.example.com and foo.bar.example.com. 
+2. When `Type = purge_prefix`: 
+Enter the prefix, such as http://www.example.com/example/. 
+3. When `Type = purge_url`: 
+Enter the URL, such as https://www.example.com/example.jpg. 
+4. When `Type = purge_all`: 
+`Targets` can be left empty. 
+5. When `Type = purge_cache_tag`: 
+Enter the cache tag, such as tag1. 
+Note: The number of submitted tasks is limited by the quota of the plan. For details, see [Billing Overview](https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1).
         :type Targets: list of str
         :param _EncodeUrl: Specifies whether to transcode non-ASCII URLs according to RFC3986.
 Note that if it’s enabled, the purging is based on the converted URLs.
@@ -4247,6 +3874,7 @@ Note that if it’s enabled, the purging is based on the converted URLs.
         """
         self._ZoneId = None
         self._Type = None
+        self._Method = None
         self._Targets = None
         self._EncodeUrl = None
 
@@ -4267,6 +3895,14 @@ Note that if it’s enabled, the purging is based on the converted URLs.
         self._Type = Type
 
     @property
+    def Method(self):
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
     def Targets(self):
         return self._Targets
 
@@ -4276,16 +3912,21 @@ Note that if it’s enabled, the purging is based on the converted URLs.
 
     @property
     def EncodeUrl(self):
+        warnings.warn("parameter `EncodeUrl` is deprecated", DeprecationWarning) 
+
         return self._EncodeUrl
 
     @EncodeUrl.setter
     def EncodeUrl(self, EncodeUrl):
+        warnings.warn("parameter `EncodeUrl` is deprecated", DeprecationWarning) 
+
         self._EncodeUrl = EncodeUrl
 
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
         self._Type = params.get("Type")
+        self._Method = params.get("Method")
         self._Targets = params.get("Targets")
         self._EncodeUrl = params.get("EncodeUrl")
         memeber_set = set(params.keys())
@@ -4309,93 +3950,6 @@ class CreatePurgeTaskResponse(AbstractModel):
         :type JobId: str
         :param _FailedList: List of failed tasks and reasons.
 Note: This field may return null, indicating that no valid values can be obtained.
-        :type FailedList: list of FailReason
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._JobId = None
-        self._FailedList = None
-        self._RequestId = None
-
-    @property
-    def JobId(self):
-        return self._JobId
-
-    @JobId.setter
-    def JobId(self, JobId):
-        self._JobId = JobId
-
-    @property
-    def FailedList(self):
-        return self._FailedList
-
-    @FailedList.setter
-    def FailedList(self, FailedList):
-        self._FailedList = FailedList
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._JobId = params.get("JobId")
-        if params.get("FailedList") is not None:
-            self._FailedList = []
-            for item in params.get("FailedList"):
-                obj = FailReason()
-                obj._deserialize(item)
-                self._FailedList.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class CreateReplayTaskRequest(AbstractModel):
-    """CreateReplayTask request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Ids: List of replay task IDs.
-        :type Ids: list of str
-        """
-        self._Ids = None
-
-    @property
-    def Ids(self):
-        return self._Ids
-
-    @Ids.setter
-    def Ids(self, Ids):
-        self._Ids = Ids
-
-
-    def _deserialize(self, params):
-        self._Ids = params.get("Ids")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateReplayTaskResponse(AbstractModel):
-    """CreateReplayTask response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _JobId: ID of the task.
-        :type JobId: str
-        :param _FailedList: List of failed tasks and reasons.
         :type FailedList: list of FailReason
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -4565,20 +4119,20 @@ class CreateRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class CreateSpeedTestingRequest(AbstractModel):
-    """CreateSpeedTesting request structure.
+class CreateSecurityIPGroupRequest(AbstractModel):
+    """CreateSecurityIPGroup request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param _ZoneId: The site ID.
+        :param _ZoneId: Site ID.
         :type ZoneId: str
-        :param _Host: The subdomain name to test.
-        :type Host: str
+        :param _IPGroup: IP group information.
+        :type IPGroup: :class:`tencentcloud.teo.v20220901.models.IPGroup`
         """
         self._ZoneId = None
-        self._Host = None
+        self._IPGroup = None
 
     @property
     def ZoneId(self):
@@ -4589,17 +4143,19 @@ class CreateSpeedTestingRequest(AbstractModel):
         self._ZoneId = ZoneId
 
     @property
-    def Host(self):
-        return self._Host
+    def IPGroup(self):
+        return self._IPGroup
 
-    @Host.setter
-    def Host(self, Host):
-        self._Host = Host
+    @IPGroup.setter
+    def IPGroup(self, IPGroup):
+        self._IPGroup = IPGroup
 
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
-        self._Host = params.get("Host")
+        if params.get("IPGroup") is not None:
+            self._IPGroup = IPGroup()
+            self._IPGroup._deserialize(params.get("IPGroup"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4610,17 +4166,28 @@ class CreateSpeedTestingRequest(AbstractModel):
         
 
 
-class CreateSpeedTestingResponse(AbstractModel):
-    """CreateSpeedTesting response structure.
+class CreateSecurityIPGroupResponse(AbstractModel):
+    """CreateSecurityIPGroup response structure.
 
     """
 
     def __init__(self):
         r"""
+        :param _GroupId: IP group ID.
+        :type GroupId: int
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self._GroupId = None
         self._RequestId = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
 
     @property
     def RequestId(self):
@@ -4632,6 +4199,7 @@ class CreateSpeedTestingResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
         self._RequestId = params.get("RequestId")
 
 
@@ -5633,6 +5201,76 @@ class DeleteRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteSecurityIPGroupRequest(AbstractModel):
+    """DeleteSecurityIPGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Site ID.
+        :type ZoneId: str
+        :param _GroupId: IP group ID.
+        :type GroupId: int
+        """
+        self._ZoneId = None
+        self._GroupId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSecurityIPGroupResponse(AbstractModel):
+    """DeleteSecurityIPGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteZoneRequest(AbstractModel):
     """DeleteZone request structure.
 
@@ -5698,7 +5336,7 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: Site ID of the accelerated domain name. If it’s not specified, all accelerated domain names under the site are returned.
+        :param _ZoneId: ID of the site related with the accelerated domain name.
         :type ZoneId: str
         :param _Filters: Filters. Each filter can have up to 20 entries. See below for details: 
 <li>`domain-name`:<br>   <strong>Accelerated domain name</strong><br>   Type: String<br>Required: No 
@@ -5865,121 +5503,6 @@ class DescribeAccelerationDomainsResponse(AbstractModel):
                 obj = AccelerationDomain()
                 obj._deserialize(item)
                 self._AccelerationDomains.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeAddableEntityListRequest(AbstractModel):
-    """DescribeAddableEntityList request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ZoneId: ID of the site.
-        :type ZoneId: str
-        :param _EntityType: Type of the shipping entity. Values:
-<li>`domain`: L7 acceleration logs;</li>
-<li>`application`: L4 acceleration logs;</li>
-<li>`web-rateLiming`: Rate limiting logs;</li>
-<li>`web-attack`: Web security logs;</li>
-<li>`web-rule`: Custom rule logs;</li>
-<li>`web-bot`: Bot management logs.</li>
-        :type EntityType: str
-        :param _Area: The service region. Values:
-<li>`mainland`: Chinese mainland.</li>
-<li>`overseas`: Regions outside the Chinese mainland.</li>For an account registered on the Chinese site, it defaults to `mainland`. For an account registered on the international site, it defaults to `overseas`.
-        :type Area: str
-        """
-        self._ZoneId = None
-        self._EntityType = None
-        self._Area = None
-
-    @property
-    def ZoneId(self):
-        return self._ZoneId
-
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-    @property
-    def EntityType(self):
-        return self._EntityType
-
-    @EntityType.setter
-    def EntityType(self, EntityType):
-        self._EntityType = EntityType
-
-    @property
-    def Area(self):
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-
-    def _deserialize(self, params):
-        self._ZoneId = params.get("ZoneId")
-        self._EntityType = params.get("EntityType")
-        self._Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeAddableEntityListResponse(AbstractModel):
-    """DescribeAddableEntityList response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TotalCount: Total number of query results.
-        :type TotalCount: int
-        :param _EntityList: List of available shipping entities.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type EntityList: list of str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._TotalCount = None
-        self._EntityList = None
-        self._RequestId = None
-
-    @property
-    def TotalCount(self):
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def EntityList(self):
-        return self._EntityList
-
-    @EntityList.setter
-    def EntityList(self, EntityList):
-        self._EntityList = EntityList
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._TotalCount = params.get("TotalCount")
-        self._EntityList = params.get("EntityList")
         self._RequestId = params.get("RequestId")
 
 
@@ -6274,182 +5797,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = PlanInfo()
                 obj._deserialize(item)
                 self._PlanInfo.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeClientRuleListRequest(AbstractModel):
-    """DescribeClientRuleList request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ZoneId: The ID of the site to be queried.
-        :type ZoneId: str
-        :param _Domain: The subdomain name to be queried.
-        :type Domain: str
-        :param _RuleType: Rule type. Values:
-<li>`acl`: Custom rules;</li>
-<li>`rate`: Rate limiting rules.</li>All rules will be queried if this field is not specified.
-        :type RuleType: str
-        :param _RuleId: The rule ID.
-        :type RuleId: int
-        :param _SourceClientIp: The client IP.
-        :type SourceClientIp: str
-        :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 1000.
-        :type Limit: int
-        :param _Offset: The page offset. Default value: 0.
-        :type Offset: int
-        :param _Area: Data storage region. Values:
-<li>`overseas`: Global (outside the Chinese mainland);</li>
-<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.
-        :type Area: str
-        """
-        self._ZoneId = None
-        self._Domain = None
-        self._RuleType = None
-        self._RuleId = None
-        self._SourceClientIp = None
-        self._Limit = None
-        self._Offset = None
-        self._Area = None
-
-    @property
-    def ZoneId(self):
-        return self._ZoneId
-
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-    @property
-    def Domain(self):
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def RuleType(self):
-        return self._RuleType
-
-    @RuleType.setter
-    def RuleType(self, RuleType):
-        self._RuleType = RuleType
-
-    @property
-    def RuleId(self):
-        return self._RuleId
-
-    @RuleId.setter
-    def RuleId(self, RuleId):
-        self._RuleId = RuleId
-
-    @property
-    def SourceClientIp(self):
-        return self._SourceClientIp
-
-    @SourceClientIp.setter
-    def SourceClientIp(self, SourceClientIp):
-        self._SourceClientIp = SourceClientIp
-
-    @property
-    def Limit(self):
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Area(self):
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-
-    def _deserialize(self, params):
-        self._ZoneId = params.get("ZoneId")
-        self._Domain = params.get("Domain")
-        self._RuleType = params.get("RuleType")
-        self._RuleId = params.get("RuleId")
-        self._SourceClientIp = params.get("SourceClientIp")
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        self._Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeClientRuleListResponse(AbstractModel):
-    """DescribeClientRuleList response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Data: The blocked client information.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Data: list of ClientRule
-        :param _TotalCount: Total number of query results.
-        :type TotalCount: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Data = None
-        self._TotalCount = None
-        self._RequestId = None
-
-    @property
-    def Data(self):
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
-
-    @property
-    def TotalCount(self):
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self._Data = []
-            for item in params.get("Data"):
-                obj = ClientRule()
-                obj._deserialize(item)
-                self._Data.append(obj)
-        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -7248,131 +6595,6 @@ class DescribeDefaultCertificatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeDnsDataRequest(AbstractModel):
-    """DescribeDnsData request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _StartTime: The start time.
-        :type StartTime: str
-        :param _EndTime: The end time.
-        :type EndTime: str
-        :param _Filters: Filter criteria. Each filter criteria can have up to 20 entries.
-<li>`zone`:<br>   Filter by <strong>site name</strong>, such as tencent.com (up to one entry)<br>   Type: String<br>   Required: No
-<li>`host`:<br>   Filter by <strong>domain name</strong>, such as test.tencent.com (up to one entry)<br>   Type: String<br>   Required: No
-<li>`type`:<br>   Filter by <strong>DNS record type</strong><br>   Type: String<br>   Required: No<br>   Values:<br>   `A`: A record<br>   `AAAA`: AAAA record<br>   `CNAME`: CNAME record<br>   `MX`: MX record<br>   `TXT`: TXT record<br>   `NS`: NS record<br>   `SRV`: SRV record<br>   `CAA`: CAA record
-<li>`code`:<br>   Filter by <strong>DNS status code</strong><br>   Type: String<br>   Required: No<br>   Values:<br>   `NoError`: Success<br>   `NXDomain`: Not found the request domain<br>   `NotImp`: Not supported request type<br>   `Refused`: The domain name server refuses to execute the request for policy reasons
-<li>`area`:<br>   Filter by <strong>DNS region</strong><br>   Type: String<br>   Required: No<br>   Values:<br>   `Asia`<br>   `Europe`<br>   `Africa`<br>   `Oceania`<br>   `Americas`
-        :type Filters: list of Filter
-        :param _Interval: The query time granularity. Values:
-<li>`min`: 1 minute;</li>
-<li>`5min`: 5 minute;</li>
-<li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>This field will be set to the default value `min` if not specified.
-        :type Interval: str
-        """
-        self._StartTime = None
-        self._EndTime = None
-        self._Filters = None
-        self._Interval = None
-
-    @property
-    def StartTime(self):
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def Filters(self):
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
-    def Interval(self):
-        return self._Interval
-
-    @Interval.setter
-    def Interval(self, Interval):
-        self._Interval = Interval
-
-
-    def _deserialize(self, params):
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        if params.get("Filters") is not None:
-            self._Filters = []
-            for item in params.get("Filters"):
-                obj = Filter()
-                obj._deserialize(item)
-                self._Filters.append(obj)
-        self._Interval = params.get("Interval")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeDnsDataResponse(AbstractModel):
-    """DescribeDnsData response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Data: DNS statistics.
-        :type Data: list of DnsData
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Data = None
-        self._RequestId = None
-
-    @property
-    def Data(self):
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self._Data = []
-            for item in params.get("Data"):
-                obj = DnsData()
-                obj._deserialize(item)
-                self._Data.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeHostsSettingRequest(AbstractModel):
     """DescribeHostsSetting request structure.
 
@@ -7616,230 +6838,6 @@ class DescribeIdentificationsResponse(AbstractModel):
                 obj = Identification()
                 obj._deserialize(item)
                 self._Identifications.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeLogSetsRequest(AbstractModel):
-    """DescribeLogSets request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _LogSetRegion: Region of the logset.
-        :type LogSetRegion: str
-        :param _LogSetId: ID of the logset.
-        :type LogSetId: str
-        :param _LogSetName: Name of the logset.
-        :type LogSetName: str
-        """
-        self._LogSetRegion = None
-        self._LogSetId = None
-        self._LogSetName = None
-
-    @property
-    def LogSetRegion(self):
-        return self._LogSetRegion
-
-    @LogSetRegion.setter
-    def LogSetRegion(self, LogSetRegion):
-        self._LogSetRegion = LogSetRegion
-
-    @property
-    def LogSetId(self):
-        return self._LogSetId
-
-    @LogSetId.setter
-    def LogSetId(self, LogSetId):
-        self._LogSetId = LogSetId
-
-    @property
-    def LogSetName(self):
-        return self._LogSetName
-
-    @LogSetName.setter
-    def LogSetName(self, LogSetName):
-        self._LogSetName = LogSetName
-
-
-    def _deserialize(self, params):
-        self._LogSetRegion = params.get("LogSetRegion")
-        self._LogSetId = params.get("LogSetId")
-        self._LogSetName = params.get("LogSetName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeLogSetsResponse(AbstractModel):
-    """DescribeLogSets response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _LogSetList: List of logsets.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type LogSetList: list of LogSetInfo
-        :param _TotalCount: Total number of query results.
-        :type TotalCount: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._LogSetList = None
-        self._TotalCount = None
-        self._RequestId = None
-
-    @property
-    def LogSetList(self):
-        return self._LogSetList
-
-    @LogSetList.setter
-    def LogSetList(self, LogSetList):
-        self._LogSetList = LogSetList
-
-    @property
-    def TotalCount(self):
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("LogSetList") is not None:
-            self._LogSetList = []
-            for item in params.get("LogSetList"):
-                obj = LogSetInfo()
-                obj._deserialize(item)
-                self._LogSetList.append(obj)
-        self._TotalCount = params.get("TotalCount")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeLogTopicTasksRequest(AbstractModel):
-    """DescribeLogTopicTasks request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ZoneId: ID of the site.
-        :type ZoneId: str
-        :param _Limit: Limit on paginated queries. Default value: `20`. Maximum value: `1000`.
-        :type Limit: int
-        :param _Offset: Page offset. Default value: 0.
-        :type Offset: int
-        """
-        self._ZoneId = None
-        self._Limit = None
-        self._Offset = None
-
-    @property
-    def ZoneId(self):
-        return self._ZoneId
-
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-    @property
-    def Limit(self):
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-
-    def _deserialize(self, params):
-        self._ZoneId = params.get("ZoneId")
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeLogTopicTasksResponse(AbstractModel):
-    """DescribeLogTopicTasks response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TopicList: List of shipping tasks.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type TopicList: list of ClsLogTopicInfo
-        :param _TotalCount: Total number of query results.
-        :type TotalCount: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._TopicList = None
-        self._TotalCount = None
-        self._RequestId = None
-
-    @property
-    def TopicList(self):
-        return self._TopicList
-
-    @TopicList.setter
-    def TopicList(self, TopicList):
-        self._TopicList = TopicList
-
-    @property
-    def TotalCount(self):
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("TopicList") is not None:
-            self._TopicList = []
-            for item in params.get("TopicList"):
-                obj = ClsLogTopicInfo()
-                obj._deserialize(item)
-                self._TopicList.append(obj)
-        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -8737,403 +7735,6 @@ class DescribeRulesSettingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeSingleL7AnalysisDataRequest(AbstractModel):
-    """DescribeSingleL7AnalysisData request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _StartTime: The start time.
-        :type StartTime: str
-        :param _EndTime: The end time.
-        :type EndTime: str
-        :param _MetricNames: The query metric. Values:
-<li>`l7Flow_singleIpRequest`: Number of requests from a single IP.</li>
-        :type MetricNames: list of str
-        :param _ZoneIds: List of sites
-If it’s not specified, all sites are selected by default, and the query period must be within the last 30 days. 
-Enter the IDs of sites to query. The maximum query period is determined by the <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> of the bound plan. 
-        :type ZoneIds: list of str
-        :param _Filters: Filters
-<li>`country`:<br>   Filter by the specified <strong>country code</strong>. <a href="https://en.wikipedia.org/wiki/ISO_3166-1">ISO 3166</a> country codes are used.</li>
-<li>`domain`:<br>u2003u2003 Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>
-<li>`protocol`:<br>   Filter by the specified <strong>HTTP protocol version</strong><br>   Values:<br>u2003u2003 `HTTP/1.0`: HTTP 1.0;<br>   `HTTP/1.1`: HTTP 1.1;<br>   `HTTP/2.0`: HTTP 2.0;<br>   `HTTP/3.0`: HTTP 3.0;<br>   `WebSocket`: WebSocket.</li>
-<li>`socket`:<br>u2003u2003 Filter by the specified <strong>HTTP protocol type</strong><br>u2003u2003 Values:<br>u2003u2003 `HTTP`: HTTP protocol;<br>u2003u2003 `HTTPS`: HTTPS protocol;<br>u2003u2003 `QUIC`: QUIC protocol.</li>
-<li>`tagKey`:<br>u2003u2003 Filter by the specified <strong>tag key</strong></li>
-<li>`tagValue`:<br>u2003u2003 Filter by the specified <strong>tag value</strong></li>
-        :type Filters: list of QueryCondition
-        :param _Interval: The query granularity. Values:
-<li>`min`: 1 minute;</li>
-<li>`5min`: 5 minutes;</li>
-<li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.
-        :type Interval: str
-        :param _Area: Geolocation scope. Values:
-<li>`overseas`: Regions outside the Chinese mainland</li>
-<li>`mainland`: Chinese mainland</li>
-<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
-        :type Area: str
-        """
-        self._StartTime = None
-        self._EndTime = None
-        self._MetricNames = None
-        self._ZoneIds = None
-        self._Filters = None
-        self._Interval = None
-        self._Area = None
-
-    @property
-    def StartTime(self):
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def MetricNames(self):
-        return self._MetricNames
-
-    @MetricNames.setter
-    def MetricNames(self, MetricNames):
-        self._MetricNames = MetricNames
-
-    @property
-    def ZoneIds(self):
-        return self._ZoneIds
-
-    @ZoneIds.setter
-    def ZoneIds(self, ZoneIds):
-        self._ZoneIds = ZoneIds
-
-    @property
-    def Filters(self):
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
-    def Interval(self):
-        return self._Interval
-
-    @Interval.setter
-    def Interval(self, Interval):
-        self._Interval = Interval
-
-    @property
-    def Area(self):
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-
-    def _deserialize(self, params):
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._MetricNames = params.get("MetricNames")
-        self._ZoneIds = params.get("ZoneIds")
-        if params.get("Filters") is not None:
-            self._Filters = []
-            for item in params.get("Filters"):
-                obj = QueryCondition()
-                obj._deserialize(item)
-                self._Filters.append(obj)
-        self._Interval = params.get("Interval")
-        self._Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeSingleL7AnalysisDataResponse(AbstractModel):
-    """DescribeSingleL7AnalysisData response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TotalCount: Total number of query results.
-        :type TotalCount: int
-        :param _Data: The list of L7 dimensional data.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Data: list of SingleDataRecord
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._TotalCount = None
-        self._Data = None
-        self._RequestId = None
-
-    @property
-    def TotalCount(self):
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def Data(self):
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._TotalCount = params.get("TotalCount")
-        if params.get("Data") is not None:
-            self._Data = []
-            for item in params.get("Data"):
-                obj = SingleDataRecord()
-                obj._deserialize(item)
-                self._Data.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeSpeedTestingDetailsRequest(AbstractModel):
-    """DescribeSpeedTestingDetails request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ZoneId: The site ID.
-        :type ZoneId: str
-        """
-        self._ZoneId = None
-
-    @property
-    def ZoneId(self):
-        return self._ZoneId
-
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-
-    def _deserialize(self, params):
-        self._ZoneId = params.get("ZoneId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeSpeedTestingDetailsResponse(AbstractModel):
-    """DescribeSpeedTestingDetails response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _SpeedTestingDetailData: The site’s load speed across regions.
-        :type SpeedTestingDetailData: :class:`tencentcloud.teo.v20220901.models.SpeedTestingDetailData`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._SpeedTestingDetailData = None
-        self._RequestId = None
-
-    @property
-    def SpeedTestingDetailData(self):
-        return self._SpeedTestingDetailData
-
-    @SpeedTestingDetailData.setter
-    def SpeedTestingDetailData(self, SpeedTestingDetailData):
-        self._SpeedTestingDetailData = SpeedTestingDetailData
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("SpeedTestingDetailData") is not None:
-            self._SpeedTestingDetailData = SpeedTestingDetailData()
-            self._SpeedTestingDetailData._deserialize(params.get("SpeedTestingDetailData"))
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeSpeedTestingMetricDataRequest(AbstractModel):
-    """DescribeSpeedTestingMetricData request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ZoneId: The site ID.
-        :type ZoneId: str
-        """
-        self._ZoneId = None
-
-    @property
-    def ZoneId(self):
-        return self._ZoneId
-
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-
-    def _deserialize(self, params):
-        self._ZoneId = params.get("ZoneId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeSpeedTestingMetricDataResponse(AbstractModel):
-    """DescribeSpeedTestingMetricData response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _SpeedTestingMetricData: The site test metrics.
-        :type SpeedTestingMetricData: :class:`tencentcloud.teo.v20220901.models.SpeedTestingMetricData`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._SpeedTestingMetricData = None
-        self._RequestId = None
-
-    @property
-    def SpeedTestingMetricData(self):
-        return self._SpeedTestingMetricData
-
-    @SpeedTestingMetricData.setter
-    def SpeedTestingMetricData(self, SpeedTestingMetricData):
-        self._SpeedTestingMetricData = SpeedTestingMetricData
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("SpeedTestingMetricData") is not None:
-            self._SpeedTestingMetricData = SpeedTestingMetricData()
-            self._SpeedTestingMetricData._deserialize(params.get("SpeedTestingMetricData"))
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeSpeedTestingQuotaRequest(AbstractModel):
-    """DescribeSpeedTestingQuota request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ZoneId: The site ID.
-        :type ZoneId: str
-        """
-        self._ZoneId = None
-
-    @property
-    def ZoneId(self):
-        return self._ZoneId
-
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-
-    def _deserialize(self, params):
-        self._ZoneId = params.get("ZoneId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeSpeedTestingQuotaResponse(AbstractModel):
-    """DescribeSpeedTestingQuota response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _SpeedTestingQuota: The quota limit on site tests.
-        :type SpeedTestingQuota: :class:`tencentcloud.teo.v20220901.models.SpeedTestingQuota`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._SpeedTestingQuota = None
-        self._RequestId = None
-
-    @property
-    def SpeedTestingQuota(self):
-        return self._SpeedTestingQuota
-
-    @SpeedTestingQuota.setter
-    def SpeedTestingQuota(self, SpeedTestingQuota):
-        self._SpeedTestingQuota = SpeedTestingQuota
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("SpeedTestingQuota") is not None:
-            self._SpeedTestingQuota = SpeedTestingQuota()
-            self._SpeedTestingQuota._deserialize(params.get("SpeedTestingQuota"))
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeTimingL4DataRequest(AbstractModel):
     """DescribeTimingL4Data request structure.
 
@@ -9706,187 +8307,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
-class DescribeTimingL7SourceDataRequest(AbstractModel):
-    """DescribeTimingL7SourceData request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _StartTime: Start time of the query period.
-        :type StartTime: str
-        :param _EndTime: End time of the query period.
-        :type EndTime: str
-        :param _MetricNames: List of metrics. Values:
-<li>`l7Flow_outFlux_hy`: EdgeOne request traffic</li>
-<li>`l7Flow_outBandwidth_hy`: EdgeOne request bandwidth</li>
-<li>`l7Flow_inFlux_hy`: Origin response traffic</li>
-<li>`l7Flow_inBandwidth_hy`: Origin response bandwidth</li>
-<li>`l7Flow_request_hy`: Origin-pull requests</li>
-        :type MetricNames: list of str
-        :param _ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
-        :type ZoneIds: list of str
-        :param _Interval: The query granularity. Values:
-<li>`min`: 1 minute</li>
-<li>`5min`: 5 minutes</li>
-<li>`hour`: 1 hour</li>
-<li>`day`: 1 day</li>If this field is not specified, the granularity is determined based on the query period. **Query period < 1 hour**: 1-minute granularity; **1 hour < query period < 2 days**: 5-minute granularity; **2 days < query period < 7 days**: 1 hour granularity; **Query period > 7 days**: 1 day granularity.
-        :type Interval: str
-        :param _Filters: Filter conditions. See below for details: 
-<li>`domain`:<br>   Filter by <strong>the origin domain</strong><br>   Type: String<br>   Required: No</li>
-<li>`origin`:<br>   Filter by <strong>the origin</strong><br>   Type: String<br>   Required: No</li>
-<li>`originGroup`:<br>   Filter by <strong>the origin group</strong>, such as origin-xxxxx.<br>   Type: String<br>   Required: No</li>
-<li>`flowType`:<br>   Filter by <strong>the origin response type</strong>. This parameter takes precedence over `MetricNames.N`.<br>   Type: String<br>   Required: No<br>   Values:<br>   `inFlow`: Origin response data, corresponding to `l7Flow_inFlux_hy`, `l7Flow_inBandwidth_hy` and `l7Flow_request_hy` in `MetricNames.N`.<br>   `outFlow`: EdgeOne request data, corresponding to `l7Flow_outFlux_hy`, `l7Flow_outBandwidth_hy` and `l7Flow_request_hy` in `MetricNames.N`.</li>
-        :type Filters: list of QueryCondition
-        :param _Area: Geolocation scope. Values:
-<li>`overseas`: Regions outside the Chinese mainland</li>
-<li>`mainland`: Chinese mainland</li>
-<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
-        :type Area: str
-        """
-        self._StartTime = None
-        self._EndTime = None
-        self._MetricNames = None
-        self._ZoneIds = None
-        self._Interval = None
-        self._Filters = None
-        self._Area = None
-
-    @property
-    def StartTime(self):
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def MetricNames(self):
-        return self._MetricNames
-
-    @MetricNames.setter
-    def MetricNames(self, MetricNames):
-        self._MetricNames = MetricNames
-
-    @property
-    def ZoneIds(self):
-        return self._ZoneIds
-
-    @ZoneIds.setter
-    def ZoneIds(self, ZoneIds):
-        self._ZoneIds = ZoneIds
-
-    @property
-    def Interval(self):
-        return self._Interval
-
-    @Interval.setter
-    def Interval(self, Interval):
-        self._Interval = Interval
-
-    @property
-    def Filters(self):
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
-    @property
-    def Area(self):
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-
-    def _deserialize(self, params):
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._MetricNames = params.get("MetricNames")
-        self._ZoneIds = params.get("ZoneIds")
-        self._Interval = params.get("Interval")
-        if params.get("Filters") is not None:
-            self._Filters = []
-            for item in params.get("Filters"):
-                obj = QueryCondition()
-                obj._deserialize(item)
-                self._Filters.append(obj)
-        self._Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeTimingL7SourceDataResponse(AbstractModel):
-    """DescribeTimingL7SourceData response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TotalCount: Total number of query results.
-        :type TotalCount: int
-        :param _TimingDataRecords: List of time series traffic data.
-Note: This field may return `null`, indicating that no valid value can be obtained.
-        :type TimingDataRecords: list of TimingDataRecord
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._TotalCount = None
-        self._TimingDataRecords = None
-        self._RequestId = None
-
-    @property
-    def TotalCount(self):
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def TimingDataRecords(self):
-        return self._TimingDataRecords
-
-    @TimingDataRecords.setter
-    def TimingDataRecords(self, TimingDataRecords):
-        self._TimingDataRecords = TimingDataRecords
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._TotalCount = params.get("TotalCount")
-        if params.get("TimingDataRecords") is not None:
-            self._TimingDataRecords = []
-            for item in params.get("TimingDataRecords"):
-                obj = TimingDataRecord()
-                obj._deserialize(item)
-                self._TimingDataRecords.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeTopL7AnalysisDataRequest(AbstractModel):
     """DescribeTopL7AnalysisData request structure.
 
@@ -9898,27 +8318,27 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: The end time.
         :type EndTime: str
-        :param _MetricName: The metric to query. Values: 
-<li>`l7Flow_outFlux_country`: Traffic by country/region</li>
-<li>`l7Flow_outFlux_statusCode`: Traffic by status code</li>
-<li>`l7Flow_outFlux_domain`: Traffic by domain name</li>
-<li>`l7Flow_outFlux_url`: Traffic by URL</li>
-<li>`l7Flow_outFlux_resourceType`: Traffic by resource type</li>
-<li>`l7Flow_outFlux_sip`: Traffic by client IP</li>
-<li>`l7Flow_outFlux_referers`: Traffic by referer</li>
-<li>`l7Flow_outFlux_ua_device`: Traffic by device</li>
-<li>`l7Flow_outFlux_ua_browser`: Traffic by browser</li>
-<li>`l7Flow_outFlux_us_os`: Traffic by operating system</li>
-<li>`l7Flow_request_country`: Requests by country/region</li>
-<li>`l7Flow_request_statusCode`: Requests by status code</li>
-<li>`l7Flow_request_domain`: Requests by domain name</li>
-<li>`l7Flow_request_url`: Requests by URL</li>
-<li>`l7Flow_request_resourceType`: Requests by resource type</li>
-<li>`l7Flow_request_sip`: Requests by client IP</li>
-<li>`l7Flow_request_referer`: Requests by referer</li>
-<li>`l7Flow_request_ua_device`: Requests by device</li>
-<li>`l7Flow_request_ua_browser`: Requests by browser</li>
-<li>`l7Flow_request_us_os`: Requests by operating system</li>
+        :param _MetricName: Metrics to query. Valid values: 
+<li>`l7Flow_outFlux_country`: Query traffic by country/region;</li>
+<li>`l7Flow_outFlux_statusCode`: Query traffic by status code;</li>
+<li>`l7Flow_outFlux_domain`: Query traffic by domain;</li>
+<li>`l7Flow_outFlux_url`: Query traffic by URL;</li>
+<li>`l7Flow_outFlux_resourceType`: Query traffic by resource type;</li>
+<li>`l7Flow_outFlux_sip`: Query traffic by source IP;</li>
+<li>`l7Flow_outFlux_referers`: Query traffic by refer information;</li>
+<li>`l7Flow_outFlux_ua_device`: Query traffic by device;</li>
+<li>`l7Flow_outFlux_ua_browser`: Query traffic by browser;</li>
+<li>`l7Flow_outFlux_us_os`: Query traffic by OS;</li>
+<li>`l7Flow_request_country`: Query requests by country/region;</li>
+<li>`l7Flow_request_statusCode`: Query requests by status code;</li>
+<li>`l7Flow_request_domain`: Query requests by domain;</li>
+<li>`l7Flow_request_url`: Query requests by URL;</li>
+<li>`l7Flow_request_resourceType`: Query requests by resource type;</li>
+<li>`l7Flow_request_sip`: Query requests by source IP;</li>
+<li>`l7Flow_request_referer`: Query requests by refer information;</li>
+<li>`l7Flow_request_ua_device`: Query requests by device;</li>
+<li>`l7Flow_request_ua_browser`: Query requests by browser;</li>
+<li>`l7Flow_request_us_os`: Query requests by OS.</li>
 
         :type MetricName: str
         :param _ZoneIds: (Required) List of sites. No query results are returned if this field is not specified.
@@ -10298,1371 +8718,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._Data = []
             for item in params.get("Data"):
                 obj = TopDataRecord()
-                obj._deserialize(item)
-                self._Data.append(obj)
-        self._TotalCount = params.get("TotalCount")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeWebManagedRulesDataRequest(AbstractModel):
-    """DescribeWebManagedRulesData request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _StartTime: The start time.
-        :type StartTime: str
-        :param _EndTime: The end time.
-        :type EndTime: str
-        :param _MetricNames: List of statistical metric. Values:
-<li>`waf_interceptNum`: Requests blocked by WAF.</li>
-        :type MetricNames: list of str
-        :param _ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
-        :type ZoneIds: list of str
-        :param _Domains: List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.
-        :type Domains: list of str
-        :param _QueryCondition: The key of the parameter QueryCondition, which is used to specify a filter. Values:
-<li>`action`: The action;</li>
-        :type QueryCondition: list of QueryCondition
-        :param _Interval: The query time granularity. Values:
-<li>`min`: 1 minute;</li>
-<li>`5min`: 5 minute;</li>
-<li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.
-        :type Interval: str
-        :param _Area: Data storage region. Values:
-<li>`overseas`: Global (outside the Chinese mainland);</li>
-<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.
-        :type Area: str
-        """
-        self._StartTime = None
-        self._EndTime = None
-        self._MetricNames = None
-        self._ZoneIds = None
-        self._Domains = None
-        self._QueryCondition = None
-        self._Interval = None
-        self._Area = None
-
-    @property
-    def StartTime(self):
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def MetricNames(self):
-        return self._MetricNames
-
-    @MetricNames.setter
-    def MetricNames(self, MetricNames):
-        self._MetricNames = MetricNames
-
-    @property
-    def ZoneIds(self):
-        return self._ZoneIds
-
-    @ZoneIds.setter
-    def ZoneIds(self, ZoneIds):
-        self._ZoneIds = ZoneIds
-
-    @property
-    def Domains(self):
-        return self._Domains
-
-    @Domains.setter
-    def Domains(self, Domains):
-        self._Domains = Domains
-
-    @property
-    def QueryCondition(self):
-        return self._QueryCondition
-
-    @QueryCondition.setter
-    def QueryCondition(self, QueryCondition):
-        self._QueryCondition = QueryCondition
-
-    @property
-    def Interval(self):
-        return self._Interval
-
-    @Interval.setter
-    def Interval(self, Interval):
-        self._Interval = Interval
-
-    @property
-    def Area(self):
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-
-    def _deserialize(self, params):
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._MetricNames = params.get("MetricNames")
-        self._ZoneIds = params.get("ZoneIds")
-        self._Domains = params.get("Domains")
-        if params.get("QueryCondition") is not None:
-            self._QueryCondition = []
-            for item in params.get("QueryCondition"):
-                obj = QueryCondition()
-                obj._deserialize(item)
-                self._QueryCondition.append(obj)
-        self._Interval = params.get("Interval")
-        self._Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeWebManagedRulesDataResponse(AbstractModel):
-    """DescribeWebManagedRulesData response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Data: The list of WAF attack data recorded over time.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Data: list of SecEntry
-        :param _TotalCount: Total number of query results.
-        :type TotalCount: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Data = None
-        self._TotalCount = None
-        self._RequestId = None
-
-    @property
-    def Data(self):
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
-
-    @property
-    def TotalCount(self):
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self._Data = []
-            for item in params.get("Data"):
-                obj = SecEntry()
-                obj._deserialize(item)
-                self._Data.append(obj)
-        self._TotalCount = params.get("TotalCount")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeWebManagedRulesHitRuleDetailRequest(AbstractModel):
-    """DescribeWebManagedRulesHitRuleDetail request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _StartTime: The start time.
-        :type StartTime: str
-        :param _EndTime: The end time.
-        :type EndTime: str
-        :param _ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
-        :type ZoneIds: list of str
-        :param _Domains: List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.
-        :type Domains: list of str
-        :param _Interval: The query time granularity. Values:
-<li>`min`: 1 minute;</li>
-<li>`5min`: 5 minute;</li>
-<li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.
-        :type Interval: str
-        :param _QueryCondition: The key of the parameter QueryCondition, which is used to specify a filter. Values:
-<li>`action`: The action;</li>
-        :type QueryCondition: list of QueryCondition
-        :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 1000.
-        :type Limit: int
-        :param _Offset: The page offset. Default value: 0.
-        :type Offset: int
-        :param _Area: Data storage region. Values:
-<li>`overseas`: Global (outside the Chinese mainland);</li>
-<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.
-        :type Area: str
-        """
-        self._StartTime = None
-        self._EndTime = None
-        self._ZoneIds = None
-        self._Domains = None
-        self._Interval = None
-        self._QueryCondition = None
-        self._Limit = None
-        self._Offset = None
-        self._Area = None
-
-    @property
-    def StartTime(self):
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def ZoneIds(self):
-        return self._ZoneIds
-
-    @ZoneIds.setter
-    def ZoneIds(self, ZoneIds):
-        self._ZoneIds = ZoneIds
-
-    @property
-    def Domains(self):
-        return self._Domains
-
-    @Domains.setter
-    def Domains(self, Domains):
-        self._Domains = Domains
-
-    @property
-    def Interval(self):
-        return self._Interval
-
-    @Interval.setter
-    def Interval(self, Interval):
-        self._Interval = Interval
-
-    @property
-    def QueryCondition(self):
-        return self._QueryCondition
-
-    @QueryCondition.setter
-    def QueryCondition(self, QueryCondition):
-        self._QueryCondition = QueryCondition
-
-    @property
-    def Limit(self):
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Area(self):
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-
-    def _deserialize(self, params):
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._ZoneIds = params.get("ZoneIds")
-        self._Domains = params.get("Domains")
-        self._Interval = params.get("Interval")
-        if params.get("QueryCondition") is not None:
-            self._QueryCondition = []
-            for item in params.get("QueryCondition"):
-                obj = QueryCondition()
-                obj._deserialize(item)
-                self._QueryCondition.append(obj)
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        self._Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeWebManagedRulesHitRuleDetailResponse(AbstractModel):
-    """DescribeWebManagedRulesHitRuleDetail response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Data: The hit rule information.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Data: list of SecHitRuleInfo
-        :param _TotalCount: Total number of query results.
-        :type TotalCount: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Data = None
-        self._TotalCount = None
-        self._RequestId = None
-
-    @property
-    def Data(self):
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
-
-    @property
-    def TotalCount(self):
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self._Data = []
-            for item in params.get("Data"):
-                obj = SecHitRuleInfo()
-                obj._deserialize(item)
-                self._Data.append(obj)
-        self._TotalCount = params.get("TotalCount")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeWebManagedRulesLogRequest(AbstractModel):
-    """DescribeWebManagedRulesLog request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _StartTime: The start time.
-        :type StartTime: str
-        :param _EndTime: The end time.
-        :type EndTime: str
-        :param _ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
-        :type ZoneIds: list of str
-        :param _Domains: List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.
-        :type Domains: list of str
-        :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 1000.
-        :type Limit: int
-        :param _Offset: The page offset. Default value: 0.
-        :type Offset: int
-        :param _QueryCondition: Filters for the query. Values:
-<li>`attackType`: Attack type</li>
-<li>`riskLevel`: Risk level</li>
-<li>`action`: Action</li>
-<li>`ruleId`: Rule ID</li>
-<li>`sipCountryCode`: Country code of the attacker IP</li>
-<li>`attackIp`: Attacker IP</li>
-<li>`realClientIp`: Real client IP</li>
-<li>`oriDomain`: Attacked subdomain name</li>
-<li>`eventId`: Event ID</li>
-<li>`ua`: User agent</li>
-<li>`requestMethod`: Request method</li>
-<li>`uri`: Uniform resource identifier</li>
-        :type QueryCondition: list of QueryCondition
-        :param _Area: Data storage region. Values:
-<li>`overseas`: Global (outside the Chinese mainland);</li>
-<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.
-        :type Area: str
-        """
-        self._StartTime = None
-        self._EndTime = None
-        self._ZoneIds = None
-        self._Domains = None
-        self._Limit = None
-        self._Offset = None
-        self._QueryCondition = None
-        self._Area = None
-
-    @property
-    def StartTime(self):
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def ZoneIds(self):
-        return self._ZoneIds
-
-    @ZoneIds.setter
-    def ZoneIds(self, ZoneIds):
-        self._ZoneIds = ZoneIds
-
-    @property
-    def Domains(self):
-        return self._Domains
-
-    @Domains.setter
-    def Domains(self, Domains):
-        self._Domains = Domains
-
-    @property
-    def Limit(self):
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def QueryCondition(self):
-        return self._QueryCondition
-
-    @QueryCondition.setter
-    def QueryCondition(self, QueryCondition):
-        self._QueryCondition = QueryCondition
-
-    @property
-    def Area(self):
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-
-    def _deserialize(self, params):
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._ZoneIds = params.get("ZoneIds")
-        self._Domains = params.get("Domains")
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        if params.get("QueryCondition") is not None:
-            self._QueryCondition = []
-            for item in params.get("QueryCondition"):
-                obj = QueryCondition()
-                obj._deserialize(item)
-                self._QueryCondition.append(obj)
-        self._Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeWebManagedRulesLogResponse(AbstractModel):
-    """DescribeWebManagedRulesLog response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Data: The list of web log data.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Data: list of WebLogs
-        :param _TotalCount: Total number of query results.
-        :type TotalCount: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Data = None
-        self._TotalCount = None
-        self._RequestId = None
-
-    @property
-    def Data(self):
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
-
-    @property
-    def TotalCount(self):
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self._Data = []
-            for item in params.get("Data"):
-                obj = WebLogs()
-                obj._deserialize(item)
-                self._Data.append(obj)
-        self._TotalCount = params.get("TotalCount")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeWebProtectionClientIpListRequest(AbstractModel):
-    """DescribeWebProtectionClientIpList request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _StartTime: The start time.
-        :type StartTime: str
-        :param _EndTime: The end time.
-        :type EndTime: str
-        :param _ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
-        :type ZoneIds: list of str
-        :param _Domains: List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.
-        :type Domains: list of str
-        :param _Interval: The query time granularity. Values:
-<li>`min`: 1 minute;</li>
-<li>`5min`: 5 minute;</li>
-<li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.
-        :type Interval: str
-        :param _QueryCondition: The key of the parameter QueryCondition, which is used to specify a filter. Values:
-<li>`action`: The action;</li>
-        :type QueryCondition: list of QueryCondition
-        :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 1000.
-        :type Limit: int
-        :param _Offset: The page offset. Default value: 0.
-        :type Offset: int
-        :param _Area: Data storage region. Values:
-<li>`overseas`: Global (outside the Chinese mainland);</li>
-<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.
-        :type Area: str
-        """
-        self._StartTime = None
-        self._EndTime = None
-        self._ZoneIds = None
-        self._Domains = None
-        self._Interval = None
-        self._QueryCondition = None
-        self._Limit = None
-        self._Offset = None
-        self._Area = None
-
-    @property
-    def StartTime(self):
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def ZoneIds(self):
-        return self._ZoneIds
-
-    @ZoneIds.setter
-    def ZoneIds(self, ZoneIds):
-        self._ZoneIds = ZoneIds
-
-    @property
-    def Domains(self):
-        return self._Domains
-
-    @Domains.setter
-    def Domains(self, Domains):
-        self._Domains = Domains
-
-    @property
-    def Interval(self):
-        return self._Interval
-
-    @Interval.setter
-    def Interval(self, Interval):
-        self._Interval = Interval
-
-    @property
-    def QueryCondition(self):
-        return self._QueryCondition
-
-    @QueryCondition.setter
-    def QueryCondition(self, QueryCondition):
-        self._QueryCondition = QueryCondition
-
-    @property
-    def Limit(self):
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Area(self):
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-
-    def _deserialize(self, params):
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._ZoneIds = params.get("ZoneIds")
-        self._Domains = params.get("Domains")
-        self._Interval = params.get("Interval")
-        if params.get("QueryCondition") is not None:
-            self._QueryCondition = []
-            for item in params.get("QueryCondition"):
-                obj = QueryCondition()
-                obj._deserialize(item)
-                self._QueryCondition.append(obj)
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        self._Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeWebProtectionClientIpListResponse(AbstractModel):
-    """DescribeWebProtectionClientIpList response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Data: The list of CC attacker IPs.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Data: list of SecClientIp
-        :param _TotalCount: Total number of query results.
-        :type TotalCount: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Data = None
-        self._TotalCount = None
-        self._RequestId = None
-
-    @property
-    def Data(self):
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
-
-    @property
-    def TotalCount(self):
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self._Data = []
-            for item in params.get("Data"):
-                obj = SecClientIp()
-                obj._deserialize(item)
-                self._Data.append(obj)
-        self._TotalCount = params.get("TotalCount")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeWebProtectionDataRequest(AbstractModel):
-    """DescribeWebProtectionData request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _StartTime: The start time.
-        :type StartTime: str
-        :param _EndTime: The end time.
-        :type EndTime: str
-        :param _MetricNames: Metrics to query. Values:
-<li>`ccRate_interceptNum`: Requests restricted by the rate limiting rules;</li>
-<li>`ccAcl_interceptNum`: Requests restricted by the custom rules.</li>
-        :type MetricNames: list of str
-        :param _ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
-        :type ZoneIds: list of str
-        :param _Domains: List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.
-        :type Domains: list of str
-        :param _Interval: The query time granularity. Values:
-<li>`min`: 1 minute;</li>
-<li>`5min`: 5 minute;</li>
-<li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.
-        :type Interval: str
-        :param _QueryCondition: The key of the parameter QueryCondition, which is used to specify a filter. Values:
-<li>`action`: The action;</li>
-        :type QueryCondition: list of QueryCondition
-        :param _Area: Data storage region. Values:
-<li>`overseas`: Global (outside the Chinese mainland);</li>
-<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.
-        :type Area: str
-        """
-        self._StartTime = None
-        self._EndTime = None
-        self._MetricNames = None
-        self._ZoneIds = None
-        self._Domains = None
-        self._Interval = None
-        self._QueryCondition = None
-        self._Area = None
-
-    @property
-    def StartTime(self):
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def MetricNames(self):
-        return self._MetricNames
-
-    @MetricNames.setter
-    def MetricNames(self, MetricNames):
-        self._MetricNames = MetricNames
-
-    @property
-    def ZoneIds(self):
-        return self._ZoneIds
-
-    @ZoneIds.setter
-    def ZoneIds(self, ZoneIds):
-        self._ZoneIds = ZoneIds
-
-    @property
-    def Domains(self):
-        return self._Domains
-
-    @Domains.setter
-    def Domains(self, Domains):
-        self._Domains = Domains
-
-    @property
-    def Interval(self):
-        return self._Interval
-
-    @Interval.setter
-    def Interval(self, Interval):
-        self._Interval = Interval
-
-    @property
-    def QueryCondition(self):
-        return self._QueryCondition
-
-    @QueryCondition.setter
-    def QueryCondition(self, QueryCondition):
-        self._QueryCondition = QueryCondition
-
-    @property
-    def Area(self):
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-
-    def _deserialize(self, params):
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._MetricNames = params.get("MetricNames")
-        self._ZoneIds = params.get("ZoneIds")
-        self._Domains = params.get("Domains")
-        self._Interval = params.get("Interval")
-        if params.get("QueryCondition") is not None:
-            self._QueryCondition = []
-            for item in params.get("QueryCondition"):
-                obj = QueryCondition()
-                obj._deserialize(item)
-                self._QueryCondition.append(obj)
-        self._Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeWebProtectionDataResponse(AbstractModel):
-    """DescribeWebProtectionData response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Data: The list of CC protection data recorded over time.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Data: list of SecEntry
-        :param _TotalCount: Total number of query results.
-        :type TotalCount: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Data = None
-        self._TotalCount = None
-        self._RequestId = None
-
-    @property
-    def Data(self):
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
-
-    @property
-    def TotalCount(self):
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self._Data = []
-            for item in params.get("Data"):
-                obj = SecEntry()
-                obj._deserialize(item)
-                self._Data.append(obj)
-        self._TotalCount = params.get("TotalCount")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeWebProtectionHitRuleDetailRequest(AbstractModel):
-    """DescribeWebProtectionHitRuleDetail request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _StartTime: The start time.
-        :type StartTime: str
-        :param _EndTime: The end time.
-        :type EndTime: str
-        :param _EntityType: The rule type. Values:
-<li>`rate`: Rate limiting rules;</li>
-<li>`acl`: Custom rules.</li>
-        :type EntityType: str
-        :param _ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
-        :type ZoneIds: list of str
-        :param _Domains: List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.
-        :type Domains: list of str
-        :param _QueryCondition: The key of the parameter QueryCondition, which is used to specify a filter. Values:
-<li>`action`: The action;</li>
-        :type QueryCondition: list of QueryCondition
-        :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 1000.
-        :type Limit: int
-        :param _Offset: The page offset. Default value: 0.
-        :type Offset: int
-        :param _Interval: The query time granularity. Values:
-<li>`min`: 1 minute;</li>
-<li>`5min`: 5 minute;</li>
-<li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.
-        :type Interval: str
-        :param _Area: Data storage region. Values:
-<li>`overseas`: Global (outside the Chinese mainland);</li>
-<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.
-        :type Area: str
-        """
-        self._StartTime = None
-        self._EndTime = None
-        self._EntityType = None
-        self._ZoneIds = None
-        self._Domains = None
-        self._QueryCondition = None
-        self._Limit = None
-        self._Offset = None
-        self._Interval = None
-        self._Area = None
-
-    @property
-    def StartTime(self):
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def EntityType(self):
-        return self._EntityType
-
-    @EntityType.setter
-    def EntityType(self, EntityType):
-        self._EntityType = EntityType
-
-    @property
-    def ZoneIds(self):
-        return self._ZoneIds
-
-    @ZoneIds.setter
-    def ZoneIds(self, ZoneIds):
-        self._ZoneIds = ZoneIds
-
-    @property
-    def Domains(self):
-        return self._Domains
-
-    @Domains.setter
-    def Domains(self, Domains):
-        self._Domains = Domains
-
-    @property
-    def QueryCondition(self):
-        return self._QueryCondition
-
-    @QueryCondition.setter
-    def QueryCondition(self, QueryCondition):
-        self._QueryCondition = QueryCondition
-
-    @property
-    def Limit(self):
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Interval(self):
-        return self._Interval
-
-    @Interval.setter
-    def Interval(self, Interval):
-        self._Interval = Interval
-
-    @property
-    def Area(self):
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-
-    def _deserialize(self, params):
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._EntityType = params.get("EntityType")
-        self._ZoneIds = params.get("ZoneIds")
-        self._Domains = params.get("Domains")
-        if params.get("QueryCondition") is not None:
-            self._QueryCondition = []
-            for item in params.get("QueryCondition"):
-                obj = QueryCondition()
-                obj._deserialize(item)
-                self._QueryCondition.append(obj)
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        self._Interval = params.get("Interval")
-        self._Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeWebProtectionHitRuleDetailResponse(AbstractModel):
-    """DescribeWebProtectionHitRuleDetail response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Data: The list of hit CC protection rules.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Data: list of SecHitRuleInfo
-        :param _TotalCount: Total number of query results.
-        :type TotalCount: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Data = None
-        self._TotalCount = None
-        self._RequestId = None
-
-    @property
-    def Data(self):
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
-
-    @property
-    def TotalCount(self):
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self._Data = []
-            for item in params.get("Data"):
-                obj = SecHitRuleInfo()
-                obj._deserialize(item)
-                self._Data.append(obj)
-        self._TotalCount = params.get("TotalCount")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeWebProtectionTopDataRequest(AbstractModel):
-    """DescribeWebProtectionTopData request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _StartTime: The start time.
-        :type StartTime: str
-        :param _EndTime: The end time.
-        :type EndTime: str
-        :param _MetricName: List of statistical metric. Values:
-<li>`ccRate_requestNum_url`: Top-ranked URLs by rate limiting requests.</li>
-<li>`ccRate_cipRequestNum_region`: Top-ranked client IPs by rate limiting requests.</li>
-<li>`ccAcl_requestNum_url`: Top-ranked URLs by custom rule requests.</li>
-<li>`ccAcl_requestNum_cip`: Top-ranked client IPs by custom rule execution requests.</li>
-<li>`ccAcl_cipRequestNum_region`: Top-ranked clients by custom rule execution requests.</li>
-        :type MetricName: str
-        :param _Interval: The query time granularity. Values:
-<li>`min`: 1 minute;</li>
-<li>`5min`: 5 minute;</li>
-<li>`hour`: 1 hour;</li>
-<li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the interval between the start time and end time as follows: 1-minute granularity applies for a 1-hour interval, 5-minute granularity for a 2-day interval, 1-hour granularity for a 7-day interval, and 1-day granularity for an interval of over 7 days.
-        :type Interval: str
-        :param _ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
-        :type ZoneIds: list of str
-        :param _Domains: List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.
-        :type Domains: list of str
-        :param _Limit: Queries the top n rows of data. Top 10 rows of data will be queried if this field is not specified.
-        :type Limit: int
-        :param _QueryCondition: The key of the parameter QueryCondition, which is used to specify a filter. Values:
-<li>`action`: The action;</li>
-        :type QueryCondition: list of QueryCondition
-        :param _Area: Data storage region. Values:
-<li>`overseas`: Global (outside the Chinese mainland);</li>
-<li>`mainland`: Chinese mainland.</li>If this field is not specified, the data storage region will be determined based on the user’s location.
-        :type Area: str
-        """
-        self._StartTime = None
-        self._EndTime = None
-        self._MetricName = None
-        self._Interval = None
-        self._ZoneIds = None
-        self._Domains = None
-        self._Limit = None
-        self._QueryCondition = None
-        self._Area = None
-
-    @property
-    def StartTime(self):
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def MetricName(self):
-        return self._MetricName
-
-    @MetricName.setter
-    def MetricName(self, MetricName):
-        self._MetricName = MetricName
-
-    @property
-    def Interval(self):
-        return self._Interval
-
-    @Interval.setter
-    def Interval(self, Interval):
-        self._Interval = Interval
-
-    @property
-    def ZoneIds(self):
-        return self._ZoneIds
-
-    @ZoneIds.setter
-    def ZoneIds(self, ZoneIds):
-        self._ZoneIds = ZoneIds
-
-    @property
-    def Domains(self):
-        return self._Domains
-
-    @Domains.setter
-    def Domains(self, Domains):
-        self._Domains = Domains
-
-    @property
-    def Limit(self):
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def QueryCondition(self):
-        return self._QueryCondition
-
-    @QueryCondition.setter
-    def QueryCondition(self, QueryCondition):
-        self._QueryCondition = QueryCondition
-
-    @property
-    def Area(self):
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-
-    def _deserialize(self, params):
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._MetricName = params.get("MetricName")
-        self._Interval = params.get("Interval")
-        self._ZoneIds = params.get("ZoneIds")
-        self._Domains = params.get("Domains")
-        self._Limit = params.get("Limit")
-        if params.get("QueryCondition") is not None:
-            self._QueryCondition = []
-            for item in params.get("QueryCondition"):
-                obj = QueryCondition()
-                obj._deserialize(item)
-                self._QueryCondition.append(obj)
-        self._Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeWebProtectionTopDataResponse(AbstractModel):
-    """DescribeWebProtectionTopData response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Data: The list of top-ranked CC protection data.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Data: list of TopEntry
-        :param _TotalCount: Total number of query results.
-        :type TotalCount: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Data = None
-        self._TotalCount = None
-        self._RequestId = None
-
-    @property
-    def Data(self):
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
-
-    @property
-    def TotalCount(self):
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self._Data = []
-            for item in params.get("Data"):
-                obj = TopEntry()
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._TotalCount = params.get("TotalCount")
@@ -12300,96 +9355,6 @@ class DiffIPWhitelist(AbstractModel):
         if params.get("NoChangeIPWhitelist") is not None:
             self._NoChangeIPWhitelist = IPWhitelist()
             self._NoChangeIPWhitelist._deserialize(params.get("NoChangeIPWhitelist"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DistrictStatistics(AbstractModel):
-    """The site’s load speed across regions
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Alpha2: The ISO 3166-2 Alpha-2 country code. For the list of country codes, see [ISO 3166-2](https://zh.m.wikipedia.org/zh-hans/ISO_3166-2).
-        :type Alpha2: str
-        :param _LoadTime: The overall load time, in milliseconds.
-        :type LoadTime: int
-        """
-        self._Alpha2 = None
-        self._LoadTime = None
-
-    @property
-    def Alpha2(self):
-        return self._Alpha2
-
-    @Alpha2.setter
-    def Alpha2(self, Alpha2):
-        self._Alpha2 = Alpha2
-
-    @property
-    def LoadTime(self):
-        return self._LoadTime
-
-    @LoadTime.setter
-    def LoadTime(self, LoadTime):
-        self._LoadTime = LoadTime
-
-
-    def _deserialize(self, params):
-        self._Alpha2 = params.get("Alpha2")
-        self._LoadTime = params.get("LoadTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DnsData(AbstractModel):
-    """DNS data points
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Time: The time.
-        :type Time: str
-        :param _Value: The value.
-        :type Value: int
-        """
-        self._Time = None
-        self._Value = None
-
-    @property
-    def Time(self):
-        return self._Time
-
-    @Time.setter
-    def Time(self, Time):
-        self._Time = Time
-
-    @property
-    def Value(self):
-        return self._Value
-
-    @Value.setter
-    def Value(self, Value):
-        self._Value = Value
-
-
-    def _deserialize(self, params):
-        self._Time = params.get("Time")
-        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13517,9 +10482,9 @@ class Grpc(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable gRPC support
-<li>`on`: Enable</li>
-<li>`off`: Disable</li>
+        :param _Switch: Whether to enable gRPC support. Valid values: 
+<li>`on`: Enable;</li>
+<li>`off`: Disable.</li>
         :type Switch: str
         """
         self._Switch = None
@@ -13601,8 +10566,8 @@ class Hsts(AbstractModel):
 <li>`on`: Enable</li>
 <li>`off`: Disable</li>
         :type Switch: str
-        :param _MaxAge: The MaxAge value in seconds. Maximum value: `86400` (one day)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MaxAge: MaxAge (in seconds). The maximum value is 1 day. 
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type MaxAge: int
         :param _IncludeSubDomains: Whether to contain subdomain names. Values:
 <li>`on`: Enable</li>
@@ -13685,12 +10650,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 <li>`off`: Disable</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OcspStapling: str
-        :param _TlsVersion: TLS version. Values:
-<li>`TLSv1`: TLSv1 version</li>
-<li>`TLSV1.1`: TLSv1.1 version</li>
-<li>`TLSV1.2`: TLSv1.2 version</li>
-<li>`TLSv1.3`: TLSv1.3 version</li>Only consecutive versions can be enabled at the same time.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TlsVersion: TLS version. Valid values: 
+<li>`TLSv1`: TLSv1 version;</li>
+<li>`TLSV1.1`: TLSv1.1 version;</li>
+<li>`TLSV1.2`: TLSv1.2 version;</li>
+<li>`TLSv1.3`: TLSv1.3 version.</li>Only consecutive versions can be enabled at the same time. 
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type TlsVersion: list of str
         :param _Hsts: HSTS Configuration
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -13790,6 +10755,63 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 self._CertInfo.append(obj)
         self._ApplyType = params.get("ApplyType")
         self._CipherSuite = params.get("CipherSuite")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IPGroup(AbstractModel):
+    """IP range group
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: Group ID. Enter `0`.
+        :type GroupId: int
+        :param _Name: Group name.
+        :type Name: str
+        :param _Content: IP group information, including IP and IP mask.
+        :type Content: list of str
+        """
+        self._GroupId = None
+        self._Name = None
+        self._Content = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._Name = params.get("Name")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14383,9 +11405,9 @@ class Ipv6(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable IPv6 access. Values:
-<li>`on`: Enable IPv6 access.</li>
-<li>`off`: Disable IPv6 access.</li>
+        :param _Switch: Whether to enable IPv6 access. Valid values: 
+<li>`on`: Enable;</li>
+<li>`off`: Disable.</li>
         :type Switch: str
         """
         self._Switch = None
@@ -14592,77 +11614,6 @@ class L7OfflineLog(AbstractModel):
         self._Url = params.get("Url")
         self._LogPacketName = params.get("LogPacketName")
         self._Area = params.get("Area")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class LogSetInfo(AbstractModel):
-    """Logset information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _LogSetRegion: Region of the logset.
-        :type LogSetRegion: str
-        :param _LogSetName: Name of the logset.
-        :type LogSetName: str
-        :param _LogSetId: ID of the logset.
-        :type LogSetId: str
-        :param _Deleted: Whether the logset is deleted. Values:
-<li>`no`: The logset is not deleted;</li>
-<li>`yes`: The logset is deleted.</li>
-        :type Deleted: str
-        """
-        self._LogSetRegion = None
-        self._LogSetName = None
-        self._LogSetId = None
-        self._Deleted = None
-
-    @property
-    def LogSetRegion(self):
-        return self._LogSetRegion
-
-    @LogSetRegion.setter
-    def LogSetRegion(self, LogSetRegion):
-        self._LogSetRegion = LogSetRegion
-
-    @property
-    def LogSetName(self):
-        return self._LogSetName
-
-    @LogSetName.setter
-    def LogSetName(self, LogSetName):
-        self._LogSetName = LogSetName
-
-    @property
-    def LogSetId(self):
-        return self._LogSetId
-
-    @LogSetId.setter
-    def LogSetId(self, LogSetId):
-        self._LogSetId = LogSetId
-
-    @property
-    def Deleted(self):
-        return self._Deleted
-
-    @Deleted.setter
-    def Deleted(self, Deleted):
-        self._Deleted = Deleted
-
-
-    def _deserialize(self, params):
-        self._LogSetRegion = params.get("LogSetRegion")
-        self._LogSetName = params.get("LogSetName")
-        self._LogSetId = params.get("LogSetId")
-        self._Deleted = params.get("Deleted")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15103,12 +12054,12 @@ class ModifyApplicationProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: The site ID.
+        :param _ZoneId: Site ID.
         :type ZoneId: str
-        :param _ProxyId: The proxy ID.
+        :param _ProxyId: Proxy ID.
         :type ProxyId: str
-        :param _ProxyName: The domain name or subdomain name when `ProxyType=hostname`.
-The instance name when `ProxyType=instance`.
+        :param _ProxyName: Domain name or subdomain name when `ProxyType=hostname`; 
+Instance name when `ProxyType=instance`.
         :type ProxyName: str
         :param _SessionPersistTime: The session persistence duration. Value range: 30-3600 (in seconds).
 The original configuration will apply if this field is not specified.
@@ -15117,8 +12068,10 @@ The original configuration will apply if this field is not specified.
 <li>`hostname`: The proxy is created by subdomain name.</li>
 <li>`instance`: The proxy is created by instance.</li>If not specified, this field uses the default value `instance`.
         :type ProxyType: str
-        :param _Ipv6: The IPv6 access configuration. The original configuration will apply if this field is not specified.
+        :param _Ipv6: IPv6 access configuration. The original configuration will apply if it is not specified.
         :type Ipv6: :class:`tencentcloud.teo.v20220901.models.Ipv6`
+        :param _AccelerateMainland: Cross-MLC-border acceleration. The original configuration will apply if it is not specified.
+        :type AccelerateMainland: :class:`tencentcloud.teo.v20220901.models.AccelerateMainland`
         """
         self._ZoneId = None
         self._ProxyId = None
@@ -15126,6 +12079,7 @@ The original configuration will apply if this field is not specified.
         self._SessionPersistTime = None
         self._ProxyType = None
         self._Ipv6 = None
+        self._AccelerateMainland = None
 
     @property
     def ZoneId(self):
@@ -15175,6 +12129,14 @@ The original configuration will apply if this field is not specified.
     def Ipv6(self, Ipv6):
         self._Ipv6 = Ipv6
 
+    @property
+    def AccelerateMainland(self):
+        return self._AccelerateMainland
+
+    @AccelerateMainland.setter
+    def AccelerateMainland(self, AccelerateMainland):
+        self._AccelerateMainland = AccelerateMainland
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -15185,6 +12147,9 @@ The original configuration will apply if this field is not specified.
         if params.get("Ipv6") is not None:
             self._Ipv6 = Ipv6()
             self._Ipv6._deserialize(params.get("Ipv6"))
+        if params.get("AccelerateMainland") is not None:
+            self._AccelerateMainland = AccelerateMainland()
+            self._AccelerateMainland._deserialize(params.get("AccelerateMainland"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15584,90 +12549,6 @@ class ModifyApplicationProxyStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class ModifyDefaultCertificateRequest(AbstractModel):
-    """ModifyDefaultCertificate request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ZoneId: ID of the site.
-        :type ZoneId: str
-        :param _CertId: ID of the certificate.
-        :type CertId: str
-        :param _Status: Status of the certificate. Values:
-<li>`deployed`: The certificate is deployed;</li>
-<li>`disabled`: The certificate is disabled.</li>When a deployment fails, you can try again.
-        :type Status: str
-        """
-        self._ZoneId = None
-        self._CertId = None
-        self._Status = None
-
-    @property
-    def ZoneId(self):
-        return self._ZoneId
-
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-    @property
-    def CertId(self):
-        return self._CertId
-
-    @CertId.setter
-    def CertId(self, CertId):
-        self._CertId = CertId
-
-    @property
-    def Status(self):
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-
-    def _deserialize(self, params):
-        self._ZoneId = params.get("ZoneId")
-        self._CertId = params.get("CertId")
-        self._Status = params.get("Status")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyDefaultCertificateResponse(AbstractModel):
-    """ModifyDefaultCertificate response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class ModifyHostsCertificateRequest(AbstractModel):
     """ModifyHostsCertificate request structure.
 
@@ -15911,76 +12792,6 @@ class ModifyOriginGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class ModifyRulePriorityRequest(AbstractModel):
-    """ModifyRulePriority request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ZoneId: ID of the site
-        :type ZoneId: str
-        :param _RuleIds: Order of rule IDs. If there are multiple rules, they will be executed in order from top to bottom.
-        :type RuleIds: list of str
-        """
-        self._ZoneId = None
-        self._RuleIds = None
-
-    @property
-    def ZoneId(self):
-        return self._ZoneId
-
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-    @property
-    def RuleIds(self):
-        return self._RuleIds
-
-    @RuleIds.setter
-    def RuleIds(self, RuleIds):
-        self._RuleIds = RuleIds
-
-
-    def _deserialize(self, params):
-        self._ZoneId = params.get("ZoneId")
-        self._RuleIds = params.get("RuleIds")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyRulePriorityResponse(AbstractModel):
-    """ModifyRulePriority response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class ModifyRuleRequest(AbstractModel):
     """ModifyRule request structure.
 
@@ -16118,6 +12929,93 @@ class ModifyRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifySecurityIPGroupRequest(AbstractModel):
+    """ModifySecurityIPGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Site ID.
+        :type ZoneId: str
+        :param _IPGroup: IP group configuration.
+        :type IPGroup: :class:`tencentcloud.teo.v20220901.models.IPGroup`
+        :param _Mode: Operation type. Valid values: 
+<li>`append`: Add information of `Content` to `IPGroup`;</li>
+<li>`remove`: Delete information of `Content` from `IPGroup`;</li>
+<li>`update`: Replace all information of `IPGroup` and modify the IPGroup name.</li>
+        :type Mode: str
+        """
+        self._ZoneId = None
+        self._IPGroup = None
+        self._Mode = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def IPGroup(self):
+        return self._IPGroup
+
+    @IPGroup.setter
+    def IPGroup(self, IPGroup):
+        self._IPGroup = IPGroup
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("IPGroup") is not None:
+            self._IPGroup = IPGroup()
+            self._IPGroup._deserialize(params.get("IPGroup"))
+        self._Mode = params.get("Mode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecurityIPGroupResponse(AbstractModel):
+    """ModifySecurityIPGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifySecurityPolicyRequest(AbstractModel):
     """ModifySecurityPolicy request structure.
 
@@ -16191,178 +13089,6 @@ class ModifySecurityPolicyRequest(AbstractModel):
 
 class ModifySecurityPolicyResponse(AbstractModel):
     """ModifySecurityPolicy response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class ModifySecurityWafGroupPolicyRequest(AbstractModel):
-    """ModifySecurityWafGroupPolicy request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ZoneId: The site ID. You must specify either "ZoneId+Entity" or "TemplateId".
-        :type ZoneId: str
-        :param _Entity: The subdomain name. You must specify either "ZoneId+Entity" or "TemplateId". 
-        :type Entity: str
-        :param _Switch: Switch. Values:
-<li>`on`: Enable</li>
-<li>`off`: Disable</li>If not specified, it defaults to the setting that was last configured.
-        :type Switch: str
-        :param _Level: The rule level. Values:
-<li>`loose`: Loose</li>
-<li>`normal`: Moderate</li>
-<li>`strict`: Strict</li>
-<li>`stricter`: Super strict</li>
-<li>`custom`: Custom</li>If not specified, it defaults to the setting that was last configured.
-        :type Level: str
-        :param _Mode: The rule action. Values:
-<li>`block`: Block</li>
-<li>`observe`: Observe</li>If not specified, it defaults to the setting that was last configured.
-        :type Mode: str
-        :param _WafRules: The settings of the managed rule. If not specified, it defaults to the settings that were last configured.
-        :type WafRules: :class:`tencentcloud.teo.v20220901.models.WafRule`
-        :param _AiRule: The settings of the AI rule engine. If not specified, it defaults to the settings that were last configured.
-        :type AiRule: :class:`tencentcloud.teo.v20220901.models.AiRule`
-        :param _WafGroups: The settings of the managed rule group. If not specified, it defaults to the settings that were last configured.
-        :type WafGroups: list of WafGroup
-        :param _TemplateId: The template ID. You must specify either this field or "ZoneId+Entity".
-        :type TemplateId: str
-        """
-        self._ZoneId = None
-        self._Entity = None
-        self._Switch = None
-        self._Level = None
-        self._Mode = None
-        self._WafRules = None
-        self._AiRule = None
-        self._WafGroups = None
-        self._TemplateId = None
-
-    @property
-    def ZoneId(self):
-        return self._ZoneId
-
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-    @property
-    def Entity(self):
-        return self._Entity
-
-    @Entity.setter
-    def Entity(self, Entity):
-        self._Entity = Entity
-
-    @property
-    def Switch(self):
-        return self._Switch
-
-    @Switch.setter
-    def Switch(self, Switch):
-        self._Switch = Switch
-
-    @property
-    def Level(self):
-        return self._Level
-
-    @Level.setter
-    def Level(self, Level):
-        self._Level = Level
-
-    @property
-    def Mode(self):
-        return self._Mode
-
-    @Mode.setter
-    def Mode(self, Mode):
-        self._Mode = Mode
-
-    @property
-    def WafRules(self):
-        return self._WafRules
-
-    @WafRules.setter
-    def WafRules(self, WafRules):
-        self._WafRules = WafRules
-
-    @property
-    def AiRule(self):
-        return self._AiRule
-
-    @AiRule.setter
-    def AiRule(self, AiRule):
-        self._AiRule = AiRule
-
-    @property
-    def WafGroups(self):
-        return self._WafGroups
-
-    @WafGroups.setter
-    def WafGroups(self, WafGroups):
-        self._WafGroups = WafGroups
-
-    @property
-    def TemplateId(self):
-        return self._TemplateId
-
-    @TemplateId.setter
-    def TemplateId(self, TemplateId):
-        self._TemplateId = TemplateId
-
-
-    def _deserialize(self, params):
-        self._ZoneId = params.get("ZoneId")
-        self._Entity = params.get("Entity")
-        self._Switch = params.get("Switch")
-        self._Level = params.get("Level")
-        self._Mode = params.get("Mode")
-        if params.get("WafRules") is not None:
-            self._WafRules = WafRule()
-            self._WafRules._deserialize(params.get("WafRules"))
-        if params.get("AiRule") is not None:
-            self._AiRule = AiRule()
-            self._AiRule._deserialize(params.get("AiRule"))
-        if params.get("WafGroups") is not None:
-            self._WafGroups = []
-            for item in params.get("WafGroups"):
-                obj = WafGroup()
-                obj._deserialize(item)
-                self._WafGroups.append(obj)
-        self._TemplateId = params.get("TemplateId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifySecurityWafGroupPolicyResponse(AbstractModel):
-    """ModifySecurityWafGroupPolicy response structure.
 
     """
 
@@ -16491,7 +13217,7 @@ class ModifyZoneSettingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: The site ID to be modified.
+        :param _ZoneId: Site ID to modify.
         :type ZoneId: str
         :param _CacheConfig: Cache expiration time configuration
 The original configuration will apply if this field is not specified.
@@ -16505,23 +13231,23 @@ The original configuration will apply if this field is not specified.
         :param _OfflineCache: The offline cache configuration.
 The original configuration will apply if this field is not specified.
         :type OfflineCache: :class:`tencentcloud.teo.v20220901.models.OfflineCache`
-        :param _Quic: The QUIC access configuration.
-The original configuration will apply if this field is not specified.
+        :param _Quic: QUIC access configuration. 
+The original configuration will apply if it is not specified.
         :type Quic: :class:`tencentcloud.teo.v20220901.models.Quic`
-        :param _PostMaxSize: The POST transport configuration.
-The original configuration will apply if this field is not specified.
+        :param _PostMaxSize: POST transport configuration. 
+The original configuration will apply if it is not specified.
         :type PostMaxSize: :class:`tencentcloud.teo.v20220901.models.PostMaxSize`
         :param _Compression: The smart compression configuration.
 The original configuration will apply if this field is not specified.
         :type Compression: :class:`tencentcloud.teo.v20220901.models.Compression`
-        :param _UpstreamHttp2: The HTTP2 origin-pull configuration.
-The original configuration will apply if this field is not specified.
+        :param _UpstreamHttp2: HTTP2 origin-pull configuration. 
+The original configuration will apply if it is not specified.
         :type UpstreamHttp2: :class:`tencentcloud.teo.v20220901.models.UpstreamHttp2`
-        :param _ForceRedirect: The force HTTPS redirect configuration.
-The original configuration will apply if this field is not specified.
+        :param _ForceRedirect: Force HTTPS redirect configuration. 
+The original configuration will apply if it is not specified.
         :type ForceRedirect: :class:`tencentcloud.teo.v20220901.models.ForceRedirect`
-        :param _Https: The HTTPS acceleration configuration.
-The original configuration will apply if this field is not specified.
+        :param _Https: HTTPS acceleration configuration. 
+The original configuration will apply if it is not specified.
         :type Https: :class:`tencentcloud.teo.v20220901.models.Https`
         :param _Origin: The origin server configuration.
 The original configuration will apply if this field is not specified.
@@ -16529,24 +13255,29 @@ The original configuration will apply if this field is not specified.
         :param _SmartRouting: The smart acceleration configuration.
 The original configuration will apply if this field is not specified.
         :type SmartRouting: :class:`tencentcloud.teo.v20220901.models.SmartRouting`
-        :param _WebSocket: The WebSocket configuration.
-The original configuration will apply if this field is not specified.
+        :param _WebSocket: WebSocket configuration. 
+The original configuration will apply if it is not specified.
         :type WebSocket: :class:`tencentcloud.teo.v20220901.models.WebSocket`
-        :param _ClientIpHeader: The origin-pull client IP header configuration.
-The original configuration will apply if this field is not specified.
+        :param _ClientIpHeader: Origin-pull client IP header configuration. 
+The original configuration will apply if it is not specified.
         :type ClientIpHeader: :class:`tencentcloud.teo.v20220901.models.ClientIpHeader`
         :param _CachePrefresh: The cache prefresh configuration.
 The original configuration will apply if this field is not specified.
         :type CachePrefresh: :class:`tencentcloud.teo.v20220901.models.CachePrefresh`
-        :param _Ipv6: The IPv6 access configuration.
-The original configuration will apply if this field is not specified.
+        :param _Ipv6: Ipv6 access configuration. 
+The original configuration will apply if it is not specified.
         :type Ipv6: :class:`tencentcloud.teo.v20220901.models.Ipv6`
-        :param _ClientIpCountry: Whether to carry the location information of the client IP during origin-pull.
-The original configuration will apply if this field is not specified.
+        :param _ClientIpCountry: Whether to carry the location information of the client IP during origin-pull. 
+The original configuration will apply if it is not specified.
         :type ClientIpCountry: :class:`tencentcloud.teo.v20220901.models.ClientIpCountry`
-        :param _Grpc: Configuration of gRPC support
-The original configuration will apply if this field is not specified.
+        :param _Grpc: Configuration of gRPC support. 
+The original configuration will apply if it is not specified.
         :type Grpc: :class:`tencentcloud.teo.v20220901.models.Grpc`
+        :param _ImageOptimize: Image optimization. 
+It is disabled if this parameter is not specified.
+        :type ImageOptimize: :class:`tencentcloud.teo.v20220901.models.ImageOptimize`
+        :param _StandardDebug: 
+        :type StandardDebug: :class:`tencentcloud.teo.v20220901.models.StandardDebug`
         """
         self._ZoneId = None
         self._CacheConfig = None
@@ -16567,6 +13298,8 @@ The original configuration will apply if this field is not specified.
         self._Ipv6 = None
         self._ClientIpCountry = None
         self._Grpc = None
+        self._ImageOptimize = None
+        self._StandardDebug = None
 
     @property
     def ZoneId(self):
@@ -16720,6 +13453,22 @@ The original configuration will apply if this field is not specified.
     def Grpc(self, Grpc):
         self._Grpc = Grpc
 
+    @property
+    def ImageOptimize(self):
+        return self._ImageOptimize
+
+    @ImageOptimize.setter
+    def ImageOptimize(self, ImageOptimize):
+        self._ImageOptimize = ImageOptimize
+
+    @property
+    def StandardDebug(self):
+        return self._StandardDebug
+
+    @StandardDebug.setter
+    def StandardDebug(self, StandardDebug):
+        self._StandardDebug = StandardDebug
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -16777,6 +13526,12 @@ The original configuration will apply if this field is not specified.
         if params.get("Grpc") is not None:
             self._Grpc = Grpc()
             self._Grpc._deserialize(params.get("Grpc"))
+        if params.get("ImageOptimize") is not None:
+            self._ImageOptimize = ImageOptimize()
+            self._ImageOptimize._deserialize(params.get("ImageOptimize"))
+        if params.get("StandardDebug") is not None:
+            self._StandardDebug = StandardDebug()
+            self._StandardDebug._deserialize(params.get("StandardDebug"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17004,78 +13759,6 @@ class OfflineCache(AbstractModel):
         
 
 
-class OptimizeAction(AbstractModel):
-    """The optimization suggestions
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Name: The optimization metric. Values:
-<li>`Http2`</li>
-<li>`Http3`</li>
-<li>`Brotli`</li>
-        :type Name: str
-        :param _Connectivity: The network environment.
-        :type Connectivity: str
-        :param _Value: The estimated load time, in milliseconds.
-        :type Value: int
-        :param _Ratio: The estimated improvement ratio, in %.
-        :type Ratio: int
-        """
-        self._Name = None
-        self._Connectivity = None
-        self._Value = None
-        self._Ratio = None
-
-    @property
-    def Name(self):
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Connectivity(self):
-        return self._Connectivity
-
-    @Connectivity.setter
-    def Connectivity(self, Connectivity):
-        self._Connectivity = Connectivity
-
-    @property
-    def Value(self):
-        return self._Value
-
-    @Value.setter
-    def Value(self, Value):
-        self._Value = Value
-
-    @property
-    def Ratio(self):
-        return self._Ratio
-
-    @Ratio.setter
-    def Ratio(self, Ratio):
-        self._Ratio = Ratio
-
-
-    def _deserialize(self, params):
-        self._Name = params.get("Name")
-        self._Connectivity = params.get("Connectivity")
-        self._Value = params.get("Value")
-        self._Ratio = params.get("Ratio")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class Origin(AbstractModel):
     """The origin server configuration.
 
@@ -17095,10 +13778,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 <li>`https`: Force HTTPS for origin-pull.</li>
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type OriginPullProtocol: str
-        :param _CosPrivateAccess: Whether to allow private access to buckets when `OriginType=cos`. Values:
-<li>`on`: Allow private access.</li>
-<li>`off`: Allow public access.</li>
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _CosPrivateAccess: Whether to allow private access to buckets when `OriginType=cos`. Valid values: 
+<li>`on`: Private access;</li>
+<li>`off`: Public access.</li>
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type CosPrivateAccess: str
         """
         self._Origins = None
@@ -17965,9 +14648,9 @@ class PostMaxSize(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable POST upload limit (default limit: 32 MB). Values:
-<li>`on`: Enable</li>
-<li>`off`: Disable</li>
+        :param _Switch: Whether to enable POST upload limit (default limit: 32 MB). Valid values: 
+<li>`on`: Enable;</li>
+<li>`off`: Disable.</li>
         :type Switch: str
         :param _MaxSize: Maximum size. Value range: 1-500 MB.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -18188,9 +14871,9 @@ class Quic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable QUIC. Values:
-<li>`on`: Enable</li>
-<li>`off`: Disable</li>
+        :param _Switch: Whether to enable QUIC. Valid values: 
+<li>`on`: Enable;</li>
+<li>`off`: Disable.</li>
         :type Switch: str
         """
         self._Switch = None
@@ -18817,134 +15500,6 @@ Note: A null value indicates responses from the origin server to EdgeOne are rec
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class ReclaimAliasDomainRequest(AbstractModel):
-    """ReclaimAliasDomain request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ZoneId: The site ID.
-        :type ZoneId: str
-        :param _ZoneName: The site name.
-        :type ZoneName: str
-        """
-        self._ZoneId = None
-        self._ZoneName = None
-
-    @property
-    def ZoneId(self):
-        return self._ZoneId
-
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-    @property
-    def ZoneName(self):
-        return self._ZoneName
-
-    @ZoneName.setter
-    def ZoneName(self, ZoneName):
-        self._ZoneName = ZoneName
-
-
-    def _deserialize(self, params):
-        self._ZoneId = params.get("ZoneId")
-        self._ZoneName = params.get("ZoneName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ReclaimAliasDomainResponse(AbstractModel):
-    """ReclaimAliasDomain response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class ReclaimZoneRequest(AbstractModel):
-    """ReclaimZone request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ZoneName: The site name.
-        :type ZoneName: str
-        """
-        self._ZoneName = None
-
-    @property
-    def ZoneName(self):
-        return self._ZoneName
-
-    @ZoneName.setter
-    def ZoneName(self, ZoneName):
-        self._ZoneName = ZoneName
-
-
-    def _deserialize(self, params):
-        self._ZoneName = params.get("ZoneName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ReclaimZoneResponse(AbstractModel):
-    """ReclaimZone response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
 
 
 class Resource(AbstractModel):
@@ -20053,63 +16608,6 @@ class RulesSettingAction(AbstractModel):
         
 
 
-class SecClientIp(AbstractModel):
-    """Client IP information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ClientIp: IP of the client.
-        :type ClientIp: str
-        :param _RequestMaxQps: Maximum QPS.
-        :type RequestMaxQps: int
-        :param _RequestNum: Number of requests.
-        :type RequestNum: int
-        """
-        self._ClientIp = None
-        self._RequestMaxQps = None
-        self._RequestNum = None
-
-    @property
-    def ClientIp(self):
-        return self._ClientIp
-
-    @ClientIp.setter
-    def ClientIp(self, ClientIp):
-        self._ClientIp = ClientIp
-
-    @property
-    def RequestMaxQps(self):
-        return self._RequestMaxQps
-
-    @RequestMaxQps.setter
-    def RequestMaxQps(self, RequestMaxQps):
-        self._RequestMaxQps = RequestMaxQps
-
-    @property
-    def RequestNum(self):
-        return self._RequestNum
-
-    @RequestNum.setter
-    def RequestNum(self, RequestNum):
-        self._RequestNum = RequestNum
-
-
-    def _deserialize(self, params):
-        self._ClientIp = params.get("ClientIp")
-        self._RequestMaxQps = params.get("RequestMaxQps")
-        self._RequestNum = params.get("RequestNum")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class SecEntry(AbstractModel):
     """Returned value of security data entry
 
@@ -20236,357 +16734,6 @@ class SecEntryValue(AbstractModel):
         self._Max = params.get("Max")
         self._Avg = params.get("Avg")
         self._Sum = params.get("Sum")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SecHitRuleInfo(AbstractModel):
-    """The hit rule information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ZoneId: The site ID.
-        :type ZoneId: str
-        :param _RuleId: The rule ID.
-        :type RuleId: int
-        :param _RuleTypeName: The rule type.
-        :type RuleTypeName: str
-        :param _HitTime: The hit time recorded in seconds using UNIX timestamp.
-        :type HitTime: int
-        :param _RequestNum: The number of requests.
-        :type RequestNum: int
-        :param _Description: The rule description.
-        :type Description: str
-        :param _Domain: The subdomain name.
-        :type Domain: str
-        :param _Action: Action. Values:
-<li>`trans`: Allow;</li>
-<li>`alg`: Algorithm challenge;</li>
-<li>`drop`: Discard;</li>
-<li>`ban`: Block the source IP;</li>
-<li>`redirect`: Redirect;</li>
-<li>`page`: Return to the specified page;</li>
-<li>`monitor`: Observe.</li>
-        :type Action: str
-        :param _BotLabel: The bot tag. Values:
-<li>`evil_bot`: Malicious bot</li>
-<li>`suspect_bot`: Suspected bot</li>
-<li>`good_bot`: Good bot</li>
-<li>`normal`: Normal request</li>
-<li>`none`: Uncategorized</li>
-        :type BotLabel: str
-        :param _RuleEnabled: Whether to enable the rule
-        :type RuleEnabled: bool
-        :param _AlarmEnabled: Whether to enable alerting for this rule
-        :type AlarmEnabled: bool
-        :param _RuleDeleted: Whether the rule is deleted. Values: 
-<li>`true`: The rule has been deleted (does not exist).</li>
-<li>`false`: The rule is not deleted (exists).</li>
-        :type RuleDeleted: bool
-        """
-        self._ZoneId = None
-        self._RuleId = None
-        self._RuleTypeName = None
-        self._HitTime = None
-        self._RequestNum = None
-        self._Description = None
-        self._Domain = None
-        self._Action = None
-        self._BotLabel = None
-        self._RuleEnabled = None
-        self._AlarmEnabled = None
-        self._RuleDeleted = None
-
-    @property
-    def ZoneId(self):
-        return self._ZoneId
-
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-    @property
-    def RuleId(self):
-        return self._RuleId
-
-    @RuleId.setter
-    def RuleId(self, RuleId):
-        self._RuleId = RuleId
-
-    @property
-    def RuleTypeName(self):
-        return self._RuleTypeName
-
-    @RuleTypeName.setter
-    def RuleTypeName(self, RuleTypeName):
-        self._RuleTypeName = RuleTypeName
-
-    @property
-    def HitTime(self):
-        return self._HitTime
-
-    @HitTime.setter
-    def HitTime(self, HitTime):
-        self._HitTime = HitTime
-
-    @property
-    def RequestNum(self):
-        return self._RequestNum
-
-    @RequestNum.setter
-    def RequestNum(self, RequestNum):
-        self._RequestNum = RequestNum
-
-    @property
-    def Description(self):
-        return self._Description
-
-    @Description.setter
-    def Description(self, Description):
-        self._Description = Description
-
-    @property
-    def Domain(self):
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def Action(self):
-        return self._Action
-
-    @Action.setter
-    def Action(self, Action):
-        self._Action = Action
-
-    @property
-    def BotLabel(self):
-        return self._BotLabel
-
-    @BotLabel.setter
-    def BotLabel(self, BotLabel):
-        self._BotLabel = BotLabel
-
-    @property
-    def RuleEnabled(self):
-        return self._RuleEnabled
-
-    @RuleEnabled.setter
-    def RuleEnabled(self, RuleEnabled):
-        self._RuleEnabled = RuleEnabled
-
-    @property
-    def AlarmEnabled(self):
-        return self._AlarmEnabled
-
-    @AlarmEnabled.setter
-    def AlarmEnabled(self, AlarmEnabled):
-        self._AlarmEnabled = AlarmEnabled
-
-    @property
-    def RuleDeleted(self):
-        return self._RuleDeleted
-
-    @RuleDeleted.setter
-    def RuleDeleted(self, RuleDeleted):
-        self._RuleDeleted = RuleDeleted
-
-
-    def _deserialize(self, params):
-        self._ZoneId = params.get("ZoneId")
-        self._RuleId = params.get("RuleId")
-        self._RuleTypeName = params.get("RuleTypeName")
-        self._HitTime = params.get("HitTime")
-        self._RequestNum = params.get("RequestNum")
-        self._Description = params.get("Description")
-        self._Domain = params.get("Domain")
-        self._Action = params.get("Action")
-        self._BotLabel = params.get("BotLabel")
-        self._RuleEnabled = params.get("RuleEnabled")
-        self._AlarmEnabled = params.get("AlarmEnabled")
-        self._RuleDeleted = params.get("RuleDeleted")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SecRuleRelatedInfo(AbstractModel):
-    """CC/WAF/Bot security rule information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RuleId: The rule ID.
-        :type RuleId: int
-        :param _Action: Action. Values:
-<li>`trans`: Allow;</li>
-<li>`alg`: Algorithm challenge;</li>
-<li>`drop`: Discard;</li>
-<li>`ban`: Block the source IP;</li>
-<li>`redirect`: Redirect;</li>
-<li>`page`: Return to the specified page;</li>
-<li>`monitor`: Observe.</li>
-        :type Action: str
-        :param _RiskLevel: Risk level (only found in WAF logs). Values:
-<li>`high risk`: High risk;</li>
-<li>`middle risk`: Middle risk;</li>
-<li>`low risk`: Low risk;</li>
-<li>`unkonw`: Unknown.</li>
-        :type RiskLevel: str
-        :param _RuleLevel: Rule level. Values:
-<li>`normal`: Moderate.</li>
-        :type RuleLevel: str
-        :param _Description: Rule description.
-        :type Description: str
-        :param _RuleTypeName: The rule type.
-        :type RuleTypeName: str
-        :param _AttackContent: The attack content.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type AttackContent: str
-        :param _RuleType: The rule type. Values:
-<li>`waf`: Tencent Cloud-managed rule</li>
-<li>`acl`: Custom rule</li>
-<li>`rate`: Rate limiting rule</li>
-<li>`bot`: Bot rule</li>
-        :type RuleType: str
-        :param _RuleEnabled: Whether to enable the rule
-        :type RuleEnabled: bool
-        :param _RuleDeleted: Whether the rule is deleted. Values: 
-<li>`true`: The rule has been deleted (does not exist).</li>
-<li>`false`: The rule is not deleted (exists).</li>
-        :type RuleDeleted: bool
-        :param _AlarmEnabled: Whether to enable alerting for this rule
-        :type AlarmEnabled: bool
-        """
-        self._RuleId = None
-        self._Action = None
-        self._RiskLevel = None
-        self._RuleLevel = None
-        self._Description = None
-        self._RuleTypeName = None
-        self._AttackContent = None
-        self._RuleType = None
-        self._RuleEnabled = None
-        self._RuleDeleted = None
-        self._AlarmEnabled = None
-
-    @property
-    def RuleId(self):
-        return self._RuleId
-
-    @RuleId.setter
-    def RuleId(self, RuleId):
-        self._RuleId = RuleId
-
-    @property
-    def Action(self):
-        return self._Action
-
-    @Action.setter
-    def Action(self, Action):
-        self._Action = Action
-
-    @property
-    def RiskLevel(self):
-        return self._RiskLevel
-
-    @RiskLevel.setter
-    def RiskLevel(self, RiskLevel):
-        self._RiskLevel = RiskLevel
-
-    @property
-    def RuleLevel(self):
-        return self._RuleLevel
-
-    @RuleLevel.setter
-    def RuleLevel(self, RuleLevel):
-        self._RuleLevel = RuleLevel
-
-    @property
-    def Description(self):
-        return self._Description
-
-    @Description.setter
-    def Description(self, Description):
-        self._Description = Description
-
-    @property
-    def RuleTypeName(self):
-        return self._RuleTypeName
-
-    @RuleTypeName.setter
-    def RuleTypeName(self, RuleTypeName):
-        self._RuleTypeName = RuleTypeName
-
-    @property
-    def AttackContent(self):
-        return self._AttackContent
-
-    @AttackContent.setter
-    def AttackContent(self, AttackContent):
-        self._AttackContent = AttackContent
-
-    @property
-    def RuleType(self):
-        return self._RuleType
-
-    @RuleType.setter
-    def RuleType(self, RuleType):
-        self._RuleType = RuleType
-
-    @property
-    def RuleEnabled(self):
-        return self._RuleEnabled
-
-    @RuleEnabled.setter
-    def RuleEnabled(self, RuleEnabled):
-        self._RuleEnabled = RuleEnabled
-
-    @property
-    def RuleDeleted(self):
-        return self._RuleDeleted
-
-    @RuleDeleted.setter
-    def RuleDeleted(self, RuleDeleted):
-        self._RuleDeleted = RuleDeleted
-
-    @property
-    def AlarmEnabled(self):
-        return self._AlarmEnabled
-
-    @AlarmEnabled.setter
-    def AlarmEnabled(self, AlarmEnabled):
-        self._AlarmEnabled = AlarmEnabled
-
-
-    def _deserialize(self, params):
-        self._RuleId = params.get("RuleId")
-        self._Action = params.get("Action")
-        self._RiskLevel = params.get("RiskLevel")
-        self._RuleLevel = params.get("RuleLevel")
-        self._Description = params.get("Description")
-        self._RuleTypeName = params.get("RuleTypeName")
-        self._AttackContent = params.get("AttackContent")
-        self._RuleType = params.get("RuleType")
-        self._RuleEnabled = params.get("RuleEnabled")
-        self._RuleDeleted = params.get("RuleDeleted")
-        self._AlarmEnabled = params.get("AlarmEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20918,101 +17065,6 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
-class SingleDataRecord(AbstractModel):
-    """The dimensional data record
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TypeKey: The query dimension value.
-        :type TypeKey: str
-        :param _TypeValue: Value of the metric under the query dimension.
-        :type TypeValue: list of SingleTypeValue
-        """
-        self._TypeKey = None
-        self._TypeValue = None
-
-    @property
-    def TypeKey(self):
-        return self._TypeKey
-
-    @TypeKey.setter
-    def TypeKey(self, TypeKey):
-        self._TypeKey = TypeKey
-
-    @property
-    def TypeValue(self):
-        return self._TypeValue
-
-    @TypeValue.setter
-    def TypeValue(self, TypeValue):
-        self._TypeValue = TypeValue
-
-
-    def _deserialize(self, params):
-        self._TypeKey = params.get("TypeKey")
-        if params.get("TypeValue") is not None:
-            self._TypeValue = []
-            for item in params.get("TypeValue"):
-                obj = SingleTypeValue()
-                obj._deserialize(item)
-                self._TypeValue.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SingleTypeValue(AbstractModel):
-    """The dimensional data
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _MetricName: The metric name.
-        :type MetricName: str
-        :param _DetailData: The metric value.
-        :type DetailData: int
-        """
-        self._MetricName = None
-        self._DetailData = None
-
-    @property
-    def MetricName(self):
-        return self._MetricName
-
-    @MetricName.setter
-    def MetricName(self, MetricName):
-        self._MetricName = MetricName
-
-    @property
-    def DetailData(self):
-        return self._DetailData
-
-    @DetailData.setter
-    def DetailData(self, DetailData):
-        self._DetailData = DetailData
-
-
-    def _deserialize(self, params):
-        self._MetricName = params.get("MetricName")
-        self._DetailData = params.get("DetailData")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class SkipCondition(AbstractModel):
     """Exception rule conditions, used to filter requests by specific fields
 
@@ -21314,658 +17366,53 @@ class SmartRouting(AbstractModel):
         
 
 
-class SpeedTestingConfig(AbstractModel):
-    """The site test configuration
+class StandardDebug(AbstractModel):
+    """
 
     """
 
     def __init__(self):
         r"""
-        :param _TaskType: The task type. Values:
-<li>`1`: Page performance</li>
-<li>`2`: File uploads</li>
-<li>`3`: File downloads</li>
-<li>`4`: Port performance</li>
-<li>`5`: Network quality</li>
-<li>`6`: Audio/Video experience</li>
-        :type TaskType: int
-        :param _Url: The URL.
-        :type Url: str
-        :param _UA: The user agent.
-        :type UA: str
-        :param _Connectivity: The network type.
-        :type Connectivity: str
+        :param _Switch: 
+        :type Switch: str
+        :param _AllowClientIPList: 
+        :type AllowClientIPList: list of str
+        :param _ExpireTime: 
+        :type ExpireTime: str
         """
-        self._TaskType = None
-        self._Url = None
-        self._UA = None
-        self._Connectivity = None
+        self._Switch = None
+        self._AllowClientIPList = None
+        self._ExpireTime = None
 
     @property
-    def TaskType(self):
-        return self._TaskType
+    def Switch(self):
+        return self._Switch
 
-    @TaskType.setter
-    def TaskType(self, TaskType):
-        self._TaskType = TaskType
-
-    @property
-    def Url(self):
-        return self._Url
-
-    @Url.setter
-    def Url(self, Url):
-        self._Url = Url
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
 
     @property
-    def UA(self):
-        return self._UA
+    def AllowClientIPList(self):
+        return self._AllowClientIPList
 
-    @UA.setter
-    def UA(self, UA):
-        self._UA = UA
+    @AllowClientIPList.setter
+    def AllowClientIPList(self, AllowClientIPList):
+        self._AllowClientIPList = AllowClientIPList
 
     @property
-    def Connectivity(self):
-        return self._Connectivity
+    def ExpireTime(self):
+        return self._ExpireTime
 
-    @Connectivity.setter
-    def Connectivity(self, Connectivity):
-        self._Connectivity = Connectivity
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
 
 
     def _deserialize(self, params):
-        self._TaskType = params.get("TaskType")
-        self._Url = params.get("Url")
-        self._UA = params.get("UA")
-        self._Connectivity = params.get("Connectivity")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SpeedTestingDetailData(AbstractModel):
-    """The site’s load speed across regions.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ZoneId: The site ID.
-        :type ZoneId: str
-        :param _ZoneName: The site name.
-        :type ZoneName: str
-        :param _DistrictStatistics: The site performance across regions.
-        :type DistrictStatistics: list of DistrictStatistics
-        """
-        self._ZoneId = None
-        self._ZoneName = None
-        self._DistrictStatistics = None
-
-    @property
-    def ZoneId(self):
-        return self._ZoneId
-
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-    @property
-    def ZoneName(self):
-        return self._ZoneName
-
-    @ZoneName.setter
-    def ZoneName(self, ZoneName):
-        self._ZoneName = ZoneName
-
-    @property
-    def DistrictStatistics(self):
-        return self._DistrictStatistics
-
-    @DistrictStatistics.setter
-    def DistrictStatistics(self, DistrictStatistics):
-        self._DistrictStatistics = DistrictStatistics
-
-
-    def _deserialize(self, params):
-        self._ZoneId = params.get("ZoneId")
-        self._ZoneName = params.get("ZoneName")
-        if params.get("DistrictStatistics") is not None:
-            self._DistrictStatistics = []
-            for item in params.get("DistrictStatistics"):
-                obj = DistrictStatistics()
-                obj._deserialize(item)
-                self._DistrictStatistics.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SpeedTestingInfo(AbstractModel):
-    """The site test information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _StatusCode: The task status. Values:
-<li>`200`: The task completed.</li>
-<li>`100`: The task is running.</li>
-<li>`503`: The task failed.</li>
-        :type StatusCode: int
-        :param _TestId: ID of the site test task.
-        :type TestId: str
-        :param _SpeedTestingConfig: The settings of the site test task.
-        :type SpeedTestingConfig: :class:`tencentcloud.teo.v20220901.models.SpeedTestingConfig`
-        :param _SpeedTestingStatistics: The site test result.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type SpeedTestingStatistics: :class:`tencentcloud.teo.v20220901.models.SpeedTestingStatistics`
-        """
-        self._StatusCode = None
-        self._TestId = None
-        self._SpeedTestingConfig = None
-        self._SpeedTestingStatistics = None
-
-    @property
-    def StatusCode(self):
-        return self._StatusCode
-
-    @StatusCode.setter
-    def StatusCode(self, StatusCode):
-        self._StatusCode = StatusCode
-
-    @property
-    def TestId(self):
-        return self._TestId
-
-    @TestId.setter
-    def TestId(self, TestId):
-        self._TestId = TestId
-
-    @property
-    def SpeedTestingConfig(self):
-        return self._SpeedTestingConfig
-
-    @SpeedTestingConfig.setter
-    def SpeedTestingConfig(self, SpeedTestingConfig):
-        self._SpeedTestingConfig = SpeedTestingConfig
-
-    @property
-    def SpeedTestingStatistics(self):
-        return self._SpeedTestingStatistics
-
-    @SpeedTestingStatistics.setter
-    def SpeedTestingStatistics(self, SpeedTestingStatistics):
-        self._SpeedTestingStatistics = SpeedTestingStatistics
-
-
-    def _deserialize(self, params):
-        self._StatusCode = params.get("StatusCode")
-        self._TestId = params.get("TestId")
-        if params.get("SpeedTestingConfig") is not None:
-            self._SpeedTestingConfig = SpeedTestingConfig()
-            self._SpeedTestingConfig._deserialize(params.get("SpeedTestingConfig"))
-        if params.get("SpeedTestingStatistics") is not None:
-            self._SpeedTestingStatistics = SpeedTestingStatistics()
-            self._SpeedTestingStatistics._deserialize(params.get("SpeedTestingStatistics"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SpeedTestingMetricData(AbstractModel):
-    """The site test metrics.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ZoneId: The site ID.
-        :type ZoneId: str
-        :param _ZoneName: The site name.
-        :type ZoneName: str
-        :param _OriginSpeedTestingInfo: The origin information.
-        :type OriginSpeedTestingInfo: list of SpeedTestingInfo
-        :param _ProxySpeedTestingInfo: The EdgeOne information.
-        :type ProxySpeedTestingInfo: list of SpeedTestingInfo
-        :param _SpeedTestingStatus: The site status.
-        :type SpeedTestingStatus: :class:`tencentcloud.teo.v20220901.models.SpeedTestingStatus`
-        :param _OptimizeAction: The optimization suggestions.
-        :type OptimizeAction: list of OptimizeAction
-        :param _ProxyLoadTime: The EdgeOne load time, in milliseconds.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type ProxyLoadTime: int
-        :param _OriginLoadTime: The origin load time, in milliseconds.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type OriginLoadTime: int
-        """
-        self._ZoneId = None
-        self._ZoneName = None
-        self._OriginSpeedTestingInfo = None
-        self._ProxySpeedTestingInfo = None
-        self._SpeedTestingStatus = None
-        self._OptimizeAction = None
-        self._ProxyLoadTime = None
-        self._OriginLoadTime = None
-
-    @property
-    def ZoneId(self):
-        return self._ZoneId
-
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-    @property
-    def ZoneName(self):
-        return self._ZoneName
-
-    @ZoneName.setter
-    def ZoneName(self, ZoneName):
-        self._ZoneName = ZoneName
-
-    @property
-    def OriginSpeedTestingInfo(self):
-        return self._OriginSpeedTestingInfo
-
-    @OriginSpeedTestingInfo.setter
-    def OriginSpeedTestingInfo(self, OriginSpeedTestingInfo):
-        self._OriginSpeedTestingInfo = OriginSpeedTestingInfo
-
-    @property
-    def ProxySpeedTestingInfo(self):
-        return self._ProxySpeedTestingInfo
-
-    @ProxySpeedTestingInfo.setter
-    def ProxySpeedTestingInfo(self, ProxySpeedTestingInfo):
-        self._ProxySpeedTestingInfo = ProxySpeedTestingInfo
-
-    @property
-    def SpeedTestingStatus(self):
-        return self._SpeedTestingStatus
-
-    @SpeedTestingStatus.setter
-    def SpeedTestingStatus(self, SpeedTestingStatus):
-        self._SpeedTestingStatus = SpeedTestingStatus
-
-    @property
-    def OptimizeAction(self):
-        return self._OptimizeAction
-
-    @OptimizeAction.setter
-    def OptimizeAction(self, OptimizeAction):
-        self._OptimizeAction = OptimizeAction
-
-    @property
-    def ProxyLoadTime(self):
-        return self._ProxyLoadTime
-
-    @ProxyLoadTime.setter
-    def ProxyLoadTime(self, ProxyLoadTime):
-        self._ProxyLoadTime = ProxyLoadTime
-
-    @property
-    def OriginLoadTime(self):
-        return self._OriginLoadTime
-
-    @OriginLoadTime.setter
-    def OriginLoadTime(self, OriginLoadTime):
-        self._OriginLoadTime = OriginLoadTime
-
-
-    def _deserialize(self, params):
-        self._ZoneId = params.get("ZoneId")
-        self._ZoneName = params.get("ZoneName")
-        if params.get("OriginSpeedTestingInfo") is not None:
-            self._OriginSpeedTestingInfo = []
-            for item in params.get("OriginSpeedTestingInfo"):
-                obj = SpeedTestingInfo()
-                obj._deserialize(item)
-                self._OriginSpeedTestingInfo.append(obj)
-        if params.get("ProxySpeedTestingInfo") is not None:
-            self._ProxySpeedTestingInfo = []
-            for item in params.get("ProxySpeedTestingInfo"):
-                obj = SpeedTestingInfo()
-                obj._deserialize(item)
-                self._ProxySpeedTestingInfo.append(obj)
-        if params.get("SpeedTestingStatus") is not None:
-            self._SpeedTestingStatus = SpeedTestingStatus()
-            self._SpeedTestingStatus._deserialize(params.get("SpeedTestingStatus"))
-        if params.get("OptimizeAction") is not None:
-            self._OptimizeAction = []
-            for item in params.get("OptimizeAction"):
-                obj = OptimizeAction()
-                obj._deserialize(item)
-                self._OptimizeAction.append(obj)
-        self._ProxyLoadTime = params.get("ProxyLoadTime")
-        self._OriginLoadTime = params.get("OriginLoadTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SpeedTestingQuota(AbstractModel):
-    """The quota limit on site tests.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TotalTestRuns: The total number of site tests.
-        :type TotalTestRuns: int
-        :param _AvailableTestRuns: The number of available site tests.
-        :type AvailableTestRuns: int
-        """
-        self._TotalTestRuns = None
-        self._AvailableTestRuns = None
-
-    @property
-    def TotalTestRuns(self):
-        return self._TotalTestRuns
-
-    @TotalTestRuns.setter
-    def TotalTestRuns(self, TotalTestRuns):
-        self._TotalTestRuns = TotalTestRuns
-
-    @property
-    def AvailableTestRuns(self):
-        return self._AvailableTestRuns
-
-    @AvailableTestRuns.setter
-    def AvailableTestRuns(self, AvailableTestRuns):
-        self._AvailableTestRuns = AvailableTestRuns
-
-
-    def _deserialize(self, params):
-        self._TotalTestRuns = params.get("TotalTestRuns")
-        self._AvailableTestRuns = params.get("AvailableTestRuns")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SpeedTestingStatistics(AbstractModel):
-    """The site test result
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _FirstContentfulPaint: Last contentful paint, in milliseconds.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type FirstContentfulPaint: int
-        :param _FirstMeaningfulPaint: Full content load, in milliseconds.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type FirstMeaningfulPaint: int
-        :param _OverallDownloadSpeed: Average download speed, in KB/s.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type OverallDownloadSpeed: float
-        :param _RenderTime: Rendering time, in milliseconds.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type RenderTime: int
-        :param _DocumentFinishTime: DOM content loaded, in milliseconds.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type DocumentFinishTime: int
-        :param _TcpConnectionTime: Average TCP connection, in milliseconds.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type TcpConnectionTime: int
-        :param _ResponseTime: Average backend response, in milliseconds.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type ResponseTime: int
-        :param _FileDownloadTime: Average DOM content download, in milliseconds.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type FileDownloadTime: int
-        :param _LoadTime: Load time, in milliseconds.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type LoadTime: int
-        """
-        self._FirstContentfulPaint = None
-        self._FirstMeaningfulPaint = None
-        self._OverallDownloadSpeed = None
-        self._RenderTime = None
-        self._DocumentFinishTime = None
-        self._TcpConnectionTime = None
-        self._ResponseTime = None
-        self._FileDownloadTime = None
-        self._LoadTime = None
-
-    @property
-    def FirstContentfulPaint(self):
-        return self._FirstContentfulPaint
-
-    @FirstContentfulPaint.setter
-    def FirstContentfulPaint(self, FirstContentfulPaint):
-        self._FirstContentfulPaint = FirstContentfulPaint
-
-    @property
-    def FirstMeaningfulPaint(self):
-        return self._FirstMeaningfulPaint
-
-    @FirstMeaningfulPaint.setter
-    def FirstMeaningfulPaint(self, FirstMeaningfulPaint):
-        self._FirstMeaningfulPaint = FirstMeaningfulPaint
-
-    @property
-    def OverallDownloadSpeed(self):
-        return self._OverallDownloadSpeed
-
-    @OverallDownloadSpeed.setter
-    def OverallDownloadSpeed(self, OverallDownloadSpeed):
-        self._OverallDownloadSpeed = OverallDownloadSpeed
-
-    @property
-    def RenderTime(self):
-        return self._RenderTime
-
-    @RenderTime.setter
-    def RenderTime(self, RenderTime):
-        self._RenderTime = RenderTime
-
-    @property
-    def DocumentFinishTime(self):
-        return self._DocumentFinishTime
-
-    @DocumentFinishTime.setter
-    def DocumentFinishTime(self, DocumentFinishTime):
-        self._DocumentFinishTime = DocumentFinishTime
-
-    @property
-    def TcpConnectionTime(self):
-        return self._TcpConnectionTime
-
-    @TcpConnectionTime.setter
-    def TcpConnectionTime(self, TcpConnectionTime):
-        self._TcpConnectionTime = TcpConnectionTime
-
-    @property
-    def ResponseTime(self):
-        return self._ResponseTime
-
-    @ResponseTime.setter
-    def ResponseTime(self, ResponseTime):
-        self._ResponseTime = ResponseTime
-
-    @property
-    def FileDownloadTime(self):
-        return self._FileDownloadTime
-
-    @FileDownloadTime.setter
-    def FileDownloadTime(self, FileDownloadTime):
-        self._FileDownloadTime = FileDownloadTime
-
-    @property
-    def LoadTime(self):
-        return self._LoadTime
-
-    @LoadTime.setter
-    def LoadTime(self, LoadTime):
-        self._LoadTime = LoadTime
-
-
-    def _deserialize(self, params):
-        self._FirstContentfulPaint = params.get("FirstContentfulPaint")
-        self._FirstMeaningfulPaint = params.get("FirstMeaningfulPaint")
-        self._OverallDownloadSpeed = params.get("OverallDownloadSpeed")
-        self._RenderTime = params.get("RenderTime")
-        self._DocumentFinishTime = params.get("DocumentFinishTime")
-        self._TcpConnectionTime = params.get("TcpConnectionTime")
-        self._ResponseTime = params.get("ResponseTime")
-        self._FileDownloadTime = params.get("FileDownloadTime")
-        self._LoadTime = params.get("LoadTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SpeedTestingStatus(AbstractModel):
-    """The test task status
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Url: The URL.
-        :type Url: str
-        :param _Tls: Whether the URL uses HTTPS.
-        :type Tls: bool
-        :param _CreatedOn: Creation time of the task.
-        :type CreatedOn: str
-        :param _StatusCode: The task status. Values:
-<li>`200`: The task completed.</li>
-<li>`100`: The task is running.</li>
-<li>`503`: The task failed./li>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type StatusCode: int
-        :param _UA: The user agent.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type UA: str
-        :param _Connectivity: The network environment.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Connectivity: str
-        :param _Reachable: Whether the URL is reachable. Values:
-<li>`true`: Yes</li>
-<li>`false`: No</li>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Reachable: bool
-        :param _TimedOut: Whether the URL connection timed out. Values:
-<li>`true`: Yes</li>
-<li>`false`: No</li>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type TimedOut: bool
-        """
-        self._Url = None
-        self._Tls = None
-        self._CreatedOn = None
-        self._StatusCode = None
-        self._UA = None
-        self._Connectivity = None
-        self._Reachable = None
-        self._TimedOut = None
-
-    @property
-    def Url(self):
-        return self._Url
-
-    @Url.setter
-    def Url(self, Url):
-        self._Url = Url
-
-    @property
-    def Tls(self):
-        return self._Tls
-
-    @Tls.setter
-    def Tls(self, Tls):
-        self._Tls = Tls
-
-    @property
-    def CreatedOn(self):
-        return self._CreatedOn
-
-    @CreatedOn.setter
-    def CreatedOn(self, CreatedOn):
-        self._CreatedOn = CreatedOn
-
-    @property
-    def StatusCode(self):
-        return self._StatusCode
-
-    @StatusCode.setter
-    def StatusCode(self, StatusCode):
-        self._StatusCode = StatusCode
-
-    @property
-    def UA(self):
-        return self._UA
-
-    @UA.setter
-    def UA(self, UA):
-        self._UA = UA
-
-    @property
-    def Connectivity(self):
-        return self._Connectivity
-
-    @Connectivity.setter
-    def Connectivity(self, Connectivity):
-        self._Connectivity = Connectivity
-
-    @property
-    def Reachable(self):
-        return self._Reachable
-
-    @Reachable.setter
-    def Reachable(self, Reachable):
-        self._Reachable = Reachable
-
-    @property
-    def TimedOut(self):
-        return self._TimedOut
-
-    @TimedOut.setter
-    def TimedOut(self, TimedOut):
-        self._TimedOut = TimedOut
-
-
-    def _deserialize(self, params):
-        self._Url = params.get("Url")
-        self._Tls = params.get("Tls")
-        self._CreatedOn = params.get("CreatedOn")
-        self._StatusCode = params.get("StatusCode")
-        self._UA = params.get("UA")
-        self._Connectivity = params.get("Connectivity")
-        self._Reachable = params.get("Reachable")
-        self._TimedOut = params.get("TimedOut")
+        self._Switch = params.get("Switch")
+        self._AllowClientIPList = params.get("AllowClientIPList")
+        self._ExpireTime = params.get("ExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22719,64 +18166,6 @@ class TopEntryValue(AbstractModel):
         
 
 
-class UpdateOriginProtectionIPWhitelistRequest(AbstractModel):
-    """UpdateOriginProtectionIPWhitelist request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ZoneId: ID of the site.
-        :type ZoneId: str
-        """
-        self._ZoneId = None
-
-    @property
-    def ZoneId(self):
-        return self._ZoneId
-
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-
-    def _deserialize(self, params):
-        self._ZoneId = params.get("ZoneId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class UpdateOriginProtectionIPWhitelistResponse(AbstractModel):
-    """UpdateOriginProtectionIPWhitelist response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class UpstreamHttp2(AbstractModel):
     """HTTP2 origin-pull configuration
 
@@ -22784,9 +18173,9 @@ class UpstreamHttp2(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable HTTP2 origin-pull. Values:
-<li>`on`: Enable</li>
-<li>`off`: Disable</li>
+        :param _Switch: Whether to enable HTTP2 origin-pull. Valid values: 
+<li>`on`: Enable;</li>
+<li>`off`: Disable.</li>
         :type Switch: str
         """
         self._Switch = None
@@ -23045,73 +18434,6 @@ class WafConfig(AbstractModel):
         
 
 
-class WafGroup(AbstractModel):
-    """WAF managed rule group
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Action: Action to be executed. Values:
-<li>`block`: Block</li>
-<li>`observe: Observe</li>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Action: str
-        :param _Level: The protection level. Values:
-<li>`loose`: Loose</li>
-<li>`normal`: Moderate</li>
-<li>`strict`: Strict</li>
-<li>`stricter`: Super strict</li>
-<li>`custom`: Custom</li>
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Level: str
-        :param _TypeId: ID of the rule type.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type TypeId: int
-        """
-        self._Action = None
-        self._Level = None
-        self._TypeId = None
-
-    @property
-    def Action(self):
-        return self._Action
-
-    @Action.setter
-    def Action(self, Action):
-        self._Action = Action
-
-    @property
-    def Level(self):
-        return self._Level
-
-    @Level.setter
-    def Level(self, Level):
-        self._Level = Level
-
-    @property
-    def TypeId(self):
-        return self._TypeId
-
-    @TypeId.setter
-    def TypeId(self, TypeId):
-        self._TypeId = TypeId
-
-
-    def _deserialize(self, params):
-        self._Action = params.get("Action")
-        self._Level = params.get("Level")
-        self._TypeId = params.get("TypeId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class WafRule(AbstractModel):
     """WAF rule
 
@@ -23161,192 +18483,6 @@ class WafRule(AbstractModel):
         self._Switch = params.get("Switch")
         self._BlockRuleIDs = params.get("BlockRuleIDs")
         self._ObserveRuleIDs = params.get("ObserveRuleIDs")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class WebLogs(AbstractModel):
-    """Web attack log
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _EventId: The attack event ID.
-        :type EventId: str
-        :param _HttpLog: The HTTP log content.
-        :type HttpLog: str
-        :param _Domain: The attacked subdomain name.
-        :type Domain: str
-        :param _AttackIp: The attacker IP.
-        :type AttackIp: str
-        :param _SipCountryCode: The country code of the attacker IP, which is defined in ISO-3166 alpha-2. For the list of country codes, see [ISO-3166](https://git.woa.com/edgeone/iso-3166/blob/master/all/all.json).
-        :type SipCountryCode: str
-        :param _RealClientIp: The real client IP.
-        :type RealClientIp: str
-        :param _RealClientIpCountryCode: The ISO-3166 alpha-2 country code of the real client IP.
-        :type RealClientIpCountryCode: str
-        :param _AttackTime: The attack time recorded in seconds using UNIX timestamp.
-        :type AttackTime: int
-        :param _RequestUri: The request address.
-        :type RequestUri: str
-        :param _ReqMethod: The request type.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type ReqMethod: str
-        :param _RuleDetailList: The security rule information.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type RuleDetailList: list of SecRuleRelatedInfo
-        :param _AttackContent: The attack content.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type AttackContent: str
-        :param _Area: Log region
-Note: This field may return `null`, indicating that no valid value was found.
-        :type Area: str
-        """
-        self._EventId = None
-        self._HttpLog = None
-        self._Domain = None
-        self._AttackIp = None
-        self._SipCountryCode = None
-        self._RealClientIp = None
-        self._RealClientIpCountryCode = None
-        self._AttackTime = None
-        self._RequestUri = None
-        self._ReqMethod = None
-        self._RuleDetailList = None
-        self._AttackContent = None
-        self._Area = None
-
-    @property
-    def EventId(self):
-        return self._EventId
-
-    @EventId.setter
-    def EventId(self, EventId):
-        self._EventId = EventId
-
-    @property
-    def HttpLog(self):
-        return self._HttpLog
-
-    @HttpLog.setter
-    def HttpLog(self, HttpLog):
-        self._HttpLog = HttpLog
-
-    @property
-    def Domain(self):
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def AttackIp(self):
-        return self._AttackIp
-
-    @AttackIp.setter
-    def AttackIp(self, AttackIp):
-        self._AttackIp = AttackIp
-
-    @property
-    def SipCountryCode(self):
-        return self._SipCountryCode
-
-    @SipCountryCode.setter
-    def SipCountryCode(self, SipCountryCode):
-        self._SipCountryCode = SipCountryCode
-
-    @property
-    def RealClientIp(self):
-        return self._RealClientIp
-
-    @RealClientIp.setter
-    def RealClientIp(self, RealClientIp):
-        self._RealClientIp = RealClientIp
-
-    @property
-    def RealClientIpCountryCode(self):
-        return self._RealClientIpCountryCode
-
-    @RealClientIpCountryCode.setter
-    def RealClientIpCountryCode(self, RealClientIpCountryCode):
-        self._RealClientIpCountryCode = RealClientIpCountryCode
-
-    @property
-    def AttackTime(self):
-        return self._AttackTime
-
-    @AttackTime.setter
-    def AttackTime(self, AttackTime):
-        self._AttackTime = AttackTime
-
-    @property
-    def RequestUri(self):
-        return self._RequestUri
-
-    @RequestUri.setter
-    def RequestUri(self, RequestUri):
-        self._RequestUri = RequestUri
-
-    @property
-    def ReqMethod(self):
-        return self._ReqMethod
-
-    @ReqMethod.setter
-    def ReqMethod(self, ReqMethod):
-        self._ReqMethod = ReqMethod
-
-    @property
-    def RuleDetailList(self):
-        return self._RuleDetailList
-
-    @RuleDetailList.setter
-    def RuleDetailList(self, RuleDetailList):
-        self._RuleDetailList = RuleDetailList
-
-    @property
-    def AttackContent(self):
-        return self._AttackContent
-
-    @AttackContent.setter
-    def AttackContent(self, AttackContent):
-        self._AttackContent = AttackContent
-
-    @property
-    def Area(self):
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-
-    def _deserialize(self, params):
-        self._EventId = params.get("EventId")
-        self._HttpLog = params.get("HttpLog")
-        self._Domain = params.get("Domain")
-        self._AttackIp = params.get("AttackIp")
-        self._SipCountryCode = params.get("SipCountryCode")
-        self._RealClientIp = params.get("RealClientIp")
-        self._RealClientIpCountryCode = params.get("RealClientIpCountryCode")
-        self._AttackTime = params.get("AttackTime")
-        self._RequestUri = params.get("RequestUri")
-        self._ReqMethod = params.get("ReqMethod")
-        if params.get("RuleDetailList") is not None:
-            self._RuleDetailList = []
-            for item in params.get("RuleDetailList"):
-                obj = SecRuleRelatedInfo()
-                obj._deserialize(item)
-                self._RuleDetailList.append(obj)
-        self._AttackContent = params.get("AttackContent")
-        self._Area = params.get("Area")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23466,11 +18602,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _AliasZoneName: The site alias. It can be up to 20 characters consisting of digits, letters, hyphens (-) and underscores (_).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AliasZoneName: str
-        :param _IsFake: Whether it’s a fake site. Values:
-<li>`0`: Non-fake site</li>
-<li>`1`: Fake site</li>
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _IsFake: Whether it’s a fake site. Valid values: 
+<li>`0`: Non-fake site;</li>
+<li>`1`: Fake site.</li>
         :type IsFake: int
+        :param _LockStatus: Lock status. Valid values: <li>`enable`: Normal. Modifying is allowed;</li><li>`disable`: Locked. Modifying is not allowed.</li>
+        :type LockStatus: str
         """
         self._ZoneId = None
         self._ZoneName = None
@@ -23491,6 +18628,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._ActiveStatus = None
         self._AliasZoneName = None
         self._IsFake = None
+        self._LockStatus = None
 
     @property
     def ZoneId(self):
@@ -23644,6 +18782,14 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     def IsFake(self, IsFake):
         self._IsFake = IsFake
 
+    @property
+    def LockStatus(self):
+        return self._LockStatus
+
+    @LockStatus.setter
+    def LockStatus(self, LockStatus):
+        self._LockStatus = LockStatus
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -23682,6 +18828,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._ActiveStatus = params.get("ActiveStatus")
         self._AliasZoneName = params.get("AliasZoneName")
         self._IsFake = params.get("IsFake")
+        self._LockStatus = params.get("LockStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23762,8 +18909,11 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param _ImageOptimize: Image optimization configuration. 
 Note: This field may return `null`, indicating that no valid value was found.
         :type ImageOptimize: :class:`tencentcloud.teo.v20220901.models.ImageOptimize`
-        :param _AccelerateMainland: 
+        :param _AccelerateMainland: Cross-MLC-border acceleration. 
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type AccelerateMainland: :class:`tencentcloud.teo.v20220901.models.AccelerateMainland`
+        :param _StandardDebug: 
+        :type StandardDebug: :class:`tencentcloud.teo.v20220901.models.StandardDebug`
         """
         self._ZoneName = None
         self._Area = None
@@ -23787,6 +18937,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._Grpc = None
         self._ImageOptimize = None
         self._AccelerateMainland = None
+        self._StandardDebug = None
 
     @property
     def ZoneName(self):
@@ -23964,6 +19115,14 @@ Note: This field may return `null`, indicating that no valid value was found.
     def AccelerateMainland(self, AccelerateMainland):
         self._AccelerateMainland = AccelerateMainland
 
+    @property
+    def StandardDebug(self):
+        return self._StandardDebug
+
+    @StandardDebug.setter
+    def StandardDebug(self, StandardDebug):
+        self._StandardDebug = StandardDebug
+
 
     def _deserialize(self, params):
         self._ZoneName = params.get("ZoneName")
@@ -24028,6 +19187,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         if params.get("AccelerateMainland") is not None:
             self._AccelerateMainland = AccelerateMainland()
             self._AccelerateMainland._deserialize(params.get("AccelerateMainland"))
+        if params.get("StandardDebug") is not None:
+            self._StandardDebug = StandardDebug()
+            self._StandardDebug._deserialize(params.get("StandardDebug"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
