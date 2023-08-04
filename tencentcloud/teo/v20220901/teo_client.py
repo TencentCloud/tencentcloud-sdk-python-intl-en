@@ -49,6 +49,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckCnameStatus(self, request):
+        """This API is used to query the CNAME status of a domain name.
+
+        :param request: Request instance for CheckCnameStatus.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CheckCnameStatusRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CheckCnameStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckCnameStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckCnameStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAccelerationDomain(self, request):
         """This API is used to connect a domain to EdgeOne.
 
@@ -211,7 +234,9 @@ class TeoClient(AbstractClient):
 
 
     def CreatePurgeTask(self, request):
-        """This API is used to create a cache purging task.
+        """When there are resources updated on the origin with the TTL remaining valid, users cannot access the latest resources. In this case, you can purge the cache using this API. There are two methods: <li>Delete: This method deletes the node cache without verification and retrieves u200dthe latest resources from the origin when receiving a request.</li><li>Invalidate: This method marks the node cache as invalid and sends a request with the If-None-Match and If-Modified-Since headers to the origin. If the origin responses with 200, the latest resources are retrieved to be cached on the node. If a 304 response is returned, the latest resources are not cached on the node.
+
+        </li>For more details, see [Cache Purge](https://intl.cloud.tencent.com/document/product/1552/70759?from_cn_redirect=1). </li>
 
         :param request: Request instance for CreatePurgeTask.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreatePurgeTaskRequest`

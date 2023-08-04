@@ -728,13 +728,21 @@ class ChangeMasterInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: Replication group ID
+        :param _GroupId: Replication group ID, such as `crs-rpl-m3zt****`. It is the unique identifier automatically assigned by the system when creating a replication group. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis/replication), and get it in the global replication list.
+
         :type GroupId: str
-        :param _InstanceId: Instance ID
+        :param _InstanceId: ID of the read-only instance to be promoted to the master instance, such as `crs-xjhsdj****`. Log in to the the [TencentDB for Redis console](https://console.cloud.tencent.com/redis), and copy it in the instance list.
+
+
         :type InstanceId: str
+        :param _ForceSwitch: Whether to promote the read-only instance to the master instance forcibly. Valid values:
+- `true`: Yes
+- `false`: No
+        :type ForceSwitch: bool
         """
         self._GroupId = None
         self._InstanceId = None
+        self._ForceSwitch = None
 
     @property
     def GroupId(self):
@@ -752,10 +760,19 @@ class ChangeMasterInstanceRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def ForceSwitch(self):
+        return self._ForceSwitch
+
+    @ForceSwitch.setter
+    def ForceSwitch(self, ForceSwitch):
+        self._ForceSwitch = ForceSwitch
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
         self._InstanceId = params.get("InstanceId")
+        self._ForceSwitch = params.get("ForceSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6403,9 +6420,9 @@ class DescribeReplicationGroupRequest(AbstractModel):
         :type Limit: int
         :param _Offset: Pagination offset, which is an integral multiple of `Limit`. `offset` = `limit` * (page number - 1).
         :type Offset: int
-        :param _GroupId: Replication group ID
+        :param _GroupId: ID of the specified replication group, such as `crs-rpl-m3zt****`. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis/replication), and get it in the global replication group list.
         :type GroupId: str
-        :param _SearchKey: Key words for fuzzy query, which can be set as the ID or name of a replication group.
+        :param _SearchKey: Keyword for fuzzy query, which can be a replication group ID or name. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis/replication), and get u200dthem in the global replication group list.
         :type SearchKey: str
         """
         self._Limit = None
@@ -6839,15 +6856,20 @@ class DescribeTaskInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: Task status. preparing: to be run; running: running; succeed: succeeded; failed: failed; error: running error.
+        :param _Status: Task status. Valid values: 
+- `preparing`: To be run
+- `running`: Running
+- `succeed`: Succeedu200ded
+- `failed`: Failed
+- `Error`: Error occurred while running
         :type Status: str
         :param _StartTime: Task start time
         :type StartTime: str
-        :param _TaskType: Task type
+        :param _TaskType: Task type, including `Create`, `Configure`, u200d`Disable Instance`, `Clear Instance`, `Reset Password`, `Upgrade Version`, `Back up Instance`, `Modify Network`, `Migrate to New AZ` and `Promote to Master`.
         :type TaskType: str
         :param _InstanceId: Instance ID
         :type InstanceId: str
-        :param _TaskMessage: Task message, which is displayed in case of an error. It will be blank if the status is running or succeeded.
+        :param _TaskMessage: Message returned by task execution, which will be au200dn error message when execution fails or be empty when the status is `running `or `succeed-`.
         :type TaskMessage: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -7681,7 +7703,7 @@ class Groups(AbstractModel):
         r"""
         :param _AppId: User APPID, which is the unique application ID that matches an account. Some Tencent Cloud products use this APPID.
         :type AppId: int
-        :param _RegionId: Region ID
+        :param _RegionId: Region ID. Valid values:
 - `1`: Guangzhou 
 - `4`: Shanghai 
 - `5`: Hong Kong (China) 
@@ -7698,7 +7720,6 @@ class Groups(AbstractModel):
 - `21`: India 
 - `22`: Virginia (East US)
 - `23`: Thailand 
-- `24`: Russia 
 - `25`: Japan
         :type RegionId: int
         :param _GroupId: Replication group ID in the format of "crs-rpl-deind****"
@@ -10297,7 +10318,7 @@ class Instances(AbstractModel):
         :param _RedisShardSize: Shard memory size.
         :type RedisShardSize: int
         :param _DiskSize: Instance disk size
-Note: This field may return `null`, indicating that no valid values can be obtained.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type DiskSize: int
         :param _Engine: Engine: Redis Community Edition, Tencent Cloud CKV.
         :type Engine: str
@@ -15185,11 +15206,18 @@ class UpgradeInstanceVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetInstanceType: Target instance type after the change, which is the same as the `Type` of the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.
+        :param _TargetInstanceType: Target instance type after the change, which is the same as the `TypeId` of the [CreateInstances](https://intl.cloud.tencent.com/document/api/239/20026?from_cn_redirect=1) API.
+- For Redis 4.0 or later, a standard architecture instance can be upgraded to a cluster architecture instance on the same version; for example, you can upgrade from Redis 4.0 Standard Architecture to Redis 4.0 Cluster Architecture.
+- Cross-version architecture upgrade is not supported; for example, you cannot upgrade from Redis 4.0 Standard Architecture to Redis 5.0 Cluster Architecture.
+- The architecture of Redis 2.8 cannot be upgraded.
+- Cluster architecture cannot be downgraded to standard architecture.
+
         :type TargetInstanceType: str
-        :param _SwitchOption: Switch mode. Valid values: 1 (switch during the maintenance time), 2 (switch now).
+        :param _SwitchOption: Switch time. Valid values:
+- `1`: Switch in the maintenance time.
+- `2` (default value): Switch now.
         :type SwitchOption: int
-        :param _InstanceId: Instance ID
+        :param _InstanceId: ID of the specified instance, such as `crs-xjhsdj****`. Log in to the [Redis console](https://console.cloud.tencent.com/redis#/), and copy it in the instance list.
         :type InstanceId: str
         """
         self._TargetInstanceType = None

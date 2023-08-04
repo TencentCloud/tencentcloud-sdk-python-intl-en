@@ -1598,6 +1598,9 @@ Note that each rule can have up to 20 ports.
 <li>`true`: Enable</li>
 <li>`false`: Disable</li>Default value: false
         :type SessionPersist: bool
+        :param _SessionPersistTime: Duration for the persistent session. The value takes effect only when `SessionPersist = true`.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type SessionPersistTime: int
         :param _OriginPort: The origin port, which can be:
 <li>A single port, such as 80</li>
 <li>A port range, such as 81-82</li>
@@ -1611,6 +1614,7 @@ Note that each rule can have up to 20 ports.
         self._Status = None
         self._ForwardClientIp = None
         self._SessionPersist = None
+        self._SessionPersistTime = None
         self._OriginPort = None
 
     @property
@@ -1678,6 +1682,14 @@ Note that each rule can have up to 20 ports.
         self._SessionPersist = SessionPersist
 
     @property
+    def SessionPersistTime(self):
+        return self._SessionPersistTime
+
+    @SessionPersistTime.setter
+    def SessionPersistTime(self, SessionPersistTime):
+        self._SessionPersistTime = SessionPersistTime
+
+    @property
     def OriginPort(self):
         return self._OriginPort
 
@@ -1695,6 +1707,7 @@ Note that each rule can have up to 20 ports.
         self._Status = params.get("Status")
         self._ForwardClientIp = params.get("ForwardClientIp")
         self._SessionPersist = params.get("SessionPersist")
+        self._SessionPersistTime = params.get("SessionPersistTime")
         self._OriginPort = params.get("OriginPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -2462,8 +2475,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type CacheTime: int
         :param _IgnoreCacheControl: Whether to enable force cache. Values:
 <li>`on`: Enable</li>
-<li>`off`: Disable</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+<li>`off`: Disable </li>
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type IgnoreCacheControl: str
         """
         self._Switch = None
@@ -2488,10 +2501,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IgnoreCacheControl(self):
+        warnings.warn("parameter `IgnoreCacheControl` is deprecated", DeprecationWarning) 
+
         return self._IgnoreCacheControl
 
     @IgnoreCacheControl.setter
     def IgnoreCacheControl(self, IgnoreCacheControl):
+        warnings.warn("parameter `IgnoreCacheControl` is deprecated", DeprecationWarning) 
+
         self._IgnoreCacheControl = IgnoreCacheControl
 
 
@@ -2689,6 +2706,93 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class CheckCnameStatusRequest(AbstractModel):
+    """CheckCnameStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: ID of the site.
+        :type ZoneId: str
+        :param _RecordNames: List of domain names.
+        :type RecordNames: list of str
+        """
+        self._ZoneId = None
+        self._RecordNames = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RecordNames(self):
+        return self._RecordNames
+
+    @RecordNames.setter
+    def RecordNames(self, RecordNames):
+        self._RecordNames = RecordNames
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RecordNames = params.get("RecordNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckCnameStatusResponse(AbstractModel):
+    """CheckCnameStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CnameStatus: List of CNAME statuses.
+        :type CnameStatus: list of CnameStatus
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CnameStatus = None
+        self._RequestId = None
+
+    @property
+    def CnameStatus(self):
+        return self._CnameStatus
+
+    @CnameStatus.setter
+    def CnameStatus(self, CnameStatus):
+        self._CnameStatus = CnameStatus
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CnameStatus") is not None:
+            self._CnameStatus = []
+            for item in params.get("CnameStatus"):
+                obj = CnameStatus()
+                obj._deserialize(item)
+                self._CnameStatus.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ClientIpCountry(AbstractModel):
     """Location information of the client IP carried in origin-pull. It is formatted as a two-letter ISO-3166-1 country/region code.
 
@@ -2776,6 +2880,67 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._HeaderName = params.get("HeaderName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CnameStatus(AbstractModel):
+    """CNAME status
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordName: The domain name.
+        :type RecordName: str
+        :param _Cname: The CNAME address.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type Cname: str
+        :param _Status: The CNAME status. Values:
+<li>`active`: Activated</li>
+<li>`moved`: Not activated </li>
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        """
+        self._RecordName = None
+        self._Cname = None
+        self._Status = None
+
+    @property
+    def RecordName(self):
+        return self._RecordName
+
+    @RecordName.setter
+    def RecordName(self, RecordName):
+        self._RecordName = RecordName
+
+    @property
+    def Cname(self):
+        return self._Cname
+
+    @Cname.setter
+    def Cname(self, Cname):
+        self._Cname = Cname
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._RecordName = params.get("RecordName")
+        self._Cname = params.get("Cname")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3314,6 +3479,8 @@ class CreateApplicationProxyRuleRequest(AbstractModel):
 <li>`true`: Enable.</li>
 <li>`false`: Disable.</li>Default value: false.
         :type SessionPersist: bool
+        :param _SessionPersistTime: Duration for the persistent session. The value takes effect only when `SessionPersist = true`.
+        :type SessionPersistTime: int
         :param _OriginPort: The origin port, which can be:
 <li>A single port, such as 80</li>
 <li>A port range, such as 81-82</li>
@@ -3327,6 +3494,7 @@ class CreateApplicationProxyRuleRequest(AbstractModel):
         self._OriginValue = None
         self._ForwardClientIp = None
         self._SessionPersist = None
+        self._SessionPersistTime = None
         self._OriginPort = None
 
     @property
@@ -3394,6 +3562,14 @@ class CreateApplicationProxyRuleRequest(AbstractModel):
         self._SessionPersist = SessionPersist
 
     @property
+    def SessionPersistTime(self):
+        return self._SessionPersistTime
+
+    @SessionPersistTime.setter
+    def SessionPersistTime(self, SessionPersistTime):
+        self._SessionPersistTime = SessionPersistTime
+
+    @property
     def OriginPort(self):
         return self._OriginPort
 
@@ -3411,6 +3587,7 @@ class CreateApplicationProxyRuleRequest(AbstractModel):
         self._OriginValue = params.get("OriginValue")
         self._ForwardClientIp = params.get("ForwardClientIp")
         self._SessionPersist = params.get("SessionPersist")
+        self._SessionPersistTime = params.get("SessionPersistTime")
         self._OriginPort = params.get("OriginPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3846,27 +4023,16 @@ class CreatePurgeTaskRequest(AbstractModel):
         r"""
         :param _ZoneId: ID of the site.
         :type ZoneId: str
-        :param _Type: Purging mode. Valid values: 
-<li>`purge_url`: Purge by URL;</li>
-<li>`purge_prefix`: Purge by directory;</li>
-<li>`purge_host`: Purge by hostname;</li>
-<li>`purge_all`: Puege all cache;</li>
-<li>`purge_cache_tag`: Purge by cache tag.</li>
+        :param _Type: Type of cache purging. Values:
+<li>`purge_url`: Purge by the URL</li>
+<li>`purge_prefix`: Purge by the directory</li>
+<li>`purge_host`: Purge by the hostname</li>
+<li>`purge_all`: Purge all caches</li>
+<li>`purge_cache_tag`: Purge by the cache-tag </li>For more details, see [Cache Purge](https://intl.cloud.tencent.com/document/product/1552/70759?from_cn_redirect=1).
         :type Type: str
-        :param _Method: 
+        :param _Method: Configures how resources under the directory are purged when `Type = purge_prefix`. Values: <li>`invalidate`: Only resources updated under the directory are purged.</li><li>`delete`: All resources under the directory are purged regardless of whether they are updated. </li>Default value: `invalidate`.
         :type Method: str
-        :param _Targets: Resource to be purged, which depends on the `Type` field. 
-1. When `Type = purge_host`: 
-Enter the hostname, such as www.example.com and foo.bar.example.com. 
-2. When `Type = purge_prefix`: 
-Enter the prefix, such as http://www.example.com/example/. 
-3. When `Type = purge_url`: 
-Enter the URL, such as https://www.example.com/example.jpg. 
-4. When `Type = purge_all`: 
-`Targets` can be left empty. 
-5. When `Type = purge_cache_tag`: 
-Enter the cache tag, such as tag1. 
-Note: The number of submitted tasks is limited by the quota of the plan. For details, see [Billing Overview](https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1).
+        :param _Targets: List of cached resources to purge. The format for input depends on the type of cache purging. See examples below for details. <li>By default, non-ASCII characters u200dare escaped based on RFC3986.</li><li>The maximum number of tasks per purging request is determined by the EdgeOne plan. See [Billing Overview (New)](https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1). </li>
         :type Targets: list of str
         :param _EncodeUrl: Specifies whether to transcode non-ASCII URLs according to RFC3986.
 Note that if it’s enabled, the purging is based on the converted URLs.
@@ -4213,8 +4379,9 @@ class CreateZoneRequest(AbstractModel):
         :param _ZoneName: The site name.
         :type ZoneName: str
         :param _Type: The access mode. Values:
-<li>`full`: Access through a name server.</li>
-<li>`partial`: Access through a CNAME record. Note that you should verify your site with the IdentifyZone API before starting site access.</li>If it is left empty, the default value `full` is used.
+<li> `full`: Access through a name server.</li>
+<li> `partial`: Access through a CNAME. Before using this access mode, first verify your site with the site verification API (IdentifyZone).<li>`noDomainAccess`: Access without using a domain name. If this value is passed, only the Tags field needs to be set. </li>
+If not specified, this field uses the default value `full`.
         :type Type: str
         :param _JumpStart: Whether to skip scanning the existing DNS records of the site. Default value: false.
         :type JumpStart: bool
@@ -12226,6 +12393,8 @@ The original configuration will apply if this field is not specified.
 <li>`true`: Enable</li>
 <li>`false`: Disable</li>If it is left empty, the default value `false` is used.
         :type SessionPersist: bool
+        :param _SessionPersistTime: Duration for the persistent session. The value takes effect only when `SessionPersist = true`.
+        :type SessionPersistTime: int
         :param _OriginPort: The origin port, which can be:
 <li>A single port, such as 80</li>
 <li>A port range, such as 81-82</li>
@@ -12240,6 +12409,7 @@ The original configuration will apply if this field is not specified.
         self._OriginValue = None
         self._ForwardClientIp = None
         self._SessionPersist = None
+        self._SessionPersistTime = None
         self._OriginPort = None
 
     @property
@@ -12315,6 +12485,14 @@ The original configuration will apply if this field is not specified.
         self._SessionPersist = SessionPersist
 
     @property
+    def SessionPersistTime(self):
+        return self._SessionPersistTime
+
+    @SessionPersistTime.setter
+    def SessionPersistTime(self, SessionPersistTime):
+        self._SessionPersistTime = SessionPersistTime
+
+    @property
     def OriginPort(self):
         return self._OriginPort
 
@@ -12333,6 +12511,7 @@ The original configuration will apply if this field is not specified.
         self._OriginValue = params.get("OriginValue")
         self._ForwardClientIp = params.get("ForwardClientIp")
         self._SessionPersist = params.get("SessionPersist")
+        self._SessionPersistTime = params.get("SessionPersistTime")
         self._OriginPort = params.get("OriginPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -12563,8 +12742,8 @@ class ModifyHostsCertificateRequest(AbstractModel):
         :param _ServerCertInfo: Certificate information. Note that only `CertId` is required. If it is not specified, the default certificate will be used.
         :type ServerCertInfo: list of ServerCertInfo
         :param _ApplyType: Whether the certificate is managed by EdgeOne. Values:
-<li>`apply`: Managed by EdgeOne</li>
-<li>`none`: Not managed by EdgeOne</li>If it is left empty, the default value `apply` is used.
+<li>`apply`: Managed by EdgeOne.</li>
+<li>`none`: Not managed by EdgeOne.</li>If not specified, this field uses the default value `none`.
         :type ApplyType: str
         """
         self._ZoneId = None
@@ -13121,19 +13300,28 @@ class ModifyZoneRequest(AbstractModel):
         r"""
         :param _ZoneId: The site ID.
         :type ZoneId: str
-        :param _Type: The site access method. Values:
-<li>`full`: Access through a name server.</li>
-<li>`partial`: Access through a CNAME record.</li>The original configuration will apply if this field is not specified.
+        :param _Type: Access mode of the site. Values:
+<li> `full`: Access through a name server.</li>
+<li> `partial`: Access through a CNAME u200drecord. A site using domainless access can only switch to CNAME access. </li>The original configuration applies if this field is not specified.
         :type Type: str
-        :param _VanityNameServers: The custom name servers. If this field is not specified, the default name servers will be used.
+        :param _VanityNameServers: The custom name servers. The original configuration applies if this field is not specified. It is not allowed to pass this field when a site is connected without using a domain name.
         :type VanityNameServers: :class:`tencentcloud.teo.v20220901.models.VanityNameServers`
         :param _AliasZoneName: The site alias. It can be up to 20 characters consisting of digits, letters, hyphens (-) and underscores (_).
         :type AliasZoneName: str
+        :param _Area: The region where the site requests access. Values:
+<li> `global`: Global coverage</li>
+<li> `mainland`: Chinese mainland</li>
+<li> `overseas`: Outside the Chinese mainland </li>It is not allowed to pass this field when a site is connected without using a domain name.
+        :type Area: str
+        :param _ZoneName: Name of the site. This field takes effect only when the site switches from domainless access to CNAME access.
+        :type ZoneName: str
         """
         self._ZoneId = None
         self._Type = None
         self._VanityNameServers = None
         self._AliasZoneName = None
+        self._Area = None
+        self._ZoneName = None
 
     @property
     def ZoneId(self):
@@ -13167,6 +13355,22 @@ class ModifyZoneRequest(AbstractModel):
     def AliasZoneName(self, AliasZoneName):
         self._AliasZoneName = AliasZoneName
 
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -13175,6 +13379,8 @@ class ModifyZoneRequest(AbstractModel):
             self._VanityNameServers = VanityNameServers()
             self._VanityNameServers._deserialize(params.get("VanityNameServers"))
         self._AliasZoneName = params.get("AliasZoneName")
+        self._Area = params.get("Area")
+        self._ZoneName = params.get("ZoneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13276,7 +13482,7 @@ The original configuration will apply if it is not specified.
         :param _ImageOptimize: Image optimization. 
 It is disabled if this parameter is not specified.
         :type ImageOptimize: :class:`tencentcloud.teo.v20220901.models.ImageOptimize`
-        :param _StandardDebug: 
+        :param _StandardDebug: Standard debugging configuration.
         :type StandardDebug: :class:`tencentcloud.teo.v20220901.models.StandardDebug`
         """
         self._ZoneId = None
@@ -14103,11 +14309,12 @@ class OriginInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OriginType: The origin type. Values: 
+        :param _OriginType: The origin type. Values:
 <li>`IP_DOMAIN`: IPv4/IPv6 address or domain name</li>
-<li>`COS`: COS bucket address</li>
-<li>`ORIGIN_GROUP`: Origin group</li>
-<li>`AWS_S3`: AWS S3 bucket address</li>
+<li>`COS`: COS bucket address </li>
+<li>`ORIGIN_GROUP`: Origin group </li>
+<li>`AWS_S3`: AWS S3 bucket address </li>
+<li>`SPACE`: EdgeOne Shield Space </li>
         :type OriginType: str
         :param _Origin: The origin address. Enter the origin group ID if `OriginType=ORIGIN_GROUP`.
         :type Origin: str
@@ -15539,6 +15746,15 @@ class Resource(AbstractModel):
 <li>`overseas`: Regions outside the Chinese mainland</li>
 <li>`global`: Global</li>
         :type Area: str
+        :param _Group: The resource type. Values:
+<li>`plan`: Plan resources</li>
+<li>`pay-as-you-go`: Pay-as-you-go resources </li>
+<li>`value-added`: Value-added resources </li>
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type Group: str
+        :param _ZoneNumber: The sites that are associated with the current resources.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type ZoneNumber: int
         """
         self._Id = None
         self._PayMode = None
@@ -15550,6 +15766,8 @@ class Resource(AbstractModel):
         self._AutoRenewFlag = None
         self._PlanId = None
         self._Area = None
+        self._Group = None
+        self._ZoneNumber = None
 
     @property
     def Id(self):
@@ -15631,6 +15849,22 @@ class Resource(AbstractModel):
     def Area(self, Area):
         self._Area = Area
 
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def ZoneNumber(self):
+        return self._ZoneNumber
+
+    @ZoneNumber.setter
+    def ZoneNumber(self, ZoneNumber):
+        self._ZoneNumber = ZoneNumber
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -15648,6 +15882,8 @@ class Resource(AbstractModel):
         self._AutoRenewFlag = params.get("AutoRenewFlag")
         self._PlanId = params.get("PlanId")
         self._Area = params.get("Area")
+        self._Group = params.get("Group")
+        self._ZoneNumber = params.get("ZoneNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17367,17 +17603,19 @@ class SmartRouting(AbstractModel):
 
 
 class StandardDebug(AbstractModel):
-    """
+    """Standard debugging
 
     """
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: Whether to enable standard debugging. Values:
+<li>`on`: Enable</li>
+<li>`off`: Disable </li>
         :type Switch: str
-        :param _AllowClientIPList: 
+        :param _AllowClientIPList: The client IP to allow. It can be an IPv4/IPv6 address or a CIDR block. If not specified, it means to allow any client IP
         :type AllowClientIPList: list of str
-        :param _ExpireTime: 
+        :param _ExpireTime: The time when the standard debugging setting expires. If it is exceeded, this feature u200dbecomes invalid.
         :type ExpireTime: str
         """
         self._Switch = None
@@ -17540,9 +17778,26 @@ class Sv(AbstractModel):
         :type Key: str
         :param _Value: The parameter value.
         :type Value: str
+        :param _Pack: Quota for a resource. Values:
+<li>`zone`: Quota for sites</li>
+<li>`custom-rule`: Quota for custom rules</li>
+<li>`rate-limiting-rule`: Quota for rate limiting rules</li>
+<li>`l4-proxy-instance`: Quota for L4 proxy instances </li>
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type Pack: str
+        :param _InstanceId: ID of the L4 proxy instance.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param _ProtectionSpecs: The protection specification.
+Values: <li> `cm_30G`: 30 Gbps base protection bandwidth in **Chinese mainland** service area</li><li> `cm_60G`: 60 Gbps base protection bandwidth in **Chinese mainland** service area</li><li> `cm_100G`: 100 Gbps base protection bandwidth in **Chinese mainland** service area</li><li> `anycast_300G`: 300 Gbps Anycast-based protection in **Global (MLC)** service area</li><li> `anycast_unlimited`: Unlimited Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> `cm_30G_anycast_300G`: 30 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> `cm_30G_anycast_unlimited`: 30 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> cm_60G_anycast_300G`: 60 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> cm_60G_anycast_unlimited`: 60 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> `cm_100G_anycast_300G`: 100 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> cm_100G_anycast_unlimited`: 100 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area </li>
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type ProtectionSpecs: str
         """
         self._Key = None
         self._Value = None
+        self._Pack = None
+        self._InstanceId = None
+        self._ProtectionSpecs = None
 
     @property
     def Key(self):
@@ -17560,10 +17815,37 @@ class Sv(AbstractModel):
     def Value(self, Value):
         self._Value = Value
 
+    @property
+    def Pack(self):
+        return self._Pack
+
+    @Pack.setter
+    def Pack(self, Pack):
+        self._Pack = Pack
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ProtectionSpecs(self):
+        return self._ProtectionSpecs
+
+    @ProtectionSpecs.setter
+    def ProtectionSpecs(self, ProtectionSpecs):
+        self._ProtectionSpecs = ProtectionSpecs
+
 
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        self._Pack = params.get("Pack")
+        self._InstanceId = params.get("InstanceId")
+        self._ProtectionSpecs = params.get("ProtectionSpecs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18561,9 +18843,10 @@ class Zone(AbstractModel):
 <li>`moved`: The name server is moved.</li>
 <li>`deactivated`: The site is blocked.</li>
         :type Status: str
-        :param _Type: The site access method. Values:
-<li>`full`: Access through a name server.</li>
-<li>`partial`: Access through a CNAME record.</li>
+        :param _Type: Access mode of the site. Values:
+<li> `full`: Access through a name server.</li>
+<li> `partial`: Access through a CNAME record.</li>
+<li> `noDomainAccess`: Access without using a domain name </li>
         :type Type: str
         :param _Paused: Whether the site is disabled.
         :type Paused: bool
@@ -18912,7 +19195,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param _AccelerateMainland: Cross-MLC-border acceleration. 
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type AccelerateMainland: :class:`tencentcloud.teo.v20220901.models.AccelerateMainland`
-        :param _StandardDebug: 
+        :param _StandardDebug: Standard debugging configuration.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type StandardDebug: :class:`tencentcloud.teo.v20220901.models.StandardDebug`
         """
         self._ZoneName = None

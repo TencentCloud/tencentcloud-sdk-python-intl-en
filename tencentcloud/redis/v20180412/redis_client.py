@@ -119,7 +119,7 @@ class RedisClient(AbstractClient):
 
 
     def ChangeMasterInstance(self, request):
-        """This API is used to switch with master instance in a replication group.
+        """This API is used to set a read-only instance in a replication group as a master instance.
 
         :param request: Request instance for ChangeMasterInstance.
         :type request: :class:`tencentcloud.redis.v20180412.models.ChangeMasterInstanceRequest`
@@ -1177,7 +1177,7 @@ class RedisClient(AbstractClient):
 
 
     def DescribeTaskInfo(self, request):
-        """This API is used to query the task result.
+        """This API is used to get the execution of a specified task.
 
         :param request: Request instance for DescribeTaskInfo.
         :type request: :class:`tencentcloud.redis.v20180412.models.DescribeTaskInfoRequest`
@@ -1936,7 +1936,7 @@ class RedisClient(AbstractClient):
 
 
     def UpgradeInstanceVersion(self, request):
-        """This API is used to upgrade compatible instance version (for example, from Redis 2.8 to 4.0), or upgrade instance architecture (for example, from standard architecture to cluster architecture).
+        """This API is used to upgrade the instance to a later version or u200dto upgrade the current standard architecture to the cluster architecture.
 
         :param request: Request instance for UpgradeInstanceVersion.
         :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeInstanceVersionRequest`

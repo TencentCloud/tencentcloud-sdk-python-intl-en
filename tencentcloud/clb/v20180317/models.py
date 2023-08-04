@@ -1887,7 +1887,7 @@ Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use 
         :type ZoneId: str
         :param _InternetAccessible: CLB network billing mode. This parameter is applicable only to public network CLB instances.
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
-        :param _VipIsp: This parameter is applicable only to public network CLB instances. Valid values: CMCC (China Mobile), CTCC (China Telecom), CUCC (China Unicom). If this parameter is not specified, BGP will be used by default. ISPs supported in a region can be queried with the `DescribeSingleIsp` API. If an ISP is specified, only bill-by-bandwidth-package (BANDWIDTH_PACKAGE) can be used as the network billing mode.
+        :param _VipIsp: It's only applicable to public network CLB instances. u200dValues: `CMCC` (China Mobile), `CTCC`·(China Telecom) and `CUCC` (China Unicom). If it is not specified, BGP line is used by default. To query ISPs available in a region, use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). If this parameter is specified, the network billing mode must be `BANDWIDTH_PACKAGE`.
         :type VipIsp: str
         :param _Vip: Applies for CLB instances for a specified VIP
         :type Vip: str
@@ -2416,14 +2416,14 @@ class CreateListenerRequest(AbstractModel):
         :type Protocol: str
         :param _ListenerNames: List of names of the listeners to be created. The array of names and array of ports are in one-to-one correspondence. If you do not want to name them now, you do not need to provide this parameter.
         :type ListenerNames: list of str
-        :param _HealthCheck: Health check parameter, which is applicable only to TCP, UDP, and TCP_SSL listeners.
+        :param _HealthCheck: Health check parameter. It is only applicable only to TCP, UDP, TCP_SSL and QUIC listeners.
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
         :param _Certificate: Certificate information. This parameter is only applicable to TCP_SSL listeners and HTTPS listeners with the SNI feature not enabled. `Certificate` and `MultiCertInfo` cannot be specified at the same time. 
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         :param _SessionExpireTime: Session persistence time in seconds. Value range: 30-3,600. The default value is 0, indicating that session persistence is not enabled. This parameter is applicable only to TCP/UDP listeners.
         :type SessionExpireTime: int
-        :param _Scheduler: Forwarding method of a listener. Value range: WRR, LEAST_CONN.
-They represent weighted round robin and least connections, respectively. Default value: WRR. This parameter is applicable only to TCP/UDP/TCP_SSL listeners.
+        :param _Scheduler: Listener forwarding mode. u200dValues: `WRR` (weighted round robin) and `LEAST_CONN` (least connections). 
+Default value: `WRR`. This parameter is only applicable to TCP, UDP, TCP_SSL and QUIC listeners.
         :type Scheduler: str
         :param _SniSwitch: Whether to enable the SNI feature. This parameter is applicable only to HTTPS listeners
         :type SniSwitch: int
@@ -2703,7 +2703,7 @@ Note: if the name of the new CLB instance already exists, a default name will be
         :type SubnetId: str
         :param _ProjectId: ID of the project to which a CLB instance belongs, which can be obtained through the `DescribeProject` API. If this parameter is not entered, the default project will be used.
         :type ProjectId: int
-        :param _AddressIPVersion: IP version. Valid values: `IPV4` (default), `IPV6` (IPV6 NAT64 version) or `IPv6FullChain` (IPv6 version). This parameter is only for public network CLB instances.
+        :param _AddressIPVersion: It's only applicable to public network CLB instances. IP version. Values: `IPV4`, `IPV6` and `IPv6FullChain` (case-insensitive). Default: `IPV4`. Note: `IPV6` indicates IPv6 NAT64, while `IPv6FullChain` indicates IPv6. 
         :type AddressIPVersion: str
         :param _Number: Number of CLBs to be created. Default value: 1.
         :type Number: int
@@ -2714,7 +2714,7 @@ Note: By default, the traffic goes to the primary AZ. The secondary AZs only car
         :type ZoneId: str
         :param _InternetAccessible: It only works on LCU-supported instances on private networks and all instances on public networks.
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
-        :param _VipIsp: This parameter is applicable only to public network CLB instances. Valid values: CMCC (China Mobile), CTCC (China Telecom), CUCC (China Unicom). If this parameter is not specified, BGP will be used by default. ISPs supported in a region can be queried with the `DescribeSingleIsp` API. If an ISP is specified, only bill-by-bandwidth-package (BANDWIDTH_PACKAGE) can be used as the network billing mode.
+        :param _VipIsp: It's only applicable to public network CLB instances. u200dValues: `CMCC` (China Mobile), `CTCC`·(China Telecom) and `CUCC` (China Unicom). If it is not specified, BGP line is used by default. To query ISPs available in a region, use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). If this parameter is specified, the network billing mode must be `BANDWIDTH_PACKAGE`.
         :type VipIsp: str
         :param _Tags: Tags the CLB instance when purchasing it. Up to 20 tag key value pairs are supported.
         :type Tags: list of TagInfo
@@ -2726,9 +2726,8 @@ Note: If the specified VIP is occupied or is not within the IP range of the spec
         :param _ExclusiveCluster: Information about the dedicated CLB instance. You must specify this parameter when you create a dedicated CLB instance in a private network.
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
         :param _SlaType: Creates an LCU-supported instance.
-<ul><li>To create an LCU-supported instance, set this parameter to `SLA`, which indicates that an LCU-supported instance is created with the default specification in pay-as-you-go mode.
-<ul><li>The default specification is Super Large 1.
-<li>If you have enabled Super Large LCU-supported instances, `SLA` corresponds to the Super Large 4 specification. Super Large LCU-supported specification is in beta now. To join the beta, [submit a ticket](https://console.cloud.tencent.com/workorder/category). </li></ul></li><li>It’s not required for a shared CLB instance. </li></ul>
+<ul><li>To create an LCU-supported instance, this parameter must be set to `SLA`, which indicates the Super Large 1 specification. 
+<ul><li>If you have activated Super Large LCU-supported instances, `SLA` indicates the Super Large 4 specification. Super u200dLarge LCU-supported specification is in beta now. u200cu200dTo join the beta, [submit a ticket](https://console.cloud.tencent.com/workorder/category). </li></ul></li><li>It’s not required for a shared CLB instance. </li></ul>
         :type SlaType: str
         :param _ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
         :type ClientToken: str
@@ -5756,7 +5755,7 @@ class DescribeListenersRequest(AbstractModel):
         :type LoadBalancerId: str
         :param _ListenerIds: Array of CLB listener IDs to query (100 IDs at most).
         :type ListenerIds: list of str
-        :param _Protocol: Type of the listener protocols to be queried. Valid values: TCP, UDP, HTTP, HTTPS, and TCP_SSL.
+        :param _Protocol: Type of the listener protocols to be queried. Values: TCP`, `UDP`, `HTTP`, `HTTPS`, `TCP_SSL` and `QUIC`.
         :type Protocol: str
         :param _Port: Port of the listeners to be queried
         :type Port: int
@@ -6266,7 +6265,7 @@ OPEN: public network; INTERNAL: private network.
         :type Forward: int
         :param _LoadBalancerName: CLB instance name.
         :type LoadBalancerName: str
-        :param _Domain: Domain name assigned to a CLB instance by Tencent Cloud. This parameter is meaningful only for the public network classic CLB.
+        :param _Domain: The domain name that Tencent Cloud assigned for the CLB instance.
         :type Domain: str
         :param _LoadBalancerVips: VIP address of a CLB instance (there can be multiple addresses)
         :type LoadBalancerVips: list of str
@@ -7888,8 +7887,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param _HttpCheckPath: Health check path (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HttpCheckPath: str
-        :param _HttpCheckDomain: The target domain name for health check. It’s applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners. It’s required for TCP listeners.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _HttpCheckDomain: Health check domain name. It is only applicable to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners. For HTTP health checks of TCP listeners, this parameter is required.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type HttpCheckDomain: str
         :param _HttpCheckMethod: Health check method (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners). Value range: HEAD, GET. Default value: HEAD.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -7906,14 +7905,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _RecvContext: Health check protocol (a custom check parameter), which is required if the value of CheckType is CUSTOM. This parameter represents the result returned by the health check. Only ASCII visible characters are allowed, and the maximum length is 500. (Applicable only to TCP/UDP listeners.)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RecvContext: str
-        :param _CheckType: Health check protocol (a custom check parameter). Value range: TCP, HTTP, CUSTOM (applicable only to TCP/UDP listeners, where UDP listeners only support CUSTOM. If custom health check is used, this parameter is required).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CheckType: u200dHealth check protocol. Values: `TCP`, `HTTP`, `HTTPS`, `GRPC`, `PING`, and `CUSTOM`. UDP listeners support `PING`/`CUSTOM`. TCP listener support `TCP`/`HTTP`/`CUSTOM`. TCP_SSL and QUIC listeners support `TCP`/`HTTP`. HTTP rules support `HTTP`/`GRPC. HTTPS rules support `HTTP`/`HTTPS`/`GRPC`.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type CheckType: str
-        :param _HttpVersion: Health check protocol (a custom check parameter), which is required if the value of CheckType is HTTP. This parameter represents the HTTP version of the real server. Value range: HTTP/1.0, HTTP/1.1. (Applicable only to TCP listeners.)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _HttpVersion: HTTP version. HTTP version of the backend service. Values: `HTTP/1.0`, HTTP/1.1`. It is only applicable to TCP listeners, and is required when `CheckType`=`HTTP`. 
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type HttpVersion: str
-        :param _SourceIpType: Specifies the type of IP for health check. `0` (default): CLB VIP. `1`: Use the IP range starting with 100.64 as the source IP.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _SourceIpType: Specifies the type of health check source IP. `0` (default): CLB VIP. `1`: 100.64 IP range.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type SourceIpType: int
         :param _ExtendedCode: GRPC health check status code, which is only applicable to rules with GRPC as the backend forwarding protocol. It can be a single number (such as `20`), multiple numbers (such as `20,25`) or a range (such as `0-99`). The default value is `12`.
 Note: This field may return `null`, indicating that no valid values can be obtained.
@@ -11318,9 +11317,9 @@ class ModifyListenerRequest(AbstractModel):
         :type ListenerName: str
         :param _SessionExpireTime: Session persistence time in seconds. Value range: 30-3,600. The default value is 0, indicating that session persistence is not enabled. This parameter is applicable only to TCP/UDP listeners.
         :type SessionExpireTime: int
-        :param _HealthCheck: Health check parameter, which is applicable only to TCP, UDP, and TCP_SSL listeners.
+        :param _HealthCheck: Health check parameter. It is only applicable only to TCP, UDP, TCP_SSL and QUIC listeners.
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param _Certificate: Certificate information. This parameter is only applicable to HTTPS/TCP_SSL listeners. `Certificate` and `MultiCertInfo` cannot be specified at the same time. 
+        :param _Certificate: Certificate information. This parameter is only applicable to HTTPS/TCP_SSL/QUIC listeners. `Certificate` and `MultiCertInfo` cannot be both specified.
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         :param _Scheduler: Forwarding method of a listener. Value range: WRR, LEAST_CONN.
 They represent weighted round robin and least connections, respectively. Default value: WRR.
@@ -13514,7 +13513,7 @@ class RuleInput(AbstractModel):
         :param _Scheduler: Request forwarding method of the rule. Value range: WRR, LEAST_CONN, IP_HASH
 They represent weighted round robin, least connections, and IP hash, respectively. Default value: WRR.
         :type Scheduler: str
-        :param _ForwardType: Forwarding protocol between the CLB instance and real server. HTTP/HTTPS/TRPC are supported. TRPC is now only available for internal usage.
+        :param _ForwardType: Forwarding protocol between the CLB instance and backend service. Values: `HTTP`, `HTTPS`, `GRPC` and `TRPC` (only for internal usage). It defaults to `HTTP`.
         :type ForwardType: str
         :param _DefaultServer: Whether to set this domain name as the default domain name. Note: Only one default domain name can be set under one listener.
         :type DefaultServer: bool
@@ -14572,9 +14571,8 @@ class SlaUpdateParam(AbstractModel):
         r"""
         :param _LoadBalancerId: ID of the CLB instance
         :type LoadBalancerId: str
-        :param _SlaType: This parameter is set to a fixed value of `SLA`, which specifies to upgrade to an LCU-supported instance of default specification.
-<ul><li>If you enable general LCU-supported instances, `SLA` corresponds to the Super Large 1 specification. General LCU-supported instances are in beta testing, [submit a ticket](https://intl.cloud.tencent.com/apply/p/hf45esx99lf?from_cn_redirect=1) for application.</li>
-<li>If you enable ultra-large LCU-supported instances, SLA corresponds to the Super Large 4 specification. Ultra-large LCU-supported instances are in beta testing, [submit a ticket](https://console.cloud.tencent.com/workorder/category) for application.</li></ul>
+        :param _SlaType: u200dTo upgrade the instance to an LCU-support instance, set it to `SLA`. `SLA` indicates Super Large 1. 
+If you have activated Super Large LCU-supported instances, `SLA` indicates the Super Large 4 specification. Super u200dLarge LCU-supported specification is in beta now. u200cu200dTo join the beta, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
         :type SlaType: str
         """
         self._LoadBalancerId = None

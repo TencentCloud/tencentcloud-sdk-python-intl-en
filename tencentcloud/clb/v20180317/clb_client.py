@@ -145,17 +145,27 @@ class ClbClient(AbstractClient):
     def CloneLoadBalancer(self, request):
         """This API is used to create a clone of the source CLB instance with the same forwarding rules and binding relations. Note that this API is asynchronous, which means that changes to the source CLB after invocation of the API are not included in the clone.
 
-        Use limits:
-        Unsupported instance types: Classic network CLB, Classic CLB, IPv6 CLB, and NAT64 CLB.
-        Monthly subscribed CLB instances are not supported.
-        QUIC and port listeners are not supported.
-        The CLB backend service cannot be a target group or an SCF function.
-        The following settings will not be cloned automatically and require manual configuration: "Custom Configuration", "Redirection Configuration" and "Allow Traffic by Default in Security Group".
+        Limits:
+        Instance attribute restrictions
+          Only pay-as-you-go instances can be cloned. Monthly-subscribed instances cannot be cloned.
+          CLB instances without any billable items cannot be cloned.
+          Classic CLB instances and CLB u200dinstances created for Anti-DDoS service cannot be cloned.
+          Classic network-based instances cannot be cloned.
+          IPv6 instances, IPv6 NAT64 instances, and instances bound with both IPv4 and IPv6 cannot be cloned.
+          The following settings will not be cloned: **Custom configuration**, **Redirection configurations**, and **Allow Traffic by Default** in security groups.
+          Before cloning an instance, make sure all certificates used on the instance are valid. Cloning will fail if there are any expired certificates.
+        Listener restrictions
+          Instances with QUIC listeners or port range listeners cannot be cloned.
+          Private network CLB instances with TCP_SSL listeners cannot be cloned.
+          Instances with layer-7 listeners that have no forwarding rules cannot be cloned.
+          u200dInstances u200dwith more than 50 listeners cannot be cloned.
+        Backend service restrictions
+          Instances with target groups and SCF cloud functions as the backend services cannot be cloned.
 
         Notes:
         If you are using a BGP bandwidth package, you need to pass the package ID.
         To create a dedicated cluster-based CLB by cloning the source CLB, you need to pass the cluster ID. Otherwise, a normal CLB is created.
-        This API is only available for beta users. If you want to try it out, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&step=1).
+        This API is only available for beta users. To try it out, [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&step=1).
 
         :param request: Request instance for CloneLoadBalancer.
         :type request: :class:`tencentcloud.clb.v20180317.models.CloneLoadBalancerRequest`
