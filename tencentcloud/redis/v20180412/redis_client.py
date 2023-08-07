@@ -1936,7 +1936,7 @@ class RedisClient(AbstractClient):
 
 
     def UpgradeInstanceVersion(self, request):
-        """This API is used to upgrade the instance to a later version or u200dto upgrade the current standard architecture to the cluster architecture.
+        """This API is used to upgrade the instance to a later version or to upgrade the current standard architecture to the cluster architecture.
 
         :param request: Request instance for UpgradeInstanceVersion.
         :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeInstanceVersionRequest`
