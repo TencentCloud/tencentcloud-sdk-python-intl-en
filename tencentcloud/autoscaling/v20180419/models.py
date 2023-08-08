@@ -55,7 +55,7 @@ class Activity(AbstractModel):
         :type EndTime: str
         :param _CreatedTime: Creation time of the scaling activity.
         :type CreatedTime: str
-        :param _ActivityRelatedInstanceSet: Information set of the instances related to the scaling activity.
+        :param _ActivityRelatedInstanceSet: This parameter has been deprecated.
         :type ActivityRelatedInstanceSet: list of ActivtyRelatedInstance
         :param _StatusMessageSimplified: Brief description of the scaling activity status.
         :type StatusMessageSimplified: str
@@ -65,6 +65,8 @@ class Activity(AbstractModel):
         :type DetailedStatusMessageSet: list of DetailedStatusMessage
         :param _InvocationResultSet: Result of the command execution
         :type InvocationResultSet: list of InvocationResult
+        :param _RelatedInstanceSet: Information set of the instances related to the scaling activity.
+        :type RelatedInstanceSet: list of RelatedInstance
         """
         self._AutoScalingGroupId = None
         self._ActivityId = None
@@ -81,6 +83,7 @@ class Activity(AbstractModel):
         self._LifecycleActionResultSet = None
         self._DetailedStatusMessageSet = None
         self._InvocationResultSet = None
+        self._RelatedInstanceSet = None
 
     @property
     def AutoScalingGroupId(self):
@@ -164,10 +167,14 @@ class Activity(AbstractModel):
 
     @property
     def ActivityRelatedInstanceSet(self):
+        warnings.warn("parameter `ActivityRelatedInstanceSet` is deprecated", DeprecationWarning) 
+
         return self._ActivityRelatedInstanceSet
 
     @ActivityRelatedInstanceSet.setter
     def ActivityRelatedInstanceSet(self, ActivityRelatedInstanceSet):
+        warnings.warn("parameter `ActivityRelatedInstanceSet` is deprecated", DeprecationWarning) 
+
         self._ActivityRelatedInstanceSet = ActivityRelatedInstanceSet
 
     @property
@@ -201,6 +208,14 @@ class Activity(AbstractModel):
     @InvocationResultSet.setter
     def InvocationResultSet(self, InvocationResultSet):
         self._InvocationResultSet = InvocationResultSet
+
+    @property
+    def RelatedInstanceSet(self):
+        return self._RelatedInstanceSet
+
+    @RelatedInstanceSet.setter
+    def RelatedInstanceSet(self, RelatedInstanceSet):
+        self._RelatedInstanceSet = RelatedInstanceSet
 
 
     def _deserialize(self, params):
@@ -239,6 +254,12 @@ class Activity(AbstractModel):
                 obj = InvocationResult()
                 obj._deserialize(item)
                 self._InvocationResultSet.append(obj)
+        if params.get("RelatedInstanceSet") is not None:
+            self._RelatedInstanceSet = []
+            for item in params.get("RelatedInstanceSet"):
+                obj = RelatedInstance()
+                obj._deserialize(item)
+                self._RelatedInstanceSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -311,10 +332,15 @@ class Advice(AbstractModel):
         :type Detail: str
         :param _Solution: Recommended resolutions
         :type Solution: str
+        :param _Level: u200dRisk level of the scaling group configuration. Valid values: <br>
+<li>WARNING<br>
+<li>CRITICAL<br>
+        :type Level: str
         """
         self._Problem = None
         self._Detail = None
         self._Solution = None
+        self._Level = None
 
     @property
     def Problem(self):
@@ -340,11 +366,20 @@ class Advice(AbstractModel):
     def Solution(self, Solution):
         self._Solution = Solution
 
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
 
     def _deserialize(self, params):
         self._Problem = params.get("Problem")
         self._Detail = params.get("Detail")
         self._Solution = params.get("Solution")
+        self._Level = params.get("Level")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8427,8 +8462,8 @@ class ModifyScalingPolicyRequest(AbstractModel):
         :type EstimatedInstanceWarmup: int
         :param _DisableScaleIn: Whether to disable scale-in. It’s only available when `ScalingPolicyType` is `TARGET_TRACKING`. Valid values: <br><li>`true`: Scaling in is not allowed.</li><li>`false`: Allows both scale-out and scale-in</li>
         :type DisableScaleIn: bool
-        :param _NotificationUserGroupIds: Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.
-If you want to clear the user group, you need to pass in the specific string "NULL" to the list.
+        :param _NotificationUserGroupIds: This parameter is diused. Please use [CreateNotificationConfiguration](https://intl.cloud.tencent.com/document/api/377/33185?from_cn_redirect=1) instead.
+Notification group ID, which is the set of user group IDs.
         :type NotificationUserGroupIds: list of str
         """
         self._AutoScalingPolicyId = None
@@ -8774,6 +8809,55 @@ class NotificationTarget(AbstractModel):
         self._TargetType = params.get("TargetType")
         self._QueueName = params.get("QueueName")
         self._TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RelatedInstance(AbstractModel):
+    """Information of the instances related to the current scaling activity.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        :param _InstanceStatus: Status of the instance in the scaling activity. Valid values:
+`INIT`: Initializing
+`RUNNING`: u200dProcessing u200dthe instance
+`SUCCESSFUL`: Task succeeded on the instance
+`FAILED`: Task failed on the instance
+        :type InstanceStatus: str
+        """
+        self._InstanceId = None
+        self._InstanceStatus = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceStatus(self):
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceStatus = params.get("InstanceStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
