@@ -266,6 +266,113 @@ class ApplySdkVerificationTokenResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ApplyWebVerificationBizTokenIntlRequest(AbstractModel):
+    """ApplyWebVerificationBizTokenIntl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CompareImageBase64: The Base64-encoded string (max 8 MB in size) of the photo to be compared.
+        :type CompareImageBase64: str
+        :param _RedirectURL: The web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. Example: `https://www.tencentcloud.com/products/faceid`.
+After the verification process is completed, the `BizToken` of this process will be spliced to the callback URL in the format of `https://www.tencentcloud.com/products/faceid?token={BizToken}` before redirect.
+        :type RedirectURL: str
+        :param _Extra: The passthrough parameter of the business, max 1,000 characters, which will be returned in `GetWebVerificationResultIntl`.
+        :type Extra: str
+        """
+        self._CompareImageBase64 = None
+        self._RedirectURL = None
+        self._Extra = None
+
+    @property
+    def CompareImageBase64(self):
+        return self._CompareImageBase64
+
+    @CompareImageBase64.setter
+    def CompareImageBase64(self, CompareImageBase64):
+        self._CompareImageBase64 = CompareImageBase64
+
+    @property
+    def RedirectURL(self):
+        return self._RedirectURL
+
+    @RedirectURL.setter
+    def RedirectURL(self, RedirectURL):
+        self._RedirectURL = RedirectURL
+
+    @property
+    def Extra(self):
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+
+    def _deserialize(self, params):
+        self._CompareImageBase64 = params.get("CompareImageBase64")
+        self._RedirectURL = params.get("RedirectURL")
+        self._Extra = params.get("Extra")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyWebVerificationBizTokenIntlResponse(AbstractModel):
+    """ApplyWebVerificationBizTokenIntl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VerificationUrl: The URL of this verification process, which will be returned to the frontend of the browser for starting the process.
+        :type VerificationUrl: str
+        :param _BizToken: The token identifying this web-based verification process, valid for 7,200s after issuance. It is required for getting the result after the verification process is completed.
+        :type BizToken: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._VerificationUrl = None
+        self._BizToken = None
+        self._RequestId = None
+
+    @property
+    def VerificationUrl(self):
+        return self._VerificationUrl
+
+    @VerificationUrl.setter
+    def VerificationUrl(self, VerificationUrl):
+        self._VerificationUrl = VerificationUrl
+
+    @property
+    def BizToken(self):
+        return self._BizToken
+
+    @BizToken.setter
+    def BizToken(self, BizToken):
+        self._BizToken = BizToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VerificationUrl = params.get("VerificationUrl")
+        self._BizToken = params.get("BizToken")
+        self._RequestId = params.get("RequestId")
+
+
 class ApplyWebVerificationTokenRequest(AbstractModel):
     """ApplyWebVerificationToken request structure.
 
@@ -1702,6 +1809,135 @@ class GetSdkVerificationResultResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetWebVerificationResultIntlRequest(AbstractModel):
+    """GetWebVerificationResultIntl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BizToken: The token for the web-based verification, which is generated using the `ApplyWebVerificationBizTokenIntl` API.
+        :type BizToken: str
+        """
+        self._BizToken = None
+
+    @property
+    def BizToken(self):
+        return self._BizToken
+
+    @BizToken.setter
+    def BizToken(self, BizToken):
+        self._BizToken = BizToken
+
+
+    def _deserialize(self, params):
+        self._BizToken = params.get("BizToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetWebVerificationResultIntlResponse(AbstractModel):
+    """GetWebVerificationResultIntl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: The final result of this verification. `0` indicates that the person is the same as that in the photo.
+For other error codes, see <a href="https://www.tencentcloud.com/document/product/1061/55390?lang=en&pg=#8a960e1e-39c0-42cb-b181-b3164d77f81e">Liveness Detection and Face Comparison (Mobile HTML5) Error Codes</a>
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type ErrorCode: int
+        :param _ErrorMsg: The description of the final verification result.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type ErrorMsg: str
+        :param _VerificationDetailList: The detailed verification result list of this process. Retries are allowed, so a verification process may have several entries of results.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type VerificationDetailList: list of VerificationDetail
+        :param _VideoBase64: The Base64-encoded string of the video collected from the video stream. Retries are allowed, and this field returns only the data collected in the last verification. If no video is collected, null is returned.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type VideoBase64: str
+        :param _BestFrameBase64: The Base64-encoded string of the best face screenshot u200dcollected from the video stream. Retries are allowed, and this field returns only the data collected in the last verification. If no best face screenshot is collected, null is returned.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type BestFrameBase64: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._ErrorMsg = None
+        self._VerificationDetailList = None
+        self._VideoBase64 = None
+        self._BestFrameBase64 = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def VerificationDetailList(self):
+        return self._VerificationDetailList
+
+    @VerificationDetailList.setter
+    def VerificationDetailList(self, VerificationDetailList):
+        self._VerificationDetailList = VerificationDetailList
+
+    @property
+    def VideoBase64(self):
+        return self._VideoBase64
+
+    @VideoBase64.setter
+    def VideoBase64(self, VideoBase64):
+        self._VideoBase64 = VideoBase64
+
+    @property
+    def BestFrameBase64(self):
+        return self._BestFrameBase64
+
+    @BestFrameBase64.setter
+    def BestFrameBase64(self, BestFrameBase64):
+        self._BestFrameBase64 = BestFrameBase64
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMsg = params.get("ErrorMsg")
+        if params.get("VerificationDetailList") is not None:
+            self._VerificationDetailList = []
+            for item in params.get("VerificationDetailList"):
+                obj = VerificationDetail()
+                obj._deserialize(item)
+                self._VerificationDetailList.append(obj)
+        self._VideoBase64 = params.get("VideoBase64")
+        self._BestFrameBase64 = params.get("BestFrameBase64")
+        self._RequestId = params.get("RequestId")
+
+
 class GetWebVerificationResultRequest(AbstractModel):
     """GetWebVerificationResult request structure.
 
@@ -2076,28 +2312,28 @@ class VerificationDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorCode: The final result of this verification. `0` indicates that the person is the same as that in the photo.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type ErrorCode: int
         :param _ErrorMsg: The description of the final verification result.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type ErrorMsg: str
         :param _LivenessErrorCode: The result of this liveness detection process. `0` indicates success.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type LivenessErrorCode: int
         :param _LivenessErrorMsg: The result description of this liveness detection process.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LivenessErrorMsg: str
         :param _CompareErrorCode: The result of this comparison process. `0` indicates that the person in the best face screenshot collected from the video stream is the same as that in the uploaded image for comparison.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type CompareErrorCode: int
         :param _CompareErrorMsg: The result description of this comparison process.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type CompareErrorMsg: str
         :param _ReqTimestamp: The timestamp (ms) of this verification process.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReqTimestamp: int
-        :param _Similarity: The similarity of the best face screenshot collected from the video stream and the uploaded image for comparison in this verification process. Valid range: [0.00, 100.00]. By default, the person in the screenshot is judged as the same person in the image if the similarity is greater than or equal to 70.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Similarity: The similarity of the best face screenshot collected from the video stream and the uploaded image for comparison in this verification process. Value range: [0.00, 100.00]. By default, the person in the screenshot is determined to be the same person in the image if the similarity is greater than or equal to 70.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type Similarity: float
         :param _Seq: Unique ID of this verification process.
 Note: This field may return null, indicating that no valid values can be obtained.

@@ -72,6 +72,29 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ApplyWebVerificationBizTokenIntl(self, request):
+        """This API is used to apply for a BizToken before calling the web-based verification service each time. This token is required for initiating a verification process and getting the result after the verification is completed.
+
+        :param request: Request instance for ApplyWebVerificationBizTokenIntl.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.ApplyWebVerificationBizTokenIntlRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.ApplyWebVerificationBizTokenIntlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplyWebVerificationBizTokenIntl", params, headers=headers)
+            response = json.loads(body)
+            model = models.ApplyWebVerificationBizTokenIntlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ApplyWebVerificationToken(self, request):
         """This API is used to apply for a token before calling the web-based verification service each time. This token is required for initiating the verification process and getting the result after the verification is completed.
 
@@ -273,6 +296,29 @@ class FaceidClient(AbstractClient):
             body = self.call("GetWebVerificationResult", params, headers=headers)
             response = json.loads(body)
             model = models.GetWebVerificationResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetWebVerificationResultIntl(self, request):
+        """This API is used to get the verification result with the corresponding BizToken after the u200dweb-based verification is completed. The token is valid for three days (259,200s) after issuance and can be called multiple times.
+
+        :param request: Request instance for GetWebVerificationResultIntl.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.GetWebVerificationResultIntlRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetWebVerificationResultIntlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetWebVerificationResultIntl", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetWebVerificationResultIntlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

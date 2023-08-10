@@ -20,6 +20,9 @@ AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
+# An exception occurred while calling the transaction service.
+FAILEDOPERATION_CALLTRADE = 'FailedOperation.CallTrade'
+
 # CMQ backend error.
 FAILEDOPERATION_CMQBACKENDERROR = 'FailedOperation.CmqBackendError'
 
@@ -82,6 +85,9 @@ FAILEDOPERATION_GETENVIRONMENTATTRIBUTESFAILED = 'FailedOperation.GetEnvironment
 
 # Failed to get the number of topic partitions.
 FAILEDOPERATION_GETTOPICPARTITIONSFAILED = 'FailedOperation.GetTopicPartitionsFailed'
+
+# This instance is not ready. Please try again later.
+FAILEDOPERATION_INSTANCENOTREADY = 'FailedOperation.InstanceNotReady'
 
 # The message size exceeds the upper limit of 1 MB.
 FAILEDOPERATION_MAXMESSAGESIZEERROR = 'FailedOperation.MaxMessageSizeError'
@@ -175,6 +181,9 @@ INVALIDPARAMETER_TOKENNOTFOUND = 'InvalidParameter.TokenNotFound'
 
 # The parameter value is incorrect.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# 
+INVALIDPARAMETERVALUE_ATLEASTONE = 'InvalidParameterValue.AtLeastOne'
 
 # The cluster name already exists.
 INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = 'InvalidParameterValue.ClusterNameDuplication'
@@ -307,3 +316,6 @@ UNKNOWNPARAMETER = 'UnknownParameter'
 
 # Unsupported operation.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# The instance does not support configuration downgrade.
+UNSUPPORTEDOPERATION_INSTANCEDOWNGRADE = 'UnsupportedOperation.InstanceDowngrade'

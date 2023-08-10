@@ -233,6 +233,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRabbitMQUser(self, request):
+        """This API is used to create a TDMQ for RabbitMQ user.
+
+        :param request: Request instance for CreateRabbitMQUser.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRabbitMQUserRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRabbitMQUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRabbitMQUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRabbitMQUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRabbitMQVipInstance(self, request):
         """This API is used to create a TDMQ for RabbitMQ exclusive instance.
 
@@ -247,6 +270,29 @@ class TdmqClient(AbstractClient):
             body = self.call("CreateRabbitMQVipInstance", params, headers=headers)
             response = json.loads(body)
             model = models.CreateRabbitMQVipInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateRabbitMQVirtualHost(self, request):
+        """This API is used to create a TDMQ for RabbitMQ vhost.
+
+        :param request: Request instance for CreateRabbitMQVirtualHost.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRabbitMQVirtualHostRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRabbitMQVirtualHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRabbitMQVirtualHost", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRabbitMQVirtualHostResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -546,6 +592,75 @@ class TdmqClient(AbstractClient):
             body = self.call("DeleteEnvironments", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteEnvironmentsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRabbitMQUser(self, request):
+        """This API is used to delete a TDMQ for RabbitMQ user.
+
+        :param request: Request instance for DeleteRabbitMQUser.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQUserRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRabbitMQUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRabbitMQUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRabbitMQVipInstance(self, request):
+        """This API is used to delete a TDMQ for RabbitMQ exclusive instance.
+
+        :param request: Request instance for DeleteRabbitMQVipInstance.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQVipInstanceRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQVipInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRabbitMQVipInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRabbitMQVipInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRabbitMQVirtualHost(self, request):
+        """This API is used to delete a TDMQ for RabbitMQ vhost.
+
+        :param request: Request instance for DeleteRabbitMQVirtualHost.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQVirtualHostRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DeleteRabbitMQVirtualHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRabbitMQVirtualHost", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRabbitMQVirtualHostResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1130,6 +1245,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRabbitMQUser(self, request):
+        """This API is used to query the list of TDMQ for RabbitMQ users.
+
+        :param request: Request instance for DescribeRabbitMQUser.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQUserRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRabbitMQUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRabbitMQUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRabbitMQVipInstances(self, request):
         """This API is used to query the list of the purchased TDMQ for RabbitMQ exclusive instances.
 
@@ -1144,6 +1282,52 @@ class TdmqClient(AbstractClient):
             body = self.call("DescribeRabbitMQVipInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRabbitMQVipInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRabbitMQVirtualHost(self, request):
+        """This API is used to query the list of TDMQ for RabbitMQ vhosts.
+
+        :param request: Request instance for DescribeRabbitMQVirtualHost.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQVirtualHostRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQVirtualHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRabbitMQVirtualHost", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRabbitMQVirtualHostResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRabbitMQVirtualHostList(self, request):
+        """This API is used to query the list of TDMQ for RabbitMQ exclusive vhosts.
+
+        :param request: Request instance for DescribeRabbitMQVirtualHostList.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQVirtualHostListRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRabbitMQVirtualHostListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRabbitMQVirtualHostList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRabbitMQVirtualHostListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1213,6 +1397,29 @@ class TdmqClient(AbstractClient):
             body = self.call("DescribeRocketMQGroups", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRocketMQGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRocketMQMsg(self, request):
+        """This API is used to query the TDMQ for RocketMQ message details.
+
+        :param request: Request instance for DescribeRocketMQMsg.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQMsgRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.DescribeRocketMQMsgResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRocketMQMsg", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRocketMQMsgResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1521,6 +1728,52 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyRabbitMQUser(self, request):
+        """This API is used to modify a TDMQ for RabbitMQ user.
+
+        :param request: Request instance for ModifyRabbitMQUser.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRabbitMQUserRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyRabbitMQUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRabbitMQUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRabbitMQUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRabbitMQVirtualHost(self, request):
+        """This API is used to modify a TDMQ for RabbitMQ vhost.
+
+        :param request: Request instance for ModifyRabbitMQVirtualHost.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRabbitMQVirtualHostRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyRabbitMQVirtualHostResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRabbitMQVirtualHost", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRabbitMQVirtualHostResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyRocketMQCluster(self, request):
         """This API is used to update a RocketMQ cluster.
 
@@ -1558,6 +1811,29 @@ class TdmqClient(AbstractClient):
             body = self.call("ModifyRocketMQGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyRocketMQGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRocketMQInstanceSpec(self, request):
+        """This API is used to modify the configurations of a TDMQ for RocketMQ exclusive instance, including the upgrade of the instance specification, node count, and storage, and the downgrade of the instance specification. After you call this API to place the order and make payments, the configuration modification will be in progress. You can query whether the modification has been completed through the `DescribeRocketMQVipInstances` API`.
+
+        :param request: Request instance for ModifyRocketMQInstanceSpec.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQInstanceSpecRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.ModifyRocketMQInstanceSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRocketMQInstanceSpec", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRocketMQInstanceSpecResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1842,7 +2118,8 @@ class TdmqClient(AbstractClient):
 
 
     def SendMessages(self, request):
-        """This API is used to send one message.
+        """This API is used to send a single message.
+        The message cannot be sent to a persistent topic.
 
         :param request: Request instance for SendMessages.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.SendMessagesRequest`
@@ -1878,6 +2155,29 @@ class TdmqClient(AbstractClient):
             body = self.call("SendMsg", params, headers=headers)
             response = json.loads(body)
             model = models.SendMsgResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SendRocketMQMessage(self, request):
+        """This document is used to send a TDMQ for RocketMQ message.
+
+        :param request: Request instance for SendRocketMQMessage.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.SendRocketMQMessageRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.SendRocketMQMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SendRocketMQMessage", params, headers=headers)
+            response = json.loads(body)
+            model = models.SendRocketMQMessageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

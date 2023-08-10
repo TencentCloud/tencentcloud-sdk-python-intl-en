@@ -1973,7 +1973,7 @@ class CreateCmqQueueRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QueueName: Queue name, which must be unique under the same account in the same region. It can contain up to 64 letters, digits, and hyphens and must begin with a letter.
+        :param _QueueName: Queue name, which is unique under the same account in a single region. It is a string of up to 64 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
         :type QueueName: str
         :param _MaxMsgHeapNum: Maximum number of heaped messages. The value range is 1,000,000–10,000,000 during the beta test and can be 1,000,000–1,000,000,000 after the product is officially released. The default value is 10,000,000 during the beta test and will be 100,000,000 after the product is officially released.
         :type MaxMsgHeapNum: int
@@ -2539,12 +2539,15 @@ class CreateEnvironmentRequest(AbstractModel):
         :type ClusterId: str
         :param _RetentionPolicy: Message retention policy
         :type RetentionPolicy: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
+        :param _AutoSubscriptionCreation: Whether to enable "Auto-Create Subscription"
+        :type AutoSubscriptionCreation: bool
         """
         self._EnvironmentId = None
         self._MsgTTL = None
         self._Remark = None
         self._ClusterId = None
         self._RetentionPolicy = None
+        self._AutoSubscriptionCreation = None
 
     @property
     def EnvironmentId(self):
@@ -2586,6 +2589,14 @@ class CreateEnvironmentRequest(AbstractModel):
     def RetentionPolicy(self, RetentionPolicy):
         self._RetentionPolicy = RetentionPolicy
 
+    @property
+    def AutoSubscriptionCreation(self):
+        return self._AutoSubscriptionCreation
+
+    @AutoSubscriptionCreation.setter
+    def AutoSubscriptionCreation(self, AutoSubscriptionCreation):
+        self._AutoSubscriptionCreation = AutoSubscriptionCreation
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -2595,6 +2606,7 @@ class CreateEnvironmentRequest(AbstractModel):
         if params.get("RetentionPolicy") is not None:
             self._RetentionPolicy = RetentionPolicy()
             self._RetentionPolicy._deserialize(params.get("RetentionPolicy"))
+        self._AutoSubscriptionCreation = params.get("AutoSubscriptionCreation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2770,6 +2782,149 @@ class CreateEnvironmentRoleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateRabbitMQUserRequest(AbstractModel):
+    """CreateRabbitMQUser request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param _User: Username, which is used for login.
+        :type User: str
+        :param _Password: Password, which is used for login.
+        :type Password: str
+        :param _Description: Description
+        :type Description: str
+        :param _Tags: User tag, which defines a user's permission scope for accessing RabbitMQ Managementu200d.
+Valid values: `management` (Common console user), monitoring` (Console admin user), other values: Non-console user.
+        :type Tags: list of str
+        :param _MaxConnections: The maximum number of connections for the user. If this parameter is left empty, there's no limit for the number.
+        :type MaxConnections: int
+        :param _MaxChannels: The maximum number of channels for the user. If this parameter is left empty, there's no limit for the number.
+        :type MaxChannels: int
+        """
+        self._InstanceId = None
+        self._User = None
+        self._Password = None
+        self._Description = None
+        self._Tags = None
+        self._MaxConnections = None
+        self._MaxChannels = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def MaxConnections(self):
+        return self._MaxConnections
+
+    @MaxConnections.setter
+    def MaxConnections(self, MaxConnections):
+        self._MaxConnections = MaxConnections
+
+    @property
+    def MaxChannels(self):
+        return self._MaxChannels
+
+    @MaxChannels.setter
+    def MaxChannels(self, MaxChannels):
+        self._MaxChannels = MaxChannels
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        self._Description = params.get("Description")
+        self._Tags = params.get("Tags")
+        self._MaxConnections = params.get("MaxConnections")
+        self._MaxChannels = params.get("MaxChannels")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRabbitMQUserResponse(AbstractModel):
+    """CreateRabbitMQUser response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _User: Username, which is used for login.
+        :type User: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._User = None
+        self._RequestId = None
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._User = params.get("User")
         self._RequestId = params.get("RequestId")
 
 
@@ -2962,6 +3117,112 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._TranId = params.get("TranId")
         self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateRabbitMQVirtualHostRequest(AbstractModel):
+    """CreateRabbitMQVirtualHost request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param _VirtualHost: Vhost name
+        :type VirtualHost: str
+        :param _Description: Description
+        :type Description: str
+        :param _TraceFlag: Message trace flag. Valid values: `true` (Enabled), `false` (Disabled, which is the default value).
+        :type TraceFlag: bool
+        """
+        self._InstanceId = None
+        self._VirtualHost = None
+        self._Description = None
+        self._TraceFlag = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def TraceFlag(self):
+        return self._TraceFlag
+
+    @TraceFlag.setter
+    def TraceFlag(self, TraceFlag):
+        self._TraceFlag = TraceFlag
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VirtualHost = params.get("VirtualHost")
+        self._Description = params.get("Description")
+        self._TraceFlag = params.get("TraceFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRabbitMQVirtualHostResponse(AbstractModel):
+    """CreateRabbitMQVirtualHost response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VirtualHost: Vhost name
+        :type VirtualHost: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._VirtualHost = None
+        self._RequestId = None
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VirtualHost = params.get("VirtualHost")
         self._RequestId = params.get("RequestId")
 
 
@@ -3200,9 +3461,9 @@ class CreateRocketMQNamespaceRequest(AbstractModel):
         :type ClusterId: str
         :param _NamespaceId: Namespace name, which can contain 3–64 letters, digits, hyphens, and underscores
         :type NamespaceId: str
-        :param _Ttl: Retention time of unconsumed messages in milliseconds. Value range: 60 seconds–15 days
+        :param _Ttl: This parameter is disused.
         :type Ttl: int
-        :param _RetentionTime: Retention time of persisted messages in milliseconds
+        :param _RetentionTime: This parameter is disused.
         :type RetentionTime: int
         :param _Remark: Remarks (up to 128 characters)
         :type Remark: str
@@ -3484,12 +3745,16 @@ class CreateRoleResponse(AbstractModel):
         :param _Remark: Remarks
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Remark: str
+        :param _EnvironmentRoleSets: Namespaces that are bound in batches
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type EnvironmentRoleSets: list of EnvironmentRoleSet
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RoleName = None
         self._Token = None
         self._Remark = None
+        self._EnvironmentRoleSets = None
         self._RequestId = None
 
     @property
@@ -3517,6 +3782,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._Remark = Remark
 
     @property
+    def EnvironmentRoleSets(self):
+        return self._EnvironmentRoleSets
+
+    @EnvironmentRoleSets.setter
+    def EnvironmentRoleSets(self, EnvironmentRoleSets):
+        self._EnvironmentRoleSets = EnvironmentRoleSets
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3529,6 +3802,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._RoleName = params.get("RoleName")
         self._Token = params.get("Token")
         self._Remark = params.get("Remark")
+        if params.get("EnvironmentRoleSets") is not None:
+            self._EnvironmentRoleSets = []
+            for item in params.get("EnvironmentRoleSets"):
+                obj = EnvironmentRoleSet()
+                obj._deserialize(item)
+                self._EnvironmentRoleSets.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -4308,6 +4587,230 @@ class DeleteEnvironmentsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._EnvironmentIds = params.get("EnvironmentIds")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRabbitMQUserRequest(AbstractModel):
+    """DeleteRabbitMQUser request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param _User: Username, which is used for login.
+        :type User: str
+        """
+        self._InstanceId = None
+        self._User = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._User = params.get("User")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRabbitMQUserResponse(AbstractModel):
+    """DeleteRabbitMQUser response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRabbitMQVipInstanceRequest(AbstractModel):
+    """DeleteRabbitMQVipInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRabbitMQVipInstanceResponse(AbstractModel):
+    """DeleteRabbitMQVipInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TranId: Order ID
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type TranId: str
+        :param _InstanceId: Instance ID
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TranId = None
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def TranId(self):
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TranId = params.get("TranId")
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRabbitMQVirtualHostRequest(AbstractModel):
+    """DeleteRabbitMQVirtualHost request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param _VirtualHost: Vhost name
+        :type VirtualHost: str
+        """
+        self._InstanceId = None
+        self._VirtualHost = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VirtualHost = params.get("VirtualHost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRabbitMQVirtualHostResponse(AbstractModel):
+    """DeleteRabbitMQVirtualHost response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -7154,6 +7657,153 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRabbitMQUserRequest(AbstractModel):
+    """DescribeRabbitMQUser request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param _SearchUser: Username search by prefix or suffix
+        :type SearchUser: str
+        :param _Offset: Pagination offset
+        :type Offset: int
+        :param _Limit: Pagination limit
+        :type Limit: int
+        :param _User: Username, which is queried by exact match.
+        :type User: str
+        :param _Tags: User tag, which is used to filter users.
+        :type Tags: list of str
+        """
+        self._InstanceId = None
+        self._SearchUser = None
+        self._Offset = None
+        self._Limit = None
+        self._User = None
+        self._Tags = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SearchUser(self):
+        return self._SearchUser
+
+    @SearchUser.setter
+    def SearchUser(self, SearchUser):
+        self._SearchUser = SearchUser
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._SearchUser = params.get("SearchUser")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._User = params.get("User")
+        self._Tags = params.get("Tags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRabbitMQUserResponse(AbstractModel):
+    """DescribeRabbitMQUser response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Returned number of users
+        :type TotalCount: int
+        :param _RabbitMQUserList: The list of the created TDMQ for RabbitMQ users
+        :type RabbitMQUserList: list of RabbitMQUser
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RabbitMQUserList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RabbitMQUserList(self):
+        return self._RabbitMQUserList
+
+    @RabbitMQUserList.setter
+    def RabbitMQUserList(self, RabbitMQUserList):
+        self._RabbitMQUserList = RabbitMQUserList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RabbitMQUserList") is not None:
+            self._RabbitMQUserList = []
+            for item in params.get("RabbitMQUserList"):
+                obj = RabbitMQUser()
+                obj._deserialize(item)
+                self._RabbitMQUserList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRabbitMQVipInstancesRequest(AbstractModel):
     """DescribeRabbitMQVipInstances request structure.
 
@@ -7267,6 +7917,279 @@ class DescribeRabbitMQVipInstancesResponse(AbstractModel):
                 obj = RabbitMQVipInstance()
                 obj._deserialize(item)
                 self._Instances.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRabbitMQVirtualHostListRequest(AbstractModel):
+    """DescribeRabbitMQVirtualHostList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: A default parameter that won’t be used
+        :type InstanceId: str
+        :param _Offset: Offset
+        :type Offset: int
+        :param _Limit: The maximum number of entries per page
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRabbitMQVirtualHostListResponse(AbstractModel):
+    """DescribeRabbitMQVirtualHostList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: The number of clusters
+        :type TotalCount: int
+        :param _VirtualHostList: Cluster list
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type VirtualHostList: list of RabbitMQPrivateVirtualHost
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._VirtualHostList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def VirtualHostList(self):
+        return self._VirtualHostList
+
+    @VirtualHostList.setter
+    def VirtualHostList(self, VirtualHostList):
+        self._VirtualHostList = VirtualHostList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("VirtualHostList") is not None:
+            self._VirtualHostList = []
+            for item in params.get("VirtualHostList"):
+                obj = RabbitMQPrivateVirtualHost()
+                obj._deserialize(item)
+                self._VirtualHostList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRabbitMQVirtualHostRequest(AbstractModel):
+    """DescribeRabbitMQVirtualHost request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param _VirtualHost: Vhost name. If this parameter is not specified, all will be queried by default.
+        :type VirtualHost: str
+        :param _Offset: Pagination offset
+        :type Offset: int
+        :param _Limit: Pagination limit
+        :type Limit: int
+        :param _Filters: Fuzzy query by vhost name
+        :type Filters: :class:`tencentcloud.tdmq.v20200217.models.Filter`
+        :param _SortElement: 
+        :type SortElement: str
+        :param _SortOrder: 
+        :type SortOrder: str
+        """
+        self._InstanceId = None
+        self._VirtualHost = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._SortElement = None
+        self._SortOrder = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortElement(self):
+        return self._SortElement
+
+    @SortElement.setter
+    def SortElement(self, SortElement):
+        self._SortElement = SortElement
+
+    @property
+    def SortOrder(self):
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VirtualHost = params.get("VirtualHost")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = Filter()
+            self._Filters._deserialize(params.get("Filters"))
+        self._SortElement = params.get("SortElement")
+        self._SortOrder = params.get("SortOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRabbitMQVirtualHostResponse(AbstractModel):
+    """DescribeRabbitMQVirtualHost response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Returned number of vhosts
+        :type TotalCount: int
+        :param _VirtualHostList: List of vhost details
+        :type VirtualHostList: list of RabbitMQVirtualHostInfo
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._VirtualHostList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def VirtualHostList(self):
+        return self._VirtualHostList
+
+    @VirtualHostList.setter
+    def VirtualHostList(self, VirtualHostList):
+        self._VirtualHostList = VirtualHostList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("VirtualHostList") is not None:
+            self._VirtualHostList = []
+            for item in params.get("VirtualHostList"):
+                obj = RabbitMQVirtualHostInfo()
+                obj._deserialize(item)
+                self._VirtualHostList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7728,6 +8651,215 @@ class DescribeRocketMQGroupsResponse(AbstractModel):
                 obj = RocketMQGroup()
                 obj._deserialize(item)
                 self._Groups.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRocketMQMsgRequest(AbstractModel):
+    """DescribeRocketMQMsg request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _EnvironmentId: Namespace ID
+        :type EnvironmentId: str
+        :param _TopicName: Topic name. Pass in the group ID when querying a dead letter queue.
+        :type TopicName: str
+        :param _MsgId: Message ID
+        :type MsgId: str
+        :param _PulsarMsgId: ID of a TDMQ for Pulsar message
+        :type PulsarMsgId: str
+        :param _QueryDlqMsg: The value of this parameter is `true` when you query a dead letter queue. It only applies to TDMQ for RocketMQ.
+        :type QueryDlqMsg: bool
+        """
+        self._ClusterId = None
+        self._EnvironmentId = None
+        self._TopicName = None
+        self._MsgId = None
+        self._PulsarMsgId = None
+        self._QueryDlqMsg = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def MsgId(self):
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def PulsarMsgId(self):
+        return self._PulsarMsgId
+
+    @PulsarMsgId.setter
+    def PulsarMsgId(self, PulsarMsgId):
+        self._PulsarMsgId = PulsarMsgId
+
+    @property
+    def QueryDlqMsg(self):
+        return self._QueryDlqMsg
+
+    @QueryDlqMsg.setter
+    def QueryDlqMsg(self, QueryDlqMsg):
+        self._QueryDlqMsg = QueryDlqMsg
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._TopicName = params.get("TopicName")
+        self._MsgId = params.get("MsgId")
+        self._PulsarMsgId = params.get("PulsarMsgId")
+        self._QueryDlqMsg = params.get("QueryDlqMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRocketMQMsgResponse(AbstractModel):
+    """DescribeRocketMQMsg response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Body: Message body
+        :type Body: str
+        :param _Properties: Details parameter
+        :type Properties: str
+        :param _ProduceTime: Production time
+        :type ProduceTime: str
+        :param _MsgId: Message ID
+        :type MsgId: str
+        :param _ProducerAddr: Producer address
+        :type ProducerAddr: str
+        :param _MessageTracks: Consumption details of a consumer group
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type MessageTracks: list of RocketMQMessageTrack
+        :param _ShowTopicName: Topic name displayed on the details page
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type ShowTopicName: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Body = None
+        self._Properties = None
+        self._ProduceTime = None
+        self._MsgId = None
+        self._ProducerAddr = None
+        self._MessageTracks = None
+        self._ShowTopicName = None
+        self._RequestId = None
+
+    @property
+    def Body(self):
+        return self._Body
+
+    @Body.setter
+    def Body(self, Body):
+        self._Body = Body
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def ProduceTime(self):
+        return self._ProduceTime
+
+    @ProduceTime.setter
+    def ProduceTime(self, ProduceTime):
+        self._ProduceTime = ProduceTime
+
+    @property
+    def MsgId(self):
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def ProducerAddr(self):
+        return self._ProducerAddr
+
+    @ProducerAddr.setter
+    def ProducerAddr(self, ProducerAddr):
+        self._ProducerAddr = ProducerAddr
+
+    @property
+    def MessageTracks(self):
+        return self._MessageTracks
+
+    @MessageTracks.setter
+    def MessageTracks(self, MessageTracks):
+        self._MessageTracks = MessageTracks
+
+    @property
+    def ShowTopicName(self):
+        return self._ShowTopicName
+
+    @ShowTopicName.setter
+    def ShowTopicName(self, ShowTopicName):
+        self._ShowTopicName = ShowTopicName
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Body = params.get("Body")
+        self._Properties = params.get("Properties")
+        self._ProduceTime = params.get("ProduceTime")
+        self._MsgId = params.get("MsgId")
+        self._ProducerAddr = params.get("ProducerAddr")
+        if params.get("MessageTracks") is not None:
+            self._MessageTracks = []
+            for item in params.get("MessageTracks"):
+                obj = RocketMQMessageTrack()
+                obj._deserialize(item)
+                self._MessageTracks.append(obj)
+        self._ShowTopicName = params.get("ShowTopicName")
         self._RequestId = params.get("RequestId")
 
 
@@ -8722,6 +9854,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _RetentionPolicy: Message retention policy.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RetentionPolicy: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
+        :param _AutoSubscriptionCreation: Whether to enable "Auto-Create Subscription"
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type AutoSubscriptionCreation: bool
         """
         self._EnvironmentId = None
         self._Remark = None
@@ -8732,6 +9867,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._NamespaceName = None
         self._TopicNum = None
         self._RetentionPolicy = None
+        self._AutoSubscriptionCreation = None
 
     @property
     def EnvironmentId(self):
@@ -8805,6 +9941,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def RetentionPolicy(self, RetentionPolicy):
         self._RetentionPolicy = RetentionPolicy
 
+    @property
+    def AutoSubscriptionCreation(self):
+        return self._AutoSubscriptionCreation
+
+    @AutoSubscriptionCreation.setter
+    def AutoSubscriptionCreation(self, AutoSubscriptionCreation):
+        self._AutoSubscriptionCreation = AutoSubscriptionCreation
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -8818,6 +9962,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("RetentionPolicy") is not None:
             self._RetentionPolicy = RetentionPolicy()
             self._RetentionPolicy._deserialize(params.get("RetentionPolicy"))
+        self._AutoSubscriptionCreation = params.get("AutoSubscriptionCreation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8911,6 +10056,54 @@ class EnvironmentRole(AbstractModel):
         self._RoleDescribe = params.get("RoleDescribe")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnvironmentRoleSet(AbstractModel):
+    """Relationship between the namespaces that are bound in batches and role permissions
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvironmentId: The IDs of the bound namespaces cannot be delicate and the namespaces must contain resources
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type EnvironmentId: str
+        :param _Permissions: Permissions to be bound to a namespace. Enumerated values: `consume`, `produce`, and `consume, produce`. This parameter cannot be left empty.
+
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type Permissions: list of str
+        """
+        self._EnvironmentId = None
+        self._Permissions = None
+
+    @property
+    def EnvironmentId(self):
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def Permissions(self):
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+
+    def _deserialize(self, params):
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._Permissions = params.get("Permissions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9667,12 +10860,15 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         :type ClusterId: str
         :param _RetentionPolicy: Message retention policy
         :type RetentionPolicy: :class:`tencentcloud.tdmq.v20200217.models.RetentionPolicy`
+        :param _AutoSubscriptionCreation: Whether to enable "Auto-Create Subscription"
+        :type AutoSubscriptionCreation: bool
         """
         self._EnvironmentId = None
         self._MsgTTL = None
         self._Remark = None
         self._ClusterId = None
         self._RetentionPolicy = None
+        self._AutoSubscriptionCreation = None
 
     @property
     def EnvironmentId(self):
@@ -9714,6 +10910,14 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
     def RetentionPolicy(self, RetentionPolicy):
         self._RetentionPolicy = RetentionPolicy
 
+    @property
+    def AutoSubscriptionCreation(self):
+        return self._AutoSubscriptionCreation
+
+    @AutoSubscriptionCreation.setter
+    def AutoSubscriptionCreation(self, AutoSubscriptionCreation):
+        self._AutoSubscriptionCreation = AutoSubscriptionCreation
+
 
     def _deserialize(self, params):
         self._EnvironmentId = params.get("EnvironmentId")
@@ -9723,6 +10927,7 @@ class ModifyEnvironmentAttributesRequest(AbstractModel):
         if params.get("RetentionPolicy") is not None:
             self._RetentionPolicy = RetentionPolicy()
             self._RetentionPolicy._deserialize(params.get("RetentionPolicy"))
+        self._AutoSubscriptionCreation = params.get("AutoSubscriptionCreation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9902,6 +11107,230 @@ class ModifyEnvironmentRoleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRabbitMQUserRequest(AbstractModel):
+    """ModifyRabbitMQUser request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param _User: Username, which is used for login.
+        :type User: str
+        :param _Password: Password, which is used for login.
+        :type Password: str
+        :param _Description: Description. If this parameter is not passed in, it won't be modified.
+        :type Description: str
+        :param _Tags: User tag, which defines a user's permission scope for accessing RabbitMQ Management. If this parameter is not passed in, it won't be modified.
+        :type Tags: list of str
+        :param _MaxConnections: The maximum number of connections for the user. If this parameter is not passed in, it won't be modified.
+        :type MaxConnections: int
+        :param _MaxChannels: The maximum number of channels for the user. If this parameter is not passed in, it won't be modified.
+        :type MaxChannels: int
+        """
+        self._InstanceId = None
+        self._User = None
+        self._Password = None
+        self._Description = None
+        self._Tags = None
+        self._MaxConnections = None
+        self._MaxChannels = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def MaxConnections(self):
+        return self._MaxConnections
+
+    @MaxConnections.setter
+    def MaxConnections(self, MaxConnections):
+        self._MaxConnections = MaxConnections
+
+    @property
+    def MaxChannels(self):
+        return self._MaxChannels
+
+    @MaxChannels.setter
+    def MaxChannels(self, MaxChannels):
+        self._MaxChannels = MaxChannels
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        self._Description = params.get("Description")
+        self._Tags = params.get("Tags")
+        self._MaxConnections = params.get("MaxConnections")
+        self._MaxChannels = params.get("MaxChannels")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRabbitMQUserResponse(AbstractModel):
+    """ModifyRabbitMQUser response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyRabbitMQVirtualHostRequest(AbstractModel):
+    """ModifyRabbitMQVirtualHost request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param _VirtualHost: Vhost name
+        :type VirtualHost: str
+        :param _Description: Description
+        :type Description: str
+        :param _TraceFlag: Message trace flag. Valid values: `true` (Enabled), `false` (Disabled).
+        :type TraceFlag: bool
+        """
+        self._InstanceId = None
+        self._VirtualHost = None
+        self._Description = None
+        self._TraceFlag = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def TraceFlag(self):
+        return self._TraceFlag
+
+    @TraceFlag.setter
+    def TraceFlag(self, TraceFlag):
+        self._TraceFlag = TraceFlag
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VirtualHost = params.get("VirtualHost")
+        self._Description = params.get("Description")
+        self._TraceFlag = params.get("TraceFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRabbitMQVirtualHostResponse(AbstractModel):
+    """ModifyRabbitMQVirtualHost response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRocketMQClusterRequest(AbstractModel):
     """ModifyRocketMQCluster request structure.
 
@@ -9915,10 +11344,13 @@ class ModifyRocketMQClusterRequest(AbstractModel):
         :type ClusterName: str
         :param _Remark: Remarks (up to 128 characters)
         :type Remark: str
+        :param _PublicAccessEnabled: Whether to enable the HTTP access over the public network
+        :type PublicAccessEnabled: bool
         """
         self._ClusterId = None
         self._ClusterName = None
         self._Remark = None
+        self._PublicAccessEnabled = None
 
     @property
     def ClusterId(self):
@@ -9944,11 +11376,20 @@ class ModifyRocketMQClusterRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def PublicAccessEnabled(self):
+        return self._PublicAccessEnabled
+
+    @PublicAccessEnabled.setter
+    def PublicAccessEnabled(self, PublicAccessEnabled):
+        self._PublicAccessEnabled = PublicAccessEnabled
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._ClusterName = params.get("ClusterName")
         self._Remark = params.get("Remark")
+        self._PublicAccessEnabled = params.get("PublicAccessEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10114,6 +11555,117 @@ class ModifyRocketMQGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRocketMQInstanceSpecRequest(AbstractModel):
+    """ModifyRocketMQInstanceSpec request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ID of the exclusive instance
+        :type InstanceId: str
+        :param _Specification: Instance specification.
+Valid values: `rocket-vip-basic-1` (Basic),
+`rocket-vip-basic-2` (Standard),
+`rocket-vip-basic-3` (Advanced I),
+`rocket-vip-basic-4` (Advanced II).
+        :type Specification: str
+        :param _NodeCount: Node count
+        :type NodeCount: int
+        :param _StorageSize: Storage space in GB
+        :type StorageSize: int
+        """
+        self._InstanceId = None
+        self._Specification = None
+        self._NodeCount = None
+        self._StorageSize = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Specification(self):
+        return self._Specification
+
+    @Specification.setter
+    def Specification(self, Specification):
+        self._Specification = Specification
+
+    @property
+    def NodeCount(self):
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+    @property
+    def StorageSize(self):
+        return self._StorageSize
+
+    @StorageSize.setter
+    def StorageSize(self, StorageSize):
+        self._StorageSize = StorageSize
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Specification = params.get("Specification")
+        self._NodeCount = params.get("NodeCount")
+        self._StorageSize = params.get("StorageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRocketMQInstanceSpecResponse(AbstractModel):
+    """ModifyRocketMQInstanceSpec response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: Order ID
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type OrderId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._OrderId = None
+        self._RequestId = None
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRocketMQNamespaceRequest(AbstractModel):
     """ModifyRocketMQNamespace request structure.
 
@@ -10125,18 +11677,21 @@ class ModifyRocketMQNamespaceRequest(AbstractModel):
         :type ClusterId: str
         :param _NamespaceId: Namespace name, which can contain 3–64 letters, digits, hyphens, and underscores
         :type NamespaceId: str
-        :param _Ttl: Retention time of unconsumed messages in milliseconds. Value range: 60 seconds–15 days
+        :param _Ttl: This parameter is disused.
         :type Ttl: int
-        :param _RetentionTime: Retention time for persisted messages in milliseconds
+        :param _RetentionTime: This parameter is disused.
         :type RetentionTime: int
         :param _Remark: Remarks (up to 128 characters)
         :type Remark: str
+        :param _PublicAccessEnabled: Whether to enable the public network access
+        :type PublicAccessEnabled: bool
         """
         self._ClusterId = None
         self._NamespaceId = None
         self._Ttl = None
         self._RetentionTime = None
         self._Remark = None
+        self._PublicAccessEnabled = None
 
     @property
     def ClusterId(self):
@@ -10178,6 +11733,14 @@ class ModifyRocketMQNamespaceRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def PublicAccessEnabled(self):
+        return self._PublicAccessEnabled
+
+    @PublicAccessEnabled.setter
+    def PublicAccessEnabled(self, PublicAccessEnabled):
+        self._PublicAccessEnabled = PublicAccessEnabled
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -10185,6 +11748,7 @@ class ModifyRocketMQNamespaceRequest(AbstractModel):
         self._Ttl = params.get("Ttl")
         self._RetentionTime = params.get("RetentionTime")
         self._Remark = params.get("Remark")
+        self._PublicAccessEnabled = params.get("PublicAccessEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11106,6 +12670,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type NodeDistribution: list of InstanceNodeDistribution
         :param _MaxStorage: Max storage capacity in MB
         :type MaxStorage: int
+        :param _CanEditRoute: Whether the route can be modified
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type CanEditRoute: bool
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -11115,6 +12682,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Version = None
         self._NodeDistribution = None
         self._MaxStorage = None
+        self._CanEditRoute = None
 
     @property
     def ClusterId(self):
@@ -11180,6 +12748,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def MaxStorage(self, MaxStorage):
         self._MaxStorage = MaxStorage
 
+    @property
+    def CanEditRoute(self):
+        return self._CanEditRoute
+
+    @CanEditRoute.setter
+    def CanEditRoute(self, CanEditRoute):
+        self._CanEditRoute = CanEditRoute
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -11195,6 +12771,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._NodeDistribution.append(obj)
         self._MaxStorage = params.get("MaxStorage")
+        self._CanEditRoute = params.get("CanEditRoute")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11615,6 +13192,172 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class RabbitMQPrivateVirtualHost(AbstractModel):
+    """TDMQ for RabbitMQ exclusive vhost
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VirtualHostName: Vhost name
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type VirtualHostName: str
+        :param _Description: Vhost description
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type Description: str
+        """
+        self._VirtualHostName = None
+        self._Description = None
+
+    @property
+    def VirtualHostName(self):
+        return self._VirtualHostName
+
+    @VirtualHostName.setter
+    def VirtualHostName(self, VirtualHostName):
+        self._VirtualHostName = VirtualHostName
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._VirtualHostName = params.get("VirtualHostName")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQUser(AbstractModel):
+    """TDMQ for RabbitMQ user entity details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param _User: Username, which is used for login.
+        :type User: str
+        :param _Password: Password, which is used for login.
+        :type Password: str
+        :param _Description: User description
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type Description: str
+        :param _Tags: User tag, which defines a user's permission scope for accessing RabbitMQ Managementu200d.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of str
+        :param _CreateTime: User creation time
+        :type CreateTime: str
+        :param _ModifyTime: Last user modification time
+        :type ModifyTime: str
+        :param _Type: User type. Valid values: `System` (Created by system), `User` (Created by user).
+        :type Type: str
+        """
+        self._InstanceId = None
+        self._User = None
+        self._Password = None
+        self._Description = None
+        self._Tags = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._Type = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        self._Description = params.get("Description")
+        self._Tags = params.get("Tags")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RabbitMQVipInstance(AbstractModel):
     """TDMQ for RabbitMQ exclusive instance information
 
@@ -11655,6 +13398,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _ExceptionInformation: Cluster exception
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExceptionInformation: str
+        :param _ClusterStatus: Instance status. Valid values: `0` (Creating), `1` (Normal), `2` (Isolated), `3` (Terminated), `4` (Abnormal), `5` (Delivery failed).
+This parameter is used to display the instance status additionally and distinguish from the `Status` parameter.
+        :type ClusterStatus: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -11671,6 +13417,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Remark = None
         self._SpecName = None
         self._ExceptionInformation = None
+        self._ClusterStatus = None
 
     @property
     def InstanceId(self):
@@ -11792,6 +13539,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ExceptionInformation(self, ExceptionInformation):
         self._ExceptionInformation = ExceptionInformation
 
+    @property
+    def ClusterStatus(self):
+        return self._ClusterStatus
+
+    @ClusterStatus.setter
+    def ClusterStatus(self, ClusterStatus):
+        self._ClusterStatus = ClusterStatus
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -11809,6 +13564,248 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Remark = params.get("Remark")
         self._SpecName = params.get("SpecName")
         self._ExceptionInformation = params.get("ExceptionInformation")
+        self._ClusterStatus = params.get("ClusterStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQVirtualHostInfo(AbstractModel):
+    """TDMQ for RabbitMQ vhost details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param _VirtualHost: Vhost name
+        :type VirtualHost: str
+        :param _Description: Vhost description
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type Description: str
+        :param _Tags: Vhost tag
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of str
+        :param _CreateTime: Creation time
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param _ModifyTime: Modification time
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type ModifyTime: str
+        :param _VirtualHostStatistics: Statistics of vhost overview
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type VirtualHostStatistics: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQVirtualHostStatistics`
+        :param _Status: 
+        :type Status: str
+        :param _MessageHeapCount: 
+        :type MessageHeapCount: int
+        :param _MessageRateIn: 
+        :type MessageRateIn: float
+        :param _MessageRateOut: 
+        :type MessageRateOut: float
+        """
+        self._InstanceId = None
+        self._VirtualHost = None
+        self._Description = None
+        self._Tags = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._VirtualHostStatistics = None
+        self._Status = None
+        self._MessageHeapCount = None
+        self._MessageRateIn = None
+        self._MessageRateOut = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def VirtualHost(self):
+        return self._VirtualHost
+
+    @VirtualHost.setter
+    def VirtualHost(self, VirtualHost):
+        self._VirtualHost = VirtualHost
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def VirtualHostStatistics(self):
+        return self._VirtualHostStatistics
+
+    @VirtualHostStatistics.setter
+    def VirtualHostStatistics(self, VirtualHostStatistics):
+        self._VirtualHostStatistics = VirtualHostStatistics
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MessageHeapCount(self):
+        return self._MessageHeapCount
+
+    @MessageHeapCount.setter
+    def MessageHeapCount(self, MessageHeapCount):
+        self._MessageHeapCount = MessageHeapCount
+
+    @property
+    def MessageRateIn(self):
+        return self._MessageRateIn
+
+    @MessageRateIn.setter
+    def MessageRateIn(self, MessageRateIn):
+        self._MessageRateIn = MessageRateIn
+
+    @property
+    def MessageRateOut(self):
+        return self._MessageRateOut
+
+    @MessageRateOut.setter
+    def MessageRateOut(self, MessageRateOut):
+        self._MessageRateOut = MessageRateOut
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._VirtualHost = params.get("VirtualHost")
+        self._Description = params.get("Description")
+        self._Tags = params.get("Tags")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        if params.get("VirtualHostStatistics") is not None:
+            self._VirtualHostStatistics = RabbitMQVirtualHostStatistics()
+            self._VirtualHostStatistics._deserialize(params.get("VirtualHostStatistics"))
+        self._Status = params.get("Status")
+        self._MessageHeapCount = params.get("MessageHeapCount")
+        self._MessageRateIn = params.get("MessageRateIn")
+        self._MessageRateOut = params.get("MessageRateOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RabbitMQVirtualHostStatistics(AbstractModel):
+    """Statistics of vhost overview
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CurrentQueues: The number of queues in the current vhost
+        :type CurrentQueues: int
+        :param _CurrentExchanges: The number of exchanges in the current vhost
+        :type CurrentExchanges: int
+        :param _CurrentConnections: The number of connections in the current vhost
+        :type CurrentConnections: int
+        :param _CurrentChannels: The number of channels in the current vhost
+        :type CurrentChannels: int
+        :param _CurrentUsers: The number of users in the current vhost
+        :type CurrentUsers: int
+        """
+        self._CurrentQueues = None
+        self._CurrentExchanges = None
+        self._CurrentConnections = None
+        self._CurrentChannels = None
+        self._CurrentUsers = None
+
+    @property
+    def CurrentQueues(self):
+        return self._CurrentQueues
+
+    @CurrentQueues.setter
+    def CurrentQueues(self, CurrentQueues):
+        self._CurrentQueues = CurrentQueues
+
+    @property
+    def CurrentExchanges(self):
+        return self._CurrentExchanges
+
+    @CurrentExchanges.setter
+    def CurrentExchanges(self, CurrentExchanges):
+        self._CurrentExchanges = CurrentExchanges
+
+    @property
+    def CurrentConnections(self):
+        return self._CurrentConnections
+
+    @CurrentConnections.setter
+    def CurrentConnections(self, CurrentConnections):
+        self._CurrentConnections = CurrentConnections
+
+    @property
+    def CurrentChannels(self):
+        return self._CurrentChannels
+
+    @CurrentChannels.setter
+    def CurrentChannels(self, CurrentChannels):
+        self._CurrentChannels = CurrentChannels
+
+    @property
+    def CurrentUsers(self):
+        return self._CurrentUsers
+
+    @CurrentUsers.setter
+    def CurrentUsers(self, CurrentUsers):
+        self._CurrentUsers = CurrentUsers
+
+
+    def _deserialize(self, params):
+        self._CurrentQueues = params.get("CurrentQueues")
+        self._CurrentExchanges = params.get("CurrentExchanges")
+        self._CurrentConnections = params.get("CurrentConnections")
+        self._CurrentChannels = params.get("CurrentChannels")
+        self._CurrentUsers = params.get("CurrentUsers")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12639,6 +14636,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _HttpVpcEndpoint: HTTP-based VPC access address
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HttpVpcEndpoint: str
+        :param _InternalEndpoint: Internal TCP access address
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type InternalEndpoint: str
+        :param _HttpInternalEndpoint: Internal HTTP access address
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type HttpInternalEndpoint: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -12655,6 +14658,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._IsolateTime = None
         self._HttpPublicEndpoint = None
         self._HttpVpcEndpoint = None
+        self._InternalEndpoint = None
+        self._HttpInternalEndpoint = None
 
     @property
     def ClusterId(self):
@@ -12776,6 +14781,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def HttpVpcEndpoint(self, HttpVpcEndpoint):
         self._HttpVpcEndpoint = HttpVpcEndpoint
 
+    @property
+    def InternalEndpoint(self):
+        return self._InternalEndpoint
+
+    @InternalEndpoint.setter
+    def InternalEndpoint(self, InternalEndpoint):
+        self._InternalEndpoint = InternalEndpoint
+
+    @property
+    def HttpInternalEndpoint(self):
+        return self._HttpInternalEndpoint
+
+    @HttpInternalEndpoint.setter
+    def HttpInternalEndpoint(self, HttpInternalEndpoint):
+        self._HttpInternalEndpoint = HttpInternalEndpoint
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -12798,6 +14819,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._IsolateTime = params.get("IsolateTime")
         self._HttpPublicEndpoint = params.get("HttpPublicEndpoint")
         self._HttpVpcEndpoint = params.get("HttpVpcEndpoint")
+        self._InternalEndpoint = params.get("InternalEndpoint")
+        self._HttpInternalEndpoint = params.get("HttpInternalEndpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13258,6 +15281,76 @@ class RocketMQInstanceConfig(AbstractModel):
         
 
 
+class RocketMQMessageTrack(AbstractModel):
+    """TDMQ for RocketMQ message trace information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Group: Consumer group
+        :type Group: str
+        :param _ConsumeStatus: Consumption status
+        :type ConsumeStatus: str
+        :param _TrackType: Message trace type
+        :type TrackType: str
+        :param _ExceptionDesc: Exception information
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type ExceptionDesc: str
+        """
+        self._Group = None
+        self._ConsumeStatus = None
+        self._TrackType = None
+        self._ExceptionDesc = None
+
+    @property
+    def Group(self):
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def ConsumeStatus(self):
+        return self._ConsumeStatus
+
+    @ConsumeStatus.setter
+    def ConsumeStatus(self, ConsumeStatus):
+        self._ConsumeStatus = ConsumeStatus
+
+    @property
+    def TrackType(self):
+        return self._TrackType
+
+    @TrackType.setter
+    def TrackType(self, TrackType):
+        self._TrackType = TrackType
+
+    @property
+    def ExceptionDesc(self):
+        return self._ExceptionDesc
+
+    @ExceptionDesc.setter
+    def ExceptionDesc(self, ExceptionDesc):
+        self._ExceptionDesc = ExceptionDesc
+
+
+    def _deserialize(self, params):
+        self._Group = params.get("Group")
+        self._ConsumeStatus = params.get("ConsumeStatus")
+        self._TrackType = params.get("TrackType")
+        self._ExceptionDesc = params.get("ExceptionDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RocketMQNamespace(AbstractModel):
     """RocketMQ namespace information
 
@@ -13267,7 +15360,7 @@ class RocketMQNamespace(AbstractModel):
         r"""
         :param _NamespaceId: Namespace name, which can contain 3–64 letters, digits, hyphens, and underscores.
         :type NamespaceId: str
-        :param _Ttl: Retention period for unconsumed messages in milliseconds. Valid range: 60 seconds–15 days.
+        :param _Ttl: Retention period for unconsumed messages in milliseconds. Valid range: 60 seconds–15 days. This parameter is disused.
         :type Ttl: int
         :param _RetentionTime: Retention period for persistently stored messages in milliseconds.
         :type RetentionTime: int
@@ -13280,6 +15373,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _VpcEndpoint: VPC access point address.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VpcEndpoint: str
+        :param _InternalEndpoint: Internal access point address
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type InternalEndpoint: str
         """
         self._NamespaceId = None
         self._Ttl = None
@@ -13287,6 +15383,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Remark = None
         self._PublicEndpoint = None
         self._VpcEndpoint = None
+        self._InternalEndpoint = None
 
     @property
     def NamespaceId(self):
@@ -13336,6 +15433,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def VpcEndpoint(self, VpcEndpoint):
         self._VpcEndpoint = VpcEndpoint
 
+    @property
+    def InternalEndpoint(self):
+        return self._InternalEndpoint
+
+    @InternalEndpoint.setter
+    def InternalEndpoint(self, InternalEndpoint):
+        self._InternalEndpoint = InternalEndpoint
+
 
     def _deserialize(self, params):
         self._NamespaceId = params.get("NamespaceId")
@@ -13344,6 +15449,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Remark = params.get("Remark")
         self._PublicEndpoint = params.get("PublicEndpoint")
         self._VpcEndpoint = params.get("VpcEndpoint")
+        self._InternalEndpoint = params.get("InternalEndpoint")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13542,6 +15648,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Remark: str
         :param _SpecName: Instance specification ID
         :type SpecName: str
+        :param _MaxRetention: The maximum message retention period in hours
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type MaxRetention: int
+        :param _MinRetention: The minimum message retention period in hours
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type MinRetention: int
+        :param _Retention: Instance message retention period in hours
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type Retention: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -13557,6 +15672,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._PayMode = None
         self._Remark = None
         self._SpecName = None
+        self._MaxRetention = None
+        self._MinRetention = None
+        self._Retention = None
 
     @property
     def InstanceId(self):
@@ -13670,6 +15788,30 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def SpecName(self, SpecName):
         self._SpecName = SpecName
 
+    @property
+    def MaxRetention(self):
+        return self._MaxRetention
+
+    @MaxRetention.setter
+    def MaxRetention(self, MaxRetention):
+        self._MaxRetention = MaxRetention
+
+    @property
+    def MinRetention(self):
+        return self._MinRetention
+
+    @MinRetention.setter
+    def MinRetention(self, MinRetention):
+        self._MinRetention = MinRetention
+
+    @property
+    def Retention(self):
+        return self._Retention
+
+    @Retention.setter
+    def Retention(self, Retention):
+        self._Retention = Retention
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -13686,6 +15828,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._PayMode = params.get("PayMode")
         self._Remark = params.get("Remark")
         self._SpecName = params.get("SpecName")
+        self._MaxRetention = params.get("MaxRetention")
+        self._MinRetention = params.get("MinRetention")
+        self._Retention = params.get("Retention")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14299,6 +16444,149 @@ class SendMsgResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class SendRocketMQMessageRequest(AbstractModel):
+    """SendRocketMQMessage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _NamespaceId: Namespace ID
+        :type NamespaceId: str
+        :param _TopicName: Topic name
+        :type TopicName: str
+        :param _MsgBody: Message content
+        :type MsgBody: str
+        :param _MsgKey: Message key
+        :type MsgKey: str
+        :param _MsgTag: Message tag
+        :type MsgTag: str
+        """
+        self._ClusterId = None
+        self._NamespaceId = None
+        self._TopicName = None
+        self._MsgBody = None
+        self._MsgKey = None
+        self._MsgTag = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NamespaceId(self):
+        return self._NamespaceId
+
+    @NamespaceId.setter
+    def NamespaceId(self, NamespaceId):
+        self._NamespaceId = NamespaceId
+
+    @property
+    def TopicName(self):
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def MsgBody(self):
+        return self._MsgBody
+
+    @MsgBody.setter
+    def MsgBody(self, MsgBody):
+        self._MsgBody = MsgBody
+
+    @property
+    def MsgKey(self):
+        return self._MsgKey
+
+    @MsgKey.setter
+    def MsgKey(self, MsgKey):
+        self._MsgKey = MsgKey
+
+    @property
+    def MsgTag(self):
+        return self._MsgTag
+
+    @MsgTag.setter
+    def MsgTag(self, MsgTag):
+        self._MsgTag = MsgTag
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NamespaceId = params.get("NamespaceId")
+        self._TopicName = params.get("TopicName")
+        self._MsgBody = params.get("MsgBody")
+        self._MsgKey = params.get("MsgKey")
+        self._MsgTag = params.get("MsgTag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendRocketMQMessageResponse(AbstractModel):
+    """SendRocketMQMessage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Message sending result
+        :type Result: bool
+        :param _MsgId: Message ID
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type MsgId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._MsgId = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def MsgId(self):
+        return self._MsgId
+
+    @MsgId.setter
+    def MsgId(self, MsgId):
+        self._MsgId = MsgId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._MsgId = params.get("MsgId")
         self._RequestId = params.get("RequestId")
 
 
