@@ -322,92 +322,6 @@ class AddTimeWindowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class Address(AbstractModel):
-    """Address
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Vip: Address
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type Vip: str
-        :param _VPort: Port
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type VPort: int
-        :param _UniqVpcId: VPC ID
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type UniqVpcId: str
-        :param _UniqSubnet: VPC subnet ID
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type UniqSubnet: str
-        :param _Desc: Description
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type Desc: str
-        """
-        self._Vip = None
-        self._VPort = None
-        self._UniqVpcId = None
-        self._UniqSubnet = None
-        self._Desc = None
-
-    @property
-    def Vip(self):
-        return self._Vip
-
-    @Vip.setter
-    def Vip(self, Vip):
-        self._Vip = Vip
-
-    @property
-    def VPort(self):
-        return self._VPort
-
-    @VPort.setter
-    def VPort(self, VPort):
-        self._VPort = VPort
-
-    @property
-    def UniqVpcId(self):
-        return self._UniqVpcId
-
-    @UniqVpcId.setter
-    def UniqVpcId(self, UniqVpcId):
-        self._UniqVpcId = UniqVpcId
-
-    @property
-    def UniqSubnet(self):
-        return self._UniqSubnet
-
-    @UniqSubnet.setter
-    def UniqSubnet(self, UniqSubnet):
-        self._UniqSubnet = UniqSubnet
-
-    @property
-    def Desc(self):
-        return self._Desc
-
-    @Desc.setter
-    def Desc(self, Desc):
-        self._Desc = Desc
-
-
-    def _deserialize(self, params):
-        self._Vip = params.get("Vip")
-        self._VPort = params.get("VPort")
-        self._UniqVpcId = params.get("UniqVpcId")
-        self._UniqSubnet = params.get("UniqSubnet")
-        self._Desc = params.get("Desc")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class AdjustCdbProxyAddressRequest(AbstractModel):
     """AdjustCdbProxyAddress request structure.
 
@@ -810,14 +724,17 @@ class AnalyzeAuditLogsRequest(AbstractModel):
         :type EndTime: str
         :param _AggregationConditions: Sorting conditions for aggregation dimension
         :type AggregationConditions: list of AggregationCondition
-        :param _AuditLogFilter: The result set of the audit log filtered by this condition is set as the analysis Log.
+        :param _AuditLogFilter: This parameter is disused. The result set of the audit log filtered by this condition is set as the analysis log.
         :type AuditLogFilter: :class:`tencentcloud.cdb.v20170320.models.AuditLogFilter`
+        :param _LogFilter: The result set of the audit log filtered by this condition is set as the analysis Log.
+        :type LogFilter: list of InstanceAuditLogFilters
         """
         self._InstanceId = None
         self._StartTime = None
         self._EndTime = None
         self._AggregationConditions = None
         self._AuditLogFilter = None
+        self._LogFilter = None
 
     @property
     def InstanceId(self):
@@ -859,6 +776,14 @@ class AnalyzeAuditLogsRequest(AbstractModel):
     def AuditLogFilter(self, AuditLogFilter):
         self._AuditLogFilter = AuditLogFilter
 
+    @property
+    def LogFilter(self):
+        return self._LogFilter
+
+    @LogFilter.setter
+    def LogFilter(self, LogFilter):
+        self._LogFilter = LogFilter
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -873,6 +798,12 @@ class AnalyzeAuditLogsRequest(AbstractModel):
         if params.get("AuditLogFilter") is not None:
             self._AuditLogFilter = AuditLogFilter()
             self._AuditLogFilter._deserialize(params.get("AuditLogFilter"))
+        if params.get("LogFilter") is not None:
+            self._LogFilter = []
+            for item in params.get("LogFilter"):
+                obj = InstanceAuditLogFilters()
+                obj._deserialize(item)
+                self._LogFilter.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1075,6 +1006,249 @@ DB: Database name.
         self._Type = params.get("Type")
         self._Compare = params.get("Compare")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLog(AbstractModel):
+    """Audit log details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AffectRows: Number of affected rows
+        :type AffectRows: int
+        :param _ErrCode: The error code
+        :type ErrCode: int
+        :param _SqlType: 
+        :type SqlType: str
+        :param _PolicyName: Audit policy name, which will be unavailable soon.
+        :type PolicyName: str
+        :param _DBName: 
+        :type DBName: str
+        :param _Sql: 
+        :type Sql: str
+        :param _Host: Client address
+        :type Host: str
+        :param _User: Username
+        :type User: str
+        :param _ExecTime: Execution time (μs)
+        :type ExecTime: int
+        :param _Timestamp: Time
+        :type Timestamp: str
+        :param _SentRows: Number of returned rows
+        :type SentRows: int
+        :param _ThreadId: Thread ID
+        :type ThreadId: int
+        :param _CheckRows: Number of scanned rows
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type CheckRows: int
+        :param _CpuTime: CPU u200dexecution time (μs)
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type CpuTime: float
+        :param _IoWaitTime: IO wait time (μs)
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type IoWaitTime: int
+        :param _LockWaitTime: Lock wait time (μs)
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type LockWaitTime: int
+        :param _NsTime: Start time, which forms a time accurate to nanoseconds with·`timestamp`.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type NsTime: int
+        :param _TrxLivingTime: Transaction u200dduration (μs)
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type TrxLivingTime: int
+        """
+        self._AffectRows = None
+        self._ErrCode = None
+        self._SqlType = None
+        self._PolicyName = None
+        self._DBName = None
+        self._Sql = None
+        self._Host = None
+        self._User = None
+        self._ExecTime = None
+        self._Timestamp = None
+        self._SentRows = None
+        self._ThreadId = None
+        self._CheckRows = None
+        self._CpuTime = None
+        self._IoWaitTime = None
+        self._LockWaitTime = None
+        self._NsTime = None
+        self._TrxLivingTime = None
+
+    @property
+    def AffectRows(self):
+        return self._AffectRows
+
+    @AffectRows.setter
+    def AffectRows(self, AffectRows):
+        self._AffectRows = AffectRows
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def SqlType(self):
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def PolicyName(self):
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def DBName(self):
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def Sql(self):
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def ExecTime(self):
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def SentRows(self):
+        return self._SentRows
+
+    @SentRows.setter
+    def SentRows(self, SentRows):
+        self._SentRows = SentRows
+
+    @property
+    def ThreadId(self):
+        return self._ThreadId
+
+    @ThreadId.setter
+    def ThreadId(self, ThreadId):
+        self._ThreadId = ThreadId
+
+    @property
+    def CheckRows(self):
+        return self._CheckRows
+
+    @CheckRows.setter
+    def CheckRows(self, CheckRows):
+        self._CheckRows = CheckRows
+
+    @property
+    def CpuTime(self):
+        return self._CpuTime
+
+    @CpuTime.setter
+    def CpuTime(self, CpuTime):
+        self._CpuTime = CpuTime
+
+    @property
+    def IoWaitTime(self):
+        return self._IoWaitTime
+
+    @IoWaitTime.setter
+    def IoWaitTime(self, IoWaitTime):
+        self._IoWaitTime = IoWaitTime
+
+    @property
+    def LockWaitTime(self):
+        return self._LockWaitTime
+
+    @LockWaitTime.setter
+    def LockWaitTime(self, LockWaitTime):
+        self._LockWaitTime = LockWaitTime
+
+    @property
+    def NsTime(self):
+        return self._NsTime
+
+    @NsTime.setter
+    def NsTime(self, NsTime):
+        self._NsTime = NsTime
+
+    @property
+    def TrxLivingTime(self):
+        return self._TrxLivingTime
+
+    @TrxLivingTime.setter
+    def TrxLivingTime(self, TrxLivingTime):
+        self._TrxLivingTime = TrxLivingTime
+
+
+    def _deserialize(self, params):
+        self._AffectRows = params.get("AffectRows")
+        self._ErrCode = params.get("ErrCode")
+        self._SqlType = params.get("SqlType")
+        self._PolicyName = params.get("PolicyName")
+        self._DBName = params.get("DBName")
+        self._Sql = params.get("Sql")
+        self._Host = params.get("Host")
+        self._User = params.get("User")
+        self._ExecTime = params.get("ExecTime")
+        self._Timestamp = params.get("Timestamp")
+        self._SentRows = params.get("SentRows")
+        self._ThreadId = params.get("ThreadId")
+        self._CheckRows = params.get("CheckRows")
+        self._CpuTime = params.get("CpuTime")
+        self._IoWaitTime = params.get("IoWaitTime")
+        self._LockWaitTime = params.get("LockWaitTime")
+        self._NsTime = params.get("NsTime")
+        self._TrxLivingTime = params.get("TrxLivingTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2308,131 +2482,6 @@ class BalanceRoGroupLoadResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
-
-
-class BaseGroupInfo(AbstractModel):
-    """Proxy group information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ProxyGroupId: Proxy group ID
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type ProxyGroupId: str
-        :param _NodeCount: Number of proxy nodes
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type NodeCount: int
-        :param _Status: Proxy group status. Valid values: `init` (delivering), `online` (active), `offline` (inactive), `destroy` (destoryed)
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type Status: str
-        :param _Region: Region
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type Region: str
-        :param _Zone: Availability zone
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type Zone: str
-        :param _OpenRW: Whether read/write separation is enabled
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type OpenRW: bool
-        :param _CurrentProxyVersion: Current proxy version
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type CurrentProxyVersion: str
-        :param _SupportUpgradeProxyVersion: Target version to which the proxy can be upgraded
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type SupportUpgradeProxyVersion: str
-        """
-        self._ProxyGroupId = None
-        self._NodeCount = None
-        self._Status = None
-        self._Region = None
-        self._Zone = None
-        self._OpenRW = None
-        self._CurrentProxyVersion = None
-        self._SupportUpgradeProxyVersion = None
-
-    @property
-    def ProxyGroupId(self):
-        return self._ProxyGroupId
-
-    @ProxyGroupId.setter
-    def ProxyGroupId(self, ProxyGroupId):
-        self._ProxyGroupId = ProxyGroupId
-
-    @property
-    def NodeCount(self):
-        return self._NodeCount
-
-    @NodeCount.setter
-    def NodeCount(self, NodeCount):
-        self._NodeCount = NodeCount
-
-    @property
-    def Status(self):
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def Region(self):
-        return self._Region
-
-    @Region.setter
-    def Region(self, Region):
-        self._Region = Region
-
-    @property
-    def Zone(self):
-        return self._Zone
-
-    @Zone.setter
-    def Zone(self, Zone):
-        self._Zone = Zone
-
-    @property
-    def OpenRW(self):
-        return self._OpenRW
-
-    @OpenRW.setter
-    def OpenRW(self, OpenRW):
-        self._OpenRW = OpenRW
-
-    @property
-    def CurrentProxyVersion(self):
-        return self._CurrentProxyVersion
-
-    @CurrentProxyVersion.setter
-    def CurrentProxyVersion(self, CurrentProxyVersion):
-        self._CurrentProxyVersion = CurrentProxyVersion
-
-    @property
-    def SupportUpgradeProxyVersion(self):
-        return self._SupportUpgradeProxyVersion
-
-    @SupportUpgradeProxyVersion.setter
-    def SupportUpgradeProxyVersion(self, SupportUpgradeProxyVersion):
-        self._SupportUpgradeProxyVersion = SupportUpgradeProxyVersion
-
-
-    def _deserialize(self, params):
-        self._ProxyGroupId = params.get("ProxyGroupId")
-        self._NodeCount = params.get("NodeCount")
-        self._Status = params.get("Status")
-        self._Region = params.get("Region")
-        self._Zone = params.get("Zone")
-        self._OpenRW = params.get("OpenRW")
-        self._CurrentProxyVersion = params.get("CurrentProxyVersion")
-        self._SupportUpgradeProxyVersion = params.get("SupportUpgradeProxyVersion")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class BinlogInfo(AbstractModel):
@@ -3872,66 +3921,6 @@ class CommonTimeWindow(AbstractModel):
         self._BackupPeriodStrategy = params.get("BackupPeriodStrategy")
         self._Days = params.get("Days")
         self._BackupPeriodTime = params.get("BackupPeriodTime")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ConnectionPoolInfo(AbstractModel):
-    """Connection pool information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ConnectionPool: Whether the connection pool is enabled
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type ConnectionPool: bool
-        :param _ConnectionPoolType: Connection pool type. Valid value: `SessionConnectionPool` (session-level connection pool)
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type ConnectionPoolType: str
-        :param _PoolConnectionTimeOut: Connection persistence timeout in seconds
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type PoolConnectionTimeOut: int
-        """
-        self._ConnectionPool = None
-        self._ConnectionPoolType = None
-        self._PoolConnectionTimeOut = None
-
-    @property
-    def ConnectionPool(self):
-        return self._ConnectionPool
-
-    @ConnectionPool.setter
-    def ConnectionPool(self, ConnectionPool):
-        self._ConnectionPool = ConnectionPool
-
-    @property
-    def ConnectionPoolType(self):
-        return self._ConnectionPoolType
-
-    @ConnectionPoolType.setter
-    def ConnectionPoolType(self, ConnectionPoolType):
-        self._ConnectionPoolType = ConnectionPoolType
-
-    @property
-    def PoolConnectionTimeOut(self):
-        return self._PoolConnectionTimeOut
-
-    @PoolConnectionTimeOut.setter
-    def PoolConnectionTimeOut(self, PoolConnectionTimeOut):
-        self._PoolConnectionTimeOut = PoolConnectionTimeOut
-
-
-    def _deserialize(self, params):
-        self._ConnectionPool = params.get("ConnectionPool")
-        self._ConnectionPoolType = params.get("ConnectionPoolType")
-        self._PoolConnectionTimeOut = params.get("PoolConnectionTimeOut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5717,7 +5706,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type InstanceRole: str
         :param _MasterInstanceId: Instance ID. It is required when purchasing a read-only instance, which is the same as the source instance ID. You can use the [DescribeDBInstances](https://intl.cloud.tencent.com/document/api/236/15872?from_cn_redirect=1) API to query the instance ID.
         :type MasterInstanceId: str
-        :param _EngineVersion: MySQL version. Valid values: `5.5`, `5.6`, `5.7`. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported versions.
+        :param _EngineVersion: MySQL version. Valid values: `5.5`, `5.6`, `5.7`, and `8.0`. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported instance versions.
         :type EngineVersion: str
         :param _Password: The root account password. It can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and symbols (_+-&=!@#$%^*()). This parameter can be specified when purchasing a replica instance and is invalid for read-only or disaster recovery instances.
         :type Password: str
@@ -6184,7 +6173,7 @@ class CreateDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealIds: Short order ID
+        :param _DealIds: Billing sub-order ID
         :type DealIds: list of str
         :param _InstanceIds: List of instance IDs
         :type InstanceIds: list of str
@@ -7440,6 +7429,186 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._Info = params.get("Info")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditLogsRequest(AbstractModel):
+    """DescribeAuditLogs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        :param _StartTime: Start time
+        :type StartTime: str
+        :param _EndTime: End time
+        :type EndTime: str
+        :param _Limit: The pagination parameter, which specifies the number of entries per page. Maximum value: 100 (default).
+        :type Limit: int
+        :param _Offset: Pagination offset
+        :type Offset: int
+        :param _Order: Sorting order Valid values: `ASC (ascending), `DESC` (descending).
+        :type Order: str
+        :param _OrderBy: Sorting field Valid values: 
+`timestamp`: Timestamp,
+`affectRows`: Number of affected rows,
+`execTime`: Execution time.
+        :type OrderBy: str
+        :param _LogFilter: Filter, which can be used to filter logs.
+        :type LogFilter: list of InstanceAuditLogFilters
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._OrderBy = None
+        self._LogFilter = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def LogFilter(self):
+        return self._LogFilter
+
+    @LogFilter.setter
+    def LogFilter(self, LogFilter):
+        self._LogFilter = LogFilter
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._OrderBy = params.get("OrderBy")
+        if params.get("LogFilter") is not None:
+            self._LogFilter = []
+            for item in params.get("LogFilter"):
+                obj = InstanceAuditLogFilters()
+                obj._deserialize(item)
+                self._LogFilter.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditLogsResponse(AbstractModel):
+    """DescribeAuditLogs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of eligible audit logs
+        :type TotalCount: int
+        :param _Items: Audit log details
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type Items: list of AuditLog
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = AuditLog()
+                obj._deserialize(item)
+                self._Items.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8941,182 +9110,6 @@ class DescribeBinlogsResponse(AbstractModel):
                 obj = BinlogInfo()
                 obj._deserialize(item)
                 self._Items.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeCDBProxyRequest(AbstractModel):
-    """DescribeCDBProxy request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: Instance ID
-        :type InstanceId: str
-        :param _ProxyGroupId: Proxy group ID
-        :type ProxyGroupId: str
-        """
-        self._InstanceId = None
-        self._ProxyGroupId = None
-
-    @property
-    def InstanceId(self):
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def ProxyGroupId(self):
-        return self._ProxyGroupId
-
-    @ProxyGroupId.setter
-    def ProxyGroupId(self, ProxyGroupId):
-        self._ProxyGroupId = ProxyGroupId
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._ProxyGroupId = params.get("ProxyGroupId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeCDBProxyResponse(AbstractModel):
-    """DescribeCDBProxy response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _BaseGroup: Basic information of the proxy group
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type BaseGroup: :class:`tencentcloud.cdb.v20170320.models.BaseGroupInfo`
-        :param _Address: Address information of the proxy group
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type Address: :class:`tencentcloud.cdb.v20170320.models.Address`
-        :param _ProxyNode: Node information of the proxy group
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type ProxyNode: :class:`tencentcloud.cdb.v20170320.models.ProxyNodeInfo`
-        :param _RWInstInfo: Read/Write separation information
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type RWInstInfo: :class:`tencentcloud.cdb.v20170320.models.RWInfo`
-        :param _ConnectionPoolInfo: Connection pool information
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type ConnectionPoolInfo: :class:`tencentcloud.cdb.v20170320.models.ConnectionPoolInfo`
-        :param _Count: Number of instances in the proxy group
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type Count: int
-        :param _ProxyGroup: Proxy information
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type ProxyGroup: list of ProxyGroup
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._BaseGroup = None
-        self._Address = None
-        self._ProxyNode = None
-        self._RWInstInfo = None
-        self._ConnectionPoolInfo = None
-        self._Count = None
-        self._ProxyGroup = None
-        self._RequestId = None
-
-    @property
-    def BaseGroup(self):
-        return self._BaseGroup
-
-    @BaseGroup.setter
-    def BaseGroup(self, BaseGroup):
-        self._BaseGroup = BaseGroup
-
-    @property
-    def Address(self):
-        return self._Address
-
-    @Address.setter
-    def Address(self, Address):
-        self._Address = Address
-
-    @property
-    def ProxyNode(self):
-        return self._ProxyNode
-
-    @ProxyNode.setter
-    def ProxyNode(self, ProxyNode):
-        self._ProxyNode = ProxyNode
-
-    @property
-    def RWInstInfo(self):
-        return self._RWInstInfo
-
-    @RWInstInfo.setter
-    def RWInstInfo(self, RWInstInfo):
-        self._RWInstInfo = RWInstInfo
-
-    @property
-    def ConnectionPoolInfo(self):
-        return self._ConnectionPoolInfo
-
-    @ConnectionPoolInfo.setter
-    def ConnectionPoolInfo(self, ConnectionPoolInfo):
-        self._ConnectionPoolInfo = ConnectionPoolInfo
-
-    @property
-    def Count(self):
-        return self._Count
-
-    @Count.setter
-    def Count(self, Count):
-        self._Count = Count
-
-    @property
-    def ProxyGroup(self):
-        return self._ProxyGroup
-
-    @ProxyGroup.setter
-    def ProxyGroup(self, ProxyGroup):
-        self._ProxyGroup = ProxyGroup
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("BaseGroup") is not None:
-            self._BaseGroup = BaseGroupInfo()
-            self._BaseGroup._deserialize(params.get("BaseGroup"))
-        if params.get("Address") is not None:
-            self._Address = Address()
-            self._Address._deserialize(params.get("Address"))
-        if params.get("ProxyNode") is not None:
-            self._ProxyNode = ProxyNodeInfo()
-            self._ProxyNode._deserialize(params.get("ProxyNode"))
-        if params.get("RWInstInfo") is not None:
-            self._RWInstInfo = RWInfo()
-            self._RWInstInfo._deserialize(params.get("RWInstInfo"))
-        if params.get("ConnectionPoolInfo") is not None:
-            self._ConnectionPoolInfo = ConnectionPoolInfo()
-            self._ConnectionPoolInfo._deserialize(params.get("ConnectionPoolInfo"))
-        self._Count = params.get("Count")
-        if params.get("ProxyGroup") is not None:
-            self._ProxyGroup = []
-            for item in params.get("ProxyGroup"):
-                obj = ProxyGroup()
-                obj._deserialize(item)
-                self._ProxyGroup.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -12496,116 +12489,6 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeProxyConnectionPoolConfRequest(AbstractModel):
-    """DescribeProxyConnectionPoolConf request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: Instance ID
-        :type InstanceId: str
-        :param _Offset: Paginated query offset
-        :type Offset: int
-        :param _Limit: Maximum entries returned per page
-        :type Limit: int
-        """
-        self._InstanceId = None
-        self._Offset = None
-        self._Limit = None
-
-    @property
-    def InstanceId(self):
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def Offset(self):
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Limit(self):
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeProxyConnectionPoolConfResponse(AbstractModel):
-    """DescribeProxyConnectionPoolConf response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Count: Number of queried configurations
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type Count: int
-        :param _PoolConf: Connection pool configuration details
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type PoolConf: :class:`tencentcloud.cdb.v20170320.models.PoolConf`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Count = None
-        self._PoolConf = None
-        self._RequestId = None
-
-    @property
-    def Count(self):
-        return self._Count
-
-    @Count.setter
-    def Count(self, Count):
-        self._Count = Count
-
-    @property
-    def PoolConf(self):
-        return self._PoolConf
-
-    @PoolConf.setter
-    def PoolConf(self, PoolConf):
-        self._PoolConf = PoolConf
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Count = params.get("Count")
-        if params.get("PoolConf") is not None:
-            self._PoolConf = PoolConf()
-            self._PoolConf._deserialize(params.get("PoolConf"))
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeProxyCustomConfRequest(AbstractModel):
     """DescribeProxyCustomConf request structure.
 
@@ -15475,6 +15358,88 @@ class InitDBInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class InstanceAuditLogFilters(AbstractModel):
+    """Search filter for audit log
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Filter condition, which is not supported for `SQL`. The search conditions are supported as follows:
+
+`Equal to`, `Not equal to`, `Include`, and `Exclude` can be used to search for 
+`host` (Client IP),
+`user` (Username),
+and `DBName` (Database name).
+
+`Equal to` and `Not equal to` can be used to search for 
+`sqlType`- SQL u200dtype,
+`errCode` - Error code,
+`threadId`- Thread ID.
+
+Range search is supported for the fields, such as 
+`execTime`- Execution time (μs),
+`lockWaitTime`u200d - Lock wait time (μs),
+`ioWaitTime` - IO wait time (μs),
+`trxLivingTime` - Transaction duration (μs),
+`cpuTime` - CPU time (μs),
+`checkRows` - Number of scanned rows,
+`affectRows` - Number of affected rows,
+`sentRows` - Number of returned rows.
+        :type Type: str
+        :param _Compare: Filter, including:
+`INC` - Include,
+`EXC` -Exclude,
+`EQS` - Equal to,
+`NEQ` - Not equal to.
+u200d`RA` - Range
+        :type Compare: str
+        :param _Value: The filter value
+        :type Value: list of str
+        """
+        self._Type = None
+        self._Compare = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Compare(self):
+        return self._Compare
+
+    @Compare.setter
+    def Compare(self, Compare):
+        self._Compare = Compare
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Compare = params.get("Compare")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceInfo(AbstractModel):
     """Instance details
 
@@ -17576,315 +17541,6 @@ class ModifyBackupEncryptionStatusRequest(AbstractModel):
 
 class ModifyBackupEncryptionStatusResponse(AbstractModel):
     """ModifyBackupEncryptionStatus response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class ModifyCDBProxyConnectionPoolRequest(AbstractModel):
-    """ModifyCDBProxyConnectionPool request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ProxyGroupId: Database proxy ID
-        :type ProxyGroupId: str
-        :param _OpenConnectionPool: Whether to enable the connection pool. Valid values: `true` (enable);
-                             `false` (disable).
-        :type OpenConnectionPool: bool
-        :param _ConnectionPoolType: Connection pool type.
-You can use the `DescribeProxyConnectionPoolConf` API to query the connection pool type.
-        :type ConnectionPoolType: str
-        :param _PoolConnectionTimeOut: Connection persistence timeout in seconds
-        :type PoolConnectionTimeOut: int
-        """
-        self._ProxyGroupId = None
-        self._OpenConnectionPool = None
-        self._ConnectionPoolType = None
-        self._PoolConnectionTimeOut = None
-
-    @property
-    def ProxyGroupId(self):
-        return self._ProxyGroupId
-
-    @ProxyGroupId.setter
-    def ProxyGroupId(self, ProxyGroupId):
-        self._ProxyGroupId = ProxyGroupId
-
-    @property
-    def OpenConnectionPool(self):
-        return self._OpenConnectionPool
-
-    @OpenConnectionPool.setter
-    def OpenConnectionPool(self, OpenConnectionPool):
-        self._OpenConnectionPool = OpenConnectionPool
-
-    @property
-    def ConnectionPoolType(self):
-        return self._ConnectionPoolType
-
-    @ConnectionPoolType.setter
-    def ConnectionPoolType(self, ConnectionPoolType):
-        self._ConnectionPoolType = ConnectionPoolType
-
-    @property
-    def PoolConnectionTimeOut(self):
-        return self._PoolConnectionTimeOut
-
-    @PoolConnectionTimeOut.setter
-    def PoolConnectionTimeOut(self, PoolConnectionTimeOut):
-        self._PoolConnectionTimeOut = PoolConnectionTimeOut
-
-
-    def _deserialize(self, params):
-        self._ProxyGroupId = params.get("ProxyGroupId")
-        self._OpenConnectionPool = params.get("OpenConnectionPool")
-        self._ConnectionPoolType = params.get("ConnectionPoolType")
-        self._PoolConnectionTimeOut = params.get("PoolConnectionTimeOut")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyCDBProxyConnectionPoolResponse(AbstractModel):
-    """ModifyCDBProxyConnectionPool response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _AsyncRequestId: Async request ID
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type AsyncRequestId: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._AsyncRequestId = None
-        self._RequestId = None
-
-    @property
-    def AsyncRequestId(self):
-        return self._AsyncRequestId
-
-    @AsyncRequestId.setter
-    def AsyncRequestId(self, AsyncRequestId):
-        self._AsyncRequestId = AsyncRequestId
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._AsyncRequestId = params.get("AsyncRequestId")
-        self._RequestId = params.get("RequestId")
-
-
-class ModifyCDBProxyDescRequest(AbstractModel):
-    """ModifyCDBProxyDesc request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: Instance ID
-        :type InstanceId: str
-        :param _ProxyGroupId: Database proxy ID
-        :type ProxyGroupId: str
-        :param _Desc: Database proxy description
-        :type Desc: str
-        """
-        self._InstanceId = None
-        self._ProxyGroupId = None
-        self._Desc = None
-
-    @property
-    def InstanceId(self):
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def ProxyGroupId(self):
-        return self._ProxyGroupId
-
-    @ProxyGroupId.setter
-    def ProxyGroupId(self, ProxyGroupId):
-        self._ProxyGroupId = ProxyGroupId
-
-    @property
-    def Desc(self):
-        return self._Desc
-
-    @Desc.setter
-    def Desc(self, Desc):
-        self._Desc = Desc
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._ProxyGroupId = params.get("ProxyGroupId")
-        self._Desc = params.get("Desc")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyCDBProxyDescResponse(AbstractModel):
-    """ModifyCDBProxyDesc response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class ModifyCDBProxyVipVPortRequest(AbstractModel):
-    """ModifyCDBProxyVipVPort request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ProxyGroupId: Proxy group ID
-        :type ProxyGroupId: str
-        :param _UniqVpcId: VPC ID
-        :type UniqVpcId: str
-        :param _UniqSubnetId: VPC subnet ID
-        :type UniqSubnetId: str
-        :param _DstIp: New IP
-        :type DstIp: str
-        :param _DstPort: New port
-        :type DstPort: int
-        :param _ReleaseDuration: Valid hours of the old IP
-        :type ReleaseDuration: int
-        """
-        self._ProxyGroupId = None
-        self._UniqVpcId = None
-        self._UniqSubnetId = None
-        self._DstIp = None
-        self._DstPort = None
-        self._ReleaseDuration = None
-
-    @property
-    def ProxyGroupId(self):
-        return self._ProxyGroupId
-
-    @ProxyGroupId.setter
-    def ProxyGroupId(self, ProxyGroupId):
-        self._ProxyGroupId = ProxyGroupId
-
-    @property
-    def UniqVpcId(self):
-        return self._UniqVpcId
-
-    @UniqVpcId.setter
-    def UniqVpcId(self, UniqVpcId):
-        self._UniqVpcId = UniqVpcId
-
-    @property
-    def UniqSubnetId(self):
-        return self._UniqSubnetId
-
-    @UniqSubnetId.setter
-    def UniqSubnetId(self, UniqSubnetId):
-        self._UniqSubnetId = UniqSubnetId
-
-    @property
-    def DstIp(self):
-        return self._DstIp
-
-    @DstIp.setter
-    def DstIp(self, DstIp):
-        self._DstIp = DstIp
-
-    @property
-    def DstPort(self):
-        return self._DstPort
-
-    @DstPort.setter
-    def DstPort(self, DstPort):
-        self._DstPort = DstPort
-
-    @property
-    def ReleaseDuration(self):
-        return self._ReleaseDuration
-
-    @ReleaseDuration.setter
-    def ReleaseDuration(self, ReleaseDuration):
-        self._ReleaseDuration = ReleaseDuration
-
-
-    def _deserialize(self, params):
-        self._ProxyGroupId = params.get("ProxyGroupId")
-        self._UniqVpcId = params.get("UniqVpcId")
-        self._UniqSubnetId = params.get("UniqSubnetId")
-        self._DstIp = params.get("DstIp")
-        self._DstPort = params.get("DstPort")
-        self._ReleaseDuration = params.get("ReleaseDuration")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyCDBProxyVipVPortResponse(AbstractModel):
-    """ModifyCDBProxyVipVPort response structure.
 
     """
 
@@ -20395,66 +20051,6 @@ class ParameterDetail(AbstractModel):
         
 
 
-class PoolConf(AbstractModel):
-    """Connection pool configuration of database proxy
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ConnectionPoolType: Connection pool type. Valid value: `SessionConnectionPool` (session-level connection pool)
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type ConnectionPoolType: str
-        :param _MaxPoolConnectionTimeOut: Maximum value of connection persistence timeout in seconds
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type MaxPoolConnectionTimeOut: int
-        :param _MinPoolConnectionTimeOut: Minimum value of connection persistence timeout in seconds
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type MinPoolConnectionTimeOut: int
-        """
-        self._ConnectionPoolType = None
-        self._MaxPoolConnectionTimeOut = None
-        self._MinPoolConnectionTimeOut = None
-
-    @property
-    def ConnectionPoolType(self):
-        return self._ConnectionPoolType
-
-    @ConnectionPoolType.setter
-    def ConnectionPoolType(self, ConnectionPoolType):
-        self._ConnectionPoolType = ConnectionPoolType
-
-    @property
-    def MaxPoolConnectionTimeOut(self):
-        return self._MaxPoolConnectionTimeOut
-
-    @MaxPoolConnectionTimeOut.setter
-    def MaxPoolConnectionTimeOut(self, MaxPoolConnectionTimeOut):
-        self._MaxPoolConnectionTimeOut = MaxPoolConnectionTimeOut
-
-    @property
-    def MinPoolConnectionTimeOut(self):
-        return self._MinPoolConnectionTimeOut
-
-    @MinPoolConnectionTimeOut.setter
-    def MinPoolConnectionTimeOut(self, MinPoolConnectionTimeOut):
-        self._MinPoolConnectionTimeOut = MinPoolConnectionTimeOut
-
-
-    def _deserialize(self, params):
-        self._ConnectionPoolType = params.get("ConnectionPoolType")
-        self._MaxPoolConnectionTimeOut = params.get("MaxPoolConnectionTimeOut")
-        self._MinPoolConnectionTimeOut = params.get("MinPoolConnectionTimeOut")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class ProxyAddress(AbstractModel):
     """Information of the database proxy address
 
@@ -20735,108 +20331,6 @@ class ProxyAllocation(AbstractModel):
         
 
 
-class ProxyGroup(AbstractModel):
-    """Database proxy group information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _BaseGroup: Basic information of the proxy
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type BaseGroup: :class:`tencentcloud.cdb.v20170320.models.BaseGroupInfo`
-        :param _Address: Address information of the proxy
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type Address: list of Address
-        :param _ConnectionPoolInfo: Connection pool information of the proxy
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type ConnectionPoolInfo: :class:`tencentcloud.cdb.v20170320.models.ConnectionPoolInfo`
-        :param _ProxyNode: Node information of the proxy
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type ProxyNode: list of ProxyNodeInfo
-        :param _RWInstInfo: Routing information of the proxy
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type RWInstInfo: :class:`tencentcloud.cdb.v20170320.models.RWInfo`
-        """
-        self._BaseGroup = None
-        self._Address = None
-        self._ConnectionPoolInfo = None
-        self._ProxyNode = None
-        self._RWInstInfo = None
-
-    @property
-    def BaseGroup(self):
-        return self._BaseGroup
-
-    @BaseGroup.setter
-    def BaseGroup(self, BaseGroup):
-        self._BaseGroup = BaseGroup
-
-    @property
-    def Address(self):
-        return self._Address
-
-    @Address.setter
-    def Address(self, Address):
-        self._Address = Address
-
-    @property
-    def ConnectionPoolInfo(self):
-        return self._ConnectionPoolInfo
-
-    @ConnectionPoolInfo.setter
-    def ConnectionPoolInfo(self, ConnectionPoolInfo):
-        self._ConnectionPoolInfo = ConnectionPoolInfo
-
-    @property
-    def ProxyNode(self):
-        return self._ProxyNode
-
-    @ProxyNode.setter
-    def ProxyNode(self, ProxyNode):
-        self._ProxyNode = ProxyNode
-
-    @property
-    def RWInstInfo(self):
-        return self._RWInstInfo
-
-    @RWInstInfo.setter
-    def RWInstInfo(self, RWInstInfo):
-        self._RWInstInfo = RWInstInfo
-
-
-    def _deserialize(self, params):
-        if params.get("BaseGroup") is not None:
-            self._BaseGroup = BaseGroupInfo()
-            self._BaseGroup._deserialize(params.get("BaseGroup"))
-        if params.get("Address") is not None:
-            self._Address = []
-            for item in params.get("Address"):
-                obj = Address()
-                obj._deserialize(item)
-                self._Address.append(obj)
-        if params.get("ConnectionPoolInfo") is not None:
-            self._ConnectionPoolInfo = ConnectionPoolInfo()
-            self._ConnectionPoolInfo._deserialize(params.get("ConnectionPoolInfo"))
-        if params.get("ProxyNode") is not None:
-            self._ProxyNode = []
-            for item in params.get("ProxyNode"):
-                obj = ProxyNodeInfo()
-                obj._deserialize(item)
-                self._ProxyNode.append(obj)
-        if params.get("RWInstInfo") is not None:
-            self._RWInstInfo = RWInfo()
-            self._RWInstInfo._deserialize(params.get("RWInstInfo"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class ProxyGroupInfo(AbstractModel):
     """Details of proxy group
 
@@ -20978,108 +20472,6 @@ class ProxyGroupInfo(AbstractModel):
         self._ConnectionPoolLimit = params.get("ConnectionPoolLimit")
         self._SupportCreateProxyAddress = params.get("SupportCreateProxyAddress")
         self._SupportUpgradeProxyMysqlVersion = params.get("SupportUpgradeProxyMysqlVersion")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ProxyGroups(AbstractModel):
-    """Database proxy group information
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _BaseGroup: Basic information of the proxy
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type BaseGroup: :class:`tencentcloud.cdb.v20170320.models.BaseGroupInfo`
-        :param _Address: Address information of the proxy
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type Address: list of Address
-        :param _ConnectionPoolInfo: Connection pool information of the proxy
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type ConnectionPoolInfo: :class:`tencentcloud.cdb.v20170320.models.ConnectionPoolInfo`
-        :param _ProxyNode: Node information of the proxy
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type ProxyNode: list of ProxyNodeInfo
-        :param _RWInstInfo: Routing information of the proxy
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type RWInstInfo: :class:`tencentcloud.cdb.v20170320.models.RWInfos`
-        """
-        self._BaseGroup = None
-        self._Address = None
-        self._ConnectionPoolInfo = None
-        self._ProxyNode = None
-        self._RWInstInfo = None
-
-    @property
-    def BaseGroup(self):
-        return self._BaseGroup
-
-    @BaseGroup.setter
-    def BaseGroup(self, BaseGroup):
-        self._BaseGroup = BaseGroup
-
-    @property
-    def Address(self):
-        return self._Address
-
-    @Address.setter
-    def Address(self, Address):
-        self._Address = Address
-
-    @property
-    def ConnectionPoolInfo(self):
-        return self._ConnectionPoolInfo
-
-    @ConnectionPoolInfo.setter
-    def ConnectionPoolInfo(self, ConnectionPoolInfo):
-        self._ConnectionPoolInfo = ConnectionPoolInfo
-
-    @property
-    def ProxyNode(self):
-        return self._ProxyNode
-
-    @ProxyNode.setter
-    def ProxyNode(self, ProxyNode):
-        self._ProxyNode = ProxyNode
-
-    @property
-    def RWInstInfo(self):
-        return self._RWInstInfo
-
-    @RWInstInfo.setter
-    def RWInstInfo(self, RWInstInfo):
-        self._RWInstInfo = RWInstInfo
-
-
-    def _deserialize(self, params):
-        if params.get("BaseGroup") is not None:
-            self._BaseGroup = BaseGroupInfo()
-            self._BaseGroup._deserialize(params.get("BaseGroup"))
-        if params.get("Address") is not None:
-            self._Address = []
-            for item in params.get("Address"):
-                obj = Address()
-                obj._deserialize(item)
-                self._Address.append(obj)
-        if params.get("ConnectionPoolInfo") is not None:
-            self._ConnectionPoolInfo = ConnectionPoolInfo()
-            self._ConnectionPoolInfo._deserialize(params.get("ConnectionPoolInfo"))
-        if params.get("ProxyNode") is not None:
-            self._ProxyNode = []
-            for item in params.get("ProxyNode"):
-                obj = ProxyNodeInfo()
-                obj._deserialize(item)
-                self._ProxyNode.append(obj)
-        if params.get("RWInstInfo") is not None:
-            self._RWInstInfo = RWInfos()
-            self._RWInstInfo._deserialize(params.get("RWInstInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21379,464 +20771,6 @@ class ProxyNodeCustom(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class ProxyNodeInfo(AbstractModel):
-    """Node information of the proxy
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ProxyNodeId: Proxy node ID
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type ProxyNodeId: str
-        :param _ProxyNodeConnections: Current number of connections to the node
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type ProxyNodeConnections: int
-        :param _ProxyNodeCpu: CPU
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type ProxyNodeCpu: int
-        :param _ProxyNodeMem: Memory
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type ProxyNodeMem: int
-        :param _ProxyStatus: Node status:
-init (applying)
-online (active)
-offline (inactive)
-destroy (destroyed)
-recovering (recovering from fault)
-error (failed)
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type ProxyStatus: str
-        """
-        self._ProxyNodeId = None
-        self._ProxyNodeConnections = None
-        self._ProxyNodeCpu = None
-        self._ProxyNodeMem = None
-        self._ProxyStatus = None
-
-    @property
-    def ProxyNodeId(self):
-        return self._ProxyNodeId
-
-    @ProxyNodeId.setter
-    def ProxyNodeId(self, ProxyNodeId):
-        self._ProxyNodeId = ProxyNodeId
-
-    @property
-    def ProxyNodeConnections(self):
-        return self._ProxyNodeConnections
-
-    @ProxyNodeConnections.setter
-    def ProxyNodeConnections(self, ProxyNodeConnections):
-        self._ProxyNodeConnections = ProxyNodeConnections
-
-    @property
-    def ProxyNodeCpu(self):
-        return self._ProxyNodeCpu
-
-    @ProxyNodeCpu.setter
-    def ProxyNodeCpu(self, ProxyNodeCpu):
-        self._ProxyNodeCpu = ProxyNodeCpu
-
-    @property
-    def ProxyNodeMem(self):
-        return self._ProxyNodeMem
-
-    @ProxyNodeMem.setter
-    def ProxyNodeMem(self, ProxyNodeMem):
-        self._ProxyNodeMem = ProxyNodeMem
-
-    @property
-    def ProxyStatus(self):
-        return self._ProxyStatus
-
-    @ProxyStatus.setter
-    def ProxyStatus(self, ProxyStatus):
-        self._ProxyStatus = ProxyStatus
-
-
-    def _deserialize(self, params):
-        self._ProxyNodeId = params.get("ProxyNodeId")
-        self._ProxyNodeConnections = params.get("ProxyNodeConnections")
-        self._ProxyNodeCpu = params.get("ProxyNodeCpu")
-        self._ProxyNodeMem = params.get("ProxyNodeMem")
-        self._ProxyStatus = params.get("ProxyStatus")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class QueryCDBProxyRequest(AbstractModel):
-    """QueryCDBProxy request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: Instance ID
-        :type InstanceId: str
-        :param _ProxyGroupId: Proxy ID
-        :type ProxyGroupId: str
-        """
-        self._InstanceId = None
-        self._ProxyGroupId = None
-
-    @property
-    def InstanceId(self):
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def ProxyGroupId(self):
-        return self._ProxyGroupId
-
-    @ProxyGroupId.setter
-    def ProxyGroupId(self, ProxyGroupId):
-        self._ProxyGroupId = ProxyGroupId
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._ProxyGroupId = params.get("ProxyGroupId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class QueryCDBProxyResponse(AbstractModel):
-    """QueryCDBProxy response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Count: Number of instances in the proxy group
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type Count: int
-        :param _ProxyGroup: Proxy information
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type ProxyGroup: list of ProxyGroups
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._Count = None
-        self._ProxyGroup = None
-        self._RequestId = None
-
-    @property
-    def Count(self):
-        return self._Count
-
-    @Count.setter
-    def Count(self, Count):
-        self._Count = Count
-
-    @property
-    def ProxyGroup(self):
-        return self._ProxyGroup
-
-    @ProxyGroup.setter
-    def ProxyGroup(self, ProxyGroup):
-        self._ProxyGroup = ProxyGroup
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Count = params.get("Count")
-        if params.get("ProxyGroup") is not None:
-            self._ProxyGroup = []
-            for item in params.get("ProxyGroup"):
-                obj = ProxyGroups()
-                obj._deserialize(item)
-                self._ProxyGroup.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class RWInfo(AbstractModel):
-    """Read/Write separation information of the proxy
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstCount: Number of instances in the proxy group
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type InstCount: int
-        :param _WeightMode: Assignment mode of read/write weights
-Valid values: `system` (auto-assigned), `custom`
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type WeightMode: str
-        :param _IsKickOut: Whether to remove delayed read-only instances from the proxy group
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type IsKickOut: bool
-        :param _MinCount: The minimum number of read-only instances allowed by the proxy group
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type MinCount: int
-        :param _MaxDelay: Delay threshold
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type MaxDelay: int
-        :param _FailOver: Whether to enable failover
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type FailOver: bool
-        :param _AutoAddRo: Whether to automatically add newly created read-only instances to the proxy group
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type AutoAddRo: bool
-        :param _RWInstInfo: Information of instances in the proxy group
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type RWInstInfo: :class:`tencentcloud.cdb.v20170320.models.RWInstanceInfo`
-        """
-        self._InstCount = None
-        self._WeightMode = None
-        self._IsKickOut = None
-        self._MinCount = None
-        self._MaxDelay = None
-        self._FailOver = None
-        self._AutoAddRo = None
-        self._RWInstInfo = None
-
-    @property
-    def InstCount(self):
-        return self._InstCount
-
-    @InstCount.setter
-    def InstCount(self, InstCount):
-        self._InstCount = InstCount
-
-    @property
-    def WeightMode(self):
-        return self._WeightMode
-
-    @WeightMode.setter
-    def WeightMode(self, WeightMode):
-        self._WeightMode = WeightMode
-
-    @property
-    def IsKickOut(self):
-        return self._IsKickOut
-
-    @IsKickOut.setter
-    def IsKickOut(self, IsKickOut):
-        self._IsKickOut = IsKickOut
-
-    @property
-    def MinCount(self):
-        return self._MinCount
-
-    @MinCount.setter
-    def MinCount(self, MinCount):
-        self._MinCount = MinCount
-
-    @property
-    def MaxDelay(self):
-        return self._MaxDelay
-
-    @MaxDelay.setter
-    def MaxDelay(self, MaxDelay):
-        self._MaxDelay = MaxDelay
-
-    @property
-    def FailOver(self):
-        return self._FailOver
-
-    @FailOver.setter
-    def FailOver(self, FailOver):
-        self._FailOver = FailOver
-
-    @property
-    def AutoAddRo(self):
-        return self._AutoAddRo
-
-    @AutoAddRo.setter
-    def AutoAddRo(self, AutoAddRo):
-        self._AutoAddRo = AutoAddRo
-
-    @property
-    def RWInstInfo(self):
-        return self._RWInstInfo
-
-    @RWInstInfo.setter
-    def RWInstInfo(self, RWInstInfo):
-        self._RWInstInfo = RWInstInfo
-
-
-    def _deserialize(self, params):
-        self._InstCount = params.get("InstCount")
-        self._WeightMode = params.get("WeightMode")
-        self._IsKickOut = params.get("IsKickOut")
-        self._MinCount = params.get("MinCount")
-        self._MaxDelay = params.get("MaxDelay")
-        self._FailOver = params.get("FailOver")
-        self._AutoAddRo = params.get("AutoAddRo")
-        if params.get("RWInstInfo") is not None:
-            self._RWInstInfo = RWInstanceInfo()
-            self._RWInstInfo._deserialize(params.get("RWInstInfo"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class RWInfos(AbstractModel):
-    """Read/Write separation information of the proxy
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstCount: Number of instances in the proxy group
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type InstCount: int
-        :param _WeightMode: Assignment mode of read/write weights
-Valid values: `system` (auto-assigned), `custom`
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type WeightMode: str
-        :param _IsKickOut: Whether to remove delayed read-only instances from the proxy group
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type IsKickOut: bool
-        :param _MinCount: The minimum number of read-only instances allowed by the proxy group
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type MinCount: int
-        :param _MaxDelay: Delay threshold
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type MaxDelay: int
-        :param _FailOver: Whether to enable failover
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type FailOver: bool
-        :param _AutoAddRo: Whether to automatically add newly created read-only instances to the proxy group
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type AutoAddRo: bool
-        :param _RWInstInfo: Information of instances in the proxy group
-Note: this field may return `null`, indicating that no valid value can be found.
-        :type RWInstInfo: list of RWInstanceInfo
-        """
-        self._InstCount = None
-        self._WeightMode = None
-        self._IsKickOut = None
-        self._MinCount = None
-        self._MaxDelay = None
-        self._FailOver = None
-        self._AutoAddRo = None
-        self._RWInstInfo = None
-
-    @property
-    def InstCount(self):
-        return self._InstCount
-
-    @InstCount.setter
-    def InstCount(self, InstCount):
-        self._InstCount = InstCount
-
-    @property
-    def WeightMode(self):
-        return self._WeightMode
-
-    @WeightMode.setter
-    def WeightMode(self, WeightMode):
-        self._WeightMode = WeightMode
-
-    @property
-    def IsKickOut(self):
-        return self._IsKickOut
-
-    @IsKickOut.setter
-    def IsKickOut(self, IsKickOut):
-        self._IsKickOut = IsKickOut
-
-    @property
-    def MinCount(self):
-        return self._MinCount
-
-    @MinCount.setter
-    def MinCount(self, MinCount):
-        self._MinCount = MinCount
-
-    @property
-    def MaxDelay(self):
-        return self._MaxDelay
-
-    @MaxDelay.setter
-    def MaxDelay(self, MaxDelay):
-        self._MaxDelay = MaxDelay
-
-    @property
-    def FailOver(self):
-        return self._FailOver
-
-    @FailOver.setter
-    def FailOver(self, FailOver):
-        self._FailOver = FailOver
-
-    @property
-    def AutoAddRo(self):
-        return self._AutoAddRo
-
-    @AutoAddRo.setter
-    def AutoAddRo(self, AutoAddRo):
-        self._AutoAddRo = AutoAddRo
-
-    @property
-    def RWInstInfo(self):
-        return self._RWInstInfo
-
-    @RWInstInfo.setter
-    def RWInstInfo(self, RWInstInfo):
-        self._RWInstInfo = RWInstInfo
-
-
-    def _deserialize(self, params):
-        self._InstCount = params.get("InstCount")
-        self._WeightMode = params.get("WeightMode")
-        self._IsKickOut = params.get("IsKickOut")
-        self._MinCount = params.get("MinCount")
-        self._MaxDelay = params.get("MaxDelay")
-        self._FailOver = params.get("FailOver")
-        self._AutoAddRo = params.get("AutoAddRo")
-        if params.get("RWInstInfo") is not None:
-            self._RWInstInfo = []
-            for item in params.get("RWInstInfo"):
-                obj = RWInstanceInfo()
-                obj._deserialize(item)
-                self._RWInstInfo.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class RWInstanceInfo(AbstractModel):
-    """Information of instances in the proxy group
-
-    """
 
 
 class ReleaseIsolatedDBInstancesRequest(AbstractModel):
@@ -25581,7 +24515,7 @@ class UpgradeDBInstanceRequest(AbstractModel):
         :type InstanceRole: str
         :param _DeviceType: The resource isolation type after the instance is upgraded. Valid values: `UNIVERSAL` (general instance), `EXCLUSIVE` (dedicated instance), `BASIC` (basic instance). If this parameter is left empty, the resource isolation type will be the same as the original one.
         :type DeviceType: str
-        :param _Cpu: The number of CPU cores after the instance is upgraded. If this parameter is left empty, it will be subject to the `Memory` value.
+        :param _Cpu: The number of CPU cores after the instance is upgraded. If this parameter is left empty, the minimum value will be automatically filled based on the value specified by `Memory`.
         :type Cpu: int
         :param _FastUpgrade: QuickChange options. Valid values: `0` (common upgrade), `1` (QuickChange), `2` (QuickChange first). After QuickChange is enabled, the required resources will be checked. QuickChange will be performed only when the required resources support the feature; otherwise, an error message will be returned.
         :type FastUpgrade: int
