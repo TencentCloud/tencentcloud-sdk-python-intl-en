@@ -2568,14 +2568,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ConditionsTemp(AbstractModel):
-    """Alarm condition template
+    """Alarm trigger condition template
 
     """
 
     def __init__(self):
         r"""
         :param _TemplateName: Template name
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type TemplateName: str
         :param _Condition: Metric trigger condition
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -7782,6 +7782,8 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         :type NoticeIds: list of str
         :param _Tags: Filter templates by tag
         :type Tags: list of Tag
+        :param _OnCallFormIDs: Schedule list
+        :type OnCallFormIDs: list of str
         """
         self._Module = None
         self._PageNumber = None
@@ -7794,6 +7796,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
         self._GroupIds = None
         self._NoticeIds = None
         self._Tags = None
+        self._OnCallFormIDs = None
 
     @property
     def Module(self):
@@ -7883,6 +7886,14 @@ class DescribeAlarmNoticesRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def OnCallFormIDs(self):
+        return self._OnCallFormIDs
+
+    @OnCallFormIDs.setter
+    def OnCallFormIDs(self, OnCallFormIDs):
+        self._OnCallFormIDs = OnCallFormIDs
+
 
     def _deserialize(self, params):
         self._Module = params.get("Module")
@@ -7901,6 +7912,7 @@ class DescribeAlarmNoticesRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._OnCallFormIDs = params.get("OnCallFormIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8006,7 +8018,7 @@ Note: If `1` is passed in for `NeedCorrespondence`, the relationship between a p
         :param _ProjectIds: ID array of the policy project, which can be viewed on the following page:
 [Project Management](https://console.cloud.tencent.com/project)
         :type ProjectIds: list of int
-        :param _NoticeIds: ID list of the notification template, which can be obtained by querying the notification template list.
+        :param _NoticeIds: List of the notification template IDs, which can be obtained by querying the notification template list.
 It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent.com/document/product/248/51280?from_cn_redirect=1).
         :type NoticeIds: list of str
         :param _RuleTypes: Filter by trigger condition. Valid values: STATIC (display policies with static threshold), DYNAMIC (display policies with dynamic threshold). If this parameter is left empty, all policies will be displayed
@@ -8023,12 +8035,16 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
         :type TriggerTasks: list of AlarmPolicyTriggerTask
         :param _OneClickPolicyType: Filter by quick alarm policy. If this parameter is left empty, all policies are displayed. `ONECLICK`: Display quick alarm policies; `NOT_ONECLICK`: Display non-quick alarm policies.
         :type OneClickPolicyType: list of str
-        :param _NotBindAll: Whether the returned result filters policies associated with all objects. Valid values: `1` (Yes), `0` (No).
+        :param _NotBindAll: Whether the returned result needs to filter policies associated with all objects. Valid values: `1` (Yes), `0` (No).
         :type NotBindAll: int
-        :param _NotInstanceGroup: Whether the returned result filters policies associated with instance groups. Valid values: `1` (Yes), `0` (No).
+        :param _NotInstanceGroup: Whether the returned result needs to filter policies associated with instance groups. Valid values: `1` (Yes), `0` (No).
         :type NotInstanceGroup: int
         :param _Tags: Filter policies by tag
         :type Tags: list of Tag
+        :param _PromInsId: ID of the TencentCloud Managed Service for Prometheus instance, which is used for customizing a metric policy.
+        :type PromInsId: str
+        :param _ReceiverOnCallFormIDs: Search by schedule
+        :type ReceiverOnCallFormIDs: list of str
         """
         self._Module = None
         self._PageNumber = None
@@ -8054,6 +8070,8 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
         self._NotBindAll = None
         self._NotInstanceGroup = None
         self._Tags = None
+        self._PromInsId = None
+        self._ReceiverOnCallFormIDs = None
 
     @property
     def Module(self):
@@ -8247,6 +8265,22 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def PromInsId(self):
+        return self._PromInsId
+
+    @PromInsId.setter
+    def PromInsId(self, PromInsId):
+        self._PromInsId = PromInsId
+
+    @property
+    def ReceiverOnCallFormIDs(self):
+        return self._ReceiverOnCallFormIDs
+
+    @ReceiverOnCallFormIDs.setter
+    def ReceiverOnCallFormIDs(self, ReceiverOnCallFormIDs):
+        self._ReceiverOnCallFormIDs = ReceiverOnCallFormIDs
+
 
     def _deserialize(self, params):
         self._Module = params.get("Module")
@@ -8283,6 +8317,8 @@ It can be queried with the API [DescribeAlarmNotices](https://intl.cloud.tencent
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._PromInsId = params.get("PromInsId")
+        self._ReceiverOnCallFormIDs = params.get("ReceiverOnCallFormIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9844,6 +9880,37 @@ Note: This field may return null, indicating that no valid value was found.
         if params.get("InstanceGroup") is not None:
             self._InstanceGroup = DescribeBindingPolicyObjectListInstanceGroup()
             self._InstanceGroup._deserialize(params.get("InstanceGroup"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterAgentCreatingProgressRequest(AbstractModel):
+    """DescribeClusterAgentCreatingProgress request structure.
+
+    """
+
+
+class DescribeClusterAgentCreatingProgressResponse(AbstractModel):
+    """DescribeClusterAgentCreatingProgress response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -19753,6 +19820,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param _ProductId: Integration center product ID.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ProductId: int
+        :param _Operators: Matching operator
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type Operators: list of Operator
+        :param _Periods: Metric monitoring granularity
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type Periods: list of int
         """
         self._Namespace = None
         self._MetricName = None
@@ -19765,6 +19838,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._IsAdvanced = None
         self._IsOpen = None
         self._ProductId = None
+        self._Operators = None
+        self._Periods = None
 
     @property
     def Namespace(self):
@@ -19854,6 +19929,22 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     def ProductId(self, ProductId):
         self._ProductId = ProductId
 
+    @property
+    def Operators(self):
+        return self._Operators
+
+    @Operators.setter
+    def Operators(self, Operators):
+        self._Operators = Operators
+
+    @property
+    def Periods(self):
+        return self._Periods
+
+    @Periods.setter
+    def Periods(self, Periods):
+        self._Periods = Periods
+
 
     def _deserialize(self, params):
         self._Namespace = params.get("Namespace")
@@ -19869,6 +19960,13 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._IsAdvanced = params.get("IsAdvanced")
         self._IsOpen = params.get("IsOpen")
         self._ProductId = params.get("ProductId")
+        if params.get("Operators") is not None:
+            self._Operators = []
+            for item in params.get("Operators"):
+                obj = Operator()
+                obj._deserialize(item)
+                self._Operators.append(obj)
+        self._Periods = params.get("Periods")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20031,51 +20129,6 @@ class MetricDataPoint(AbstractModel):
                 obj = Point()
                 obj._deserialize(item)
                 self._Values.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class MetricDatum(AbstractModel):
-    """Metric names and values
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _MetricName: Metric name.
-        :type MetricName: str
-        :param _Value: Metric value.
-        :type Value: int
-        """
-        self._MetricName = None
-        self._Value = None
-
-    @property
-    def MetricName(self):
-        return self._MetricName
-
-    @MetricName.setter
-    def MetricName(self, MetricName):
-        self._MetricName = MetricName
-
-    @property
-    def Value(self):
-        return self._Value
-
-    @Value.setter
-    def Value(self, Value):
-        self._Value = Value
-
-
-    def _deserialize(self, params):
-        self._MetricName = params.get("MetricName")
-        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20535,7 +20588,7 @@ class ModifyAlarmPolicyConditionRequest(AbstractModel):
         :type GroupBy: list of str
         :param _LogAlarmReqInfo: Log alarm creation request parameters
         :type LogAlarmReqInfo: :class:`tencentcloud.monitor.v20180724.models.LogAlarmReq`
-        :param _NoticeIds: Template ID, which is dedicated to TMP.
+        :param _NoticeIds: Template ID, which is dedicated to TencentCloud Managed Service for Prometheus.
         :type NoticeIds: list of str
         :param _Enable: Status (`0`: Disabled; `1`: Enabled)
         :type Enable: int
@@ -25890,105 +25943,6 @@ class PrometheusZoneItem(AbstractModel):
         
 
 
-class PutMonitorDataRequest(AbstractModel):
-    """PutMonitorData request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Metrics: A group of metrics and data.
-        :type Metrics: list of MetricDatum
-        :param _AnnounceIp: IP address that is automatically specified when monitoring data is reported.
-        :type AnnounceIp: str
-        :param _AnnounceTimestamp: Timestamp that is automatically specified when monitoring data is reported.
-        :type AnnounceTimestamp: int
-        :param _AnnounceInstance: IP address or product instance ID that is automatically specified when monitoring data is reported.
-        :type AnnounceInstance: str
-        """
-        self._Metrics = None
-        self._AnnounceIp = None
-        self._AnnounceTimestamp = None
-        self._AnnounceInstance = None
-
-    @property
-    def Metrics(self):
-        return self._Metrics
-
-    @Metrics.setter
-    def Metrics(self, Metrics):
-        self._Metrics = Metrics
-
-    @property
-    def AnnounceIp(self):
-        return self._AnnounceIp
-
-    @AnnounceIp.setter
-    def AnnounceIp(self, AnnounceIp):
-        self._AnnounceIp = AnnounceIp
-
-    @property
-    def AnnounceTimestamp(self):
-        return self._AnnounceTimestamp
-
-    @AnnounceTimestamp.setter
-    def AnnounceTimestamp(self, AnnounceTimestamp):
-        self._AnnounceTimestamp = AnnounceTimestamp
-
-    @property
-    def AnnounceInstance(self):
-        return self._AnnounceInstance
-
-    @AnnounceInstance.setter
-    def AnnounceInstance(self, AnnounceInstance):
-        self._AnnounceInstance = AnnounceInstance
-
-
-    def _deserialize(self, params):
-        if params.get("Metrics") is not None:
-            self._Metrics = []
-            for item in params.get("Metrics"):
-                obj = MetricDatum()
-                obj._deserialize(item)
-                self._Metrics.append(obj)
-        self._AnnounceIp = params.get("AnnounceIp")
-        self._AnnounceTimestamp = params.get("AnnounceTimestamp")
-        self._AnnounceInstance = params.get("AnnounceInstance")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class PutMonitorDataResponse(AbstractModel):
-    """PutMonitorData response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class ReceiverInfo(AbstractModel):
     """Recipient information.
 
@@ -29420,6 +29374,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param _Weekday: Notification cycle. The values 1-7 indicate Monday to Sunday.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Weekday: list of int
+        :param _OnCallFormIDs: List of schedule IDs
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type OnCallFormIDs: list of str
         """
         self._ReceiverType = None
         self._StartTime = None
@@ -29434,6 +29391,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._NeedPhoneArriveNotice = None
         self._PhoneCallType = None
         self._Weekday = None
+        self._OnCallFormIDs = None
 
     @property
     def ReceiverType(self):
@@ -29539,6 +29497,14 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     def Weekday(self, Weekday):
         self._Weekday = Weekday
 
+    @property
+    def OnCallFormIDs(self):
+        return self._OnCallFormIDs
+
+    @OnCallFormIDs.setter
+    def OnCallFormIDs(self, OnCallFormIDs):
+        self._OnCallFormIDs = OnCallFormIDs
+
 
     def _deserialize(self, params):
         self._ReceiverType = params.get("ReceiverType")
@@ -29554,6 +29520,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._NeedPhoneArriveNotice = params.get("NeedPhoneArriveNotice")
         self._PhoneCallType = params.get("PhoneCallType")
         self._Weekday = params.get("Weekday")
+        self._OnCallFormIDs = params.get("OnCallFormIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
