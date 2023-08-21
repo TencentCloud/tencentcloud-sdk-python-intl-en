@@ -164,6 +164,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloseProxy(self, request):
+        """This API is used to disable u200dthe database proxy.
+
+        :param request: Request instance for CloseProxy.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CloseProxyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CloseProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseProxy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloseWan(self, request):
         """This API is used to disable the public network.
 
@@ -339,6 +362,52 @@ class CynosdbClient(AbstractClient):
             body = self.call("CreateParamTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.CreateParamTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateProxy(self, request):
+        """This API is used to create a database proxy.
+
+        :param request: Request instance for CreateProxy.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateProxyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateProxy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateProxyEndPoint(self, request):
+        """This API is used to create a database proxy connection.
+
+        :param request: Request instance for CreateProxyEndPoint.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateProxyEndPointRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateProxyEndPointResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateProxyEndPoint", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateProxyEndPointResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1130,6 +1199,75 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeProxies(self, request):
+        """This API is used to query the list of database proxies.
+
+        :param request: Request instance for DescribeProxies.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeProxiesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeProxiesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProxies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProxiesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeProxyNodes(self, request):
+        """This API is used to query the list of proxy nodes.
+
+        :param request: Request instance for DescribeProxyNodes.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeProxyNodesRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeProxyNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProxyNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProxyNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeProxySpecs(self, request):
+        """This API is used to query the specifications of a database proxy.
+
+        :param request: Request instance for DescribeProxySpecs.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeProxySpecsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeProxySpecsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProxySpecs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProxySpecsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeResourcePackageDetail(self, request):
         """This API is used to query the usage details of a resource pack.
 
@@ -1259,6 +1397,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeRollbackTimeValidity", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRollbackTimeValidityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSupportProxyVersion(self, request):
+        """This API is used to query the supported database proxy versions.
+
+        :param request: Request instance for DescribeSupportProxyVersion.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeSupportProxyVersionRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeSupportProxyVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSupportProxyVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSupportProxyVersionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1843,6 +2004,52 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyProxyDesc(self, request):
+        """This API is used to modify the description of a database proxy.
+
+        :param request: Request instance for ModifyProxyDesc.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyProxyDescRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyProxyDescResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyProxyDesc", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyProxyDescResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyProxyRwSplit(self, request):
+        """This API is used to configure the read/write separation of a database proxy.
+
+        :param request: Request instance for ModifyProxyRwSplit.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyProxyRwSplitRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyProxyRwSplitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyProxyRwSplit", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyProxyRwSplitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyResourcePackageClusters(self, request):
         """This API is used to bind a resource pack to a cluster.
 
@@ -2004,6 +2211,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def OpenClusterReadOnlyInstanceGroupAccess(self, request):
+        """This API is used to enable the access to read-only instance group.
+
+        :param request: Request instance for OpenClusterReadOnlyInstanceGroupAccess.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.OpenClusterReadOnlyInstanceGroupAccessRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.OpenClusterReadOnlyInstanceGroupAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenClusterReadOnlyInstanceGroupAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenClusterReadOnlyInstanceGroupAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def OpenReadOnlyInstanceExclusiveAccess(self, request):
         """This API is used to enable the dedicated access group for a read-only instance.
 
@@ -2087,6 +2317,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("RefundResourcePackage", params, headers=headers)
             response = json.loads(body)
             model = models.RefundResourcePackageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReloadBalanceProxyNode(self, request):
+        """This API is used to rebalance the load on the database proxy.
+
+        :param request: Request instance for ReloadBalanceProxyNode.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ReloadBalanceProxyNodeRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ReloadBalanceProxyNodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReloadBalanceProxyNode", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReloadBalanceProxyNodeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2386,6 +2639,52 @@ class CynosdbClient(AbstractClient):
             body = self.call("UpgradeInstance", params, headers=headers)
             response = json.loads(body)
             model = models.UpgradeInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradeProxy(self, request):
+        """This API is used to upgrade the configuration of a database proxy.
+
+        :param request: Request instance for UpgradeProxy.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeProxyRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeProxy", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradeProxyVersion(self, request):
+        """This API is used to upgrade the version of a database proxy.
+
+        :param request: Request instance for UpgradeProxyVersion.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeProxyVersionRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeProxyVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeProxyVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeProxyVersionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -1372,6 +1372,112 @@ class CloseClusterPasswordComplexityResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CloseProxyRequest(AbstractModel):
+    """CloseProxy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _ProxyGroupId: Database proxy u200dgroup ID
+        :type ProxyGroupId: str
+        :param _OnlyCloseRW: Whether only to disable read/write separation. Valid values: `true`, `false`.
+        :type OnlyCloseRW: bool
+        """
+        self._ClusterId = None
+        self._ProxyGroupId = None
+        self._OnlyCloseRW = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ProxyGroupId(self):
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+    @property
+    def OnlyCloseRW(self):
+        return self._OnlyCloseRW
+
+    @OnlyCloseRW.setter
+    def OnlyCloseRW(self, OnlyCloseRW):
+        self._OnlyCloseRW = OnlyCloseRW
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        self._OnlyCloseRW = params.get("OnlyCloseRW")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseProxyResponse(AbstractModel):
+    """CloseProxy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Async flow ID
+        :type FlowId: int
+        :param _TaskId: Async task ID
+        :type TaskId: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CloseWanRequest(AbstractModel):
     """CloseWan request structure.
 
@@ -1467,6 +1573,17 @@ class ClusterInstanceDetail(AbstractModel):
         :type InstanceStorage: int
         :param _InstanceRole: Instance role
         :type InstanceRole: str
+        :param _MaintainStartTime: Execution start time in seconds from 0:00	
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type MaintainStartTime: int
+        :param _MaintainDuration: Duration in seconds	
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type MaintainDuration: int
+        :param _MaintainWeekDays: Execution time. Valid values: `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, Sat`, `Sun`.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type MaintainWeekDays: list of str
+        :param _ServerlessStatus: 
+        :type ServerlessStatus: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -1477,6 +1594,10 @@ class ClusterInstanceDetail(AbstractModel):
         self._InstanceMemory = None
         self._InstanceStorage = None
         self._InstanceRole = None
+        self._MaintainStartTime = None
+        self._MaintainDuration = None
+        self._MaintainWeekDays = None
+        self._ServerlessStatus = None
 
     @property
     def InstanceId(self):
@@ -1550,6 +1671,38 @@ class ClusterInstanceDetail(AbstractModel):
     def InstanceRole(self, InstanceRole):
         self._InstanceRole = InstanceRole
 
+    @property
+    def MaintainStartTime(self):
+        return self._MaintainStartTime
+
+    @MaintainStartTime.setter
+    def MaintainStartTime(self, MaintainStartTime):
+        self._MaintainStartTime = MaintainStartTime
+
+    @property
+    def MaintainDuration(self):
+        return self._MaintainDuration
+
+    @MaintainDuration.setter
+    def MaintainDuration(self, MaintainDuration):
+        self._MaintainDuration = MaintainDuration
+
+    @property
+    def MaintainWeekDays(self):
+        return self._MaintainWeekDays
+
+    @MaintainWeekDays.setter
+    def MaintainWeekDays(self, MaintainWeekDays):
+        self._MaintainWeekDays = MaintainWeekDays
+
+    @property
+    def ServerlessStatus(self):
+        return self._ServerlessStatus
+
+    @ServerlessStatus.setter
+    def ServerlessStatus(self, ServerlessStatus):
+        self._ServerlessStatus = ServerlessStatus
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1561,6 +1714,10 @@ class ClusterInstanceDetail(AbstractModel):
         self._InstanceMemory = params.get("InstanceMemory")
         self._InstanceStorage = params.get("InstanceStorage")
         self._InstanceRole = params.get("InstanceRole")
+        self._MaintainStartTime = params.get("MaintainStartTime")
+        self._MaintainDuration = params.get("MaintainDuration")
+        self._MaintainWeekDays = params.get("MaintainWeekDays")
+        self._ServerlessStatus = params.get("ServerlessStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2724,9 +2881,9 @@ class CreateParamTemplateRequest(AbstractModel):
         :type TemplateName: str
         :param _EngineVersion: MySQL version number
         :type EngineVersion: str
-        :param _TemplateDescription: The description of a template
+        :param _TemplateDescription: Template description
         :type TemplateDescription: str
-        :param _TemplateId: (Optional) ID of the template to be copied
+        :param _TemplateId: ID of the template to be copied
         :type TemplateId: int
         :param _DbMode: Database type. Valid values:  `NORMAL` (default), `SERVERLESS`.
         :type DbMode: str
@@ -2848,6 +3005,544 @@ class CreateParamTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateProxyEndPointRequest(AbstractModel):
+    """CreateProxyEndPoint request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _UniqueVpcId: VPC ID, which is the same as that of the cluster by defaultu200d.
+        :type UniqueVpcId: str
+        :param _UniqueSubnetId: VPCe subnet ID, which is the same as that of the cluster by default.
+        :type UniqueSubnetId: str
+        :param _ConnectionPoolType: Connection pool type. Valid value: `SessionConnectionPool` (session-level connection pool)
+        :type ConnectionPoolType: str
+        :param _OpenConnectionPool: Whether to enable connection pool. Valid value: `yes` (enable), `no` u200d(disable).
+        :type OpenConnectionPool: str
+        :param _ConnectionPoolTimeOut: Connection pool threshold in seconds
+        :type ConnectionPoolTimeOut: int
+        :param _SecurityGroupIds: Array of security group IDs
+        :type SecurityGroupIds: list of str
+        :param _Description: Description
+        :type Description: str
+        :param _Vip: VIP information
+        :type Vip: str
+        :param _WeightMode: Weight mode. 
+Valid values: `system` (system-assigned), `custom` (custom).
+        :type WeightMode: str
+        :param _AutoAddRo: Whether to automatically add read-only instance. Valid value: `yes`, `no`.
+        :type AutoAddRo: str
+        :param _FailOver: Whether to enable failover
+        :type FailOver: str
+        :param _ConsistencyType: Consistency type. Valid values: 
+`eventual`, `global`, `session`.
+        :type ConsistencyType: str
+        :param _RwType: Read-write attribute. Valid values: 
+`READWRITE`, `READONLY`.
+        :type RwType: str
+        :param _ConsistencyTimeOut: Consistency timeout period
+        :type ConsistencyTimeOut: int
+        :param _TransSplit: Transaction split
+        :type TransSplit: bool
+        :param _AccessMode: Connection mode. Valid values:
+`nearby`, `balance`.
+        :type AccessMode: str
+        :param _InstanceWeights: Instance weight
+        :type InstanceWeights: list of ProxyInstanceWeight
+        """
+        self._ClusterId = None
+        self._UniqueVpcId = None
+        self._UniqueSubnetId = None
+        self._ConnectionPoolType = None
+        self._OpenConnectionPool = None
+        self._ConnectionPoolTimeOut = None
+        self._SecurityGroupIds = None
+        self._Description = None
+        self._Vip = None
+        self._WeightMode = None
+        self._AutoAddRo = None
+        self._FailOver = None
+        self._ConsistencyType = None
+        self._RwType = None
+        self._ConsistencyTimeOut = None
+        self._TransSplit = None
+        self._AccessMode = None
+        self._InstanceWeights = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def UniqueVpcId(self):
+        return self._UniqueVpcId
+
+    @UniqueVpcId.setter
+    def UniqueVpcId(self, UniqueVpcId):
+        self._UniqueVpcId = UniqueVpcId
+
+    @property
+    def UniqueSubnetId(self):
+        return self._UniqueSubnetId
+
+    @UniqueSubnetId.setter
+    def UniqueSubnetId(self, UniqueSubnetId):
+        self._UniqueSubnetId = UniqueSubnetId
+
+    @property
+    def ConnectionPoolType(self):
+        return self._ConnectionPoolType
+
+    @ConnectionPoolType.setter
+    def ConnectionPoolType(self, ConnectionPoolType):
+        self._ConnectionPoolType = ConnectionPoolType
+
+    @property
+    def OpenConnectionPool(self):
+        return self._OpenConnectionPool
+
+    @OpenConnectionPool.setter
+    def OpenConnectionPool(self, OpenConnectionPool):
+        self._OpenConnectionPool = OpenConnectionPool
+
+    @property
+    def ConnectionPoolTimeOut(self):
+        return self._ConnectionPoolTimeOut
+
+    @ConnectionPoolTimeOut.setter
+    def ConnectionPoolTimeOut(self, ConnectionPoolTimeOut):
+        self._ConnectionPoolTimeOut = ConnectionPoolTimeOut
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def WeightMode(self):
+        return self._WeightMode
+
+    @WeightMode.setter
+    def WeightMode(self, WeightMode):
+        self._WeightMode = WeightMode
+
+    @property
+    def AutoAddRo(self):
+        return self._AutoAddRo
+
+    @AutoAddRo.setter
+    def AutoAddRo(self, AutoAddRo):
+        self._AutoAddRo = AutoAddRo
+
+    @property
+    def FailOver(self):
+        return self._FailOver
+
+    @FailOver.setter
+    def FailOver(self, FailOver):
+        self._FailOver = FailOver
+
+    @property
+    def ConsistencyType(self):
+        return self._ConsistencyType
+
+    @ConsistencyType.setter
+    def ConsistencyType(self, ConsistencyType):
+        self._ConsistencyType = ConsistencyType
+
+    @property
+    def RwType(self):
+        return self._RwType
+
+    @RwType.setter
+    def RwType(self, RwType):
+        self._RwType = RwType
+
+    @property
+    def ConsistencyTimeOut(self):
+        return self._ConsistencyTimeOut
+
+    @ConsistencyTimeOut.setter
+    def ConsistencyTimeOut(self, ConsistencyTimeOut):
+        self._ConsistencyTimeOut = ConsistencyTimeOut
+
+    @property
+    def TransSplit(self):
+        return self._TransSplit
+
+    @TransSplit.setter
+    def TransSplit(self, TransSplit):
+        self._TransSplit = TransSplit
+
+    @property
+    def AccessMode(self):
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
+    @property
+    def InstanceWeights(self):
+        return self._InstanceWeights
+
+    @InstanceWeights.setter
+    def InstanceWeights(self, InstanceWeights):
+        self._InstanceWeights = InstanceWeights
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._UniqueVpcId = params.get("UniqueVpcId")
+        self._UniqueSubnetId = params.get("UniqueSubnetId")
+        self._ConnectionPoolType = params.get("ConnectionPoolType")
+        self._OpenConnectionPool = params.get("OpenConnectionPool")
+        self._ConnectionPoolTimeOut = params.get("ConnectionPoolTimeOut")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._Description = params.get("Description")
+        self._Vip = params.get("Vip")
+        self._WeightMode = params.get("WeightMode")
+        self._AutoAddRo = params.get("AutoAddRo")
+        self._FailOver = params.get("FailOver")
+        self._ConsistencyType = params.get("ConsistencyType")
+        self._RwType = params.get("RwType")
+        self._ConsistencyTimeOut = params.get("ConsistencyTimeOut")
+        self._TransSplit = params.get("TransSplit")
+        self._AccessMode = params.get("AccessMode")
+        if params.get("InstanceWeights") is not None:
+            self._InstanceWeights = []
+            for item in params.get("InstanceWeights"):
+                obj = ProxyInstanceWeight()
+                obj._deserialize(item)
+                self._InstanceWeights.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateProxyEndPointResponse(AbstractModel):
+    """CreateProxyEndPoint response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Async flow ID
+        :type FlowId: int
+        :param _TaskId: Async task ID
+        :type TaskId: int
+        :param _ProxyGroupId: Database proxy u200dgroup ID
+        :type ProxyGroupId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._TaskId = None
+        self._ProxyGroupId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ProxyGroupId(self):
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateProxyRequest(AbstractModel):
+    """CreateProxy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _Cpu: Number of CPU cores
+        :type Cpu: int
+        :param _Mem: Memory
+        :type Mem: int
+        :param _UniqueVpcId: VPC ID, which is the same as that of the cluster by defaultu200d.
+        :type UniqueVpcId: str
+        :param _UniqueSubnetId: VPC subnet ID, which is the same as that of the cluster by default.
+        :type UniqueSubnetId: str
+        :param _ProxyCount: Number of nodes in the proxy group
+        :type ProxyCount: int
+        :param _ConnectionPoolType: Connection pool type. Valid value: `SessionConnectionPool` (session-level connection pool)
+        :type ConnectionPoolType: str
+        :param _OpenConnectionPool: Whether to enable connection pool. Valid value: `yes` (enable), `no` u200d(disable).
+        :type OpenConnectionPool: str
+        :param _ConnectionPoolTimeOut: Connection pool threshold in seconds
+        :type ConnectionPoolTimeOut: int
+        :param _SecurityGroupIds: Array of security group IDs
+        :type SecurityGroupIds: list of str
+        :param _Description: Description
+        :type Description: str
+        :param _ProxyZones: Database node information
+        :type ProxyZones: list of ProxyZone
+        """
+        self._ClusterId = None
+        self._Cpu = None
+        self._Mem = None
+        self._UniqueVpcId = None
+        self._UniqueSubnetId = None
+        self._ProxyCount = None
+        self._ConnectionPoolType = None
+        self._OpenConnectionPool = None
+        self._ConnectionPoolTimeOut = None
+        self._SecurityGroupIds = None
+        self._Description = None
+        self._ProxyZones = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def UniqueVpcId(self):
+        return self._UniqueVpcId
+
+    @UniqueVpcId.setter
+    def UniqueVpcId(self, UniqueVpcId):
+        self._UniqueVpcId = UniqueVpcId
+
+    @property
+    def UniqueSubnetId(self):
+        return self._UniqueSubnetId
+
+    @UniqueSubnetId.setter
+    def UniqueSubnetId(self, UniqueSubnetId):
+        self._UniqueSubnetId = UniqueSubnetId
+
+    @property
+    def ProxyCount(self):
+        return self._ProxyCount
+
+    @ProxyCount.setter
+    def ProxyCount(self, ProxyCount):
+        self._ProxyCount = ProxyCount
+
+    @property
+    def ConnectionPoolType(self):
+        return self._ConnectionPoolType
+
+    @ConnectionPoolType.setter
+    def ConnectionPoolType(self, ConnectionPoolType):
+        self._ConnectionPoolType = ConnectionPoolType
+
+    @property
+    def OpenConnectionPool(self):
+        return self._OpenConnectionPool
+
+    @OpenConnectionPool.setter
+    def OpenConnectionPool(self, OpenConnectionPool):
+        self._OpenConnectionPool = OpenConnectionPool
+
+    @property
+    def ConnectionPoolTimeOut(self):
+        return self._ConnectionPoolTimeOut
+
+    @ConnectionPoolTimeOut.setter
+    def ConnectionPoolTimeOut(self, ConnectionPoolTimeOut):
+        self._ConnectionPoolTimeOut = ConnectionPoolTimeOut
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ProxyZones(self):
+        return self._ProxyZones
+
+    @ProxyZones.setter
+    def ProxyZones(self, ProxyZones):
+        self._ProxyZones = ProxyZones
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        self._UniqueVpcId = params.get("UniqueVpcId")
+        self._UniqueSubnetId = params.get("UniqueSubnetId")
+        self._ProxyCount = params.get("ProxyCount")
+        self._ConnectionPoolType = params.get("ConnectionPoolType")
+        self._OpenConnectionPool = params.get("OpenConnectionPool")
+        self._ConnectionPoolTimeOut = params.get("ConnectionPoolTimeOut")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._Description = params.get("Description")
+        if params.get("ProxyZones") is not None:
+            self._ProxyZones = []
+            for item in params.get("ProxyZones"):
+                obj = ProxyZone()
+                obj._deserialize(item)
+                self._ProxyZones.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateProxyResponse(AbstractModel):
+    """CreateProxy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Async flow ID
+        :type FlowId: int
+        :param _TaskId: Async task ID
+        :type TaskId: int
+        :param _ProxyGroupId: Database proxy u200dgroup ID
+        :type ProxyGroupId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._TaskId = None
+        self._ProxyGroupId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ProxyGroupId(self):
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateResourcePackageRequest(AbstractModel):
     """CreateResourcePackage request structure.
 
@@ -2859,7 +3554,7 @@ class CreateResourcePackageRequest(AbstractModel):
         :type InstanceType: str
         :param _PackageRegion: Region of the resource pack. Valid values: `China` (Chinese mainland), `overseas` (outside Chinese mainland).
         :type PackageRegion: str
-        :param _PackageType: Resource pack type. Valid values:  `CCU` (compute resource pack), `DISK` (storage resource pack).
+        :param _PackageType: Resource pack type. Valid values: `CCU` (compute resource pack), `DISK` (storage resource pack).
         :type PackageType: str
         :param _PackageVersion: Resource pack edition. Valid values: `base` (basic edition), `common` (general edition), `enterprise` (enterprise edition).
         :type PackageVersion: str
@@ -5824,7 +6519,7 @@ class DbInfo(AbstractModel):
         :type CharacterSet: str
         :param _Status: Database status
         :type Status: str
-        :param _CollateRule: Collation rule
+        :param _CollateRule: Collation
         :type CollateRule: str
         :param _Description: Database remarks Note: This field may return null, indicating that no valid values can be obtained.
         :type Description: str
@@ -6475,6 +7170,8 @@ This parameter has been disused.
         :type Limit: int
         :param _Offset: Offset
         :type Offset: int
+        :param _AccountRegular: Keywords for fuzzy search (match `AccountName` and `AccountHost` at the same time), which supports regex. The union results will be returned.
+        :type AccountRegular: str
         """
         self._ClusterId = None
         self._AccountNames = None
@@ -6482,6 +7179,7 @@ This parameter has been disused.
         self._Hosts = None
         self._Limit = None
         self._Offset = None
+        self._AccountRegular = None
 
     @property
     def ClusterId(self):
@@ -6531,6 +7229,14 @@ This parameter has been disused.
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def AccountRegular(self):
+        return self._AccountRegular
+
+    @AccountRegular.setter
+    def AccountRegular(self, AccountRegular):
+        self._AccountRegular = AccountRegular
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -6539,6 +7245,7 @@ This parameter has been disused.
         self._Hosts = params.get("Hosts")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._AccountRegular = params.get("AccountRegular")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9758,6 +10465,373 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeProxiesRequest(AbstractModel):
+    """DescribeProxies request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _Limit: Number of returned results. Default value: `20`. Maximum value: `100`,
+        :type Limit: int
+        :param _Offset: Record offset. Default value: `0`.
+        :type Offset: int
+        :param _OrderBy: Sorting field. Valid values:
+<li> CREATETIME: Creation time</li>
+<li> PERIODENDTIME: Expiration time</li>
+        :type OrderBy: str
+        :param _OrderByType: Sorting order. Valid values:
+<li> `ASC`: Ascending.</li>
+<li> `DESC`: Descending</li>
+        :type OrderByType: str
+        :param _Filters: Filter. If there are more than one filter, the logical relationship between these filters is `AND`.
+        :type Filters: list of QueryParamFilter
+        """
+        self._ClusterId = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+        self._Filters = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = QueryParamFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProxiesResponse(AbstractModel):
+    """DescribeProxies response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of database proxy groups
+        :type TotalCount: int
+        :param _ProxyGroupInfos: List of database proxy groups
+Note: u200dThis field may returnu200d·nullu200d·, indicating that no valid values can be obtained.
+        :type ProxyGroupInfos: list of ProxyGroupInfo
+        :param _ProxyNodeInfos: Database proxy node
+Note: u200dThis field may returnu200d·nullu200d·, indicating that no valid values can be obtained.
+        :type ProxyNodeInfos: list of ProxyNodeInfo
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ProxyGroupInfos = None
+        self._ProxyNodeInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ProxyGroupInfos(self):
+        return self._ProxyGroupInfos
+
+    @ProxyGroupInfos.setter
+    def ProxyGroupInfos(self, ProxyGroupInfos):
+        self._ProxyGroupInfos = ProxyGroupInfos
+
+    @property
+    def ProxyNodeInfos(self):
+        return self._ProxyNodeInfos
+
+    @ProxyNodeInfos.setter
+    def ProxyNodeInfos(self, ProxyNodeInfos):
+        self._ProxyNodeInfos = ProxyNodeInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ProxyGroupInfos") is not None:
+            self._ProxyGroupInfos = []
+            for item in params.get("ProxyGroupInfos"):
+                obj = ProxyGroupInfo()
+                obj._deserialize(item)
+                self._ProxyGroupInfos.append(obj)
+        if params.get("ProxyNodeInfos") is not None:
+            self._ProxyNodeInfos = []
+            for item in params.get("ProxyNodeInfos"):
+                obj = ProxyNodeInfo()
+                obj._deserialize(item)
+                self._ProxyNodeInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeProxyNodesRequest(AbstractModel):
+    """DescribeProxyNodes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: Number of returned results. Default value: `20`. Maximum value: `100`,
+        :type Limit: int
+        :param _Offset: Record offset. Default value: `0`.
+        :type Offset: int
+        :param _OrderBy: Sorting field. Valid values:
+<li> CREATETIME: Creation time</li>
+<li> PERIODENDTIME: Expiration time</li>
+        :type OrderBy: str
+        :param _OrderByType: Sorting order. Valid values:
+<li> `ASC`: Ascending.</li>
+<li> `DESC`: Descending</li>
+        :type OrderByType: str
+        :param _Filters: Filter. If there are more than one filter, the logical relationship between these filters is `AND`.
+        :type Filters: list of QueryFilter
+        """
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = QueryFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProxyNodesResponse(AbstractModel):
+    """DescribeProxyNodes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of the database proxy nodes
+        :type TotalCount: int
+        :param _ProxyNodeInfos: List of the database proxy nodes
+        :type ProxyNodeInfos: list of ProxyNodeInfo
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ProxyNodeInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ProxyNodeInfos(self):
+        return self._ProxyNodeInfos
+
+    @ProxyNodeInfos.setter
+    def ProxyNodeInfos(self, ProxyNodeInfos):
+        self._ProxyNodeInfos = ProxyNodeInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ProxyNodeInfos") is not None:
+            self._ProxyNodeInfos = []
+            for item in params.get("ProxyNodeInfos"):
+                obj = ProxyNodeInfo()
+                obj._deserialize(item)
+                self._ProxyNodeInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeProxySpecsRequest(AbstractModel):
+    """DescribeProxySpecs request structure.
+
+    """
+
+
+class DescribeProxySpecsResponse(AbstractModel):
+    """DescribeProxySpecs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProxySpecs: List of database proxyspecifications
+        :type ProxySpecs: list of ProxySpec
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ProxySpecs = None
+        self._RequestId = None
+
+    @property
+    def ProxySpecs(self):
+        return self._ProxySpecs
+
+    @ProxySpecs.setter
+    def ProxySpecs(self, ProxySpecs):
+        self._ProxySpecs = ProxySpecs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ProxySpecs") is not None:
+            self._ProxySpecs = []
+            for item in params.get("ProxySpecs"):
+                obj = ProxySpec()
+                obj._deserialize(item)
+                self._ProxySpecs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeResourcePackageDetailRequest(AbstractModel):
     """DescribeResourcePackageDetail request structure.
 
@@ -10542,6 +11616,102 @@ class DescribeRollbackTimeValidityResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSupportProxyVersionRequest(AbstractModel):
+    """DescribeSupportProxyVersion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _ProxyGroupId: Database proxy u200dgroup ID
+        :type ProxyGroupId: str
+        """
+        self._ClusterId = None
+        self._ProxyGroupId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ProxyGroupId(self):
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSupportProxyVersionResponse(AbstractModel):
+    """DescribeSupportProxyVersion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SupportProxyVersions: Collection of supported database proxy versions
+Note: u200dThis field may returnu200d·nullu200d·, indicating that no valid values can be obtained.
+        :type SupportProxyVersions: list of str
+        :param _CurrentProxyVersion: The current proxy version
+Note: u200dThis field may returnu200d·nullu200d·, indicating that no valid values can be obtained.
+        :type CurrentProxyVersion: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SupportProxyVersions = None
+        self._CurrentProxyVersion = None
+        self._RequestId = None
+
+    @property
+    def SupportProxyVersions(self):
+        return self._SupportProxyVersions
+
+    @SupportProxyVersions.setter
+    def SupportProxyVersions(self, SupportProxyVersions):
+        self._SupportProxyVersions = SupportProxyVersions
+
+    @property
+    def CurrentProxyVersion(self):
+        return self._CurrentProxyVersion
+
+    @CurrentProxyVersion.setter
+    def CurrentProxyVersion(self, CurrentProxyVersion):
+        self._CurrentProxyVersion = CurrentProxyVersion
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SupportProxyVersions = params.get("SupportProxyVersions")
+        self._CurrentProxyVersion = params.get("CurrentProxyVersion")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeZonesRequest(AbstractModel):
     """DescribeZones request structure.
 
@@ -10894,6 +12064,10 @@ class ExportInstanceSlowQueriesRequest(AbstractModel):
         :type Database: str
         :param _FileType: File type. Valid values: csv, original.
         :type FileType: str
+        :param _OrderBy: Sorting field. Valid values: u200d`QueryTime`, `LockTime`, `RowsExamined`, and `RowsSent`.
+        :type OrderBy: str
+        :param _OrderByType: Sorting order. Valid values: `asc`, `desc`.
+        :type OrderByType: str
         """
         self._InstanceId = None
         self._StartTime = None
@@ -10904,6 +12078,8 @@ class ExportInstanceSlowQueriesRequest(AbstractModel):
         self._Host = None
         self._Database = None
         self._FileType = None
+        self._OrderBy = None
+        self._OrderByType = None
 
     @property
     def InstanceId(self):
@@ -10977,6 +12153,22 @@ class ExportInstanceSlowQueriesRequest(AbstractModel):
     def FileType(self, FileType):
         self._FileType = FileType
 
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -10988,6 +12180,8 @@ class ExportInstanceSlowQueriesRequest(AbstractModel):
         self._Host = params.get("Host")
         self._Database = params.get("Database")
         self._FileType = params.get("FileType")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13874,9 +15068,9 @@ class ModifyParamTemplateRequest(AbstractModel):
         r"""
         :param _TemplateId: Template ID
         :type TemplateId: int
-        :param _TemplateName: Template Name
+        :param _TemplateName: Template name
         :type TemplateName: str
-        :param _TemplateDescription: The template description
+        :param _TemplateDescription: Template description
         :type TemplateDescription: str
         :param _ParamList: Parameter list
         :type ParamList: list of ModifyParamItem
@@ -13961,6 +15155,347 @@ class ModifyParamTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyProxyDescRequest(AbstractModel):
+    """ModifyProxyDesc request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _ProxyGroupId: Database proxy u200dgroup ID
+        :type ProxyGroupId: str
+        :param _Description: Database proxy description
+        :type Description: str
+        """
+        self._ClusterId = None
+        self._ProxyGroupId = None
+        self._Description = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ProxyGroupId(self):
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyProxyDescResponse(AbstractModel):
+    """ModifyProxyDesc response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyProxyRwSplitRequest(AbstractModel):
+    """ModifyProxyRwSplit request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _ProxyGroupId: Database proxy u200dgroup ID
+        :type ProxyGroupId: str
+        :param _ConsistencyType: Consistency type. Valid values: `eventual` (eventual consistency), `session` (session consistency), `global` (global consistency).
+        :type ConsistencyType: str
+        :param _ConsistencyTimeOut: Consistency timeout period
+        :type ConsistencyTimeOut: str
+        :param _WeightMode: Assignment mode of read/write weights. Valid values: `system` (auto-assigned), `custom`
+        :type WeightMode: str
+        :param _InstanceWeights: Read-Only weight of an instance
+        :type InstanceWeights: list of ProxyInstanceWeight
+        :param _FailOver: Whether to enable failover. If it is enabled, the connection address will route requests to the source instance in case of proxy failure. Valid values: `true`, `false`.
+        :type FailOver: str
+        :param _AutoAddRo: Whether to automatically add read-only instances. Valid values: `true`, `false`
+        :type AutoAddRo: str
+        :param _OpenRw: Whether to enable read/write separation
+        :type OpenRw: str
+        :param _RwType: Read/Write type. Valid values:
+`READWRITE`, `READONLY`.
+        :type RwType: str
+        :param _TransSplit: Transaction split
+        :type TransSplit: bool
+        :param _AccessMode: Connection mode. Valid values:
+`nearby`, `balance`.
+        :type AccessMode: str
+        :param _OpenConnectionPool: Whether to enable the connection pool. Valid values: 
+`yes`, `no`.
+        :type OpenConnectionPool: str
+        :param _ConnectionPoolType: Connection pool type. Valid values:
+`ConnectionPoolType`, `SessionConnectionPool`.
+        :type ConnectionPoolType: str
+        :param _ConnectionPoolTimeOut: Connection u200dpersistence timeout
+        :type ConnectionPoolTimeOut: int
+        """
+        self._ClusterId = None
+        self._ProxyGroupId = None
+        self._ConsistencyType = None
+        self._ConsistencyTimeOut = None
+        self._WeightMode = None
+        self._InstanceWeights = None
+        self._FailOver = None
+        self._AutoAddRo = None
+        self._OpenRw = None
+        self._RwType = None
+        self._TransSplit = None
+        self._AccessMode = None
+        self._OpenConnectionPool = None
+        self._ConnectionPoolType = None
+        self._ConnectionPoolTimeOut = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ProxyGroupId(self):
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+    @property
+    def ConsistencyType(self):
+        return self._ConsistencyType
+
+    @ConsistencyType.setter
+    def ConsistencyType(self, ConsistencyType):
+        self._ConsistencyType = ConsistencyType
+
+    @property
+    def ConsistencyTimeOut(self):
+        return self._ConsistencyTimeOut
+
+    @ConsistencyTimeOut.setter
+    def ConsistencyTimeOut(self, ConsistencyTimeOut):
+        self._ConsistencyTimeOut = ConsistencyTimeOut
+
+    @property
+    def WeightMode(self):
+        return self._WeightMode
+
+    @WeightMode.setter
+    def WeightMode(self, WeightMode):
+        self._WeightMode = WeightMode
+
+    @property
+    def InstanceWeights(self):
+        return self._InstanceWeights
+
+    @InstanceWeights.setter
+    def InstanceWeights(self, InstanceWeights):
+        self._InstanceWeights = InstanceWeights
+
+    @property
+    def FailOver(self):
+        return self._FailOver
+
+    @FailOver.setter
+    def FailOver(self, FailOver):
+        self._FailOver = FailOver
+
+    @property
+    def AutoAddRo(self):
+        return self._AutoAddRo
+
+    @AutoAddRo.setter
+    def AutoAddRo(self, AutoAddRo):
+        self._AutoAddRo = AutoAddRo
+
+    @property
+    def OpenRw(self):
+        return self._OpenRw
+
+    @OpenRw.setter
+    def OpenRw(self, OpenRw):
+        self._OpenRw = OpenRw
+
+    @property
+    def RwType(self):
+        return self._RwType
+
+    @RwType.setter
+    def RwType(self, RwType):
+        self._RwType = RwType
+
+    @property
+    def TransSplit(self):
+        return self._TransSplit
+
+    @TransSplit.setter
+    def TransSplit(self, TransSplit):
+        self._TransSplit = TransSplit
+
+    @property
+    def AccessMode(self):
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
+    @property
+    def OpenConnectionPool(self):
+        return self._OpenConnectionPool
+
+    @OpenConnectionPool.setter
+    def OpenConnectionPool(self, OpenConnectionPool):
+        self._OpenConnectionPool = OpenConnectionPool
+
+    @property
+    def ConnectionPoolType(self):
+        return self._ConnectionPoolType
+
+    @ConnectionPoolType.setter
+    def ConnectionPoolType(self, ConnectionPoolType):
+        self._ConnectionPoolType = ConnectionPoolType
+
+    @property
+    def ConnectionPoolTimeOut(self):
+        return self._ConnectionPoolTimeOut
+
+    @ConnectionPoolTimeOut.setter
+    def ConnectionPoolTimeOut(self, ConnectionPoolTimeOut):
+        self._ConnectionPoolTimeOut = ConnectionPoolTimeOut
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        self._ConsistencyType = params.get("ConsistencyType")
+        self._ConsistencyTimeOut = params.get("ConsistencyTimeOut")
+        self._WeightMode = params.get("WeightMode")
+        if params.get("InstanceWeights") is not None:
+            self._InstanceWeights = []
+            for item in params.get("InstanceWeights"):
+                obj = ProxyInstanceWeight()
+                obj._deserialize(item)
+                self._InstanceWeights.append(obj)
+        self._FailOver = params.get("FailOver")
+        self._AutoAddRo = params.get("AutoAddRo")
+        self._OpenRw = params.get("OpenRw")
+        self._RwType = params.get("RwType")
+        self._TransSplit = params.get("TransSplit")
+        self._AccessMode = params.get("AccessMode")
+        self._OpenConnectionPool = params.get("OpenConnectionPool")
+        self._ConnectionPoolType = params.get("ConnectionPoolType")
+        self._ConnectionPoolTimeOut = params.get("ConnectionPoolTimeOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyProxyRwSplitResponse(AbstractModel):
+    """ModifyProxyRwSplit response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Async FlowId
+        :type FlowId: int
+        :param _TaskId: Async task ID
+        :type TaskId: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -15084,6 +16619,37 @@ class OpenClusterPasswordComplexityResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class OpenClusterReadOnlyInstanceGroupAccessRequest(AbstractModel):
+    """OpenClusterReadOnlyInstanceGroupAccess request structure.
+
+    """
+
+
+class OpenClusterReadOnlyInstanceGroupAccessResponse(AbstractModel):
+    """OpenClusterReadOnlyInstanceGroupAccess response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -16410,7 +17976,7 @@ class PolicyRule(AbstractModel):
         r"""
         :param _Action: Policy, which can be `ACCEPT` or `DROP`
         :type Action: str
-        :param _CidrIp: Source IP or IP range, such as 192.168.0.0/16
+        :param _CidrIp: Source IP or source IP range, such as 192.168.0.0/16
         :type CidrIp: str
         :param _PortRange: Port
         :type PortRange: str
@@ -16518,6 +18084,741 @@ class PolicyRule(AbstractModel):
         
 
 
+class ProxyConnectionPoolInfo(AbstractModel):
+    """Connection pool information for the database proxy
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConnectionPoolTimeOut: Connection persistence timeout in seconds
+Note: u200dThis field may returnu200d·nullu200d·, indicating that no valid values can be obtained.
+        :type ConnectionPoolTimeOut: int
+        :param _OpenConnectionPool: Whether the connection pool is enabled
+Note: u200dThis field may returnu200d·nullu200d·, indicating that no valid values can be obtained.
+        :type OpenConnectionPool: str
+        :param _ConnectionPoolType: Connection pool type. Valid value: `SessionConnectionPool` (session-level).
+Note: u200dThis field may returnu200d·nullu200d·, indicating that no valid values can be obtained.
+        :type ConnectionPoolType: str
+        """
+        self._ConnectionPoolTimeOut = None
+        self._OpenConnectionPool = None
+        self._ConnectionPoolType = None
+
+    @property
+    def ConnectionPoolTimeOut(self):
+        return self._ConnectionPoolTimeOut
+
+    @ConnectionPoolTimeOut.setter
+    def ConnectionPoolTimeOut(self, ConnectionPoolTimeOut):
+        self._ConnectionPoolTimeOut = ConnectionPoolTimeOut
+
+    @property
+    def OpenConnectionPool(self):
+        return self._OpenConnectionPool
+
+    @OpenConnectionPool.setter
+    def OpenConnectionPool(self, OpenConnectionPool):
+        self._OpenConnectionPool = OpenConnectionPool
+
+    @property
+    def ConnectionPoolType(self):
+        return self._ConnectionPoolType
+
+    @ConnectionPoolType.setter
+    def ConnectionPoolType(self, ConnectionPoolType):
+        self._ConnectionPoolType = ConnectionPoolType
+
+
+    def _deserialize(self, params):
+        self._ConnectionPoolTimeOut = params.get("ConnectionPoolTimeOut")
+        self._OpenConnectionPool = params.get("OpenConnectionPool")
+        self._ConnectionPoolType = params.get("ConnectionPoolType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyGroup(AbstractModel):
+    """Proxy group
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProxyGroupId: Database proxy u200dgroup ID
+        :type ProxyGroupId: str
+        :param _ProxyNodeCount: Number of nodes in the proxy group
+        :type ProxyNodeCount: int
+        :param _Status: Database proxy u200dgroup status
+        :type Status: str
+        :param _Region: Region
+        :type Region: str
+        :param _Zone: AZ
+        :type Zone: str
+        :param _CurrentProxyVersion: Current proxy version
+        :type CurrentProxyVersion: str
+        :param _ClusterId: Cluster ID
+Note: u200dThis field may returnu200d·nullu200d·, indicating that no valid values can be obtained.
+        :type ClusterId: str
+        :param _AppId: User `AppId`
+Note: u200dThis field may returnu200d·nullu200d·, indicating that no valid values can be obtained.
+        :type AppId: int
+        :param _OpenRw: Enabling read/write separation for database proxy
+Note: u200dThis field may returnu200d·nullu200d·, indicating that no valid values can be obtained.
+        :type OpenRw: str
+        """
+        self._ProxyGroupId = None
+        self._ProxyNodeCount = None
+        self._Status = None
+        self._Region = None
+        self._Zone = None
+        self._CurrentProxyVersion = None
+        self._ClusterId = None
+        self._AppId = None
+        self._OpenRw = None
+
+    @property
+    def ProxyGroupId(self):
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+    @property
+    def ProxyNodeCount(self):
+        return self._ProxyNodeCount
+
+    @ProxyNodeCount.setter
+    def ProxyNodeCount(self, ProxyNodeCount):
+        self._ProxyNodeCount = ProxyNodeCount
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def CurrentProxyVersion(self):
+        return self._CurrentProxyVersion
+
+    @CurrentProxyVersion.setter
+    def CurrentProxyVersion(self, CurrentProxyVersion):
+        self._CurrentProxyVersion = CurrentProxyVersion
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def OpenRw(self):
+        return self._OpenRw
+
+    @OpenRw.setter
+    def OpenRw(self, OpenRw):
+        self._OpenRw = OpenRw
+
+
+    def _deserialize(self, params):
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        self._ProxyNodeCount = params.get("ProxyNodeCount")
+        self._Status = params.get("Status")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._CurrentProxyVersion = params.get("CurrentProxyVersion")
+        self._ClusterId = params.get("ClusterId")
+        self._AppId = params.get("AppId")
+        self._OpenRw = params.get("OpenRw")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyGroupInfo(AbstractModel):
+    """Database proxy group details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProxyGroup: Database proxy group
+Note: u200dThis field may returnu200d·nullu200d·, indicating that no valid values can be obtained.
+        :type ProxyGroup: :class:`tencentcloud.cynosdb.v20190107.models.ProxyGroup`
+        :param _ProxyGroupRwInfo: Read/write separation information of the database proxy u200dgroup
+Note: u200dThis field may returnu200d·nullu200d·, indicating that no valid values can be obtained.
+        :type ProxyGroupRwInfo: :class:`tencentcloud.cynosdb.v20190107.models.ProxyGroupRwInfo`
+        :param _ProxyNodes: Node information of the u200ddatabase proxy
+Note: u200dThis field may returnu200d·nullu200d·, indicating that no valid values can be obtained.
+        :type ProxyNodes: list of ProxyNodeInfo
+        :param _ConnectionPool: Connection pool information for the database proxy
+Note: u200dThis field may returnu200d·nullu200d·, indicating that no valid values can be obtained.
+        :type ConnectionPool: :class:`tencentcloud.cynosdb.v20190107.models.ProxyConnectionPoolInfo`
+        :param _NetAddrInfos: Network information for database proxy
+Note: u200dThis field may returnu200d·nullu200d·, indicating that no valid values can be obtained.
+        :type NetAddrInfos: list of NetAddr
+        :param _Tasks: Task set of the database proxy
+Note: u200dThis field may returnu200d·nullu200d·, indicating that no valid values can be obtained.
+        :type Tasks: list of ObjectTask
+        """
+        self._ProxyGroup = None
+        self._ProxyGroupRwInfo = None
+        self._ProxyNodes = None
+        self._ConnectionPool = None
+        self._NetAddrInfos = None
+        self._Tasks = None
+
+    @property
+    def ProxyGroup(self):
+        return self._ProxyGroup
+
+    @ProxyGroup.setter
+    def ProxyGroup(self, ProxyGroup):
+        self._ProxyGroup = ProxyGroup
+
+    @property
+    def ProxyGroupRwInfo(self):
+        return self._ProxyGroupRwInfo
+
+    @ProxyGroupRwInfo.setter
+    def ProxyGroupRwInfo(self, ProxyGroupRwInfo):
+        self._ProxyGroupRwInfo = ProxyGroupRwInfo
+
+    @property
+    def ProxyNodes(self):
+        return self._ProxyNodes
+
+    @ProxyNodes.setter
+    def ProxyNodes(self, ProxyNodes):
+        self._ProxyNodes = ProxyNodes
+
+    @property
+    def ConnectionPool(self):
+        return self._ConnectionPool
+
+    @ConnectionPool.setter
+    def ConnectionPool(self, ConnectionPool):
+        self._ConnectionPool = ConnectionPool
+
+    @property
+    def NetAddrInfos(self):
+        return self._NetAddrInfos
+
+    @NetAddrInfos.setter
+    def NetAddrInfos(self, NetAddrInfos):
+        self._NetAddrInfos = NetAddrInfos
+
+    @property
+    def Tasks(self):
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+
+    def _deserialize(self, params):
+        if params.get("ProxyGroup") is not None:
+            self._ProxyGroup = ProxyGroup()
+            self._ProxyGroup._deserialize(params.get("ProxyGroup"))
+        if params.get("ProxyGroupRwInfo") is not None:
+            self._ProxyGroupRwInfo = ProxyGroupRwInfo()
+            self._ProxyGroupRwInfo._deserialize(params.get("ProxyGroupRwInfo"))
+        if params.get("ProxyNodes") is not None:
+            self._ProxyNodes = []
+            for item in params.get("ProxyNodes"):
+                obj = ProxyNodeInfo()
+                obj._deserialize(item)
+                self._ProxyNodes.append(obj)
+        if params.get("ConnectionPool") is not None:
+            self._ConnectionPool = ProxyConnectionPoolInfo()
+            self._ConnectionPool._deserialize(params.get("ConnectionPool"))
+        if params.get("NetAddrInfos") is not None:
+            self._NetAddrInfos = []
+            for item in params.get("NetAddrInfos"):
+                obj = NetAddr()
+                obj._deserialize(item)
+                self._NetAddrInfos.append(obj)
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyGroupRwInfo(AbstractModel):
+    """Read/write separation information of the database proxy u200dgroup
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsistencyType: Consistency type. Valid values: `eventual` (eventual consistency), `session` (session consistency), `global` (global consistency).
+        :type ConsistencyType: str
+        :param _ConsistencyTimeOut: Consistency timeout period
+        :type ConsistencyTimeOut: int
+        :param _WeightMode: Weight mode. Valid values: `system` (auto-assigned), `custom`.
+        :type WeightMode: str
+        :param _FailOver: Whether to enable failover
+        :type FailOver: str
+        :param _AutoAddRo: Whether to automatically add read-only instance. Valid value: `yes`, `no`.
+        :type AutoAddRo: str
+        :param _InstanceWeights: Instance weight array
+        :type InstanceWeights: list of ProxyInstanceWeight
+        :param _OpenRw: Whether to enable read-write node. Valid values: `yes`, `no`.
+Note: u200dThis field may returnu200d·nullu200d·, indicating that no valid values can be obtained.
+        :type OpenRw: str
+        :param _RwType: Read/write attribute. Valid values: `READWRITE`, `READONLY`.
+        :type RwType: str
+        :param _TransSplit: Transaction split
+        :type TransSplit: bool
+        :param _AccessMode: Connection mode. Valid values: `balance`, `nearby`.
+        :type AccessMode: str
+        """
+        self._ConsistencyType = None
+        self._ConsistencyTimeOut = None
+        self._WeightMode = None
+        self._FailOver = None
+        self._AutoAddRo = None
+        self._InstanceWeights = None
+        self._OpenRw = None
+        self._RwType = None
+        self._TransSplit = None
+        self._AccessMode = None
+
+    @property
+    def ConsistencyType(self):
+        return self._ConsistencyType
+
+    @ConsistencyType.setter
+    def ConsistencyType(self, ConsistencyType):
+        self._ConsistencyType = ConsistencyType
+
+    @property
+    def ConsistencyTimeOut(self):
+        return self._ConsistencyTimeOut
+
+    @ConsistencyTimeOut.setter
+    def ConsistencyTimeOut(self, ConsistencyTimeOut):
+        self._ConsistencyTimeOut = ConsistencyTimeOut
+
+    @property
+    def WeightMode(self):
+        return self._WeightMode
+
+    @WeightMode.setter
+    def WeightMode(self, WeightMode):
+        self._WeightMode = WeightMode
+
+    @property
+    def FailOver(self):
+        return self._FailOver
+
+    @FailOver.setter
+    def FailOver(self, FailOver):
+        self._FailOver = FailOver
+
+    @property
+    def AutoAddRo(self):
+        return self._AutoAddRo
+
+    @AutoAddRo.setter
+    def AutoAddRo(self, AutoAddRo):
+        self._AutoAddRo = AutoAddRo
+
+    @property
+    def InstanceWeights(self):
+        return self._InstanceWeights
+
+    @InstanceWeights.setter
+    def InstanceWeights(self, InstanceWeights):
+        self._InstanceWeights = InstanceWeights
+
+    @property
+    def OpenRw(self):
+        return self._OpenRw
+
+    @OpenRw.setter
+    def OpenRw(self, OpenRw):
+        self._OpenRw = OpenRw
+
+    @property
+    def RwType(self):
+        return self._RwType
+
+    @RwType.setter
+    def RwType(self, RwType):
+        self._RwType = RwType
+
+    @property
+    def TransSplit(self):
+        return self._TransSplit
+
+    @TransSplit.setter
+    def TransSplit(self, TransSplit):
+        self._TransSplit = TransSplit
+
+    @property
+    def AccessMode(self):
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
+
+    def _deserialize(self, params):
+        self._ConsistencyType = params.get("ConsistencyType")
+        self._ConsistencyTimeOut = params.get("ConsistencyTimeOut")
+        self._WeightMode = params.get("WeightMode")
+        self._FailOver = params.get("FailOver")
+        self._AutoAddRo = params.get("AutoAddRo")
+        if params.get("InstanceWeights") is not None:
+            self._InstanceWeights = []
+            for item in params.get("InstanceWeights"):
+                obj = ProxyInstanceWeight()
+                obj._deserialize(item)
+                self._InstanceWeights.append(obj)
+        self._OpenRw = params.get("OpenRw")
+        self._RwType = params.get("RwType")
+        self._TransSplit = params.get("TransSplit")
+        self._AccessMode = params.get("AccessMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyInstanceWeight(AbstractModel):
+    """Weight ratio between read-write instances and read-only instances
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: InstanID
+        :type InstanceId: str
+        :param _Weight: Instance weight
+        :type Weight: int
+        """
+        self._InstanceId = None
+        self._Weight = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Weight(self):
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyNodeInfo(AbstractModel):
+    """Node in the database proxy group
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProxyNodeId: Database proxy node ID
+        :type ProxyNodeId: str
+        :param _ProxyNodeConnections: Current node connections, which is not returned by the `DescribeProxyNodes` API.
+        :type ProxyNodeConnections: int
+        :param _Cpu: CPU of the database proxy node
+        :type Cpu: int
+        :param _Mem: Memory of the database proxy node
+        :type Mem: int
+        :param _Status: Status of the database proxy node
+        :type Status: str
+        :param _ProxyGroupId: Database proxy group ID
+        :type ProxyGroupId: str
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _AppId: User AppID
+        :type AppId: int
+        :param _Region: Region
+        :type Region: str
+        :param _Zone: AZ
+        :type Zone: str
+        """
+        self._ProxyNodeId = None
+        self._ProxyNodeConnections = None
+        self._Cpu = None
+        self._Mem = None
+        self._Status = None
+        self._ProxyGroupId = None
+        self._ClusterId = None
+        self._AppId = None
+        self._Region = None
+        self._Zone = None
+
+    @property
+    def ProxyNodeId(self):
+        return self._ProxyNodeId
+
+    @ProxyNodeId.setter
+    def ProxyNodeId(self, ProxyNodeId):
+        self._ProxyNodeId = ProxyNodeId
+
+    @property
+    def ProxyNodeConnections(self):
+        return self._ProxyNodeConnections
+
+    @ProxyNodeConnections.setter
+    def ProxyNodeConnections(self, ProxyNodeConnections):
+        self._ProxyNodeConnections = ProxyNodeConnections
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ProxyGroupId(self):
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+
+    def _deserialize(self, params):
+        self._ProxyNodeId = params.get("ProxyNodeId")
+        self._ProxyNodeConnections = params.get("ProxyNodeConnections")
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        self._Status = params.get("Status")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._AppId = params.get("AppId")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxySpec(AbstractModel):
+    """Database proxy specifications
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: Number of database proxy CPU cores
+        :type Cpu: int
+        :param _Mem: Database proxy memory
+        :type Mem: int
+        """
+        self._Cpu = None
+        self._Mem = None
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyZone(AbstractModel):
+    """Number of proxy nodes and their AZs
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProxyNodeZone: AZ u200dof the proxy node
+        :type ProxyNodeZone: str
+        :param _ProxyNodeCount: The number of proxy nodes
+        :type ProxyNodeCount: int
+        """
+        self._ProxyNodeZone = None
+        self._ProxyNodeCount = None
+
+    @property
+    def ProxyNodeZone(self):
+        return self._ProxyNodeZone
+
+    @ProxyNodeZone.setter
+    def ProxyNodeZone(self, ProxyNodeZone):
+        self._ProxyNodeZone = ProxyNodeZone
+
+    @property
+    def ProxyNodeCount(self):
+        return self._ProxyNodeCount
+
+    @ProxyNodeCount.setter
+    def ProxyNodeCount(self, ProxyNodeCount):
+        self._ProxyNodeCount = ProxyNodeCount
+
+
+    def _deserialize(self, params):
+        self._ProxyNodeZone = params.get("ProxyNodeZone")
+        self._ProxyNodeCount = params.get("ProxyNodeCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QueryFilter(AbstractModel):
     """Query filter
 
@@ -16599,6 +18900,63 @@ class QueryFilter(AbstractModel):
         
 
 
+class QueryParamFilter(AbstractModel):
+    """Filters for query
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Names: Search field. Valid values: "InstanceId", "ProjectId", "InstanceName", "Vip"
+        :type Names: list of str
+        :param _Values: Search string
+        :type Values: list of str
+        :param _ExactMatch: Whether to use exact match
+        :type ExactMatch: bool
+        """
+        self._Names = None
+        self._Values = None
+        self._ExactMatch = None
+
+    @property
+    def Names(self):
+        return self._Names
+
+    @Names.setter
+    def Names(self, Names):
+        self._Names = Names
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def ExactMatch(self):
+        return self._ExactMatch
+
+    @ExactMatch.setter
+    def ExactMatch(self, ExactMatch):
+        self._ExactMatch = ExactMatch
+
+
+    def _deserialize(self, params):
+        self._Names = params.get("Names")
+        self._Values = params.get("Values")
+        self._ExactMatch = params.get("ExactMatch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RefundResourcePackageRequest(AbstractModel):
     """RefundResourcePackage request structure.
 
@@ -16666,6 +19024,100 @@ class RefundResourcePackageResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DealNames = params.get("DealNames")
+        self._RequestId = params.get("RequestId")
+
+
+class ReloadBalanceProxyNodeRequest(AbstractModel):
+    """ReloadBalanceProxyNode request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _ProxyGroupId: Database proxy u200dgroup ID
+        :type ProxyGroupId: str
+        """
+        self._ClusterId = None
+        self._ProxyGroupId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ProxyGroupId(self):
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReloadBalanceProxyNodeResponse(AbstractModel):
+    """ReloadBalanceProxyNode response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Async flow ID
+        :type FlowId: int
+        :param _TaskId: Async task ID
+        :type TaskId: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -19026,6 +21478,307 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._TranId = params.get("TranId")
         self._BigDealIds = params.get("BigDealIds")
         self._DealNames = params.get("DealNames")
+        self._RequestId = params.get("RequestId")
+
+
+class UpgradeProxyRequest(AbstractModel):
+    """UpgradeProxy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _Cpu: Number of CPU cores
+        :type Cpu: int
+        :param _Mem: Memory
+        :type Mem: int
+        :param _ProxyCount: Number of nodes in the proxy group
+        :type ProxyCount: int
+        :param _ProxyGroupId: ID of the database proxy group (disused)
+        :type ProxyGroupId: str
+        :param _ReloadBalance: Load rebalance mode. Valid values: `auto`, `manual`
+        :type ReloadBalance: str
+        :param _IsInMaintainPeriod: Upgrade time. Valid values: `no` (upon upgrade completion), `timeWindow` (upgrade during instance maintenance time)
+        :type IsInMaintainPeriod: str
+        :param _ProxyZones: Node information of the atabase proxy
+        :type ProxyZones: list of ProxyZone
+        """
+        self._ClusterId = None
+        self._Cpu = None
+        self._Mem = None
+        self._ProxyCount = None
+        self._ProxyGroupId = None
+        self._ReloadBalance = None
+        self._IsInMaintainPeriod = None
+        self._ProxyZones = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def ProxyCount(self):
+        return self._ProxyCount
+
+    @ProxyCount.setter
+    def ProxyCount(self, ProxyCount):
+        self._ProxyCount = ProxyCount
+
+    @property
+    def ProxyGroupId(self):
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+    @property
+    def ReloadBalance(self):
+        return self._ReloadBalance
+
+    @ReloadBalance.setter
+    def ReloadBalance(self, ReloadBalance):
+        self._ReloadBalance = ReloadBalance
+
+    @property
+    def IsInMaintainPeriod(self):
+        return self._IsInMaintainPeriod
+
+    @IsInMaintainPeriod.setter
+    def IsInMaintainPeriod(self, IsInMaintainPeriod):
+        self._IsInMaintainPeriod = IsInMaintainPeriod
+
+    @property
+    def ProxyZones(self):
+        return self._ProxyZones
+
+    @ProxyZones.setter
+    def ProxyZones(self, ProxyZones):
+        self._ProxyZones = ProxyZones
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        self._ProxyCount = params.get("ProxyCount")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        self._ReloadBalance = params.get("ReloadBalance")
+        self._IsInMaintainPeriod = params.get("IsInMaintainPeriod")
+        if params.get("ProxyZones") is not None:
+            self._ProxyZones = []
+            for item in params.get("ProxyZones"):
+                obj = ProxyZone()
+                obj._deserialize(item)
+                self._ProxyZones.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeProxyResponse(AbstractModel):
+    """UpgradeProxy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Async flow ID
+        :type FlowId: int
+        :param _TaskId: Async task ID
+        :type TaskId: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class UpgradeProxyVersionRequest(AbstractModel):
+    """UpgradeProxyVersion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _SrcProxyVersion: Current version of database proxy
+        :type SrcProxyVersion: str
+        :param _DstProxyVersion: Target version of database proxy
+        :type DstProxyVersion: str
+        :param _ProxyGroupId: Database proxy u200dgroup ID
+        :type ProxyGroupId: str
+        :param _IsInMaintainPeriod: Upgrade time. Valid values: `no` (upon upgrade completion), `yes` (upgrade during instance maintenance time)
+        :type IsInMaintainPeriod: str
+        """
+        self._ClusterId = None
+        self._SrcProxyVersion = None
+        self._DstProxyVersion = None
+        self._ProxyGroupId = None
+        self._IsInMaintainPeriod = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SrcProxyVersion(self):
+        return self._SrcProxyVersion
+
+    @SrcProxyVersion.setter
+    def SrcProxyVersion(self, SrcProxyVersion):
+        self._SrcProxyVersion = SrcProxyVersion
+
+    @property
+    def DstProxyVersion(self):
+        return self._DstProxyVersion
+
+    @DstProxyVersion.setter
+    def DstProxyVersion(self, DstProxyVersion):
+        self._DstProxyVersion = DstProxyVersion
+
+    @property
+    def ProxyGroupId(self):
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+    @property
+    def IsInMaintainPeriod(self):
+        return self._IsInMaintainPeriod
+
+    @IsInMaintainPeriod.setter
+    def IsInMaintainPeriod(self, IsInMaintainPeriod):
+        self._IsInMaintainPeriod = IsInMaintainPeriod
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._SrcProxyVersion = params.get("SrcProxyVersion")
+        self._DstProxyVersion = params.get("DstProxyVersion")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        self._IsInMaintainPeriod = params.get("IsInMaintainPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeProxyVersionResponse(AbstractModel):
+    """UpgradeProxyVersion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Async flow ID
+        :type FlowId: int
+        :param _TaskId: Async task ID
+        :type TaskId: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
