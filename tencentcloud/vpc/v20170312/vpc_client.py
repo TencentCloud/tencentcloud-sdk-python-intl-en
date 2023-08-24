@@ -73,7 +73,7 @@ class VpcClient(AbstractClient):
 
 
     def AdjustPublicAddress(self, request):
-        """This API is used to change the IP address. It supports changing the common public IPs and EIPs billed by monthly subscribed bandwidth of a CVM instance.
+        """This API is used to change the public IP of a CVM or the EIP of the associated bandwidth package.
 
         :param request: Request instance for AdjustPublicAddress.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AdjustPublicAddressRequest`
@@ -349,8 +349,8 @@ class VpcClient(AbstractClient):
 
 
     def AttachCcnInstances(self, request):
-        """This API (AttachCcnInstances) is used to load a network instance to a CCN instance. Network instances include VPCs and Direct Connect gateways.<br />
-        The number of network instances that each CCN can be associated with is limited. For more information, see the product documentation. If you need to associate more instances, please contact online customer service.
+        """This API is used to add a network instance to a CCN instance. Network instances include VPCs and Direct Connect gateways. <br />
+        The number of network instances that each CCN can be associated with is limited. For more information, see the product documentation. If you need to associate more instances, please submit a ticket.
 
         :param request: Request instance for AttachCcnInstances.
         :type request: :class:`tencentcloud.vpc.v20170312.models.AttachCcnInstancesRequest`
@@ -1148,19 +1148,20 @@ class VpcClient(AbstractClient):
 
 
     def CreateSecurityGroupWithPolicies(self, request):
-        """This API (CreateSecurityGroupWithPolicies) is used to create security groups, and add security group policies.
-        * Note the<a href="https://intl.cloud.tencent.com/document/product/213/12453?from_cn_redirect=1">maximum number of security groups</a>per project in each region under each account.
-        * Both the inbound and outbound policies for a newly created security group are Deny All by default. You need to call CreateSecurityGroupPolicies to set security group policies according to your needs.
+        """This API is used to create u200da security group, and add security group policies.
+        * For the the upper limit of security groups per project in each region under each account, <a href="https://intl.cloud.tencent.com/document/product/213/12453?from_cn_redirect=1">see here</a>
+        * u200dFor u200dnewly u200dcreated security groups, u200dthe inbound and outbound policies are set to `Deny All` by default. You need to call <a href="https://intl.cloud.tencent.com/document/product/215/15807?from_cn_redirect=1">CreateSecurityGroupPolicies</a>
+        to change it.
 
         Description:
-        * `Version`: Indicates the version number of a security group policy, which will automatically increment by 1 every time you update the security policy, to prevent the expiration of the updated policies. If this field is left empty, any conflicts will be ignored.
-        * `Protocol`: Values can be TCP, UDP, ICMP, ICMPV6, GRE, or ALL.
-        * `CidrBlock`:  A CIDR block in the correct format. In a basic network, if a CidrBlock contains private IPs on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.
-        * `Ipv6CidrBlock`: An IPv6 CIDR block in the correct format. In a basic network, if an Ipv6CidrBlock contains private IPv6 addresses on Tencent Cloud for devices under your account other than CVMs, it does not mean this policy allows you to access these devices. The network isolation policies between tenants take priority over the private network policies in security groups.
-        * `SecurityGroupId`: ID of the security group. It can be in the same project as the security group to be modified, including the ID of the security group itself, to represent private IP addresses of all CVMs under the security group. If this field is used, the policy will change without manual modification according to the CVM associated with the policy ID while being used to match network messages.
-        * `Port`: A single port number, or a port range in the format of “8000-8010”. The Port field is accepted only if the value of the `Protocol` field is `TCP` or `UDP`. Otherwise Protocol and Port are mutually exclusive.
+        * `Version`: The version number of a security group policy. It automatically increments by 1 every time you update the security policy, so to prevent the expiration of the updated policies. If this field is left empty, any conflicts will be ignored.
+        * `Protocol`: Values can be `TCP`, `UDP`, `ICMP`, `ICMPV6`, `GRE`, and `ALL`.
+        * `CidrBlock`: Enter a CIDR block in the correct format. In the classic network, even if the CIDR block specified in u200d`CidrBlock` contains the Tencent Cloud private IPs not used for CVMs under your Tencent Cloud account, it does not mean this policy allows you to access those resources. The network isolation policies between tenants take priority over the private network policies in security groups.
+        * `Ipv6CidrBlock`: Enter an IPv6 CIDR block in the correct format. In the classic network, even if the CIDR block specified in `Ipv6CidrBlock` contains the Tencent Cloud private IPv6 addresses not used for CVMs under your Tencent Cloud account, it does not mean this policy allows you to access those resources. The network isolation policies between tenants take priority over the private network policies in security groups.
+        * `SecurityGroupId`: ID of the security group. It can be the ID of a security group to be modified, or the ID of another security group in the same project. All private IPs of all CVMs under the security group will be covered. If this field is used, the policy will automatically change according to the CVM associated with the group ID while being used to match network messages. You don't need to change it manually.
+        * `Port`: Enter a single port number (such as `80`), or a port range (such as `8000-8010`). `Port` is only applicable when `Protocol` is `TCP` or `UDP`. If `Protocol` is not `TCP` or `UDP`, `Protocol` and `Port` cannot be both specified.
         * `Action`: Values can be `ACCEPT` or `DROP`.
-        * CidrBlock, Ipv6CidrBlock, SecurityGroupId, and AddressTemplate are exclusive and cannot be entered at the same time. “Protocol + Port” and ServiceTemplate are mutually exclusive and cannot be entered at the same time.
+        * `CidrBlock`, `Ipv6CidrBlock`, `SecurityGroupId`, and `AddressTemplate` are exclusive u200dto one another. “Protocol + Port” and `ServiceTemplate` are mutually exclusive.
         * Only policies in one direction can be created in each request. If you need to specify the `PolicyIndex` parameter, the indexes of policies must be consistent.
 
         :param request: Request instance for CreateSecurityGroupWithPolicies.
@@ -2067,8 +2068,8 @@ class VpcClient(AbstractClient):
 
 
     def DeleteSubnet(self, request):
-        """This API (DeleteSubnet) is used to delete subnets.
-        Before deleting a subnet, you need to remove all resources in the subnet, including CVMs, load balancers, cloud data, NoSQL databases, and ENIs.
+        """This API is used to delete a subnet.
+        * Remove all resources in the subnet before deleting it
 
         :param request: Request instance for DeleteSubnet.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteSubnetRequest`
@@ -2081,6 +2082,29 @@ class VpcClient(AbstractClient):
             body = self.call("DeleteSubnet", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSubnetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteTrafficPackages(self, request):
+        """This API is used to delete traffic packages. Note that only non-valid traffic packages can be deleted.
+
+        :param request: Request instance for DeleteTrafficPackages.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteTrafficPackagesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteTrafficPackagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTrafficPackages", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTrafficPackagesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3135,7 +3159,7 @@ class VpcClient(AbstractClient):
 
 
     def DescribeRouteTables(self, request):
-        """This API (DescribeRouteTables) is used to query route tables.
+        """This API is used to query route tables.
 
         :param request: Request instance for DescribeRouteTables.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeRouteTablesRequest`
@@ -3480,8 +3504,8 @@ class VpcClient(AbstractClient):
 
 
     def DescribeUsedIpAddress(self, request):
-        """This API is used to query IP usage of a subnet or VPC.
-        If the IP is taken, the associated resource type and ID are returned. Otherwise it returns null.
+        """This API is used to query the IP usage of a subnet or VPC.
+        If the IP is occupied, the resource type and ID associated with the are is returned. If the IP is not used, it returns null.
 
         :param request: Request instance for DescribeUsedIpAddress.
         :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeUsedIpAddressRequest`
@@ -4264,6 +4288,29 @@ class VpcClient(AbstractClient):
             body = self.call("EnableVpcEndPointConnect", params, headers=headers)
             response = json.loads(body)
             model = models.EnableVpcEndPointConnectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GenerateVpnConnectionDefaultHealthCheckIp(self, request):
+        """This API is used to get a pair of VPN tunnel health check addresses.
+
+        :param request: Request instance for GenerateVpnConnectionDefaultHealthCheckIp.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.GenerateVpnConnectionDefaultHealthCheckIpRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.GenerateVpnConnectionDefaultHealthCheckIpResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GenerateVpnConnectionDefaultHealthCheckIp", params, headers=headers)
+            response = json.loads(body)
+            model = models.GenerateVpnConnectionDefaultHealthCheckIpResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

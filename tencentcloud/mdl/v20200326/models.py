@@ -4250,13 +4250,19 @@ class HlsRemuxSettingsInfo(AbstractModel):
         :type PdtInsertion: str
         :param _PdtDuration: PDT duration in seconds. Value range: (0,3000]. Default value: 600.
         :type PdtDuration: int
-        :param _Scheme: Audio/Video packaging scheme. Valid values: `SEPARATE`, `MERGE`
+        :param _Scheme: Audio/Video packaging scheme. Valid values: `SEPARATE`, `MERGE`. Default value is: SEPARATE.
         :type Scheme: str
         :param _SegmentType: The segment type. Valid values: `ts` (default), `fmp4`.
 Currently, fMP4 segments do not support DRM or time shifting.
         :type SegmentType: str
         :param _H265PackageType: The HLS package type when the H.265 codec is used. Valid values: `hvc1`, `hev1` (default).
         :type H265PackageType: str
+        :param _LowLatency: 
+        :type LowLatency: int
+        :param _PartialSegmentDuration: 
+        :type PartialSegmentDuration: int
+        :param _PartialSegmentPlaySite: 
+        :type PartialSegmentPlaySite: int
         """
         self._SegmentDuration = None
         self._SegmentNumber = None
@@ -4265,6 +4271,9 @@ Currently, fMP4 segments do not support DRM or time shifting.
         self._Scheme = None
         self._SegmentType = None
         self._H265PackageType = None
+        self._LowLatency = None
+        self._PartialSegmentDuration = None
+        self._PartialSegmentPlaySite = None
 
     @property
     def SegmentDuration(self):
@@ -4322,6 +4331,30 @@ Currently, fMP4 segments do not support DRM or time shifting.
     def H265PackageType(self, H265PackageType):
         self._H265PackageType = H265PackageType
 
+    @property
+    def LowLatency(self):
+        return self._LowLatency
+
+    @LowLatency.setter
+    def LowLatency(self, LowLatency):
+        self._LowLatency = LowLatency
+
+    @property
+    def PartialSegmentDuration(self):
+        return self._PartialSegmentDuration
+
+    @PartialSegmentDuration.setter
+    def PartialSegmentDuration(self, PartialSegmentDuration):
+        self._PartialSegmentDuration = PartialSegmentDuration
+
+    @property
+    def PartialSegmentPlaySite(self):
+        return self._PartialSegmentPlaySite
+
+    @PartialSegmentPlaySite.setter
+    def PartialSegmentPlaySite(self, PartialSegmentPlaySite):
+        self._PartialSegmentPlaySite = PartialSegmentPlaySite
+
 
     def _deserialize(self, params):
         self._SegmentDuration = params.get("SegmentDuration")
@@ -4331,6 +4364,9 @@ Currently, fMP4 segments do not support DRM or time shifting.
         self._Scheme = params.get("Scheme")
         self._SegmentType = params.get("SegmentType")
         self._H265PackageType = params.get("H265PackageType")
+        self._LowLatency = params.get("LowLatency")
+        self._PartialSegmentDuration = params.get("PartialSegmentDuration")
+        self._PartialSegmentPlaySite = params.get("PartialSegmentPlaySite")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

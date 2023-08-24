@@ -649,7 +649,7 @@ class Addr(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IP: IP
+        :param _IP: IP address
         :type IP: str
         :param _Port: Port
         :type Port: int
@@ -1113,16 +1113,21 @@ class BindInstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: The ID of the instance bound Note: This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceId: ID of the bound cluster
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type InstanceId: str
         :param _InstanceRegion: Region of the instance bound Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceRegion: str
         :param _InstanceType: Type of the instance bound Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceType: str
+        :param _ExtendIds: ID of the instance in the bound cluster
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type ExtendIds: list of str
         """
         self._InstanceId = None
         self._InstanceRegion = None
         self._InstanceType = None
+        self._ExtendIds = None
 
     @property
     def InstanceId(self):
@@ -1148,11 +1153,20 @@ class BindInstanceInfo(AbstractModel):
     def InstanceType(self, InstanceType):
         self._InstanceType = InstanceType
 
+    @property
+    def ExtendIds(self):
+        return self._ExtendIds
+
+    @ExtendIds.setter
+    def ExtendIds(self, ExtendIds):
+        self._ExtendIds = ExtendIds
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._InstanceRegion = params.get("InstanceRegion")
         self._InstanceType = params.get("InstanceType")
+        self._ExtendIds = params.get("ExtendIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1582,7 +1596,8 @@ Note: u200dThis field may return null, indicating that no valid values can be ob
         :param _MaintainWeekDays: Execution time. Valid values: `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, Sat`, `Sun`.
 Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type MaintainWeekDays: list of str
-        :param _ServerlessStatus: 
+        :param _ServerlessStatus: Serverless instance u200denablement status
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type ServerlessStatus: str
         """
         self._InstanceId = None
@@ -4384,7 +4399,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Vip: str
         :param _Vport: vport
         :type Vport: int
-        :param _RoAddr: vport for read/write separation
+        :param _RoAddr: VIP u200dand vport of the read-only instance in a cluster
         :type RoAddr: list of Addr
         :param _Ability: Features supported by the cluster
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -10841,7 +10856,7 @@ class DescribeResourcePackageDetailRequest(AbstractModel):
         r"""
         :param _PackageId: The unique ID of a resource pack
         :type PackageId: str
-        :param _ClusterIds: Instance ID
+        :param _ClusterIds: Cluster ID
         :type ClusterIds: list of str
         :param _StartTime: Start time
         :type StartTime: str
@@ -10851,6 +10866,8 @@ class DescribeResourcePackageDetailRequest(AbstractModel):
         :type Offset: str
         :param _Limit: Limit
         :type Limit: str
+        :param _InstanceIds: Instance D
+        :type InstanceIds: list of str
         """
         self._PackageId = None
         self._ClusterIds = None
@@ -10858,6 +10875,7 @@ class DescribeResourcePackageDetailRequest(AbstractModel):
         self._EndTime = None
         self._Offset = None
         self._Limit = None
+        self._InstanceIds = None
 
     @property
     def PackageId(self):
@@ -10907,6 +10925,14 @@ class DescribeResourcePackageDetailRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
 
     def _deserialize(self, params):
         self._PackageId = params.get("PackageId")
@@ -10915,6 +10941,7 @@ class DescribeResourcePackageDetailRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._InstanceIds = params.get("InstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12694,11 +12721,23 @@ class InstanceInitInfo(AbstractModel):
         :type InstanceType: str
         :param _InstanceCount: Number of the instances. Value range: 1-15.
         :type InstanceCount: int
+        :param _MinRoCount: Minimum number of serverless instances. Value range: 1-15.
+        :type MinRoCount: int
+        :param _MaxRoCount: Maximum number of serverless instances. Value range: 1-15.
+        :type MaxRoCount: int
+        :param _MinRoCpu: Minimum specifications for serverless instance
+        :type MinRoCpu: float
+        :param _MaxRoCpu: Maximum specifications for serverless instance
+        :type MaxRoCpu: float
         """
         self._Cpu = None
         self._Memory = None
         self._InstanceType = None
         self._InstanceCount = None
+        self._MinRoCount = None
+        self._MaxRoCount = None
+        self._MinRoCpu = None
+        self._MaxRoCpu = None
 
     @property
     def Cpu(self):
@@ -12732,12 +12771,48 @@ class InstanceInitInfo(AbstractModel):
     def InstanceCount(self, InstanceCount):
         self._InstanceCount = InstanceCount
 
+    @property
+    def MinRoCount(self):
+        return self._MinRoCount
+
+    @MinRoCount.setter
+    def MinRoCount(self, MinRoCount):
+        self._MinRoCount = MinRoCount
+
+    @property
+    def MaxRoCount(self):
+        return self._MaxRoCount
+
+    @MaxRoCount.setter
+    def MaxRoCount(self, MaxRoCount):
+        self._MaxRoCount = MaxRoCount
+
+    @property
+    def MinRoCpu(self):
+        return self._MinRoCpu
+
+    @MinRoCpu.setter
+    def MinRoCpu(self, MinRoCpu):
+        self._MinRoCpu = MinRoCpu
+
+    @property
+    def MaxRoCpu(self):
+        return self._MaxRoCpu
+
+    @MaxRoCpu.setter
+    def MaxRoCpu(self, MaxRoCpu):
+        self._MaxRoCpu = MaxRoCpu
+
 
     def _deserialize(self, params):
         self._Cpu = params.get("Cpu")
         self._Memory = params.get("Memory")
         self._InstanceType = params.get("InstanceType")
         self._InstanceCount = params.get("InstanceCount")
+        self._MinRoCount = params.get("MinRoCount")
+        self._MaxRoCount = params.get("MaxRoCount")
+        self._MinRoCpu = params.get("MinRoCpu")
+        self._MaxRoCpu = params.get("MaxRoCpu")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
