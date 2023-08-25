@@ -865,7 +865,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _SegmentObjectName: The relative output path of the segment file after being transcoded to adaptive bitrate streaming (in HLS format only). If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`.
         :type SegmentObjectName: str
         :param _AddOnSubtitles: The subtitle file to add.
-Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type AddOnSubtitles: list of AddOnSubtitle
         """
         self._Definition = None
@@ -1203,12 +1203,12 @@ class AddOnSubtitle(AbstractModel):
         r"""
         :param _Type: The mode. Valid values:
 <li>`subtitle-stream`: Add a subtitle track.</li>
-<li>`close-caption-708`: u200dEmbed EA-708 subtitles in SEI frames.</li>
+<li>`close-caption-708`: Embed EA-708 subtitles in SEI frames.</li>
 <li>`close-caption-608`: Embed CEA-608 subtitles in SEI frames.</li>
-Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type Type: str
         :param _Subtitle: The subtitle file.
-Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type Subtitle: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         self._Type = None
@@ -22520,16 +22520,16 @@ class OverrideTranscodeParameter(AbstractModel):
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
         :param _SubtitleTemplate: The subtitle settings.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SubtitleTemplate: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
         :param _AddonAudioStream: The information of the external audio track to add.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AddonAudioStream: list of MediaInputInfo
         :param _StdExtInfo: An extended field for transcoding.
-Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type StdExtInfo: str
         :param _AddOnSubtitles: The subtitle file to add.
-Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type AddOnSubtitles: list of AddOnSubtitle
         """
         self._Container = None
@@ -26946,10 +26946,10 @@ class SubtitleTemplate(AbstractModel):
     def __init__(self):
         r"""
         :param _Path: The URL of the subtitles to add to the video.
-Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type Path: str
         :param _StreamIndex: The subtitle track to add to the video. If both `Path` and `StreamIndex` are specified, `Path` will be used. You need to specify at least one of the two parameters.
-Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type StreamIndex: int
         :param _FontType: The font. Valid values:
 <li>`hei.ttf`: Heiti.</li>
@@ -26957,19 +26957,19 @@ Note: u200dThis field may returnu200d·nullu200d, indicating that no valid value
 <li>`simkai.ttf`: Kaiti.</li>
 <li>`arial.ttf`: Arial.</li>
 The default is `hei.ttf`.
-Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type FontType: str
         :param _FontSize: The font size (pixels). If this is not specified, the font size in the subtitle file will be used.
-Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type FontSize: str
         :param _FontColor: The font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).
-Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type FontColor: str
         :param _FontAlpha: The text transparency. Value range: 0-1.
 <li>`0`: Fully transparent.</li>
-<li>`1`: u200dFully opaque.</li>
+<li>`1`: Fully opaque.</li>
 Default value: 1.
-Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type FontAlpha: float
         """
         self._Path = None
@@ -27293,10 +27293,10 @@ class TEHDConfigForUpdate(AbstractModel):
 <li>`TEHD-100`: TSC-100 (video TSC). </li>
 <li>`TEHD-200`: TSC-200 (audio TSC). </li>
 If this parameter is left blank, no modification will be made.
-Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type Type: str
-        :param _MaxVideoBitrate: u200dThe maximum video bitrate. If this parameter is not specified, no modifications will be made.
-Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :param _MaxVideoBitrate: The maximum video bitrate. If this parameter is not specified, no modifications will be made.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type MaxVideoBitrate: int
         """
         self._Type = None

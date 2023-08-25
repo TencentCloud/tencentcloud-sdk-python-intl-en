@@ -143,7 +143,11 @@ Empty string (default): Keep the application running on the cloud only when ther
         :type RunMode: str
         :param _ApplicationParameters: Application startup parameter.
 If the user requests a multi-application project or a prelaunch-disabled single-application project, this parameter takes effect.
+ 
 If the user requests a prelaunch-enabled single-application project, this parameter is invalid.
+
+Note: When this parameter takes effect, the `ApplicationParameters` parameter will be appended to the end of the application startup parameter. The application startup parameter is set in the application or project configuration in the console.
+For example, for a prelaunch-disabled single-application project, if its application startup parameter `bar` is `0` and the `ApplicationParameters` parameter `foo` is `1`, the actual application startup parameters will be `bar=0 foo=1`.
         :type ApplicationParameters: str
         :param _HostUserId: The user ID of the host in **multi-person interaction** scenarios, which is required.
 If the current user is the host, `HostUserId` must be the same as their `UserId`; otherwise, `HostUserId` should be the host's `UserId`.
@@ -308,6 +312,134 @@ class DestroySessionRequest(AbstractModel):
 
 class DestroySessionResponse(AbstractModel):
     """DestroySession response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StartPublishStreamRequest(AbstractModel):
+    """StartPublishStream request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: Unique user ID, which is customized by you and is not understood by CAR. It will be used as the `StreamId` for pushing streams. For example, if the bound push domain is **abc.livepush.myqcloud.com**, the push address will be **rtmp://abc.livepush.myqcloud.com/live/UserId?txSecret=xxx&txTime=xxx**.
+        :type UserId: str
+        :param _PublishStreamArgs: Push parameter, which is a custom parameter carried during stream pushing.
+        :type PublishStreamArgs: str
+        """
+        self._UserId = None
+        self._PublishStreamArgs = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def PublishStreamArgs(self):
+        return self._PublishStreamArgs
+
+    @PublishStreamArgs.setter
+    def PublishStreamArgs(self, PublishStreamArgs):
+        self._PublishStreamArgs = PublishStreamArgs
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._PublishStreamArgs = params.get("PublishStreamArgs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartPublishStreamResponse(AbstractModel):
+    """StartPublishStream response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopPublishStreamRequest(AbstractModel):
+    """StopPublishStream request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: Unique user ID, which is customized by you and is not understood by CAR. It can also be randomly generated using the timestamp and should be kept unchanged during user reconnection.
+        :type UserId: str
+        """
+        self._UserId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopPublishStreamResponse(AbstractModel):
+    """StopPublishStream response structure.
 
     """
 

@@ -27,7 +27,7 @@ class CarClient(AbstractClient):
 
 
     def ApplyConcurrent(self, request):
-        """This API is used to request concurrency quota.
+        """This API is used to request a concurrency. The timeout period of the API is 20 seconds.
 
         :param request: Request instance for ApplyConcurrent.
         :type request: :class:`tencentcloud.car.v20220110.models.ApplyConcurrentRequest`
@@ -50,7 +50,7 @@ class CarClient(AbstractClient):
 
 
     def CreateSession(self, request):
-        """This API is used to create a session.
+        """This API is used to create a session. The timeout period of the API is 5 seconds.
 
         :param request: Request instance for CreateSession.
         :type request: :class:`tencentcloud.car.v20220110.models.CreateSessionRequest`
@@ -86,6 +86,52 @@ class CarClient(AbstractClient):
             body = self.call("DestroySession", params, headers=headers)
             response = json.loads(body)
             model = models.DestroySessionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StartPublishStream(self, request):
+        """This API is used to start stream push.
+
+        :param request: Request instance for StartPublishStream.
+        :type request: :class:`tencentcloud.car.v20220110.models.StartPublishStreamRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.StartPublishStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartPublishStream", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartPublishStreamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopPublishStream(self, request):
+        """This API is used to stop stream push.
+
+        :param request: Request instance for StopPublishStream.
+        :type request: :class:`tencentcloud.car.v20220110.models.StopPublishStreamRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.StopPublishStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopPublishStream", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopPublishStreamResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
