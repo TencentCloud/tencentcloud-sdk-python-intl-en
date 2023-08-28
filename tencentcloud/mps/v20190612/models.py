@@ -1203,7 +1203,7 @@ class AddOnSubtitle(AbstractModel):
         r"""
         :param _Type: The mode. Valid values:
 <li>`subtitle-stream`: Add a subtitle track.</li>
-<li>`close-caption-708`: Embed EA-708 subtitles in SEI frames.</li>
+<li>`close-caption-708`: Embed CEA-708 subtitles in SEI frames.</li>
 <li>`close-caption-608`: Embed CEA-608 subtitles in SEI frames.</li>
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type Type: str
