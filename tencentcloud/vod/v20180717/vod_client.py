@@ -2214,6 +2214,39 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def EditMedia(self, request):
+        """This API is used to edit a video (by clipping, splicing, etc.) to generate a new VOD video. Editing features include:
+
+        1. Clipping a file in VOD to generate a new video;
+        2. Splicing multiple files in VOD to generate a new video;
+        3. Clipping multiple files in VOD and then splicing the clips to generate a new video;
+        4. Directly generating a new video from a stream in VOD;
+        5. Clipping a stream in VOD to generate a new video;
+        6. Splicing multiple streams in VOD to generate a new video;
+        7. Clipping multiple streams in VOD and then splicing the clips to generate a new video.
+
+        You can also specify whether to perform a task flow for the generated new video.
+
+        :param request: Request instance for EditMedia.
+        :type request: :class:`tencentcloud.vod.v20180717.models.EditMediaRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.EditMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EditMedia", params, headers=headers)
+            response = json.loads(body)
+            model = models.EditMediaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExecuteFunction(self, request):
         """This API is only used in special scenarios of custom development. Unless requested by VOD customer service, please do not call it.
 
