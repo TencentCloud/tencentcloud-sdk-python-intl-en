@@ -11157,10 +11157,13 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Start time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS
+        :param _StartTime: The start time of the query,supports data query for the last ont months,the gap between the start time and the end time cannot exceed twenty-four hours. Interface query supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type StartTime: str
-        :param _EndTime: The end time (Beijing time) in the format of yyyy-mm-dd HH:MM:SS.
-The start time and end time cannot be more than 24 hours apart and must be within the past month.
+        :param _EndTime: The end time of the query,supports data query for the last ont months,the gap between the start time and the end time cannot exceed twenty-four hours. Interface query supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type EndTime: str
         :param _PlayDomain: Playback domain name,
 If this parameter is left empty, data of live streams of all playback domain names will be queried.
