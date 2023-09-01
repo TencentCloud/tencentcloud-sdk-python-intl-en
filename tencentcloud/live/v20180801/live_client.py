@@ -1952,7 +1952,6 @@ class LiveClient(AbstractClient):
     def DescribePlayErrorCodeDetailInfoList(self, request):
         """This API is used to query the information of downstream playback error codes, i.e., the occurrences of each HTTP error code (4xx and 5xx) at a 1-minute granularity in a certain period of time.
 
-
         :param request: Request instance for DescribePlayErrorCodeDetailInfoList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribePlayErrorCodeDetailInfoListRequest`
         :rtype: :class:`tencentcloud.live.v20180801.models.DescribePlayErrorCodeDetailInfoListResponse`

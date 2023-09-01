@@ -5794,7 +5794,9 @@ class DescribeAllStreamPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QueryTime: The time point to query in the format of “yyyy-mm-dd HH:MM:00”(accurate to the minute). You can query data from the last month. Because there is a five-minute delay in the data, if you want to get the latest data, we recommend you pass in a time point five minutes earlier than the current time.
+        :param _QueryTime: The query time of the request, supports data query for the last one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type QueryTime: str
         :param _PlayDomains: The playback domains to query. If you leave this empty, all playback domains will be queried.
         :type PlayDomains: list of str
@@ -5839,7 +5841,7 @@ class DescribeAllStreamPlayInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QueryTime: The time point queried, whose value is the same as that of the corresponding request parameter.
+        :param _QueryTime: The time point queried, whose format is the same as that of the corresponding request parameter.
         :type QueryTime: str
         :param _DataInfoList: The playback data.
         :type DataInfoList: list of MonitorStreamPlayInfo
@@ -5893,9 +5895,13 @@ class DescribeBillBandwidthAndFluxListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Start time point in the format of `yyyy-mm-dd HH:MM:SS`.
+        :param _StartTime: The start time of the request, supports data query for the last three years, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type StartTime: str
-        :param _EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 3 years can be queried.
+        :param _EndTime: The end time of the request, supports data query for the last three years, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type EndTime: str
         :param _PlayDomains: LVB playback domain name. If this parameter is left empty, full data will be queried.
         :type PlayDomains: list of str
@@ -6120,11 +6126,13 @@ class DescribeConcurrentRecordStreamNumRequest(AbstractModel):
         :param _LiveType: Live streaming type. SlowLive: LCB.
 NormalLive: LVB.
         :type LiveType: str
-        :param _StartTime: Start time in the format of `yyyy-mm-dd HH:MM:SS`.
-Data for the last 180 days can be queried.
+        :param _StartTime: The start time of the request, supports data query for the last six months, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type StartTime: str
-        :param _EndTime: End time in the format of `yyyy-mm-dd HH:MM:SS`.
-The maximum time span supported is 31 days.
+        :param _EndTime: The end time of the request, supports data query for the last six months, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type EndTime: str
         :param _MainlandOrOversea: Valid values: Mainland (data for Mainland China), Oversea (data for regions outside Mainland China). If this parameter is left empty, data for all regions will be queried.
         :type MainlandOrOversea: str
@@ -6243,9 +6251,13 @@ class DescribeDeliverBandwidthListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Start time in the format of "%Y-%m-%d %H:%M:%S".
+        :param _StartTime: The start time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed a month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type StartTime: str
-        :param _EndTime: End time in the format of "%Y-%m-%d %H:%M:%S". Data in the last 3 months can be queried, and the query period is up to 1 month.
+        :param _EndTime: The end time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed a month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type EndTime: str
         """
         self._StartTime = None
@@ -6330,10 +6342,13 @@ class DescribeGroupProIspPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Start time point in the format of `yyyy-mm-dd HH:MM:SS`.
+        :param _StartTime: The start time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type StartTime: str
-        :param _EndTime: End time point in the format of `yyyy-mm-dd HH:MM:SS`
-The time span is (0,3 hours]. Data for the last month can be queried.
+        :param _EndTime: The end time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type EndTime: str
         :param _PlayDomains: Playback domain name. If this parameter is left empty, full data will be queried.
         :type PlayDomains: list of str
@@ -6466,12 +6481,13 @@ class DescribeHttpStatusInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Start time (Beijing time).
-Format: yyyy-mm-dd HH:MM:SS.
+        :param _StartTime: The start time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type StartTime: str
-        :param _EndTime: End time (Beijing time).
-Format: yyyy-mm-dd HH:MM:SS.
-Note: data in the last 3 months can be queried and the query period is up to 1 day.
+        :param _EndTime: The end time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type EndTime: str
         :param _PlayDomains: Playback domain name list.
         :type PlayDomains: list of str
@@ -9365,7 +9381,7 @@ class DescribeLiveTranscodeDetailInfoRequest(AbstractModel):
         :type StreamName: str
         :param _DayTime: Query date (UTC+8)
 Format: yyyymmdd
-Note: you can query the statistics for a day in the past month, with yesterday as the latest date allowed.
+Note: you can query the statistics for a day in the past three months, with yesterday as the latest date allowed.
         :type DayTime: str
         :param _PageNum: Number of pages. Default value: 1.
 Up to 100 pages.
@@ -9373,13 +9389,13 @@ Up to 100 pages.
         :param _PageSize: Number of entries per page. Default value: 20,
 Value range: [10,1000].
         :type PageSize: int
-        :param _StartDayTime: Start day time (Beijing time),
-In the format of `yyyymmdd`.
-Note: details for the last month can be queried.
+        :param _StartDayTime: Start date (UTC+8)
+Format: yyyymmdd
+Note: details for the last three months can be queried.
         :type StartDayTime: str
         :param _EndDayTime: End date (UTC+8)
 Format: yyyymmdd
-Note: you can query the statistics for a period in the past month, with yesterday as the latest date allowed. You must specify either `DayTime`, or `StartDayTime` and `EndDayTime`. If you specify all three parameters, only `DayTime` will be applied.
+Note: you can query the statistics for a period in the past three months, with yesterday as the latest date allowed. You must specify either `DayTime`, or `StartDayTime` and `EndDayTime`. If you specify all three parameters, only `DayTime` will be applied.
         :type EndDayTime: str
         """
         self._PushDomain = None
@@ -9770,11 +9786,13 @@ class DescribeLiveTranscodeTotalInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Start time (Beijing time)
-Format: yyyy-mm-dd HH:MM:SS
+        :param _StartTime: The start time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed three months. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type StartTime: str
-        :param _EndTime: End time (Beijing time)
-Format: yyyy-mm-dd HH:MM:SS
+        :param _EndTime: The end time of the request, supports data query for the last three months, the gap between the start time and the end time cannot exceed three months. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type EndTime: str
         :param _PushDomains: List of push domains to query. If this parameter is left empty, the data of all domains is queried.
 If this parameter is specified, the data returned will be on an hourly basis.
@@ -10068,12 +10086,13 @@ class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Start time (Beijing time),
-In the format of `yyyy-mm-dd HH:MM:SS`.
+        :param _StartTime: The start time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type StartTime: str
-        :param _EndTime: End time (Beijing time),
-In the format of `yyyy-mm-dd HH:MM:SS`.
-Note: `EndTime` and `StartTime` only support querying data for the last day.
+        :param _EndTime: The end time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type EndTime: str
         :param _Granularity: Query granularity:
 1: 1-minute granularity.
@@ -10219,12 +10238,13 @@ class DescribePlayErrorCodeSumInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Start point in time (Beijing time).
-In the format of `yyyy-mm-dd HH:MM:SS`.
+        :param _StartTime: The start time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type StartTime: str
-        :param _EndTime: End point in time (Beijing time).
-In the format of `yyyy-mm-dd HH:MM:SS`.
-Note: `EndTime` and `StartTime` only support querying data for the last day.
+        :param _EndTime: The end time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type EndTime: str
         :param _PlayDomains: Playback domain name list. If this parameter is left empty, full data will be queried.
         :type PlayDomains: list of str
@@ -10506,12 +10526,13 @@ class DescribeProvinceIspPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Start point in time (Beijing time).
-Example: 2019-02-21 10:00:00.
+        :param _StartTime: The start time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type StartTime: str
-        :param _EndTime: End point in time (Beijing time).
-Example: 2019-02-21 12:00:00.
-Note: `EndTime` and `StartTime` only support querying data for the last day.
+        :param _EndTime: The end time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type EndTime: str
         :param _Granularity: Supported granularities:
 1: 1-minute granularity (the query interval should be within 1 day)
@@ -11157,11 +11178,11 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: The start time of the query,supports data query for the last ont months,the gap between the start time and the end time cannot exceed twenty-four hours. Interface query supports two time formats:
-1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+        :param _StartTime: The start time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed twenty-four hours. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
 2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type StartTime: str
-        :param _EndTime: The end time of the query,supports data query for the last ont months,the gap between the start time and the end time cannot exceed twenty-four hours. Interface query supports two time formats:
+        :param _EndTime: The end time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed twenty-four hours. Interface request supports two time formats:
 1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
 2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type EndTime: str
@@ -11732,10 +11753,13 @@ class DescribeTopClientIpSumInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Start point in time in the format of `yyyy-mm-dd HH:MM:SS`.
+        :param _StartTime: The start time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed four hours. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type StartTime: str
-        :param _EndTime: End point in time in the format of `yyyy-mm-dd HH:MM:SS`
-The time span is [0,4 hours]. Data for the last day can be queried.
+        :param _EndTime: The end time of the request, supports data query for the last one day, the gap between the start time and the end time cannot exceed four hours. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type EndTime: str
         :param _PlayDomains: Playback domain name. If this parameter is left empty, full data will be queried by default.
         :type PlayDomains: list of str
@@ -11952,9 +11976,13 @@ class DescribeTranscodeTaskNumRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: The start time in the format of yyyy-mm-dd HH:MM:SS.
+        :param _StartTime: The start time of the request, supports data query for the last forty days, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type StartTime: str
-        :param _EndTime: The end time in the format of yyyy-mm-dd HH:MM:SS.
+        :param _EndTime: The end time of the request, supports data query for the last forty days, the gap between the start time and the end time cannot exceed one day. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type EndTime: str
         :param _PushDomains: The push domains to query. If you do not pass a value, all push domains will be queried.
         :type PushDomains: list of str
@@ -12051,9 +12079,13 @@ class DescribeUploadStreamNumsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Start time point in the format of yyyy-mm-dd HH:MM:SS.
+        :param _StartTime: The start time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format, for details, see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type StartTime: str
-        :param _EndTime: End time point in the format of yyyy-mm-dd HH:MM:SS. The difference between the start time and end time cannot be greater than 31 days. Data in the last 31 days can be queried.
+        :param _EndTime: The end time of the request, supports data query for the last one month, the gap between the start time and the end time cannot exceed one month. Interface request supports two time formats:
+1) YYYY-MM-DDThh:mm:ssZ: ISO time format,for details,see [ISO Date Format Description](https://cloud.tencent.com/document/product/267/38543#:~:text=I- ,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+2) YYYY-MM-DD hh:mm:ss: When using this format, it represents Beijing time by default.
         :type EndTime: str
         :param _Domains: LVB domain names. If this parameter is left empty, data of all domain names will be queried.
         :type Domains: list of str
