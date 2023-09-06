@@ -72,6 +72,29 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCustomAccount(self, request):
+        """This API is used to create a custom account.
+
+        :param request: Request instance for CreateCustomAccount.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateCustomAccountRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateCustomAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCustomAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCustomAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateImageAccelerationService(self, request):
         """This API is used to create an image acceleration service.
 
@@ -302,6 +325,29 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateServiceAccount(self, request):
+        """This API is used to create a service account.
+
+        :param request: Request instance for CreateServiceAccount.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateServiceAccountRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateServiceAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateServiceAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateServiceAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSignature(self, request):
         """This API is used to create a signature for an image tag.
 
@@ -408,6 +454,29 @@ class TcrClient(AbstractClient):
             body = self.call("CreateWebhookTrigger", params, headers=headers)
             response = json.loads(body)
             model = models.CreateWebhookTriggerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCustomAccount(self, request):
+        """This API is used to delete a custom account.
+
+        :param request: Request instance for DeleteCustomAccount.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteCustomAccountRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteCustomAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCustomAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCustomAccountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -671,7 +740,9 @@ class TcrClient(AbstractClient):
 
 
     def DeleteSecurityPolicy(self, request):
-        """This API is used to delete a public network access allowlist policy of an instance.
+        """This API is used to delete a public network access allow policy.
+
+        Note: When both `PolicyIndex` and `CidrBlock` are specified, `CidrBlock` takes the higher priority
 
         :param request: Request instance for DeleteSecurityPolicy.
         :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteSecurityPolicyRequest`
@@ -684,6 +755,29 @@ class TcrClient(AbstractClient):
             body = self.call("DeleteSecurityPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSecurityPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteServiceAccount(self, request):
+        """This API is used to delete a service account.
+
+        :param request: Request instance for DeleteServiceAccount.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteServiceAccountRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteServiceAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteServiceAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteServiceAccountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -776,6 +870,29 @@ class TcrClient(AbstractClient):
             body = self.call("DescribeChartDownloadInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeChartDownloadInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCustomAccounts(self, request):
+        """This API is used to query custom accounts.
+
+        :param request: Request instance for DescribeCustomAccounts.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeCustomAccountsRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeCustomAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomAccountsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1222,6 +1339,29 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeServiceAccounts(self, request):
+        """This API is used to query service accounts.
+
+        :param request: Request instance for DescribeServiceAccounts.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeServiceAccountsRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeServiceAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServiceAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServiceAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTagRetentionExecution(self, request):
         """This API is used to query tag retention execution records.
 
@@ -1429,6 +1569,29 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCustomAccount(self, request):
+        """This API is used to update a custom account.
+
+        :param request: Request instance for ModifyCustomAccount.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyCustomAccountRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ModifyCustomAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCustomAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCustomAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyImmutableTagRules(self, request):
         """This API is used to update the tag immutability rule.
 
@@ -1558,6 +1721,29 @@ class TcrClient(AbstractClient):
             body = self.call("ModifySecurityPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySecurityPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyServiceAccount(self, request):
+        """This API is used to update a service account.
+
+        :param request: Request instance for ModifyServiceAccount.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyServiceAccountRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ModifyServiceAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyServiceAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyServiceAccountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

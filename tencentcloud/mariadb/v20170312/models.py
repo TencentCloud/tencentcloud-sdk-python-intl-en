@@ -3837,7 +3837,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type RsAccessStrategy: int
         :param _ReservedNetResources: Unclaimed network resource
         :type ReservedNetResources: list of ReservedNetResource
-        :param _IsPhysicalReplicationSupported: 
+        :param _IsPhysicalReplicationSupported: Whether physical replication is supported.
         :type IsPhysicalReplicationSupported: bool
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5312,6 +5312,81 @@ class DescribeDBSlowLogsResponse(AbstractModel):
         self._QueryCount = params.get("QueryCount")
         self._Total = params.get("Total")
         self._QueryTimeSum = params.get("QueryTimeSum")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBTmpInstancesRequest(AbstractModel):
+    """DescribeDBTmpInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBTmpInstancesResponse(AbstractModel):
+    """DescribeDBTmpInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TmpInstances: Temp instance
+        :type TmpInstances: list of TmpInstance
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TmpInstances = None
+        self._RequestId = None
+
+    @property
+    def TmpInstances(self):
+        return self._TmpInstances
+
+    @TmpInstances.setter
+    def TmpInstances(self, TmpInstances):
+        self._TmpInstances = TmpInstances
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TmpInstances") is not None:
+            self._TmpInstances = []
+            for item in params.get("TmpInstances"):
+                obj = TmpInstance()
+                obj._deserialize(item)
+                self._TmpInstances.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9460,6 +9535,222 @@ class TerminateDedicatedDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
+
+
+class TmpInstance(AbstractModel):
+    """Temp instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: Application ID
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type AppId: int
+        :param _CreateTime: Creation time
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param _InstanceRemark: Instance remarks
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type InstanceRemark: str
+        :param _TempType: Whether it is a temp instance. Valid values: `0` (non-temp instance), `1` (invalid temp instance), `2` (valid temp rollback instance).
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type TempType: int
+        :param _Status: Instance status. Valid values: `0` (to be initialized), `1` (in process), `2` (running), `-1` (isolated), `-2` (eliminated).
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type Status: int
+        :param _InstanceId: Instance ID in the format of `tdsql-ow728lmc`
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param _Vip: Virtual instance IP
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type Vip: str
+        :param _Vport: Virtual instance port
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type Vport: int
+        :param _PeriodEndTime: Validity end time
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type PeriodEndTime: str
+        :param _SrcInstanceId: Source instance ID in the format of `tdsql-ow728lmc`
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type SrcInstanceId: str
+        :param _StatusDesc: Instance status description
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type StatusDesc: str
+        :param _Region: Instance region
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type Region: str
+        :param _Zone: AZ of the instance
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type Zone: str
+        :param _Vipv6: Virtual IPv6 of the instance
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type Vipv6: str
+        :param _Ipv6Flag: Instance IPv6 flag
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type Ipv6Flag: int
+        """
+        self._AppId = None
+        self._CreateTime = None
+        self._InstanceRemark = None
+        self._TempType = None
+        self._Status = None
+        self._InstanceId = None
+        self._Vip = None
+        self._Vport = None
+        self._PeriodEndTime = None
+        self._SrcInstanceId = None
+        self._StatusDesc = None
+        self._Region = None
+        self._Zone = None
+        self._Vipv6 = None
+        self._Ipv6Flag = None
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def InstanceRemark(self):
+        return self._InstanceRemark
+
+    @InstanceRemark.setter
+    def InstanceRemark(self, InstanceRemark):
+        self._InstanceRemark = InstanceRemark
+
+    @property
+    def TempType(self):
+        return self._TempType
+
+    @TempType.setter
+    def TempType(self, TempType):
+        self._TempType = TempType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def PeriodEndTime(self):
+        return self._PeriodEndTime
+
+    @PeriodEndTime.setter
+    def PeriodEndTime(self, PeriodEndTime):
+        self._PeriodEndTime = PeriodEndTime
+
+    @property
+    def SrcInstanceId(self):
+        return self._SrcInstanceId
+
+    @SrcInstanceId.setter
+    def SrcInstanceId(self, SrcInstanceId):
+        self._SrcInstanceId = SrcInstanceId
+
+    @property
+    def StatusDesc(self):
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Vipv6(self):
+        return self._Vipv6
+
+    @Vipv6.setter
+    def Vipv6(self, Vipv6):
+        self._Vipv6 = Vipv6
+
+    @property
+    def Ipv6Flag(self):
+        return self._Ipv6Flag
+
+    @Ipv6Flag.setter
+    def Ipv6Flag(self, Ipv6Flag):
+        self._Ipv6Flag = Ipv6Flag
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._CreateTime = params.get("CreateTime")
+        self._InstanceRemark = params.get("InstanceRemark")
+        self._TempType = params.get("TempType")
+        self._Status = params.get("Status")
+        self._InstanceId = params.get("InstanceId")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._PeriodEndTime = params.get("PeriodEndTime")
+        self._SrcInstanceId = params.get("SrcInstanceId")
+        self._StatusDesc = params.get("StatusDesc")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._Vipv6 = params.get("Vipv6")
+        self._Ipv6Flag = params.get("Ipv6Flag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UpgradeDedicatedDBInstanceRequest(AbstractModel):

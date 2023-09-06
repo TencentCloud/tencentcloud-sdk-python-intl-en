@@ -867,6 +867,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _AddOnSubtitles: The subtitle file to add.
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type AddOnSubtitles: list of AddOnSubtitle
+        :param _DrmInfo: Information of Drm.   Note: This field may return·null, indicating that no valid values can be obtained.
+        :type DrmInfo: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -875,6 +877,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
         self._SubStreamObjectName = None
         self._SegmentObjectName = None
         self._AddOnSubtitles = None
+        self._DrmInfo = None
 
     @property
     def Definition(self):
@@ -932,6 +935,14 @@ Note: This field may return·null, indicating that no valid values can be obtain
     def AddOnSubtitles(self, AddOnSubtitles):
         self._AddOnSubtitles = AddOnSubtitles
 
+    @property
+    def DrmInfo(self):
+        return self._DrmInfo
+
+    @DrmInfo.setter
+    def DrmInfo(self, DrmInfo):
+        self._DrmInfo = DrmInfo
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -953,6 +964,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
                 obj = AddOnSubtitle()
                 obj._deserialize(item)
                 self._AddOnSubtitles.append(obj)
+        if params.get("DrmInfo") is not None:
+            self._DrmInfo = DrmInfo()
+            self._DrmInfo._deserialize(params.get("DrmInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13909,6 +13923,53 @@ class DisableWorkflowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DrmInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 
+        :type Type: str
+        :param _SimpleAesDrm: 
+        :type SimpleAesDrm: :class:`tencentcloud.mps.v20190612.models.SimpleAesDrm`
+        """
+        self._Type = None
+        self._SimpleAesDrm = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SimpleAesDrm(self):
+        return self._SimpleAesDrm
+
+    @SimpleAesDrm.setter
+    def SimpleAesDrm(self, SimpleAesDrm):
+        self._SimpleAesDrm = SimpleAesDrm
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("SimpleAesDrm") is not None:
+            self._SimpleAesDrm = SimpleAesDrm()
+            self._SimpleAesDrm._deserialize(params.get("SimpleAesDrm"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EditMediaFileInfo(AbstractModel):
     """VOD video file editing information
 
@@ -26636,6 +26697,63 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Intensity = params.get("Intensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SimpleAesDrm(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uri: 
+        :type Uri: str
+        :param _Key: 
+        :type Key: str
+        :param _Vector: 
+        :type Vector: str
+        """
+        self._Uri = None
+        self._Key = None
+        self._Vector = None
+
+    @property
+    def Uri(self):
+        return self._Uri
+
+    @Uri.setter
+    def Uri(self, Uri):
+        self._Uri = Uri
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Vector(self):
+        return self._Vector
+
+    @Vector.setter
+    def Vector(self, Vector):
+        self._Vector = Vector
+
+
+    def _deserialize(self, params):
+        self._Uri = params.get("Uri")
+        self._Key = params.get("Key")
+        self._Vector = params.get("Vector")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

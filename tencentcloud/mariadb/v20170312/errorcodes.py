@@ -365,7 +365,7 @@ RESOURCEUNAVAILABLE_SGCHECKFAIL = 'ResourceUnavailable.SGCheckFail'
 # You have no permission to manipulate this API or resource.
 UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied'
 
-# 
+# This database version is not supported.
 UNSUPPORTEDOPERATION_DBVERSIONNOTSUPPORTED = 'UnsupportedOperation.DbVersionNotSupported'
 
 # The operation is not supported.

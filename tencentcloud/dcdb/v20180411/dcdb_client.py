@@ -211,6 +211,29 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDedicatedClusterDCDBInstance(self, request):
+        """This API is used to create a dedicated TDSQL cluster instance.
+
+        :param request: Request instance for CreateDedicatedClusterDCDBInstance.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.CreateDedicatedClusterDCDBInstanceRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.CreateDedicatedClusterDCDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDedicatedClusterDCDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDedicatedClusterDCDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateHourDCDBInstance(self, request):
         """This API is used to create a pay-as-you-go TDSQL instance.
 
@@ -465,6 +488,29 @@ class DcdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBTmpInstances(self, request):
+        """This API is used to obtain u200da temp rollback instance.
+
+        :param request: Request instance for DescribeDBTmpInstances.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBTmpInstancesRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBTmpInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBTmpInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBTmpInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDCDBInstanceDetail(self, request):
         """This API is used to get the details of a TDSQL instance.
 
@@ -710,6 +756,29 @@ class DcdbClient(AbstractClient):
             body = self.call("DescribeFlow", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLogFileRetentionPeriod(self, request):
+        """This API is used to view the backup log retention days.
+
+        :param request: Request instance for DescribeLogFileRetentionPeriod.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeLogFileRetentionPeriodRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.DescribeLogFileRetentionPeriodResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogFileRetentionPeriod", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogFileRetentionPeriodResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1311,6 +1380,29 @@ class DcdbClient(AbstractClient):
             body = self.call("TerminateDedicatedDBInstance", params, headers=headers)
             response = json.loads(body)
             model = models.TerminateDedicatedDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradeDedicatedDCDBInstance(self, request):
+        """This API is used to u200dupgrade a dedicated TDSQL cluster instance.
+
+        :param request: Request instance for UpgradeDedicatedDCDBInstance.
+        :type request: :class:`tencentcloud.dcdb.v20180411.models.UpgradeDedicatedDCDBInstanceRequest`
+        :rtype: :class:`tencentcloud.dcdb.v20180411.models.UpgradeDedicatedDCDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeDedicatedDCDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeDedicatedDCDBInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

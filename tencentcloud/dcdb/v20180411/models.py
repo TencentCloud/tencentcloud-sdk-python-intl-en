@@ -1465,6 +1465,434 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class CreateDedicatedClusterDCDBInstanceRequest(AbstractModel):
+    """CreateDedicatedClusterDCDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GoodsNum: Number of created instances
+        :type GoodsNum: int
+        :param _ShardNum: Shard u200dcount
+        :type ShardNum: int
+        :param _ShardMemory: Shard memory size in GB
+        :type ShardMemory: int
+        :param _ShardStorage: Shard disk size in GB
+        :type ShardStorage: int
+        :param _ClusterId: UUID of the dedicated cluster
+        :type ClusterId: str
+        :param _Zone: (Disused) AZ
+        :type Zone: str
+        :param _ProjectId: Project ID
+        :type ProjectId: int
+        :param _Cpu: (Disused) u200dNumber of CPU u200dcores
+        :type Cpu: int
+        :param _VpcId: VPC ID
+        :type VpcId: str
+        :param _SubnetId: Subnet ID
+        :type SubnetId: str
+        :param _ShardMachine: (Disused) Shard model
+        :type ShardMachine: str
+        :param _ShardNodeNum: Number of shard nodes
+        :type ShardNodeNum: int
+        :param _ShardNodeCpu: (Disused) Number of node CPU cores. Value range: 1-100.
+        :type ShardNodeCpu: int
+        :param _ShardNodeMemory: (Disused) Node memory size in GB
+        :type ShardNodeMemory: int
+        :param _ShardNodeStorage: (Disused) Node disk size in GB
+        :type ShardNodeStorage: int
+        :param _DbVersionId: Database version
+        :type DbVersionId: str
+        :param _SecurityGroupId: Security group ID
+        :type SecurityGroupId: str
+        :param _SecurityGroupIds: List of security group IDs
+        :type SecurityGroupIds: list of str
+        :param _DcnInstanceId: DCN source instance ID
+        :type DcnInstanceId: str
+        :param _DcnRegion: Region of DCN source instance
+        :type DcnRegion: str
+        :param _InstanceName: Custom instance name
+        :type InstanceName: str
+        :param _ResourceTags: Tag
+        :type ResourceTags: list of ResourceTag
+        :param _Ipv6Flag: Whether IPv6 flag is supported. Valid values: `1` (yes), `0` (no).
+        :type Ipv6Flag: int
+        :param _Pid: (Disused) Pid, which can be queried by the u200d`DescribeSpecInfo` API.
+        :type Pid: int
+        :param _InitParams: List of parameters. Valid values: `character_set_server` (character set; required), `lower_case_table_names` (table name case sensitivity; required; `0`: case-sensitive; `1`: case-insensitive), `innodb_page_size` (InnoDB data page; default size: 16 KB), `sync_mode` (sync mode; `0`: async; `1`: strong sync; `2`: downgradable strong sync. Default value: u200d`2`).
+        :type InitParams: list of DBParamValue
+        :param _MasterHostId: Specified UUID for the source node. If left empty, it will be assigned by the system randomly.
+        :type MasterHostId: str
+        :param _SlaveHostIds: Specified UUID for the u200dreplica node. If left empty, it will be assigned by the system randomly.
+        :type SlaveHostIds: list of str
+        :param _RollbackInstanceId: ID of the u200dsource instance to be rolled back
+        :type RollbackInstanceId: str
+        :param _RollbackTime: Rollback time
+        :type RollbackTime: str
+        """
+        self._GoodsNum = None
+        self._ShardNum = None
+        self._ShardMemory = None
+        self._ShardStorage = None
+        self._ClusterId = None
+        self._Zone = None
+        self._ProjectId = None
+        self._Cpu = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._ShardMachine = None
+        self._ShardNodeNum = None
+        self._ShardNodeCpu = None
+        self._ShardNodeMemory = None
+        self._ShardNodeStorage = None
+        self._DbVersionId = None
+        self._SecurityGroupId = None
+        self._SecurityGroupIds = None
+        self._DcnInstanceId = None
+        self._DcnRegion = None
+        self._InstanceName = None
+        self._ResourceTags = None
+        self._Ipv6Flag = None
+        self._Pid = None
+        self._InitParams = None
+        self._MasterHostId = None
+        self._SlaveHostIds = None
+        self._RollbackInstanceId = None
+        self._RollbackTime = None
+
+    @property
+    def GoodsNum(self):
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+    @property
+    def ShardNum(self):
+        return self._ShardNum
+
+    @ShardNum.setter
+    def ShardNum(self, ShardNum):
+        self._ShardNum = ShardNum
+
+    @property
+    def ShardMemory(self):
+        return self._ShardMemory
+
+    @ShardMemory.setter
+    def ShardMemory(self, ShardMemory):
+        self._ShardMemory = ShardMemory
+
+    @property
+    def ShardStorage(self):
+        return self._ShardStorage
+
+    @ShardStorage.setter
+    def ShardStorage(self, ShardStorage):
+        self._ShardStorage = ShardStorage
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def ShardMachine(self):
+        return self._ShardMachine
+
+    @ShardMachine.setter
+    def ShardMachine(self, ShardMachine):
+        self._ShardMachine = ShardMachine
+
+    @property
+    def ShardNodeNum(self):
+        return self._ShardNodeNum
+
+    @ShardNodeNum.setter
+    def ShardNodeNum(self, ShardNodeNum):
+        self._ShardNodeNum = ShardNodeNum
+
+    @property
+    def ShardNodeCpu(self):
+        return self._ShardNodeCpu
+
+    @ShardNodeCpu.setter
+    def ShardNodeCpu(self, ShardNodeCpu):
+        self._ShardNodeCpu = ShardNodeCpu
+
+    @property
+    def ShardNodeMemory(self):
+        return self._ShardNodeMemory
+
+    @ShardNodeMemory.setter
+    def ShardNodeMemory(self, ShardNodeMemory):
+        self._ShardNodeMemory = ShardNodeMemory
+
+    @property
+    def ShardNodeStorage(self):
+        return self._ShardNodeStorage
+
+    @ShardNodeStorage.setter
+    def ShardNodeStorage(self, ShardNodeStorage):
+        self._ShardNodeStorage = ShardNodeStorage
+
+    @property
+    def DbVersionId(self):
+        return self._DbVersionId
+
+    @DbVersionId.setter
+    def DbVersionId(self, DbVersionId):
+        self._DbVersionId = DbVersionId
+
+    @property
+    def SecurityGroupId(self):
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def DcnInstanceId(self):
+        return self._DcnInstanceId
+
+    @DcnInstanceId.setter
+    def DcnInstanceId(self, DcnInstanceId):
+        self._DcnInstanceId = DcnInstanceId
+
+    @property
+    def DcnRegion(self):
+        return self._DcnRegion
+
+    @DcnRegion.setter
+    def DcnRegion(self, DcnRegion):
+        self._DcnRegion = DcnRegion
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ResourceTags(self):
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def Ipv6Flag(self):
+        return self._Ipv6Flag
+
+    @Ipv6Flag.setter
+    def Ipv6Flag(self, Ipv6Flag):
+        self._Ipv6Flag = Ipv6Flag
+
+    @property
+    def Pid(self):
+        return self._Pid
+
+    @Pid.setter
+    def Pid(self, Pid):
+        self._Pid = Pid
+
+    @property
+    def InitParams(self):
+        return self._InitParams
+
+    @InitParams.setter
+    def InitParams(self, InitParams):
+        self._InitParams = InitParams
+
+    @property
+    def MasterHostId(self):
+        return self._MasterHostId
+
+    @MasterHostId.setter
+    def MasterHostId(self, MasterHostId):
+        self._MasterHostId = MasterHostId
+
+    @property
+    def SlaveHostIds(self):
+        return self._SlaveHostIds
+
+    @SlaveHostIds.setter
+    def SlaveHostIds(self, SlaveHostIds):
+        self._SlaveHostIds = SlaveHostIds
+
+    @property
+    def RollbackInstanceId(self):
+        return self._RollbackInstanceId
+
+    @RollbackInstanceId.setter
+    def RollbackInstanceId(self, RollbackInstanceId):
+        self._RollbackInstanceId = RollbackInstanceId
+
+    @property
+    def RollbackTime(self):
+        return self._RollbackTime
+
+    @RollbackTime.setter
+    def RollbackTime(self, RollbackTime):
+        self._RollbackTime = RollbackTime
+
+
+    def _deserialize(self, params):
+        self._GoodsNum = params.get("GoodsNum")
+        self._ShardNum = params.get("ShardNum")
+        self._ShardMemory = params.get("ShardMemory")
+        self._ShardStorage = params.get("ShardStorage")
+        self._ClusterId = params.get("ClusterId")
+        self._Zone = params.get("Zone")
+        self._ProjectId = params.get("ProjectId")
+        self._Cpu = params.get("Cpu")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._ShardMachine = params.get("ShardMachine")
+        self._ShardNodeNum = params.get("ShardNodeNum")
+        self._ShardNodeCpu = params.get("ShardNodeCpu")
+        self._ShardNodeMemory = params.get("ShardNodeMemory")
+        self._ShardNodeStorage = params.get("ShardNodeStorage")
+        self._DbVersionId = params.get("DbVersionId")
+        self._SecurityGroupId = params.get("SecurityGroupId")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._DcnInstanceId = params.get("DcnInstanceId")
+        self._DcnRegion = params.get("DcnRegion")
+        self._InstanceName = params.get("InstanceName")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        self._Ipv6Flag = params.get("Ipv6Flag")
+        self._Pid = params.get("Pid")
+        if params.get("InitParams") is not None:
+            self._InitParams = []
+            for item in params.get("InitParams"):
+                obj = DBParamValue()
+                obj._deserialize(item)
+                self._InitParams.append(obj)
+        self._MasterHostId = params.get("MasterHostId")
+        self._SlaveHostIds = params.get("SlaveHostIds")
+        self._RollbackInstanceId = params.get("RollbackInstanceId")
+        self._RollbackTime = params.get("RollbackTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDedicatedClusterDCDBInstanceResponse(AbstractModel):
+    """CreateDedicatedClusterDCDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: Array of assigned resource IDs
+        :type InstanceIds: list of str
+        :param _FlowId: Flow ID
+        :type FlowId: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InstanceIds = None
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateHourDCDBInstanceRequest(AbstractModel):
     """CreateHourDCDBInstance request structure.
 
@@ -4830,6 +5258,81 @@ class DescribeDBSyncModeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBTmpInstancesRequest(AbstractModel):
+    """DescribeDBTmpInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: The instance ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBTmpInstancesResponse(AbstractModel):
+    """DescribeDBTmpInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TmpInstances: List of temp instances
+        :type TmpInstances: list of TmpInstance
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TmpInstances = None
+        self._RequestId = None
+
+    @property
+    def TmpInstances(self):
+        return self._TmpInstances
+
+    @TmpInstances.setter
+    def TmpInstances(self, TmpInstances):
+        self._TmpInstances = TmpInstances
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TmpInstances") is not None:
+            self._TmpInstances = []
+            for item in params.get("TmpInstances"):
+                obj = TmpInstance()
+                obj._deserialize(item)
+                self._TmpInstances.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDCDBInstanceDetailRequest(AbstractModel):
     """DescribeDCDBInstanceDetail request structure.
 
@@ -4989,7 +5492,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type RsAccessStrategy: int
         :param _ReservedNetResources: Unclaimed network resource
         :type ReservedNetResources: list of ReservedNetResource
-        :param _IsPhysicalReplicationSupported: 
+        :param _IsPhysicalReplicationSupported: Whether physical replication is supported.
         :type IsPhysicalReplicationSupported: bool
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -6913,6 +7416,88 @@ class DescribeFlowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLogFileRetentionPeriodRequest(AbstractModel):
+    """DescribeLogFileRetentionPeriod request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID in the format of `tdsql-ow728lmc`
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogFileRetentionPeriodResponse(AbstractModel):
+    """DescribeLogFileRetentionPeriod response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID in the format of `tdsql-ow728lmc`
+        :type InstanceId: str
+        :param _Days: Backup log retention days
+        :type Days: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._Days = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Days(self):
+        return self._Days
+
+    @Days.setter
+    def Days(self, Days):
+        self._Days = Days
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Days = params.get("Days")
         self._RequestId = params.get("RequestId")
 
 
@@ -10940,6 +11525,382 @@ class TerminateDedicatedDBInstanceResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _FlowId: Async task ID
+        :type FlowId: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class TmpInstance(AbstractModel):
+    """Temp instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: Application ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AppId: int
+        :param _CreateTime: Creation time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param _InstanceRemark: Instance remarks
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceRemark: str
+        :param _TempType: Type of temp instance. Valid values: `0` (non-temp instance), `1` (invalid temp instance), `2` (valid rollback temp instance).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TempType: int
+        :param _Status: Instance status. Valid values: `0` (to be initialized), `1` (in process), `2` (running), `-1` (isolated), `-2` (eliminated).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param _InstanceId: Instance ID in the format of `tdsql-ow728lmc`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param _Vip: Virtual instance IP
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Vip: str
+        :param _Vport: Virtual instance port
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Vport: int
+        :param _PeriodEndTime: Validity end time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PeriodEndTime: str
+        :param _SrcInstanceId: Source instance ID in the format of `tdsql-ow728lmc`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SrcInstanceId: str
+        :param _StatusDesc: Instance status description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StatusDesc: str
+        :param _Region: Instance region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Region: str
+        :param _Zone: AZ of the instance
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Zone: str
+        :param _Vipv6: Virtual IPv6 of the instance
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Vipv6: str
+        :param _Ipv6Flag: Instance IPv6 flag
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Ipv6Flag: int
+        """
+        self._AppId = None
+        self._CreateTime = None
+        self._InstanceRemark = None
+        self._TempType = None
+        self._Status = None
+        self._InstanceId = None
+        self._Vip = None
+        self._Vport = None
+        self._PeriodEndTime = None
+        self._SrcInstanceId = None
+        self._StatusDesc = None
+        self._Region = None
+        self._Zone = None
+        self._Vipv6 = None
+        self._Ipv6Flag = None
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def InstanceRemark(self):
+        return self._InstanceRemark
+
+    @InstanceRemark.setter
+    def InstanceRemark(self, InstanceRemark):
+        self._InstanceRemark = InstanceRemark
+
+    @property
+    def TempType(self):
+        return self._TempType
+
+    @TempType.setter
+    def TempType(self, TempType):
+        self._TempType = TempType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Vip(self):
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def PeriodEndTime(self):
+        return self._PeriodEndTime
+
+    @PeriodEndTime.setter
+    def PeriodEndTime(self, PeriodEndTime):
+        self._PeriodEndTime = PeriodEndTime
+
+    @property
+    def SrcInstanceId(self):
+        return self._SrcInstanceId
+
+    @SrcInstanceId.setter
+    def SrcInstanceId(self, SrcInstanceId):
+        self._SrcInstanceId = SrcInstanceId
+
+    @property
+    def StatusDesc(self):
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Vipv6(self):
+        return self._Vipv6
+
+    @Vipv6.setter
+    def Vipv6(self, Vipv6):
+        self._Vipv6 = Vipv6
+
+    @property
+    def Ipv6Flag(self):
+        return self._Ipv6Flag
+
+    @Ipv6Flag.setter
+    def Ipv6Flag(self, Ipv6Flag):
+        self._Ipv6Flag = Ipv6Flag
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._CreateTime = params.get("CreateTime")
+        self._InstanceRemark = params.get("InstanceRemark")
+        self._TempType = params.get("TempType")
+        self._Status = params.get("Status")
+        self._InstanceId = params.get("InstanceId")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._PeriodEndTime = params.get("PeriodEndTime")
+        self._SrcInstanceId = params.get("SrcInstanceId")
+        self._StatusDesc = params.get("StatusDesc")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._Vipv6 = params.get("Vipv6")
+        self._Ipv6Flag = params.get("Ipv6Flag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeDedicatedDCDBInstanceRequest(AbstractModel):
+    """UpgradeDedicatedDCDBInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UpgradeType: Upgrade type. Valid values: `ADD` (add a shard), `SPLIT` (split a shard), and `EXPAND` (Vertically expand a shard).
+        :type UpgradeType: str
+        :param _InstanceId: Instance ID, such as dcdbt-mlfjm74h.
+        :type InstanceId: str
+        :param _AddShardConfig: A parameter for adding shards when `UpgradeType` is `ADD`.
+        :type AddShardConfig: :class:`tencentcloud.dcdb.v20180411.models.AddShardConfig`
+        :param _ExpandShardConfig: A parameter for vertically expand a shard when `UpgradeType` is `EXPAND`.
+        :type ExpandShardConfig: :class:`tencentcloud.dcdb.v20180411.models.ExpandShardConfig`
+        :param _SplitShardConfig: A parameter for splitting a shard when `UpgradeType` is `SPLIT`.
+        :type SplitShardConfig: :class:`tencentcloud.dcdb.v20180411.models.SplitShardConfig`
+        :param _SwitchAutoRetry: Whether to automatically retry u200donce when missing the switch time window. Valid values: `0` (No), `1` (Yes).
+        :type SwitchAutoRetry: int
+        :param _SwitchStartTime: Switch u200dstart u200dtime
+        :type SwitchStartTime: str
+        :param _SwitchEndTime: Switch end time
+        :type SwitchEndTime: str
+        """
+        self._UpgradeType = None
+        self._InstanceId = None
+        self._AddShardConfig = None
+        self._ExpandShardConfig = None
+        self._SplitShardConfig = None
+        self._SwitchAutoRetry = None
+        self._SwitchStartTime = None
+        self._SwitchEndTime = None
+
+    @property
+    def UpgradeType(self):
+        return self._UpgradeType
+
+    @UpgradeType.setter
+    def UpgradeType(self, UpgradeType):
+        self._UpgradeType = UpgradeType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AddShardConfig(self):
+        return self._AddShardConfig
+
+    @AddShardConfig.setter
+    def AddShardConfig(self, AddShardConfig):
+        self._AddShardConfig = AddShardConfig
+
+    @property
+    def ExpandShardConfig(self):
+        return self._ExpandShardConfig
+
+    @ExpandShardConfig.setter
+    def ExpandShardConfig(self, ExpandShardConfig):
+        self._ExpandShardConfig = ExpandShardConfig
+
+    @property
+    def SplitShardConfig(self):
+        return self._SplitShardConfig
+
+    @SplitShardConfig.setter
+    def SplitShardConfig(self, SplitShardConfig):
+        self._SplitShardConfig = SplitShardConfig
+
+    @property
+    def SwitchAutoRetry(self):
+        return self._SwitchAutoRetry
+
+    @SwitchAutoRetry.setter
+    def SwitchAutoRetry(self, SwitchAutoRetry):
+        self._SwitchAutoRetry = SwitchAutoRetry
+
+    @property
+    def SwitchStartTime(self):
+        return self._SwitchStartTime
+
+    @SwitchStartTime.setter
+    def SwitchStartTime(self, SwitchStartTime):
+        self._SwitchStartTime = SwitchStartTime
+
+    @property
+    def SwitchEndTime(self):
+        return self._SwitchEndTime
+
+    @SwitchEndTime.setter
+    def SwitchEndTime(self, SwitchEndTime):
+        self._SwitchEndTime = SwitchEndTime
+
+
+    def _deserialize(self, params):
+        self._UpgradeType = params.get("UpgradeType")
+        self._InstanceId = params.get("InstanceId")
+        if params.get("AddShardConfig") is not None:
+            self._AddShardConfig = AddShardConfig()
+            self._AddShardConfig._deserialize(params.get("AddShardConfig"))
+        if params.get("ExpandShardConfig") is not None:
+            self._ExpandShardConfig = ExpandShardConfig()
+            self._ExpandShardConfig._deserialize(params.get("ExpandShardConfig"))
+        if params.get("SplitShardConfig") is not None:
+            self._SplitShardConfig = SplitShardConfig()
+            self._SplitShardConfig._deserialize(params.get("SplitShardConfig"))
+        self._SwitchAutoRetry = params.get("SwitchAutoRetry")
+        self._SwitchStartTime = params.get("SwitchStartTime")
+        self._SwitchEndTime = params.get("SwitchEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeDedicatedDCDBInstanceResponse(AbstractModel):
+    """UpgradeDedicatedDCDBInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Async task flow ID
         :type FlowId: int
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

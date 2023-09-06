@@ -20,6 +20,9 @@ AUTHFAILURE = 'AuthFailure'
 # Operation failed
 FAILEDOPERATION = 'FailedOperation'
 
+# Database error
+FAILEDOPERATION_DBERROR = 'FailedOperation.DbError'
+
 # Dependency exception.
 FAILEDOPERATION_DEPENDENCEERROR = 'FailedOperation.DependenceError'
 
@@ -49,6 +52,9 @@ FAILEDOPERATION_GETTCRCLIENT = 'FailedOperation.GetTcrClient'
 
 # The operation is canceled.
 FAILEDOPERATION_OPERATIONCANCEL = 'FailedOperation.OperationCancel'
+
+# 
+FAILEDOPERATION_PRECONDITIONFAILED = 'FailedOperation.PreconditionFailed'
 
 # The transaction failed.
 FAILEDOPERATION_TRADEFAILED = 'FailedOperation.TradeFailed'

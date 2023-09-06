@@ -466,6 +466,29 @@ class MariadbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBTmpInstances(self, request):
+        """This API is used to obtain a temp u200drollback instance.
+
+        :param request: Request instance for DescribeDBTmpInstances.
+        :type request: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBTmpInstancesRequest`
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DescribeDBTmpInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBTmpInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBTmpInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDatabaseObjects(self, request):
         """This API is used to query the list of database objects in a TencentDB instance, including tables, stored procedures, views, and functions.
 

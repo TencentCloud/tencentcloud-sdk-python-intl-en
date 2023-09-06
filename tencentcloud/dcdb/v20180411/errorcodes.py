@@ -89,6 +89,9 @@ FAILEDOPERATION_SETSVCLOCATIONFAILED = 'FailedOperation.SetSvcLocationFailed'
 # Either tag key/value verification or tag API authentication failed.
 FAILEDOPERATION_TAGDRYRUNERROR = 'FailedOperation.TagDryRunError'
 
+# Insufficient tags
+FAILEDOPERATION_TAGQUOTAEXCEEDLIMIT = 'FailedOperation.TagQuotaExceedLimit'
+
 # Failed to update the security group information of an instance.
 FAILEDOPERATION_UPDATEINSTANCEINFOFAILED = 'FailedOperation.UpdateInstanceInfoFailed'
 
@@ -323,6 +326,9 @@ INVALIDPARAMETERVALUE_SUPERUSERFORBIDDEN = 'InvalidParameterValue.SuperUserForbi
 # The deployment mode does not support setting the sync mode.
 INVALIDPARAMETERVALUE_SYNCMODENOTALLOWED = 'InvalidParameterValue.SyncModeNotAllowed'
 
+# Insufficient resources 
+RESOURCEINSUFFICIENT = 'ResourceInsufficient'
+
 # The specified account does not exist.
 RESOURCENOTFOUND_ACCOUNTDOESNOTEXIST = 'ResourceNotFound.AccountDoesNotExist'
 
@@ -341,6 +347,9 @@ RESOURCEUNAVAILABLE_BADINSTANCESTATUS = 'ResourceUnavailable.BadInstanceStatus'
 # An error occurred while calling COS APIs.
 RESOURCEUNAVAILABLE_COSAPIFAILED = 'ResourceUnavailable.CosApiFailed'
 
+# Abnormal dedicated cluster status
+RESOURCEUNAVAILABLE_EXCLUSTERSTATUSABNORMAL = 'ResourceUnavailable.ExclusterStatusAbnormal'
+
 # The database instance has been dropped.
 RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = 'ResourceUnavailable.InstanceAlreadyDeleted'
 
@@ -356,7 +365,7 @@ RESOURCEUNAVAILABLE_SGCHECKFAIL = 'ResourceUnavailable.SGCheckFail'
 # You have no permission to manipulate this API or resource.
 UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied'
 
-# 
+# This database version is not supported.
 UNSUPPORTEDOPERATION_DBVERSIONNOTSUPPORTED = 'UnsupportedOperation.DbVersionNotSupported'
 
 # Unsupported operation.

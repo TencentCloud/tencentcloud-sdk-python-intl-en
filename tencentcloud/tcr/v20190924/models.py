@@ -239,6 +239,189 @@ class CheckInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCustomAccountRequest(AbstractModel):
+    """CreateCustomAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: Instance ID
+        :type RegistryId: str
+        :param _Name: Custom account name
+        :type Name: str
+        :param _Permissions: Policy list
+        :type Permissions: list of Permission
+        :param _Description: Custom account description
+        :type Description: str
+        :param _Duration: Validity in days starting from the current day. It takes a higher priority than `ExpiresAt`.
+        :type Duration: int
+        :param _ExpiresAt: Expiry time of the custom account (timestamp, in milliseconds)
+        :type ExpiresAt: int
+        :param _Disable: Whether to disable the custom account
+        :type Disable: bool
+        """
+        self._RegistryId = None
+        self._Name = None
+        self._Permissions = None
+        self._Description = None
+        self._Duration = None
+        self._ExpiresAt = None
+        self._Disable = None
+
+    @property
+    def RegistryId(self):
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Permissions(self):
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ExpiresAt(self):
+        return self._ExpiresAt
+
+    @ExpiresAt.setter
+    def ExpiresAt(self, ExpiresAt):
+        self._ExpiresAt = ExpiresAt
+
+    @property
+    def Disable(self):
+        return self._Disable
+
+    @Disable.setter
+    def Disable(self, Disable):
+        self._Disable = Disable
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._Name = params.get("Name")
+        if params.get("Permissions") is not None:
+            self._Permissions = []
+            for item in params.get("Permissions"):
+                obj = Permission()
+                obj._deserialize(item)
+                self._Permissions.append(obj)
+        self._Description = params.get("Description")
+        self._Duration = params.get("Duration")
+        self._ExpiresAt = params.get("ExpiresAt")
+        self._Disable = params.get("Disable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomAccountResponse(AbstractModel):
+    """CreateCustomAccount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Custom username (the prefix `tcr$` is automatically added)
+        :type Name: str
+        :param _Password: Custom password, which is displayed only once
+        :type Password: str
+        :param _ExpiresAt: Custom expiry time (timestamp)
+        :type ExpiresAt: int
+        :param _CreateTime: Custom account creation time
+        :type CreateTime: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Name = None
+        self._Password = None
+        self._ExpiresAt = None
+        self._CreateTime = None
+        self._RequestId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def ExpiresAt(self):
+        return self._ExpiresAt
+
+    @ExpiresAt.setter
+    def ExpiresAt(self, ExpiresAt):
+        self._ExpiresAt = ExpiresAt
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Password = params.get("Password")
+        self._ExpiresAt = params.get("ExpiresAt")
+        self._CreateTime = params.get("CreateTime")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateImageAccelerationServiceRequest(AbstractModel):
     """CreateImageAccelerationService request structure.
 
@@ -570,6 +753,8 @@ class CreateInstanceRequest(AbstractModel):
         :type SyncTag: bool
         :param _EnableCosMAZ: Whether to enable the COS Multi-AZ feature
         :type EnableCosMAZ: bool
+        :param _DeletionProtection: Whether to enable deletion protection
+        :type DeletionProtection: bool
         """
         self._RegistryName = None
         self._RegistryType = None
@@ -578,6 +763,7 @@ class CreateInstanceRequest(AbstractModel):
         self._RegistryChargePrepaid = None
         self._SyncTag = None
         self._EnableCosMAZ = None
+        self._DeletionProtection = None
 
     @property
     def RegistryName(self):
@@ -635,6 +821,14 @@ class CreateInstanceRequest(AbstractModel):
     def EnableCosMAZ(self, EnableCosMAZ):
         self._EnableCosMAZ = EnableCosMAZ
 
+    @property
+    def DeletionProtection(self):
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
 
     def _deserialize(self, params):
         self._RegistryName = params.get("RegistryName")
@@ -648,6 +842,7 @@ class CreateInstanceRequest(AbstractModel):
             self._RegistryChargePrepaid._deserialize(params.get("RegistryChargePrepaid"))
         self._SyncTag = params.get("SyncTag")
         self._EnableCosMAZ = params.get("EnableCosMAZ")
+        self._DeletionProtection = params.get("DeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1316,6 +1511,189 @@ class CreateSecurityPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateServiceAccountRequest(AbstractModel):
+    """CreateServiceAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: Instance ID
+        :type RegistryId: str
+        :param _Name: Service account name
+        :type Name: str
+        :param _Permissions: Policy list
+        :type Permissions: list of Permission
+        :param _Description: Service account description
+        :type Description: str
+        :param _Duration: Validity in days starting from the current day. It takes a higher priority than `ExpiresAt`.
+        :type Duration: int
+        :param _ExpiresAt: Expiry time (timestamp, in milliseconds)
+        :type ExpiresAt: int
+        :param _Disable: Whether to disable the service account
+        :type Disable: bool
+        """
+        self._RegistryId = None
+        self._Name = None
+        self._Permissions = None
+        self._Description = None
+        self._Duration = None
+        self._ExpiresAt = None
+        self._Disable = None
+
+    @property
+    def RegistryId(self):
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Permissions(self):
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ExpiresAt(self):
+        return self._ExpiresAt
+
+    @ExpiresAt.setter
+    def ExpiresAt(self, ExpiresAt):
+        self._ExpiresAt = ExpiresAt
+
+    @property
+    def Disable(self):
+        return self._Disable
+
+    @Disable.setter
+    def Disable(self, Disable):
+        self._Disable = Disable
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._Name = params.get("Name")
+        if params.get("Permissions") is not None:
+            self._Permissions = []
+            for item in params.get("Permissions"):
+                obj = Permission()
+                obj._deserialize(item)
+                self._Permissions.append(obj)
+        self._Description = params.get("Description")
+        self._Duration = params.get("Duration")
+        self._ExpiresAt = params.get("ExpiresAt")
+        self._Disable = params.get("Disable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateServiceAccountResponse(AbstractModel):
+    """CreateServiceAccount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Service account name (the prefix `tcr$` is automatically added)
+        :type Name: str
+        :param _Password: Service account password, which is displayed only once
+        :type Password: str
+        :param _ExpiresAt: Expiry time of the service account (timestamp)
+        :type ExpiresAt: int
+        :param _CreateTime: Creation time of the service account
+        :type CreateTime: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Name = None
+        self._Password = None
+        self._ExpiresAt = None
+        self._CreateTime = None
+        self._RequestId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def ExpiresAt(self):
+        return self._ExpiresAt
+
+    @ExpiresAt.setter
+    def ExpiresAt(self, ExpiresAt):
+        self._ExpiresAt = ExpiresAt
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Password = params.get("Password")
+        self._ExpiresAt = params.get("ExpiresAt")
+        self._CreateTime = params.get("CreateTime")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSignaturePolicyRequest(AbstractModel):
     """CreateSignaturePolicy request structure.
 
@@ -1828,6 +2206,123 @@ class CreateWebhookTriggerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CustomAccount(AbstractModel):
+    """Custom account
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Custom account name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _Description: Description
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Description: str
+        :param _Disable: Whether to disable
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Disable: bool
+        :param _ExpiresAt: Expiry time
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ExpiresAt: int
+        :param _CreateTime: Creation time
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param _UpdateTime: Update time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        :param _Permissions: Policy
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Permissions: list of Permission
+        """
+        self._Name = None
+        self._Description = None
+        self._Disable = None
+        self._ExpiresAt = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Permissions = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Disable(self):
+        return self._Disable
+
+    @Disable.setter
+    def Disable(self, Disable):
+        self._Disable = Disable
+
+    @property
+    def ExpiresAt(self):
+        return self._ExpiresAt
+
+    @ExpiresAt.setter
+    def ExpiresAt(self, ExpiresAt):
+        self._ExpiresAt = ExpiresAt
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Permissions(self):
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Disable = params.get("Disable")
+        self._ExpiresAt = params.get("ExpiresAt")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("Permissions") is not None:
+            self._Permissions = []
+            for item in params.get("Permissions"):
+                obj = Permission()
+                obj._deserialize(item)
+                self._Permissions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomizedDomainInfo(AbstractModel):
     """Custom domain name information
 
@@ -1895,6 +2390,76 @@ class CustomizedDomainInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteCustomAccountRequest(AbstractModel):
+    """DeleteCustomAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: Instance ID	
+        :type RegistryId: str
+        :param _Name: Custom account name
+        :type Name: str
+        """
+        self._RegistryId = None
+        self._Name = None
+
+    @property
+    def RegistryId(self):
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCustomAccountResponse(AbstractModel):
+    """DeleteCustomAccount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteImageAccelerateServiceRequest(AbstractModel):
@@ -2793,10 +3358,13 @@ class DeleteSecurityPolicyRequest(AbstractModel):
         :type PolicyIndex: int
         :param _PolicyVersion: Allowlist version
         :type PolicyVersion: str
+        :param _CidrBlock: IP range or IP address (mutually exclusive).
+        :type CidrBlock: str
         """
         self._RegistryId = None
         self._PolicyIndex = None
         self._PolicyVersion = None
+        self._CidrBlock = None
 
     @property
     def RegistryId(self):
@@ -2822,11 +3390,20 @@ class DeleteSecurityPolicyRequest(AbstractModel):
     def PolicyVersion(self, PolicyVersion):
         self._PolicyVersion = PolicyVersion
 
+    @property
+    def CidrBlock(self):
+        return self._CidrBlock
+
+    @CidrBlock.setter
+    def CidrBlock(self, CidrBlock):
+        self._CidrBlock = CidrBlock
+
 
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
         self._PolicyIndex = params.get("PolicyIndex")
         self._PolicyVersion = params.get("PolicyVersion")
+        self._CidrBlock = params.get("CidrBlock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2871,6 +3448,76 @@ class DeleteSecurityPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteServiceAccountRequest(AbstractModel):
+    """DeleteServiceAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: Instance ID	
+        :type RegistryId: str
+        :param _Name: Service account name
+        :type Name: str
+        """
+        self._RegistryId = None
+        self._Name = None
+
+    @property
+    def RegistryId(self):
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteServiceAccountResponse(AbstractModel):
+    """DeleteServiceAccount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -3199,6 +3846,159 @@ class DescribeChartDownloadInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._PreSignedDownloadURL = params.get("PreSignedDownloadURL")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCustomAccountsRequest(AbstractModel):
+    """DescribeCustomAccounts request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: Instance ID
+        :type RegistryId: str
+        :param _All: All custom accounts
+        :type All: bool
+        :param _EmbedPermission: Whether to enter the policy
+        :type EmbedPermission: bool
+        :param _Filters: Filters
+        :type Filters: list of Filter
+        :param _Offset: Offset. Default value: `0`
+        :type Offset: int
+        :param _Limit: Maximum number of output entries. Default value: `20`. Maximum value: 100`.
+        :type Limit: int
+        """
+        self._RegistryId = None
+        self._All = None
+        self._EmbedPermission = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def RegistryId(self):
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def All(self):
+        return self._All
+
+    @All.setter
+    def All(self, All):
+        self._All = All
+
+    @property
+    def EmbedPermission(self):
+        return self._EmbedPermission
+
+    @EmbedPermission.setter
+    def EmbedPermission(self, EmbedPermission):
+        self._EmbedPermission = EmbedPermission
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._All = params.get("All")
+        self._EmbedPermission = params.get("EmbedPermission")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCustomAccountsResponse(AbstractModel):
+    """DescribeCustomAccounts response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomAccounts: List of custom accounts
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CustomAccounts: list of CustomAccount
+        :param _TotalCount: Number of custom accounts
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CustomAccounts = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def CustomAccounts(self):
+        return self._CustomAccounts
+
+    @CustomAccounts.setter
+    def CustomAccounts(self, CustomAccounts):
+        self._CustomAccounts = CustomAccounts
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CustomAccounts") is not None:
+            self._CustomAccounts = []
+            for item in params.get("CustomAccounts"):
+                obj = CustomAccount()
+                obj._deserialize(item)
+                self._CustomAccounts.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -5258,6 +6058,159 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeServiceAccountsRequest(AbstractModel):
+    """DescribeServiceAccounts request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: Instance ID
+        :type RegistryId: str
+        :param _All: All service accounts
+        :type All: bool
+        :param _EmbedPermission: Whether to fill in permission information
+        :type EmbedPermission: bool
+        :param _Filters: Filters
+        :type Filters: list of Filter
+        :param _Offset: Offset. Default value: `0`
+        :type Offset: int
+        :param _Limit: Maximum number of output entries. Default value: `20`. Maximum value: `100`. The maximum value is automatically applied when a value exceeding it is entered.
+        :type Limit: int
+        """
+        self._RegistryId = None
+        self._All = None
+        self._EmbedPermission = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def RegistryId(self):
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def All(self):
+        return self._All
+
+    @All.setter
+    def All(self, All):
+        self._All = All
+
+    @property
+    def EmbedPermission(self):
+        return self._EmbedPermission
+
+    @EmbedPermission.setter
+    def EmbedPermission(self, EmbedPermission):
+        self._EmbedPermission = EmbedPermission
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._All = params.get("All")
+        self._EmbedPermission = params.get("EmbedPermission")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServiceAccountsResponse(AbstractModel):
+    """DescribeServiceAccounts response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceAccounts: List of service accounts
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ServiceAccounts: list of ServiceAccount
+        :param _TotalCount: Number of service accounts
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ServiceAccounts = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ServiceAccounts(self):
+        return self._ServiceAccounts
+
+    @ServiceAccounts.setter
+    def ServiceAccounts(self, ServiceAccounts):
+        self._ServiceAccounts = ServiceAccounts
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceAccounts") is not None:
+            self._ServiceAccounts = []
+            for item in params.get("ServiceAccounts"):
+                obj = ServiceAccount()
+                obj._deserialize(item)
+                self._ServiceAccounts.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTagRetentionExecutionRequest(AbstractModel):
     """DescribeTagRetentionExecution request structure.
 
@@ -6744,6 +7697,141 @@ class ManageReplicationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyCustomAccountRequest(AbstractModel):
+    """ModifyCustomAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: Instance ID
+        :type RegistryId: str
+        :param _Name: Custom account name
+        :type Name: str
+        :param _Description: Custom account description
+        :type Description: str
+        :param _Duration: Validity in days starting from the current day. It takes a higher priority than `ExpiresAt`.
+        :type Duration: int
+        :param _ExpiresAt: Expiry time of the custom account (timestamp)
+        :type ExpiresAt: int
+        :param _Disable: Whether to disable the custom account
+        :type Disable: bool
+        :param _Permissions: Policy list
+        :type Permissions: list of Permission
+        """
+        self._RegistryId = None
+        self._Name = None
+        self._Description = None
+        self._Duration = None
+        self._ExpiresAt = None
+        self._Disable = None
+        self._Permissions = None
+
+    @property
+    def RegistryId(self):
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ExpiresAt(self):
+        return self._ExpiresAt
+
+    @ExpiresAt.setter
+    def ExpiresAt(self, ExpiresAt):
+        self._ExpiresAt = ExpiresAt
+
+    @property
+    def Disable(self):
+        return self._Disable
+
+    @Disable.setter
+    def Disable(self, Disable):
+        self._Disable = Disable
+
+    @property
+    def Permissions(self):
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Duration = params.get("Duration")
+        self._ExpiresAt = params.get("ExpiresAt")
+        self._Disable = params.get("Disable")
+        if params.get("Permissions") is not None:
+            self._Permissions = []
+            for item in params.get("Permissions"):
+                obj = Permission()
+                obj._deserialize(item)
+                self._Permissions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCustomAccountResponse(AbstractModel):
+    """ModifyCustomAccount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyImmutableTagRulesRequest(AbstractModel):
     """ModifyImmutableTagRules request structure.
 
@@ -6849,11 +7937,17 @@ class ModifyInstanceRequest(AbstractModel):
         r"""
         :param _RegistryId: Instance ID
         :type RegistryId: str
-        :param _RegistryType: Instance specification
+        :param _RegistryType: Instance edition
+Basic: `basic`
+Standard: `standard`
+Premium: `premium`
         :type RegistryType: str
+        :param _DeletionProtection: Whether to enable deletion protection. It defaults to `false`. 
+        :type DeletionProtection: bool
         """
         self._RegistryId = None
         self._RegistryType = None
+        self._DeletionProtection = None
 
     @property
     def RegistryId(self):
@@ -6871,10 +7965,19 @@ class ModifyInstanceRequest(AbstractModel):
     def RegistryType(self, RegistryType):
         self._RegistryType = RegistryType
 
+    @property
+    def DeletionProtection(self):
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
 
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
         self._RegistryType = params.get("RegistryType")
+        self._DeletionProtection = params.get("DeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7310,6 +8413,141 @@ class ModifySecurityPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyServiceAccountRequest(AbstractModel):
+    """ModifyServiceAccount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: Instance ID
+        :type RegistryId: str
+        :param _Name: Service account name
+        :type Name: str
+        :param _Description: Service account description
+        :type Description: str
+        :param _Duration: Validity in days starting from the current day, It takes a higher priority than `ExpiresAt`.
+        :type Duration: int
+        :param _ExpiresAt: Expiry time (timestamp, in milliseconds)
+        :type ExpiresAt: int
+        :param _Disable: Whether to disable the service account
+        :type Disable: bool
+        :param _Permissions: Policy list
+        :type Permissions: list of Permission
+        """
+        self._RegistryId = None
+        self._Name = None
+        self._Description = None
+        self._Duration = None
+        self._ExpiresAt = None
+        self._Disable = None
+        self._Permissions = None
+
+    @property
+    def RegistryId(self):
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ExpiresAt(self):
+        return self._ExpiresAt
+
+    @ExpiresAt.setter
+    def ExpiresAt(self, ExpiresAt):
+        self._ExpiresAt = ExpiresAt
+
+    @property
+    def Disable(self):
+        return self._Disable
+
+    @Disable.setter
+    def Disable(self, Disable):
+        self._Disable = Disable
+
+    @property
+    def Permissions(self):
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Duration = params.get("Duration")
+        self._ExpiresAt = params.get("ExpiresAt")
+        self._Disable = params.get("Disable")
+        if params.get("Permissions") is not None:
+            self._Permissions = []
+            for item in params.get("Permissions"):
+                obj = Permission()
+                obj._deserialize(item)
+                self._Permissions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyServiceAccountResponse(AbstractModel):
+    """ModifyServiceAccount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyTagRetentionRuleRequest(AbstractModel):
     """ModifyTagRetentionRule request structure.
 
@@ -7561,6 +8799,53 @@ class PeerReplicationOption(AbstractModel):
         self._PeerRegistryUin = params.get("PeerRegistryUin")
         self._PeerRegistryToken = params.get("PeerRegistryToken")
         self._EnablePeerReplication = params.get("EnablePeerReplication")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Permission(AbstractModel):
+    """Policy
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resource: Resource path. Valid value: `Namespace`
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Resource: str
+        :param _Actions: Action. Valid values: `tcr:PushRepository`, `tcr:PullRepository`
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Actions: list of str
+        """
+        self._Resource = None
+        self._Actions = None
+
+    @property
+    def Resource(self):
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def Actions(self):
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
+
+
+    def _deserialize(self, params):
+        self._Resource = params.get("Resource")
+        self._Actions = params.get("Actions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8901,6 +10186,123 @@ class SecurityPolicy(AbstractModel):
         self._Description = params.get("Description")
         self._CidrBlock = params.get("CidrBlock")
         self._PolicyVersion = params.get("PolicyVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceAccount(AbstractModel):
+    """Service account
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Service account name
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _Description: Description
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Description: str
+        :param _Disable: Whether to disable
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Disable: bool
+        :param _ExpiresAt: Expiry time
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ExpiresAt: int
+        :param _CreateTime: Creation time
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param _UpdateTime: Update time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        :param _Permissions: Policy
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Permissions: list of Permission
+        """
+        self._Name = None
+        self._Description = None
+        self._Disable = None
+        self._ExpiresAt = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Permissions = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Disable(self):
+        return self._Disable
+
+    @Disable.setter
+    def Disable(self, Disable):
+        self._Disable = Disable
+
+    @property
+    def ExpiresAt(self):
+        return self._ExpiresAt
+
+    @ExpiresAt.setter
+    def ExpiresAt(self, ExpiresAt):
+        self._ExpiresAt = ExpiresAt
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Permissions(self):
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Disable = params.get("Disable")
+        self._ExpiresAt = params.get("ExpiresAt")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("Permissions") is not None:
+            self._Permissions = []
+            for item in params.get("Permissions"):
+                obj = Permission()
+                obj._deserialize(item)
+                self._Permissions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
