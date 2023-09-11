@@ -44,6 +44,9 @@ FAILEDOPERATION_CANNOTGETORDER = 'FailedOperation.CannotGetOrder'
 # The certificate already exists.
 FAILEDOPERATION_CERTIFICATEEXISTS = 'FailedOperation.CertificateExists'
 
+# Unable to use the deployment feature because the login account is an internal account with too many instance resources. Please contact us to handle it.
+FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = 'FailedOperation.CertificateHostResourceInnerInterrupt'
+
 # The certificate is invalid.
 FAILEDOPERATION_CERTIFICATEINVALID = 'FailedOperation.CertificateInvalid'
 
@@ -104,6 +107,9 @@ FAILEDOPERATION_PACKAGECOUNTLIMIT = 'FailedOperation.PackageCountLimit'
 # The benefit package has expired.
 FAILEDOPERATION_PACKAGEEXPIRED = 'FailedOperation.PackageExpired'
 
+# The role does not exist. Please authorize the role first.
+FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = 'FailedOperation.RoleNotFoundAuthorization'
+
 # A system error occurred.
 FAILEDOPERATION_SYSTEMERROR = 'FailedOperation.SystemError'
 
@@ -118,6 +124,9 @@ INTERNALERROR_BACKENDRESPONSEERROR = 'InternalError.BackendResponseError'
 
 # The parameter is incorrect.
 INVALIDPARAMETER = 'InvalidParameter'
+
+# Incorrect CSR ID.
+INVALIDPARAMETER_INVALIDCSRID = 'InvalidParameter.InvalidCSRId'
 
 # The list of benefit point IDs is invalid.
 INVALIDPARAMETER_PACKAGEIDSINVALID = 'InvalidParameter.PackageIdsInvalid'

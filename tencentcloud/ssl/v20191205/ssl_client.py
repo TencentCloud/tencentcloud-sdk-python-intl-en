@@ -49,6 +49,29 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchDeleteCSR(self, request):
+        """This API is used to batch delete CSRs.
+
+        :param request: Request instance for BatchDeleteCSR.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.BatchDeleteCSRRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.BatchDeleteCSRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchDeleteCSR", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchDeleteCSRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CancelCertificateOrder(self, request):
         """This API is used to cancel a certificate order.
 
@@ -95,6 +118,29 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCSR(self, request):
+        """This API is used to create a CSR.
+
+        :param request: Request instance for CreateCSR.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.CreateCSRRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CreateCSRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCSR", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCSRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCertificate(self, request):
         """This API is used to purchase a certificate.
 
@@ -109,6 +155,29 @@ class SslClient(AbstractClient):
             body = self.call("CreateCertificate", params, headers=headers)
             response = json.loads(body)
             model = models.CreateCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCertificateBindResourceSyncTask(self, request):
+        """This API is used to create an async task for querying the cloud resources associated with a certificate. If such a task already exists under the certificate ID, the ID of this task is returned as the result. The following types of cloud resources are supported: CLB, CDN, WAF, LIVE, VOD, DDOS, TKE, APIGATEWAY, TCB, and TEO (EDGEONE). You can query the result of this task using the `DescribeCertificateBindResourceTaskResult` API.
+
+        :param request: Request instance for CreateCertificateBindResourceSyncTask.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.CreateCertificateBindResourceSyncTaskRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CreateCertificateBindResourceSyncTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCertificateBindResourceSyncTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCertificateBindResourceSyncTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -141,6 +210,52 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCSR(self, request):
+        """This API is used to query the details of a CSR.
+
+        :param request: Request instance for DescribeCSR.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCSRRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeCSRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCSR", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCSRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCSRSet(self, request):
+        """This API is used to query the CSR list.
+
+        :param request: Request instance for DescribeCSRSet.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCSRSetRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeCSRSetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCSRSet", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCSRSetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCertificate(self, request):
         """This API is used to get certificate information.
 
@@ -155,6 +270,52 @@ class SslClient(AbstractClient):
             body = self.call("DescribeCertificate", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCertificateBindResourceTaskDetail(self, request):
+        """This API is used to query the result of an async task created with `CreateCertificateBindResourceSyncTask` to query cloud resources associated with a certificate. The following types of cloud resources are supported: CLB, CDN, WAF, LIVE, VOD, DDOS, TKE, APIGATEWAY, TCB, and TEO (EDGEONE).
+
+        :param request: Request instance for DescribeCertificateBindResourceTaskDetail.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateBindResourceTaskDetailRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateBindResourceTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCertificateBindResourceTaskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCertificateBindResourceTaskDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCertificateBindResourceTaskResult(self, request):
+        """This API is used to query the result of an async task created with `CreateCertificateBindResourceSyncTask` to query cloud resources associated with a certificate. The following types of cloud resources are supported: CLB, CDN, WAF, LIVE, VOD, DDOS, TKE, APIGATEWAY, TCB, and TEO (EDGEONE).
+
+        :param request: Request instance for DescribeCertificateBindResourceTaskResult.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateBindResourceTaskResultRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeCertificateBindResourceTaskResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCertificateBindResourceTaskResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCertificateBindResourceTaskResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -247,6 +408,29 @@ class SslClient(AbstractClient):
             body = self.call("DownloadCertificate", params, headers=headers)
             response = json.loads(body)
             model = models.DownloadCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCSR(self, request):
+        """This API is used to modify the information of a CSR.
+
+        :param request: Request instance for ModifyCSR.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.ModifyCSRRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.ModifyCSRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCSR", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCSRResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

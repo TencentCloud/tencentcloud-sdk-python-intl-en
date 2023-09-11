@@ -18,6 +18,151 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ApiGatewayInstanceDetail(AbstractModel):
+    """Details of an APIGATEWAY instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: The instance ID.
+        :type ServiceId: str
+        :param _ServiceName: The instance name.
+        :type ServiceName: str
+        :param _Domain: The domain.
+        :type Domain: str
+        :param _CertId: The certificate ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CertId: str
+        :param _Protocol: The protocol.
+        :type Protocol: str
+        """
+        self._ServiceId = None
+        self._ServiceName = None
+        self._Domain = None
+        self._CertId = None
+        self._Protocol = None
+
+    @property
+    def ServiceId(self):
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ServiceName(self):
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._ServiceName = params.get("ServiceName")
+        self._Domain = params.get("Domain")
+        self._CertId = params.get("CertId")
+        self._Protocol = params.get("Protocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiGatewayInstanceList(AbstractModel):
+    """Details of APIGATEWAY instances - data structure of an async task for querying associated cloud resources
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: The region.
+        :type Region: str
+        :param _InstanceList: The list of APIGATEWAY instances.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceList: list of ApiGatewayInstanceDetail
+        :param _TotalCount: The total number of APIGATEWAY instances in this region.	
+        :type TotalCount: int
+        """
+        self._Region = None
+        self._InstanceList = None
+        self._TotalCount = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceList(self):
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = ApiGatewayInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplyCertificateRequest(AbstractModel):
     """ApplyCertificate request structure.
 
@@ -244,6 +389,375 @@ class ApplyCertificateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BatchDeleteCSRRequest(AbstractModel):
+    """BatchDeleteCSR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CSRIds: The IDs of the CSRs to be deleted, 100 IDs at most.
+        :type CSRIds: list of int
+        """
+        self._CSRIds = None
+
+    @property
+    def CSRIds(self):
+        return self._CSRIds
+
+    @CSRIds.setter
+    def CSRIds(self, CSRIds):
+        self._CSRIds = CSRIds
+
+
+    def _deserialize(self, params):
+        self._CSRIds = params.get("CSRIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchDeleteCSRResponse(AbstractModel):
+    """BatchDeleteCSR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: The IDs of the CSRs successfully deleted.
+        :type Success: list of int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Success = None
+        self._RequestId = None
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Success = params.get("Success")
+        self._RequestId = params.get("RequestId")
+
+
+class BindResourceRegionResult(AbstractModel):
+    """Region of associated cloud resources
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: The region.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Region: str
+        :param _TotalCount: The total number of associated cloud resources.
+        :type TotalCount: int
+        """
+        self._Region = None
+        self._TotalCount = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindResourceResult(AbstractModel):
+    """Associated cloud resources
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: Supported types: CLB, CDN, WAF, LIVE, VOD, DDOS, TKE, APIGATEWAY, TCB, and TEO (EDGEONE).
+        :type ResourceType: str
+        :param _BindResourceRegionResult: The region of associated cloud resources.
+        :type BindResourceRegionResult: list of BindResourceRegionResult
+        """
+        self._ResourceType = None
+        self._BindResourceRegionResult = None
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def BindResourceRegionResult(self):
+        return self._BindResourceRegionResult
+
+    @BindResourceRegionResult.setter
+    def BindResourceRegionResult(self, BindResourceRegionResult):
+        self._BindResourceRegionResult = BindResourceRegionResult
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        if params.get("BindResourceRegionResult") is not None:
+            self._BindResourceRegionResult = []
+            for item in params.get("BindResourceRegionResult"):
+                obj = BindResourceRegionResult()
+                obj._deserialize(item)
+                self._BindResourceRegionResult.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CSRItem(AbstractModel):
+    """Details of a CSR
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: The CSR ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Id: int
+        :param _OwnerUin: The account.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OwnerUin: str
+        :param _Domain: The domain.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Domain: str
+        :param _Organization: The organization name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Organization: str
+        :param _Department: The department.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Department: str
+        :param _Email: The email address.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Email: str
+        :param _Province: The province.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Province: str
+        :param _City: The city.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type City: str
+        :param _Country: The country or region.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Country: str
+        :param _Remarks: The remarks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Remarks: str
+        :param _Status: The status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param _CreateTime: The creation time.
+Note: u200dThis field may return `null`, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param _EncryptAlgo: The encryption algorithm.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EncryptAlgo: str
+        :param _KeyParameter: The algorithm parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type KeyParameter: str
+        """
+        self._Id = None
+        self._OwnerUin = None
+        self._Domain = None
+        self._Organization = None
+        self._Department = None
+        self._Email = None
+        self._Province = None
+        self._City = None
+        self._Country = None
+        self._Remarks = None
+        self._Status = None
+        self._CreateTime = None
+        self._EncryptAlgo = None
+        self._KeyParameter = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Organization(self):
+        return self._Organization
+
+    @Organization.setter
+    def Organization(self, Organization):
+        self._Organization = Organization
+
+    @property
+    def Department(self):
+        return self._Department
+
+    @Department.setter
+    def Department(self, Department):
+        self._Department = Department
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Remarks(self):
+        return self._Remarks
+
+    @Remarks.setter
+    def Remarks(self, Remarks):
+        self._Remarks = Remarks
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def EncryptAlgo(self):
+        return self._EncryptAlgo
+
+    @EncryptAlgo.setter
+    def EncryptAlgo(self, EncryptAlgo):
+        self._EncryptAlgo = EncryptAlgo
+
+    @property
+    def KeyParameter(self):
+        return self._KeyParameter
+
+    @KeyParameter.setter
+    def KeyParameter(self, KeyParameter):
+        self._KeyParameter = KeyParameter
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._OwnerUin = params.get("OwnerUin")
+        self._Domain = params.get("Domain")
+        self._Organization = params.get("Organization")
+        self._Department = params.get("Department")
+        self._Email = params.get("Email")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._Country = params.get("Country")
+        self._Remarks = params.get("Remarks")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._EncryptAlgo = params.get("EncryptAlgo")
+        self._KeyParameter = params.get("KeyParameter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CancelCertificateOrderRequest(AbstractModel):
     """CancelCertificateOrder request structure.
 
@@ -312,6 +826,242 @@ class CancelCertificateOrderResponse(AbstractModel):
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
         self._RequestId = params.get("RequestId")
+
+
+class CdnInstanceDetail(AbstractModel):
+    """Details of a CDN instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: The domain.
+        :type Domain: str
+        :param _CertId: The ID of the deployed certificate.
+        :type CertId: str
+        :param _Status: The status of the domain.
+        :type Status: str
+        :param _HttpsBillingSwitch: The billing status of the domain.
+        :type HttpsBillingSwitch: str
+        """
+        self._Domain = None
+        self._CertId = None
+        self._Status = None
+        self._HttpsBillingSwitch = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def HttpsBillingSwitch(self):
+        return self._HttpsBillingSwitch
+
+    @HttpsBillingSwitch.setter
+    def HttpsBillingSwitch(self, HttpsBillingSwitch):
+        self._HttpsBillingSwitch = HttpsBillingSwitch
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._CertId = params.get("CertId")
+        self._Status = params.get("Status")
+        self._HttpsBillingSwitch = params.get("HttpsBillingSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CdnInstanceList(AbstractModel):
+    """Details of CDN instances - data structure of an async task for querying associated cloud resources
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: The total number of CDN domains in this region.	
+        :type TotalCount: int
+        :param _InstanceList: The list of CDN domains.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceList: list of CdnInstanceDetail
+        """
+        self._TotalCount = None
+        self._InstanceList = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstanceList(self):
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = CdnInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CertTaskId(AbstractModel):
+    """Certificate and async task IDs
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertId: The certificate ID.
+        :type CertId: str
+        :param _TaskId: The async task ID.
+        :type TaskId: str
+        """
+        self._CertId = None
+        self._TaskId = None
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._CertId = params.get("CertId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Certificate(AbstractModel):
+    """Details of a CLB certificate
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertId: The certificate ID.
+        :type CertId: str
+        :param _DnsNames: The list of domains bound to the certificate.
+        :type DnsNames: list of str
+        :param _CertCaId: The root certificate ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CertCaId: str
+        :param _SSLMode: The authentication type. Valid values: `UNIDIRECTIONAL` (one-way authentication) and `MUTUAL` (two-way authentication).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SSLMode: str
+        """
+        self._CertId = None
+        self._DnsNames = None
+        self._CertCaId = None
+        self._SSLMode = None
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def DnsNames(self):
+        return self._DnsNames
+
+    @DnsNames.setter
+    def DnsNames(self, DnsNames):
+        self._DnsNames = DnsNames
+
+    @property
+    def CertCaId(self):
+        return self._CertCaId
+
+    @CertCaId.setter
+    def CertCaId(self, CertCaId):
+        self._CertCaId = CertCaId
+
+    @property
+    def SSLMode(self):
+        return self._SSLMode
+
+    @SSLMode.setter
+    def SSLMode(self, SSLMode):
+        self._SSLMode = SSLMode
+
+
+    def _deserialize(self, params):
+        self._CertId = params.get("CertId")
+        self._DnsNames = params.get("DnsNames")
+        self._CertCaId = params.get("CertCaId")
+        self._SSLMode = params.get("SSLMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CertificateExtra(AbstractModel):
@@ -941,6 +1691,332 @@ Note: This field may return null, indicating that no valid value can be obtained
         
 
 
+class ClbInstanceDetail(AbstractModel):
+    """Details of a CLB instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerId: The CLB instance ID.
+        :type LoadBalancerId: str
+        :param _LoadBalancerName: The CLB instance name.
+        :type LoadBalancerName: str
+        :param _Listeners: The list of CLB listeners.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Listeners: list of ClbListener
+        """
+        self._LoadBalancerId = None
+        self._LoadBalancerName = None
+        self._Listeners = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def LoadBalancerName(self):
+        return self._LoadBalancerName
+
+    @LoadBalancerName.setter
+    def LoadBalancerName(self, LoadBalancerName):
+        self._LoadBalancerName = LoadBalancerName
+
+    @property
+    def Listeners(self):
+        return self._Listeners
+
+    @Listeners.setter
+    def Listeners(self, Listeners):
+        self._Listeners = Listeners
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        self._LoadBalancerName = params.get("LoadBalancerName")
+        if params.get("Listeners") is not None:
+            self._Listeners = []
+            for item in params.get("Listeners"):
+                obj = ClbListener()
+                obj._deserialize(item)
+                self._Listeners.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClbInstanceList(AbstractModel):
+    """Details of CLB instances - data structure of an async task for querying associated cloud resources
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: The region.
+        :type Region: str
+        :param _InstanceList: The list of CLB instances.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceList: list of ClbInstanceDetail
+        :param _TotalCount: The total number of CLB instances in this region.
+        :type TotalCount: int
+        """
+        self._Region = None
+        self._InstanceList = None
+        self._TotalCount = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceList(self):
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = ClbInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClbListener(AbstractModel):
+    """Details of a CLB instance listener
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ListenerId: The listener ID.
+        :type ListenerId: str
+        :param _ListenerName: The listener name.
+        :type ListenerName: str
+        :param _SniSwitch: Whether to enable SNI. Valid values: `1` (enable) and `0` (disable).
+        :type SniSwitch: int
+        :param _Protocol: The listener protocol type. Valid values: `HTTPS` and `TCP_SSL`.
+        :type Protocol: str
+        :param _Certificate: The information of the certificate bound to the listener.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Certificate: :class:`tencentcloud.ssl.v20191205.models.Certificate`
+        :param _Rules: The list of the listener rules.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Rules: list of ClbListenerRule
+        :param _NoMatchDomains: The list of non-matching domains.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NoMatchDomains: list of str
+        """
+        self._ListenerId = None
+        self._ListenerName = None
+        self._SniSwitch = None
+        self._Protocol = None
+        self._Certificate = None
+        self._Rules = None
+        self._NoMatchDomains = None
+
+    @property
+    def ListenerId(self):
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def ListenerName(self):
+        return self._ListenerName
+
+    @ListenerName.setter
+    def ListenerName(self, ListenerName):
+        self._ListenerName = ListenerName
+
+    @property
+    def SniSwitch(self):
+        return self._SniSwitch
+
+    @SniSwitch.setter
+    def SniSwitch(self, SniSwitch):
+        self._SniSwitch = SniSwitch
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Certificate(self):
+        return self._Certificate
+
+    @Certificate.setter
+    def Certificate(self, Certificate):
+        self._Certificate = Certificate
+
+    @property
+    def Rules(self):
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def NoMatchDomains(self):
+        return self._NoMatchDomains
+
+    @NoMatchDomains.setter
+    def NoMatchDomains(self, NoMatchDomains):
+        self._NoMatchDomains = NoMatchDomains
+
+
+    def _deserialize(self, params):
+        self._ListenerId = params.get("ListenerId")
+        self._ListenerName = params.get("ListenerName")
+        self._SniSwitch = params.get("SniSwitch")
+        self._Protocol = params.get("Protocol")
+        if params.get("Certificate") is not None:
+            self._Certificate = Certificate()
+            self._Certificate._deserialize(params.get("Certificate"))
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = ClbListenerRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._NoMatchDomains = params.get("NoMatchDomains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClbListenerRule(AbstractModel):
+    """Details of a CLB listener rule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LocationId: The rule ID.
+        :type LocationId: str
+        :param _Domain: The domains bound.
+        :type Domain: str
+        :param _IsMatch: Whether the rule matches the domains to be associated with a certificate.
+        :type IsMatch: bool
+        :param _Certificate: The certificates associated with the rule.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Certificate: :class:`tencentcloud.ssl.v20191205.models.Certificate`
+        :param _NoMatchDomains: The list of non-matching domains.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NoMatchDomains: list of str
+        """
+        self._LocationId = None
+        self._Domain = None
+        self._IsMatch = None
+        self._Certificate = None
+        self._NoMatchDomains = None
+
+    @property
+    def LocationId(self):
+        return self._LocationId
+
+    @LocationId.setter
+    def LocationId(self, LocationId):
+        self._LocationId = LocationId
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def IsMatch(self):
+        return self._IsMatch
+
+    @IsMatch.setter
+    def IsMatch(self, IsMatch):
+        self._IsMatch = IsMatch
+
+    @property
+    def Certificate(self):
+        return self._Certificate
+
+    @Certificate.setter
+    def Certificate(self, Certificate):
+        self._Certificate = Certificate
+
+    @property
+    def NoMatchDomains(self):
+        return self._NoMatchDomains
+
+    @NoMatchDomains.setter
+    def NoMatchDomains(self, NoMatchDomains):
+        self._NoMatchDomains = NoMatchDomains
+
+
+    def _deserialize(self, params):
+        self._LocationId = params.get("LocationId")
+        self._Domain = params.get("Domain")
+        self._IsMatch = params.get("IsMatch")
+        if params.get("Certificate") is not None:
+            self._Certificate = Certificate()
+            self._Certificate._deserialize(params.get("Certificate"))
+        self._NoMatchDomains = params.get("NoMatchDomains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CommitCertificateInformationRequest(AbstractModel):
     """CommitCertificateInformation request structure.
 
@@ -1032,6 +2108,295 @@ class CommitCertificateInformationResponse(AbstractModel):
     def _deserialize(self, params):
         self._OrderId = params.get("OrderId")
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCSRRequest(AbstractModel):
+    """CreateCSR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: The domain.
+        :type Domain: str
+        :param _Organization: The organization name.
+        :type Organization: str
+        :param _Department: The department.
+        :type Department: str
+        :param _Email: The email address.
+        :type Email: str
+        :param _Province: The province.
+        :type Province: str
+        :param _City: The city.
+        :type City: str
+        :param _Country: The country or region code that complies with ISO 3166, such as CN and US.
+        :type Country: str
+        :param _EncryptAlgo: The encryption algorithm. RSA and ECC are supported.	
+        :type EncryptAlgo: str
+        :param _KeyParameter: The key pair parameter. For RSA, only the 2048-bit and 4096-bit key pairs are supported. For ECC, only prime256v1 is supported.
+        :type KeyParameter: str
+        :param _Generate: Whether to generate the CSR content. Once the CSR content is generated, the CSR record cannot be modified.
+        :type Generate: bool
+        :param _KeyPassword: The password of the private key.
+        :type KeyPassword: str
+        :param _Remark: The remarks.
+        :type Remark: str
+        """
+        self._Domain = None
+        self._Organization = None
+        self._Department = None
+        self._Email = None
+        self._Province = None
+        self._City = None
+        self._Country = None
+        self._EncryptAlgo = None
+        self._KeyParameter = None
+        self._Generate = None
+        self._KeyPassword = None
+        self._Remark = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Organization(self):
+        return self._Organization
+
+    @Organization.setter
+    def Organization(self, Organization):
+        self._Organization = Organization
+
+    @property
+    def Department(self):
+        return self._Department
+
+    @Department.setter
+    def Department(self, Department):
+        self._Department = Department
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def EncryptAlgo(self):
+        return self._EncryptAlgo
+
+    @EncryptAlgo.setter
+    def EncryptAlgo(self, EncryptAlgo):
+        self._EncryptAlgo = EncryptAlgo
+
+    @property
+    def KeyParameter(self):
+        return self._KeyParameter
+
+    @KeyParameter.setter
+    def KeyParameter(self, KeyParameter):
+        self._KeyParameter = KeyParameter
+
+    @property
+    def Generate(self):
+        return self._Generate
+
+    @Generate.setter
+    def Generate(self, Generate):
+        self._Generate = Generate
+
+    @property
+    def KeyPassword(self):
+        return self._KeyPassword
+
+    @KeyPassword.setter
+    def KeyPassword(self, KeyPassword):
+        self._KeyPassword = KeyPassword
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Organization = params.get("Organization")
+        self._Department = params.get("Department")
+        self._Email = params.get("Email")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._Country = params.get("Country")
+        self._EncryptAlgo = params.get("EncryptAlgo")
+        self._KeyParameter = params.get("KeyParameter")
+        self._Generate = params.get("Generate")
+        self._KeyPassword = params.get("KeyPassword")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCSRResponse(AbstractModel):
+    """CreateCSR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: The CSR ID.
+        :type Id: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCertificateBindResourceSyncTaskRequest(AbstractModel):
+    """CreateCertificateBindResourceSyncTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateIds: The list of certificate IDs, 100 IDs at most.
+        :type CertificateIds: list of str
+        :param _IsCache: Whether to use the cached results. Valid values: `1` (default) for yes and `0` for no. If any task completed within last 30 minutes exists under the current certificate ID, and the cache is used, the query result of the last task completed within 30 minutes will be read.
+        :type IsCache: int
+        """
+        self._CertificateIds = None
+        self._IsCache = None
+
+    @property
+    def CertificateIds(self):
+        return self._CertificateIds
+
+    @CertificateIds.setter
+    def CertificateIds(self, CertificateIds):
+        self._CertificateIds = CertificateIds
+
+    @property
+    def IsCache(self):
+        return self._IsCache
+
+    @IsCache.setter
+    def IsCache(self, IsCache):
+        self._IsCache = IsCache
+
+
+    def _deserialize(self, params):
+        self._CertificateIds = params.get("CertificateIds")
+        self._IsCache = params.get("IsCache")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCertificateBindResourceSyncTaskResponse(AbstractModel):
+    """CreateCertificateBindResourceSyncTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertTaskIds: The IDs of async tasks for querying cloud resources associated with a certificate.
+        :type CertTaskIds: list of CertTaskId
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CertTaskIds = None
+        self._RequestId = None
+
+    @property
+    def CertTaskIds(self):
+        return self._CertTaskIds
+
+    @CertTaskIds.setter
+    def CertTaskIds(self, CertTaskIds):
+        self._CertTaskIds = CertTaskIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CertTaskIds") is not None:
+            self._CertTaskIds = []
+            for item in params.get("CertTaskIds"):
+                obj = CertTaskId()
+                obj._deserialize(item)
+                self._CertTaskIds.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -1141,6 +2506,139 @@ class CreateCertificateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DdosInstanceDetail(AbstractModel):
+    """Details of a DDOS instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: The domain.
+        :type Domain: str
+        :param _InstanceId: The instance ID.
+        :type InstanceId: str
+        :param _Protocol: The protocol type.
+        :type Protocol: str
+        :param _CertId: The certificate ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CertId: str
+        :param _VirtualPort: The forwarding port.
+        :type VirtualPort: str
+        """
+        self._Domain = None
+        self._InstanceId = None
+        self._Protocol = None
+        self._CertId = None
+        self._VirtualPort = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def VirtualPort(self):
+        return self._VirtualPort
+
+    @VirtualPort.setter
+    def VirtualPort(self, VirtualPort):
+        self._VirtualPort = VirtualPort
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._InstanceId = params.get("InstanceId")
+        self._Protocol = params.get("Protocol")
+        self._CertId = params.get("CertId")
+        self._VirtualPort = params.get("VirtualPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DdosInstanceList(AbstractModel):
+    """Details of DDOS instances - data structure of an async task for querying associated cloud resources
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: The total number of DDOS instances in this region.	
+        :type TotalCount: int
+        :param _InstanceList: The list of DDOS instances.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceList: list of DdosInstanceDetail
+        """
+        self._TotalCount = None
+        self._InstanceList = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstanceList(self):
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = DdosInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteCertificateRequest(AbstractModel):
     """DeleteCertificate request structure.
 
@@ -1208,6 +2706,780 @@ class DeleteCertificateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DeleteResult = params.get("DeleteResult")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCSRRequest(AbstractModel):
+    """DescribeCSR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CSRId: The CSR ID.
+        :type CSRId: int
+        """
+        self._CSRId = None
+
+    @property
+    def CSRId(self):
+        return self._CSRId
+
+    @CSRId.setter
+    def CSRId(self, CSRId):
+        self._CSRId = CSRId
+
+
+    def _deserialize(self, params):
+        self._CSRId = params.get("CSRId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCSRResponse(AbstractModel):
+    """DescribeCSR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: The CSR ID.
+        :type Id: int
+        :param _OwnerUin: The account.
+        :type OwnerUin: str
+        :param _Domain: The domain.
+        :type Domain: str
+        :param _Organization: The organization name.
+        :type Organization: str
+        :param _Department: The department.
+        :type Department: str
+        :param _Email: The email address.
+        :type Email: str
+        :param _Province: The province.
+        :type Province: str
+        :param _City: The city.
+        :type City: str
+        :param _Country: The country or region.
+        :type Country: str
+        :param _EncryptAlgo: The key algorithm.
+        :type EncryptAlgo: str
+        :param _KeyParameter: The algorithm parameter.
+        :type KeyParameter: str
+        :param _Remarks: The remarks.
+        :type Remarks: str
+        :param _Status: The status.
+        :type Status: int
+        :param _KeyPassword: The password of the private key.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type KeyPassword: str
+        :param _CreateTime: The creation time.
+        :type CreateTime: str
+        :param _CSR: The CSR content.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CSR: str
+        :param _PrivateKey: The content of the private key.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PrivateKey: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Id = None
+        self._OwnerUin = None
+        self._Domain = None
+        self._Organization = None
+        self._Department = None
+        self._Email = None
+        self._Province = None
+        self._City = None
+        self._Country = None
+        self._EncryptAlgo = None
+        self._KeyParameter = None
+        self._Remarks = None
+        self._Status = None
+        self._KeyPassword = None
+        self._CreateTime = None
+        self._CSR = None
+        self._PrivateKey = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Organization(self):
+        return self._Organization
+
+    @Organization.setter
+    def Organization(self, Organization):
+        self._Organization = Organization
+
+    @property
+    def Department(self):
+        return self._Department
+
+    @Department.setter
+    def Department(self, Department):
+        self._Department = Department
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def EncryptAlgo(self):
+        return self._EncryptAlgo
+
+    @EncryptAlgo.setter
+    def EncryptAlgo(self, EncryptAlgo):
+        self._EncryptAlgo = EncryptAlgo
+
+    @property
+    def KeyParameter(self):
+        return self._KeyParameter
+
+    @KeyParameter.setter
+    def KeyParameter(self, KeyParameter):
+        self._KeyParameter = KeyParameter
+
+    @property
+    def Remarks(self):
+        return self._Remarks
+
+    @Remarks.setter
+    def Remarks(self, Remarks):
+        self._Remarks = Remarks
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def KeyPassword(self):
+        return self._KeyPassword
+
+    @KeyPassword.setter
+    def KeyPassword(self, KeyPassword):
+        self._KeyPassword = KeyPassword
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CSR(self):
+        return self._CSR
+
+    @CSR.setter
+    def CSR(self, CSR):
+        self._CSR = CSR
+
+    @property
+    def PrivateKey(self):
+        return self._PrivateKey
+
+    @PrivateKey.setter
+    def PrivateKey(self, PrivateKey):
+        self._PrivateKey = PrivateKey
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._OwnerUin = params.get("OwnerUin")
+        self._Domain = params.get("Domain")
+        self._Organization = params.get("Organization")
+        self._Department = params.get("Department")
+        self._Email = params.get("Email")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._Country = params.get("Country")
+        self._EncryptAlgo = params.get("EncryptAlgo")
+        self._KeyParameter = params.get("KeyParameter")
+        self._Remarks = params.get("Remarks")
+        self._Status = params.get("Status")
+        self._KeyPassword = params.get("KeyPassword")
+        self._CreateTime = params.get("CreateTime")
+        self._CSR = params.get("CSR")
+        self._PrivateKey = params.get("PrivateKey")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCSRSetRequest(AbstractModel):
+    """DescribeCSRSet request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: The number of CSRs on each page. The default value is 10, and the maximum value is 100.
+        :type Limit: int
+        :param _Offset: The pagination offset, starting from 0.	
+        :type Offset: int
+        :param _Domain: The domain for CSR filtering.
+        :type Domain: str
+        :param _EncryptAlgo: The encryption algorithm for CSR filtering.
+        :type EncryptAlgo: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Domain = None
+        self._EncryptAlgo = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def EncryptAlgo(self):
+        return self._EncryptAlgo
+
+    @EncryptAlgo.setter
+    def EncryptAlgo(self, EncryptAlgo):
+        self._EncryptAlgo = EncryptAlgo
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Domain = params.get("Domain")
+        self._EncryptAlgo = params.get("EncryptAlgo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCSRSetResponse(AbstractModel):
+    """DescribeCSRSet response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: The total number of CSRs.	
+        :type Total: int
+        :param _Set: The list of CSRs.
+        :type Set: list of CSRItem
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Set = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Set(self):
+        return self._Set
+
+    @Set.setter
+    def Set(self, Set):
+        self._Set = Set
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Set") is not None:
+            self._Set = []
+            for item in params.get("Set"):
+                obj = CSRItem()
+                obj._deserialize(item)
+                self._Set.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
+    """DescribeCertificateBindResourceTaskDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: The task ID, which is required to query the result of associated cloud resources.
+        :type TaskId: str
+        :param _Limit: The number of cloud resources displayed on each page. The default value is 10, and the maximum value is 100.
+        :type Limit: str
+        :param _Offset: The current offset.
+        :type Offset: str
+        :param _ResourceTypes: The types of the resources to be queried. If no value is passed in, all types of resources will be queried.
+        :type ResourceTypes: list of str
+        :param _Regions: The regions of the resources to be queried. Only CLB, TKE, WAF, APIGATEWAY, and TCB resources support the query by region.
+        :type Regions: list of str
+        """
+        self._TaskId = None
+        self._Limit = None
+        self._Offset = None
+        self._ResourceTypes = None
+        self._Regions = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def ResourceTypes(self):
+        return self._ResourceTypes
+
+    @ResourceTypes.setter
+    def ResourceTypes(self, ResourceTypes):
+        self._ResourceTypes = ResourceTypes
+
+    @property
+    def Regions(self):
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._ResourceTypes = params.get("ResourceTypes")
+        self._Regions = params.get("Regions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCertificateBindResourceTaskDetailResponse(AbstractModel):
+    """DescribeCertificateBindResourceTaskDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CLB: The details of associated CLB resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CLB: list of ClbInstanceList
+        :param _CDN: The details of associated CDN resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CDN: list of CdnInstanceList
+        :param _WAF: The details of associated WAF resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WAF: list of WafInstanceList
+        :param _DDOS: The details of associated Anti-DDS resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DDOS: list of DdosInstanceList
+        :param _LIVE: The details of associated LIVE resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LIVE: list of LiveInstanceList
+        :param _VOD: The details of associated VOD resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VOD: list of VODInstanceList
+        :param _TKE: The details of associated TKE resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TKE: list of TkeInstanceList
+        :param _APIGATEWAY: The details of associated APIGATEWAY resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type APIGATEWAY: list of ApiGatewayInstanceList
+        :param _TCB: The details of associated TCB resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TCB: list of TCBInstanceList
+        :param _TEO: The details of associated TEO resources.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TEO: list of TeoInstanceList
+        :param _Status: The status of the async task. Valid values: `0` for querying, `1` for successful, and `2` for abnormal. If the status is `1`, the result of `BindResourceResult` will be displayed; if the status is `2`, the error causes will be displayed.
+        :type Status: int
+        :param _CacheTime: The cache time of the current result.
+        :type CacheTime: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CLB = None
+        self._CDN = None
+        self._WAF = None
+        self._DDOS = None
+        self._LIVE = None
+        self._VOD = None
+        self._TKE = None
+        self._APIGATEWAY = None
+        self._TCB = None
+        self._TEO = None
+        self._Status = None
+        self._CacheTime = None
+        self._RequestId = None
+
+    @property
+    def CLB(self):
+        return self._CLB
+
+    @CLB.setter
+    def CLB(self, CLB):
+        self._CLB = CLB
+
+    @property
+    def CDN(self):
+        return self._CDN
+
+    @CDN.setter
+    def CDN(self, CDN):
+        self._CDN = CDN
+
+    @property
+    def WAF(self):
+        return self._WAF
+
+    @WAF.setter
+    def WAF(self, WAF):
+        self._WAF = WAF
+
+    @property
+    def DDOS(self):
+        return self._DDOS
+
+    @DDOS.setter
+    def DDOS(self, DDOS):
+        self._DDOS = DDOS
+
+    @property
+    def LIVE(self):
+        return self._LIVE
+
+    @LIVE.setter
+    def LIVE(self, LIVE):
+        self._LIVE = LIVE
+
+    @property
+    def VOD(self):
+        return self._VOD
+
+    @VOD.setter
+    def VOD(self, VOD):
+        self._VOD = VOD
+
+    @property
+    def TKE(self):
+        return self._TKE
+
+    @TKE.setter
+    def TKE(self, TKE):
+        self._TKE = TKE
+
+    @property
+    def APIGATEWAY(self):
+        return self._APIGATEWAY
+
+    @APIGATEWAY.setter
+    def APIGATEWAY(self, APIGATEWAY):
+        self._APIGATEWAY = APIGATEWAY
+
+    @property
+    def TCB(self):
+        return self._TCB
+
+    @TCB.setter
+    def TCB(self, TCB):
+        self._TCB = TCB
+
+    @property
+    def TEO(self):
+        return self._TEO
+
+    @TEO.setter
+    def TEO(self, TEO):
+        self._TEO = TEO
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CacheTime(self):
+        return self._CacheTime
+
+    @CacheTime.setter
+    def CacheTime(self, CacheTime):
+        self._CacheTime = CacheTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CLB") is not None:
+            self._CLB = []
+            for item in params.get("CLB"):
+                obj = ClbInstanceList()
+                obj._deserialize(item)
+                self._CLB.append(obj)
+        if params.get("CDN") is not None:
+            self._CDN = []
+            for item in params.get("CDN"):
+                obj = CdnInstanceList()
+                obj._deserialize(item)
+                self._CDN.append(obj)
+        if params.get("WAF") is not None:
+            self._WAF = []
+            for item in params.get("WAF"):
+                obj = WafInstanceList()
+                obj._deserialize(item)
+                self._WAF.append(obj)
+        if params.get("DDOS") is not None:
+            self._DDOS = []
+            for item in params.get("DDOS"):
+                obj = DdosInstanceList()
+                obj._deserialize(item)
+                self._DDOS.append(obj)
+        if params.get("LIVE") is not None:
+            self._LIVE = []
+            for item in params.get("LIVE"):
+                obj = LiveInstanceList()
+                obj._deserialize(item)
+                self._LIVE.append(obj)
+        if params.get("VOD") is not None:
+            self._VOD = []
+            for item in params.get("VOD"):
+                obj = VODInstanceList()
+                obj._deserialize(item)
+                self._VOD.append(obj)
+        if params.get("TKE") is not None:
+            self._TKE = []
+            for item in params.get("TKE"):
+                obj = TkeInstanceList()
+                obj._deserialize(item)
+                self._TKE.append(obj)
+        if params.get("APIGATEWAY") is not None:
+            self._APIGATEWAY = []
+            for item in params.get("APIGATEWAY"):
+                obj = ApiGatewayInstanceList()
+                obj._deserialize(item)
+                self._APIGATEWAY.append(obj)
+        if params.get("TCB") is not None:
+            self._TCB = []
+            for item in params.get("TCB"):
+                obj = TCBInstanceList()
+                obj._deserialize(item)
+                self._TCB.append(obj)
+        if params.get("TEO") is not None:
+            self._TEO = []
+            for item in params.get("TEO"):
+                obj = TeoInstanceList()
+                obj._deserialize(item)
+                self._TEO.append(obj)
+        self._Status = params.get("Status")
+        self._CacheTime = params.get("CacheTime")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCertificateBindResourceTaskResultRequest(AbstractModel):
+    """DescribeCertificateBindResourceTaskResult request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskIds: The task IDs, which are used to query the results of associated cloud resources, 100 IDs at most.
+        :type TaskIds: list of str
+        """
+        self._TaskIds = None
+
+    @property
+    def TaskIds(self):
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+
+    def _deserialize(self, params):
+        self._TaskIds = params.get("TaskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCertificateBindResourceTaskResultResponse(AbstractModel):
+    """DescribeCertificateBindResourceTaskResult response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SyncTaskBindResourceResult: The results of the async tasks for querying associated cloud resources.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SyncTaskBindResourceResult: list of SyncTaskBindResourceResult
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SyncTaskBindResourceResult = None
+        self._RequestId = None
+
+    @property
+    def SyncTaskBindResourceResult(self):
+        return self._SyncTaskBindResourceResult
+
+    @SyncTaskBindResourceResult.setter
+    def SyncTaskBindResourceResult(self, SyncTaskBindResourceResult):
+        self._SyncTaskBindResourceResult = SyncTaskBindResourceResult
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SyncTaskBindResourceResult") is not None:
+            self._SyncTaskBindResourceResult = []
+            for item in params.get("SyncTaskBindResourceResult"):
+                obj = SyncTaskBindResourceResult()
+                obj._deserialize(item)
+                self._SyncTaskBindResourceResult.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -1370,6 +3642,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _EncryptAlgorithm: Certificate algorithm
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EncryptAlgorithm: str
+        :param _DvRevokeAuthDetail: The authentication value for DV certificate revocation.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DvRevokeAuthDetail: list of DvAuths
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1413,6 +3688,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CertFingerprint = None
         self._EncryptCertFingerprint = None
         self._EncryptAlgorithm = None
+        self._DvRevokeAuthDetail = None
         self._RequestId = None
 
     @property
@@ -1736,6 +4012,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._EncryptAlgorithm = EncryptAlgorithm
 
     @property
+    def DvRevokeAuthDetail(self):
+        return self._DvRevokeAuthDetail
+
+    @DvRevokeAuthDetail.setter
+    def DvRevokeAuthDetail(self, DvRevokeAuthDetail):
+        self._DvRevokeAuthDetail = DvRevokeAuthDetail
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -1798,6 +4082,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CertFingerprint = params.get("CertFingerprint")
         self._EncryptCertFingerprint = params.get("EncryptCertFingerprint")
         self._EncryptAlgorithm = params.get("EncryptAlgorithm")
+        if params.get("DvRevokeAuthDetail") is not None:
+            self._DvRevokeAuthDetail = []
+            for item in params.get("DvRevokeAuthDetail"):
+                obj = DvAuths()
+                obj._deserialize(item)
+                self._DvRevokeAuthDetail.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -2082,6 +4372,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _CAEndTimes: All expiration time of a CA certificate
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CAEndTimes: list of str
+        :param _DvRevokeAuthDetail: The authentication value for DV certificate revocation.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DvRevokeAuthDetail: list of DvAuths
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -2120,6 +4413,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CAEncryptAlgorithms = None
         self._CACommonNames = None
         self._CAEndTimes = None
+        self._DvRevokeAuthDetail = None
         self._RequestId = None
 
     @property
@@ -2403,6 +4697,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CAEndTimes = CAEndTimes
 
     @property
+    def DvRevokeAuthDetail(self):
+        return self._DvRevokeAuthDetail
+
+    @DvRevokeAuthDetail.setter
+    def DvRevokeAuthDetail(self, DvRevokeAuthDetail):
+        self._DvRevokeAuthDetail = DvRevokeAuthDetail
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -2458,6 +4760,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CAEncryptAlgorithms = params.get("CAEncryptAlgorithms")
         self._CACommonNames = params.get("CACommonNames")
         self._CAEndTimes = params.get("CAEndTimes")
+        if params.get("DvRevokeAuthDetail") is not None:
+            self._DvRevokeAuthDetail = []
+            for item in params.get("DvRevokeAuthDetail"):
+                obj = DvAuths()
+                obj._deserialize(item)
+                self._DvRevokeAuthDetail.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -2494,6 +4802,8 @@ class DescribeCertificatesRequest(AbstractModel):
         :type IsSM: int
         :param _FilterExpiring: Whether to filter expiring certificates. `1`: Yes; `0`: No.
         :type FilterExpiring: int
+        :param _Hostable: Whether the certificate can be hosted. Valid values: `1` for yes and `0` for no.
+        :type Hostable: int
         """
         self._Offset = None
         self._Limit = None
@@ -2508,6 +4818,7 @@ class DescribeCertificatesRequest(AbstractModel):
         self._FilterSource = None
         self._IsSM = None
         self._FilterExpiring = None
+        self._Hostable = None
 
     @property
     def Offset(self):
@@ -2613,6 +4924,14 @@ class DescribeCertificatesRequest(AbstractModel):
     def FilterExpiring(self, FilterExpiring):
         self._FilterExpiring = FilterExpiring
 
+    @property
+    def Hostable(self):
+        return self._Hostable
+
+    @Hostable.setter
+    def Hostable(self, Hostable):
+        self._Hostable = Hostable
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -2628,6 +4947,7 @@ class DescribeCertificatesRequest(AbstractModel):
         self._FilterSource = params.get("FilterSource")
         self._IsSM = params.get("IsSM")
         self._FilterExpiring = params.get("FilterExpiring")
+        self._Hostable = params.get("Hostable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2979,6 +5299,378 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class Error(AbstractModel):
+    """Errors
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: The error code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Code: str
+        :param _Message: The error message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        """
+        self._Code = None
+        self._Message = None
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveInstanceDetail(AbstractModel):
+    """Details of a LIVE instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: The domain.
+        :type Domain: str
+        :param _CertId: The ID of the associated certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CertId: str
+        :param _Status: The status. Valid values: `-1`: No certificate is associated with the domain.
+`1`: HTTPS is enabled for the domain.
+`0`: HTTPS is disabled for the domain.
+        :type Status: int
+        """
+        self._Domain = None
+        self._CertId = None
+        self._Status = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._CertId = params.get("CertId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveInstanceList(AbstractModel):
+    """Details of LIVE instances - data structure of an async task for querying associated cloud resources
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: The total number of LIVE instances in this region.	
+        :type TotalCount: int
+        :param _InstanceList: The list of LIVE instances.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceList: list of LiveInstanceDetail
+        """
+        self._TotalCount = None
+        self._InstanceList = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InstanceList(self):
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = LiveInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCSRRequest(AbstractModel):
+    """ModifyCSR request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CSRId: The CSR ID.	
+        :type CSRId: int
+        :param _Generate: Whether to generate the CSR content. Once the CSR content is generated, the CSR record cannot be modified.
+        :type Generate: bool
+        :param _Domain: The domain.
+        :type Domain: str
+        :param _Organization: The organization name.
+        :type Organization: str
+        :param _Department: The department.
+        :type Department: str
+        :param _Email: The email address.
+        :type Email: str
+        :param _Province: The province.
+        :type Province: str
+        :param _City: The city.
+        :type City: str
+        :param _Country: The country or region.
+        :type Country: str
+        :param _EncryptAlgo: The encryption algorithm. RSA and ECC are supported.	
+        :type EncryptAlgo: str
+        :param _KeyParameter: The key pair parameter. For RSA, only the 2048-bit and 4096-bit key pairs are supported. For ECC, only prime256v1 is supported.
+        :type KeyParameter: str
+        :param _Remark: The remarks.
+        :type Remark: str
+        :param _KeyPassword: The password of the private key.
+        :type KeyPassword: str
+        """
+        self._CSRId = None
+        self._Generate = None
+        self._Domain = None
+        self._Organization = None
+        self._Department = None
+        self._Email = None
+        self._Province = None
+        self._City = None
+        self._Country = None
+        self._EncryptAlgo = None
+        self._KeyParameter = None
+        self._Remark = None
+        self._KeyPassword = None
+
+    @property
+    def CSRId(self):
+        return self._CSRId
+
+    @CSRId.setter
+    def CSRId(self, CSRId):
+        self._CSRId = CSRId
+
+    @property
+    def Generate(self):
+        return self._Generate
+
+    @Generate.setter
+    def Generate(self, Generate):
+        self._Generate = Generate
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Organization(self):
+        return self._Organization
+
+    @Organization.setter
+    def Organization(self, Organization):
+        self._Organization = Organization
+
+    @property
+    def Department(self):
+        return self._Department
+
+    @Department.setter
+    def Department(self, Department):
+        self._Department = Department
+
+    @property
+    def Email(self):
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Province(self):
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def EncryptAlgo(self):
+        return self._EncryptAlgo
+
+    @EncryptAlgo.setter
+    def EncryptAlgo(self, EncryptAlgo):
+        self._EncryptAlgo = EncryptAlgo
+
+    @property
+    def KeyParameter(self):
+        return self._KeyParameter
+
+    @KeyParameter.setter
+    def KeyParameter(self, KeyParameter):
+        self._KeyParameter = KeyParameter
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def KeyPassword(self):
+        return self._KeyPassword
+
+    @KeyPassword.setter
+    def KeyPassword(self, KeyPassword):
+        self._KeyPassword = KeyPassword
+
+
+    def _deserialize(self, params):
+        self._CSRId = params.get("CSRId")
+        self._Generate = params.get("Generate")
+        self._Domain = params.get("Domain")
+        self._Organization = params.get("Organization")
+        self._Department = params.get("Department")
+        self._Email = params.get("Email")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._Country = params.get("Country")
+        self._EncryptAlgo = params.get("EncryptAlgo")
+        self._KeyParameter = params.get("KeyParameter")
+        self._Remark = params.get("Remark")
+        self._KeyPassword = params.get("KeyPassword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCSRResponse(AbstractModel):
+    """ModifyCSR response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: The CSR ID.
+        :type Id: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyCertificateAliasRequest(AbstractModel):
@@ -3382,6 +6074,11 @@ class ReplaceCertificateRequest(AbstractModel):
         :type CsrkeyPassword: str
         :param _Reason: Reissue reason
         :type Reason: str
+        :param _CertCSREncryptAlgo: The CSR encryption algorithm. Valid values: `RSA` (default), `ECC1`, and `SM2`.
+This parameter is available for selection only when the value of `CsrType` is `Online`.
+        :type CertCSREncryptAlgo: str
+        :param _CertCSRKeyParameter: The CSR encryption parameters. When `CsrEncryptAlgo` is set to `RSA`, `2048` (default) and `4096` are available for selection; and when`CsrEncryptAlgo` is set to `ECC`, `prime256v1` (default) and `secp384r1` are available for selection. 
+        :type CertCSRKeyParameter: str
         """
         self._CertificateId = None
         self._ValidType = None
@@ -3389,6 +6086,8 @@ class ReplaceCertificateRequest(AbstractModel):
         self._CsrContent = None
         self._CsrkeyPassword = None
         self._Reason = None
+        self._CertCSREncryptAlgo = None
+        self._CertCSRKeyParameter = None
 
     @property
     def CertificateId(self):
@@ -3438,6 +6137,22 @@ class ReplaceCertificateRequest(AbstractModel):
     def Reason(self, Reason):
         self._Reason = Reason
 
+    @property
+    def CertCSREncryptAlgo(self):
+        return self._CertCSREncryptAlgo
+
+    @CertCSREncryptAlgo.setter
+    def CertCSREncryptAlgo(self, CertCSREncryptAlgo):
+        self._CertCSREncryptAlgo = CertCSREncryptAlgo
+
+    @property
+    def CertCSRKeyParameter(self):
+        return self._CertCSRKeyParameter
+
+    @CertCSRKeyParameter.setter
+    def CertCSRKeyParameter(self, CertCSRKeyParameter):
+        self._CertCSRKeyParameter = CertCSRKeyParameter
+
 
     def _deserialize(self, params):
         self._CertificateId = params.get("CertificateId")
@@ -3446,6 +6161,8 @@ class ReplaceCertificateRequest(AbstractModel):
         self._CsrContent = params.get("CsrContent")
         self._CsrkeyPassword = params.get("CsrkeyPassword")
         self._Reason = params.get("Reason")
+        self._CertCSREncryptAlgo = params.get("CertCSREncryptAlgo")
+        self._CertCSRKeyParameter = params.get("CertCSRKeyParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4269,6 +6986,565 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class SyncTaskBindResourceResult(AbstractModel):
+    """Result of an async task for querying associated cloud resources
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: The task ID.
+        :type TaskId: str
+        :param _BindResourceResult: The associated cloud resources.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BindResourceResult: list of BindResourceResult
+        :param _Status: The status of the async task. Valid values: `0` for querying, `1` for successful, and `2` for abnormal. If the status is `1`, the result of `BindResourceResult` will be displayed; if the status is `2`, the error causes will be displayed.
+        :type Status: int
+        :param _Error: The error occurred when querying the associated cloud resources.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Error: :class:`tencentcloud.ssl.v20191205.models.Error`
+        :param _CacheTime: The cache time of the current result.
+        :type CacheTime: str
+        """
+        self._TaskId = None
+        self._BindResourceResult = None
+        self._Status = None
+        self._Error = None
+        self._CacheTime = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def BindResourceResult(self):
+        return self._BindResourceResult
+
+    @BindResourceResult.setter
+    def BindResourceResult(self, BindResourceResult):
+        self._BindResourceResult = BindResourceResult
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Error(self):
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+    @property
+    def CacheTime(self):
+        return self._CacheTime
+
+    @CacheTime.setter
+    def CacheTime(self, CacheTime):
+        self._CacheTime = CacheTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        if params.get("BindResourceResult") is not None:
+            self._BindResourceResult = []
+            for item in params.get("BindResourceResult"):
+                obj = BindResourceResult()
+                obj._deserialize(item)
+                self._BindResourceResult.append(obj)
+        self._Status = params.get("Status")
+        if params.get("Error") is not None:
+            self._Error = Error()
+            self._Error._deserialize(params.get("Error"))
+        self._CacheTime = params.get("CacheTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TCBAccessInstance(AbstractModel):
+    """TCB access instances
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: The domain.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Domain: str
+        :param _Status: The status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: int
+        :param _UnionStatus: The unified domain status.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UnionStatus: int
+        :param _IsPreempted: Whether the domain is preempted. A preempted domain is one that is already associated with another environment. It must be disassociated or re-associated first.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsPreempted: bool
+        :param _ICPStatus: Whether the domain is added to the ICP blocklist. Valid values: `0` for no and `1` for yes.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ICPStatus: int
+        :param _OldCertificateId: The ID of the associated certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OldCertificateId: str
+        """
+        self._Domain = None
+        self._Status = None
+        self._UnionStatus = None
+        self._IsPreempted = None
+        self._ICPStatus = None
+        self._OldCertificateId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def UnionStatus(self):
+        return self._UnionStatus
+
+    @UnionStatus.setter
+    def UnionStatus(self, UnionStatus):
+        self._UnionStatus = UnionStatus
+
+    @property
+    def IsPreempted(self):
+        return self._IsPreempted
+
+    @IsPreempted.setter
+    def IsPreempted(self, IsPreempted):
+        self._IsPreempted = IsPreempted
+
+    @property
+    def ICPStatus(self):
+        return self._ICPStatus
+
+    @ICPStatus.setter
+    def ICPStatus(self, ICPStatus):
+        self._ICPStatus = ICPStatus
+
+    @property
+    def OldCertificateId(self):
+        return self._OldCertificateId
+
+    @OldCertificateId.setter
+    def OldCertificateId(self, OldCertificateId):
+        self._OldCertificateId = OldCertificateId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Status = params.get("Status")
+        self._UnionStatus = params.get("UnionStatus")
+        self._IsPreempted = params.get("IsPreempted")
+        self._ICPStatus = params.get("ICPStatus")
+        self._OldCertificateId = params.get("OldCertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TCBAccessService(AbstractModel):
+    """Details of TCB access instances
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceList: The list of instances.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceList: list of TCBAccessInstance
+        :param _TotalCount: The instance count.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        """
+        self._InstanceList = None
+        self._TotalCount = None
+
+    @property
+    def InstanceList(self):
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = TCBAccessInstance()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TCBEnvironment(AbstractModel):
+    """Details of TCB environment instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: The unique ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ID: str
+        :param _Source: The source.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Source: str
+        :param _Name: The name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _Status: The status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        """
+        self._ID = None
+        self._Source = None
+        self._Name = None
+        self._Status = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Source = params.get("Source")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TCBEnvironments(AbstractModel):
+    """Details of TCB instances by environment - data structure of an async task for querying associated cloud resources
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Environment: The TCB environment.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Environment: :class:`tencentcloud.ssl.v20191205.models.TCBEnvironment`
+        :param _AccessService: The access service.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AccessService: :class:`tencentcloud.ssl.v20191205.models.TCBAccessService`
+        :param _HostService: Whether static hosting is used.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HostService: :class:`tencentcloud.ssl.v20191205.models.TCBHostService`
+        """
+        self._Environment = None
+        self._AccessService = None
+        self._HostService = None
+
+    @property
+    def Environment(self):
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def AccessService(self):
+        return self._AccessService
+
+    @AccessService.setter
+    def AccessService(self, AccessService):
+        self._AccessService = AccessService
+
+    @property
+    def HostService(self):
+        return self._HostService
+
+    @HostService.setter
+    def HostService(self, HostService):
+        self._HostService = HostService
+
+
+    def _deserialize(self, params):
+        if params.get("Environment") is not None:
+            self._Environment = TCBEnvironment()
+            self._Environment._deserialize(params.get("Environment"))
+        if params.get("AccessService") is not None:
+            self._AccessService = TCBAccessService()
+            self._AccessService._deserialize(params.get("AccessService"))
+        if params.get("HostService") is not None:
+            self._HostService = TCBHostService()
+            self._HostService._deserialize(params.get("HostService"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TCBHostInstance(AbstractModel):
+    """Details of TCB service instances subject to static hosting
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: The domain.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Domain: str
+        :param _Status: The status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        :param _DNSStatus: The resolution status.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DNSStatus: str
+        :param _OldCertificateId: The ID of the associated certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OldCertificateId: str
+        """
+        self._Domain = None
+        self._Status = None
+        self._DNSStatus = None
+        self._OldCertificateId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DNSStatus(self):
+        return self._DNSStatus
+
+    @DNSStatus.setter
+    def DNSStatus(self, DNSStatus):
+        self._DNSStatus = DNSStatus
+
+    @property
+    def OldCertificateId(self):
+        return self._OldCertificateId
+
+    @OldCertificateId.setter
+    def OldCertificateId(self, OldCertificateId):
+        self._OldCertificateId = OldCertificateId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Status = params.get("Status")
+        self._DNSStatus = params.get("DNSStatus")
+        self._OldCertificateId = params.get("OldCertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TCBHostService(AbstractModel):
+    """List of TCB services subject to static hosting
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceList: The list of instances.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceList: list of TCBHostInstance
+        :param _TotalCount: The instance count.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        """
+        self._InstanceList = None
+        self._TotalCount = None
+
+    @property
+    def InstanceList(self):
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = TCBHostInstance()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TCBInstanceList(AbstractModel):
+    """Details of TCB instances by region - data structure of an async task for querying associated cloud resources
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: The region.
+        :type Region: str
+        :param _Environments: The list of TCB environments.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Environments: list of TCBEnvironments
+        """
+        self._Region = None
+        self._Environments = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Environments(self):
+        return self._Environments
+
+    @Environments.setter
+    def Environments(self, Environments):
+        self._Environments = Environments
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        if params.get("Environments") is not None:
+            self._Environments = []
+            for item in params.get("Environments"):
+                obj = TCBEnvironments()
+                obj._deserialize(item)
+                self._Environments.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Tags(AbstractModel):
     """Tag
 
@@ -4314,6 +7590,458 @@ class Tags(AbstractModel):
         
 
 
+class TeoInstanceDetail(AbstractModel):
+    """Details of TEO instances
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: The domain.
+        :type Host: str
+        :param _CertId: The certificate ID.
+        :type CertId: str
+        :param _ZoneId: The AZ ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ZoneId: str
+        :param _Status: The status of the domain.
+        :type Status: str
+        """
+        self._Host = None
+        self._CertId = None
+        self._ZoneId = None
+        self._Status = None
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Host = params.get("Host")
+        self._CertId = params.get("CertId")
+        self._ZoneId = params.get("ZoneId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TeoInstanceList(AbstractModel):
+    """Details of the EDGEONE instances - data structure of an async task for querying associated cloud resources
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceList: The list of EDGEONE instances.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceList: list of TeoInstanceDetail
+        :param _TotalCount: The total number of EDGEONE instances.	
+        :type TotalCount: int
+        """
+        self._InstanceList = None
+        self._TotalCount = None
+
+    @property
+    def InstanceList(self):
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = TeoInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TkeIngressDetail(AbstractModel):
+    """Details of a TKE Ingress instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IngressName: The Ingress name.
+        :type IngressName: str
+        :param _TlsDomains: The list of TLS domains.
+        :type TlsDomains: list of str
+        :param _Domains: The list of Ingress domains.
+        :type Domains: list of str
+        """
+        self._IngressName = None
+        self._TlsDomains = None
+        self._Domains = None
+
+    @property
+    def IngressName(self):
+        return self._IngressName
+
+    @IngressName.setter
+    def IngressName(self, IngressName):
+        self._IngressName = IngressName
+
+    @property
+    def TlsDomains(self):
+        return self._TlsDomains
+
+    @TlsDomains.setter
+    def TlsDomains(self, TlsDomains):
+        self._TlsDomains = TlsDomains
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+
+    def _deserialize(self, params):
+        self._IngressName = params.get("IngressName")
+        self._TlsDomains = params.get("TlsDomains")
+        self._Domains = params.get("Domains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TkeInstanceDetail(AbstractModel):
+    """Details of a TKE instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: The cluster ID.
+        :type ClusterId: str
+        :param _ClusterName: The cluster name.
+        :type ClusterName: str
+        :param _NamespaceList: The list of cluster namespaces.
+        :type NamespaceList: list of TkeNameSpaceDetail
+        :param _ClusterType: The cluster type.
+        :type ClusterType: str
+        :param _ClusterVersion: The cluster version.
+        :type ClusterVersion: str
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+        self._NamespaceList = None
+        self._ClusterType = None
+        self._ClusterVersion = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def NamespaceList(self):
+        return self._NamespaceList
+
+    @NamespaceList.setter
+    def NamespaceList(self, NamespaceList):
+        self._NamespaceList = NamespaceList
+
+    @property
+    def ClusterType(self):
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def ClusterVersion(self):
+        return self._ClusterVersion
+
+    @ClusterVersion.setter
+    def ClusterVersion(self, ClusterVersion):
+        self._ClusterVersion = ClusterVersion
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        if params.get("NamespaceList") is not None:
+            self._NamespaceList = []
+            for item in params.get("NamespaceList"):
+                obj = TkeNameSpaceDetail()
+                obj._deserialize(item)
+                self._NamespaceList.append(obj)
+        self._ClusterType = params.get("ClusterType")
+        self._ClusterVersion = params.get("ClusterVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TkeInstanceList(AbstractModel):
+    """Details of TKE instances - data structure of an async task for querying associated cloud resources
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: The region.
+        :type Region: str
+        :param _InstanceList: The list of TKE instances.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceList: list of TkeInstanceDetail
+        :param _TotalCount: The total number of TKE instances in this region.	
+        :type TotalCount: int
+        """
+        self._Region = None
+        self._InstanceList = None
+        self._TotalCount = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceList(self):
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = TkeInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TkeNameSpaceDetail(AbstractModel):
+    """Details of a TKE namespace
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: The namespace name.
+        :type Name: str
+        :param _SecretList: The secret list.
+        :type SecretList: list of TkeSecretDetail
+        """
+        self._Name = None
+        self._SecretList = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SecretList(self):
+        return self._SecretList
+
+    @SecretList.setter
+    def SecretList(self, SecretList):
+        self._SecretList = SecretList
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("SecretList") is not None:
+            self._SecretList = []
+            for item in params.get("SecretList"):
+                obj = TkeSecretDetail()
+                obj._deserialize(item)
+                self._SecretList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TkeSecretDetail(AbstractModel):
+    """Details of a TKE secret
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: The secret name.
+        :type Name: str
+        :param _CertId: The certificate ID.
+        :type CertId: str
+        :param _IngressList: The Ingress list.
+        :type IngressList: list of TkeIngressDetail
+        :param _NoMatchDomains: The list of domains that do not match the new certificate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NoMatchDomains: list of str
+        """
+        self._Name = None
+        self._CertId = None
+        self._IngressList = None
+        self._NoMatchDomains = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def IngressList(self):
+        return self._IngressList
+
+    @IngressList.setter
+    def IngressList(self, IngressList):
+        self._IngressList = IngressList
+
+    @property
+    def NoMatchDomains(self):
+        return self._NoMatchDomains
+
+    @NoMatchDomains.setter
+    def NoMatchDomains(self, NoMatchDomains):
+        self._NoMatchDomains = NoMatchDomains
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._CertId = params.get("CertId")
+        if params.get("IngressList") is not None:
+            self._IngressList = []
+            for item in params.get("IngressList"):
+                obj = TkeIngressDetail()
+                obj._deserialize(item)
+                self._IngressList.append(obj)
+        self._NoMatchDomains = params.get("NoMatchDomains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UploadCertificateRequest(AbstractModel):
     """UploadCertificate request structure.
 
@@ -4333,6 +8061,8 @@ class UploadCertificateRequest(AbstractModel):
         :type ProjectId: int
         :param _CertificateUse: 
         :type CertificateUse: str
+        :param _Tags: The list of tags.
+        :type Tags: list of Tags
         :param _Repeatable: Whether a certificate can be repeatedly uploaded.
         :type Repeatable: bool
         """
@@ -4342,6 +8072,7 @@ class UploadCertificateRequest(AbstractModel):
         self._Alias = None
         self._ProjectId = None
         self._CertificateUse = None
+        self._Tags = None
         self._Repeatable = None
 
     @property
@@ -4393,6 +8124,14 @@ class UploadCertificateRequest(AbstractModel):
         self._CertificateUse = CertificateUse
 
     @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
     def Repeatable(self):
         return self._Repeatable
 
@@ -4408,6 +8147,12 @@ class UploadCertificateRequest(AbstractModel):
         self._Alias = params.get("Alias")
         self._ProjectId = params.get("ProjectId")
         self._CertificateUse = params.get("CertificateUse")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         self._Repeatable = params.get("Repeatable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4561,3 +8306,221 @@ class UploadConfirmLetterResponse(AbstractModel):
         self._CertificateId = params.get("CertificateId")
         self._IsSuccess = params.get("IsSuccess")
         self._RequestId = params.get("RequestId")
+
+
+class VODInstanceList(AbstractModel):
+    """Details of VOD instances - data structure of an async task for querying associated cloud resources
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceList: The list of VOD instances.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceList: list of VodInstanceDetail
+        :param _TotalCount: The total number of VOD instances in this region.	
+        :type TotalCount: int
+        """
+        self._InstanceList = None
+        self._TotalCount = None
+
+    @property
+    def InstanceList(self):
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = VodInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VodInstanceDetail(AbstractModel):
+    """Details of a VOD instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: The domain.
+        :type Domain: str
+        :param _CertId: The certificate ID.
+        :type CertId: str
+        """
+        self._Domain = None
+        self._CertId = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._CertId = params.get("CertId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WafInstanceDetail(AbstractModel):
+    """Details of a WAF instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: The domain.
+        :type Domain: str
+        :param _CertId: The certificate ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CertId: str
+        :param _Keepalive: Whether to keep the persistent connection.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Keepalive: int
+        """
+        self._Domain = None
+        self._CertId = None
+        self._Keepalive = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def Keepalive(self):
+        return self._Keepalive
+
+    @Keepalive.setter
+    def Keepalive(self, Keepalive):
+        self._Keepalive = Keepalive
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._CertId = params.get("CertId")
+        self._Keepalive = params.get("Keepalive")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WafInstanceList(AbstractModel):
+    """Details of WAF instances - data structure of an async task for querying associated cloud resources
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: The region.
+        :type Region: str
+        :param _InstanceList: The list of WAF instances.	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceList: list of WafInstanceDetail
+        :param _TotalCount: The total number of WAF instances in this region.	
+        :type TotalCount: int
+        """
+        self._Region = None
+        self._InstanceList = None
+        self._TotalCount = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def InstanceList(self):
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = WafInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
