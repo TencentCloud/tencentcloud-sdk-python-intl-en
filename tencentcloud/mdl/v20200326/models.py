@@ -887,6 +887,8 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         :type PlanSettings: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
         :param _EventNotifySettings: The callback settings.
         :type EventNotifySettings: :class:`tencentcloud.mdl.v20200326.models.EventNotifySetting`
+        :param _InputLossBehavior: Complement the last video frame settings.
+        :type InputLossBehavior: :class:`tencentcloud.mdl.v20200326.models.InputLossBehaviorInfo`
         """
         self._Name = None
         self._AttachedInputs = None
@@ -896,6 +898,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         self._AVTemplates = None
         self._PlanSettings = None
         self._EventNotifySettings = None
+        self._InputLossBehavior = None
 
     @property
     def Name(self):
@@ -961,6 +964,14 @@ class CreateStreamLiveChannelRequest(AbstractModel):
     def EventNotifySettings(self, EventNotifySettings):
         self._EventNotifySettings = EventNotifySettings
 
+    @property
+    def InputLossBehavior(self):
+        return self._InputLossBehavior
+
+    @InputLossBehavior.setter
+    def InputLossBehavior(self, InputLossBehavior):
+        self._InputLossBehavior = InputLossBehavior
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1000,6 +1011,9 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         if params.get("EventNotifySettings") is not None:
             self._EventNotifySettings = EventNotifySetting()
             self._EventNotifySettings._deserialize(params.get("EventNotifySettings"))
+        if params.get("InputLossBehavior") is not None:
+            self._InputLossBehavior = InputLossBehaviorInfo()
+            self._InputLossBehavior._deserialize(params.get("InputLossBehavior"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4488,6 +4502,75 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class InputLossBehaviorInfo(AbstractModel):
+    """Complement the last video frame related settings.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RepeatLastFrameMs: The time to fill in the last video frame, unit ms, range 0-1000000, 1000000 means always inserting, default 0 means filling in black screen frame.
+        :type RepeatLastFrameMs: int
+        :param _InputLossImageType: Fill frame type, COLOR means solid color filling, IMAGE means picture filling, the default is COLOR.
+        :type InputLossImageType: str
+        :param _ColorRGB: When the type is COLOR, the corresponding rgb value
+        :type ColorRGB: str
+        :param _ImageUrl: When the type is IMAGE, the corresponding image url value
+        :type ImageUrl: str
+        """
+        self._RepeatLastFrameMs = None
+        self._InputLossImageType = None
+        self._ColorRGB = None
+        self._ImageUrl = None
+
+    @property
+    def RepeatLastFrameMs(self):
+        return self._RepeatLastFrameMs
+
+    @RepeatLastFrameMs.setter
+    def RepeatLastFrameMs(self, RepeatLastFrameMs):
+        self._RepeatLastFrameMs = RepeatLastFrameMs
+
+    @property
+    def InputLossImageType(self):
+        return self._InputLossImageType
+
+    @InputLossImageType.setter
+    def InputLossImageType(self, InputLossImageType):
+        self._InputLossImageType = InputLossImageType
+
+    @property
+    def ColorRGB(self):
+        return self._ColorRGB
+
+    @ColorRGB.setter
+    def ColorRGB(self, ColorRGB):
+        self._ColorRGB = ColorRGB
+
+    @property
+    def ImageUrl(self):
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+
+    def _deserialize(self, params):
+        self._RepeatLastFrameMs = params.get("RepeatLastFrameMs")
+        self._InputLossImageType = params.get("InputLossImageType")
+        self._ColorRGB = params.get("ColorRGB")
+        self._ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InputSecurityGroupInfo(AbstractModel):
     """Input security group information.
 
@@ -4957,6 +5040,8 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         :type PlanSettings: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
         :param _EventNotifySettings: The callback settings.
         :type EventNotifySettings: :class:`tencentcloud.mdl.v20200326.models.EventNotifySetting`
+        :param _InputLossBehavior: Complement the last video frame settings.
+        :type InputLossBehavior: :class:`tencentcloud.mdl.v20200326.models.InputLossBehaviorInfo`
         """
         self._Id = None
         self._Name = None
@@ -4967,6 +5052,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         self._AVTemplates = None
         self._PlanSettings = None
         self._EventNotifySettings = None
+        self._InputLossBehavior = None
 
     @property
     def Id(self):
@@ -5040,6 +5126,14 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
     def EventNotifySettings(self, EventNotifySettings):
         self._EventNotifySettings = EventNotifySettings
 
+    @property
+    def InputLossBehavior(self):
+        return self._InputLossBehavior
+
+    @InputLossBehavior.setter
+    def InputLossBehavior(self, InputLossBehavior):
+        self._InputLossBehavior = InputLossBehavior
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -5080,6 +5174,9 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         if params.get("EventNotifySettings") is not None:
             self._EventNotifySettings = EventNotifySetting()
             self._EventNotifySettings._deserialize(params.get("EventNotifySettings"))
+        if params.get("InputLossBehavior") is not None:
+            self._InputLossBehavior = InputLossBehaviorInfo()
+            self._InputLossBehavior._deserialize(params.get("InputLossBehavior"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6868,6 +6965,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param _EventNotifySettings: The callback settings.
 Note: This field may return `null`, indicating that no valid value was found.
         :type EventNotifySettings: :class:`tencentcloud.mdl.v20200326.models.EventNotifySetting`
+        :param _InputLossBehavior: Supplement the last video frame configuration settings.
+        :type InputLossBehavior: :class:`tencentcloud.mdl.v20200326.models.InputLossBehaviorInfo`
         """
         self._Id = None
         self._State = None
@@ -6879,6 +6978,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._AVTemplates = None
         self._PlanSettings = None
         self._EventNotifySettings = None
+        self._InputLossBehavior = None
 
     @property
     def Id(self):
@@ -6960,6 +7060,14 @@ Note: This field may return `null`, indicating that no valid value was found.
     def EventNotifySettings(self, EventNotifySettings):
         self._EventNotifySettings = EventNotifySettings
 
+    @property
+    def InputLossBehavior(self):
+        return self._InputLossBehavior
+
+    @InputLossBehavior.setter
+    def InputLossBehavior(self, InputLossBehavior):
+        self._InputLossBehavior = InputLossBehavior
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -7001,6 +7109,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         if params.get("EventNotifySettings") is not None:
             self._EventNotifySettings = EventNotifySetting()
             self._EventNotifySettings._deserialize(params.get("EventNotifySettings"))
+        if params.get("InputLossBehavior") is not None:
+            self._InputLossBehavior = InputLossBehaviorInfo()
+            self._InputLossBehavior._deserialize(params.get("InputLossBehavior"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
