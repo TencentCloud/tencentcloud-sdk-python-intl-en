@@ -280,10 +280,13 @@ After the verification process is completed, the `BizToken` of this process will
         :type RedirectURL: str
         :param _Extra: The passthrough parameter of the business, max 1,000 characters, which will be returned in `GetWebVerificationResultIntl`.
         :type Extra: str
+        :param _Config: The parameter control the page configuration.
+        :type Config: :class:`tencentcloud.faceid.v20180301.models.WebVerificationConfigIntl`
         """
         self._CompareImageBase64 = None
         self._RedirectURL = None
         self._Extra = None
+        self._Config = None
 
     @property
     def CompareImageBase64(self):
@@ -309,11 +312,22 @@ After the verification process is completed, the `BizToken` of this process will
     def Extra(self, Extra):
         self._Extra = Extra
 
+    @property
+    def Config(self):
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
 
     def _deserialize(self, params):
         self._CompareImageBase64 = params.get("CompareImageBase64")
         self._RedirectURL = params.get("RedirectURL")
         self._Extra = params.get("Extra")
+        if params.get("Config") is not None:
+            self._Config = WebVerificationConfigIntl()
+            self._Config._deserialize(params.get("Config"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -335,19 +349,26 @@ class ApplyWebVerificationBizTokenIntlResponse(AbstractModel):
         :type VerificationUrl: str
         :param _BizToken: The token identifying this web-based verification process, valid for 7,200s after issuance. It is required for getting the result after the verification process is completed.
         :type BizToken: str
+        :param _VerificationURL: 
+        :type VerificationURL: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._VerificationUrl = None
         self._BizToken = None
+        self._VerificationURL = None
         self._RequestId = None
 
     @property
     def VerificationUrl(self):
+        warnings.warn("parameter `VerificationUrl` is deprecated", DeprecationWarning) 
+
         return self._VerificationUrl
 
     @VerificationUrl.setter
     def VerificationUrl(self, VerificationUrl):
+        warnings.warn("parameter `VerificationUrl` is deprecated", DeprecationWarning) 
+
         self._VerificationUrl = VerificationUrl
 
     @property
@@ -357,6 +378,14 @@ class ApplyWebVerificationBizTokenIntlResponse(AbstractModel):
     @BizToken.setter
     def BizToken(self, BizToken):
         self._BizToken = BizToken
+
+    @property
+    def VerificationURL(self):
+        return self._VerificationURL
+
+    @VerificationURL.setter
+    def VerificationURL(self, VerificationURL):
+        self._VerificationURL = VerificationURL
 
     @property
     def RequestId(self):
@@ -370,6 +399,7 @@ class ApplyWebVerificationBizTokenIntlResponse(AbstractModel):
     def _deserialize(self, params):
         self._VerificationUrl = params.get("VerificationUrl")
         self._BizToken = params.get("BizToken")
+        self._VerificationURL = params.get("VerificationURL")
         self._RequestId = params.get("RequestId")
 
 
@@ -2616,3 +2646,36 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._BestFrame = FileInfo()
             self._BestFrame._deserialize(params.get("BestFrame"))
         self._RequestId = params.get("RequestId")
+
+
+class WebVerificationConfigIntl(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoSkip: Whether to automatically redirect to `RedirectUrl` after successful verification. Default value: `false`.
+        :type AutoSkip: bool
+        """
+        self._AutoSkip = None
+
+    @property
+    def AutoSkip(self):
+        return self._AutoSkip
+
+    @AutoSkip.setter
+    def AutoSkip(self, AutoSkip):
+        self._AutoSkip = AutoSkip
+
+
+    def _deserialize(self, params):
+        self._AutoSkip = params.get("AutoSkip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
