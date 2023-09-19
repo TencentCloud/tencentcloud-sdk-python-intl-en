@@ -56,6 +56,12 @@ FAILEDOPERATION_CERTIFICATEMISMATCH = 'FailedOperation.CertificateMismatch'
 # The certificate does not exist.
 FAILEDOPERATION_CERTIFICATENOTFOUND = 'FailedOperation.CertificateNotFound'
 
+# The certificate does not exist, or the review cannot be canceled.
+FAILEDOPERATION_CERTIFICATENOTFOUNDORCANTCANCEL = 'FailedOperation.CertificateNotFoundOrCantCancel'
+
+# You cannot re-submit a review application for a certificate in this status.
+FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWRESUBMIT = 'FailedOperation.CertificateStatusNotAllowResubmit'
+
 # The confirmation letter file cannot exceed 1.4 MB.
 FAILEDOPERATION_CONFIRMLETTERTOOLARGE = 'FailedOperation.ConfirmLetterTooLarge'
 
@@ -124,6 +130,9 @@ INTERNALERROR_BACKENDRESPONSEERROR = 'InternalError.BackendResponseError'
 
 # The parameter is incorrect.
 INVALIDPARAMETER = 'InvalidParameter'
+
+# u200cYou cannot re-submit a review application for a certificate in this status.
+INVALIDPARAMETER_CERTIFICATESTATUSNOTALLOWRESUBMIT = 'InvalidParameter.CertificateStatusNotAllowResubmit'
 
 # Incorrect CSR ID.
 INVALIDPARAMETER_INVALIDCSRID = 'InvalidParameter.InvalidCSRId'

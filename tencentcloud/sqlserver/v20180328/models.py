@@ -411,7 +411,7 @@ class AccountPrivilegeModifyInfo(AbstractModel):
         :type UserName: str
         :param _DBPrivileges: Account permission change information
         :type DBPrivileges: list of DBPrivilegeModifyInfo
-        :param _IsAdmin: Whether the account has the admin permission. Valid values: `true` (Yes. It is an admin account when the instance is a basic edition type and `AccountType` is `L0`; it is a privileged account when the instance is a dual-server high availability edition type and `AccountType` is `L1`.), `false` (No. The admin permission is disabled by default).
+        :param _IsAdmin: Whether it is an instance admin account. Valid values: `true` (Yes. When the instance is single-node and `AccountType` is `L0`, it's an admin account; when the instance is two-node and `AccountType` is `L1`, it's a privileged account), `false` (No. It's a standard account and `AccountType` is `L3`).
         :type IsAdmin: bool
         :param _AccountType: Account type, which is an extension field of `IsAdmin`. Valid values: `L0` (admin account, only for basic edition), `L1` (privileged account), `L2` (designated account), `L3` (standard account, default)
         :type AccountType: str
@@ -1478,15 +1478,18 @@ class CreateBackupRequest(AbstractModel):
         :type Strategy: int
         :param _DBNames: List of names of databases to be backed up (required only for multi-database backup)
         :type DBNames: list of str
-        :param _InstanceId: Instance ID in the format of mssql-i1z41iwd
+        :param _InstanceId: (Required) Instance ID in the format of mssql-i1z41iwd
         :type InstanceId: str
         :param _BackupName: Backup name. If this parameter is left empty, a backup name in the format of "[Instance ID]_[Backup start timestamp]" will be automatically generated.
         :type BackupName: str
+        :param _StorageStrategy: 
+        :type StorageStrategy: int
         """
         self._Strategy = None
         self._DBNames = None
         self._InstanceId = None
         self._BackupName = None
+        self._StorageStrategy = None
 
     @property
     def Strategy(self):
@@ -1520,12 +1523,21 @@ class CreateBackupRequest(AbstractModel):
     def BackupName(self, BackupName):
         self._BackupName = BackupName
 
+    @property
+    def StorageStrategy(self):
+        return self._StorageStrategy
+
+    @StorageStrategy.setter
+    def StorageStrategy(self, StorageStrategy):
+        self._StorageStrategy = StorageStrategy
+
 
     def _deserialize(self, params):
         self._Strategy = params.get("Strategy")
         self._DBNames = params.get("DBNames")
         self._InstanceId = params.get("InstanceId")
         self._BackupName = params.get("BackupName")
+        self._StorageStrategy = params.get("StorageStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2320,7 +2332,7 @@ class CreateCloudReadOnlyDBInstancesRequest(AbstractModel):
         :type ReadOnlyGroupMinInGroup: int
         :param _InstanceChargeType: Billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID` (pay-as-you-go).
         :type InstanceChargeType: str
-        :param _GoodsNum: Number of instances purchased this time. Default value: `1`.
+        :param _GoodsNum: Number of read-only instances to be purchased this time. Default value: `2`.
         :type GoodsNum: int
         :param _SubnetId: VPC subnet ID in the format of `subnet-bdoe83fa`. Both `SubnetId` and `VpcId` need to be set or unset at the same time.
         :type SubnetId: str
@@ -3521,6 +3533,8 @@ class DBDetail(AbstractModel):
         :type Accounts: list of AccountPrivilege
         :param _InternalStatus: Internal status. ONLINE: running
         :type InternalStatus: str
+        :param _Encryption: TDE status. Valid values: `enable` (enabled), `disable` (disabled).
+        :type Encryption: str
         """
         self._Name = None
         self._Charset = None
@@ -3529,6 +3543,7 @@ class DBDetail(AbstractModel):
         self._Status = None
         self._Accounts = None
         self._InternalStatus = None
+        self._Encryption = None
 
     @property
     def Name(self):
@@ -3586,6 +3601,14 @@ class DBDetail(AbstractModel):
     def InternalStatus(self, InternalStatus):
         self._InternalStatus = InternalStatus
 
+    @property
+    def Encryption(self):
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -3600,6 +3623,7 @@ class DBDetail(AbstractModel):
                 obj._deserialize(item)
                 self._Accounts.append(obj)
         self._InternalStatus = params.get("InternalStatus")
+        self._Encryption = params.get("Encryption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3673,7 +3697,7 @@ class DBInstance(AbstractModel):
         :type Cpu: int
         :param _Version: Instance version code
         :type Version: str
-        :param _Type: Physical server code
+        :param _Type: Instance type. Valid values: `TS85` (physical machine, local SSD), `Z3` (early version of physical machine, local SSD), `CLOUD_BASIC` (virtual machine, HDD cloud disk), `CLOUD_PREMIUM` (virtual machine, premium cloud disk), `CLOUD_SSD` (virtual machine, SSD), `CLOUD_HSSD` (virtual machine, enhanced SSD), `CLOUD_TSSD` (virtual machine, ulTra SSD), `CLOUD_BSSD` virtual machine, balanced SSD).
         :type Type: str
         :param _Pid: Billing ID
         :type Pid: int
@@ -3729,8 +3753,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param _SlaveZones: Replica AZ information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SlaveZones: :class:`tencentcloud.sqlserver.v20180328.models.SlaveZones`
-        :param _Architecture: Architecture type. Valid values: `SINGLE` (single-node), `DOUBLE` (two-node), `TRIPLE` (three-node).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Architecture: Architecture type. Valid values: `SINGLE` (single-node), `DOUBLE` (two-node).
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type Architecture: str
         :param _Style: Instance type. Valid values: `EXCLUSIVE` (dedicated), `SHARED` (shared)
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -4476,6 +4500,51 @@ class DBRenameRes(AbstractModel):
         
 
 
+class DBTDEEncrypt(AbstractModel):
+    """This example shows you how to enable or disable TDE of a database.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBName: 
+        :type DBName: str
+        :param _Encryption: TDE u200dstatus. Valid values: `enable` (enabled), `disable` (disabled).
+        :type Encryption: str
+        """
+        self._DBName = None
+        self._Encryption = None
+
+    @property
+    def DBName(self):
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def Encryption(self):
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+
+    def _deserialize(self, params):
+        self._DBName = params.get("DBName")
+        self._Encryption = params.get("Encryption")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DbNormalDetail(AbstractModel):
     """Database configurations
 
@@ -4865,6 +4934,51 @@ class DealInfo(AbstractModel):
         self._InstanceIdSet = params.get("InstanceIdSet")
         self._OwnerUin = params.get("OwnerUin")
         self._InstanceChargeType = params.get("InstanceChargeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DealInstance(AbstractModel):
+    """List of the resource IDs corresponding to order number
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID
+        :type InstanceId: list of str
+        :param _DealName: Order ID
+        :type DealName: str
+        """
+        self._InstanceId = None
+        self._DealName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DealName(self):
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DealName = params.get("DealName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5593,7 +5707,7 @@ class DescribeBackupFilesRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID in the format of mssql-njj2mtpl
         :type InstanceId: str
-        :param _GroupId: Group ID of unarchived backup files, which can be obtained by the `DescribeBackups` API
+        :param _GroupId: Group ID of unarchived backup files, which can be obtained by the `DescribeBackups` API (Querying archived backup record is not supported).
         :type GroupId: str
         :param _Limit: Number of entries to be returned per page. Value range: 1-100. Default value: `20`
         :type Limit: int
@@ -6712,6 +6826,8 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         :type BlockedThreshold: int
         :param _EventSaveDays: Retention period for the files of slow SQL, blocking, deadlock, and extended events.
         :type EventSaveDays: int
+        :param _TDEConfig: TDE u200dconfiguration
+        :type TDEConfig: :class:`tencentcloud.sqlserver.v20180328.models.TDEConfigAttribute`
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -6723,6 +6839,7 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self._RegularBackupStartTime = None
         self._BlockedThreshold = None
         self._EventSaveDays = None
+        self._TDEConfig = None
         self._RequestId = None
 
     @property
@@ -6790,6 +6907,14 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self._EventSaveDays = EventSaveDays
 
     @property
+    def TDEConfig(self):
+        return self._TDEConfig
+
+    @TDEConfig.setter
+    def TDEConfig(self, TDEConfig):
+        self._TDEConfig = TDEConfig
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -6807,6 +6932,9 @@ class DescribeDBInstancesAttributeResponse(AbstractModel):
         self._RegularBackupStartTime = params.get("RegularBackupStartTime")
         self._BlockedThreshold = params.get("BlockedThreshold")
         self._EventSaveDays = params.get("EventSaveDays")
+        if params.get("TDEConfig") is not None:
+            self._TDEConfig = TDEConfigAttribute()
+            self._TDEConfig._deserialize(params.get("TDEConfig"))
         self._RequestId = params.get("RequestId")
 
 
@@ -7193,12 +7321,15 @@ class DescribeDBsRequest(AbstractModel):
         :type Name: str
         :param _OrderByType: Sorting rule. Valid values: `desc` (descending order), `asc` (ascending order). Default value: `desc`.
         :type OrderByType: str
+        :param _Encryption: TDE status. Valid values: `enable` (enabled), `disable` (disabled).
+        :type Encryption: str
         """
         self._InstanceIdSet = None
         self._Limit = None
         self._Offset = None
         self._Name = None
         self._OrderByType = None
+        self._Encryption = None
 
     @property
     def InstanceIdSet(self):
@@ -7240,6 +7371,14 @@ class DescribeDBsRequest(AbstractModel):
     def OrderByType(self, OrderByType):
         self._OrderByType = OrderByType
 
+    @property
+    def Encryption(self):
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
 
     def _deserialize(self, params):
         self._InstanceIdSet = params.get("InstanceIdSet")
@@ -7247,6 +7386,7 @@ class DescribeDBsRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Name = params.get("Name")
         self._OrderByType = params.get("OrderByType")
+        self._Encryption = params.get("Encryption")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7561,6 +7701,81 @@ class DescribeIncrementalMigrationResponse(AbstractModel):
                 obj = Migration()
                 obj._deserialize(item)
                 self._IncrementalMigrationSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceByOrdersRequest(AbstractModel):
+    """DescribeInstanceByOrders request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealNames: Order ID set
+        :type DealNames: list of str
+        """
+        self._DealNames = None
+
+    @property
+    def DealNames(self):
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+
+    def _deserialize(self, params):
+        self._DealNames = params.get("DealNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceByOrdersResponse(AbstractModel):
+    """DescribeInstanceByOrders response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealInstance: 
+        :type DealInstance: list of DealInstance
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DealInstance = None
+        self._RequestId = None
+
+    @property
+    def DealInstance(self):
+        return self._DealInstance
+
+    @DealInstance.setter
+    def DealInstance(self, DealInstance):
+        self._DealInstance = DealInstance
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DealInstance") is not None:
+            self._DealInstance = []
+            for item in params.get("DealInstance"):
+                obj = DealInstance()
+                obj._deserialize(item)
+                self._DealInstance.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8486,9 +8701,9 @@ class DescribeSlowlogsRequest(AbstractModel):
         r"""
         :param _InstanceId: Instance ID in the format of mssql-k8voqdlz
         :type InstanceId: str
-        :param _StartTime: Query start time
+        :param _StartTime: Start time in the format of `yyyy-MM-dd HH:mm:ss`
         :type StartTime: str
-        :param _EndTime: Query end time
+        :param _EndTime: End time in the format of `yyyy-MM-dd HH:mm:ss`
         :type EndTime: str
         :param _Limit: Number of results per page. Value range: 1-100. Default value: 20
         :type Limit: int
@@ -8789,9 +9004,9 @@ class DescribeXEventsRequest(AbstractModel):
         :type InstanceId: str
         :param _EventType: Event type. Valid values: `slow` (Slow SQL event), `blocked` (blocking event),  deadlock` (deadlock event).
         :type EventType: str
-        :param _StartTime: Generation start time of an extended file
+        :param _StartTime: Generation start time of an extended file in the format of yyyy-MM-dd HH:mm:ss.
         :type StartTime: str
-        :param _EndTime: Generation end time of an extended file
+        :param _EndTime: Generation end time of an extended file in the format of yyyy-MM-dd HH:mm:ss.
         :type EndTime: str
         :param _Offset: Page number. Default value: `0`
         :type Offset: int
@@ -9223,13 +9438,14 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         :type Period: int
         :param _GoodsNum: Number of instances purchased at a time. Value range: 1-100. Default value: 1
         :type GoodsNum: int
-        :param _DBVersion: SQL Server version. Valid values: 2008R2 (SQL Server 2008 Enterprise), 2012SP3 (SQL Server 2012 Enterprise), 2016SP1 (SQL Server 2016 Enterprise), 201602 (SQL Server 2016 Standard), 2017 (SQL Server 2017 Enterprise). Default value: 2008R2.
+        :param _DBVersion: SQL version. Valid values: `2008R2` (SQL Server 2008 R2 Enterprise), `2012SP3` (SQL Server 2012 Enterprise), `201202` (SQL Server 2012 Standard), `2014SP2` (SQL Server 2014 Enterprise), `201402` (SQL Server 2014 Standard)`, `2016SP1` (SQL Server 2016 Enterprise), `201602` (SQL Server 2016 Standard), `2017` (SQL Server 2017 Enterprise), `201702` (SQL Server 2017 Standard), `2019` (SQL Server 2019 Enterprise), `201902` (SQL Server 2019 Standard). Default value: `2008R2`. The purchasable version varies by region. It can be queried by the `DescribeProductConfig` API.
         :type DBVersion: str
         :param _Cpu: The number of CPU cores of the instance you want to purchase.
         :type Cpu: int
-        :param _InstanceType: The type of purchased instance. Valid values: HA (high-availability edition, including dual-server high availability and AlwaysOn cluster), RO (read-only replica), SI (basic edition). Default value: HA.
+        :param _InstanceType: The type of instance to be purchased. Valid values: `HA` (high-availability edition, including dual-server high-availability and AlwaysOn cluster u200deditionu200d), `RO` (read-only replica edition), `SI` (single-node edition), `cvmHA` (dual-server high-availability edition u200dfor CVM), `cvmRO` (read-only edition u200dfor CVM).
         :type InstanceType: str
-        :param _MachineType: The host type of purchased instance. Valid values: PM (physical machine), CLOUD_PREMIUM (physical machine with premium cloud disk), CLOUD_SSD (physical machine with SSD). Default value: PM.
+        :param _MachineType: The host type of the instance to be purchased. Valid values: `PM` (physical machine), `CLOUD_PREMIUM` (virtual machine with premium cloud disk), `CLOUD_SSD` (virtual machine with SSD), 
+`CLOUD_HSSD` (virtual machine with enhanced SSD), `CLOUD_TSSD` (virtual machine with ulTra SSD), `CLOUD_BSSD` (virtual machine with balanced SSD).
         :type MachineType: str
         """
         self._Zone = None
@@ -11164,6 +11380,93 @@ class ModifyBackupStrategyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDBEncryptAttributesRequest(AbstractModel):
+    """ModifyDBEncryptAttributes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        :param _DBTDEEncrypt: A parameter used to enable or disable TDE of the database
+        :type DBTDEEncrypt: list of DBTDEEncrypt
+        """
+        self._InstanceId = None
+        self._DBTDEEncrypt = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DBTDEEncrypt(self):
+        return self._DBTDEEncrypt
+
+    @DBTDEEncrypt.setter
+    def DBTDEEncrypt(self, DBTDEEncrypt):
+        self._DBTDEEncrypt = DBTDEEncrypt
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("DBTDEEncrypt") is not None:
+            self._DBTDEEncrypt = []
+            for item in params.get("DBTDEEncrypt"):
+                obj = DBTDEEncrypt()
+                obj._deserialize(item)
+                self._DBTDEEncrypt.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBEncryptAttributesResponse(AbstractModel):
+    """ModifyDBEncryptAttributes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Task flow ID
+        :type FlowId: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceNameRequest(AbstractModel):
     """ModifyDBInstanceName request structure.
 
@@ -12000,6 +12303,100 @@ class ModifyIncrementalMigrationResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._IncrementalMigrationId = params.get("IncrementalMigrationId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceEncryptAttributesRequest(AbstractModel):
+    """ModifyInstanceEncryptAttributes request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        :param _CertificateAttribution: Certificate u200downership. Valid values: `self` (certificate of this account), `others` (certificate of the other account). Default value: `self`.
+        :type CertificateAttribution: str
+        :param _QuoteUin: ID of the other referenced root account, which is required when `CertificateAttribution` is `others`.
+        :type QuoteUin: str
+        """
+        self._InstanceId = None
+        self._CertificateAttribution = None
+        self._QuoteUin = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CertificateAttribution(self):
+        return self._CertificateAttribution
+
+    @CertificateAttribution.setter
+    def CertificateAttribution(self, CertificateAttribution):
+        self._CertificateAttribution = CertificateAttribution
+
+    @property
+    def QuoteUin(self):
+        return self._QuoteUin
+
+    @QuoteUin.setter
+    def QuoteUin(self, QuoteUin):
+        self._QuoteUin = QuoteUin
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._CertificateAttribution = params.get("CertificateAttribution")
+        self._QuoteUin = params.get("QuoteUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceEncryptAttributesResponse(AbstractModel):
+    """ModifyInstanceEncryptAttributes response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Task flow ID
+        :type FlowId: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 
@@ -13960,6 +14357,64 @@ class StartInstanceXEventResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class TDEConfigAttribute(AbstractModel):
+    """TDE u200dconfiguration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Encryption: TDE status. Valid values: `enable` (enabled), `disable` (disabled).
+        :type Encryption: str
+        :param _CertificateAttribution: Certificate u200downership. Valid values: `self` (u200dcertificate of the this account), `others` (u200dcertificate of the other account), `none` (no certificate).
+        :type CertificateAttribution: str
+        :param _QuoteUin: ID of the u200dother referenced root account when enabling TDE
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type QuoteUin: str
+        """
+        self._Encryption = None
+        self._CertificateAttribution = None
+        self._QuoteUin = None
+
+    @property
+    def Encryption(self):
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
+    def CertificateAttribution(self):
+        return self._CertificateAttribution
+
+    @CertificateAttribution.setter
+    def CertificateAttribution(self, CertificateAttribution):
+        self._CertificateAttribution = CertificateAttribution
+
+    @property
+    def QuoteUin(self):
+        return self._QuoteUin
+
+    @QuoteUin.setter
+    def QuoteUin(self, QuoteUin):
+        self._QuoteUin = QuoteUin
+
+
+    def _deserialize(self, params):
+        self._Encryption = params.get("Encryption")
+        self._CertificateAttribution = params.get("CertificateAttribution")
+        self._QuoteUin = params.get("QuoteUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TerminateDBInstanceRequest(AbstractModel):

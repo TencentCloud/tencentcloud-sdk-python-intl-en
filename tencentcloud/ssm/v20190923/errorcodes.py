@@ -62,6 +62,9 @@ OPERATIONDENIED_AUTOROTATEDRESOURCE = 'OperationDenied.AutoRotatedResource'
 # The role does not exist.
 OPERATIONDENIED_ROLENOTEXIST = 'OperationDenied.RoleNotExist'
 
+# The secret is not owned by the current account. 
+OPERATIONDENIED_UINNOTMATCH = 'OperationDenied.UinNotMatch'
+
 # The number of requests exceeds the frequency limit.
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
 

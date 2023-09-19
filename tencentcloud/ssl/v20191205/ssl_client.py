@@ -72,6 +72,29 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelAuditCertificate(self, request):
+        """This API is used to cancel certificate review.
+
+        :param request: Request instance for CancelAuditCertificate.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.CancelAuditCertificateRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CancelAuditCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelAuditCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelAuditCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CancelCertificateOrder(self, request):
         """This API is used to cancel a certificate order.
 
@@ -477,6 +500,29 @@ class SslClient(AbstractClient):
             body = self.call("ModifyCertificateProject", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCertificateProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCertificateResubmit(self, request):
+        """This API is used to re-submit a review application for a paid certificate whose review failed or was canceled.
+
+        :param request: Request instance for ModifyCertificateResubmit.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.ModifyCertificateResubmitRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.ModifyCertificateResubmitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCertificateResubmit", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCertificateResubmitResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

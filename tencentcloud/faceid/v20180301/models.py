@@ -349,7 +349,7 @@ class ApplyWebVerificationBizTokenIntlResponse(AbstractModel):
         :type VerificationUrl: str
         :param _BizToken: The token identifying this web-based verification process, valid for 7,200s after issuance. It is required for getting the result after the verification process is completed.
         :type BizToken: str
-        :param _VerificationURL: 
+        :param _VerificationURL: The verification URL to be opened with a browser to start the verification process.
         :type VerificationURL: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

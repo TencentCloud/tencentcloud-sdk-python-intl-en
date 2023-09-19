@@ -234,7 +234,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateClusterEndpointVip(self, request):
-        """Create an external network access port for the managed cluster (the old way, only the external network port for the managed cluster is supported)
+        """This API is used to create a public network access port for a managed cluster. Note: This API will be disused soon. Please call `CreateClusterEndpoint` instead.
 
         :param request: Request instance for CreateClusterEndpointVip.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateClusterEndpointVipRequest`
@@ -477,6 +477,29 @@ class TkeClient(AbstractClient):
             body = self.call("CreateTKEEdgeCluster", params, headers=headers)
             response = json.loads(body)
             model = models.CreateTKEEdgeClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAddon(self, request):
+        """This API is used to delete an add-on.
+
+        :param request: Request instance for DeleteAddon.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteAddonRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteAddonResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAddon", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAddonResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -845,6 +868,52 @@ class TkeClient(AbstractClient):
             body = self.call("DeleteTKEEdgeCluster", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteTKEEdgeClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAddon(self, request):
+        """This API is used to query the list of add-ons.
+
+        :param request: Request instance for DescribeAddon.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeAddonRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeAddonResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAddon", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAddonResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAddonValues(self, request):
+        """This API is used to query parameters of an add-on.
+
+        :param request: Request instance for DescribeAddonValues.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeAddonValuesRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeAddonValuesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAddonValues", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAddonValuesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1567,6 +1636,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEncryptionStatus(self, request):
+        """This API is used to query the encryption status of etcd data.
+
+        :param request: Request instance for DescribeEncryptionStatus.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeEncryptionStatusRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeEncryptionStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEncryptionStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEncryptionStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeExistedInstances(self, request):
         """This API is used to query one or more existing node and determine whether they can be added to a cluster.
 
@@ -1889,6 +1981,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisableEncryptionProtection(self, request):
+        """This API is used to disable encryption protection.
+
+        :param request: Request instance for DisableEncryptionProtection.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DisableEncryptionProtectionRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DisableEncryptionProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableEncryptionProtection", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableEncryptionProtectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DrainClusterVirtualNode(self, request):
         """This API is used to drain a virtual node.
 
@@ -1926,6 +2041,29 @@ class TkeClient(AbstractClient):
             body = self.call("EnableClusterDeletionProtection", params, headers=headers)
             response = json.loads(body)
             model = models.EnableClusterDeletionProtectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableEncryptionProtection(self, request):
+        """This API is used to enable encryption protection.
+
+        :param request: Request instance for EnableEncryptionProtection.
+        :type request: :class:`tencentcloud.tke.v20180525.models.EnableEncryptionProtectionRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.EnableEncryptionProtectionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableEncryptionProtection", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableEncryptionProtectionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2018,6 +2156,29 @@ class TkeClient(AbstractClient):
             body = self.call("GetUpgradeInstanceProgress", params, headers=headers)
             response = json.loads(body)
             model = models.GetUpgradeInstanceProgressResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InstallAddon(self, request):
+        """This API is used to install an add-on on the target cluster.
+
+        :param request: Request instance for InstallAddon.
+        :type request: :class:`tencentcloud.tke.v20180525.models.InstallAddonRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.InstallAddonResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InstallAddon", params, headers=headers)
+            response = json.loads(body)
+            model = models.InstallAddonResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2317,6 +2478,29 @@ class TkeClient(AbstractClient):
             body = self.call("UninstallEdgeLogAgent", params, headers=headers)
             response = json.loads(body)
             model = models.UninstallEdgeLogAgentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateAddon(self, request):
+        """This API is used to update parameters and version of an add-on.
+
+        :param request: Request instance for UpdateAddon.
+        :type request: :class:`tencentcloud.tke.v20180525.models.UpdateAddonRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.UpdateAddonResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAddon", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateAddonResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

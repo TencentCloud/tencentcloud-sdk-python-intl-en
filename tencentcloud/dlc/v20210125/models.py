@@ -285,33 +285,44 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class CommonMetrics(AbstractModel):
-    """
+    """Common task metrics
 
     """
 
     def __init__(self):
         r"""
-        :param _CreateTaskTime: 
+        :param _CreateTaskTime: The task creation time in ms.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type CreateTaskTime: float
-        :param _ProcessTime: 
+        :param _ProcessTime: The processing time in ms.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type ProcessTime: float
-        :param _QueueTime: 
+        :param _QueueTime: The queue time in ms.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type QueueTime: float
-        :param _ExecutionTime: 
+        :param _ExecutionTime: The execution duration in ms.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type ExecutionTime: float
-        :param _IsResultCacheHit: 
+        :param _IsResultCacheHit: Whether the result cache is hit.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type IsResultCacheHit: bool
-        :param _MatchedMVBytes: 
+        :param _MatchedMVBytes: The volume of matched materialized views, in bytes.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type MatchedMVBytes: int
-        :param _MatchedMVs: 
+        :param _MatchedMVs: The list of matched materialized views.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type MatchedMVs: str
-        :param _AffectedBytes: 
+        :param _AffectedBytes: The result data in bytes.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type AffectedBytes: str
-        :param _AffectedRows: 
+        :param _AffectedRows: 	The number of rows in the result.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type AffectedRows: int
-        :param _ProcessedBytes: 
+        :param _ProcessedBytes: The volume of the data scanned, in bytes.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type ProcessedBytes: int
-        :param _ProcessedRows: 
+        :param _ProcessedRows: 	The number of scanned rows.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type ProcessedRows: int
         """
         self._CreateTaskTime = None
@@ -437,6 +448,53 @@ class CommonMetrics(AbstractModel):
         
 
 
+class CosPermission(AbstractModel):
+    """COS permissions
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosPath: The COS path.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type CosPath: str
+        :param _Permissions: The permissions. Valid values: `read` and `write`.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type Permissions: list of str
+        """
+        self._CosPath = None
+        self._Permissions = None
+
+    @property
+    def CosPath(self):
+        return self._CosPath
+
+    @CosPath.setter
+    def CosPath(self, CosPath):
+        self._CosPath = CosPath
+
+    @property
+    def Permissions(self):
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+
+    def _deserialize(self, params):
+        self._CosPath = params.get("CosPath")
+        self._Permissions = params.get("Permissions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateDataEngineRequest(AbstractModel):
     """CreateDataEngine request structure.
 
@@ -482,7 +540,7 @@ class CreateDataEngineRequest(AbstractModel):
         :type CrontabResumeSuspend: int
         :param _CrontabResumeSuspendStrategy: The complex policy for scheduled start and suspension, including the start/suspension time and suspension policy.
         :type CrontabResumeSuspendStrategy: :class:`tencentcloud.dlc.v20210125.models.CrontabResumeSuspendStrategy`
-        :param _EngineExecType: The type of tasks to be executed by the engine, which defaults to SQL.
+        :param _EngineExecType: The type of tasks to be executed by the engine, which defaults to SQL. Valid values: `SQL` and `BATCH`.
         :type EngineExecType: str
         :param _MaxConcurrency: The max task concurrency of a cluster, which defaults to 5.
         :type MaxConcurrency: int
@@ -496,7 +554,7 @@ class CreateDataEngineRequest(AbstractModel):
         :type DataEngineConfigPairs: list of DataEngineConfigPair
         :param _ImageVersionName: The version name of cluster image, such as SuperSQL-P 1.1 and SuperSQL-S 3.2. If no value is passed in, a cluster is created using the latest image version.
         :type ImageVersionName: str
-        :param _MainClusterName: The name of the primary cluster.
+        :param _MainClusterName: The primary cluster, which is specified when a failover cluster is created.
         :type MainClusterName: str
         :param _ElasticSwitch: Whether to enable the scaling feature for a monthly subscribed Spark job cluster.
         :type ElasticSwitch: bool
@@ -594,10 +652,14 @@ class CreateDataEngineRequest(AbstractModel):
 
     @property
     def DefaultDataEngine(self):
+        warnings.warn("parameter `DefaultDataEngine` is deprecated", DeprecationWarning) 
+
         return self._DefaultDataEngine
 
     @DefaultDataEngine.setter
     def DefaultDataEngine(self, DefaultDataEngine):
+        warnings.warn("parameter `DefaultDataEngine` is deprecated", DeprecationWarning) 
+
         self._DefaultDataEngine = DefaultDataEngine
 
     @property
@@ -1093,51 +1155,51 @@ class CreateSparkAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppName: Spark application name
+        :param _AppName: The Spark job name.
         :type AppName: str
-        :param _AppType: 1: Spark JAR application; 2: Spark streaming application
+        :param _AppType: The Spark job type. Valid values: `1` for Spark JAR job and `2` for Spark streaming job.
         :type AppType: int
-        :param _DataEngine: The data engine executing the Spark job
+        :param _DataEngine: The data engine executing the Spark job.
         :type DataEngine: str
-        :param _AppFile: Execution entry of the Spark application
+        :param _AppFile: The path of the Spark job package.
         :type AppFile: str
-        :param _RoleArn: Execution role ID of the Spark job
+        :param _RoleArn: The data access policy (CAM role arn).
         :type RoleArn: int
-        :param _AppDriverSize: Driver resource specification of the Spark job. Valid values: `small`, `medium`, `large`, `xlarge`.
+        :param _AppDriverSize: The driver size. Valid values: `small` (default, 1 CU), `medium` (2 CUs), `large` (4 CUs), and `xlarge` (8 CUs).
         :type AppDriverSize: str
-        :param _AppExecutorSize: Executor resource specification of the Spark job. Valid values: `small`, `medium`, `large`, `xlarge`.
+        :param _AppExecutorSize: The executor size. Valid values: `small` (default, 1 CU), `medium` (2 CUs), `large` (4 CUs), and `xlarge` (8 CUs).
         :type AppExecutorSize: str
         :param _AppExecutorNums: Number of Spark job executors
         :type AppExecutorNums: int
         :param _Eni: This field has been disused. Use the `Datasource` field instead.
         :type Eni: str
-        :param _IsLocal: Whether it is upload locally. Valid values: `cos`, `lakefs`.
+        :param _IsLocal: The source of the Spark job package. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).
         :type IsLocal: str
-        :param _MainClass: Main class of the Spark JAR job during execution
+        :param _MainClass: The main class of the Spark job.
         :type MainClass: str
         :param _AppConf: Spark configurations separated by line break
         :type AppConf: str
-        :param _IsLocalJars: Whether it is upload locally. Valid values: `cos`, `lakefs`.
+        :param _IsLocalJars: The source of the dependency JAR packages of the Spark job. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).
         :type IsLocalJars: str
-        :param _AppJars: Dependency JAR packages of the Spark JAR job separated by comma
+        :param _AppJars: The dependency JAR packages of the Spark JAR job (JAR packages), separated by comma.
         :type AppJars: str
-        :param _IsLocalFiles: Whether it is upload locally. Valid values: `cos`, `lakefs`.
+        :param _IsLocalFiles: The source of the dependency files of the Spark job. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).
         :type IsLocalFiles: str
-        :param _AppFiles: Dependency resources of the Spark job separated by comma
+        :param _AppFiles: The dependency files of the Spark job (files other than JAR and ZIP packages) separated by comma.
         :type AppFiles: str
-        :param _CmdArgs: Command line parameters of the Spark job
+        :param _CmdArgs: The input parameters of the Spark job, separated by comma.
         :type CmdArgs: str
-        :param _MaxRetries: This parameter takes effect only for Spark flow tasks.
+        :param _MaxRetries: The maximum number of retries, valid for Spark streaming tasks only.
         :type MaxRetries: int
-        :param _DataSource: Data source name
+        :param _DataSource: The data source name.
         :type DataSource: str
-        :param _IsLocalPythonFiles: PySpark: Dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).
+        :param _IsLocalPythonFiles: The source of the PySpark dependencies. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).
         :type IsLocalPythonFiles: str
-        :param _AppPythonFiles: PySpark: Python dependency, which can be in .py, .zip, or .egg format. Multiple files should be separated by comma.
+        :param _AppPythonFiles: The PySpark dependencies (Python files), separated by comma, with .py, .zip, and .egg formats supported.
         :type AppPythonFiles: str
-        :param _IsLocalArchives: Archives: Dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).
+        :param _IsLocalArchives: The source of the dependency archives of the Spark job. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).
         :type IsLocalArchives: str
-        :param _AppArchives: Archives: Dependency resources
+        :param _AppArchives: The dependency archives of the Spark job, separated by comma, with tar.gz, .tgz, and .tar formats supported.
         :type AppArchives: str
         :param _SparkImage: The Spark image version.
         :type SparkImage: str
@@ -1149,6 +1211,8 @@ class CreateSparkAppRequest(AbstractModel):
         :type SessionId: str
         :param _IsInherit: Whether to inherit the task resource configuration from the cluster template. Valid values: `0` (default): No; `1`: Yes.
         :type IsInherit: int
+        :param _IsSessionStarted: Whether to run the task with the session SQLs. Valid values: `false` for no and `true` for yes.
+        :type IsSessionStarted: bool
         """
         self._AppName = None
         self._AppType = None
@@ -1178,6 +1242,7 @@ class CreateSparkAppRequest(AbstractModel):
         self._AppExecutorMaxNumbers = None
         self._SessionId = None
         self._IsInherit = None
+        self._IsSessionStarted = None
 
     @property
     def AppName(self):
@@ -1403,6 +1468,14 @@ class CreateSparkAppRequest(AbstractModel):
     def IsInherit(self, IsInherit):
         self._IsInherit = IsInherit
 
+    @property
+    def IsSessionStarted(self):
+        return self._IsSessionStarted
+
+    @IsSessionStarted.setter
+    def IsSessionStarted(self, IsSessionStarted):
+        self._IsSessionStarted = IsSessionStarted
+
 
     def _deserialize(self, params):
         self._AppName = params.get("AppName")
@@ -1433,6 +1506,7 @@ class CreateSparkAppRequest(AbstractModel):
         self._AppExecutorMaxNumbers = params.get("AppExecutorMaxNumbers")
         self._SessionId = params.get("SessionId")
         self._IsInherit = params.get("IsInherit")
+        self._IsSessionStarted = params.get("IsSessionStarted")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1490,7 +1564,7 @@ class CreateSparkAppTaskRequest(AbstractModel):
         r"""
         :param _JobName: Spark job name
         :type JobName: str
-        :param _CmdArgs: Command line parameters of the Spark job separated by space. They are generally used for periodic calls.
+        :param _CmdArgs: The input parameters of the Spark job, separated by space. They are generally used for periodic calls.
         :type CmdArgs: str
         """
         self._JobName = None
@@ -1600,8 +1674,12 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
         :type SessionId: str
         :param _SessionName: The name of the session to create.
         :type SessionName: str
-        :param _Arguments: Session configurations. `dlc.eni`, `dlc.role.arn`, `dlc.sql.set.config`, and user-defined configurations are supported.
+        :param _Arguments: The session configurations. Valid values: `1.dlc.eni` for user-defined ENI gateway information;
+`2.dlc.role.arn` for user-defined roleArn configurations;
+and `3.dlc.sql.set.config` for user-defined cluster configurations.
         :type Arguments: list of KVPair
+        :param _IsInherit: Whether to inherit the resource configurations from the cluster. Valid values: `0` for no (default) and `1` for yes.
+        :type IsInherit: int
         """
         self._DataEngineName = None
         self._ExecuteSQL = None
@@ -1613,6 +1691,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
         self._SessionId = None
         self._SessionName = None
         self._Arguments = None
+        self._IsInherit = None
 
     @property
     def DataEngineName(self):
@@ -1694,6 +1773,14 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
     def Arguments(self, Arguments):
         self._Arguments = Arguments
 
+    @property
+    def IsInherit(self):
+        return self._IsInherit
+
+    @IsInherit.setter
+    def IsInherit(self, IsInherit):
+        self._IsInherit = IsInherit
+
 
     def _deserialize(self, params):
         self._DataEngineName = params.get("DataEngineName")
@@ -1711,6 +1798,7 @@ class CreateSparkSessionBatchSQLRequest(AbstractModel):
                 obj = KVPair()
                 obj._deserialize(item)
                 self._Arguments.append(obj)
+        self._IsInherit = params.get("IsInherit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2107,7 +2195,7 @@ class DeleteSparkAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppName: Spark application name
+        :param _AppName: The Spark job name.
         :type AppName: str
         """
         self._AppName = None
@@ -2165,7 +2253,7 @@ class DescribeEngineUsageInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataEngineId: The house ID.
+        :param _DataEngineId: The data engine ID.
         :type DataEngineId: str
         """
         self._DataEngineId = None
@@ -2487,7 +2575,7 @@ class DescribeSparkAppJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: Spark job ID. If it co-exists with `JobName`, `JobName` will become invalid.
+        :param _JobId: The Spark job ID. If it co-exists with `JobName`, `JobName` is invalid. At least `JobId` or `JobName` must be used.
         :type JobId: str
         :param _JobName: Spark job name
         :type JobName: str
@@ -2588,7 +2676,7 @@ class DescribeSparkAppJobsRequest(AbstractModel):
         :type SortBy: str
         :param _Sorting: Descending or ascending order, such as `desc`.
         :type Sorting: str
-        :param _Filters: Filter by this parameter, which can be `spark-job-name`.
+        :param _Filters: The filters. The following types are supported, and `Name` of the parameter passed in must be one of them: `spark-job-name` (job name), `spark-job-id` (job ID), `spark-app-type` (job type: `1` for batch, `2` for streaming, and `4` for SQL), `user-name` (creator), and `key-word` (job name or ID keywords for fuzzy search).
         :type Filters: list of Filter
         :param _StartTime: The update start time in the format of yyyy-mm-dd HH:MM:SS.
         :type StartTime: str
@@ -2756,9 +2844,9 @@ class DescribeSparkAppTasksRequest(AbstractModel):
         :type Limit: int
         :param _TaskId: Execution instance ID
         :type TaskId: str
-        :param _StartTime: Update start time
+        :param _StartTime: The update start time in the format of yyyy-MM-dd HH:mm:ss.
         :type StartTime: str
-        :param _EndTime: Update end time
+        :param _EndTime: The update end time in the format of yyyy-MM-dd HH:mm:ss.
         :type EndTime: str
         :param _Filters: Filter by this parameter, which can be `task-state`.
         :type Filters: list of Filter
@@ -3132,7 +3220,7 @@ task-kind - string (filter by task type)
         :type StartTime: str
         :param _EndTime: End time in the format of `yyyy-mm-dd HH:MM:SS`, which is the current time by default. The time span is (0, 30] days. Data in the last 45 days can be queried.
         :type EndTime: str
-        :param _DataEngineName: Filter by compute resource name
+        :param _DataEngineName: The data engine name for filtering.
         :type DataEngineName: str
         """
         self._Limit = None
@@ -3299,6 +3387,141 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("TasksOverview") is not None:
             self._TasksOverview = TasksOverview()
             self._TasksOverview._deserialize(params.get("TasksOverview"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserRolesRequest(AbstractModel):
+    """DescribeUserRoles request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: The number limit of enumerated user roles.
+        :type Limit: int
+        :param _Offset: The offset for starting enumeration. 
+        :type Offset: int
+        :param _Fuzzy: Fuzzy enumeration by arn.
+        :type Fuzzy: str
+        :param _SortBy: The field for sorting the returned results.
+        :type SortBy: str
+        :param _Sorting: The sorting order, descending or ascending, such as `desc`.
+        :type Sorting: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Fuzzy = None
+        self._SortBy = None
+        self._Sorting = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Fuzzy(self):
+        return self._Fuzzy
+
+    @Fuzzy.setter
+    def Fuzzy(self, Fuzzy):
+        self._Fuzzy = Fuzzy
+
+    @property
+    def SortBy(self):
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def Sorting(self):
+        return self._Sorting
+
+    @Sorting.setter
+    def Sorting(self, Sorting):
+        self._Sorting = Sorting
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Fuzzy = params.get("Fuzzy")
+        self._SortBy = params.get("SortBy")
+        self._Sorting = params.get("Sorting")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserRolesResponse(AbstractModel):
+    """DescribeUserRoles response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: The total number of user roles meeting the enumeration conditions.
+        :type Total: int
+        :param _UserRoles: The user roles.
+        :type UserRoles: list of UserRole
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._UserRoles = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def UserRoles(self):
+        return self._UserRoles
+
+    @UserRoles.setter
+    def UserRoles(self, UserRoles):
+        self._UserRoles = UserRoles
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("UserRoles") is not None:
+            self._UserRoles = []
+            for item in params.get("UserRoles"):
+                obj = UserRole()
+                obj._deserialize(item)
+                self._UserRoles.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -3736,53 +3959,53 @@ class ModifySparkAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppName: Spark application name
+        :param _AppName: The Spark job name.
         :type AppName: str
-        :param _AppType: 1: Spark JAR application; 2: Spark streaming application
+        :param _AppType: The Spark job type. Valid values: `1` for Spark JAR job and `2` for Spark streaming job.
         :type AppType: int
-        :param _DataEngine: The data engine executing the Spark job
+        :param _DataEngine: The data engine executing the Spark job.
         :type DataEngine: str
-        :param _AppFile: Execution entry of the Spark application
+        :param _AppFile: The path of the Spark job package.
         :type AppFile: str
-        :param _RoleArn: Execution role ID of the Spark job
+        :param _RoleArn: The data access policy (CAM role arn).
         :type RoleArn: int
-        :param _AppDriverSize: Driver resource specification of the Spark job. Valid values: `small`, `medium`, `large`, `xlarge`.
+        :param _AppDriverSize: The driver size. Valid values: `small` (default, 1 CU), `medium` (2 CUs), `large` (4 CUs), and `xlarge` (8 CUs).
         :type AppDriverSize: str
-        :param _AppExecutorSize: Executor resource specification of the Spark job. Valid values: `small`, `medium`, `large`, `xlarge`.
+        :param _AppExecutorSize: The executor size. Valid values: `small` (default, 1 CU), `medium` (2 CUs), `large` (4 CUs), and `xlarge` (8 CUs).
         :type AppExecutorSize: str
         :param _AppExecutorNums: Number of Spark job executors
         :type AppExecutorNums: int
-        :param _SparkAppId: Spark application ID
+        :param _SparkAppId: The Spark job ID.
         :type SparkAppId: str
         :param _Eni: This field has been disused. Use the `Datasource` field instead.
         :type Eni: str
-        :param _IsLocal: Whether it is uploaded locally. Valid values: `cos`, `lakefs`.
+        :param _IsLocal: The source of the Spark job package. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).
         :type IsLocal: str
-        :param _MainClass: Main class of the Spark JAR job during execution
+        :param _MainClass: The main class of the Spark job.
         :type MainClass: str
         :param _AppConf: Spark configurations separated by line break
         :type AppConf: str
-        :param _IsLocalJars: JAR resource dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).
+        :param _IsLocalJars: The source of the dependency JAR packages of the Spark job. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).
         :type IsLocalJars: str
-        :param _AppJars: Dependency JAR packages of the Spark JAR job separated by comma
+        :param _AppJars: The dependency JAR packages of the Spark JAR job (JAR packages), separated by comma.
         :type AppJars: str
-        :param _IsLocalFiles: File resource dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).
+        :param _IsLocalFiles: The source of the dependency files of the Spark job. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).
         :type IsLocalFiles: str
-        :param _AppFiles: Dependency resources of the Spark job separated by comma
+        :param _AppFiles: The dependency files of the Spark job (files other than JAR and ZIP packages), separated by comma.
         :type AppFiles: str
-        :param _IsLocalPythonFiles: PySpark: Dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).
+        :param _IsLocalPythonFiles: The source of the PySpark dependencies. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).
         :type IsLocalPythonFiles: str
-        :param _AppPythonFiles: PySpark: Python dependency, which can be in .py, .zip, or .egg format. Multiple files should be separated by comma.
+        :param _AppPythonFiles: The PySpark dependencies (Python files), separated by comma, with .py, .zip, and .egg formats supported.
         :type AppPythonFiles: str
-        :param _CmdArgs: Command line parameters of the Spark job
+        :param _CmdArgs: The input parameters of the Spark job, separated by comma.
         :type CmdArgs: str
-        :param _MaxRetries: This parameter takes effect only for Spark flow tasks.
+        :param _MaxRetries: The maximum number of retries, valid for Spark streaming tasks only.
         :type MaxRetries: int
         :param _DataSource: Data source name
         :type DataSource: str
-        :param _IsLocalArchives: Archives: Dependency upload method. 1: cos; 2: lakefs (this method needs to be used in the console but cannot be called through APIs).
+        :param _IsLocalArchives: The source of the dependency archives of the Spark job. Valid values: `cos` for COS and `lakefs` for the local system (for use in the console, but this method does not support direct API calls).
         :type IsLocalArchives: str
-        :param _AppArchives: Archives: Dependency resources
+        :param _AppArchives: The dependency archives of the Spark job, separated by comma, with tar.gz, .tgz, and .tar formats supported.
         :type AppArchives: str
         :param _SparkImage: The Spark image version.
         :type SparkImage: str
@@ -3794,6 +4017,8 @@ class ModifySparkAppRequest(AbstractModel):
         :type SessionId: str
         :param _IsInherit: Whether to inherit the task resource configuration from the cluster configuration template. Valid values: `0` (default): No; `1`: Yes.
         :type IsInherit: int
+        :param _IsSessionStarted: Whether to run the task with the session SQLs. Valid values: `false` for no and `true` for yes.
+        :type IsSessionStarted: bool
         """
         self._AppName = None
         self._AppType = None
@@ -3824,6 +4049,7 @@ class ModifySparkAppRequest(AbstractModel):
         self._AppExecutorMaxNumbers = None
         self._SessionId = None
         self._IsInherit = None
+        self._IsSessionStarted = None
 
     @property
     def AppName(self):
@@ -4057,6 +4283,14 @@ class ModifySparkAppRequest(AbstractModel):
     def IsInherit(self, IsInherit):
         self._IsInherit = IsInherit
 
+    @property
+    def IsSessionStarted(self):
+        return self._IsSessionStarted
+
+    @IsSessionStarted.setter
+    def IsSessionStarted(self, IsSessionStarted):
+        self._IsSessionStarted = IsSessionStarted
+
 
     def _deserialize(self, params):
         self._AppName = params.get("AppName")
@@ -4088,6 +4322,7 @@ class ModifySparkAppRequest(AbstractModel):
         self._AppExecutorMaxNumbers = params.get("AppExecutorMaxNumbers")
         self._SessionId = params.get("SessionId")
         self._IsInherit = params.get("IsInherit")
+        self._IsSessionStarted = params.get("IsSessionStarted")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4361,15 +4596,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrestoMonitorMetrics(AbstractModel):
-    """
+    """Presto monitoring metrics
 
     """
 
     def __init__(self):
         r"""
-        :param _LocalCacheHitRate: 
+        :param _LocalCacheHitRate: 	The Alluxio cache hit rate.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type LocalCacheHitRate: float
-        :param _FragmentCacheHitRate: 
+        :param _FragmentCacheHitRate: The Fragment cache hit rate.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type FragmentCacheHitRate: float
         """
         self._LocalCacheHitRate = None
@@ -4680,6 +4917,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _IsInherit: Whether the task resource configuration is inherited from the cluster template. Valid values: `0` (default): No; `1`: Yes.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsInherit: int
+        :param _IsSessionStarted: Whether the task runs with the session SQLs. Valid values: `false` for no and `true` for yes.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type IsSessionStarted: bool
         """
         self._JobId = None
         self._JobName = None
@@ -4721,6 +4961,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._DataEngineClusterType = None
         self._DataEngineImageVersion = None
         self._IsInherit = None
+        self._IsSessionStarted = None
 
     @property
     def JobId(self):
@@ -5042,6 +5283,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def IsInherit(self, IsInherit):
         self._IsInherit = IsInherit
 
+    @property
+    def IsSessionStarted(self):
+        return self._IsSessionStarted
+
+    @IsSessionStarted.setter
+    def IsSessionStarted(self, IsSessionStarted):
+        self._IsSessionStarted = IsSessionStarted
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -5086,6 +5335,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._DataEngineClusterType = params.get("DataEngineClusterType")
         self._DataEngineImageVersion = params.get("DataEngineImageVersion")
         self._IsInherit = params.get("IsInherit")
+        self._IsSessionStarted = params.get("IsSessionStarted")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5097,15 +5347,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SparkMonitorMetrics(AbstractModel):
-    """
+    """Spark monitoring metrics
 
     """
 
     def __init__(self):
         r"""
-        :param _ShuffleWriteBytesCos: 
+        :param _ShuffleWriteBytesCos: The shuffle data (in bytes) that overflows to COS.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type ShuffleWriteBytesCos: int
-        :param _ShuffleWriteBytesTotal: 
+        :param _ShuffleWriteBytesTotal: The total shuffle data (in bytes).
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type ShuffleWriteBytesTotal: int
         """
         self._ShuffleWriteBytesCos = None
@@ -6053,7 +6305,7 @@ class TaskResponseInfo(AbstractModel):
         :type OutputPath: str
         :param _CreateTime: Task creation time
         :type CreateTime: str
-        :param _State: Task status. Valid values: `0` (initial), `1` (executing), `2` (executed successfully), `-1` (failed to execute), `-3` (canceled).
+        :param _State: The task status. Valid values: `0` (initializing), `1` (executing), `2` (executed), `3` (writing data), `4` (queuing), `-1` (failed), and `-3` (canceled).
         :type State: int
         :param _SQLType: SQL statement type of the task, such as DDL and DML.
         :type SQLType: str
@@ -6141,11 +6393,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ExecutorMaxNumbers: The maximum executor count (in dynamic mode). The minimum value is 1 and the maximum value is less than the cluster specification. If you set `ExecutorMaxNumbers` to a value smaller than that of `ExecutorNums`, the value of `ExecutorMaxNumbers` is automatically changed to that of `ExecutorNums`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ExecutorMaxNumbers: int
-        :param _CommonMetrics: 
+        :param _CommonMetrics: Common task metrics
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type CommonMetrics: :class:`tencentcloud.dlc.v20210125.models.CommonMetrics`
-        :param _SparkMonitorMetrics: 
+        :param _SparkMonitorMetrics: The Spark task metrics.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type SparkMonitorMetrics: :class:`tencentcloud.dlc.v20210125.models.SparkMonitorMetrics`
-        :param _PrestoMonitorMetrics: 
+        :param _PrestoMonitorMetrics: The Presto task metrics.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type PrestoMonitorMetrics: :class:`tencentcloud.dlc.v20210125.models.PrestoMonitorMetrics`
         """
         self._DatabaseName = None
@@ -6586,7 +6841,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type SQL: str
         :param _SQLType: Type of the executed task. Valid values: `DDL`, `DML`, `DQL`.
         :type SQLType: str
-        :param _State: Current status of the task. `0`: initial; `1`: task running; `2`: task execution succeeded; `-1`: task execution failed; `-3`: task terminated manually by the user. The task execution result will be returned only if task execution succeeds.
+        :param _State: u200cThe current task status. Valid values: `0` (initializing), `1` (executing), `2` (executed), `3` (writing data), `4` (queuing), u200c`-1` (failed), and `-3` (canceled). Only when the task is successfully executed, a task execution result will be returned.
         :type State: int
         :param _DataAmount: Amount of the data scanned in bytes
         :type DataAmount: int
@@ -7055,3 +7310,153 @@ class UpdateRowFilterResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class UserRole(AbstractModel):
+    """User role
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleId: The role ID.
+        :type RoleId: int
+        :param _AppId: The user's app ID.
+        :type AppId: str
+        :param _Uin: The user ID.
+        :type Uin: str
+        :param _Arn: The role permission.
+        :type Arn: str
+        :param _ModifyTime: The last modified timestamp.
+        :type ModifyTime: int
+        :param _Desc: The role description.
+        :type Desc: str
+        :param _RoleName: The role name.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type RoleName: str
+        :param _Creator: The creator UIN.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type Creator: str
+        :param _CosPermissionList: The COS permission list.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type CosPermissionList: list of CosPermission
+        :param _PermissionJson: The CAM policy in JSON.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type PermissionJson: str
+        """
+        self._RoleId = None
+        self._AppId = None
+        self._Uin = None
+        self._Arn = None
+        self._ModifyTime = None
+        self._Desc = None
+        self._RoleName = None
+        self._Creator = None
+        self._CosPermissionList = None
+        self._PermissionJson = None
+
+    @property
+    def RoleId(self):
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Arn(self):
+        return self._Arn
+
+    @Arn.setter
+    def Arn(self, Arn):
+        self._Arn = Arn
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def RoleName(self):
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def Creator(self):
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CosPermissionList(self):
+        return self._CosPermissionList
+
+    @CosPermissionList.setter
+    def CosPermissionList(self, CosPermissionList):
+        self._CosPermissionList = CosPermissionList
+
+    @property
+    def PermissionJson(self):
+        return self._PermissionJson
+
+    @PermissionJson.setter
+    def PermissionJson(self, PermissionJson):
+        self._PermissionJson = PermissionJson
+
+
+    def _deserialize(self, params):
+        self._RoleId = params.get("RoleId")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._Arn = params.get("Arn")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Desc = params.get("Desc")
+        self._RoleName = params.get("RoleName")
+        self._Creator = params.get("Creator")
+        if params.get("CosPermissionList") is not None:
+            self._CosPermissionList = []
+            for item in params.get("CosPermissionList"):
+                obj = CosPermission()
+                obj._deserialize(item)
+                self._CosPermissionList.append(obj)
+        self._PermissionJson = params.get("PermissionJson")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

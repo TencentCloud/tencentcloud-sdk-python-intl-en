@@ -38,6 +38,9 @@ FAILEDOPERATION_GETVPCFAILED = 'FailedOperation.GetVpcFailed'
 # Locking the backup import task failed.
 FAILEDOPERATION_MIGRATIONLOCKERROR = 'FailedOperation.MigrationLockError'
 
+# The operation is not supported.
+FAILEDOPERATION_NOTSUPPORT = 'FailedOperation.NotSupport'
+
 # Failed to query order.
 FAILEDOPERATION_QUERYORDERFAILED = 'FailedOperation.QueryOrderFailed'
 
@@ -259,6 +262,9 @@ UNAUTHORIZEDOPERATION_PERMISSIONDENIED = 'UnauthorizedOperation.PermissionDenied
 
 # Unknown parameter error
 UNKNOWNPARAMETER = 'UnknownParameter'
+
+# The operation is not supported.
+UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # Repeated operations are not supported.
 UNSUPPORTEDOPERATION_NOTSUPPORTREPEAT = 'UnsupportedOperation.NotSupportRepeat'

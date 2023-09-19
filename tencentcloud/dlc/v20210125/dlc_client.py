@@ -142,7 +142,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateSparkApp(self, request):
-        """This API is used to create a Spark application.
+        """This API is used to create a Spark job.
 
         :param request: Request instance for CreateSparkApp.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkAppRequest`
@@ -165,7 +165,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateSparkAppTask(self, request):
-        """This API is used to create a Spark task.
+        """This API is used to start a Spark job.
 
         :param request: Request instance for CreateSparkAppTask.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkAppTaskRequest`
@@ -188,7 +188,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateSparkSessionBatchSQL(self, request):
-        """This API is used to submit a Spark SQL batch task.
+        """This API is used to submit a Spark SQL batch task to the job engine.
 
         :param request: Request instance for CreateSparkSessionBatchSQL.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkSessionBatchSQLRequest`
@@ -211,7 +211,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateTask(self, request):
-        """This API is used to create a SQL query task. (We recommend you use the `CreateTasks` API instead.)
+        """This API is used to create and execute a SQL task. (`CreateTasks` is recommended.)
 
         :param request: Request instance for CreateTask.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateTaskRequest`
@@ -234,7 +234,7 @@ class DlcClient(AbstractClient):
 
 
     def CreateTasks(self, request):
-        """This API is used to create tasks in batches.
+        """This API is used to create and execute SQL tasks in batches.
 
         :param request: Request instance for CreateTasks.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreateTasksRequest`
@@ -257,7 +257,7 @@ class DlcClient(AbstractClient):
 
 
     def DeleteSparkApp(self, request):
-        """This API is used to delete a Spark application.
+        """This API is used to delete a Spark job.
 
         :param request: Request instance for DeleteSparkApp.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteSparkAppRequest`
@@ -303,7 +303,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeForbiddenTablePro(self, request):
-        """This API is used to get the list of disabled table attributes.
+        """This API is used to get the list of disabled table attributes (new).
 
         :param request: Request instance for DescribeForbiddenTablePro.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeForbiddenTableProRequest`
@@ -395,7 +395,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkAppJob(self, request):
-        """This API is used to query a specific Spark application.
+        """u200cThis API is used to query the information of a Spark job.
 
         :param request: Request instance for DescribeSparkAppJob.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppJobRequest`
@@ -418,7 +418,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkAppJobs(self, request):
-        """This API is used to get the list of Spark applications.
+        """This API is used to query the list of Spark jobs.
 
         :param request: Request instance for DescribeSparkAppJobs.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppJobsRequest`
@@ -441,7 +441,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkAppTasks(self, request):
-        """This API is used to query the list of running task instances of a Spark application.
+        """This API is used to query the list of running task instances of a Spark job.
 
         :param request: Request instance for DescribeSparkAppTasks.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkAppTasksRequest`
@@ -532,6 +532,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserRoles(self, request):
+        """This API is used to enumerate user roles.
+
+        :param request: Request instance for DescribeUserRoles.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserRolesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeUserRolesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserRoles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserRolesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GenerateCreateMangedTableSql(self, request):
         """This API is used to generate SQL statements for creating a managed table.
 
@@ -579,7 +602,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifySparkApp(self, request):
-        """This API is used to update a Spark application.
+        """This API is used to update a Spark job.
 
         :param request: Request instance for ModifySparkApp.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifySparkAppRequest`
@@ -625,7 +648,7 @@ class DlcClient(AbstractClient):
 
 
     def SuspendResumeDataEngine(self, request):
-        """This API is used to suspend or resume a data engine.
+        """This API is used to suspend or start a data engine.
 
         :param request: Request instance for SuspendResumeDataEngine.
         :type request: :class:`tencentcloud.dlc.v20210125.models.SuspendResumeDataEngineRequest`

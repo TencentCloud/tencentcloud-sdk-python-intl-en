@@ -510,7 +510,7 @@ class SqlserverClient(AbstractClient):
 
 
     def DescribeBackupFiles(self, request):
-        """This API is used to query the list of unarchived database backup files.
+        """This API is used to query the details of an unarchived backup.
 
         :param request: Request instance for DescribeBackupFiles.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeBackupFilesRequest`
@@ -799,6 +799,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("DescribeIncrementalMigration", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeIncrementalMigrationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceByOrders(self, request):
+        """This API is used to query the instance ID by the order number.
+
+        :param request: Request instance for DescribeInstanceByOrders.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceByOrdersRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeInstanceByOrdersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceByOrders", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceByOrdersResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1108,7 +1131,8 @@ class SqlserverClient(AbstractClient):
 
 
     def InquiryPriceUpgradeDBInstance(self, request):
-        """This API is used to query the upgrade price of an instance.
+        """This API is used to query the upgrade prices of a monthly subscribed instance
+        .
 
         :param request: Request instance for InquiryPriceUpgradeDBInstance.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.InquiryPriceUpgradeDBInstanceRequest`
@@ -1213,6 +1237,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("ModifyBackupStrategy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyBackupStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDBEncryptAttributes(self, request):
+        """This API is used to u200denable or disable TDE of a database.
+
+        :param request: Request instance for ModifyDBEncryptAttributes.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBEncryptAttributesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBEncryptAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBEncryptAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBEncryptAttributesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1420,6 +1467,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("ModifyIncrementalMigration", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyIncrementalMigrationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceEncryptAttributes(self, request):
+        """This API is used to enable TDE of an instance.
+
+        :param request: Request instance for ModifyInstanceEncryptAttributes.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyInstanceEncryptAttributesRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyInstanceEncryptAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceEncryptAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceEncryptAttributesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

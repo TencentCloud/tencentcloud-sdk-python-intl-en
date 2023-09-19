@@ -497,6 +497,90 @@ class AddVpcCniSubnetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Addon(AbstractModel):
+    """Add-on description
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddonName: Add-on name
+        :type AddonName: str
+        :param _AddonVersion: Add-on version
+        :type AddonVersion: str
+        :param _RawValues: Add-on parameters, which are base64-encoded strings in JSON/
+Note: u200dThis field may return `null`, indicating that no valid values can be obtained.
+        :type RawValues: str
+        :param _Phase: Add-on status
+Note: u200dThis field may return `null`, indicating that no valid values can be obtained.
+        :type Phase: str
+        :param _Reason: Reason for add-on failure
+Note: u200dThis field may return `null`, indicating that no valid values can be obtained.
+        :type Reason: str
+        """
+        self._AddonName = None
+        self._AddonVersion = None
+        self._RawValues = None
+        self._Phase = None
+        self._Reason = None
+
+    @property
+    def AddonName(self):
+        return self._AddonName
+
+    @AddonName.setter
+    def AddonName(self, AddonName):
+        self._AddonName = AddonName
+
+    @property
+    def AddonVersion(self):
+        return self._AddonVersion
+
+    @AddonVersion.setter
+    def AddonVersion(self, AddonVersion):
+        self._AddonVersion = AddonVersion
+
+    @property
+    def RawValues(self):
+        return self._RawValues
+
+    @RawValues.setter
+    def RawValues(self, RawValues):
+        self._RawValues = RawValues
+
+    @property
+    def Phase(self):
+        return self._Phase
+
+    @Phase.setter
+    def Phase(self, Phase):
+        self._Phase = Phase
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._AddonName = params.get("AddonName")
+        self._AddonVersion = params.get("AddonVersion")
+        self._RawValues = params.get("RawValues")
+        self._Phase = params.get("Phase")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoScalingGroupRange(AbstractModel):
     """Maximum and minimum number of pods in cluster-associated scaling groups
 
@@ -1899,11 +1983,11 @@ Note: this field may return null, indicating that no valid value was found.
         :param _ScaleDownUtilizationThreshold: Percentage of node resource usage below which the node is considered to be idle (default value: 50)
 Note: this field may return null, indicating that no valid value was found.
         :type ScaleDownUtilizationThreshold: int
-        :param _SkipNodesWithLocalStorage: During scale-in, ignore nodes with local storage pods (default value: False)
-Note: this field may return null, indicating that no valid value was found.
+        :param _SkipNodesWithLocalStorage: Do not scale in a node if it contains local storage Pods. Default: `true`.
+Note: u200dThis field may return `null`, indicating that no valid values can be obtained.
         :type SkipNodesWithLocalStorage: bool
-        :param _SkipNodesWithSystemPods: During scale-in, ignore nodes with pods in the kube-system namespace that are not managed by DaemonSet (default value: False)
-Note: this field may return null, indicating that no valid value was found.
+        :param _SkipNodesWithSystemPods: Do not scale in a node if it contains Pods in the kube-system namespace that are not managed by DaemonSet. Default: `true`.
+Note: u200dThis field may return `null`, indicating that no valid values can be obtained.
         :type SkipNodesWithSystemPods: bool
         :param _IgnoreDaemonSetsUtilization: Whether to ignore DaemonSet pods by default when calculating resource usage (default value: False: do not ignore)
 Note: this field may return null, indicating that no valid value was found.
@@ -2585,6 +2669,8 @@ class ClusterLevelAttribute(AbstractModel):
         :type PodCount: int
         :param _ConfigMapCount: Number of ConfigMap
         :type ConfigMapCount: int
+        :param _RSCount: Number of ReplicaSets
+        :type RSCount: int
         :param _CRDCount: Number of CRDs
         :type CRDCount: int
         :param _Enable: Whether it is enabled
@@ -2598,6 +2684,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._NodeCount = None
         self._PodCount = None
         self._ConfigMapCount = None
+        self._RSCount = None
         self._CRDCount = None
         self._Enable = None
         self._OtherCount = None
@@ -2643,6 +2730,14 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._ConfigMapCount = ConfigMapCount
 
     @property
+    def RSCount(self):
+        return self._RSCount
+
+    @RSCount.setter
+    def RSCount(self, RSCount):
+        self._RSCount = RSCount
+
+    @property
     def CRDCount(self):
         return self._CRDCount
 
@@ -2673,6 +2768,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._NodeCount = params.get("NodeCount")
         self._PodCount = params.get("PodCount")
         self._ConfigMapCount = params.get("ConfigMapCount")
+        self._RSCount = params.get("RSCount")
         self._CRDCount = params.get("CRDCount")
         self._Enable = params.get("Enable")
         self._OtherCount = params.get("OtherCount")
@@ -2707,6 +2803,8 @@ class ClusterLevelChangeRecord(AbstractModel):
         :type NewLevel: str
         :param _TriggerType: Trigger type (valid values: `manual`, `auto`)
         :type TriggerType: str
+        :param _CreatedAt: Creation time
+        :type CreatedAt: str
         :param _StartedAt: Start time
         :type StartedAt: str
         :param _EndedAt: End time
@@ -2719,6 +2817,7 @@ class ClusterLevelChangeRecord(AbstractModel):
         self._OldLevel = None
         self._NewLevel = None
         self._TriggerType = None
+        self._CreatedAt = None
         self._StartedAt = None
         self._EndedAt = None
 
@@ -2779,6 +2878,14 @@ class ClusterLevelChangeRecord(AbstractModel):
         self._TriggerType = TriggerType
 
     @property
+    def CreatedAt(self):
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
     def StartedAt(self):
         return self._StartedAt
 
@@ -2803,6 +2910,7 @@ class ClusterLevelChangeRecord(AbstractModel):
         self._OldLevel = params.get("OldLevel")
         self._NewLevel = params.get("NewLevel")
         self._TriggerType = params.get("TriggerType")
+        self._CreatedAt = params.get("CreatedAt")
         self._StartedAt = params.get("StartedAt")
         self._EndedAt = params.get("EndedAt")
         memeber_set = set(params.keys())
@@ -3382,12 +3490,12 @@ class CreateClusterEndpointRequest(AbstractModel):
         :type Domain: str
         :param _SecurityGroup: The security group in use, which must be passed in when public access is enabled.
         :type SecurityGroup: str
-        :param _ExtensiveParameters: Parameters used to create a CLB in JSON format. It’s only required for public network access. Example: `{"InternetAccessible":{"InternetChargeType":"TRAFFIC_POSTPAID_BY_HOUR","InternetMaxBandwidthOut":"200"},"VipIsp":"","BandwidthPackageId":""}`. 
-Parameters: 
-`InternetAccessible.InternetChargeType`: `TRAFFIC_POSTPAID_BY_HOUR`, `BANDWIDTH_POSTPAID_BY_HOUR`, `InternetAccessible.BANDWIDTH_PACKAGE` (Bill by the bandwidth package) 
-`InternetMaxBandwidthOut`: Outbound bandwidth cap in Mbps. Range: 0 - 2048. It defaults to 10. 
-`VipIsp`: The VIP provider. Values: `CMCC` (China Mobile), `CTCC` (China Telecom), `CUCC` (China Unicom). If this parameter is not specified, BGP will be used by default. ISPs supported in a region can be queried with the `DescribeSingleIsp` API. If an ISP is specified, only bill-by-bandwidth-package (BANDWIDTH_PACKAGE) can be used as the network billing mode. 
-`BandwidthPackageId`: Bandwidth package ID. If this parameter is specified, the network billing mode (`InternetAccessible.InternetChargeType`) will only support bill-by-bandwidth package (`BANDWIDTH_PACKAGE`).
+        :param _ExtensiveParameters: LB parameters in a JSON string. It is only required for public network access: {"InternetAccessible":{"InternetChargeType":"TRAFFIC_POSTPAID_BY_HOUR","InternetMaxBandwidthOut":200},"VipIsp":"","BandwidthPackageId":""}.
+Description of parameters:
+`InternetAccessible.InternetChargeType`: `TRAFFIC_POSTPAID_BY_HOUR` (Pay-as-you-go by traffic on an hourly basis); `BANDWIDTH_POSTPAID_BY_HOUR` (Pay-as-you-go by bandwidth on an hourly basis); `InternetAccessible.BANDWIDTH_PACKAGE` (Bill-by-bandwidth package).
+`InternetMaxBandwidthOut`: Outbound bandwidth cap in Mbps. Value range: 0 - 2048. Default value: 10.
+`VipIsp`: `CMCC` (China Mobile), `CTCC`·(China Telecom) and `CUCC` (China Unicom). If it is not specified, BGP line is used by default. To query ISPs available in a region, call `DescribeSingleIsp`. If this parameter is specified, the network billing mode must be `BANDWIDTH_PACKAGE`.
+`BandwidthPackageId`: Bandwidth package ID. If this parameter is specified, only `BANDWIDTH_PACKAGE` is supported for `InternetAccessible.InternetChargeType`.
         :type ExtensiveParameters: str
         """
         self._ClusterId = None
@@ -5067,6 +5175,8 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         :type EdgeVersion: str
         :param _RegistryPrefix: Prefix of the image registry of an edge component
         :type RegistryPrefix: str
+        :param _TagSpecification: u200dTags bound with the cluster
+        :type TagSpecification: :class:`tencentcloud.tke.v20180525.models.TagSpecification`
         """
         self._K8SVersion = None
         self._VpcId = None
@@ -5082,6 +5192,7 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         self._ChargeType = None
         self._EdgeVersion = None
         self._RegistryPrefix = None
+        self._TagSpecification = None
 
     @property
     def K8SVersion(self):
@@ -5195,6 +5306,14 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
     def RegistryPrefix(self, RegistryPrefix):
         self._RegistryPrefix = RegistryPrefix
 
+    @property
+    def TagSpecification(self):
+        return self._TagSpecification
+
+    @TagSpecification.setter
+    def TagSpecification(self, TagSpecification):
+        self._TagSpecification = TagSpecification
+
 
     def _deserialize(self, params):
         self._K8SVersion = params.get("K8SVersion")
@@ -5215,6 +5334,9 @@ class CreateTKEEdgeClusterRequest(AbstractModel):
         self._ChargeType = params.get("ChargeType")
         self._EdgeVersion = params.get("EdgeVersion")
         self._RegistryPrefix = params.get("RegistryPrefix")
+        if params.get("TagSpecification") is not None:
+            self._TagSpecification = TagSpecification()
+            self._TagSpecification._deserialize(params.get("TagSpecification"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5315,19 +5437,19 @@ Note: This field may return null, indicating that no valid value was found.
         :param _AutoFormatAndMount: Whether the disk is auto-formatted and mounted
 Note: this field may return `null`, indicating that no valid value is obtained.
         :type AutoFormatAndMount: bool
-        :param _MountTarget: Mounting directory
-Note: This field may return null, indicating that no valid value was found.
-        :type MountTarget: str
         :param _DiskPartition: Mounted device name or partition name (only required when adding an existing node)
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type DiskPartition: str
+        :param _MountTarget: Mounting directory
+Note: This field may return null, indicating that no valid value was found.
+        :type MountTarget: str
         """
         self._DiskType = None
         self._FileSystem = None
         self._DiskSize = None
         self._AutoFormatAndMount = None
-        self._MountTarget = None
         self._DiskPartition = None
+        self._MountTarget = None
 
     @property
     def DiskType(self):
@@ -5362,14 +5484,6 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._AutoFormatAndMount = AutoFormatAndMount
 
     @property
-    def MountTarget(self):
-        return self._MountTarget
-
-    @MountTarget.setter
-    def MountTarget(self, MountTarget):
-        self._MountTarget = MountTarget
-
-    @property
     def DiskPartition(self):
         return self._DiskPartition
 
@@ -5377,14 +5491,22 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     def DiskPartition(self, DiskPartition):
         self._DiskPartition = DiskPartition
 
+    @property
+    def MountTarget(self):
+        return self._MountTarget
+
+    @MountTarget.setter
+    def MountTarget(self, MountTarget):
+        self._MountTarget = MountTarget
+
 
     def _deserialize(self, params):
         self._DiskType = params.get("DiskType")
         self._FileSystem = params.get("FileSystem")
         self._DiskSize = params.get("DiskSize")
         self._AutoFormatAndMount = params.get("AutoFormatAndMount")
-        self._MountTarget = params.get("MountTarget")
         self._DiskPartition = params.get("DiskPartition")
+        self._MountTarget = params.get("MountTarget")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5393,6 +5515,76 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteAddonRequest(AbstractModel):
+    """DeleteAddon request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _AddonName: Add-on name
+        :type AddonName: str
+        """
+        self._ClusterId = None
+        self._AddonName = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AddonName(self):
+        return self._AddonName
+
+    @AddonName.setter
+    def AddonName(self, AddonName):
+        self._AddonName = AddonName
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._AddonName = params.get("AddonName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAddonResponse(AbstractModel):
+    """DeleteAddon response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteBackupStorageLocationRequest(AbstractModel):
@@ -6601,6 +6793,187 @@ class DeleteTKEEdgeClusterResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAddonRequest(AbstractModel):
+    """DescribeAddon request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _AddonName: Add-on name (all add-ons in the cluster are returned if this parameter is not specified)
+        :type AddonName: str
+        """
+        self._ClusterId = None
+        self._AddonName = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AddonName(self):
+        return self._AddonName
+
+    @AddonName.setter
+    def AddonName(self, AddonName):
+        self._AddonName = AddonName
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._AddonName = params.get("AddonName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAddonResponse(AbstractModel):
+    """DescribeAddon response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Addons: List of add-ons
+        :type Addons: list of Addon
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Addons = None
+        self._RequestId = None
+
+    @property
+    def Addons(self):
+        return self._Addons
+
+    @Addons.setter
+    def Addons(self, Addons):
+        self._Addons = Addons
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Addons") is not None:
+            self._Addons = []
+            for item in params.get("Addons"):
+                obj = Addon()
+                obj._deserialize(item)
+                self._Addons.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAddonValuesRequest(AbstractModel):
+    """DescribeAddonValues request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _AddonName: Add-on name
+        :type AddonName: str
+        """
+        self._ClusterId = None
+        self._AddonName = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AddonName(self):
+        return self._AddonName
+
+    @AddonName.setter
+    def AddonName(self, AddonName):
+        self._AddonName = AddonName
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._AddonName = params.get("AddonName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAddonValuesResponse(AbstractModel):
+    """DescribeAddonValues response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Values: Parameters in a JSON string. If the add-on has been installed, the configured parameters are used for rendering.
+        :type Values: str
+        :param _DefaultValues: List of parameters supported by the add-on in a JSON string. The default values are used.
+        :type DefaultValues: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Values = None
+        self._DefaultValues = None
+        self._RequestId = None
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def DefaultValues(self):
+        return self._DefaultValues
+
+    @DefaultValues.setter
+    def DefaultValues(self, DefaultValues):
+        self._DefaultValues = DefaultValues
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Values = params.get("Values")
+        self._DefaultValues = params.get("DefaultValues")
         self._RequestId = params.get("RequestId")
 
 
@@ -9845,6 +10218,88 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEncryptionStatusRequest(AbstractModel):
+    """DescribeEncryptionStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEncryptionStatusResponse(AbstractModel):
+    """DescribeEncryptionStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Encryption status
+        :type Status: str
+        :param _ErrorMsg: Encryption error message
+        :type ErrorMsg: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeExistedInstancesRequest(AbstractModel):
     """DescribeExistedInstances request structure.
 
@@ -10348,6 +10803,8 @@ class DescribeResourceUsageResponse(AbstractModel):
         :type CRDUsage: :class:`tencentcloud.tke.v20180525.models.ResourceUsage`
         :param _PodUsage: Pod usage
         :type PodUsage: int
+        :param _RSUsage: ReplicaSet usage
+        :type RSUsage: int
         :param _ConfigMapUsage: ConfigMap usage
         :type ConfigMapUsage: int
         :param _OtherUsage: Other resource usage
@@ -10357,6 +10814,7 @@ class DescribeResourceUsageResponse(AbstractModel):
         """
         self._CRDUsage = None
         self._PodUsage = None
+        self._RSUsage = None
         self._ConfigMapUsage = None
         self._OtherUsage = None
         self._RequestId = None
@@ -10376,6 +10834,14 @@ class DescribeResourceUsageResponse(AbstractModel):
     @PodUsage.setter
     def PodUsage(self, PodUsage):
         self._PodUsage = PodUsage
+
+    @property
+    def RSUsage(self):
+        return self._RSUsage
+
+    @RSUsage.setter
+    def RSUsage(self, RSUsage):
+        self._RSUsage = RSUsage
 
     @property
     def ConfigMapUsage(self):
@@ -10407,6 +10873,7 @@ class DescribeResourceUsageResponse(AbstractModel):
             self._CRDUsage = ResourceUsage()
             self._CRDUsage._deserialize(params.get("CRDUsage"))
         self._PodUsage = params.get("PodUsage")
+        self._RSUsage = params.get("RSUsage")
         self._ConfigMapUsage = params.get("ConfigMapUsage")
         if params.get("OtherUsage") is not None:
             self._OtherUsage = ResourceUsage()
@@ -10571,6 +11038,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :type Health: str
         :param _GridDaemon: Whether to deploy GridDaemon to support headless service
         :type GridDaemon: str
+        :param _UnitCluster: Access kins clusters over the public network
+        :type UnitCluster: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -10582,6 +11051,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._HealthRegion = None
         self._Health = None
         self._GridDaemon = None
+        self._UnitCluster = None
         self._RequestId = None
 
     @property
@@ -10649,6 +11119,14 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._GridDaemon = GridDaemon
 
     @property
+    def UnitCluster(self):
+        return self._UnitCluster
+
+    @UnitCluster.setter
+    def UnitCluster(self, UnitCluster):
+        self._UnitCluster = UnitCluster
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -10677,6 +11155,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._HealthRegion = params.get("HealthRegion")
         self._Health = params.get("Health")
         self._GridDaemon = params.get("GridDaemon")
+        self._UnitCluster = params.get("UnitCluster")
         self._RequestId = params.get("RequestId")
 
 
@@ -10781,7 +11260,7 @@ all clusters under the account are obtained)
         :type Offset: int
         :param _Limit: Maximum number of output entries. Default value: `20`
         :type Limit: int
-        :param _Filters: Filter condition (only filtering by a single ClusterName is supported)
+        :param _Filters: Filter conditions. Values: `ClusterName` and tags in the format of ["key1:value1","key2:value2"].
         :type Filters: list of Filter
         """
         self._ClusterIds = None
@@ -11354,6 +11833,64 @@ class DisableClusterDeletionProtectionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DisableEncryptionProtectionRequest(AbstractModel):
+    """DisableEncryptionProtection request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableEncryptionProtectionResponse(AbstractModel):
+    """DisableEncryptionProtection response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DrainClusterVirtualNodeRequest(AbstractModel):
     """DrainClusterVirtualNode request structure.
 
@@ -11877,7 +12414,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param _EdgeVersion: Edge cluster component version 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EdgeVersion: str
-        :param _TagSpecification: 
+        :param _TagSpecification: u200dTags bound with the cluster
+Note: u200dThis field may return `null`, indicating that no valid values can be obtained.
         :type TagSpecification: :class:`tencentcloud.tke.v20180525.models.TagSpecification`
         """
         self._ClusterId = None
@@ -12318,6 +12856,78 @@ class EnableClusterDeletionProtectionRequest(AbstractModel):
 
 class EnableClusterDeletionProtectionResponse(AbstractModel):
     """EnableClusterDeletionProtection response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class EnableEncryptionProtectionRequest(AbstractModel):
+    """EnableEncryptionProtection request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _KMSConfiguration: KMS encryption configuration
+        :type KMSConfiguration: :class:`tencentcloud.tke.v20180525.models.KMSConfiguration`
+        """
+        self._ClusterId = None
+        self._KMSConfiguration = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def KMSConfiguration(self):
+        return self._KMSConfiguration
+
+    @KMSConfiguration.setter
+    def KMSConfiguration(self, KMSConfiguration):
+        self._KMSConfiguration = KMSConfiguration
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("KMSConfiguration") is not None:
+            self._KMSConfiguration = KMSConfiguration()
+            self._KMSConfiguration._deserialize(params.get("KMSConfiguration"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableEncryptionProtectionResponse(AbstractModel):
+    """EnableEncryptionProtection response structure.
 
     """
 
@@ -13612,6 +14222,100 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class InstallAddonRequest(AbstractModel):
+    """InstallAddon request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _AddonName: Add-on name
+        :type AddonName: str
+        :param _AddonVersion: Add-on version. If it is not specified, the latest version is installed by default.
+        :type AddonVersion: str
+        :param _RawValues: Add-on parameters in a base64-encoded JSON string. You can query add-on parameters via `DescribeAddonValues`.
+        :type RawValues: str
+        """
+        self._ClusterId = None
+        self._AddonName = None
+        self._AddonVersion = None
+        self._RawValues = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AddonName(self):
+        return self._AddonName
+
+    @AddonName.setter
+    def AddonName(self, AddonName):
+        self._AddonName = AddonName
+
+    @property
+    def AddonVersion(self):
+        return self._AddonVersion
+
+    @AddonVersion.setter
+    def AddonVersion(self, AddonVersion):
+        self._AddonVersion = AddonVersion
+
+    @property
+    def RawValues(self):
+        return self._RawValues
+
+    @RawValues.setter
+    def RawValues(self, RawValues):
+        self._RawValues = RawValues
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._AddonName = params.get("AddonName")
+        self._AddonVersion = params.get("AddonVersion")
+        self._RawValues = params.get("RawValues")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstallAddonResponse(AbstractModel):
+    """InstallAddon response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class InstallEdgeLogAgentRequest(AbstractModel):
     """InstallEdgeLogAgent request structure.
 
@@ -14396,6 +15100,51 @@ Note: this field may return `null`, indicating that no valid value is obtained.
                 obj = TaskStepInfo()
                 obj._deserialize(item)
                 self._Detail.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KMSConfiguration(AbstractModel):
+    """KMS encryption parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyId: KMS ID
+        :type KeyId: str
+        :param _KmsRegion: KMS region
+        :type KmsRegion: str
+        """
+        self._KeyId = None
+        self._KmsRegion = None
+
+    @property
+    def KeyId(self):
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def KmsRegion(self):
+        return self._KmsRegion
+
+    @KmsRegion.setter
+    def KmsRegion(self, KmsRegion):
+        self._KmsRegion = KmsRegion
+
+
+    def _deserialize(self, params):
+        self._KeyId = params.get("KeyId")
+        self._KmsRegion = params.get("KmsRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15398,6 +16147,8 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
         :type NodePoolId: str
         :param _Name: Node pool name
         :type Name: str
+        :param _SecurityGroupIds: List of security group IDs
+        :type SecurityGroupIds: list of str
         :param _Labels: Virtual node labels
         :type Labels: list of Label
         :param _Taints: Virtual node taint
@@ -15408,6 +16159,7 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
         self._ClusterId = None
         self._NodePoolId = None
         self._Name = None
+        self._SecurityGroupIds = None
         self._Labels = None
         self._Taints = None
         self._DeletionProtection = None
@@ -15435,6 +16187,14 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
     @Name.setter
     def Name(self, Name):
         self._Name = Name
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
 
     @property
     def Labels(self):
@@ -15465,6 +16225,7 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
         self._ClusterId = params.get("ClusterId")
         self._NodePoolId = params.get("NodePoolId")
         self._Name = params.get("Name")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         if params.get("Labels") is not None:
             self._Labels = []
             for item in params.get("Labels"):
@@ -17975,6 +18736,100 @@ class UninstallEdgeLogAgentRequest(AbstractModel):
 
 class UninstallEdgeLogAgentResponse(AbstractModel):
     """UninstallEdgeLogAgent response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateAddonRequest(AbstractModel):
+    """UpdateAddon request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster ID
+        :type ClusterId: str
+        :param _AddonName: Add-on name
+        :type AddonName: str
+        :param _AddonVersion: Add-on version. The add-on version is not updated if this parameter is not specified.
+        :type AddonVersion: str
+        :param _RawValues: Add-on parameters in a base64-encoded JSON string. You can query add-on parameters via `DescribeAddonValues`.
+        :type RawValues: str
+        """
+        self._ClusterId = None
+        self._AddonName = None
+        self._AddonVersion = None
+        self._RawValues = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AddonName(self):
+        return self._AddonName
+
+    @AddonName.setter
+    def AddonName(self, AddonName):
+        self._AddonName = AddonName
+
+    @property
+    def AddonVersion(self):
+        return self._AddonVersion
+
+    @AddonVersion.setter
+    def AddonVersion(self, AddonVersion):
+        self._AddonVersion = AddonVersion
+
+    @property
+    def RawValues(self):
+        return self._RawValues
+
+    @RawValues.setter
+    def RawValues(self, RawValues):
+        self._RawValues = RawValues
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._AddonName = params.get("AddonName")
+        self._AddonVersion = params.get("AddonVersion")
+        self._RawValues = params.get("RawValues")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAddonResponse(AbstractModel):
+    """UpdateAddon response structure.
 
     """
 

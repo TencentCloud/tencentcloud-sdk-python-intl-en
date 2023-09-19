@@ -475,18 +475,22 @@ class CreateSecretRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: Secret name, which must be unique within a region. The name can be up to 128 bytes, contain letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit.
+        :param _SecretName: Secret name, which must be unique in the same region. It can contain 128 bytes ([a-z], [A-Z], [0-9], [-_]). It must begin with a letter or digit. Note that it cannot be modified once created. 
         :type SecretName: str
-        :param _VersionId: Secret version. It can be up to 64 bytes, contain letters, digits, hyphens (-), and underscores (_), and must begin with a letter or digit. `SecretName` and `VersionId` are used to query the Secret information.
+        :param _VersionId: Secret version. It can contain up to 64 bytes ([a-z], [A-Z], [0-9], [-_.]). It must begin with a letter or digit. `SecretName` and `VersionId` are used to query the Secret information. If it is left empty, the initial Secret version number is used by default.
         :type VersionId: str
         :param _Description: Description information, such as the detailed use cases. It can be up to 2048 bytes.
         :type Description: str
         :param _KmsKeyId: KMS CMK used for Secret encryption. If this parameter is left empty, SecretsManager will create a CMK by default. You can also specify a KMS CMK that is created in the same region.
         :type KmsKeyId: str
+        :param _SecretType: Secret type. It defaults to `custom`.
+        :type SecretType: int
         :param _SecretBinary: Base64-encoded plaintext of a binary Secret. Either `SecretBinary` or `SecretString` must be set. A maximum of 4096 bytes is supported.
         :type SecretBinary: str
         :param _SecretString: Plaintext of a Secret, in text format. Base64 encoding is not required. Either `SecretBinary` or `SecretString` must be set. A maximum of 4096 bytes is supported.
         :type SecretString: str
+        :param _AdditionalConfig: Additional configuration of the Secret in JSON format
+        :type AdditionalConfig: str
         :param _Tags: List of tags.
         :type Tags: list of Tag
         """
@@ -494,8 +498,10 @@ class CreateSecretRequest(AbstractModel):
         self._VersionId = None
         self._Description = None
         self._KmsKeyId = None
+        self._SecretType = None
         self._SecretBinary = None
         self._SecretString = None
+        self._AdditionalConfig = None
         self._Tags = None
 
     @property
@@ -531,6 +537,14 @@ class CreateSecretRequest(AbstractModel):
         self._KmsKeyId = KmsKeyId
 
     @property
+    def SecretType(self):
+        return self._SecretType
+
+    @SecretType.setter
+    def SecretType(self, SecretType):
+        self._SecretType = SecretType
+
+    @property
     def SecretBinary(self):
         return self._SecretBinary
 
@@ -547,6 +561,14 @@ class CreateSecretRequest(AbstractModel):
         self._SecretString = SecretString
 
     @property
+    def AdditionalConfig(self):
+        return self._AdditionalConfig
+
+    @AdditionalConfig.setter
+    def AdditionalConfig(self, AdditionalConfig):
+        self._AdditionalConfig = AdditionalConfig
+
+    @property
     def Tags(self):
         return self._Tags
 
@@ -560,8 +582,10 @@ class CreateSecretRequest(AbstractModel):
         self._VersionId = params.get("VersionId")
         self._Description = params.get("Description")
         self._KmsKeyId = params.get("KmsKeyId")
+        self._SecretType = params.get("SecretType")
         self._SecretBinary = params.get("SecretBinary")
         self._SecretString = params.get("SecretString")
+        self._AdditionalConfig = params.get("AdditionalConfig")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -1210,6 +1234,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _TargetUin: UIN of the Tencent Cloud API key. This field is valid when the secret type is Tencent Cloud API key secret.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TargetUin: int
+        :param _AdditionalConfig: Additional configuration of the Secret
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AdditionalConfig: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -1229,6 +1256,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._ProjectID = None
         self._AssociatedInstanceIDs = None
         self._TargetUin = None
+        self._AdditionalConfig = None
         self._RequestId = None
 
     @property
@@ -1360,6 +1388,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._TargetUin = TargetUin
 
     @property
+    def AdditionalConfig(self):
+        return self._AdditionalConfig
+
+    @AdditionalConfig.setter
+    def AdditionalConfig(self, AdditionalConfig):
+        self._AdditionalConfig = AdditionalConfig
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -1385,6 +1421,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._ProjectID = params.get("ProjectID")
         self._AssociatedInstanceIDs = params.get("AssociatedInstanceIDs")
         self._TargetUin = params.get("TargetUin")
+        self._AdditionalConfig = params.get("AdditionalConfig")
         self._RequestId = params.get("RequestId")
 
 
@@ -2652,6 +2689,15 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param _TargetUin: UIN of the Tencent Cloud API key. This field is valid when the secret type is Tencent Cloud API key secret.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type TargetUin: int
+        :param _RotationFrequency: Rotation frequency in days. It takes effect when the rotation feature is enabled. 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RotationFrequency: int
+        :param _ResourceID: ID of Tencent Cloud resource corresponding with the Secret. 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ResourceID: str
+        :param _RotationBeginTime: The rotation start time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RotationBeginTime: str
         """
         self._SecretName = None
         self._Description = None
@@ -2669,6 +2715,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._ProjectID = None
         self._AssociatedInstanceIDs = None
         self._TargetUin = None
+        self._RotationFrequency = None
+        self._ResourceID = None
+        self._RotationBeginTime = None
 
     @property
     def SecretName(self):
@@ -2798,6 +2847,30 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     def TargetUin(self, TargetUin):
         self._TargetUin = TargetUin
 
+    @property
+    def RotationFrequency(self):
+        return self._RotationFrequency
+
+    @RotationFrequency.setter
+    def RotationFrequency(self, RotationFrequency):
+        self._RotationFrequency = RotationFrequency
+
+    @property
+    def ResourceID(self):
+        return self._ResourceID
+
+    @ResourceID.setter
+    def ResourceID(self, ResourceID):
+        self._ResourceID = ResourceID
+
+    @property
+    def RotationBeginTime(self):
+        return self._RotationBeginTime
+
+    @RotationBeginTime.setter
+    def RotationBeginTime(self, RotationBeginTime):
+        self._RotationBeginTime = RotationBeginTime
+
 
     def _deserialize(self, params):
         self._SecretName = params.get("SecretName")
@@ -2816,6 +2889,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._ProjectID = params.get("ProjectID")
         self._AssociatedInstanceIDs = params.get("AssociatedInstanceIDs")
         self._TargetUin = params.get("TargetUin")
+        self._RotationFrequency = params.get("RotationFrequency")
+        self._ResourceID = params.get("ResourceID")
+        self._RotationBeginTime = params.get("RotationBeginTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

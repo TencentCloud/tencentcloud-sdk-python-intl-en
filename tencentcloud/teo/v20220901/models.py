@@ -221,24 +221,25 @@ class AclCondition(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MatchFrom: The field to match. Values:
-<li>`host`: Request domain name</li>
-<li>`sip`: Client IP</li>
-<li>`ua`: User-Agent</li>
-<li>`cookie`: Cookie</li>
-<li>`cgi`: CGI script</li>
-<li>`xff`: XFF header</li>
-<li>`url`: Request URL</li>
-<li>`accept`: Request content type</li>
-<li>`method`: Request method</li>
-<li>`header`: Request header</li>
-<li>`app_proto`: Application layer protocol</li>
-<li>`sip_proto`: Network layer protocol</li>
-<li>`uabot`: UA rules (only available in custom bot rules)</li>
-<li>`idcid`: IDC rules (only available in custom bot rules)</li>
-<li>`sipbot`: Search engine rules (only available in custom bot rules)</li>
-<li>`portrait`: Client reputation (only available in custom bot rules)</li>
-<li>`header_seq`: Header sequence (only available in custom bot rules)</li>
+        :param _MatchFrom: Filters: 
+<li>`host`: Request domain name;</li>
+<li>`sip`: Client IP;</li>
+<li>`ua`: User-Agent;</li>
+<li>`cookie`: Cookie;</li>
+<li>`cgi`: CGI script;</li>
+<li>`xff`: XFF header;</li></li>
+<li>`url`: Request URL;<li></li>
+<li>`accept`: Request content type;</li>
+<li>`method`: Request method<;/li>
+<li>`header`: Request header;</li>
+<li>`app_proto`: Application layer protocol;</li>
+<li>`sip_proto`: Network layer protocol;</li>
+<li>`uabot`: UA rules (only available in custom bot rules);</li>
+<li>`idcid`: IDC rules (only available in custom bot rules);</li>
+<li>`sipbot`: Search engine rules (only available in custom bot rules);</li>
+<li>`portrait`: Client reputation (only available in custom bot rules);</li>
+<li>`header_seq`: Header sequence (only available in custom bot rules);</li>
+<li>`hdr`: Request body (only available in custom Web protection rules). </li>
         :type MatchFrom: str
         :param _MatchParam: The parameter of the field. When `MatchFrom = header`, the key contained in the header can be passed.
         :type MatchParam: str
@@ -1605,6 +1606,9 @@ Note: u200dThis field may return null, indicating that no valid values can be ob
 <li>A single port, such as 80</li>
 <li>A port range, such as 81-82</li>
         :type OriginPort: str
+        :param _RuleTag: Rule tag.
+Note: u200dThis field may returnu200d·`nullu200d`, indicating that no valid values can be obtained.
+        :type RuleTag: str
         """
         self._Proto = None
         self._Port = None
@@ -1616,6 +1620,7 @@ Note: u200dThis field may return null, indicating that no valid values can be ob
         self._SessionPersist = None
         self._SessionPersistTime = None
         self._OriginPort = None
+        self._RuleTag = None
 
     @property
     def Proto(self):
@@ -1697,6 +1702,14 @@ Note: u200dThis field may return null, indicating that no valid values can be ob
     def OriginPort(self, OriginPort):
         self._OriginPort = OriginPort
 
+    @property
+    def RuleTag(self):
+        return self._RuleTag
+
+    @RuleTag.setter
+    def RuleTag(self, RuleTag):
+        self._RuleTag = RuleTag
+
 
     def _deserialize(self, params):
         self._Proto = params.get("Proto")
@@ -1709,6 +1722,7 @@ Note: u200dThis field may return null, indicating that no valid values can be ob
         self._SessionPersist = params.get("SessionPersist")
         self._SessionPersistTime = params.get("SessionPersistTime")
         self._OriginPort = params.get("OriginPort")
+        self._RuleTag = params.get("RuleTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2713,9 +2727,9 @@ class CheckCnameStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: ID of the site.
+        :param _ZoneId: Site ID.
         :type ZoneId: str
-        :param _RecordNames: List of domain names.
+        :param _RecordNames: List of accelerated domain names.
         :type RecordNames: list of str
         """
         self._ZoneId = None
@@ -2758,7 +2772,7 @@ class CheckCnameStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CnameStatus: List of CNAME statuses.
+        :param _CnameStatus: CNAME status of accelerated domain names.
         :type CnameStatus: list of CnameStatus
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -3485,6 +3499,8 @@ class CreateApplicationProxyRuleRequest(AbstractModel):
 <li>A single port, such as 80</li>
 <li>A port range, such as 81-82</li>
         :type OriginPort: str
+        :param _RuleTag: Rule tag. This parameter is left empty by default.
+        :type RuleTag: str
         """
         self._ZoneId = None
         self._ProxyId = None
@@ -3496,6 +3512,7 @@ class CreateApplicationProxyRuleRequest(AbstractModel):
         self._SessionPersist = None
         self._SessionPersistTime = None
         self._OriginPort = None
+        self._RuleTag = None
 
     @property
     def ZoneId(self):
@@ -3577,6 +3594,14 @@ class CreateApplicationProxyRuleRequest(AbstractModel):
     def OriginPort(self, OriginPort):
         self._OriginPort = OriginPort
 
+    @property
+    def RuleTag(self):
+        return self._RuleTag
+
+    @RuleTag.setter
+    def RuleTag(self, RuleTag):
+        self._RuleTag = RuleTag
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -3589,6 +3614,7 @@ class CreateApplicationProxyRuleRequest(AbstractModel):
         self._SessionPersist = params.get("SessionPersist")
         self._SessionPersistTime = params.get("SessionPersistTime")
         self._OriginPort = params.get("OriginPort")
+        self._RuleTag = params.get("RuleTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5813,7 +5839,7 @@ class DescribeApplicationProxiesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: The paginated query limit. Default value: 20. Maximum value: 1000.
         :type Limit: int
-        :param _Filters: Filter criteria. Each filter criteria can have up to 20 entries. <li>`proxy-id`:<br>   Filter by <strong>proxy ID</strong>, such as proxy-ev2sawbwfd<br>   Type: String<br>   Required: No</li><li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-vawer2vadg<br>   Type: String<br>   Required: No</li>
+        :param _Filters: Filters. Each filter can have up to 20 entries. Details: <li>proxy-id<br>   Filter by the <strong>Proxy ID</strong>u200d, such as: `proxy-ev2sawbwfd`. <br>   Type: String<br>   Required: No</li><li>zone-id<br>   Filter by the <strong>Site ID</strong>, such as `zone-vawer2vadg`. <br>   Type: String<br>   Required: No</li><li>rule-tag<br>   Filter by the <strong>Rule tag</strong>, such as `rule-service-1`. <br>   Type: String<br>   Required: No</li>
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -9543,9 +9569,9 @@ class DownloadL4LogsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: The end time.
         :type EndTime: str
-        :param _ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
+        :param _ZoneIds: List of sites. This parameter is required. A `null` will be returned if it is left empty.
         :type ZoneIds: list of str
-        :param _ProxyIds: List of L4 proxy IDs.
+        :param _ProxyIds: List of L4 proxy instance IDs.
         :type ProxyIds: list of str
         :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 1000.
         :type Limit: int
@@ -9632,25 +9658,16 @@ class DownloadL4LogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: The list of L4 log data.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Data: list of L4OfflineLog
         :param _TotalCount: Total number of query results.
         :type TotalCount: int
+        :param _Data: List of L4 logs.
+        :type Data: list of L4OfflineLog
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self._Data = None
         self._TotalCount = None
+        self._Data = None
         self._RequestId = None
-
-    @property
-    def Data(self):
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
 
     @property
     def TotalCount(self):
@@ -9659,6 +9676,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @TotalCount.setter
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -9670,13 +9695,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
         if params.get("Data") is not None:
             self._Data = []
             for item in params.get("Data"):
                 obj = L4OfflineLog()
                 obj._deserialize(item)
                 self._Data.append(obj)
-        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -9691,7 +9716,7 @@ class DownloadL7LogsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: The end time.
         :type EndTime: str
-        :param _ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
+        :param _ZoneIds: List of sites. This parameter is required. A `null` will be returned if it is left empty.
         :type ZoneIds: list of str
         :param _Domains: List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.
         :type Domains: list of str
@@ -9780,25 +9805,16 @@ class DownloadL7LogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: The list of L7 log data.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type Data: list of L7OfflineLog
         :param _TotalCount: Total number of query results.
         :type TotalCount: int
+        :param _Data: List of L7 logs.
+        :type Data: list of L7OfflineLog
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
-        self._Data = None
         self._TotalCount = None
+        self._Data = None
         self._RequestId = None
-
-    @property
-    def Data(self):
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
 
     @property
     def TotalCount(self):
@@ -9807,6 +9823,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @TotalCount.setter
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -9818,13 +9842,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
         if params.get("Data") is not None:
             self._Data = []
             for item in params.get("Data"):
                 obj = L7OfflineLog()
                 obj._deserialize(item)
                 self._Data.append(obj)
-        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -11607,36 +11631,33 @@ class L4OfflineLog(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogTime: The start time of the log packaging.
-        :type LogTime: int
-        :param _ProxyId: The L4 proxy ID.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ProxyId: L4 proxy instance ID.
         :type ProxyId: str
-        :param _Size: The log size, in bytes.
-        :type Size: int
-        :param _Url: The download address.
-        :type Url: str
-        :param _LogPacketName: The log package name.
-        :type LogPacketName: str
-        :param _Area: The acceleration region. Values:
+        :param _Area: Log query area. Valid values:
 <li>`mainland`: Chinese mainland;</li>
-<li>`overseas`: Global (outside the Chinese mainland);</li>
+<li>`overseas`: Global (outside the Chinese mainland). </li>
         :type Area: str
+        :param _LogPacketName: Log packet name.
+        :type LogPacketName: str
+        :param _Url: Log download address.
+        :type Url: str
+        :param _LogTime: (Disused) Log packaging time. 
+        :type LogTime: int
+        :param _LogStartTime: Start time of log packaging.
+        :type LogStartTime: str
+        :param _LogEndTime: End time of the log package.
+        :type LogEndTime: str
+        :param _Size: Log size (in bytes).
+        :type Size: int
         """
-        self._LogTime = None
         self._ProxyId = None
-        self._Size = None
-        self._Url = None
-        self._LogPacketName = None
         self._Area = None
-
-    @property
-    def LogTime(self):
-        return self._LogTime
-
-    @LogTime.setter
-    def LogTime(self, LogTime):
-        self._LogTime = LogTime
+        self._LogPacketName = None
+        self._Url = None
+        self._LogTime = None
+        self._LogStartTime = None
+        self._LogEndTime = None
+        self._Size = None
 
     @property
     def ProxyId(self):
@@ -11647,20 +11668,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ProxyId = ProxyId
 
     @property
-    def Size(self):
-        return self._Size
+    def Area(self):
+        return self._Area
 
-    @Size.setter
-    def Size(self, Size):
-        self._Size = Size
-
-    @property
-    def Url(self):
-        return self._Url
-
-    @Url.setter
-    def Url(self, Url):
-        self._Url = Url
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
 
     @property
     def LogPacketName(self):
@@ -11671,21 +11684,55 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._LogPacketName = LogPacketName
 
     @property
-    def Area(self):
-        return self._Area
+    def Url(self):
+        return self._Url
 
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def LogTime(self):
+        return self._LogTime
+
+    @LogTime.setter
+    def LogTime(self, LogTime):
+        self._LogTime = LogTime
+
+    @property
+    def LogStartTime(self):
+        return self._LogStartTime
+
+    @LogStartTime.setter
+    def LogStartTime(self, LogStartTime):
+        self._LogStartTime = LogStartTime
+
+    @property
+    def LogEndTime(self):
+        return self._LogEndTime
+
+    @LogEndTime.setter
+    def LogEndTime(self, LogEndTime):
+        self._LogEndTime = LogEndTime
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
 
 
     def _deserialize(self, params):
-        self._LogTime = params.get("LogTime")
         self._ProxyId = params.get("ProxyId")
-        self._Size = params.get("Size")
-        self._Url = params.get("Url")
-        self._LogPacketName = params.get("LogPacketName")
         self._Area = params.get("Area")
+        self._LogPacketName = params.get("LogPacketName")
+        self._Url = params.get("Url")
+        self._LogTime = params.get("LogTime")
+        self._LogStartTime = params.get("LogStartTime")
+        self._LogEndTime = params.get("LogEndTime")
+        self._Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11697,41 +11744,39 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class L7OfflineLog(AbstractModel):
-    """Layer-7 offline log details
+    """Details of L7 logs.
 
     """
 
     def __init__(self):
         r"""
-        :param _LogTime: Start time of the log packaging
-        :type LogTime: int
-        :param _Domain: The subdomain name.
+        :param _Domain: Log domain name.
         :type Domain: str
-        :param _Size: Log size, in bytes.
-        :type Size: int
-        :param _Url: Download address
-        :type Url: str
-        :param _LogPacketName: Log package name
-        :type LogPacketName: str
-        :param _Area: Acceleration region. Values:
+        :param _Area: Log query area. Valid values:
 <li>`mainland`: Chinese mainland;</li>
-<li>`overseas`: Global (outside the Chinese mainland);</li>
+<li>`overseas`: Global (outside the Chinese mainland). </li>
         :type Area: str
+        :param _LogPacketName: Log packet name.	
+        :type LogPacketName: str
+        :param _Url: Log download address.	
+        :type Url: str
+        :param _LogTime: (Disused) Log packaging time. 
+        :type LogTime: int
+        :param _LogStartTime: Start time of log packaging.
+        :type LogStartTime: str
+        :param _LogEndTime: End time of the log package.
+        :type LogEndTime: str
+        :param _Size: Original log size (in bytes).
+        :type Size: int
         """
-        self._LogTime = None
         self._Domain = None
-        self._Size = None
-        self._Url = None
-        self._LogPacketName = None
         self._Area = None
-
-    @property
-    def LogTime(self):
-        return self._LogTime
-
-    @LogTime.setter
-    def LogTime(self, LogTime):
-        self._LogTime = LogTime
+        self._LogPacketName = None
+        self._Url = None
+        self._LogTime = None
+        self._LogStartTime = None
+        self._LogEndTime = None
+        self._Size = None
 
     @property
     def Domain(self):
@@ -11742,20 +11787,12 @@ class L7OfflineLog(AbstractModel):
         self._Domain = Domain
 
     @property
-    def Size(self):
-        return self._Size
+    def Area(self):
+        return self._Area
 
-    @Size.setter
-    def Size(self, Size):
-        self._Size = Size
-
-    @property
-    def Url(self):
-        return self._Url
-
-    @Url.setter
-    def Url(self, Url):
-        self._Url = Url
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
 
     @property
     def LogPacketName(self):
@@ -11766,21 +11803,55 @@ class L7OfflineLog(AbstractModel):
         self._LogPacketName = LogPacketName
 
     @property
-    def Area(self):
-        return self._Area
+    def Url(self):
+        return self._Url
 
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def LogTime(self):
+        return self._LogTime
+
+    @LogTime.setter
+    def LogTime(self, LogTime):
+        self._LogTime = LogTime
+
+    @property
+    def LogStartTime(self):
+        return self._LogStartTime
+
+    @LogStartTime.setter
+    def LogStartTime(self, LogStartTime):
+        self._LogStartTime = LogStartTime
+
+    @property
+    def LogEndTime(self):
+        return self._LogEndTime
+
+    @LogEndTime.setter
+    def LogEndTime(self, LogEndTime):
+        self._LogEndTime = LogEndTime
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
 
 
     def _deserialize(self, params):
-        self._LogTime = params.get("LogTime")
         self._Domain = params.get("Domain")
-        self._Size = params.get("Size")
-        self._Url = params.get("Url")
-        self._LogPacketName = params.get("LogPacketName")
         self._Area = params.get("Area")
+        self._LogPacketName = params.get("LogPacketName")
+        self._Url = params.get("Url")
+        self._LogTime = params.get("LogTime")
+        self._LogStartTime = params.get("LogStartTime")
+        self._LogEndTime = params.get("LogEndTime")
+        self._Size = params.get("Size")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12399,6 +12470,8 @@ The original configuration will apply if this field is not specified.
 <li>A single port, such as 80</li>
 <li>A port range, such as 81-82</li>
         :type OriginPort: str
+        :param _RuleTag: Rule tag. The original configuration will apply if it is not specified.
+        :type RuleTag: str
         """
         self._ZoneId = None
         self._ProxyId = None
@@ -12411,6 +12484,7 @@ The original configuration will apply if this field is not specified.
         self._SessionPersist = None
         self._SessionPersistTime = None
         self._OriginPort = None
+        self._RuleTag = None
 
     @property
     def ZoneId(self):
@@ -12500,6 +12574,14 @@ The original configuration will apply if this field is not specified.
     def OriginPort(self, OriginPort):
         self._OriginPort = OriginPort
 
+    @property
+    def RuleTag(self):
+        return self._RuleTag
+
+    @RuleTag.setter
+    def RuleTag(self, RuleTag):
+        self._RuleTag = RuleTag
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -12513,6 +12595,7 @@ The original configuration will apply if this field is not specified.
         self._SessionPersist = params.get("SessionPersist")
         self._SessionPersistTime = params.get("SessionPersistTime")
         self._OriginPort = params.get("OriginPort")
+        self._RuleTag = params.get("RuleTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15525,10 +15608,7 @@ class RateLimitUserRule(AbstractModel):
         :type Period: int
         :param _RuleName: The rule name, which consists of only letters, digits, and underscores and cannot start with an underscore.
         :type RuleName: str
-        :param _Action: The action. Values:
-<li>`monitor`: Observe</li>
-<li>`drop`: Block</li>
-<li>`alg`: JavaScript challenge</li>
+        :param _Action: Action. Valid values: <li>`monitor`: Observe;</li>`<li>drop`: Block;</li> <li>`alg`: JavaScript challenge. </li>	
         :type Action: str
         :param _PunishTime: The amount of time taken to perform the action. Value range: 0 seconds - 2 days.
         :type PunishTime: int
@@ -15545,8 +15625,8 @@ class RateLimitUserRule(AbstractModel):
         :type AclConditions: list of AclCondition
         :param _RulePriority: The rule weight. Value range: 0-100.
         :type RulePriority: int
-        :param _RuleID: The rule ID, which is only used as an output parameter.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RuleID: Rule ID, which is only used as an output parameter.
+Note: This field may return·`null`, indicating that no valid values can be obtained.
         :type RuleID: int
         :param _FreqFields: The filter. Values:
 <li>`sip`: Client IP</li>
@@ -15555,10 +15635,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _UpdateTime: Update time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
-        :param _FreqScope: The statistical dimension. Values:
-<li>`source_to_eo`: Responses from the origin server to EdgeOne</li>
-<li>`client_to_eo`: Requests from the client to EdgeOne</li>
-Note: A null value indicates responses from the origin server to EdgeOne are recorded.
+        :param _FreqScope: Statistical dimension. `source_to_eo` is entered by default when this parameter is not specified. Valid values:
+<li>`source_to_eo`: (Response) Traffic going from the origin to EdgeOne. </li>
+<li>`client_to_eo`: (Request) Traffic going from the client to EdgeOne.</li>
+Note: This field may return·`null`, indicating that no valid values can be obtained.
         :type FreqScope: list of str
         """
         self._Threshold = None

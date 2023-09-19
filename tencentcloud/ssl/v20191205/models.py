@@ -758,6 +758,76 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class CancelAuditCertificateRequest(AbstractModel):
+    """CancelAuditCertificate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateId: The certificate ID.
+        :type CertificateId: str
+        """
+        self._CertificateId = None
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+
+    def _deserialize(self, params):
+        self._CertificateId = params.get("CertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelAuditCertificateResponse(AbstractModel):
+    """CancelAuditCertificate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Whether the operation succeeded.
+        :type Result: bool
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class CancelCertificateOrderRequest(AbstractModel):
     """CancelCertificateOrder request structure.
 
@@ -1286,6 +1356,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _AutoRenewFlag: Whether auto-renewal is enabled.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type AutoRenewFlag: int
+        :param _HostingStatus: The hosting status. Valid values: `0` (hosting), `5` (replacing resources), `10` (hosting completed), and `-1` (not hosted). 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HostingStatus: int
+        :param _HostingCompleteTime: The hosting completion time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HostingCompleteTime: str
+        :param _HostingRenewCertId: The hosted new certificate ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HostingRenewCertId: str
         """
         self._OwnerUin = None
         self._ProjectId = None
@@ -1325,6 +1404,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._CACommonNames = None
         self._PreAuditInfo = None
         self._AutoRenewFlag = None
+        self._HostingStatus = None
+        self._HostingCompleteTime = None
+        self._HostingRenewCertId = None
 
     @property
     def OwnerUin(self):
@@ -1630,6 +1712,30 @@ Note: This field may return null, indicating that no valid value can be obtained
     def AutoRenewFlag(self, AutoRenewFlag):
         self._AutoRenewFlag = AutoRenewFlag
 
+    @property
+    def HostingStatus(self):
+        return self._HostingStatus
+
+    @HostingStatus.setter
+    def HostingStatus(self, HostingStatus):
+        self._HostingStatus = HostingStatus
+
+    @property
+    def HostingCompleteTime(self):
+        return self._HostingCompleteTime
+
+    @HostingCompleteTime.setter
+    def HostingCompleteTime(self, HostingCompleteTime):
+        self._HostingCompleteTime = HostingCompleteTime
+
+    @property
+    def HostingRenewCertId(self):
+        return self._HostingRenewCertId
+
+    @HostingRenewCertId.setter
+    def HostingRenewCertId(self, HostingRenewCertId):
+        self._HostingRenewCertId = HostingRenewCertId
+
 
     def _deserialize(self, params):
         self._OwnerUin = params.get("OwnerUin")
@@ -1681,6 +1787,9 @@ Note: This field may return null, indicating that no valid value can be obtained
             self._PreAuditInfo = PreAuditInfo()
             self._PreAuditInfo._deserialize(params.get("PreAuditInfo"))
         self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._HostingStatus = params.get("HostingStatus")
+        self._HostingCompleteTime = params.get("HostingCompleteTime")
+        self._HostingRenewCertId = params.get("HostingRenewCertId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5848,6 +5957,76 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._SuccessCertificates = params.get("SuccessCertificates")
         self._FailCertificates = params.get("FailCertificates")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCertificateResubmitRequest(AbstractModel):
+    """ModifyCertificateResubmit request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateId: The certificate ID.
+        :type CertificateId: str
+        """
+        self._CertificateId = None
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+
+    def _deserialize(self, params):
+        self._CertificateId = params.get("CertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCertificateResubmitResponse(AbstractModel):
+    """ModifyCertificateResubmit response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateId: The certificate ID.
+        :type CertificateId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CertificateId = None
+        self._RequestId = None
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CertificateId = params.get("CertificateId")
         self._RequestId = params.get("RequestId")
 
 
