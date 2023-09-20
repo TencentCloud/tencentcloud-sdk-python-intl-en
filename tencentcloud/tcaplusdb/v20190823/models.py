@@ -3886,7 +3886,7 @@ class DescribeTablesRequest(AbstractModel):
         :type ClusterId: str
         :param _TableGroupIds: List of IDs of the table groups where the table to be queried resides
         :type TableGroupIds: list of str
-        :param _SelectedTables: Information list of tables to be queried
+        :param _SelectedTables: Information list of tables to be queriedu200d. If you need to filter the tables, use the`Filter` parameter.
         :type SelectedTables: list of SelectedTableInfoNew
         :param _Filters: Filter. Valid values: TableName, TableInstanceId
         :type Filters: list of Filter
@@ -4865,10 +4865,14 @@ class ImportSnapshotsResponse(AbstractModel):
         :param _TaskId: `TaskId` is in the format of `AppInstanceId-taskId`, used to identify tasks of different clusters.
 Note: `null` may be returned for this field, indicating that no valid values can be obtained.
         :type TaskId: str
+        :param _ApplicationId: `ApplicationId` is in the format of `AppInstanceId-applicationId`, which is used to identify applications of different clusters.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type ApplicationId: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TaskId = None
+        self._ApplicationId = None
         self._RequestId = None
 
     @property
@@ -4878,6 +4882,14 @@ Note: `null` may be returned for this field, indicating that no valid values can
     @TaskId.setter
     def TaskId(self, TaskId):
         self._TaskId = TaskId
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
 
     @property
     def RequestId(self):
@@ -4890,6 +4902,7 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._ApplicationId = params.get("ApplicationId")
         self._RequestId = params.get("RequestId")
 
 
