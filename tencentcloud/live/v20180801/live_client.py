@@ -2629,6 +2629,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RestartLivePullStreamTask(self, request):
+        """Restart the running live streaming pull task.
+
+        :param request: Request instance for RestartLivePullStreamTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.RestartLivePullStreamTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.RestartLivePullStreamTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestartLivePullStreamTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestartLivePullStreamTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ResumeDelayLiveStream(self, request):
         """This API is used to cancel the delay setting and recover the real-time display of the live streaming image.
 

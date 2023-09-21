@@ -16296,6 +16296,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 1: Use local mode
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VodLocalMode: int
+        :param _RecordTemplateId:  Recording template ID.
+        :type RecordTemplateId: str
+        :param _BackupToUrl: Newly added streaming address. Used for the scenario of pushing two streams with a single task.
+        :type BackupToUrl: str
         """
         self._TaskId = None
         self._SourceType = None
@@ -16324,6 +16328,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._BackupSourceUrl = None
         self._WatermarkList = None
         self._VodLocalMode = None
+        self._RecordTemplateId = None
+        self._BackupToUrl = None
 
     @property
     def TaskId(self):
@@ -16541,6 +16547,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def VodLocalMode(self, VodLocalMode):
         self._VodLocalMode = VodLocalMode
 
+    @property
+    def RecordTemplateId(self):
+        return self._RecordTemplateId
+
+    @RecordTemplateId.setter
+    def RecordTemplateId(self, RecordTemplateId):
+        self._RecordTemplateId = RecordTemplateId
+
+    @property
+    def BackupToUrl(self):
+        return self._BackupToUrl
+
+    @BackupToUrl.setter
+    def BackupToUrl(self, BackupToUrl):
+        self._BackupToUrl = BackupToUrl
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -16577,6 +16599,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._WatermarkList.append(obj)
         self._VodLocalMode = params.get("VodLocalMode")
+        self._RecordTemplateId = params.get("RecordTemplateId")
+        self._BackupToUrl = params.get("BackupToUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17787,6 +17811,76 @@ class RefererAuthConfig(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RestartLivePullStreamTaskRequest(AbstractModel):
+    """RestartLivePullStreamTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task Id.
+        :type TaskId: str
+        :param _Operator: task operator.
+        :type Operator: str
+        """
+        self._TaskId = None
+        self._Operator = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartLivePullStreamTaskResponse(AbstractModel):
+    """RestartLivePullStreamTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ResumeDelayLiveStreamRequest(AbstractModel):
