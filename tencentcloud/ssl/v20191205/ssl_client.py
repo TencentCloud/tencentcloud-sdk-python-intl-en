@@ -417,6 +417,29 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeHostTeoInstanceList(self, request):
+        """This API is used to query the list of EDGEONE instances to which a certificate can be deployed.
+
+        :param request: Request instance for DescribeHostTeoInstanceList.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostTeoInstanceListRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostTeoInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostTeoInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostTeoInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DownloadCertificate(self, request):
         """This API is used to download a certificate.
 

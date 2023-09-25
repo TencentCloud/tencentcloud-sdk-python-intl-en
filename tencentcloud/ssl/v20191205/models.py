@@ -5123,6 +5123,183 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeHostTeoInstanceListRequest(AbstractModel):
+    """DescribeHostTeoInstanceList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertificateId: The ID of the certificate to be deployed.
+        :type CertificateId: str
+        :param _ResourceType: The type of resource for certificate deployment.
+        :type ResourceType: str
+        :param _IsCache: Whether to query the cached results. Valid values: `1` (yes) and `0` (no). By default, the cached results within 30 minutes are queried.
+        :type IsCache: int
+        :param _Filters: The list of filter parameters. FilterKey: domainMatch (query the list of instances with matching or non-matching domains). FilterValue: `1` (default; query the list of instances with matching domains) or `0` (query the list of instances with non-matching domains).
+        :type Filters: list of Filter
+        :param _OldCertificateId: The ID of the deployed certificate.
+        :type OldCertificateId: str
+        :param _Offset: The pagination offset, starting from 0.
+        :type Offset: int
+        :param _Limit: The number of instances on each page. Default value: 10.	
+        :type Limit: int
+        :param _AsyncCache: Whether the query is asynchronous.
+        :type AsyncCache: int
+        """
+        self._CertificateId = None
+        self._ResourceType = None
+        self._IsCache = None
+        self._Filters = None
+        self._OldCertificateId = None
+        self._Offset = None
+        self._Limit = None
+        self._AsyncCache = None
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def IsCache(self):
+        return self._IsCache
+
+    @IsCache.setter
+    def IsCache(self, IsCache):
+        self._IsCache = IsCache
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OldCertificateId(self):
+        return self._OldCertificateId
+
+    @OldCertificateId.setter
+    def OldCertificateId(self, OldCertificateId):
+        self._OldCertificateId = OldCertificateId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def AsyncCache(self):
+        return self._AsyncCache
+
+    @AsyncCache.setter
+    def AsyncCache(self, AsyncCache):
+        self._AsyncCache = AsyncCache
+
+
+    def _deserialize(self, params):
+        self._CertificateId = params.get("CertificateId")
+        self._ResourceType = params.get("ResourceType")
+        self._IsCache = params.get("IsCache")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._OldCertificateId = params.get("OldCertificateId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._AsyncCache = params.get("AsyncCache")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostTeoInstanceListResponse(AbstractModel):
+    """DescribeHostTeoInstanceList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceList: The list of EDGEONE instances.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceList: list of TeoInstanceDetail
+        :param _TotalCount: The total count.
+        :type TotalCount: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._InstanceList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def InstanceList(self):
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = TeoInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DownloadCertificateRequest(AbstractModel):
     """DownloadCertificate request structure.
 
@@ -5447,6 +5624,51 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._Code = params.get("Code")
         self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Filter(AbstractModel):
+    """List of filter parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilterKey: The key of the filter parameter.
+        :type FilterKey: str
+        :param _FilterValue: u200cThe value of the filter parameter.
+        :type FilterValue: str
+        """
+        self._FilterKey = None
+        self._FilterValue = None
+
+    @property
+    def FilterKey(self):
+        return self._FilterKey
+
+    @FilterKey.setter
+    def FilterKey(self, FilterKey):
+        self._FilterKey = FilterKey
+
+    @property
+    def FilterValue(self):
+        return self._FilterValue
+
+    @FilterValue.setter
+    def FilterValue(self, FilterValue):
+        self._FilterValue = FilterValue
+
+
+    def _deserialize(self, params):
+        self._FilterKey = params.get("FilterKey")
+        self._FilterValue = params.get("FilterValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
