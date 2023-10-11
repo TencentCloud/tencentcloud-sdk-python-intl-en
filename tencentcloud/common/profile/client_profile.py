@@ -18,7 +18,7 @@ from tencentcloud.common.profile.http_profile import HttpProfile
 class ClientProfile(object):
     unsignedPayload = False
 
-    def __init__(self, signMethod=None, httpProfile=None, language="en-US",
+    def __init__(self, signMethod=None, httpProfile=None, language="zh-CN",
                  disable_region_breaker=True, region_breaker_profile=None):
         """SDK profile.
 
