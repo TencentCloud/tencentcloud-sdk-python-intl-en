@@ -855,8 +855,8 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         :type Definition: int
         :param _WatermarkSet: List of up to 10 image or text watermarks.
         :type WatermarkSet: list of WatermarkInput
-        :param _OutputStorage: Target bucket of an output file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _OutputStorage: 
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: The relative or absolute output path of the manifest file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}.{format}`.
         :type OutputObjectPath: str
@@ -864,10 +864,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type SubStreamObjectName: str
         :param _SegmentObjectName: The relative output path of the segment file after being transcoded to adaptive bitrate streaming (in HLS format only). If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`.
         :type SegmentObjectName: str
-        :param _AddOnSubtitles: The subtitle file to add.
+        :param _AddOnSubtitles: 
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type AddOnSubtitles: list of AddOnSubtitle
-        :param _DrmInfo: Information of Drm.   Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _DrmInfo: 
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type DrmInfo: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         """
         self._Definition = None
@@ -1930,6 +1931,7 @@ class AiAnalysisTaskHighlightOutput(AbstractModel):
         :param _HighlightSet: A list of the highlight segments generated.
         :type HighlightSet: list of MediaAiAnalysisHighlightItem
         :param _OutputStorage: The storage location of the highlight segments.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._HighlightSet = None
@@ -5078,7 +5080,8 @@ class AiReviewPornTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: ID of a porn information detection template.
+        :param _Definition: The ID of a porn detection template.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type Definition: int
         """
         self._Definition = None
@@ -7554,6 +7557,243 @@ There can be up to 10 tags, each with a length limit of 16 characters.
         
 
 
+class AudioBeautifyConfig(AbstractModel):
+    """The audio improvement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable the feature. Valid values:
+<li>`ON`</li>
+<li>`OFF` </li>
+Default value: `ON`.
+        :type Switch: str
+        :param _Types: The audio improvement options. You can specify multiple options. Valid values:
+<li>`declick`: Noise removal.</li>
+<li>`deesser`: De-essing.</li>
+Default: `declick`.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Types: list of str
+        """
+        self._Switch = None
+        self._Types = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Types(self):
+        return self._Types
+
+    @Types.setter
+    def Types(self, Types):
+        self._Types = Types
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Types = params.get("Types")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioDenoiseConfig(AbstractModel):
+    """The noise reduction configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable the feature. Valid values:
+<li>`ON`</li>
+<li>`OFF` </li>
+Default value: `ON`.
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioEnhanceConfig(AbstractModel):
+    """The audio enhancement configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Denoise: The audio noise reduction configuration.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Denoise: :class:`tencentcloud.mps.v20190612.models.AudioDenoiseConfig`
+        :param _Separate: The audio separation configuration.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Separate: :class:`tencentcloud.mps.v20190612.models.AudioSeparateConfig`
+        :param _VolumeBalance: The volume equalization configuration.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type VolumeBalance: :class:`tencentcloud.mps.v20190612.models.VolumeBalanceConfig`
+        :param _Beautify: The audio improvement configuration.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Beautify: :class:`tencentcloud.mps.v20190612.models.AudioBeautifyConfig`
+        """
+        self._Denoise = None
+        self._Separate = None
+        self._VolumeBalance = None
+        self._Beautify = None
+
+    @property
+    def Denoise(self):
+        return self._Denoise
+
+    @Denoise.setter
+    def Denoise(self, Denoise):
+        self._Denoise = Denoise
+
+    @property
+    def Separate(self):
+        return self._Separate
+
+    @Separate.setter
+    def Separate(self, Separate):
+        self._Separate = Separate
+
+    @property
+    def VolumeBalance(self):
+        return self._VolumeBalance
+
+    @VolumeBalance.setter
+    def VolumeBalance(self, VolumeBalance):
+        self._VolumeBalance = VolumeBalance
+
+    @property
+    def Beautify(self):
+        return self._Beautify
+
+    @Beautify.setter
+    def Beautify(self, Beautify):
+        self._Beautify = Beautify
+
+
+    def _deserialize(self, params):
+        if params.get("Denoise") is not None:
+            self._Denoise = AudioDenoiseConfig()
+            self._Denoise._deserialize(params.get("Denoise"))
+        if params.get("Separate") is not None:
+            self._Separate = AudioSeparateConfig()
+            self._Separate._deserialize(params.get("Separate"))
+        if params.get("VolumeBalance") is not None:
+            self._VolumeBalance = VolumeBalanceConfig()
+            self._VolumeBalance._deserialize(params.get("VolumeBalance"))
+        if params.get("Beautify") is not None:
+            self._Beautify = AudioBeautifyConfig()
+            self._Beautify._deserialize(params.get("Beautify"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioSeparateConfig(AbstractModel):
+    """The audio separation configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable the feature. Valid values:
+<li>`ON`</li>
+<li>`OFF` </li>
+Default value: `ON`.
+        :type Switch: str
+        :param _Type: The scenario. Valid values:
+<li>`normal`: Separate voice and background audio.</li>
+<li>`music`: Separate vocals and instrumentals.</li>
+Default value: `normal`.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _Track: The output audio track. Valid values:
+<li>`vocal`: Voice.</li>
+<li>`background`: Output background audio if the scenario is `normal`, and output instrumentals if the scenario is `music`.</li>
+Default value: `vocal`.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Track: str
+        """
+        self._Switch = None
+        self._Type = None
+        self._Track = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Track(self):
+        return self._Track
+
+    @Track.setter
+    def Track(self, Track):
+        self._Track = Track
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        self._Track = params.get("Track")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioTemplateInfo(AbstractModel):
     """Audio stream configuration parameter
 
@@ -7870,12 +8110,16 @@ class AwsSQS(AbstractModel):
     def __init__(self):
         r"""
         :param _SQSRegion: The region of the SQS queue.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type SQSRegion: str
         :param _SQSQueueName: The name of the SQS queue.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type SQSQueueName: str
         :param _S3SecretId: The key ID required to read from/write to the SQS queue.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type S3SecretId: str
         :param _S3SecretKey: The key required to read from/write to the SQS queue.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type S3SecretKey: str
         """
         self._SQSRegion = None
@@ -8044,6 +8288,1581 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeAudioItem(AbstractModel):
+    """The audio element information of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceMedia: The media information of the element.
+        :type SourceMedia: :class:`tencentcloud.mps.v20190612.models.ComposeSourceMedia`
+        :param _TrackTime: The time of the element in the timeline. If this is not specified, the element will follow the previous element.
+        :type TrackTime: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
+        :param _AudioOperations: The operations performed, such as muting.
+        :type AudioOperations: list of ComposeAudioOperation
+        """
+        self._SourceMedia = None
+        self._TrackTime = None
+        self._AudioOperations = None
+
+    @property
+    def SourceMedia(self):
+        return self._SourceMedia
+
+    @SourceMedia.setter
+    def SourceMedia(self, SourceMedia):
+        self._SourceMedia = SourceMedia
+
+    @property
+    def TrackTime(self):
+        return self._TrackTime
+
+    @TrackTime.setter
+    def TrackTime(self, TrackTime):
+        self._TrackTime = TrackTime
+
+    @property
+    def AudioOperations(self):
+        return self._AudioOperations
+
+    @AudioOperations.setter
+    def AudioOperations(self, AudioOperations):
+        self._AudioOperations = AudioOperations
+
+
+    def _deserialize(self, params):
+        if params.get("SourceMedia") is not None:
+            self._SourceMedia = ComposeSourceMedia()
+            self._SourceMedia._deserialize(params.get("SourceMedia"))
+        if params.get("TrackTime") is not None:
+            self._TrackTime = ComposeTrackTime()
+            self._TrackTime._deserialize(params.get("TrackTime"))
+        if params.get("AudioOperations") is not None:
+            self._AudioOperations = []
+            for item in params.get("AudioOperations"):
+                obj = ComposeAudioOperation()
+                obj._deserialize(item)
+                self._AudioOperations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeAudioOperation(AbstractModel):
+    """The audio operations of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: The operation type. Valid values:
+<li>`Volume`: Volume adjustment. </li>
+        :type Type: str
+        :param _Volume:  The volume level. This parameter is valid if `Type` is `Volume`. Value range: 0–5. 
+<li>If the parameter value is `0`, the video will be muted. </li>
+<li>If the parameter value is smaller than 1, the volume will be reduced. </li>
+<li>If the parameter value is `1`, the original volume will be kept. </li>
+<li>If the parameter value is greater than 1, the volume will be increased. </li>
+        :type Volume: float
+        """
+        self._Type = None
+        self._Volume = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Volume(self):
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Volume = params.get("Volume")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeAudioStream(AbstractModel):
+    """The audio stream information of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Codec: The codec of the audio stream. Valid values:
+<li>`AAC`: AAC (default), which is used for the MP4 container. </li>
+<li>`MP3`: MP3 codec, which is used for the MP3 container. </li>
+        :type Codec: str
+        :param _SampleRate: The sample rate (Hz) of the audio stream.
+<li>16000 (default)</li>
+<li>32000</li>
+<li>44100</li>
+<li>48000</li>
+        :type SampleRate: int
+        :param _AudioChannel: The number of sound channels. Valid values:
+u200c<li>`1`: Mono. </li>
+<li>`2`: Dual (default). </li>
+        :type AudioChannel: int
+        """
+        self._Codec = None
+        self._SampleRate = None
+        self._AudioChannel = None
+
+    @property
+    def Codec(self):
+        return self._Codec
+
+    @Codec.setter
+    def Codec(self, Codec):
+        self._Codec = Codec
+
+    @property
+    def SampleRate(self):
+        return self._SampleRate
+
+    @SampleRate.setter
+    def SampleRate(self, SampleRate):
+        self._SampleRate = SampleRate
+
+    @property
+    def AudioChannel(self):
+        return self._AudioChannel
+
+    @AudioChannel.setter
+    def AudioChannel(self, AudioChannel):
+        self._AudioChannel = AudioChannel
+
+
+    def _deserialize(self, params):
+        self._Codec = params.get("Codec")
+        self._SampleRate = params.get("SampleRate")
+        self._AudioChannel = params.get("AudioChannel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeCanvas(AbstractModel):
+    """The canvas information of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Color: The RGB value of the background color. The format is #RRGGBB, such as `#F0F0F0`. 
+Default value: `#000000` (black).
+        :type Color: str
+        :param _Width: The canvas width (px), which is the width of the output video. Value range: 0–3840.  
+The default value is `0`, which means that the canvas is as wide as the first video.
+        :type Width: int
+        :param _Height: The canvas height (px), which is the height of the output video. Value range: 0–3840.  
+The default value is `0`, which means that the canvas is as high as the first video.
+        :type Height: int
+        """
+        self._Color = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def Color(self):
+        return self._Color
+
+    @Color.setter
+    def Color(self, Color):
+        self._Color = Color
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+
+    def _deserialize(self, params):
+        self._Color = params.get("Color")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeEmptyItem(AbstractModel):
+    """The placeholder element information of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Duration: The element duration.
+<li>The value of this parameter ends with `s`, which means seconds. For example, `3.5s` indicates 3.5 seconds. </li>
+        :type Duration: str
+        """
+        self._Duration = None
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeImageItem(AbstractModel):
+    """The image element information of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceMedia: The media information of the element.
+        :type SourceMedia: :class:`tencentcloud.mps.v20190612.models.ComposeSourceMedia`
+        :param _TrackTime: The time of the element in the timeline. If this is not specified, the element will follow the previous element.
+        :type TrackTime: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
+        :param _XPos: The horizontal distance of the element's center from the canvas origin. Two formats are supported:
+<li>If the value ends with %, it specifies the distance as a percentage of the canvas width. For example, `10%` means that the distance is 10% of the canvas width. </li>
+u200c<li>If the value ends with px, it specifies the distance in pixels. For example, `100px` means that the distance is 100 pixels. </li>
+Default value: `50%`.
+        :type XPos: str
+        :param _YPos: The vertical distance of the element's center from the canvas origin. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the distance as a percentage of the canvas height. For example, `10%` means that the distance is 10% of the canvas height. </li>
+u200c<li>If the value ends with px, it specifies the distance in pixels. For example, `100px` means that the distance is 100 pixels. </li>
+Default value: `50%`.
+        :type YPos: str
+        :param _Width: The width of the video segment. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the width as a percentage of the canvas width. For example, `10%` means that the video width is 10% of the canvas width. </li>
+u200c<li>If the value ends with px, it specifies the width in pixels. For example, `100px` means that the video width is 100 pixels. </li>
+If one or both parameters are empty or set to `0`:
+<li>If both `Width` and `Height` are empty, the original width and height of the element will be kept. </li>
+<li>If `Width` is empty and `Height` is not, the width will be auto scaled. </li>
+<li>If `Width` is not empty and `Height` is, the height will be auto scaled. </li>
+        :type Width: str
+        :param _Height: The height of the element. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the height as a percentage of the canvas height. For example, `10%` means that the height is 10% of the canvas height. </li>
+u200c<li>If the value ends with px, it specifies the height in pixels. For example, `100px` means that the height is 100 pixels. </li>
+If one or both parameters are empty or set to `0`:
+<li>If both `Width` and `Height` are empty, the original width and height of the video will be kept. </li>
+<li>If `Width` is empty and `Height` is not, the width will be auto scaled. </li>
+<li>If `Width` is not empty and `Height` is, the height will be auto scaled. </li>
+        :type Height: str
+        :param _ImageOperations: The image operations, such as image rotation.
+        :type ImageOperations: list of ComposeImageOperation
+        """
+        self._SourceMedia = None
+        self._TrackTime = None
+        self._XPos = None
+        self._YPos = None
+        self._Width = None
+        self._Height = None
+        self._ImageOperations = None
+
+    @property
+    def SourceMedia(self):
+        return self._SourceMedia
+
+    @SourceMedia.setter
+    def SourceMedia(self, SourceMedia):
+        self._SourceMedia = SourceMedia
+
+    @property
+    def TrackTime(self):
+        return self._TrackTime
+
+    @TrackTime.setter
+    def TrackTime(self, TrackTime):
+        self._TrackTime = TrackTime
+
+    @property
+    def XPos(self):
+        return self._XPos
+
+    @XPos.setter
+    def XPos(self, XPos):
+        self._XPos = XPos
+
+    @property
+    def YPos(self):
+        return self._YPos
+
+    @YPos.setter
+    def YPos(self, YPos):
+        self._YPos = YPos
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def ImageOperations(self):
+        return self._ImageOperations
+
+    @ImageOperations.setter
+    def ImageOperations(self, ImageOperations):
+        self._ImageOperations = ImageOperations
+
+
+    def _deserialize(self, params):
+        if params.get("SourceMedia") is not None:
+            self._SourceMedia = ComposeSourceMedia()
+            self._SourceMedia._deserialize(params.get("SourceMedia"))
+        if params.get("TrackTime") is not None:
+            self._TrackTime = ComposeTrackTime()
+            self._TrackTime._deserialize(params.get("TrackTime"))
+        self._XPos = params.get("XPos")
+        self._YPos = params.get("YPos")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        if params.get("ImageOperations") is not None:
+            self._ImageOperations = []
+            for item in params.get("ImageOperations"):
+                obj = ComposeImageOperation()
+                obj._deserialize(item)
+                self._ImageOperations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeImageOperation(AbstractModel):
+    """The image operations of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: The type. Valid values:
+u200c<li>`Rotate`: Image rotation. </li>
+<li>`Flip`: Image flipping. </li>
+        :type Type: str
+        :param _RotateAngle: This is valid if `Type` is `Rotate`. The angle of rotation around the image center. Value range: 0–360.
+        :type RotateAngle: float
+        :param _FlipType: This is valid if `Type` is `Flip`. How to flip the image. Valid values:xa0
+u200c<li>`Horizental`: Flip horizontally. </li>
+<li>`Vertical`: Flip vertically. </li>
+        :type FlipType: str
+        """
+        self._Type = None
+        self._RotateAngle = None
+        self._FlipType = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RotateAngle(self):
+        return self._RotateAngle
+
+    @RotateAngle.setter
+    def RotateAngle(self, RotateAngle):
+        self._RotateAngle = RotateAngle
+
+    @property
+    def FlipType(self):
+        return self._FlipType
+
+    @FlipType.setter
+    def FlipType(self, FlipType):
+        self._FlipType = FlipType
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._RotateAngle = params.get("RotateAngle")
+        self._FlipType = params.get("FlipType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeMediaConfig(AbstractModel):
+    """The information of a video editing/compositing task.
+
+    The figure below outlines the relationships among tracks, elements, and the timeline.
+
+    ![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/EditMedia-Compose-Track-Item.png)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetInfo: The information of the output video.
+        :type TargetInfo: :class:`tencentcloud.mps.v20190612.models.ComposeTargetInfo`
+        :param _Canvas: The canvas information of the output video.
+        :type Canvas: :class:`tencentcloud.mps.v20190612.models.ComposeCanvas`
+        :param _Styles: The global styles. This parameter is used together with `Tracks` to specify styles, such as the subtitle style.
+        :type Styles: list of ComposeStyles
+        :param _Tracks: The information of media tracks (consisting of video, audio, image, and text elements) used to composite the video. About tracks and the timeline:
+<ul><li>The timeline of a track is the same as the timeline of the output video. </li><li>The elements of different tracks are overlaid at the same time point in the timeline.</li><ul><li>Video, image, and text elements are overlaid according to their track number, with the first track on top. </li><li>Audio elements are mixed. </li></ul></ul>Note: The different elements of the same track cannot be overlaid (except subtitles).
+        :type Tracks: list of ComposeMediaTrack
+        """
+        self._TargetInfo = None
+        self._Canvas = None
+        self._Styles = None
+        self._Tracks = None
+
+    @property
+    def TargetInfo(self):
+        return self._TargetInfo
+
+    @TargetInfo.setter
+    def TargetInfo(self, TargetInfo):
+        self._TargetInfo = TargetInfo
+
+    @property
+    def Canvas(self):
+        return self._Canvas
+
+    @Canvas.setter
+    def Canvas(self, Canvas):
+        self._Canvas = Canvas
+
+    @property
+    def Styles(self):
+        return self._Styles
+
+    @Styles.setter
+    def Styles(self, Styles):
+        self._Styles = Styles
+
+    @property
+    def Tracks(self):
+        return self._Tracks
+
+    @Tracks.setter
+    def Tracks(self, Tracks):
+        self._Tracks = Tracks
+
+
+    def _deserialize(self, params):
+        if params.get("TargetInfo") is not None:
+            self._TargetInfo = ComposeTargetInfo()
+            self._TargetInfo._deserialize(params.get("TargetInfo"))
+        if params.get("Canvas") is not None:
+            self._Canvas = ComposeCanvas()
+            self._Canvas._deserialize(params.get("Canvas"))
+        if params.get("Styles") is not None:
+            self._Styles = []
+            for item in params.get("Styles"):
+                obj = ComposeStyles()
+                obj._deserialize(item)
+                self._Styles.append(obj)
+        if params.get("Tracks") is not None:
+            self._Tracks = []
+            for item in params.get("Tracks"):
+                obj = ComposeMediaTrack()
+                obj._deserialize(item)
+                self._Tracks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeMediaItem(AbstractModel):
+    """The element information of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: The element type. Valid values:
+<li>`Video` </li>
+<li>`Audio` </li>
+<li>`Image` </li>
+<li>`Transition` </li>
+<li>`Subtitle` </li>
+<li>`Empty` </li>
+        :type Type: str
+        :param _Video: The information of the video element, which is valid if `Type` is `Video`.
+        :type Video: :class:`tencentcloud.mps.v20190612.models.ComposeVideoItem`
+        :param _Audio: The information of the audio element, which is valid if `Type` is `Audio`.
+        :type Audio: :class:`tencentcloud.mps.v20190612.models.ComposeAudioItem`
+        :param _Image: The information of the image element, which is valid if `Type` is `Image`.
+        :type Image: :class:`tencentcloud.mps.v20190612.models.ComposeImageItem`
+        :param _Transition: The information of the transition element, which is valid if `Type` is `Transition`.
+        :type Transition: :class:`tencentcloud.mps.v20190612.models.ComposeTransitionItem`
+        :param _Subtitle: The information of the subtitle element, which is valid if `Type` is `Subtitle`.
+        :type Subtitle: :class:`tencentcloud.mps.v20190612.models.ComposeSubtitleItem`
+        :param _Empty: The information of the empty element, which is valid if `Type` is `Empty`. An empty element is used as a placeholder in the timeline.
+        :type Empty: :class:`tencentcloud.mps.v20190612.models.ComposeEmptyItem`
+        """
+        self._Type = None
+        self._Video = None
+        self._Audio = None
+        self._Image = None
+        self._Transition = None
+        self._Subtitle = None
+        self._Empty = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Video(self):
+        return self._Video
+
+    @Video.setter
+    def Video(self, Video):
+        self._Video = Video
+
+    @property
+    def Audio(self):
+        return self._Audio
+
+    @Audio.setter
+    def Audio(self, Audio):
+        self._Audio = Audio
+
+    @property
+    def Image(self):
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Transition(self):
+        return self._Transition
+
+    @Transition.setter
+    def Transition(self, Transition):
+        self._Transition = Transition
+
+    @property
+    def Subtitle(self):
+        return self._Subtitle
+
+    @Subtitle.setter
+    def Subtitle(self, Subtitle):
+        self._Subtitle = Subtitle
+
+    @property
+    def Empty(self):
+        return self._Empty
+
+    @Empty.setter
+    def Empty(self, Empty):
+        self._Empty = Empty
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("Video") is not None:
+            self._Video = ComposeVideoItem()
+            self._Video._deserialize(params.get("Video"))
+        if params.get("Audio") is not None:
+            self._Audio = ComposeAudioItem()
+            self._Audio._deserialize(params.get("Audio"))
+        if params.get("Image") is not None:
+            self._Image = ComposeImageItem()
+            self._Image._deserialize(params.get("Image"))
+        if params.get("Transition") is not None:
+            self._Transition = ComposeTransitionItem()
+            self._Transition._deserialize(params.get("Transition"))
+        if params.get("Subtitle") is not None:
+            self._Subtitle = ComposeSubtitleItem()
+            self._Subtitle._deserialize(params.get("Subtitle"))
+        if params.get("Empty") is not None:
+            self._Empty = ComposeEmptyItem()
+            self._Empty._deserialize(params.get("Empty"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeMediaTrack(AbstractModel):
+    """The track information of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: The track type. Valid values:<ul><li>`Video`: Video track. A video track can consist of the following elements:</li><ul><li>Video</li><li>Image</li><li>Transition</li><li>Empty</li></ul><li>`Audio`: Audio track. An audio track can consist of the following elements:</li><ul><li>Audio</li><li>Transition</li><li>Empty</li></ul><li>`Title`: Text track. A text track can consist of the following elements: </li><ul><li>Subtitle</li></ul>
+        :type Type: str
+        :param _Items: The elements of a track.
+        :type Items: list of ComposeMediaItem
+        """
+        self._Type = None
+        self._Items = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ComposeMediaItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeSourceMedia(AbstractModel):
+    """The material source of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: The material ID, which can be found in `FileInfos`.
+        :type FileId: str
+        :param _StartTime: The start time of the material. The following two formats are supported.
+<li>If the value of this parameter ends with `s`, it specifies the time in seconds. For example, `3.5s` indicates the time when 3.5 seconds of the material elapses.</li>
+u200c<li>If the value of this parameter ends with `%`, it specifies the time as a percentage of the material's duration. For example, `10%` indicates the time when 10% of the material's duration elapses. </li>
+Default value: `0s`.
+        :type StartTime: str
+        :param _EndTime: The end time of the material. This parameter and `StartTime` determine which time segment of the material is used. The following two formats are supported:
+<li>If the value of this parameter ends with `s`, it specifies the time in seconds. For example, `3.5s` indicates the time when 3.5 seconds of the material elapses.</li>
+u200c<li>If the value of this parameter ends with `%`, it specifies the time as a percentage of the material's duration. For example, `10%` indicates the time when 10% of the material's duration elapses. </li>
+If the track duration is set, the default value is `StartTime` plus the track duration. If not, the default value is `StartTime` plus 1 second.
+Note: `EndTime` must be at least 0.02 seconds later than `StartTime`.
+
+        :type EndTime: str
+        """
+        self._FileId = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeStyles(AbstractModel):
+    """The style information of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: The style ID, which identifies an element style.
+Note: The style ID can be up to 32 characters long and can contain letters, digits, and special characters -_
+        :type Id: str
+        :param _Type: The type. Valid values:
+<li>`Subtitle`: The subtitle style. </li>
+        :type Type: str
+        :param _Subtitle: The subtitle style details. This parameter is valid if `Type` is `Subtitle`.
+        :type Subtitle: :class:`tencentcloud.mps.v20190612.models.ComposeSubtitleStyle`
+        """
+        self._Id = None
+        self._Type = None
+        self._Subtitle = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Subtitle(self):
+        return self._Subtitle
+
+    @Subtitle.setter
+    def Subtitle(self, Subtitle):
+        self._Subtitle = Subtitle
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        if params.get("Subtitle") is not None:
+            self._Subtitle = ComposeSubtitleStyle()
+            self._Subtitle._deserialize(params.get("Subtitle"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeSubtitleItem(AbstractModel):
+    """The subtitle element information of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StyleId: The subtitle style ID, which corresponds to the `Id` field of `ComposeStyles`.
+        :type StyleId: str
+        :param _Text: The subtitle text.
+        :type Text: str
+        :param _TrackTime: The time of the element in the timeline. If this is not specified, the element will follow the previous element.	
+        :type TrackTime: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
+        """
+        self._StyleId = None
+        self._Text = None
+        self._TrackTime = None
+
+    @property
+    def StyleId(self):
+        return self._StyleId
+
+    @StyleId.setter
+    def StyleId(self, StyleId):
+        self._StyleId = StyleId
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def TrackTime(self):
+        return self._TrackTime
+
+    @TrackTime.setter
+    def TrackTime(self, TrackTime):
+        self._TrackTime = TrackTime
+
+
+    def _deserialize(self, params):
+        self._StyleId = params.get("StyleId")
+        self._Text = params.get("Text")
+        if params.get("TrackTime") is not None:
+            self._TrackTime = ComposeTrackTime()
+            self._TrackTime._deserialize(params.get("TrackTime"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeSubtitleStyle(AbstractModel):
+    """The subtitle style of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Height: The subtitle height. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the height as a percentage of the canvas height. For example, `10%` means that the height is 10% of the canvas height. </li>
+u200c<li>If the value ends with px, it specifies the height in pixels. For example, `100px` means that the height is 100 pixels. </li>
+The default value is the value of `FontSize`.
+        :type Height: str
+        :param _MarginBottom: The bottom margin. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the margin as a percentage of the canvas height. For example, `10%` means that the margin is 10% of the canvas height. </li>
+u200c<li>If the value ends with px, it specifies the margin in pixels. For example, `100px` means that the margin is 100 pixels. </li>
+Default value: `0px`.
+        :type MarginBottom: str
+        :param _FontType: The font type. Valid values:
+<li>`SimHei`(default): Chinese font Heiti. </li>
+<Li>`SimSun`: Chinese font Songti. </li>
+        :type FontType: str
+        :param _FontSize: The font size. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the size as a percentage of the canvas height. For example, `10%` means that the size is 10% of the canvas height. </li>
+u200c<li>If the value ends with px, it specifies the size in pixels. For example, `100px` means that the size is 100 pixels. </li>
+Default value: `2%`.
+        :type FontSize: str
+        :param _FontBold: Whether to bold the text (some fonts may not support bold). Valid values:
+<li>`0` (default): No. </li>
+<li>`1`: Yes. </li>
+        :type FontBold: int
+        :param _FontItalic: Whether to italicize the text (some fonts may not support italics). Valid values:
+<li>`0` (default): No. </li>
+<li>`1`: Yes. </li>
+        :type FontItalic: int
+        :param _FontColor: The font color (#RRGGBBAA).  
+Default value: `0x000000FF` (black).  
+Note: `AA` in the color notation defines the opacity of the color. It's optional.
+
+        :type FontColor: str
+        :param _FontAlign: The text alignment. Valid values:
+<li>`Center`(default) </li>
+<li>`Left` </li>
+<li>`Right` </li>
+        :type FontAlign: str
+        :param _FontAlignMargin: The margin for left/right align.
+<li>If `FontAlign` is `Left`, this parameter specifies the left margin of the subtitles. </li>
+<li>If `FontAlign` is `Right`, this parameter specifies the right margin of the subtitles. </li>
+Two formats are supported:
+u200c<li>If the value ends with %, it specifies the margin as a percentage of the canvas width. For example, `10%` means that the margin is 10% of the canvas width. </li>
+u200c<li>If the value ends with px, it specifies the margin in pixels. For example, `100px` means that the margin is 100 pixels. </li>
+        :type FontAlignMargin: str
+        :param _BorderWidth: The subtitle border width. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the width as a percentage of the canvas height. For example, `10%` means that the width is 10% of the canvas height. </li>
+u200c<li>If the value ends with px, it specifies the width in pixels. For example, `100px` means that the width is 100 pixels. </li>
+The default value is `0`, which means the subtitles will have no borders.
+        :type BorderWidth: str
+        :param _BorderColor: The border color, whose format is the same as that for `FontColor`. This parameter is valid if `BorderWidth` is not `0`.
+        :type BorderColor: str
+        :param _BottomColor: The text background color, whose format is the same as that for `FontColor`.  
+The default value is an empty string, which means the subtitles will not have a background color.
+        :type BottomColor: str
+        """
+        self._Height = None
+        self._MarginBottom = None
+        self._FontType = None
+        self._FontSize = None
+        self._FontBold = None
+        self._FontItalic = None
+        self._FontColor = None
+        self._FontAlign = None
+        self._FontAlignMargin = None
+        self._BorderWidth = None
+        self._BorderColor = None
+        self._BottomColor = None
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def MarginBottom(self):
+        return self._MarginBottom
+
+    @MarginBottom.setter
+    def MarginBottom(self, MarginBottom):
+        self._MarginBottom = MarginBottom
+
+    @property
+    def FontType(self):
+        return self._FontType
+
+    @FontType.setter
+    def FontType(self, FontType):
+        self._FontType = FontType
+
+    @property
+    def FontSize(self):
+        return self._FontSize
+
+    @FontSize.setter
+    def FontSize(self, FontSize):
+        self._FontSize = FontSize
+
+    @property
+    def FontBold(self):
+        return self._FontBold
+
+    @FontBold.setter
+    def FontBold(self, FontBold):
+        self._FontBold = FontBold
+
+    @property
+    def FontItalic(self):
+        return self._FontItalic
+
+    @FontItalic.setter
+    def FontItalic(self, FontItalic):
+        self._FontItalic = FontItalic
+
+    @property
+    def FontColor(self):
+        return self._FontColor
+
+    @FontColor.setter
+    def FontColor(self, FontColor):
+        self._FontColor = FontColor
+
+    @property
+    def FontAlign(self):
+        return self._FontAlign
+
+    @FontAlign.setter
+    def FontAlign(self, FontAlign):
+        self._FontAlign = FontAlign
+
+    @property
+    def FontAlignMargin(self):
+        return self._FontAlignMargin
+
+    @FontAlignMargin.setter
+    def FontAlignMargin(self, FontAlignMargin):
+        self._FontAlignMargin = FontAlignMargin
+
+    @property
+    def BorderWidth(self):
+        return self._BorderWidth
+
+    @BorderWidth.setter
+    def BorderWidth(self, BorderWidth):
+        self._BorderWidth = BorderWidth
+
+    @property
+    def BorderColor(self):
+        return self._BorderColor
+
+    @BorderColor.setter
+    def BorderColor(self, BorderColor):
+        self._BorderColor = BorderColor
+
+    @property
+    def BottomColor(self):
+        return self._BottomColor
+
+    @BottomColor.setter
+    def BottomColor(self, BottomColor):
+        self._BottomColor = BottomColor
+
+
+    def _deserialize(self, params):
+        self._Height = params.get("Height")
+        self._MarginBottom = params.get("MarginBottom")
+        self._FontType = params.get("FontType")
+        self._FontSize = params.get("FontSize")
+        self._FontBold = params.get("FontBold")
+        self._FontItalic = params.get("FontItalic")
+        self._FontColor = params.get("FontColor")
+        self._FontAlign = params.get("FontAlign")
+        self._FontAlignMargin = params.get("FontAlignMargin")
+        self._BorderWidth = params.get("BorderWidth")
+        self._BorderColor = params.get("BorderColor")
+        self._BottomColor = params.get("BottomColor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeTargetInfo(AbstractModel):
+    """The output video information of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Container: The container. Valid values:
+<li>`mp4` (default), for video files. </li>
+<li>`mp3`, for audio files. </li>
+        :type Container: str
+        :param _RemoveVideo: Whether to remove video data. Valid values:
+<li>`0` (default): No. </li>
+<li>`1`: Yes. </li>
+        :type RemoveVideo: int
+        :param _RemoveAudio: Whether to remove audio data. Valid values:
+<li>`0` (default): No. </li>
+<li>`1`: Yes. </li>
+        :type RemoveAudio: int
+        :param _VideoStream: The information of the output video stream.
+        :type VideoStream: :class:`tencentcloud.mps.v20190612.models.ComposeVideoStream`
+        :param _AudioStream: The information of the output audio stream.
+        :type AudioStream: :class:`tencentcloud.mps.v20190612.models.ComposeAudioStream`
+        """
+        self._Container = None
+        self._RemoveVideo = None
+        self._RemoveAudio = None
+        self._VideoStream = None
+        self._AudioStream = None
+
+    @property
+    def Container(self):
+        return self._Container
+
+    @Container.setter
+    def Container(self, Container):
+        self._Container = Container
+
+    @property
+    def RemoveVideo(self):
+        return self._RemoveVideo
+
+    @RemoveVideo.setter
+    def RemoveVideo(self, RemoveVideo):
+        self._RemoveVideo = RemoveVideo
+
+    @property
+    def RemoveAudio(self):
+        return self._RemoveAudio
+
+    @RemoveAudio.setter
+    def RemoveAudio(self, RemoveAudio):
+        self._RemoveAudio = RemoveAudio
+
+    @property
+    def VideoStream(self):
+        return self._VideoStream
+
+    @VideoStream.setter
+    def VideoStream(self, VideoStream):
+        self._VideoStream = VideoStream
+
+    @property
+    def AudioStream(self):
+        return self._AudioStream
+
+    @AudioStream.setter
+    def AudioStream(self, AudioStream):
+        self._AudioStream = AudioStream
+
+
+    def _deserialize(self, params):
+        self._Container = params.get("Container")
+        self._RemoveVideo = params.get("RemoveVideo")
+        self._RemoveAudio = params.get("RemoveAudio")
+        if params.get("VideoStream") is not None:
+            self._VideoStream = ComposeVideoStream()
+            self._VideoStream._deserialize(params.get("VideoStream"))
+        if params.get("AudioStream") is not None:
+            self._AudioStream = ComposeAudioStream()
+            self._AudioStream._deserialize(params.get("AudioStream"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeTrackTime(AbstractModel):
+    """The time information of an element on the output video track of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Start: The time when the element starts on the track.
+<li>The value of this parameter ends with `s`, which means seconds. For example, `3.5s` indicates the time when 3.5 seconds of the video elapses.</li>
+Note: If this parameter is not specified, the start time will be the end time of the previous element. Therefore, you can also use the placeholder parameter `ComposeEmptyItem` to configure the start time.
+        :type Start: str
+        :param _Duration: The element duration.
+<li>The value of this parameter ends with `s`, which means seconds. For example, `3.5s` means 3.5 seconds.</li>
+The default value is the material duration, which is determined by `EndTime` and `StartTime` of `ComposeSourceMedia`. If `ComposeSourceMedia` is not specified, the duration will be 1 second.
+        :type Duration: str
+        """
+        self._Start = None
+        self._Duration = None
+
+    @property
+    def Start(self):
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._Start = params.get("Start")
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeTransitionItem(AbstractModel):
+    """The transition element information of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Duration: The element duration. <li>The value of this parameter ends with `s`, which means seconds. For example, `3s` indicates 3 seconds. </li>
+Default value: `1s`.
+Note
+<li>The number before `s` must be an integer. Non-integers will be rounded down to the nearest integer. </li>
+<li>The transition element must be between two non-empty elements. </li>
+<li>The duration of the transition element must be shorter than that of the preceding element and the following element. </li>
+u200c<li>The start time of the following element on the track will be automatically changed to the end time of the preceding element minus the duration of the transition element. </li>
+        :type Duration: str
+        :param _Transitions: The transition effects.
+The default transition effect is fade.
+Note: You can add at most one image transition and one audio transition.
+        :type Transitions: list of ComposeTransitionOperation
+        """
+        self._Duration = None
+        self._Transitions = None
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Transitions(self):
+        return self._Transitions
+
+    @Transitions.setter
+    def Transitions(self, Transitions):
+        self._Transitions = Transitions
+
+
+    def _deserialize(self, params):
+        self._Duration = params.get("Duration")
+        if params.get("Transitions") is not None:
+            self._Transitions = []
+            for item in params.get("Transitions"):
+                obj = ComposeTransitionOperation()
+                obj._deserialize(item)
+                self._Transitions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeTransitionOperation(AbstractModel):
+    """The transition information of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: The transition type.
+
+The image transition, which connects two video segments.
+<li>`ImageFadeInFadeOut` </li>
+u200c<li>`BowTieHorizontal` </li>
+u200c<li>`BowTieVertical` </li>
+u200c<li>`ButterflyWaveScrawler` </li>
+<li>`Cannabisleaf` </li>
+<li>`Circle` </li>
+<li>`CircleCrop` </li>
+u200c<li>`Circleopen` </li>
+<li>`Crosswarp` </li>
+<li>`Cube` </li>
+<li>`DoomScreenTransition` </li>
+<li>`Doorway` </li>
+<li>`Dreamy` </li>
+<li>`DreamyZoom` </li>
+<li>`FilmBurn` </li>
+<li>`GlitchMemories` </li>
+<li>`Heart` </li>
+<li>`InvertedPageCurl` </li>
+<li>`Luma` </li>
+<li>`Mosaic` </li>
+<li>`Pinwheel` </li>
+<li>`PolarFunction` </li>
+<li>`PolkaDotsCurtain` </li>
+<li>`Radial` </li>
+<li>`RotateScaleFade` </li>
+<li>`Squeeze` </li>
+<li>`Swap` </li>
+<li>`Swirl` </li>
+<li>`UndulatingBurnOutSwirl` </li>
+<li>`Windowblinds` </li>
+<li>`WipeDown` </li>
+<li>`WipeLeft` </li>
+<li>`WipeRight` </li>
+<li>`WipeUp` </li>
+<li>`ZoomInCircles` </li> 
+The audio transition, which connects two audio segments.
+<li>`AudioFadeInFadeOut` </li>
+        :type Type: str
+        """
+        self._Type = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeVideoItem(AbstractModel):
+    """The video element information of a video editing/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceMedia: The media information of the element.
+        :type SourceMedia: :class:`tencentcloud.mps.v20190612.models.ComposeSourceMedia`
+        :param _TrackTime: The time of the element in the timeline. If this is not specified, the element will follow the previous element.
+        :type TrackTime: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
+        :param _XPos: The horizontal distance of the element's center from the canvas origin. Two formats are supported:
+<li>If the value ends with %, it specifies the distance as a percentage of the canvas width. For example, `10%` means that the distance is 10% of the canvas width. </li>
+u200c<li>If the value ends with px, it specifies the distance in pixels. For example, `100px` means that the distance is 100 pixels. </li>
+Default value: `50%`.
+        :type XPos: str
+        :param _YPos: The vertical distance of the element's center from the canvas origin. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the distance as a percentage of the canvas height. For example, `10%` means that the distance is 10% of the canvas height. </li>
+u200c<li>If the value ends with px, it specifies the distance in pixels. For example, `100px` means that the distance is 100 pixels. </li>
+Default value: `50%`.
+        :type YPos: str
+        :param _Width: The width of the video segment. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the width as a percentage of the canvas width. For example, `10%` means that the video width is 10% of the canvas width. </li>
+u200c<li>If the value ends with px, it specifies the width in pixels. For example, `100px` means that the video width is 100 pixels. </li>
+If one or both parameters are empty or set to `0`:
+<li>If both `Width` and `Height` are empty, the original width and height of the element will be kept. </li>
+<li>If `Width` is empty and `Height` is not, the width will be auto scaled. </li>
+<li>If `Width` is not empty and `Height` is, the height will be auto scaled. </li>
+        :type Width: str
+        :param _Height: The height of the element. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the height as a percentage of the canvas height. For example, `10%` means that the height is 10% of the canvas height. </li>
+u200c<li>If the value ends with px, it specifies the height in pixels. For example, `100px` means that the height is 100 pixels. </li>
+If one or both parameters are empty or set to `0`:
+<li>If both `Width` and `Height` are empty, the original width and height of the element will be kept. </li>
+<li>If `Width` is empty and `Height` is not, the width will be auto scaled. </li>
+<li>If `Width` is not empty and `Height` is, the height will be auto scaled. </li>
+        :type Height: str
+        :param _ImageOperations: The image operations, such as image rotation.
+        :type ImageOperations: list of ComposeImageOperation
+        :param _AudioOperations: The audio operations, such as muting.
+        :type AudioOperations: list of ComposeAudioOperation
+        """
+        self._SourceMedia = None
+        self._TrackTime = None
+        self._XPos = None
+        self._YPos = None
+        self._Width = None
+        self._Height = None
+        self._ImageOperations = None
+        self._AudioOperations = None
+
+    @property
+    def SourceMedia(self):
+        return self._SourceMedia
+
+    @SourceMedia.setter
+    def SourceMedia(self, SourceMedia):
+        self._SourceMedia = SourceMedia
+
+    @property
+    def TrackTime(self):
+        return self._TrackTime
+
+    @TrackTime.setter
+    def TrackTime(self, TrackTime):
+        self._TrackTime = TrackTime
+
+    @property
+    def XPos(self):
+        return self._XPos
+
+    @XPos.setter
+    def XPos(self, XPos):
+        self._XPos = XPos
+
+    @property
+    def YPos(self):
+        return self._YPos
+
+    @YPos.setter
+    def YPos(self, YPos):
+        self._YPos = YPos
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def ImageOperations(self):
+        return self._ImageOperations
+
+    @ImageOperations.setter
+    def ImageOperations(self, ImageOperations):
+        self._ImageOperations = ImageOperations
+
+    @property
+    def AudioOperations(self):
+        return self._AudioOperations
+
+    @AudioOperations.setter
+    def AudioOperations(self, AudioOperations):
+        self._AudioOperations = AudioOperations
+
+
+    def _deserialize(self, params):
+        if params.get("SourceMedia") is not None:
+            self._SourceMedia = ComposeSourceMedia()
+            self._SourceMedia._deserialize(params.get("SourceMedia"))
+        if params.get("TrackTime") is not None:
+            self._TrackTime = ComposeTrackTime()
+            self._TrackTime._deserialize(params.get("TrackTime"))
+        self._XPos = params.get("XPos")
+        self._YPos = params.get("YPos")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        if params.get("ImageOperations") is not None:
+            self._ImageOperations = []
+            for item in params.get("ImageOperations"):
+                obj = ComposeImageOperation()
+                obj._deserialize(item)
+                self._ImageOperations.append(obj)
+        if params.get("AudioOperations") is not None:
+            self._AudioOperations = []
+            for item in params.get("AudioOperations"):
+                obj = ComposeAudioOperation()
+                obj._deserialize(item)
+                self._AudioOperations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComposeVideoStream(AbstractModel):
+    """The video stream information of a video edit/compositing task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Codec: The codec. Valid values:
+<li>`H.264` (default) </li>
+        :type Codec: str
+        :param _Fps: The video frame rate (Hz). Value range: 0–60.  
+The default value is `0`, which means that the frame rate will be the same as that of the first video.
+        :type Fps: int
+        """
+        self._Codec = None
+        self._Fps = None
+
+    @property
+    def Codec(self):
+        return self._Codec
+
+    @Codec.setter
+    def Codec(self, Codec):
+        self._Codec = Codec
+
+    @property
+    def Fps(self):
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+
+    def _deserialize(self, params):
+        self._Codec = params.get("Codec")
+        self._Fps = params.get("Fps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12949,6 +14768,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ScheduleTask: The information of a scheme. This parameter is valid only if `TaskType` is `ScheduleTask`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ScheduleTask: :class:`tencentcloud.mps.v20190612.models.ScheduleTask`
+        :param _LiveScheduleTask: The information of a live scheme. This parameter is valid only if `TaskType` is `LiveScheduleTask`.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type LiveScheduleTask: :class:`tencentcloud.mps.v20190612.models.LiveScheduleTask`
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -12966,6 +14788,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SessionContext = None
         self._ExtInfo = None
         self._ScheduleTask = None
+        self._LiveScheduleTask = None
         self._RequestId = None
 
     @property
@@ -13081,6 +14904,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ScheduleTask = ScheduleTask
 
     @property
+    def LiveScheduleTask(self):
+        return self._LiveScheduleTask
+
+    @LiveScheduleTask.setter
+    def LiveScheduleTask(self, LiveScheduleTask):
+        self._LiveScheduleTask = LiveScheduleTask
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -13114,6 +14945,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("ScheduleTask") is not None:
             self._ScheduleTask = ScheduleTask()
             self._ScheduleTask._deserialize(params.get("ScheduleTask"))
+        if params.get("LiveScheduleTask") is not None:
+            self._LiveScheduleTask = LiveScheduleTask()
+            self._LiveScheduleTask._deserialize(params.get("LiveScheduleTask"))
         self._RequestId = params.get("RequestId")
 
 
@@ -13924,15 +15758,18 @@ class DisableWorkflowResponse(AbstractModel):
 
 
 class DrmInfo(AbstractModel):
-    """
+    """The DRM encryption details.
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: The encryption type.
+<li>`simpleaes`: AES-128 encryption.</li>
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type Type: str
-        :param _SimpleAesDrm: 
+        :param _SimpleAesDrm: The AES-128 encryption details.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type SimpleAesDrm: :class:`tencentcloud.mps.v20190612.models.SimpleAesDrm`
         """
         self._Type = None
@@ -13979,14 +15816,20 @@ class EditMediaFileInfo(AbstractModel):
         r"""
         :param _InputInfo: Video input information.
         :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
-        :param _StartTimeOffset: Start time offset of video clipping in seconds.
+        :param _StartTimeOffset: The start offset (seconds) for video clipping. This parameter is valid for video clipping tasks.
         :type StartTimeOffset: float
-        :param _EndTimeOffset: End time offset of video clipping in seconds.
+        :param _EndTimeOffset: The end offset (seconds) for video clipping. This parameter is valid for video clipping tasks.
         :type EndTimeOffset: float
+        :param _Id: The ID of the material associated with an element. This parameter is required for video compositing tasks.
+
+Note: The ID can be up to 32 characters long and can contain letters, digits, and special characters -_
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Id: str
         """
         self._InputInfo = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
+        self._Id = None
 
     @property
     def InputInfo(self):
@@ -14012,6 +15855,14 @@ class EditMediaFileInfo(AbstractModel):
     def EndTimeOffset(self, EndTimeOffset):
         self._EndTimeOffset = EndTimeOffset
 
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         if params.get("InputInfo") is not None:
@@ -14019,6 +15870,7 @@ class EditMediaFileInfo(AbstractModel):
             self._InputInfo._deserialize(params.get("InputInfo"))
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14036,9 +15888,11 @@ class EditMediaOutputConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Container: Format. Valid values: `mp4` (default), `hls`, `mov`, `flv`, `avi`
+        :param _Container: The container. Valid values: `mp4` (default), `hls`, `mov`, `flv`, `avi`.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type Container: str
-        :param _Type: The editing mode. Valid values are `normal` and `fast`. The default is `normal`, which indicates precise editing.
+        :param _Type: The clip mode. Valid values: `normal` (default), `fast`.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type Type: str
         """
         self._Container = None
@@ -14086,9 +15940,16 @@ class EditMediaRequest(AbstractModel):
         :param _OutputStorage: The storage location of the media processing output file.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputObjectPath: The path to save the media processing output file.
+
+Note: For complex compositing tasks, the filename can be up to 64 characters long and can only contain digits, letters, and special characters -_
+
         :type OutputObjectPath: str
-        :param _OutputConfig: Configuration for output files of video editing
+        :param _OutputConfig: The output settings for a video clipping task.
         :type OutputConfig: :class:`tencentcloud.mps.v20190612.models.EditMediaOutputConfig`
+        :param _ComposeConfig: The settings for a video compositing task.
+
+Note: If this parameter is not empty, the task is a video compositing task. Otherwise, the task is a video clipping task.
+        :type ComposeConfig: :class:`tencentcloud.mps.v20190612.models.ComposeMediaConfig`
         :param _TaskNotifyConfig: Event notification information of task. If this parameter is left empty, no event notifications will be obtained.
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         :param _TasksPriority: Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.
@@ -14102,6 +15963,7 @@ class EditMediaRequest(AbstractModel):
         self._OutputStorage = None
         self._OutputObjectPath = None
         self._OutputConfig = None
+        self._ComposeConfig = None
         self._TaskNotifyConfig = None
         self._TasksPriority = None
         self._SessionId = None
@@ -14138,6 +16000,14 @@ class EditMediaRequest(AbstractModel):
     @OutputConfig.setter
     def OutputConfig(self, OutputConfig):
         self._OutputConfig = OutputConfig
+
+    @property
+    def ComposeConfig(self):
+        return self._ComposeConfig
+
+    @ComposeConfig.setter
+    def ComposeConfig(self, ComposeConfig):
+        self._ComposeConfig = ComposeConfig
 
     @property
     def TaskNotifyConfig(self):
@@ -14186,6 +16056,9 @@ class EditMediaRequest(AbstractModel):
         if params.get("OutputConfig") is not None:
             self._OutputConfig = EditMediaOutputConfig()
             self._OutputConfig._deserialize(params.get("OutputConfig"))
+        if params.get("ComposeConfig") is not None:
+            self._ComposeConfig = ComposeMediaConfig()
+            self._ComposeConfig._deserialize(params.get("ComposeConfig"))
         if params.get("TaskNotifyConfig") is not None:
             self._TaskNotifyConfig = TaskNotifyConfig()
             self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
@@ -14551,8 +16424,12 @@ class EnhanceConfig(AbstractModel):
         :param _VideoEnhance: Video enhancement configuration.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type VideoEnhance: :class:`tencentcloud.mps.v20190612.models.VideoEnhanceConfig`
+        :param _AudioEnhance: The audio enhancement configuration.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type AudioEnhance: :class:`tencentcloud.mps.v20190612.models.AudioEnhanceConfig`
         """
         self._VideoEnhance = None
+        self._AudioEnhance = None
 
     @property
     def VideoEnhance(self):
@@ -14562,11 +16439,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def VideoEnhance(self, VideoEnhance):
         self._VideoEnhance = VideoEnhance
 
+    @property
+    def AudioEnhance(self):
+        return self._AudioEnhance
+
+    @AudioEnhance.setter
+    def AudioEnhance(self, AudioEnhance):
+        self._AudioEnhance = AudioEnhance
+
 
     def _deserialize(self, params):
         if params.get("VideoEnhance") is not None:
             self._VideoEnhance = VideoEnhanceConfig()
             self._VideoEnhance._deserialize(params.get("VideoEnhance"))
+        if params.get("AudioEnhance") is not None:
+            self._AudioEnhance = AudioEnhanceConfig()
+            self._AudioEnhance._deserialize(params.get("AudioEnhance"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15072,9 +16960,11 @@ class HeadTailParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HeadSet: Opening credits list
+        :param _HeadSet: The opening segments.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type HeadSet: list of MediaInputInfo
-        :param _TailSet: Closing credits list
+        :param _TailSet: The closing segments.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type TailSet: list of MediaInputInfo
         """
         self._HeadSet = None
@@ -15748,6 +17638,527 @@ class ImageWatermarkTemplate(AbstractModel):
         self._Width = params.get("Width")
         self._Height = params.get("Height")
         self._RepeatType = params.get("RepeatType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveActivityResItem(AbstractModel):
+    """The output of a live scheme subtask.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LiveRecordTask: The output of a live recording task.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type LiveRecordTask: :class:`tencentcloud.mps.v20190612.models.LiveScheduleLiveRecordTaskResult`
+        """
+        self._LiveRecordTask = None
+
+    @property
+    def LiveRecordTask(self):
+        return self._LiveRecordTask
+
+    @LiveRecordTask.setter
+    def LiveRecordTask(self, LiveRecordTask):
+        self._LiveRecordTask = LiveRecordTask
+
+
+    def _deserialize(self, params):
+        if params.get("LiveRecordTask") is not None:
+            self._LiveRecordTask = LiveScheduleLiveRecordTaskResult()
+            self._LiveRecordTask._deserialize(params.get("LiveRecordTask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveActivityResult(AbstractModel):
+    """The output of a live scheme subtask.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActivityType: The task type.
+<li>`LiveRecord`: Live recording. </li>
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type ActivityType: str
+        :param _LiveActivityResItem: The task output.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type LiveActivityResItem: :class:`tencentcloud.mps.v20190612.models.LiveActivityResItem`
+        """
+        self._ActivityType = None
+        self._LiveActivityResItem = None
+
+    @property
+    def ActivityType(self):
+        return self._ActivityType
+
+    @ActivityType.setter
+    def ActivityType(self, ActivityType):
+        self._ActivityType = ActivityType
+
+    @property
+    def LiveActivityResItem(self):
+        return self._LiveActivityResItem
+
+    @LiveActivityResItem.setter
+    def LiveActivityResItem(self, LiveActivityResItem):
+        self._LiveActivityResItem = LiveActivityResItem
+
+
+    def _deserialize(self, params):
+        self._ActivityType = params.get("ActivityType")
+        if params.get("LiveActivityResItem") is not None:
+            self._LiveActivityResItem = LiveActivityResItem()
+            self._LiveActivityResItem._deserialize(params.get("LiveActivityResItem"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveRecordFile(AbstractModel):
+    """The information of a live recording file.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: The URL of the recording file.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Url: str
+        :param _Size: The size of the recording file.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Size: int
+        :param _Duration: The duration of the recording file.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Duration: int
+        :param _StartTime: The recording start time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type StartTime: str
+        :param _EndTime: The recording end time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type EndTime: str
+        """
+        self._Url = None
+        self._Size = None
+        self._Duration = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Size(self):
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._Size = params.get("Size")
+        self._Duration = params.get("Duration")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveRecordResult(AbstractModel):
+    """The live recording result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OutputStorage: The storage of the recording file.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _FileList: The recording segments.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type FileList: list of LiveRecordFile
+        """
+        self._OutputStorage = None
+        self._FileList = None
+
+    @property
+    def OutputStorage(self):
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def FileList(self):
+        return self._FileList
+
+    @FileList.setter
+    def FileList(self, FileList):
+        self._FileList = FileList
+
+
+    def _deserialize(self, params):
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        if params.get("FileList") is not None:
+            self._FileList = []
+            for item in params.get("FileList"):
+                obj = LiveRecordFile()
+                obj._deserialize(item)
+                self._FileList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveRecordTaskInput(AbstractModel):
+    """The input parameters of a live recording task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: The live recording template ID.
+        :type Definition: int
+        :param _OutputStorage: The storage of the recording file. If this parameter is left empty, the `OutputStorage` value of the parent folder will be inherited.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _OutputObjectPath: The output path of the recording file.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type OutputObjectPath: str
+        """
+        self._Definition = None
+        self._OutputStorage = None
+        self._OutputObjectPath = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def OutputStorage(self):
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def OutputObjectPath(self):
+        return self._OutputObjectPath
+
+    @OutputObjectPath.setter
+    def OutputObjectPath(self, OutputObjectPath):
+        self._OutputObjectPath = OutputObjectPath
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._OutputObjectPath = params.get("OutputObjectPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveScheduleLiveRecordTaskResult(AbstractModel):
+    """The result of a live scheme's live recording task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: The task status. Valid values: `PROCESSING`, `SUCCESS`, `FAIL`.
+        :type Status: str
+        :param _ErrCodeExt: The error code. An empty string indicates the task is successful; any other value indicates the task has failed. For details, see [Error Codes](https://www.tencentcloud.com/document/product/1041/40249).
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type ErrCodeExt: str
+        :param _ErrCode: The error code. `0` indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type ErrCode: int
+        :param _Message: The error message.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _Input: The input of a live recording task.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.LiveRecordTaskInput`
+        :param _Output: The output of a live recording task.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.LiveRecordResult`
+        :param _BeginProcessTime: The time when the task was started, in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type BeginProcessTime: str
+        :param _FinishTime: The time when the task was completed, in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type FinishTime: str
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def BeginProcessTime(self):
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = LiveRecordTaskInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = LiveRecordResult()
+            self._Output._deserialize(params.get("Output"))
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveScheduleTask(AbstractModel):
+    """The information of a live scheme subtask.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: The ID of a live scheme subtask.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type TaskId: str
+        :param _Status: The task status. Valid values:
+<li>`PROCESSING`</li>
+<li>`FINISH` </li>
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Status: str
+        :param _ErrCode: If the value returned is not `0`, there was a source error. If `0` is returned, refer to the error codes of the corresponding task type.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type ErrCode: int
+        :param _Message: If there was a source error, this parameter is the error message. For other errors, refer to the error messages of the corresponding task type.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _Url: The URL of the live stream.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Url: str
+        :param _LiveActivityResultSet: The task output.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type LiveActivityResultSet: list of LiveActivityResult
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Url = None
+        self._LiveActivityResultSet = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def LiveActivityResultSet(self):
+        return self._LiveActivityResultSet
+
+    @LiveActivityResultSet.setter
+    def LiveActivityResultSet(self, LiveActivityResultSet):
+        self._LiveActivityResultSet = LiveActivityResultSet
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        self._Url = params.get("Url")
+        if params.get("LiveActivityResultSet") is not None:
+            self._LiveActivityResultSet = []
+            for item in params.get("LiveActivityResultSet"):
+                obj = LiveActivityResult()
+                obj._deserialize(item)
+                self._LiveActivityResultSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22934,6 +25345,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ScheduleTaskEvent: The information of a scheme. Information will be returned only if `EventType` is `ScheduleTask`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ScheduleTaskEvent: :class:`tencentcloud.mps.v20190612.models.ScheduleTask`
+        :param _Timestamp: - The expiration time (Unix timestamp) of the notification's signature.
+- By default, notifications sent by MPS expire after 10 minutes. If the expiration time specified has elapsed, a notification will be considered invalid. This can prevent replay attacks.
+- The format of this parameter is a decimal Unix timestamp, i.e., the number of seconds that have elapsed since 00:00 (UTC/GMT time) on January 1, 1970.
+
+        :type Timestamp: int
+        :param _Sign: The notification signature. Sign = MD5 (Timestamp + NotifyKey) MPS concatenates `Timestamp` and `NotifyKey` in `TaskNotifyConfig` and calculates a signature using the MD5 algorithm. This signature is included in the notification sent to your backend server. If the signature in the notification matches your own calculation result, it indicates that the notification is from MPS.
+        :type Sign: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -22943,6 +25361,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SessionId = None
         self._SessionContext = None
         self._ScheduleTaskEvent = None
+        self._Timestamp = None
+        self._Sign = None
         self._RequestId = None
 
     @property
@@ -22994,6 +25414,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ScheduleTaskEvent = ScheduleTaskEvent
 
     @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Sign(self):
+        return self._Sign
+
+    @Sign.setter
+    def Sign(self, Sign):
+        self._Sign = Sign
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -23015,6 +25451,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("ScheduleTaskEvent") is not None:
             self._ScheduleTaskEvent = ScheduleTask()
             self._ScheduleTaskEvent._deserialize(params.get("ScheduleTaskEvent"))
+        self._Timestamp = params.get("Timestamp")
+        self._Sign = params.get("Sign")
         self._RequestId = params.get("RequestId")
 
 
@@ -24072,10 +26510,20 @@ class ProcessLiveStreamRequest(AbstractModel):
         :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
         :param _AiRecognitionTask: Type parameter of video content recognition task.
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        :param _AiAnalysisTask: 
+        :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        :param _AiQualityControlTask: 
+        :type AiQualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
         :param _SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
         :type SessionId: str
         :param _SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
+        :param _ScheduleId: The live scheme ID.
+Note 1:
+<li>If an output storage (`OutputStorage`) and directory (`OutputDir`) are specified for a subtask of the scheme, those output settings will be applied. </li>
+u200c<li>If an output storage (`OutputStorage`) and directory (`OutputDir`) are not specified for a subtask of the scheme, the output parameters specified for `ProcessLiveStream` (if any) will be applied. </li>
+Note 2: If `TaskNotifyConfig` is specified when `ProcessLiveStream` is called, the specified settings will be applied instead of the default callback settings of the scheme.
+        :type ScheduleId: int
         """
         self._Url = None
         self._TaskNotifyConfig = None
@@ -24083,8 +26531,11 @@ class ProcessLiveStreamRequest(AbstractModel):
         self._OutputDir = None
         self._AiContentReviewTask = None
         self._AiRecognitionTask = None
+        self._AiAnalysisTask = None
+        self._AiQualityControlTask = None
         self._SessionId = None
         self._SessionContext = None
+        self._ScheduleId = None
 
     @property
     def Url(self):
@@ -24135,6 +26586,22 @@ class ProcessLiveStreamRequest(AbstractModel):
         self._AiRecognitionTask = AiRecognitionTask
 
     @property
+    def AiAnalysisTask(self):
+        return self._AiAnalysisTask
+
+    @AiAnalysisTask.setter
+    def AiAnalysisTask(self, AiAnalysisTask):
+        self._AiAnalysisTask = AiAnalysisTask
+
+    @property
+    def AiQualityControlTask(self):
+        return self._AiQualityControlTask
+
+    @AiQualityControlTask.setter
+    def AiQualityControlTask(self, AiQualityControlTask):
+        self._AiQualityControlTask = AiQualityControlTask
+
+    @property
     def SessionId(self):
         return self._SessionId
 
@@ -24149,6 +26616,14 @@ class ProcessLiveStreamRequest(AbstractModel):
     @SessionContext.setter
     def SessionContext(self, SessionContext):
         self._SessionContext = SessionContext
+
+    @property
+    def ScheduleId(self):
+        return self._ScheduleId
+
+    @ScheduleId.setter
+    def ScheduleId(self, ScheduleId):
+        self._ScheduleId = ScheduleId
 
 
     def _deserialize(self, params):
@@ -24166,8 +26641,15 @@ class ProcessLiveStreamRequest(AbstractModel):
         if params.get("AiRecognitionTask") is not None:
             self._AiRecognitionTask = AiRecognitionTaskInput()
             self._AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
+        if params.get("AiAnalysisTask") is not None:
+            self._AiAnalysisTask = AiAnalysisTaskInput()
+            self._AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("AiQualityControlTask") is not None:
+            self._AiQualityControlTask = AiQualityControlTaskInput()
+            self._AiQualityControlTask._deserialize(params.get("AiQualityControlTask"))
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
+        self._ScheduleId = params.get("ScheduleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26456,11 +28938,16 @@ class SchedulesInfo(AbstractModel):
         :param _ScheduleName: The scheme name.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ScheduleName: str
+        :param _Type: The scheme type. Valid values:
+ <li>`Preset`</li>
+<li>`Custom` </li>
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Type: str
         :param _Status: The scheme status. Valid values:
 `Enabled`
 `Disabled`
 Note: This field may return null, indicating that no valid values can be obtained.
-        :type Status: list of str
+        :type Status: str
         :param _Trigger: The trigger of the scheme.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
@@ -26485,6 +28972,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         """
         self._ScheduleId = None
         self._ScheduleName = None
+        self._Type = None
         self._Status = None
         self._Trigger = None
         self._Activities = None
@@ -26509,6 +28997,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @ScheduleName.setter
     def ScheduleName(self, ScheduleName):
         self._ScheduleName = ScheduleName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
     @property
     def Status(self):
@@ -26578,6 +29074,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._ScheduleId = params.get("ScheduleId")
         self._ScheduleName = params.get("ScheduleName")
+        self._Type = params.get("Type")
         self._Status = params.get("Status")
         if params.get("Trigger") is not None:
             self._Trigger = WorkflowTrigger()
@@ -26708,17 +29205,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class SimpleAesDrm(AbstractModel):
-    """
+    """The AES-128 encryption details.
 
     """
 
     def __init__(self):
         r"""
-        :param _Uri: 
+        :param _Uri: The URI of decryption key.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type Uri: str
-        :param _Key: 
+        :param _Key: The encryption key (a 32-byte string).
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type Key: str
-        :param _Vector: 
+        :param _Vector: The initialization vector for encryption (a 32-byte string).
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type Vector: str
         """
         self._Uri = None
@@ -27527,16 +30027,6 @@ class TaskNotifyConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CmqModel: The CMQ or TDMQ-CMQ model. Valid values: Queue, Topic.
-        :type CmqModel: str
-        :param _CmqRegion: The CMQ or TDMQ-CMQ region, such as `sh` (Shanghai) or `bj` (Beijing).
-        :type CmqRegion: str
-        :param _TopicName: The CMQ or TDMQ-CMQ topic to receive notifications. This parameter is valid when `CmqModel` is `Topic`.
-        :type TopicName: str
-        :param _QueueName: The CMQ or TDMQ-CMQ queue to receive notifications. This parameter is valid when `CmqModel` is `Queue`.
-        :type QueueName: str
-        :param _NotifyMode: Workflow notification method. Valid values: Finish, Change. If this parameter is left empty, `Finish` will be used.
-        :type NotifyMode: str
         :param _NotifyType: The notification type. Valid values:
 <li>`CMQ`: This value is no longer used. Please use `TDMQ-CMQ` instead.</li>
 <li>`TDMQ-CMQ`: Message queue</li>
@@ -27545,21 +30035,59 @@ class TaskNotifyConfig(AbstractModel):
 <li>`AWS-SQS`: AWS queue. This type is only supported for AWS tasks, and the queue must be in the same region as the AWS bucket.</li>
 <font color="red">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>
         :type NotifyType: str
+        :param _NotifyMode: Workflow notification method. Valid values: Finish, Change. If this parameter is left empty, `Finish` will be used.
+        :type NotifyMode: str
         :param _NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`
         :type NotifyUrl: str
+        :param _CmqModel: The CMQ or TDMQ-CMQ model. Valid values: Queue, Topic.
+        :type CmqModel: str
+        :param _CmqRegion: The CMQ or TDMQ-CMQ region, such as `sh` (Shanghai) or `bj` (Beijing).
+        :type CmqRegion: str
+        :param _TopicName: The CMQ or TDMQ-CMQ topic to receive notifications. This parameter is valid when `CmqModel` is `Topic`.
+        :type TopicName: str
+        :param _QueueName: The CMQ or TDMQ-CMQ queue to receive notifications. This parameter is valid when `CmqModel` is `Queue`.
+        :type QueueName: str
         :param _AwsSQS: The AWS SQS queue. This parameter is required if `NotifyType` is `AWS-SQS`.
 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AwsSQS: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
+        :param _NotifyKey: The key used to generate the callback signature.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type NotifyKey: str
         """
+        self._NotifyType = None
+        self._NotifyMode = None
+        self._NotifyUrl = None
         self._CmqModel = None
         self._CmqRegion = None
         self._TopicName = None
         self._QueueName = None
-        self._NotifyMode = None
-        self._NotifyType = None
-        self._NotifyUrl = None
         self._AwsSQS = None
+        self._NotifyKey = None
+
+    @property
+    def NotifyType(self):
+        return self._NotifyType
+
+    @NotifyType.setter
+    def NotifyType(self, NotifyType):
+        self._NotifyType = NotifyType
+
+    @property
+    def NotifyMode(self):
+        return self._NotifyMode
+
+    @NotifyMode.setter
+    def NotifyMode(self, NotifyMode):
+        self._NotifyMode = NotifyMode
+
+    @property
+    def NotifyUrl(self):
+        return self._NotifyUrl
+
+    @NotifyUrl.setter
+    def NotifyUrl(self, NotifyUrl):
+        self._NotifyUrl = NotifyUrl
 
     @property
     def CmqModel(self):
@@ -27594,30 +30122,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._QueueName = QueueName
 
     @property
-    def NotifyMode(self):
-        return self._NotifyMode
-
-    @NotifyMode.setter
-    def NotifyMode(self, NotifyMode):
-        self._NotifyMode = NotifyMode
-
-    @property
-    def NotifyType(self):
-        return self._NotifyType
-
-    @NotifyType.setter
-    def NotifyType(self, NotifyType):
-        self._NotifyType = NotifyType
-
-    @property
-    def NotifyUrl(self):
-        return self._NotifyUrl
-
-    @NotifyUrl.setter
-    def NotifyUrl(self, NotifyUrl):
-        self._NotifyUrl = NotifyUrl
-
-    @property
     def AwsSQS(self):
         return self._AwsSQS
 
@@ -27625,18 +30129,27 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def AwsSQS(self, AwsSQS):
         self._AwsSQS = AwsSQS
 
+    @property
+    def NotifyKey(self):
+        return self._NotifyKey
+
+    @NotifyKey.setter
+    def NotifyKey(self, NotifyKey):
+        self._NotifyKey = NotifyKey
+
 
     def _deserialize(self, params):
+        self._NotifyType = params.get("NotifyType")
+        self._NotifyMode = params.get("NotifyMode")
+        self._NotifyUrl = params.get("NotifyUrl")
         self._CmqModel = params.get("CmqModel")
         self._CmqRegion = params.get("CmqRegion")
         self._TopicName = params.get("TopicName")
         self._QueueName = params.get("QueueName")
-        self._NotifyMode = params.get("NotifyMode")
-        self._NotifyType = params.get("NotifyType")
-        self._NotifyUrl = params.get("NotifyUrl")
         if params.get("AwsSQS") is not None:
             self._AwsSQS = AwsSQS()
             self._AwsSQS._deserialize(params.get("AwsSQS"))
+        self._NotifyKey = params.get("NotifyKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29885,6 +32398,58 @@ Default value: 0. If this parameter is set to `1`, multiple streams with differe
         self._FillType = params.get("FillType")
         self._Vcrf = params.get("Vcrf")
         self._ContentAdaptStream = params.get("ContentAdaptStream")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VolumeBalanceConfig(AbstractModel):
+    """The volume equalization configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable the feature. Valid values:
+<li>`ON`</li>
+<li>`OFF` </li>
+Default value: `ON`.
+        :type Switch: str
+        :param _Type: The type. Valid values:
+<li>`loudNorm`: Loudness normalization.</li>
+<li>`gainControl`: Volume leveling.</li>
+Default value: `loudNorm`.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

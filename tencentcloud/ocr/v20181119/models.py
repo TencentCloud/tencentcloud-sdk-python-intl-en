@@ -1785,7 +1785,6 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _WarningCode: Multiple alarm codes. If the ID card is spoofed, photocopied, or photoshopped, the corresponding alarm code will be returned.
 -9102: Alarm for photocopied document
 -9103: Alarm for spoofed document
--9104: Alarm for photoshopped document
         :type WarningCode: list of int
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

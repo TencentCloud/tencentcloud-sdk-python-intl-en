@@ -92,5 +92,11 @@ INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = 'InvalidParameterValue.Invali
 # The file is too large.
 LIMITEXCEEDED_TOOLARGEFILEERROR = 'LimitExceeded.TooLargeFileError'
 
+# 
+RESOURCEUNAVAILABLE_INARREARS = 'ResourceUnavailable.InArrears'
+
+# 
+RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = 'ResourceUnavailable.ResourcePackageRunOut'
+
 # Exceptional billing status.
 RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = 'ResourcesSoldOut.ChargeStatusException'

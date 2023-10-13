@@ -1134,11 +1134,19 @@ class MpsClient(AbstractClient):
 
 
     def EditMedia(self, request):
-        """This API is used to edit a video (by clipping, splicing, etc.) to generate a new VOD video. Editing features include:
+        """This API is used to edit a video to generate a new video. Editing actions may include:
 
-        1. Clipping a file to generate a new video;
-        2. Splicing multiple files to generate a new video;
-        3. Clipping multiple files and then splicing the clips to generate a new video.
+
+        1. **Simple editing**: Simple video editing such as clipping and splicing
+        1.1 Clipping a file to generate a new video
+        1.2 Splicing multiple files to generate a new video
+        1.3 Clipping multiple files and then splicing the clips to generate a new video
+
+        2. **Compositing**: Composing a new video as required
+        2.1 Adding different tracks (video, audio, subtitles) or elements (video, image, audio, text, empty)
+        2.2 Image: Adding, scaling, rotating, or mirroring an image
+        2.3 Audio: Adjusting volume and adding audio effects such as fade and reverb
+        2.4 Video: Adding transition effects, changing playback speed, splicing and clipping videos, adding subtitles, playing videos picture-in-picture, separating audio from videos, adding animation effects, etc.
 
         :param request: Request instance for EditMedia.
         :type request: :class:`tencentcloud.mps.v20190612.models.EditMediaRequest`
@@ -1605,9 +1613,12 @@ class MpsClient(AbstractClient):
         """This API is used to initiate live stream processing tasks. Such tasks may include the following:
 
         * Intelligent content moderation (detection of pornographic content in images and audio, detection of sensitive information)
-        * Intelligent content recognition (face, full text, text keyword, and speech keyword recognition; real-time speech translation)
+        * Intelligent content recognition (face, full text, text keyword, full speech, speech keyword, real-time speech translation, object recognition, game event tracking)
+        * Intelligent content analysis (real-time news splitting)
+        * Quality control, including recognizing live stream format, checking audio/video content for flickering, blur, low light, overexposure, black bars, white bars, black screen, white screen, noise, pixelation, QR code, etc., and no-reference scoring.
+        * Recording
 
-        Live stream processing notifications are written into the specified CMQ queue in real time. You need to obtain the processing results from the CMQ queue. The output files of processing tasks are saved to the specified bucket.
+        HTTP callbacks are supported for live stream processing events. Notifications can also be written in real time to and read from a CMQ queue. The output files of processing tasks are saved to the storage you specify.
 
         :param request: Request instance for ProcessLiveStream.
         :type request: :class:`tencentcloud.mps.v20190612.models.ProcessLiveStreamRequest`
