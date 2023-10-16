@@ -5708,7 +5708,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type MasterInstanceId: str
         :param _EngineVersion: MySQL version. Valid values: `5.5`, `5.6`, `5.7`, and `8.0`. You can use the [DescribeDBZoneConfig](https://intl.cloud.tencent.com/document/api/236/17229?from_cn_redirect=1) API to query the supported instance versions.
         :type EngineVersion: str
-        :param _Password: The root account password. It can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and symbols (_+-&=!@#$%^*()). This parameter can be specified when purchasing a replica instance and is invalid for read-only or disaster recovery instances.
+        :param _Password: The root account password, which can contain 8-64 characters and must contain at least two of the following types of characters: letters, digits, and symbols `_+-&=!@#$%^*()`. This parameter applies to source instances but not to read-only or disaster recovery instances.
         :type Password: str
         :param _ProtectMode: Data replication mode. Valid values: `0` (async replication), `1` (semi-sync replication), `2` (strong sync replication). Default value: `0`.
         :type ProtectMode: int
@@ -5740,7 +5740,7 @@ class CreateDBInstanceRequest(AbstractModel):
         :type DeviceType: str
         :param _ParamTemplateId: Parameter template ID
         :type ParamTemplateId: int
-        :param _AlarmPolicyList: Array of alarm policy IDs, which is `OriginId` obtained through the `DescribeAlarmPolicy` API.
+        :param _AlarmPolicyList: Array of alarm policy IDs, which can be obtained through the `OriginId` field in the return value of the `DescribeAlarmPolicy` API of TCOP.
         :type AlarmPolicyList: list of int
         :param _InstanceNodes: The number of nodes of the instance. To purchase a read-only instance or a basic instance, set this parameter to `1` or leave it empty. To purchase a three-node instance, set this parameter to `3` or specify the `BackupZone` parameter. If the instance to be purchased is a source instance and both `BackupZone` and this parameter are left empty, the value `2` will be used, which indicates the source instance will have two nodes.
         :type InstanceNodes: int
@@ -7456,7 +7456,7 @@ class DescribeAuditLogsRequest(AbstractModel):
 `affectRows`: Number of affected rows,
 `execTime`: Execution time.
         :type OrderBy: str
-        :param _LogFilter: Filter, which can be used to filter logs.
+        :param _LogFilter: Filter. Multiple values are in `AND` relationship.
         :type LogFilter: list of InstanceAuditLogFilters
         """
         self._InstanceId = None
@@ -9365,6 +9365,103 @@ class DescribeCloneListResponse(AbstractModel):
                 obj = CloneItem()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCpuExpandStrategyRequest(AbstractModel):
+    """DescribeCpuExpandStrategy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCpuExpandStrategyResponse(AbstractModel):
+    """DescribeCpuExpandStrategy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Policy type. Valid values: `auto`, `manual`.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _ExpandCpu: Manually expanded CPU, which is valid when `Type` is `manual`.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type ExpandCpu: str
+        :param _AutoStrategy: Automatic expansion policy, which is valid when `Type` is `auto`.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type AutoStrategy: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Type = None
+        self._ExpandCpu = None
+        self._AutoStrategy = None
+        self._RequestId = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ExpandCpu(self):
+        return self._ExpandCpu
+
+    @ExpandCpu.setter
+    def ExpandCpu(self, ExpandCpu):
+        self._ExpandCpu = ExpandCpu
+
+    @property
+    def AutoStrategy(self):
+        return self._AutoStrategy
+
+    @AutoStrategy.setter
+    def AutoStrategy(self, AutoStrategy):
+        self._AutoStrategy = AutoStrategy
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._ExpandCpu = params.get("ExpandCpu")
+        self._AutoStrategy = params.get("AutoStrategy")
         self._RequestId = params.get("RequestId")
 
 
@@ -15365,19 +15462,22 @@ class InstanceAuditLogFilters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: Filter condition, which is not supported for `SQL`. The search conditions are supported as follows:
+        :param _Type: Filter condition. The search conditions are supported as follows:
 
-`Equal to`, `Not equal to`, `Include`, and `Exclude` can be used to search for 
-`host` (Client IP),
-`user` (Username),
-and `DBName` (Database name).
+Include/Exclude, and Include/Exclude (segment dimension) can be used to search for:
+`sql` - SQL details.
 
-`Equal to` and `Not equal to` can be used to search for 
-`sqlType`- SQL u200dtype,
+`Equal to`, `Not equal to`, `Include`, and `Exclude` can be used to search for:
+`host` - Client IP,
+`user` - Username,
+`DBName` - Database name.
+
+`Equal to` and `Not equal to` can be used to search for:
+`sqlType` - SQL u200dtype,
 `errCode` - Error code,
-`threadId`- Thread ID.
+`threadId` - Thread ID.
 
-Range search is supported for the fields, such as 
+Range search is supported for:
 `execTime`- Execution time (μs),
 `lockWaitTime`u200d - Lock wait time (μs),
 `ioWaitTime` - IO wait time (μs),
@@ -15387,14 +15487,16 @@ Range search is supported for the fields, such as
 `affectRows` - Number of affected rows,
 `sentRows` - Number of returned rows.
         :type Type: str
-        :param _Compare: Filter, including:
+        :param _Compare: Filter. Valid values:
+`WINC` - Include (segment dimension)
+`WEXC` - Exclude (segment dimension)
 `INC` - Include,
-`EXC` -Exclude,
+`EXC` - Exclude,
 `EQS` - Equal to,
 `NEQ` - Not equal to.
 u200d`RA` - Range
         :type Compare: str
-        :param _Value: The filter value
+        :param _Value: The filter value. In a reverse query, multiple values are in an "AND" relationship; while in a forward query, multiple values are in an "OR" relationship.
         :type Value: list of str
         """
         self._Type = None
@@ -23223,6 +23325,49 @@ class StartBatchRollbackResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StartCpuExpandRequest(AbstractModel):
+    """StartCpuExpand request structure.
+
+    """
+
+
+class StartCpuExpandResponse(AbstractModel):
+    """StartCpuExpand response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AsyncRequestId: Async task ID, which can be passed in by calling the u200c`DescribeAsyncRequest` API for task progress query.
+        :type AsyncRequestId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AsyncRequestId = None
+        self._RequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
+
+
 class StartReplicationRequest(AbstractModel):
     """StartReplication request structure.
 
@@ -23265,6 +23410,76 @@ class StartReplicationResponse(AbstractModel):
         r"""
         :param _AsyncRequestId: Async task ID.
 Note: this field may return `null`, indicating that no valid values can be obtained.
+        :type AsyncRequestId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AsyncRequestId = None
+        self._RequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
+
+
+class StopCpuExpandRequest(AbstractModel):
+    """StopCpuExpand request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopCpuExpandResponse(AbstractModel):
+    """StopCpuExpand response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AsyncRequestId: Async task ID, which can be passed in by calling the u200c`DescribeAsyncRequest` API for task progress query.
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

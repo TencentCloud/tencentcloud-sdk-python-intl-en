@@ -119,6 +119,9 @@ FAILEDOPERATION_MODIFYROGROUPERROR = 'FailedOperation.ModifyROGroupError'
 # The number of networks does not meet resource requirements.
 FAILEDOPERATION_NETWORKNUMLIMITERROR = 'FailedOperation.NetworkNumLimitError'
 
+# The instance has no available standby server.
+FAILEDOPERATION_NOAVAILABLESTANDBY = 'FailedOperation.NoAvailableStandby'
+
 # The operation frequency limit is exceeded. Try again later. If the problem persists, contact customer service.
 FAILEDOPERATION_OPERATEFREQUENCYLIMITEDERROR = 'FailedOperation.OperateFrequencyLimitedError'
 
@@ -134,7 +137,7 @@ FAILEDOPERATION_PAYORDERFAILED = 'FailedOperation.PayOrderFailed'
 # Failed to unfreeze the account of a pay-as-you-go instance. Please try again later. If the problem persists, please contact customer service.
 FAILEDOPERATION_POSTPAIDUNBLOCKERROR = 'FailedOperation.PostPaidUnblockError'
 
-# 
+# Pre-check failed
 FAILEDOPERATION_PRECHECKERROR = 'FailedOperation.PreCheckError'
 
 # An error occurred while getting the pre-signed authorization URL.
@@ -287,6 +290,9 @@ INVALIDPARAMETER_INSTANCENAMEEXIST = 'InvalidParameter.InstanceNameExist'
 # Failed to check the parameter.
 INVALIDPARAMETER_PARAMETERCHECKERROR = 'InvalidParameter.ParameterCheckError'
 
+# You can't left all parameters empty.You need to set at least one of the parameters.
+INVALIDPARAMETER_PARAMETERSNOTSET = 'InvalidParameter.ParametersNotSet'
+
 # Incorrect PID
 INVALIDPARAMETER_TRADEACCESSDENIEDERROR = 'InvalidParameter.TradeAccessDeniedError'
 
@@ -401,6 +407,9 @@ INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = 'InvalidParameterValue.ParameterHan
 # The length of parameter exceeds the limit.
 INVALIDPARAMETERVALUE_PARAMETERLENGTHLIMITERROR = 'InvalidParameterValue.ParameterLengthLimitError'
 
+# Invalid parameter
+INVALIDPARAMETERVALUE_PARAMETEROUTOFRANGE = 'InvalidParameterValue.ParameterOutOfRange'
+
 # Invalid parameter values.
 INVALIDPARAMETERVALUE_PARAMETEROUTRANGEERROR = 'InvalidParameterValue.ParameterOutRangeError'
 
@@ -451,6 +460,9 @@ OPERATIONDENIED_INSTANCESTATUSLIMITERROR = 'OperationDenied.InstanceStatusLimitE
 
 # This operation cannot be performed on an instance in this status.
 OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = 'OperationDenied.InstanceStatusLimitOpError'
+
+# Invalid instance type
+OPERATIONDENIED_INSTANCETYPEDENIED = 'OperationDenied.InstanceTypeDenied'
 
 # Serverless is not supported in this availability zone.
 OPERATIONDENIED_NOTSUPPORTZONEERROR = 'OperationDenied.NotSupportZoneError'

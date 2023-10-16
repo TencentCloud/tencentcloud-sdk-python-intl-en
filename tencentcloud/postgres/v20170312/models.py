@@ -892,31 +892,44 @@ class CloneDBInstanceRequest(AbstractModel):
         r"""
         :param _DBInstanceId: ID of the original instance to be cloned.
         :type DBInstanceId: str
-        :param _SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
+        :param _SpecCode: Purchasable code, which can be obtained from the `SpecCode` field in the return value of the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.
         :type SpecCode: str
         :param _Storage: Instance storage capacity in GB.
         :type Storage: int
-        :param _Period: Valid period in months of the purchased instance. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.
+        :param _Period: Validity period in months. Valid values:
+<li>Monthly subscription: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.
+<li>Pay-as-you-go: `1`.
         :type Period: int
-        :param _AutoRenewFlag: Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.
+        :param _AutoRenewFlag: Auto-renewal flag. Valid values:
+<li>`0`: Manual renewal.
+<li>`1`: Automatic renewal.
+Default value: `0`.
         :type AutoRenewFlag: int
-        :param _VpcId: VPC ID.
+        :param _VpcId: VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.
         :type VpcId: str
-        :param _SubnetId: ID of a subnet in the VPC specified by `VpcId`.
+        :param _SubnetId: VPC subnet ID in the format of `subnet-xxxxxxxx`, which can be obtained in the console or from the `unSubnetId` field in the return value of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.
         :type SubnetId: str
-        :param _Name: Name of the purchased instance.
+        :param _Name: Name of the newly purchased instance, which can contain up to 60 letters, digits, or symbols (-_). If this parameter is not specified, "Unnamed" will be displayed by default.
         :type Name: str
-        :param _InstanceChargeType: Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).
+        :param _InstanceChargeType: Instance billing mode. Valid values:
+<li>`PREPAID`: Monthly subscription.
+<li>`POSTPAID_BY_HOUR`: Pay-as-you-go.
+Default value: `PREPAID`.
         :type InstanceChargeType: str
-        :param _SecurityGroupIds: Security group ID.
+        :param _SecurityGroupIds: Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.
+
         :type SecurityGroupIds: list of str
         :param _ProjectId: Project ID.
         :type ProjectId: int
-        :param _TagList: The information of tags to be bound with the purchased instance. This parameter is left empty by default.
+        :param _TagList: The information of tags to be bound with the instance, which is left empty by default. This parameter can be obtained from the `Tags` field in the return value of the [DescribeTags](https://intl.cloud.tencent.com/document/api/651/35316?from_cn_redirect=1) API.
         :type TagList: list of Tag
-        :param _DBNodeSet: This parameter is required if you purchase a multi-AZ deployed instance.
+        :param _DBNodeSet: Deployment information of the instance node, which will display the information of each AZ when the instance node is deployed across multiple AZs.
+The information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.
         :type DBNodeSet: list of DBNode
-        :param _AutoVoucher: Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.
+        :param _AutoVoucher: Whether to use vouchers automatically. Valid values:
+<li>`0`: No.
+<li>`1`: Yes.
+Default value: `0`.
         :type AutoVoucher: int
         :param _VoucherIds: Voucher ID list.
         :type VoucherIds: str
@@ -926,6 +939,12 @@ class CloneDBInstanceRequest(AbstractModel):
         :type BackupSetId: str
         :param _RecoveryTargetTime: Restoration point in time.
         :type RecoveryTargetTime: str
+        :param _SyncMode: Primary-standby sync mode. Valid values:  
+<li>`Semi-sync`
+<li>`Async`
+Default value for the primary instance: `Semi-sync`.
+Default value for the standby instance: `Async`.
+        :type SyncMode: str
         """
         self._DBInstanceId = None
         self._SpecCode = None
@@ -945,6 +964,7 @@ class CloneDBInstanceRequest(AbstractModel):
         self._ActivityId = None
         self._BackupSetId = None
         self._RecoveryTargetTime = None
+        self._SyncMode = None
 
     @property
     def DBInstanceId(self):
@@ -1090,6 +1110,14 @@ class CloneDBInstanceRequest(AbstractModel):
     def RecoveryTargetTime(self, RecoveryTargetTime):
         self._RecoveryTargetTime = RecoveryTargetTime
 
+    @property
+    def SyncMode(self):
+        return self._SyncMode
+
+    @SyncMode.setter
+    def SyncMode(self, SyncMode):
+        self._SyncMode = SyncMode
+
 
     def _deserialize(self, params):
         self._DBInstanceId = params.get("DBInstanceId")
@@ -1120,6 +1148,7 @@ class CloneDBInstanceRequest(AbstractModel):
         self._ActivityId = params.get("ActivityId")
         self._BackupSetId = params.get("BackupSetId")
         self._RecoveryTargetTime = params.get("RecoveryTargetTime")
+        self._SyncMode = params.get("SyncMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1542,7 +1571,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
+        :param _SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeClasses` API.
         :type SpecCode: str
         :param _Storage: Instance capacity size in GB.
         :type Storage: int
@@ -1869,106 +1898,161 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
+        :param _Zone: Primary AZ of the instance in the format of `ap-guangzhou-3`. To support multiple AZs, add information of the primary and standby AZs in the `DBNodeSet.N` field.
+The information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.
+        :type Zone: str
+        :param _SpecCode: Purchasable code, which can be obtained from the `SpecCode` field in the return value of the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.
         :type SpecCode: str
         :param _Storage: Instance storage capacity in GB
         :type Storage: int
-        :param _InstanceCount: The number of instances purchased at a time. Value range: 1-10.
+        :param _InstanceCount: The number of instances to be purchased at a time. Value range: 1-10. To purchase more than 10 instances each time, you can make multiple calls.
         :type InstanceCount: int
-        :param _Period: Valid period in months of purchased instances. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.
+        :param _Period: Validity period in months.
+<li>Monthly subscription: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.
+<li>Pay-as-you-go: `1`.
         :type Period: int
-        :param _Zone: Availability zone ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.
-        :type Zone: str
-        :param _Charset: Instance character set. Valid values: `UTF8`, `LATIN1`.
+        :param _Charset: Instance character set. Valid values: 
+<li> `UTF8`
+<li> `LATIN1`
         :type Charset: str
-        :param _AdminName: Instance root account name
+        :param _AdminName: Username of the instance root account, which has the following rules:
+<li>It must contain 1–16 letters , digits, or underscores
+<li>It can't be `postgres`.
+<li>It can't start with a digit or `pg_`.
+<li>All rules are case-insensitive.
         :type AdminName: str
-        :param _AdminPassword: Instance root account password
+        :param _AdminPassword: Password of the instance root account, which must contain 8-32 characters (above 12 characters preferably). It cannot begin with "/",
+and must contain the following 4 types of characters.
+<li>Lowercase letters: [a–z]
+<li>Uppercase letters: [A–Z]
+<li>Digits: 0-9
+<li>Symbols: ()`~!@#$%^&*-+=_|{}[]:;'<>,.?/
         :type AdminPassword: str
-        :param _ProjectId: Project ID
-        :type ProjectId: int
-        :param _DBVersion: PostgreSQL version. If it is specified, an instance running the latest kernel of PostgreSQL `DBVersion` will be created. You must pass in at least one of the following parameters: DBVersion, DBMajorVersion, DBKernelVersion.
+        :param _DBMajorVersion: The major PostgreSQL version number, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API. Valid values: `10`, `11`, `12`, `13`, `14`, `15`.
+When only this parameter is specified, an instance running the latest kernel version of the latest minor version will be created based on this major version.
+You must pass in at least one of the following parameters: `DBMajorVersion`, `DBVersion`, DBKernelVersion`. If you don't need a minor version, just pass in `DBMajorVersion`.
+
+        :type DBMajorVersion: str
+        :param _DBVersion: Number of the major PostgreSQL community version and minor version, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.
+If it is specified, an instance running the latest kernel version will be created based on the community minor version.
+You must pass in at least one of the following parameters: `DBMajorVersion`, `DBVersion`, DBKernelVersion`.
         :type DBVersion: str
-        :param _InstanceChargeType: Instance billing mode. Valid values: `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go).
+        :param _DBKernelVersion: PostgreSQL kernel version number, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.
+PostgreSQL kernel version number. If it is specified, an instance running the specified kernel version will be created. Passing in this parameter in other scenarios is not supported.This parameter is only used to specify a kernel version, which serves no other purposes.
+
+        :type DBKernelVersion: str
+        :param _InstanceChargeType: Instance billing mode. Valid values:
+<li>`PREPAID`: Monthly subscription
+<li>`POSTPAID_BY_HOUR`: Pay-as-you-go
+Default value: `PREPAID`.
         :type InstanceChargeType: str
-        :param _AutoVoucher: Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.
+        :param _VpcId: VPC ID in the format of `vpc-xxxxxxx`. To obtain valid VPC IDs, you can log in to the console or call [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) and look for the `unVpcId` fields in the response.
+        :type VpcId: str
+        :param _SubnetId: VPC subnet ID in the format of `subnet-xxxxxxxx`, u200cwhich can be obtained in the console or from the `unSubnetId` field in the return value of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.
+        :type SubnetId: str
+        :param _DBNodeSet: Deployment information of the instance node, which will display the information of each AZ when the instance node is deployed across multiple AZs.
+The information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.
+        :type DBNodeSet: list of DBNode
+        :param _AutoRenewFlag: Auto-renewal flag. Valid values:
+<li>`0`: Manual renewal.
+<li> `1`: Automatic renewal.
+Default value: `0`.
+        :type AutoRenewFlag: int
+        :param _AutoVoucher: Whether to use vouchers automatically. Valid values:
+<li>`0`: No.
+<li>`1`: Yes.
+Default value: `0`.
         :type AutoVoucher: int
         :param _VoucherIds: Voucher ID list. Currently, you can specify only one voucher.
         :type VoucherIds: list of str
-        :param _VpcId: VPC ID
-        :type VpcId: str
-        :param _SubnetId: ID of a subnet in the VPC specified by `VpcId`
-        :type SubnetId: str
-        :param _AutoRenewFlag: Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.
-        :type AutoRenewFlag: int
+        :param _ProjectId: Project ID
+        :type ProjectId: int
         :param _ActivityId: Campaign ID
         :type ActivityId: int
-        :param _Name: Instance name
+        :param _Name: Instance name, which can contain up to 60 letters, digits, hyphens, and symbols (_-). If this parameter is not specified, "Unnamed" will be displayed by default.
+
         :type Name: str
-        :param _NeedSupportIpv6: Whether to support IPv6 address access. Valid values: `1` (yes), `0` (no). Default value: `0`
-        :type NeedSupportIpv6: int
-        :param _TagList: The information of tags to be associated with instances. This parameter is left empty by default.
+        :param _TagList: The information of tags to be bound with the instance, which is left empty by default. This parameter can be obtained from the `Tags` field in the return value of the [DescribeTags](https://intl.cloud.tencent.com/document/api/651/35316?from_cn_redirect=1) API.
         :type TagList: list of Tag
-        :param _SecurityGroupIds: Security group IDs
+        :param _SecurityGroupIds: Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.
+
         :type SecurityGroupIds: list of str
-        :param _DBMajorVersion: PostgreSQL major version. Valid values: `10`, `11`, `12`, `13`. If it is specified, an instance running the latest kernel of PostgreSQL `DBMajorVersion` will be created. You must pass in at least one of the following parameters: DBMajorVersion, DBVersion, DBKernelVersion.
-        :type DBMajorVersion: str
-        :param _DBKernelVersion: PostgreSQL kernel version. If it is specified, an instance running the latest kernel of PostgreSQL `DBKernelVersion` will be created. You must pass in one of the following parameters: DBKernelVersion, DBVersion, DBMajorVersion.
-        :type DBKernelVersion: str
-        :param _DBNodeSet: Instance node information, which is required if you purchase a multi-AZ deployed instance.
-        :type DBNodeSet: list of DBNode
-        :param _NeedSupportTDE: Whether to support transparent data encryption. Valid values: 1 (yes), 0 (no). Default value: 0.
+        :param _NeedSupportTDE: Whether to support TDE. Valid values:
+<li>`0`: No.
+<li>`1`: Yes.
+Default value: `0`.
+For more information, see [TDE]u200d(https://www.tencentcloud.com/document/product/409/47765).
         :type NeedSupportTDE: int
         :param _KMSKeyId: KeyId of custom key, which is required if you select custom key encryption. It is also the unique CMK identifier.
+For more information on creating `KeyId`, see [Enabling TDE](https://www.tencentcloud.com/document/product/409/47762).
         :type KMSKeyId: str
-        :param _KMSRegion: The region where the KMS service is enabled. When `KMSRegion` is left empty, the KMS of the current region will be enabled by default. If the current region is not supported, you need to select another region supported by KMS.
+        :param _KMSRegion: The region where the KMS service is enabled. When `KMSRegion` is left empty, the current region will be selected by default.  If the current region does not support KMS, you must select another region that does.
+For more information on `KMSRegion`, see [Enabling TDE](https://intl.cloud.tencent.com/document/product/409/71749?from_cn_redirect=1).
         :type KMSRegion: str
-        :param _DBEngine: Database engine. Valid values:
-1. `postgresql` (TencentDB for PostgreSQL)
-2. `mssql_compatible`（MSSQL compatible-TencentDB for PostgreSQL)
-Default value: `postgresql`
+        :param _DBEngine: Database engines. Valid values:
+<li>`postgresql`: TencentDB for PostgreSQL
+<li>`mssql_compatible`: MSSQL compatible-TencentDB for PostgreSQL
+Default value: `postgresql`.
         :type DBEngine: str
         :param _DBEngineConfig: Configuration information of database engine in the following format:
 {"$key1":"$value1", "$key2":"$value2"}
-
 Valid values:
-1. mssql_compatible engine：
-`migrationMode`: Database mode. Valid values: `single-db` (single-database mode), `multi-db` (multi-database mode). Default value: `single-db`.
-`defaultLocale`: Default locale, which can’t be modified after the initialization. Default value: `en_US`. Valid values:
+mssql_compatible engine:
+<li>`migrationMode`: Database mode. Valid values: `single-db` (single-database mode), `multi-db` (multi-database mode). Default value: `single-db`.
+<li>`defaultLocale`: Default locale, which can’t be modified after the initialization. Default value: `en_US`. Valid values:
 "af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN".
-`serverCollationName`: Name of collation rule, which can’t be modified after the initialization. Default value: `sql_latin1_general_cp1_ci_as`. Valid values:
-"bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as".
+<li>`serverCollationName`: Default collation name, which can’t be modified after the initialization. Default value: "bbf_unicode_general_ci_as". Valid values: "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as"。
         :type DBEngineConfig: str
+        :param _SyncMode: Primary-standby sync mode. Valid values:  
+<li>`Semi-sync`
+<li>`Async`
+Default value for the primary instance: `Semi-sync`.
+Default value for the standby instance: `Async`.
+        :type SyncMode: str
+        :param _NeedSupportIpv6: Whether IPv6 is supported.
+<li>`0`: No.
+<li>`1`: Yes.
+Default value: `0`.
+        :type NeedSupportIpv6: int
         """
+        self._Zone = None
         self._SpecCode = None
         self._Storage = None
         self._InstanceCount = None
         self._Period = None
-        self._Zone = None
         self._Charset = None
         self._AdminName = None
         self._AdminPassword = None
-        self._ProjectId = None
+        self._DBMajorVersion = None
         self._DBVersion = None
+        self._DBKernelVersion = None
         self._InstanceChargeType = None
-        self._AutoVoucher = None
-        self._VoucherIds = None
         self._VpcId = None
         self._SubnetId = None
+        self._DBNodeSet = None
         self._AutoRenewFlag = None
+        self._AutoVoucher = None
+        self._VoucherIds = None
+        self._ProjectId = None
         self._ActivityId = None
         self._Name = None
-        self._NeedSupportIpv6 = None
         self._TagList = None
         self._SecurityGroupIds = None
-        self._DBMajorVersion = None
-        self._DBKernelVersion = None
-        self._DBNodeSet = None
         self._NeedSupportTDE = None
         self._KMSKeyId = None
         self._KMSRegion = None
         self._DBEngine = None
         self._DBEngineConfig = None
+        self._SyncMode = None
+        self._NeedSupportIpv6 = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
 
     @property
     def SpecCode(self):
@@ -2003,14 +2087,6 @@ Valid values:
         self._Period = Period
 
     @property
-    def Zone(self):
-        return self._Zone
-
-    @Zone.setter
-    def Zone(self, Zone):
-        self._Zone = Zone
-
-    @property
     def Charset(self):
         return self._Charset
 
@@ -2035,12 +2111,12 @@ Valid values:
         self._AdminPassword = AdminPassword
 
     @property
-    def ProjectId(self):
-        return self._ProjectId
+    def DBMajorVersion(self):
+        return self._DBMajorVersion
 
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
+    @DBMajorVersion.setter
+    def DBMajorVersion(self, DBMajorVersion):
+        self._DBMajorVersion = DBMajorVersion
 
     @property
     def DBVersion(self):
@@ -2051,28 +2127,20 @@ Valid values:
         self._DBVersion = DBVersion
 
     @property
+    def DBKernelVersion(self):
+        return self._DBKernelVersion
+
+    @DBKernelVersion.setter
+    def DBKernelVersion(self, DBKernelVersion):
+        self._DBKernelVersion = DBKernelVersion
+
+    @property
     def InstanceChargeType(self):
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
     def InstanceChargeType(self, InstanceChargeType):
         self._InstanceChargeType = InstanceChargeType
-
-    @property
-    def AutoVoucher(self):
-        return self._AutoVoucher
-
-    @AutoVoucher.setter
-    def AutoVoucher(self, AutoVoucher):
-        self._AutoVoucher = AutoVoucher
-
-    @property
-    def VoucherIds(self):
-        return self._VoucherIds
-
-    @VoucherIds.setter
-    def VoucherIds(self, VoucherIds):
-        self._VoucherIds = VoucherIds
 
     @property
     def VpcId(self):
@@ -2091,12 +2159,44 @@ Valid values:
         self._SubnetId = SubnetId
 
     @property
+    def DBNodeSet(self):
+        return self._DBNodeSet
+
+    @DBNodeSet.setter
+    def DBNodeSet(self, DBNodeSet):
+        self._DBNodeSet = DBNodeSet
+
+    @property
     def AutoRenewFlag(self):
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
     def AutoRenewFlag(self, AutoRenewFlag):
         self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def AutoVoucher(self):
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def VoucherIds(self):
+        return self._VoucherIds
+
+    @VoucherIds.setter
+    def VoucherIds(self, VoucherIds):
+        self._VoucherIds = VoucherIds
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
 
     @property
     def ActivityId(self):
@@ -2115,14 +2215,6 @@ Valid values:
         self._Name = Name
 
     @property
-    def NeedSupportIpv6(self):
-        return self._NeedSupportIpv6
-
-    @NeedSupportIpv6.setter
-    def NeedSupportIpv6(self, NeedSupportIpv6):
-        self._NeedSupportIpv6 = NeedSupportIpv6
-
-    @property
     def TagList(self):
         return self._TagList
 
@@ -2137,30 +2229,6 @@ Valid values:
     @SecurityGroupIds.setter
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
-
-    @property
-    def DBMajorVersion(self):
-        return self._DBMajorVersion
-
-    @DBMajorVersion.setter
-    def DBMajorVersion(self, DBMajorVersion):
-        self._DBMajorVersion = DBMajorVersion
-
-    @property
-    def DBKernelVersion(self):
-        return self._DBKernelVersion
-
-    @DBKernelVersion.setter
-    def DBKernelVersion(self, DBKernelVersion):
-        self._DBKernelVersion = DBKernelVersion
-
-    @property
-    def DBNodeSet(self):
-        return self._DBNodeSet
-
-    @DBNodeSet.setter
-    def DBNodeSet(self, DBNodeSet):
-        self._DBNodeSet = DBNodeSet
 
     @property
     def NeedSupportTDE(self):
@@ -2202,27 +2270,50 @@ Valid values:
     def DBEngineConfig(self, DBEngineConfig):
         self._DBEngineConfig = DBEngineConfig
 
+    @property
+    def SyncMode(self):
+        return self._SyncMode
+
+    @SyncMode.setter
+    def SyncMode(self, SyncMode):
+        self._SyncMode = SyncMode
+
+    @property
+    def NeedSupportIpv6(self):
+        return self._NeedSupportIpv6
+
+    @NeedSupportIpv6.setter
+    def NeedSupportIpv6(self, NeedSupportIpv6):
+        self._NeedSupportIpv6 = NeedSupportIpv6
+
 
     def _deserialize(self, params):
+        self._Zone = params.get("Zone")
         self._SpecCode = params.get("SpecCode")
         self._Storage = params.get("Storage")
         self._InstanceCount = params.get("InstanceCount")
         self._Period = params.get("Period")
-        self._Zone = params.get("Zone")
         self._Charset = params.get("Charset")
         self._AdminName = params.get("AdminName")
         self._AdminPassword = params.get("AdminPassword")
-        self._ProjectId = params.get("ProjectId")
+        self._DBMajorVersion = params.get("DBMajorVersion")
         self._DBVersion = params.get("DBVersion")
+        self._DBKernelVersion = params.get("DBKernelVersion")
         self._InstanceChargeType = params.get("InstanceChargeType")
-        self._AutoVoucher = params.get("AutoVoucher")
-        self._VoucherIds = params.get("VoucherIds")
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
+        if params.get("DBNodeSet") is not None:
+            self._DBNodeSet = []
+            for item in params.get("DBNodeSet"):
+                obj = DBNode()
+                obj._deserialize(item)
+                self._DBNodeSet.append(obj)
         self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._AutoVoucher = params.get("AutoVoucher")
+        self._VoucherIds = params.get("VoucherIds")
+        self._ProjectId = params.get("ProjectId")
         self._ActivityId = params.get("ActivityId")
         self._Name = params.get("Name")
-        self._NeedSupportIpv6 = params.get("NeedSupportIpv6")
         if params.get("TagList") is not None:
             self._TagList = []
             for item in params.get("TagList"):
@@ -2230,19 +2321,13 @@ Valid values:
                 obj._deserialize(item)
                 self._TagList.append(obj)
         self._SecurityGroupIds = params.get("SecurityGroupIds")
-        self._DBMajorVersion = params.get("DBMajorVersion")
-        self._DBKernelVersion = params.get("DBKernelVersion")
-        if params.get("DBNodeSet") is not None:
-            self._DBNodeSet = []
-            for item in params.get("DBNodeSet"):
-                obj = DBNode()
-                obj._deserialize(item)
-                self._DBNodeSet.append(obj)
         self._NeedSupportTDE = params.get("NeedSupportTDE")
         self._KMSKeyId = params.get("KMSKeyId")
         self._KMSRegion = params.get("KMSRegion")
         self._DBEngine = params.get("DBEngine")
         self._DBEngineConfig = params.get("DBEngineConfig")
+        self._SyncMode = params.get("SyncMode")
+        self._NeedSupportIpv6 = params.get("NeedSupportIpv6")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2427,67 +2512,99 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SpecCode: Purchasable specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
+        :param _Zone: Primary AZ of an instance, such as "ap-guangzhou-3".
+The information of AZ can be obtained from the `Zone` field in the return value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.
+        :type Zone: str
+        :param _MasterDBInstanceId: ID of the primary instance to which the read-only instance belongs
+        :type MasterDBInstanceId: str
+        :param _SpecCode: Purchasable code, which can be obtained from the `SpecCode` field in the return value of the [DescribeClasses](https://intl.cloud.tencent.com/document/api/409/89019?from_cn_redirect=1) API.
         :type SpecCode: str
         :param _Storage: Instance storage capacity in GB
         :type Storage: int
-        :param _InstanceCount: Number of instances purchased at a time. Value range: 1–100.
+        :param _InstanceCount: The number of instances to be purchased at a time. Value range: 1-10. To purchase more than 10 instances each time, you can make multiple calls.
         :type InstanceCount: int
-        :param _Period: Valid period in months of purchased instances. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.
+        :param _Period: Validity period in months, valid values:
+<li>Monthly subscription: `1`, `2`, `3`, 4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.
+<li>Pay-as-you-go: `1`.
         :type Period: int
-        :param _MasterDBInstanceId: ID of the primary instance to which the read-only replica belongs
-        :type MasterDBInstanceId: str
-        :param _Zone: Availability zone ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.
-        :type Zone: str
-        :param _ProjectId: Project ID
-        :type ProjectId: int
-        :param _DBVersion: (Disused) You don’t need to specify a version, as the kernel version is as the same as that of the instance.
-        :type DBVersion: str
-        :param _InstanceChargeType: Instance billing mode. Valid value: `POSTPAID_BY_HOUR` (pay-as-you-go). If the source instance is pay-as-you-go, so is the read-only instance.
+        :param _VpcId: VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.
+        :type VpcId: str
+        :param _SubnetId: VPC subnet ID in the format of `subnet-xxxxxxxx` which can be obtained in the console or from the `unSubnetId` field in the return value of the [DescribeSubnets](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.
+        :type SubnetId: str
+        :param _InstanceChargeType: Instance billing mode. Valid values: 
+<li>`PREPAID`: Monthly subscription
+<li>`POSTPAID_BY_HOUR`: Pay-as-you-go
+Default value: `PREPAID`. If the primary instance is pay-as-you-go, so is the read-only instance.
         :type InstanceChargeType: str
-        :param _AutoVoucher: Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.
+        :param _AutoVoucher: Whether to use vouchers automatically. Valid values:
+<li>`0`: No.
+<li>`1`: Yes.
+Default value: `0`.
         :type AutoVoucher: int
         :param _VoucherIds: Voucher ID list. Currently, you can specify only one voucher.
         :type VoucherIds: list of str
-        :param _AutoRenewFlag: Renewal flag. Valid values: `0` (manual renewal), `1` (auto-renewal). Default value: `0`.
+        :param _AutoRenewFlag: Auto-renewal flag. Valid values:
+<li>`0`: Manual renewal.
+<li>`1`: Automatic renewal.
+Default value: `0`.
         :type AutoRenewFlag: int
-        :param _VpcId: VPC ID
-        :type VpcId: str
-        :param _SubnetId: VPC subnet ID
-        :type SubnetId: str
+        :param _ProjectId: Project ID
+        :type ProjectId: int
         :param _ActivityId: Special offer ID
         :type ActivityId: int
-        :param _Name: Instance name (which will be supported in the future)
-        :type Name: str
-        :param _NeedSupportIpv6: Whether to support IPv6 address access. Valid values: `1` (yes), `0` (no).
-        :type NeedSupportIpv6: int
         :param _ReadOnlyGroupId: RO group ID
         :type ReadOnlyGroupId: str
-        :param _TagList: The information of tags to be bound with the purchased instance, which is left empty by default (type: tag array).
+        :param _TagList: The information of tags to be bound with the instance, which is left empty by default. This parameter can be obtained from the `Tags` field in the return value of the [DescribeTags](https://intl.cloud.tencent.com/document/api/651/35316?from_cn_redirect=1) API.
         :type TagList: :class:`tencentcloud.postgres.v20170312.models.Tag`
-        :param _SecurityGroupIds: Security group ID
+        :param _SecurityGroupIds: Security group of the instance, which can be obtained from the `sgld` field in the return value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API. If this parameter is not specified, the default security group will be bound.
+
         :type SecurityGroupIds: list of str
+        :param _NeedSupportIpv6: Whether IPv6 is supported.
+<li>`0`: No.
+<li>`1`: Yes.
+Default value: `0`.
+        :type NeedSupportIpv6: int
+        :param _Name: Instance name (which will be supported in the future)
+        :type Name: str
+        :param _DBVersion: (Disused) You don’t need to specify a version, as the kernel version is as the same as that of the instance.
+        :type DBVersion: str
         """
+        self._Zone = None
+        self._MasterDBInstanceId = None
         self._SpecCode = None
         self._Storage = None
         self._InstanceCount = None
         self._Period = None
-        self._MasterDBInstanceId = None
-        self._Zone = None
-        self._ProjectId = None
-        self._DBVersion = None
+        self._VpcId = None
+        self._SubnetId = None
         self._InstanceChargeType = None
         self._AutoVoucher = None
         self._VoucherIds = None
         self._AutoRenewFlag = None
-        self._VpcId = None
-        self._SubnetId = None
+        self._ProjectId = None
         self._ActivityId = None
-        self._Name = None
-        self._NeedSupportIpv6 = None
         self._ReadOnlyGroupId = None
         self._TagList = None
         self._SecurityGroupIds = None
+        self._NeedSupportIpv6 = None
+        self._Name = None
+        self._DBVersion = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def MasterDBInstanceId(self):
+        return self._MasterDBInstanceId
+
+    @MasterDBInstanceId.setter
+    def MasterDBInstanceId(self, MasterDBInstanceId):
+        self._MasterDBInstanceId = MasterDBInstanceId
 
     @property
     def SpecCode(self):
@@ -2522,36 +2639,20 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         self._Period = Period
 
     @property
-    def MasterDBInstanceId(self):
-        return self._MasterDBInstanceId
+    def VpcId(self):
+        return self._VpcId
 
-    @MasterDBInstanceId.setter
-    def MasterDBInstanceId(self, MasterDBInstanceId):
-        self._MasterDBInstanceId = MasterDBInstanceId
-
-    @property
-    def Zone(self):
-        return self._Zone
-
-    @Zone.setter
-    def Zone(self, Zone):
-        self._Zone = Zone
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
 
     @property
-    def ProjectId(self):
-        return self._ProjectId
+    def SubnetId(self):
+        return self._SubnetId
 
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
-
-    @property
-    def DBVersion(self):
-        return self._DBVersion
-
-    @DBVersion.setter
-    def DBVersion(self, DBVersion):
-        self._DBVersion = DBVersion
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
 
     @property
     def InstanceChargeType(self):
@@ -2586,20 +2687,12 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         self._AutoRenewFlag = AutoRenewFlag
 
     @property
-    def VpcId(self):
-        return self._VpcId
+    def ProjectId(self):
+        return self._ProjectId
 
-    @VpcId.setter
-    def VpcId(self, VpcId):
-        self._VpcId = VpcId
-
-    @property
-    def SubnetId(self):
-        return self._SubnetId
-
-    @SubnetId.setter
-    def SubnetId(self, SubnetId):
-        self._SubnetId = SubnetId
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
 
     @property
     def ActivityId(self):
@@ -2608,22 +2701,6 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
     @ActivityId.setter
     def ActivityId(self, ActivityId):
         self._ActivityId = ActivityId
-
-    @property
-    def Name(self):
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def NeedSupportIpv6(self):
-        return self._NeedSupportIpv6
-
-    @NeedSupportIpv6.setter
-    def NeedSupportIpv6(self, NeedSupportIpv6):
-        self._NeedSupportIpv6 = NeedSupportIpv6
 
     @property
     def ReadOnlyGroupId(self):
@@ -2649,30 +2726,54 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def NeedSupportIpv6(self):
+        return self._NeedSupportIpv6
+
+    @NeedSupportIpv6.setter
+    def NeedSupportIpv6(self, NeedSupportIpv6):
+        self._NeedSupportIpv6 = NeedSupportIpv6
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DBVersion(self):
+        return self._DBVersion
+
+    @DBVersion.setter
+    def DBVersion(self, DBVersion):
+        self._DBVersion = DBVersion
+
 
     def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._MasterDBInstanceId = params.get("MasterDBInstanceId")
         self._SpecCode = params.get("SpecCode")
         self._Storage = params.get("Storage")
         self._InstanceCount = params.get("InstanceCount")
         self._Period = params.get("Period")
-        self._MasterDBInstanceId = params.get("MasterDBInstanceId")
-        self._Zone = params.get("Zone")
-        self._ProjectId = params.get("ProjectId")
-        self._DBVersion = params.get("DBVersion")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
         self._InstanceChargeType = params.get("InstanceChargeType")
         self._AutoVoucher = params.get("AutoVoucher")
         self._VoucherIds = params.get("VoucherIds")
         self._AutoRenewFlag = params.get("AutoRenewFlag")
-        self._VpcId = params.get("VpcId")
-        self._SubnetId = params.get("SubnetId")
+        self._ProjectId = params.get("ProjectId")
         self._ActivityId = params.get("ActivityId")
-        self._Name = params.get("Name")
-        self._NeedSupportIpv6 = params.get("NeedSupportIpv6")
         self._ReadOnlyGroupId = params.get("ReadOnlyGroupId")
         if params.get("TagList") is not None:
             self._TagList = Tag()
             self._TagList._deserialize(params.get("TagList"))
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._NeedSupportIpv6 = params.get("NeedSupportIpv6")
+        self._Name = params.get("Name")
+        self._DBVersion = params.get("DBVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3398,21 +3499,19 @@ class DBInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Region: Instance region such as ap-guangzhou, which corresponds to the `Region` field of `RegionSet`
+        :param _Region: Instance region such as ap-guangzhou, which corresponds to the`Region` field in `RegionSet`.
         :type Region: str
-        :param _Zone: Instance AZ such as ap-guangzhou-3, which corresponds to the `Zone` field of `ZoneSet`
+        :param _Zone: Instance AZ such as ap-guangzhou-3, which corresponds to the `Zone` field of `ZoneSet`.
         :type Zone: str
-        :param _ProjectId: Project ID
-        :type ProjectId: int
-        :param _VpcId: VPC ID
+        :param _VpcId: VPC ID in the format of `vpc-xxxxxxx`, which can be obtained in the console or from the `unVpcId` field in the return value of the [DescribeVpcEx](https://intl.cloud.tencent.com/document/api/215/1372?from_cn_redirect=1) API.
         :type VpcId: str
-        :param _SubnetId: SubnetId
+        :param _SubnetId: VPC subnet ID in the format of `subnet-xxxxxxxx`, which can be obtained in the console or from the `unSubnetId` field in the return value of the [DescribeSubnets ](https://intl.cloud.tencent.com/document/api/215/15784?from_cn_redirect=1) API.
         :type SubnetId: str
         :param _DBInstanceId: Instance ID
         :type DBInstanceId: str
         :param _DBInstanceName: Instance name
         :type DBInstanceName: str
-        :param _DBInstanceStatus: Instance status.  Valid values: `applying`, `init` (to be initialized), `initing` (initializing), `running`, `limited run`, `isolating`, `isolated`, `recycling`, `recycled`, `job running`, `offline`, `migrating`, `expanding`, `waitSwitch` (waiting for switch), `switching`, `readonly`, `restarting`, `network changing`, `upgrading` (upgrading kernel version).
+        :param _DBInstanceStatus: Instance status. Valid values: `applying`, `init` (to be initialized), `initing` (initializing), `running`, `limited run`, `isolating`, `isolated`, `recycling`, `recycled`, `job running`, `offline`, `migrating`, `expanding`, `waitSwitch` (waiting for switch), `switching`, `readonly`, `restarting`, `network changing`, `upgrading` (upgrading kernel version), `audit-switching` (changing audit status), `primary-switching` (primary-standby switching).
         :type DBInstanceStatus: str
         :param _DBInstanceMemory: Assigned instance memory size in GB
         :type DBInstanceMemory: int
@@ -3422,25 +3521,42 @@ class DBInstance(AbstractModel):
         :type DBInstanceCpu: int
         :param _DBInstanceClass: Purchasable specification ID
         :type DBInstanceClass: str
-        :param _DBInstanceType: Instance type. 1: primary (master instance), 2: readonly (read-only instance), 3: guard (disaster recovery instance), 4: temp (temp instance)
-        :type DBInstanceType: str
-        :param _DBInstanceVersion: Instance edition. Currently, only `standard` edition (dual-server high-availability one-master-one-slave edition) is supported
-        :type DBInstanceVersion: str
-        :param _DBCharset: Instance database character set
-        :type DBCharset: str
-        :param _DBVersion: PostgreSQL version number
+        :param _DBMajorVersion: The major PostgreSQL version number, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API. Valid values: `10`, `11`, `12`, `13`, `14`, `15`.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type DBMajorVersion: str
+        :param _DBVersion: Number of the major PostgreSQL community version and minor version, such as 12.4, which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.
         :type DBVersion: str
+        :param _DBKernelVersion: PostgreSQL kernel version number (like v12.7_r1.8), which can be queried by the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type DBKernelVersion: str
+        :param _DBInstanceType: Instance type. Valid values:
+<li>`primary`: Primary instance
+<li>`readonly`: Read-only instance
+<li>`guard`: Disaster recovery instance
+<li>`temp`: Temp instance
+        :type DBInstanceType: str
+        :param _DBInstanceVersion: Instance version. Valid value: `standard` (dual-server high-availability; one-primary-one-standby).
+        :type DBInstanceVersion: str
+        :param _DBCharset: Instance character set. Valid values:
+<li>`UTF8`
+<li>`LATIN1`
+        :type DBCharset: str
         :param _CreateTime: Instance creation time
         :type CreateTime: str
-        :param _UpdateTime: Instance last modified time
+        :param _UpdateTime: Last updated time of the instance attribute
         :type UpdateTime: str
         :param _ExpireTime: Instance expiration time
         :type ExpireTime: str
         :param _IsolatedTime: Instance isolation time
         :type IsolatedTime: str
-        :param _PayType: Billing mode. postpaid: pay-as-you-go
+        :param _PayType: Billing mode. Valid values:
+<li>`PREPAID`: Monthly subscription
+<li>`postpaid`: Pay-as-you-go
         :type PayType: str
-        :param _AutoRenew: Whether to renew automatically. 1: yes, 0: no
+        :param _AutoRenew: Whether auto-renewal is enabled. Valid values:
+<li>`0`: Manual renewal.
+<li>`1`: Automatic renewal.
+Default value: `0`.
         :type AutoRenew: int
         :param _DBInstanceNetInfo: Instance network connection information
         :type DBInstanceNetInfo: list of DBInstanceNetInfo
@@ -3450,47 +3566,60 @@ class DBInstance(AbstractModel):
         :type AppId: int
         :param _Uid: Instance `Uid`
         :type Uid: int
-        :param _SupportIpv6: Whether the instance supports IPv6 address access. Valid values: 1 (yes), 0 (no)
-        :type SupportIpv6: int
-        :param _TagList: The information of tags associated with instances.
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _ProjectId: Project ID
+        :type ProjectId: int
+        :param _TagList: The information of tags associated with instances
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type TagList: list of Tag
-        :param _MasterDBInstanceId: Primary instance information, which is returned only when the instance is read-only
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _MasterDBInstanceId: Primary instance information, which is returned only when the instance is read-only.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type MasterDBInstanceId: str
         :param _ReadOnlyInstanceNum: Number of read-only instances
-Note: this field may return null, indicating that no valid values can be obtained.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type ReadOnlyInstanceNum: int
-        :param _StatusInReadonlyGroup: The status of a instance in a read-only group
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _StatusInReadonlyGroup: The status of a read-only instance in a read-only group
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type StatusInReadonlyGroup: str
-        :param _OfflineTime: Elimination time
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _OfflineTime: Offline time
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
         :type OfflineTime: str
-        :param _DBKernelVersion: Database kernel version
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DBKernelVersion: str
+        :param _DBNodeSet: Instance node information
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type DBNodeSet: list of DBNode
+        :param _IsSupportTDE: Whether the instance supports TDE. Valid values: 
+<li>`0`: No.
+<li>`1`: Yes.
+Default value: `0`.
+For more information, see [TDE](https://intl.cloud.tencent.com/document/product/409/71748?from_cn_redirect=1).
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type IsSupportTDE: int
+        :param _DBEngine: Database engines. Valid values:
+<li>`postgresql`: TencentDB for PostgreSQL
+<li>`mssql_compatible`: MSSQL compatible-TencentDB for PostgreSQL
+Default value: `postgresql`.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type DBEngine: str
+        :param _DBEngineConfig: Configuration information of database engine in the following format:
+{"$key1":"$value1", "$key2":"$value2"}
+Valid values:
+mssql_compatible engine:
+<li>`migrationMode`: Database mode. Valid values: `single-db` (single-database mode), `multi-db` (multi-database mode). Default value: `single-db`.
+<li>`defaultLocale`: Default locale, which can’t be modified after the initialization. Default value: `en_US`. Valid values:
+"af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN".
+<li>`serverCollationName`: Default collation name, which can’t be modified after the initialization. Default value: "sql_latin1_general_cp1_ci_as". Valid values: "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as".
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type DBEngineConfig: str
         :param _NetworkAccessList: Network access list of the instance (this field has been deprecated)
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type NetworkAccessList: list of NetworkAccess
-        :param _DBMajorVersion: PostgreSQL major version number
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DBMajorVersion: str
-        :param _DBNodeSet: Instance node information
-Note: this field may return `null`, indicating that no valid values can be obtained.
-        :type DBNodeSet: list of DBNode
-        :param _IsSupportTDE: Whether the instance supports TDE data encryption. Valid values: 0 (no), 1 (yes)
-Note: This field may return `null`, indicating that no valid values can be obtained.
-        :type IsSupportTDE: int
-        :param _DBEngine: 
-        :type DBEngine: str
-        :param _DBEngineConfig: Configuration information of database engine
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type DBEngineConfig: str
+        :param _SupportIpv6: Whether the instance supports IPv6. Valid values:
+<li>`0`: No.
+<li>`1`: Yes.
+Default value: `0`.
+        :type SupportIpv6: int
         """
         self._Region = None
         self._Zone = None
-        self._ProjectId = None
         self._VpcId = None
         self._SubnetId = None
         self._DBInstanceId = None
@@ -3500,10 +3629,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._DBInstanceStorage = None
         self._DBInstanceCpu = None
         self._DBInstanceClass = None
+        self._DBMajorVersion = None
+        self._DBVersion = None
+        self._DBKernelVersion = None
         self._DBInstanceType = None
         self._DBInstanceVersion = None
         self._DBCharset = None
-        self._DBVersion = None
         self._CreateTime = None
         self._UpdateTime = None
         self._ExpireTime = None
@@ -3514,19 +3645,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Type = None
         self._AppId = None
         self._Uid = None
-        self._SupportIpv6 = None
+        self._ProjectId = None
         self._TagList = None
         self._MasterDBInstanceId = None
         self._ReadOnlyInstanceNum = None
         self._StatusInReadonlyGroup = None
         self._OfflineTime = None
-        self._DBKernelVersion = None
-        self._NetworkAccessList = None
-        self._DBMajorVersion = None
         self._DBNodeSet = None
         self._IsSupportTDE = None
         self._DBEngine = None
         self._DBEngineConfig = None
+        self._NetworkAccessList = None
+        self._SupportIpv6 = None
 
     @property
     def Region(self):
@@ -3543,14 +3673,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @Zone.setter
     def Zone(self, Zone):
         self._Zone = Zone
-
-    @property
-    def ProjectId(self):
-        return self._ProjectId
-
-    @ProjectId.setter
-    def ProjectId(self, ProjectId):
-        self._ProjectId = ProjectId
 
     @property
     def VpcId(self):
@@ -3625,6 +3747,30 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._DBInstanceClass = DBInstanceClass
 
     @property
+    def DBMajorVersion(self):
+        return self._DBMajorVersion
+
+    @DBMajorVersion.setter
+    def DBMajorVersion(self, DBMajorVersion):
+        self._DBMajorVersion = DBMajorVersion
+
+    @property
+    def DBVersion(self):
+        return self._DBVersion
+
+    @DBVersion.setter
+    def DBVersion(self, DBVersion):
+        self._DBVersion = DBVersion
+
+    @property
+    def DBKernelVersion(self):
+        return self._DBKernelVersion
+
+    @DBKernelVersion.setter
+    def DBKernelVersion(self, DBKernelVersion):
+        self._DBKernelVersion = DBKernelVersion
+
+    @property
     def DBInstanceType(self):
         return self._DBInstanceType
 
@@ -3647,14 +3793,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @DBCharset.setter
     def DBCharset(self, DBCharset):
         self._DBCharset = DBCharset
-
-    @property
-    def DBVersion(self):
-        return self._DBVersion
-
-    @DBVersion.setter
-    def DBVersion(self, DBVersion):
-        self._DBVersion = DBVersion
 
     @property
     def CreateTime(self):
@@ -3737,12 +3875,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Uid = Uid
 
     @property
-    def SupportIpv6(self):
-        return self._SupportIpv6
+    def ProjectId(self):
+        return self._ProjectId
 
-    @SupportIpv6.setter
-    def SupportIpv6(self, SupportIpv6):
-        self._SupportIpv6 = SupportIpv6
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
 
     @property
     def TagList(self):
@@ -3785,30 +3923,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._OfflineTime = OfflineTime
 
     @property
-    def DBKernelVersion(self):
-        return self._DBKernelVersion
-
-    @DBKernelVersion.setter
-    def DBKernelVersion(self, DBKernelVersion):
-        self._DBKernelVersion = DBKernelVersion
-
-    @property
-    def NetworkAccessList(self):
-        return self._NetworkAccessList
-
-    @NetworkAccessList.setter
-    def NetworkAccessList(self, NetworkAccessList):
-        self._NetworkAccessList = NetworkAccessList
-
-    @property
-    def DBMajorVersion(self):
-        return self._DBMajorVersion
-
-    @DBMajorVersion.setter
-    def DBMajorVersion(self, DBMajorVersion):
-        self._DBMajorVersion = DBMajorVersion
-
-    @property
     def DBNodeSet(self):
         return self._DBNodeSet
 
@@ -3840,11 +3954,26 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def DBEngineConfig(self, DBEngineConfig):
         self._DBEngineConfig = DBEngineConfig
 
+    @property
+    def NetworkAccessList(self):
+        return self._NetworkAccessList
+
+    @NetworkAccessList.setter
+    def NetworkAccessList(self, NetworkAccessList):
+        self._NetworkAccessList = NetworkAccessList
+
+    @property
+    def SupportIpv6(self):
+        return self._SupportIpv6
+
+    @SupportIpv6.setter
+    def SupportIpv6(self, SupportIpv6):
+        self._SupportIpv6 = SupportIpv6
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
         self._Zone = params.get("Zone")
-        self._ProjectId = params.get("ProjectId")
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._DBInstanceId = params.get("DBInstanceId")
@@ -3854,10 +3983,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._DBInstanceStorage = params.get("DBInstanceStorage")
         self._DBInstanceCpu = params.get("DBInstanceCpu")
         self._DBInstanceClass = params.get("DBInstanceClass")
+        self._DBMajorVersion = params.get("DBMajorVersion")
+        self._DBVersion = params.get("DBVersion")
+        self._DBKernelVersion = params.get("DBKernelVersion")
         self._DBInstanceType = params.get("DBInstanceType")
         self._DBInstanceVersion = params.get("DBInstanceVersion")
         self._DBCharset = params.get("DBCharset")
-        self._DBVersion = params.get("DBVersion")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._ExpireTime = params.get("ExpireTime")
@@ -3873,7 +4004,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Type = params.get("Type")
         self._AppId = params.get("AppId")
         self._Uid = params.get("Uid")
-        self._SupportIpv6 = params.get("SupportIpv6")
+        self._ProjectId = params.get("ProjectId")
         if params.get("TagList") is not None:
             self._TagList = []
             for item in params.get("TagList"):
@@ -3884,14 +4015,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ReadOnlyInstanceNum = params.get("ReadOnlyInstanceNum")
         self._StatusInReadonlyGroup = params.get("StatusInReadonlyGroup")
         self._OfflineTime = params.get("OfflineTime")
-        self._DBKernelVersion = params.get("DBKernelVersion")
-        if params.get("NetworkAccessList") is not None:
-            self._NetworkAccessList = []
-            for item in params.get("NetworkAccessList"):
-                obj = NetworkAccess()
-                obj._deserialize(item)
-                self._NetworkAccessList.append(obj)
-        self._DBMajorVersion = params.get("DBMajorVersion")
         if params.get("DBNodeSet") is not None:
             self._DBNodeSet = []
             for item in params.get("DBNodeSet"):
@@ -3901,6 +4024,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._IsSupportTDE = params.get("IsSupportTDE")
         self._DBEngine = params.get("DBEngine")
         self._DBEngineConfig = params.get("DBEngineConfig")
+        if params.get("NetworkAccessList") is not None:
+            self._NetworkAccessList = []
+            for item in params.get("NetworkAccessList"):
+                obj = NetworkAccess()
+                obj._deserialize(item)
+                self._NetworkAccessList.append(obj)
+        self._SupportIpv6 = params.get("SupportIpv6")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5945,19 +6075,19 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: Instance ID in the format of postgres-5bq3wfjd
+        :param _DBInstanceId: Instance ID	
         :type DBInstanceId: str
-        :param _StartTime: Query start time in the format of 2018-01-01 00:00:00, which cannot be more than 7 days ago
+        :param _StartTime: u200cu200cu200cQuery start time in the format of 2018-01-01 00:00:00. The log is retained for seven days by default, so the start time must fall within the retention period.	
         :type StartTime: str
-        :param _EndTime: Query end time in the format of 2018-01-01 00:00:00
+        :param _EndTime: u200cu200cu200cu200cQuery end time in the format of 2018-01-01 00:00:00	
         :type EndTime: str
         :param _DatabaseName: Database name
         :type DatabaseName: str
-        :param _SearchKeys: Search keyword
+        :param _SearchKeys: Keywords used for search
         :type SearchKeys: list of str
-        :param _Limit: Number of entries returned per page. Value range: 1-100
+        :param _Limit: Number of results returned per page. Value range: 1-100. Default value: `50`.	
         :type Limit: int
-        :param _Offset: Page number for data return in paged query. Pagination starts from 0
+        :param _Offset: Data offset, which starts from 0. Default value: `0`.	
         :type Offset: int
         """
         self._DBInstanceId = None
@@ -6050,9 +6180,9 @@ class DescribeDBErrlogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Number of date entries returned for this call
+        :param _TotalCount: Number of logs returned in a single query. Maximum value: `10000`.
         :type TotalCount: int
-        :param _Details: Error log list
+        :param _Details: Detailed sets of error logs
         :type Details: list of ErrLogDetail
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -6166,6 +6296,138 @@ class DescribeDBInstanceAttributeResponse(AbstractModel):
         if params.get("DBInstance") is not None:
             self._DBInstance = DBInstance()
             self._DBInstance._deserialize(params.get("DBInstance"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBInstanceHAConfigRequest(AbstractModel):
+    """DescribeDBInstanceHAConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        """
+        self._DBInstanceId = None
+
+    @property
+    def DBInstanceId(self):
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceHAConfigResponse(AbstractModel):
+    """DescribeDBInstanceHAConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SyncMode: Primary-standby sync mode. Valid values:
+<li>`Semi-sync`
+<li>`Async`
+        :type SyncMode: str
+        :param _MaxStandbyLatency: Maximum data lag for high-availability standby server. The standby node can be promoted to the primary node when its data lag and the delay time are both less than the value of `MaxStandbyLatency` and `MaxStandbyLag` respectively.
+<li>Unit: byte
+<li>Value range: 1073741824-322122547200
+        :type MaxStandbyLatency: int
+        :param _MaxStandbyLag: The maximum delay for high-availability standby server The standby node can be promoted to the primary node when its data lag and the delay time are both less than or equals to the value of `MaxStandbyLatency` and `MaxStandbyLag` respectively.
+<li>Unit: s
+<li>Value range: 5-10
+        :type MaxStandbyLag: int
+        :param _MaxSyncStandbyLatency: Maximum data sync lag for u200du200dstandby server. If data lag of the standby node and the delay time are both less than or equals to the values of `MaxSyncStandbyLatency` and `MaxSyncStandbyLag` respectively, the standby server adopts semi-sync replication; if not, it adopts async replication.
+This value is only valid for the instance with `SyncMode` set to `Semi-sync`.
+This field returns null for async instance
+and semi-sync (non-downgradable to async) instance.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type MaxSyncStandbyLatency: int
+        :param _MaxSyncStandbyLag: Maximum sync delay time for u200dstandby server. If the delay time for u200dstandby server and the data lag are both less than or equals to the values of `MaxSyncStandbyLag` and `MaxSyncStandbyLatency` respectively, the standby server adopts sync replication mode; if not, it adopts async replication.
+This value is only valid for the instance with `SyncMode` set to `Semi-sync`.
+This field will not return for async instance
+and semi-sync (non-downgradable to async) instance.
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type MaxSyncStandbyLag: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SyncMode = None
+        self._MaxStandbyLatency = None
+        self._MaxStandbyLag = None
+        self._MaxSyncStandbyLatency = None
+        self._MaxSyncStandbyLag = None
+        self._RequestId = None
+
+    @property
+    def SyncMode(self):
+        return self._SyncMode
+
+    @SyncMode.setter
+    def SyncMode(self, SyncMode):
+        self._SyncMode = SyncMode
+
+    @property
+    def MaxStandbyLatency(self):
+        return self._MaxStandbyLatency
+
+    @MaxStandbyLatency.setter
+    def MaxStandbyLatency(self, MaxStandbyLatency):
+        self._MaxStandbyLatency = MaxStandbyLatency
+
+    @property
+    def MaxStandbyLag(self):
+        return self._MaxStandbyLag
+
+    @MaxStandbyLag.setter
+    def MaxStandbyLag(self, MaxStandbyLag):
+        self._MaxStandbyLag = MaxStandbyLag
+
+    @property
+    def MaxSyncStandbyLatency(self):
+        return self._MaxSyncStandbyLatency
+
+    @MaxSyncStandbyLatency.setter
+    def MaxSyncStandbyLatency(self, MaxSyncStandbyLatency):
+        self._MaxSyncStandbyLatency = MaxSyncStandbyLatency
+
+    @property
+    def MaxSyncStandbyLag(self):
+        return self._MaxSyncStandbyLag
+
+    @MaxSyncStandbyLag.setter
+    def MaxSyncStandbyLag(self, MaxSyncStandbyLag):
+        self._MaxSyncStandbyLag = MaxSyncStandbyLag
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SyncMode = params.get("SyncMode")
+        self._MaxStandbyLatency = params.get("MaxStandbyLatency")
+        self._MaxStandbyLag = params.get("MaxStandbyLag")
+        self._MaxSyncStandbyLatency = params.get("MaxSyncStandbyLatency")
+        self._MaxSyncStandbyLag = params.get("MaxSyncStandbyLag")
         self._RequestId = params.get("RequestId")
 
 
@@ -8697,11 +8959,16 @@ class DisIsolateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceIdSet: List of resource IDs. Note that currently you cannot remove multiple instances from isolation at the same time. Only one instance ID can be passed in here.
+        :param _DBInstanceIdSet: Instance ID list. Currently, you can't remove multiple instances from isolation in batches. Only one instance ID can be passed in here.
         :type DBInstanceIdSet: list of str
-        :param _Period: The valid period (in months) of the monthly-subscribed instance when removing it from isolation
+        :param _Period: Validity period in months
+<li>Monthly subscription: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.
+<li>Pay-as-you-go: `1`.
         :type Period: int
-        :param _AutoVoucher: Whether to use vouchers. Valid values: `true` (yes), `false` (no). Default value: `false`.
+        :param _AutoVoucher: Whether to use vouchers. Valid values:
+<li>`true`: Yes.
+u200c<li>`false`: No.
+Default value: `false`.
         :type AutoVoucher: bool
         :param _VoucherIds: Voucher ID list
         :type VoucherIds: list of str
@@ -9349,7 +9616,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         r"""
         :param _Zone: AZ ID, which can be obtained through the `Zone` field in the returned value of the `DescribeZones` API.
         :type Zone: str
-        :param _SpecCode: Specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeProductConfig` API.
+        :param _SpecCode: Specification ID, which can be obtained through the `SpecCode` field in the returned value of the `DescribeClasses` API.
         :type SpecCode: str
         :param _Storage: Storage capacity size in GB.
         :type Storage: int
@@ -10168,7 +10435,7 @@ class ModifyBackupPlanRequest(AbstractModel):
         :type MinBackupStartTime: str
         :param _MaxBackupStartTime: The latest time to start a backup
         :type MaxBackupStartTime: str
-        :param _BaseBackupRetentionPeriod: Backup retention period in days. Value range: 3-7
+        :param _BaseBackupRetentionPeriod: Backup retention period in days. Value range: 7-1830
         :type BaseBackupRetentionPeriod: int
         :param _BackupPeriod: Backup cycle, which means on which days each week the instance will be backed up. The parameter value should be the lowercase names of the days of the week.
         :type BackupPeriod: list of str
@@ -10352,13 +10619,24 @@ class ModifyDBInstanceChargeTypeRequest(AbstractModel):
         r"""
         :param _DBInstanceId: Instance ID in the format of `postgres-6fego161`
         :type DBInstanceId: str
-        :param _InstanceChargeType: Instance billing mode.  Valid values:  `PREPAID` (monthly subscription), `POSTPAID_BY_HOUR` (pay-as-you-go). Default value:  `PREPAID`.
+        :param _InstanceChargeType: Instance billing mode. Valid values:
+<li>`PREPAID`: Monthly subscription.
+<li>`POSTPAID_BY_HOUR`: Pay-as-you-go.
+Default value: `PREPAID`.
         :type InstanceChargeType: str
-        :param _Period: Validity period  in months. Valid values:  Valid period in months of the purchased instance. Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`. This parameter is set to `1` when the pay-as-you-go billing mode is used.
+        :param _Period: Validity period in months
+<li>Monthly subscription: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `24`, `36`.
+<li>Pay-as-you-go: `1`.
         :type Period: int
-        :param _AutoRenewFlag: Renewal flag. Valid values；  Valid values: `0` (manual renewal), `1` (auto-renewal).
+        :param _AutoRenewFlag: Auto-renewal flag. Valid values:
+<li>`0`: Manual renewal.
+<li>`1`: Automatic renewal.
+Default value: `0`.
         :type AutoRenewFlag: int
-        :param _AutoVoucher: Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.
+        :param _AutoVoucher: Whether to use vouchers automatically. Valid values:
+<li>`0`: No.
+<li>`1`: Yes.
+Default value: `0`.
         :type AutoVoucher: int
         """
         self._DBInstanceId = None
@@ -10470,9 +10748,14 @@ class ModifyDBInstanceDeploymentRequest(AbstractModel):
         r"""
         :param _DBInstanceId: Instance ID.
         :type DBInstanceId: str
-        :param _DBNodeSet: Instance node information.
+        :param _DBNodeSet: Deployment information of the instance node, which will display the information of each AZ when the instance node is deployed across multiple AZs.
+The information of AZ can be obtained from the `Zone` field in the returned value of the [DescribeZones](https://intl.cloud.tencent.com/document/api/409/16769?from_cn_redirect=1) API.
         :type DBNodeSet: list of DBNode
-        :param _SwitchTag: Switch time. Valid values: `0` (switch now), `1` (switch at a specified time), `2` (switch during maintenance time). Default value: `0`.
+        :param _SwitchTag: Switch time for the specified instance after configuration modification.
+<li>`0`: Switch now. 
+<li>`1`: Switch at the specified time.
+<li>`2`: Switch in the maintenance time.
+Default value: `0`. 
         :type SwitchTag: int
         :param _SwitchStartTime: Switch start time in the format of `HH:MM:SS`, such as 01:00:00. When `SwitchTag` is 0 or 2, this parameter becomes invalid.
         :type SwitchStartTime: str
@@ -10572,6 +10855,137 @@ class ModifyDBInstanceDeploymentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceHAConfigRequest(AbstractModel):
+    """ModifyDBInstanceHAConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        :param _SyncMode: Primary-standby sync mode. Valid values:
+<li>`Semi-sync`
+<li>`Async`
+
+        :type SyncMode: str
+        :param _MaxStandbyLatency: u200cMaximum data lag for high-availability standby server. The standby node can be promoted to the primary node when its data lag and the delay time are both less than the value of `MaxStandbyLatency` and `MaxStandbyLag` respectively.
+<li>Unit: byte
+<li>Value range: 1073741824-322122547200
+        :type MaxStandbyLatency: int
+        :param _MaxStandbyLag: The maximum delay for high-availability standby server The standby node can be promoted to the primary node when its data lag and the delay time are both less or equals to the value of `MaxStandbyLatency` and `MaxStandbyLag` respectively.
+<li>Unit: s
+<li>Value range: 5-10
+        :type MaxStandbyLag: int
+        :param _MaxSyncStandbyLatency: Maximum data sync lag for u200dstandby server. If data lag of the standby node and the delay ime are both less than or equals to the values of `MaxSyncStandbyLatency` and `MaxSyncStandbyLag`, the standby server adopts semi-sync replication; if not, it adopts async replication.
+This value is only valid for the instance with `SyncMode` set to `Semi-sync`.
+When the semi-sync replication mode of the instance is not allowed to downgrade to async replication, `MaxSyncStandbyLatency` and `MaxSyncStandbyLag` are not required.
+When the semi-sync instance is allowed to downgrade to async replication, `MaxSyncStandbyLatency` is required and `MaxSyncStandbyLag` must be left empty for PostgreSQL 9; `MaxSyncStandbyLatency` and MaxSyncStandbyLag` are required for PostgreSQL 10 and later.
+        :type MaxSyncStandbyLatency: int
+        :param _MaxSyncStandbyLag: Maximum delay for u200dsync u200dstandby server. If the delay time for u200dstandby server and the data lag are both less than or equals to the value of `MaxSyncStandbyLag` and `MaxSyncStandbyLatency` respectively, the standby server adopts sync replication mode; if not, it adopts async replication.
+This value is only valid for the instance with `SyncMode` set to `Semi-sync`.
+When the semi-sync replication mode of the instance is not allowed to downgrade to async replication, `MaxSyncStandbyLatency` and `MaxSyncStandbyLag` are not required.
+When the semi-sync instance is allowed to downgrade to async replication, `MaxSyncStandbyLatency` is required and `MaxSyncStandbyLag` must be left empty for PostgreSQL 9; `MaxSyncStandbyLatency` and MaxSyncStandbyLag` are required for PostgreSQL 10 and later.
+        :type MaxSyncStandbyLag: int
+        """
+        self._DBInstanceId = None
+        self._SyncMode = None
+        self._MaxStandbyLatency = None
+        self._MaxStandbyLag = None
+        self._MaxSyncStandbyLatency = None
+        self._MaxSyncStandbyLag = None
+
+    @property
+    def DBInstanceId(self):
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def SyncMode(self):
+        return self._SyncMode
+
+    @SyncMode.setter
+    def SyncMode(self, SyncMode):
+        self._SyncMode = SyncMode
+
+    @property
+    def MaxStandbyLatency(self):
+        return self._MaxStandbyLatency
+
+    @MaxStandbyLatency.setter
+    def MaxStandbyLatency(self, MaxStandbyLatency):
+        self._MaxStandbyLatency = MaxStandbyLatency
+
+    @property
+    def MaxStandbyLag(self):
+        return self._MaxStandbyLag
+
+    @MaxStandbyLag.setter
+    def MaxStandbyLag(self, MaxStandbyLag):
+        self._MaxStandbyLag = MaxStandbyLag
+
+    @property
+    def MaxSyncStandbyLatency(self):
+        return self._MaxSyncStandbyLatency
+
+    @MaxSyncStandbyLatency.setter
+    def MaxSyncStandbyLatency(self, MaxSyncStandbyLatency):
+        self._MaxSyncStandbyLatency = MaxSyncStandbyLatency
+
+    @property
+    def MaxSyncStandbyLag(self):
+        return self._MaxSyncStandbyLag
+
+    @MaxSyncStandbyLag.setter
+    def MaxSyncStandbyLag(self, MaxSyncStandbyLag):
+        self._MaxSyncStandbyLag = MaxSyncStandbyLag
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._SyncMode = params.get("SyncMode")
+        self._MaxStandbyLatency = params.get("MaxStandbyLatency")
+        self._MaxStandbyLag = params.get("MaxStandbyLag")
+        self._MaxSyncStandbyLatency = params.get("MaxSyncStandbyLatency")
+        self._MaxSyncStandbyLag = params.get("MaxSyncStandbyLag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceHAConfigResponse(AbstractModel):
+    """ModifyDBInstanceHAConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceNameRequest(AbstractModel):
     """ModifyDBInstanceName request structure.
 
@@ -10581,7 +10995,8 @@ class ModifyDBInstanceNameRequest(AbstractModel):
         r"""
         :param _DBInstanceId: Database instance ID in the format of postgres-6fego161
         :type DBInstanceId: str
-        :param _InstanceName: New name of database instance
+        :param _InstanceName: Instance name, which can contain up to 60 letters, digits, hyphens, and symbols (_-). If this parameter is not specified, "Unnamed" will be displayed by default.
+
         :type InstanceName: str
         """
         self._DBInstanceId = None
@@ -10818,7 +11233,9 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecurityGroupIdSet: The list of security groups to be associated with the instance or RO groups
+        :param _SecurityGroupIdSet: The list of security groups to be associated with the instance or RO groups.
+Information of security groups can be obtained from the `sgld` field in the returned value of the [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API.
+
         :type SecurityGroupIdSet: list of str
         :param _DBInstanceId: Instance ID. Either this parameter or `ReadOnlyGroupId` must be passed in. If both parameters are passed in, `ReadOnlyGroupId` will be ignored.
         :type DBInstanceId: str
@@ -10906,13 +11323,20 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         :type Memory: int
         :param _Storage: Instance disk size in GiB after modification.
         :type Storage: int
-        :param _AutoVoucher: Whether to automatically use vouchers. Valid values: `1` (yes), `0` (no). Default value: `0`.
+        :param _AutoVoucher: Whether to use vouchers automatically. Valid values:
+<li>`0`: No.
+<li>`1`: Yes.
+Default value: `0`.
         :type AutoVoucher: int
         :param _VoucherIds: Voucher ID list. Currently, you can specify only one voucher.
         :type VoucherIds: list of str
         :param _ActivityId: Campaign ID.
         :type ActivityId: int
-        :param _SwitchTag: Switch time after instance configurations are modified. Valid values: `0` (switch now), `1` (switch at a specified time), `2` (switch during maintenance time). Default value: `0`.
+        :param _SwitchTag: Switch time for the specified instance after configuration modification.
+<li>`0`: Switch now. 
+<li>`1`: Switch at the specified time.
+<li>`2`: Switch in the maintenance time.
+Default value: `0`. 
         :type SwitchTag: int
         :param _SwitchStartTime: Switch start time in the format of `HH:MM:SS`, such as 01:00:00. When `SwitchTag` is 0 or 2, this parameter becomes invalid.
         :type SwitchStartTime: str
@@ -14521,6 +14945,117 @@ Note: This field may return `null`, indicating that no valid value was found.
         
 
 
+class SwitchDBInstancePrimaryRequest(AbstractModel):
+    """SwitchDBInstancePrimary request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: Instance ID
+        :type DBInstanceId: str
+        :param _Force: Whether to perform forced switch. As long as the standby node can be accessed, the switch will be performed regardless of the primary-standby sync delay. You can switch immediately only when `SwitchTag` is `0.
+<li>Default: `false`.
+        :type Force: bool
+        :param _SwitchTag: Switch time for the specified instance after configuration modification.
+<li>`0`: Switch now. 
+<li>`1`: Switch at the specified time.
+<li>`2`: Switch in the maintenance time.
+<li>Default value: `0`. 
+        :type SwitchTag: int
+        :param _SwitchStartTime: The earliest time to start a switch in the format of "HH:MM:SS", such as "01:00:00". This parameter is invalid when `SwitchTag` is `0` or `2`.
+        :type SwitchStartTime: str
+        :param _SwitchEndTime: The latest time to start a switch in the format of "HH:MM:SS", such as "01:30:00". This parameter is invalid when `SwitchTag` is `0` or `2`. The difference between `SwitchStartTime` and `SwitchEndTime` cannot be less than 30 minutes.
+        :type SwitchEndTime: str
+        """
+        self._DBInstanceId = None
+        self._Force = None
+        self._SwitchTag = None
+        self._SwitchStartTime = None
+        self._SwitchEndTime = None
+
+    @property
+    def DBInstanceId(self):
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def Force(self):
+        return self._Force
+
+    @Force.setter
+    def Force(self, Force):
+        self._Force = Force
+
+    @property
+    def SwitchTag(self):
+        return self._SwitchTag
+
+    @SwitchTag.setter
+    def SwitchTag(self, SwitchTag):
+        self._SwitchTag = SwitchTag
+
+    @property
+    def SwitchStartTime(self):
+        return self._SwitchStartTime
+
+    @SwitchStartTime.setter
+    def SwitchStartTime(self, SwitchStartTime):
+        self._SwitchStartTime = SwitchStartTime
+
+    @property
+    def SwitchEndTime(self):
+        return self._SwitchEndTime
+
+    @SwitchEndTime.setter
+    def SwitchEndTime(self, SwitchEndTime):
+        self._SwitchEndTime = SwitchEndTime
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._Force = params.get("Force")
+        self._SwitchTag = params.get("SwitchTag")
+        self._SwitchStartTime = params.get("SwitchStartTime")
+        self._SwitchEndTime = params.get("SwitchEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchDBInstancePrimaryResponse(AbstractModel):
+    """SwitchDBInstancePrimary response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class Tag(AbstractModel):
     """The information of tags associated with instances, including `TagKey` and `TagValue`
 
@@ -14575,20 +15110,23 @@ class UpgradeDBInstanceKernelVersionRequest(AbstractModel):
         r"""
         :param _DBInstanceId: Instance ID
         :type DBInstanceId: str
-        :param _TargetDBKernelVersion: Target kernel version, which can be obtained in the `AvailableUpgradeTarget` field returned by the `DescribeDBVersions` API.
+        :param _TargetDBKernelVersion: Target kernel version, which can be obtained in the `AvailableUpgradeTarget` field in the returned value of the [DescribeDBVersions](https://intl.cloud.tencent.com/document/api/409/89018?from_cn_redirect=1) API.
+
         :type TargetDBKernelVersion: str
-        :param _SwitchTag: Switch time after the kernel version upgrade. Valid values:
-`0` (default value): Switch now.
-`1`: Switch at the specified time.
-`2`: Switch in the maintenance time.
+        :param _SwitchTag: Switch time after the kernel version upgrade for the specified instance. Valid values:
+<li>`0`: Switch now.
+<li>`1`: Switch at the specified time.
+<li>`2`: Switch in the maintenance time.
+Default value: `0`. 
         :type SwitchTag: int
         :param _SwitchStartTime: Switch start time in the format of `HH:MM:SS`, such as 01:00:00. When `SwitchTag` is `0` or `2`, this parameter is invalid.
         :type SwitchStartTime: str
         :param _SwitchEndTime: Switch end time in the format of `HH:MM:SS`, such as 01:30:00. When `SwitchTag` is `0` or `2`, this parameter is invalid. The difference between `SwitchStartTime` and `SwitchEndTime` cannot be less than 30 minutes.
         :type SwitchEndTime: str
-        :param _DryRun: Whether to perform a precheck on the current operation of upgrading the instance kernel version. Valid values:
-`true`: Performs a precheck without upgrading the kernel version. Check items include request parameters, kernel version compatibility, and instance parameters.
-`false` (default value): Sends a normal request and upgrades the kernel version directly after the check is passed.
+        :param _DryRun: Whether to perform a pre-check on the current operation of upgrading the instance kernel version. Valid values:
+u200c<li>u200c`true`: Performs a pre-check without upgrading the kernel version. Check items include request parameters, kernel version compatibility, and instance parameters.
+u200cu200c<li>`false`: Sends a normal request and upgrades the kernel version directly after the check is passed.
+Default value: `false`.
         :type DryRun: bool
         """
         self._DBInstanceId = None

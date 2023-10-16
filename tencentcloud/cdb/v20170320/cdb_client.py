@@ -1034,6 +1034,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCpuExpandStrategy(self, request):
+        """This API is used to query the elastic expansion policy of an instance.
+
+        :param request: Request instance for DescribeCpuExpandStrategy.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeCpuExpandStrategyRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeCpuExpandStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCpuExpandStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCpuExpandStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBFeatures(self, request):
         """This API is used to query database version attributes, including supported features such as database encryption and audit.
 
@@ -2790,6 +2813,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartCpuExpand(self, request):
+        """u200cThis API is used to enable elastic CPU expansion manually or automatically.
+
+        :param request: Request instance for StartCpuExpand.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.StartCpuExpandRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.StartCpuExpandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartCpuExpand", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartCpuExpandResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StartReplication(self, request):
         """This API is used to start the data replication from the source instance to the read-only instance.
 
@@ -2804,6 +2850,29 @@ class CdbClient(AbstractClient):
             body = self.call("StartReplication", params, headers=headers)
             response = json.loads(body)
             model = models.StartReplicationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopCpuExpand(self, request):
+        """This API is used to disable elastic CPU expansion.
+
+        :param request: Request instance for StopCpuExpand.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.StopCpuExpandRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.StopCpuExpandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopCpuExpand", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopCpuExpandResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

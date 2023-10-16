@@ -68,6 +68,9 @@ INTERNALERROR_SCDNUSERSUSPEND = 'InternalError.ScdnUserSuspend'
 # Tag internal error. Please submit a ticket for troubleshooting.
 INTERNALERROR_TAGSYSTEMERROR = 'InternalError.TagSystemError'
 
+# 
+INTERNALERROR_UNKNOWNERROR = 'InternalError.UnknownError'
+
 # The access port 443 must be enabled for HTTPS configuration.
 INVALIDPARAMETER_ACCESSPORTOPENEDHTTPS = 'InvalidParameter.AccessPortOpenedHttps'
 
@@ -284,6 +287,12 @@ LIMITEXCEEDED_CDNCONFIGTOOMANYCACHERULES = 'LimitExceeded.CdnConfigTooManyCacheR
 # Domain name operations are too frequent.
 LIMITEXCEEDED_CDNHOSTOPTOOOFTEN = 'LimitExceeded.CdnHostOpTooOften'
 
+# 
+LIMITEXCEEDED_CDNPURGEEXCEEDBATCHLIMIT = 'LimitExceeded.CdnPurgeExceedBatchLimit'
+
+# 
+LIMITEXCEEDED_CDNPURGEEXCEEDDAYLIMIT = 'LimitExceeded.CdnPurgeExceedDayLimit'
+
 # The number of directories to be purged exceeds the limit.
 LIMITEXCEEDED_CDNPURGEPATHEXCEEDBATCHLIMIT = 'LimitExceeded.CdnPurgePathExceedBatchLimit'
 
@@ -319,6 +328,9 @@ LIMITEXCEEDED_CLSTOPICEXCEED = 'LimitExceeded.ClsTopicExceed'
 
 # Daily task quota exceeded
 LIMITEXCEEDED_SCDNLOGTASKEXCEEDDAYLIMIT = 'LimitExceeded.ScdnLogTaskExceedDayLimit'
+
+# 
+OPERATIONDENIED_SHARECACHEAREADNSNOTMATCH = 'OperationDenied.ShareCacheAreaDnsNotMatch'
 
 # The domain name conflicts with an existing domain name in the system.
 RESOURCEINUSE_CDNCONFLICTHOSTEXISTS = 'ResourceInUse.CdnConflictHostExists'
