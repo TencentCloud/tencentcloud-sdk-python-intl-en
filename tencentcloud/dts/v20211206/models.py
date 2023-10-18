@@ -1133,7 +1133,7 @@ class ConfigureSyncJobRequest(AbstractModel):
         :type DstInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         :param _DstNodeType: Enumerated values: `single` (for single-node target database), `cluster` (for multi-node target database).
         :type DstNodeType: str
-        :param _Options: Sync task options
+        :param _Options: Sync task options. The `RateLimitOption` option cannot take effect currently. To modify the speed limit settings, use the `ModifySyncRateLimit` API.
         :type Options: :class:`tencentcloud.dts.v20211206.models.Options`
         :param _AutoRetryTimeRangeMinutes: Automatic retry time, which can be set to 5-720 minutes. 0 indicates that retry is disabled.
         :type AutoRetryTimeRangeMinutes: int
@@ -4240,6 +4240,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ErrorInfo: Task error information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ErrorInfo: list of ErrorInfoItem
+        :param _DumperResumeCtrl: Whether the task can be reentered in the full export stage. Valid values: `yes`, `no`. `yes`: The current task can be reentered. `no`: The current task is in the full export stage which cannot be reentered. If the value of this parameter is `no`, the checkpoint restart is not supported when the task is restarted in the export stage.
+        :type DumperResumeCtrl: str
+        :param _RateLimitOption: Task throttling information
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type RateLimitOption: :class:`tencentcloud.dts.v20211206.models.RateLimitOption`
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -4263,6 +4268,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CheckStepInfo = None
         self._TradeInfo = None
         self._ErrorInfo = None
+        self._DumperResumeCtrl = None
+        self._RateLimitOption = None
         self._RequestId = None
 
     @property
@@ -4426,6 +4433,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ErrorInfo = ErrorInfo
 
     @property
+    def DumperResumeCtrl(self):
+        return self._DumperResumeCtrl
+
+    @DumperResumeCtrl.setter
+    def DumperResumeCtrl(self, DumperResumeCtrl):
+        self._DumperResumeCtrl = DumperResumeCtrl
+
+    @property
+    def RateLimitOption(self):
+        return self._RateLimitOption
+
+    @RateLimitOption.setter
+    def RateLimitOption(self, RateLimitOption):
+        self._RateLimitOption = RateLimitOption
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -4481,6 +4504,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = ErrorInfoItem()
                 obj._deserialize(item)
                 self._ErrorInfo.append(obj)
+        self._DumperResumeCtrl = params.get("DumperResumeCtrl")
+        if params.get("RateLimitOption") is not None:
+            self._RateLimitOption = RateLimitOption()
+            self._RateLimitOption._deserialize(params.get("RateLimitOption"))
         self._RequestId = params.get("RequestId")
 
 
@@ -5700,6 +5727,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _DatabaseNetEnv: Network environment of the database. This parameter is required when `AccessType` is `ccn`. Valid values: `UserIDC` (user IDC), `TencentVPC` (Tencent Cloud VPC).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DatabaseNetEnv: str
+        :param _CcnOwnerUin: The root account of CCN in the scenario where the database is connected to CCN under another Tencent Cloud account
+Note: u200dThis field may return `null`, indicating that no valid values can be obtained.
+        :type CcnOwnerUin: str
         """
         self._Region = None
         self._Role = None
@@ -5727,6 +5757,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TmpToken = None
         self._EncryptConn = None
         self._DatabaseNetEnv = None
+        self._CcnOwnerUin = None
 
     @property
     def Region(self):
@@ -5936,6 +5967,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def DatabaseNetEnv(self, DatabaseNetEnv):
         self._DatabaseNetEnv = DatabaseNetEnv
 
+    @property
+    def CcnOwnerUin(self):
+        return self._CcnOwnerUin
+
+    @CcnOwnerUin.setter
+    def CcnOwnerUin(self, CcnOwnerUin):
+        self._CcnOwnerUin = CcnOwnerUin
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -5964,6 +6003,66 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TmpToken = params.get("TmpToken")
         self._EncryptConn = params.get("EncryptConn")
         self._DatabaseNetEnv = params.get("DatabaseNetEnv")
+        self._CcnOwnerUin = params.get("CcnOwnerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ErrInfo(AbstractModel):
+    """Error information and the corresponding solution
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Reason: Cause of the error
+        :type Reason: str
+        :param _Message: Error message
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _Solution: Solution
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type Solution: str
+        """
+        self._Reason = None
+        self._Message = None
+        self._Solution = None
+
+    @property
+    def Reason(self):
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Solution(self):
+        return self._Solution
+
+    @Solution.setter
+    def Solution(self, Solution):
+        self._Solution = Solution
+
+
+    def _deserialize(self, params):
+        self._Reason = params.get("Reason")
+        self._Message = params.get("Message")
+        self._Solution = params.get("Solution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6223,6 +6322,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _AutoRetryTimeRangeMinutes: Information of automatic retry time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AutoRetryTimeRangeMinutes: int
+        :param _DumperResumeCtrl: Whether the task can be reentered in the full export stage. Valid values: `yes`, `no`. `yes`: The current task can be reentered. `no`: The current task is in the full export stage which cannot be reentered. If the value of this parameter is `no`, the checkpoint restart is not supported when the task is restarted in the export stage.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type DumperResumeCtrl: str
         """
         self._JobId = None
         self._JobName = None
@@ -6242,6 +6344,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TradeInfo = None
         self._Tags = None
         self._AutoRetryTimeRangeMinutes = None
+        self._DumperResumeCtrl = None
 
     @property
     def JobId(self):
@@ -6387,6 +6490,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def AutoRetryTimeRangeMinutes(self, AutoRetryTimeRangeMinutes):
         self._AutoRetryTimeRangeMinutes = AutoRetryTimeRangeMinutes
 
+    @property
+    def DumperResumeCtrl(self):
+        return self._DumperResumeCtrl
+
+    @DumperResumeCtrl.setter
+    def DumperResumeCtrl(self, DumperResumeCtrl):
+        self._DumperResumeCtrl = DumperResumeCtrl
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -6424,6 +6535,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
+        self._DumperResumeCtrl = params.get("DumperResumeCtrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6812,8 +6924,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsDstReadOnly: bool
         :param _ExtraAttr: Additional information. You can set additional parameters for certain database types. For Redis, you can define the following parameters: 
-["ClientOutputBufferHardLimit":512, 	Hard limit of the replica buffer zone capacity in MB	"ClientOutputBufferSoftLimit":512, 	Soft limit of the replica buffer zone capacity in MB	"ClientOutputBufferPersistTime":60, Soft limit duration of the replica buffer zone in seconds	"ReplBacklogSize":512, 	Limit of the circular buffer zone capacity in MB	"ReplTimeout":120, 		Replication timeout period in seconds]
-Note: This field may return null, indicating that no valid values can be obtained.
+["DstWriteMode": `normal`. 	Target database write mode. Valid values: `clearData` (Clear the target instance data), overwrite` (Execute the task in overwriting mode), `normal` (Follow the normal steps) 	"IsDstReadOnly": `true`. 	Whether to set the target database to read-only for a migration task. Valid values: `true` (Yes), `false` (No) 	"ClientOutputBufferHardLimit": 512. 	Hard limit of the replica buffer zone capacity in MB. 	"ClientOutputBufferSoftLimit": 512. 	Soft limit of the replica buffer zone capacity in MB. 	"ClientOutputBufferPersistTime": 60. Soft limit duration of the replica buffer zone in seconds. 	"ReplBacklogSize": 512, 	Limit of the circular buffer zone capacity in MB. 	"ReplTimeout":120，		Replication timeout period in seconds]
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type ExtraAttr: list of KeyValuePairOption
         """
         self._DatabaseTable = None
@@ -7263,7 +7375,7 @@ class ModifyMigrationJobRequest(AbstractModel):
         :type JobId: str
         :param _RunMode: Running mode. Valid values: `immediate`, `timed`.
         :type RunMode: str
-        :param _MigrateOption: Migration task configuration options, which describe how the task performs migration.
+        :param _MigrateOption: Migration task configuration options, which describe how the task performs migration. The `RateLimitOption` option cannot be configured. To modify the speed limit settings of the task, use the `ModifyMigrateRateLimit` API after the task starts running.
         :type MigrateOption: :class:`tencentcloud.dts.v20211206.models.MigrateOption`
         :param _SrcInfo: Source instance information
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
@@ -7646,6 +7758,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _KafkaOption: Kafka sync options
 Note: This field may return null, indicating that no valid values can be obtained.
         :type KafkaOption: :class:`tencentcloud.dts.v20211206.models.KafkaOption`
+        :param _RateLimitOption: Task speed limit information. This parameter can only be used as an output parameter.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type RateLimitOption: :class:`tencentcloud.dts.v20211206.models.RateLimitOption`
+        :param _AutoRetryTimeRangeMinutes: Settings of the automatic retry time range
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type AutoRetryTimeRangeMinutes: int
         """
         self._InitType = None
         self._DealOfExistSameTable = None
@@ -7655,6 +7773,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ConflictHandleOption = None
         self._DdlOptions = None
         self._KafkaOption = None
+        self._RateLimitOption = None
+        self._AutoRetryTimeRangeMinutes = None
 
     @property
     def InitType(self):
@@ -7720,6 +7840,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def KafkaOption(self, KafkaOption):
         self._KafkaOption = KafkaOption
 
+    @property
+    def RateLimitOption(self):
+        return self._RateLimitOption
+
+    @RateLimitOption.setter
+    def RateLimitOption(self, RateLimitOption):
+        self._RateLimitOption = RateLimitOption
+
+    @property
+    def AutoRetryTimeRangeMinutes(self):
+        return self._AutoRetryTimeRangeMinutes
+
+    @AutoRetryTimeRangeMinutes.setter
+    def AutoRetryTimeRangeMinutes(self, AutoRetryTimeRangeMinutes):
+        self._AutoRetryTimeRangeMinutes = AutoRetryTimeRangeMinutes
+
 
     def _deserialize(self, params):
         self._InitType = params.get("InitType")
@@ -7739,6 +7875,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("KafkaOption") is not None:
             self._KafkaOption = KafkaOption()
             self._KafkaOption._deserialize(params.get("KafkaOption"))
+        if params.get("RateLimitOption") is not None:
+            self._RateLimitOption = RateLimitOption()
+            self._RateLimitOption._deserialize(params.get("RateLimitOption"))
+        self._AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8019,6 +8159,170 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Message = params.get("Message")
         self._Solution = params.get("Solution")
         self._HelpDoc = params.get("HelpDoc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RateLimitOption(AbstractModel):
+    """Speed limit details of migration and sync tasks
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CurrentDumpThread: The number of full export threads that have taken effect.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type CurrentDumpThread: int
+        :param _DefaultDumpThread: The default number of full export threads.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type DefaultDumpThread: int
+        :param _CurrentDumpRps: The full export RPS that has taken effect.	
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type CurrentDumpRps: int
+        :param _DefaultDumpRps: The default full export RPS.	
+Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :type DefaultDumpRps: int
+        :param _CurrentLoadThread: The number of full import threads that have taken effect.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type CurrentLoadThread: int
+        :param _DefaultLoadThread: The default number of full import threads.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type DefaultLoadThread: int
+        :param _CurrentLoadRps: The full import RPS that has taken effect.	
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type CurrentLoadRps: int
+        :param _DefaultLoadRps: The default full import RPS.	
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type DefaultLoadRps: int
+        :param _CurrentSinkerThread: The number of incremental import threads that have taken effect.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type CurrentSinkerThread: int
+        :param _DefaultSinkerThread: The default number of incremental import threads.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type DefaultSinkerThread: int
+        :param _HasUserSetRateLimit: Whether the speed limit has been set. Valid values: `no` (No), `yes` (Yes).
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type HasUserSetRateLimit: str
+        """
+        self._CurrentDumpThread = None
+        self._DefaultDumpThread = None
+        self._CurrentDumpRps = None
+        self._DefaultDumpRps = None
+        self._CurrentLoadThread = None
+        self._DefaultLoadThread = None
+        self._CurrentLoadRps = None
+        self._DefaultLoadRps = None
+        self._CurrentSinkerThread = None
+        self._DefaultSinkerThread = None
+        self._HasUserSetRateLimit = None
+
+    @property
+    def CurrentDumpThread(self):
+        return self._CurrentDumpThread
+
+    @CurrentDumpThread.setter
+    def CurrentDumpThread(self, CurrentDumpThread):
+        self._CurrentDumpThread = CurrentDumpThread
+
+    @property
+    def DefaultDumpThread(self):
+        return self._DefaultDumpThread
+
+    @DefaultDumpThread.setter
+    def DefaultDumpThread(self, DefaultDumpThread):
+        self._DefaultDumpThread = DefaultDumpThread
+
+    @property
+    def CurrentDumpRps(self):
+        return self._CurrentDumpRps
+
+    @CurrentDumpRps.setter
+    def CurrentDumpRps(self, CurrentDumpRps):
+        self._CurrentDumpRps = CurrentDumpRps
+
+    @property
+    def DefaultDumpRps(self):
+        return self._DefaultDumpRps
+
+    @DefaultDumpRps.setter
+    def DefaultDumpRps(self, DefaultDumpRps):
+        self._DefaultDumpRps = DefaultDumpRps
+
+    @property
+    def CurrentLoadThread(self):
+        return self._CurrentLoadThread
+
+    @CurrentLoadThread.setter
+    def CurrentLoadThread(self, CurrentLoadThread):
+        self._CurrentLoadThread = CurrentLoadThread
+
+    @property
+    def DefaultLoadThread(self):
+        return self._DefaultLoadThread
+
+    @DefaultLoadThread.setter
+    def DefaultLoadThread(self, DefaultLoadThread):
+        self._DefaultLoadThread = DefaultLoadThread
+
+    @property
+    def CurrentLoadRps(self):
+        return self._CurrentLoadRps
+
+    @CurrentLoadRps.setter
+    def CurrentLoadRps(self, CurrentLoadRps):
+        self._CurrentLoadRps = CurrentLoadRps
+
+    @property
+    def DefaultLoadRps(self):
+        return self._DefaultLoadRps
+
+    @DefaultLoadRps.setter
+    def DefaultLoadRps(self, DefaultLoadRps):
+        self._DefaultLoadRps = DefaultLoadRps
+
+    @property
+    def CurrentSinkerThread(self):
+        return self._CurrentSinkerThread
+
+    @CurrentSinkerThread.setter
+    def CurrentSinkerThread(self, CurrentSinkerThread):
+        self._CurrentSinkerThread = CurrentSinkerThread
+
+    @property
+    def DefaultSinkerThread(self):
+        return self._DefaultSinkerThread
+
+    @DefaultSinkerThread.setter
+    def DefaultSinkerThread(self, DefaultSinkerThread):
+        self._DefaultSinkerThread = DefaultSinkerThread
+
+    @property
+    def HasUserSetRateLimit(self):
+        return self._HasUserSetRateLimit
+
+    @HasUserSetRateLimit.setter
+    def HasUserSetRateLimit(self, HasUserSetRateLimit):
+        self._HasUserSetRateLimit = HasUserSetRateLimit
+
+
+    def _deserialize(self, params):
+        self._CurrentDumpThread = params.get("CurrentDumpThread")
+        self._DefaultDumpThread = params.get("DefaultDumpThread")
+        self._CurrentDumpRps = params.get("CurrentDumpRps")
+        self._DefaultDumpRps = params.get("DefaultDumpRps")
+        self._CurrentLoadThread = params.get("CurrentLoadThread")
+        self._DefaultLoadThread = params.get("DefaultLoadThread")
+        self._CurrentLoadRps = params.get("CurrentLoadRps")
+        self._DefaultLoadRps = params.get("DefaultLoadRps")
+        self._CurrentSinkerThread = params.get("CurrentSinkerThread")
+        self._DefaultSinkerThread = params.get("DefaultSinkerThread")
+        self._HasUserSetRateLimit = params.get("HasUserSetRateLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9559,8 +9863,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Progress: Overall progress
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Progress: int
-        :param _CurrentStepProgress: Progress of the current step
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CurrentStepProgress: Progress of the current step. Value range: 0-100. The value of `-1` indicates that you can't check the progress of the current step.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
         :type CurrentStepProgress: int
         :param _MasterSlaveDistance: Data volume difference between the sync source and target
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -9577,6 +9881,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _CauseOfCompareDisable: Cause of the failure of initiating data consistency check
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CauseOfCompareDisable: str
+        :param _ErrInfo: Task error and the corresponding solution
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type ErrInfo: :class:`tencentcloud.dts.v20211206.models.ErrInfo`
         """
         self._StepAll = None
         self._StepNow = None
@@ -9587,6 +9894,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Message = None
         self._StepInfos = None
         self._CauseOfCompareDisable = None
+        self._ErrInfo = None
 
     @property
     def StepAll(self):
@@ -9660,6 +9968,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def CauseOfCompareDisable(self, CauseOfCompareDisable):
         self._CauseOfCompareDisable = CauseOfCompareDisable
 
+    @property
+    def ErrInfo(self):
+        return self._ErrInfo
+
+    @ErrInfo.setter
+    def ErrInfo(self, ErrInfo):
+        self._ErrInfo = ErrInfo
+
 
     def _deserialize(self, params):
         self._StepAll = params.get("StepAll")
@@ -9676,6 +9992,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._StepInfos.append(obj)
         self._CauseOfCompareDisable = params.get("CauseOfCompareDisable")
+        if params.get("ErrInfo") is not None:
+            self._ErrInfo = ErrInfo()
+            self._ErrInfo._deserialize(params.get("ErrInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9738,6 +10057,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _SrcInfo: Source database information. This parameter is used by single-node databases.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        :param _SrcNodeType: Valid values: `cluster`, `single`. `single`: For single-node source databases; `cluster`: For multi-node source databases.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type SrcNodeType: str
+        :param _SrcInfos: Source database information. This parameter is used for multi-node databases.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type SrcInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         :param _DstRegion: Target database region, such as `ap-guangzhou`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DstRegion: str
@@ -9750,6 +10075,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _DstInfo: Target database information. This parameter is used by single-node databases.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        :param _DstNodeType: Valid values: `cluster`, `single`. `single`: For single-node target databases; `cluster`: For multi-node target databases.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type DstNodeType: str
+        :param _DstInfos: Target database information. This parameter is used for multi-node databases.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type DstInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         :param _CreateTime: Creation time in the format of `yyyy-mm-dd hh:mm:ss`
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CreateTime: str
@@ -9783,6 +10114,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _AutoRetryTimeRangeMinutes: Settings of automatic retry time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AutoRetryTimeRangeMinutes: int
+        :param _DumperResumeCtrl: Whether the task can be reentered in the full export stage. Valid values: `yes`, `no`. `yes`: The current task can be reentered. `no`: The current task is in the full export stage which cannot be reentered. If the value of this parameter is `no`, the checkpoint restart is not supported when the task is restarted in the export stage.
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type DumperResumeCtrl: str
         """
         self._JobId = None
         self._JobName = None
@@ -9799,10 +10133,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SrcDatabaseType = None
         self._SrcAccessType = None
         self._SrcInfo = None
+        self._SrcNodeType = None
+        self._SrcInfos = None
         self._DstRegion = None
         self._DstDatabaseType = None
         self._DstAccessType = None
         self._DstInfo = None
+        self._DstNodeType = None
+        self._DstInfos = None
         self._CreateTime = None
         self._StartTime = None
         self._Status = None
@@ -9814,6 +10152,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AutoRenew = None
         self._OfflineTime = None
         self._AutoRetryTimeRangeMinutes = None
+        self._DumperResumeCtrl = None
 
     @property
     def JobId(self):
@@ -9936,6 +10275,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SrcInfo = SrcInfo
 
     @property
+    def SrcNodeType(self):
+        return self._SrcNodeType
+
+    @SrcNodeType.setter
+    def SrcNodeType(self, SrcNodeType):
+        self._SrcNodeType = SrcNodeType
+
+    @property
+    def SrcInfos(self):
+        return self._SrcInfos
+
+    @SrcInfos.setter
+    def SrcInfos(self, SrcInfos):
+        self._SrcInfos = SrcInfos
+
+    @property
     def DstRegion(self):
         return self._DstRegion
 
@@ -9966,6 +10321,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @DstInfo.setter
     def DstInfo(self, DstInfo):
         self._DstInfo = DstInfo
+
+    @property
+    def DstNodeType(self):
+        return self._DstNodeType
+
+    @DstNodeType.setter
+    def DstNodeType(self, DstNodeType):
+        self._DstNodeType = DstNodeType
+
+    @property
+    def DstInfos(self):
+        return self._DstInfos
+
+    @DstInfos.setter
+    def DstInfos(self, DstInfos):
+        self._DstInfos = DstInfos
 
     @property
     def CreateTime(self):
@@ -10055,6 +10426,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def AutoRetryTimeRangeMinutes(self, AutoRetryTimeRangeMinutes):
         self._AutoRetryTimeRangeMinutes = AutoRetryTimeRangeMinutes
 
+    @property
+    def DumperResumeCtrl(self):
+        return self._DumperResumeCtrl
+
+    @DumperResumeCtrl.setter
+    def DumperResumeCtrl(self, DumperResumeCtrl):
+        self._DumperResumeCtrl = DumperResumeCtrl
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -10078,12 +10457,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("SrcInfo") is not None:
             self._SrcInfo = Endpoint()
             self._SrcInfo._deserialize(params.get("SrcInfo"))
+        self._SrcNodeType = params.get("SrcNodeType")
+        if params.get("SrcInfos") is not None:
+            self._SrcInfos = SyncDBEndpointInfos()
+            self._SrcInfos._deserialize(params.get("SrcInfos"))
         self._DstRegion = params.get("DstRegion")
         self._DstDatabaseType = params.get("DstDatabaseType")
         self._DstAccessType = params.get("DstAccessType")
         if params.get("DstInfo") is not None:
             self._DstInfo = Endpoint()
             self._DstInfo._deserialize(params.get("DstInfo"))
+        self._DstNodeType = params.get("DstNodeType")
+        if params.get("DstInfos") is not None:
+            self._DstInfos = SyncDBEndpointInfos()
+            self._DstInfos._deserialize(params.get("DstInfos"))
         self._CreateTime = params.get("CreateTime")
         self._StartTime = params.get("StartTime")
         self._Status = params.get("Status")
@@ -10102,6 +10489,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AutoRenew = params.get("AutoRenew")
         self._OfflineTime = params.get("OfflineTime")
         self._AutoRetryTimeRangeMinutes = params.get("AutoRetryTimeRangeMinutes")
+        self._DumperResumeCtrl = params.get("DumperResumeCtrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

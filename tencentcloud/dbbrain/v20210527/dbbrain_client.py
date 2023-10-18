@@ -49,6 +49,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloseAuditService(self, request):
+        """This API is used to disable database audit as needed.
+
+        :param request: Request instance for CloseAuditService.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.CloseAuditServiceRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.CloseAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseAuditServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDBDiagReportTask(self, request):
         """This API is used to create a health report and send it via email as configured.
 
@@ -155,6 +178,29 @@ class DbbrainClient(AbstractClient):
             body = self.call("CreateProxySessionKillTask", params, headers=headers)
             response = json.loads(body)
             model = models.CreateProxySessionKillTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateRedisBigKeyAnalysisTask(self, request):
+        """This API is used to create an ad hoc big key analysis task for Redis instances. By default, there can only be up to five running ad hoc analysis tasks.
+
+        :param request: Request instance for CreateRedisBigKeyAnalysisTask.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.CreateRedisBigKeyAnalysisTaskRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.CreateRedisBigKeyAnalysisTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRedisBigKeyAnalysisTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRedisBigKeyAnalysisTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -293,6 +339,29 @@ class DbbrainClient(AbstractClient):
             body = self.call("DescribeAllUserGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAllUserGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditInstanceList(self, request):
+        """This API is used to query the instance list.
+
+        :param request: Request instance for DescribeAuditInstanceList.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeAuditInstanceListRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeAuditInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditInstanceListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -854,6 +923,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAuditService(self, request):
+        """u200cThis API is used to modify audit configurations such as the frequent access storage period.
+
+        :param request: Request instance for ModifyAuditService.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.ModifyAuditServiceRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.ModifyAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAuditServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDiagDBInstanceConf(self, request):
         """This API is used to enable/disable instance inspection.
 
@@ -868,6 +960,29 @@ class DbbrainClient(AbstractClient):
             body = self.call("ModifyDiagDBInstanceConf", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDiagDBInstanceConfResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OpenAuditService(self, request):
+        """This API is used to enable database audit.
+
+        :param request: Request instance for OpenAuditService.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.OpenAuditServiceRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.OpenAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenAuditServiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

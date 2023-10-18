@@ -112,6 +112,406 @@ class AddUserContactResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AuditInstance(AbstractModel):
+    """Instance details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuditStatus: Audit status. Valid values: `ON` (Enabled), `OFF` (Not enabled).
+        :type AuditStatus: str
+        :param _BillingAmount: Audit log size. This parameter is only used for the free trial edition of Database Audit.
+        :type BillingAmount: int
+        :param _BillingConfirmed: Billing confirmation status. Valid values: `0` (Unconfirmed), `1` (Confirmed).
+        :type BillingConfirmed: int
+        :param _ColdLogExpireDay: Infrequent access storage period
+        :type ColdLogExpireDay: int
+        :param _ColdLogSize: Storage size of infrequently accessed logs in MB
+        :type ColdLogSize: int
+        :param _HotLogExpireDay: Storage period of frequently accessed logs in days
+        :type HotLogExpireDay: int
+        :param _HotLogSize: Storage size of frequently accessed logs in MB
+        :type HotLogSize: int
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        :param _LogExpireDay: Log retention period in days, which is the sum of the frequent and infrequent access storage periods.
+        :type LogExpireDay: int
+        :param _CreateTime: Instance creation time
+        :type CreateTime: str
+        :param _InstanceInfo: Instance details
+        :type InstanceInfo: :class:`tencentcloud.dbbrain.v20210527.models.AuditInstanceInfo`
+        """
+        self._AuditStatus = None
+        self._BillingAmount = None
+        self._BillingConfirmed = None
+        self._ColdLogExpireDay = None
+        self._ColdLogSize = None
+        self._HotLogExpireDay = None
+        self._HotLogSize = None
+        self._InstanceId = None
+        self._LogExpireDay = None
+        self._CreateTime = None
+        self._InstanceInfo = None
+
+    @property
+    def AuditStatus(self):
+        return self._AuditStatus
+
+    @AuditStatus.setter
+    def AuditStatus(self, AuditStatus):
+        self._AuditStatus = AuditStatus
+
+    @property
+    def BillingAmount(self):
+        return self._BillingAmount
+
+    @BillingAmount.setter
+    def BillingAmount(self, BillingAmount):
+        self._BillingAmount = BillingAmount
+
+    @property
+    def BillingConfirmed(self):
+        return self._BillingConfirmed
+
+    @BillingConfirmed.setter
+    def BillingConfirmed(self, BillingConfirmed):
+        self._BillingConfirmed = BillingConfirmed
+
+    @property
+    def ColdLogExpireDay(self):
+        return self._ColdLogExpireDay
+
+    @ColdLogExpireDay.setter
+    def ColdLogExpireDay(self, ColdLogExpireDay):
+        self._ColdLogExpireDay = ColdLogExpireDay
+
+    @property
+    def ColdLogSize(self):
+        return self._ColdLogSize
+
+    @ColdLogSize.setter
+    def ColdLogSize(self, ColdLogSize):
+        self._ColdLogSize = ColdLogSize
+
+    @property
+    def HotLogExpireDay(self):
+        return self._HotLogExpireDay
+
+    @HotLogExpireDay.setter
+    def HotLogExpireDay(self, HotLogExpireDay):
+        self._HotLogExpireDay = HotLogExpireDay
+
+    @property
+    def HotLogSize(self):
+        return self._HotLogSize
+
+    @HotLogSize.setter
+    def HotLogSize(self, HotLogSize):
+        self._HotLogSize = HotLogSize
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogExpireDay(self):
+        return self._LogExpireDay
+
+    @LogExpireDay.setter
+    def LogExpireDay(self, LogExpireDay):
+        self._LogExpireDay = LogExpireDay
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def InstanceInfo(self):
+        return self._InstanceInfo
+
+    @InstanceInfo.setter
+    def InstanceInfo(self, InstanceInfo):
+        self._InstanceInfo = InstanceInfo
+
+
+    def _deserialize(self, params):
+        self._AuditStatus = params.get("AuditStatus")
+        self._BillingAmount = params.get("BillingAmount")
+        self._BillingConfirmed = params.get("BillingConfirmed")
+        self._ColdLogExpireDay = params.get("ColdLogExpireDay")
+        self._ColdLogSize = params.get("ColdLogSize")
+        self._HotLogExpireDay = params.get("HotLogExpireDay")
+        self._HotLogSize = params.get("HotLogSize")
+        self._InstanceId = params.get("InstanceId")
+        self._LogExpireDay = params.get("LogExpireDay")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("InstanceInfo") is not None:
+            self._InstanceInfo = AuditInstanceInfo()
+            self._InstanceInfo._deserialize(params.get("InstanceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditInstanceFilter(AbstractModel):
+    """Query condition of the instance list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Filter name
+        :type Name: str
+        :param _Values: Filter value
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditInstanceInfo(AbstractModel):
+    """Instance details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appId
+        :type AppId: int
+        :param _AuditStatus: Audit status. Valid values: `0` (Not enabled), `1` (Enabled).
+        :type AuditStatus: int
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        :param _InstanceName: Instance name
+        :type InstanceName: str
+        :param _ProjectId: Project ID
+        :type ProjectId: int
+        :param _Region: The region where the instance resides
+        :type Region: str
+        :param _ResourceTags: Resource tags
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :type ResourceTags: list of str
+        """
+        self._AppId = None
+        self._AuditStatus = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._ProjectId = None
+        self._Region = None
+        self._ResourceTags = None
+
+    @property
+    def AppId(self):
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AuditStatus(self):
+        return self._AuditStatus
+
+    @AuditStatus.setter
+    def AuditStatus(self, AuditStatus):
+        self._AuditStatus = AuditStatus
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ResourceTags(self):
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._AuditStatus = params.get("AuditStatus")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._ProjectId = params.get("ProjectId")
+        self._Region = params.get("Region")
+        self._ResourceTags = params.get("ResourceTags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseAuditServiceRequest(AbstractModel):
+    """CloseAuditService request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: Service type. Valid values: `dcdb` (TDSQL for MySQL), `mariadb` (TencentDB for MariaDB).
+        :type Product: str
+        :param _NodeRequestType: Use the value of `u200cProduct` for this parameter, such as `dcdb` and `mariadb`.
+        :type NodeRequestType: str
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        """
+        self._Product = None
+        self._NodeRequestType = None
+        self._InstanceId = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def NodeRequestType(self):
+        return self._NodeRequestType
+
+    @NodeRequestType.setter
+    def NodeRequestType(self, NodeRequestType):
+        self._NodeRequestType = NodeRequestType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._NodeRequestType = params.get("NodeRequestType")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseAuditServiceResponse(AbstractModel):
+    """CloseAuditService response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: If `0` is returned, audit is successfully disabled; otherwise, an exception will be returned, indicating that audit has failed to be disabled.
+        :type TaskId: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ContactItem(AbstractModel):
     """Recipient description.
 
@@ -786,6 +1186,113 @@ class CreateProxySessionKillTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRedisBigKeyAnalysisTaskRequest(AbstractModel):
+    """CreateRedisBigKeyAnalysisTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        :param _Product: Service type. Valid value: `redis` (TencentDB for Redis).
+        :type Product: str
+        :param _ShardIds: The list of the serial numbers of shard nodes. When the list is empty, all shard nodes will be selected.
+        :type ShardIds: list of int
+        :param _KeyDelimiterList: The list of separators of top key prefixes.
+Currently, the following separators are supported: ",", ";", ":", "_", "-", "+", "@", "=", "|", "#", ".". When the list is empty, all separators will be selected by default.
+        :type KeyDelimiterList: list of str
+        """
+        self._InstanceId = None
+        self._Product = None
+        self._ShardIds = None
+        self._KeyDelimiterList = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def ShardIds(self):
+        return self._ShardIds
+
+    @ShardIds.setter
+    def ShardIds(self, ShardIds):
+        self._ShardIds = ShardIds
+
+    @property
+    def KeyDelimiterList(self):
+        return self._KeyDelimiterList
+
+    @KeyDelimiterList.setter
+    def KeyDelimiterList(self, KeyDelimiterList):
+        self._KeyDelimiterList = KeyDelimiterList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._ShardIds = params.get("ShardIds")
+        self._KeyDelimiterList = params.get("KeyDelimiterList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRedisBigKeyAnalysisTaskResponse(AbstractModel):
+    """CreateRedisBigKeyAnalysisTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AsyncRequestId: Async task ID
+        :type AsyncRequestId: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AsyncRequestId = None
+        self._RequestId = None
+
+    @property
+    def AsyncRequestId(self):
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSchedulerMailProfileRequest(AbstractModel):
     """CreateSchedulerMailProfile request structure.
 
@@ -1385,6 +1892,159 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = GroupItem()
                 obj._deserialize(item)
                 self._Groups.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditInstanceListRequest(AbstractModel):
+    """DescribeAuditInstanceList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: Service type. Valid values: `dcdb` (TDSQL for MySQL), `mariadb` (TencentDB for MariaDB).
+        :type Product: str
+        :param _NodeRequestType: Use the value of `u200cProduct` for this parameter, such as `dcdb` and `mariadb`.
+        :type NodeRequestType: str
+        :param _AuditSwitch: Audit status. Valid values: `0` (Not enabled), `1` (Enabled). Default value: `0`.
+        :type AuditSwitch: int
+        :param _Offset: The offset. Default value: `0`.
+        :type Offset: int
+        :param _Limit: The number of queried items. Default value: `20`. Max value: `100`.
+        :type Limit: int
+        :param _Filters: Filters for querying instances
+        :type Filters: list of AuditInstanceFilter
+        """
+        self._Product = None
+        self._NodeRequestType = None
+        self._AuditSwitch = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def NodeRequestType(self):
+        return self._NodeRequestType
+
+    @NodeRequestType.setter
+    def NodeRequestType(self, NodeRequestType):
+        self._NodeRequestType = NodeRequestType
+
+    @property
+    def AuditSwitch(self):
+        return self._AuditSwitch
+
+    @AuditSwitch.setter
+    def AuditSwitch(self, AuditSwitch):
+        self._AuditSwitch = AuditSwitch
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._NodeRequestType = params.get("NodeRequestType")
+        self._AuditSwitch = params.get("AuditSwitch")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AuditInstanceFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditInstanceListResponse(AbstractModel):
+    """DescribeAuditInstanceList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: The number of eligible instances.
+Note: u200dThis field may return `null`, indicating that no valid values can be obtained.
+        :type TotalCount: int
+        :param _Items: Instance details
+        :type Items: list of AuditInstance
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = AuditInstance()
+                obj._deserialize(item)
+                self._Items.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -3720,7 +4380,7 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
         :type EndTime: str
         :param _Product: Service type. Valid values: mysql (TencentDB for MySQL), cynosdb (TDSQL-C for MySQL). Default value: mysql.
         :type Product: str
-        :param _Md5: MD5 value of SOL template
+        :param _Md5: MD5 value of the SQL template
         :type Md5: str
         """
         self._InstanceId = None
@@ -6240,6 +6900,124 @@ class MailConfiguration(AbstractModel):
         
 
 
+class ModifyAuditServiceRequest(AbstractModel):
+    """ModifyAuditService request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: Service type. Valid values: `dcdb` (TDSQL for MySQL), `mariadb` (TencentDB for MariaDB).
+        :type Product: str
+        :param _NodeRequestType: Use the value of `u200cProduct` for this parameter, such as `dcdb` and `mariadb`.
+        :type NodeRequestType: str
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        :param _LogExpireDay: Total log retention period in days. Valid values: `7`, `30`, `90`, `180`, `365`, `1095`, `1825`.
+        :type LogExpireDay: int
+        :param _HotLogExpireDay: Storage period of frequently accessed logs in days. Valid values: `7`, `30`, `90`, `180`, `365`, `1095`, `1825`.
+        :type HotLogExpireDay: int
+        """
+        self._Product = None
+        self._NodeRequestType = None
+        self._InstanceId = None
+        self._LogExpireDay = None
+        self._HotLogExpireDay = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def NodeRequestType(self):
+        return self._NodeRequestType
+
+    @NodeRequestType.setter
+    def NodeRequestType(self, NodeRequestType):
+        self._NodeRequestType = NodeRequestType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogExpireDay(self):
+        return self._LogExpireDay
+
+    @LogExpireDay.setter
+    def LogExpireDay(self, LogExpireDay):
+        self._LogExpireDay = LogExpireDay
+
+    @property
+    def HotLogExpireDay(self):
+        return self._HotLogExpireDay
+
+    @HotLogExpireDay.setter
+    def HotLogExpireDay(self, HotLogExpireDay):
+        self._HotLogExpireDay = HotLogExpireDay
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._NodeRequestType = params.get("NodeRequestType")
+        self._InstanceId = params.get("InstanceId")
+        self._LogExpireDay = params.get("LogExpireDay")
+        self._HotLogExpireDay = params.get("HotLogExpireDay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAuditServiceResponse(AbstractModel):
+    """ModifyAuditService response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: Audit configuration modification result. If `0` is returned, the modification is successful; otherwise, an exception will be returned, indicating that the modification failed.
+        :type Success: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Success = None
+        self._RequestId = None
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Success = params.get("Success")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDiagDBInstanceConfRequest(AbstractModel):
     """ModifyDiagDBInstanceConf request structure.
 
@@ -6667,6 +7445,124 @@ class MySqlProcess(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class OpenAuditServiceRequest(AbstractModel):
+    """OpenAuditService request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: Service type. Valid values: `dcdb` (TDSQL for MySQL), `mariadb` (TencentDB for MariaDB).
+        :type Product: str
+        :param _NodeRequestType: Use the value of `u200cProduct` for this parameter, such as `dcdb` and `mariadb`.
+        :type NodeRequestType: str
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        :param _LogExpireDay: Total log retention period in days. Valid values: `7`, `30`, `90`, `180`, `365`, `1095`, `1825`.
+        :type LogExpireDay: int
+        :param _HotLogExpireDay: Storage period of frequently accessed logs in days. Valid values: `7`, `30`, `90`, `180`, `365`, `1095`, `1825`.
+        :type HotLogExpireDay: int
+        """
+        self._Product = None
+        self._NodeRequestType = None
+        self._InstanceId = None
+        self._LogExpireDay = None
+        self._HotLogExpireDay = None
+
+    @property
+    def Product(self):
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def NodeRequestType(self):
+        return self._NodeRequestType
+
+    @NodeRequestType.setter
+    def NodeRequestType(self, NodeRequestType):
+        self._NodeRequestType = NodeRequestType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogExpireDay(self):
+        return self._LogExpireDay
+
+    @LogExpireDay.setter
+    def LogExpireDay(self, LogExpireDay):
+        self._LogExpireDay = LogExpireDay
+
+    @property
+    def HotLogExpireDay(self):
+        return self._HotLogExpireDay
+
+    @HotLogExpireDay.setter
+    def HotLogExpireDay(self, HotLogExpireDay):
+        self._HotLogExpireDay = HotLogExpireDay
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._NodeRequestType = params.get("NodeRequestType")
+        self._InstanceId = params.get("InstanceId")
+        self._LogExpireDay = params.get("LogExpireDay")
+        self._HotLogExpireDay = params.get("HotLogExpireDay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenAuditServiceResponse(AbstractModel):
+    """OpenAuditService response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Audit is successfully enabled only when the value of this parameter is `0`.
+        :type TaskId: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ProcessStatistic(AbstractModel):
