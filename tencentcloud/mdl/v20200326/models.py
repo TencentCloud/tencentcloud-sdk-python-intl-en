@@ -3960,6 +3960,8 @@ class EventSettingsReq(AbstractModel):
         :type SpliceEventID: int
         :param _SpliceDuration: The duration of the segment in 90kHz ticks.It used to  give the splicer an indication of when the break will be over and when the network In Point will occur. If not specifyed,the splice_insert will continue when enter a return_to_network to end the splice_insert at the appropriate time.
         :type SpliceDuration: int
+        :param _TimedMetadataSetting: Meta information plan configuration.
+        :type TimedMetadataSetting: :class:`tencentcloud.mdl.v20200326.models.TimedMetadataInfo`
         """
         self._EventType = None
         self._InputAttachment = None
@@ -3969,6 +3971,7 @@ class EventSettingsReq(AbstractModel):
         self._SCTE35SegmentationDescriptor = None
         self._SpliceEventID = None
         self._SpliceDuration = None
+        self._TimedMetadataSetting = None
 
     @property
     def EventType(self):
@@ -4034,6 +4037,14 @@ class EventSettingsReq(AbstractModel):
     def SpliceDuration(self, SpliceDuration):
         self._SpliceDuration = SpliceDuration
 
+    @property
+    def TimedMetadataSetting(self):
+        return self._TimedMetadataSetting
+
+    @TimedMetadataSetting.setter
+    def TimedMetadataSetting(self, TimedMetadataSetting):
+        self._TimedMetadataSetting = TimedMetadataSetting
+
 
     def _deserialize(self, params):
         self._EventType = params.get("EventType")
@@ -4054,6 +4065,9 @@ class EventSettingsReq(AbstractModel):
                 self._SCTE35SegmentationDescriptor.append(obj)
         self._SpliceEventID = params.get("SpliceEventID")
         self._SpliceDuration = params.get("SpliceDuration")
+        if params.get("TimedMetadataSetting") is not None:
+            self._TimedMetadataSetting = TimedMetadataInfo()
+            self._TimedMetadataSetting._deserialize(params.get("TimedMetadataSetting"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4087,6 +4101,8 @@ class EventSettingsResp(AbstractModel):
         :type SpliceEventID: int
         :param _SpliceDuration: The duration of the segment in 90kHz ticks.It used to  give the splicer an indication of when the break will be over and when the network In Point will occur. If not specifyed,the splice_insert will continue when enter a return_to_network to end the splice_insert at the appropriate time.
         :type SpliceDuration: str
+        :param _TimedMetadataSetting: Meta information plan configuration.
+        :type TimedMetadataSetting: :class:`tencentcloud.mdl.v20200326.models.TimedMetadataInfo`
         """
         self._EventType = None
         self._InputAttachment = None
@@ -4096,6 +4112,7 @@ class EventSettingsResp(AbstractModel):
         self._SCTE35SegmentationDescriptor = None
         self._SpliceEventID = None
         self._SpliceDuration = None
+        self._TimedMetadataSetting = None
 
     @property
     def EventType(self):
@@ -4161,6 +4178,14 @@ class EventSettingsResp(AbstractModel):
     def SpliceDuration(self, SpliceDuration):
         self._SpliceDuration = SpliceDuration
 
+    @property
+    def TimedMetadataSetting(self):
+        return self._TimedMetadataSetting
+
+    @TimedMetadataSetting.setter
+    def TimedMetadataSetting(self, TimedMetadataSetting):
+        self._TimedMetadataSetting = TimedMetadataSetting
+
 
     def _deserialize(self, params):
         self._EventType = params.get("EventType")
@@ -4181,6 +4206,9 @@ class EventSettingsResp(AbstractModel):
                 self._SCTE35SegmentationDescriptor.append(obj)
         self._SpliceEventID = params.get("SpliceEventID")
         self._SpliceDuration = params.get("SpliceDuration")
+        if params.get("TimedMetadataSetting") is not None:
+            self._TimedMetadataSetting = TimedMetadataInfo()
+            self._TimedMetadataSetting._deserialize(params.get("TimedMetadataSetting"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5515,12 +5543,15 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _AVTemplateNames: Audio/Video transcoding template name. If `HlsRemuxSettings.Scheme` is `MERGE`, there is 1 audio/video transcoding template. Otherwise, this parameter is empty.
 Note: this field may return `null`, indicating that no valid value was found.
         :type AVTemplateNames: list of str
+        :param _TimedMetadataSettings: Meta information controls configuration.
+        :type TimedMetadataSettings: :class:`tencentcloud.mdl.v20200326.models.TimedMetadataSettingInfo`
         """
         self._Name = None
         self._AudioTemplateNames = None
         self._VideoTemplateNames = None
         self._Scte35Settings = None
         self._AVTemplateNames = None
+        self._TimedMetadataSettings = None
 
     @property
     def Name(self):
@@ -5562,6 +5593,14 @@ Note: this field may return `null`, indicating that no valid value was found.
     def AVTemplateNames(self, AVTemplateNames):
         self._AVTemplateNames = AVTemplateNames
 
+    @property
+    def TimedMetadataSettings(self):
+        return self._TimedMetadataSettings
+
+    @TimedMetadataSettings.setter
+    def TimedMetadataSettings(self, TimedMetadataSettings):
+        self._TimedMetadataSettings = TimedMetadataSettings
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -5571,6 +5610,9 @@ Note: this field may return `null`, indicating that no valid value was found.
             self._Scte35Settings = Scte35SettingsInfo()
             self._Scte35Settings._deserialize(params.get("Scte35Settings"))
         self._AVTemplateNames = params.get("AVTemplateNames")
+        if params.get("TimedMetadataSettings") is not None:
+            self._TimedMetadataSettings = TimedMetadataSettingInfo()
+            self._TimedMetadataSettings._deserialize(params.get("TimedMetadataSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7532,6 +7574,72 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._State = params.get("State")
         self._PlayDomain = params.get("PlayDomain")
         self._StartoverWindow = params.get("StartoverWindow")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimedMetadataInfo(AbstractModel):
+    """Transparent transmission of meta information plan configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID3: Base64-encoded id3 metadata information, with a maximum limit of 1024 characters.
+        :type ID3: str
+        """
+        self._ID3 = None
+
+    @property
+    def ID3(self):
+        return self._ID3
+
+    @ID3.setter
+    def ID3(self, ID3):
+        self._ID3 = ID3
+
+
+    def _deserialize(self, params):
+        self._ID3 = params.get("ID3")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimedMetadataSettingInfo(AbstractModel):
+    """Transparent transmission of ID3 information configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Behavior: Whether to transparently transmit ID3 information, optional values: 0:NO_PASSTHROUGH, 1:PASSTHROUGH, default 0.
+        :type Behavior: int
+        """
+        self._Behavior = None
+
+    @property
+    def Behavior(self):
+        return self._Behavior
+
+    @Behavior.setter
+    def Behavior(self, Behavior):
+        self._Behavior = Behavior
+
+
+    def _deserialize(self, params):
+        self._Behavior = params.get("Behavior")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
