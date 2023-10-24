@@ -118,6 +118,29 @@ class CarClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartPublishStreamWithURL(self, request):
+        """This API is used to start stream push to the specified URL. It is billed separately. For billing details, see the [Push to third-party address](https://intl.cloud.tencent.com/document/product/1547/72168?from_cn_redirect=1#98ac188a-d122-4caf-88be-05268ecefdf6) section.
+
+        :param request: Request instance for StartPublishStreamWithURL.
+        :type request: :class:`tencentcloud.car.v20220110.models.StartPublishStreamWithURLRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.StartPublishStreamWithURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartPublishStreamWithURL", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartPublishStreamWithURLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopPublishStream(self, request):
         """This API is used to stop stream push.
 
