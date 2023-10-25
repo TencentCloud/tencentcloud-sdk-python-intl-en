@@ -1269,6 +1269,98 @@ class ClbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InquiryPriceCreateLoadBalancer(self, request):
+        """This API is used to query the price of creating a CLB instance.
+
+        :param request: Request instance for InquiryPriceCreateLoadBalancer.
+        :type request: :class:`tencentcloud.clb.v20180317.models.InquiryPriceCreateLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.InquiryPriceCreateLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquiryPriceCreateLoadBalancer", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquiryPriceCreateLoadBalancerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InquiryPriceModifyLoadBalancer(self, request):
+        """This API is used to query the price of adjusting the specification of a CLB instance.
+
+        :param request: Request instance for InquiryPriceModifyLoadBalancer.
+        :type request: :class:`tencentcloud.clb.v20180317.models.InquiryPriceModifyLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.InquiryPriceModifyLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquiryPriceModifyLoadBalancer", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquiryPriceModifyLoadBalancerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InquiryPriceRefundLoadBalancer(self, request):
+        """This API is used to query the refund amount of returning a CLB instance.
+
+        :param request: Request instance for InquiryPriceRefundLoadBalancer.
+        :type request: :class:`tencentcloud.clb.v20180317.models.InquiryPriceRefundLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.InquiryPriceRefundLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquiryPriceRefundLoadBalancer", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquiryPriceRefundLoadBalancerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InquiryPriceRenewLoadBalancer(self, request):
+        """This API is used to query the price of renewing a CLB instance. It's only available to prepaid CLB instances.
+
+        :param request: Request instance for InquiryPriceRenewLoadBalancer.
+        :type request: :class:`tencentcloud.clb.v20180317.models.InquiryPriceRenewLoadBalancerRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.InquiryPriceRenewLoadBalancerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquiryPriceRenewLoadBalancer", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquiryPriceRenewLoadBalancerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ManualRewrite(self, request):
         """After the original access address and the address to be redirected are configured manually, the system will automatically redirect requests made to the original access address to the target address of the corresponding path. Multiple paths can be configured as a redirection policy under one domain name to achieve automatic redirection between HTTP and HTTPS. A redirection policy should meet the following rules: if A has already been redirected to B, then it cannot be redirected to C (unless the original redirection relationship is deleted and a new one is created), and B cannot be redirected to any other addresses.
 
@@ -1477,6 +1569,29 @@ class ClbClient(AbstractClient):
             body = self.call("ModifyLoadBalancerSla", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyLoadBalancerSlaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLoadBalancersProject(self, request):
+        """This API is used to modify the projects of CLB instances.
+
+        :param request: Request instance for ModifyLoadBalancersProject.
+        :type request: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancersProjectRequest`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModifyLoadBalancersProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLoadBalancersProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLoadBalancersProjectResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

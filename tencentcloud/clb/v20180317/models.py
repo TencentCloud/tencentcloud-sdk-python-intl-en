@@ -1887,7 +1887,7 @@ Note: A secondary AZ will load traffic if the primary AZ is faulty. You can use 
         :type ZoneId: str
         :param _InternetAccessible: CLB network billing mode. This parameter is applicable only to public network CLB instances.
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
-        :param _VipIsp: It's only applicable to public network CLB instances. u200dValues: `CMCC` (China Mobile), `CTCC`·(China Telecom) and `CUCC` (China Unicom). If it is not specified, BGP line is used by default. To query ISPs available in a region, use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). If this parameter is specified, the network billing mode must be `BANDWIDTH_PACKAGE`.
+        :param _VipIsp: ISP of VIP. Values: `CMCC` (China Mobile), `CUCC` (China Unicom) and `CTCC` (China Telecom). You need to activate static single-line IPs. This feature is in beta and is only available in Guangzhou, Shanghai, Nanjing, Jinan, Hangzhou, Fuzhou, Beijing, Shijiazhuang, Wuhan, Changsha, Chengdu and Chongqing regions. To try it out, please contact your sales rep. If it's specified, the network billing mode must be `BANDWIDTH_PACKAGE`. If it's not specified, BGP is used by default. To query ISPs supported in a region, please use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). 
         :type VipIsp: str
         :param _Vip: Applies for CLB instances for a specified VIP
         :type Vip: str
@@ -2707,14 +2707,14 @@ Note: if the name of the new CLB instance already exists, a default name will be
         :type AddressIPVersion: str
         :param _Number: Number of CLBs to be created. Default value: 1.
         :type Number: int
-        :param _MasterZoneId: Sets the primary AZ ID for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`, which is applicable only to public network CLB.
-Note: By default, the traffic goes to the primary AZ. The secondary AZs only carry traffic when the primary AZ is unavailable. The optimal secondary AZ is chosen automatically. You can query the primary and secondary AZ of a region by calling [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1).
+        :param _MasterZoneId: ID of the primary AZ for cross-AZ disaster recovery, such as `100001` or `ap-guangzhou-1`. It's only available to public CLB instances. 
+Note: The traffic only goes to the primary AZ in normal cases. The secondary AZ is used only when the primary AZ is unavailable. To query the list of primary AZs in a region, use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1).
         :type MasterZoneId: str
         :param _ZoneId: Specifies an AZ ID for creating a CLB instance, such as `ap-guangzhou-1`, which is applicable only to public network CLB instances.
         :type ZoneId: str
         :param _InternetAccessible: It only works on LCU-supported instances on private networks and all instances on public networks.
         :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
-        :param _VipIsp: It's only applicable to public network CLB instances. u200dValues: `CMCC` (China Mobile), `CTCC`·(China Telecom) and `CUCC` (China Unicom). If it is not specified, BGP line is used by default. To query ISPs available in a region, use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). If this parameter is specified, the network billing mode must be `BANDWIDTH_PACKAGE`.
+        :param _VipIsp: ISP of VIP. Values: `CMCC` (China Mobile), `CUCC` (China Unicom) and `CTCC` (China Telecom). You need to activate static single-line IPs. This feature is in beta and is only available in Guangzhou, Shanghai, Nanjing, Jinan, Hangzhou, Fuzhou, Beijing, Shijiazhuang, Wuhan, Changsha, Chengdu and Chongqing regions. To try it out, please contact your sales rep. If it's specified, the network billing mode must be `BANDWIDTH_PACKAGE`. If it's not specified, BGP is used by default. To query ISPs supported in a region, please use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). 
         :type VipIsp: str
         :param _Tags: Tags the CLB instance when purchasing it. Up to 20 tag key value pairs are supported.
         :type Tags: list of TagInfo
@@ -2725,9 +2725,8 @@ Note: If the specified VIP is occupied or is not within the IP range of the spec
         :type BandwidthPackageId: str
         :param _ExclusiveCluster: Information about the dedicated CLB instance. You must specify this parameter when you create a dedicated CLB instance in a private network.
         :type ExclusiveCluster: :class:`tencentcloud.clb.v20180317.models.ExclusiveCluster`
-        :param _SlaType: Creates an LCU-supported instance.
-<ul><li>To create an LCU-supported instance, this parameter must be set to `SLA`, which indicates the Super Large 1 specification. 
-<ul><li>If you have activated Super Large LCU-supported instances, `SLA` indicates the Super Large 4 specification. Super u200dLarge LCU-supported specification is in beta now. u200cu200dTo join the beta, [submit a ticket](https://console.cloud.tencent.com/workorder/category). </li></ul></li><li>It’s not required for a shared CLB instance. </li></ul>
+        :param _SlaType: Specification of LCU-supported instance.
+<ul><li>This parameter is required to create LCU-supported instances. Values: <ul><li>`SLA`: Super Large 4. When you have activated Super Large models, `SLA` refers to Super Large 4.</li><li>`clb.c2.medium`: Standard</li><li>`clb.c3.small`: Advanced 1</li><li>`clb.c3.medium`: Advanced 1</li><li>`clb.c4.small`: Super Large 1</li><li>`clb.c4.medium`: Super Large 2</li><li>`clb.c4.large`: Super Large 3</li><li>`clb.c4.xlarge`: Super Large 4</li> For Super Large 2 and above models, please [submit a ticket](https://console.cloud.tencent.com/workorder/category).</ul></li><li> This parameter is not required for creating shared instances.</li></ul>For more details, see [Instance Specifications](https://intl.cloud.tencent.com/document/product/214/84689?from_cn_redirect=1).
         :type SlaType: str
         :param _ClientToken: A unique string supplied by the client to ensure that the request is idempotent. Its maximum length is 64 ASCII characters. If this parameter is not specified, the idempotency of the request cannot be guaranteed.
         :type ClientToken: str
@@ -2746,6 +2745,8 @@ Note: The traffic only goes to the secondary AZ when the primary AZ is unavailab
         :type LoadBalancerPassToTarget: bool
         :param _DynamicVip: Upgrades to domain name-based CLB
         :type DynamicVip: bool
+        :param _Egress: Network egress point
+        :type Egress: str
         """
         self._LoadBalancerType = None
         self._Forward = None
@@ -2772,6 +2773,7 @@ Note: The traffic only goes to the secondary AZ when the primary AZ is unavailab
         self._EipAddressId = None
         self._LoadBalancerPassToTarget = None
         self._DynamicVip = None
+        self._Egress = None
 
     @property
     def LoadBalancerType(self):
@@ -2973,6 +2975,14 @@ Note: The traffic only goes to the secondary AZ when the primary AZ is unavailab
     def DynamicVip(self, DynamicVip):
         self._DynamicVip = DynamicVip
 
+    @property
+    def Egress(self):
+        return self._Egress
+
+    @Egress.setter
+    def Egress(self, Egress):
+        self._Egress = Egress
+
 
     def _deserialize(self, params):
         self._LoadBalancerType = params.get("LoadBalancerType")
@@ -3014,6 +3024,7 @@ Note: The traffic only goes to the secondary AZ when the primary AZ is unavailab
         self._EipAddressId = params.get("EipAddressId")
         self._LoadBalancerPassToTarget = params.get("LoadBalancerPassToTarget")
         self._DynamicVip = params.get("DynamicVip")
+        self._Egress = params.get("Egress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7887,8 +7898,8 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param _HttpCheckPath: Health check path (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HttpCheckPath: str
-        :param _HttpCheckDomain: Health check domain name. It is only applicable to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners. For HTTP health checks of TCP listeners, this parameter is required.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :param _HttpCheckDomain: Health check domain name. It’s applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners. It’s required for HTTP health check of TCP listeners.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type HttpCheckDomain: str
         :param _HttpCheckMethod: Health check method (applicable only to HTTP/HTTPS forwarding rules and HTTP health checks of TCP listeners). Value range: HEAD, GET. Default value: HEAD.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -8220,6 +8231,422 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         
 
 
+class InquiryPriceCreateLoadBalancerRequest(AbstractModel):
+    """InquiryPriceCreateLoadBalancer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerType: Network type of the CLB to query. `OPEN`: Public network; `INTERNAL`: Private network is intranet type
+        :type LoadBalancerType: str
+        :param _LoadBalancerChargeType: The billing mode to query. `POSTPAID`:Pay as you go
+        :type LoadBalancerChargeType: str
+        :param _LoadBalancerChargePrepaid: Reserved field
+        :type LoadBalancerChargePrepaid: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
+        :param _InternetAccessible: The network billing mode to query 
+        :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
+        :param _GoodsNum: Number of CLB instances to query. Default value: 1.
+        :type GoodsNum: int
+        :param _ZoneId: Availability zone in the format of "ap-guangzhou-1"
+        :type ZoneId: str
+        :param _SlaType: To query the price of monthly subscribed LCU-supported instances, specify the instance specification in this parameter, such as `clb.c3.small`. For PAYG instances, use `SLA`.
+        :type SlaType: str
+        :param _AddressIPVersion: IP version. Valid values: `IPV4` (default), `IPV6` (IPV6 NAT64 version) or `IPv6FullChain` (IPv6 version). 
+        :type AddressIPVersion: str
+        :param _VipIsp: ISP of VIP. Values: `CMCC` (China Mobile), `CUCC` (China Unicom) and `CTCC` (China Telecom). You need to activate static single-line IPs. This feature is in beta and is only available in Guangzhou, Shanghai, Nanjing, Jinan, Hangzhou, Fuzhou, Beijing, Shijiazhuang, Wuhan, Changsha, Chengdu and Chongqing regions. To try it out, please contact your sales rep. If it's specified, the network billing mode must be `BANDWIDTH_PACKAGE`. If it's not specified, BGP is used by default. To query ISPs supported in a region, please use [DescribeResources](https://intl.cloud.tencent.com/document/api/214/70213?from_cn_redirect=1). 
+        :type VipIsp: str
+        """
+        self._LoadBalancerType = None
+        self._LoadBalancerChargeType = None
+        self._LoadBalancerChargePrepaid = None
+        self._InternetAccessible = None
+        self._GoodsNum = None
+        self._ZoneId = None
+        self._SlaType = None
+        self._AddressIPVersion = None
+        self._VipIsp = None
+
+    @property
+    def LoadBalancerType(self):
+        return self._LoadBalancerType
+
+    @LoadBalancerType.setter
+    def LoadBalancerType(self, LoadBalancerType):
+        self._LoadBalancerType = LoadBalancerType
+
+    @property
+    def LoadBalancerChargeType(self):
+        return self._LoadBalancerChargeType
+
+    @LoadBalancerChargeType.setter
+    def LoadBalancerChargeType(self, LoadBalancerChargeType):
+        self._LoadBalancerChargeType = LoadBalancerChargeType
+
+    @property
+    def LoadBalancerChargePrepaid(self):
+        return self._LoadBalancerChargePrepaid
+
+    @LoadBalancerChargePrepaid.setter
+    def LoadBalancerChargePrepaid(self, LoadBalancerChargePrepaid):
+        self._LoadBalancerChargePrepaid = LoadBalancerChargePrepaid
+
+    @property
+    def InternetAccessible(self):
+        return self._InternetAccessible
+
+    @InternetAccessible.setter
+    def InternetAccessible(self, InternetAccessible):
+        self._InternetAccessible = InternetAccessible
+
+    @property
+    def GoodsNum(self):
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def SlaType(self):
+        return self._SlaType
+
+    @SlaType.setter
+    def SlaType(self, SlaType):
+        self._SlaType = SlaType
+
+    @property
+    def AddressIPVersion(self):
+        return self._AddressIPVersion
+
+    @AddressIPVersion.setter
+    def AddressIPVersion(self, AddressIPVersion):
+        self._AddressIPVersion = AddressIPVersion
+
+    @property
+    def VipIsp(self):
+        return self._VipIsp
+
+    @VipIsp.setter
+    def VipIsp(self, VipIsp):
+        self._VipIsp = VipIsp
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerType = params.get("LoadBalancerType")
+        self._LoadBalancerChargeType = params.get("LoadBalancerChargeType")
+        if params.get("LoadBalancerChargePrepaid") is not None:
+            self._LoadBalancerChargePrepaid = LBChargePrepaid()
+            self._LoadBalancerChargePrepaid._deserialize(params.get("LoadBalancerChargePrepaid"))
+        if params.get("InternetAccessible") is not None:
+            self._InternetAccessible = InternetAccessible()
+            self._InternetAccessible._deserialize(params.get("InternetAccessible"))
+        self._GoodsNum = params.get("GoodsNum")
+        self._ZoneId = params.get("ZoneId")
+        self._SlaType = params.get("SlaType")
+        self._AddressIPVersion = params.get("AddressIPVersion")
+        self._VipIsp = params.get("VipIsp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceCreateLoadBalancerResponse(AbstractModel):
+    """InquiryPriceCreateLoadBalancer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: Price of the instance with the specified configurations.
+        :type Price: :class:`tencentcloud.clb.v20180317.models.Price`
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = Price()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
+
+
+class InquiryPriceModifyLoadBalancerRequest(AbstractModel):
+    """InquiryPriceModifyLoadBalancer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerId: CLB instance ID
+        :type LoadBalancerId: str
+        :param _InternetAccessible: New bandwidth bandwidth specification
+        :type InternetAccessible: :class:`tencentcloud.clb.v20180317.models.InternetAccessible`
+        """
+        self._LoadBalancerId = None
+        self._InternetAccessible = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def InternetAccessible(self):
+        return self._InternetAccessible
+
+    @InternetAccessible.setter
+    def InternetAccessible(self, InternetAccessible):
+        self._InternetAccessible = InternetAccessible
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        if params.get("InternetAccessible") is not None:
+            self._InternetAccessible = InternetAccessible()
+            self._InternetAccessible._deserialize(params.get("InternetAccessible"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceModifyLoadBalancerResponse(AbstractModel):
+    """InquiryPriceModifyLoadBalancer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: Pricing information
+        :type Price: :class:`tencentcloud.clb.v20180317.models.Price`
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = Price()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
+
+
+class InquiryPriceRefundLoadBalancerRequest(AbstractModel):
+    """InquiryPriceRefundLoadBalancer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerId: CLB instance ID
+        :type LoadBalancerId: str
+        """
+        self._LoadBalancerId = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceRefundLoadBalancerResponse(AbstractModel):
+    """InquiryPriceRefundLoadBalancer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: Price of the instance with the specified configurations.
+        :type Price: :class:`tencentcloud.clb.v20180317.models.Price`
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = Price()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
+
+
+class InquiryPriceRenewLoadBalancerRequest(AbstractModel):
+    """InquiryPriceRenewLoadBalancer request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerId: CLB instance ID
+        :type LoadBalancerId: str
+        :param _LoadBalancerChargePrepaid: Renewal period
+        :type LoadBalancerChargePrepaid: :class:`tencentcloud.clb.v20180317.models.LBChargePrepaid`
+        """
+        self._LoadBalancerId = None
+        self._LoadBalancerChargePrepaid = None
+
+    @property
+    def LoadBalancerId(self):
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def LoadBalancerChargePrepaid(self):
+        return self._LoadBalancerChargePrepaid
+
+    @LoadBalancerChargePrepaid.setter
+    def LoadBalancerChargePrepaid(self, LoadBalancerChargePrepaid):
+        self._LoadBalancerChargePrepaid = LoadBalancerChargePrepaid
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        if params.get("LoadBalancerChargePrepaid") is not None:
+            self._LoadBalancerChargePrepaid = LBChargePrepaid()
+            self._LoadBalancerChargePrepaid._deserialize(params.get("LoadBalancerChargePrepaid"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquiryPriceRenewLoadBalancerResponse(AbstractModel):
+    """InquiryPriceRenewLoadBalancer response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: Price to renew
+        :type Price: :class:`tencentcloud.clb.v20180317.models.Price`
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = Price()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
+
+
 class InternetAccessible(AbstractModel):
     """Network billing mode based on maximum outbound bandwidth
 
@@ -8274,6 +8701,107 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._InternetChargeType = params.get("InternetChargeType")
         self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
         self._BandwidthpkgSubType = params.get("BandwidthpkgSubType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ItemPrice(AbstractModel):
+    """Pricing information of an item
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UnitPrice: PAYG unit price, in USD.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type UnitPrice: float
+        :param _ChargeUnit: Subsequent billing unit. Value Range: 
+`HOUR`: Calculate the cost by hour. It's available when "InternetChargeType=POSTPAID_BY_HOUR".
+`GB`: Calculate the cost by traffic in GB. It's available when "InternetChargeType=TRAFFIC_POSTPAID_BY_HOUR".
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type ChargeUnit: str
+        :param _OriginalPrice: Reserved field
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type OriginalPrice: float
+        :param _DiscountPrice: Reserved field
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type DiscountPrice: float
+        :param _UnitPriceDiscount: Discount unit price of a pay-as-you-go instance, in USD.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type UnitPriceDiscount: float
+        :param _Discount: Discount. For example, 20.0 indicates 80% off.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Discount: float
+        """
+        self._UnitPrice = None
+        self._ChargeUnit = None
+        self._OriginalPrice = None
+        self._DiscountPrice = None
+        self._UnitPriceDiscount = None
+        self._Discount = None
+
+    @property
+    def UnitPrice(self):
+        return self._UnitPrice
+
+    @UnitPrice.setter
+    def UnitPrice(self, UnitPrice):
+        self._UnitPrice = UnitPrice
+
+    @property
+    def ChargeUnit(self):
+        return self._ChargeUnit
+
+    @ChargeUnit.setter
+    def ChargeUnit(self, ChargeUnit):
+        self._ChargeUnit = ChargeUnit
+
+    @property
+    def OriginalPrice(self):
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
+
+    @property
+    def DiscountPrice(self):
+        return self._DiscountPrice
+
+    @DiscountPrice.setter
+    def DiscountPrice(self, DiscountPrice):
+        self._DiscountPrice = DiscountPrice
+
+    @property
+    def UnitPriceDiscount(self):
+        return self._UnitPriceDiscount
+
+    @UnitPriceDiscount.setter
+    def UnitPriceDiscount(self, UnitPriceDiscount):
+        self._UnitPriceDiscount = UnitPriceDiscount
+
+    @property
+    def Discount(self):
+        return self._Discount
+
+    @Discount.setter
+    def Discount(self, Discount):
+        self._Discount = Discount
+
+
+    def _deserialize(self, params):
+        self._UnitPrice = params.get("UnitPrice")
+        self._ChargeUnit = params.get("ChargeUnit")
+        self._OriginalPrice = params.get("OriginalPrice")
+        self._DiscountPrice = params.get("DiscountPrice")
+        self._UnitPriceDiscount = params.get("UnitPriceDiscount")
+        self._Discount = params.get("Discount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8558,8 +9086,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _SessionExpireTime: Session persistence time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SessionExpireTime: int
-        :param _SniSwitch: Whether to enable the SNI feature (this parameter is only meaningful for HTTPS listeners)
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SniSwitch: Whether to enable SNI. `1`: Enable; `0`: Do not enable. This parameter is only meaningful for HTTPS listeners.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type SniSwitch: int
         :param _Rules: All forwarding rules under a listener (this parameter is meaningful only for HTTP/HTTPS listeners)
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -9331,6 +9859,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param _LoadBalancerDomain: Domain name of the CLB instance.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LoadBalancerDomain: str
+        :param _Egress: Network egress
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Egress: str
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
@@ -9386,6 +9917,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ClusterIds = None
         self._AttributeFlags = None
         self._LoadBalancerDomain = None
+        self._Egress = None
 
     @property
     def LoadBalancerId(self):
@@ -9819,6 +10351,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def LoadBalancerDomain(self, LoadBalancerDomain):
         self._LoadBalancerDomain = LoadBalancerDomain
 
+    @property
+    def Egress(self):
+        return self._Egress
+
+    @Egress.setter
+    def Egress(self, Egress):
+        self._Egress = Egress
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -9902,6 +10442,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ClusterIds = params.get("ClusterIds")
         self._AttributeFlags = params.get("AttributeFlags")
         self._LoadBalancerDomain = params.get("LoadBalancerDomain")
+        self._Egress = params.get("Egress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10027,12 +10568,15 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         :param _Zones: The AZ of private CLB instance. This is only available for beta users.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Zones: list of str
-        :param _SniSwitch: Whether SNI is enabled. This parameter is only meaningful for HTTPS listeners.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _SniSwitch: Whether to enable SNI. `1`: Enable; `0`: Do not enable. This parameter is only meaningful for HTTPS listeners.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type SniSwitch: int
         :param _LoadBalancerDomain: Domain name of the CLB instance.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LoadBalancerDomain: str
+        :param _Egress: Network egress
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Egress: str
         """
         self._LoadBalancerId = None
         self._LoadBalancerName = None
@@ -10072,6 +10616,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Zones = None
         self._SniSwitch = None
         self._LoadBalancerDomain = None
+        self._Egress = None
 
     @property
     def LoadBalancerId(self):
@@ -10377,6 +10922,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def LoadBalancerDomain(self, LoadBalancerDomain):
         self._LoadBalancerDomain = LoadBalancerDomain
 
+    @property
+    def Egress(self):
+        return self._Egress
+
+    @Egress.setter
+    def Egress(self, Egress):
+        self._Egress = Egress
+
 
     def _deserialize(self, params):
         self._LoadBalancerId = params.get("LoadBalancerId")
@@ -10428,6 +10981,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Zones = params.get("Zones")
         self._SniSwitch = params.get("SniSwitch")
         self._LoadBalancerDomain = params.get("LoadBalancerDomain")
+        self._Egress = params.get("Egress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11769,6 +12323,76 @@ class ModifyLoadBalancerSlaResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyLoadBalancersProjectRequest(AbstractModel):
+    """ModifyLoadBalancersProject request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadBalancerIds: IDs of CLB instances ID(s).
+        :type LoadBalancerIds: list of str
+        :param _ProjectId: Project ID
+        :type ProjectId: int
+        """
+        self._LoadBalancerIds = None
+        self._ProjectId = None
+
+    @property
+    def LoadBalancerIds(self):
+        return self._LoadBalancerIds
+
+    @LoadBalancerIds.setter
+    def LoadBalancerIds(self, LoadBalancerIds):
+        self._LoadBalancerIds = LoadBalancerIds
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._LoadBalancerIds = params.get("LoadBalancerIds")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLoadBalancersProjectResponse(AbstractModel):
+    """ModifyLoadBalancersProject response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRuleRequest(AbstractModel):
     """ModifyRule request structure.
 
@@ -12490,6 +13114,72 @@ class MultiCertInfo(AbstractModel):
         
 
 
+class Price(AbstractModel):
+    """Price of CLB instances.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstancePrice: Instance price.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type InstancePrice: :class:`tencentcloud.clb.v20180317.models.ItemPrice`
+        :param _BandwidthPrice: Network price.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type BandwidthPrice: :class:`tencentcloud.clb.v20180317.models.ItemPrice`
+        :param _LcuPrice: LCU price.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type LcuPrice: :class:`tencentcloud.clb.v20180317.models.ItemPrice`
+        """
+        self._InstancePrice = None
+        self._BandwidthPrice = None
+        self._LcuPrice = None
+
+    @property
+    def InstancePrice(self):
+        return self._InstancePrice
+
+    @InstancePrice.setter
+    def InstancePrice(self, InstancePrice):
+        self._InstancePrice = InstancePrice
+
+    @property
+    def BandwidthPrice(self):
+        return self._BandwidthPrice
+
+    @BandwidthPrice.setter
+    def BandwidthPrice(self, BandwidthPrice):
+        self._BandwidthPrice = BandwidthPrice
+
+    @property
+    def LcuPrice(self):
+        return self._LcuPrice
+
+    @LcuPrice.setter
+    def LcuPrice(self, LcuPrice):
+        self._LcuPrice = LcuPrice
+
+
+    def _deserialize(self, params):
+        if params.get("InstancePrice") is not None:
+            self._InstancePrice = ItemPrice()
+            self._InstancePrice._deserialize(params.get("InstancePrice"))
+        if params.get("BandwidthPrice") is not None:
+            self._BandwidthPrice = ItemPrice()
+            self._BandwidthPrice._deserialize(params.get("BandwidthPrice"))
+        if params.get("LcuPrice") is not None:
+            self._LcuPrice = ItemPrice()
+            self._LcuPrice._deserialize(params.get("LcuPrice"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Quota(AbstractModel):
     """Quota description. All quotas are in the current region.
 
@@ -13158,7 +13848,7 @@ class RewriteLocationMap(AbstractModel):
         r"""
         :param _SourceLocationId: Source forwarding rule ID
         :type SourceLocationId: str
-        :param _TargetLocationId: Forwarding rule ID of a redirect target
+        :param _TargetLocationId: ID of the forwarding rule of the destination
         :type TargetLocationId: str
         :param _RewriteCode: Redirection status code. Valid values: 301, 302, and 307.
         :type RewriteCode: int
@@ -14571,8 +15261,15 @@ class SlaUpdateParam(AbstractModel):
         r"""
         :param _LoadBalancerId: ID of the CLB instance
         :type LoadBalancerId: str
-        :param _SlaType: u200dTo upgrade the instance to an LCU-support instance, set it to `SLA`. `SLA` indicates Super Large 1. 
-If you have activated Super Large LCU-supported instances, `SLA` indicates the Super Large 4 specification. Super u200dLarge LCU-supported specification is in beta now. u200cu200dTo join the beta, [submit a ticket](https://console.cloud.tencent.com/workorder/category).
+        :param _SlaType: LCU-supported instance specification. Value:
+<li>`SLA`: If you have activated Super Large LCU-supported instances, `SLA` indicates Super Large 4.</li>
+<li>`clb.c2.medium`: Standard</li>
+<li>`clb.c3.small`: Advanced 1</li>
+<li>`clb.c3.medium`: Advanced 2</li>
+<li>`clb.c4.small`: Super Large 1</li>
+<li>`clb.c4.medium`: Super Large 2</li>
+<li>`clb.c4.large`: Super Large 3</li>
+<li>`clb.c4.xlarge`: Super Large 4</li> For Super Large 2 and above specifications, please [submit a ticket](https://console.cloud.tencent.com/workorder/category). For more specifications, see [Specifications Comparison](https://intl.cloud.tencent.com/document/product/214/84689?from_cn_redirect=1)
         :type SlaType: str
         """
         self._LoadBalancerId = None
@@ -15560,6 +16257,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type ZoneResourceType: str
         :param _EdgeZone: Whether the AZ is an edge zone. Values: `true`, `false`.
         :type EdgeZone: bool
+        :param _Egress: Network egress
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Egress: str
         """
         self._MasterZone = None
         self._ResourceSet = None
@@ -15569,6 +16269,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._LocalZone = None
         self._ZoneResourceType = None
         self._EdgeZone = None
+        self._Egress = None
 
     @property
     def MasterZone(self):
@@ -15634,6 +16335,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def EdgeZone(self, EdgeZone):
         self._EdgeZone = EdgeZone
 
+    @property
+    def Egress(self):
+        return self._Egress
+
+    @Egress.setter
+    def Egress(self, Egress):
+        self._Egress = Egress
+
 
     def _deserialize(self, params):
         self._MasterZone = params.get("MasterZone")
@@ -15649,6 +16358,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._LocalZone = params.get("LocalZone")
         self._ZoneResourceType = params.get("ZoneResourceType")
         self._EdgeZone = params.get("EdgeZone")
+        self._Egress = params.get("Egress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
