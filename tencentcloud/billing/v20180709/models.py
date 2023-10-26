@@ -259,9 +259,18 @@ class BillDetail(AbstractModel):
         :type RegionId: str
         :param _ProjectId: Project ID
         :type ProjectId: int
-        :param _PriceInfo: Price attribute
+        :param _PriceInfo: Price attribute: A set of attributes which will determine the price of a component, apart from unit price and usage duration.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PriceInfo: list of str
+        :param _AssociatedOrder: Associated transaction document ID: The ID of the document associated with a transaction, such as a write-off order, the original order showing a deduction error during first settlement, a restructured order, or the original purchase order corresponding to a refund order.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AssociatedOrder: :class:`tencentcloud.billing.v20180709.models.BillDetailAssociatedOrder`
+        :param _Formula: Calculation formula: The detailed calculation formula for a specific transaction type, such as refund or configuration change.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Formula: str
+        :param _FormulaUrl: Billing rules: Official website links for detailed billing rules of each product.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FormulaUrl: str
         """
         self._BusinessCodeName = None
         self._ProductCodeName = None
@@ -288,6 +297,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RegionId = None
         self._ProjectId = None
         self._PriceInfo = None
+        self._AssociatedOrder = None
+        self._Formula = None
+        self._FormulaUrl = None
 
     @property
     def BusinessCodeName(self):
@@ -489,6 +501,30 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def PriceInfo(self, PriceInfo):
         self._PriceInfo = PriceInfo
 
+    @property
+    def AssociatedOrder(self):
+        return self._AssociatedOrder
+
+    @AssociatedOrder.setter
+    def AssociatedOrder(self, AssociatedOrder):
+        self._AssociatedOrder = AssociatedOrder
+
+    @property
+    def Formula(self):
+        return self._Formula
+
+    @Formula.setter
+    def Formula(self, Formula):
+        self._Formula = Formula
+
+    @property
+    def FormulaUrl(self):
+        return self._FormulaUrl
+
+    @FormulaUrl.setter
+    def FormulaUrl(self, FormulaUrl):
+        self._FormulaUrl = FormulaUrl
+
 
     def _deserialize(self, params):
         self._BusinessCodeName = params.get("BusinessCodeName")
@@ -526,6 +562,110 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RegionId = params.get("RegionId")
         self._ProjectId = params.get("ProjectId")
         self._PriceInfo = params.get("PriceInfo")
+        if params.get("AssociatedOrder") is not None:
+            self._AssociatedOrder = BillDetailAssociatedOrder()
+            self._AssociatedOrder._deserialize(params.get("AssociatedOrder"))
+        self._Formula = params.get("Formula")
+        self._FormulaUrl = params.get("FormulaUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillDetailAssociatedOrder(AbstractModel):
+    """Information of the document associated with bill details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrepayPurchase: Purchase order.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PrepayPurchase: str
+        :param _PrepayRenew: Renewal order.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PrepayRenew: str
+        :param _PrepayModifyUp: Upgrade order.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PrepayModifyUp: str
+        :param _ReverseOrder: Write-off order.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReverseOrder: str
+        :param _NewOrder: The order after discount.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NewOrder: str
+        :param _Original: The original order before discount.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Original: str
+        """
+        self._PrepayPurchase = None
+        self._PrepayRenew = None
+        self._PrepayModifyUp = None
+        self._ReverseOrder = None
+        self._NewOrder = None
+        self._Original = None
+
+    @property
+    def PrepayPurchase(self):
+        return self._PrepayPurchase
+
+    @PrepayPurchase.setter
+    def PrepayPurchase(self, PrepayPurchase):
+        self._PrepayPurchase = PrepayPurchase
+
+    @property
+    def PrepayRenew(self):
+        return self._PrepayRenew
+
+    @PrepayRenew.setter
+    def PrepayRenew(self, PrepayRenew):
+        self._PrepayRenew = PrepayRenew
+
+    @property
+    def PrepayModifyUp(self):
+        return self._PrepayModifyUp
+
+    @PrepayModifyUp.setter
+    def PrepayModifyUp(self, PrepayModifyUp):
+        self._PrepayModifyUp = PrepayModifyUp
+
+    @property
+    def ReverseOrder(self):
+        return self._ReverseOrder
+
+    @ReverseOrder.setter
+    def ReverseOrder(self, ReverseOrder):
+        self._ReverseOrder = ReverseOrder
+
+    @property
+    def NewOrder(self):
+        return self._NewOrder
+
+    @NewOrder.setter
+    def NewOrder(self, NewOrder):
+        self._NewOrder = NewOrder
+
+    @property
+    def Original(self):
+        return self._Original
+
+    @Original.setter
+    def Original(self, Original):
+        self._Original = Original
+
+
+    def _deserialize(self, params):
+        self._PrepayPurchase = params.get("PrepayPurchase")
+        self._PrepayRenew = params.get("PrepayRenew")
+        self._PrepayModifyUp = params.get("PrepayModifyUp")
+        self._ReverseOrder = params.get("ReverseOrder")
+        self._NewOrder = params.get("NewOrder")
+        self._Original = params.get("Original")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -601,6 +741,9 @@ class BillDetailComponent(AbstractModel):
         :type OriginalCostWithSP: str
         :param _BlendedDiscount: Blended discount multiplier: The final discount multiplier that is applied after combining multiple discount types, which is "Total amount after discount / Original cost". Note: This field may return null, indicating that no valid values can be obtained.
         :type BlendedDiscount: str
+        :param _ComponentConfig: Configuration description: The specification configuration of an instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComponentConfig: list of BillDetailComponentConfig
         """
         self._ComponentCodeName = None
         self._ItemCodeName = None
@@ -631,6 +774,7 @@ class BillDetailComponent(AbstractModel):
         self._SPDeduction = None
         self._OriginalCostWithSP = None
         self._BlendedDiscount = None
+        self._ComponentConfig = None
 
     @property
     def ComponentCodeName(self):
@@ -872,6 +1016,14 @@ class BillDetailComponent(AbstractModel):
     def BlendedDiscount(self, BlendedDiscount):
         self._BlendedDiscount = BlendedDiscount
 
+    @property
+    def ComponentConfig(self):
+        return self._ComponentConfig
+
+    @ComponentConfig.setter
+    def ComponentConfig(self, ComponentConfig):
+        self._ComponentConfig = ComponentConfig
+
 
     def _deserialize(self, params):
         self._ComponentCodeName = params.get("ComponentCodeName")
@@ -903,6 +1055,535 @@ class BillDetailComponent(AbstractModel):
         self._SPDeduction = params.get("SPDeduction")
         self._OriginalCostWithSP = params.get("OriginalCostWithSP")
         self._BlendedDiscount = params.get("BlendedDiscount")
+        if params.get("ComponentConfig") is not None:
+            self._ComponentConfig = []
+            for item in params.get("ComponentConfig"):
+                obj = BillDetailComponentConfig()
+                obj._deserialize(item)
+                self._ComponentConfig.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillDetailComponentConfig(AbstractModel):
+    """Bill details configuration descriptions
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Configuration description name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _Value: Configuration description value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillDistributionResourceSummary(AbstractModel):
+    """Summary objects for a reseller bill
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessCodeName: Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
+        :type BusinessCodeName: str
+        :param _ProductCodeName: Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM - Standard S1.
+        :type ProductCodeName: str
+        :param _PayModeName: Billing mode: The billing mode, which can be monthly subscription or pay-as-you-go.
+        :type PayModeName: str
+        :param _ProjectName: Project Name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
+        :type ProjectName: str
+        :param _RegionName: Region: The region of a resource, e.g. South China (Guangzhou).
+        :type RegionName: str
+        :param _ZoneName: Availability zone: The availability zone of a resource, e.g. Guangzhou Zone 3.
+        :type ZoneName: str
+        :param _ResourceId: Instance ID: The object ID of a billed resource, such as a CVM instance ID. This object ID may vary due to various forms and contents of resources in different products.	
+        :type ResourceId: str
+        :param _ResourceName: Instance name: The resource name set by the user in the console. If it is not set, it will be empty by default.
+        :type ResourceName: str
+        :param _ActionTypeName: Transaction type, which can be monthly subscription purchase, monthly subscription renewal, pay-as-you-go deduction, etc.
+        :type ActionTypeName: str
+        :param _OrderId: Order ID: The ID of a monthly subscription order.
+        :type OrderId: str
+        :param _PayTime: Deduction time: The settlement cost deduction time.
+        :type PayTime: str
+        :param _FeeBeginTime: Usage start time: The time at which product or service usage starts.
+        :type FeeBeginTime: str
+        :param _FeeEndTime: Usage end time: The time at which product or service usage ends.
+        :type FeeEndTime: str
+        :param _ConfigDesc: Configuration description: The billable item names and usage of a resource, which are displayed on the resource bill only.
+        :type ConfigDesc: str
+        :param _ExtendField1: Extended Field 1: The extended attribute information of a product, which is displayed on the resource bill only.
+        :type ExtendField1: str
+        :param _ExtendField2: Extended field 2: The extended attribute information of a product, which is displayed on the resource bill only.
+        :type ExtendField2: str
+        :param _TotalCost: Original cost. The original cost of a component = Component price x Usage x Usage duration. If a customer has applied for a fixed preferential price or contract price or if a customer is in a refund scenario, this parameter will not be displayed by default.
+        :type TotalCost: str
+        :param _Discount: Discount multiplier: The discount multiplier that applies to the component. If a customer has applied for a fixed preferential price or contract price or if a customer is in a refund scenario, this parameter will not be displayed by default.
+        :type Discount: str
+        :param _ReduceType: Offer type.
+        :type ReduceType: str
+        :param _RealTotalCost: Total amount after discount.
+        :type RealTotalCost: str
+        :param _VoucherPayAmount: Voucher payment: The voucher deduction amount.
+        :type VoucherPayAmount: str
+        :param _CashPayAmount: Cash credit payment: The amount paid through the user's cash account.
+        :type CashPayAmount: str
+        :param _IncentivePayAmount: Free credit payment: The amount paid with the user's free credit.
+        :type IncentivePayAmount: str
+        :param _TransferPayAmount: Commission credit payment: The amount paid with the user's commission credit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TransferPayAmount: str
+        :param _ExtendField3: Extended field 3: The extended attribute information of a product, which is displayed on the resource bill only.
+        :type ExtendField3: str
+        :param _ExtendField4: Extended field 4: The extended attribute information of a product, which is displayed on the resource bill only.
+        :type ExtendField4: str
+        :param _ExtendField5: Extended field 5: The extended attribute information of a product, which is displayed on the resource bill only.
+        :type ExtendField5: str
+        :param _Tags: Tag information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of BillTagInfo
+        :param _OwnerUin: Owner account ID: The account ID of the actual resource user.
+        :type OwnerUin: str
+        :param _OperateUin: Operator account ID: The account or role ID of the operator who purchases or activates a resource.
+        :type OperateUin: str
+        :param _BusinessCode: Product code.
+        :type BusinessCode: str
+        :param _ProductCode: Subproduct code.
+        :type ProductCode: str
+        :param _RegionId: Region ID.
+        :type RegionId: int
+        :param _InstanceType: Instance type: The instance type of a product or service purchased, which can be resource package, RI, SP, or spot instance. Other instance types are not displayed by default.
+        :type InstanceType: str
+        :param _OriginalCostWithRI: RI deduction (cost): The amount deducted from the original cost by RI.	
+        :type OriginalCostWithRI: str
+        :param _SPDeduction: Savings plan deduction (disused).
+        :type SPDeduction: str
+        :param _OriginalCostWithSP: SP deduction (cost): The amount of cost deducted by a savings plan based on the component's original cost. SP deduction (cost) = Cost deduction by SP / SP deduction rate	
+        :type OriginalCostWithSP: str
+        """
+        self._BusinessCodeName = None
+        self._ProductCodeName = None
+        self._PayModeName = None
+        self._ProjectName = None
+        self._RegionName = None
+        self._ZoneName = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._ActionTypeName = None
+        self._OrderId = None
+        self._PayTime = None
+        self._FeeBeginTime = None
+        self._FeeEndTime = None
+        self._ConfigDesc = None
+        self._ExtendField1 = None
+        self._ExtendField2 = None
+        self._TotalCost = None
+        self._Discount = None
+        self._ReduceType = None
+        self._RealTotalCost = None
+        self._VoucherPayAmount = None
+        self._CashPayAmount = None
+        self._IncentivePayAmount = None
+        self._TransferPayAmount = None
+        self._ExtendField3 = None
+        self._ExtendField4 = None
+        self._ExtendField5 = None
+        self._Tags = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._BusinessCode = None
+        self._ProductCode = None
+        self._RegionId = None
+        self._InstanceType = None
+        self._OriginalCostWithRI = None
+        self._SPDeduction = None
+        self._OriginalCostWithSP = None
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def ProductCodeName(self):
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def PayModeName(self):
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ActionTypeName(self):
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def PayTime(self):
+        return self._PayTime
+
+    @PayTime.setter
+    def PayTime(self, PayTime):
+        self._PayTime = PayTime
+
+    @property
+    def FeeBeginTime(self):
+        return self._FeeBeginTime
+
+    @FeeBeginTime.setter
+    def FeeBeginTime(self, FeeBeginTime):
+        self._FeeBeginTime = FeeBeginTime
+
+    @property
+    def FeeEndTime(self):
+        return self._FeeEndTime
+
+    @FeeEndTime.setter
+    def FeeEndTime(self, FeeEndTime):
+        self._FeeEndTime = FeeEndTime
+
+    @property
+    def ConfigDesc(self):
+        return self._ConfigDesc
+
+    @ConfigDesc.setter
+    def ConfigDesc(self, ConfigDesc):
+        self._ConfigDesc = ConfigDesc
+
+    @property
+    def ExtendField1(self):
+        return self._ExtendField1
+
+    @ExtendField1.setter
+    def ExtendField1(self, ExtendField1):
+        self._ExtendField1 = ExtendField1
+
+    @property
+    def ExtendField2(self):
+        return self._ExtendField2
+
+    @ExtendField2.setter
+    def ExtendField2(self, ExtendField2):
+        self._ExtendField2 = ExtendField2
+
+    @property
+    def TotalCost(self):
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
+
+    @property
+    def Discount(self):
+        return self._Discount
+
+    @Discount.setter
+    def Discount(self, Discount):
+        self._Discount = Discount
+
+    @property
+    def ReduceType(self):
+        return self._ReduceType
+
+    @ReduceType.setter
+    def ReduceType(self, ReduceType):
+        self._ReduceType = ReduceType
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def CashPayAmount(self):
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def TransferPayAmount(self):
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def ExtendField3(self):
+        return self._ExtendField3
+
+    @ExtendField3.setter
+    def ExtendField3(self, ExtendField3):
+        self._ExtendField3 = ExtendField3
+
+    @property
+    def ExtendField4(self):
+        return self._ExtendField4
+
+    @ExtendField4.setter
+    def ExtendField4(self, ExtendField4):
+        self._ExtendField4 = ExtendField4
+
+    @property
+    def ExtendField5(self):
+        return self._ExtendField5
+
+    @ExtendField5.setter
+    def ExtendField5(self, ExtendField5):
+        self._ExtendField5 = ExtendField5
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def OriginalCostWithRI(self):
+        return self._OriginalCostWithRI
+
+    @OriginalCostWithRI.setter
+    def OriginalCostWithRI(self, OriginalCostWithRI):
+        self._OriginalCostWithRI = OriginalCostWithRI
+
+    @property
+    def SPDeduction(self):
+        warnings.warn("parameter `SPDeduction` is deprecated", DeprecationWarning) 
+
+        return self._SPDeduction
+
+    @SPDeduction.setter
+    def SPDeduction(self, SPDeduction):
+        warnings.warn("parameter `SPDeduction` is deprecated", DeprecationWarning) 
+
+        self._SPDeduction = SPDeduction
+
+    @property
+    def OriginalCostWithSP(self):
+        return self._OriginalCostWithSP
+
+    @OriginalCostWithSP.setter
+    def OriginalCostWithSP(self, OriginalCostWithSP):
+        self._OriginalCostWithSP = OriginalCostWithSP
+
+
+    def _deserialize(self, params):
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._ProductCodeName = params.get("ProductCodeName")
+        self._PayModeName = params.get("PayModeName")
+        self._ProjectName = params.get("ProjectName")
+        self._RegionName = params.get("RegionName")
+        self._ZoneName = params.get("ZoneName")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        self._ActionTypeName = params.get("ActionTypeName")
+        self._OrderId = params.get("OrderId")
+        self._PayTime = params.get("PayTime")
+        self._FeeBeginTime = params.get("FeeBeginTime")
+        self._FeeEndTime = params.get("FeeEndTime")
+        self._ConfigDesc = params.get("ConfigDesc")
+        self._ExtendField1 = params.get("ExtendField1")
+        self._ExtendField2 = params.get("ExtendField2")
+        self._TotalCost = params.get("TotalCost")
+        self._Discount = params.get("Discount")
+        self._ReduceType = params.get("ReduceType")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        self._ExtendField3 = params.get("ExtendField3")
+        self._ExtendField4 = params.get("ExtendField4")
+        self._ExtendField5 = params.get("ExtendField5")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = BillTagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._OwnerUin = params.get("OwnerUin")
+        self._OperateUin = params.get("OperateUin")
+        self._BusinessCode = params.get("BusinessCode")
+        self._ProductCode = params.get("ProductCode")
+        self._RegionId = params.get("RegionId")
+        self._InstanceType = params.get("InstanceType")
+        self._OriginalCostWithRI = params.get("OriginalCostWithRI")
+        self._SPDeduction = params.get("SPDeduction")
+        self._OriginalCostWithSP = params.get("OriginalCostWithSP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1902,6 +2583,122 @@ class CosDetailSets(AbstractModel):
         
 
 
+class CreateAllocationTagRequest(AbstractModel):
+    """CreateAllocationTag request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: Cost allocation tag key.
+        :type TagKey: list of str
+        """
+        self._TagKey = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAllocationTagResponse(AbstractModel):
+    """CreateAllocationTag response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAllocationTagRequest(AbstractModel):
+    """DeleteAllocationTag request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: Cost allocation tag key
+        :type TagKey: list of str
+        """
+        self._TagKey = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAllocationTagResponse(AbstractModel):
+    """DeleteAllocationTag response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAccountBalanceRequest(AbstractModel):
     """DescribeAccountBalance request structure.
 
@@ -2086,6 +2883,281 @@ class DescribeAccountBalanceResponse(AbstractModel):
         self._CreditAmount = params.get("CreditAmount")
         self._CreditBalance = params.get("CreditBalance")
         self._RealCreditBalance = params.get("RealCreditBalance")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBillDetailForOrganizationRequest(AbstractModel):
+    """DescribeBillDetailForOrganization request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.
+        :type Offset: int
+        :param _Limit: The number of entries returned at a time. The maximum value is `100`.
+        :type Limit: int
+        :param _PeriodType: Cycle type, which can be `byUsedTime` (by billing cycle) or `byPayTime` (by deduction time). This value must be the same as the billing period type in Billing Center for that particular month. You can check your billing cycle at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.
+        :type PeriodType: str
+        :param _Month: Bill month in the format of "yyyy-mm". You only have to enter either `Month` or `BeginTime` and `EndTime`. When you enter values for `BeginTime` and `EndTime`, `Month` becomes invalid. This value must be no earlier than the month when Bill 2.0 is activated; last 18 months data is available.
+        :type Month: str
+        :param _BeginTime: Start time of the cycle in the format of "yyyy-mm-dd hh:ii:ss". You only have to enter either `Month` or `BeginTime` and `EndTime`. When you enter values for `BeginTime` and `EndTime`, `Month` becomes invalid. `BeginTime` and `EndTime` must be passed together, and their values must be of the same month. Query period must start and end on the same month, andthe query result returned will be of the entire month. This value must be no earlier than the month when Bill 2.0 is activated; last 18 months data is available.
+        :type BeginTime: str
+        :param _EndTime: End time of the cycle in the format of "yyyy-mm-dd hh:ii:ss". You only have to enter either `Month` or `BeginTime` and `EndTime`. When you enter values for `BeginTime` and `EndTime`, `Month` becomes invalid. `BeginTime` and `EndTime` must be passed together, and their values must be of the same month. Query period must start and end on the same month, andthe query result returned will be of the entire month. This value must be no earlier than the month when Bill 2.0 is activated; last 18 months data is available.
+        :type EndTime: str
+        :param _NeedRecordNum: Indicates whether the total number of records is required, used for pagination.
+Valid values: `1` (required), `0` (not required).
+        :type NeedRecordNum: int
+        :param _PayMode: Billing mode, which can be `prePay` (monthly subscription) or `postPay` (pay-as-you-go).
+        :type PayMode: str
+        :param _ResourceId: ID of the instance to be queried.
+        :type ResourceId: str
+        :param _ActionType: Transaction type. This parameter needs to be input using the `ActionTypeName` value. Valid values:
+Monthly subscription purchase
+Monthly subscription renewal
+Monthly subscription upgrade/downgrade
+Monthly subscription refund 
+Pay-as-you-go deduction 
+Offline project deduction 
+Offline product deduction 
+Adjustment deduction 
+Adjustment compensation 
+Hourly pay-as-you-go 
+Daily pay-as-you-go 
+Monthly pay-as-you-go 
+Hourly spot instance 
+Offline project adjustment compensation 
+Offline product adjustment compensation 
+Offer deduction 
+Offer compensation 
+Pay-as-you-go resource migration in 
+Pay-as-you-go resource migration out 
+Monthly subscription resource migration in 
+Monthly subscription resource migration out 
+Prepaid 
+Hourly 
+RI refund 
+Pay-as-you-go reversal 
+Monthly subscription to pay-as-you-go 
+Minimum spend deduction 
+Hourly savings plan fee
+        :type ActionType: str
+        :param _ProjectId: Project ID: The ID of the project to which the resource belongs.
+        :type ProjectId: int
+        :param _BusinessCode: Product code.
+Note: To query the product codes used in the current month, call <a href="https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1">DescribeBillSummaryByProduct</a>.
+        :type BusinessCode: str
+        :param _Context: Context information returned by the last response. You can view multiple pages when querying for data after May 2023 to speed up the query. We recommend you use this query method if your data volume is above 100 thousand entries, which can improve query speed by 2-10 times.
+        :type Context: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._PeriodType = None
+        self._Month = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._NeedRecordNum = None
+        self._PayMode = None
+        self._ResourceId = None
+        self._ActionType = None
+        self._ProjectId = None
+        self._BusinessCode = None
+        self._Context = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def PeriodType(self):
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def NeedRecordNum(self):
+        return self._NeedRecordNum
+
+    @NeedRecordNum.setter
+    def NeedRecordNum(self, NeedRecordNum):
+        self._NeedRecordNum = NeedRecordNum
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def Context(self):
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._PeriodType = params.get("PeriodType")
+        self._Month = params.get("Month")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._NeedRecordNum = params.get("NeedRecordNum")
+        self._PayMode = params.get("PayMode")
+        self._ResourceId = params.get("ResourceId")
+        self._ActionType = params.get("ActionType")
+        self._ProjectId = params.get("ProjectId")
+        self._BusinessCode = params.get("BusinessCode")
+        self._Context = params.get("Context")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillDetailForOrganizationResponse(AbstractModel):
+    """DescribeBillDetailForOrganization response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DetailSet: Details list.
+        :type DetailSet: list of DistributionBillDetail
+        :param _Total: Total number of records, which is cached every 24 hours and may be less than the actual total number of records.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Total: int
+        :param _Context: Context information of the current request, which can be used in the parameters of the next request to speed up the query.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Context: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DetailSet = None
+        self._Total = None
+        self._Context = None
+        self._RequestId = None
+
+    @property
+    def DetailSet(self):
+        return self._DetailSet
+
+    @DetailSet.setter
+    def DetailSet(self, DetailSet):
+        self._DetailSet = DetailSet
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Context(self):
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DetailSet") is not None:
+            self._DetailSet = []
+            for item in params.get("DetailSet"):
+                obj = DistributionBillDetail()
+                obj._deserialize(item)
+                self._DetailSet.append(obj)
+        self._Total = params.get("Total")
+        self._Context = params.get("Context")
         self._RequestId = params.get("RequestId")
 
 
@@ -2391,6 +3463,359 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBillDownloadUrlRequest(AbstractModel):
+    """DescribeBillDownloadUrl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileType: Bill type. Valid values:
+`billOverview` (L0: PDF bills)
+`billSummary` (L1: Bill summary)	
+`billResource` (L2: Bill by instance)	
+`billDetail` (L3: Bill details)	
+`billPack` (Bill packs)
+        :type FileType: str
+        :param _Month: Bill month.
+The earliest month that can be queried is January 2021.
+L0 bills and bill packs cannot be downloaded for the current month. Please download the current month's bills after it is generated at 19:00 on the 1st day of the next month.
+        :type Month: str
+        :param _ChildUin: List of account IDs for downloading the bill. By default, it queries the bill for the current account. If you are an admin account and need to download bills for member accounts with their own payment, input the member account's UIN for this parameter.
+        :type ChildUin: list of str
+        """
+        self._FileType = None
+        self._Month = None
+        self._ChildUin = None
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def ChildUin(self):
+        return self._ChildUin
+
+    @ChildUin.setter
+    def ChildUin(self, ChildUin):
+        self._ChildUin = ChildUin
+
+
+    def _deserialize(self, params):
+        self._FileType = params.get("FileType")
+        self._Month = params.get("Month")
+        self._ChildUin = params.get("ChildUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillDownloadUrlResponse(AbstractModel):
+    """DescribeBillDownloadUrl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ready: Indicates whether the bill file is ready. Valid values: `0` (the file is being generated), `1` (the file has been generated).
+        :type Ready: int
+        :param _DownloadUrl: Bill download URL, valid for one hour.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DownloadUrl: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Ready = None
+        self._DownloadUrl = None
+        self._RequestId = None
+
+    @property
+    def Ready(self):
+        return self._Ready
+
+    @Ready.setter
+    def Ready(self, Ready):
+        self._Ready = Ready
+
+    @property
+    def DownloadUrl(self):
+        return self._DownloadUrl
+
+    @DownloadUrl.setter
+    def DownloadUrl(self, DownloadUrl):
+        self._DownloadUrl = DownloadUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Ready = params.get("Ready")
+        self._DownloadUrl = params.get("DownloadUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBillResourceSummaryForOrganizationRequest(AbstractModel):
+    """DescribeBillResourceSummaryForOrganization request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.
+        :type Offset: int
+        :param _Limit: The number of entries returned at a time. The maximum value is `1000`.
+        :type Limit: int
+        :param _Month: Bill month in the format of "yyyy-mm". This value must be no earlier than the month when Bill 2.0 is activated.
+        :type Month: str
+        :param _PeriodType: Cycle type, which can be `byUsedTime` (by billing cycle) or `byPayTime` (by deduction time). This value must be the same as the billing period type in Billing Center for that particular month. You can check your billing cycle at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.
+        :type PeriodType: str
+        :param _NeedRecordNum: Indicates whether the total number of records is required, used for pagination.
+Valid values: `1` (required), `0` (not required).
+        :type NeedRecordNum: int
+        :param _ActionType: Transaction type. This parameter needs to be input using the `ActionTypeName` value. Valid values:
+Monthly subscription purchase
+Monthly subscription renewal
+Monthly subscription upgrade/downgrade
+Monthly subscription refund 
+Pay-as-you-go deduction 
+Offline project deduction 
+Offline product deduction 
+Adjustment deduction 
+Adjustment compensation 
+Hourly pay-as-you-go 
+Daily pay-as-you-go 
+Monthly pay-as-you-go 
+Hourly spot instance 
+Offline project adjustment compensation 
+Offline product adjustment compensation 
+Offer deduction 
+Offer compensation 
+Pay-as-you-go resource migration in 
+Pay-as-you-go resource migration out 
+Monthly subscription resource migration in 
+Monthly subscription resource migration out 
+Prepaid 
+Hourly 
+RI refund 
+Pay-as-you-go reversal 
+Monthly subscription to pay-as-you-go 
+Minimum spend deduction 
+Hourly savings plan fee
+        :type ActionType: str
+        :param _ResourceId: ID of the instance to be queried.
+        :type ResourceId: str
+        :param _PayMode: Billing mode. Valid values: `prePay`, `postPay`.
+        :type PayMode: str
+        :param _BusinessCode: Product code
+Note: To query the product codes (`BusinessCode`) used in the current month, call <a href="https://intl.cloud.tencent.com/document/product/555/35761?from_cn_redirect=1">DescribeBillSummaryByProduct</a>.
+        :type BusinessCode: str
+        :param _TagKey: Cost allocation tag key, which can be customized. This parameter can be used for querying bills after January 2021.
+        :type TagKey: str
+        :param _TagValue: Resource tag value. If it is left empty, there are no records with tag values set under this tag key.
+This parameter can be used for querying bills after January 2021.
+        :type TagValue: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Month = None
+        self._PeriodType = None
+        self._NeedRecordNum = None
+        self._ActionType = None
+        self._ResourceId = None
+        self._PayMode = None
+        self._BusinessCode = None
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def PeriodType(self):
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def NeedRecordNum(self):
+        return self._NeedRecordNum
+
+    @NeedRecordNum.setter
+    def NeedRecordNum(self, NeedRecordNum):
+        self._NeedRecordNum = NeedRecordNum
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Month = params.get("Month")
+        self._PeriodType = params.get("PeriodType")
+        self._NeedRecordNum = params.get("NeedRecordNum")
+        self._ActionType = params.get("ActionType")
+        self._ResourceId = params.get("ResourceId")
+        self._PayMode = params.get("PayMode")
+        self._BusinessCode = params.get("BusinessCode")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillResourceSummaryForOrganizationResponse(AbstractModel):
+    """DescribeBillResourceSummaryForOrganization response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceSummarySet: Resource summary list.
+        :type ResourceSummarySet: list of BillDistributionResourceSummary
+        :param _Total: Total number of resource summary lists. It will not be returned if `NeedRecordNum` is `0`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Total: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ResourceSummarySet = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def ResourceSummarySet(self):
+        return self._ResourceSummarySet
+
+    @ResourceSummarySet.setter
+    def ResourceSummarySet(self, ResourceSummarySet):
+        self._ResourceSummarySet = ResourceSummarySet
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceSummarySet") is not None:
+            self._ResourceSummarySet = []
+            for item in params.get("ResourceSummarySet"):
+                obj = BillDistributionResourceSummary()
+                obj._deserialize(item)
+                self._ResourceSummarySet.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBillResourceSummaryRequest(AbstractModel):
     """DescribeBillResourceSummary request structure.
 
@@ -2439,6 +3864,11 @@ Note: To query the product codes used in the current month, call <a href="https:
         :type BusinessCode: str
         :param _PayerUin: The account ID of the payer, which is the unique identifier of a Tencent Cloud user. This account is allowed to query its own bills by default. If an organization admin account needs to query the self-pay bills of members, this field should be specified as the member account ID.
         :type PayerUin: str
+        :param _TagKey: Cost allocation tag key, which can be customized. This parameter can be used for querying bills after January 2021.
+        :type TagKey: str
+        :param _TagValue: Resource tag value. If it is left empty, there are no records with tag values set under this tag key.
+This parameter can be used for querying bills after January 2021.
+        :type TagValue: str
         """
         self._Offset = None
         self._Limit = None
@@ -2450,6 +3880,8 @@ Note: To query the product codes used in the current month, call <a href="https:
         self._PayMode = None
         self._BusinessCode = None
         self._PayerUin = None
+        self._TagKey = None
+        self._TagValue = None
 
     @property
     def Offset(self):
@@ -2531,6 +3963,22 @@ Note: To query the product codes used in the current month, call <a href="https:
     def PayerUin(self, PayerUin):
         self._PayerUin = PayerUin
 
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -2543,6 +3991,8 @@ Note: To query the product codes used in the current month, call <a href="https:
         self._PayMode = params.get("PayMode")
         self._BusinessCode = params.get("BusinessCode")
         self._PayerUin = params.get("PayerUin")
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3238,6 +4688,117 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBillSummaryForOrganizationRequest(AbstractModel):
+    """DescribeBillSummaryForOrganization request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: Bill month in the format of "yyyy-mm".
+        :type Month: str
+        :param _GroupType: Bill dimension. Valid values: `business`, `project`, `region`, `payMode`, and `tag`.
+        :type GroupType: str
+        :param _TagKey: Tag key. Pass in it when `GroupType` is `tag`.
+        :type TagKey: list of str
+        """
+        self._Month = None
+        self._GroupType = None
+        self._TagKey = None
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def GroupType(self):
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        self._GroupType = params.get("GroupType")
+        self._TagKey = params.get("TagKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillSummaryForOrganizationResponse(AbstractModel):
+    """DescribeBillSummaryForOrganization response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ready: Indicates whether the data is ready. Valid values: `0` (not ready), `1` (ready). If `Ready` is `0`, it indicates that the current UIN is initializing billing for the first time. Wait for 5-10 minutes and try again.
+        :type Ready: int
+        :param _SummaryDetail: Bills summarized by multiple dimensions.
+        :type SummaryDetail: list of SummaryDetail
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Ready = None
+        self._SummaryDetail = None
+        self._RequestId = None
+
+    @property
+    def Ready(self):
+        return self._Ready
+
+    @Ready.setter
+    def Ready(self, Ready):
+        self._Ready = Ready
+
+    @property
+    def SummaryDetail(self):
+        return self._SummaryDetail
+
+    @SummaryDetail.setter
+    def SummaryDetail(self, SummaryDetail):
+        self._SummaryDetail = SummaryDetail
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Ready = params.get("Ready")
+        if params.get("SummaryDetail") is not None:
+            self._SummaryDetail = []
+            for item in params.get("SummaryDetail"):
+                obj = SummaryDetail()
+                obj._deserialize(item)
+                self._SummaryDetail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBillSummaryRequest(AbstractModel):
     """DescribeBillSummary request structure.
 
@@ -3445,6 +5006,141 @@ class DescribeDosageCosDetailByDateResponse(AbstractModel):
                 obj = CosDetailSets()
                 obj._deserialize(item)
                 self._DetailSets.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTagListRequest(AbstractModel):
+    """DescribeTagList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.
+        :type Limit: int
+        :param _Offset: The number of entries returned at a time. The maximum value is `1000`.
+        :type Offset: int
+        :param _TagKey: Cost allocation tag key, used for fuzzy search.
+        :type TagKey: str
+        :param _Status: Tag type, used for tag filtering. Valid values: `0` (general tags), `1` (cost allocation tags). If it is not specified, all tag keys will be queried.
+        :type Status: int
+        :param _OrderType: Sorting order. Valid values: `asc` (ascending order), `desc` (descending order).
+        :type OrderType: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._TagKey = None
+        self._Status = None
+        self._OrderType = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def OrderType(self):
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._TagKey = params.get("TagKey")
+        self._Status = params.get("Status")
+        self._OrderType = params.get("OrderType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTagListResponse(AbstractModel):
+    """DescribeTagList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordNum: Total number of records.
+        :type RecordNum: int
+        :param _Data: Tag information.
+        :type Data: list of TagDataInfo
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RecordNum = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def RecordNum(self):
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordNum = params.get("RecordNum")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = TagDataInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -3850,6 +5546,372 @@ Note: This field may return `null`, indicating that no valid value was found.
                 obj._deserialize(item)
                 self._UsageRecords.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class DistributionBillDetail(AbstractModel):
+    """Objects of reseller bill details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessCodeName: Product name: The name of a Tencent Cloud product purchased by the user, such as CVM.
+        :type BusinessCodeName: str
+        :param _ProductCodeName: Subproduct name: The subcategory of a Tencent Cloud product purchased by the user, such as CVM - Standard S1.
+        :type ProductCodeName: str
+        :param _PayModeName: Billing mode: The billing mode, which can be monthly subscription or pay-as-you-go.
+        :type PayModeName: str
+        :param _ProjectName: Project Name: The project to which a resource belongs, which is user-designated. If a resource has not been assigned to a project, it will automatically belong to the default project.
+        :type ProjectName: str
+        :param _RegionName: Region: The region of a resource, e.g. South China (Guangzhou).
+        :type RegionName: str
+        :param _ZoneName: Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3.
+        :type ZoneName: str
+        :param _ResourceId: Instance ID: The object ID of a billed resource, such as a CVM instance ID. This object ID may vary due to various forms and contents of resources in different products.
+        :type ResourceId: str
+        :param _ResourceName: Instance name: The resource name set by the user in the console. If it is not set, it will be empty by default.
+        :type ResourceName: str
+        :param _ActionTypeName: Transaction type, which can be monthly subscription purchase, monthly subscription renewal, pay-as-you-go deduction, etc.
+        :type ActionTypeName: str
+        :param _OrderId: Order ID: The ID of a monthly subscription order.
+        :type OrderId: str
+        :param _BillId: Transaction ID: The ID of a settlement bill.
+        :type BillId: str
+        :param _PayTime: Deduction time: The settlement cost deduction time.
+        :type PayTime: str
+        :param _FeeBeginTime: Usage start time: The time at which product or service usage starts.
+        :type FeeBeginTime: str
+        :param _FeeEndTime: Usage end time: The time at which product or service usage ends.
+        :type FeeEndTime: str
+        :param _ComponentSet: List of components.
+        :type ComponentSet: list of BillDetailComponent
+        :param _OwnerUin: Owner account ID: The account ID of the actual resource user.
+        :type OwnerUin: str
+        :param _OperateUin: Operator account ID: The account or role ID of the operator who purchases or activates a resource.
+        :type OperateUin: str
+        :param _Tags: Tag information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of BillTagInfo
+        :param _BusinessCode: Product code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BusinessCode: str
+        :param _ProductCode: Subproduct code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProductCode: str
+        :param _ActionType: Transaction type code.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ActionType: str
+        :param _RegionId: Region ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RegionId: str
+        :param _ProjectId: Project ID.
+        :type ProjectId: int
+        :param _PriceInfo: Price attribute: A set of attributes which will determine the price of a component, apart from unit price and usage duration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PriceInfo: list of str
+        :param _AssociatedOrder: Associated transaction document ID: The ID of the document associated with a transaction, such as a write-off order, the original order showing a deduction error during first settlement, a restructured order, or the original purchase order corresponding to a refund order.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AssociatedOrder: :class:`tencentcloud.billing.v20180709.models.BillDetailAssociatedOrder`
+        :param _Formula: Calculation formula: The detailed calculation formula for a specific transaction type, such as refund or configuration change.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Formula: str
+        :param _FormulaUrl: Billing rules: Official website links for detailed billing rules of each product.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FormulaUrl: str
+        """
+        self._BusinessCodeName = None
+        self._ProductCodeName = None
+        self._PayModeName = None
+        self._ProjectName = None
+        self._RegionName = None
+        self._ZoneName = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._ActionTypeName = None
+        self._OrderId = None
+        self._BillId = None
+        self._PayTime = None
+        self._FeeBeginTime = None
+        self._FeeEndTime = None
+        self._ComponentSet = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._Tags = None
+        self._BusinessCode = None
+        self._ProductCode = None
+        self._ActionType = None
+        self._RegionId = None
+        self._ProjectId = None
+        self._PriceInfo = None
+        self._AssociatedOrder = None
+        self._Formula = None
+        self._FormulaUrl = None
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def ProductCodeName(self):
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def PayModeName(self):
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ActionTypeName(self):
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def BillId(self):
+        return self._BillId
+
+    @BillId.setter
+    def BillId(self, BillId):
+        self._BillId = BillId
+
+    @property
+    def PayTime(self):
+        return self._PayTime
+
+    @PayTime.setter
+    def PayTime(self, PayTime):
+        self._PayTime = PayTime
+
+    @property
+    def FeeBeginTime(self):
+        return self._FeeBeginTime
+
+    @FeeBeginTime.setter
+    def FeeBeginTime(self, FeeBeginTime):
+        self._FeeBeginTime = FeeBeginTime
+
+    @property
+    def FeeEndTime(self):
+        return self._FeeEndTime
+
+    @FeeEndTime.setter
+    def FeeEndTime(self, FeeEndTime):
+        self._FeeEndTime = FeeEndTime
+
+    @property
+    def ComponentSet(self):
+        return self._ComponentSet
+
+    @ComponentSet.setter
+    def ComponentSet(self, ComponentSet):
+        self._ComponentSet = ComponentSet
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def PriceInfo(self):
+        return self._PriceInfo
+
+    @PriceInfo.setter
+    def PriceInfo(self, PriceInfo):
+        self._PriceInfo = PriceInfo
+
+    @property
+    def AssociatedOrder(self):
+        return self._AssociatedOrder
+
+    @AssociatedOrder.setter
+    def AssociatedOrder(self, AssociatedOrder):
+        self._AssociatedOrder = AssociatedOrder
+
+    @property
+    def Formula(self):
+        return self._Formula
+
+    @Formula.setter
+    def Formula(self, Formula):
+        self._Formula = Formula
+
+    @property
+    def FormulaUrl(self):
+        return self._FormulaUrl
+
+    @FormulaUrl.setter
+    def FormulaUrl(self, FormulaUrl):
+        self._FormulaUrl = FormulaUrl
+
+
+    def _deserialize(self, params):
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._ProductCodeName = params.get("ProductCodeName")
+        self._PayModeName = params.get("PayModeName")
+        self._ProjectName = params.get("ProjectName")
+        self._RegionName = params.get("RegionName")
+        self._ZoneName = params.get("ZoneName")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        self._ActionTypeName = params.get("ActionTypeName")
+        self._OrderId = params.get("OrderId")
+        self._BillId = params.get("BillId")
+        self._PayTime = params.get("PayTime")
+        self._FeeBeginTime = params.get("FeeBeginTime")
+        self._FeeEndTime = params.get("FeeEndTime")
+        if params.get("ComponentSet") is not None:
+            self._ComponentSet = []
+            for item in params.get("ComponentSet"):
+                obj = BillDetailComponent()
+                obj._deserialize(item)
+                self._ComponentSet.append(obj)
+        self._OwnerUin = params.get("OwnerUin")
+        self._OperateUin = params.get("OperateUin")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = BillTagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._BusinessCode = params.get("BusinessCode")
+        self._ProductCode = params.get("ProductCode")
+        self._ActionType = params.get("ActionType")
+        self._RegionId = params.get("RegionId")
+        self._ProjectId = params.get("ProjectId")
+        self._PriceInfo = params.get("PriceInfo")
+        if params.get("AssociatedOrder") is not None:
+            self._AssociatedOrder = BillDetailAssociatedOrder()
+            self._AssociatedOrder._deserialize(params.get("AssociatedOrder"))
+        self._Formula = params.get("Formula")
+        self._FormulaUrl = params.get("FormulaUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ExcludedProducts(AbstractModel):
@@ -4496,6 +6558,64 @@ Note: this field may return `null`, indicating that no valid values can be obtai
     def _deserialize(self, params):
         self._RealTotalCost = params.get("RealTotalCost")
         self._TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagDataInfo(AbstractModel):
+    """Tag information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: Cost allocation tag key.
+        :type TagKey: str
+        :param _Status: Tag type. Valid values: `0` (general tags), `1` (cost allocation tags).
+        :type Status: int
+        :param _UpdateTime: Time to set the cost allocation tag. It will not be returned if `Status` is `0`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        """
+        self._TagKey = None
+        self._Status = None
+        self._UpdateTime = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._Status = params.get("Status")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

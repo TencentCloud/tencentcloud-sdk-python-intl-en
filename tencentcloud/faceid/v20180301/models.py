@@ -275,10 +275,11 @@ class ApplyWebVerificationBizTokenIntlRequest(AbstractModel):
         r"""
         :param _CompareImageBase64: The Base64-encoded string (max 8 MB in size) of the photo to be compared.
         :type CompareImageBase64: str
-        :param _RedirectURL: The web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. Example: `https://www.tencentcloud.com/products/faceid`.
-After the verification process is completed, the `BizToken` of this process will be spliced to the callback URL in the format of `https://www.tencentcloud.com/products/faceid?token={BizToken}` before redirect.
+        :param _RedirectURL: The web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. 
+Example: https://www.tencentcloud.com/products/faceid.
+After the verification process is completed, the BizToken of this process will be spliced to the callback URL in the format of https://www.tencentcloud.com/products/faceid?token={BizToken} before redirect.
         :type RedirectURL: str
-        :param _Extra: The passthrough parameter of the business, max 1,000 characters, which will be returned in `GetWebVerificationResultIntl`.
+        :param _Extra: The passthrough parameter of the business, max 1,000 characters, which will be returned in GetWebVerificationResultIntl.
         :type Extra: str
         :param _Config: The parameter control the page configuration.
         :type Config: :class:`tencentcloud.faceid.v20180301.models.WebVerificationConfigIntl`
@@ -345,9 +346,9 @@ class ApplyWebVerificationBizTokenIntlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VerificationUrl: The URL of this verification process, which will be returned to the frontend of the browser for starting the process.
+        :param _VerificationUrl: The token identifying this web-based verification process, valid for 7,200s after issuance. It is required for getting the result after the verification process is completed.
         :type VerificationUrl: str
-        :param _BizToken: The token identifying this web-based verification process, valid for 7,200s after issuance. It is required for getting the result after the verification process is completed.
+        :param _BizToken: The token for the web-based verification, which is generated using the ApplyWebVerificationBizTokenIntl API.
         :type BizToken: str
         :param _VerificationURL: The verification URL to be opened with a browser to start the verification process.
         :type VerificationURL: str
@@ -694,6 +695,172 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CompareFaceLivenessRequest(AbstractModel):
+    """CompareFaceLiveness request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageBase64: Base64 value of photos used for face comparison. 
+The size of image data encoded by Base64 shall not exceed 3M, only jpg and png are supported. 
+Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. 
+Example values: "/9j/4AAQSk... (total length:61944)KiiK//2Q=="
+        :type ImageBase64: str
+        :param _VideoBase64: Base64 value of photos used for face comparison. 
+The size of image data encoded by Base64 shall not exceed 3M, only jpg and png are supported. 
+Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. 
+Example values: "/9j/4AAQSk... (total length:61944)KiiK//2Q=="
+        :type VideoBase64: str
+        :param _LivenessType: The liveness detection type. Valid values: `LIP`, `ACTION`, and `SILENT`.
+`LIP`: Numeric mode; `ACTION`: Motion mode; `SILENT`: silent mode. Select one of them.
+Example value: "SILENT"
+        :type LivenessType: str
+        :param _ValidateData: When the “LivenessType” parameter is “ACTION”, it must be specified.
+It is used to control the action sequence. Action types: 
+1 (open mouth)
+2 (blink)
+3 (nod)
+4 (shake head). 
+Select one or two from the four actions.
+Example of passing single action parameter: "1".
+Example of passing multiple action parameters: "4,2".
+When the “LivenessType” parameter value is “SILENT”, it shall be unspecified.
+Example value: ""
+        :type ValidateData: str
+        """
+        self._ImageBase64 = None
+        self._VideoBase64 = None
+        self._LivenessType = None
+        self._ValidateData = None
+
+    @property
+    def ImageBase64(self):
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def VideoBase64(self):
+        return self._VideoBase64
+
+    @VideoBase64.setter
+    def VideoBase64(self, VideoBase64):
+        self._VideoBase64 = VideoBase64
+
+    @property
+    def LivenessType(self):
+        return self._LivenessType
+
+    @LivenessType.setter
+    def LivenessType(self, LivenessType):
+        self._LivenessType = LivenessType
+
+    @property
+    def ValidateData(self):
+        return self._ValidateData
+
+    @ValidateData.setter
+    def ValidateData(self, ValidateData):
+        self._ValidateData = ValidateData
+
+
+    def _deserialize(self, params):
+        self._ImageBase64 = params.get("ImageBase64")
+        self._VideoBase64 = params.get("VideoBase64")
+        self._LivenessType = params.get("LivenessType")
+        self._ValidateData = params.get("ValidateData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CompareFaceLivenessResponse(AbstractModel):
+    """CompareFaceLiveness response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Service error code. When the return value is "Success", it indicates that the liveness detection and face comparison succeeded. It is determined that they are the same person. When the return value is "FailedOperation.CompareLowSimilarity", it indicates that the liveness detection succeeded, and the face comparison similarity is lower than 70 points. It is determined that they are not the same person. For other error cases, please refer to Liveness Face Comparison (Pure API) Error Code (https://www.tencentcloud.com/document/product/1061/55390). 
+Example Value: "Success".
+        :type Result: str
+        :param _Description: Description of business results. 
+Example value: "Success"
+        :type Description: str
+        :param _Sim: This value is valid when the “Result” parameter is "Success" or "FailedOperation.CompareLowSimilarity." 
+This value indicates the similarity of face comparison. Value range: [0.00, 100.00]. The false pass rate for threshold 70 is 1 in 1,000, and the false pass rate for threshold 80 is 1 in 1,000. 
+Example value: 80.00
+        :type Sim: float
+        :param _BestFrameBase64: The optimal screenshot of the video after verification is the value encoded by BASE64, jpg format. 
+Note: This field may return “null”, indicating that no valid value can be obtained. 
+Example values: "/9j/4AAQSk... (total length:142036)s97n//2Q=="
+        :type BestFrameBase64: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._Description = None
+        self._Sim = None
+        self._BestFrameBase64 = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Sim(self):
+        return self._Sim
+
+    @Sim.setter
+    def Sim(self, Sim):
+        self._Sim = Sim
+
+    @property
+    def BestFrameBase64(self):
+        return self._BestFrameBase64
+
+    @BestFrameBase64.setter
+    def BestFrameBase64(self, BestFrameBase64):
+        self._BestFrameBase64 = BestFrameBase64
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._Description = params.get("Description")
+        self._Sim = params.get("Sim")
+        self._BestFrameBase64 = params.get("BestFrameBase64")
+        self._RequestId = params.get("RequestId")
 
 
 class CompareResult(AbstractModel):
@@ -2649,13 +2816,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class WebVerificationConfigIntl(AbstractModel):
-    """
+    """eKYC Web related configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _AutoSkip: Whether to automatically redirect to `RedirectUrl` after successful verification. Default value: `false`.
+        :param _AutoSkip: Whether to automatically redirect to RedirectUrl after successful verification. Default value: false.
         :type AutoSkip: bool
         """
         self._AutoSkip = None

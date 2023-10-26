@@ -118,6 +118,29 @@ class FaceidClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CompareFaceLiveness(self, request):
+        """This interface supports judgment of real person and photo comparison to verify the user's identity online. By passing the video and photo into the interface, it will first judge whether the person in the video is real. If yes, it judges whether the person in the video is the same one as the uploaded photo and returns authentication result.
+
+        :param request: Request instance for CompareFaceLiveness.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.CompareFaceLivenessRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.CompareFaceLivenessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CompareFaceLiveness", params, headers=headers)
+            response = json.loads(body)
+            model = models.CompareFaceLivenessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateUploadUrl(self, request):
         """This API is used to generate a temporary `UploadUrl` for uploading resource files (with the `HTTP PUT` method). After resource upload, `ResourceUrl` will be passed to the `TargetAction` API to complete the resource passing (specific fields vary by case).
         The data will be stored in a COS bucket in the region specified by the parameter `Region` for two hours.

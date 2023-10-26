@@ -3004,6 +3004,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ProcessMedia(self, request):
+        """
+
+        :param request: Request instance for ProcessMedia.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ProcessMediaRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ProcessMedia", params, headers=headers)
+            response = json.loads(body)
+            model = models.ProcessMediaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ProcessMediaByProcedure(self, request):
         """This API is used to start a task flow on a video.
         There are two ways to create a task flow template:

@@ -11084,7 +11084,7 @@ class CloneCDNDomainRequest(AbstractModel):
         :type Domain: str
         :param _ReferenceDomain: The cloned domain.
         :type ReferenceDomain: str
-        :param _SubAppId: VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.
+        :param _SubAppId: VOD[Subapplication](https://www.tencentcloud.com/document/product/266/33987) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.
         :type SubAppId: int
         """
         self._Domain = None
@@ -13473,7 +13473,7 @@ class CreateCDNDomainRequest(AbstractModel):
         :type Domain: str
         :param _Config: Domain configuration.
         :type Config: :class:`tencentcloud.vod.v20180717.models.CDNDomainConfig`
-        :param _SubAppId: VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.
+        :param _SubAppId: VOD[Subapplication](https://www.tencentcloud.com/zh/document/product/266/33987) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.
         :type SubAppId: int
         """
         self._Domain = None
@@ -40662,6 +40662,205 @@ class ProcessMediaByUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ProcessMediaRequest(AbstractModel):
+    """ProcessMedia request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: Media file ID, i.e., the globally unique ID of a file in VOD assigned by the VOD backend after successful upload. This field can be obtained through the [video upload completion event notification](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) or [VOD Console](https://console.cloud.tencent.com/vod/media).
+        :type FileId: str
+        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param _MediaProcessTask: Parameter of video processing task.
+        :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
+        :param _AiContentReviewTask: The information of the audio/video moderation task\*.
+This parameter is <font color=red>\*no longer recommended</font>. Please use [ReviewAudioVideo](https://intl.cloud.tencent.com/document/api/266/80283?from_cn_redirect=1) or [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1) instead.
+        :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
+        :param _AiAnalysisTask: Video content analysis task parameter.
+        :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
+        :param _AiRecognitionTask: Type parameter of video content recognition task.
+        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
+        :param _TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.
+        :type TasksPriority: int
+        :param _TasksNotifyMode: Notification mode for task flow status change. Valid values: Finish, Change, None. If this parameter is left empty, `Finish` will be used.
+        :type TasksNotifyMode: str
+        :param _SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        :param _SessionId: Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.
+        :type SessionId: str
+        :param _ExtInfo: Reserved field for special purposes.
+        :type ExtInfo: str
+        """
+        self._FileId = None
+        self._SubAppId = None
+        self._MediaProcessTask = None
+        self._AiContentReviewTask = None
+        self._AiAnalysisTask = None
+        self._AiRecognitionTask = None
+        self._TasksPriority = None
+        self._TasksNotifyMode = None
+        self._SessionContext = None
+        self._SessionId = None
+        self._ExtInfo = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def MediaProcessTask(self):
+        return self._MediaProcessTask
+
+    @MediaProcessTask.setter
+    def MediaProcessTask(self, MediaProcessTask):
+        self._MediaProcessTask = MediaProcessTask
+
+    @property
+    def AiContentReviewTask(self):
+        return self._AiContentReviewTask
+
+    @AiContentReviewTask.setter
+    def AiContentReviewTask(self, AiContentReviewTask):
+        self._AiContentReviewTask = AiContentReviewTask
+
+    @property
+    def AiAnalysisTask(self):
+        return self._AiAnalysisTask
+
+    @AiAnalysisTask.setter
+    def AiAnalysisTask(self, AiAnalysisTask):
+        self._AiAnalysisTask = AiAnalysisTask
+
+    @property
+    def AiRecognitionTask(self):
+        return self._AiRecognitionTask
+
+    @AiRecognitionTask.setter
+    def AiRecognitionTask(self, AiRecognitionTask):
+        self._AiRecognitionTask = AiRecognitionTask
+
+    @property
+    def TasksPriority(self):
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+    @property
+    def TasksNotifyMode(self):
+        return self._TasksNotifyMode
+
+    @TasksNotifyMode.setter
+    def TasksNotifyMode(self, TasksNotifyMode):
+        self._TasksNotifyMode = TasksNotifyMode
+
+    @property
+    def SessionContext(self):
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def ExtInfo(self):
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._SubAppId = params.get("SubAppId")
+        if params.get("MediaProcessTask") is not None:
+            self._MediaProcessTask = MediaProcessTaskInput()
+            self._MediaProcessTask._deserialize(params.get("MediaProcessTask"))
+        if params.get("AiContentReviewTask") is not None:
+            self._AiContentReviewTask = AiContentReviewTaskInput()
+            self._AiContentReviewTask._deserialize(params.get("AiContentReviewTask"))
+        if params.get("AiAnalysisTask") is not None:
+            self._AiAnalysisTask = AiAnalysisTaskInput()
+            self._AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("AiRecognitionTask") is not None:
+            self._AiRecognitionTask = AiRecognitionTaskInput()
+            self._AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
+        self._TasksPriority = params.get("TasksPriority")
+        self._TasksNotifyMode = params.get("TasksNotifyMode")
+        self._SessionContext = params.get("SessionContext")
+        self._SessionId = params.get("SessionId")
+        self._ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessMediaResponse(AbstractModel):
+    """ProcessMedia response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID
+        :type TaskId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ProhibitedAsrReviewTemplateInfo(AbstractModel):
     """Control parameter of prohibited information detection in speech task
 
@@ -50207,23 +50406,15 @@ class TerrorismConfigureInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImgReviewInfo: Parameters for recognition of terrorism content in images
-Note: This field may return `null`, indicating that no valid value can be found.
-        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismImgReviewTemplateInfo`
         :param _OcrReviewInfo: Parameters for OCR-based recognition of terrorism content
 Note: This field may return `null`, indicating that no valid value can be found.
         :type OcrReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismOcrReviewTemplateInfo`
+        :param _ImgReviewInfo: Parameters for recognition of terrorism content in images
+Note: This field may return `null`, indicating that no valid value can be found.
+        :type ImgReviewInfo: :class:`tencentcloud.vod.v20180717.models.TerrorismImgReviewTemplateInfo`
         """
-        self._ImgReviewInfo = None
         self._OcrReviewInfo = None
-
-    @property
-    def ImgReviewInfo(self):
-        return self._ImgReviewInfo
-
-    @ImgReviewInfo.setter
-    def ImgReviewInfo(self, ImgReviewInfo):
-        self._ImgReviewInfo = ImgReviewInfo
+        self._ImgReviewInfo = None
 
     @property
     def OcrReviewInfo(self):
@@ -50233,14 +50424,22 @@ Note: This field may return `null`, indicating that no valid value can be found.
     def OcrReviewInfo(self, OcrReviewInfo):
         self._OcrReviewInfo = OcrReviewInfo
 
+    @property
+    def ImgReviewInfo(self):
+        return self._ImgReviewInfo
+
+    @ImgReviewInfo.setter
+    def ImgReviewInfo(self, ImgReviewInfo):
+        self._ImgReviewInfo = ImgReviewInfo
+
 
     def _deserialize(self, params):
-        if params.get("ImgReviewInfo") is not None:
-            self._ImgReviewInfo = TerrorismImgReviewTemplateInfo()
-            self._ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
         if params.get("OcrReviewInfo") is not None:
             self._OcrReviewInfo = TerrorismOcrReviewTemplateInfo()
             self._OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+        if params.get("ImgReviewInfo") is not None:
+            self._ImgReviewInfo = TerrorismImgReviewTemplateInfo()
+            self._ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

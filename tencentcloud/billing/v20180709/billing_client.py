@@ -26,6 +26,52 @@ class BillingClient(AbstractClient):
     _service = 'billing'
 
 
+    def CreateAllocationTag(self, request):
+        """This API is used to batch set cost allocation tags.
+
+        :param request: Request instance for CreateAllocationTag.
+        :type request: :class:`tencentcloud.billing.v20180709.models.CreateAllocationTagRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.CreateAllocationTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAllocationTag", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAllocationTagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAllocationTag(self, request):
+        """u200cThis API is used to batch cancel cost allocation tags.
+
+        :param request: Request instance for DeleteAllocationTag.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationTagRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DeleteAllocationTagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAllocationTag", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAllocationTagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAccountBalance(self, request):
         """This API is used to check the Tencent Cloud account balance.
 
@@ -50,8 +96,10 @@ class BillingClient(AbstractClient):
 
 
     def DescribeBillDetail(self, request):
-        """This API is used to get bill details.
-        Notes: 1. The API request may fail due to network instability or other network exceptions. In this case, we recommend you manually retry the request when the API request fails. 2. If the volume of your bill data is high (for example, if over 200 thousand bill entries are generated for a month), querying bill data via APIs may be slow. We recommend you enable bill storage so that you can obtain bill files from COS buckets for analysis. For details, see [Saving Bills to COS](https://intl.cloud.tencent.com/document/product/555/61275?from_cn_redirect=1).
+        """u200cThis API is used to get bill details.
+        Note:
+        1. The API request may fail due to network instability or other exceptions. In this case, we recommend you manually retry the request when the API request fails.
+        2.If the volume of your bill data is high (for example, if over 200 thousand bill entries are generated for a month), bill data query via APIs may be slow. We recommend you enable bill storage so that you can obtain bill files from COS buckets for analysis. For details, see [Saving Bills to COS](https://intl.cloud.tencent.com/document/product/555/61275?from_cn_redirect=1).
 
         :param request: Request instance for DescribeBillDetail.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillDetailRequest`
@@ -73,8 +121,55 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBillDetailForOrganization(self, request):
+        """This API is used to get pay-on-behalf bills of the admin account (bill details).
+        Note: The API request may fail due to network instability or other exceptions. In this case, we recommend you manually retry the request when the API request fails.
+
+        :param request: Request instance for DescribeBillDetailForOrganization.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillDetailForOrganizationRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillDetailForOrganizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillDetailForOrganization", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillDetailForOrganizationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBillDownloadUrl(self, request):
+        """This API is used to get bill download URLs for L0, L1, L2, and L3 bills and bill packs.
+
+        :param request: Request instance for DescribeBillDownloadUrl.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillDownloadUrlRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillDownloadUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillDownloadUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillDownloadUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBillResourceSummary(self, request):
-        """This API is used to query bill resources summary.
+        """This API is used to get the bill summarized by instance.
 
         :param request: Request instance for DescribeBillResourceSummary.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillResourceSummaryRequest`
@@ -87,6 +182,29 @@ class BillingClient(AbstractClient):
             body = self.call("DescribeBillResourceSummary", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBillResourceSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBillResourceSummaryForOrganization(self, request):
+        """This API is used to get pay-on-behalf bills of the admin account (bills by instance).
+
+        :param request: Request instance for DescribeBillResourceSummaryForOrganization.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillResourceSummaryForOrganizationRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillResourceSummaryForOrganizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillResourceSummaryForOrganization", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillResourceSummaryForOrganizationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -234,6 +352,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBillSummaryForOrganization(self, request):
+        """This API is used to get bills summarized by product, project, region, billing mode, and tag by passing in parameters.
+
+        :param request: Request instance for DescribeBillSummaryForOrganization.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryForOrganizationRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillSummaryForOrganizationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillSummaryForOrganization", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillSummaryForOrganizationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDosageCosDetailByDate(self, request):
         """This API is used to query COS usage details.
 
@@ -248,6 +389,29 @@ class BillingClient(AbstractClient):
             body = self.call("DescribeDosageCosDetailByDate", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDosageCosDetailByDateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTagList(self, request):
+        """This API is used to get cost allocation tags.
+
+        :param request: Request instance for DescribeTagList.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeTagListRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeTagListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTagList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTagListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
