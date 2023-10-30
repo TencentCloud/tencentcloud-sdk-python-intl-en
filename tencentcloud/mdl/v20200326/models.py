@@ -889,6 +889,8 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         :type EventNotifySettings: :class:`tencentcloud.mdl.v20200326.models.EventNotifySetting`
         :param _InputLossBehavior: Complement the last video frame settings.
         :type InputLossBehavior: :class:`tencentcloud.mdl.v20200326.models.InputLossBehaviorInfo`
+        :param _PipelineInputSettings: Pipeline configuration.
+        :type PipelineInputSettings: :class:`tencentcloud.mdl.v20200326.models.PipelineInputSettingsInfo`
         """
         self._Name = None
         self._AttachedInputs = None
@@ -899,6 +901,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         self._PlanSettings = None
         self._EventNotifySettings = None
         self._InputLossBehavior = None
+        self._PipelineInputSettings = None
 
     @property
     def Name(self):
@@ -972,6 +975,14 @@ class CreateStreamLiveChannelRequest(AbstractModel):
     def InputLossBehavior(self, InputLossBehavior):
         self._InputLossBehavior = InputLossBehavior
 
+    @property
+    def PipelineInputSettings(self):
+        return self._PipelineInputSettings
+
+    @PipelineInputSettings.setter
+    def PipelineInputSettings(self, PipelineInputSettings):
+        self._PipelineInputSettings = PipelineInputSettings
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1014,6 +1025,9 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         if params.get("InputLossBehavior") is not None:
             self._InputLossBehavior = InputLossBehaviorInfo()
             self._InputLossBehavior._deserialize(params.get("InputLossBehavior"))
+        if params.get("PipelineInputSettings") is not None:
+            self._PipelineInputSettings = PipelineInputSettingsInfo()
+            self._PipelineInputSettings._deserialize(params.get("PipelineInputSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3752,8 +3766,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _SDMCSettings: SDMC key configuration. This parameter is used when `Scheme` is set to `SDMCDRM`.
 Note: This field may return `null`, indicating that no valid value was found.
         :type SDMCSettings: :class:`tencentcloud.mdl.v20200326.models.SDMCSettingsInfo`
-        :param _DrmType: The DRM type. Valid values: `FAIRPLAY`, `WIDEVINE`, `AES128`. For HLS, this can be `FAIRPLAY` or `AES128`. For DASH, this can only be `WIDEVINE`.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _DrmType: The DRM type. Valid values: `FAIRPLAY`, `WIDEVINE`, `AES128`, `PLAYREADY`. For HLS, this can be `FAIRPLAY` or `AES128` or `PLAYREADY`. For DASH, valid values: `WIDEVINE` or `PLAYREADY`. 
         :type DrmType: str
         """
         self._State = None
@@ -4299,12 +4312,16 @@ Currently, fMP4 segments do not support DRM or time shifting.
         :type SegmentType: str
         :param _H265PackageType: The HLS package type when the H.265 codec is used. Valid values: `hvc1`, `hev1` (default).
         :type H265PackageType: str
-        :param _LowLatency: 
+        :param _LowLatency: Whether to enable low latency 0:CLOSE, 1:OPEN, default value: 0.
         :type LowLatency: int
-        :param _PartialSegmentDuration: 
+        :param _PartialSegmentDuration: Low latency slice size, unit ms. Value range: integer [200-HlsRemuxSettings.SegmentDuration] Default value: 500ms.
         :type PartialSegmentDuration: int
-        :param _PartialSegmentPlaySite: 
+        :param _PartialSegmentPlaySite: Low latency slice playback position, unit ms. Value range: integer [3*HlsRemuxSettings.PartiSegmentDuration - 3*HlsRemuxSettings.SegmentDuration], Default value: 3*HlsRemuxSettings.PartiSegmentDuration.
         :type PartialSegmentPlaySite: int
+        :param _StreamOrder: Hls main m3u8 file sorting rules by bitrate, optional values: 1: video bitrate ascending order; 2: video bitrate descending order. Default value: 1.
+        :type StreamOrder: int
+        :param _VideoResolution: Whether the Hls main m3u8 file contains resolution information, optional values: 1: INCLUDE includes video resolution; 2: EXCLUDE does not include video resolution. Default value: 1.
+        :type VideoResolution: int
         """
         self._SegmentDuration = None
         self._SegmentNumber = None
@@ -4316,6 +4333,8 @@ Currently, fMP4 segments do not support DRM or time shifting.
         self._LowLatency = None
         self._PartialSegmentDuration = None
         self._PartialSegmentPlaySite = None
+        self._StreamOrder = None
+        self._VideoResolution = None
 
     @property
     def SegmentDuration(self):
@@ -4397,6 +4416,22 @@ Currently, fMP4 segments do not support DRM or time shifting.
     def PartialSegmentPlaySite(self, PartialSegmentPlaySite):
         self._PartialSegmentPlaySite = PartialSegmentPlaySite
 
+    @property
+    def StreamOrder(self):
+        return self._StreamOrder
+
+    @StreamOrder.setter
+    def StreamOrder(self, StreamOrder):
+        self._StreamOrder = StreamOrder
+
+    @property
+    def VideoResolution(self):
+        return self._VideoResolution
+
+    @VideoResolution.setter
+    def VideoResolution(self, VideoResolution):
+        self._VideoResolution = VideoResolution
+
 
     def _deserialize(self, params):
         self._SegmentDuration = params.get("SegmentDuration")
@@ -4409,6 +4444,8 @@ Currently, fMP4 segments do not support DRM or time shifting.
         self._LowLatency = params.get("LowLatency")
         self._PartialSegmentDuration = params.get("PartialSegmentDuration")
         self._PartialSegmentPlaySite = params.get("PartialSegmentPlaySite")
+        self._StreamOrder = params.get("StreamOrder")
+        self._VideoResolution = params.get("VideoResolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5070,6 +5107,8 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         :type EventNotifySettings: :class:`tencentcloud.mdl.v20200326.models.EventNotifySetting`
         :param _InputLossBehavior: Complement the last video frame settings.
         :type InputLossBehavior: :class:`tencentcloud.mdl.v20200326.models.InputLossBehaviorInfo`
+        :param _PipelineInputSettings: Pipeline configuration.
+        :type PipelineInputSettings: :class:`tencentcloud.mdl.v20200326.models.PipelineInputSettingsInfo`
         """
         self._Id = None
         self._Name = None
@@ -5081,6 +5120,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         self._PlanSettings = None
         self._EventNotifySettings = None
         self._InputLossBehavior = None
+        self._PipelineInputSettings = None
 
     @property
     def Id(self):
@@ -5162,6 +5202,14 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
     def InputLossBehavior(self, InputLossBehavior):
         self._InputLossBehavior = InputLossBehavior
 
+    @property
+    def PipelineInputSettings(self):
+        return self._PipelineInputSettings
+
+    @PipelineInputSettings.setter
+    def PipelineInputSettings(self, PipelineInputSettings):
+        self._PipelineInputSettings = PipelineInputSettings
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -5205,6 +5253,9 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         if params.get("InputLossBehavior") is not None:
             self._InputLossBehavior = InputLossBehaviorInfo()
             self._InputLossBehavior._deserialize(params.get("InputLossBehavior"))
+        if params.get("PipelineInputSettings") is not None:
+            self._PipelineInputSettings = PipelineInputSettingsInfo()
+            self._PipelineInputSettings._deserialize(params.get("PipelineInputSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5668,6 +5719,39 @@ class OutputsStatistics(AbstractModel):
                 obj = PipelineOutputStatistics()
                 obj._deserialize(item)
                 self._Pipeline1.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PipelineInputSettingsInfo(AbstractModel):
+    """Pipeline failover information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FaultBehavior: Pipeline failover configuration, the valid value is: 1.PIPELINE_FAILOVER (channels are mutually failover); 2.PIPELINE_FILLING (channels fill in themselves). Default value: PIPELINE_FILLING. The specific content is specified by FaultBehavior.
+        :type FaultBehavior: str
+        """
+        self._FaultBehavior = None
+
+    @property
+    def FaultBehavior(self):
+        return self._FaultBehavior
+
+    @FaultBehavior.setter
+    def FaultBehavior(self, FaultBehavior):
+        self._FaultBehavior = FaultBehavior
+
+
+    def _deserialize(self, params):
+        self._FaultBehavior = params.get("FaultBehavior")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7009,6 +7093,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         :type EventNotifySettings: :class:`tencentcloud.mdl.v20200326.models.EventNotifySetting`
         :param _InputLossBehavior: Supplement the last video frame configuration settings.
         :type InputLossBehavior: :class:`tencentcloud.mdl.v20200326.models.InputLossBehaviorInfo`
+        :param _PipelineInputSettings: Pipeline configuration.
+        :type PipelineInputSettings: :class:`tencentcloud.mdl.v20200326.models.PipelineInputSettingsInfo`
         """
         self._Id = None
         self._State = None
@@ -7021,6 +7107,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._PlanSettings = None
         self._EventNotifySettings = None
         self._InputLossBehavior = None
+        self._PipelineInputSettings = None
 
     @property
     def Id(self):
@@ -7110,6 +7197,14 @@ Note: This field may return `null`, indicating that no valid value was found.
     def InputLossBehavior(self, InputLossBehavior):
         self._InputLossBehavior = InputLossBehavior
 
+    @property
+    def PipelineInputSettings(self):
+        return self._PipelineInputSettings
+
+    @PipelineInputSettings.setter
+    def PipelineInputSettings(self, PipelineInputSettings):
+        self._PipelineInputSettings = PipelineInputSettings
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -7154,6 +7249,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         if params.get("InputLossBehavior") is not None:
             self._InputLossBehavior = InputLossBehaviorInfo()
             self._InputLossBehavior._deserialize(params.get("InputLossBehavior"))
+        if params.get("PipelineInputSettings") is not None:
+            self._PipelineInputSettings = PipelineInputSettingsInfo()
+            self._PipelineInputSettings._deserialize(params.get("PipelineInputSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7537,8 +7635,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param _PlayDomain: Domain name bound for time shifting
 Note: This field may return `null`, indicating that no valid value was found.
         :type PlayDomain: str
-        :param _StartoverWindow: Allowable time-shift period (s). Value range: [600, 1209600]. Default value: 300
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _StartoverWindow: Allowable time-shift period (s). Value range: [300, 2592000]. Default value: 300Note: This field may return `null`, indicating that no valid value was found.
         :type StartoverWindow: int
         """
         self._State = None
