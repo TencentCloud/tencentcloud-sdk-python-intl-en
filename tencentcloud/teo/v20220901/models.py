@@ -3131,10 +3131,21 @@ class CreateAccelerationDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _OwnershipVerification: 
+        :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self._OwnershipVerification = None
         self._RequestId = None
+
+    @property
+    def OwnershipVerification(self):
+        return self._OwnershipVerification
+
+    @OwnershipVerification.setter
+    def OwnershipVerification(self, OwnershipVerification):
+        self._OwnershipVerification = OwnershipVerification
 
     @property
     def RequestId(self):
@@ -3146,6 +3157,9 @@ class CreateAccelerationDomainResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("OwnershipVerification") is not None:
+            self._OwnershipVerification = OwnershipVerification()
+            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
         self._RequestId = params.get("RequestId")
 
 
@@ -4056,7 +4070,7 @@ class CreatePurgeTaskRequest(AbstractModel):
 <li>`purge_all`: Purge all caches</li>
 <li>`purge_cache_tag`: Purge by the cache-tag </li>For more details, see [Cache Purge](https://intl.cloud.tencent.com/document/product/1552/70759?from_cn_redirect=1).
         :type Type: str
-        :param _Method: Configures how resources under the directory are purged when `Type = purge_prefix`. Values: <li>`invalidate`: Only resources updated under the directory are purged.</li><li>`delete`: All resources under the directory are purged regardless of whether they are updated. </li>Default value: `invalidate`.
+        :param _Method: Configures how cache are purged. It works when `Type` is `purge_prefix`, `purge_host` or `purge_all`. Values: <li>`invalidate`: Only resources updated under the directory are purged.</li><li>`delete`: All resources under the directory are purged regardless of whether they are updated.</li>Note that when Type` is `purge_prefix`, it defaults to `invalidate`.
         :type Method: str
         :param _Targets: List of cached resources to purge. The format for input depends on the type of cache purging. See examples below for details. <li>By default, non-ASCII characters u200dare escaped based on RFC3986.</li><li>The maximum number of tasks per purging request is determined by the EdgeOne plan. See [Billing Overview (New)](https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1). </li>
         :type Targets: list of str
@@ -4392,6 +4406,102 @@ class CreateSecurityIPGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSharedCNAMERequest(AbstractModel):
+    """CreateSharedCNAME request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: ID of the site to which the shared CNAME belongs.	
+        :type ZoneId: str
+        :param _SharedCNAMEPrefix: Prefix of the shared CNAME. Format: "test-api","test-api.com". Up 50 characters allowed.
+The full format of the shared CNAME is: <custom prefix> + <12-bit random string in ZoneId> + "share.eo.dns[0-5].com". For example, if the prefix is "example.com", the created shared CNAME is "example.com.sai2ig51kaa5.share.eo.dnse2.com"
+Example: example.com
+        :type SharedCNAMEPrefix: str
+        :param _Description: Description. It supports 1-50 characters.
+        :type Description: str
+        """
+        self._ZoneId = None
+        self._SharedCNAMEPrefix = None
+        self._Description = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def SharedCNAMEPrefix(self):
+        return self._SharedCNAMEPrefix
+
+    @SharedCNAMEPrefix.setter
+    def SharedCNAMEPrefix(self, SharedCNAMEPrefix):
+        self._SharedCNAMEPrefix = SharedCNAMEPrefix
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._SharedCNAMEPrefix = params.get("SharedCNAMEPrefix")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSharedCNAMEResponse(AbstractModel):
+    """CreateSharedCNAME response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SharedCNAME: Shared CNAME. Format: <Custom Prefix> + <12-bit random string in ZoneId> + "share.eo.dnse[0-5].com"
+        :type SharedCNAME: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SharedCNAME = None
+        self._RequestId = None
+
+    @property
+    def SharedCNAME(self):
+        return self._SharedCNAME
+
+    @SharedCNAME.setter
+    def SharedCNAME(self, SharedCNAME):
+        self._SharedCNAME = SharedCNAME
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SharedCNAME = params.get("SharedCNAME")
         self._RequestId = params.get("RequestId")
 
 
@@ -9558,6 +9668,63 @@ class DiffIPWhitelist(AbstractModel):
         
 
 
+class DnsVerification(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Subdomain: 
+        :type Subdomain: str
+        :param _RecordType: 
+        :type RecordType: str
+        :param _RecordValue: 
+        :type RecordValue: str
+        """
+        self._Subdomain = None
+        self._RecordType = None
+        self._RecordValue = None
+
+    @property
+    def Subdomain(self):
+        return self._Subdomain
+
+    @Subdomain.setter
+    def Subdomain(self, Subdomain):
+        self._Subdomain = Subdomain
+
+    @property
+    def RecordType(self):
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
+    @property
+    def RecordValue(self):
+        return self._RecordValue
+
+    @RecordValue.setter
+    def RecordValue(self, RecordValue):
+        self._RecordValue = RecordValue
+
+
+    def _deserialize(self, params):
+        self._Subdomain = params.get("Subdomain")
+        self._RecordType = params.get("RecordType")
+        self._RecordValue = params.get("RecordValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DownloadL4LogsRequest(AbstractModel):
     """DownloadL4Logs request structure.
 
@@ -9573,7 +9740,7 @@ class DownloadL4LogsRequest(AbstractModel):
         :type ZoneIds: list of str
         :param _ProxyIds: List of L4 proxy instance IDs.
         :type ProxyIds: list of str
-        :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 1000.
+        :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 300.
         :type Limit: int
         :param _Offset: The page offset. Default value: 0.
         :type Offset: int
@@ -9720,7 +9887,7 @@ class DownloadL7LogsRequest(AbstractModel):
         :type ZoneIds: list of str
         :param _Domains: List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.
         :type Domains: list of str
-        :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 1000.
+        :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 300.
         :type Limit: int
         :param _Offset: The page offset. Default value: 0.
         :type Offset: int
@@ -10436,6 +10603,51 @@ class FileAscriptionInfo(AbstractModel):
     def _deserialize(self, params):
         self._IdentifyPath = params.get("IdentifyPath")
         self._IdentifyContent = params.get("IdentifyContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FileVerification(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: 
+        :type Path: str
+        :param _Content: 
+        :type Content: str
+        """
+        self._Path = None
+        self._Content = None
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        self._Content = params.get("Content")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14013,6 +14225,39 @@ class NormalAction(AbstractModel):
         
 
 
+class NsVerification(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NameServers: 
+        :type NameServers: list of str
+        """
+        self._NameServers = None
+
+    @property
+    def NameServers(self):
+        return self._NameServers
+
+    @NameServers.setter
+    def NameServers(self, NameServers):
+        self._NameServers = NameServers
+
+
+    def _deserialize(self, params):
+        self._NameServers = params.get("NameServers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OfflineCache(AbstractModel):
     """Offline cache feature status switch.
 
@@ -14394,18 +14639,19 @@ class OriginInfo(AbstractModel):
         r"""
         :param _OriginType: The origin type. Values:
 <li>`IP_DOMAIN`: IPv4/IPv6 address or domain name</li>
-<li>`COS`: COS bucket address </li>
-<li>`ORIGIN_GROUP`: Origin group </li>
-<li>`AWS_S3`: AWS S3 bucket address </li>
-<li>`SPACE`: EdgeOne Shield Space </li>
+<li>`COS`: COS bucket address</li>
+<li>`ORIGIN_GROUP`: Origin group</li>
+<li>`AWS_S3`: AWS S3 bucket address</li>
+<li>`LB`: Tencent Cloud CLB instance</li>
+<li>`SPACE`: EdgeOne Shield Space</li>
         :type OriginType: str
         :param _Origin: The origin address. Enter the origin group ID if `OriginType=ORIGIN_GROUP`.
         :type Origin: str
-        :param _BackupOrigin: ID of the secondary origin group (valid when `OriginType=ORIGIN_GROUP`). If it’s not specified, it indicates that secondary origins are not used.
+        :param _BackupOrigin: ID of the backup origin group (valid when `OriginType=ORIGIN_GROUP`). If it’s not specified, it indicates not to use backup origins.
         :type BackupOrigin: str
-        :param _PrivateAccess: Whether to authenticate access to the private object storage origin (valid when `OriginType=COS/AWS_S3`). Values: 
-<li>`on`: Enable private authentication.</li>
-<li>`off`: Disable private authentication.</li>If this field is not specified, the default value `off` is used.
+        :param _PrivateAccess: Whether to allow access to the private object storage origin (valid when `OriginType=COS/AWS_S3`). Values:
+u200c<li>`on`: Enable private authentication.</li>
+<li>`off`: (Default) Disable private authentication.</li>
         :type PrivateAccess: str
         :param _PrivateParameters: The private authentication parameters. This field is valid when `PrivateAccess=on`.
         :type PrivateParameters: list of PrivateParameter
@@ -14735,6 +14981,69 @@ Whether the origin group is private. Values:
                 obj = PrivateParameter()
                 obj._deserialize(item)
                 self._PrivateParameters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OwnershipVerification(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DnsVerification: 
+        :type DnsVerification: :class:`tencentcloud.teo.v20220901.models.DnsVerification`
+        :param _FileVerification: 
+        :type FileVerification: :class:`tencentcloud.teo.v20220901.models.FileVerification`
+        :param _NsVerification: 
+        :type NsVerification: :class:`tencentcloud.teo.v20220901.models.NsVerification`
+        """
+        self._DnsVerification = None
+        self._FileVerification = None
+        self._NsVerification = None
+
+    @property
+    def DnsVerification(self):
+        return self._DnsVerification
+
+    @DnsVerification.setter
+    def DnsVerification(self, DnsVerification):
+        self._DnsVerification = DnsVerification
+
+    @property
+    def FileVerification(self):
+        return self._FileVerification
+
+    @FileVerification.setter
+    def FileVerification(self, FileVerification):
+        self._FileVerification = FileVerification
+
+    @property
+    def NsVerification(self):
+        return self._NsVerification
+
+    @NsVerification.setter
+    def NsVerification(self, NsVerification):
+        self._NsVerification = NsVerification
+
+
+    def _deserialize(self, params):
+        if params.get("DnsVerification") is not None:
+            self._DnsVerification = DnsVerification()
+            self._DnsVerification._deserialize(params.get("DnsVerification"))
+        if params.get("FileVerification") is not None:
+            self._FileVerification = FileVerification()
+            self._FileVerification._deserialize(params.get("FileVerification"))
+        if params.get("NsVerification") is not None:
+            self._NsVerification = NsVerification()
+            self._NsVerification._deserialize(params.get("NsVerification"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17280,10 +17589,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Alias: str
         :param _Type: Type of the certificate. Values:
-<li>`default`: Default certificate</lil>
-<li>`upload`: Specified certificate</li>
-<li>`managed`: Tencent Cloud-managed certificate</li>
-Note: This field may return `null`, indicating that no valid value can be obtained.
+u200c<li>`default`: Default certificate</li>
+u200c<li>`upload`: Custom certificate</li>
+u200c<li>`managed`: Tencent Cloud-managed certificate</li>
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type Type: str
         :param _ExpireTime: Time when the certificate expires.
 Note: This field may return null, indicating that no valid values can be obtained.

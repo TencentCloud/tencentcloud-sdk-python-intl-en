@@ -3094,6 +3094,15 @@ Note: This parameter may return null, indicating that no valid values can be obt
         :param _Ext: Document generation mode (for trial).
 Note: This parameter may return null, indicating that no valid values can be obtained.
         :type Ext: str
+        :param _CreateTime: Document transcoding task creation time, unit: seconds.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :type CreateTime: int
+        :param _AssignTime: Document transcoding task assignment time, unit: seconds.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :type AssignTime: int
+        :param _FinishedTime: Document transcoding task finished time, unit: seconds.
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :type FinishedTime: int
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -3109,6 +3118,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
         self._CompressFileUrl = None
         self._ResourceListUrl = None
         self._Ext = None
+        self._CreateTime = None
+        self._AssignTime = None
+        self._FinishedTime = None
         self._RequestId = None
 
     @property
@@ -3208,6 +3220,30 @@ Note: This parameter may return null, indicating that no valid values can be obt
         self._Ext = Ext
 
     @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def AssignTime(self):
+        return self._AssignTime
+
+    @AssignTime.setter
+    def AssignTime(self, AssignTime):
+        self._AssignTime = AssignTime
+
+    @property
+    def FinishedTime(self):
+        return self._FinishedTime
+
+    @FinishedTime.setter
+    def FinishedTime(self, FinishedTime):
+        self._FinishedTime = FinishedTime
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3229,6 +3265,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
         self._CompressFileUrl = params.get("CompressFileUrl")
         self._ResourceListUrl = params.get("ResourceListUrl")
         self._Ext = params.get("Ext")
+        self._CreateTime = params.get("CreateTime")
+        self._AssignTime = params.get("AssignTime")
+        self._FinishedTime = params.get("FinishedTime")
         self._RequestId = params.get("RequestId")
 
 

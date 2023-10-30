@@ -20,6 +20,9 @@ DRYRUNOPERATION = 'DryRunOperation'
 # Operation failed.
 FAILEDOPERATION = 'FailedOperation'
 
+# 
+FAILEDOPERATION_CERTIFICATEHASEXPIRED = 'FailedOperation.CertificateHasExpired'
+
 # The certificate does not exist.
 FAILEDOPERATION_CERTIFICATENOTFOUND = 'FailedOperation.CertificateNotFound'
 
@@ -77,6 +80,9 @@ INVALIDPARAMETER_ACTIONINPROGRESS = 'InvalidParameter.ActionInProgress'
 # Cu200dhinese SM certificates are not supported for alias domain names.
 INVALIDPARAMETER_ALIASDOMAINNOTSUPPORTSMCERT = 'InvalidParameter.AliasDomainNotSupportSMCert'
 
+# 
+INVALIDPARAMETER_CACHEKEYQUERYSTRINGREQUIRESFULLURLCACHEOFF = 'InvalidParameter.CacheKeyQueryStringRequiresFullUrlCacheOff'
+
 # The query string has too many values.
 INVALIDPARAMETER_CACHEKEYQUERYSTRINGTOOMANYVALUE = 'InvalidParameter.CacheKeyQueryStringTooManyValue'
 
@@ -131,11 +137,17 @@ INVALIDPARAMETER_ERRINVALIDACTIONPARAMNAME = 'InvalidParameter.ErrInvalidActionP
 # Invalid parameter: The parameter has too many values.
 INVALIDPARAMETER_ERRINVALIDACTIONPARAMTOOMANYVALUES = 'InvalidParameter.ErrInvalidActionParamTooManyValues'
 
-# 
+# Invalid action.
 INVALIDPARAMETER_ERRINVALIDACTIONPARAMVALUE = 'InvalidParameter.ErrInvalidActionParamValue'
 
 # Invalid action type.
 INVALIDPARAMETER_ERRINVALIDACTIONTYPE = 'InvalidParameter.ErrInvalidActionType'
+
+# 
+INVALIDPARAMETER_ERRINVALIDCONDITION = 'InvalidParameter.ErrInvalidCondition'
+
+# 
+INVALIDPARAMETER_ERRINVALIDCONDITIONHOSTTOOMANYWHENMODIFYORIGINACTIONCONFIGURED = 'InvalidParameter.ErrInvalidConditionHostTooManyWhenModifyOriginActionConfigured'
 
 # Invalid condition: The letter case is ignored.
 INVALIDPARAMETER_ERRINVALIDCONDITIONIGNORECASE = 'InvalidParameter.ErrInvalidConditionIgnoreCase'
@@ -179,6 +191,9 @@ INVALIDPARAMETER_ERRINVALIDELSEWHENMODIFYORIGINACTIONCONFIGURED = 'InvalidParame
 # To enable gRPC support, HTTP/2 support must be enabled as well.
 INVALIDPARAMETER_GRPCREQUIREHTTP2 = 'InvalidParameter.GrpcRequireHttp2'
 
+# 
+INVALIDPARAMETER_HOSTHEADERINVALID = 'InvalidParameter.HostHeaderInvalid'
+
 # The domain name does not exist.
 INVALIDPARAMETER_HOSTNOTFOUND = 'InvalidParameter.HostNotFound'
 
@@ -206,6 +221,9 @@ INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPETIMEPARAM = 'InvalidParameter.InvalidA
 # Invalid third-party object storage.
 INVALIDPARAMETER_INVALIDAWSPRIVATEACCESS = 'InvalidParameter.InvalidAwsPrivateAccess'
 
+# 
+INVALIDPARAMETER_INVALIDAWSSECRETKEY = 'InvalidParameter.InvalidAwsSecretKey'
+
 # Invalid secondary origin domain.
 INVALIDPARAMETER_INVALIDBACKUPSERVERNAME = 'InvalidParameter.InvalidBackupServerName'
 
@@ -218,7 +236,7 @@ INVALIDPARAMETER_INVALIDCACHECONFIGFOLLOWORIGIN = 'InvalidParameter.InvalidCache
 # Invalid cache key.
 INVALIDPARAMETER_INVALIDCACHEKEY = 'InvalidParameter.InvalidCacheKey'
 
-# 
+# Invalid cache key cookie.
 INVALIDPARAMETER_INVALIDCACHEKEYCOOKIE = 'InvalidParameter.InvalidCacheKeyCookie'
 
 # Cases are ignored in the cache key.
@@ -256,6 +274,9 @@ INVALIDPARAMETER_INVALIDERRORPAGE = 'InvalidParameter.InvalidErrorPage'
 
 # Invalid custom error page.
 INVALIDPARAMETER_INVALIDERRORPAGEREDIRECTURL = 'InvalidParameter.InvalidErrorPageRedirectUrl'
+
+# 
+INVALIDPARAMETER_INVALIDFORCEREDIRECTTYPE = 'InvalidParameter.InvalidForceRedirectType'
 
 # Invalid parameter "https".
 INVALIDPARAMETER_INVALIDHTTPS = 'InvalidParameter.InvalidHttps'
@@ -295,6 +316,9 @@ INVALIDPARAMETER_INVALIDPOSTSIZEVALUE = 'InvalidParameter.InvalidPostSizeValue'
 
 # AccessKeyId and SecretAccessKey u200dare required to access the third-party object storage.
 INVALIDPARAMETER_INVALIDPRIVATEACCESSPARAMS = 'InvalidParameter.InvalidPrivateAccessParams'
+
+# 
+INVALIDPARAMETER_INVALIDPRIVATEACCESSSWITCH = 'InvalidParameter.InvalidPrivateAccessSwitch'
 
 # The plan does not support QUIC.
 INVALIDPARAMETER_INVALIDQUICBILLING = 'InvalidParameter.InvalidQuicBilling'
@@ -377,8 +401,14 @@ INVALIDPARAMETER_OCDIRECTORIGINREQUIRESSMARTROUTING = 'InvalidParameter.OCDirect
 # The origin address cannot be a private IP address.
 INVALIDPARAMETER_ORIGINISINNERIP = 'InvalidParameter.OriginIsInnerIp'
 
+# 
+INVALIDPARAMETER_ORIGINNAMEEXISTS = 'InvalidParameter.OriginNameExists'
+
 # The origin group ID is required.
 INVALIDPARAMETER_ORIGINORIGINGROUPIDISREQUIRED = 'InvalidParameter.OriginOriginGroupIdIsRequired'
+
+# 
+INVALIDPARAMETER_ORIGINRECORDFORMATERROR = 'InvalidParameter.OriginRecordFormatError'
 
 # Parameter error: Invalid “End time”. The interval between the start and end time cannot exceed 7 days.
 INVALIDPARAMETER_PARAMETERERROR = 'InvalidParameter.ParameterError'
@@ -389,13 +419,25 @@ INVALIDPARAMETER_PLANNOTFOUND = 'InvalidParameter.PlanNotFound'
 # Maximum upload size exceeded.
 INVALIDPARAMETER_POSTMAXSIZELIMITEXCEEDED = 'InvalidParameter.PostMaxSizeLimitExceeded'
 
+# 
+INVALIDPARAMETER_PROXYNAMEDUPLICATING = 'InvalidParameter.ProxyNameDuplicating'
+
+# 
+INVALIDPARAMETER_RULEORIGINMULTIDOMAIN = 'InvalidParameter.RuleOriginMultiDomain'
+
+# 
+INVALIDPARAMETER_RULEORIGINPORTINTEGER = 'InvalidParameter.RuleOriginPortInteger'
+
+# 
+INVALIDPARAMETER_RULEPORTDUPLICATING = 'InvalidParameter.RulePortDuplicating'
+
 # Invalid parameter.
 INVALIDPARAMETER_SECURITY = 'InvalidParameter.Security'
 
 # Configuration parameter error.
 INVALIDPARAMETER_SETTINGINVALIDPARAM = 'InvalidParameter.SettingInvalidParam'
 
-# 
+# Shield Space is not bound with an origin. 
 INVALIDPARAMETER_SPACENOTBINDORIGIN = 'InvalidParameter.SpaceNotBindOrigin'
 
 # Resource error
@@ -407,14 +449,20 @@ INVALIDPARAMETER_TASKNOTGENERATED = 'InvalidParameter.TaskNotGenerated'
 # Internal error.
 INVALIDPARAMETER_TASKSYSTEMERROR = 'InvalidParameter.TaskSystemError'
 
+# 
+INVALIDPARAMETER_TOOMANYFILTERVALUES = 'InvalidParameter.TooManyFilterValues'
+
 # Invalid file upload link.
 INVALIDPARAMETER_UPLOADURL = 'InvalidParameter.UploadUrl'
 
 # The site is already bound.
 INVALIDPARAMETER_ZONEHASBEENBOUND = 'InvalidParameter.ZoneHasBeenBound'
 
-# 
+# The site is being upgraded. Changing is not supported. Please try again later.
 INVALIDPARAMETER_ZONEISGRAYPUBLISHING = 'InvalidParameter.ZoneIsGrayPublishing'
+
+# 
+INVALIDPARAMETER_ZONENAMEISREQUIRED = 'InvalidParameter.ZoneNameIsRequired'
 
 # The site does not exist.
 INVALIDPARAMETER_ZONENOTFOUND = 'InvalidParameter.ZoneNotFound'
@@ -437,6 +485,9 @@ INVALIDPARAMETERVALUE_CONTENTSAMEASNAME = 'InvalidParameterValue.ContentSameAsNa
 # The specified domain name does not match the site. 
 INVALIDPARAMETERVALUE_DOMAINNOTMATCHZONE = 'InvalidParameterValue.DomainNotMatchZone'
 
+# 
+INVALIDPARAMETERVALUE_INVALIDALIASNAMESUFFIX = 'InvalidParameterValue.InvalidAliasNameSuffix'
+
 # Incorrect DNS record.
 INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = 'InvalidParameterValue.InvalidDNSContent'
 
@@ -452,8 +503,14 @@ INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = 'InvalidParameterValue.InvalidDomain
 # Incorrect DNS proxy
 INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = 'InvalidParameterValue.InvalidProxyOrigin'
 
-# 
+# Wildcard domain CNAMEs are not supported.
+INVALIDPARAMETERVALUE_NOTALLOWEDWILDCARDSHAREDCNAME = 'InvalidParameterValue.NotAllowedWildcardSharedCNAME'
+
+# The specified origin group does not exist.
 INVALIDPARAMETERVALUE_ORIGINGROUPNOTEXISTS = 'InvalidParameterValue.OriginGroupNotExists'
+
+# Enter a valid shared CNAME prefix of up to 50 characters.
+INVALIDPARAMETERVALUE_SHAREDCNAMEPREFIXNOTMATCH = 'InvalidParameterValue.SharedCNAMEPrefixNotMatch'
 
 # The site alias already exists. 
 INVALIDPARAMETERVALUE_ZONESAMEASNAME = 'InvalidParameterValue.ZoneSameAsName'
@@ -476,6 +533,9 @@ LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = 'LimitExceeded.QueryTimeLimitExceeded'
 # Reached the API rate limit.
 LIMITEXCEEDED_RATELIMITEXCEEDED = 'LimitExceeded.RateLimitExceeded'
 
+# 
+LIMITEXCEEDED_ZONEBINDPLAN = 'LimitExceeded.ZoneBindPlan'
+
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
 
@@ -486,6 +546,9 @@ OPERATIONDENIED_ACCELERATEMAINLANDDISABLE = 'OperationDenied.AccelerateMainlandD
 OPERATIONDENIED_ACCELERATEMAINLANDIPV6CONFLICT = 'OperationDenied.AccelerateMainlandIpv6Conflict'
 
 # 
+OPERATIONDENIED_ACCELERATIONDOMAINSTATUSNOTINONLINE = 'OperationDenied.AccelerationDomainStatusNotInOnline'
+
+# The configuration is locked. Please unlock and try again.
 OPERATIONDENIED_CONFIGLOCKED = 'OperationDenied.ConfigLocked'
 
 # The EdgeOne service of the site is being disabled. Please try again later.
@@ -527,11 +590,29 @@ OPERATIONDENIED_L4STATUSNOTINONLINE = 'OperationDenied.L4StatusNotInOnline'
 # The EdgeOne service cannot be disabled for the site: An accelerated domain name is being deployed.
 OPERATIONDENIED_L7HOSTINPROCESSSTATUS = 'OperationDenied.L7HostInProcessStatus'
 
+# 
+OPERATIONDENIED_LOADBALANCINGZONEISNOTACTIVE = 'OperationDenied.LoadBalancingZoneIsNotActive'
+
 # Unable to switch to NS for multiple sites using CNAME.
 OPERATIONDENIED_MULTIPLECNAMEZONE = 'OperationDenied.MultipleCnameZone'
 
 # Domain traffic scheduling is not supported in NS access mode.
 OPERATIONDENIED_NSNOTALLOWTRAFFICSTRATEGY = 'OperationDenied.NSNotAllowTrafficStrategy'
+
+# 
+OPERATIONDENIED_NODOMAINACCESSZONEONLYALLOWMODIFIEDTOCNAME = 'OperationDenied.NoDomainAccessZoneOnlyAllowModifiedToCNAME'
+
+# 
+OPERATIONDENIED_NODOMAINACCESSZONEONLYSUPPORTMODIFYTYPE = 'OperationDenied.NoDomainAccessZoneOnlySupportModifyType'
+
+# 
+OPERATIONDENIED_ORIGINGROUPACCELERATIONDOMAINUSED = 'OperationDenied.OriginGroupAccelerationDomainUsed'
+
+# 
+OPERATIONDENIED_PLANNOTSUPPORTMODIFYZONEAREA = 'OperationDenied.PlanNotSupportModifyZoneArea'
+
+# 
+OPERATIONDENIED_PLATTYPEIPACCELERATEMAINLANDNOTSUPPORT = 'OperationDenied.PlatTypeIPAccelerateMainlandNotSupport'
 
 # The DNS record cannot be added.
 OPERATIONDENIED_RECORDISFORBIDDEN = 'OperationDenied.RecordIsForbidden'
@@ -539,14 +620,17 @@ OPERATIONDENIED_RECORDISFORBIDDEN = 'OperationDenied.RecordIsForbidden'
 # This operation conflicts with concurrent operations. Try again later.
 OPERATIONDENIED_RESOURCELOCKEDTEMPORARY = 'OperationDenied.ResourceLockedTemporary'
 
-# 
+# The domain name is bound with a shared CNAME and cannot be changed to "Cross-MLC-border acceleration". Please unbind the domain name from the shared CNAME first.
 OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDACCELERATEMAINLAND = 'OperationDenied.SharedCNAMEUnsupportedAccelerateMainland'
 
-# 
+# The domain name is bound with a shared CNAME and cannot be changed to "IPv6 access". Please unbind the domain name from the shared CNAME first.
 OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDIPV6 = 'OperationDenied.SharedCNAMEUnsupportedIPv6'
 
-# 
+# The shared CNAME has been bound to another site. Please unbind first.
 OPERATIONDENIED_ZONEISBINDINGSHAREDCNAME = 'OperationDenied.ZoneIsBindingSharedCNAME'
+
+# 
+OPERATIONDENIED_ZONEISREFERENCECUSTOMERRORPAGE = 'OperationDenied.ZoneIsReferenceCustomErrorPage'
 
 # The resource is occupied.
 RESOURCEINUSE = 'ResourceInUse'
@@ -622,6 +706,9 @@ RESOURCEUNAVAILABLE_DOMAINNOTFOUND = 'ResourceUnavailable.DomainNotFound'
 
 # The domain name does not exist or not use a proxy.
 RESOURCEUNAVAILABLE_HOSTNOTFOUND = 'ResourceUnavailable.HostNotFound'
+
+# The shared CNAME is used by others.
+RESOURCEUNAVAILABLE_SHAREDCNAMEALREADYEXISTS = 'ResourceUnavailable.SharedCNAMEAlreadyExists'
 
 # The site does not exist or is not belong to this account.
 RESOURCEUNAVAILABLE_ZONENOTFOUND = 'ResourceUnavailable.ZoneNotFound'

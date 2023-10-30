@@ -73,7 +73,9 @@ class TiwClient(AbstractClient):
 
 
     def CreateOfflineRecord(self, request):
-        """This API is used to create an offline recording task.
+        """课后录制服务已下线
+
+        This API is used to create an offline recording task.
 
         :param request: Request instance for CreateOfflineRecord.
         :type request: :class:`tencentcloud.tiw.v20190919.models.CreateOfflineRecordRequest`
@@ -280,7 +282,9 @@ class TiwClient(AbstractClient):
 
 
     def DescribeOfflineRecord(self, request):
-        """This API is used to query the information about an offline recording task, including the recording progress and recording result.
+        """课后录制服务已下线
+
+        This API is used to query the information about an offline recording task, including the recording progress and recording result.
 
         :param request: Request instance for DescribeOfflineRecord.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeOfflineRecordRequest`
@@ -303,7 +307,9 @@ class TiwClient(AbstractClient):
 
 
     def DescribeOfflineRecordCallback(self, request):
-        """This API is used to query the offline recording callback URL.
+        """课后录制服务已下线
+
+        This API is used to query the offline recording callback URL.
 
         :param request: Request instance for DescribeOfflineRecordCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeOfflineRecordCallbackRequest`
@@ -997,7 +1003,9 @@ class TiwClient(AbstractClient):
 
 
     def SetOfflineRecordCallback(self, request):
-        """This API is used to set the offline recording callback URL.
+        """课后录制服务已下线
+
+        This API is used to set the offline recording callback URL.
 
         :param request: Request instance for SetOfflineRecordCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetOfflineRecordCallbackRequest`

@@ -53,9 +53,6 @@ FAILEDOPERATION_MEDIATYPE = 'FailedOperation.MediaType'
 # Network error.
 FAILEDOPERATION_NETWORKERROR = 'FailedOperation.NetWorkError'
 
-# No need to reduce the bitrate.
-FAILEDOPERATION_NONEEDTOREDUCEMEDIABITRATE = 'FailedOperation.NoNeedToReduceMediaBitrate'
-
 # Operation failed: the parent category ID does not exist.
 FAILEDOPERATION_PARENTIDNOFOUND = 'FailedOperation.ParentIdNoFound'
 
@@ -602,7 +599,7 @@ LIMITEXCEEDED_KEYFRAMEDESCCOUNTREACHMAX = 'LimitExceeded.KeyFrameDescCountReachM
 # Limit exceeded: the total number of new and old tags exceeds the limit.
 LIMITEXCEEDED_TAGCOUNTREACHMAX = 'LimitExceeded.TagCountReachMax'
 
-# Limit exceeded: the number of templates exceeds the limit.
+# 
 LIMITEXCEEDED_TOOMUCHTEMPLATE = 'LimitExceeded.TooMuchTemplate'
 
 # Missing parameter.
