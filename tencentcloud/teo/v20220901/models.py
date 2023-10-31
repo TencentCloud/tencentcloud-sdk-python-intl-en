@@ -95,17 +95,10 @@ class AccelerationDomain(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OriginDetail: Details of the origin.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type OriginDetail: :class:`tencentcloud.teo.v20220901.models.OriginDetail`
-        :param _CreatedOn: Creation time of the accelerated domain name.
-        :type CreatedOn: str
-        :param _DomainName: Accelerated domain name
-        :type DomainName: str
-        :param _ModifiedOn: Modification time of the accelerated domain name.
-        :type ModifiedOn: str
         :param _ZoneId: ID of the site.
         :type ZoneId: str
+        :param _DomainName: Accelerated domain name
+        :type DomainName: str
         :param _DomainStatus: Status of the accelerated domain name. Values:
 <li>`online`: Activated</li>
 <li>`process`: Being deployed</li>
@@ -113,52 +106,47 @@ Note: This field may return null, indicating that no valid values can be obtaine
 <li>`forbidden`: Blocked</li>
 <li>`init`: Pending activation</li>
         :type DomainStatus: str
+        :param _OriginDetail: Details of the origin.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginDetail: :class:`tencentcloud.teo.v20220901.models.OriginDetail`
+        :param _OriginProtocol: 
+        :type OriginProtocol: str
+        :param _HttpOriginPort: 
+        :type HttpOriginPort: int
+        :param _HttpsOriginPort: 
+        :type HttpsOriginPort: int
+        :param _IPv6Status: 
+        :type IPv6Status: str
         :param _Cname: The CNAME address.
         :type Cname: str
         :param _IdentificationStatus: Ownership verification status. Values: <li>`pending`: Pending verification</li> <li>`finished`: Verified</li>	
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IdentificationStatus: str
+        :param _CreatedOn: Creation time of the accelerated domain name.
+        :type CreatedOn: str
+        :param _ModifiedOn: Modification time of the accelerated domain name.
+        :type ModifiedOn: str
+        :param _OwnershipVerification: Information required to verify the ownership of a domain name.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
+        :param _Certificate: Domain name certificate information
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Certificate: :class:`tencentcloud.teo.v20220901.models.AccelerationDomainCertificate`
         """
-        self._OriginDetail = None
-        self._CreatedOn = None
-        self._DomainName = None
-        self._ModifiedOn = None
         self._ZoneId = None
+        self._DomainName = None
         self._DomainStatus = None
+        self._OriginDetail = None
+        self._OriginProtocol = None
+        self._HttpOriginPort = None
+        self._HttpsOriginPort = None
+        self._IPv6Status = None
         self._Cname = None
         self._IdentificationStatus = None
-
-    @property
-    def OriginDetail(self):
-        return self._OriginDetail
-
-    @OriginDetail.setter
-    def OriginDetail(self, OriginDetail):
-        self._OriginDetail = OriginDetail
-
-    @property
-    def CreatedOn(self):
-        return self._CreatedOn
-
-    @CreatedOn.setter
-    def CreatedOn(self, CreatedOn):
-        self._CreatedOn = CreatedOn
-
-    @property
-    def DomainName(self):
-        return self._DomainName
-
-    @DomainName.setter
-    def DomainName(self, DomainName):
-        self._DomainName = DomainName
-
-    @property
-    def ModifiedOn(self):
-        return self._ModifiedOn
-
-    @ModifiedOn.setter
-    def ModifiedOn(self, ModifiedOn):
-        self._ModifiedOn = ModifiedOn
+        self._CreatedOn = None
+        self._ModifiedOn = None
+        self._OwnershipVerification = None
+        self._Certificate = None
 
     @property
     def ZoneId(self):
@@ -169,12 +157,60 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ZoneId = ZoneId
 
     @property
+    def DomainName(self):
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
     def DomainStatus(self):
         return self._DomainStatus
 
     @DomainStatus.setter
     def DomainStatus(self, DomainStatus):
         self._DomainStatus = DomainStatus
+
+    @property
+    def OriginDetail(self):
+        return self._OriginDetail
+
+    @OriginDetail.setter
+    def OriginDetail(self, OriginDetail):
+        self._OriginDetail = OriginDetail
+
+    @property
+    def OriginProtocol(self):
+        return self._OriginProtocol
+
+    @OriginProtocol.setter
+    def OriginProtocol(self, OriginProtocol):
+        self._OriginProtocol = OriginProtocol
+
+    @property
+    def HttpOriginPort(self):
+        return self._HttpOriginPort
+
+    @HttpOriginPort.setter
+    def HttpOriginPort(self, HttpOriginPort):
+        self._HttpOriginPort = HttpOriginPort
+
+    @property
+    def HttpsOriginPort(self):
+        return self._HttpsOriginPort
+
+    @HttpsOriginPort.setter
+    def HttpsOriginPort(self, HttpsOriginPort):
+        self._HttpsOriginPort = HttpsOriginPort
+
+    @property
+    def IPv6Status(self):
+        return self._IPv6Status
+
+    @IPv6Status.setter
+    def IPv6Status(self, IPv6Status):
+        self._IPv6Status = IPv6Status
 
     @property
     def Cname(self):
@@ -192,18 +228,111 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def IdentificationStatus(self, IdentificationStatus):
         self._IdentificationStatus = IdentificationStatus
 
+    @property
+    def CreatedOn(self):
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def ModifiedOn(self):
+        return self._ModifiedOn
+
+    @ModifiedOn.setter
+    def ModifiedOn(self, ModifiedOn):
+        self._ModifiedOn = ModifiedOn
+
+    @property
+    def OwnershipVerification(self):
+        return self._OwnershipVerification
+
+    @OwnershipVerification.setter
+    def OwnershipVerification(self, OwnershipVerification):
+        self._OwnershipVerification = OwnershipVerification
+
+    @property
+    def Certificate(self):
+        return self._Certificate
+
+    @Certificate.setter
+    def Certificate(self, Certificate):
+        self._Certificate = Certificate
+
 
     def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._DomainName = params.get("DomainName")
+        self._DomainStatus = params.get("DomainStatus")
         if params.get("OriginDetail") is not None:
             self._OriginDetail = OriginDetail()
             self._OriginDetail._deserialize(params.get("OriginDetail"))
-        self._CreatedOn = params.get("CreatedOn")
-        self._DomainName = params.get("DomainName")
-        self._ModifiedOn = params.get("ModifiedOn")
-        self._ZoneId = params.get("ZoneId")
-        self._DomainStatus = params.get("DomainStatus")
+        self._OriginProtocol = params.get("OriginProtocol")
+        self._HttpOriginPort = params.get("HttpOriginPort")
+        self._HttpsOriginPort = params.get("HttpsOriginPort")
+        self._IPv6Status = params.get("IPv6Status")
         self._Cname = params.get("Cname")
         self._IdentificationStatus = params.get("IdentificationStatus")
+        self._CreatedOn = params.get("CreatedOn")
+        self._ModifiedOn = params.get("ModifiedOn")
+        if params.get("OwnershipVerification") is not None:
+            self._OwnershipVerification = OwnershipVerification()
+            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
+        if params.get("Certificate") is not None:
+            self._Certificate = AccelerationDomainCertificate()
+            self._Certificate._deserialize(params.get("Certificate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccelerationDomainCertificate(AbstractModel):
+    """Information of the acceleration domain name certificate.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: Certificate configuration mode. Values: <li>`disable`: Do not configure the certificate;</li><li>`eofreecert`: Use a free certificate provided by EdgeOne; </li><li>`sslcert`: Configure an SSL certificate.</li>
+        :type Mode: str
+        :param _List: List of certificates
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type List: list of CertificateInfo
+        """
+        self._Mode = None
+        self._List = None
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = CertificateInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2720,6 +2849,119 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class CertificateInfo(AbstractModel):
+    """HTTPS server certificate configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertId: ID of the server certificate.
+        :type CertId: str
+        :param _Alias: Alias of the certificate.
+        :type Alias: str
+        :param _Type: Type of the certificate. Values:
+<li>`default`: Default certificate</li>
+<li>`upload`: Specified certificate</li>
+<li>`managed`: Tencent Cloud-managed certificate</li>
+        :type Type: str
+        :param _ExpireTime: The certificate expiration time.
+        :type ExpireTime: str
+        :param _DeployTime: Time when the certificate is deployed.
+        :type DeployTime: str
+        :param _SignAlgo: Signature algorithm.
+        :type SignAlgo: str
+        :param _Status: Status of the certificate. Values:
+u200c<li>`deployed`: The deployment has completed</li>
+u200c<li>`processing`: Deployment in progress</li>
+u200c<li>`applying`: Application in progress</li>
+u200c<li>`failed`: Application rejected</li>
+<li>`issued`: Binding failed.</li>
+        :type Status: str
+        """
+        self._CertId = None
+        self._Alias = None
+        self._Type = None
+        self._ExpireTime = None
+        self._DeployTime = None
+        self._SignAlgo = None
+        self._Status = None
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def Alias(self):
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def DeployTime(self):
+        return self._DeployTime
+
+    @DeployTime.setter
+    def DeployTime(self, DeployTime):
+        self._DeployTime = DeployTime
+
+    @property
+    def SignAlgo(self):
+        return self._SignAlgo
+
+    @SignAlgo.setter
+    def SignAlgo(self, SignAlgo):
+        self._SignAlgo = SignAlgo
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._CertId = params.get("CertId")
+        self._Alias = params.get("Alias")
+        self._Type = params.get("Type")
+        self._ExpireTime = params.get("ExpireTime")
+        self._DeployTime = params.get("DeployTime")
+        self._SignAlgo = params.get("SignAlgo")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CheckCnameStatusRequest(AbstractModel):
     """CheckCnameStatus request structure.
 
@@ -3072,16 +3314,28 @@ class CreateAccelerationDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: ID of the site related with the accelerated domain name.
+        :param _ZoneId: ID of the site related with the acceleration domain name.
         :type ZoneId: str
-        :param _DomainName: Accelerated domain name
+        :param _DomainName: Acceleration domain name
         :type DomainName: str
         :param _OriginInfo: Details of the origin.
         :type OriginInfo: :class:`tencentcloud.teo.v20220901.models.OriginInfo`
+        :param _OriginProtocol: 
+        :type OriginProtocol: str
+        :param _HttpOriginPort: 
+        :type HttpOriginPort: int
+        :param _HttpsOriginPort: 
+        :type HttpsOriginPort: int
+        :param _IPv6Status: 
+        :type IPv6Status: str
         """
         self._ZoneId = None
         self._DomainName = None
         self._OriginInfo = None
+        self._OriginProtocol = None
+        self._HttpOriginPort = None
+        self._HttpsOriginPort = None
+        self._IPv6Status = None
 
     @property
     def ZoneId(self):
@@ -3107,6 +3361,38 @@ class CreateAccelerationDomainRequest(AbstractModel):
     def OriginInfo(self, OriginInfo):
         self._OriginInfo = OriginInfo
 
+    @property
+    def OriginProtocol(self):
+        return self._OriginProtocol
+
+    @OriginProtocol.setter
+    def OriginProtocol(self, OriginProtocol):
+        self._OriginProtocol = OriginProtocol
+
+    @property
+    def HttpOriginPort(self):
+        return self._HttpOriginPort
+
+    @HttpOriginPort.setter
+    def HttpOriginPort(self, HttpOriginPort):
+        self._HttpOriginPort = HttpOriginPort
+
+    @property
+    def HttpsOriginPort(self):
+        return self._HttpsOriginPort
+
+    @HttpsOriginPort.setter
+    def HttpsOriginPort(self, HttpsOriginPort):
+        self._HttpsOriginPort = HttpsOriginPort
+
+    @property
+    def IPv6Status(self):
+        return self._IPv6Status
+
+    @IPv6Status.setter
+    def IPv6Status(self, IPv6Status):
+        self._IPv6Status = IPv6Status
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -3114,6 +3400,10 @@ class CreateAccelerationDomainRequest(AbstractModel):
         if params.get("OriginInfo") is not None:
             self._OriginInfo = OriginInfo()
             self._OriginInfo._deserialize(params.get("OriginInfo"))
+        self._OriginProtocol = params.get("OriginProtocol")
+        self._HttpOriginPort = params.get("HttpOriginPort")
+        self._HttpsOriginPort = params.get("HttpsOriginPort")
+        self._IPv6Status = params.get("IPv6Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3131,7 +3421,8 @@ class CreateAccelerationDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OwnershipVerification: 
+        :param _OwnershipVerification: Use the information returned by this parameter to verify the ownership of a domain name. For details, see [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1).
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -4512,38 +4803,39 @@ class CreateZoneRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneName: The site name.
-        :type ZoneName: str
-        :param _Type: The access mode. Values:
-<li> `full`: Access through a name server.</li>
-<li> `partial`: Access through a CNAME. Before using this access mode, first verify your site with the site verification API (IdentifyZone).<li>`noDomainAccess`: Access without using a domain name. If this value is passed, only the Tags field needs to be set. </li>
-If not specified, this field uses the default value `full`.
+        :param _Type: Site access types. Options include:
+<li>`partial`: (Default) Access through a CNAME record</li>
+<li>`full`: Access through a name server</li>
+<li>`noDomainAccess`: Access without using a domain name</li>
         :type Type: str
-        :param _JumpStart: Whether to skip scanning the existing DNS records of the site. Default value: false.
-        :type JumpStart: bool
-        :param _Tags: The resource tag.
+        :param _ZoneName: Site name. For sites connected via CNAME/NS, pass in the secondary domain name (example.com). Leave it blank if the site is connected without a domain name. 
+        :type ZoneName: str
+        :param _Area: The acceleration area of the L7 domain name when `Type` is `partial` or `full`. When Type is `noDomainAccess`, please leave it blank.
+<li>`global`: Global AZs</li>
+<li>`mainland`: AZs in the Chinese mainland</li>
+<li>`overseas`: (Default) AZs outside the Chinese mainland </li>
+        :type Area: str
+        :param _PlanId: ID of the plan to which you want to bind the site. If you don't have an EdgeOne plan, purchase one in the EdgeOne console.
+        :type PlanId: str
+        :param _AliasZoneName: The site alias. It allows up to 20 characters, including [0-9], [a-z], [A-Z] and [-_]. For details, see [Glossary](https://intl.cloud.tencent.com/document/product/1552/70202?from_cn_redirect=1). If you don't want to use it, just leave it blank.
+        :type AliasZoneName: str
+        :param _Tags: Tags of the site. To create tags, go to the [Tag Console](https://console.cloud.tencent.com/tag/taglist).
         :type Tags: list of Tag
         :param _AllowDuplicates: Whether to allow duplicate sites. Values:
 <li>`true`: Duplicate sites are allowed.</li>
 <li>`false`: Duplicate sites are not allowed.</li>If it is left empty, the default value `false` is used.
         :type AllowDuplicates: bool
-        :param _AliasZoneName: The site alias. It can be up to 20 characters consisting of digits, letters, hyphens (-) and underscores (_).
-        :type AliasZoneName: str
+        :param _JumpStart: Whether to skip scanning the existing DNS records of the site. Default value: false.
+        :type JumpStart: bool
         """
-        self._ZoneName = None
         self._Type = None
-        self._JumpStart = None
+        self._ZoneName = None
+        self._Area = None
+        self._PlanId = None
+        self._AliasZoneName = None
         self._Tags = None
         self._AllowDuplicates = None
-        self._AliasZoneName = None
-
-    @property
-    def ZoneName(self):
-        return self._ZoneName
-
-    @ZoneName.setter
-    def ZoneName(self, ZoneName):
-        self._ZoneName = ZoneName
+        self._JumpStart = None
 
     @property
     def Type(self):
@@ -4554,12 +4846,36 @@ If not specified, this field uses the default value `full`.
         self._Type = Type
 
     @property
-    def JumpStart(self):
-        return self._JumpStart
+    def ZoneName(self):
+        return self._ZoneName
 
-    @JumpStart.setter
-    def JumpStart(self, JumpStart):
-        self._JumpStart = JumpStart
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def PlanId(self):
+        return self._PlanId
+
+    @PlanId.setter
+    def PlanId(self, PlanId):
+        self._PlanId = PlanId
+
+    @property
+    def AliasZoneName(self):
+        return self._AliasZoneName
+
+    @AliasZoneName.setter
+    def AliasZoneName(self, AliasZoneName):
+        self._AliasZoneName = AliasZoneName
 
     @property
     def Tags(self):
@@ -4571,25 +4887,35 @@ If not specified, this field uses the default value `full`.
 
     @property
     def AllowDuplicates(self):
+        warnings.warn("parameter `AllowDuplicates` is deprecated", DeprecationWarning) 
+
         return self._AllowDuplicates
 
     @AllowDuplicates.setter
     def AllowDuplicates(self, AllowDuplicates):
+        warnings.warn("parameter `AllowDuplicates` is deprecated", DeprecationWarning) 
+
         self._AllowDuplicates = AllowDuplicates
 
     @property
-    def AliasZoneName(self):
-        return self._AliasZoneName
+    def JumpStart(self):
+        warnings.warn("parameter `JumpStart` is deprecated", DeprecationWarning) 
 
-    @AliasZoneName.setter
-    def AliasZoneName(self, AliasZoneName):
-        self._AliasZoneName = AliasZoneName
+        return self._JumpStart
+
+    @JumpStart.setter
+    def JumpStart(self, JumpStart):
+        warnings.warn("parameter `JumpStart` is deprecated", DeprecationWarning) 
+
+        self._JumpStart = JumpStart
 
 
     def _deserialize(self, params):
-        self._ZoneName = params.get("ZoneName")
         self._Type = params.get("Type")
-        self._JumpStart = params.get("JumpStart")
+        self._ZoneName = params.get("ZoneName")
+        self._Area = params.get("Area")
+        self._PlanId = params.get("PlanId")
+        self._AliasZoneName = params.get("AliasZoneName")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -4597,7 +4923,7 @@ If not specified, this field uses the default value `full`.
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._AllowDuplicates = params.get("AllowDuplicates")
-        self._AliasZoneName = params.get("AliasZoneName")
+        self._JumpStart = params.get("JumpStart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4615,12 +4941,22 @@ class CreateZoneResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: The site ID.
+        :param _ZoneId: Site ID.
         :type ZoneId: str
+        :param _OwnershipVerification: Site ownership verification information. After the site is created, you need to complete the ownership verification before the site can serve normally.
+
+If `Type=partial`, add TXT records to your DNS provider or add files to the root DNS server, and then call [VerifyOwnership]() to complete verification. For more information, see [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1).
+
+If `Type = full`, switch the DNS server as instructed by [Modifying DNS Server](https://intl.cloud.tencent.com/document/product/1552/90452?from_cn_redirect=1). Then call [VerifyOwnership]() to check the result.
+
+If `Type = noDomainAccess`, leave it blank. No action is required.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._ZoneId = None
+        self._OwnershipVerification = None
         self._RequestId = None
 
     @property
@@ -4630,6 +4966,14 @@ class CreateZoneResponse(AbstractModel):
     @ZoneId.setter
     def ZoneId(self, ZoneId):
         self._ZoneId = ZoneId
+
+    @property
+    def OwnershipVerification(self):
+        return self._OwnershipVerification
+
+    @OwnershipVerification.setter
+    def OwnershipVerification(self, OwnershipVerification):
+        self._OwnershipVerification = OwnershipVerification
 
     @property
     def RequestId(self):
@@ -4642,6 +4986,9 @@ class CreateZoneResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
+        if params.get("OwnershipVerification") is not None:
+            self._OwnershipVerification = OwnershipVerification()
+            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
         self._RequestId = params.get("RequestId")
 
 
@@ -5639,41 +5986,40 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: ID of the site related with the accelerated domain name.
+        :param _ZoneId: ID of the site related with the acceleration domain name.
         :type ZoneId: str
-        :param _Filters: Filters. Each filter can have up to 20 entries. See below for details: 
-<li>`domain-name`:<br>   <strong>Accelerated domain name</strong><br>   Type: String<br>Required: No 
-<li>`origin-type`:<br>   <strong>Type of the origin</strong><br>   Type: String<br>   Required: No 
-<li>`origin`:<br>   <strong>Primary origin</strong><br>   Type: String<br>   Required: No 
-<li>`backup-origin`:<br>   <strong>Secondary origin</strong><br>   Type: String<br>   Required: No 
-<li>`domain-cname`:<br>   <strong>Accelerated CNAME</strong><br>   Type: String<br>   Required: No 
-<li>`share-cname`:<br>   <strong> Shared CNAME</strong><br>   Type: String<br>   Required: No
+        :param _Offset: Offset for paginated queries. Default value: 0.
+        :type Offset: int
+        :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 200.
+        :type Limit: int
+        :param _Filters: Filter conditions. Up to 20 values for each filter. If it is not passed in, all domain names related with the specific zone-id are returned. 
+<li>`domain-name`: Acceleration domain name</li>
+<li>`origin-type`: Type of the origin</li>
+<li>`origin`: Primary origin address</li>
+<li>`backup-origin`: Secondary origin address</li>
+<li>`domain-cname`: CNAME</li>
+<li>`share-cname`: Shared CNAME</li>
         :type Filters: list of AdvancedFilter
-        :param _Direction: The sorting order. Values:
+        :param _Order: Sort the returned results according to this field. Values include:
+<li>`created_on`: Creation time of the acceleration domain name</li>
+<li>`domain-name`: (Default) Acceleration domain name.</li> 
+        :type Order: str
+        :param _Direction: Sort direction. If the field value is number, sort by the numeric value. If the field value is text, sort by the ascill code. Values include:
 <li>`asc`: Ascending order.</li>
-<li>`desc`: Descending order.</li>Default value: `asc`.
+<li>`desc`: Descending order.</li> Default value: `asc`.
         :type Direction: str
         :param _Match: The match mode. Values:
 <li>`all`: Return all matches.</li>
 <li>`any`: Return any match.</li>Default value: `all`.
         :type Match: str
-        :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 200.
-        :type Limit: int
-        :param _Offset: Offset for paginated queries. Default value: 0.
-        :type Offset: int
-        :param _Order: The sorting criteria. Values:
-<li>`created_on`: Creation time of the accelerated domain name.</li>
-<li>`domain-name`: Acceleration domain name.</li>
-</li>Default value: `domain-name`.
-        :type Order: str
         """
         self._ZoneId = None
+        self._Offset = None
+        self._Limit = None
         self._Filters = None
+        self._Order = None
         self._Direction = None
         self._Match = None
-        self._Limit = None
-        self._Offset = None
-        self._Order = None
 
     @property
     def ZoneId(self):
@@ -5684,12 +6030,36 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
         self._ZoneId = ZoneId
 
     @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
     def Filters(self):
         return self._Filters
 
     @Filters.setter
     def Filters(self, Filters):
         self._Filters = Filters
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
 
     @property
     def Direction(self):
@@ -5707,44 +6077,20 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
     def Match(self, Match):
         self._Match = Match
 
-    @property
-    def Limit(self):
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Offset(self):
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Order(self):
-        return self._Order
-
-    @Order.setter
-    def Order(self, Order):
-        self._Order = Order
-
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
                 obj = AdvancedFilter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Order = params.get("Order")
         self._Direction = params.get("Direction")
         self._Match = params.get("Match")
-        self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        self._Order = params.get("Order")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5762,9 +6108,9 @@ class DescribeAccelerationDomainsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of matched accelerated domain names.
+        :param _TotalCount: Total of matched alias domain names.
         :type TotalCount: int
-        :param _AccelerationDomains: List of accelerated domain names.
+        :param _AccelerationDomains: Information of all matched acceleration domain names
         :type AccelerationDomains: list of AccelerationDomain
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -9109,22 +9455,22 @@ class DescribeZonesRequest(AbstractModel):
         r"""
         :param _Offset: The page offset. Default value: 0
         :type Offset: int
-        :param _Limit: The paginated query limit. Default value: 20. Maximum value: 1000.
+        :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 100.
         :type Limit: int
-        :param _Filters: Filter criteria. Each filter criteria can have up to 20 entries.
-<li>`zone-name`:<br>   Filter by <strong>site name</strong><br>   Type: String<br>   Required: No</li><li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-xxx<br>   Type: String<br>   Required: No</li><li>`status`:<br>   Filter by <strong>site status</strong><br>   Type: String<br>   Required: No</li><li>`tag-key`:<br>   Filter by <strong>tag key</strong><br>   Type: String<br>   Required: No</li><li>`tag-value`:<br>   Filter by <strong>tag value</strong><br>   Type: String<br>   Required: No</li>Only `zone-name` supports fuzzy query.
+        :param _Filters: Filter conditions. Up to 20 values for each filter. If this parameter is not filled in, the information of all sites under the current account is returned. Detailed filtering conditions are as follows:
+<li>`zone-name`: Site name </li><li>`zone-id`: Site ID, such as zone-2noz78a8ev6k</li><li>`status`: Site status </li><li>`tag-key`: Tag key </li><li>`tag-value`: Tag value </li>Only `zone-name` supports fuzzy query.
         :type Filters: list of AdvancedFilter
-        :param _Order: The sorting field. Values:
-<li>`type`: Access mode</li>
+        :param _Order: Sort the returned results according to this field. Values include:
+<li>`type`: Connection mode</li>
 <li>`area`: Acceleration region</li>
-<li>`create-time`: Creation date</li>
+<li>`create-time`: Creation time</li>
 <li>`zone-name`: Site name</li>
-<li>`use-time`: Last used date</li>
-<li>`active-status`: Activation status</li>If it is left empty, the default value `create-time` is used.
+<li>`use-time`: Last used time</li>
+<li>`active-status` Effective status</li> Default value: `create-time`
         :type Order: str
-        :param _Direction: The sorting direction. Values:
-<li>`asc`: From smallest to largest</li>
-<li>`desc`: From largest to smallest</li>If it is left empty, the default value `desc` is used.
+        :param _Direction: Sort direction. If the field value is a number, sort by the numeric value. If the field value is text, sort by the ascill code. Values include:
+<li>`asc`: From the smallest to largest</li>
+<li>`desc`: From the largest to smallest.</li>Default value: `desc`
         :type Direction: str
         """
         self._Offset = None
@@ -9204,7 +9550,7 @@ class DescribeZonesResponse(AbstractModel):
         r"""
         :param _TotalCount: Number of eligible sites.
         :type TotalCount: int
-        :param _Zones: Details of sites
+        :param _Zones: Details of sites.
         :type Zones: list of Zone
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -9675,11 +10021,11 @@ class DnsVerification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Subdomain: 
+        :param _Subdomain: The host record.
         :type Subdomain: str
-        :param _RecordType: 
+        :param _RecordType: The record type.
         :type RecordType: str
-        :param _RecordValue: 
+        :param _RecordValue: The record value.
         :type RecordValue: str
         """
         self._Subdomain = None
@@ -10614,15 +10960,15 @@ class FileAscriptionInfo(AbstractModel):
 
 
 class FileVerification(AbstractModel):
-    """
+    """Information required for verifying via a file. It's applicable to sites connected via CNAMEs.
 
     """
 
     def __init__(self):
         r"""
-        :param _Path: 
+        :param _Path: EdgeOne obtains the file verification information in the format of "Scheme + Host + URL Path", (e.g. https://www.example.com/.well-known/teo-verification/z12h416twn.txt). This field is the URL path section of the URL you need to create.
         :type Path: str
-        :param _Content: 
+        :param _Content: Content of the verification file. The contents of this field need to be filled into the text file returned by `Path`.
         :type Content: str
         """
         self._Path = None
@@ -13032,17 +13378,24 @@ class ModifyHostsCertificateRequest(AbstractModel):
         r"""
         :param _ZoneId: ID of the site.
         :type ZoneId: str
-        :param _Hosts: List of domain names that the certificate will be attached to.
+        :param _Hosts: Domain names that you need to modify the certificate configuration
         :type Hosts: list of str
-        :param _ServerCertInfo: Certificate information. Note that only `CertId` is required. If it is not specified, the default certificate will be used.
+        :param _Mode: Certificate configuration mode. Values:
+<li>`disable`: (Default) Do not configure the certificate</li>
+<li>`eofreecert`: Use a free certificate provided by EdgeOne</li>
+<li>`sslcert`: Configure an SSL certificate.</li>
+        :type Mode: str
+        :param _ServerCertInfo: ID of the SSL certificate. It takes effect when `mode=sslcert`. To check the certificate ID, go to the [SSL Certificate](https://console.cloud.tencent.com/certoview) console.
         :type ServerCertInfo: list of ServerCertInfo
         :param _ApplyType: Whether the certificate is managed by EdgeOne. Values:
-<li>`apply`: Managed by EdgeOne.</li>
-<li>`none`: Not managed by EdgeOne.</li>If not specified, this field uses the default value `none`.
+<li>`none`: Not managed by EdgeOne</li>
+<li>`apply`: Managed by EdgeOne</li>
+Default value: `none`.
         :type ApplyType: str
         """
         self._ZoneId = None
         self._Hosts = None
+        self._Mode = None
         self._ServerCertInfo = None
         self._ApplyType = None
 
@@ -13063,6 +13416,14 @@ class ModifyHostsCertificateRequest(AbstractModel):
         self._Hosts = Hosts
 
     @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
     def ServerCertInfo(self):
         return self._ServerCertInfo
 
@@ -13072,16 +13433,21 @@ class ModifyHostsCertificateRequest(AbstractModel):
 
     @property
     def ApplyType(self):
+        warnings.warn("parameter `ApplyType` is deprecated", DeprecationWarning) 
+
         return self._ApplyType
 
     @ApplyType.setter
     def ApplyType(self, ApplyType):
+        warnings.warn("parameter `ApplyType` is deprecated", DeprecationWarning) 
+
         self._ApplyType = ApplyType
 
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
         self._Hosts = params.get("Hosts")
+        self._Mode = params.get("Mode")
         if params.get("ServerCertInfo") is not None:
             self._ServerCertInfo = []
             for item in params.get("ServerCertInfo"):
@@ -14226,13 +14592,13 @@ class NormalAction(AbstractModel):
 
 
 class NsVerification(AbstractModel):
-    """
+    """Information required for switching DNS servers. It's applicable to sites connected via NSs.
 
     """
 
     def __init__(self):
         r"""
-        :param _NameServers: 
+        :param _NameServers: The DNS server address assigned to the user when connecting a site to EO via NS. You need to switch the NameServer of the domain name to this address.
         :type NameServers: list of str
         """
         self._NameServers = None
@@ -14643,7 +15009,7 @@ class OriginInfo(AbstractModel):
 <li>`ORIGIN_GROUP`: Origin group</li>
 <li>`AWS_S3`: AWS S3 bucket address</li>
 <li>`LB`: Tencent Cloud CLB instance</li>
-<li>`SPACE`: EdgeOne Shield Space</li>
+<li>`SPACE`: EdgeOne Shield Space</li>  
         :type OriginType: str
         :param _Origin: The origin address. Enter the origin group ID if `OriginType=ORIGIN_GROUP`.
         :type Origin: str
@@ -14992,17 +15358,22 @@ Whether the origin group is private. Values:
 
 
 class OwnershipVerification(AbstractModel):
-    """
+    """Information of domain name ownership verification.
 
     """
 
     def __init__(self):
         r"""
-        :param _DnsVerification: 
+        :param _DnsVerification: u200cInformation required for authentication using DNS resolution. It's applicable to sites connected via CNAME. See [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1#7af6ecf8-afca-4e35-8811-b5797ed1bde5).
+ 
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type DnsVerification: :class:`tencentcloud.teo.v20220901.models.DnsVerification`
-        :param _FileVerification: 
+        :param _FileVerification: u200cInformation required for verifying via a file. It's applicable to sites connected via CNAMEs. See [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1#7af6ecf8-afca-4e35-8811-b5797ed1bde5).
+ 
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type FileVerification: :class:`tencentcloud.teo.v20220901.models.FileVerification`
-        :param _NsVerification: 
+        :param _NsVerification: u200cInformation required for switching DNS servers. It's applicable to sites connected via NSs. For details, see [Modifying DNS Server](https://intl.cloud.tencent.com/document/product/1552/90452?from_cn_redirect=1).
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type NsVerification: :class:`tencentcloud.teo.v20220901.models.NsVerification`
         """
         self._DnsVerification = None
@@ -16641,14 +17012,7 @@ class RuleCondition(AbstractModel):
 <li>`exist`: Exists</li>
 <li>`notexist`: Does not exist</li>
         :type Operator: str
-        :param _Target: The match type. Values:
-<li>`filename`: File name</li>
-<li>`extension`: File extension</li>
-<li>`host`: Host</li>
-<li>`full_url`: Full URL, which indicates the complete URL path under the current site and must contain the HTTP protocol, host, and path.</li>
-<li>`url`: Partial URL under the current site</li><li>`client_country`: Country/Region of the client</li>
-<li>`query_string`: Query string in the request URL</li>
-<li>`request_header`: HTTP request header</li>
+        :param _Target: Match fields. Values: <li>`filename`: File name;</li><li>`extension`: File suffix;</li><li>`host`: HOST;</li><li>`full_url`: The complete URL path under the current site, including the HTTP protocol, Host and path;</li><li>`url`: The URL path request under the current site;</li><li>`client_country`: Client country;</li><li>`query_string`: The query string of the URL requested under the current site;</li><li>`request_header`: HTTP request header. </li>
         :type Target: str
         :param _Values: The parameter value of the match type. It can be an empty string only when `Target=query string/request header` and `Operator=exist/notexist`.
 <li>When `Target=extension`, enter the file extension, such as "jpg" and "txt".</li>
@@ -16720,10 +17084,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IgnoreNameCase(self):
+        warnings.warn("parameter `IgnoreNameCase` is deprecated", DeprecationWarning) 
+
         return self._IgnoreNameCase
 
     @IgnoreNameCase.setter
     def IgnoreNameCase(self, IgnoreNameCase):
+        warnings.warn("parameter `IgnoreNameCase` is deprecated", DeprecationWarning) 
+
         self._IgnoreNameCase = IgnoreNameCase
 
 
@@ -18964,6 +19332,90 @@ class VanityNameServersIps(AbstractModel):
         
 
 
+class VerifyOwnershipRequest(AbstractModel):
+    """VerifyOwnership request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: Site or acceleration domain name
+        :type Domain: str
+        """
+        self._Domain = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyOwnershipResponse(AbstractModel):
+    """VerifyOwnership response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Result of ownership verification
+<li>`success`: Verification passed</li>
+<li>`fail`: Verification failed</li>
+        :type Status: str
+        :param _Result: When the ownership verification result is `fail`, this field returns the reason of failure.
+        :type Result: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class Waf(AbstractModel):
     """N/A
 
@@ -19218,7 +19670,7 @@ class Zone(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: The site ID.
+        :param _ZoneId: Site ID.
         :type ZoneId: str
         :param _ZoneName: The site name.
         :type ZoneName: str
@@ -19227,15 +19679,17 @@ class Zone(AbstractModel):
         :param _NameServers: The list of name servers assigned by Tencent Cloud.
         :type NameServers: list of str
         :param _Status: The site status. Values:
-<li>`active`: The name server is switched.</li>
-<li>`pending`: The name server is not switched.</li>
-<li>`moved`: The name server is moved.</li>
-<li>`deactivated`: The site is blocked.</li>
+u200c<li>`active`: The name server is switched to EdgeOne.</li>
+u200c<li>`pending`: The name server is not switched.</li>
+u200c<li>`moved`: The name server is changed to other service providers.</li>
+u200c<li>`deactivated`: The site is blocked.</li>
+<li>`initializing`: The site is not bound with any plan. </li>
         :type Status: str
-        :param _Type: Access mode of the site. Values:
-<li> `full`: Access through a name server.</li>
-<li> `partial`: Access through a CNAME record.</li>
-<li> `noDomainAccess`: Access without using a domain name </li>
+        :param _Type: Connection mode of the site. Values:
+<li>`full`: Connect via the name server.</li>
+<li>`partial`: Connect via the CNAME record.</li>
+<li>`noDomainAccess`: Connect without using a domain name
+ 
         :type Type: str
         :param _Paused: Whether the site is disabled.
         :type Paused: bool
@@ -19278,8 +19732,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 <li>`0`: Non-fake site;</li>
 <li>`1`: Fake site.</li>
         :type IsFake: int
-        :param _LockStatus: Lock status. Valid values: <li>`enable`: Normal. Modifying is allowed;</li><li>`disable`: Locked. Modifying is not allowed.</li>
+        :param _LockStatus: Lock status. Values: <li>`enable`: Normal. Modification is allowed.</li><li>`disable`: Locked. Modification is not allowed.</li><li>`plan_migrate`: Adjusting the plan. Modification is not allowed.</li> 
         :type LockStatus: str
+        :param _OwnershipVerification: Ownership verification information
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
         """
         self._ZoneId = None
         self._ZoneName = None
@@ -19301,6 +19758,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AliasZoneName = None
         self._IsFake = None
         self._LockStatus = None
+        self._OwnershipVerification = None
 
     @property
     def ZoneId(self):
@@ -19462,6 +19920,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def LockStatus(self, LockStatus):
         self._LockStatus = LockStatus
 
+    @property
+    def OwnershipVerification(self):
+        return self._OwnershipVerification
+
+    @OwnershipVerification.setter
+    def OwnershipVerification(self, OwnershipVerification):
+        self._OwnershipVerification = OwnershipVerification
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -19501,6 +19967,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AliasZoneName = params.get("AliasZoneName")
         self._IsFake = params.get("IsFake")
         self._LockStatus = params.get("LockStatus")
+        if params.get("OwnershipVerification") is not None:
+            self._OwnershipVerification = OwnershipVerification()
+            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

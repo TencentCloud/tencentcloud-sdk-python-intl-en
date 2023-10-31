@@ -73,7 +73,9 @@ class TeoClient(AbstractClient):
 
 
     def CreateAccelerationDomain(self, request):
-        """This API is used to connect a domain to EdgeOne.
+        """This API is used to create an acceleration domain name.
+
+        For sites connected via the CNAME, if you have not verified the ownership of the domain name, the ownership verification information of the domain name is returned. To verify your ownership of the domain name, see [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1).
 
         :param request: Request instance for CreateAccelerationDomain.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateAccelerationDomainRequest`
@@ -328,7 +330,9 @@ class TeoClient(AbstractClient):
 
 
     def CreateZone(self, request):
-        """This API is used to access a new site.
+        """This API is used to create a site. After you create the site, you can connect it to EdgeOne via the CNAME or NS (see [Quick Start](https://intl.cloud.tencent.com/document/product/1552/87601?from_cn_redirect=1)), or connect it without a domain name (see [Quick Access to L4 Proxy Service](https://intl.cloud.tencent.com/document/product/1552/96051?from_cn_redirect=1)).
+
+        If there are already EdgeOne plans under the current account, it is recommended to pass in the `PlanId` to bind the site with the plan directly. If `PlanId` is not passed in, the created site is not activated. You need to call [BindZoneToPlan](https://intl.cloud.tencent.com/document/product/1552/83042?from_cn_redirect=1) to bind the site with a plan. To purchase a plan, please go to the EdgeOne console.
 
         :param request: Request instance for CreateZone.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateZoneRequest`
@@ -535,7 +539,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeAccelerationDomains(self, request):
-        """This API is used to query accelerated domain names. Paging, sorting and filtering are supported.
+        """This API is used to query domain name information of a site, including the acceleration domain name, origin, and domain name status. You can query the information of all domain names, or specific domain names by specifying filters information.
 
         :param request: Request instance for DescribeAccelerationDomains.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeAccelerationDomainsRequest`
@@ -1087,7 +1091,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeZones(self, request):
-        """This API is used to query the list of user sites.
+        """This API is used to query the information of sites that you have access to. You can filter sites based on different query criteria.
 
         :param request: Request instance for DescribeZones.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeZonesRequest`
@@ -1363,7 +1367,9 @@ class TeoClient(AbstractClient):
 
 
     def ModifyHostsCertificate(self, request):
-        """This API is used to modify the certificate of a domain name.
+        """This API is used to configure the certificate of a site. You can use your own certificate or [apply for a free certificate](https://intl.cloud.tencent.com/document/product/1552/90437?from_cn_redirect=1).
+        To use an external certificate, upload the certificate to [SSL Certificates Console](https://console.cloud.tencent.com/certoview) first, and then input the certificate ID in this API. For details, see [Deploying Own Certificates to EdgeOne Domains](https://intl.cloud.tencent.com/document/product/1552/88874?from_cn_redirect=1).
+
 
         :param request: Request instance for ModifyHostsCertificate.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyHostsCertificateRequest`
@@ -1537,6 +1543,31 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyZoneStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyZoneStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def VerifyOwnership(self, request):
+        """This API is used to verify your ownership of a site or domain name. It's required in the CNAME access mode. After a site is verified, you don't need to verify the ownership again for domain names added to it in the future. For details, see [Ownership Verification](https://intl.cloud.tencent.com/document/product/1552/70789?from_cn_redirect=1).
+
+        For sites connected via the NS, you can query whether the NS is successfully switched through this API. For details, see [Modifying DNS Servers](https://intl.cloud.tencent.com/document/product/1552/90452?from_cn_redirect=1).
+
+        :param request: Request instance for VerifyOwnership.
+        :type request: :class:`tencentcloud.teo.v20220901.models.VerifyOwnershipRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.VerifyOwnershipResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VerifyOwnership", params, headers=headers)
+            response = json.loads(body)
+            model = models.VerifyOwnershipResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
