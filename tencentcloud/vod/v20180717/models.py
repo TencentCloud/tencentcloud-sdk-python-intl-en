@@ -24589,6 +24589,305 @@ class EditMediaFileInfo(AbstractModel):
         
 
 
+class EditMediaOutputConfig(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MediaName: 
+        :type MediaName: str
+        :param _Type: 
+        :type Type: str
+        :param _ClassId: 
+        :type ClassId: int
+        :param _ExpireTime: 
+        :type ExpireTime: str
+        :param _VideoStream: 
+        :type VideoStream: :class:`tencentcloud.vod.v20180717.models.EditMediaVideoStream`
+        :param _TEHDConfig: 
+        :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.EditMediaTEHDConfig`
+        """
+        self._MediaName = None
+        self._Type = None
+        self._ClassId = None
+        self._ExpireTime = None
+        self._VideoStream = None
+        self._TEHDConfig = None
+
+    @property
+    def MediaName(self):
+        return self._MediaName
+
+    @MediaName.setter
+    def MediaName(self, MediaName):
+        self._MediaName = MediaName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ClassId(self):
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def VideoStream(self):
+        return self._VideoStream
+
+    @VideoStream.setter
+    def VideoStream(self, VideoStream):
+        self._VideoStream = VideoStream
+
+    @property
+    def TEHDConfig(self):
+        return self._TEHDConfig
+
+    @TEHDConfig.setter
+    def TEHDConfig(self, TEHDConfig):
+        self._TEHDConfig = TEHDConfig
+
+
+    def _deserialize(self, params):
+        self._MediaName = params.get("MediaName")
+        self._Type = params.get("Type")
+        self._ClassId = params.get("ClassId")
+        self._ExpireTime = params.get("ExpireTime")
+        if params.get("VideoStream") is not None:
+            self._VideoStream = EditMediaVideoStream()
+            self._VideoStream._deserialize(params.get("VideoStream"))
+        if params.get("TEHDConfig") is not None:
+            self._TEHDConfig = EditMediaTEHDConfig()
+            self._TEHDConfig._deserialize(params.get("TEHDConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EditMediaRequest(AbstractModel):
+    """EditMedia request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputType: 
+        :type InputType: str
+        :param _SubAppId: 
+        :type SubAppId: int
+        :param _FileInfos: 
+        :type FileInfos: list of EditMediaFileInfo
+        :param _StreamInfos: 
+        :type StreamInfos: list of EditMediaStreamInfo
+        :param _Definition: 
+        :type Definition: int
+        :param _ProcedureName: 
+        :type ProcedureName: str
+        :param _OutputConfig: 
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.EditMediaOutputConfig`
+        :param _SessionContext: 
+        :type SessionContext: str
+        :param _TasksPriority: 
+        :type TasksPriority: int
+        :param _SessionId: Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.
+        :type SessionId: str
+        :param _ExtInfo: Reserved field for special purposes.
+        :type ExtInfo: str
+        """
+        self._InputType = None
+        self._SubAppId = None
+        self._FileInfos = None
+        self._StreamInfos = None
+        self._Definition = None
+        self._ProcedureName = None
+        self._OutputConfig = None
+        self._SessionContext = None
+        self._TasksPriority = None
+        self._SessionId = None
+        self._ExtInfo = None
+
+    @property
+    def InputType(self):
+        return self._InputType
+
+    @InputType.setter
+    def InputType(self, InputType):
+        self._InputType = InputType
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def FileInfos(self):
+        return self._FileInfos
+
+    @FileInfos.setter
+    def FileInfos(self, FileInfos):
+        self._FileInfos = FileInfos
+
+    @property
+    def StreamInfos(self):
+        return self._StreamInfos
+
+    @StreamInfos.setter
+    def StreamInfos(self, StreamInfos):
+        self._StreamInfos = StreamInfos
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def ProcedureName(self):
+        return self._ProcedureName
+
+    @ProcedureName.setter
+    def ProcedureName(self, ProcedureName):
+        self._ProcedureName = ProcedureName
+
+    @property
+    def OutputConfig(self):
+        return self._OutputConfig
+
+    @OutputConfig.setter
+    def OutputConfig(self, OutputConfig):
+        self._OutputConfig = OutputConfig
+
+    @property
+    def SessionContext(self):
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def TasksPriority(self):
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def ExtInfo(self):
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._InputType = params.get("InputType")
+        self._SubAppId = params.get("SubAppId")
+        if params.get("FileInfos") is not None:
+            self._FileInfos = []
+            for item in params.get("FileInfos"):
+                obj = EditMediaFileInfo()
+                obj._deserialize(item)
+                self._FileInfos.append(obj)
+        if params.get("StreamInfos") is not None:
+            self._StreamInfos = []
+            for item in params.get("StreamInfos"):
+                obj = EditMediaStreamInfo()
+                obj._deserialize(item)
+                self._StreamInfos.append(obj)
+        self._Definition = params.get("Definition")
+        self._ProcedureName = params.get("ProcedureName")
+        if params.get("OutputConfig") is not None:
+            self._OutputConfig = EditMediaOutputConfig()
+            self._OutputConfig._deserialize(params.get("OutputConfig"))
+        self._SessionContext = params.get("SessionContext")
+        self._TasksPriority = params.get("TasksPriority")
+        self._SessionId = params.get("SessionId")
+        self._ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EditMediaResponse(AbstractModel):
+    """EditMedia response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 
+        :type TaskId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class EditMediaStreamInfo(AbstractModel):
     """Video stream editing information
 
@@ -24638,6 +24937,39 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._StreamId = params.get("StreamId")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EditMediaTEHDConfig(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 
+        :type Type: str
+        """
+        self._Type = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25002,6 +25334,75 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._MediaName = params.get("MediaName")
         self._ClassId = params.get("ClassId")
         self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EditMediaVideoStream(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResolutionAdaptive: 
+        :type ResolutionAdaptive: str
+        :param _Width: 
+        :type Width: int
+        :param _Height: 
+        :type Height: int
+        :param _Fps: 
+        :type Fps: int
+        """
+        self._ResolutionAdaptive = None
+        self._Width = None
+        self._Height = None
+        self._Fps = None
+
+    @property
+    def ResolutionAdaptive(self):
+        return self._ResolutionAdaptive
+
+    @ResolutionAdaptive.setter
+    def ResolutionAdaptive(self, ResolutionAdaptive):
+        self._ResolutionAdaptive = ResolutionAdaptive
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Fps(self):
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+
+    def _deserialize(self, params):
+        self._ResolutionAdaptive = params.get("ResolutionAdaptive")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._Fps = params.get("Fps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41349,6 +41750,205 @@ class ProcessMediaByUrlRequest(AbstractModel):
 
 class ProcessMediaByUrlResponse(AbstractModel):
     """ProcessMediaByUrl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID
+        :type TaskId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ProcessMediaRequest(AbstractModel):
+    """ProcessMedia request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: Media file ID, i.e., the globally unique ID of a file in VOD assigned by the VOD backend after successful upload. This field can be obtained through the [video upload completion event notification](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) or [VOD Console](https://console.cloud.tencent.com/vod/media).
+        :type FileId: str
+        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param _MediaProcessTask: Parameter of video processing task.
+        :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
+        :param _AiContentReviewTask: The information of the audio/video moderation task\*.
+This parameter is <font color=red>\*no longer recommended</font>. Please use [ReviewAudioVideo](https://intl.cloud.tencent.com/document/api/266/80283?from_cn_redirect=1) or [ReviewImage](https://intl.cloud.tencent.com/document/api/266/73217?from_cn_redirect=1) instead.
+        :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
+        :param _AiAnalysisTask: Video content analysis task parameter.
+        :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
+        :param _AiRecognitionTask: Type parameter of video content recognition task.
+        :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
+        :param _TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.
+        :type TasksPriority: int
+        :param _TasksNotifyMode: Notification mode for task flow status change. Valid values: Finish, Change, None. If this parameter is left empty, `Finish` will be used.
+        :type TasksNotifyMode: str
+        :param _SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        :param _SessionId: Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.
+        :type SessionId: str
+        :param _ExtInfo: Reserved field for special purposes.
+        :type ExtInfo: str
+        """
+        self._FileId = None
+        self._SubAppId = None
+        self._MediaProcessTask = None
+        self._AiContentReviewTask = None
+        self._AiAnalysisTask = None
+        self._AiRecognitionTask = None
+        self._TasksPriority = None
+        self._TasksNotifyMode = None
+        self._SessionContext = None
+        self._SessionId = None
+        self._ExtInfo = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def MediaProcessTask(self):
+        return self._MediaProcessTask
+
+    @MediaProcessTask.setter
+    def MediaProcessTask(self, MediaProcessTask):
+        self._MediaProcessTask = MediaProcessTask
+
+    @property
+    def AiContentReviewTask(self):
+        return self._AiContentReviewTask
+
+    @AiContentReviewTask.setter
+    def AiContentReviewTask(self, AiContentReviewTask):
+        self._AiContentReviewTask = AiContentReviewTask
+
+    @property
+    def AiAnalysisTask(self):
+        return self._AiAnalysisTask
+
+    @AiAnalysisTask.setter
+    def AiAnalysisTask(self, AiAnalysisTask):
+        self._AiAnalysisTask = AiAnalysisTask
+
+    @property
+    def AiRecognitionTask(self):
+        return self._AiRecognitionTask
+
+    @AiRecognitionTask.setter
+    def AiRecognitionTask(self, AiRecognitionTask):
+        self._AiRecognitionTask = AiRecognitionTask
+
+    @property
+    def TasksPriority(self):
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+    @property
+    def TasksNotifyMode(self):
+        return self._TasksNotifyMode
+
+    @TasksNotifyMode.setter
+    def TasksNotifyMode(self, TasksNotifyMode):
+        self._TasksNotifyMode = TasksNotifyMode
+
+    @property
+    def SessionContext(self):
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def ExtInfo(self):
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._SubAppId = params.get("SubAppId")
+        if params.get("MediaProcessTask") is not None:
+            self._MediaProcessTask = MediaProcessTaskInput()
+            self._MediaProcessTask._deserialize(params.get("MediaProcessTask"))
+        if params.get("AiContentReviewTask") is not None:
+            self._AiContentReviewTask = AiContentReviewTaskInput()
+            self._AiContentReviewTask._deserialize(params.get("AiContentReviewTask"))
+        if params.get("AiAnalysisTask") is not None:
+            self._AiAnalysisTask = AiAnalysisTaskInput()
+            self._AiAnalysisTask._deserialize(params.get("AiAnalysisTask"))
+        if params.get("AiRecognitionTask") is not None:
+            self._AiRecognitionTask = AiRecognitionTaskInput()
+            self._AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
+        self._TasksPriority = params.get("TasksPriority")
+        self._TasksNotifyMode = params.get("TasksNotifyMode")
+        self._SessionContext = params.get("SessionContext")
+        self._SessionId = params.get("SessionId")
+        self._ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessMediaResponse(AbstractModel):
+    """ProcessMedia response structure.
 
     """
 
