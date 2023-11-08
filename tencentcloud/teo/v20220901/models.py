@@ -1919,6 +1919,140 @@ class AscriptionInfo(AbstractModel):
         
 
 
+class BindSharedCNAMEMap(AbstractModel):
+    """Bindings between a shared CNAME and connected domain names
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SharedCNAME: The shared CNAME to be bound with or unbound from.
+        :type SharedCNAME: str
+        :param _DomainNames: Acceleration domains (up to 20).
+        :type DomainNames: list of str
+        """
+        self._SharedCNAME = None
+        self._DomainNames = None
+
+    @property
+    def SharedCNAME(self):
+        return self._SharedCNAME
+
+    @SharedCNAME.setter
+    def SharedCNAME(self, SharedCNAME):
+        self._SharedCNAME = SharedCNAME
+
+    @property
+    def DomainNames(self):
+        return self._DomainNames
+
+    @DomainNames.setter
+    def DomainNames(self, DomainNames):
+        self._DomainNames = DomainNames
+
+
+    def _deserialize(self, params):
+        self._SharedCNAME = params.get("SharedCNAME")
+        self._DomainNames = params.get("DomainNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindSharedCNAMERequest(AbstractModel):
+    """BindSharedCNAME request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: ID of the site related with the acceleration domain name.	
+        :type ZoneId: str
+        :param _BindType: Action type. Values:
+<li>`bind`: To bind</li>
+<li>`unbind`: To unbind</li>
+        :type BindType: str
+        :param _BindSharedCNAMEMaps: Bindings between domain names and a shared CNAME
+        :type BindSharedCNAMEMaps: list of BindSharedCNAMEMap
+        """
+        self._ZoneId = None
+        self._BindType = None
+        self._BindSharedCNAMEMaps = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def BindType(self):
+        return self._BindType
+
+    @BindType.setter
+    def BindType(self, BindType):
+        self._BindType = BindType
+
+    @property
+    def BindSharedCNAMEMaps(self):
+        return self._BindSharedCNAMEMaps
+
+    @BindSharedCNAMEMaps.setter
+    def BindSharedCNAMEMaps(self, BindSharedCNAMEMaps):
+        self._BindSharedCNAMEMaps = BindSharedCNAMEMaps
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._BindType = params.get("BindType")
+        if params.get("BindSharedCNAMEMaps") is not None:
+            self._BindSharedCNAMEMaps = []
+            for item in params.get("BindSharedCNAMEMaps"):
+                obj = BindSharedCNAMEMap()
+                obj._deserialize(item)
+                self._BindSharedCNAMEMaps.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindSharedCNAMEResponse(AbstractModel):
+    """BindSharedCNAME response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class BindZoneToPlanRequest(AbstractModel):
     """BindZoneToPlan request structure.
 
@@ -4709,9 +4843,11 @@ class CreateSharedCNAMERequest(AbstractModel):
         r"""
         :param _ZoneId: ID of the site to which the shared CNAME belongs.	
         :type ZoneId: str
-        :param _SharedCNAMEPrefix: Prefix of the shared CNAME. Format: "test-api","test-api.com". Up 50 characters allowed.
-The full format of the shared CNAME is: <custom prefix> + <12-bit random string in ZoneId> + "share.eo.dns[0-5].com". For example, if the prefix is "example.com", the created shared CNAME is "example.com.sai2ig51kaa5.share.eo.dnse2.com"
-Example: example.com
+        :param _SharedCNAMEPrefix: Prefix of the shared CNAME (up to 50 characters). Format: "test-api", "test-api.com". 
+
+The complete format of a shared CNAME: <Custom Prefix> + <12-bit random string in ZoneId> + "share.dnse[0-5].com"
+
+For example, if the prefix is `example.com`, the generated shared CNAME is `example.com.sai2ig51kaa5.share.dnse2.com`.
         :type SharedCNAMEPrefix: str
         :param _Description: Description. It supports 1-50 characters.
         :type Description: str
@@ -4766,7 +4902,7 @@ class CreateSharedCNAMEResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SharedCNAME: Shared CNAME. Format: <Custom Prefix> + <12-bit random string in ZoneId> + "share.eo.dnse[0-5].com"
+        :param _SharedCNAME: Shared CNAME. Format: <Custom prefix> + <12-bit random string in ZoneId> + "share.dnse[0-5].com"
         :type SharedCNAME: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -5898,6 +6034,76 @@ class DeleteSecurityIPGroupRequest(AbstractModel):
 
 class DeleteSecurityIPGroupResponse(AbstractModel):
     """DeleteSecurityIPGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSharedCNAMERequest(AbstractModel):
+    """DeleteSharedCNAME request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: ID of the site to which the shared CNAME belongs.
+        :type ZoneId: str
+        :param _SharedCNAME: The shared CNAME to be deleted
+        :type SharedCNAME: str
+        """
+        self._ZoneId = None
+        self._SharedCNAME = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def SharedCNAME(self):
+        return self._SharedCNAME
+
+    @SharedCNAME.setter
+    def SharedCNAME(self, SharedCNAME):
+        self._SharedCNAME = SharedCNAME
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._SharedCNAME = params.get("SharedCNAME")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSharedCNAMEResponse(AbstractModel):
+    """DeleteSharedCNAME response structure.
 
     """
 
@@ -14862,97 +15068,80 @@ class OriginGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: The site ID.
-        :type ZoneId: str
-        :param _ZoneName: The site name.
-        :type ZoneName: str
-        :param _OriginGroupId: The ID of the origin group.
-        :type OriginGroupId: str
-        :param _OriginType: The origin type. Values:
-<li>`self`: Customer origin</li>
-<li>`third_party`: Third-party origin</li>
-<li>`cos`: Tencent Cloud COS origin</li>
-        :type OriginType: str
-        :param _OriginGroupName: The name of the origin group.
-        :type OriginGroupName: str
-        :param _ConfigurationType: The origin configuration type when `OriginType=self`. Values:
-<li>`area`: Configure by region.</li>
-<li>`weight`: Configure by weight.</li>
-<li>`proto`: Configure by HTTP protocol.</li>When `OriginType=third_party/cos`, leave this field empty.
-        :type ConfigurationType: str
-        :param _OriginRecords: The origin record information.
-        :type OriginRecords: list of OriginRecord
+        :param _GroupId: 
+        :type GroupId: str
+        :param _Name: 
+        :type Name: str
+        :param _Type: 
+        :type Type: str
+        :param _Records: 
+        :type Records: list of OriginRecord
+        :param _References: 
+        :type References: list of OriginGroupReference
+        :param _CreateTime: 
+        :type CreateTime: str
         :param _UpdateTime: The update time of the origin group.
         :type UpdateTime: str
-        :param _HostHeader: The origin domain when `OriginType=self`.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _HostHeader: Origin-pull host header
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type HostHeader: str
         """
-        self._ZoneId = None
-        self._ZoneName = None
-        self._OriginGroupId = None
-        self._OriginType = None
-        self._OriginGroupName = None
-        self._ConfigurationType = None
-        self._OriginRecords = None
+        self._GroupId = None
+        self._Name = None
+        self._Type = None
+        self._Records = None
+        self._References = None
+        self._CreateTime = None
         self._UpdateTime = None
         self._HostHeader = None
 
     @property
-    def ZoneId(self):
-        return self._ZoneId
+    def GroupId(self):
+        return self._GroupId
 
-    @ZoneId.setter
-    def ZoneId(self, ZoneId):
-        self._ZoneId = ZoneId
-
-    @property
-    def ZoneName(self):
-        return self._ZoneName
-
-    @ZoneName.setter
-    def ZoneName(self, ZoneName):
-        self._ZoneName = ZoneName
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
 
     @property
-    def OriginGroupId(self):
-        return self._OriginGroupId
+    def Name(self):
+        return self._Name
 
-    @OriginGroupId.setter
-    def OriginGroupId(self, OriginGroupId):
-        self._OriginGroupId = OriginGroupId
-
-    @property
-    def OriginType(self):
-        return self._OriginType
-
-    @OriginType.setter
-    def OriginType(self, OriginType):
-        self._OriginType = OriginType
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
     @property
-    def OriginGroupName(self):
-        return self._OriginGroupName
+    def Type(self):
+        return self._Type
 
-    @OriginGroupName.setter
-    def OriginGroupName(self, OriginGroupName):
-        self._OriginGroupName = OriginGroupName
-
-    @property
-    def ConfigurationType(self):
-        return self._ConfigurationType
-
-    @ConfigurationType.setter
-    def ConfigurationType(self, ConfigurationType):
-        self._ConfigurationType = ConfigurationType
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
     @property
-    def OriginRecords(self):
-        return self._OriginRecords
+    def Records(self):
+        return self._Records
 
-    @OriginRecords.setter
-    def OriginRecords(self, OriginRecords):
-        self._OriginRecords = OriginRecords
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+    @property
+    def References(self):
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
 
     @property
     def UpdateTime(self):
@@ -14972,20 +15161,81 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
     def _deserialize(self, params):
-        self._ZoneId = params.get("ZoneId")
-        self._ZoneName = params.get("ZoneName")
-        self._OriginGroupId = params.get("OriginGroupId")
-        self._OriginType = params.get("OriginType")
-        self._OriginGroupName = params.get("OriginGroupName")
-        self._ConfigurationType = params.get("ConfigurationType")
-        if params.get("OriginRecords") is not None:
-            self._OriginRecords = []
-            for item in params.get("OriginRecords"):
+        self._GroupId = params.get("GroupId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
                 obj = OriginRecord()
                 obj._deserialize(item)
-                self._OriginRecords.append(obj)
+                self._Records.append(obj)
+        if params.get("References") is not None:
+            self._References = []
+            for item in params.get("References"):
+                obj = OriginGroupReference()
+                obj._deserialize(item)
+                self._References.append(obj)
+        self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._HostHeader = params.get("HostHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginGroupReference(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: 
+        :type InstanceType: str
+        :param _InstanceId: 
+        :type InstanceId: str
+        :param _InstanceName: 
+        :type InstanceName: str
+        """
+        self._InstanceType = None
+        self._InstanceId = None
+        self._InstanceName = None
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18370,7 +18620,7 @@ class StandardDebug(AbstractModel):
 <li>`on`: Enable</li>
 <li>`off`: Disable </li>
         :type Switch: str
-        :param _AllowClientIPList: The client IP to allow. It can be an IPv4/IPv6 address or a CIDR block. If not specified, it means to allow any client IP
+        :param _AllowClientIPList: Allowed client source. It supports IPv4/IPv6 addresses and CIDR blocks.
         :type AllowClientIPList: list of str
         :param _ExpireTime: The time when the standard debugging setting expires. If it is exceeded, this feature u200dbecomes invalid.
         :type ExpireTime: str
@@ -19688,8 +19938,7 @@ u200c<li>`deactivated`: The site is blocked.</li>
         :param _Type: Connection mode of the site. Values:
 <li>`full`: Connect via the name server.</li>
 <li>`partial`: Connect via the CNAME record.</li>
-<li>`noDomainAccess`: Connect without using a domain name
- 
+<li>`noDomainAccess`: Connect without using a domain name</li>
         :type Type: str
         :param _Paused: Whether the site is disabled.
         :type Paused: bool
