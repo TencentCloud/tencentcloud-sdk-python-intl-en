@@ -97,7 +97,7 @@ class AmsClient(AbstractClient):
 
 
     def DescribeTaskDetail(self, request):
-        """This API is used to view the details of an audio moderation task, including task status, detection result, recognized text content of the audio file, maliciousness tag that corresponds to the detection result, and suggested operation. For the specific output content, see the sample output parameters.<br>Default API request rate limit: **100 requests/sec**.
+        """This API is used to view the details of an audio moderation task, including task status, detection result, recognized text content of the audio file, maliciousness tag that corresponds to the detection result, and suggested operation. For the specific output content, see the sample output parameters.
 
         :param request: Request instance for DescribeTaskDetail.
         :type request: :class:`tencentcloud.ams.v20201229.models.DescribeTaskDetailRequest`

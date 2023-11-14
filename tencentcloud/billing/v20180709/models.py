@@ -5016,9 +5016,9 @@ class DescribeTagListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.
+        :param _Limit: The number of entries returned at a time. The maximum value is `1000`.
         :type Limit: int
-        :param _Offset: The number of entries returned at a time. The maximum value is `1000`.
+        :param _Offset: Pagination offset. If `Offset` is `0`, it indicates the first page. When `Limit` is `100`, if `Offset` is `100`, it indicates the second page; if `Offset` is `200`, it indicates the third page, and so on.
         :type Offset: int
         :param _TagKey: Cost allocation tag key, used for fuzzy search.
         :type TagKey: str
