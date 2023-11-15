@@ -124,6 +124,11 @@ def test_import_cmq():
     from tencentcloud.cmq.v20190304 import models
 
 
+def test_import_csip():
+    from tencentcloud.csip.v20221121 import csip_client
+    from tencentcloud.csip.v20221121 import models
+
+
 def test_import_cvm():
     from tencentcloud.cvm.v20170312 import cvm_client
     from tencentcloud.cvm.v20170312 import models
