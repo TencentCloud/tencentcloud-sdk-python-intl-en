@@ -39,6 +39,16 @@ class CreateInput(AbstractModel):
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTPSettings`
         :param _FailOver: Input failover. Valid values: `OPEN`, `CLOSE` (default)
         :type FailOver: str
+        :param _RTMPPullSettings: 
+        :type RTMPPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTMPPullSettings`
+        :param _RTSPPullSettings: 
+        :type RTSPPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTSPPullSettings`
+        :param _HLSPullSettings: 
+        :type HLSPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputHLSPullSettings`
+        :param _ResilientStream: 
+        :type ResilientStream: :class:`tencentcloud.mdc.v20200828.models.ResilientStreamConf`
+        :param _SecurityGroupIds: The bound security group IDs.
+        :type SecurityGroupIds: list of str
         """
         self._InputName = None
         self._Protocol = None
@@ -47,6 +57,11 @@ class CreateInput(AbstractModel):
         self._SRTSettings = None
         self._RTPSettings = None
         self._FailOver = None
+        self._RTMPPullSettings = None
+        self._RTSPPullSettings = None
+        self._HLSPullSettings = None
+        self._ResilientStream = None
+        self._SecurityGroupIds = None
 
     @property
     def InputName(self):
@@ -104,6 +119,46 @@ class CreateInput(AbstractModel):
     def FailOver(self, FailOver):
         self._FailOver = FailOver
 
+    @property
+    def RTMPPullSettings(self):
+        return self._RTMPPullSettings
+
+    @RTMPPullSettings.setter
+    def RTMPPullSettings(self, RTMPPullSettings):
+        self._RTMPPullSettings = RTMPPullSettings
+
+    @property
+    def RTSPPullSettings(self):
+        return self._RTSPPullSettings
+
+    @RTSPPullSettings.setter
+    def RTSPPullSettings(self, RTSPPullSettings):
+        self._RTSPPullSettings = RTSPPullSettings
+
+    @property
+    def HLSPullSettings(self):
+        return self._HLSPullSettings
+
+    @HLSPullSettings.setter
+    def HLSPullSettings(self, HLSPullSettings):
+        self._HLSPullSettings = HLSPullSettings
+
+    @property
+    def ResilientStream(self):
+        return self._ResilientStream
+
+    @ResilientStream.setter
+    def ResilientStream(self, ResilientStream):
+        self._ResilientStream = ResilientStream
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._InputName = params.get("InputName")
@@ -117,6 +172,95 @@ class CreateInput(AbstractModel):
             self._RTPSettings = CreateInputRTPSettings()
             self._RTPSettings._deserialize(params.get("RTPSettings"))
         self._FailOver = params.get("FailOver")
+        if params.get("RTMPPullSettings") is not None:
+            self._RTMPPullSettings = CreateInputRTMPPullSettings()
+            self._RTMPPullSettings._deserialize(params.get("RTMPPullSettings"))
+        if params.get("RTSPPullSettings") is not None:
+            self._RTSPPullSettings = CreateInputRTSPPullSettings()
+            self._RTSPPullSettings._deserialize(params.get("RTSPPullSettings"))
+        if params.get("HLSPullSettings") is not None:
+            self._HLSPullSettings = CreateInputHLSPullSettings()
+            self._HLSPullSettings._deserialize(params.get("HLSPullSettings"))
+        if params.get("ResilientStream") is not None:
+            self._ResilientStream = ResilientStreamConf()
+            self._ResilientStream._deserialize(params.get("ResilientStream"))
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInputHLSPullSettings(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceAddresses: 
+        :type SourceAddresses: list of HLSPullSourceAddress
+        """
+        self._SourceAddresses = None
+
+    @property
+    def SourceAddresses(self):
+        return self._SourceAddresses
+
+    @SourceAddresses.setter
+    def SourceAddresses(self, SourceAddresses):
+        self._SourceAddresses = SourceAddresses
+
+
+    def _deserialize(self, params):
+        if params.get("SourceAddresses") is not None:
+            self._SourceAddresses = []
+            for item in params.get("SourceAddresses"):
+                obj = HLSPullSourceAddress()
+                obj._deserialize(item)
+                self._SourceAddresses.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInputRTMPPullSettings(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceAddresses: 
+        :type SourceAddresses: list of RTMPPullSourceAddress
+        """
+        self._SourceAddresses = None
+
+    @property
+    def SourceAddresses(self):
+        return self._SourceAddresses
+
+    @SourceAddresses.setter
+    def SourceAddresses(self, SourceAddresses):
+        self._SourceAddresses = SourceAddresses
+
+
+    def _deserialize(self, params):
+        if params.get("SourceAddresses") is not None:
+            self._SourceAddresses = []
+            for item in params.get("SourceAddresses"):
+                obj = RTMPPullSourceAddress()
+                obj._deserialize(item)
+                self._SourceAddresses.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -162,6 +306,44 @@ class CreateInputRTPSettings(AbstractModel):
     def _deserialize(self, params):
         self._FEC = params.get("FEC")
         self._IdleTimeout = params.get("IdleTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInputRTSPPullSettings(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceAddresses: 
+        :type SourceAddresses: list of RTSPPullSourceAddress
+        """
+        self._SourceAddresses = None
+
+    @property
+    def SourceAddresses(self):
+        return self._SourceAddresses
+
+    @SourceAddresses.setter
+    def SourceAddresses(self, SourceAddresses):
+        self._SourceAddresses = SourceAddresses
+
+
+    def _deserialize(self, params):
+        if params.get("SourceAddresses") is not None:
+            self._SourceAddresses = []
+            for item in params.get("SourceAddresses"):
+                obj = RTSPPullSourceAddress()
+                obj._deserialize(item)
+                self._SourceAddresses.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -330,6 +512,10 @@ class CreateOutputInfo(AbstractModel):
         :param _AllowIpList: The IP allowlist. The address must be in CIDR format, such as `0.0.0.0/0`.
 This parameter is valid if `Protocol` is set to `RTMP_PULL`. If it is left empty, there is no restriction on clients’ IP addresses.
         :type AllowIpList: list of str
+        :param _MaxConcurrent: 
+        :type MaxConcurrent: int
+        :param _SecurityGroupIds: The bound security group IDs.
+        :type SecurityGroupIds: list of str
         """
         self._OutputName = None
         self._Description = None
@@ -339,6 +525,8 @@ This parameter is valid if `Protocol` is set to `RTMP_PULL`. If it is left empty
         self._RTMPSettings = None
         self._RTPSettings = None
         self._AllowIpList = None
+        self._MaxConcurrent = None
+        self._SecurityGroupIds = None
 
     @property
     def OutputName(self):
@@ -404,6 +592,22 @@ This parameter is valid if `Protocol` is set to `RTMP_PULL`. If it is left empty
     def AllowIpList(self, AllowIpList):
         self._AllowIpList = AllowIpList
 
+    @property
+    def MaxConcurrent(self):
+        return self._MaxConcurrent
+
+    @MaxConcurrent.setter
+    def MaxConcurrent(self, MaxConcurrent):
+        self._MaxConcurrent = MaxConcurrent
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._OutputName = params.get("OutputName")
@@ -420,6 +624,8 @@ This parameter is valid if `Protocol` is set to `RTMP_PULL`. If it is left empty
             self._RTPSettings = CreateOutputInfoRTPSettings()
             self._RTPSettings._deserialize(params.get("RTPSettings"))
         self._AllowIpList = params.get("AllowIpList")
+        self._MaxConcurrent = params.get("MaxConcurrent")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1230,6 +1436,39 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class DescribeHLSPullSourceAddress(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 
+        :type Url: str
+        """
+        self._Url = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeInput(AbstractModel):
     """Configuration information of the queried input.
 
@@ -1263,6 +1502,16 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _FailOver: Input failover
 Note: this field may return `null`, indicating that no valid value was found.
         :type FailOver: str
+        :param _RTMPPullSettings: 
+        :type RTMPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTMPPullSettings`
+        :param _RTSPPullSettings: 
+        :type RTSPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputRTSPPullSettings`
+        :param _HLSPullSettings: 
+        :type HLSPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeInputHLSPullSettings`
+        :param _ResilientStream: 
+        :type ResilientStream: :class:`tencentcloud.mdc.v20200828.models.ResilientStreamConf`
+        :param _SecurityGroupIds: The bound security group ID.
+        :type SecurityGroupIds: list of str
         """
         self._InputId = None
         self._InputName = None
@@ -1275,6 +1524,11 @@ Note: this field may return `null`, indicating that no valid value was found.
         self._InputRegion = None
         self._RTMPSettings = None
         self._FailOver = None
+        self._RTMPPullSettings = None
+        self._RTSPPullSettings = None
+        self._HLSPullSettings = None
+        self._ResilientStream = None
+        self._SecurityGroupIds = None
 
     @property
     def InputId(self):
@@ -1364,6 +1618,46 @@ Note: this field may return `null`, indicating that no valid value was found.
     def FailOver(self, FailOver):
         self._FailOver = FailOver
 
+    @property
+    def RTMPPullSettings(self):
+        return self._RTMPPullSettings
+
+    @RTMPPullSettings.setter
+    def RTMPPullSettings(self, RTMPPullSettings):
+        self._RTMPPullSettings = RTMPPullSettings
+
+    @property
+    def RTSPPullSettings(self):
+        return self._RTSPPullSettings
+
+    @RTSPPullSettings.setter
+    def RTSPPullSettings(self, RTSPPullSettings):
+        self._RTSPPullSettings = RTSPPullSettings
+
+    @property
+    def HLSPullSettings(self):
+        return self._HLSPullSettings
+
+    @HLSPullSettings.setter
+    def HLSPullSettings(self, HLSPullSettings):
+        self._HLSPullSettings = HLSPullSettings
+
+    @property
+    def ResilientStream(self):
+        return self._ResilientStream
+
+    @ResilientStream.setter
+    def ResilientStream(self, ResilientStream):
+        self._ResilientStream = ResilientStream
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._InputId = params.get("InputId")
@@ -1388,6 +1682,95 @@ Note: this field may return `null`, indicating that no valid value was found.
             self._RTMPSettings = DescribeInputRTMPSettings()
             self._RTMPSettings._deserialize(params.get("RTMPSettings"))
         self._FailOver = params.get("FailOver")
+        if params.get("RTMPPullSettings") is not None:
+            self._RTMPPullSettings = DescribeInputRTMPPullSettings()
+            self._RTMPPullSettings._deserialize(params.get("RTMPPullSettings"))
+        if params.get("RTSPPullSettings") is not None:
+            self._RTSPPullSettings = DescribeInputRTSPPullSettings()
+            self._RTSPPullSettings._deserialize(params.get("RTSPPullSettings"))
+        if params.get("HLSPullSettings") is not None:
+            self._HLSPullSettings = DescribeInputHLSPullSettings()
+            self._HLSPullSettings._deserialize(params.get("HLSPullSettings"))
+        if params.get("ResilientStream") is not None:
+            self._ResilientStream = ResilientStreamConf()
+            self._ResilientStream._deserialize(params.get("ResilientStream"))
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInputHLSPullSettings(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceAddresses: 
+        :type SourceAddresses: list of DescribeHLSPullSourceAddress
+        """
+        self._SourceAddresses = None
+
+    @property
+    def SourceAddresses(self):
+        return self._SourceAddresses
+
+    @SourceAddresses.setter
+    def SourceAddresses(self, SourceAddresses):
+        self._SourceAddresses = SourceAddresses
+
+
+    def _deserialize(self, params):
+        if params.get("SourceAddresses") is not None:
+            self._SourceAddresses = []
+            for item in params.get("SourceAddresses"):
+                obj = DescribeHLSPullSourceAddress()
+                obj._deserialize(item)
+                self._SourceAddresses.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInputRTMPPullSettings(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceAddresses: 
+        :type SourceAddresses: list of DescribeRTMPPullSourceAddress
+        """
+        self._SourceAddresses = None
+
+    @property
+    def SourceAddresses(self):
+        return self._SourceAddresses
+
+    @SourceAddresses.setter
+    def SourceAddresses(self, SourceAddresses):
+        self._SourceAddresses = SourceAddresses
+
+
+    def _deserialize(self, params):
+        if params.get("SourceAddresses") is not None:
+            self._SourceAddresses = []
+            for item in params.get("SourceAddresses"):
+                obj = DescribeRTMPPullSourceAddress()
+                obj._deserialize(item)
+                self._SourceAddresses.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1480,6 +1863,44 @@ class DescribeInputRTPSettings(AbstractModel):
     def _deserialize(self, params):
         self._FEC = params.get("FEC")
         self._IdleTimeout = params.get("IdleTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInputRTSPPullSettings(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceAddresses: 
+        :type SourceAddresses: list of DescribeRTSPPullSourceAddress
+        """
+        self._SourceAddresses = None
+
+    @property
+    def SourceAddresses(self):
+        return self._SourceAddresses
+
+    @SourceAddresses.setter
+    def SourceAddresses(self, SourceAddresses):
+        self._SourceAddresses = SourceAddresses
+
+
+    def _deserialize(self, params):
+        if params.get("SourceAddresses") is not None:
+            self._SourceAddresses = []
+            for item in params.get("SourceAddresses"):
+                obj = DescribeRTSPPullSourceAddress()
+                obj._deserialize(item)
+                self._SourceAddresses.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1665,6 +2086,14 @@ Note: This field may return `null`, indicating that no valid value was found.
 This parameter is valid if `Protocol` is set to `RTMP_PULL`. If this parameter is left empty, there is no restriction on clients’ IP addresses.
 Note: This field may return `null`, indicating that no valid value was found.
         :type AllowIpList: list of str
+        :param _RTSPPullSettings: 
+        :type RTSPPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputRTSPPullSettings`
+        :param _HLSPullSettings: 
+        :type HLSPullSettings: :class:`tencentcloud.mdc.v20200828.models.DescribeOutputHLSPullSettings`
+        :param _MaxConcurrent: 
+        :type MaxConcurrent: int
+        :param _SecurityGroupIds: The bound security group IDs.
+        :type SecurityGroupIds: list of str
         """
         self._OutputId = None
         self._OutputName = None
@@ -1678,6 +2107,10 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._RTMPSettings = None
         self._RTMPPullSettings = None
         self._AllowIpList = None
+        self._RTSPPullSettings = None
+        self._HLSPullSettings = None
+        self._MaxConcurrent = None
+        self._SecurityGroupIds = None
 
     @property
     def OutputId(self):
@@ -1775,6 +2208,38 @@ Note: This field may return `null`, indicating that no valid value was found.
     def AllowIpList(self, AllowIpList):
         self._AllowIpList = AllowIpList
 
+    @property
+    def RTSPPullSettings(self):
+        return self._RTSPPullSettings
+
+    @RTSPPullSettings.setter
+    def RTSPPullSettings(self, RTSPPullSettings):
+        self._RTSPPullSettings = RTSPPullSettings
+
+    @property
+    def HLSPullSettings(self):
+        return self._HLSPullSettings
+
+    @HLSPullSettings.setter
+    def HLSPullSettings(self, HLSPullSettings):
+        self._HLSPullSettings = HLSPullSettings
+
+    @property
+    def MaxConcurrent(self):
+        return self._MaxConcurrent
+
+    @MaxConcurrent.setter
+    def MaxConcurrent(self, MaxConcurrent):
+        self._MaxConcurrent = MaxConcurrent
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._OutputId = params.get("OutputId")
@@ -1802,6 +2267,85 @@ Note: This field may return `null`, indicating that no valid value was found.
             self._RTMPPullSettings = DescribeOutputRTMPPullSettings()
             self._RTMPPullSettings._deserialize(params.get("RTMPPullSettings"))
         self._AllowIpList = params.get("AllowIpList")
+        if params.get("RTSPPullSettings") is not None:
+            self._RTSPPullSettings = DescribeOutputRTSPPullSettings()
+            self._RTSPPullSettings._deserialize(params.get("RTSPPullSettings"))
+        if params.get("HLSPullSettings") is not None:
+            self._HLSPullSettings = DescribeOutputHLSPullSettings()
+            self._HLSPullSettings._deserialize(params.get("HLSPullSettings"))
+        self._MaxConcurrent = params.get("MaxConcurrent")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOutputHLSPullServerUrl(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 
+        :type Url: str
+        """
+        self._Url = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOutputHLSPullSettings(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServerUrls: 
+        :type ServerUrls: list of DescribeOutputHLSPullServerUrl
+        """
+        self._ServerUrls = None
+
+    @property
+    def ServerUrls(self):
+        return self._ServerUrls
+
+    @ServerUrls.setter
+    def ServerUrls(self, ServerUrls):
+        self._ServerUrls = ServerUrls
+
+
+    def _deserialize(self, params):
+        if params.get("ServerUrls") is not None:
+            self._ServerUrls = []
+            for item in params.get("ServerUrls"):
+                obj = DescribeOutputHLSPullServerUrl()
+                obj._deserialize(item)
+                self._ServerUrls.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2026,6 +2570,77 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class DescribeOutputRTSPPullServerUrl(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 
+        :type Url: str
+        """
+        self._Url = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOutputRTSPPullSettings(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServerUrls: 
+        :type ServerUrls: list of DescribeOutputRTSPPullServerUrl
+        """
+        self._ServerUrls = None
+
+    @property
+    def ServerUrls(self):
+        return self._ServerUrls
+
+    @ServerUrls.setter
+    def ServerUrls(self, ServerUrls):
+        self._ServerUrls = ServerUrls
+
+
+    def _deserialize(self, params):
+        if params.get("ServerUrls") is not None:
+            self._ServerUrls = []
+            for item in params.get("ServerUrls"):
+                obj = DescribeOutputRTSPPullServerUrl()
+                obj._deserialize(item)
+                self._ServerUrls.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeOutputSRTSettings(AbstractModel):
     """SRT configuration information of the queried output.
 
@@ -2177,6 +2792,84 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 obj = OutputSRTSourceAddressResp()
                 obj._deserialize(item)
                 self._SourceAddresses.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRTMPPullSourceAddress(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TcUrl: 
+        :type TcUrl: str
+        :param _StreamKey: 
+        :type StreamKey: str
+        """
+        self._TcUrl = None
+        self._StreamKey = None
+
+    @property
+    def TcUrl(self):
+        return self._TcUrl
+
+    @TcUrl.setter
+    def TcUrl(self, TcUrl):
+        self._TcUrl = TcUrl
+
+    @property
+    def StreamKey(self):
+        return self._StreamKey
+
+    @StreamKey.setter
+    def StreamKey(self, StreamKey):
+        self._StreamKey = StreamKey
+
+
+    def _deserialize(self, params):
+        self._TcUrl = params.get("TcUrl")
+        self._StreamKey = params.get("StreamKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRTSPPullSourceAddress(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 
+        :type Url: str
+        """
+        self._Url = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4388,6 +5081,39 @@ class FlowVideo(AbstractModel):
         
 
 
+class HLSPullSourceAddress(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 
+        :type Url: str
+        """
+        self._Url = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InputAddress(AbstractModel):
     """Input address information.
 
@@ -4459,6 +5185,16 @@ If there is an SRT input, the output must be SRT.
         :type Protocol: str
         :param _FailOver: Whether to enable input failover. Valid values: OPEN, CLOSE.
         :type FailOver: str
+        :param _RTMPPullSettings: 
+        :type RTMPPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTMPPullSettings`
+        :param _RTSPPullSettings: 
+        :type RTSPPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTSPPullSettings`
+        :param _HLSPullSettings: 
+        :type HLSPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputHLSPullSettings`
+        :param _ResilientStream: 
+        :type ResilientStream: :class:`tencentcloud.mdc.v20200828.models.ResilientStreamConf`
+        :param _SecurityGroupIds: The bound security group IDs. 
+        :type SecurityGroupIds: list of str
         """
         self._InputId = None
         self._InputName = None
@@ -4468,6 +5204,11 @@ If there is an SRT input, the output must be SRT.
         self._RTPSettings = None
         self._Protocol = None
         self._FailOver = None
+        self._RTMPPullSettings = None
+        self._RTSPPullSettings = None
+        self._HLSPullSettings = None
+        self._ResilientStream = None
+        self._SecurityGroupIds = None
 
     @property
     def InputId(self):
@@ -4533,6 +5274,46 @@ If there is an SRT input, the output must be SRT.
     def FailOver(self, FailOver):
         self._FailOver = FailOver
 
+    @property
+    def RTMPPullSettings(self):
+        return self._RTMPPullSettings
+
+    @RTMPPullSettings.setter
+    def RTMPPullSettings(self, RTMPPullSettings):
+        self._RTMPPullSettings = RTMPPullSettings
+
+    @property
+    def RTSPPullSettings(self):
+        return self._RTSPPullSettings
+
+    @RTSPPullSettings.setter
+    def RTSPPullSettings(self, RTSPPullSettings):
+        self._RTSPPullSettings = RTSPPullSettings
+
+    @property
+    def HLSPullSettings(self):
+        return self._HLSPullSettings
+
+    @HLSPullSettings.setter
+    def HLSPullSettings(self, HLSPullSettings):
+        self._HLSPullSettings = HLSPullSettings
+
+    @property
+    def ResilientStream(self):
+        return self._ResilientStream
+
+    @ResilientStream.setter
+    def ResilientStream(self, ResilientStream):
+        self._ResilientStream = ResilientStream
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._InputId = params.get("InputId")
@@ -4547,6 +5328,19 @@ If there is an SRT input, the output must be SRT.
             self._RTPSettings._deserialize(params.get("RTPSettings"))
         self._Protocol = params.get("Protocol")
         self._FailOver = params.get("FailOver")
+        if params.get("RTMPPullSettings") is not None:
+            self._RTMPPullSettings = CreateInputRTMPPullSettings()
+            self._RTMPPullSettings._deserialize(params.get("RTMPPullSettings"))
+        if params.get("RTSPPullSettings") is not None:
+            self._RTSPPullSettings = CreateInputRTSPPullSettings()
+            self._RTSPPullSettings._deserialize(params.get("RTSPPullSettings"))
+        if params.get("HLSPullSettings") is not None:
+            self._HLSPullSettings = CreateInputHLSPullSettings()
+            self._HLSPullSettings._deserialize(params.get("HLSPullSettings"))
+        if params.get("ResilientStream") is not None:
+            self._ResilientStream = ResilientStreamConf()
+            self._ResilientStream._deserialize(params.get("ResilientStream"))
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4581,6 +5375,10 @@ class ModifyOutputInfo(AbstractModel):
         :param _AllowIpList: The IP allowlist. The address must be in CIDR format, such as `0.0.0.0/0`.
 This parameter is valid if `Protocol` is set to `RTMP_PULL`. If it is left empty, there is no restriction on clients’ IP addresses.
         :type AllowIpList: list of str
+        :param _MaxConcurrent: 
+        :type MaxConcurrent: int
+        :param _SecurityGroupIds: The bound security group IDs.
+        :type SecurityGroupIds: list of str
         """
         self._OutputId = None
         self._OutputName = None
@@ -4590,6 +5388,8 @@ This parameter is valid if `Protocol` is set to `RTMP_PULL`. If it is left empty
         self._RTPSettings = None
         self._RTMPSettings = None
         self._AllowIpList = None
+        self._MaxConcurrent = None
+        self._SecurityGroupIds = None
 
     @property
     def OutputId(self):
@@ -4655,6 +5455,22 @@ This parameter is valid if `Protocol` is set to `RTMP_PULL`. If it is left empty
     def AllowIpList(self, AllowIpList):
         self._AllowIpList = AllowIpList
 
+    @property
+    def MaxConcurrent(self):
+        return self._MaxConcurrent
+
+    @MaxConcurrent.setter
+    def MaxConcurrent(self, MaxConcurrent):
+        self._MaxConcurrent = MaxConcurrent
+
+    @property
+    def SecurityGroupIds(self):
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._OutputId = params.get("OutputId")
@@ -4671,6 +5487,8 @@ This parameter is valid if `Protocol` is set to `RTMP_PULL`. If it is left empty
             self._RTMPSettings = CreateOutputRTMPSettings()
             self._RTMPSettings._deserialize(params.get("RTMPSettings"))
         self._AllowIpList = params.get("AllowIpList")
+        self._MaxConcurrent = params.get("MaxConcurrent")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5046,6 +5864,51 @@ class RTMPAddressDestination(AbstractModel):
         
 
 
+class RTMPPullSourceAddress(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TcUrl: 
+        :type TcUrl: str
+        :param _StreamKey: 
+        :type StreamKey: str
+        """
+        self._TcUrl = None
+        self._StreamKey = None
+
+    @property
+    def TcUrl(self):
+        return self._TcUrl
+
+    @TcUrl.setter
+    def TcUrl(self, TcUrl):
+        self._TcUrl = TcUrl
+
+    @property
+    def StreamKey(self):
+        return self._StreamKey
+
+    @StreamKey.setter
+    def StreamKey(self, StreamKey):
+        self._StreamKey = StreamKey
+
+
+    def _deserialize(self, params):
+        self._TcUrl = params.get("TcUrl")
+        self._StreamKey = params.get("StreamKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RTPAddressDestination(AbstractModel):
     """Destination address information of RTP push.
 
@@ -5091,6 +5954,39 @@ class RTPAddressDestination(AbstractModel):
         
 
 
+class RTSPPullSourceAddress(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 
+        :type Url: str
+        """
+        self._Url = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RegionInfo(AbstractModel):
     """Region information
 
@@ -5114,6 +6010,51 @@ class RegionInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResilientStreamConf(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: 
+        :type Enable: bool
+        :param _BufferTime: 
+        :type BufferTime: int
+        """
+        self._Enable = None
+        self._BufferTime = None
+
+    @property
+    def Enable(self):
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def BufferTime(self):
+        return self._BufferTime
+
+    @BufferTime.setter
+    def BufferTime(self, BufferTime):
+        self._BufferTime = BufferTime
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._BufferTime = params.get("BufferTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
