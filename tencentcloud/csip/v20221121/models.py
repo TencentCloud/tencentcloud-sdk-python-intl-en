@@ -2153,7 +2153,7 @@ class BugInfoDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Type of the query action. `1`: Query emergency vulnerabilities; `2`: Query all vulnerabilities; `3`: Query a specific vulnerability. When `Id=3`, `CVEId` is required. 
+        :param _Id: Vulnerability ID
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type Id: int
         :param _PatchId: POC ID of the vulnerability
@@ -2198,16 +2198,16 @@ Note: This field may return·null, indicating that no valid values can be obtain
         :param _ProSupport: Product support status. The real-time status is returned.
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type ProSupport: int
-        :param _IsPublish: Published or not, `0`: Not published; `1`: Published.
+        :param _IsPublish: Specify whether the vulnerability is published as an emergency vulnerability. `1`: Published as an emergency vulnerability; `0`: Not an emergency vulnerability.
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type IsPublish: int
-        :param _ReleaseTime: Release time
+        :param _ReleaseTime: Disclosure time of the vulnerability. 
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type ReleaseTime: str
-        :param _CreateTime: Creation time
+        :param _CreateTime: The time when the vulnerability is added to the vulnerability database.
 Note: u200dThis field may return `null`, indicating that no valid values can be obtained.
         :type CreateTime: str
-        :param _UpdateTime: Update time
+        :param _UpdateTime: The last update time of the vulnerability in the database
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
         :param _SubCategory: Sub-category of the vulnerability
@@ -2529,13 +2529,13 @@ Note: This field may return·null, indicating that no valid values can be obtain
         :param _PortCount: Number of listened ports.
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type PortCount: int
-        :param _Attack: Network attacks
+        :param _Attack: Number of network attacks
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type Attack: int
-        :param _Access: Network access
+        :param _Access: Number of network access requests
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type Access: int
-        :param _Intercept: Network interception
+        :param _Intercept: Number of blocked attacks
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type Intercept: int
         :param _InBandwidth: Inbound peak bandwidth
@@ -5227,7 +5227,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
         :param _Data: u200c-
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type Data: list of DomainAssetVO
-        :param _DefenseStatusList: List of protection status
+        :param _DefenseStatusList: List of WAF protection status
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type DefenseStatusList: list of FilterDataObject
         :param _AssetLocationList: List of asset locations
@@ -5500,7 +5500,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
         :param _AssetLocationList: List of asset locations
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type AssetLocationList: list of FilterDataObject
-        :param _IpTypeList: List of IPs
+        :param _IpTypeList: List of IP types
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type IpTypeList: list of FilterDataObject
         :param _RegionList: List of regions
@@ -5711,7 +5711,7 @@ class DescribeRiskCenterAssetViewCFGRiskListResponse(AbstractModel):
         :type TotalCount: int
         :param _Data: List of configuration risks
         :type Data: list of AssetViewCFGRisk
-        :param _StatusLists: List of status
+        :param _StatusLists: List of risk handling status
         :type StatusLists: list of FilterDataObject
         :param _LevelLists: List of risk levels
         :type LevelLists: list of FilterDataObject
@@ -5919,7 +5919,7 @@ class DescribeRiskCenterAssetViewPortRiskListResponse(AbstractModel):
         :type TotalCount: int
         :param _Data: List of configuration risks
         :type Data: list of AssetViewPortRisk
-        :param _StatusLists: List of status
+        :param _StatusLists: List of risk handling status
         :type StatusLists: list of FilterDataObject
         :param _LevelLists: List of risk levels
         :type LevelLists: list of FilterDataObject
@@ -6110,7 +6110,7 @@ class DescribeRiskCenterAssetViewVULRiskListResponse(AbstractModel):
         :type TotalCount: int
         :param _Data: List of vulnerabilities
         :type Data: list of AssetViewVULRisk
-        :param _StatusLists: List of status
+        :param _StatusLists: List of risk handling status
         :type StatusLists: list of FilterDataObject
         :param _LevelLists: List of risk levels
         :type LevelLists: list of FilterDataObject
@@ -6301,7 +6301,7 @@ class DescribeRiskCenterAssetViewWeakPasswordRiskListResponse(AbstractModel):
         :type TotalCount: int
         :param _Data: List of risks
         :type Data: list of AssetViewWeakPassRisk
-        :param _StatusLists: List of status
+        :param _StatusLists: List of risk handling status
         :type StatusLists: list of FilterDataObject
         :param _LevelLists: List of risk levels
         :type LevelLists: list of FilterDataObject
@@ -6929,7 +6929,7 @@ class DescribeRiskCenterWebsiteRiskListResponse(AbstractModel):
         :type TotalCount: int
         :param _Data: List of content risks
         :type Data: list of WebsiteRisk
-        :param _StatusLists: List of status
+        :param _StatusLists: List of risk handling status
         :type StatusLists: list of FilterDataObject
         :param _LevelLists: List of risk levels
         :type LevelLists: list of FilterDataObject
@@ -8116,7 +8116,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
         :param _Access: Network access
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type Access: int
-        :param _Intercept: Network interception
+        :param _Intercept: Number of blocked attacks
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type Intercept: int
         :param _InBandwidth: Inbound peak bandwidth
@@ -8191,7 +8191,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
         :param _VerifyStatus: Ownership verification status of the asset. `0`: Pending verification; `1`: Verified; `2`: Verifying; `3`: TXT record verification failed; `4`: Human verification failed.
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type VerifyStatus: int
-        :param _BotAccessCount: Bot access data
+        :param _BotAccessCount: u200cNumber of bot attacks
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type BotAccessCount: int
         """
@@ -8809,13 +8809,13 @@ Note: This field may return·null, indicating that no valid values can be obtain
         :param _IsCloud: Whether it's a cloud asset
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type IsCloud: int
-        :param _Attack: Network attacks
+        :param _Attack: Number of network attacks
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type Attack: int
-        :param _Access: Network access
+        :param _Access: Number of network access requests
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type Access: int
-        :param _Intercept: Network Interception
+        :param _Intercept: Number of blocked attacks
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type Intercept: int
         :param _InBandwidth: Inbound bandwidth
@@ -11347,7 +11347,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
         :param _Region: Region
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type Region: str
-        :param _Arn: Unique ID of Multi-cloud asset
+        :param _Arn: The ID specific for an asset synched from another cloud platform
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type Arn: str
         """

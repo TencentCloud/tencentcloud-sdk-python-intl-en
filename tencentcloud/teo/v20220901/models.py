@@ -109,13 +109,23 @@ class AccelerationDomain(AbstractModel):
         :param _OriginDetail: Details of the origin.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OriginDetail: :class:`tencentcloud.teo.v20220901.models.OriginDetail`
-        :param _OriginProtocol: 
+        :param _OriginProtocol: Origin-pull protocol configuration. Values:
+<li>`FOLLOW`: Follow the protocol of origin</li>
+<li>`HTTP`: Send requests to the origin over HTTP</li>
+<li>`HTTPS`: Send requests to the origin over HTTPS</li>
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type OriginProtocol: str
-        :param _HttpOriginPort: 
+        :param _HttpOriginPort: The port used for HTTP origin-pull requests
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type HttpOriginPort: int
-        :param _HttpsOriginPort: 
+        :param _HttpsOriginPort: The port used for HTTPS origin-pull requests
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type HttpsOriginPort: int
-        :param _IPv6Status: 
+        :param _IPv6Status: IPv6 status. Values:
+<li>`follow`: Follow the IPv6 configuration of the site</li>
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type IPv6Status: str
         :param _Cname: The CNAME address.
         :type Cname: str
@@ -525,14 +535,14 @@ class AclUserRule(AbstractModel):
         r"""
         :param _RuleName: The rule name.
         :type RuleName: str
-        :param _Action: The rule action. Values:
-<li>`trans`: Allow the request.</li>
-<li>`drop`: Block the request.</li>
-<li>`monitor`: Observe the request.</li>
-<li>`ban`: Block the IP.</li>
-<li>`redirect`: Redirect the request.</li>
-<li>`page`: Return the specified page.</li>
-<li>`alg`: Verify the request by Javascript challenge.</li>
+        :param _Action: The action. Values:
+<li>`trans`: Allow</li>
+<li>`drop`: Block the request</li>
+<li>`monitor`: Observe</li>
+<li>`ban`: Block the IP</li>
+<li>`redirect`: Redirect the request</li>
+<li>`page`: Return the specified page</li>
+<li>`alg`: JavaScript challenge</li>
         :type Action: str
         :param _RuleStatus: The rule status. Values:
 <li>`on`: Enabled</li>
@@ -542,33 +552,27 @@ class AclUserRule(AbstractModel):
         :type AclConditions: list of AclCondition
         :param _RulePriority: The rule priority. Value range: 0-100.
         :type RulePriority: int
-        :param _RuleID: The rule ID, which is only used as an output parameter.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RuleID: Rule ID, which is only used as an output parameter.
         :type RuleID: int
         :param _UpdateTime: The update time, which is only used as an output parameter.
-Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
-        :param _PunishTime: The IP blocking duration. Value range: 0 seconds - 2 days. Default value: 0 seconds.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PunishTime: IP ban duration. Range: 0-2 days. It's required when `Action=ban`. 
         :type PunishTime: int
-        :param _PunishTimeUnit: The unit of the IP blocking duration. Values:
+        :param _PunishTimeUnit: The unit of the IP ban duration. Values:
 <li>`second`: Second</li>
 <li>`minutes`: Minute</li>
-<li>`hour`: Hour</li>Default value: second.
-Note: This field may return null, indicating that no valid values can be obtained.
+<li>`hour`: Hour</li>Default value: `second`.
         :type PunishTimeUnit: str
-        :param _Name: The name of the custom page, which defaults to an empty string.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Name: Name of the custom return page. It's required when `Action=page`.	
         :type Name: str
-        :param _PageId: The ID of the custom page, which defaults to 0.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PageId: (Disused) ID of the custom return page. The default value is 0, which means that the system default blocking page is used. 
         :type PageId: int
-        :param _RedirectUrl: The redirection URL, which must be a subdomain name of the site. It defaults to an empty string.
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type RedirectUrl: str
-        :param _ResponseCode: The response code returned after redirection, which defaults to 0.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CustomResponseId: ID of custom response. The ID can be obtained via the `DescribeCustomErrorPages` API. It's required when `Action=page`.	
+        :type CustomResponseId: str
+        :param _ResponseCode: The response code to trigger the return page. It's required when `Action=page`. Value: 100-600. 3xx response codes are not supported. Default value: 567.
         :type ResponseCode: int
+        :param _RedirectUrl: The redirection URL. It's required when `Action=redirect`.	
+        :type RedirectUrl: str
         """
         self._RuleName = None
         self._Action = None
@@ -581,8 +585,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._PunishTimeUnit = None
         self._Name = None
         self._PageId = None
-        self._RedirectUrl = None
+        self._CustomResponseId = None
         self._ResponseCode = None
+        self._RedirectUrl = None
 
     @property
     def RuleName(self):
@@ -673,12 +678,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._PageId = PageId
 
     @property
-    def RedirectUrl(self):
-        return self._RedirectUrl
+    def CustomResponseId(self):
+        return self._CustomResponseId
 
-    @RedirectUrl.setter
-    def RedirectUrl(self, RedirectUrl):
-        self._RedirectUrl = RedirectUrl
+    @CustomResponseId.setter
+    def CustomResponseId(self, CustomResponseId):
+        self._CustomResponseId = CustomResponseId
 
     @property
     def ResponseCode(self):
@@ -687,6 +692,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @ResponseCode.setter
     def ResponseCode(self, ResponseCode):
         self._ResponseCode = ResponseCode
+
+    @property
+    def RedirectUrl(self):
+        return self._RedirectUrl
+
+    @RedirectUrl.setter
+    def RedirectUrl(self, RedirectUrl):
+        self._RedirectUrl = RedirectUrl
 
 
     def _deserialize(self, params):
@@ -706,8 +719,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._PunishTimeUnit = params.get("PunishTimeUnit")
         self._Name = params.get("Name")
         self._PageId = params.get("PageId")
-        self._RedirectUrl = params.get("RedirectUrl")
+        self._CustomResponseId = params.get("CustomResponseId")
         self._ResponseCode = params.get("ResponseCode")
+        self._RedirectUrl = params.get("RedirectUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -719,7 +733,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class Action(AbstractModel):
-    """Rule engine feature operation. A feature can be of only one of the following three types, so each item in the `RuleAction` array can be of only one of the following types. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view more requirements for entering feature items.
+    """Rule engine action. Each feature supports only one of the following three action types. The `RuleAction` array can be of only one of the following types. For all details, see [DescribeRulesSetting](https://intl.cloud.tencent.com/document/product/1552/80618?from_cn_redirect=1).
 
     """
 
@@ -1919,6 +1933,117 @@ class AscriptionInfo(AbstractModel):
         
 
 
+class BindSecurityTemplateToEntityRequest(AbstractModel):
+    """BindSecurityTemplateToEntity request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Site ID of the policy template to be bound to or unbound from.
+        :type ZoneId: str
+        :param _Entities: List of domain names to bind to/unbind from a policy template
+        :type Entities: list of str
+        :param _Operate: Action options. Values include:
+<li>`bind`: Bind the domain names to the specified policy template </li>
+<li>`unbind-keep-policy`: Unbind a domain name from a policy template and keep the current policy when unbinding</li>
+<li>`unbind-use-default`: Unbind domain names from policy templates and use default blank policy.</li> Note: Only one domain name can be unbound at one time. When `Operate` is `unbind-keep-policy` or `unbind-use-default`, there can only be one domain name specified in `Entities`.
+        :type Operate: str
+        :param _TemplateId: Specifies the policy template ID to bind or unbind.
+        :type TemplateId: str
+        :param _OverWrite: Whether to replace the existing policy template bound with the domain name. Values: 
+<li>`true`: Replace the template bound to the domain. </li>
+<li>`false`: Do not replace the template.</li> Note: In this case, the API returns an error if there is already a policy template bound to the specified domain name.
+        :type OverWrite: bool
+        """
+        self._ZoneId = None
+        self._Entities = None
+        self._Operate = None
+        self._TemplateId = None
+        self._OverWrite = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Entities(self):
+        return self._Entities
+
+    @Entities.setter
+    def Entities(self, Entities):
+        self._Entities = Entities
+
+    @property
+    def Operate(self):
+        return self._Operate
+
+    @Operate.setter
+    def Operate(self, Operate):
+        self._Operate = Operate
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def OverWrite(self):
+        return self._OverWrite
+
+    @OverWrite.setter
+    def OverWrite(self, OverWrite):
+        self._OverWrite = OverWrite
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Entities = params.get("Entities")
+        self._Operate = params.get("Operate")
+        self._TemplateId = params.get("TemplateId")
+        self._OverWrite = params.get("OverWrite")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindSecurityTemplateToEntityResponse(AbstractModel):
+    """BindSecurityTemplateToEntity response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class BindSharedCNAMEMap(AbstractModel):
     """Bindings between a shared CNAME and connected domain names
 
@@ -2528,16 +2653,18 @@ class BotUserRule(AbstractModel):
         r"""
         :param _RuleName: 
         :type RuleName: str
-        :param _Action: Action. Valid values: 
-<li>`drop`: Block;</li>
-<li>`monitor`: Observe;</li>
-<li>`trans`: Allow;</li>
-<li>`alg`: JavaScript challenge;</li>
-<li>`captcha`: Managed challenge;</li>
-<li>`random`: Random action;</li>
-<li>`silence`: Silence;</li>
-<li>`shortdelay`: Add short latency;</li>
-<li>`longdelay`: Add long latency.</li>
+        :param _Action: The action. Values:
+<li>`drop`: Block the request</li>
+<li>`monitor`: Observe</li>
+<li>`trans`: Allow</li>
+<li>`redirect`: Redirect the request</li>
+<li>`page`: Return the specified page</li>
+<li>`alg`: JavaScript challenge</li>
+<li>`captcha`: Managed challenge</li>
+<li>`random`: Handle the request randomly by the weight</li>
+<li>`silence`: Keep the connection but do not response to the client</li>
+<li>`shortdelay`: Add a short latency period</li>
+<li>`longdelay`: Add a long latency period</li>
         :type Action: str
         :param _RuleStatus: The rule status. Values:
 <li>`on`: Enabled</li>
@@ -2547,23 +2674,29 @@ class BotUserRule(AbstractModel):
         :type AclConditions: list of AclCondition
         :param _RulePriority: The rule weight. Value range: 0-100.
         :type RulePriority: int
-        :param _RuleID: The rule ID, which is only used as an output parameter.
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _RuleID: Rule ID, which is only used as an output parameter.
         :type RuleID: int
         :param _ExtendActions: [Currently unavailable] Specify the random action and percentage.
         :type ExtendActions: list of BotExtendAction
         :param _FreqFields: The filter. Values:
 <li>`sip`: Client IP</li>
-Note: This field may return `null`, indicating that no valid values can be obtained.
+This parameter is left empty by default.
         :type FreqFields: list of str
-        :param _UpdateTime: Updated time
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _UpdateTime: The update time, which is only used as an output parameter.
         :type UpdateTime: str
-        :param _FreqScope: The statistical dimension. Values:
-<li>`source_to_eo`: Responses from the origin server to EdgeOne</li>
-<li>`client_to_eo`: Requests from the client to EdgeOne</li>
-Note: This field may return `null`, indicating that no valid values can be obtained.
+        :param _FreqScope: Query scope. Values:
+<li>`source_to_eo`: (Response) Traffic going from the origin to EdgeOne.</li>
+<li>`client_to_eo`: (Request) Traffic going from the client to EdgeOne.</li>
+Default: `source_to_eo`.
         :type FreqScope: list of str
+        :param _Name: Name of the custom return page. It's required when `Action=page`.
+        :type Name: str
+        :param _CustomResponseId: ID of custom response. The ID can be obtained via the `DescribeCustomErrorPages` API. It's required when `Action=page`.	
+        :type CustomResponseId: str
+        :param _ResponseCode: The response code to trigger the return page. It's required when `Action=page`. Value: 100-600. 3xx response codes are not supported. Default value: 567.
+        :type ResponseCode: int
+        :param _RedirectUrl: The redirection URL. It's required when `Action=redirect`.
+        :type RedirectUrl: str
         """
         self._RuleName = None
         self._Action = None
@@ -2575,6 +2708,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._FreqFields = None
         self._UpdateTime = None
         self._FreqScope = None
+        self._Name = None
+        self._CustomResponseId = None
+        self._ResponseCode = None
+        self._RedirectUrl = None
 
     @property
     def RuleName(self):
@@ -2656,6 +2793,38 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     def FreqScope(self, FreqScope):
         self._FreqScope = FreqScope
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CustomResponseId(self):
+        return self._CustomResponseId
+
+    @CustomResponseId.setter
+    def CustomResponseId(self, CustomResponseId):
+        self._CustomResponseId = CustomResponseId
+
+    @property
+    def ResponseCode(self):
+        return self._ResponseCode
+
+    @ResponseCode.setter
+    def ResponseCode(self, ResponseCode):
+        self._ResponseCode = ResponseCode
+
+    @property
+    def RedirectUrl(self):
+        return self._RedirectUrl
+
+    @RedirectUrl.setter
+    def RedirectUrl(self, RedirectUrl):
+        self._RedirectUrl = RedirectUrl
+
 
     def _deserialize(self, params):
         self._RuleName = params.get("RuleName")
@@ -2678,6 +2847,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._FreqFields = params.get("FreqFields")
         self._UpdateTime = params.get("UpdateTime")
         self._FreqScope = params.get("FreqScope")
+        self._Name = params.get("Name")
+        self._CustomResponseId = params.get("CustomResponseId")
+        self._ResponseCode = params.get("ResponseCode")
+        self._RedirectUrl = params.get("RedirectUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3348,7 +3521,7 @@ class CodeAction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Action: Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.
+        :param _Action: Feature name. For details, see [DescribeRulesSetting](https://intl.cloud.tencent.com/document/product/1552/80618?from_cn_redirect=1) API
         :type Action: str
         :param _Parameters: Operation parameter.
         :type Parameters: list of RuleCodeActionParams
@@ -3454,13 +3627,21 @@ class CreateAccelerationDomainRequest(AbstractModel):
         :type DomainName: str
         :param _OriginInfo: Details of the origin.
         :type OriginInfo: :class:`tencentcloud.teo.v20220901.models.OriginInfo`
-        :param _OriginProtocol: 
+        :param _OriginProtocol: Origin-pull protocol configuration. Values:
+<li>`FOLLOW`: Follow the protocol of origin</li>
+<li>`HTTP`: Send requests to the origin over HTTP</li>
+<li>`HTTPS`: Send requests to the origin over HTTPS</li>
+<li>Default: `FOLLOW`</li>
         :type OriginProtocol: str
-        :param _HttpOriginPort: 
+        :param _HttpOriginPort: Ports for HTTP origin-pull requests. Range: 1-65535. It takes effect when `OriginProtocol=FOLLOW/HTTP`. Port 80 is used if it's not specified. 
         :type HttpOriginPort: int
-        :param _HttpsOriginPort: 
+        :param _HttpsOriginPort: Ports for HTTPS origin-pull requests. Range: 1-65535. It takes effect when `OriginProtocol=FOLLOW/HTTPS`. Port 443 is used if it's not specified. 
         :type HttpsOriginPort: int
-        :param _IPv6Status: 
+        :param _IPv6Status: IPv6 status. Values:
+<li>`follow`: Follow the IPv6 configuration of the site</li>
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+<li>Default: `follow`</li>
         :type IPv6Status: str
         """
         self._ZoneId = None
@@ -4108,30 +4289,23 @@ class CreateOriginGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: The site ID.
+        :param _ZoneId: Site ID
         :type ZoneId: str
-        :param _OriginType: The origin type. Values:
-<li>`self`: Customer origin</li>
-<li>`third_party`: Third-party origin</li>
-<li>`cos`: Tencent Cloud COS origin</li>
-        :type OriginType: str
-        :param _OriginGroupName: The name of the origin group.
-        :type OriginGroupName: str
-        :param _ConfigurationType: The origin configuration type when `OriginType=self`. Values:
-<li>`area`: Configure by region.</li>
-<li>`weight`: Configure by weight.</li>
-<li>`proto`: Configure by HTTP protocol.</li>When `OriginType=third_party/cos`, leave this field empty.
-        :type ConfigurationType: str
-        :param _OriginRecords: Details of the origin record.
-        :type OriginRecords: list of OriginRecord
-        :param _HostHeader: The origin domain. This field can be specified only when `OriginType=self`.
+        :param _Name: Origin group name. It can contain 1 to 200 characters ([a-z], [A-Z], [0-9] and [_-]).
+        :type Name: str
+        :param _Type: (Required) Origin group type. Values:
+<li>`GENERAL`: General origin groups. It supports IPs and domain names. It can be referenced by DNS, Rule Engine, Layer 4 Proxy and General LoadBalancer. </li>
+<li>`HTTP`: HTTP-specific origin groups. It supports IPs/domain names and object storage buckets. It can be referenced by acceleration domain names, rule engines and HTTP LoadBalancer. It cannot be referenced by L4 proxies. </li>
+        :type Type: str
+        :param _Records: (Required) Origins in the origin group.
+        :type Records: list of OriginRecord
+        :param _HostHeader: Host header used for origin-pull. It only works when `Type=HTTP`. The `HostHeader` specified in `RuleEngine` takes a higher priority over this configuration.
         :type HostHeader: str
         """
         self._ZoneId = None
-        self._OriginType = None
-        self._OriginGroupName = None
-        self._ConfigurationType = None
-        self._OriginRecords = None
+        self._Name = None
+        self._Type = None
+        self._Records = None
         self._HostHeader = None
 
     @property
@@ -4143,36 +4317,28 @@ class CreateOriginGroupRequest(AbstractModel):
         self._ZoneId = ZoneId
 
     @property
-    def OriginType(self):
-        return self._OriginType
+    def Name(self):
+        return self._Name
 
-    @OriginType.setter
-    def OriginType(self, OriginType):
-        self._OriginType = OriginType
-
-    @property
-    def OriginGroupName(self):
-        return self._OriginGroupName
-
-    @OriginGroupName.setter
-    def OriginGroupName(self, OriginGroupName):
-        self._OriginGroupName = OriginGroupName
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
     @property
-    def ConfigurationType(self):
-        return self._ConfigurationType
+    def Type(self):
+        return self._Type
 
-    @ConfigurationType.setter
-    def ConfigurationType(self, ConfigurationType):
-        self._ConfigurationType = ConfigurationType
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
     @property
-    def OriginRecords(self):
-        return self._OriginRecords
+    def Records(self):
+        return self._Records
 
-    @OriginRecords.setter
-    def OriginRecords(self, OriginRecords):
-        self._OriginRecords = OriginRecords
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
 
     @property
     def HostHeader(self):
@@ -4185,15 +4351,14 @@ class CreateOriginGroupRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
-        self._OriginType = params.get("OriginType")
-        self._OriginGroupName = params.get("OriginGroupName")
-        self._ConfigurationType = params.get("ConfigurationType")
-        if params.get("OriginRecords") is not None:
-            self._OriginRecords = []
-            for item in params.get("OriginRecords"):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
                 obj = OriginRecord()
                 obj._deserialize(item)
-                self._OriginRecords.append(obj)
+                self._Records.append(obj)
         self._HostHeader = params.get("HostHeader")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -5854,13 +6019,13 @@ class DeleteOriginGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: The site ID.
+        :param _ZoneId: ID of the site.
         :type ZoneId: str
-        :param _OriginGroupId: The ID of the origin group.
-        :type OriginGroupId: str
+        :param _GroupId: (Required) Origin group IDe group ID. This parameter is required.
+        :type GroupId: str
         """
         self._ZoneId = None
-        self._OriginGroupId = None
+        self._GroupId = None
 
     @property
     def ZoneId(self):
@@ -5871,17 +6036,17 @@ class DeleteOriginGroupRequest(AbstractModel):
         self._ZoneId = ZoneId
 
     @property
-    def OriginGroupId(self):
-        return self._OriginGroupId
+    def GroupId(self):
+        return self._GroupId
 
-    @OriginGroupId.setter
-    def OriginGroupId(self, OriginGroupId):
-        self._OriginGroupId = OriginGroupId
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
 
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
-        self._OriginGroupId = params.get("OriginGroupId")
+        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7703,17 +7868,28 @@ class DescribeOriginGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: Offset for paginated queries. Default value: 0.
+        :param _ZoneId: (Required) Site ID
+        :type ZoneId: str
+        :param _Offset: The paginated query offset. Default value: 0
         :type Offset: int
-        :param _Limit: Limit on paginated queries. Value range: 1-1000. Default value: 10.
+        :param _Limit: Limit on paginated queries. Value range: 1-1000. Default value: 20.
         :type Limit: int
         :param _Filters: Filters. Each filter can have up to 20 entries. See below for details:
-<li>`zone-id`<br>   Filter by the specified <strong>site ID</strong>, such as zone-20hzkd4rdmy0<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`origin-group-id`:<br>   Filter by the specified <strong>origin group ID</strong>, such as origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`origin-group-name`:<br>   Filter by the specified <strong>origin group name</strong><br>   Type: String<br>   Required: No<br>   Fuzzy query: Supported (only one origin group name allowed in a query)</li>
+<li>`origin-group-id`<br>Filter by the <strong>origin group ID</strong>. Format: `origin-2ccgtb24-7dc5-46s2-9r3e-95825d53dwe3a`<br>Fuzzy query is not supported</li><li>`origin-group-name`<br>Filter by the <strong>origin group name</strong><br>Fuzzy query is supported. When fuzzy query is used, only one origin groupsource site group name is supported</li>
         :type Filters: list of AdvancedFilter
         """
+        self._ZoneId = None
         self._Offset = None
         self._Limit = None
         self._Filters = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
 
     @property
     def Offset(self):
@@ -7741,6 +7917,7 @@ class DescribeOriginGroupRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
@@ -8590,6 +8767,99 @@ class DescribeRulesSettingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSecurityTemplateBindingsRequest(AbstractModel):
+    """DescribeSecurityTemplateBindings request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: ID of the site to query
+        :type ZoneId: str
+        :param _TemplateId: ID of the policy template to query.
+        :type TemplateId: list of str
+        """
+        self._ZoneId = None
+        self._TemplateId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSecurityTemplateBindingsResponse(AbstractModel):
+    """DescribeSecurityTemplateBindings response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecurityTemplate: Bindings of the specified policy template.
+
+When a domain name of a site is bound with the specified policy template, `TemplateScope` includes the `ZoneId` of the related site and the bindings of the domain name. 
+
+Note: If the template is not bound with any domain name, and there is not any existing binding, `TemplateScope=0` is returned.
+
+In the binding list, the same domain name may appear repeatedly in the `EntityStatus` list with different `Status`. For example, when a domain name is being bound to another policy template, it's marked both `online` and `pending`.
+        :type SecurityTemplate: list of SecurityTemplateBinding
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SecurityTemplate = None
+        self._RequestId = None
+
+    @property
+    def SecurityTemplate(self):
+        return self._SecurityTemplate
+
+    @SecurityTemplate.setter
+    def SecurityTemplate(self, SecurityTemplate):
+        self._SecurityTemplate = SecurityTemplate
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SecurityTemplate") is not None:
+            self._SecurityTemplate = []
+            for item in params.get("SecurityTemplate"):
+                obj = SecurityTemplateBinding()
+                obj._deserialize(item)
+                self._SecurityTemplate.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTimingL4DataRequest(AbstractModel):
     """DescribeTimingL4Data request structure.
 
@@ -8813,23 +9083,23 @@ Enter the IDs of sites to query. The maximum query period is determined by the <
 <li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.
         :type Interval: str
         :param _Filters: Filters
-<li>`country`:<br>   Filter by the specified <strong>country code</strong>. <a href="https://en.wikipedia.org/wiki/ISO_3166-1">ISO 3166</a> country codes are used.</li>
-<li>`province`:<br>   Filter by the specified <strong>province name</strong>. It’s only available when `Area` is `mainland`. </li>
-<li>`isp`:<br>   Filter by the specified <strong>ISP</strong>. It’s only available when `Area` is `mainland`.<br>   Values: <br>   `2`: CTCC; <br>   `26`: CUCC;<br>   `1046`: CMCC;<br>   `3947`: CTT; <br>   `38`: CERNET; <br>   `43`: GWBN;<br>   `0`: Others.</li>
-<li>`domain`:<br>   Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>
-<li>`url`:<br>   Filter by the specified <strong>URL Path</strong> (such as `/content` or `content/test.jpg`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.</li>
-<li>`referer`:<br>   Filter by the specified <strong>Referer header</strong>, such as `example.com`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.</li>
-<li>`resourceType`<br>   Filter by the specified <strong>resource file type</strong>, such as `jpg`, `css`. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.</li>
-<li>`protocol`:<br>   Filter by the specified <strong>HTTP protocol version</strong><br>   Values:<br>   `HTTP/1.0`: HTTP 1.0;<br>   `HTTP/1.1`: HTTP 1.1;<br>   `HTTP/2.0`: HTTP 2.0;<br>   `HTTP/3.0`: HTTP 3.0;<br>   `WebSocket`: WebSocket.</li>
-<li>`socket`:<br>   Filter by the specified <strong>HTTP protocol type</strong><br>   Values:<br>   `HTTP`: HTTP protocol;<br>   `HTTPS`: HTTPS protocol;<br>   `QUIC`: QUIC protocol.</li>
-<li>`statusCode`:<br>   Filter by the specified <strong> status code</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>
-<li>`browserType`:<br>   Filter by the specified <strong>browser type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>  `Firefox`: Firefox browser;<br>   `Chrome`: Chrome browser;<br>   `Safari`: Safari browser;<br>   `MicrosoftEdge`: Microsoft Edge browser;<br>   `IE`: IE browser;<br>   `Opera`: Opera browser;<br>   `QQBrowser`: QQ browser;<br>   `LBBrowser`: LB browser;<br>   `MaxthonBrowser`: Maxthon browser;<br>   `SouGouBrowser`: Sogou browser;<br>  `BIDUBrowser`: Baidu browser;<br>   `TaoBrowser`: Tao browser;<br>   `UBrowser`: UC browser;<br>   `Other`: Other browsers; <br>   `Empty`: The browser type is not specified; <br>   `Bot`: Web crawler.</li>
-<li>`deviceType`:<br>   Filter by the <strong>device type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `TV`: TV; <br>   `Tablet`: Tablet;<br>   `Mobile`: Mobile phone;<br>   `Desktop`: Desktop device; <br>   `Other`: Other device;<br>   `Empty`: Device type not specified.</li>
-<li>`operatingSystemType`:<br>   Filter by the <strong>operating system</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `Linux`: Linux OS;<br>   `MacOS`: Mac OS;<br>   `Android`: Android OS;<br>   `IOS`: iOS OS;<br>   `Windows`: Windows OS;<br>   `NetBSD`: NetBSD OS;<br>   `ChromiumOS`: Chromium OS;<br>   `Bot`: Web crawler: <br>   `Other`: Other OS;<br>   `Empty`: The OS is not specified.</li>
-<li>`tlsVersion`:<br>   Filter by the <strong>TLS version</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values:<br>   `TLS1.0`: TLS 1.0; <br>   `TLS1.1`: TLS 1.1;<br>   `TLS1.2`: TLS 1.2;<br>   `TLS1.3`: TLS 1.3.</li>
-<li>`ipVersion`:<br>   Filter by the specified <strong>IP version</strong>.<br>   Values:<br>   `4`: IPv4;<br>   `6`: IPv6.</li>
-<li>`tagKey`:<br>   Filter by the specified <strong>tag key</strong></li>
-<li>`tagValue`<br>   Filter by the specified <strong>tag value</strong></li>
+<li>country<br>Filter by the <strong> Country/Region</strong>. The country/region follows <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166</a> specification. </li>
+<li>`province`<br>Filter by the <strong>specified province name</strong>. It’s only available when `Area` is `mainland`.</li>
+<li>`isp`<br>:   Filter by the specified ISP. It’s only available when `Area` is `mainland`.<br>Values: <br>`2`: CTCC; <br>`26`: CUCC; <br>`1046`: CMCC; <br>`3947`: CTT; <br>`38`: CERNET; <br>`43`: GWBN; <br>`0`: Others.</li>
+<li>`domain`<br>: Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>
+<li>`url`:<br>Filter by the specified <strong>URL path<strong> (such as `/content` or `content/test.jpg`.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>
+<li>`referer`:<br>Filter by the specified <strong>Referer header</strong>, such as `example.com`.<br>If this parameter is specified, the max query period is the last 30 days.<br>The<a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>
+<li>`resourceType`:<br>Filter by the specified <strong>resource file type</strong>, such as `jpg`, `css`. <br>Note that if this parameter is specified, the max data query period is the last 30 days. <br>The [data query scope stated in the specifications of service package]<a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90"> related with the `ZoneIds` becomes invalid.</li>
+<li>`protocol`:<br> Filter by the specified <strong>HTTP protocol</strong> version <br>Values: <br>`HTTP/1.0`: HTTP 1.0;<br>`HTTP/1.1`: HTTP 1.1;<br>`HTTP/2.0`: HTTP 2.0;<br>`HTTP/3.0`: HTTP 3.0;<br>`WebSocket`: WebSocket.</li>
+<li>`socket`:<br>Filter by the specified <strong>HTTP protocol</strong> type <br>Values: <br>`HTTP`: HTTP protocol;<br>`HTTPS`: HTTPS protocol;<br>`QUIC`: QUIC protocol.</li>
+<li>statusCode<br>u2003u2003 Filter by [strong> Status Code/strong>]. lt;br>u2003u2003 If you only fill in statusCode parameter, you can query data of nearly 30 days at most; br>u2003u2003 If statusCode+Zonelds parameter is filled in at the same time, the supported query data range is the smaller of a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90"> Maximum query range of data analysis/a> and 30 days supported by package. lt;br>u2003u2003 The corresponding Value options are as follows: br>u2003u2003 1XX: Status code of type 1xx; br>u2003u2003 100:100 status code; br>u2003u2003 101:101 status code; br>u2003u2003 102:102 status code; br>u2003u2003 2XX: Status code of type 2xx; br>u2003u2003 200:200 status code; br>u2003u2003 201:201 status code; br>u2003u2003 202:202 status code; br>u2003u2003 203:203 status code; br>u2003u2003 204:204 status code; br>u2003u2003 205:205 status code; br>u2003u2003 206:206 status code; br>u2003u2003 207:207 status code; br>u2003u2003 3XX: Status code of type 3xx; br>u2003u2003 300:300 status code; br>u2003u2003 301:301 status code; br>u2003u2003 302:302 status code; br>u2003u2003 303:303 status code; br>u2003u2003 304:304 status code; br>u2003u2003 305:305 status code; br>u2003u2003 307:307 status code; br>u2003u2003 4XX: Status code of type 4xx; br>u2003u2003 400:400 status code; br>u2003u2003 401:401 status code; br>u2003u2003 402:402 status code; br>u2003u2003 403:403 status code; br>u2003u2003 404:404 status code; br>u2003u2003 405:405 status code; br>u2003u2003 406:406 status code; br>u2003u2003 407:407 status code; br>u2003u2003 408:408 status code; br>u2003u2003 409:409 status code; br>u2003u2003 410:410 status code; br>u2003u2003 411:411 status code; br>u2003u2003 412:412 status code; br>u2003u2003 412:413 Status Code; br>u2003u2003 414:414 status code; br>u2003u2003 415:415 status code; br>u2003u2003 416:416 status code; br>u2003u2003 417:417 status code; br>u2003u2003 422:422 status code; br>u2003u2003 423:423 status code; br>u2003u2003 424:424 status code; br>u2003u2003 426:426 status code; br>u2003u2003 451:451 status code; br>u2003u2003 5XX: Status code of type 5xx; br>u2003u2003 500:500 status code; br>u2003u2003 501:501 status code; br>u2003u2003 502:502 status code; br>u2003u2003 503:503 status code; br>u2003u2003 504:504 status code; br>u2003u2003 505:505 status code; br>u2003u2003 506:506 status code; br>u2003u2003 507:507 status code; br>u2003u2003 510:510 status code; br>u2003u2003 514:514 status code; br>u2003u2003 544:544 Status Code.& lt</li>
+<li>`browserType`:<br>Filter by the specified <strong>browser type</strong>. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li><br>Values: <br>`Firefox`: Firefox browser; <br>`Chrome`: Chrome browser; <br>`Safari`: Safari browser; <br>`MicrosoftEdge`: Microsoft Edge browser; <br>`IE`: IE browser; <br>`Opera`: Opera browser; <br>`QQBrowser`: QQ browser; <br>`LBBrowser`: LB browser; <br>`MaxthonBrowser`: Maxthon browser; <br>`SouGouBrowser`: Sogou browser; <br>`BIDUBrowser`: Baidu browser; <br>`TaoBrowser`: Tao browser; <br>`UBrowser`: UC browser; <br>`Other`: Other browsers; <br>`Empty`: The browser type is not specified; <br>`Bot`: Web crawler.</li>
+<li>`deviceType`:<br>Filter by the <strong>device type</strong>.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values:<br>`TV`: TV; <br>`Tablet`: Tablet;<br>`Mobile`: Mobile phone; <br>`Desktop`: Desktop device;<br>`Other`: Other device;<br>`Empty`: Device type not specified.</li>
+<li>`operatingSystemType`:<br>Filter by the <strong>operating system</strong>.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values: <br>`Linux`: Linux OS; <br>`MacOS`: Mac OS;<br>`Android`: Android OS;<br>`IOS`: iOS OS;<br>`Windows`: Windows OS;<br>`NetBSD`: NetBSD OS;<br>`ChromiumOS`: Chromium OS; <br>`Bot`: Web crawler:<br>`Other`: Other OS;   <br>`Empty`: The OS is not specified.</li>
+<li>`tlsVersion`:<br>Filter by the <strong>TLS version</strong>. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values: <br>`TLS1.0`: TLS 1.0;<br>`TLS1.1`: TLS 1.1; <br>`TLS1.2`: TLS 1.2;<br>`TLS1.3`: TLS 1.3.</li>
+<li>`ipVersion`<br>Filter by the <strong>specified IP version. <br>Values: <br>`4`: IPv4; <br>`6`: IPv6.
+<li>`tagKey`<br>Filter by the <strong>Tag Key</strong>. </li>
+<li>`tagValue`<br>Filter by the <strong>Tag Value</strong>. </li>
         :type Filters: list of QueryCondition
         :param _Area: Geolocation scope. Values:
 <li>`overseas`: Regions outside the Chinese mainland</li>
@@ -9201,23 +9471,23 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
         :param _Limit: Queries the top n rows of data. Maximum value: 1000. Top 10 rows of data will be queried if this field is not specified.
         :type Limit: int
         :param _Filters: Filters
-<li>`country`:<br>   Filter by the specified <strong>country code</strong>. <a href="https://en.wikipedia.org/wiki/ISO_3166-1">ISO 3166</a> country codes are used.</li>
-<li>`province`:<br>   Filter by the specified <strong>province name</strong>. It’s only available when `Area` is `mainland`.</li>
-<li>`isp`:<br>   Filter by the specified <strong>ISP</strong>. It’s only available when `Area` is `mainland`.<br>   Values: <br>   `2`: CTCC; <br>   `26`: CUCC;<br>   `1046`: CMCC;<br>   `3947`: CTT; <br>   `38`: CERNET; <br>   `43`: GWBN;<br>   `0`: Others</li>
-<li>`domain`:<br>   Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>
-<li>`url`:<br>   Filter by the specified <strong>URL Path</strong> (such as `/content` or `content/test.jpg`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.</li>
-<li>`referer`:<br>   Filter by the specified <strong>Referer header</strong>, such as `example.com`.<br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.</li>
-<li>`resourceType`:<br>   Filter by the specified <strong>resource file type</strong>, such as `jpg`, `css`. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.</li>
-<li>`protocol`:<br>   Filter by the specified <strong>HTTP protocol version</strong><br>   Values:<br>   `HTTP/1.0`: HTTP 1.0;<br>   `HTTP/1.1`: HTTP 1.1;<br>   `HTTP/2.0`: HTTP 2.0;<br>   `HTTP/3.0`: HTTP 3.0;<br>   `WebSocket`: WebSocket.</li>
-<li>`socket`<br>   Filter by the specified <strong>HTTP protocol type</strong><br>   Values:<br>   `HTTP`: HTTP protocol;<br>   `HTTPS`: HTTPS protocol;<br>   `QUIC`: QUIC protocol.</li>
-<li>`statusCode`:<br>   Filter by the specified <strong> status code</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>  In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `1XX`: All 1xx status codes;<br>   `100`: 100 status code;<br>   `101`: 101 status code;<br>   `102`: 102 status code;<br>   `2XX`: All 2xx status codes;<br>   `200`: 200 status code;<br>   `201`: 201 status code;<br>   `202`: 202 status code;<br>   `203`: 203 status code;<br>   `204`: 204 status code;<br>   `205`: 205 status code;<br>   `206`: 206 status code;<br>   `207`: 207 status code;<br>  `3XX`: All 3xx status codes;<br>   `300`: 300 status code;<br>   `301`: 301 status code;<br>   `302`: 302 status code;<br>   `303`: 303 status code;<br>   `304`: 304 status code;<br>   `305`: 305 status code;<br>   `307`: 307 status code;<br>   `4XX`: All 4xx status codes;<br>   `400`: 400 status code;<br>   `401`: 401 status code;<br>   `402`: 402 status code;<br>   `403`: 403 status code;<br>   `404`: 404 status code;<br>   `405`: 405 status code;<br>   `406`: 406 status code;<br>   `407`: 407 status code;<br>   `408`: 408 status code;<br>   `409`: 409 status code;<br>   `410`: 410 status code;<br>   `411`: 411 status code;<br>   `412`: 412 status code;<br>   `412`: 413 status code;<br>   `414`: 414 status code;<br>   `415`: 415 status code;<br>   `416`: 416 status code;<br>   `417`: 417 status code;<br>  `422`: 422 status code;<br>   `423`: 423 status code;<br>   `424`: 424 status code;<br>   `426`: 426 status code;<br>   `451`: 451 status code;<br>   `5XX`: All 5xx status codes;<br>   `500`: 500 status code;<br>   `501`: 501 status code;<br>   `502`: 502 status code;<br>   `503`: 503 status code;<br>   `504`: 504 status code;<br>   `505`: 505 status code;<br>   `506`: 506 status code;<br>   `507`: 507 status code;<br>   `510`: 510 status code;<br>   `514`: 514 status code;<br>   `544`: 544 status code.</li>
-<li>`browserType`:<br>   Filter by the specified <strong>browser type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>  `Firefox`: Firefox browser;<br>   `Chrome`: Chrome browser;<br>   `Safari`: Safari browser;<br>   `MicrosoftEdge`: Microsoft Edge browser;<br>   `IE`: IE browser;<br>   `Opera`: Opera browser;<br>   `QQBrowser`: QQ browser;<br>   `LBBrowser`: LB browser;<br>   `MaxthonBrowser`: Maxthon browser;<br>   `SouGouBrowser`: Sogou browser;<br>  `BIDUBrowser`: Baidu browser;<br>   `TaoBrowser`: Tao browser;<br>   `UBrowser`: UC browser;<br>   `Other`: Other browsers; <br>   `Empty`: The browser type is not specified; <br>   `Bot`: Web crawler.</li>
-<li>`deviceType`:<br>   Filter by the <strong>device type</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `TV`: TV; <br>   `Tablet`: Tablet;<br>   `Mobile`: Mobile phone;<br>   `Desktop`: Desktop device; <br>   `Other`: Other device;<br>   `Empty`: Device type not specified.</li>
-<li>`operatingSystemType`:<br>   Filter by the <strong>operating system</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values: <br>   `Linux`: Linux OS;<br>   `MacOS`: Mac OS;<br>   `Android`: Android OS;<br>   `IOS`: iOS OS;<br>   `Windows`: Windows OS;<br>   `NetBSD`: NetBSD OS;<br>   `ChromiumOS`: Chromium OS;<br>   `Bot`: Web crawler: <br>   `Other`: Other OS;<br>   `Empty`: The OS is not specified.</li>
-<li>`tlsVersion`:<br>   Filter by the <strong>TLS version</strong>. <br>   When this parameter is specified, the query period must be within the last 30 days. <br>   In this case, the supported <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> stated when `Zonelds` is specified become invalid.<br>   Values:<br>   `TLS1.0`: TLS 1.0; <br>   `TLS1.1`: TLS 1.1;<br>   `TLS1.2`: TLS 1.2;<br>   `TLS1.3`: TLS 1.3.</li>
-<li>`ipVersion`:<br>   Filter by the specified <strong>IP version</strong>.<br>   Values:<br>   `4`: IPv4;<br>   `6`: IPv6.</li>
-<li>`tagKey`:<br>   Filter by the specified <strong>tag key</strong></li>
-<li>`tagValue`:<br>   Filter by the specified <strong>tag value</strong></li>
+<li>`country`<br>Filter by the <strong> Country/Region</strong>. The country/region follows <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166</a> specification. </li>
+<li>`province`<br>Filter by the <strong>specified province name</strong>. It’s only available when `Area` is `mainland`.</li>
+<li>`isp`<br>:   Filter by the specified ISP. It’s only available when `Area` is `mainland`.<br>Values: <br>`2`: CTCC; <br>`26`: CUCC; <br>`1046`: CMCC; <br>`3947`: CTT; <br>`38`: CERNET; <br>`43`: GWBN; <br>`0`: Others.</li>
+<li>`domain`<br>: Filter by the specified <strong>sub-domain name</strong>, such as `test.example.com`</li>
+<li>`url`:<br>Filter by the <strong>specified URL Path (such as `/content` or `content/test.jpg`. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>
+<li>`referer`:<br>Filter by the specified <strong>Referer header</strong>, such as `example.com`.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>
+<li>`resourceType`:<br>Filter by the specified <strong>resource file type</strong>, such as `jpg`, `css`. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li>
+<li>`protocol`:<br> Filter by the specified <strong>HTTP protocol</strong> version <br>Values: <br>`HTTP/1.0`: HTTP 1.0;<br>`HTTP/1.1`: HTTP 1.1;<br>`HTTP/2.0`: HTTP 2.0;<br>`HTTP/3.0`: HTTP 3.0;<br>`WebSocket`: WebSocket.</li>
+<li>`socket`:<br>Filter by the specified <strong>HTTP protocol type</strong> <br>Values:<br>`HTTP`: HTTP protocol; <br>`HTTPS`: HTTPS protocol;<br>`QUIC`: QUIC protocol.
+<li>`statusCode`:<br> Filter by the <strong> Status Code</strong><br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values:<br>1XX: Status code of type 1xx <br>100: 100 status code <br>101: 101 status code <br>102: 102 status code <br>2XX: Status code of type 2xx <br>200: 200 status code <br>201: 201 status code <br>202: 202 status code <br>203: 203 status code <br>204: 204 status code <br>205: 205 status code <br>206: 206 status code <br>207: 207 status code <br>3XX: Status code of type 3xx <br>300: 300 status code <br>301: 301 status code <br>302: 302 status code <br>303: 303 status code <br>304: 304 status code <br>305: 305 status code <br>307: 307 status code <br>4XX: Status code of type 4xx <br>400: 400 status code <br>401: 401 status code <br>402: 402 status code <br>403: 403 status code <br>404: 404 status code <br>405: 405 status code <br>406: 406 status code <br>407: 407 status code <br>408: 408 status code <br>409: 409 status code <br>410: 410 status code <br>411: 411 status code <br>412: 412 status code <br>412: 413 Status Code <br>414: 414 status code <br>415: 415 status code <br>416: 416 status code <br>417: 417 status code <br>422: 422 status code <br>423: 423 status code <br>424: 424 status code <br>426: 426 status code <br>451: 451 status code <br>5XX: Status code of type 5xx <br>500: 500 status code <br>501: 501 status code <br>502:502 status code <br>503: 503 status code <br>504: 504 status code <br>505: 505 status code <br>506: 506 status code <br>507: 507 status code <br>510: 510 status code <br>514: 514 status code <br>544: 544 Status Code. </li>
+<li>`browserType`:<br>Filter by the specified <strong>browser type</strong>. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.</li><br>Values: <br>`Firefox`: Firefox browser; <br>`Chrome`: Chrome browser; <br>`Safari`: Safari browser; <br>`MicrosoftEdge`: Microsoft Edge browser; <br>`IE`: IE browser; <br>`Opera`: Opera browser; <br>`QQBrowser`: QQ browser; <br>`LBBrowser`: LB browser; <br>`MaxthonBrowser`: Maxthon browser; <br>`SouGouBrowser`: Sogou browser; <br>`BIDUBrowser`: Baidu browser; <br>`TaoBrowser`: Tao browser; <br>`UBrowser`: UC browser; <br>`Other`: Other browsers; <br>`Empty`: The browser type is not specified; <br>`Bot`: Web crawler.</li>
+<li>`deviceType`:<br>Filter by the <strong>device type</strong>.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values:<br>`TV`: TV; <br>`Tablet`: Tablet;<br>`Mobile`: Mobile phone; <br>`Desktop`: Desktop device;<br>`Other`: Other device;<br>`Empty`: Device type not specified.</li>
+<li>`operatingSystemType`:<br>Filter by the <strong>operating system</strong>.<br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values: <br>`Linux`: Linux OS; <br>`MacOS`: Mac OS;<br>`Android`: Android OS;<br>`IOS`: iOS OS;<br>`Windows`: Windows OS;<br>`NetBSD`: NetBSD OS;<br>`ChromiumOS`: Chromium OS; <br>`Bot`: Web crawler:<br>`Other`: Other OS;   <br>`Empty`: The OS is not specified.</li>
+<li>`tlsVersion`:<br>Filter by the <strong>TLS version</strong>. <br>If this parameter is specified, the max query period is the last 30 days.<br>The <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query scope stated in the service package specifications</a> of the site (if `ZoneIds` specified) becomes invalid.<br>Values: <br>`TLS1.0`: TLS 1.0;<br>`TLS1.1`: TLS 1.1; <br>`TLS1.2`: TLS 1.2;<br>`TLS1.3`: TLS 1.3.</li>
+<li>`ipVersion`<br>Filter by the <strong>specified IP version. <br>Values: <br>`4`: IPv4; <br>`6`: IPv6.
+<li>`tagKey`<br>Filter by the <strong>Tag Key</strong>. </li>
+<li>`tagValue`<br>Filter by the <strong>Tag Value</strong>. </li>
         :type Filters: list of QueryCondition
         :param _Interval: The query time granularity. Values:
 <li>`min`: 1 minute;</li>
@@ -10643,22 +10913,25 @@ class DropPageDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageId: The ID of the block page, which can be obtained from the CreateSecurityDropPage API.
-If 0 is passed, the default block page will be used.
+        :param _PageId: The ID of the block page. Specify `0` to use the default block page. 
+(Disused) If 0 is passed, the default block page will be used.
         :type PageId: int
-        :param _StatusCode: The HTTP status code of the block page. Value range: 100-600.
+        :param _StatusCode: The HTTP status code to trigger the block page. Range: 100-600, excluding 3xx codes. Code 566: Requests blocked by managed rules. Code 567: Requests blocked by web security rules (except managed rules).
         :type StatusCode: int
         :param _Name: The block page file or URL.
         :type Name: str
         :param _Type: Type of the block page. Values:
-<li>`file`: Block page file</li>
-<li>`url`: Block page URL</li>
+<li>`page`: Return the specified page.</li>
+
         :type Type: str
+        :param _CustomResponseId: ID of custom response. The ID can be obtained via the `DescribeCustomErrorPages` API. It's required when `Type=page`.
+        :type CustomResponseId: str
         """
         self._PageId = None
         self._StatusCode = None
         self._Name = None
         self._Type = None
+        self._CustomResponseId = None
 
     @property
     def PageId(self):
@@ -10692,12 +10965,79 @@ If 0 is passed, the default block page will be used.
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def CustomResponseId(self):
+        return self._CustomResponseId
+
+    @CustomResponseId.setter
+    def CustomResponseId(self, CustomResponseId):
+        self._CustomResponseId = CustomResponseId
+
 
     def _deserialize(self, params):
         self._PageId = params.get("PageId")
         self._StatusCode = params.get("StatusCode")
         self._Name = params.get("Name")
         self._Type = params.get("Type")
+        self._CustomResponseId = params.get("CustomResponseId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EntityStatus(AbstractModel):
+    """Status of domain names bound with this template.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Entity: Instance name. Only subdomain names are supported.
+        :type Entity: str
+        :param _Status: Instance configuration status. Values:
+<li>`online`: Configuration has taken effect;</li><li>`fail`: Configuration failed;</li><li>`process`: Configuration is being delivered. </li>
+        :type Status: str
+        :param _Message: Message returned after the operation completed. 
+        :type Message: str
+        """
+        self._Entity = None
+        self._Status = None
+        self._Message = None
+
+    @property
+    def Entity(self):
+        return self._Entity
+
+    @Entity.setter
+    def Entity(self, Entity):
+        self._Entity = Entity
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Entity = params.get("Entity")
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12687,10 +13027,30 @@ class ModifyAccelerationDomainRequest(AbstractModel):
         :type DomainName: str
         :param _OriginInfo: Details of the origin.
         :type OriginInfo: :class:`tencentcloud.teo.v20220901.models.OriginInfo`
+        :param _OriginProtocol: Origin-pull protocol configuration. Values:
+<li>`FOLLOW`: Follow the protocol of origin</li>
+<li>`HTTP`: Send requests to the origin over HTTP</li>
+<li>`HTTPS`: Send requests to the origin over HTTPS</li>
+<li>The original configuration applies if this field is not specified.</li>
+        :type OriginProtocol: str
+        :param _HttpOriginPort: Ports for HTTP origin-pull requests. Range: 1-65535. It takes effect when `OriginProtocol=FOLLOW/HTTP`. The original configuration is used if it's not specified.
+        :type HttpOriginPort: int
+        :param _HttpsOriginPort: Ports for HTTPS origin-pull requests. Range: 1-65535. It takes effect when `OriginProtocol=FOLLOW/HTTPS`. The original configuration is used if it's not specified.
+        :type HttpsOriginPort: int
+        :param _IPv6Status: IPv6 status. Values:
+<li>`follow`: Follow the IPv6 configuration of the site</li>
+<li>`on`: Enable</li>
+<li>`off`: Disable</li>
+<li>The original configuration applies if this field is not specified.</li>
+        :type IPv6Status: str
         """
         self._ZoneId = None
         self._DomainName = None
         self._OriginInfo = None
+        self._OriginProtocol = None
+        self._HttpOriginPort = None
+        self._HttpsOriginPort = None
+        self._IPv6Status = None
 
     @property
     def ZoneId(self):
@@ -12716,6 +13076,38 @@ class ModifyAccelerationDomainRequest(AbstractModel):
     def OriginInfo(self, OriginInfo):
         self._OriginInfo = OriginInfo
 
+    @property
+    def OriginProtocol(self):
+        return self._OriginProtocol
+
+    @OriginProtocol.setter
+    def OriginProtocol(self, OriginProtocol):
+        self._OriginProtocol = OriginProtocol
+
+    @property
+    def HttpOriginPort(self):
+        return self._HttpOriginPort
+
+    @HttpOriginPort.setter
+    def HttpOriginPort(self, HttpOriginPort):
+        self._HttpOriginPort = HttpOriginPort
+
+    @property
+    def HttpsOriginPort(self):
+        return self._HttpsOriginPort
+
+    @HttpsOriginPort.setter
+    def HttpsOriginPort(self, HttpsOriginPort):
+        self._HttpsOriginPort = HttpsOriginPort
+
+    @property
+    def IPv6Status(self):
+        return self._IPv6Status
+
+    @IPv6Status.setter
+    def IPv6Status(self, IPv6Status):
+        self._IPv6Status = IPv6Status
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -12723,6 +13115,10 @@ class ModifyAccelerationDomainRequest(AbstractModel):
         if params.get("OriginInfo") is not None:
             self._OriginInfo = OriginInfo()
             self._OriginInfo._deserialize(params.get("OriginInfo"))
+        self._OriginProtocol = params.get("OriginProtocol")
+        self._HttpOriginPort = params.get("HttpOriginPort")
+        self._HttpsOriginPort = params.get("HttpsOriginPort")
+        self._IPv6Status = params.get("IPv6Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13703,34 +14099,26 @@ class ModifyOriginGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: The site ID.
+        :param _ZoneId: Site ID
         :type ZoneId: str
-        :param _OriginGroupId: The ID of the origin group.
-        :type OriginGroupId: str
-        :param _OriginType: The origin type. Values:
-<li>`self`: Customer origin</li>
-<li>`third_party`: Third-party origin</li>
-<li>`cos`: Tencent Cloud COS origin</li>
-        :type OriginType: str
-        :param _OriginGroupName: The name of the origin group.
-        :type OriginGroupName: str
-        :param _ConfigurationType: The origin configuration type when `OriginType=self`. Values:
-<li>`area`: Configure by region.</li>
-<li>`weight`: Configure by weight.</li>
-<li>`proto`: Configure by HTTP protocol.</li> When `OriginType=third_party/cos`, leave this field empty.
-        :type ConfigurationType: str
-        :param _OriginRecords: Details of the origin record.
-        :type OriginRecords: list of OriginRecord
-        :param _HostHeader: The origin domain. This field can be specified only when `OriginType=self`.
-If it is left empty, the existing configuration is used.
+        :param _GroupId: (Required) Origin group ID
+        :type GroupId: str
+        :param _Name: Origin group name. It can contain 1 to 200 characters ([a-z], [A-Z], [0-9] and [_-]). The original configuration applies if this field is not specified.	
+        :type Name: str
+        :param _Type: The origin grouptype. Values:
+<li>`GENERAL`: General origin groups. It supports IPs and domain names. It can be referenced by DNS, Rule Engine, Layer 4 Proxy and General LoadBalancer.</li>
+<li>`HTTP`: HTTP-specific origin groups. It supports IPs/domain names and object storage buckets. It can be referenced by acceleration domain names, rule engines and HTTP LoadBalancer. It cannot be referenced by L4 proxies. </li>The original configuration is used if it's not specified.
+        :type Type: str
+        :param _Records: Origin information. The original configuration is used if it's not specified.
+        :type Records: list of OriginRecord
+        :param _HostHeader: Host header used for origin-pull. It only works when `Type=HTTP`. If it's not specified, no specific Host header is configured. The `HostHeader` specified in `RuleEngine` takes a higher priority over this configuration. 
         :type HostHeader: str
         """
         self._ZoneId = None
-        self._OriginGroupId = None
-        self._OriginType = None
-        self._OriginGroupName = None
-        self._ConfigurationType = None
-        self._OriginRecords = None
+        self._GroupId = None
+        self._Name = None
+        self._Type = None
+        self._Records = None
         self._HostHeader = None
 
     @property
@@ -13742,44 +14130,36 @@ If it is left empty, the existing configuration is used.
         self._ZoneId = ZoneId
 
     @property
-    def OriginGroupId(self):
-        return self._OriginGroupId
+    def GroupId(self):
+        return self._GroupId
 
-    @OriginGroupId.setter
-    def OriginGroupId(self, OriginGroupId):
-        self._OriginGroupId = OriginGroupId
-
-    @property
-    def OriginType(self):
-        return self._OriginType
-
-    @OriginType.setter
-    def OriginType(self, OriginType):
-        self._OriginType = OriginType
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
 
     @property
-    def OriginGroupName(self):
-        return self._OriginGroupName
+    def Name(self):
+        return self._Name
 
-    @OriginGroupName.setter
-    def OriginGroupName(self, OriginGroupName):
-        self._OriginGroupName = OriginGroupName
-
-    @property
-    def ConfigurationType(self):
-        return self._ConfigurationType
-
-    @ConfigurationType.setter
-    def ConfigurationType(self, ConfigurationType):
-        self._ConfigurationType = ConfigurationType
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
     @property
-    def OriginRecords(self):
-        return self._OriginRecords
+    def Type(self):
+        return self._Type
 
-    @OriginRecords.setter
-    def OriginRecords(self, OriginRecords):
-        self._OriginRecords = OriginRecords
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Records(self):
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
 
     @property
     def HostHeader(self):
@@ -13792,16 +14172,15 @@ If it is left empty, the existing configuration is used.
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
-        self._OriginGroupId = params.get("OriginGroupId")
-        self._OriginType = params.get("OriginType")
-        self._OriginGroupName = params.get("OriginGroupName")
-        self._ConfigurationType = params.get("ConfigurationType")
-        if params.get("OriginRecords") is not None:
-            self._OriginRecords = []
-            for item in params.get("OriginRecords"):
+        self._GroupId = params.get("GroupId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
                 obj = OriginRecord()
                 obj._deserialize(item)
-                self._OriginRecords.append(obj)
+                self._Records.append(obj)
         self._HostHeader = params.get("HostHeader")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -14754,7 +15133,7 @@ class NormalAction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Action: Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.
+        :param _Action: Feature name. For details, see [DescribeRulesSetting](https://intl.cloud.tencent.com/document/product/1552/80618?from_cn_redirect=1) API
         :type Action: str
         :param _Parameters: Parameter
         :type Parameters: list of RuleNormalActionParams
@@ -15068,17 +15447,19 @@ class OriginGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 
+        :param _GroupId: The ID of the origin group.
         :type GroupId: str
-        :param _Name: 
+        :param _Name: The name of the origin group.
         :type Name: str
-        :param _Type: 
+        :param _Type: The origin group type. Values:
+<li>`GENERAL`: General origin group</li>
+<li>`HTTP`: HTTP-specific origin group</li>
         :type Type: str
-        :param _Records: 
+        :param _Records: Details of the origin record.
         :type Records: list of OriginRecord
-        :param _References: 
+        :param _References: List of instances referencing this origin group.	
         :type References: list of OriginGroupReference
-        :param _CreateTime: 
+        :param _CreateTime: Creation time of the origin group.
         :type CreateTime: str
         :param _UpdateTime: The update time of the origin group.
         :type UpdateTime: str
@@ -15190,17 +15571,21 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
 
 class OriginGroupReference(AbstractModel):
-    """
+    """Services referencing this origin group
 
     """
 
     def __init__(self):
         r"""
-        :param _InstanceType: 
+        :param _InstanceType: Services referencing the origin group. Values:
+<li>`AccelerationDomain`: Acceleration domain name</li>
+<li>`RuleEngine`: Rules engine</li>
+<li>`Loadbalance`: Load balancer</li>
+<li>`ApplicationProxy`: L4 proxy</li>
         :type InstanceType: str
-        :param _InstanceId: 
+        :param _InstanceId: ID of the instances referencing the origin group
         :type InstanceId: str
-        :param _InstanceName: 
+        :param _InstanceName: Name of the instance referencing the origin group
         :type InstanceName: str
         """
         self._InstanceType = None
@@ -15479,42 +15864,28 @@ class OriginRecord(AbstractModel):
         r"""
         :param _Record: The origin record value, which can be an IPv4/IPv6 address or a domain name.
         :type Record: str
+        :param _Type: The origin type. Values:
+<li>`IP_DOMAIN`: IPv4/IPv6 address or domain name</li>
+<li>`COS`: COS bucket address</li>
+<li>`AWS_S3`: AWS S3 bucket address
+        :type Type: str
         :param _RecordId: The origin record ID.
         :type RecordId: str
-        :param _Port: The origin port. Value rang: 1-65535.
-        :type Port: int
-        :param _Weight: The weight when `ConfigurationType=weight`.
-If 0 or no value is passed, the weight of each origin in a group will be 0 or left empty, indicating that origin-pull is performed by round-robin.
-If a value between 1-100 is passed, the total weight of multiple origins in a group should be 100, indicating that origin-pull is performed by weight.
-The weight when `ConfigurationType=proto`.
-If 0 or no value is passed, the weight of each origin in a group will be 0 or left empty, indicating that origin-pull is performed by round-robin.
-If a value between 1-100 is passed, the total weight of multiple origins with the same protocol in a group should be 100, indicating that origin-pull is performed by weight.
+        :param _Weight: Weight of an origin. Range: 0-100. If it is not specified, a random weight is assigned. If `0` is passed in, there is no traffic scheduled to this origin.
+Note: This field may return·null, indicating that no valid values can be obtained.
         :type Weight: int
-        :param _Proto: The origin protocol when `ConfigurationType=proto`, indicating that origin-pull is performed by protocol.
-<li>`http`: HTTP protocol</li>
-<li>`https`: HTTPS protocol</li>
-        :type Proto: str
-        :param _Area: The region when `ConfigurationType=area`, which is specified by country code (ISO 3166 alpha-2) or continent code. If not specified, it indicates all regions. Supported continent codes:
-<li>`Asia`</li>
-<li>`Europe`</li>
-<li>`Africa`</li>
-<li>`Oceania`</li>
-<li>`Americas`</li>An origin group must have at least one origin configured with all regions.
-        :type Area: list of str
-        :param _Private: It is valid only when `OriginType=third_part`.
-Whether the origin group is private. Values:
+        :param _Private: Whether to enable private authentication. It is valid when `OriginType=COS/AWS_S3`. Values:
 <li>`true`: Yes.</li>
-<li>`false`: No.</li>If not specified, it defaults to false.
+<li>`false`: No.</li>Default: `false`.
+
         :type Private: bool
-        :param _PrivateParameters: The authentication parameter, which is used when `Private=true`.
+        :param _PrivateParameters: Private authentication parameters. This field is valid when `Private=true`.
         :type PrivateParameters: list of PrivateParameter
         """
         self._Record = None
+        self._Type = None
         self._RecordId = None
-        self._Port = None
         self._Weight = None
-        self._Proto = None
-        self._Area = None
         self._Private = None
         self._PrivateParameters = None
 
@@ -15527,6 +15898,14 @@ Whether the origin group is private. Values:
         self._Record = Record
 
     @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
     def RecordId(self):
         return self._RecordId
 
@@ -15535,36 +15914,12 @@ Whether the origin group is private. Values:
         self._RecordId = RecordId
 
     @property
-    def Port(self):
-        return self._Port
-
-    @Port.setter
-    def Port(self, Port):
-        self._Port = Port
-
-    @property
     def Weight(self):
         return self._Weight
 
     @Weight.setter
     def Weight(self, Weight):
         self._Weight = Weight
-
-    @property
-    def Proto(self):
-        return self._Proto
-
-    @Proto.setter
-    def Proto(self, Proto):
-        self._Proto = Proto
-
-    @property
-    def Area(self):
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
 
     @property
     def Private(self):
@@ -15585,11 +15940,9 @@ Whether the origin group is private. Values:
 
     def _deserialize(self, params):
         self._Record = params.get("Record")
+        self._Type = params.get("Type")
         self._RecordId = params.get("RecordId")
-        self._Port = params.get("Port")
         self._Weight = params.get("Weight")
-        self._Proto = params.get("Proto")
-        self._Area = params.get("Area")
         self._Private = params.get("Private")
         if params.get("PrivateParameters") is not None:
             self._PrivateParameters = []
@@ -15910,7 +16263,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrivateParameter(AbstractModel):
-    """Origin authentication parameter
+    """Private authentication parameters of object storage origins
 
     """
 
@@ -15919,6 +16272,8 @@ class PrivateParameter(AbstractModel):
         :param _Name: The parameter name. Values
 <li>`AccessKeyId`: Access Key ID</li>
 <li>`SecretAccessKey`: Secret Access Key</li>
+<li>`SignatureVersion`: Signature version. Values: `v2`, `v4`</li>
+<li>`Region`: Region of the storage bucket</li>
         :type Name: str
         :param _Value: The parameter value.
         :type Value: str
@@ -16538,7 +16893,7 @@ class RateLimitUserRule(AbstractModel):
         :type Period: int
         :param _RuleName: The rule name, which consists of only letters, digits, and underscores and cannot start with an underscore.
         :type RuleName: str
-        :param _Action: Action. Valid values: <li>`monitor`: Observe;</li>`<li>drop`: Block;</li> <li>`alg`: JavaScript challenge. </li>	
+        :param _Action: Action. Values:<li>`monitor`: Observe;</li><li>`drop`: Block;</li><li>`redirect`: Redirect;</li><li>`page`: Return a specific page;</li><li>`alg`: JavaScript challenge. </li>	
         :type Action: str
         :param _PunishTime: The amount of time taken to perform the action. Value range: 0 seconds - 2 days.
         :type PunishTime: int
@@ -16549,27 +16904,33 @@ class RateLimitUserRule(AbstractModel):
         :type PunishTimeUnit: str
         :param _RuleStatus: The rule status. Values:
 <li>`on`: Enabled</li>
-<li>`off`: Disabled</li>Default value: on
+<li>`off`: Disabled</li>Default value: `on`
         :type RuleStatus: str
         :param _AclConditions: The rule details.
         :type AclConditions: list of AclCondition
         :param _RulePriority: The rule weight. Value range: 0-100.
         :type RulePriority: int
         :param _RuleID: Rule ID, which is only used as an output parameter.
-Note: This field may return·`null`, indicating that no valid values can be obtained.
         :type RuleID: int
         :param _FreqFields: The filter. Values:
 <li>`sip`: Client IP</li>
-Note: This field may return null, indicating that no valid values can be obtained.
+This parameter is left empty by default.
         :type FreqFields: list of str
-        :param _UpdateTime: Update time
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _UpdateTime: Update time. It is only used as a response parameter, and defaults to the current time. 
         :type UpdateTime: str
-        :param _FreqScope: Statistical dimension. `source_to_eo` is entered by default when this parameter is not specified. Valid values:
-<li>`source_to_eo`: (Response) Traffic going from the origin to EdgeOne. </li>
+        :param _FreqScope: Query scope. Values:
+<li>`source_to_eo`: (Response) Traffic going from the origin to EdgeOne.</li>
 <li>`client_to_eo`: (Request) Traffic going from the client to EdgeOne.</li>
-Note: This field may return·`null`, indicating that no valid values can be obtained.
+Default: `source_to_eo`.
         :type FreqScope: list of str
+        :param _Name: Name of the custom return page. It's required when `Action=page`.
+        :type Name: str
+        :param _CustomResponseId: ID of custom response. The ID can be obtained via the `DescribeCustomErrorPages` API. It's required when `Action=page`.	
+        :type CustomResponseId: str
+        :param _ResponseCode: The response code to trigger the return page. It's required when `Action=page`. Value: 100-600. 3xx response codes are not supported. Default value: 567.
+        :type ResponseCode: int
+        :param _RedirectUrl: The redirection URL. It's required when `Action=redirect`.
+        :type RedirectUrl: str
         """
         self._Threshold = None
         self._Period = None
@@ -16584,6 +16945,10 @@ Note: This field may return·`null`, indicating that no valid values can be obta
         self._FreqFields = None
         self._UpdateTime = None
         self._FreqScope = None
+        self._Name = None
+        self._CustomResponseId = None
+        self._ResponseCode = None
+        self._RedirectUrl = None
 
     @property
     def Threshold(self):
@@ -16689,6 +17054,38 @@ Note: This field may return·`null`, indicating that no valid values can be obta
     def FreqScope(self, FreqScope):
         self._FreqScope = FreqScope
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CustomResponseId(self):
+        return self._CustomResponseId
+
+    @CustomResponseId.setter
+    def CustomResponseId(self, CustomResponseId):
+        self._CustomResponseId = CustomResponseId
+
+    @property
+    def ResponseCode(self):
+        return self._ResponseCode
+
+    @ResponseCode.setter
+    def ResponseCode(self, ResponseCode):
+        self._ResponseCode = ResponseCode
+
+    @property
+    def RedirectUrl(self):
+        return self._RedirectUrl
+
+    @RedirectUrl.setter
+    def RedirectUrl(self, RedirectUrl):
+        self._RedirectUrl = RedirectUrl
+
 
     def _deserialize(self, params):
         self._Threshold = params.get("Threshold")
@@ -16709,6 +17106,10 @@ Note: This field may return·`null`, indicating that no valid values can be obta
         self._FreqFields = params.get("FreqFields")
         self._UpdateTime = params.get("UpdateTime")
         self._FreqScope = params.get("FreqScope")
+        self._Name = params.get("Name")
+        self._CustomResponseId = params.get("CustomResponseId")
+        self._ResponseCode = params.get("ResponseCode")
+        self._RedirectUrl = params.get("RedirectUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16911,7 +17312,7 @@ class RewriteAction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Action: Feature name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the feature name.
+        :param _Action: Feature name. For details, see [DescribeRulesSetting](https://intl.cloud.tencent.com/document/product/1552/80618?from_cn_redirect=1) API
         :type Action: str
         :param _Parameters: Parameter
         :type Parameters: list of RuleRewriteActionParams
@@ -17201,7 +17602,7 @@ class RuleCodeActionParams(AbstractModel):
         r"""
         :param _StatusCode: The status code.
         :type StatusCode: int
-        :param _Name: The parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name.
+        :param _Name: The parameter name. For details, see [DescribeRulesSetting](https://intl.cloud.tencent.com/document/product/1552/80618?from_cn_redirect=1).
         :type Name: str
         :param _Values: The parameter value.
         :type Values: list of str
@@ -17532,7 +17933,7 @@ class RuleNormalActionParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name.
+        :param _Name: The parameter name. For details, see [DescribeRulesSetting](https://intl.cloud.tencent.com/document/product/1552/80618?from_cn_redirect=1).
         :type Name: str
         :param _Values: The parameter value.
         :type Values: list of str
@@ -17577,10 +17978,10 @@ class RuleRewriteActionParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Action: Feature parameter name. You can call the [DescribeRulesSetting](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) API to view the requirements for entering the parameter name, which has three values:
-<li>add: Add the HTTP header.</li>
-<li>set: Rewrite the HTTP header.</li>
-<li>del: Delete the HTTP header.</li>
+        :param _Action: Feature parameter name. For details, see [DescribeRulesSetting](https://intl.cloud.tencent.com/document/product/1552/80618?from_cn_redirect=1).
+<li>`add`: Add the HTTP header.</li>
+<li>`set`: Rewrite the HTTP header.</li>
+<li>`del`: Delete the HTTP header.</li>
         :type Action: str
         :param _Name: Parameter name
         :type Name: str
@@ -17644,12 +18045,12 @@ class RulesProperties(AbstractModel):
         :param _ChoicesValue: Valid parameter values.
 Note: If `Type` is `CUSTOM_NUM` or `CUSTOM_STRING`, this parameter will be an empty array.
         :type ChoicesValue: list of str
-        :param _Type: Parameter value type.
-<li>`CHOICE`: The parameter value can be selected only from `ChoicesValue`.</li>
-<li>`TOGGLE`: The parameter value is of switch type and can be selected from `ChoicesValue`.</li>
-<li>`OBJECT`: The parameter value is of object type, and `ChoiceProperties` indicates the attributes associated with the object type.</li>
-<li>`CUSTOM_NUM`: Custom integer</li>
-<li>`CUSTOM_STRING`: Custom string.</li>Note: If `OBJECT` is selected, refer to [Example 2. Create a rule with parameters of OBJECT type](https://tcloud4api.woa.com/document/product/1657/79382?!preview&!document=1).
+        :param _Type: The parameter value type.
+<li>`CHOICE`: `If Type=CHOICE`, choose a value in `ChoiceValue`.</li>
+<li>`TOGGLE`: If `Type=TOGGLE`, choose `on` or `off` from `ChoicesValue`.</li>
+<li>`OBJECT`: Specify an object. If this is specified, `ChoiceProperties` includes attributes of the specified object. See [Example 2. Create a rule with Type=OBJECT](https://intl.cloud.tencent.com/document/product/1552/80622?from_cn_redirect=1#.E7.A4.BA.E4.BE.8B2-.E5.8F.82.E6.95.B0.E4.B8.BA-OBJECT-.E7.B1.BB.E5.9E.8B.E7.9A.84.E5.88.9B.E5.BB.BA)</li>
+<li>`CUSTOM_NUM`: (Integer) Custom value.</li>
+<li>`CUSTOM_STRING`: (String) Custom value.</li>
         :type Type: str
         :param _Max: Maximum value. If both `Min` and `Max` are set to `0`, this parameter does not take effect.
         :type Max: int
@@ -18148,6 +18549,56 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         if params.get("SlowPostConfig") is not None:
             self._SlowPostConfig = SlowPostConfig()
             self._SlowPostConfig._deserialize(params.get("SlowPostConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecurityTemplateBinding(AbstractModel):
+    """Bindings of a security policy template
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: template ID
+        :type TemplateId: str
+        :param _TemplateScope: Binding status of the template.
+        :type TemplateScope: list of TemplateScope
+        """
+        self._TemplateId = None
+        self._TemplateScope = None
+
+    @property
+    def TemplateId(self):
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateScope(self):
+        return self._TemplateScope
+
+    @TemplateScope.setter
+    def TemplateScope(self, TemplateScope):
+        self._TemplateScope = TemplateScope
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        if params.get("TemplateScope") is not None:
+            self._TemplateScope = []
+            for item in params.get("TemplateScope"):
+                obj = TemplateScope()
+                obj._deserialize(item)
+                self._TemplateScope.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19073,6 +19524,58 @@ class TemplateConfig(AbstractModel):
     def _deserialize(self, params):
         self._TemplateId = params.get("TemplateId")
         self._TemplateName = params.get("TemplateName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TemplateScope(AbstractModel):
+    """Domain names bound with the template.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: ID of the site.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type ZoneId: str
+        :param _EntityStatus: List of instance statuses
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type EntityStatus: list of EntityStatus
+        """
+        self._ZoneId = None
+        self._EntityStatus = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def EntityStatus(self):
+        return self._EntityStatus
+
+    @EntityStatus.setter
+    def EntityStatus(self, EntityStatus):
+        self._EntityStatus = EntityStatus
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("EntityStatus") is not None:
+            self._EntityStatus = []
+            for item in params.get("EntityStatus"):
+                obj = EntityStatus()
+                obj._deserialize(item)
+                self._EntityStatus.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

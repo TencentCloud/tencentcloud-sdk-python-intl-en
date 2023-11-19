@@ -602,7 +602,7 @@ LIMITEXCEEDED_KEYFRAMEDESCCOUNTREACHMAX = 'LimitExceeded.KeyFrameDescCountReachM
 # Limit exceeded: the total number of new and old tags exceeds the limit.
 LIMITEXCEEDED_TAGCOUNTREACHMAX = 'LimitExceeded.TagCountReachMax'
 
-# 
+# Limit exceeded: The number of templates exceeds the upper limit of 100. If you need more, please[Submit a ticket](https://console.tencentcloud.com/workorder/category)。
 LIMITEXCEEDED_TOOMUCHTEMPLATE = 'LimitExceeded.TooMuchTemplate'
 
 # Missing parameter.

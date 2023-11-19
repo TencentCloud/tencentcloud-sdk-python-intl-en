@@ -386,6 +386,76 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class AbnormalLightingConfigureInfo(AbstractModel):
+    """Control parameters for detecting low brightness and overexposure of video.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: low brightness and overexposure inspection switch, optional values: 
+<li>ON: enabled;</li> 
+<li>OFF: disabled.</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AbnormalLightingConfigureInfoForUpdate(AbstractModel):
+    """Control parameters for detecting low brightness and overexposure of video.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: low brightness and overexposure inspection switch, optional values: 
+<li>ON: enabled;</li> 
+<li>OFF: disabled.</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccelerateAreaInfo(AbstractModel):
     """Acceleration region information of the domain name
 
@@ -469,11 +539,14 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 <li>If the file is a DASH file, the value of this parameter is the sum of the size of the MPD and segment files.</li>
 <li><font color=red>Note</font>: For adaptive bitrate streaming files generated before 2022-01-10T16:00:00Z, the value of this parameter is `0`.</li>
         :type Size: int
-        :param _DigitalWatermarkType: 
+        :param _DigitalWatermarkType: Digital watermark type. Optional values:
+<li>Trace means traceability watermark processing; </li>
+<li>CopyRight means copyright watermark processing; </li>
+<li>None means no digital watermark processing. </li>
         :type DigitalWatermarkType: str
         :param _SubStreamSet: The information of the streams.
         :type SubStreamSet: list of MediaSubStreamInfoItem
-        :param _CopyRightWatermarkText: 
+        :param _CopyRightWatermarkText: Copyright Information.
         :type CopyRightWatermarkText: str
         """
         self._Definition = None
@@ -588,7 +661,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type WatermarkSet: list of WatermarkInput
         :param _TraceWatermark: Digital watermark.
         :type TraceWatermark: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
-        :param _CopyRightWatermark: 
+        :param _CopyRightWatermark: CopyRight Watermark.
         :type CopyRightWatermark: :class:`tencentcloud.vod.v20180717.models.CopyRightWatermarkInput`
         :param _SubtitleSet: List of subtitle IDs (maximum: 16)
         :type SubtitleSet: list of str
@@ -1184,9 +1257,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskClassificationOutput`
         :param _Progress: The progress of an intelligent categorization task. Value range: 0-100.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the intelligent classification task started to be executed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time when the intelligent classification task is completed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -1414,9 +1487,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskCoverOutput`
         :param _Progress: The progress of an intelligent thumbnail generation task. Value range: 0-100.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the smart cover task started to be executed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time when the smart cover task is completed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -1644,9 +1717,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskFrameTagOutput`
         :param _Progress: The progress of an intelligent labeling by frame task. Value range: 0-100.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the intelligent frame labeling task started execution, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time when the intelligent frame labeling task is completed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -1874,9 +1947,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskHighlightOutput`
         :param _Progress: The progress of an intelligent highlight generation task. Value range: 0-100.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the smart highlight task started execution, in [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time the smart highlight task completed, in [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -2137,9 +2210,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskTagOutput`
         :param _Progress: The progress of an intelligent labeling task. Value range: 0-100.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the smart label task started executing, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time when the smart label task is completed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -2663,11 +2736,11 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         :param _Output: Output information of full speech recognition task.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResultOutput`
-        :param _Progress: 
+        :param _Progress: Speech full-text recognition task progress, value range [0-100].
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the full-text speech recognition task started, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time when the speech full-text recognition task was completed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -3040,9 +3113,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrWordsResultOutput`
         :param _Progress: The progress of a speech keyword recognition task. Value range: 0-100.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the speech keyword recognition task started, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time when the speech keyword recognition task is completed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -3377,9 +3450,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskFaceResultOutput`
         :param _Progress: The progress of a face recognition task. Value range: 0-100.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the face recognition task started, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time when the face recognition task was completed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -3752,9 +3825,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskHeadTailResultOutput`
         :param _Progress: The progress of an opening/closing segment recognition task. Value range: 0-100.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the video start and end recognition task starts, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time when the video start and end recognition task is completed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -4021,9 +4094,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskObjectResultOutput`
         :param _Progress: The progress of an object recognition task. Value range: 0-100.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the object recognition task started execution, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time when the object recognition task is completed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -4177,7 +4250,7 @@ class AiRecognitionTaskObjectResultItem(AbstractModel):
         :type Name: str
         :param _SegmentSet: List of segments that contain an object.
         :type SegmentSet: list of AiRecognitionTaskObjectSeqmentItem
-        :param _RecognitionSegmentSet: 
+        :param _RecognitionSegmentSet: List of fragments in which the object appears.
         :type RecognitionSegmentSet: list of AiRecognitionTaskObjectSegmentItem
         """
         self._Name = None
@@ -4301,19 +4374,19 @@ class AiRecognitionTaskObjectResultOutput(AbstractModel):
 
 
 class AiRecognitionTaskObjectSegmentItem(AbstractModel):
-    """
+    """Object recognition result fragment.
 
     """
 
     def __init__(self):
         r"""
-        :param _StartTimeOffset: 
+        :param _StartTimeOffset: Identifies the offset time of the beginning of the segment, in seconds.
         :type StartTimeOffset: float
-        :param _EndTimeOffset: 
+        :param _EndTimeOffset: Offset time to identify the end of the segment, in seconds.
         :type EndTimeOffset: float
-        :param _Confidence: 
+        :param _Confidence: Identify segment confidence. Value: 0~100.
         :type Confidence: float
-        :param _AreaCoordSet: 
+        :param _AreaCoordSet: The area coordinates of the recognition result. The array contains 4 elements [x1, y1, x2, y2], which in turn represent the horizontal and vertical coordinates of the upper left point and lower right point of the area.
         :type AreaCoordSet: list of int
         """
         self._StartTimeOffset = None
@@ -4460,9 +4533,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrFullTextResultOutput`
         :param _Progress: The progress of a full text recognition task. Value range: 0-100.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the full text recognition task started, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time when the full text recognition task was completed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -4809,9 +4882,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskOcrWordsResultOutput`
         :param _Progress: The progress of a text keyword recognition task. Value range: 0-100.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the text keyword recognition task started, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time when the text keyword recognition task is completed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -5159,9 +5232,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskSegmentResultOutput`
         :param _Progress: The progress of a video splitting task. Value range: 0-100.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the video detachment task started, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time when the video stripping task is completed is in [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -6619,7 +6692,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _Output: Output for OCR-based recognition of politically sensitive content
 Note: This field may return `null`, indicating that no valid value can be found.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AiReviewPoliticalOcrTaskOutput`
-        :param _Progress: 
+        :param _Progress: Audio and video review OCR text involves the task progress of inappropriate information, the value range is [0-100].
         :type Progress: int
         """
         self._Status = None
@@ -7919,7 +7992,10 @@ class AiSampleFaceOperation(AbstractModel):
         :type Type: str
         :param _FaceIds: Face ID set, which is required if `Type` is `delete`.
         :type FaceIds: list of str
-        :param _FaceContents: 
+        :param _FaceContents: Face image [Base64](https://tools.ietf.org/html/rfc4648) Encoded string collection, only supports jpeg and png image formats. 
+<li>When Type is add or reset, this field is required;</li>
+<li>Array length limit: 5 pictures. </li>
+Note: The picture must be a clear frontal photo of a single person, with a pixel size of no less than 200*200.
         :type FaceContents: list of str
         """
         self._Type = None
@@ -9668,7 +9744,7 @@ class Authentication(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: Anti-hotlink configuration switch, value: <li>on: on; </li> <li>off: off. </li>
         :type Switch: str
         :param _TypeA: Timestamp hotlink protection mode A configuration
         :type TypeA: :class:`tencentcloud.vod.v20180717.models.AuthenticationTypeA`
@@ -9751,23 +9827,23 @@ class Authentication(AbstractModel):
 
 
 class AuthenticationTypeA(AbstractModel):
-    """
+    """Configuration of timestamp anti-hotlinking mode A; The access URL format of timestamp anti-hotlinking mode A is: http://DomainName/Filename?sign=timestamp-rand-uid-md5hash; where timestamp is a decimal UNIX timestamp; rand is a random character String, consisting of 0 ~ 100 uppercase and lowercase letters and numbers; uid is 0; md5hash: MD5 (file path-timestamp-rand-uid-custom key).
 
     """
 
     def __init__(self):
         r"""
-        :param _SecretKey: 
+        :param _SecretKey: The key to calculate the signature; only uppercase and lowercase letters and numbers are allowed, with a length of 6~32 characters.
         :type SecretKey: str
-        :param _SignParam: 
+        :param _SignParam: Signature parameter name setting; only uppercase and lowercase letters, numbers or underscores are allowed, the length is 1~100 characters, and it cannot start with a number.
         :type SignParam: str
-        :param _ExpireTime: 
+        :param _ExpireTime: Signature expiration time setting; the unit is seconds, and the maximum value can be set to 630720000.
         :type ExpireTime: int
-        :param _FileExtensions: 
+        :param _FileExtensions: File extension list settings for authentication/non-authentication; if the character * is included, it means all files.
         :type FileExtensions: list of str
-        :param _FilterType: 
+        :param _FilterType: whitelist: whitelist, indicating that all types except the FileExtensions list will be authenticated; blacklist: blacklist, indicating that only the types in FileExtensions will be authenticated.
         :type FilterType: str
-        :param _BackupSecretKey: 
+        :param _BackupSecretKey: Alternate key for calculating signature; only uppercase and lowercase letters and numbers are allowed, length 6~32 characters.
         :type BackupSecretKey: str
         """
         self._SecretKey = None
@@ -9850,15 +9926,15 @@ class AuthenticationTypeB(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretKey: 
+        :param _SecretKey: The key to calculate the signature; only uppercase and lowercase letters and numbers are allowed, with a length of 6~32 characters.
         :type SecretKey: str
-        :param _ExpireTime: 
+        :param _ExpireTime: Signature expiration time setting; the unit is seconds, and the maximum value can be set to 630720000.
         :type ExpireTime: int
-        :param _FileExtensions: 
+        :param _FileExtensions: File extension list settings for authentication/non-authentication; if the character * is included, it means all files.
         :type FileExtensions: list of str
-        :param _FilterType: 
+        :param _FilterType: whitelist: whitelist, indicating that all types except the FileExtensions list will be authenticated; blacklist: blacklist, indicating that only the types in FileExtensions will be authenticated.
         :type FilterType: str
-        :param _BackupSecretKey: 
+        :param _BackupSecretKey: Alternate key for calculating signature; only uppercase and lowercase letters and numbers are allowed, length 6~32 characters.
         :type BackupSecretKey: str
         """
         self._SecretKey = None
@@ -9925,23 +10001,23 @@ class AuthenticationTypeB(AbstractModel):
 
 
 class AuthenticationTypeC(AbstractModel):
-    """
+    """Timestamp anti-hotlinking mode C configuration; The access URL format of timestamp anti-hotlinking mode C is: http://DomainName/md5hash/timestamp/FileName; where timestamp is a hexadecimal UNIX timestamp; md5hash: MD5 (custom password key + file path + timestamp).
 
     """
 
     def __init__(self):
         r"""
-        :param _SecretKey: 
+        :param _SecretKey: The key to calculate the signature; only uppercase and lowercase letters and numbers are allowed, with a length of 6~32 characters.
         :type SecretKey: str
-        :param _ExpireTime: 
+        :param _ExpireTime: Signature expiration time setting; the unit is seconds, and the maximum value can be set to 630720000.
         :type ExpireTime: int
-        :param _FileExtensions: 
+        :param _FileExtensions: File extension list settings for authentication/non-authentication; if the character * is included, it means all files.
         :type FileExtensions: list of str
-        :param _FilterType: 
+        :param _FilterType: whitelist: whitelist, indicating that all types except the FileExtensions list will be authenticated; blacklist: blacklist, indicating that only the types in FileExtensions will be authenticated.
         :type FilterType: str
-        :param _TimeFormat: 
+        :param _TimeFormat: Timestamp base setting: <li>dec: decimal</li> <li>hex: hexadecimal</li>
         :type TimeFormat: str
-        :param _BackupSecretKey: 
+        :param _BackupSecretKey: Alternate key for calculating signature; only uppercase and lowercase letters and numbers are allowed, length 6~32 characters.
         :type BackupSecretKey: str
         """
         self._SecretKey = None
@@ -10018,27 +10094,27 @@ class AuthenticationTypeC(AbstractModel):
 
 
 class AuthenticationTypeD(AbstractModel):
-    """
+    """Timestamp anti-hotlinking mode D configuration; The access URL format of timestamp anti-hotlinking mode D is: http://DomainName/FileName?sign=md5hash&t=timestamp; where timestamp is a decimal or hexadecimal UNIX timestamp; md5hash: MD5 (custom key + file path + timestamp).
 
     """
 
     def __init__(self):
         r"""
-        :param _SecretKey: 
+        :param _SecretKey: The key to calculate the signature; only uppercase and lowercase letters and numbers are allowed, with a length of 6~32 characters.
         :type SecretKey: str
-        :param _ExpireTime: 
+        :param _ExpireTime: Signature expiration time setting; the unit is seconds, and the maximum value can be set to 630720000.
         :type ExpireTime: int
-        :param _FileExtensions: 
+        :param _FileExtensions: File extension list settings for authentication/non-authentication; if the character * is included, it means all files.
         :type FileExtensions: list of str
-        :param _FilterType: 
+        :param _FilterType: whitelist: whitelist, indicating that all types except the FileExtensions list will be authenticated; blacklist: blacklist, indicating that only the types in FileExtensions will be authenticated.
         :type FilterType: str
-        :param _SignParam: 
+        :param _SignParam: Signature parameter name setting; only uppercase and lowercase letters, numbers or underscores are allowed, the length is 1~100 characters, and it cannot start with a number.
         :type SignParam: str
-        :param _TimeParam: 
+        :param _TimeParam: Timestamp parameter name setting; only uppercase and lowercase letters, numbers or underscores are allowed, the length is 1~100 characters, and it cannot start with a number.
         :type TimeParam: str
-        :param _TimeFormat: 
+        :param _TimeFormat: Timestamp base setting: <li>dec: decimal</li> <li>hex: hexadecimal</li>
         :type TimeFormat: str
-        :param _BackupSecretKey: 
+        :param _BackupSecretKey: Alternate key for calculating signature; only uppercase and lowercase letters and numbers are allowed, length 6~32 characters.
         :type BackupSecretKey: str
         """
         self._SecretKey = None
@@ -10141,7 +10217,7 @@ class AwsPrivateAccess(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: AWS S3 return-to-origin authentication configuration switch, the values u200bu200bare: <li>on: on; </li> <li>off: off. </li>
         :type Switch: str
         :param _AccessKey: Access ID.
         :type AccessKey: str
@@ -10215,6 +10291,146 @@ class AwsPrivateAccess(AbstractModel):
         
 
 
+class BlackWhiteEdgeConfigureInfo(AbstractModel):
+    """Control parameters for video screen black border, white border, black screen, and white screen detection.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Video screen black border, white border, black screen, white screen detection switch, optional values: 
+<li>ON: turn on; </li>
+<li>OFF: turn off. </li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BlackWhiteEdgeConfigureInfoForUpdate(AbstractModel):
+    """Control parameters for video screen black border, white border, black screen, and white screen detection.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Video screen black border, white border, black screen, white screen detection switch, optional values: 
+<li>ON: turn on; </li>
+<li>OFF: turn off. </li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BlurConfigureInfo(AbstractModel):
+    """Control parameters for video blur detection.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Video screen blur detection switch, optional values:
+<li>ON: turn on;</li>
+<li>OFF: turn off. </li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BlurConfigureInfoForUpdate(AbstractModel):
+    """Control parameters for video blur detection.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Video screen blur detection switch, optional values:
+<li>ON: turn on;</li>
+<li>OFF: turn off. </li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CDNCertInfo(AbstractModel):
     """Domain https acceleration configuration, the default is off
 
@@ -10222,13 +10438,13 @@ class CDNCertInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertId: 
+        :param _CertId: The server certificate ID is automatically generated during certificate hosting by SSL Certificate Management.
         :type CertId: str
         :param _Certificate: Server certificate information.
         :type Certificate: str
         :param _PrivateKey: Server key information.
         :type PrivateKey: str
-        :param _ExpireTime: 
+        :param _ExpireTime: Certificate expiration time; no need to fill in when configured as an input parameter.
         :type ExpireTime: str
         """
         self._CertId = None
@@ -10291,7 +10507,7 @@ class CDNDomainConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Area: 
+        :param _Area: Domain name acceleration areas: <li>mainland: acceleration within China; </li> <li>overseas: acceleration outside China; </li> <li>global: global acceleration. </li>
         :type Area: str
         :param _Origin: Origin Server Configuration
         :type Origin: :class:`tencentcloud.vod.v20180717.models.Origin`
@@ -10576,7 +10792,7 @@ class CDNDomainConfigForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Area: 
+        :param _Area: Domain name acceleration areas: <li>mainland: acceleration within China; </li> <li>overseas: acceleration outside China; </li> <li>global: global acceleration. </li>
         :type Area: str
         :param _Origin: Origin Server Configuration.
         :type Origin: :class:`tencentcloud.vod.v20180717.models.Origin`
@@ -10855,21 +11071,22 @@ class CDNDomainConfigForUpdate(AbstractModel):
 
 
 class CDNDomainInfo(AbstractModel):
-    """
+    """CDN domain name information
 
     """
 
     def __init__(self):
         r"""
-        :param _Domain: 
+        :param _Domain: Domain.
         :type Domain: str
-        :param _DeployStatus: 
+        :param _DeployStatus: Deployment status.
         :type DeployStatus: str
-        :param _Cname: 
+        :param _Cname: Cname record.
         :type Cname: str
-        :param _CreateTime: 
+        :param _CreateTime: Create Time
         :type CreateTime: str
-        :param _Config: 
+        :param _Config: CDN domain name configuration information. 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Config: :class:`tencentcloud.vod.v20180717.models.CDNDomainConfig`
         """
         self._Domain = None
@@ -10938,13 +11155,13 @@ class CDNDomainInfo(AbstractModel):
 
 
 class Cache(AbstractModel):
-    """
+    """Node cache expiration time configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _RuleCache: 
+        :param _RuleCache: Path cache configuration.
         :type RuleCache: list of RuleCache
         """
         self._RuleCache = None
@@ -10982,15 +11199,15 @@ class CacheConfigCache(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: Path cache configuration switch, the values u200bu200bare: <li>on: on; </li> <li>off: off. </li>
         :type Switch: str
         :param _CacheTime: Cache expiration time settings<li>Unit: second. The maximum value is 365 days.</li>
         :type CacheTime: int
-        :param _CompareMaxAge: 
+        :param _CompareMaxAge: Advanced cache expiration configuration. When enabled, the max-age value returned by the origin site will be compared with the cache expiration time set in CacheRules, and the minimum value will be used to cache the node. Values: <li>on: enabled; </li> <li >off: off. </li>
         :type CompareMaxAge: str
-        :param _IgnoreCacheControl: 
+        :param _IgnoreCacheControl: Force caching, values: <li>on: on; </li> <li>off: off. </li>
         :type IgnoreCacheControl: str
-        :param _IgnoreSetCookie: 
+        :param _IgnoreSetCookie: When the origin site returns the Set-Cookie header, whether the node caches the header and body: <li>on: on, does not cache the header and body;</li> <li>off: off, follows user customization Node caching rules. </li>
         :type IgnoreSetCookie: str
         """
         self._Switch = None
@@ -11063,7 +11280,7 @@ class CacheConfigFollowOrigin(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: The path cache follows the origin site configuration switch. The values u200bu200bare: <li>on: on; </li> <li>off: off. </li>
         :type Switch: str
         :param _HeuristicCache: Heuristic cache configuration
         :type HeuristicCache: :class:`tencentcloud.vod.v20180717.models.HeuristicCache`
@@ -11110,9 +11327,9 @@ class CacheConfigNoCache(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: Path cache does not cache configuration configuration switch, value: <li>on: on; </li> <li>off: off. </li>
         :type Switch: str
-        :param _Revalidate: 
+        :param _Revalidate: Always return to the origin site for verification, value: <li>on: on; </li> <li>off: off. </li>
         :type Revalidate: str
         """
         self._Switch = None
@@ -11160,9 +11377,11 @@ class Canvas(AbstractModel):
 <li>White: white background</li>
 Default value: Black.
         :type Color: str
-        :param _Width: 
+        :param _Width: Canvas width, that is, the width of the output video, value range: 0~3840, unit: px. 
+Default value: 0, which means the video width is the same as the first video clip of the first video track.
         :type Width: int
-        :param _Height: 
+        :param _Height: Canvas height, that is, the height (or long side) of the output video, value range: 0~3840, unit: px. 
+Default value: 0, which means the video height is consistent with the first video clip of the first video track.
         :type Height: int
         """
         self._Color = None
@@ -11518,7 +11737,7 @@ class CloneCDNDomainRequest(AbstractModel):
         :type Domain: str
         :param _ReferenceDomain: The cloned domain.
         :type ReferenceDomain: str
-        :param _SubAppId: 
+        :param _SubAppId: VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.
         :type SubAppId: int
         """
         self._Domain = None
@@ -12952,13 +13171,13 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
 
 class CopyRightWatermarkInput(AbstractModel):
-    """
+    """Copyright watermark parameters
 
     """
 
     def __init__(self):
         r"""
-        :param _Text: 
+        :param _Text: Copyright information, maximum length is 200 characters.
         :type Text: str
         """
         self._Text = None
@@ -13141,6 +13360,76 @@ class CoverConfigureInfoForUpdate(AbstractModel):
         :param _Switch: Switch of intelligent cover generating task. Valid values:
 <li>ON: enables intelligent cover generating task;</li>
 <li>OFF: disables intelligent cover generating task.</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CrashScreenConfigureInfo(AbstractModel):
+    """Control parameters for video screen blur detection.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Video screen distortion detection switch, optional values:
+<li>ON: turn on;</li>
+<li>OFF: turn off. </li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CrashScreenConfigureInfoForUpdate(AbstractModel):
+    """Control parameters for video screen blur detection.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Video screen distortion detection switch, optional values:
+<li>ON: turn on;</li>
+<li>OFF: turn off. </li>
         :type Switch: str
         """
         self._Switch = None
@@ -13566,7 +13855,11 @@ Note: the frame rate of all substreams must be the same; otherwise, the frame ra
         :type SubAppId: int
         :param _Name: Template name. Length limit: 64 characters.
         :type Name: str
-        :param _DrmType: 
+        :param _DrmType: DRM scheme type, value range:
+<li>SimpleAES</li>
+<li>Widevine</li>
+<li>FairPlay</li>
+The default value is an empty string. It is an empty string, indicating that the video will not be DRM protected.
         :type DrmType: str
         :param _DrmKeyProvider: The provider of the DRM key. Valid values:
 <li>SDMC</li>
@@ -13932,11 +14225,11 @@ class CreateCDNDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 
+        :param _Domain: Domain
         :type Domain: str
-        :param _Config: 
+        :param _Config: Domain Config
         :type Config: :class:`tencentcloud.vod.v20180717.models.CDNDomainConfig`
-        :param _SubAppId: 
+        :param _SubAppId: VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.
         :type SubAppId: int
         """
         self._Domain = None
@@ -14295,6 +14588,392 @@ class CreateContentReviewTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDomainVerifyRecordRequest(AbstractModel):
+    """CreateDomainVerifyRecord request structure.
+
+    """
+
+
+class CreateDomainVerifyRecordResponse(AbstractModel):
+    """CreateDomainVerifyRecord response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DNSVerifyInfo: DNS Verify Information
+        :type DNSVerifyInfo: :class:`tencentcloud.vod.v20180717.models.DNSVerifyInfo`
+        :param _FileVerifyInfo: File Verify Information
+        :type FileVerifyInfo: :class:`tencentcloud.vod.v20180717.models.FileVerifyInfo`
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DNSVerifyInfo = None
+        self._FileVerifyInfo = None
+        self._RequestId = None
+
+    @property
+    def DNSVerifyInfo(self):
+        return self._DNSVerifyInfo
+
+    @DNSVerifyInfo.setter
+    def DNSVerifyInfo(self, DNSVerifyInfo):
+        self._DNSVerifyInfo = DNSVerifyInfo
+
+    @property
+    def FileVerifyInfo(self):
+        return self._FileVerifyInfo
+
+    @FileVerifyInfo.setter
+    def FileVerifyInfo(self, FileVerifyInfo):
+        self._FileVerifyInfo = FileVerifyInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DNSVerifyInfo") is not None:
+            self._DNSVerifyInfo = DNSVerifyInfo()
+            self._DNSVerifyInfo._deserialize(params.get("DNSVerifyInfo"))
+        if params.get("FileVerifyInfo") is not None:
+            self._FileVerifyInfo = FileVerifyInfo()
+            self._FileVerifyInfo._deserialize(params.get("FileVerifyInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateEnhanceMediaTemplateRequest(AbstractModel):
+    """CreateEnhanceMediaTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Container: Output file encapsulation format, optional values: mp4, flv, hls.
+        :type Container: str
+        :param _SubAppId: VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.
+        :type SubAppId: int
+        :param _Name: Audio and video quality rebirth template name, length limit: 64 characters.
+        :type Name: str
+        :param _Comment: Template description information, length limit: 256 characters.
+        :type Comment: str
+        :param _RebuildVideoInfo: Audio and picture quality regeneration video control control information.
+        :type RebuildVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildVideoInfo`
+        :param _RebuildAudioInfo: Audio and video quality regeneration audio control information.
+        :type RebuildAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildAudioInfo`
+        :param _TargetVideoInfo: Output target video control information.
+        :type TargetVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetVideoStream`
+        :param _TargetAudioInfo: Output target audio control information.
+        :type TargetAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetAudioStream`
+        :param _RemoveVideo: Whether to remove video data, optional values:
+<li>0: Keep</li>
+<li>1: Remove</li>
+Default value 0.
+        :type RemoveVideo: int
+        :param _RemoveAudio: Whether to remove audio data, optional values:
+<li>0: Keep</li>
+<li>1: Remove</li>
+Default value 0.
+        :type RemoveAudio: int
+        """
+        self._Container = None
+        self._SubAppId = None
+        self._Name = None
+        self._Comment = None
+        self._RebuildVideoInfo = None
+        self._RebuildAudioInfo = None
+        self._TargetVideoInfo = None
+        self._TargetAudioInfo = None
+        self._RemoveVideo = None
+        self._RemoveAudio = None
+
+    @property
+    def Container(self):
+        return self._Container
+
+    @Container.setter
+    def Container(self, Container):
+        self._Container = Container
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def RebuildVideoInfo(self):
+        return self._RebuildVideoInfo
+
+    @RebuildVideoInfo.setter
+    def RebuildVideoInfo(self, RebuildVideoInfo):
+        self._RebuildVideoInfo = RebuildVideoInfo
+
+    @property
+    def RebuildAudioInfo(self):
+        return self._RebuildAudioInfo
+
+    @RebuildAudioInfo.setter
+    def RebuildAudioInfo(self, RebuildAudioInfo):
+        self._RebuildAudioInfo = RebuildAudioInfo
+
+    @property
+    def TargetVideoInfo(self):
+        return self._TargetVideoInfo
+
+    @TargetVideoInfo.setter
+    def TargetVideoInfo(self, TargetVideoInfo):
+        self._TargetVideoInfo = TargetVideoInfo
+
+    @property
+    def TargetAudioInfo(self):
+        return self._TargetAudioInfo
+
+    @TargetAudioInfo.setter
+    def TargetAudioInfo(self, TargetAudioInfo):
+        self._TargetAudioInfo = TargetAudioInfo
+
+    @property
+    def RemoveVideo(self):
+        return self._RemoveVideo
+
+    @RemoveVideo.setter
+    def RemoveVideo(self, RemoveVideo):
+        self._RemoveVideo = RemoveVideo
+
+    @property
+    def RemoveAudio(self):
+        return self._RemoveAudio
+
+    @RemoveAudio.setter
+    def RemoveAudio(self, RemoveAudio):
+        self._RemoveAudio = RemoveAudio
+
+
+    def _deserialize(self, params):
+        self._Container = params.get("Container")
+        self._SubAppId = params.get("SubAppId")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("RebuildVideoInfo") is not None:
+            self._RebuildVideoInfo = RebuildVideoInfo()
+            self._RebuildVideoInfo._deserialize(params.get("RebuildVideoInfo"))
+        if params.get("RebuildAudioInfo") is not None:
+            self._RebuildAudioInfo = RebuildAudioInfo()
+            self._RebuildAudioInfo._deserialize(params.get("RebuildAudioInfo"))
+        if params.get("TargetVideoInfo") is not None:
+            self._TargetVideoInfo = RebuildMediaTargetVideoStream()
+            self._TargetVideoInfo._deserialize(params.get("TargetVideoInfo"))
+        if params.get("TargetAudioInfo") is not None:
+            self._TargetAudioInfo = RebuildMediaTargetAudioStream()
+            self._TargetAudioInfo._deserialize(params.get("TargetAudioInfo"))
+        self._RemoveVideo = params.get("RemoveVideo")
+        self._RemoveAudio = params.get("RemoveAudio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEnhanceMediaTemplateResponse(AbstractModel):
+    """CreateEnhanceMediaTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Enhance Media Template ID.
+        :type Definition: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateHeadTailTemplateRequest(AbstractModel):
+    """CreateHeadTailTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Template name, length limit is 64 characters.
+        :type Name: str
+        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :type SubAppId: int
+        :param _Comment: Template description information, length limit is 256 characters.
+        :type Comment: str
+        :param _HeadCandidateSet: Title candidate list, fill in the FileId of the video. When transcoding, the title closest to the aspect ratio of the feature film will be automatically selected (when the aspect ratio is the same, the front candidate will take precedence). Supports up to 5 candidate titles.
+        :type HeadCandidateSet: list of str
+        :param _TailCandidateSet: Ending candidate list, fill in the FileId of the video. When transcoding, the ending with the aspect ratio closest to the feature film will be automatically selected (when the aspect ratio is the same, the front candidate will take precedence). Supports up to 5 candidate endings.
+        :type TailCandidateSet: list of str
+        :param _FillType: Padding method. When the video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the transcoding processing method is "padding". Optional filling method:
+<li> stretch: stretch, stretch each frame to fill the entire screen, which may cause the transcoded video to be "squashed" or "stretched";</li> 
+<li> gauss: Gaussian blur, keep the video aspect ratio unchanged, use Gaussian blur for the remaining edges; </li>
+<li> white: leave blank, keep the video aspect ratio unchanged, use the remaining edges for the edge Use white filling; </li>
+<li> black: Leave black, keep the video aspect ratio unchanged, and fill the remaining edges with black. </li>
+Default value: stretch.
+        :type FillType: str
+        """
+        self._Name = None
+        self._SubAppId = None
+        self._Comment = None
+        self._HeadCandidateSet = None
+        self._TailCandidateSet = None
+        self._FillType = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def HeadCandidateSet(self):
+        return self._HeadCandidateSet
+
+    @HeadCandidateSet.setter
+    def HeadCandidateSet(self, HeadCandidateSet):
+        self._HeadCandidateSet = HeadCandidateSet
+
+    @property
+    def TailCandidateSet(self):
+        return self._TailCandidateSet
+
+    @TailCandidateSet.setter
+    def TailCandidateSet(self, TailCandidateSet):
+        self._TailCandidateSet = TailCandidateSet
+
+    @property
+    def FillType(self):
+        return self._FillType
+
+    @FillType.setter
+    def FillType(self, FillType):
+        self._FillType = FillType
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._SubAppId = params.get("SubAppId")
+        self._Comment = params.get("Comment")
+        self._HeadCandidateSet = params.get("HeadCandidateSet")
+        self._TailCandidateSet = params.get("TailCandidateSet")
+        self._FillType = params.get("FillType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateHeadTailTemplateResponse(AbstractModel):
+    """CreateHeadTailTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Head Tail Template Number
+        :type Definition: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateImageProcessingTemplateRequest(AbstractModel):
     """CreateImageProcessingTemplate request structure.
 
@@ -14548,9 +15227,11 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 <li>If `SampleType` is `Percent`, sampling will be performed at an interval of the specified percentage.</li>
 <li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>
         :type SampleInterval: int
-        :param _RowCount: 
+        :param _RowCount: The number of rows of small images in the sprite image. 
+Note: The number of rows of the small image will affect the height of the final large image. The maximum height of the large image is 15,000 pixels. The height of the large image is the product of the number of rows of the small image and the height of the small image.
         :type RowCount: int
-        :param _ColumnCount: 
+        :param _ColumnCount: The number of columns of small images in the sprite image. 
+Note: The number of columns of the small image will affect the width of the final large image. The maximum width of the large image is 15,000 pixels. The width of the large image is the product of the number of columns of the small image and the width of the small image.
         :type ColumnCount: int
         :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
@@ -14563,9 +15244,21 @@ class CreateImageSpriteTemplateRequest(AbstractModel):
 <li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
 Default value: black.
         :type FillType: str
-        :param _Width: 
+        :param _Width: The maximum value of the width (or long side) of the small image in the sprite image, value range: 0 and [128, 4096], unit: px. 
+<li>When Width and Height are both 0, the resolution is from the same source;</li>
+<li>When Width is 0 and Height is non-0, Width is scaled proportionally;</li>
+< li>When Width is non-0 and Height is 0, the Height is scaled proportionally; </li>
+<li>When both Width and Height are non-0, the resolution is specified by the user. </li>
+Default value: 0. 
+Note: The width of the small image will affect the width of the final large image. The maximum width of the large image is 15,000 pixels. The width of the large image is the product of the number of columns of the small image and the width of the small image.
         :type Width: int
-        :param _Height: 
+        :param _Height: The maximum value of the height (or short side) of the small image in the sprite image, value range: 0 and [128, 4096], unit: px. 
+<li>When Width and Height are both 0, the resolution is from the same source;</li>
+<li>When Width is 0 and Height is non-0, Width is scaled proportionally;</li>
+< li>When Width is non-0 and Height is 0, the Height is scaled proportionally; </li>
+<li>When both Width and Height are non-0, the resolution is specified by the user. </li>
+Default value: 0. 
+Note: The height of the small image will affect the height of the final large image. The maximum height of the large image is 15,000 pixels. The height of the large image is the product of the number of rows of the small image and the height of the small image.
         :type Height: int
         :param _ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
@@ -15057,6 +15750,252 @@ class CreateProcedureTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateQualityInspectTemplateRequest(AbstractModel):
+    """CreateQualityInspectTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>The VOD [subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?has_map=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param _Name: Media quality inspect template name.Length limit: 64 characters.
+        :type Name: str
+        :param _Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        :param _ScreenshotInterval: Frame interval, unit in seconds, minimum value is 1. When not filled, the default frame interval is 1 second.
+        :type ScreenshotInterval: float
+        :param _JitterConfigure: Control parameters for detecting video jitter and ghosting.
+        :type JitterConfigure: :class:`tencentcloud.vod.v20180717.models.JitterConfigureInfo`
+        :param _BlurConfigure: Control parameters for detecting video blur.
+        :type BlurConfigure: :class:`tencentcloud.vod.v20180717.models.BlurConfigureInfo`
+        :param _AbnormalLightingConfigure: Control parameters for detecting low brightness and overexposure of video.
+        :type AbnormalLightingConfigure: :class:`tencentcloud.vod.v20180717.models.AbnormalLightingConfigureInfo`
+        :param _CrashScreenConfigure: Control parameters for detecting video crash.
+        :type CrashScreenConfigure: :class:`tencentcloud.vod.v20180717.models.CrashScreenConfigureInfo`
+        :param _BlackWhiteEdgeConfigure: Control parameters for detecting video black edges, white edges, black screen, and white screen.
+        :type BlackWhiteEdgeConfigure: :class:`tencentcloud.vod.v20180717.models.BlackWhiteEdgeConfigureInfo`
+        :param _NoiseConfigure: Control parameters for detecting video noise.
+        :type NoiseConfigure: :class:`tencentcloud.vod.v20180717.models.NoiseConfigureInfo`
+        :param _MosaicConfigure: Control parameters for detecting video mosaic.
+        :type MosaicConfigure: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfo`
+        :param _QRCodeConfigure: Control parameters for QR code detection in video.
+        :type QRCodeConfigure: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfo`
+        :param _VoiceConfigure: Control parameters for audio (mutes, bass, blast sound).
+        :type VoiceConfigure: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfo`
+        :param _QualityEvaluationConfigure: Control parameters for video quality evaluation.
+        :type QualityEvaluationConfigure: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfo`
+        """
+        self._SubAppId = None
+        self._Name = None
+        self._Comment = None
+        self._ScreenshotInterval = None
+        self._JitterConfigure = None
+        self._BlurConfigure = None
+        self._AbnormalLightingConfigure = None
+        self._CrashScreenConfigure = None
+        self._BlackWhiteEdgeConfigure = None
+        self._NoiseConfigure = None
+        self._MosaicConfigure = None
+        self._QRCodeConfigure = None
+        self._VoiceConfigure = None
+        self._QualityEvaluationConfigure = None
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def ScreenshotInterval(self):
+        return self._ScreenshotInterval
+
+    @ScreenshotInterval.setter
+    def ScreenshotInterval(self, ScreenshotInterval):
+        self._ScreenshotInterval = ScreenshotInterval
+
+    @property
+    def JitterConfigure(self):
+        return self._JitterConfigure
+
+    @JitterConfigure.setter
+    def JitterConfigure(self, JitterConfigure):
+        self._JitterConfigure = JitterConfigure
+
+    @property
+    def BlurConfigure(self):
+        return self._BlurConfigure
+
+    @BlurConfigure.setter
+    def BlurConfigure(self, BlurConfigure):
+        self._BlurConfigure = BlurConfigure
+
+    @property
+    def AbnormalLightingConfigure(self):
+        return self._AbnormalLightingConfigure
+
+    @AbnormalLightingConfigure.setter
+    def AbnormalLightingConfigure(self, AbnormalLightingConfigure):
+        self._AbnormalLightingConfigure = AbnormalLightingConfigure
+
+    @property
+    def CrashScreenConfigure(self):
+        return self._CrashScreenConfigure
+
+    @CrashScreenConfigure.setter
+    def CrashScreenConfigure(self, CrashScreenConfigure):
+        self._CrashScreenConfigure = CrashScreenConfigure
+
+    @property
+    def BlackWhiteEdgeConfigure(self):
+        return self._BlackWhiteEdgeConfigure
+
+    @BlackWhiteEdgeConfigure.setter
+    def BlackWhiteEdgeConfigure(self, BlackWhiteEdgeConfigure):
+        self._BlackWhiteEdgeConfigure = BlackWhiteEdgeConfigure
+
+    @property
+    def NoiseConfigure(self):
+        return self._NoiseConfigure
+
+    @NoiseConfigure.setter
+    def NoiseConfigure(self, NoiseConfigure):
+        self._NoiseConfigure = NoiseConfigure
+
+    @property
+    def MosaicConfigure(self):
+        return self._MosaicConfigure
+
+    @MosaicConfigure.setter
+    def MosaicConfigure(self, MosaicConfigure):
+        self._MosaicConfigure = MosaicConfigure
+
+    @property
+    def QRCodeConfigure(self):
+        return self._QRCodeConfigure
+
+    @QRCodeConfigure.setter
+    def QRCodeConfigure(self, QRCodeConfigure):
+        self._QRCodeConfigure = QRCodeConfigure
+
+    @property
+    def VoiceConfigure(self):
+        return self._VoiceConfigure
+
+    @VoiceConfigure.setter
+    def VoiceConfigure(self, VoiceConfigure):
+        self._VoiceConfigure = VoiceConfigure
+
+    @property
+    def QualityEvaluationConfigure(self):
+        return self._QualityEvaluationConfigure
+
+    @QualityEvaluationConfigure.setter
+    def QualityEvaluationConfigure(self, QualityEvaluationConfigure):
+        self._QualityEvaluationConfigure = QualityEvaluationConfigure
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._ScreenshotInterval = params.get("ScreenshotInterval")
+        if params.get("JitterConfigure") is not None:
+            self._JitterConfigure = JitterConfigureInfo()
+            self._JitterConfigure._deserialize(params.get("JitterConfigure"))
+        if params.get("BlurConfigure") is not None:
+            self._BlurConfigure = BlurConfigureInfo()
+            self._BlurConfigure._deserialize(params.get("BlurConfigure"))
+        if params.get("AbnormalLightingConfigure") is not None:
+            self._AbnormalLightingConfigure = AbnormalLightingConfigureInfo()
+            self._AbnormalLightingConfigure._deserialize(params.get("AbnormalLightingConfigure"))
+        if params.get("CrashScreenConfigure") is not None:
+            self._CrashScreenConfigure = CrashScreenConfigureInfo()
+            self._CrashScreenConfigure._deserialize(params.get("CrashScreenConfigure"))
+        if params.get("BlackWhiteEdgeConfigure") is not None:
+            self._BlackWhiteEdgeConfigure = BlackWhiteEdgeConfigureInfo()
+            self._BlackWhiteEdgeConfigure._deserialize(params.get("BlackWhiteEdgeConfigure"))
+        if params.get("NoiseConfigure") is not None:
+            self._NoiseConfigure = NoiseConfigureInfo()
+            self._NoiseConfigure._deserialize(params.get("NoiseConfigure"))
+        if params.get("MosaicConfigure") is not None:
+            self._MosaicConfigure = MosaicConfigureInfo()
+            self._MosaicConfigure._deserialize(params.get("MosaicConfigure"))
+        if params.get("QRCodeConfigure") is not None:
+            self._QRCodeConfigure = QRCodeConfigureInfo()
+            self._QRCodeConfigure._deserialize(params.get("QRCodeConfigure"))
+        if params.get("VoiceConfigure") is not None:
+            self._VoiceConfigure = VoiceConfigureInfo()
+            self._VoiceConfigure._deserialize(params.get("VoiceConfigure"))
+        if params.get("QualityEvaluationConfigure") is not None:
+            self._QualityEvaluationConfigure = QualityEvaluationConfigureInfo()
+            self._QualityEvaluationConfigure._deserialize(params.get("QualityEvaluationConfigure"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateQualityInspectTemplateResponse(AbstractModel):
+    """CreateQualityInspectTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Media quality inspect template ID.
+        :type Definition: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRebuildMediaTemplateRequest(AbstractModel):
     """CreateRebuildMediaTemplate request structure.
 
@@ -15219,7 +16158,7 @@ class CreateRebuildMediaTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: The remaster template ID.
+        :param _Definition: Rebuild Media Template ID.
         :type Definition: int
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -15373,7 +16312,10 @@ class CreateRoundPlayRequest(AbstractModel):
         :type Name: str
         :param _Desc: The playlist description (not longer than 256 characters).
         :type Desc: str
-        :param _PlayBackMode: 
+        :param _PlayBackMode: Play mode, optional values:
+<li>Loop: Play the playlist in a loop;</li>
+<li>Linear: Play once, stop playing after the playlist is played. </li>
+Default value：Loop。
         :type PlayBackMode: str
         """
         self._StartTime = None
@@ -16064,7 +17006,14 @@ This parameter is required if `AudioVideoType` is `Transcode`.
         :type TranscodeDefinition: int
         :param _ImageSpriteDefinition: ID of the image sprite generating template that allows output.
         :type ImageSpriteDefinition: int
-        :param _ResolutionNames: 
+        :param _ResolutionNames: The player displays names for substreams of different resolutions. If left unfilled or filled in a blank array, the default configuration is used:
+<li>MinEdgeLength: 240, Name: smooth;</li>
+<li>MinEdgeLength: 480, Name: SD; </li>
+<li>MinEdgeLength: 720, Name: HD; </li>
+<li>MinEdgeLength: 1080, Name: Full HD; </li>
+<li>MinEdgeLength: 1440, Name: 2K; </li>
+<li>MinEdgeLength: 2160, Name: 4K; </li>
+<li>MinEdgeLength: 4320, Name: 8K. </li>
         :type ResolutionNames: list of ResolutionNameInfo
         :param _Domain: Domain name used for playback. If it is left empty or set to `Default`, the domain name configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used.
         :type Domain: str
@@ -16824,6 +17773,63 @@ class CreateWordSamplesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DNSVerifyInfo(AbstractModel):
+    """DNS verification information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubDomain: sub-parsing.
+        :type SubDomain: str
+        :param _Record: parse value.
+        :type Record: str
+        :param _RecordType: parsing type.
+        :type RecordType: str
+        """
+        self._SubDomain = None
+        self._Record = None
+        self._RecordType = None
+
+    @property
+    def SubDomain(self):
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
+
+    @property
+    def Record(self):
+        return self._Record
+
+    @Record.setter
+    def Record(self, Record):
+        self._Record = Record
+
+    @property
+    def RecordType(self):
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
+
+    def _deserialize(self, params):
+        self._SubDomain = params.get("SubDomain")
+        self._Record = params.get("Record")
+        self._RecordType = params.get("RecordType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAIAnalysisTemplateRequest(AbstractModel):
     """DeleteAIAnalysisTemplate request structure.
 
@@ -17111,9 +18117,9 @@ class DeleteCDNDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 
+        :param _Domain: Domain.
         :type Domain: str
-        :param _SubAppId: 
+        :param _SubAppId: VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.
         :type SubAppId: int
         """
         self._Domain = None
@@ -17291,6 +18297,146 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
 
 class DeleteContentReviewTemplateResponse(AbstractModel):
     """DeleteContentReviewTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteEnhanceMediaTemplateRequest(AbstractModel):
+    """DeleteEnhanceMediaTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Enhance Media Template ID
+        :type Definition: int
+        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :type SubAppId: int
+        """
+        self._Definition = None
+        self._SubAppId = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteEnhanceMediaTemplateResponse(AbstractModel):
+    """DeleteEnhanceMediaTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteHeadTailTemplateRequest(AbstractModel):
+    """DeleteHeadTailTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Head Tail Template Number.
+        :type Definition: int
+        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :type SubAppId: int
+        """
+        self._Definition = None
+        self._SubAppId = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteHeadTailTemplateResponse(AbstractModel):
+    """DeleteHeadTailTemplate response structure.
 
     """
 
@@ -17681,6 +18827,76 @@ class DeleteProcedureTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteQualityInspectTemplateRequest(AbstractModel):
+    """DeleteQualityInspectTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Media quality inspection template ID.
+        :type Definition: int
+        :param _SubAppId: <b>The VOD [subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?has_map=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        """
+        self._Definition = None
+        self._SubAppId = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteQualityInspectTemplateResponse(AbstractModel):
+    """DeleteQualityInspectTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteRebuildMediaTemplateRequest(AbstractModel):
     """DeleteRebuildMediaTemplate request structure.
 
@@ -17688,7 +18904,7 @@ class DeleteRebuildMediaTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: The remaster template ID.
+        :param _Definition: Rebuild Media Template ID.
         :type Definition: int
         :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
@@ -18988,7 +20204,7 @@ class DescribeCDNDomainsRequest(AbstractModel):
         :type Domains: list of str
         :param _Limit: The maximum number of returned results for pagination fetching. Default value: 20.
         :type Limit: int
-        :param _Offset: 
+        :param _Offset: The starting offset of paged pull. Default value: 0.
         :type Offset: int
         :param _SubAppId: VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.
         :type SubAppId: int
@@ -19053,9 +20269,9 @@ class DescribeCDNDomainsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainSet: 
+        :param _DomainSet: Domain information list.
         :type DomainSet: list of CDNDomainInfo
-        :param _TotalCount: 
+        :param _TotalCount: The total number of CDN domains under the current application.
         :type TotalCount: int
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -19107,7 +20323,12 @@ class DescribeCDNStatDetailsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Metric: 
+        :param _Metric: Query indicators, the values u200bu200bare:
+<li>Traffic: traffic, unit is Byte. </li>
+<li>Bandwidth: Bandwidth, unit is Bps. </li>
+<li>Requests: Number of requests. </li>
+<li>QUICRequests: Number of QUIC requests. </li>
+<li>IpVisit: Number of IP visits. </li>
         :type Metric: str
         :param _StartTime: Start time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
         :type StartTime: str
@@ -20068,6 +21289,143 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEnhanceMediaTemplatesRequest(AbstractModel):
+    """DescribeEnhanceMediaTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :type SubAppId: int
+        :param _Definitions: List of Enhance media templates. Length limit: 100.
+        :type Definitions: list of int
+        :param _Type: Template type filter conditions, optional values:
+<li>Preset: system preset template;</li>
+<li>Custom: user-defined template. </li>
+        :type Type: str
+        :param _Offset: Paging offset, default value: 0.
+        :type Offset: int
+        :param _Limit: Returns the number of records, default value: 10, maximum value: 100.
+        :type Limit: int
+        """
+        self._SubAppId = None
+        self._Definitions = None
+        self._Type = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Definitions(self):
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._Definitions = params.get("Definitions")
+        self._Type = params.get("Type")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnhanceMediaTemplatesResponse(AbstractModel):
+    """DescribeEnhanceMediaTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: The total number of records matching the filter criteria.
+        :type TotalCount: int
+        :param _RebuildMediaTemplateSet: Detailed list of Rebuild Media templates.
+        :type RebuildMediaTemplateSet: list of RebuildMediaTemplate
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RebuildMediaTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RebuildMediaTemplateSet(self):
+        return self._RebuildMediaTemplateSet
+
+    @RebuildMediaTemplateSet.setter
+    def RebuildMediaTemplateSet(self, RebuildMediaTemplateSet):
+        self._RebuildMediaTemplateSet = RebuildMediaTemplateSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RebuildMediaTemplateSet") is not None:
+            self._RebuildMediaTemplateSet = []
+            for item in params.get("RebuildMediaTemplateSet"):
+                obj = RebuildMediaTemplate()
+                obj._deserialize(item)
+                self._RebuildMediaTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeFileAttributesRequest(AbstractModel):
     """DescribeFileAttributes request structure.
 
@@ -20354,7 +21712,7 @@ class DescribeFileAttributesTaskOutput(AbstractModel):
         r"""
         :param _Md5: The MD5 hash of the file.
         :type Md5: str
-        :param _Sha1: 
+        :param _Sha1: The Sha1 value of the media file.
         :type Sha1: str
         """
         self._Md5 = None
@@ -20388,6 +21746,129 @@ class DescribeFileAttributesTaskOutput(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeHeadTailTemplatesRequest(AbstractModel):
+    """DescribeHeadTailTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :type SubAppId: int
+        :param _Definitions: Head Tail template number, array length limit: 100.
+        :type Definitions: list of int
+        :param _Offset: Paging offset, default value: 0.
+        :type Offset: int
+        :param _Limit: Returns the number of records, default value: 10, maximum value: 100.
+        :type Limit: int
+        """
+        self._SubAppId = None
+        self._Definitions = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Definitions(self):
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._Definitions = params.get("Definitions")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHeadTailTemplatesResponse(AbstractModel):
+    """DescribeHeadTailTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: The total number of records matching the filter criteria.
+        :type TotalCount: int
+        :param _HeadTailTemplateSet: Head Tail Template Details.
+        :type HeadTailTemplateSet: list of HeadTailTemplate
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._HeadTailTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def HeadTailTemplateSet(self):
+        return self._HeadTailTemplateSet
+
+    @HeadTailTemplateSet.setter
+    def HeadTailTemplateSet(self, HeadTailTemplateSet):
+        self._HeadTailTemplateSet = HeadTailTemplateSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("HeadTailTemplateSet") is not None:
+            self._HeadTailTemplateSet = []
+            for item in params.get("HeadTailTemplateSet"):
+                obj = HeadTailTemplate()
+                obj._deserialize(item)
+                self._HeadTailTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeImageProcessingTemplatesRequest(AbstractModel):
@@ -21137,19 +22618,25 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
         :type EndTime: str
         :param _SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
         :type SubAppId: int
-        :param _Type: The type of media processing task. Valid values:
-<li>`Transcoding`: General transcoding</li>
-<li>`Transcoding-TESHD`: Top Speed Codec transcoding</li>
-<li>`Editing`: Video editing</li>
-<li>`Editing-TESHD`: Top Speed Codec editing</li>
-<li>`AdaptiveBitrateStreaming`: Adaptive bitrate streaming</li>
-<li>`ContentAudit`: Content moderation</li>
-<li>`ContentRecognition`: Content recognition</li>
-<li>`RemoveWatermark`: Watermark removal</li>
-<li>`ExtractTraceWatermark`: Digital watermark extraction</li>
-<li>`AddTraceWatermark`: Digital watermarking</li>
-<li>`RebuildMedia`: Remaster</li>
-<li>`Transcode` Transcoding, including general transcoding, Top Speed Codec transcoding, and video editing. This value is not recommended.</li>
+        :param _Type: Query the video processing task type. Currently supported task types include:
+<li> Transcoding: Normal transcoding</li>
+<li> Transcoding-TESHD: Extremely fast high-definition transcoding</li>
+<li> Editing : Video editing</li>
+<li> Editing-TESHD: Extremely fast high-definition video editing</li>
+<li> AdaptiveBitrateStreaming: Adaptive bitrate streaming</li>
+<li> ContentAudit: Content audit</li> li>
+<li> ContentRecognition: Content recognition</li>
+<li> RemoveWatermark: Remove watermark</li>
+<li> ExtractTraceWatermark: Extract watermark</li>
+<li> AddTraceWatermark: Add watermark </li>
+<li> RebuildMedia: Rebirth of audio and video quality</li>
+<li> QualityInspect: Media quality inspection</li>
+<li> VideoHighlight: Smart video collection</li>
+< li> VideoTag: Video smart tag</li>
+<li> VideoClassification: Video smart classification</li>
+<li> VideoCover: Video smart cover</li>
+<li> VideoSegment: Video smart split </li>
+<li>Transcode: transcoding, including normal transcoding, high-speed HD and video editing (not recommended)</li>
         :type Type: str
         """
         self._StartTime = None
@@ -21548,6 +23035,141 @@ class DescribeProcedureTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeQualityInspectTemplatesRequest(AbstractModel):
+    """DescribeQualityInspectTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <b>The VOD [subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?has_map=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param _Definitions: Media quality inspect template list. Length limit: 100.
+        :type Definitions: list of int
+        :param _Type: Template type filter conditions, optional values: <li>Preset: system preset template;</li> <li>Custom: user-defined template. </li>
+        :type Type: str
+        :param _Offset: Paging offset, default value: 0.
+        :type Offset: int
+        :param _Limit: Back record count, default value: 10, maximum value: 100.
+        :type Limit: int
+        """
+        self._SubAppId = None
+        self._Definitions = None
+        self._Type = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Definitions(self):
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._Definitions = params.get("Definitions")
+        self._Type = params.get("Type")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQualityInspectTemplatesResponse(AbstractModel):
+    """DescribeQualityInspectTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Comply with the filter conditions, the total number of records.
+        :type TotalCount: int
+        :param _QualityInspectTemplateSet: Media quality inspect template details list.
+        :type QualityInspectTemplateSet: list of QualityInspectTemplateItem
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._QualityInspectTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def QualityInspectTemplateSet(self):
+        return self._QualityInspectTemplateSet
+
+    @QualityInspectTemplateSet.setter
+    def QualityInspectTemplateSet(self, QualityInspectTemplateSet):
+        self._QualityInspectTemplateSet = QualityInspectTemplateSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("QualityInspectTemplateSet") is not None:
+            self._QualityInspectTemplateSet = []
+            for item in params.get("QualityInspectTemplateSet"):
+                obj = QualityInspectTemplateItem()
+                obj._deserialize(item)
+                self._QualityInspectTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRebuildMediaTemplatesRequest(AbstractModel):
     """DescribeRebuildMediaTemplates request structure.
 
@@ -21555,7 +23177,7 @@ class DescribeRebuildMediaTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definitions: The remaster template IDs.
+        :param _Definitions: List of rebuild media templates.
         :type Definitions: list of int
         :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
@@ -21640,7 +23262,7 @@ class DescribeRebuildMediaTemplatesResponse(AbstractModel):
         r"""
         :param _TotalCount: The total number of records that meet the conditions.
         :type TotalCount: int
-        :param _RebuildMediaTemplateSet: The details of the remaster templates.
+        :param _RebuildMediaTemplateSet: Rebuild media template details list.
         :type RebuildMediaTemplateSet: list of RebuildMediaTemplate
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -21817,7 +23439,7 @@ class DescribeReviewTemplatesRequest(AbstractModel):
         r"""
         :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: int
-        :param _Definitions: The IDs of the moderation templates to query. Array length limit: 100.
+        :param _Definitions: The audit template uniquely identifies the filtering conditions, and the array length limit is: 100.
         :type Definitions: list of int
         :param _Type: The template type. Valid values:
 <li>Preset</li>
@@ -22508,7 +24130,22 @@ You can set this parameter to 1 to query the total usage of all applications (in
 <li>Day: 1-day granularity</li>
 The value is set according to query period length by default. 5-minute granularity is set for periods no longer than 1 day, and 1-day granularity is set for periods longer than 1 day.
         :type Interval: str
-        :param _StorageType: 
+        :param _StorageType: Queryed storage type, valid values:
+<li>TotalStorage: total storage amount, the sum of standard, low-frequency, archive and deep archive storage amounts, excluding early deletion amount. </li>
+<li>StandardStorage: Standard storage. </li>
+<li>InfrequentStorage: low-frequency storage. </li>
+<li>ArchiveStorage: archive storage. </li>
+<li>DeepArchiveStorage: deep archive storage. </li>
+<li>DeletedInfrequentStorage: The amount of early deletion of low-frequency storage. </li>
+<li>DeletedArchiveStorage: The amount of archives deleted in advance. </li>
+<li>DeletedDeepArchiveStorage: The amount of deep archive deletion in advance. 
+<li>ArchiveStandardRetrieval: Archive standard retrieval amount. </li>
+<li>ArchiveExpeditedRetrieval: archive quick retrieval amount. </li>
+<li>ArchiveBulkRetrieval: Archive batch retrieval amount. </li>
+<li>DeepArchiveStandardRetrieval: Deep archive standard retrieval amount. </li>
+<li>DeepArchiveBulkRetrieval: Deep archive batch retrieval amount. </li>
+<li>InfrequentRetrieval: Low-frequency storage retrieval amount. </li>
+The default value is TotalStorage.
         :type StorageType: str
         :param _Area: Storage region to query. Valid values:
 <li>Chinese Mainland</li>
@@ -23050,44 +24687,64 @@ class DescribeTaskDetailResponse(AbstractModel):
         :param _FinishTime: End time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type FinishTime: str
         :param _ProcedureTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ProcedureTask: :class:`tencentcloud.vod.v20180717.models.ProcedureTask`
         :param _EditMediaTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type EditMediaTask: :class:`tencentcloud.vod.v20180717.models.EditMediaTask`
         :param _WechatPublishTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type WechatPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatPublishTask`
         :param _ComposeMediaTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ComposeMediaTask: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`
         :param _SplitMediaTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type SplitMediaTask: :class:`tencentcloud.vod.v20180717.models.SplitMediaTask`
         :param _WechatMiniProgramPublishTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type WechatMiniProgramPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
         :param _PullUploadTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type PullUploadTask: :class:`tencentcloud.vod.v20180717.models.PullUploadTask`
         :param _TranscodeTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type TranscodeTask: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`
         :param _ConcatTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ConcatTask: :class:`tencentcloud.vod.v20180717.models.ConcatTask2017`
         :param _ClipTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ClipTask: :class:`tencentcloud.vod.v20180717.models.ClipTask2017`
         :param _CreateImageSpriteTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type CreateImageSpriteTask: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`
         :param _SnapshotByTimeOffsetTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type SnapshotByTimeOffsetTask: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
         :param _RemoveWatermarkTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type RemoveWatermarkTask: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkTask`
         :param _RebuildMediaTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type RebuildMediaTask: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTask`
         :param _ExtractTraceWatermarkTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ExtractTraceWatermarkTask: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTask`
         :param _ExtractCopyRightWatermarkTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ExtractCopyRightWatermarkTask: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkTask`
         :param _ReviewAudioVideoTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
         :param _ReduceMediaBitrateTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ReduceMediaBitrateTask: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTask`
         :param _DescribeFileAttributesTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type DescribeFileAttributesTask: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesTask`
         :param _QualityInspectTask: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type QualityInspectTask: :class:`tencentcloud.vod.v20180717.models.QualityInspectTask`
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -23749,8 +25406,8 @@ class DescribeVodDomainsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domains: List of domain names. If this parameter is left empty, all domain names will be listed.
-<li>Maximum number of domain names listed: 20</li>
+        :param _Domains: Domain name list. When this field is left blank, all domain name information will be listed by default. The limitations of this field are as follows:
+<li>The maximum number of domain names is 20. </li>
         :type Domains: list of str
         :param _Limit: Maximum results to return for pulling paginated queries. Default value: 20
         :type Limit: int
@@ -24541,9 +26198,9 @@ class EditMediaFileInfo(AbstractModel):
         r"""
         :param _FileId: Video ID.
         :type FileId: str
-        :param _StartTimeOffset: 
+        :param _StartTimeOffset: Offset time of the start of the video clip, unit: seconds.
         :type StartTimeOffset: float
-        :param _EndTimeOffset: 
+        :param _EndTimeOffset: Offset time at the end of the video clip, unit: seconds.
         :type EndTimeOffset: float
         """
         self._FileId = None
@@ -24590,23 +26247,24 @@ class EditMediaFileInfo(AbstractModel):
 
 
 class EditMediaOutputConfig(AbstractModel):
-    """
+    """Result file output of edited video.
 
     """
 
     def __init__(self):
         r"""
-        :param _MediaName: 
+        :param _MediaName: Output file name, up to 64 characters. By default, the generated file name is specified by the system.
         :type MediaName: str
-        :param _Type: 
+        :param _Type: Output file format, optional values: mp4, hls. The default is mp4.
         :type Type: str
-        :param _ClassId: 
+        :param _ClassId: Classification ID is used to classify media. You can create a classification through the Create Classification interface to obtain the classification ID. 
+<li>Default value: 0, indicating other categories. </li>
         :type ClassId: int
-        :param _ExpireTime: 
+        :param _ExpireTime: The expiration time of the output file. The file will be deleted after this time. The default is permanent and not expired. The format is expressed in accordance with the ISO 8601 standard. For details, see [ISO Date Format Description](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type ExpireTime: str
-        :param _VideoStream: 
+        :param _VideoStream: Output video information.
         :type VideoStream: :class:`tencentcloud.vod.v20180717.models.EditMediaVideoStream`
-        :param _TEHDConfig: 
+        :param _TEHDConfig: TSC Transcoding Config.
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.EditMediaTEHDConfig`
         """
         self._MediaName = None
@@ -24693,27 +26351,29 @@ class EditMediaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InputType: 
+        :param _InputType: Input the type of video. The possible values u200bu200bare File and Stream.
         :type InputType: str
-        :param _SubAppId: 
+        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
         :type SubAppId: int
-        :param _FileInfos: 
+        :param _FileInfos: Input video file information, required when InputType is File.
         :type FileInfos: list of EditMediaFileInfo
-        :param _StreamInfos: 
+        :param _StreamInfos: nput stream information, required when InputType is Stream.
         :type StreamInfos: list of EditMediaStreamInfo
-        :param _Definition: 
+        :param _Definition: EditMedia template ID. The values u200bu200bare 10 and 20. If left blank, the 10 template is used. 
+<li>10: When splicing, the input with the highest resolution is used as the benchmark;</li>
+<li>20: When splicing, the input with the highest code rate is used as the benchmark. </li>
         :type Definition: int
-        :param _ProcedureName: 
+        :param _ProcedureName: Task flow template name, if you want Fill in when executing the task flow on the generated new video.
         :type ProcedureName: str
-        :param _OutputConfig: 
+        :param _OutputConfig: The file configuration generated after editing.
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.EditMediaOutputConfig`
-        :param _SessionContext: 
+        :param _SessionContext: Identifies the source context, which is used to transparently transmit user request information. This field value will be returned in the EditMediaComplete callback and task flow status change callback, with a maximum length of 1000 characters.
         :type SessionContext: str
-        :param _TasksPriority: 
+        :param _TasksPriority: The priority of the task. The larger the value, the higher the priority. The value range is -10 to 10. If left blank, it means 0.
         :type TasksPriority: int
-        :param _SessionId: Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.
+        :param _SessionId: The identification code used for task deduplication. If there is a request with the same identification code within three days, this request will return an error. The maximum length is 50 characters, without or with an empty string to indicate no deduplication.
         :type SessionId: str
-        :param _ExtInfo: Reserved field for special purposes.
+        :param _ExtInfo: Reserved fields, used for special purposes.
         :type ExtInfo: str
         """
         self._InputType = None
@@ -24858,7 +26518,7 @@ class EditMediaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 
+        :param _TaskId: The task ID of the video editing. You can use this ID to query the status of the editing task (task type is EditMedia).
         :type TaskId: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -24948,13 +26608,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class EditMediaTEHDConfig(AbstractModel):
-    """
+    """EditMediaT TSC Transcoding Config.
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: TSC Transcoding type, optional values: <li>TEHD-100 means TSC Transcoding-definition-100;</li> <li>OFF means turning off TSC Transcoding-definition. </li>Leave it blank to indicate OFF.
         :type Type: str
         """
         self._Type = None
@@ -25345,19 +27005,32 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class EditMediaVideoStream(AbstractModel):
-    """
+    """Video stream configuration information
 
     """
 
     def __init__(self):
         r"""
-        :param _ResolutionAdaptive: 
+        :param _ResolutionAdaptive: Resolution adaptive, optional values:
+<li>open: open, at this time, Width represents the long side of the video, and Height represents the short side of the video;</li>
+<li>close: closed, at this time , Width represents the width of the video, and Height represents the height of the video. </li>
+Default value: open.
         :type ResolutionAdaptive: str
-        :param _Width: 
+        :param _Width: Resolution adaptive, optional values:
+<li>open: open, at this time, Width represents the long side of the video, and Height represents the short side of the video;</li>
+<li>close: closed, at this time , Width represents the width of the video, and Height represents the height of the video. </li>
+Default value: open.
         :type Width: int
-        :param _Height: 
+        :param _Height: The maximum value of the video stream height (or short side), value range: 0 and [128, 4096], unit: px. 
+<li>When Width and Height are both 0, the resolution is based on the base resolution;</li>
+<li>When Width is 0 and Height is non-0, Width is scaled according to the base resolution;</li> li>
+<li>When Width is non-0 and Height is 0, the Height is scaled according to the base resolution; </li>
+<li>When both Width and Height are non-0, the resolution is specified by the user. </li>
+Default value: 0.
         :type Height: int
-        :param _Fps: 
+        :param _Fps: Video frame rate, value range: [0, 100], unit: Hz. 
+When the value is 0, the frame rate will be automatically set for the video. 
+The default value is 0.
         :type Fps: int
         """
         self._ResolutionAdaptive = None
@@ -25446,6 +27119,186 @@ class EmptyTrackItem(AbstractModel):
         
 
 
+class EnhanceMediaByTemplateRequest(AbstractModel):
+    """EnhanceMediaByTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: File ID.
+        :type FileId: str
+        :param _Definition: Enhance Media Template ID.
+        :type Definition: int
+        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :type SubAppId: int
+        :param _StartTimeOffset: Starting offset time, unit: seconds, leaving it blank means intercepting from the beginning of the video.
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: End offset time, unit: seconds, leaving it blank means intercepting to the end of the video.
+        :type EndTimeOffset: float
+        :param _OutputConfig: File configuration after Enhance.
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.RebuildMediaOutputConfig`
+        :param _SessionId: The identification code used for deduplication. If there is a request for the same identification code within three days, this request will return an error. The maximum length is 50 characters, without or with an empty string to indicate no deduplication.
+        :type SessionId: str
+        :param _SessionContext: Source context, used to transparently transmit user request information. The task flow status change callback will return the value of this field, which can be up to 1000 characters.
+        :type SessionContext: str
+        :param _TasksPriority: The priority of the task. The larger the value, the higher the priority. The value range is -10 to 10. If left blank, it means 0.
+        :type TasksPriority: int
+        :param _ExtInfo: Reserved fields, used for special purposes.
+        :type ExtInfo: str
+        """
+        self._FileId = None
+        self._Definition = None
+        self._SubAppId = None
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+        self._OutputConfig = None
+        self._SessionId = None
+        self._SessionContext = None
+        self._TasksPriority = None
+        self._ExtInfo = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def StartTimeOffset(self):
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+    @property
+    def OutputConfig(self):
+        return self._OutputConfig
+
+    @OutputConfig.setter
+    def OutputConfig(self, OutputConfig):
+        self._OutputConfig = OutputConfig
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def TasksPriority(self):
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+    @property
+    def ExtInfo(self):
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        if params.get("OutputConfig") is not None:
+            self._OutputConfig = RebuildMediaOutputConfig()
+            self._OutputConfig._deserialize(params.get("OutputConfig"))
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        self._TasksPriority = params.get("TasksPriority")
+        self._ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnhanceMediaByTemplateResponse(AbstractModel):
+    """EnhanceMediaByTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: The task ID of the Enhance Media. You can use this ID to query the status of the EnhanceMedia task.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class EventContent(AbstractModel):
     """Event notification content, where TranscodeCompleteEvent, ConcatCompleteEvent, ClipCompleteEvent, CreateImageSpriteCompleteEvent, and SnapshotByTimeOffsetCompleteEvent are event notifications for tasks that are initiated by v2017-compatible APIs.
 
@@ -25478,55 +27331,73 @@ class EventContent(AbstractModel):
 <li>`CreateSnapshotByTimeOffsetComplete`: Finished time point screencapturing.</li>
         :type EventType: str
         :param _FileUploadEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type FileUploadEvent: :class:`tencentcloud.vod.v20180717.models.FileUploadTask`
         :param _ProcedureStateChangeEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ProcedureStateChangeEvent: :class:`tencentcloud.vod.v20180717.models.ProcedureTask`
         :param _FileDeleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type FileDeleteEvent: :class:`tencentcloud.vod.v20180717.models.FileDeleteTask`
         :param _PullCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type PullCompleteEvent: :class:`tencentcloud.vod.v20180717.models.PullUploadTask`
         :param _EditMediaCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type EditMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.EditMediaTask`
-        :param _SplitMediaCompleteEvent: The notification for completing video splitting, which is valid if the event type is `SplitMediaComplete`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SplitMediaCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type SplitMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SplitMediaTask`
         :param _ComposeMediaCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ComposeMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ComposeMediaTask`
         :param _ClipCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ClipCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ClipTask2017`
         :param _TranscodeCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type TranscodeCompleteEvent: :class:`tencentcloud.vod.v20180717.models.TranscodeTask2017`
         :param _CreateImageSpriteCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type CreateImageSpriteCompleteEvent: :class:`tencentcloud.vod.v20180717.models.CreateImageSpriteTask2017`
         :param _ConcatCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ConcatCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ConcatTask2017`
         :param _SnapshotByTimeOffsetCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type SnapshotByTimeOffsetCompleteEvent: :class:`tencentcloud.vod.v20180717.models.SnapshotByTimeOffsetTask2017`
         :param _WechatPublishCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type WechatPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatPublishTask`
         :param _WechatMiniProgramPublishCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type WechatMiniProgramPublishCompleteEvent: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTask`
-        :param _RemoveWatermarkCompleteEvent: The notification for completing watermark removal. This parameter is valid only if the event type is `RemoveWatermark`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RemoveWatermarkCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type RemoveWatermarkCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RemoveWatermarkTask`
-        :param _RestoreMediaCompleteEvent: The notification for completing video retrieval. This parameter is valid if the event type is `RestoreMediaComplete`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RestoreMediaCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type RestoreMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RestoreMediaTask`
-        :param _RebuildMediaCompleteEvent: The notification for completing audio/video remastering. This parameter is valid only if the event type is `RebuildMediaComplete`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RebuildMediaCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type RebuildMediaCompleteEvent: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTask`
-        :param _ExtractTraceWatermarkCompleteEvent: The notification for completing digital watermark extraction. This parameter is valid only if `EventType` is `ExtractTraceWatermarkComplete`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ExtractTraceWatermarkCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ExtractTraceWatermarkCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ExtractTraceWatermarkTask`
         :param _ExtractCopyRightWatermarkCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ExtractCopyRightWatermarkCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkTask`
         :param _ReviewAudioVideoCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ReviewAudioVideoCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ReviewAudioVideoTask`
         :param _ReduceMediaBitrateCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type ReduceMediaBitrateCompleteEvent: :class:`tencentcloud.vod.v20180717.models.ReduceMediaBitrateTask`
         :param _DescribeFileAttributesCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type DescribeFileAttributesCompleteEvent: :class:`tencentcloud.vod.v20180717.models.DescribeFileAttributesTask`
         :param _QualityInspectCompleteEvent: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type QualityInspectCompleteEvent: :class:`tencentcloud.vod.v20180717.models.QualityInspectTask`
         """
         self._EventHandle = None
@@ -25969,30 +27840,167 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
-class ExtractCopyRightWatermarkTask(AbstractModel):
-    """
+class ExtractCopyRightWatermarkRequest(AbstractModel):
+    """ExtractCopyRightWatermark request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param _TaskId: 
-        :type TaskId: str
-        :param _Status: 
-        :type Status: str
-        :param _ErrCode: 
-        :type ErrCode: int
-        :param _Message: 
-        :type Message: str
-        :param _ErrCodeExt: 
-        :type ErrCodeExt: str
-        :param _Input: 
-        :type Input: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkTaskInput`
-        :param _Output: 
-        :type Output: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkTaskOutput`
-        :param _SessionId: 
+        :param _Url: The media URL from which the watermark needs to be extracted.
+        :type Url: str
+        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :type SubAppId: int
+        :param _SessionContext: Identifies the source context, which is used to transparently transmit user request information. This field value will be returned in the ExtractCopyRightWatermarkComplete callback and task flow status change callback, with a maximum length of 1000 characters.
+        :type SessionContext: str
+        :param _SessionId: The identification code used for task deduplication. If there is a request with the same identification code within three days, this request will return an error. The maximum length is 50 characters, without or with an empty string to indicate no deduplication.
         :type SessionId: str
-        :param _SessionContext: 
+        :param _TasksPriority: The priority of the task. The larger the value, the higher the priority. The value range is -10 to 10. If left blank, it means 0.
+        :type TasksPriority: int
+        :param _ExtInfo: Reserved fields, used for special purposes.
+        :type ExtInfo: str
+        """
+        self._Url = None
+        self._SubAppId = None
+        self._SessionContext = None
+        self._SessionId = None
+        self._TasksPriority = None
+        self._ExtInfo = None
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def SessionContext(self):
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def TasksPriority(self):
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+    @property
+    def ExtInfo(self):
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._SubAppId = params.get("SubAppId")
+        self._SessionContext = params.get("SessionContext")
+        self._SessionId = params.get("SessionId")
+        self._TasksPriority = params.get("TasksPriority")
+        self._ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtractCopyRightWatermarkResponse(AbstractModel):
+    """ExtractCopyRightWatermark response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ExtractCopyRightWatermarkTask(AbstractModel):
+    """Extract copyright watermark
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: str
+        :param _Status: Task status, values:
+<li>PROCESSING: Processing;</li>
+<li>FINISH: Completed. </li>
+        :type Status: str
+        :param _ErrCode: Error code, 0 means success, other values u200bu200bmean failure:
+<li>40000: The input parameters are illegal, please check the input parameters;</li>
+<li>60000: Source file error (such as video data damage), Please confirm whether the source file is normal;</li>
+<li>70000: Internal service error, it is recommended to try again. </li>
+        :type ErrCode: int
+        :param _Message: Error message.
+        :type Message: str
+        :param _ErrCodeExt: Error code. An empty string indicates success. Other values u200bu200bindicate failure. For values, please refer to [Video Processing Error Code](https://www.tencentcloud.com/document/product/266/39145) list.
+        :type ErrCodeExt: str
+        :param _Input: Extract copyright watermark task input information.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Input: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkTaskInput`
+        :param _Output: Extract copyright watermark task output information.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Output: :class:`tencentcloud.vod.v20180717.models.ExtractCopyRightWatermarkTaskOutput`
+        :param _SessionId: Identification code used for deduplication. If there is a request for the same identification code within seven days, this request will return an error. The maximum length is 50 characters, without or with an empty string to indicate no deduplication.
+        :type SessionId: str
+        :param _SessionContext: Source context, used to transparently transmit user request information. The task flow status change callback will return the value of this field, which can be up to 1000 characters.
         :type SessionContext: str
         """
         self._TaskId = None
@@ -26103,13 +28111,13 @@ class ExtractCopyRightWatermarkTask(AbstractModel):
 
 
 class ExtractCopyRightWatermarkTaskInput(AbstractModel):
-    """
+    """Extract copyright watermark task input
 
     """
 
     def __init__(self):
         r"""
-        :param _Url: 
+        :param _Url: The media URL from which the watermark needs to be extracted.
         :type Url: str
         """
         self._Url = None
@@ -26136,13 +28144,13 @@ class ExtractCopyRightWatermarkTaskInput(AbstractModel):
 
 
 class ExtractCopyRightWatermarkTaskOutput(AbstractModel):
-    """
+    """Extract copyright watermark output information
 
     """
 
     def __init__(self):
         r"""
-        :param _Text: 
+        :param _Text: Copyright information
         :type Text: str
         """
         self._Text = None
@@ -26458,7 +28466,7 @@ class ExtractTraceWatermarkTaskInput(AbstractModel):
         r"""
         :param _Url: The URL of the media on which digital watermark extraction is to be performed.
         :type Url: str
-        :param _FileId: 
+        :param _FileId: Media file ID. The original media file ID corresponding to the URL.
         :type FileId: str
         """
         self._Url = None
@@ -27010,6 +29018,64 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class FileVerifyInfo(AbstractModel):
+    """File verification information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileVerifyUrl: File verification URL guidance.
+        :type FileVerifyUrl: str
+        :param _FileVerifyDomains: File verification domain name list.
+        :type FileVerifyDomains: list of str
+        :param _FileVerifyName: File verification file name.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type FileVerifyName: str
+        """
+        self._FileVerifyUrl = None
+        self._FileVerifyDomains = None
+        self._FileVerifyName = None
+
+    @property
+    def FileVerifyUrl(self):
+        return self._FileVerifyUrl
+
+    @FileVerifyUrl.setter
+    def FileVerifyUrl(self, FileVerifyUrl):
+        self._FileVerifyUrl = FileVerifyUrl
+
+    @property
+    def FileVerifyDomains(self):
+        return self._FileVerifyDomains
+
+    @FileVerifyDomains.setter
+    def FileVerifyDomains(self, FileVerifyDomains):
+        self._FileVerifyDomains = FileVerifyDomains
+
+    @property
+    def FileVerifyName(self):
+        return self._FileVerifyName
+
+    @FileVerifyName.setter
+    def FileVerifyName(self, FileVerifyName):
+        self._FileVerifyName = FileVerifyName
+
+
+    def _deserialize(self, params):
+        self._FileVerifyUrl = params.get("FileVerifyUrl")
+        self._FileVerifyDomains = params.get("FileVerifyDomains")
+        self._FileVerifyName = params.get("FileVerifyName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FollowRedirect(AbstractModel):
     """Back to the source 301/302 status code automatically follows the configuration, the default is off
 
@@ -27017,7 +29083,7 @@ class FollowRedirect(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: Back-to-origin follow configuration switch, the values u200bu200bare: <li>on: on; </li> <li>off: off. </li>
         :type Switch: str
         """
         self._Switch = None
@@ -27144,9 +29210,9 @@ class ForceRedirect(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: Access forced jump configuration switch, value: <li>on: on; </li> <li>off: off. </li>
         :type Switch: str
-        :param _RedirectType: 
+        :param _RedirectType: Access forced jump type: <li>http: forced http jump</li> <li>https: forced https jump</li>
         :type RedirectType: str
         :param _RedirectStatusCode: Status code returned for forced redirect Supports 301, 302.
         :type RedirectStatusCode: int
@@ -27456,16 +29522,141 @@ class HeadTailTaskInput(AbstractModel):
         
 
 
-class HeuristicCache(AbstractModel):
-    """
+class HeadTailTemplate(AbstractModel):
+    """Head Tail Template Details
 
     """
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Definition: Head Tail Template Number.
+        :type Definition: int
+        :param _Name: Template name, supports up to 64 characters.
+        :type Name: str
+        :param _Comment: Template description, up to 256 characters.
+        :type Comment: str
+        :param _HeadCandidateSet: Title candidate list. When using it, the one closest to the resolution of the feature film will be selected. When the same candidate exists, the first one will be selected. A maximum of 5 are supported.
+        :type HeadCandidateSet: list of str
+        :param _TailCandidateSet: Ending candidate list. When using it, the one closest to the resolution of the feature film will be selected. When the same candidate exists, the first one will be selected. A maximum of 5 are supported.
+        :type TailCandidateSet: list of str
+        :param _FillType: Padding method. When the video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the transcoding processing method is "padding". Optional filling method:
+<li> stretch: stretch, stretch each frame to fill the entire screen, which may cause the transcoded video to be "squashed" or "stretched";</li> 
+<li> gauss: Gaussian blur, keep the video aspect ratio unchanged, use Gaussian blur for the remaining edges; </li>
+<li> white: leave blank, keep the video aspect ratio unchanged, use the remaining edges for the edge Use white filling; </li>
+<li> black: Leave black, keep the video aspect ratio unchanged, and fill the remaining edges with black. </li>
+Default value: stretch.
+        :type FillType: str
+        :param _CreateTime: Template creation time, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
+        :type CreateTime: str
+        :param _UpdateTime: The last modification time of the template, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
+        :type UpdateTime: str
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._HeadCandidateSet = None
+        self._TailCandidateSet = None
+        self._FillType = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def HeadCandidateSet(self):
+        return self._HeadCandidateSet
+
+    @HeadCandidateSet.setter
+    def HeadCandidateSet(self, HeadCandidateSet):
+        self._HeadCandidateSet = HeadCandidateSet
+
+    @property
+    def TailCandidateSet(self):
+        return self._TailCandidateSet
+
+    @TailCandidateSet.setter
+    def TailCandidateSet(self, TailCandidateSet):
+        self._TailCandidateSet = TailCandidateSet
+
+    @property
+    def FillType(self):
+        return self._FillType
+
+    @FillType.setter
+    def FillType(self, FillType):
+        self._FillType = FillType
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._HeadCandidateSet = params.get("HeadCandidateSet")
+        self._TailCandidateSet = params.get("TailCandidateSet")
+        self._FillType = params.get("FillType")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HeuristicCache(AbstractModel):
+    """Heuristic cache configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Heuristic cache configuration switch, the values u200bu200bare: 
+<li>on: on; </li>
+<li>off: off. </li>
         :type Switch: str
-        :param _CacheConfig: 
+        :param _CacheConfig: Custom heuristic cache time configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type CacheConfig: :class:`tencentcloud.vod.v20180717.models.HeuristicCacheConfig`
         """
         self._Switch = None
@@ -27510,7 +29701,7 @@ class HeuristicCacheConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HeuristicCacheTimeSwitch: 
+        :param _HeuristicCacheTimeSwitch: Heuristic custom time cache configuration switch, the values u200bu200bare: <li>on: on; </li> <li>off: off. </li>
         :type HeuristicCacheTimeSwitch: str
         :param _HeuristicCacheTime: Unit: seconds.
         :type HeuristicCacheTime: int
@@ -27682,15 +29873,15 @@ class HttpHeaderPathRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HeaderMode: 
+        :param _HeaderMode: http header setting method: <li>set: setting. Change the value of the specified header parameter to the set value; if the set header does not exist, the header will be added; if there are multiple duplicate header parameters, all will be changed and merged into one header. ;</li> <li>del: delete. Delete the specified header parameter;</li> <li>add: add. Add the specified header parameters. By default, repeated addition is allowed, that is, the same header is added repeatedly (note: repeated addition may affect the browser response, please use the set operation first). </li>
         :type HeaderMode: str
         :param _HeaderName: HTTP header name. Up to 100 characters can be set.
         :type HeaderName: str
-        :param _HeaderValue: 
+        :param _HeaderValue: http header value, up to 1000 characters can be set; optional when Mode is del; required when Mode is add/set.
         :type HeaderValue: str
-        :param _RuleType: 
+        :param _RuleType: Rule type: <li>all: valid for all files;</li> <li>file: valid for specified file suffix;</li> <li>directory: valid for specified path;</li> <li>path: specified absolute The path takes effect. </li>
         :type RuleType: str
-        :param _RulePaths: 
+        :param _RulePaths: Matching content under the corresponding type of RuleType: <li>Fill in * when all is used;</li> <li>Fill in suffix name when file is used, such as jpg, txt;</li> <li>Fill in path when directory is used, such as /xxx/ test/;</li> <li>Fill in the absolute path when path is specified, such as /xxx/test.html. </li>
         :type RulePaths: list of str
         """
         self._HeaderMode = None
@@ -27763,9 +29954,9 @@ class Https(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: https configuration switch, value: <li>on: on; </li> <li>off: off. </li>
         :type Switch: str
-        :param _Http2: 
+        :param _Http2: http2 configuration switch, value: <li>on: on; </li> <li>off: off. </li>
         :type Http2: str
         :param _CertInfo: Server certificate configuration information
         :type CertInfo: :class:`tencentcloud.vod.v20180717.models.CDNCertInfo`
@@ -27822,7 +30013,7 @@ class HwPrivateAccess(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: Huawei Cloud Object Storage back-to-origin authentication configuration switch, the value is: <li>on: on; </li> <li>off: off. </li>
         :type Switch: str
         :param _AccessKey: Access ID
         :type AccessKey: str
@@ -28020,7 +30211,10 @@ class ImageOperation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: Image processing type. Optional types are:
+<li>Scale: image thumbnail processing;</li>
+<li>CenterCut: image cropping processing;</li>
+<li>Blur: image blur processing. </li>
         :type Type: str
         :param _Scale: The scaling details. This parameter is valid only if `Type` is `Scale`.
         :type Scale: :class:`tencentcloud.vod.v20180717.models.ImageScale`
@@ -28901,6 +31095,148 @@ class ImageWatermarkTemplate(AbstractModel):
         
 
 
+class InspectMediaQualityRequest(AbstractModel):
+    """InspectMediaQuality request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: Media file ID, i.e., the globally unique ID of a file in VOD assigned by the VOD backend after successful upload. This field can be obtained through the [video upload completion event notification](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) or [VOD Console](https://console.cloud.tencent.com/vod/media).
+        :type FileId: str
+        :param _Definition: Media quality inspect template ID.
+        :type Definition: int
+        :param _SubAppId: <b>The VOD [subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?has_map=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param _TasksPriority: The priority of the task, the higher the numeric value, the higher the priority. The range is from -10 to 10, and not filled represents 0.
+        :type TasksPriority: int
+        :param _SessionContext: The source context which is used to pass through the user request information. After `Procedure` is specified, the task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :type SessionContext: str
+        :param _SessionId: Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.
+        :type SessionId: str
+        :param _ExtInfo: Retain field, using when special purpose.
+        :type ExtInfo: str
+        """
+        self._FileId = None
+        self._Definition = None
+        self._SubAppId = None
+        self._TasksPriority = None
+        self._SessionContext = None
+        self._SessionId = None
+        self._ExtInfo = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def TasksPriority(self):
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+    @property
+    def SessionContext(self):
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def ExtInfo(self):
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        self._TasksPriority = params.get("TasksPriority")
+        self._SessionContext = params.get("SessionContext")
+        self._SessionId = params.get("SessionId")
+        self._ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InspectMediaQualityResponse(AbstractModel):
+    """InspectMediaQuality response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Media quality inspection task ID.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class IpFilter(AbstractModel):
     """IP blocklist/allowlist configuration. This is disabled by default.
 
@@ -28908,11 +31244,11 @@ class IpFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: IP black and white list configuration switch, value: <li>on: on; </li> <li>off: off. </li>
         :type Switch: str
-        :param _FilterType: 
+        :param _FilterType: IP blacklist and whitelist types: <li>whitelist: whitelist;</li> <li>blacklist: blacklist. </li>
         :type FilterType: str
-        :param _Filters: 
+        :param _Filters: IP black and white list, supports: IP in the form of X.X.X.X, or network segment in the form of /8, /16, /24; Can populate up to 50 whitelists or 50 blacklists.
         :type Filters: list of str
         :param _FilterRules: IP blocklist/allowlist path-based configuration. This feature is only available to selected beta customers.
         :type FilterRules: list of IpFilterPathRule
@@ -28982,13 +31318,13 @@ class IpFilterPathRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FilterType: 
+        :param _FilterType: IP blacklist and whitelist types: <li>whitelist: whitelist;</li> <li>blacklist: blacklist. </li>
         :type FilterType: str
-        :param _Filters: 
+        :param _Filters: IP black and white list, supports: IP in the form of X.X.X.X, or network segment in the form of /8, /16, /24; Can populate up to 50 whitelists or 50 blacklists.
         :type Filters: list of str
-        :param _RuleType: 
+        :param _RuleType: Rule type: <li>all: valid for all files;</li> <li>file: valid for specified file suffix;</li> <li>directory: valid for specified path;</li> <li>path: specified absolute The path takes effect. </li>
         :type RuleType: str
-        :param _RulePaths: 
+        :param _RulePaths: Matching content under the corresponding type of RuleType: <li>Fill in * when all is used;</li> <li>Fill in suffix name when file is used, such as jpg, txt;</li> <li>Fill in path when directory is used, such as /xxx/ test/;</li> <li>Fill in the absolute path when path is specified, such as /xxx/test.html. </li>
         :type RulePaths: list of str
         """
         self._FilterType = None
@@ -29051,7 +31387,77 @@ class Ipv6Access(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: Domain name enables ipv6 access configuration switch. The value is: <li>on: on; </li> <li>off: off. </li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JitterConfigureInfo(AbstractModel):
+    """Control parameters for video jitter and ghost detection.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Video shake and ghost detection switch, optional values:
+<li>ON: turn on;</li>
+<li>OFF: turn off. </li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JitterConfigureInfoForUpdate(AbstractModel):
+    """Control parameters for video jitter and ghost detection.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Video shake and ghost detection switch, optional values:
+<li>ON: turn on;</li>
+<li>OFF: turn off. </li>
         :type Switch: str
         """
         self._Switch = None
@@ -29378,6 +31784,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 Note: this field may return null, indicating that no valid values can be obtained.
         :type VodTaskId: str
         :param _MetaData: 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param _SegmentSet: Cliped media segment info.
         :type SegmentSet: list of LiveRealTimeClipMediaSegmentInfo
@@ -29505,17 +31912,17 @@ class LiveRealTimeClipStreamInfo(AbstractModel):
 
 
 class LiveRecordInfo(AbstractModel):
-    """Live streaming recording information.
+    """Live recording information
 
     """
 
     def __init__(self):
         r"""
-        :param _StreamId: Live streaming recording ID
+        :param _StreamId: Live recording stream ID.
         :type StreamId: str
-        :param _RecordStartTime: Recording start time, using [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
+        :param _RecordStartTime: Recording start time, use [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type RecordStartTime: str
-        :param _RecordEndTime: Recording end time, using [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
+        :param _RecordEndTime: Recording end time, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type RecordEndTime: str
         """
         self._StreamId = None
@@ -29738,11 +32145,11 @@ class MaxAgeRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MaxAgeType: 
+        :param _MaxAgeType: Rule type: <li>all: valid for all files;</li> <li>file: valid for specified file suffix;</li> <li>directory: valid for specified path;</li> <li>path: specified absolute The path takes effect. </li>
         :type MaxAgeType: str
-        :param _MaxAgeContents: 
+        :param _MaxAgeContents: Matching content under the corresponding type of MaxAgeType: <li>Fill in * when all is used; </li> <li> Fill in suffix name when file is used, such as jpg, txt; </li> <li> Fill in path when directory is used, such as /xxx/ test/;</li> <li>Fill in the absolute path when path is specified, such as /xxx/test.html. </li> <b>Note: all rules cannot be deleted. They follow the origin site by default and can be modified. </b>
         :type MaxAgeContents: list of str
-        :param _MaxAgeTime: 
+        :param _MaxAgeTime: MaxAge time setting, unit second; <b>Note: The time is 0, which means no caching. </b>
         :type MaxAgeTime: int
         :param _FollowOrigin: Whether to follow the origin server. Valid values: on and off. If it's on, MaxAgeTime is ignored.
         :type FollowOrigin: str
@@ -31288,17 +33695,18 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
 
 class MediaDeleteItem(AbstractModel):
-    """
+    """Specify video content for deletion
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: The type of files to delete. If this parameter is left empty, it will be invalid. Valid values:
-<li>`OriginalFiles`: The original file. After deleting an original file, you can no longer perform operations such as transcoding or WeChat publishing on the file ID.</li>
-<li>`TranscodeFiles`: Transcoding outputs</li>
-<li>`AdaptiveDynamicStreamingFiles`: Adaptive bitrate outputs</li>
-<li>`WechatPublishFiles`: The file for WeChat publishing</li>
+        :param _Type: The specified portion to be deleted. The parameter is invalid if this field is not filled in. Optional values u200bare:
+<li>OriginalFiles (Delete the original file. After deletion, video processing operations such as transcoding cannot be initiated);</li>
+<li>TranscodeFiles (delete transcoded files);</li>
+<li>AdaptiveDynamicStreamingFiles (Delete the adaptive bitrate streaming files);</li>
+<font color=red>Notice:</font> <li>When the value is OriginalFiles, the cover file carried when uploading the file will be deleted;</li>
+<li>When the value is TranscodeFiles, cover files generated by media processing will be deleted.</li>
         :type Type: str
         :param _Definition: ID of the template for which to delete the videos of the type specified by the `Type` parameter. For the template definition, please see [Transcoding Template](https://intl.cloud.tencent.com/document/product/266/33478?from_cn_redirect=1#.3Cspan-id-.3D-.22zm.22-.3E.3C.2Fspan.3E.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
 Default value: 0, which indicates to delete all videos of the type specified by the `Type` parameter.
@@ -32291,9 +34699,9 @@ class MediaProcessTaskAdaptiveDynamicStreamingResult(AbstractModel):
         :type Input: :class:`tencentcloud.vod.v20180717.models.AdaptiveDynamicStreamingTaskInput`
         :param _Output: Output of adaptive bitrate streaming task.
         :type Output: :class:`tencentcloud.vod.v20180717.models.AdaptiveDynamicStreamingInfoItem`
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the conversion to adaptive code stream task starts, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time when the adaptive code stream conversion task is completed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -32426,9 +34834,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaAnimatedGraphicsItem`
         :param _Progress: The progress of an animated image generation task. Value range: 0-100.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the rotation graph task started to execute, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time when the rotation graph task is completed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -32560,9 +34968,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.CoverBySnapshotTaskOutput`
         :param _Progress: The progress of a video screenshot (thumbnail) task. Value range: 0-100.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the screenshot making cover task started, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: Screenshot the time when the cover task was completed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -32695,9 +35103,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaImageSpriteItem`
         :param _Progress: The progress of an image sprite generation task. Value range: 0-100.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the sprite cut task started to be executed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time when the sprite cut task is completed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -33122,9 +35530,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaSampleSnapshotItem`
         :param _Progress: The progress of a sampled screenshot task. Value range: 0-100.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the sampling screenshot task starts execution is in [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time when the sampling screenshot task is completed uses [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -33257,9 +35665,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Output: :class:`tencentcloud.vod.v20180717.models.MediaSnapshotByTimeOffsetItem`
         :param _Progress: The progress of a time point screenshot task. Value range: 0-100.
         :type Progress: int
-        :param _BeginProcessTime: 
+        :param _BeginProcessTime: The time when the point-in-time screenshot task started to be executed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type BeginProcessTime: str
-        :param _FinishTime: 
+        :param _FinishTime: The time when the point-in-time screenshot task is completed, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type FinishTime: str
         """
         self._Status = None
@@ -33797,8 +36205,7 @@ class MediaSourceData(AbstractModel):
         :type SourceContext: str
         :param _LiveRecordInfo: Live streaming recording information, valid when the file source is Record.
         :type LiveRecordInfo: :class:`tencentcloud.vod.v20180717.models.LiveRecordInfo`
-        :param _TrtcRecordInfo: The TRTC recording information.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _TrtcRecordInfo: TRTC recording information, valid when the file source is TrtcRecord.
         :type TrtcRecordInfo: :class:`tencentcloud.vod.v20180717.models.TrtcRecordInfo`
         :param _WebPageRecordInfo: Panoramic recording information, valid when the file source is WebPageRecord.
         :type WebPageRecordInfo: :class:`tencentcloud.vod.v20180717.models.WebPageRecordInfo`
@@ -34373,7 +36780,8 @@ class MediaTranscodeItem(AbstractModel):
         :param _Url: Address of output video file.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Url: str
-        :param _Definition: 
+        :param _Definition: For transcoding specification ID, see [Transcoding Parameter Template](https://intl.cloud.tencent.com/document/product/266/33476?from_cn_redirect=1). 
+<font color=red>Note: A value of 0 represents the original file. </font>
         :type Definition: int
         :param _Bitrate: Sum of the average bitrate of a video stream and that of an audio stream in bps.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -34574,7 +36982,7 @@ class MediaTransitionItem(AbstractModel):
         :param _Transitions: List of transition operations. Up to one video image or audio transition operation is supported.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Transitions: list of TransitionOpertion
-        :param _MediaTransitions: 
+        :param _MediaTransitions: Transition operation list. Image transition operations and audio transition operations support at most one each.
         :type MediaTransitions: list of TransitionOperation
         """
         self._Duration = None
@@ -35483,11 +37891,11 @@ class ModifyCDNDomainConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 
+        :param _Domain: Domain.
         :type Domain: str
-        :param _Config: 
+        :param _Config: Domain Config.
         :type Config: :class:`tencentcloud.vod.v20180717.models.CDNDomainConfigForUpdate`
-        :param _SubAppId: 
+        :param _SubAppId: VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.
         :type SubAppId: int
         """
         self._Domain = None
@@ -35881,6 +38289,442 @@ class ModifyDefaultStorageRegionRequest(AbstractModel):
 
 class ModifyDefaultStorageRegionResponse(AbstractModel):
     """ModifyDefaultStorageRegion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyEnhanceMediaTemplateRequest(AbstractModel):
+    """ModifyEnhanceMediaTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Enhance Media Template ID.
+        :type Definition: int
+        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :type SubAppId: int
+        :param _Name: Audio and video quality rebirth template name, length limit: 64 characters.
+        :type Name: str
+        :param _Comment: Template description information, length limit: 256 characters.
+        :type Comment: str
+        :param _RebuildVideoInfo: Media quality Enhance video control control information.
+        :type RebuildVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildVideoInfo`
+        :param _RebuildAudioInfo: Media quality Enhance audio control control information.
+        :type RebuildAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildAudioInfo`
+        :param _TargetVideoInfo: Output target video control information.
+        :type TargetVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetVideoStream`
+        :param _TargetAudioInfo: Output target audio control information.
+        :type TargetAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetAudioStream`
+        :param _Container: Output file encapsulation format, optional values: mp4, flv, hls.
+        :type Container: str
+        :param _RemoveVideo: Whether to remove video data, optional values:
+<li>0: Keep</li>
+<li>1: Remove</li>
+Default value 0.
+        :type RemoveVideo: int
+        :param _RemoveAudio: Whether to remove audio data, optional values:
+<li>0: Keep</li>
+<li>1: Remove</li>
+Default value 0.
+        :type RemoveAudio: int
+        """
+        self._Definition = None
+        self._SubAppId = None
+        self._Name = None
+        self._Comment = None
+        self._RebuildVideoInfo = None
+        self._RebuildAudioInfo = None
+        self._TargetVideoInfo = None
+        self._TargetAudioInfo = None
+        self._Container = None
+        self._RemoveVideo = None
+        self._RemoveAudio = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def RebuildVideoInfo(self):
+        return self._RebuildVideoInfo
+
+    @RebuildVideoInfo.setter
+    def RebuildVideoInfo(self, RebuildVideoInfo):
+        self._RebuildVideoInfo = RebuildVideoInfo
+
+    @property
+    def RebuildAudioInfo(self):
+        return self._RebuildAudioInfo
+
+    @RebuildAudioInfo.setter
+    def RebuildAudioInfo(self, RebuildAudioInfo):
+        self._RebuildAudioInfo = RebuildAudioInfo
+
+    @property
+    def TargetVideoInfo(self):
+        return self._TargetVideoInfo
+
+    @TargetVideoInfo.setter
+    def TargetVideoInfo(self, TargetVideoInfo):
+        self._TargetVideoInfo = TargetVideoInfo
+
+    @property
+    def TargetAudioInfo(self):
+        return self._TargetAudioInfo
+
+    @TargetAudioInfo.setter
+    def TargetAudioInfo(self, TargetAudioInfo):
+        self._TargetAudioInfo = TargetAudioInfo
+
+    @property
+    def Container(self):
+        return self._Container
+
+    @Container.setter
+    def Container(self, Container):
+        self._Container = Container
+
+    @property
+    def RemoveVideo(self):
+        return self._RemoveVideo
+
+    @RemoveVideo.setter
+    def RemoveVideo(self, RemoveVideo):
+        self._RemoveVideo = RemoveVideo
+
+    @property
+    def RemoveAudio(self):
+        return self._RemoveAudio
+
+    @RemoveAudio.setter
+    def RemoveAudio(self, RemoveAudio):
+        self._RemoveAudio = RemoveAudio
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("RebuildVideoInfo") is not None:
+            self._RebuildVideoInfo = RebuildVideoInfo()
+            self._RebuildVideoInfo._deserialize(params.get("RebuildVideoInfo"))
+        if params.get("RebuildAudioInfo") is not None:
+            self._RebuildAudioInfo = RebuildAudioInfo()
+            self._RebuildAudioInfo._deserialize(params.get("RebuildAudioInfo"))
+        if params.get("TargetVideoInfo") is not None:
+            self._TargetVideoInfo = RebuildMediaTargetVideoStream()
+            self._TargetVideoInfo._deserialize(params.get("TargetVideoInfo"))
+        if params.get("TargetAudioInfo") is not None:
+            self._TargetAudioInfo = RebuildMediaTargetAudioStream()
+            self._TargetAudioInfo._deserialize(params.get("TargetAudioInfo"))
+        self._Container = params.get("Container")
+        self._RemoveVideo = params.get("RemoveVideo")
+        self._RemoveAudio = params.get("RemoveAudio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEnhanceMediaTemplateResponse(AbstractModel):
+    """ModifyEnhanceMediaTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyEventConfigRequest(AbstractModel):
+    """ModifyEventConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: How to receive event notifications. 
+<li>PUSH: [HTTP callback notification](https://www.tencentcloud.com/document/product/266/33948);</li>
+<li>PULL: [Reliable notification based on message queue ](https://www.tencentcloud.com/document/product/266/33948). </li>
+        :type Mode: str
+        :param _NotificationUrl: The address used to receive 3.0 format callbacks when using the [HTTP callback notification](https://www.tencentcloud.com/document/product/266/33948) reception method. 
+Note: If the NotificationUrl parameter is provided and the value is an empty string, the 3.0 format callback address will be cleared.
+        :type NotificationUrl: str
+        :param _UploadMediaCompleteEventSwitch: Whether to receive the [Video Upload Completed](https://www.tencentcloud.com/document/product/266/33950) event notification. The default "OFF" is to ignore the event notification, and "ON" is to receive the event notification. 
+        :type UploadMediaCompleteEventSwitch: str
+        :param _DeleteMediaCompleteEventSwitch: Whether to receive [Video deletion completed](https://www.tencentcloud.com/document/product/266/33952) event notification, the default "OFF" means to ignore the event notification, "ON" means to receive the event notification .
+        :type DeleteMediaCompleteEventSwitch: str
+        :param _SubAppId: VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.
+        :type SubAppId: int
+        """
+        self._Mode = None
+        self._NotificationUrl = None
+        self._UploadMediaCompleteEventSwitch = None
+        self._DeleteMediaCompleteEventSwitch = None
+        self._SubAppId = None
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def NotificationUrl(self):
+        return self._NotificationUrl
+
+    @NotificationUrl.setter
+    def NotificationUrl(self, NotificationUrl):
+        self._NotificationUrl = NotificationUrl
+
+    @property
+    def UploadMediaCompleteEventSwitch(self):
+        return self._UploadMediaCompleteEventSwitch
+
+    @UploadMediaCompleteEventSwitch.setter
+    def UploadMediaCompleteEventSwitch(self, UploadMediaCompleteEventSwitch):
+        self._UploadMediaCompleteEventSwitch = UploadMediaCompleteEventSwitch
+
+    @property
+    def DeleteMediaCompleteEventSwitch(self):
+        return self._DeleteMediaCompleteEventSwitch
+
+    @DeleteMediaCompleteEventSwitch.setter
+    def DeleteMediaCompleteEventSwitch(self, DeleteMediaCompleteEventSwitch):
+        self._DeleteMediaCompleteEventSwitch = DeleteMediaCompleteEventSwitch
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._NotificationUrl = params.get("NotificationUrl")
+        self._UploadMediaCompleteEventSwitch = params.get("UploadMediaCompleteEventSwitch")
+        self._DeleteMediaCompleteEventSwitch = params.get("DeleteMediaCompleteEventSwitch")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEventConfigResponse(AbstractModel):
+    """ModifyEventConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyHeadTailTemplateRequest(AbstractModel):
+    """ModifyHeadTailTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: HeadTail template ID.
+        :type Definition: int
+        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :type SubAppId: int
+        :param _Name: Template name, length limit is 64 characters. Not passing means not modifying.
+        :type Name: str
+        :param _Comment: Template description, limited to 256 characters. Passing nothing means no modification, passing empty means clearing it.
+        :type Comment: str
+        :param _HeadCandidateSet: Title candidate list, fill in the FileId of the video. When transcoding, the title closest to the aspect ratio of the feature film will be automatically selected (when the aspect ratio is the same, the front candidate will take precedence). Supports up to 5 candidate titles. Not passing it means no modification, passing an empty array means clearing it.
+        :type HeadCandidateSet: list of str
+        :param _TailCandidateSet: Ending candidate list, fill in the FileId of the video. When transcoding, the ending with the aspect ratio closest to the feature film will be automatically selected (when the aspect ratio is the same, the front candidate will take precedence). Supports up to 5 candidate titles. Not passing it means no modification, passing an empty array means clearing it.
+        :type TailCandidateSet: list of str
+        :param _FillType: Padding method. When the video stream configuration width and height parameters are inconsistent with the aspect ratio of the original video, the transcoding processing method is "padding". Optional filling method:
+<li> stretch: stretch, stretch each frame to fill the entire screen, which may cause the transcoded video to be "squashed" or "stretched";</li> 
+<li> gauss: Gaussian blur, keep the video aspect ratio unchanged, use Gaussian blur for the remaining edges; </li>
+<li> white: leave blank, keep the video aspect ratio unchanged, use the remaining edges for the edge Use white filling; </li>
+<li> black: Leave black, keep the video aspect ratio unchanged, and fill the remaining edges with black. </li>
+The default value is not to be modified.
+        :type FillType: str
+        """
+        self._Definition = None
+        self._SubAppId = None
+        self._Name = None
+        self._Comment = None
+        self._HeadCandidateSet = None
+        self._TailCandidateSet = None
+        self._FillType = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def HeadCandidateSet(self):
+        return self._HeadCandidateSet
+
+    @HeadCandidateSet.setter
+    def HeadCandidateSet(self, HeadCandidateSet):
+        self._HeadCandidateSet = HeadCandidateSet
+
+    @property
+    def TailCandidateSet(self):
+        return self._TailCandidateSet
+
+    @TailCandidateSet.setter
+    def TailCandidateSet(self, TailCandidateSet):
+        self._TailCandidateSet = TailCandidateSet
+
+    @property
+    def FillType(self):
+        return self._FillType
+
+    @FillType.setter
+    def FillType(self, FillType):
+        self._FillType = FillType
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._HeadCandidateSet = params.get("HeadCandidateSet")
+        self._TailCandidateSet = params.get("TailCandidateSet")
+        self._FillType = params.get("FillType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyHeadTailTemplateResponse(AbstractModel):
+    """ModifyHeadTailTemplate response structure.
 
     """
 
@@ -36407,7 +39251,7 @@ class ModifyMediaStorageClassRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileIds: 
+        :param _FileIds: Media file unique identifier list, maximum length: 100.
         :type FileIds: list of str
         :param _StorageClass: The target storage class. Valid values:
 <li>STANDARD</li>
@@ -36674,6 +39518,252 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         self._RequestId = params.get("RequestId")
 
 
+class ModifyQualityInspectTemplateRequest(AbstractModel):
+    """ModifyQualityInspectTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Media quality inspection template ID.
+        :type Definition: int
+        :param _SubAppId: <b>The VOD [subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?has_map=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :type SubAppId: int
+        :param _Name: Media quality inspection template name.Length limit: 64 characters.
+        :type Name: str
+        :param _Comment: Template description. Length limit: 256 characters.
+        :type Comment: str
+        :param _ScreenshotInterval: Frame interval, unit in seconds, minimum value is 1. When not filled, the default frame interval is 1 second.
+        :type ScreenshotInterval: float
+        :param _JitterConfigure: Control parameters for detecting video jitter and ghosting.
+        :type JitterConfigure: :class:`tencentcloud.vod.v20180717.models.JitterConfigureInfoForUpdate`
+        :param _BlurConfigure: Control parameters for detecting video blur.
+        :type BlurConfigure: :class:`tencentcloud.vod.v20180717.models.BlurConfigureInfoForUpdate`
+        :param _AbnormalLightingConfigure: Control parameters for detecting low brightness and overexposure of video.
+        :type AbnormalLightingConfigure: :class:`tencentcloud.vod.v20180717.models.AbnormalLightingConfigureInfoForUpdate`
+        :param _CrashScreenConfigure: Control parameters for detecting video crash.
+        :type CrashScreenConfigure: :class:`tencentcloud.vod.v20180717.models.CrashScreenConfigureInfoForUpdate`
+        :param _BlackWhiteEdgeConfigure: Control parameters for detecting video black edges, white edges, black screen, and white screen.
+        :type BlackWhiteEdgeConfigure: :class:`tencentcloud.vod.v20180717.models.BlackWhiteEdgeConfigureInfoForUpdate`
+        :param _NoiseConfigure: Control parameters for detecting video noise.
+        :type NoiseConfigure: :class:`tencentcloud.vod.v20180717.models.NoiseConfigureInfoForUpdate`
+        :param _MosaicConfigure: Control parameters for detecting video mosaic.
+        :type MosaicConfigure: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfoForUpdate`
+        :param _QRCodeConfigure: Control parameters for QR code detection in video.
+        :type QRCodeConfigure: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfoForUpdate`
+        :param _VoiceConfigure: Control parameters for audio (mutes, bass, blast sound).
+        :type VoiceConfigure: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfoForUpdate`
+        :param _QualityEvaluationConfigure: Control parameters for video quality evaluation.
+        :type QualityEvaluationConfigure: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfoForUpdate`
+        """
+        self._Definition = None
+        self._SubAppId = None
+        self._Name = None
+        self._Comment = None
+        self._ScreenshotInterval = None
+        self._JitterConfigure = None
+        self._BlurConfigure = None
+        self._AbnormalLightingConfigure = None
+        self._CrashScreenConfigure = None
+        self._BlackWhiteEdgeConfigure = None
+        self._NoiseConfigure = None
+        self._MosaicConfigure = None
+        self._QRCodeConfigure = None
+        self._VoiceConfigure = None
+        self._QualityEvaluationConfigure = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def ScreenshotInterval(self):
+        return self._ScreenshotInterval
+
+    @ScreenshotInterval.setter
+    def ScreenshotInterval(self, ScreenshotInterval):
+        self._ScreenshotInterval = ScreenshotInterval
+
+    @property
+    def JitterConfigure(self):
+        return self._JitterConfigure
+
+    @JitterConfigure.setter
+    def JitterConfigure(self, JitterConfigure):
+        self._JitterConfigure = JitterConfigure
+
+    @property
+    def BlurConfigure(self):
+        return self._BlurConfigure
+
+    @BlurConfigure.setter
+    def BlurConfigure(self, BlurConfigure):
+        self._BlurConfigure = BlurConfigure
+
+    @property
+    def AbnormalLightingConfigure(self):
+        return self._AbnormalLightingConfigure
+
+    @AbnormalLightingConfigure.setter
+    def AbnormalLightingConfigure(self, AbnormalLightingConfigure):
+        self._AbnormalLightingConfigure = AbnormalLightingConfigure
+
+    @property
+    def CrashScreenConfigure(self):
+        return self._CrashScreenConfigure
+
+    @CrashScreenConfigure.setter
+    def CrashScreenConfigure(self, CrashScreenConfigure):
+        self._CrashScreenConfigure = CrashScreenConfigure
+
+    @property
+    def BlackWhiteEdgeConfigure(self):
+        return self._BlackWhiteEdgeConfigure
+
+    @BlackWhiteEdgeConfigure.setter
+    def BlackWhiteEdgeConfigure(self, BlackWhiteEdgeConfigure):
+        self._BlackWhiteEdgeConfigure = BlackWhiteEdgeConfigure
+
+    @property
+    def NoiseConfigure(self):
+        return self._NoiseConfigure
+
+    @NoiseConfigure.setter
+    def NoiseConfigure(self, NoiseConfigure):
+        self._NoiseConfigure = NoiseConfigure
+
+    @property
+    def MosaicConfigure(self):
+        return self._MosaicConfigure
+
+    @MosaicConfigure.setter
+    def MosaicConfigure(self, MosaicConfigure):
+        self._MosaicConfigure = MosaicConfigure
+
+    @property
+    def QRCodeConfigure(self):
+        return self._QRCodeConfigure
+
+    @QRCodeConfigure.setter
+    def QRCodeConfigure(self, QRCodeConfigure):
+        self._QRCodeConfigure = QRCodeConfigure
+
+    @property
+    def VoiceConfigure(self):
+        return self._VoiceConfigure
+
+    @VoiceConfigure.setter
+    def VoiceConfigure(self, VoiceConfigure):
+        self._VoiceConfigure = VoiceConfigure
+
+    @property
+    def QualityEvaluationConfigure(self):
+        return self._QualityEvaluationConfigure
+
+    @QualityEvaluationConfigure.setter
+    def QualityEvaluationConfigure(self, QualityEvaluationConfigure):
+        self._QualityEvaluationConfigure = QualityEvaluationConfigure
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._ScreenshotInterval = params.get("ScreenshotInterval")
+        if params.get("JitterConfigure") is not None:
+            self._JitterConfigure = JitterConfigureInfoForUpdate()
+            self._JitterConfigure._deserialize(params.get("JitterConfigure"))
+        if params.get("BlurConfigure") is not None:
+            self._BlurConfigure = BlurConfigureInfoForUpdate()
+            self._BlurConfigure._deserialize(params.get("BlurConfigure"))
+        if params.get("AbnormalLightingConfigure") is not None:
+            self._AbnormalLightingConfigure = AbnormalLightingConfigureInfoForUpdate()
+            self._AbnormalLightingConfigure._deserialize(params.get("AbnormalLightingConfigure"))
+        if params.get("CrashScreenConfigure") is not None:
+            self._CrashScreenConfigure = CrashScreenConfigureInfoForUpdate()
+            self._CrashScreenConfigure._deserialize(params.get("CrashScreenConfigure"))
+        if params.get("BlackWhiteEdgeConfigure") is not None:
+            self._BlackWhiteEdgeConfigure = BlackWhiteEdgeConfigureInfoForUpdate()
+            self._BlackWhiteEdgeConfigure._deserialize(params.get("BlackWhiteEdgeConfigure"))
+        if params.get("NoiseConfigure") is not None:
+            self._NoiseConfigure = NoiseConfigureInfoForUpdate()
+            self._NoiseConfigure._deserialize(params.get("NoiseConfigure"))
+        if params.get("MosaicConfigure") is not None:
+            self._MosaicConfigure = MosaicConfigureInfoForUpdate()
+            self._MosaicConfigure._deserialize(params.get("MosaicConfigure"))
+        if params.get("QRCodeConfigure") is not None:
+            self._QRCodeConfigure = QRCodeConfigureInfoForUpdate()
+            self._QRCodeConfigure._deserialize(params.get("QRCodeConfigure"))
+        if params.get("VoiceConfigure") is not None:
+            self._VoiceConfigure = VoiceConfigureInfoForUpdate()
+            self._VoiceConfigure._deserialize(params.get("VoiceConfigure"))
+        if params.get("QualityEvaluationConfigure") is not None:
+            self._QualityEvaluationConfigure = QualityEvaluationConfigureInfoForUpdate()
+            self._QualityEvaluationConfigure._deserialize(params.get("QualityEvaluationConfigure"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyQualityInspectTemplateResponse(AbstractModel):
+    """ModifyQualityInspectTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRebuildMediaTemplateRequest(AbstractModel):
     """ModifyRebuildMediaTemplate request structure.
 
@@ -36681,17 +39771,17 @@ class ModifyRebuildMediaTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: The remaster template ID.
+        :param _Definition: Rebuild Media Template ID.
         :type Definition: int
         :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: str
-        :param _Name: The remaster template name.
+        :param _Name: Rebuild Media Template Name.
         :type Name: str
-        :param _Comment: The template description.
+        :param _Comment: Rebuild media template description.
         :type Comment: str
-        :param _RebuildVideoInfo: 
+        :param _RebuildVideoInfo: Rebuild media video control information.
         :type RebuildVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildVideoInfo`
-        :param _RebuildAudioInfo: 
+        :param _RebuildAudioInfo: Rebuild media audio control information.
         :type RebuildAudioInfo: :class:`tencentcloud.vod.v20180717.models.RebuildAudioInfo`
         :param _TargetVideoInfo: The output video parameters.
         :type TargetVideoInfo: :class:`tencentcloud.vod.v20180717.models.RebuildMediaTargetVideoStream`
@@ -36990,9 +40080,13 @@ class ModifyRoundPlayRequest(AbstractModel):
         :type Name: str
         :param _Desc: The playlist description (not longer than 256 characters).
         :type Desc: str
-        :param _Status: 
+        :param _Status: Playback status, optional values: 
+<li>Disabled: End playback, and the carousel task cannot be started again after the end. </li>
+
         :type Status: str
-        :param _PlayBackMode: 
+        :param _PlayBackMode: Play mode, optional values:
+<li>Loop: Play the playlist in a loop;</li>
+<li>Linear: Play once, stop playing after the playlist is played. </li>
         :type PlayBackMode: str
         """
         self._RoundPlayId = None
@@ -37674,7 +40768,7 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         :type TranscodeDefinition: int
         :param _ImageSpriteDefinition: ID of the image sprite generating template that allows output.
         :type ImageSpriteDefinition: int
-        :param _ResolutionNames: 
+        :param _ResolutionNames: The player displays names for substreams of different resolutions.
         :type ResolutionNames: list of ResolutionNameInfo
         :param _Domain: Domain name used for playback. If its value is `Default`, the domain name configured in [Default Distribution Configuration](https://intl.cloud.tencent.com/document/product/266/33373?from_cn_redirect=1) will be used.
         :type Domain: str
@@ -38549,6 +41643,76 @@ class ModifyWordSampleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class MosaicConfigureInfo(AbstractModel):
+    """Control parameters for detecting video mosaic.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Video mosaic inspection switch, optional values:
+<li>ON: enabled;</li>
+<li>OFF: disabled.</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MosaicConfigureInfoForUpdate(AbstractModel):
+    """Control parameters for detecting video mosaic.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Video mosaic inspection switch, optional values:
+<li>ON: enabled;</li>
+<li>OFF: disabled.</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MosaicInput(AbstractModel):
     """Blur parameter type of video processing task
 
@@ -38664,6 +41828,76 @@ Default value: 10%.
         self._Height = params.get("Height")
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NoiseConfigureInfo(AbstractModel):
+    """Control parameters for detecting video noise.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Video noise inspection switch, optional values:
+<li>ON: enabled;</li>
+<li>OFF: disabled.</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NoiseConfigureInfoForUpdate(AbstractModel):
+    """Control parameters for detecting video noise.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Video noise inspection switch, optional values:
+<li>ON: enabled;</li>
+<li>OFF: disabled.</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38948,21 +42182,21 @@ class Origin(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Origins: 
+        :param _Origins: List of main origin sites. When modifying the main origin site, the corresponding OriginType needs to be filled in at the same time.
         :type Origins: list of str
-        :param _OriginType: 
+        :param _OriginType: Main origin site type, input parameters support the following types: <li>domain: domain name type;</li> <li>ip: IP list as the origin site;</li> <li>third_party: third-party storage origin site . </li>
         :type OriginType: str
-        :param _ServerName: 
+        :param _ServerName: When returning to the main origin server, the Host header will default to the accelerated domain name if it is not filled in. When the origin server type is object storage, the ServerName field is required.
         :type ServerName: str
-        :param _OriginPullProtocol: 
+        :param _OriginPullProtocol: Back-to-origin protocol configuration: <li>http: Forces HTTP back-to-origin;</li> <li>follow: The protocol follows back-to-origin;</li> <li>https: Forces https back-to-origin, and https back-to-origin only supports origin. Station port 443. </li>
         :type OriginPullProtocol: str
-        :param _BackupOrigins: 
+        :param _BackupOrigins: Backup source site list. When modifying the backup origin site, the corresponding OriginType needs to be filled in at the same time.
         :type BackupOrigins: list of str
-        :param _BackupOriginType: 
+        :param _BackupOriginType: Backup origin site type, input parameters support the following types: <li>domain: domain name type;</li> <li>ip: IP list as the origin site;</li> <li>third_party: third-party storage origin site . </li>
         :type BackupOriginType: str
         :param _BackupServerName: Host header used when accessing the backup origin server. If it is left empty, the ServerName of primary origin server will be used by default. Note: This field may return null, indicating that no valid value can be obtained.
         :type BackupServerName: str
-        :param _OriginCompany: 
+        :param _OriginCompany: Object storage back to the origin vendor. Required when the origin site type is a third-party storage origin site (third_party). Optional values u200bu200binclude the following: <li>aws_s3: AWS S3;</li> <li>ali_oss: Alibaba Cloud OSS; </li> <li>hw_obs: Huawei OBS;</li> <li>others: object storage from other manufacturers, only supports object storage compatible with AWS signature algorithm, such as Tencent Cloud COS. </li>
         :type OriginCompany: str
         """
         self._Origins = None
@@ -39065,7 +42299,7 @@ class OssPrivateAccess(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: Alibaba Cloud OSS return-to-origin authentication configuration switch, the values u200bu200bare: <li>on: on; </li> <li>off: off. </li>
         :type Switch: str
         :param _AccessKey: Access ID.
         :type AccessKey: str
@@ -39146,7 +42380,7 @@ class OthersPrivateAccess(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: Other manufacturers' object storage back-to-origin authentication configuration switch, the values u200bu200bare: <li>on: on; </li> <li>off: off. </li>
         :type Switch: str
         :param _AccessKey: Access ID.
         :type AccessKey: str
@@ -41450,7 +44684,7 @@ class ProcessMediaByProcedureRequest(AbstractModel):
         :type TasksNotifyMode: str
         :param _SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
-        :param _SessionId: 
+        :param _SessionId: Identification code used for deduplication. If there is a request with the same identification code within 7 days, this request will return an error. The maximum length is 50 characters, without or with an empty string to indicate no deduplication.
         :type SessionId: str
         :param _ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
@@ -42883,6 +46117,170 @@ class PushUrlCacheResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class QRCodeConfigureInfo(AbstractModel):
+    """Control parameters for QR code detection in video.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: QR code inspection switch, optional values:
+<li>ON: enabled;</li>
+<li>OFF: disabled.</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QRCodeConfigureInfoForUpdate(AbstractModel):
+    """Control parameters for QR code detection in video.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: QR code inspection switch, optional values:
+<li>ON: enabled;</li>
+<li>OFF: disabled.</li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityEvaluationConfigureInfo(AbstractModel):
+    """Control parameters for video quality evaluation.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Video quality evaluation switch, optional values:
+<li>ON: enabled;</li>
+<li>OFF: disabled.</li>
+        :type Switch: str
+        :param _Score: Video quality evaluation filter threshold, the result only returns the time periods lower than this value, the default value is 60.
+        :type Score: int
+        """
+        self._Switch = None
+        self._Score = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityEvaluationConfigureInfoForUpdate(AbstractModel):
+    """Control parameters for video quality evaluation.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Video quality evaluation switch, optional values:
+<li>ON: enabled;</li>
+<li>OFF: disabled.</li>
+        :type Switch: str
+        :param _Score: Video quality evaluation filter threshold, the result only returns the time periods lower than this value, the default value is 60.
+        :type Score: int
+        """
+        self._Switch = None
+        self._Score = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Score(self):
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QualityInspectItem(AbstractModel):
     """Abnormal segment information of media quality inspection.
 
@@ -42965,7 +46363,7 @@ class QualityInspectResultItem(AbstractModel):
         :type SegmentSet: list of QualityInspectItem
         :param _SegmentSetFileUrl: Abnormal segment List file URL. The file content is JSON, and the data structure is consistent with the SegmentSet Field. (The file will not be permanently stored, and will be deleted after reaching the SegmentSetFileUrlExpireTime Time point).
         :type SegmentSetFileUrl: str
-        :param _SegmentSetFileUrlExpireTime: Abnormal segment List file URL expiration time, using [ISO date supported](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
+        :param _SegmentSetFileUrlExpireTime: Abnormal segment List file URL expiration time, using [ISO date supported](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
         :type SegmentSetFileUrlExpireTime: str
         """
         self._Type = None
@@ -43037,11 +46435,11 @@ class QualityInspectTask(AbstractModel):
         :type TaskId: str
         :param _Status: Task status, value: <li>PROCESSING: processing;</li> <li>FINISH: Completed.</li>
         :type Status: str
-        :param _ErrCodeExt: Error code, an empty string indicates success, other values indicate failure. Please refer to the [Video Processing Error Code](https://intl.cloud.tencent.com/document/product/266/50368?from_cn_redirect=1#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) list for values.
+        :param _ErrCodeExt: Error code, an empty string indicates success, other values indicate failure. Please refer to the [Video Processing Error Code](https://www.tencentcloud.com/document/product/266/39145) list for values.
         :type ErrCodeExt: str
         :param _Message: Error information.
         :type Message: str
-        :param _MetaData: Media quality inpection input metadata of audio and video.
+        :param _MetaData: Media quality inspection input metadata of audio and video.
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param _Input: Media quality inspection task input.
         :type Input: :class:`tencentcloud.vod.v20180717.models.QualityInspectTaskInput`
@@ -43049,7 +46447,7 @@ class QualityInspectTask(AbstractModel):
         :type Output: :class:`tencentcloud.vod.v20180717.models.QualityInspectTaskOutput`
         :param _SessionId: Used for deduplication, if there has been a request with the same recognition code within seven days, this request will return an error. Maximum length of 50 characters, without or with an empty string indicates no deduplication.
         :type SessionId: str
-        :param _SessionContext: Source context, used for transparent transmission of user request information. Upon completion of media quality inpection, the callback will return the value of this field, with a maximum length of 1000 characters.
+        :param _SessionContext: Source context, used for transparent transmission of user request information. Upon completion of media quality inspection, the callback will return the value of this field, with a maximum length of 1000 characters.
         :type SessionContext: str
         """
         self._TaskId = None
@@ -43280,6 +46678,251 @@ class QualityInspectTaskOutput(AbstractModel):
         
 
 
+class QualityInspectTemplateItem(AbstractModel):
+    """Media quality inspection template details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Media quality inspection template ID.
+        :type Definition: int
+        :param _Type: Template Type, available options: <li>Preset: Preset Template;</li> <li>Custom: User Custom Template.</li>
+        :type Type: str
+        :param _Name: Media quality inspection template name.
+        :type Name: str
+        :param _Comment: Template description. 
+        :type Comment: str
+        :param _ScreenshotInterval: Frame interval, unit in seconds.
+        :type ScreenshotInterval: float
+        :param _JitterConfigure: Control parameters for detecting video jitter and ghosting.
+        :type JitterConfigure: :class:`tencentcloud.vod.v20180717.models.JitterConfigureInfo`
+        :param _BlurConfigure: Control parameters for detecting video blur.
+        :type BlurConfigure: :class:`tencentcloud.vod.v20180717.models.BlurConfigureInfo`
+        :param _AbnormalLightingConfigure: Control parameters for detecting low brightness and overexposure of video.
+        :type AbnormalLightingConfigure: :class:`tencentcloud.vod.v20180717.models.AbnormalLightingConfigureInfo`
+        :param _CrashScreenConfigure: Control parameters for detecting video crash.
+        :type CrashScreenConfigure: :class:`tencentcloud.vod.v20180717.models.CrashScreenConfigureInfo`
+        :param _BlackWhiteEdgeConfigure: Control parameters for detecting video black edges, white edges, black screen, and white screen.
+        :type BlackWhiteEdgeConfigure: :class:`tencentcloud.vod.v20180717.models.BlackWhiteEdgeConfigureInfo`
+        :param _NoiseConfigure: Control parameters for detecting video noise.
+        :type NoiseConfigure: :class:`tencentcloud.vod.v20180717.models.NoiseConfigureInfo`
+        :param _MosaicConfigure: Control parameters for detecting video mosaic.
+        :type MosaicConfigure: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfo`
+        :param _QRCodeConfigure: Control parameters for QR code detection in video.
+        :type QRCodeConfigure: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfo`
+        :param _QualityEvaluationConfigure: Control parameters for video quality evaluation.
+        :type QualityEvaluationConfigure: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfo`
+        :param _VoiceConfigure: Control parameters for audio (mutes, bass, blast sound).
+        :type VoiceConfigure: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfo`
+        :param _CreateTime: Template Creation Time, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
+        :type CreateTime: str
+        :param _UpdateTime: Template Modification time, using [ISO date format](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
+        :type UpdateTime: str
+        """
+        self._Definition = None
+        self._Type = None
+        self._Name = None
+        self._Comment = None
+        self._ScreenshotInterval = None
+        self._JitterConfigure = None
+        self._BlurConfigure = None
+        self._AbnormalLightingConfigure = None
+        self._CrashScreenConfigure = None
+        self._BlackWhiteEdgeConfigure = None
+        self._NoiseConfigure = None
+        self._MosaicConfigure = None
+        self._QRCodeConfigure = None
+        self._QualityEvaluationConfigure = None
+        self._VoiceConfigure = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def ScreenshotInterval(self):
+        return self._ScreenshotInterval
+
+    @ScreenshotInterval.setter
+    def ScreenshotInterval(self, ScreenshotInterval):
+        self._ScreenshotInterval = ScreenshotInterval
+
+    @property
+    def JitterConfigure(self):
+        return self._JitterConfigure
+
+    @JitterConfigure.setter
+    def JitterConfigure(self, JitterConfigure):
+        self._JitterConfigure = JitterConfigure
+
+    @property
+    def BlurConfigure(self):
+        return self._BlurConfigure
+
+    @BlurConfigure.setter
+    def BlurConfigure(self, BlurConfigure):
+        self._BlurConfigure = BlurConfigure
+
+    @property
+    def AbnormalLightingConfigure(self):
+        return self._AbnormalLightingConfigure
+
+    @AbnormalLightingConfigure.setter
+    def AbnormalLightingConfigure(self, AbnormalLightingConfigure):
+        self._AbnormalLightingConfigure = AbnormalLightingConfigure
+
+    @property
+    def CrashScreenConfigure(self):
+        return self._CrashScreenConfigure
+
+    @CrashScreenConfigure.setter
+    def CrashScreenConfigure(self, CrashScreenConfigure):
+        self._CrashScreenConfigure = CrashScreenConfigure
+
+    @property
+    def BlackWhiteEdgeConfigure(self):
+        return self._BlackWhiteEdgeConfigure
+
+    @BlackWhiteEdgeConfigure.setter
+    def BlackWhiteEdgeConfigure(self, BlackWhiteEdgeConfigure):
+        self._BlackWhiteEdgeConfigure = BlackWhiteEdgeConfigure
+
+    @property
+    def NoiseConfigure(self):
+        return self._NoiseConfigure
+
+    @NoiseConfigure.setter
+    def NoiseConfigure(self, NoiseConfigure):
+        self._NoiseConfigure = NoiseConfigure
+
+    @property
+    def MosaicConfigure(self):
+        return self._MosaicConfigure
+
+    @MosaicConfigure.setter
+    def MosaicConfigure(self, MosaicConfigure):
+        self._MosaicConfigure = MosaicConfigure
+
+    @property
+    def QRCodeConfigure(self):
+        return self._QRCodeConfigure
+
+    @QRCodeConfigure.setter
+    def QRCodeConfigure(self, QRCodeConfigure):
+        self._QRCodeConfigure = QRCodeConfigure
+
+    @property
+    def QualityEvaluationConfigure(self):
+        return self._QualityEvaluationConfigure
+
+    @QualityEvaluationConfigure.setter
+    def QualityEvaluationConfigure(self, QualityEvaluationConfigure):
+        self._QualityEvaluationConfigure = QualityEvaluationConfigure
+
+    @property
+    def VoiceConfigure(self):
+        return self._VoiceConfigure
+
+    @VoiceConfigure.setter
+    def VoiceConfigure(self, VoiceConfigure):
+        self._VoiceConfigure = VoiceConfigure
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._ScreenshotInterval = params.get("ScreenshotInterval")
+        if params.get("JitterConfigure") is not None:
+            self._JitterConfigure = JitterConfigureInfo()
+            self._JitterConfigure._deserialize(params.get("JitterConfigure"))
+        if params.get("BlurConfigure") is not None:
+            self._BlurConfigure = BlurConfigureInfo()
+            self._BlurConfigure._deserialize(params.get("BlurConfigure"))
+        if params.get("AbnormalLightingConfigure") is not None:
+            self._AbnormalLightingConfigure = AbnormalLightingConfigureInfo()
+            self._AbnormalLightingConfigure._deserialize(params.get("AbnormalLightingConfigure"))
+        if params.get("CrashScreenConfigure") is not None:
+            self._CrashScreenConfigure = CrashScreenConfigureInfo()
+            self._CrashScreenConfigure._deserialize(params.get("CrashScreenConfigure"))
+        if params.get("BlackWhiteEdgeConfigure") is not None:
+            self._BlackWhiteEdgeConfigure = BlackWhiteEdgeConfigureInfo()
+            self._BlackWhiteEdgeConfigure._deserialize(params.get("BlackWhiteEdgeConfigure"))
+        if params.get("NoiseConfigure") is not None:
+            self._NoiseConfigure = NoiseConfigureInfo()
+            self._NoiseConfigure._deserialize(params.get("NoiseConfigure"))
+        if params.get("MosaicConfigure") is not None:
+            self._MosaicConfigure = MosaicConfigureInfo()
+            self._MosaicConfigure._deserialize(params.get("MosaicConfigure"))
+        if params.get("QRCodeConfigure") is not None:
+            self._QRCodeConfigure = QRCodeConfigureInfo()
+            self._QRCodeConfigure._deserialize(params.get("QRCodeConfigure"))
+        if params.get("QualityEvaluationConfigure") is not None:
+            self._QualityEvaluationConfigure = QualityEvaluationConfigureInfo()
+            self._QualityEvaluationConfigure._deserialize(params.get("QualityEvaluationConfigure"))
+        if params.get("VoiceConfigure") is not None:
+            self._VoiceConfigure = VoiceConfigureInfo()
+            self._VoiceConfigure._deserialize(params.get("VoiceConfigure"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Quic(AbstractModel):
     """QUIC configuration item
 
@@ -43287,7 +46930,7 @@ class Quic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: Quic function configuration switch, the values u200bu200bare: <li>on: on; </li> <li>off: off. </li>
         :type Switch: str
         """
         self._Switch = None
@@ -43358,7 +47001,7 @@ class RebuildMediaByTemplateRequest(AbstractModel):
         r"""
         :param _FileId: The file ID.
         :type FileId: str
-        :param _Definition: The remaster template ID.
+        :param _Definition: Rebuild Media Template ID.
         :type Definition: int
         :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
         :type SubAppId: str
@@ -43366,7 +47009,7 @@ class RebuildMediaByTemplateRequest(AbstractModel):
         :type StartTimeOffset: float
         :param _EndTimeOffset: The end offset (seconds). If you do not specify this, the segment will end at the end of the video.
         :type EndTimeOffset: float
-        :param _OutputConfig: 
+        :param _OutputConfig: New file configuration after rebuild.
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.RebuildMediaOutputConfig`
         :param _SessionId: The session ID, which is used for de-duplication. If there was a request with the same session ID in the last three days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.
         :type SessionId: str
@@ -43499,7 +47142,7 @@ class RebuildMediaByTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: The ID of the remaster task. You need to provide this ID to query the task status.
+        :param _TaskId: The task ID of the rebuild, through which the status of the rebuild task can be queried.
         :type TaskId: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -43893,7 +47536,7 @@ class RebuildMediaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: The ID of the audio/video remastering task. You need to provide this ID to query the task status.
+        :param _TaskId: The task ID of the Enhance Media. You can use this ID to query the status of the EnhanceMedia task.
         :type TaskId: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -45642,7 +49285,7 @@ class Referer(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: referer Blacklist and whitelist configuration switch, value: <li>on: on; </li> <li>off: off. </li>
         :type Switch: str
         :param _RefererRules: Referer blacklist/whitelist configuration rule
         :type RefererRules: list of RefererRule
@@ -45769,15 +49412,15 @@ class RefererRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleType: 
+        :param _RuleType: Rule type: <li>all: valid for all files;</li> <li>file: valid for specified file suffix;</li> <li>directory: valid for specified path;</li> <li>path: specified absolute The path takes effect. </li>
         :type RuleType: str
-        :param _RulePaths: 
+        :param _RulePaths: Matching content under the corresponding type of RuleType: <li>Fill in * when all is used;</li> <li>Fill in suffix name when file is used, such as jpg, txt;</li> <li>Fill in path when directory is used, such as /xxx/ test/;</li> <li>Fill in the absolute path when path is specified, such as /xxx/test.html. </li>
         :type RulePaths: list of str
-        :param _RefererType: 
+        :param _RefererType: rferer configuration type, value: <li>whitelist: whitelist;</li> <li>blacklist: blacklist. </li>
         :type RefererType: str
         :param _Referers: Referer content list
         :type Referers: list of str
-        :param _AllowEmpty: 
+        :param _AllowEmpty: Whether to allow empty referers: When the anti-hotlinking type is whitelist, true means that empty referers are allowed, false means that empty referers are not allowed; when the anti-hotlinking type is blacklist, true means that empty referers are rejected, and false means that empty referers are not rejected.
         :type AllowEmpty: bool
         """
         self._RuleType = None
@@ -46357,7 +50000,7 @@ class RequestHeader(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: Custom request header configuration switch, the values u200bu200bare: <li>on: on; </li> <li>off: off. </li>
         :type Switch: str
         :param _HeaderRules: Custom request header configuration rules
         :type HeaderRules: list of HttpHeaderPathRule
@@ -46650,7 +50293,7 @@ class ResponseHeader(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: Custom response header configuration switch, the values u200bu200bare: <li>on: on; </li> <li>off: off. </li>
         :type Switch: str
         :param _HeaderRules: Custom response header rules
         :type HeaderRules: list of HttpHeaderPathRule
@@ -46700,11 +50343,11 @@ class RestoreMediaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileIds: The IDs of media files.
+        :param _FileIds: Media file unique identifier list, maximum length: 100.
         :type FileIds: list of str
         :param _SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
         :type SubAppId: int
-        :param _RestoreDay: The number of days during which the restored files will remain available.
+        :param _RestoreDay: The accessible duration of the unfrozen temporary media files must be greater than 0, and the unit is "days".
         :type RestoreDay: int
         :param _RestoreTier: The retrieval mode. If the current storage class is ARCHIVE, the valid values for this parameter are as follows:
 <li>Expedited: The files are made available in five minutes.</li>
@@ -48101,11 +51744,17 @@ class RoundPlayInfo(AbstractModel):
         :type Name: str
         :param _Desc: The playlist description (not longer than 256 characters).
         :type Desc: str
-        :param _Status: 
+        :param _Status: Playback status, optional values:
+<li>Enabled: startup status;</li>
+<li>Disabled: stop status. </li>
+Default value: Enabled.
         :type Status: str
-        :param _PlayBackMode: 
+        :param _PlayBackMode: Play mode, optional values:
+<li>Loop: Play the playlist in a loop;</li>
+<li>Linear: Play once, stop playing after the playlist is played. </li>
+Default value: Loop.
         :type PlayBackMode: str
-        :param _Url: 
+        :param _Url: Carousel playback address.
         :type Url: str
         """
         self._RoundPlayId = None
@@ -48207,7 +51856,7 @@ class RoundPlayInfo(AbstractModel):
 
 
 class RoundPlayListItemInfo(AbstractModel):
-    """The information of a file on a playlist.
+    """Carousel media file information
 
     """
 
@@ -48267,15 +51916,15 @@ The file must be in HLS format.
 
 
 class RuleCache(AbstractModel):
-    """
+    """Branch path cache configuration. The default cache expiration for all files is 30 days.
 
     """
 
     def __init__(self):
         r"""
-        :param _RuleType: 
+        :param _RuleType: Rule type: <li>all: valid for all files;</li> <li>file: valid for specified file suffix;</li> <li>directory: valid for specified path;</li> <li>path: specified absolute The path takes effect. </li>
         :type RuleType: str
-        :param _RulePaths: 
+        :param _RulePaths: Matching content under the corresponding type of RuleType: <li>Fill in * when all is used;</li> <li>Fill in suffix name when file is used, such as jpg, txt;</li> <li>Fill in path when directory is used, such as /xxx/ test/;</li> <li>Fill in the absolute path when path is specified, such as /xxx/test.html. </li>
         :type RulePaths: list of str
         :param _CacheConfig: Cache configuration
         :type CacheConfig: :class:`tencentcloud.vod.v20180717.models.RuleCacheConfig`
@@ -48326,17 +51975,20 @@ class RuleCache(AbstractModel):
 
 
 class RuleCacheConfig(AbstractModel):
-    """
+    """Path cache cache configuration (select one of the three cache modes)
 
     """
 
     def __init__(self):
         r"""
-        :param _Cache: 
+        :param _Cache: Cache configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Cache: :class:`tencentcloud.vod.v20180717.models.CacheConfigCache`
-        :param _NoCache: 
+        :param _NoCache: Configuration is not cached.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type NoCache: :class:`tencentcloud.vod.v20180717.models.CacheConfigNoCache`
-        :param _FollowOrigin: 
+        :param _FollowOrigin: Follow the origin configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type FollowOrigin: :class:`tencentcloud.vod.v20180717.models.CacheConfigFollowOrigin`
         """
         self._Cache = None
@@ -50229,6 +53881,141 @@ class SplitMediaOutputConfig(AbstractModel):
         
 
 
+class SplitMediaRequest(AbstractModel):
+    """SplitMedia request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: The video ID.
+        :type FileId: str
+        :param _Segments: Video splitting task information list, supporting up to 100 splitting messages at the same time.
+        :type Segments: list of SplitMediaTaskConfig
+        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :type SubAppId: int
+        :param _SessionContext: Identifies the source context, which is used to transparently transmit user request information. This field value will be returned in the SplitMediaComplete callback and task flow status change callback, with a maximum length of 1000 characters.
+        :type SessionContext: str
+        :param _SessionId: The identification code used for task deduplication. If there is a request with the same identification code within three days, this request will return an error. The maximum length is 50 characters, without or with an empty string to indicate no deduplication.
+        :type SessionId: str
+        :param _TasksPriority: The priority of the task. The larger the value, the higher the priority. The value range is -10 to 10. If left blank, it means 0.
+        :type TasksPriority: int
+        """
+        self._FileId = None
+        self._Segments = None
+        self._SubAppId = None
+        self._SessionContext = None
+        self._SessionId = None
+        self._TasksPriority = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Segments(self):
+        return self._Segments
+
+    @Segments.setter
+    def Segments(self, Segments):
+        self._Segments = Segments
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def SessionContext(self):
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def TasksPriority(self):
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        if params.get("Segments") is not None:
+            self._Segments = []
+            for item in params.get("Segments"):
+                obj = SplitMediaTaskConfig()
+                obj._deserialize(item)
+                self._Segments.append(obj)
+        self._SubAppId = params.get("SubAppId")
+        self._SessionContext = params.get("SessionContext")
+        self._SessionId = params.get("SessionId")
+        self._TasksPriority = params.get("TasksPriority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SplitMediaResponse(AbstractModel):
+    """SplitMedia response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: The task ID of video splitting. You can use this ID to query the status of the splitting task (task type is SplitMedia).
+        :type TaskId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class SplitMediaTask(AbstractModel):
     """Video splitting task information. This field has a value only when `TaskType` is `SplitMedia`.
 
@@ -50355,6 +54142,83 @@ class SplitMediaTask(AbstractModel):
         self._SessionContext = params.get("SessionContext")
         self._SessionId = params.get("SessionId")
         self._Progress = params.get("Progress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SplitMediaTaskConfig(AbstractModel):
+    """Video stripping task configuration information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTimeOffset: The offset time of the start of video stripping, unit: seconds. 
+<li>Leave it blank or fill in 0, which means that the transcoded video starts from the starting position of the original video;</li>
+<li>When the value is greater than 0 (assumed to be n), it means that after transcoding The video starts from the n-th second position of the original video;</li>
+<li>When the value is less than 0 (assumed to be -n), it means that the transcoded video starts from the position n seconds before the end of the original video. </li>
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: Offset time at the end of video stripping, unit: seconds. 
+<li>Leave it blank or fill it in with 0, which means that the transcoded video will continue until the end of the original video;</li>
+<li>When the value is greater than 0 (assumed to be n), it means that the transcoded video will continue until the end of the original video. The video continues until the nth second of the original video and terminates;</li>
+<li>When the value is less than 0 (assumed to be -n), it means that the transcoded video continues until n seconds before the end of the original video. </li>
+        :type EndTimeOffset: float
+        :param _ProcedureName: Task flow template name, if you want Fill in when executing the task flow on the generated new video.
+        :type ProcedureName: str
+        :param _OutputConfig: The video is split into strips to output information.
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.SplitMediaOutputConfig`
+        """
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+        self._ProcedureName = None
+        self._OutputConfig = None
+
+    @property
+    def StartTimeOffset(self):
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+    @property
+    def ProcedureName(self):
+        return self._ProcedureName
+
+    @ProcedureName.setter
+    def ProcedureName(self, ProcedureName):
+        self._ProcedureName = ProcedureName
+
+    @property
+    def OutputConfig(self):
+        return self._OutputConfig
+
+    @OutputConfig.setter
+    def OutputConfig(self, OutputConfig):
+        self._OutputConfig = OutputConfig
+
+
+    def _deserialize(self, params):
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        self._ProcedureName = params.get("ProcedureName")
+        if params.get("OutputConfig") is not None:
+            self._OutputConfig = SplitMediaOutputConfig()
+            self._OutputConfig._deserialize(params.get("OutputConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50537,7 +54401,7 @@ class StartCDNDomainRequest(AbstractModel):
         r"""
         :param _Domain: Domain.
         :type Domain: str
-        :param _Operation: 
+        :param _Operation: Domain name operation, value: <li>start: enable;</li> <li>stop: disable. </li>
         :type Operation: str
         :param _SubAppId: VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.
         :type SubAppId: int
@@ -50621,12 +54485,14 @@ class StatDataItem(AbstractModel):
 <li>For data at hourly level, `2019-08-22T00:00:00+08:00` indicates the statistics between 00:00 and 01:00 AM on August 22, 2019.</li>
 <li>For data at daily level, `2019-08-22T00:00:00+08:00` indicates statistics on August 22, 2019.</li>
         :type Time: str
-        :param _Value: The data size.
-<li>Storage capacity in bytes.</li>
-<li>Transcoding duration in seconds.</li>
-<li>Traffic in bytes.</li>
-<li>Bandwidth in bps.</li>
-<li>Live stream clip duration in seconds.</li>
+        :param _Value: Data size. 
+<li>The data of the storage space, the unit is bytes. </li>
+<li>Transcoding duration data, unit is seconds. </li>
+<li>Traffic data, unit is bytes. </li>
+<li>Bandwidth data, unit is bits per second. </li>
+<li>Live broadcast clip data, the unit is seconds. </li>
+<li>Carousel data, unit is seconds. </li>
+<li>The number of sub-applications, the unit is one. </li>
         :type Value: int
         """
         self._Time = None
@@ -51704,19 +55570,21 @@ class TaskStatData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: The task type.
-<li>`Transcoding`: General transcoding</li>
-<li>`Transcoding-TESHD`: Top Speed Codec transcoding</li>
-<li>`Editing`: Video editing</li>
-<li>`Editing-TESHD`: Top Speed Codec editing</li>
-<li>`AdaptiveBitrateStreaming`: Adaptive bitrate streaming</li>
-<li>ContentAudit: Content moderation</li>
-<li>`ContentRecognition`: Content recognition</li>
-<li>RemoveWatermark: Watermark removal</li>
-<li>`ExtractTraceWatermark`: Digital watermark extraction</li>
-<li>`AddTraceWatermark`: Digital watermarking</li>
-<li>`RebuildMedia`: Remaster</li>
-<li>`Transcode` Transcoding, including general transcoding, Top Speed Codec transcoding, and video editing. This value is not recommended.</li>
+        :param _TaskType: Task Type.
+<li> Transcoding: Normal transcoding</li>
+<li> Transcoding-TESHD: Extremely fast high-definition transcoding</li>
+<li> Editing: Video editing</li>
+< li> Editing-TESHD: Extremely fast high-definition video editing</li>
+<li> AdaptiveBitrateStreaming: Adaptive bitrate streaming</li>
+<li> ContentAudit: Content audit</li>
+<li> ContentRecognition: Content Recognize</li>
+<li> RemoveWatermark: Remove watermark</li>
+<li> ExtractTraceWatermark: Extract watermark</li>
+<li> AddTraceWatermark: Add watermark</li>
+<li> RebuildMedia : Audio and video quality reborn</li>
+<li> QualityInspect: Media quality inspection</li>
+<li>Transcode: transcoding, including normal transcoding, ultra-fast high-definition and video editing (not recommended)</li>
+<li>Transcode: li>
         :type TaskType: str
         :param _Summary: Task statistics overview (usage unit: second).
         :type Summary: list of TaskStatDataItem
@@ -52866,7 +56734,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type WatermarkSet: list of WatermarkInput
         :param _TraceWatermark: Digital watermark.
         :type TraceWatermark: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
-        :param _CopyRightWatermark: 
+        :param _CopyRightWatermark: Copyright watermark.
         :type CopyRightWatermark: :class:`tencentcloud.vod.v20180717.models.CopyRightWatermarkInput`
         :param _MosaicSet: List of blurs. Up to 10 ones can be supported.
         :type MosaicSet: list of MosaicInput
@@ -53204,13 +57072,59 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class TransitionOperation(AbstractModel):
-    """
+    """Transition operation
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: Transition type, the values u200bu200bare:
+<ul>
+<li>Image transition operation, used for transition processing between two video clip images:
+<ul>
+<li>ImageFadeInFadeOut: image fade in and fade out. </li>
+<li>BowTieHorizontal: horizontal bow tie. </li>
+<li>BowTieVertical: vertical bow tie. </li>
+<li>ButterflyWaveScrawler: Shake. </li>
+<li>Cannabisleaf: maple leaf. </li>
+<li>Circle: Arc retraction. </li>
+<li>CircleCrop: Circles gather together. </li>
+<li>Circleopen: ellipse gathering. </li>
+<li>Crosswarp: Horizontal warping. </li>
+<li>Cube: Cube. </li>
+<li>DoomScreenTransition: Curtain. </li>
+<li>Doorway: Porch. </li>
+<li>Dreamy: Wave. </li>
+<li>DreamyZoom: Horizontal zoom. </li>
+<li>FilmBurn: Fire Burning Cloud. </li>
+<li>GlitchMemories: Glitch. </li>
+<li>Heart: heart shape. </li>
+<li>InvertedPageCurl: Page turning. </li>
+<li>Luma: Corrosion. </li>
+<li>Mosaic: Nine-square grid. </li>
+<li>Pinwheel: Windmill. </li>
+<li>PolarFunction: elliptical diffusion. </li>
+<li>PolkaDotsCurtain: Arc diffusion. </li>
+<li>Radial: radar scanning </li>
+<li>RotateScaleFade: up and down. </li>
+<li>Squeeze: gather up and down. </li>
+<li>Swap: zoom in and switch. </li>
+<li>Swirl: spiral. </li>
+<li>UndulatingBurnOutSwirl: Water spreading. </li>
+<li>Windowblinds: blinds. </li>
+<li>WipeDown: Wrap downward. </li>
+<li>WipeLeft: Wrap to the left. </li>
+<li>WipeRight: Wrap to the right. </li>
+<li>WipeUp: Wrap up. </li>
+<li>ZoomInCircles: Water ripples. </li>
+</ul>
+</li>
+<li>Audio transition operation, used for transition processing between two audio clips:
+<ul>
+<li>AudioFadeInFadeOut : The sound fades in and out. </li>
+</ul>
+</li>
+</ul>
         :type Type: str
         """
         self._Type = None
@@ -53439,7 +57353,7 @@ class UserAgentFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: UserAgent blacklist and whitelist configuration switch, the values u200bu200bare: <li>on: on; </li> <li>off: off. </li>
         :type Switch: str
         :param _FilterRules: UA blacklist/whitelist effect rule list
         :type FilterRules: list of UserAgentFilterRule
@@ -53489,13 +57403,13 @@ class UserAgentFilterRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FilterType: 
+        :param _FilterType: UA blacklist type: <li>whitelist: whitelist;</li> <li>blacklist: blacklist. </li>
         :type FilterType: str
         :param _UserAgents: UserAgent list.
         :type UserAgents: list of str
-        :param _RuleType: 
+        :param _RuleType: Rule type: <li>all: valid for all files;</li> <li>file: valid for specified file suffix;</li> <li>directory: valid for specified path;</li> <li>path: specified absolute The path takes effect. </li>
         :type RuleType: str
-        :param _RulePaths: 
+        :param _RulePaths: Matching content under the corresponding type of RuleType: <li>Fill in * when all is used;</li> <li>Fill in suffix name when file is used, such as jpg, txt;</li> <li>Fill in path when directory is used, such as /xxx/ test/;</li> <li>Fill in the absolute path when path is specified, such as /xxx/test.html. </li>
         :type RulePaths: list of str
         """
         self._FilterType = None
@@ -54110,6 +58024,92 @@ Up to 10 labels are allowed, each containing no more than 16 characters.
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class VerifyDomainRecordRequest(AbstractModel):
+    """VerifyDomainRecord request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: Need to access the VOD acceleration domain name.
+        :type Domain: str
+        :param _VerifyType: VerifyType:
+<li>dns: DNS Parse verification; </li>
+<li>fIle: Document verification.</li>
+
+Default value: dns.
+        :type VerifyType: str
+        """
+        self._Domain = None
+        self._VerifyType = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def VerifyType(self):
+        return self._VerifyType
+
+    @VerifyType.setter
+    def VerifyType(self, VerifyType):
+        self._VerifyType = VerifyType
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._VerifyType = params.get("VerifyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyDomainRecordResponse(AbstractModel):
+    """VerifyDomainRecord response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Whether the verification is successful.
+        :type Result: bool
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class VideoDenoiseInfo(AbstractModel):
@@ -54763,6 +58763,76 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = ImageTransform()
                 obj._deserialize(item)
                 self._ImageOperations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConfigureInfo(AbstractModel):
+    """Control parameters for audio (silence, bass, pop) detection.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Audio (mute, bass, pop) detection switch, optional values: 
+<li>ON: on; </li>
+<li>OFF: off. </li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConfigureInfoForUpdate(AbstractModel):
+    """Control parameters for audio (silence, bass, pop) detection.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Audio (mute, bass, pop) detection switch, optional values: 
+<li>ON: on; </li>
+<li>OFF: off. </li>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

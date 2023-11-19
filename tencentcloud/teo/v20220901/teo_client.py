@@ -26,6 +26,29 @@ class TeoClient(AbstractClient):
     _service = 'teo'
 
 
+    def BindSecurityTemplateToEntity(self, request):
+        """This API is used to bind/unbind a domain name to/from a specific policy template.
+
+        :param request: Request instance for BindSecurityTemplateToEntity.
+        :type request: :class:`tencentcloud.teo.v20220901.models.BindSecurityTemplateToEntityRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.BindSecurityTemplateToEntityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindSecurityTemplateToEntity", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindSecurityTemplateToEntityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindSharedCNAME(self, request):
         """This API is used to bind/unbind a domain name to/from a shared CNAME. It is now only available to beta users.
 
@@ -190,7 +213,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateOriginGroup(self, request):
-        """This API is used to create an origin group.
+        """This API is used to create an origin group for easy management. The created origin server group can be used for **adding acceleration domain names** and **layer-4 proxy configuration**.
 
         :param request: Request instance for CreateOriginGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateOriginGroupRequest`
@@ -470,7 +493,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteOriginGroup(self, request):
-        """This API is used to delete an origin group.
+        """This API is used to delete an origin group. Note that an origin group can not be deleted if it is referenced by services (e.g. L4 Proxy, domain name service, load balancing, rule engines).
 
         :param request: Request instance for DeleteOriginGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteOriginGroupRequest`
@@ -998,6 +1021,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSecurityTemplateBindings(self, request):
+        """This API is used to query bindings of a policy template.
+
+        :param request: Request instance for DescribeSecurityTemplateBindings.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityTemplateBindingsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityTemplateBindingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityTemplateBindings", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityTemplateBindingsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTimingL4Data(self, request):
         """This API is used to query the list of L4 traffic data recorded over time.
 
@@ -1438,7 +1484,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyOriginGroup(self, request):
-        """This API is used to modify an origin group.
+        """This API is used to modify the configuration of an origin group. The original configuration will be overwritten.
 
         :param request: Request instance for ModifyOriginGroup.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyOriginGroupRequest`
