@@ -476,27 +476,21 @@ class CreateStreamPackageHarvestJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: Task ID, a globally unique identifier, ID can contain up to 128 characters. Supported characters are numbers, letters, underscores (_), and dashes (-).
+        :param _ID: HarvestJob ID, a globally unique identifier.
         :type ID: str
         :param _ChannelName: The associated channel name.
         :type ChannelName: str
-        :param _EndpointName: The associated endpoint name, StreamPackage only supports harvesting content from HLS and DASH endpoints that have startover turned on.
+        :param _EndpointName: The associated endpoint name.
         :type EndpointName: str
-        :param _TimeFormat: Time format, supports the following types: 
-1. Epoch seconds 
-2. ISO-8601.
+        :param _TimeFormat: Time format, supports the following types: 1. Epoch seconds 2. ISO-8601
         :type TimeFormat: str
-        :param _StartTime: Task start time supports two formats for TimeFormat input: 
-1. Epoch seconds: The input box is a numeric input box, and only positive integers can be entered. 
-2. ISO-8601: The supported format is ISO time, for example: 2023-08-01T10:00:00+08:00.
+        :param _StartTime: Task start time supports two formats for TimeFormat input: 1. Epoch seconds: The input box is a numeric input box, and only positive integers can be entered. 2. ISO-8601: The supported format is ISO time, for example: 2023-08-01T10:00:00+08:00.
         :type StartTime: str
-        :param _EndTime: Task end time supports two formats for TimeFormat input: 
-1. Epoch seconds: The input box is a numeric input box, and only positive integers can be entered. 
-2. ISO-8601: The supported format is ISO time, for example: 2023-08-01T10:00:00+08:00.
+        :param _EndTime: Task end time supports two formats for TimeFormat input: 1. Epoch seconds: The input box is a numeric input box, and only positive integers can be entered. 2. ISO-8601: The supported format is ISO time, for example: 2023-08-01T10:00:00+08:00.
         :type EndTime: str
-        :param _Destination: The COS bucket address where the recording file is stored in COS, format: https://{Bucket_name}-{AppId}.cos.{Region}.myqcloud.com/.
+        :param _Destination: The path where the recording file is stored in Cos.
         :type Destination: str
-        :param _Manifest: The path in the cos bucket and identifier for the parent manifest for the live-to-VOD asset, fotmat: {path 1}/xxx/{path n}/{name}.m3u8.
+        :param _Manifest: The file name of the recording file stored in Cos.
         :type Manifest: str
         """
         self._ID = None
@@ -800,7 +794,7 @@ class DeleteStreamPackageHarvestJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: Task ID, a globally unique identifier.
+        :param _ID: HarvestJob ID, a globally unique identifier.
         :type ID: str
         """
         self._ID = None
@@ -858,7 +852,7 @@ class DeleteStreamPackageHarvestJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IDs: Task IDs, id is a globally unique identifier.
+        :param _IDs: HarvestJob IDs, id is a globally unique identifier.
         :type IDs: list of str
         """
         self._IDs = None
@@ -1124,7 +1118,7 @@ class DescribeStreamPackageHarvestJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: Task ID, a globally unique identifier.
+        :param _ID: HarvestJob ID, a globally unique identifier.
         :type ID: str
         """
         self._ID = None
@@ -1444,13 +1438,13 @@ class EndpointInfo(AbstractModel):
 
 
 class HarvestJobResp(AbstractModel):
-    """HarvestJob Response parameter structure
+    """HarvestJob response info.
 
     """
 
     def __init__(self):
         r"""
-        :param _ID: Job ID, a globally unique identifier.
+        :param _ID: HarvestJob ID, a globally unique identifier.
         :type ID: str
         :param _ChannelName: The associated channel name.
         :type ChannelName: str
@@ -1458,9 +1452,9 @@ class HarvestJobResp(AbstractModel):
         :type EndpointName: str
         :param _TimeFormat: Time format, supports the following types: 1. Epoch seconds 2. ISO-8601
         :type TimeFormat: str
-        :param _StartTime: Job start time.
+        :param _StartTime: HarvestJob start time.
         :type StartTime: str
-        :param _EndTime: Job end time.
+        :param _EndTime: HarvestJob end time.
         :type EndTime: str
         :param _Destination: The path where the recording file is stored in COS.
         :type Destination: str
@@ -1468,9 +1462,9 @@ class HarvestJobResp(AbstractModel):
         :type Manifest: str
         :param _Status: The task status is divided into running: Running, execution completed: Completed, and execution failure: Failed.
         :type Status: str
-        :param _ErrMessage: Job error message.
+        :param _ErrMessage: HarvestJob error message.
         :type ErrMessage: str
-        :param _CreateTime: Job creation time, timestamp in seconds.
+        :param _CreateTime: HarvestJob creation time, timestamp in seconds.
         :type CreateTime: int
         :param _ChannelId: The associated ChannelID.
         :type ChannelId: str
