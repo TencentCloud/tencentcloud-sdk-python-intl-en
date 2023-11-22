@@ -469,6 +469,168 @@ class CreateStreamPackageChannelResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateStreamPackageHarvestJobRequest(AbstractModel):
+    """CreateStreamPackageHarvestJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: Task ID, a globally unique identifier, ID can contain up to 128 characters. Supported characters are numbers, letters, underscores (_), and dashes (-).
+        :type ID: str
+        :param _ChannelName: The associated channel name.
+        :type ChannelName: str
+        :param _EndpointName: The associated endpoint name, StreamPackage only supports harvesting content from HLS and DASH endpoints that have startover turned on.
+        :type EndpointName: str
+        :param _TimeFormat: Time format, supports the following types: 
+1. Epoch seconds 
+2. ISO-8601.
+        :type TimeFormat: str
+        :param _StartTime: Task start time supports two formats for TimeFormat input: 
+1. Epoch seconds: The input box is a numeric input box, and only positive integers can be entered. 
+2. ISO-8601: The supported format is ISO time, for example: 2023-08-01T10:00:00+08:00.
+        :type StartTime: str
+        :param _EndTime: Task end time supports two formats for TimeFormat input: 
+1. Epoch seconds: The input box is a numeric input box, and only positive integers can be entered. 
+2. ISO-8601: The supported format is ISO time, for example: 2023-08-01T10:00:00+08:00.
+        :type EndTime: str
+        :param _Destination: The COS bucket address where the recording file is stored in COS, format: https://{Bucket_name}-{AppId}.cos.{Region}.myqcloud.com/.
+        :type Destination: str
+        :param _Manifest: The path in the cos bucket and identifier for the parent manifest for the live-to-VOD asset, fotmat: {path 1}/xxx/{path n}/{name}.m3u8.
+        :type Manifest: str
+        """
+        self._ID = None
+        self._ChannelName = None
+        self._EndpointName = None
+        self._TimeFormat = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Destination = None
+        self._Manifest = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ChannelName(self):
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
+    @property
+    def EndpointName(self):
+        return self._EndpointName
+
+    @EndpointName.setter
+    def EndpointName(self, EndpointName):
+        self._EndpointName = EndpointName
+
+    @property
+    def TimeFormat(self):
+        return self._TimeFormat
+
+    @TimeFormat.setter
+    def TimeFormat(self, TimeFormat):
+        self._TimeFormat = TimeFormat
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Destination(self):
+        return self._Destination
+
+    @Destination.setter
+    def Destination(self, Destination):
+        self._Destination = Destination
+
+    @property
+    def Manifest(self):
+        return self._Manifest
+
+    @Manifest.setter
+    def Manifest(self, Manifest):
+        self._Manifest = Manifest
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._ChannelName = params.get("ChannelName")
+        self._EndpointName = params.get("EndpointName")
+        self._TimeFormat = params.get("TimeFormat")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Destination = params.get("Destination")
+        self._Manifest = params.get("Manifest")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamPackageHarvestJobResponse(AbstractModel):
+    """CreateStreamPackageHarvestJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: HarvestJob information.
+        :type Info: :class:`tencentcloud.mdp.v20200527.models.HarvestJobResp`
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = HarvestJobResp()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteStreamPackageChannelEndpointsRequest(AbstractModel):
     """DeleteStreamPackageChannelEndpoints request structure.
 
@@ -628,6 +790,122 @@ class DeleteStreamPackageChannelsResponse(AbstractModel):
                 obj = ChannelInfo()
                 obj._deserialize(item)
                 self._FailInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageHarvestJobRequest(AbstractModel):
+    """DeleteStreamPackageHarvestJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: Task ID, a globally unique identifier.
+        :type ID: str
+        """
+        self._ID = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageHarvestJobResponse(AbstractModel):
+    """DeleteStreamPackageHarvestJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageHarvestJobsRequest(AbstractModel):
+    """DeleteStreamPackageHarvestJobs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IDs: Task IDs, id is a globally unique identifier.
+        :type IDs: list of str
+        """
+        self._IDs = None
+
+    @property
+    def IDs(self):
+        return self._IDs
+
+    @IDs.setter
+    def IDs(self, IDs):
+        self._IDs = IDs
+
+
+    def _deserialize(self, params):
+        self._IDs = params.get("IDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageHarvestJobsResponse(AbstractModel):
+    """DeleteStreamPackageHarvestJobs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -839,6 +1117,213 @@ Note: this field may return `null`, indicating that no valid value was found.
         self._RequestId = params.get("RequestId")
 
 
+class DescribeStreamPackageHarvestJobRequest(AbstractModel):
+    """DescribeStreamPackageHarvestJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: Task ID, a globally unique identifier.
+        :type ID: str
+        """
+        self._ID = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageHarvestJobResponse(AbstractModel):
+    """DescribeStreamPackageHarvestJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: HarvestJob information.
+        :type Info: :class:`tencentcloud.mdp.v20200527.models.HarvestJobResp`
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = HarvestJobResp()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageHarvestJobsRequest(AbstractModel):
+    """DescribeStreamPackageHarvestJobs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelName: The bound channel name. If not passed, all channels will be queried by default.
+        :type ChannelName: str
+        :param _PageNum: Page number.
+        :type PageNum: int
+        :param _PageSize: PageSize.
+        :type PageSize: int
+        """
+        self._ChannelName = None
+        self._PageNum = None
+        self._PageSize = None
+
+    @property
+    def ChannelName(self):
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ChannelName = params.get("ChannelName")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageHarvestJobsResponse(AbstractModel):
+    """DescribeStreamPackageHarvestJobs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: HarvestJob information list.
+        :type Infos: list of HarvestJobResp
+        :param _PageNum: Page number.
+        :type PageNum: int
+        :param _PageSize: PageSize
+        :type PageSize: int
+        :param _TotalNum: TotalNum
+        :type TotalNum: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = HarvestJobResp()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._RequestId = params.get("RequestId")
+
+
 class EndpointAuthInfo(AbstractModel):
     """The authentication information of channel endpoints.
 
@@ -948,6 +1433,183 @@ class EndpointInfo(AbstractModel):
         if params.get("AuthInfo") is not None:
             self._AuthInfo = EndpointAuthInfo()
             self._AuthInfo._deserialize(params.get("AuthInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HarvestJobResp(AbstractModel):
+    """HarvestJob Response parameter structure
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: Job ID, a globally unique identifier.
+        :type ID: str
+        :param _ChannelName: The associated channel name.
+        :type ChannelName: str
+        :param _EndpointName: The associated endpoint name.
+        :type EndpointName: str
+        :param _TimeFormat: Time format, supports the following types: 1. Epoch seconds 2. ISO-8601
+        :type TimeFormat: str
+        :param _StartTime: Job start time.
+        :type StartTime: str
+        :param _EndTime: Job end time.
+        :type EndTime: str
+        :param _Destination: The path where the recording file is stored in COS.
+        :type Destination: str
+        :param _Manifest: The file name of the recording file stored in COS.
+        :type Manifest: str
+        :param _Status: The task status is divided into running: Running, execution completed: Completed, and execution failure: Failed.
+        :type Status: str
+        :param _ErrMessage: Job error message.
+        :type ErrMessage: str
+        :param _CreateTime: Job creation time, timestamp in seconds.
+        :type CreateTime: int
+        :param _ChannelId: The associated ChannelID.
+        :type ChannelId: str
+        :param _Region: The region corresponding to the harvest job.
+        :type Region: str
+        """
+        self._ID = None
+        self._ChannelName = None
+        self._EndpointName = None
+        self._TimeFormat = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Destination = None
+        self._Manifest = None
+        self._Status = None
+        self._ErrMessage = None
+        self._CreateTime = None
+        self._ChannelId = None
+        self._Region = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ChannelName(self):
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
+    @property
+    def EndpointName(self):
+        return self._EndpointName
+
+    @EndpointName.setter
+    def EndpointName(self, EndpointName):
+        self._EndpointName = EndpointName
+
+    @property
+    def TimeFormat(self):
+        return self._TimeFormat
+
+    @TimeFormat.setter
+    def TimeFormat(self, TimeFormat):
+        self._TimeFormat = TimeFormat
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Destination(self):
+        return self._Destination
+
+    @Destination.setter
+    def Destination(self, Destination):
+        self._Destination = Destination
+
+    @property
+    def Manifest(self):
+        return self._Manifest
+
+    @Manifest.setter
+    def Manifest(self, Manifest):
+        self._Manifest = Manifest
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrMessage(self):
+        return self._ErrMessage
+
+    @ErrMessage.setter
+    def ErrMessage(self, ErrMessage):
+        self._ErrMessage = ErrMessage
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._ChannelName = params.get("ChannelName")
+        self._EndpointName = params.get("EndpointName")
+        self._TimeFormat = params.get("TimeFormat")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Destination = params.get("Destination")
+        self._Manifest = params.get("Manifest")
+        self._Status = params.get("Status")
+        self._ErrMessage = params.get("ErrMessage")
+        self._CreateTime = params.get("CreateTime")
+        self._ChannelId = params.get("ChannelId")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

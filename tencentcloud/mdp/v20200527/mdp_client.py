@@ -95,6 +95,29 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateStreamPackageHarvestJob(self, request):
+        """Create HarvestJob.
+
+        :param request: Request instance for CreateStreamPackageHarvestJob.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageHarvestJobRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.CreateStreamPackageHarvestJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamPackageHarvestJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStreamPackageHarvestJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteStreamPackageChannelEndpoints(self, request):
         """This API is used to delete endpoints from a StreamPackage channel in batches.
 
@@ -141,6 +164,52 @@ class MdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteStreamPackageHarvestJob(self, request):
+        """Delete HarvestJob.
+
+        :param request: Request instance for DeleteStreamPackageHarvestJob.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageHarvestJobRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageHarvestJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageHarvestJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageHarvestJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteStreamPackageHarvestJobs(self, request):
+        """Deleting HarvestJobs in Batch.
+
+        :param request: Request instance for DeleteStreamPackageHarvestJobs.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageHarvestJobsRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DeleteStreamPackageHarvestJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageHarvestJobs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageHarvestJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeStreamPackageChannel(self, request):
         """This API is used to query the information of a StreamPackage channel.
 
@@ -178,6 +247,52 @@ class MdpClient(AbstractClient):
             body = self.call("DescribeStreamPackageChannels", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeStreamPackageChannelsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageHarvestJob(self, request):
+        """Query HarvestJob.
+
+        :param request: Request instance for DescribeStreamPackageHarvestJob.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageHarvestJobRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageHarvestJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageHarvestJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageHarvestJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageHarvestJobs(self, request):
+        """Batch query HarvestJob.
+
+        :param request: Request instance for DescribeStreamPackageHarvestJobs.
+        :type request: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageHarvestJobsRequest`
+        :rtype: :class:`tencentcloud.mdp.v20200527.models.DescribeStreamPackageHarvestJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageHarvestJobs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageHarvestJobsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

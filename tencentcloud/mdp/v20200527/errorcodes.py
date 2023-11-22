@@ -47,6 +47,9 @@ INVALIDPARAMETER_NAME = 'InvalidParameter.Name'
 # Failed to find the channel/input/output.
 INVALIDPARAMETER_NOTFOUND = 'InvalidParameter.NotFound'
 
+# 
+INVALIDPARAMETER_OUTPUTGROUPS = 'InvalidParameter.OutputGroups'
+
 # Invalid `PageNum`.
 INVALIDPARAMETER_PAGENUM = 'InvalidParameter.PageNum'
 
