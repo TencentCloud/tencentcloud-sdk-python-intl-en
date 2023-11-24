@@ -5008,11 +5008,11 @@ class CreateSharedCNAMERequest(AbstractModel):
         r"""
         :param _ZoneId: ID of the site to which the shared CNAME belongs.	
         :type ZoneId: str
-        :param _SharedCNAMEPrefix: Prefix of the shared CNAME (up to 50 characters). Format: "test-api", "test-api.com". 
+        :param _SharedCNAMEPrefix: Shared CNAME prefix. Enter a valid domain name prefix, such as "test-api" and "test-api.com". A maximum of 50 characters are allowed. 
 
-The complete format of a shared CNAME: <Custom Prefix> + <12-bit random string in ZoneId> + "share.dnse[0-5].com"
+Complete format of the shared CNAME: '<Custom prefix>+<A 12-character random string in ZoneId>+share.dnse[0-5].com'. 
 
-For example, if the prefix is `example.com`, the generated shared CNAME is `example.com.sai2ig51kaa5.share.dnse2.com`.
+For example, if the prefix is example.com, EdgeOne will create the shared CNAME: example.com.sai2ig51kaa5.share.dnse2.com.
         :type SharedCNAMEPrefix: str
         :param _Description: Description. It supports 1-50 characters.
         :type Description: str
@@ -5067,7 +5067,7 @@ class CreateSharedCNAMEResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SharedCNAME: Shared CNAME. Format: <Custom prefix> + <12-bit random string in ZoneId> + "share.dnse[0-5].com"
+        :param _SharedCNAME: Shared CNAME. Format: '<Custom prefix>+<A 12-character random string in ZoneId>+share.dnse[0-5].com'.
         :type SharedCNAME: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -8130,10 +8130,9 @@ class DescribeOverviewL7DataRequest(AbstractModel):
 <li>`l7Flow_flux`: Upstream and downstream traffic used for client access</li>
 <li>`l7Flow_bandwidth`: Upstream and downstream bandwidth used for client access</li>
         :type MetricNames: list of str
-        :param _ZoneIds: List of sites
-Enter the IDs of sites to query. The maximum query period is determined by the <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> of the bound plan. If it’s not specified, all sites are selected by default, and the query period must be within the last 30 days. 
+        :param _ZoneIds: ZoneId set. This parameter is required.
         :type ZoneIds: list of str
-        :param _Domains: List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.
+        :param _Domains: Queried domain name set. This parameter has been discarded.
         :type Domains: list of str
         :param _Protocol: The protocol type. Values:
 <li>`http`: HTTP protocol;</li>
@@ -8147,10 +8146,11 @@ Enter the IDs of sites to query. The maximum query period is determined by the <
 <li>`hour`: 1 hour;</li>
 <li>`day`: One day</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.
         :type Interval: str
-        :param _Filters: Filters
-<li>`socket`:<br>u2003u2003 Filter by the specified <strong>HTTP protocol type</strong><br>u2003u2003 Values:<br>u2003u2003 `HTTP`: HTTP protocol;<br>u2003u2003 `HTTPS`: HTTPS protocol;<br>u2003u2003 `QUIC`: QUIC protocol.</li>
-<li>`tagKey`:<br>u2003u2003 Filter by the specified <strong>tag key</strong></li>
-<li>`tagValue`<br>u2003u2003 Filter by the specified <strong>tag value</strong></li>
+        :param _Filters: Filtering condition. The detailed filtering condition key values are as follows: 
+<li>socket<br>    Filter based on [<strong>HTTP protocol type</strong>]. <br>    Corresponding value options: <br>    HTTP: HTTP protocol；<br>    HTTPS: HTTPS protocol;<br>    QUIC: QUIC protocol. </li>
+<li>domains<br>    Filter based on [<strong>domain name</strong>]. </li>
+<li>tagKey<br>    Filter based on [<strong>Tag Key</strong>]. </li>
+<li>tagValue<br>    Filter based on [<strong>Tag Value</strong>]. </li>
         :type Filters: list of QueryCondition
         :param _Area: Geolocation scope. Values:
 <li>`overseas`: Regions outside the Chinese mainland</li>
@@ -8328,6 +8328,9 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ZoneId: ZoneId. 
+The parameter is required.
+        :type ZoneId: str
         :param _StartTime: Start time of the query.
         :type StartTime: str
         :param _EndTime: End time of the query.
@@ -8336,15 +8339,23 @@ class DescribePrefetchTasksRequest(AbstractModel):
         :type Offset: int
         :param _Limit: Limit on paginated queries. Default value: `20`. Maximum value: `1000`.
         :type Limit: int
-        :param _Filters: Filter criteria. Each filter criteria can have up to 20 entries.
-<li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-1379afjk91u32h (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`job-id`:<br>   Filter by <strong>task ID</strong>, such as 1379afjk91u32h (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`target`:<br>   Filter by <strong>target resource</strong>, such as http://www.qq.com/1.txt (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`domains`:<br>   Filter by <strong>domain name</strong>, such as www.qq.com<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`statuses`:<br>   Filter by <strong>task status</strong><br>   Required: No<br>   Fuzzy query: Not supported<br>   Values:<br>   `processing`: The task is in progress.<br>   `success`: The task succeeded.<br>   `failed`: The task failed.<br>   `timeout`: The task timed out.</li>
+        :param _Filters: Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: <li>job-id<br>    Filter based on [<strong>task ID</strong>]. job-id format: 1379afjk91u32h. Multiple values are not supported. <br>    Type: String<br>    Required: No. <br>    Fuzz query: Not supported. </li><li>target<br>    Filter based on [<strong>target resource information</strong>]. target format: http://www.qq.com/1.txt. Multiple values are not supported. <br>    Type: String<br>    Required: No. <br>    Fuzz query: Not supported. </li><li>domains<br>    Filter based on [<strong>domain name</strong>]. domains format: www.qq.com. <br>    Type: String<br>    Required: No. <br>    Fuzz query: Not supported. </li><li>statuses<br>    Filter based on [<strong>task status</strong>]. <br>    Required: No<br>    Fuzz query: Not supported. <br>    Options:<br>    processing: Processing<br>    success: Success<br>    failed: Failure<br>    timeout: Timeout</li>
         :type Filters: list of AdvancedFilter
         """
+        self._ZoneId = None
         self._StartTime = None
         self._EndTime = None
         self._Offset = None
         self._Limit = None
         self._Filters = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
 
     @property
     def StartTime(self):
@@ -8388,6 +8399,7 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Offset = params.get("Offset")
@@ -8469,7 +8481,8 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: Disused. Use "zone-id" in "Filters" instead.
+        :param _ZoneId: ZoneId. 
+The parameter is required.
         :type ZoneId: str
         :param _StartTime: Start time of the query.
         :type StartTime: str
@@ -8479,7 +8492,7 @@ class DescribePurgeTasksRequest(AbstractModel):
         :type Offset: int
         :param _Limit: Limit on paginated queries. Default value: `20`. Maximum value: `1000`.
         :type Limit: int
-        :param _Filters: Filter criteria. Each filter criteria can have up to 20 entries. <li>`zone-id`:<br>   Filter by <strong>site ID</strong>, such as zone-xxx (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`job-id`:<br>   Filter by <strong>task ID</strong>, such as 1379afjk91u32h (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`target`:<br>   Filter by <strong>target resource</strong>, such as http://www.qq.com/1.txt and tag1<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`domains`:<br>   Filter by <strong>domain name</strong>, such as www.qq.com<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported</li><li>`statuses`:<br>   Filter by <strong>task status</strong><br>   Required: No<br>   Fuzzy query: Not supported<br>   Values:<br>   `processing`: The task is in progress.<br>   `success`: The task succeeded.<br>   `failed`: The task failed.<br>   `timeout`: The task timed out.<li>`type`:<br>   Filter by <strong>purging mode</strong> (up to one entry)<br>   Type: String<br>   Required: No<br>   Fuzzy query: Not supported<br>   Values:<br>   `purge_url`: Purge by URL.<br>   `purge_prefix`: Purge by prefix.<br>   `purge_all`: Purge all caches.<br>   `purge_host`: Purge by hostname.<br>   `purge_cache_tag`: Purge by cache tag.</li>
+        :param _Filters: Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: <li>job-id<br>    Filter based on [<strong>task ID</strong>]. job-id format: 1379afjk91u32h. Multiple values are not supported. <br>    Type: String<br>    Required: No<br>    Fuzz query: Not supported.</li><li>target<br>    Filter based on: [strong>target resource information</strong>. target format: http://www.qq.com/1.txt or tag1. Multiple values are not supported.<br>    Type: String<br>    Required: No<br>    Fuzz query: Not supported.</li><li>domains<br>    Filter based on [<strong>domain name</strong>]. domains format: www.qq.com<br>    Type: String<br>    Required: No<br>    Fuzz query: Not supported. </li><li>statuses<br>    Filter based on <strong>task status</strong>.<br>    Required: No<br>    Fuzz query: Not supported. <br>    Options:<br>    processing: Processing<br>    success: Success<br>    failed: Failure<br>    timeout: Timeout</li><li>type<br>    Filter based on [<strong>cleared cache type</strong>]. Multiple values are not supported. <br>    Type: String<br>    Required: No<br>    Fuzz query: Not supported.<br>    Options:<br>    purge_url: URL<br>    purge_prefix: Prefix<br>    purge_all: All cache content<br>    purge_host: Hostname<br>    purge_cache_tag: CacheTag</li>
         :type Filters: list of AdvancedFilter
         """
         self._ZoneId = None
@@ -8871,16 +8884,13 @@ class DescribeTimingL4DataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: The end time.
         :type EndTime: str
-        :param _MetricNames: Metric to query. Values:
-<li>`l4Flow_connections`: Access connections;</li>
-<li>`l4Flow_flux`: Access traffic;</li>
-<li>`l4Flow_inFlux`: Inbound traffic;</li>
-<li>`l4Flow_outFlux`: Outbound traffic;</li>
-<li>`l4Flow_outPkt`: Outbound packets.</li>
+        :param _MetricNames: Query indicator. Values: 
+<li>l4Flow_connections: Number of access connections;</li>
+<li>l4Flow_flux: Total access traffic;</li>
+<li>l4Flow_inFlux: Ingress access traffic;</li>
+<li>l4Flow_outFlux: Egress access traffic. </li>
         :type MetricNames: list of str
-        :param _ZoneIds: List of sites
-If it’s not specified, all sites are selected by default, and the query period must be within the last 30 days. 
-Enter the IDs of sites to query. The maximum query period is determined by the <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> of the bound plan. 
+        :param _ZoneIds: ZoneId set. This parameter is required.
         :type ZoneIds: list of str
         :param _ProxyIds: List of L4 proxy IDs. All L4 proxies will be selected if this field is not specified.
         :type ProxyIds: list of str
@@ -9064,17 +9074,16 @@ class DescribeTimingL7AnalysisDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: The end time.
         :type EndTime: str
-        :param _MetricNames: The metric to query. Values:
-<li>`l7Flow_outFlux`: Traffic used for EdgeOne responses</li>
-<li>`l7Flow_inFlux`: Traffic used for EdgeOne requests</li>
-<li>`l7Flow_outBandwidth`: Bandwidth used for EdgeOne responses</li>
-<li>`l7Flow_inBandwidth`: Bandwidth used for EdgeOne requests</li>
-<li>`l7Flow_request`: Access requests</li>
-<li>`l7Flow_flux`: Upstream and downstream traffic used for client access</li>
-<li>`l7Flow_bandwidth`: Upstream and downstream bandwidth used for client access</li>
+        :param _MetricNames: Indicator list. Values: 
+<li>l7Flow_outFlux: Edgeone response traffic;</li>
+<li>l7Flow_inFlux: Edgeone request traffic;</li>
+<li>l7Flow_outBandwidth: Edgeone response bandwidth;</li>
+<li>l7Flow_inBandwidth: Edgeone request bandwidth;</li>
+<li>l7Flow_request: Number of access requests;</li>
+<li>l7Flow_flux: Uplink + downlink traffic of access requests;< li>
+<li>l7Flow_bandwidth: Uplink + downlink bandwidth of access requests. </li>
         :type MetricNames: list of str
-        :param _ZoneIds: List of sites
-Enter the IDs of sites to query. The maximum query period is determined by the <a href="https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1#edgeone-.E5.A5.97.E9.A4.90">max data query period</a> of the bound plan. If it’s not specified, all sites are selected by default, and the query period must be within the last 30 days. 
+        :param _ZoneIds: ZoneId set. This parameter is required.
         :type ZoneIds: list of str
         :param _Interval: The query granularity. Values:
 <li>`min`: 1 minute;</li>
@@ -9266,7 +9275,7 @@ class DescribeTimingL7CacheDataRequest(AbstractModel):
 <li>`l7Cache_request`: Response requests.</li>
 <li>`l7Cache_outBandwidth`: Response bandwidth.</li>
         :type MetricNames: list of str
-        :param _ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
+        :param _ZoneIds: ZoneId set. This parameter is required.
         :type ZoneIds: list of str
         :param _Filters: Filter conditions. See below for details: 
 <li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>
@@ -9466,7 +9475,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
 <li>`l7Flow_request_us_os`: Query requests by OS.</li>
 
         :type MetricName: str
-        :param _ZoneIds: (Required) List of sites. No query results are returned if this field is not specified.
+        :param _ZoneIds: ZoneId set. This parameter is required.
         :type ZoneIds: list of str
         :param _Limit: Queries the top n rows of data. Maximum value: 1000. Top 10 rows of data will be queried if this field is not specified.
         :type Limit: int
@@ -9671,7 +9680,7 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
 <li>`l7Cache_outFlux_resourceType`: Resource type;</li>
 <li>`l7Cache_outFlux_statusCode`: Status code.</li>
         :type MetricName: str
-        :param _ZoneIds: Specifies sites by ID. All sites will be selected if this field is not specified.
+        :param _ZoneIds: ZoneId set. This parameter is required.
         :type ZoneIds: list of str
         :param _Limit: Top rows of data to query. Maximum value: 1000. Top 10 rows of data are queried if this field is not specified.
         :type Limit: int
@@ -10558,7 +10567,7 @@ class DownloadL4LogsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: The end time.
         :type EndTime: str
-        :param _ZoneIds: List of sites. This parameter is required. A `null` will be returned if it is left empty.
+        :param _ZoneIds: ZoneId set. This parameter is required.
         :type ZoneIds: list of str
         :param _ProxyIds: List of L4 proxy instance IDs.
         :type ProxyIds: list of str
@@ -10705,7 +10714,7 @@ class DownloadL7LogsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: The end time.
         :type EndTime: str
-        :param _ZoneIds: List of sites. This parameter is required. A `null` will be returned if it is left empty.
+        :param _ZoneIds: ZoneId set. This parameter is required.
         :type ZoneIds: list of str
         :param _Domains: List of subdomain names to be queried. All subdomain names will be selected if this field is not specified.
         :type Domains: list of str
@@ -19071,7 +19080,7 @@ class StandardDebug(AbstractModel):
 <li>`on`: Enable</li>
 <li>`off`: Disable </li>
         :type Switch: str
-        :param _AllowClientIPList: Allowed client source. It supports IPv4/IPv6 addresses and CIDR blocks.
+        :param _AllowClientIPList: Allowed client source. IPv4 and IPv6 addresses and network segments are supported. 0.0.0.0/0 indicates that all IPv4 clients can be debugged, and ::/0 indicates that all IPv6 clients can be debugged.
         :type AllowClientIPList: list of str
         :param _ExpireTime: The time when the standard debugging setting expires. If it is exceeded, this feature u200dbecomes invalid.
         :type ExpireTime: str

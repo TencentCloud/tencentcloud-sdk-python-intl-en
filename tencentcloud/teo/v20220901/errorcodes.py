@@ -194,7 +194,7 @@ INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEZEROLENGTH = 'InvalidParameter.ErrInval
 # ELSE is not supported for origin server modification.
 INVALIDPARAMETER_ERRINVALIDELSEWHENMODIFYORIGINACTIONCONFIGURED = 'InvalidParameter.ErrInvalidElseWhenModifyOriginActionConfigured'
 
-# 
+# Empty condition.
 INVALIDPARAMETER_ERRNILCONDITION = 'InvalidParameter.ErrNilCondition'
 
 # To enable gRPC support, HTTP/2 support must be enabled as well.
@@ -215,7 +215,7 @@ INVALIDPARAMETER_INVALIDACCELERATETYPE = 'InvalidParameter.InvalidAccelerateType
 # Invalid token authentication.
 INVALIDPARAMETER_INVALIDAUTHENTICATION = 'InvalidParameter.InvalidAuthentication'
 
-# 
+# Invalid token authentication expiration time.
 INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPEEXPIRETIME = 'InvalidParameter.InvalidAuthenticationTypeExpireTime'
 
 # Invalid key for token authentication.
@@ -323,6 +323,9 @@ INVALIDPARAMETER_INVALIDORIGIN = 'InvalidParameter.InvalidOrigin'
 # The origin cannot be a private IP or loopback address.
 INVALIDPARAMETER_INVALIDORIGINIP = 'InvalidParameter.InvalidOriginIp'
 
+# Incorrect origin server type.
+INVALIDPARAMETER_INVALIDORIGINTYPE = 'InvalidParameter.InvalidOriginType'
+
 # Invalid parameter.
 INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
 
@@ -377,11 +380,17 @@ INVALIDPARAMETER_INVALIDRULEENGINETARGETSEXTENSION = 'InvalidParameter.InvalidRu
 # Invalid URL in the rule engine condition.
 INVALIDPARAMETER_INVALIDRULEENGINETARGETSURL = 'InvalidParameter.InvalidRuleEngineTargetsUrl'
 
+# Incorrect protocol of the rules. (TCP/UDP).
+INVALIDPARAMETER_INVALIDRULEPROTO = 'InvalidParameter.InvalidRuleProto'
+
 # Invalid origin domain.
 INVALIDPARAMETER_INVALIDSERVERNAME = 'InvalidParameter.InvalidServerName'
 
 # Invalid client IP or CIDR block.
 INVALIDPARAMETER_INVALIDSTANDARDDEBUGCLIENTIP = 'InvalidParameter.InvalidStandardDebugClientIp'
+
+# The AllowClientIPList parameter is mandatory. The IPv4 and IPv6 network segments are supported. 0.0.0.0/0 indicates that all IPv4 clients can be debugged, and ::/0 indicates that all IPv6 clients can be debugged.
+INVALIDPARAMETER_INVALIDSTANDARDDEBUGEMPTYLIST = 'InvalidParameter.InvalidStandardDebugEmptyList'
 
 # The expiration time is exceeded.
 INVALIDPARAMETER_INVALIDSTANDARDDEBUGEXPIRETIMELIMIT = 'InvalidParameter.InvalidStandardDebugExpireTimeLimit'
@@ -428,6 +437,9 @@ INVALIDPARAMETER_ORIGINORIGINGROUPIDISREQUIRED = 'InvalidParameter.OriginOriginG
 # Incorrect origin server format. 
 INVALIDPARAMETER_ORIGINRECORDFORMATERROR = 'InvalidParameter.OriginRecordFormatError'
 
+# Incorrect key format.
+INVALIDPARAMETER_ORIGINTHIRDPARTYPARAMFORMATERROR = 'InvalidParameter.OriginThirdPartyParamFormatError'
+
 # Parameter error: Invalid “End time”. The interval between the start and end time cannot exceed 7 days.
 INVALIDPARAMETER_PARAMETERERROR = 'InvalidParameter.ParameterError'
 
@@ -440,7 +452,7 @@ INVALIDPARAMETER_POSTMAXSIZELIMITEXCEEDED = 'InvalidParameter.PostMaxSizeLimitEx
 # The instance name already exists.
 INVALIDPARAMETER_PROXYNAMEDUPLICATING = 'InvalidParameter.ProxyNameDuplicating'
 
-# 
+# Incorrect origin server information format of the rules.
 INVALIDPARAMETER_RULEORIGINFORMATERROR = 'InvalidParameter.RuleOriginFormatError'
 
 # The origin of the rule does not support multiple domain names.
@@ -455,10 +467,10 @@ INVALIDPARAMETER_RULEORIGINVALUEERROR = 'InvalidParameter.RuleOriginValueError'
 # The rule port already exists.
 INVALIDPARAMETER_RULEPORTDUPLICATING = 'InvalidParameter.RulePortDuplicating'
 
-# 
+# Incorrect port number segment of the rules.
 INVALIDPARAMETER_RULEPORTGROUP = 'InvalidParameter.RulePortGroup'
 
-# 
+# The port number of the rules must be an integer.
 INVALIDPARAMETER_RULEPORTINTEGER = 'InvalidParameter.RulePortInteger'
 
 # Invalid parameter.
@@ -667,6 +679,9 @@ OPERATIONDENIED_ZONEISBINDINGSHAREDCNAME = 'OperationDenied.ZoneIsBindingSharedC
 
 # Error found in the associated custom error page. Please unbind it first.
 OPERATIONDENIED_ZONEISREFERENCECUSTOMERRORPAGE = 'OperationDenied.ZoneIsReferenceCustomErrorPage'
+
+# The zone is disabled.
+OPERATIONDENIED_ZONENOTACTIVE = 'OperationDenied.ZoneNotActive'
 
 # The resource is occupied.
 RESOURCEINUSE = 'ResourceInUse'
