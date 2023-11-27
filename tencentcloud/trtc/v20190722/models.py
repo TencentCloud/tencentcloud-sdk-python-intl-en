@@ -276,6 +276,63 @@ class AudioEncode(AbstractModel):
         
 
 
+class AudioEncodeParams(AbstractModel):
+    """Audio transcoding parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SampleRate: Audio Sample rate, Value range [48000, 44100], unit is Hz.
+        :type SampleRate: int
+        :param _Channel: Audio Channel number, Value range [1,2], 1 means Audio is Mono-channel, 2 means Audio is Dual-channel.
+        :type Channel: int
+        :param _BitRate: Audio Bitrate, Value range [8,500], unit is kbps.
+        :type BitRate: int
+        """
+        self._SampleRate = None
+        self._Channel = None
+        self._BitRate = None
+
+    @property
+    def SampleRate(self):
+        return self._SampleRate
+
+    @SampleRate.setter
+    def SampleRate(self, SampleRate):
+        self._SampleRate = SampleRate
+
+    @property
+    def Channel(self):
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        self._Channel = Channel
+
+    @property
+    def BitRate(self):
+        return self._BitRate
+
+    @BitRate.setter
+    def BitRate(self, BitRate):
+        self._BitRate = BitRate
+
+
+    def _deserialize(self, params):
+        self._SampleRate = params.get("SampleRate")
+        self._Channel = params.get("Channel")
+        self._BitRate = params.get("BitRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioParams(AbstractModel):
     """The audio transcoding parameters for recording.
 
@@ -1683,6 +1740,88 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = ScaleInfomation()
                 obj._deserialize(item)
                 self._ScaleList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamIngestRequest(AbstractModel):
+    """DescribeStreamIngest request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: The SDKAppId of TRTC should be the same as the SDKAppId corresponding to the task room.
+        :type SdkAppId: int
+        :param _TaskId: The unique Id of the task, will return after successfully starting the task.
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamIngestResponse(AbstractModel):
+    """DescribeStreamIngest response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status information. InProgress: Indicates that the current task is in progress. NotExist: Indicates that the current task does not exist. Example value: InProgress
+        :type Status: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -5267,6 +5406,177 @@ class StartPublishCdnStreamResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StartStreamIngestRequest(AbstractModel):
+    """StartStreamIngest request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC's [SdkAppId](https://intl.cloud.tencent.com/document/product/647/46351?from_cn_redirect=1#sdkappid), the same as the SdkAppId corresponding to the Record room.
+        :type SdkAppId: int
+        :param _RoomId: TRTC's [RoomId](https://intl.cloud.tencent.com/document/product/647/46351?from_cn_redirect=1#roomid), the RoomId corresponding to the Record TRTC room.
+        :type RoomId: str
+        :param _RoomIdType: Type of TRTC RoomId. 【*Note】Must be the same as the RoomId type corresponding to the Record room: 0: String type RoomId 1: 32-bit Integer type RoomId (default)
+        :type RoomIdType: int
+        :param _UserId: UserId of the Pull stream Relay Robot, used to enter the room and initiate the Pull stream Relay Task.
+        :type UserId: str
+        :param _UserSig: UserSig corresponding to the Pull stream Relay Robot UserId, i.e., UserId and UserSig are equivalent to the Robot's Login password for entering the room. For the specific Calculation method, please refer to the TRTC [UserSig](https://intl.cloud.tencent.com/document/product/647/45910?from_cn_redirect=1#UserSig) Scheme.
+        :type UserSig: str
+        :param _SourceUrl: 	
+Source URL. Example value: https://a.b/test.mp4
+        :type SourceUrl: list of str
+        :param _PrivateMapKey: TRTC room permission Encryption ticket, only needed when advanced permission control is enabled in the Console. After enabling advanced permission control in the TRTC Console, TRTC's backend service system will verify a so-called [PrivateMapKey] 'Permission ticket', which contains an encrypted RoomId and an encrypted 'Permission bit list'. Since PrivateMapKey contains RoomId, providing only UserSig without PrivateMapKey does not allow entry into the specified room.
+        :type PrivateMapKey: str
+        :param _VideoEncodeParams: Video Codec Parameters. Optional, if not filled, Keep original stream Parameters.
+        :type VideoEncodeParams: :class:`tencentcloud.trtc.v20190722.models.VideoEncodeParams`
+        :param _AudioEncodeParams: Audio Codec Parameters. Optional, if not filled, Keep original stream Parameters.
+        :type AudioEncodeParams: :class:`tencentcloud.trtc.v20190722.models.AudioEncodeParams`
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._RoomIdType = None
+        self._UserId = None
+        self._UserSig = None
+        self._SourceUrl = None
+        self._PrivateMapKey = None
+        self._VideoEncodeParams = None
+        self._AudioEncodeParams = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def RoomIdType(self):
+        return self._RoomIdType
+
+    @RoomIdType.setter
+    def RoomIdType(self, RoomIdType):
+        self._RoomIdType = RoomIdType
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserSig(self):
+        return self._UserSig
+
+    @UserSig.setter
+    def UserSig(self, UserSig):
+        self._UserSig = UserSig
+
+    @property
+    def SourceUrl(self):
+        return self._SourceUrl
+
+    @SourceUrl.setter
+    def SourceUrl(self, SourceUrl):
+        self._SourceUrl = SourceUrl
+
+    @property
+    def PrivateMapKey(self):
+        return self._PrivateMapKey
+
+    @PrivateMapKey.setter
+    def PrivateMapKey(self, PrivateMapKey):
+        self._PrivateMapKey = PrivateMapKey
+
+    @property
+    def VideoEncodeParams(self):
+        return self._VideoEncodeParams
+
+    @VideoEncodeParams.setter
+    def VideoEncodeParams(self, VideoEncodeParams):
+        self._VideoEncodeParams = VideoEncodeParams
+
+    @property
+    def AudioEncodeParams(self):
+        return self._AudioEncodeParams
+
+    @AudioEncodeParams.setter
+    def AudioEncodeParams(self, AudioEncodeParams):
+        self._AudioEncodeParams = AudioEncodeParams
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._RoomIdType = params.get("RoomIdType")
+        self._UserId = params.get("UserId")
+        self._UserSig = params.get("UserSig")
+        self._SourceUrl = params.get("SourceUrl")
+        self._PrivateMapKey = params.get("PrivateMapKey")
+        if params.get("VideoEncodeParams") is not None:
+            self._VideoEncodeParams = VideoEncodeParams()
+            self._VideoEncodeParams._deserialize(params.get("VideoEncodeParams"))
+        if params.get("AudioEncodeParams") is not None:
+            self._AudioEncodeParams = AudioEncodeParams()
+            self._AudioEncodeParams._deserialize(params.get("AudioEncodeParams"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartStreamIngestResponse(AbstractModel):
+    """StartStreamIngest response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: The Task ID of the Pull stream Relay. The Task ID is a unique identifier for a Pull stream Relay lifecycle process, and it loses its meaning when the task ends. The Task ID needs to be saved by the business as a parameter for the next operation on this task.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class StopPublishCdnStreamRequest(AbstractModel):
     """StopPublishCdnStream request structure.
 
@@ -5346,6 +5656,76 @@ class StopPublishCdnStreamResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class StopStreamIngestRequest(AbstractModel):
+    """StopStreamIngest request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: The SDKAppId of TRTC, which is the same as the SDKAppId corresponding to the task's room.
+        :type SdkAppId: int
+        :param _TaskId: The unique Task ID, which will be returned after the task is successfully started.
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopStreamIngestResponse(AbstractModel):
+    """StopStreamIngest response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -6137,6 +6517,87 @@ class VideoEncode(AbstractModel):
         :param _BitRate: The bitrate (Kbps) of the output stream. This parameter is required if audio and video are relayed. Value range: [0, 10000].
         :type BitRate: int
         :param _Gop: The GOP (seconds) of the output stream. This parameter is required if audio and video are relayed. Value range: [1, 5].
+        :type Gop: int
+        """
+        self._Width = None
+        self._Height = None
+        self._Fps = None
+        self._BitRate = None
+        self._Gop = None
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Fps(self):
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+    @property
+    def BitRate(self):
+        return self._BitRate
+
+    @BitRate.setter
+    def BitRate(self, BitRate):
+        self._BitRate = BitRate
+
+    @property
+    def Gop(self):
+        return self._Gop
+
+    @Gop.setter
+    def Gop(self, Gop):
+        self._Gop = Gop
+
+
+    def _deserialize(self, params):
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._Fps = params.get("Fps")
+        self._BitRate = params.get("BitRate")
+        self._Gop = params.get("Gop")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoEncodeParams(AbstractModel):
+    """Video transcoding parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Width: Width. Value range [0,1920], unit is pixel value.
+        :type Width: int
+        :param _Height: Height. Value range [0,1080], unit is pixel value.
+        :type Height: int
+        :param _Fps: Frame Rate. Value range [1,60], indicating that the frame rate can be selected from 1 to 60fps.
+        :type Fps: int
+        :param _BitRate: Bitrate. Value range [1,10000], unit is kbps.
+        :type BitRate: int
+        :param _Gop: Gop. Value range [1,2], unit is second.
         :type Gop: int
         """
         self._Width = None

@@ -266,6 +266,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeStreamIngest(self, request):
+        """You can query the status of the Relay task.
+
+        :param request: Request instance for DescribeStreamIngest.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeStreamIngestRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeStreamIngestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamIngest", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamIngestResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTrtcRoomUsage(self, request):
         """This API is used to query usage data grouped by room.
         - The queried period cannot exceed 24 hours. If the period spans two different days, the data returned may not be accurate due to a delay in data collection. You can make multiple calls to query the usage on different days.
@@ -637,6 +660,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartStreamIngest(self, request):
+        """Push an online media stream to the TRTC room.
+
+        :param request: Request instance for StartStreamIngest.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StartStreamIngestRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StartStreamIngestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartStreamIngest", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartStreamIngestResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopPublishCdnStream(self, request):
         """This API is used to stop a relaying task.
 
@@ -651,6 +697,29 @@ class TrtcClient(AbstractClient):
             body = self.call("StopPublishCdnStream", params, headers=headers)
             response = json.loads(body)
             model = models.StopPublishCdnStreamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopStreamIngest(self, request):
+        """Stop a Pull stream Relay task.
+
+        :param request: Request instance for StopStreamIngest.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StopStreamIngestRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StopStreamIngestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopStreamIngest", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopStreamIngestResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

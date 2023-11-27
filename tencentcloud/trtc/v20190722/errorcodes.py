@@ -32,6 +32,9 @@ FAILEDOPERATION = 'FailedOperation'
 # Unsupported on-cloud recording method.
 FAILEDOPERATION_CRUNSUPPORTMETHOD = 'FailedOperation.CRUnsupportMethod'
 
+# Query task failed
+FAILEDOPERATION_QUERYTASKINFOFAILED = 'FailedOperation.QueryTaskInfoFailed'
+
 # Maximum number of concurrent on-cloud recording tasks reached. Contact us to raise the limit.
 FAILEDOPERATION_RESTRICTEDCONCURRENCY = 'FailedOperation.RestrictedConcurrency'
 
@@ -40,6 +43,12 @@ FAILEDOPERATION_ROOMNOTEXIST = 'FailedOperation.RoomNotExist'
 
 # The application ID does not exist.
 FAILEDOPERATION_SDKAPPIDNOTEXIST = 'FailedOperation.SdkAppIdNotExist'
+
+# Task already exists
+FAILEDOPERATION_TASKEXIST = 'FailedOperation.TaskExist'
+
+# Task has ended when calling the interface.
+FAILEDOPERATION_TASKFINISHED = 'FailedOperation.TaskFinished'
 
 # The user is not in the room.
 FAILEDOPERATION_USERNOTEXIST = 'FailedOperation.UserNotExist'
@@ -65,8 +74,14 @@ INTERNALERROR_GETROOMFROMCACHEERROR = 'InternalError.GetRoomFromCacheError'
 # Failed to parse the HTTP request.
 INTERNALERROR_HTTPPARASEFALIED = 'InternalError.HttpParaseFalied'
 
+# HTTP request parsing failed.
+INTERNALERROR_HTTPPARSEFAILED = 'InternalError.HttpParseFailed'
+
 # API error.
 INTERNALERROR_INTERFACEERR = 'InternalError.InterfaceErr'
+
+# Internal error, please retry.
+INTERNALERROR_INTERNALERROR = 'InternalError.InternalError'
 
 # Unsupported method.
 INTERNALERROR_METHODERR = 'InternalError.MethodErr'
@@ -118,6 +133,12 @@ INVALIDPARAMETER_STARTTS = 'InvalidParameter.StartTs'
 
 # The start time for query exceeded the limit.
 INVALIDPARAMETER_STARTTSOVERSIZE = 'InvalidParameter.StartTsOversize'
+
+# StrRoomId parameter error.
+INVALIDPARAMETER_STRROOMID = 'InvalidParameter.StrRoomId'
+
+# TaskId parameter error.
+INVALIDPARAMETER_TASKID = 'InvalidParameter.TaskId'
 
 # Failed to parse URL parameters.
 INVALIDPARAMETER_URLPARAMSERROR = 'InvalidParameter.UrlParamsError'
@@ -202,6 +223,9 @@ MISSINGPARAMETER_USERSIG = 'MissingParameter.UserSig'
 
 # `Vendor` parameter missing.
 MISSINGPARAMETER_VENDOR = 'MissingParameter.Vendor'
+
+# Insufficient resources.
+RESOURCEINSUFFICIENT_REQUESTREJECTION = 'ResourceInsufficient.RequestRejection'
 
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
