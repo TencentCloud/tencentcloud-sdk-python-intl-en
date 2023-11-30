@@ -15442,6 +15442,116 @@ class CreateImageSpriteTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateJustInTimeTranscodeTemplateRequest(AbstractModel):
+    """CreateJustInTimeTranscodeTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Template name, the length is limited to 64 characters.
+        :type Name: str
+        :param _VideoConfigure: Video parameter configuration.
+        :type VideoConfigure: :class:`tencentcloud.vod.v20180717.models.VideoConfigureInfo`
+        :param _SubAppId: <b>VOD application ID. If you want to access resources in a sub-application, fill this field with the SubAppID; when empty, it means accessing the resources of the default application.</b>
+        :type SubAppId: int
+        :param _WatermarkConfigure: Watermark parameter configuration.
+        :type WatermarkConfigure: :class:`tencentcloud.vod.v20180717.models.WatermarkConfigureInfo`
+        :param _Comment: Template description, the length is limited to 256 characters.
+        :type Comment: str
+        """
+        self._Name = None
+        self._VideoConfigure = None
+        self._SubAppId = None
+        self._WatermarkConfigure = None
+        self._Comment = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def VideoConfigure(self):
+        return self._VideoConfigure
+
+    @VideoConfigure.setter
+    def VideoConfigure(self, VideoConfigure):
+        self._VideoConfigure = VideoConfigure
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def WatermarkConfigure(self):
+        return self._WatermarkConfigure
+
+    @WatermarkConfigure.setter
+    def WatermarkConfigure(self, WatermarkConfigure):
+        self._WatermarkConfigure = WatermarkConfigure
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("VideoConfigure") is not None:
+            self._VideoConfigure = VideoConfigureInfo()
+            self._VideoConfigure._deserialize(params.get("VideoConfigure"))
+        self._SubAppId = params.get("SubAppId")
+        if params.get("WatermarkConfigure") is not None:
+            self._WatermarkConfigure = WatermarkConfigureInfo()
+            self._WatermarkConfigure._deserialize(params.get("WatermarkConfigure"))
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateJustInTimeTranscodeTemplateResponse(AbstractModel):
+    """CreateJustInTimeTranscodeTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePersonSampleRequest(AbstractModel):
     """CreatePersonSample request structure.
 
@@ -18577,6 +18687,76 @@ class DeleteImageSpriteTemplateRequest(AbstractModel):
 
 class DeleteImageSpriteTemplateResponse(AbstractModel):
     """DeleteImageSpriteTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteJustInTimeTranscodeTemplateRequest(AbstractModel):
+    """DeleteJustInTimeTranscodeTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Template name.
+        :type Name: str
+        :param _SubAppId: <b>VOD application ID. If you want to access resources in a sub-application, fill this field with the SubAppID; when empty, it means accessing the resources of the default application.</b>
+        :type SubAppId: int
+        """
+        self._Name = None
+        self._SubAppId = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteJustInTimeTranscodeTemplateResponse(AbstractModel):
+    """DeleteJustInTimeTranscodeTemplate response structure.
 
     """
 
@@ -22244,6 +22424,143 @@ class DescribeImageSpriteTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeJustInTimeTranscodeTemplatesRequest(AbstractModel):
+    """DescribeJustInTimeTranscodeTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Names: Template name filter condition, array length limit: 100.
+        :type Names: list of str
+        :param _SubAppId: <b>VOD application ID. If you want to access resources in a sub-application, fill this field with the SubAppID; when empty, it means accessing the resources of the default application.</b>
+        :type SubAppId: int
+        :param _Type: Template type filter conditions, optional values:
+<li>Preset: system preset task flow template;</li>
+<li>Custom: user-defined task flow template. </li>
+        :type Type: str
+        :param _Offset: Paging offset, default value: 0.
+        :type Offset: int
+        :param _Limit: Returns the number of records, default value: 10, maximum value: 100.
+        :type Limit: int
+        """
+        self._Names = None
+        self._SubAppId = None
+        self._Type = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Names(self):
+        return self._Names
+
+    @Names.setter
+    def Names(self, Names):
+        self._Names = Names
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Names = params.get("Names")
+        self._SubAppId = params.get("SubAppId")
+        self._Type = params.get("Type")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJustInTimeTranscodeTemplatesResponse(AbstractModel):
+    """DescribeJustInTimeTranscodeTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: The total number of records matching the filter criteria.
+        :type TotalCount: int
+        :param _JustInTimeTranscodeTemplateSet: Template details list.
+        :type JustInTimeTranscodeTemplateSet: list of JustInTimeTranscodeTemplate
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._JustInTimeTranscodeTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def JustInTimeTranscodeTemplateSet(self):
+        return self._JustInTimeTranscodeTemplateSet
+
+    @JustInTimeTranscodeTemplateSet.setter
+    def JustInTimeTranscodeTemplateSet(self, JustInTimeTranscodeTemplateSet):
+        self._JustInTimeTranscodeTemplateSet = JustInTimeTranscodeTemplateSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("JustInTimeTranscodeTemplateSet") is not None:
+            self._JustInTimeTranscodeTemplateSet = []
+            for item in params.get("JustInTimeTranscodeTemplateSet"):
+                obj = JustInTimeTranscodeTemplate()
+                obj._deserialize(item)
+                self._JustInTimeTranscodeTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLicenseUsageDataRequest(AbstractModel):
     """DescribeLicenseUsageData request structure.
 
@@ -24746,6 +25063,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _QualityInspectTask: 
 Note: This field may return null, indicating that no valid value can be obtained.
         :type QualityInspectTask: :class:`tencentcloud.vod.v20180717.models.QualityInspectTask`
+        :param _QualityEnhanceTask: Media Quality Enhance task information. This field has a value only when TaskType is QualityEnhance.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type QualityEnhanceTask: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTask`
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -24774,6 +25094,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._ReduceMediaBitrateTask = None
         self._DescribeFileAttributesTask = None
         self._QualityInspectTask = None
+        self._QualityEnhanceTask = None
         self._RequestId = None
 
     @property
@@ -24977,6 +25298,14 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._QualityInspectTask = QualityInspectTask
 
     @property
+    def QualityEnhanceTask(self):
+        return self._QualityEnhanceTask
+
+    @QualityEnhanceTask.setter
+    def QualityEnhanceTask(self, QualityEnhanceTask):
+        self._QualityEnhanceTask = QualityEnhanceTask
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -25051,6 +25380,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("QualityInspectTask") is not None:
             self._QualityInspectTask = QualityInspectTask()
             self._QualityInspectTask._deserialize(params.get("QualityInspectTask"))
+        if params.get("QualityEnhanceTask") is not None:
+            self._QualityEnhanceTask = QualityEnhanceTask()
+            self._QualityEnhanceTask._deserialize(params.get("QualityEnhanceTask"))
         self._RequestId = params.get("RequestId")
 
 
@@ -25967,8 +26299,11 @@ class DomainHTTPSConfig(AbstractModel):
         :param _CertExpireTime: Time when the certificate expires
 <li>The time is in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732).</li>
         :type CertExpireTime: str
+        :param _CloudCertId: Certificate ID in Tencent Cloud SSL product.
+        :type CloudCertId: str
         """
         self._CertExpireTime = None
+        self._CloudCertId = None
 
     @property
     def CertExpireTime(self):
@@ -25978,9 +26313,18 @@ class DomainHTTPSConfig(AbstractModel):
     def CertExpireTime(self, CertExpireTime):
         self._CertExpireTime = CertExpireTime
 
+    @property
+    def CloudCertId(self):
+        return self._CloudCertId
+
+    @CloudCertId.setter
+    def CloudCertId(self, CloudCertId):
+        self._CloudCertId = CloudCertId
+
 
     def _deserialize(self, params):
         self._CertExpireTime = params.get("CertExpireTime")
+        self._CloudCertId = params.get("CloudCertId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27011,6 +27355,15 @@ class EditMediaVideoStream(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Codec: The encoding format of the video stream, optional values:
+<li>libx264: H.264 encoding;</li>
+<li>libx265: H.265 encoding;</li>
+<li>av1: AOMedia Video 1 encoding;</li>
+<li>H.266: H.266 encoding. </li>
+        :type Codec: str
+        :param _Bitrate: The bit rate of the video stream, value range: 0 and [128, 35000], unit: kbps. 
+When the value is 0 or left blank, it means automatically selecting the best video bit rate.
+        :type Bitrate: int
         :param _ResolutionAdaptive: Resolution adaptive, optional values:
 <li>open: open, at this time, Width represents the long side of the video, and Height represents the short side of the video;</li>
 <li>close: closed, at this time , Width represents the width of the video, and Height represents the height of the video. </li>
@@ -27033,10 +27386,28 @@ When the value is 0, the frame rate will be automatically set for the video.
 The default value is 0.
         :type Fps: int
         """
+        self._Codec = None
+        self._Bitrate = None
         self._ResolutionAdaptive = None
         self._Width = None
         self._Height = None
         self._Fps = None
+
+    @property
+    def Codec(self):
+        return self._Codec
+
+    @Codec.setter
+    def Codec(self, Codec):
+        self._Codec = Codec
+
+    @property
+    def Bitrate(self):
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
 
     @property
     def ResolutionAdaptive(self):
@@ -27072,6 +27443,8 @@ The default value is 0.
 
 
     def _deserialize(self, params):
+        self._Codec = params.get("Codec")
+        self._Bitrate = params.get("Bitrate")
         self._ResolutionAdaptive = params.get("ResolutionAdaptive")
         self._Width = params.get("Width")
         self._Height = params.get("Height")
@@ -31483,6 +31856,93 @@ class JitterConfigureInfoForUpdate(AbstractModel):
         
 
 
+class JustInTimeTranscodeTemplate(AbstractModel):
+    """Just In Time transcoding template details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Template type.
+        :type Type: str
+        :param _Name: Template name.
+        :type Name: str
+        :param _Comment: Template description.
+        :type Comment: str
+        :param _VideoConfigure: Video parameter configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type VideoConfigure: :class:`tencentcloud.vod.v20180717.models.VideoConfigureInfo`
+        :param _WatermarkConfigure: Watermark parameter configuration. 
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type WatermarkConfigure: :class:`tencentcloud.vod.v20180717.models.WatermarkConfigureData`
+        """
+        self._Type = None
+        self._Name = None
+        self._Comment = None
+        self._VideoConfigure = None
+        self._WatermarkConfigure = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def VideoConfigure(self):
+        return self._VideoConfigure
+
+    @VideoConfigure.setter
+    def VideoConfigure(self, VideoConfigure):
+        self._VideoConfigure = VideoConfigure
+
+    @property
+    def WatermarkConfigure(self):
+        return self._WatermarkConfigure
+
+    @WatermarkConfigure.setter
+    def WatermarkConfigure(self, WatermarkConfigure):
+        self._WatermarkConfigure = WatermarkConfigure
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("VideoConfigure") is not None:
+            self._VideoConfigure = VideoConfigureInfo()
+            self._VideoConfigure._deserialize(params.get("VideoConfigure"))
+        if params.get("WatermarkConfigure") is not None:
+            self._WatermarkConfigure = WatermarkConfigureData()
+            self._WatermarkConfigure._deserialize(params.get("WatermarkConfigure"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LicenseUsageDataItem(AbstractModel):
     """The license request statistics.
 
@@ -32892,9 +33352,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 <li>Audio: audio file</li>
 <li>Image: image file</li>
         :type Category: str
-        :param _Status: The file status. Valid values: `Normal`, `Forbidden`.
-
-*Note: This field is not supported yet.	
+        :param _Status: File status: Normal: normal, Forbidden: banned.
         :type Status: str
         :param _StorageClass: Storage class of a media file:
 <li>STANDARD</li>
@@ -38963,6 +39421,116 @@ class ModifyImageSpriteTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyJustInTimeTranscodeTemplateRequest(AbstractModel):
+    """ModifyJustInTimeTranscodeTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Template name.
+        :type Name: str
+        :param _SubAppId: <b>VOD application ID. If you want to access resources in a sub-application, fill this field with the SubAppID; when empty, it means accessing the resources of the default application.</b>
+        :type SubAppId: int
+        :param _VideoConfigure: Video parameter configuration.
+        :type VideoConfigure: :class:`tencentcloud.vod.v20180717.models.VideoConfigureInfoForUpdate`
+        :param _WatermarkConfigure: Watermark parameter configuration.
+        :type WatermarkConfigure: :class:`tencentcloud.vod.v20180717.models.WatermarkConfigureInfoForUpdate`
+        :param _Comment: Template description, the length is limited to 256 characters.
+        :type Comment: str
+        """
+        self._Name = None
+        self._SubAppId = None
+        self._VideoConfigure = None
+        self._WatermarkConfigure = None
+        self._Comment = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def VideoConfigure(self):
+        return self._VideoConfigure
+
+    @VideoConfigure.setter
+    def VideoConfigure(self, VideoConfigure):
+        self._VideoConfigure = VideoConfigure
+
+    @property
+    def WatermarkConfigure(self):
+        return self._WatermarkConfigure
+
+    @WatermarkConfigure.setter
+    def WatermarkConfigure(self, WatermarkConfigure):
+        self._WatermarkConfigure = WatermarkConfigure
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._SubAppId = params.get("SubAppId")
+        if params.get("VideoConfigure") is not None:
+            self._VideoConfigure = VideoConfigureInfoForUpdate()
+            self._VideoConfigure._deserialize(params.get("VideoConfigure"))
+        if params.get("WatermarkConfigure") is not None:
+            self._WatermarkConfigure = WatermarkConfigureInfoForUpdate()
+            self._WatermarkConfigure._deserialize(params.get("WatermarkConfigure"))
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyJustInTimeTranscodeTemplateResponse(AbstractModel):
+    """ModifyJustInTimeTranscodeTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyMediaInfoRequest(AbstractModel):
     """ModifyMediaInfo request structure.
 
@@ -42478,10 +43046,14 @@ Default value: 16,000.
 <li>2: dual</li>
 Default value: 2.
         :type AudioChannel: int
+        :param _Bitrate: The bit rate of the audio stream, value range: 0 and [26, 256], unit: kbps. 
+When the value is 0, the audio bitrate will be automatically set.
+        :type Bitrate: int
         """
         self._Codec = None
         self._SampleRate = None
         self._AudioChannel = None
+        self._Bitrate = None
 
     @property
     def Codec(self):
@@ -42507,11 +43079,20 @@ Default value: 2.
     def AudioChannel(self, AudioChannel):
         self._AudioChannel = AudioChannel
 
+    @property
+    def Bitrate(self):
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
         self._SampleRate = params.get("SampleRate")
         self._AudioChannel = params.get("AudioChannel")
+        self._Bitrate = params.get("Bitrate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46177,6 +46758,312 @@ class QRCodeConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityEnhanceTask(AbstractModel):
+    """Quality Enhance Task
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task Id.
+        :type TaskId: str
+        :param _Status: Task flow status, values:
+<li>PROCESSING: Processing;</li>
+<li>FINISH: Completed. </li>
+        :type Status: str
+        :param _ErrCode: Error code, 0 means success, other values u200bu200bmean failure:
+<li>40000: The input parameters are illegal, please check the input parameters;</li>
+<li>60000: Source file error (such as video data damage), Please confirm whether the source file is normal;</li>
+<li>70000: Internal service error, it is recommended to try again. </li>
+        :type ErrCode: int
+        :param _Message: Error message.
+        :type Message: str
+        :param _ErrCodeExt: Error code. An empty string indicates success. Other values u200bu200bindicate failure. For values, please refer to [Video Processing Error Code](https://www.tencentcloud.com/document/product/266/39145) list.
+        :type ErrCodeExt: str
+        :param _Progress: Media quality enhance task progress, value range [0-100].
+        :type Progress: int
+        :param _Input: Input for media quality enhance task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Input: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTaskInput`
+        :param _Output: Output of the media quality enhance task.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Output: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTaskOutput`
+        :param _MetaData: Media quality enhance outputs meta-information of the video.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        :param _SessionId: Identification code used for deduplication. If there is a request for the same identification code within seven days, this request will return an error. The maximum length is 50 characters, without or with an empty string to indicate no deduplication.
+        :type SessionId: str
+        :param _SessionContext: Source context, used to transparently transmit user request information. The task flow status change callback will return the value of this field, which can be up to 1000 characters.
+        :type SessionContext: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._ErrCodeExt = None
+        self._Progress = None
+        self._Input = None
+        self._Output = None
+        self._MetaData = None
+        self._SessionId = None
+        self._SessionContext = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def ErrCodeExt(self):
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def MetaData(self):
+        return self._MetaData
+
+    @MetaData.setter
+    def MetaData(self, MetaData):
+        self._MetaData = MetaData
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Progress = params.get("Progress")
+        if params.get("Input") is not None:
+            self._Input = QualityEnhanceTaskInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = QualityEnhanceTaskOutput()
+            self._Output._deserialize(params.get("Output"))
+        if params.get("MetaData") is not None:
+            self._MetaData = MediaMetaData()
+            self._MetaData._deserialize(params.get("MetaData"))
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityEnhanceTaskInput(AbstractModel):
+    """Input for media quality enhance task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: Media file ID.
+        :type FileId: str
+        :param _Definition: Media quality enhance template ID.
+        :type Definition: int
+        """
+        self._FileId = None
+        self._Definition = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityEnhanceTaskOutput(AbstractModel):
+    """Output for media quality enhance task
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileType: File types such as mp4, flv, etc.
+        :type FileType: str
+        :param _FileUrl: Media file playback address.
+        :type FileUrl: str
+        :param _FileId: Media file ID.
+        :type FileId: str
+        :param _MediaName: Output file name, up to 64 characters. By default, the generated file name is specified by the system.
+        :type MediaName: str
+        :param _ClassId: Classification ID is used to classify media. You can create a classification through the [Create Classification](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) interface to obtain the classification ID. 
+<li>Default value: 0, indicating other categories. </li>
+        :type ClassId: int
+        :param _ExpireTime: The expiration time of the output file. The file will be deleted after this time. The default is permanent and not expired. The format is expressed in accordance with the ISO 8601 standard. For details, see [ISO Date Format Description](https://www.tencentcloud.com/document/product/266/11732#iso-date-format).
+        :type ExpireTime: str
+        """
+        self._FileType = None
+        self._FileUrl = None
+        self._FileId = None
+        self._MediaName = None
+        self._ClassId = None
+        self._ExpireTime = None
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def FileUrl(self):
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def MediaName(self):
+        return self._MediaName
+
+    @MediaName.setter
+    def MediaName(self, MediaName):
+        self._MediaName = MediaName
+
+    @property
+    def ClassId(self):
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._FileType = params.get("FileType")
+        self._FileUrl = params.get("FileUrl")
+        self._FileId = params.get("FileId")
+        self._MediaName = params.get("MediaName")
+        self._ClassId = params.get("ClassId")
+        self._ExpireTime = params.get("ExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53063,6 +53950,37 @@ class SetDrmKeyProviderInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SetVodDomainCertificateRequest(AbstractModel):
+    """SetVodDomainCertificate request structure.
+
+    """
+
+
+class SetVodDomainCertificateResponse(AbstractModel):
+    """SetVodDomainCertificate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class SharpEnhanceInfo(AbstractModel):
     """Detail enhancement configuration.
 
@@ -55162,12 +56080,13 @@ Default value: 10W%.
 <li>If the string ends in %, the meaning is the same as `H%`.
 Default value: 0 px.
         :type Height: str
-        :param _CycleConfig: Watermark cycle configuration, which is used to configure watermarks so that they will be displayed and hidden periodically.
-Primary use case: watermarks can be added at various positions in a video, which are displayed and hidden periodically to prevent them from being covered.
-For example, watermarks A, B, C, and D are set in the top-left corner, top-right corner, bottom-right corner, and bottom-left corner of a video, respectively. After the first video frame, { A will be displayed for 5s -> B for 5s -> C for 5s -> D for 5s } -> A for 5s -> B for 5s -> ... Only one watermark will be visible at any time.
-Within the braces ({}) is a major cycle composed of four watermarks, namely, A, B, C, and D, which lasts for 20 seconds in a cycle.
-Watermarks A, B, C, and D are displayed periodically for 5 seconds and hidden for 15 seconds each in a fixed order.
-This configuration item is used to describe the cycle configuration of a single watermark.
+        :param _CycleConfig: Watermark period configuration is used to configure the watermark to be displayed and hidden periodically. 
+The main usage scenario is: in order to prevent video from being blocked, watermarks are set in multiple places on the video. These watermarks are periodically displayed and hidden in a fixed order. 
+For example, set four watermarks A, B, C, and D to be located in the upper left corner, upper right corner, lower right corner, and lower left corner of the video respectively. When the video starts, { A displays for 5 seconds -> B displays for 5 seconds -> C Display for 5 seconds -> D Display for 5 seconds} -> A Display for 5 seconds -> B Display for 5 seconds -> ..., only one watermark is displayed at any time. 
+The curly brackets {} represent a large cycle consisting of 4 watermarks A, B, C, and D. It can be seen that each large cycle lasts 20 seconds. 
+It can be seen that A, B, C, and D are periodically displayed for 5 seconds and hidden for 15 seconds, and the four have a fixed display order. 
+This configuration item is used to describe the periodic configuration of a single watermark.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type CycleConfig: :class:`tencentcloud.vod.v20180717.models.WatermarkCycleConfigForUpdate`
         """
         self._Width = None
@@ -58112,6 +59031,178 @@ class VerifyDomainRecordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class VideoConfigureInfo(AbstractModel):
+    """Just In Time transcoding video template configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Width: The maximum value of the video stream width (or long side), value range: 0 and [128, 1920], unit: px. 
+<li>When Width and Height are both 0, the resolution is from the same source;</li>
+<li>When Width is 0 and Height is non-0, Width is scaled proportionally;</li>
+< li>When Width is non-0 and Height is 0, the Height is scaled proportionally; </li>
+<li>When both Width and Height are non-0, the resolution is specified by the user. </li>
+
+Default value: 0.
+        :type Width: int
+        :param _Height: The maximum value of the video stream height (or short side), value range: 0 and [128, 1920], unit: px. 
+<li>When Width and Height are both 0, the resolution is from the same source;</li>
+<li>When Width is 0 and Height is non-0, Width is scaled proportionally;</li>
+< li>When Width is non-0 and Height is 0, the Height is scaled proportionally; </li>
+<li>When both Width and Height are non-0, the resolution is specified by the user. </li>
+
+Default value: 0.
+        :type Height: int
+        :param _ResolutionAdaptive: Resolution adaptive, optional values:
+<li>open: open, at this time, Width represents the long side of the video, and Height represents the short side of the video;</li>
+<li>close: closed, at this time , Width represents the width of the video, and Height represents the height of the video. </li>
+
+Default value: open.
+        :type ResolutionAdaptive: str
+        :param _Bitrate: The bit rate of the video stream, value range: 0 and [128, 10000], unit: kbps. 
+When the value is 0, it means that the video bitrate remains the same as the original video.
+        :type Bitrate: int
+        """
+        self._Width = None
+        self._Height = None
+        self._ResolutionAdaptive = None
+        self._Bitrate = None
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def ResolutionAdaptive(self):
+        return self._ResolutionAdaptive
+
+    @ResolutionAdaptive.setter
+    def ResolutionAdaptive(self, ResolutionAdaptive):
+        self._ResolutionAdaptive = ResolutionAdaptive
+
+    @property
+    def Bitrate(self):
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
+
+    def _deserialize(self, params):
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._ResolutionAdaptive = params.get("ResolutionAdaptive")
+        self._Bitrate = params.get("Bitrate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoConfigureInfoForUpdate(AbstractModel):
+    """Just In Time transcoding video template update configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Width: The maximum value of the video stream width (or long side), value range: 0 and [128, 1920], unit: px. 
+<li>When Width and Height are both 0, the resolution is from the same source;</li>
+<li>When Width is 0 and Height is non-0, Width is scaled proportionally;</li>
+< li>When Width is non-0 and Height is 0, the Height is scaled proportionally; </li>
+<li>When both Width and Height are non-0, the resolution is specified by the user. </li>
+
+Default value: 0.
+        :type Width: int
+        :param _Height: The maximum value of the video stream height (or short side), value range: 0 and [128, 1920], unit: px. 
+<li>When Width and Height are both 0, the resolution is from the same source;</li>
+<li>When Width is 0 and Height is non-0, Width is scaled proportionally;</li>
+< li>When Width is non-0 and Height is 0, the Height is scaled proportionally; </li>
+<li>When both Width and Height are non-0, the resolution is specified by the user. </li>
+
+Default value: 0.
+        :type Height: int
+        :param _ResolutionAdaptive: Resolution adaptive, optional values:
+<li>open: open, at this time, Width represents the long side of the video, and Height represents the short side of the video;</li>
+<li>close: closed, at this time , Width represents the width of the video, and Height represents the height of the video. </li>
+
+Default value: open.
+        :type ResolutionAdaptive: str
+        :param _Bitrate: The bit rate of the video stream, value range: 0 and [128, 10000], unit: kbps. 
+When the value is 0, it means that the video bitrate remains the same as the original video.
+        :type Bitrate: int
+        """
+        self._Width = None
+        self._Height = None
+        self._ResolutionAdaptive = None
+        self._Bitrate = None
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def ResolutionAdaptive(self):
+        return self._ResolutionAdaptive
+
+    @ResolutionAdaptive.setter
+    def ResolutionAdaptive(self, ResolutionAdaptive):
+        self._ResolutionAdaptive = ResolutionAdaptive
+
+    @property
+    def Bitrate(self):
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
+
+    def _deserialize(self, params):
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._ResolutionAdaptive = params.get("ResolutionAdaptive")
+        self._Bitrate = params.get("Bitrate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VideoDenoiseInfo(AbstractModel):
     """Image noise removal configuration.
 
@@ -58833,6 +59924,297 @@ class VoiceConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WatermarkConfigureData(AbstractModel):
+    """Just In Time transcoding watermark template configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable watermark. Possible values:
+<li>ON: means enabling watermark;</li>
+<li>OFF: means turning off watermark. </li>
+        :type Switch: str
+        :param _Url: Watermark URL.
+        :type Url: str
+        :param _Width: The width of the watermark. 
+<li>The string ends with %, indicating that the watermark Width is a percentage of the video width, such as 10% indicating that the Width is 10% of the video width;</li>
+        :type Width: str
+        :param _Height: The height of the watermark. 
+<li>The string ends with %, indicating that the watermark Height is a percentage of the video height, for example, 10% means that the Height is 10% of the video height;</li>
+        :type Height: str
+        :param _XPos: The horizontal position of the watermark origin from the video image coordinate origin. The string ends with %, indicating that the watermark XPos specifies a percentage of the video width, such as 10% indicating that XPos is 10% of the video width.
+        :type XPos: str
+        :param _YPos: The vertical position of the watermark origin from the video image coordinate origin. When the string ends with %, it means that the watermark YPos specifies a percentage of the video height. For example, 10% means that YPos is 10% of the video height.
+        :type YPos: str
+        """
+        self._Switch = None
+        self._Url = None
+        self._Width = None
+        self._Height = None
+        self._XPos = None
+        self._YPos = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def XPos(self):
+        return self._XPos
+
+    @XPos.setter
+    def XPos(self, XPos):
+        self._XPos = XPos
+
+    @property
+    def YPos(self):
+        return self._YPos
+
+    @YPos.setter
+    def YPos(self, YPos):
+        self._YPos = YPos
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Url = params.get("Url")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._XPos = params.get("XPos")
+        self._YPos = params.get("YPos")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WatermarkConfigureInfo(AbstractModel):
+    """Just In Time transcoding watermark template configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable watermark. Possible values:
+<li>ON: means enabling watermark;</li>
+<li>OFF: means turning off watermark. </li>
+        :type Switch: str
+        :param _ImageContent: Watermark image Base64 encoded string. Supports jpeg, png image formats.
+        :type ImageContent: str
+        :param _Width: The width of the watermark. 
+<li>The string ends with %, indicating that the watermark Width is a percentage of the video width, such as 10% indicating that the Width is 10% of the video width;</li>
+        :type Width: str
+        :param _Height: The height of the watermark. 
+<li>The string ends with %, indicating that the watermark Height is a percentage of the video height, for example, 10% means that the Height is 10% of the video height;</li>
+        :type Height: str
+        :param _XPos: The horizontal position of the watermark origin from the video image coordinate origin. The string ends with %, indicating that the watermark XPos specifies a percentage of the video width, such as 10% indicating that the XPos is 10% of the video width.
+        :type XPos: str
+        :param _YPos: The vertical position of the watermark origin from the video image coordinate origin. When the string ends with %, it means that the watermark YPos specifies a percentage of the video height. For example, 10% means that YPos is 10% of the video height.
+        :type YPos: str
+        """
+        self._Switch = None
+        self._ImageContent = None
+        self._Width = None
+        self._Height = None
+        self._XPos = None
+        self._YPos = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def ImageContent(self):
+        return self._ImageContent
+
+    @ImageContent.setter
+    def ImageContent(self, ImageContent):
+        self._ImageContent = ImageContent
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def XPos(self):
+        return self._XPos
+
+    @XPos.setter
+    def XPos(self, XPos):
+        self._XPos = XPos
+
+    @property
+    def YPos(self):
+        return self._YPos
+
+    @YPos.setter
+    def YPos(self, YPos):
+        self._YPos = YPos
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._ImageContent = params.get("ImageContent")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._XPos = params.get("XPos")
+        self._YPos = params.get("YPos")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WatermarkConfigureInfoForUpdate(AbstractModel):
+    """Just In Time transcoding watermark template update configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable watermark. Possible values:
+<li>ON: means enabling watermark;</li>
+<li>OFF: means turning off watermark. </li>
+        :type Switch: str
+        :param _ImageContent: Watermark image Base64 encoded string. Supports jpeg, png image formats.
+        :type ImageContent: str
+        :param _Width: The width of the watermark. 
+<li>The string ends with %, indicating that the watermark Width is a percentage of the video width, such as 10% indicating that the Width is 10% of the video width;</li>
+        :type Width: str
+        :param _Height: The height of the watermark. 
+<li>The string ends with %, indicating that the watermark Height is a percentage of the video height, for example, 10% means that the Height is 10% of the video height;</li>
+        :type Height: str
+        :param _XPos: The horizontal position of the watermark origin from the video image coordinate origin. The string ends with %, indicating that the watermark XPos specifies a percentage of the video width, such as 10% indicating that XPos is 10% of the video width.
+        :type XPos: str
+        :param _YPos: The vertical position of the watermark origin from the video image coordinate origin. When the string ends with %, it means that the watermark YPos specifies a percentage of the video height. For example, 10% means that YPos is 10% of the video height.
+        :type YPos: str
+        """
+        self._Switch = None
+        self._ImageContent = None
+        self._Width = None
+        self._Height = None
+        self._XPos = None
+        self._YPos = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def ImageContent(self):
+        return self._ImageContent
+
+    @ImageContent.setter
+    def ImageContent(self, ImageContent):
+        self._ImageContent = ImageContent
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def XPos(self):
+        return self._XPos
+
+    @XPos.setter
+    def XPos(self, XPos):
+        self._XPos = XPos
+
+    @property
+    def YPos(self):
+        return self._YPos
+
+    @YPos.setter
+    def YPos(self, YPos):
+        self._YPos = YPos
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._ImageContent = params.get("ImageContent")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._XPos = params.get("XPos")
+        self._YPos = params.get("YPos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

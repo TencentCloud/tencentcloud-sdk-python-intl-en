@@ -458,6 +458,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateJustInTimeTranscodeTemplate(self, request):
+        """Create Just In Time Transcode Template.
+
+        :param request: Request instance for CreateJustInTimeTranscodeTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateJustInTimeTranscodeTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateJustInTimeTranscodeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateJustInTimeTranscodeTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateJustInTimeTranscodeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePersonSample(self, request):
         """This API is used to create samples for using facial features positioning and other technologies to perform video processing operations such as content recognition and inappropriate information recognition.
 
@@ -1058,6 +1081,29 @@ class VodClient(AbstractClient):
             body = self.call("DeleteImageSpriteTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteImageSpriteTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteJustInTimeTranscodeTemplate(self, request):
+        """Delete Just In Time Transcode Template.
+
+        :param request: Request instance for DeleteJustInTimeTranscodeTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteJustInTimeTranscodeTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteJustInTimeTranscodeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteJustInTimeTranscodeTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteJustInTimeTranscodeTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1849,6 +1895,29 @@ class VodClient(AbstractClient):
             body = self.call("DescribeImageSpriteTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeImageSpriteTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeJustInTimeTranscodeTemplates(self, request):
+        """Describe Just In Time Transcode Templates.
+
+        :param request: Request instance for DescribeJustInTimeTranscodeTemplates.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeJustInTimeTranscodeTemplatesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeJustInTimeTranscodeTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJustInTimeTranscodeTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJustInTimeTranscodeTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2973,6 +3042,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyJustInTimeTranscodeTemplate(self, request):
+        """Modify Just In Time Transcode Template.
+
+        :param request: Request instance for ModifyJustInTimeTranscodeTemplate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyJustInTimeTranscodeTemplateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyJustInTimeTranscodeTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyJustInTimeTranscodeTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyJustInTimeTranscodeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyMediaInfo(self, request):
         """This API is used to modify the attributes of a media file, including category, name, description, tag, expiration time, timestamp information, video thumbnail, and subtitle information.
 
@@ -3833,6 +3925,29 @@ class VodClient(AbstractClient):
             body = self.call("SetDrmKeyProviderInfo", params, headers=headers)
             response = json.loads(body)
             model = models.SetDrmKeyProviderInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetVodDomainCertificate(self, request):
+        """Set Vod Domain Certificate.
+
+        :param request: Request instance for SetVodDomainCertificate.
+        :type request: :class:`tencentcloud.vod.v20180717.models.SetVodDomainCertificateRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SetVodDomainCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetVodDomainCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetVodDomainCertificateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
