@@ -212,6 +212,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateConfigGroupVersion(self, request):
+        """This API is used to create a new version for the specified configuration group in version management mode. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.
+
+        :param request: Request instance for CreateConfigGroupVersion.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateConfigGroupVersionRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateConfigGroupVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateConfigGroupVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateConfigGroupVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateOriginGroup(self, request):
         """This API is used to create an origin group for easy management. The created origin server group can be used for **adding acceleration domain names** and **layer-4 proxy configuration**.
 
@@ -282,9 +305,9 @@ class TeoClient(AbstractClient):
 
 
     def CreatePurgeTask(self, request):
-        """When the origin server resource is updated but the node cache TTL has not expired, the user will still access the old resource. To solve this problem, you can use this API to purge the node cache. There are two action options: <li>Delete directly: Delete the node cache directly without any verification. Trigger origin-pull when the resource is requested.</li><li>Mark as expired: Set the node resource as expired, and trigger origin-pull verification when the resource, that is, send an HTTP conditional request with If-None-Match and If-Modified-Since headers. If the origin responds with 200, the node pulls new resources from the origin and update the cache. If the origin responds with 304, the node does not update the cache</li>.
+        """When there are resources updated on the origin with the TTL remaining valid, users cannot access the latest resources. In this case, you can purge the cache using this API. There are two methods: <li>Delete: This method deletes the node cache without verification and retrieves the latest resources from the origin when receiving a request.</li><li>Invalidate: This method marks the node cache as invalid and sends a request with the If-None-Match and If-Modified-Since headers to the origin. If the origin responses with 200, the latest resources are retrieved to be cached on the node. If a 304 response is returned, the latest resources are not cached on the node.
 
-        For more details, see [Cache Purge](https://intl.cloud.tencent.com/document/product/1552/70759?from_cn_redirect=1).
+        </li>For more details, see [Cache Purge](https://intl.cloud.tencent.com/document/product/1552/70759?from_cn_redirect=1). </li>
 
         :param request: Request instance for CreatePurgeTask.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreatePurgeTaskRequest`
@@ -607,6 +630,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeployConfigGroupVersion(self, request):
+        """This API is used to release versions in version management mode. Users can deploy the version to either the testing environment or the production environment by specifying the EnvId parameter. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.
+
+        :param request: Request instance for DeployConfigGroupVersion.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeployConfigGroupVersionRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeployConfigGroupVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeployConfigGroupVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeployConfigGroupVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAccelerationDomains(self, request):
         """This API is used to query domain name information of a site, including the acceleration domain name, origin, and domain name status. You can query the information of all domain names, or specific domain names by specifying filters information.
 
@@ -690,6 +736,52 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeAvailablePlans", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAvailablePlansResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConfigGroupVersionDetail(self, request):
+        """This API is used to obtain detailed information about a version in version management mode. The response includes the version ID, description, status, creation time, configuration group information, and the content of the version configuration file. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.
+
+        :param request: Request instance for DescribeConfigGroupVersionDetail.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeConfigGroupVersionDetailRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeConfigGroupVersionDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConfigGroupVersionDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConfigGroupVersionDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConfigGroupVersions(self, request):
+        """This API is used to query the version list for the specified configuration group in version management mode. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.
+
+        :param request: Request instance for DescribeConfigGroupVersions.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeConfigGroupVersionsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeConfigGroupVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConfigGroupVersions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConfigGroupVersionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -805,6 +897,52 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeDefaultCertificates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDefaultCertificatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDeployHistory(self, request):
+        """This API is used to query the release history of versions in the production or test environment in version management mode. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.
+
+        :param request: Request instance for DescribeDeployHistory.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeDeployHistoryRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeDeployHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeployHistory", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeployHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeEnvironments(self, request):
+        """This API is used to query environment information in version management mode. The response includes the environment ID, type, and current effective version. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.
+
+        :param request: Request instance for DescribeEnvironments.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeEnvironmentsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeEnvironmentsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEnvironments", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEnvironmentsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

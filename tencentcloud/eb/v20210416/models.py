@@ -1565,6 +1565,154 @@ class DeleteTransformationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLogTagValueRequest(AbstractModel):
+    """DescribeLogTagValue request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: The query start time.
+        :type StartTime: int
+        :param _EndTime: The query end time.
+        :type EndTime: int
+        :param _EventBusId: Event bus ID
+        :type EventBusId: str
+        :param _GroupField: Aggregation field
+        :type GroupField: str
+        :param _Page: Number of pages.
+        :type Page: int
+        :param _Limit: Logs returned per page
+        :type Limit: int
+        :param _Filter: Filter conditions
+        :type Filter: list of LogFilter
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._EventBusId = None
+        self._GroupField = None
+        self._Page = None
+        self._Limit = None
+        self._Filter = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def GroupField(self):
+        return self._GroupField
+
+    @GroupField.setter
+    def GroupField(self, GroupField):
+        self._GroupField = GroupField
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._EventBusId = params.get("EventBusId")
+        self._GroupField = params.get("GroupField")
+        self._Page = params.get("Page")
+        self._Limit = params.get("Limit")
+        if params.get("Filter") is not None:
+            self._Filter = []
+            for item in params.get("Filter"):
+                obj = LogFilter()
+                obj._deserialize(item)
+                self._Filter.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLogTagValueResponse(AbstractModel):
+    """DescribeLogTagValue response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Results: Query searching metric value. 
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Results: list of str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Results = params.get("Results")
+        self._RequestId = params.get("RequestId")
+
+
 class ESTargetParams(AbstractModel):
     """ES rule targets
 
@@ -2992,6 +3140,151 @@ class ListTargetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LogFilter(AbstractModel):
+    """Definition of filter parameters of log query-related API
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Field name
+        :type Key: str
+        :param _Operator: Operator. Values: `eq` (Equal to), `neq` (Not equal to), `like`, `not like`, `lt` (Smaller than), `lte` (Smaller than and equal to), `gt` (Greater than), `gte` (Greater than and equal to), `range` (Within the range) and `norange` (Not in the range).
+        :type Operator: str
+        :param _Value: Filter value. Two values should be entered for range operation, separated by a comma (,).
+
+        :type Value: str
+        :param _Type: The logical relationship between conditions. Values: `AND` and `OR`.
+        :type Type: str
+        :param _Filters: LogFilters array
+        :type Filters: list of LogFilters
+        """
+        self._Key = None
+        self._Operator = None
+        self._Value = None
+        self._Type = None
+        self._Filters = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Operator = params.get("Operator")
+        self._Value = params.get("Value")
+        self._Type = params.get("Type")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = LogFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogFilters(AbstractModel):
+    """Log filters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Field name
+        :type Key: str
+        :param _Operator: Operator. Values: `eq` (Equal to), `neq` (Not equal to), `like`, `not like`, `lt` (Smaller than), `lte` (Smaller than and equal to), `gt` (Greater than), `gte` (Greater than and equal to), `range` (Within the range) and `norange` (Not in the range).
+        :type Operator: str
+        :param _Value: Filter value. Two values should be entered for range operation, separated by a comma (,)
+
+        :type Value: str
+        """
+        self._Key = None
+        self._Operator = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Operator(self):
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Operator = params.get("Operator")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OutputStructParam(AbstractModel):
     """`Transform` output parameter
 
@@ -3291,6 +3584,335 @@ class SCFParams(AbstractModel):
         self._BatchTimeout = params.get("BatchTimeout")
         self._BatchEventCount = params.get("BatchEventCount")
         self._EnableBatchDelivery = params.get("EnableBatchDelivery")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchLogRequest(AbstractModel):
+    """SearchLog request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Query start time (UNIX in ms)
+        :type StartTime: int
+        :param _EndTime: Query end time (UNIX in ms)
+        :type EndTime: int
+        :param _EventBusId: Event bus ID
+        :type EventBusId: str
+        :param _Page: Page number
+        :type Page: int
+        :param _Limit: Logs returned per page
+        :type Limit: int
+        :param _Filter: Filter conditions
+        :type Filter: list of LogFilter
+        :param _OrderFields: Sorting array
+        :type OrderFields: list of str
+        :param _OrderBy: Sorting order. Values: `asc` (earliest first); `desc` (latest first)
+        :type OrderBy: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._EventBusId = None
+        self._Page = None
+        self._Limit = None
+        self._Filter = None
+        self._OrderFields = None
+        self._OrderBy = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def EventBusId(self):
+        return self._EventBusId
+
+    @EventBusId.setter
+    def EventBusId(self, EventBusId):
+        self._EventBusId = EventBusId
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filter(self):
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def OrderFields(self):
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+    @property
+    def OrderBy(self):
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._EventBusId = params.get("EventBusId")
+        self._Page = params.get("Page")
+        self._Limit = params.get("Limit")
+        if params.get("Filter") is not None:
+            self._Filter = []
+            for item in params.get("Filter"):
+                obj = LogFilter()
+                obj._deserialize(item)
+                self._Filter.append(obj)
+        self._OrderFields = params.get("OrderFields")
+        self._OrderBy = params.get("OrderBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchLogResponse(AbstractModel):
+    """SearchLog response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number of logs
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Total: int
+        :param _Limit: Number of entries per page.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Limit: int
+        :param _Page: Page number
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Page: int
+        :param _Results: Log searching results
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Results: list of SearchLogResult
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Limit = None
+        self._Page = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Page(self):
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Limit = params.get("Limit")
+        self._Page = params.get("Page")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = SearchLogResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class SearchLogResult(AbstractModel):
+    """Retails of returned logs
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: Log reported time
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Timestamp: str
+        :param _Message: Log details
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _Source: Event source
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Source: str
+        :param _Type: The event type.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _RuleIds: Event matching rule
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type RuleIds: str
+        :param _Subject: The instance ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Subject: str
+        :param _Region: The region.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Region: str
+        :param _Status: Event status
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :type Status: str
+        """
+        self._Timestamp = None
+        self._Message = None
+        self._Source = None
+        self._Type = None
+        self._RuleIds = None
+        self._Subject = None
+        self._Region = None
+        self._Status = None
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RuleIds(self):
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+    @property
+    def Subject(self):
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._Message = params.get("Message")
+        self._Source = params.get("Source")
+        self._Type = params.get("Type")
+        self._RuleIds = params.get("RuleIds")
+        self._Subject = params.get("Subject")
+        self._Region = params.get("Region")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

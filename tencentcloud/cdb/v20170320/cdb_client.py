@@ -1195,6 +1195,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBInstanceLogToCLS(self, request):
+        """The API DescribeDBInstanceLogToCLS is used to query the configurations of sending slow and error logs of an instance (InstanceId) filtered by AppId and Region to Cloud Log Service (CLS).
+
+        :param request: Request instance for DescribeDBInstanceLogToCLS.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceLogToCLSRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.DescribeDBInstanceLogToCLSResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBInstanceLogToCLS", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBInstanceLogToCLSResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBInstanceRebootTime(self, request):
         """This API (DescribeDBInstanceRebootTime) is used to query the estimated time needed for a TencentDB instance to restart.
 
@@ -1752,7 +1775,7 @@ class CdbClient(AbstractClient):
 
 
     def DescribeSlowLogs(self, request):
-        """This API (DescribeSlowLogs) is used to query the slow logs of a TencentDB instance.
+        """The API DescribeSlowLogs is used to obtain slow query logs of a cloud database (CDB) instance. Note: If the size of logs to be queried is too large, the operation may time out. It is recommended that you select a shorter time range, such as one hour.
 
         :param request: Request instance for DescribeSlowLogs.
         :type request: :class:`tencentcloud.cdb.v20170320.models.DescribeSlowLogsRequest`
@@ -2232,6 +2255,29 @@ class CdbClient(AbstractClient):
             body = self.call("ModifyCdbProxyParam", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCdbProxyParamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDBInstanceLogToCLS(self, request):
+        """This API is used to enable or disable the feature of sending CDB slow and error logs to CLS.
+
+        :param request: Request instance for ModifyDBInstanceLogToCLS.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceLogToCLSRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyDBInstanceLogToCLSResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBInstanceLogToCLS", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBInstanceLogToCLSResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -26,14 +26,47 @@ FAILEDOPERATION_CERTIFICATEHASEXPIRED = 'FailedOperation.CertificateHasExpired'
 # The certificate does not exist.
 FAILEDOPERATION_CERTIFICATENOTFOUND = 'FailedOperation.CertificateNotFound'
 
+# Syntax error in the condition expression of the configuration file.
+FAILEDOPERATION_CONFIGCONDITIONSYNTAXERROR = 'FailedOperation.ConfigConditionSyntaxError'
+
+# Unrecognized condition matching type.
+FAILEDOPERATION_CONFIGCONDITIONUNKNOWNTARGET = 'FailedOperation.ConfigConditionUnknownTarget'
+
+# The value field of the condition expression cannot be empty in the configuration file.
+FAILEDOPERATION_CONFIGCONDITIONVALUEEMPTYERROR = 'FailedOperation.ConfigConditionValueEmptyError'
+
+# The configuration file contains fields with inconsistent data types.
+FAILEDOPERATION_CONFIGFIELDTYPEERROR = 'FailedOperation.ConfigFieldTypeError'
+
+# Syntax error in the configuration file.
+FAILEDOPERATION_CONFIGFORMATERROR = 'FailedOperation.ConfigFormatError'
+
+# Incorrect format of the configuration file. Parsing failed.
+FAILEDOPERATION_CONFIGMALFORMEDCONTENT = 'FailedOperation.ConfigMalformedContent'
+
+# Parameter verification error in the configuration file.
+FAILEDOPERATION_CONFIGPARAMVALIDATEERRORS = 'FailedOperation.ConfigParamValidateErrors'
+
+# The specified field in the configuration file is not recognized, indicating a possible spelling error or incorrect placement within the file structure.
+FAILEDOPERATION_CONFIGUNKNOWNFIELD = 'FailedOperation.ConfigUnknownField'
+
+# The current configuration file version is not supported.
+FAILEDOPERATION_CONFIGUNSUPPORTEDFORMATVERSION = 'FailedOperation.ConfigUnsupportedFormatVersion'
+
 # Insufficient account balance
 FAILEDOPERATION_INSUFFICIENTACCOUNTBALANCE = 'FailedOperation.InsufficientAccountBalance'
 
 # The site status is invalid.
 FAILEDOPERATION_INVALIDZONESTATUS = 'FailedOperation.InvalidZoneStatus'
 
+# The content is missing a mandatory configuration block.
+FAILEDOPERATION_MISSINGCONFIGCHUNK = 'FailedOperation.MissingConfigChunk'
+
 # Operation failed.
 FAILEDOPERATION_MODIFYFAILED = 'FailedOperation.ModifyFailed'
+
+# Unknown configuration group type.
+FAILEDOPERATION_UNKNOWNCONFIGGROUPTYPE = 'FailedOperation.UnknownConfigGroupType'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
@@ -80,7 +113,7 @@ INVALIDPARAMETER_ACCESSREDIRECTREGEXERROR = 'InvalidParameter.AccessRedirectRege
 # Too many attempts. Please try again later.
 INVALIDPARAMETER_ACTIONINPROGRESS = 'InvalidParameter.ActionInProgress'
 
-# Cu200dhinese SM certificates are not supported for alias domain names.
+# Chinese SM certificates are not supported for alias domain names.
 INVALIDPARAMETER_ALIASDOMAINNOTSUPPORTSMCERT = 'InvalidParameter.AliasDomainNotSupportSMCert'
 
 # Invalid query string.
@@ -115,6 +148,9 @@ INVALIDPARAMETER_DOMAINNOTFOUND = 'InvalidParameter.DomainNotFound'
 
 # Traffic scheduling is already enabled for the current domain name.
 INVALIDPARAMETER_DOMAINONTRAFFICSCHEDULING = 'InvalidParameter.DomainOnTrafficScheduling'
+
+# Duplicate rules.
+INVALIDPARAMETER_DUPLICATERULE = 'InvalidParameter.DuplicateRule'
 
 # The current conditions do not support the requested operation.
 INVALIDPARAMETER_ERRACTIONUNSUPPORTTARGET = 'InvalidParameter.ErrActionUnsupportTarget'
@@ -281,6 +317,9 @@ INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = 'InvalidParameter.InvalidClientIpHe
 # Invalid origin for region-specific origin-pull.
 INVALIDPARAMETER_INVALIDCLIENTIPORIGIN = 'InvalidParameter.InvalidClientIpOrigin'
 
+# Invalid conditions.
+INVALIDPARAMETER_INVALIDCONDITIONS = 'InvalidParameter.InvalidConditions'
+
 # Invalid origin-pull configuration. When `OriginType` is `COS` or `AWS_S3`, the origin address must be an object storage domain name.
 INVALIDPARAMETER_INVALIDCOSDOMAIN = 'InvalidParameter.InvalidCosDomain'
 
@@ -318,6 +357,9 @@ INVALIDPARAMETER_INVALIDHTTPSTLSVERSION = 'InvalidParameter.InvalidHttpsTlsVersi
 INVALIDPARAMETER_INVALIDIPV6SWITCH = 'InvalidParameter.InvalidIpv6Switch'
 
 # Invalid browser cache.
+INVALIDPARAMETER_INVALIDMAXAGEFOLLOWORIGIN = 'InvalidParameter.InvalidMaxAgeFollowOrigin'
+
+# Invalid browser cache.
 INVALIDPARAMETER_INVALIDMAXAGETIME = 'InvalidParameter.InvalidMaxAgeTime'
 
 # Invalid origin server.
@@ -338,7 +380,7 @@ INVALIDPARAMETER_INVALIDPOSTMAXSIZEBILLING = 'InvalidParameter.InvalidPostMaxSiz
 # Invalid POST request size.
 INVALIDPARAMETER_INVALIDPOSTSIZEVALUE = 'InvalidParameter.InvalidPostSizeValue'
 
-# AccessKeyId and SecretAccessKey u200dare required to access the third-party object storage.
+# AccessKeyId and SecretAccessKey are required to access the third-party object storage.
 INVALIDPARAMETER_INVALIDPRIVATEACCESSPARAMS = 'InvalidParameter.InvalidPrivateAccessParams'
 
 # The value of `PrivateAccess` should be `on` or `off`.
@@ -388,6 +430,9 @@ INVALIDPARAMETER_INVALIDRULEPROTO = 'InvalidParameter.InvalidRuleProto'
 
 # Invalid origin domain.
 INVALIDPARAMETER_INVALIDSERVERNAME = 'InvalidParameter.InvalidServerName'
+
+# Invalid debug configuration for EdgeOne.
+INVALIDPARAMETER_INVALIDSTANDARDDEBUG = 'InvalidParameter.InvalidStandardDebug'
 
 # Invalid client IP or CIDR block.
 INVALIDPARAMETER_INVALIDSTANDARDDEBUGCLIENTIP = 'InvalidParameter.InvalidStandardDebugClientIp'
@@ -491,6 +536,9 @@ INVALIDPARAMETER_SETTINGINVALIDPARAM = 'InvalidParameter.SettingInvalidParam'
 # Shield Space is not bound with an origin. 
 INVALIDPARAMETER_SPACENOTBINDORIGIN = 'InvalidParameter.SpaceNotBindOrigin'
 
+# Invalid status code in cache.
+INVALIDPARAMETER_STATUSCODECACHEINVALIDSTATUSCODE = 'InvalidParameter.StatusCodeCacheInvalidStatusCode'
+
 # Resource error
 INVALIDPARAMETER_TARGET = 'InvalidParameter.Target'
 
@@ -584,6 +632,9 @@ LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = 'LimitExceeded.QueryTimeLimitExceeded'
 # Reached the API rate limit.
 LIMITEXCEEDED_RATELIMITEXCEEDED = 'LimitExceeded.RateLimitExceeded'
 
+# The number of rules has reached the limit.
+LIMITEXCEEDED_RULELIMITEXCEEDED = 'LimitExceeded.RuleLimitExceeded'
+
 # Limit exceeded
 LIMITEXCEEDED_SECURITY = 'LimitExceeded.Security'
 
@@ -592,6 +643,9 @@ LIMITEXCEEDED_USERQUOTALIMITED = 'LimitExceeded.UserQuotaLimited'
 
 # Reached the upper limit of sites of the plan
 LIMITEXCEEDED_ZONEBINDPLAN = 'LimitExceeded.ZoneBindPlan'
+
+# Missing parameters.
+MISSINGPARAMETER = 'MissingParameter'
 
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
@@ -625,6 +679,12 @@ OPERATIONDENIED_DOMAINNOICP = 'OperationDenied.DomainNoICP'
 
 # Unable to modify the service area: There are domain names under the site.
 OPERATIONDENIED_DOMAINNUMBERISNOTZERO = 'OperationDenied.DomainNumberIsNotZero'
+
+# Some domain names on the site are currently experiencing instability. The stable states for domain names are "online" and "offline".
+OPERATIONDENIED_DOMAINSTATUSUNSTABLE = 'OperationDenied.DomainStatusUnstable'
+
+# 
+OPERATIONDENIED_ENVNOTREADY = 'OperationDenied.EnvNotReady'
 
 # The EdgeOne service of the site is disabled. Please enable it and try again.
 OPERATIONDENIED_ERRZONEISALREADYPAUSED = 'OperationDenied.ErrZoneIsAlreadyPaused'
@@ -665,8 +725,14 @@ OPERATIONDENIED_NODOMAINACCESSZONEONLYALLOWMODIFIEDTOCNAME = 'OperationDenied.No
 # You can only switch a site connected without a domain name to connecting via the CNAME. Other operations are not allowed.
 OPERATIONDENIED_NODOMAINACCESSZONEONLYSUPPORTMODIFYTYPE = 'OperationDenied.NoDomainAccessZoneOnlySupportModifyType'
 
+# The current user is not included in the whitelist for version management.
+OPERATIONDENIED_NOTINVERSIONCONTROLWHITELIST = 'OperationDenied.NotInVersionControlWhiteList'
+
 # Failed to delete: The acceleration domain name is in use. 
 OPERATIONDENIED_ORIGINGROUPACCELERATIONDOMAINUSED = 'OperationDenied.OriginGroupAccelerationDomainUsed'
+
+# Ownership verification failed. Please complete the site ownership verification first.
+OPERATIONDENIED_OWNERSHIPVERIFICATIONNOTPASSED = 'OperationDenied.OwnershipVerificationNotPassed'
 
 # The specified plan does not support changing the service area of the site.
 OPERATIONDENIED_PLANNOTSUPPORTMODIFYZONEAREA = 'OperationDenied.PlanNotSupportModifyZoneArea'
@@ -688,6 +754,12 @@ OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDIPV6 = 'OperationDenied.SharedCNAMEUnsuppo
 
 # There is a test version in use. Please release the test version to the live environment, or roll back the test version and try again.
 OPERATIONDENIED_VERSIONCONTROLISGRAYING = 'OperationDenied.VersionControlIsGraying'
+
+# 
+OPERATIONDENIED_VERSIONCONTROLLOCKED = 'OperationDenied.VersionControlLocked'
+
+# The specified site working mode is not applicable to the version management mode.
+OPERATIONDENIED_WORKMODENOTINVERSIONCONTROL = 'OperationDenied.WorkModeNotInVersionControl'
 
 # The shared CNAME has been bound to another site. Please unbind first.
 OPERATIONDENIED_ZONEISBINDINGSHAREDCNAME = 'OperationDenied.ZoneIsBindingSharedCNAME'
@@ -761,6 +833,9 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 # Maximum upload size is not configured.
 RESOURCENOTFOUND_POSTMAXSIZEQUOTANOTFOUND = 'ResourceNotFound.PostMaxSizeQuotaNotFound'
 
+# The configuration group version does not exist. Please check and try again.
+RESOURCENOTFOUND_VERSIONNOTFOUND = 'ResourceNotFound.VersionNotFound'
+
 # The resource is unavailable.
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
@@ -772,6 +847,9 @@ RESOURCEUNAVAILABLE_DOMAINALREADYEXISTS = 'ResourceUnavailable.DomainAlreadyExis
 
 # The requested accelerated domain name doesn’t exist. 
 RESOURCEUNAVAILABLE_DOMAINNOTFOUND = 'ResourceUnavailable.DomainNotFound'
+
+# 
+RESOURCEUNAVAILABLE_FUNCTIONNOTFOUND = 'ResourceUnavailable.FunctionNotFound'
 
 # The domain name does not exist or not use a proxy.
 RESOURCEUNAVAILABLE_HOSTNOTFOUND = 'ResourceUnavailable.HostNotFound'

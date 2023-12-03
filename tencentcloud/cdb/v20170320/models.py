@@ -1048,23 +1048,26 @@ class AuditLog(AbstractModel):
         :param _ThreadId: Thread ID
         :type ThreadId: int
         :param _CheckRows: Number of scanned rows
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CheckRows: int
-        :param _CpuTime: CPU u200dexecution time (μs)
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :param _CpuTime: CPU execution time (μs)
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CpuTime: float
         :param _IoWaitTime: IO wait time (μs)
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type IoWaitTime: int
         :param _LockWaitTime: Lock wait time (μs)
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LockWaitTime: int
         :param _NsTime: Start time, which forms a time accurate to nanoseconds with·`timestamp`.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type NsTime: int
-        :param _TrxLivingTime: Transaction u200dduration (μs)
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :param _TrxLivingTime: Transaction duration (μs)
+Note: This field may return null, indicating that no valid values can be obtained.
         :type TrxLivingTime: int
+        :param _TemplateInfo: Basic information on the rule template hit by the log.
+Note: The return value may be null, indicating that no valid data can be obtained.
+        :type TemplateInfo: list of LogRuleTemplateInfo
         """
         self._AffectRows = None
         self._ErrCode = None
@@ -1084,6 +1087,7 @@ Note: u200dThis field may return null, indicating that no valid values can be ob
         self._LockWaitTime = None
         self._NsTime = None
         self._TrxLivingTime = None
+        self._TemplateInfo = None
 
     @property
     def AffectRows(self):
@@ -1229,6 +1233,14 @@ Note: u200dThis field may return null, indicating that no valid values can be ob
     def TrxLivingTime(self, TrxLivingTime):
         self._TrxLivingTime = TrxLivingTime
 
+    @property
+    def TemplateInfo(self):
+        return self._TemplateInfo
+
+    @TemplateInfo.setter
+    def TemplateInfo(self, TemplateInfo):
+        self._TemplateInfo = TemplateInfo
+
 
     def _deserialize(self, params):
         self._AffectRows = params.get("AffectRows")
@@ -1249,6 +1261,12 @@ Note: u200dThis field may return null, indicating that no valid values can be ob
         self._LockWaitTime = params.get("LockWaitTime")
         self._NsTime = params.get("NsTime")
         self._TrxLivingTime = params.get("TrxLivingTime")
+        if params.get("TemplateInfo") is not None:
+            self._TemplateInfo = []
+            for item in params.get("TemplateInfo"):
+                obj = LogRuleTemplateInfo()
+                obj._deserialize(item)
+                self._TemplateInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1849,6 +1867,75 @@ Note:  This field may return null, indicating that no valid values can be obtain
                 obj = RuleFilters()
                 obj._deserialize(item)
                 self._RuleFilters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AutoStrategy(AbstractModel):
+    """Automatic scale-out policy for elastic CPU scale-out.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExpandThreshold: CPU utilization threshold (percent value). Valid values: 70, 80, and 90. Automatic scale-out will be triggered when CPU utilization reaches the set threshold.
+        :type ExpandThreshold: int
+        :param _ExpandPeriod: Interval, in seconds. Valid values: 1, 3, 5, 10, 15, and 30. The system backend determines whether automatic scale-out is required at the set interval.
+        :type ExpandPeriod: int
+        :param _ShrinkThreshold: CPU utilization threshold (percent value). Valid values: 10, 20, and 30. Automatic scale-in will be triggered when CPU utilization reaches the set threshold.
+        :type ShrinkThreshold: int
+        :param _ShrinkPeriod: Interval, in seconds. Valid values: 5, 10, 15, and 30. The system backend determines whether automatic scale-in is required at the set interval.
+        :type ShrinkPeriod: int
+        """
+        self._ExpandThreshold = None
+        self._ExpandPeriod = None
+        self._ShrinkThreshold = None
+        self._ShrinkPeriod = None
+
+    @property
+    def ExpandThreshold(self):
+        return self._ExpandThreshold
+
+    @ExpandThreshold.setter
+    def ExpandThreshold(self, ExpandThreshold):
+        self._ExpandThreshold = ExpandThreshold
+
+    @property
+    def ExpandPeriod(self):
+        return self._ExpandPeriod
+
+    @ExpandPeriod.setter
+    def ExpandPeriod(self, ExpandPeriod):
+        self._ExpandPeriod = ExpandPeriod
+
+    @property
+    def ShrinkThreshold(self):
+        return self._ShrinkThreshold
+
+    @ShrinkThreshold.setter
+    def ShrinkThreshold(self, ShrinkThreshold):
+        self._ShrinkThreshold = ShrinkThreshold
+
+    @property
+    def ShrinkPeriod(self):
+        return self._ShrinkPeriod
+
+    @ShrinkPeriod.setter
+    def ShrinkPeriod(self, ShrinkPeriod):
+        self._ShrinkPeriod = ShrinkPeriod
+
+
+    def _deserialize(self, params):
+        self._ExpandThreshold = params.get("ExpandThreshold")
+        self._ExpandPeriod = params.get("ExpandPeriod")
+        self._ShrinkThreshold = params.get("ShrinkThreshold")
+        self._ShrinkPeriod = params.get("ShrinkPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7567,7 +7654,7 @@ class DescribeAuditLogsResponse(AbstractModel):
         :param _TotalCount: Number of eligible audit logs
         :type TotalCount: int
         :param _Items: Audit log details
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Items: list of AuditLog
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -9409,13 +9496,13 @@ class DescribeCpuExpandStrategyResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: Policy type. Valid values: `auto`, `manual`.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         :param _ExpandCpu: Manually expanded CPU, which is valid when `Type` is `manual`.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ExpandCpu: str
         :param _AutoStrategy: Automatic expansion policy, which is valid when `Type` is `auto`.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AutoStrategy: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -10172,6 +10259,94 @@ Note: this field may return `null`, indicating that no valid value can be found.
         self._KeyId = params.get("KeyId")
         self._KeyRegion = params.get("KeyRegion")
         self._DefaultKmsRegion = params.get("DefaultKmsRegion")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBInstanceLogToCLSRequest(AbstractModel):
+    """DescribeDBInstanceLogToCLS request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstanceLogToCLSResponse(AbstractModel):
+    """DescribeDBInstanceLogToCLS response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorLog: Configurations of sending error logs to CLS.
+Note: The return value may be null, indicating that no valid data can be obtained.
+        :type ErrorLog: :class:`tencentcloud.cdb.v20170320.models.LogToCLSConfig`
+        :param _SlowLog: Configurations of sending slow logs to CLS.
+Note: The return value may be null, indicating that no valid data can be obtained.
+        :type SlowLog: :class:`tencentcloud.cdb.v20170320.models.LogToCLSConfig`
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorLog = None
+        self._SlowLog = None
+        self._RequestId = None
+
+    @property
+    def ErrorLog(self):
+        return self._ErrorLog
+
+    @ErrorLog.setter
+    def ErrorLog(self, ErrorLog):
+        self._ErrorLog = ErrorLog
+
+    @property
+    def SlowLog(self):
+        return self._SlowLog
+
+    @SlowLog.setter
+    def SlowLog(self, SlowLog):
+        self._SlowLog = SlowLog
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorLog") is not None:
+            self._ErrorLog = LogToCLSConfig()
+            self._ErrorLog._deserialize(params.get("ErrorLog"))
+        if params.get("SlowLog") is not None:
+            self._SlowLog = LogToCLSConfig()
+            self._SlowLog._deserialize(params.get("SlowLog"))
         self._RequestId = params.get("RequestId")
 
 
@@ -13161,7 +13336,7 @@ class DescribeRollbackRangeTimeRequest(AbstractModel):
         r"""
         :param _InstanceIds: Instance ID list. An instance ID is in the format of cdb-c1nl9rpv, which is the same as the instance ID displayed on the TencentDB Console page.
         :type InstanceIds: list of str
-        :param _IsRemoteZone: Whether the clone instance and the source instance are in one AZ. Valid values: `true` (yes), `false` (no).
+        :param _IsRemoteZone: Whether the clone instance and the source instance are in the same AZ. Valid values: `true` (yes), `false` (no).
         :type IsRemoteZone: str
         :param _BackupRegion: The region of the clone instance, such as `ap-guangzhou`.
         :type BackupRegion: str
@@ -15473,13 +15648,13 @@ Include/Exclude, and Include/Exclude (segment dimension) can be used to search f
 `DBName` - Database name.
 
 `Equal to` and `Not equal to` can be used to search for:
-`sqlType` - SQL u200dtype,
+`sqlType` - SQL type,
 `errCode` - Error code,
 `threadId` - Thread ID.
 
 Range search is supported for:
 `execTime`- Execution time (μs),
-`lockWaitTime`u200d - Lock wait time (μs),
+`lockWaitTime` - Lock wait time (μs),
 `ioWaitTime` - IO wait time (μs),
 `trxLivingTime` - Transaction duration (μs),
 `cpuTime` - CPU time (μs),
@@ -15494,7 +15669,7 @@ Range search is supported for:
 `EXC` - Exclude,
 `EQS` - Equal to,
 `NEQ` - Not equal to.
-u200d`RA` - Range
+`RA` - Range
         :type Compare: str
         :param _Value: The filter value. In a reverse query, multiple values are in an "AND" relationship; while in a forward query, multiple values are in an "OR" relationship.
         :type Value: list of str
@@ -16417,6 +16592,139 @@ class LocalBinlogConfigDefault(AbstractModel):
     def _deserialize(self, params):
         self._SaveHours = params.get("SaveHours")
         self._MaxUsage = params.get("MaxUsage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogRuleTemplateInfo(AbstractModel):
+    """Basic information on the rule template hit by the audit log.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleTemplateId: Template ID. 
+Note: The return value may be null, indicating that no valid data can be obtained.
+        :type RuleTemplateId: str
+        :param _RuleTemplateName: Template name.
+Note: The return value may be null, indicating that no valid data can be obtained.
+        :type RuleTemplateName: str
+        :param _AlarmLevel: Alarm level. Valid values: 1: Low risk; 2: Medium risk; 3: High risk. 
+Note: The return value may be null, indicating that no valid data can be obtained.
+        :type AlarmLevel: str
+        :param _RuleTemplateStatus: Template change status. Valid values: 0: Unchanged; 1: Changed; 2: Deleted.
+Note: The return value may be null, indicating that no valid data can be obtained.
+        :type RuleTemplateStatus: int
+        """
+        self._RuleTemplateId = None
+        self._RuleTemplateName = None
+        self._AlarmLevel = None
+        self._RuleTemplateStatus = None
+
+    @property
+    def RuleTemplateId(self):
+        return self._RuleTemplateId
+
+    @RuleTemplateId.setter
+    def RuleTemplateId(self, RuleTemplateId):
+        self._RuleTemplateId = RuleTemplateId
+
+    @property
+    def RuleTemplateName(self):
+        return self._RuleTemplateName
+
+    @RuleTemplateName.setter
+    def RuleTemplateName(self, RuleTemplateName):
+        self._RuleTemplateName = RuleTemplateName
+
+    @property
+    def AlarmLevel(self):
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def RuleTemplateStatus(self):
+        return self._RuleTemplateStatus
+
+    @RuleTemplateStatus.setter
+    def RuleTemplateStatus(self, RuleTemplateStatus):
+        self._RuleTemplateStatus = RuleTemplateStatus
+
+
+    def _deserialize(self, params):
+        self._RuleTemplateId = params.get("RuleTemplateId")
+        self._RuleTemplateName = params.get("RuleTemplateName")
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._RuleTemplateStatus = params.get("RuleTemplateStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogToCLSConfig(AbstractModel):
+    """Configurations of sending slow and error logs of a CDB instance to CLS.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Enabling status of the feature.
+Note: The return value may be null, indicating that no valid data can be obtained.
+        :type Status: str
+        :param _LogSetId: CLS log set ID.
+Note: The return value may be null, indicating that no valid data can be obtained.
+        :type LogSetId: str
+        :param _LogTopicId: Log topic ID.
+Note: The return value may be null, indicating that no valid data can be obtained.
+        :type LogTopicId: str
+        """
+        self._Status = None
+        self._LogSetId = None
+        self._LogTopicId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def LogSetId(self):
+        return self._LogSetId
+
+    @LogSetId.setter
+    def LogSetId(self, LogSetId):
+        self._LogSetId = LogSetId
+
+    @property
+    def LogTopicId(self):
+        return self._LogTopicId
+
+    @LogTopicId.setter
+    def LogTopicId(self, LogTopicId):
+        self._LogTopicId = LogTopicId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._LogSetId = params.get("LogSetId")
+        self._LogTopicId = params.get("LogTopicId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17960,6 +18268,160 @@ class ModifyCdbProxyParamResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceLogToCLSRequest(AbstractModel):
+    """ModifyDBInstanceLogToCLS request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _LogType: Log type. Valid values: error and slowLog.
+        :type LogType: str
+        :param _Status: Enabling status. Valid values: ON and OFF.
+        :type Status: str
+        :param _CreateLogset: Indicates whether a log set needs to be created.
+        :type CreateLogset: bool
+        :param _Logset: Log set name if the log set is to be created or ID of the selected existing log set.
+        :type Logset: str
+        :param _CreateLogTopic: Indicates whether a log topic needs to be created.
+        :type CreateLogTopic: bool
+        :param _LogTopic: Log topic name if the topic is to be created or ID of the selected existing topic.
+        :type LogTopic: str
+        :param _Period: Log topic validity period, which is 30 days by default if not specified.
+        :type Period: int
+        :param _CreateIndex: Indicates whether to create an index when creating the log topic.
+        :type CreateIndex: bool
+        """
+        self._InstanceId = None
+        self._LogType = None
+        self._Status = None
+        self._CreateLogset = None
+        self._Logset = None
+        self._CreateLogTopic = None
+        self._LogTopic = None
+        self._Period = None
+        self._CreateIndex = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogType(self):
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateLogset(self):
+        return self._CreateLogset
+
+    @CreateLogset.setter
+    def CreateLogset(self, CreateLogset):
+        self._CreateLogset = CreateLogset
+
+    @property
+    def Logset(self):
+        return self._Logset
+
+    @Logset.setter
+    def Logset(self, Logset):
+        self._Logset = Logset
+
+    @property
+    def CreateLogTopic(self):
+        return self._CreateLogTopic
+
+    @CreateLogTopic.setter
+    def CreateLogTopic(self, CreateLogTopic):
+        self._CreateLogTopic = CreateLogTopic
+
+    @property
+    def LogTopic(self):
+        return self._LogTopic
+
+    @LogTopic.setter
+    def LogTopic(self, LogTopic):
+        self._LogTopic = LogTopic
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def CreateIndex(self):
+        return self._CreateIndex
+
+    @CreateIndex.setter
+    def CreateIndex(self, CreateIndex):
+        self._CreateIndex = CreateIndex
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._LogType = params.get("LogType")
+        self._Status = params.get("Status")
+        self._CreateLogset = params.get("CreateLogset")
+        self._Logset = params.get("Logset")
+        self._CreateLogTopic = params.get("CreateLogTopic")
+        self._LogTopic = params.get("LogTopic")
+        self._Period = params.get("Period")
+        self._CreateIndex = params.get("CreateIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceLogToCLSResponse(AbstractModel):
+    """ModifyDBInstanceLogToCLS response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceNameRequest(AbstractModel):
     """ModifyDBInstanceName request structure.
 
@@ -19289,14 +19751,17 @@ class OpenAuditServiceRequest(AbstractModel):
         :type HighLogExpireDay: int
         :param _AuditRuleFilters: Audit rule If both this parameter and `RuleTemplateIds` are left empty, full audit will be applied.
         :type AuditRuleFilters: list of AuditRuleFilters
-        :param _RuleTemplateIds: Rule template ID If both this parameter and `AuditRuleFilters` are left empty, full audit will be applied.
+        :param _RuleTemplateIds: Rule template ID. If both this parameter and AuditRuleFilters are not specified, all SQL statements will be recorded.
         :type RuleTemplateIds: list of str
+        :param _AuditAll: Audit type. Valid values: true: Record all; false: Record by rules (default value).
+        :type AuditAll: bool
         """
         self._InstanceId = None
         self._LogExpireDay = None
         self._HighLogExpireDay = None
         self._AuditRuleFilters = None
         self._RuleTemplateIds = None
+        self._AuditAll = None
 
     @property
     def InstanceId(self):
@@ -19338,6 +19803,14 @@ class OpenAuditServiceRequest(AbstractModel):
     def RuleTemplateIds(self, RuleTemplateIds):
         self._RuleTemplateIds = RuleTemplateIds
 
+    @property
+    def AuditAll(self):
+        return self._AuditAll
+
+    @AuditAll.setter
+    def AuditAll(self, AuditAll):
+        self._AuditAll = AuditAll
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -19350,6 +19823,7 @@ class OpenAuditServiceRequest(AbstractModel):
                 obj._deserialize(item)
                 self._AuditRuleFilters.append(obj)
         self._RuleTemplateIds = params.get("RuleTemplateIds")
+        self._AuditAll = params.get("AuditAll")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19776,6 +20250,8 @@ class ParamRecord(AbstractModel):
         :type IsSucess: bool
         :param _ModifyTime: Modification time
         :type ModifyTime: str
+        :param _IsSuccess: Indicates whether the parameter is modified successfully.
+        :type IsSuccess: bool
         """
         self._InstanceId = None
         self._ParamName = None
@@ -19783,6 +20259,7 @@ class ParamRecord(AbstractModel):
         self._NewValue = None
         self._IsSucess = None
         self._ModifyTime = None
+        self._IsSuccess = None
 
     @property
     def InstanceId(self):
@@ -19818,10 +20295,14 @@ class ParamRecord(AbstractModel):
 
     @property
     def IsSucess(self):
+        warnings.warn("parameter `IsSucess` is deprecated", DeprecationWarning) 
+
         return self._IsSucess
 
     @IsSucess.setter
     def IsSucess(self, IsSucess):
+        warnings.warn("parameter `IsSucess` is deprecated", DeprecationWarning) 
+
         self._IsSucess = IsSucess
 
     @property
@@ -19832,6 +20313,14 @@ class ParamRecord(AbstractModel):
     def ModifyTime(self, ModifyTime):
         self._ModifyTime = ModifyTime
 
+    @property
+    def IsSuccess(self):
+        return self._IsSuccess
+
+    @IsSuccess.setter
+    def IsSuccess(self, IsSuccess):
+        self._IsSuccess = IsSuccess
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -19840,6 +20329,7 @@ class ParamRecord(AbstractModel):
         self._NewValue = params.get("NewValue")
         self._IsSucess = params.get("IsSucess")
         self._ModifyTime = params.get("ModifyTime")
+        self._IsSuccess = params.get("IsSuccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23330,6 +23820,72 @@ class StartCpuExpandRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _Type: Scale-out mode. Valid values: auto and
+manual.
+        :type Type: str
+        :param _ExpandCpu: Number of CPU cores to increase during manual scale-out. This parameter is required when Type is set to manual.
+        :type ExpandCpu: int
+        :param _AutoStrategy: Automatic scale-out policy. This parameter is required when Type is set to auto.
+        :type AutoStrategy: :class:`tencentcloud.cdb.v20170320.models.AutoStrategy`
+        """
+        self._InstanceId = None
+        self._Type = None
+        self._ExpandCpu = None
+        self._AutoStrategy = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ExpandCpu(self):
+        return self._ExpandCpu
+
+    @ExpandCpu.setter
+    def ExpandCpu(self, ExpandCpu):
+        self._ExpandCpu = ExpandCpu
+
+    @property
+    def AutoStrategy(self):
+        return self._AutoStrategy
+
+    @AutoStrategy.setter
+    def AutoStrategy(self, AutoStrategy):
+        self._AutoStrategy = AutoStrategy
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Type = params.get("Type")
+        self._ExpandCpu = params.get("ExpandCpu")
+        if params.get("AutoStrategy") is not None:
+            self._AutoStrategy = AutoStrategy()
+            self._AutoStrategy._deserialize(params.get("AutoStrategy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class StartCpuExpandResponse(AbstractModel):
     """StartCpuExpand response structure.
@@ -23338,7 +23894,7 @@ class StartCpuExpandResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: Async task ID, which can be passed in by calling the u200c`DescribeAsyncRequest` API for task progress query.
+        :param _AsyncRequestId: Async task ID, which can be passed in by calling the `DescribeAsyncRequest` API for task progress query.
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -23479,7 +24035,7 @@ class StopCpuExpandResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: Async task ID, which can be passed in by calling the u200c`DescribeAsyncRequest` API for task progress query.
+        :param _AsyncRequestId: Async task ID, which can be passed in by calling the `DescribeAsyncRequest` API for task progress query.
         :type AsyncRequestId: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str

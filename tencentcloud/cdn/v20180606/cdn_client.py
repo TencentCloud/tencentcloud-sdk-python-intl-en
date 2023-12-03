@@ -844,6 +844,33 @@ class CdnClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDomainConfig(self, request):
+        """This API is used to modify the configuration of a CDN acceleration domain name in a finer manner than `UpdateDomainConfig`.
+        Notes:
+        In `Route`, separate values by dots (.). The last value is called a leaf node. For non-leaf nodes, keep the configuration unchanged.
+        The Value field is serialized to a JSON string {key:value}, where **key** is fixed to `update` and **value** is used to specify the value of the configuration parameter. To specify configurations with complex types, see https://intl.cloud.tencent.com/document/product/228/41116.?from_cn_redirect=1
+        The input parameters of this API are not reported to CloudAudit as it may contain sensitive data, such as keys and secrets.
+
+        :param request: Request instance for ModifyDomainConfig.
+        :type request: :class:`tencentcloud.cdn.v20180606.models.ModifyDomainConfigRequest`
+        :rtype: :class:`tencentcloud.cdn.v20180606.models.ModifyDomainConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDomainConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDomainConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def PurgePathCache(self, request):
         """This API is used to submit multiple directory purge tasks, which are carried out according to the acceleration region of the domain names.
         By default, a maximum of 100 directories can be purged per day for acceleration regions either within or outside the Chinese mainland, and up to 500 tasks can be submitted at a time.
@@ -988,7 +1015,8 @@ class CdnClient(AbstractClient):
 
     def UpdateDomainConfig(self, request):
         """This API is used to modify the configuration of CDN acceleration domain names.
-        Note: if you need to update complex configuration items, you must pass all the attributes of the entire object. The default value will be used for attributes that are not passed. We recommend calling the querying API to obtain the configuration attributes first. You can then modify and pass the attributes to the API. The certificate and key fields do not need to be passed for HTTPS configuration.
+        Note: To update complex configuration items, all attributes of the object must be specified, or the default values are used. We recommend calling the querying API to get attributes before modifying and passing them to this API.
+        The input parameters of this API are not reported to CloudAudit as it may contain sensitive data, such as keys and secrets.
 
         :param request: Request instance for UpdateDomainConfig.
         :type request: :class:`tencentcloud.cdn.v20180606.models.UpdateDomainConfigRequest`

@@ -41,11 +41,41 @@ FAILEDOPERATION_CANNOTBEDELETEDWITHINHOUR = 'FailedOperation.CannotBeDeletedWith
 # Failed to get order information. Try again later.
 FAILEDOPERATION_CANNOTGETORDER = 'FailedOperation.CannotGetOrder'
 
+# This operation can be performed only when the record status is Complete.
+FAILEDOPERATION_CERTIFICATEDEPLOYDETAILROLLBACKSTATUSINVALID = 'FailedOperation.CertificateDeployDetailRollbackStatusInvalid'
+
+# There is a running certificate deployment task. Please try again after the deployment is complete.
+FAILEDOPERATION_CERTIFICATEDEPLOYHASPENDINGRECORD = 'FailedOperation.CertificateDeployHasPendingRecord'
+
+# There is no instance for the selected cloud resource. Updating failed. Please try again after checking it.
+FAILEDOPERATION_CERTIFICATEDEPLOYINSTANCEEMPTY = 'FailedOperation.CertificateDeployInstanceEmpty'
+
+# The certificate deployment record does not exist.
+FAILEDOPERATION_CERTIFICATEDEPLOYNOTEXIST = 'FailedOperation.CertificateDeployNotExist'
+
+# This operation can be performed only when the record status is Failed.
+FAILEDOPERATION_CERTIFICATEDEPLOYRETRYSTATUSINVALID = 'FailedOperation.CertificateDeployRetryStatusInvalid'
+
+# A rollback can be performed only when there is a record indicating successful deployment.
+FAILEDOPERATION_CERTIFICATEDEPLOYROLLBACKSTATUSINVALID = 'FailedOperation.CertificateDeployRollbackStatusInvalid'
+
+# The certificate is suspected to be an SM2 certificate and does not comply with the selected certificate standard. Please check whether the selected certificate standard and the content of the certificate are correct.
+FAILEDOPERATION_CERTIFICATEENCRYPTINVALID = 'FailedOperation.CertificateEncryptInvalid'
+
 # The certificate already exists.
 FAILEDOPERATION_CERTIFICATEEXISTS = 'FailedOperation.CertificateExists'
 
+# The current certificate is not allowed to use the one-click update function.
+FAILEDOPERATION_CERTIFICATEHOSTDEPLOYCANNOTALLOW = 'FailedOperation.CertificateHostDeployCanNotAllow'
+
 # Unable to use the deployment feature because the login account is an internal account with too many instance resources. Please contact us to handle it.
 FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = 'FailedOperation.CertificateHostResourceInnerInterrupt'
+
+# There are too many instances under the current account. Loading cannot be performed properly. Please switch the loading mode. After switching, click "Refresh List" and wait for a period of time. Then, all the instances can be loaded.
+FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINSTANCEHUGELIMIT = 'FailedOperation.CertificateHostResourceInstanceHugeLimit'
+
+# The cloud resource type is invalid.
+FAILEDOPERATION_CERTIFICATEHOSTRESOURCETYPEINVALID = 'FailedOperation.CertificateHostResourceTypeInvalid'
 
 # The certificate is invalid.
 FAILEDOPERATION_CERTIFICATEINVALID = 'FailedOperation.CertificateInvalid'
@@ -55,6 +85,9 @@ FAILEDOPERATION_CERTIFICATEMISMATCH = 'FailedOperation.CertificateMismatch'
 
 # The certificate is not available. Please check and try again.
 FAILEDOPERATION_CERTIFICATENOTAVAILABLE = 'FailedOperation.CertificateNotAvailable'
+
+# The certificate is not allowed to be deployed under the instance list.
+FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = 'FailedOperation.CertificateNotDeployInstance'
 
 # The certificate does not exist.
 FAILEDOPERATION_CERTIFICATENOTFOUND = 'FailedOperation.CertificateNotFound'
@@ -116,6 +149,9 @@ FAILEDOPERATION_PACKAGECOUNTLIMIT = 'FailedOperation.PackageCountLimit'
 # The benefit package has expired.
 FAILEDOPERATION_PACKAGEEXPIRED = 'FailedOperation.PackageExpired'
 
+# The benefit package does not exist.
+FAILEDOPERATION_PACKAGENOTFOUND = 'FailedOperation.PackageNotFound'
+
 # The role does not exist. Please authorize the role first.
 FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = 'FailedOperation.RoleNotFoundAuthorization'
 
@@ -140,8 +176,14 @@ INVALIDPARAMETER_CERTIFICATESTATUSNOTALLOWRESUBMIT = 'InvalidParameter.Certifica
 # Incorrect CSR ID.
 INVALIDPARAMETER_INVALIDCSRID = 'InvalidParameter.InvalidCSRId'
 
+# There is no matching private key.
+INVALIDPARAMETER_MISSMATCHPRIVATEKEY = 'InvalidParameter.MissMatchPrivateKey'
+
 # The list of benefit point IDs is invalid.
 INVALIDPARAMETER_PACKAGEIDSINVALID = 'InvalidParameter.PackageIdsInvalid'
+
+# The algorithm is invalid.
+INVALIDPARAMETER_RENEWALGORITHMINVALID = 'InvalidParameter.RenewAlgorithmInvalid'
 
 # The parameter is incorrect.
 INVALIDPARAMETER_WITHDETAILREASON = 'InvalidParameter.WithDetailReason'
@@ -154,3 +196,6 @@ LIMITEXCEEDED_RATELIMITEXCEEDED = 'LimitExceeded.RateLimitExceeded'
 
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
+
+# The manager of the company does not exist.
+RESOURCENOTFOUND_MANAGER = 'ResourceNotFound.Manager'

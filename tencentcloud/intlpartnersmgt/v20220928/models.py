@@ -302,6 +302,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _TotalCost: Total cost = discounted total - voucher deduction
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCost: str
+        :param _Id: ID
+Note: The return value may be null, indicating that no valid data can be obtained.
+        :type Id: str
         """
         self._PayerAccountId = None
         self._OwnerAccountId = None
@@ -333,6 +336,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TotalAmountAfterDiscount = None
         self._VoucherDeduction = None
         self._TotalCost = None
+        self._Id = None
 
     @property
     def PayerAccountId(self):
@@ -574,6 +578,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def TotalCost(self, TotalCost):
         self._TotalCost = TotalCost
 
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         self._PayerAccountId = params.get("PayerAccountId")
@@ -606,6 +618,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TotalAmountAfterDiscount = params.get("TotalAmountAfterDiscount")
         self._VoucherDeduction = params.get("VoucherDeduction")
         self._TotalCost = params.get("TotalCost")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1036,6 +1049,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _TotalCost: Total cost = discounted total - voucher deduction
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalCost: str
+        :param _Id: ID
+Note: The return value may be null, indicating that no valid data can be obtained.
+        :type Id: str
         """
         self._PayerAccountId = None
         self._OwnerAccountId = None
@@ -1064,6 +1080,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._OriginalCost = None
         self._Currency = None
         self._TotalCost = None
+        self._Id = None
 
     @property
     def PayerAccountId(self):
@@ -1281,6 +1298,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def TotalCost(self, TotalCost):
         self._TotalCost = TotalCost
 
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         self._PayerAccountId = params.get("PayerAccountId")
@@ -1310,6 +1335,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._OriginalCost = params.get("OriginalCost")
         self._Currency = params.get("Currency")
         self._TotalCost = params.get("TotalCost")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1329,7 +1355,7 @@ class DescribeBillDetailRequest(AbstractModel):
         r"""
         :param _Month: The queried month in u200dthe format of “YYYY-MM”, such as 2023-01.
         :type Month: str
-        :param _PageSize: A pagination parameter that specifies the number of entries per page
+        :param _PageSize: Page parameter: Indicates the number of entries per page. The maximum value is 200.
         :type PageSize: int
         :param _Page: A pagination parameter that specifies the current page number
         :type Page: int
@@ -1732,7 +1758,7 @@ class DescribeCustomerBillDetailRequest(AbstractModel):
         :type CustomerUin: int
         :param _Month: The queried month in “YYYY-MM” format, such as 2023-01.
         :type Month: str
-        :param _PageSize: A pagination parameter that specifies the number of entries per page
+        :param _PageSize: Page parameter: Indicates the number of entries per page. The maximum value is 200.
         :type PageSize: int
         :param _Page: A pagination parameter that specifies the current page number
         :type Page: int
@@ -2078,9 +2104,19 @@ class DescribeCustomerInfoData(AbstractModel):
         :type Name: str
         :param _BindTime: Binding time Note: This field may return null, indicating that no valid values can be obtained.
         :type BindTime: str
-        :param _AccountStatus: Account status Valid values: `0` (Not frozen),  `1` (Frozen).  Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AccountStatus: Account status
+0: Normal
+1: Forcibly mandatory (this function is not supported yet)
+2. Mandatory arrears
+Note: The return value may be null, indicating that no valid data can be obtained.
         :type AccountStatus: str
-        :param _AuthStatus: Identity verification status Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AuthStatus: Identity verification status
+-1: Files not uploaded
+0: Not submitted for review
+1: Under review
+2: Review error
+3: Approved
+Note: The return value may be null, indicating that no valid data can be obtained.
         :type AuthStatus: str
         """
         self._CustomerUin = None
@@ -2620,11 +2656,15 @@ class QueryCreditAllocationHistoryData(AbstractModel):
         :type Credit: float
         :param _AllocatedCredit: The allocated total credit
         :type AllocatedCredit: float
+        :param _ClientCreditAfter: Available credits after allocation
+Note: The return value may be null, indicating that no valid data can be obtained.
+        :type ClientCreditAfter: float
         """
         self._AllocatedTime = None
         self._Operator = None
         self._Credit = None
         self._AllocatedCredit = None
+        self._ClientCreditAfter = None
 
     @property
     def AllocatedTime(self):
@@ -2658,12 +2698,21 @@ class QueryCreditAllocationHistoryData(AbstractModel):
     def AllocatedCredit(self, AllocatedCredit):
         self._AllocatedCredit = AllocatedCredit
 
+    @property
+    def ClientCreditAfter(self):
+        return self._ClientCreditAfter
+
+    @ClientCreditAfter.setter
+    def ClientCreditAfter(self, ClientCreditAfter):
+        self._ClientCreditAfter = ClientCreditAfter
+
 
     def _deserialize(self, params):
         self._AllocatedTime = params.get("AllocatedTime")
         self._Operator = params.get("Operator")
         self._Credit = params.get("Credit")
         self._AllocatedCredit = params.get("AllocatedCredit")
+        self._ClientCreditAfter = params.get("ClientCreditAfter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3330,12 +3379,18 @@ class QueryPartnerCreditResponse(AbstractModel):
         :type TotalCredit: float
         :param _RemainingCredit: Remaining credit
         :type RemainingCredit: float
+        :param _CustomerTotalCredit: Allocated quota for the client
+        :type CustomerTotalCredit: float
+        :param _CustomerRemainingCredit: Remaining quota for the client
+        :type CustomerRemainingCredit: float
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._AllocatedCredit = None
         self._TotalCredit = None
         self._RemainingCredit = None
+        self._CustomerTotalCredit = None
+        self._CustomerRemainingCredit = None
         self._RequestId = None
 
     @property
@@ -3363,6 +3418,22 @@ class QueryPartnerCreditResponse(AbstractModel):
         self._RemainingCredit = RemainingCredit
 
     @property
+    def CustomerTotalCredit(self):
+        return self._CustomerTotalCredit
+
+    @CustomerTotalCredit.setter
+    def CustomerTotalCredit(self, CustomerTotalCredit):
+        self._CustomerTotalCredit = CustomerTotalCredit
+
+    @property
+    def CustomerRemainingCredit(self):
+        return self._CustomerRemainingCredit
+
+    @CustomerRemainingCredit.setter
+    def CustomerRemainingCredit(self, CustomerRemainingCredit):
+        self._CustomerRemainingCredit = CustomerRemainingCredit
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3375,6 +3446,8 @@ class QueryPartnerCreditResponse(AbstractModel):
         self._AllocatedCredit = params.get("AllocatedCredit")
         self._TotalCredit = params.get("TotalCredit")
         self._RemainingCredit = params.get("RemainingCredit")
+        self._CustomerTotalCredit = params.get("CustomerTotalCredit")
+        self._CustomerRemainingCredit = params.get("CustomerRemainingCredit")
         self._RequestId = params.get("RequestId")
 
 

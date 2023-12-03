@@ -71,7 +71,7 @@ FAILEDOPERATION_GETPRIVILEGEERROR = 'FailedOperation.GetPrivilegeError'
 # Query failed.
 FAILEDOPERATION_INSTANCEQUERYERROR = 'FailedOperation.InstanceQueryError'
 
-# 
+# An error occurred due to instance task conflict.
 FAILEDOPERATION_INSTANCETASKCONFLICTERROR = 'FailedOperation.InstanceTaskConflictError'
 
 # Failed to deserialize JSON.
@@ -107,7 +107,7 @@ FAILEDOPERATION_REPEATCREATEPROXYERROR = 'FailedOperation.RepeatCreateProxyError
 # Exception with the backend request for the service. Please contact customer service.
 FAILEDOPERATION_RESPONSEVALUEERROR = 'FailedOperation.ResponseValueError'
 
-# 
+# The result set size of queried logs exceeds the limit. Please select a shorter time range.
 FAILEDOPERATION_RESULTSETOVERLIMIT = 'FailedOperation.ResultSetOverLimit'
 
 # Failed to initiate the operation. Please try again later. If the operation remains unsuccessful, please contact customer service.
@@ -128,7 +128,7 @@ FAILEDOPERATION_TYPEINCONFLICT = 'FailedOperation.TypeInConflict'
 # The IP has been occupied.
 FAILEDOPERATION_VPCIPINUSEERROR = 'FailedOperation.VpcIpInUseError'
 
-# 
+# Invalid IP address
 FAILEDOPERATION_VPCIPINVALIDERROR = 'FailedOperation.VpcIpInvalidError'
 
 # The IP doesn’t exist in the subnet.
@@ -197,7 +197,7 @@ INTERNALERROR_FTPERROR = 'InternalError.FtpError'
 # Exceptional HTTP request
 INTERNALERROR_HTTPERROR = 'InternalError.HttpError'
 
-# 
+# Request failed.
 INTERNALERROR_HTTPREQUESTERROR = 'InternalError.HttpRequestError'
 
 # Import failed

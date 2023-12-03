@@ -302,6 +302,29 @@ class EbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLogTagValue(self, request):
+        """This API is used to query log searching metric values.
+
+        :param request: Request instance for DescribeLogTagValue.
+        :type request: :class:`tencentcloud.eb.v20210416.models.DescribeLogTagValueRequest`
+        :rtype: :class:`tencentcloud.eb.v20210416.models.DescribeLogTagValueResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogTagValue", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogTagValueResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetEventBus(self, request):
         """This API is used to get the details of an event bus.
 
@@ -454,6 +477,29 @@ class EbClient(AbstractClient):
             body = self.call("ListTargets", params, headers=headers)
             response = json.loads(body)
             model = models.ListTargetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SearchLog(self, request):
+        """This API is used to query logs.
+
+        :param request: Request instance for SearchLog.
+        :type request: :class:`tencentcloud.eb.v20210416.models.SearchLogRequest`
+        :rtype: :class:`tencentcloud.eb.v20210416.models.SearchLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchLogResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

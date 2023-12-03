@@ -68,7 +68,7 @@ INTERNALERROR_SCDNUSERSUSPEND = 'InternalError.ScdnUserSuspend'
 # Tag internal error. Please submit a ticket for troubleshooting.
 INTERNALERROR_TAGSYSTEMERROR = 'InternalError.TagSystemError'
 
-# 
+# Internal service error. Please submit a ticket for troubleshooting.
 INTERNALERROR_UNKNOWNERROR = 'InternalError.UnknownError'
 
 # The access port 443 must be enabled for HTTPS configuration.
@@ -329,7 +329,7 @@ LIMITEXCEEDED_CLSTOPICEXCEED = 'LimitExceeded.ClsTopicExceed'
 # Daily task quota exceeded
 LIMITEXCEEDED_SCDNLOGTASKEXCEEDDAYLIMIT = 'LimitExceeded.ScdnLogTaskExceedDayLimit'
 
-# 
+# Inconsistent domain name. Please select again or submit a ticket.
 OPERATIONDENIED_SHARECACHEAREADNSNOTMATCH = 'OperationDenied.ShareCacheAreaDnsNotMatch'
 
 # The domain name conflicts with an existing domain name in the system.

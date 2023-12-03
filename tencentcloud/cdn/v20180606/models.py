@@ -25,7 +25,9 @@ class AccessControl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable request header and request URL access control. Valid values: on, off
+        :param _Switch: Whether to enable access control based on the request header and request URL. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         :param _AccessControlRules: Request header and request URL access rule
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -1100,7 +1102,10 @@ class AdvancedAuthentication(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Hotlink protection configuration switch (which can be on or off). If it is enabled, only one mode can and must be configured, while other modes are null.
+        :param _Switch: Whether to enable hot linking protection. Values:
+`on`: Enable
+`off`: Disable
+Only one advanced configuration can be enabled. Set the rests to `null`.
         :type Switch: str
         :param _TypeA: Timestamp hotlink protection advanced configuration mode A
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -1848,8 +1853,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param _FrequencyLimit: Detection frequency threshold
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type FrequencyLimit: int
-        :param _PunishmentSwitch: Whether to enable IP penalty. Valid values: `on` and `off`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _PunishmentSwitch: Whether to enable IP blocking. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return·`null`, indicating that no valid values can be obtained.
         :type PunishmentSwitch: str
         :param _PunishmentTime: IP penalty duration
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -1863,8 +1870,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param _Configure: Layer-7 rule configuration for CC frequency limiting
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type Configure: list of ScdnSevenLayerRules
-        :param _Switch: Whether to enable the rule. Values: `on` (enable), `off` (disable).
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Switch: Whether to enable custom CC rules. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return·`null`, indicating that no valid values can be obtained.
         :type Switch: str
         """
         self._RuleName = None
@@ -2169,7 +2178,7 @@ class AdvancedScdnAclRule(AbstractModel):
 `matching`: The prefix is matched
 `null`: Empty or does not exist
         :type LogicOperator: str
-        :param _MatchValue: Match value
+        :param _MatchValue: Matched value.
 When `MatchKey` is `protocol`,
 Values: `HTTP` and `HTTPS`.
 
@@ -2232,11 +2241,10 @@ When `MatchKey` is `ipCountry`, valid values include:
 `AI`: Anguilla
 `VA`: Vatican
 `SK`: Slovakia
-`RU`: Russia
 `GB`: United Kingdom
 `CZ`: Czech Republic
 `UA`: Ukraine
-`TR`: Turkey
+`TR`: Türkiye
 `SI`: Slovenia
 `SE`: Sweden
 `RS`: Republic of Serbia
@@ -2373,7 +2381,7 @@ When `MatchKey` is `ipCountry`, valid values include:
 `AO`: Angola
 
 When MatchKey is `ipArea`, valid values include:
-`OTHER`: other areas
+`OTHER`: Other areas
 `AS`: Asia
 `EU`: Europe
 `AN`: Antarctica
@@ -2460,11 +2468,17 @@ class Authentication(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Hotlink protection configuration switch
+        :param _Switch: Whether to enable hot linking protection. Values:
 `on`: Enable
 `off`: Disable
-When this is enabled, one mode needs to be configured. Other modes need to be set to null.
+Only one advanced configuration can be enabled. Set the rests to `null`.
         :type Switch: str
+        :param _AuthAlgorithm: Authentication algorithm. Values:
+`md5`: Calculate the hash using MD5.
+`sha256`: Calculate the hash using SHA-256.
+Default value: `md5`.
+Note: This field may return·`null`, indicating that no valid values can be obtained.
+        :type AuthAlgorithm: str
         :param _TypeA: Timestamp hotlink protection mode A configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type TypeA: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeA`
@@ -2479,6 +2493,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :type TypeD: :class:`tencentcloud.cdn.v20180606.models.AuthenticationTypeD`
         """
         self._Switch = None
+        self._AuthAlgorithm = None
         self._TypeA = None
         self._TypeB = None
         self._TypeC = None
@@ -2491,6 +2506,14 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     @Switch.setter
     def Switch(self, Switch):
         self._Switch = Switch
+
+    @property
+    def AuthAlgorithm(self):
+        return self._AuthAlgorithm
+
+    @AuthAlgorithm.setter
+    def AuthAlgorithm(self, AuthAlgorithm):
+        self._AuthAlgorithm = AuthAlgorithm
 
     @property
     def TypeA(self):
@@ -2527,6 +2550,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
+        self._AuthAlgorithm = params.get("AuthAlgorithm")
         if params.get("TypeA") is not None:
             self._TypeA = AuthenticationTypeA()
             self._TypeA._deserialize(params.get("TypeA"))
@@ -2987,8 +3011,10 @@ class AvifAdapter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Switch. Valid values: `on`, `off`.
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _Switch: Whether to enable `AvifAdapter` for image optimization. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return·`null`, indicating that no valid values can be obtained.
         :type Switch: str
         """
         self._Switch = None
@@ -3021,7 +3047,9 @@ class AwsPrivateAccess(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Switch, which can be set to on or off.
+        :param _Switch: Whether to enable origin-pull authentication for S3 buckets.
+`on`: Enable
+`off`: Disable
         :type Switch: str
         :param _AccessKey: Access ID.
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -3106,7 +3134,7 @@ class BandwidthAlert(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Specifies whether to enable the bandwidth cap
+        :param _Switch: Whether to enable usage limit. Values:
 `on`: Enable
 `off`: Disable
         :type Switch: str
@@ -3120,10 +3148,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param _LastTriggerTime: The last time when the usage upper limit in the Chinese mainland was reached
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type LastTriggerTime: str
-        :param _AlertSwitch: Indicates whether to trigger alerts when the upper limit is reached
+        :param _AlertSwitch: Whether to enable alerts for usage limit. Values:
 `on`: Enable
 `off`: Disable
-Note: this field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type AlertSwitch: str
         :param _AlertPercentage: Triggers alarms when the ratio of bandwidth or traffic usage to the usage upper limit reaches the specified value
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -3255,7 +3283,9 @@ class BotCookie(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Valid values: `on` and `off`.
+        :param _Switch: Whether to enable bot cookie policies. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         :param _RuleType: Rule type, which can only be `all` currently.
         :type RuleType: str
@@ -3350,7 +3380,9 @@ class BotJavaScript(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Valid values: `on` and `off`.
+        :param _Switch: Whether to enable bot JS policies. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         :param _RuleType: Rule type, which can only be `file` currently.
         :type RuleType: str
@@ -3742,10 +3774,13 @@ class CacheConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HeuristicCacheTimeSwitch: `on`: Enable
+        :param _HeuristicCacheTimeSwitch: Whether to enable heuristic cache validity. Values:
+`on`: Enable
 `off`: Disable
+Note: This field may return·`null`, indicating that no valid values can be obtained.
         :type HeuristicCacheTimeSwitch: str
         :param _HeuristicCacheTime: Unit: Second
+Note: This field may return·`null`, indicating that no valid values can be obtained.
         :type HeuristicCacheTime: int
         """
         self._HeuristicCacheTimeSwitch = None
@@ -3788,10 +3823,10 @@ class CacheConfigCache(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Cache configuration switch
-on: enable
-off: disable
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Switch: Whether to enable path cache. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         :param _CacheTime: Cache expiration time settings
 Unit: second. The maximum value is 365 days.
@@ -3886,7 +3921,7 @@ class CacheConfigFollowOrigin(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Follow origin server switch configuration
+        :param _Switch: Whether to follow the origin configuration for path cache. Values:
 `on`: Enable
 `off`: Disable
         :type Switch: str
@@ -3936,10 +3971,10 @@ class CacheConfigNoCache(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: No-cache configuration switch
+        :param _Switch: Whether to enable no-caching at the path. Values:
 `on`: Enable
 `off`: Disable
-Note: this field may return null, indicating that no valid value is obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         :param _Revalidate: Always forwards to the origin server for verification
 `on`: Enable
@@ -4176,8 +4211,10 @@ class CacheTagKey(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to use `CacheTag` as part of `CacheKey`
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Switch: Whether to include `CacheTag` as part of `CacheKey`. Values:
+`on`: Yes
+`off`: No
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         :param _Value: Value of custom `CacheTag`
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -4781,7 +4818,7 @@ class Compression(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Smart compression configuration switch
+        :param _Switch: Whether to enable smart compression. Values:
 `on`: Enable
 `off`: Disable
         :type Switch: str
@@ -4961,8 +4998,10 @@ class CookieKey(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to use `Cookie` as part of `CacheKey`. Valid values: on, off
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Switch: Whether to include Cookie as part of CacheKey. Values:
+`on`: Yes
+`off`: No
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         :param _Value: Used cookies (separated by ';')
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -7149,16 +7188,23 @@ class DescribePayTypeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Area: Specifies a service region.
-`mainland`: queries billing methods within Mainland China;
-`overseas`: queries billing methods outside Mainland China.
-Default value: `mainland`.
+        :param _Area: Specifies the service area.
+`mainland`: Queries billing methods available in the Chinese mainland.
+`overseas`: Queries billing methods available in the regions outside the Chinese mainland.
+`Global`: Queries billing methods available across the globe.
+If it is not specified, it defaults to `mainland`.
         :type Area: str
         :param _Product: Specifies the product to query, either `cdn` (default) or `ecdn`.
         :type Product: str
+        :param _Type: Specifies resources.
+`flux`: Traffic package
+`https`: HTTPS requests
+It defaults to `flux` if not specified. 
+        :type Type: str
         """
         self._Area = None
         self._Product = None
+        self._Type = None
 
     @property
     def Area(self):
@@ -7176,10 +7222,19 @@ Default value: `mainland`.
     def Product(self, Product):
         self._Product = Product
 
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._Area = params.get("Area")
         self._Product = params.get("Product")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7197,35 +7252,36 @@ class DescribePayTypeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PayType: Billing modes:
+        :param _PayType: Billing type
 `flux`: Bill by traffic
 `bandwidth`: Bill by bandwidth
 `request`: Bill by the number of requests
-`flux_sep`: Disused field
-`bandwidth_sep`: Disused field
-When you change a daily billing mode to another, and there is network usage on the day of change, this field shows the new billing mode, which takes effect from the next day. If there is no network usage on the day of change, this field shows the new billing mode directly.
+`flux_sep`: Bill by dynamic and static traffic separately 
+`bandwidth_sep`: Bill by dynamic and static bandwidth separately
+If you incur any usage when switching the billing mode, the new mode will take effect the next day. If no usage is incurred, the new mode takes effect immediately.
         :type PayType: str
-        :param _BillingCycle: Billing cycle:
+        :param _BillingCycle: Billing cycle
 `day`: Daily
-`month`: Monthly 
-`hour`: Hourly 
+`month`: Monthly
+`hour`: Hourly
         :type BillingCycle: str
-        :param _StatType: `monthMax`: Billed by the monthly average of daily peak traffic (monthly settlement)
-`day95`: Billed by the daily 95th percentile bandwidth (monthly settlement)
-`month95`: Billed by the monthly 95th percentile bandwidth (monthly settlement)
-`sum`: Billed by the total traffic/total requests (daily or monthly settlement)
-`max`: Billed by the peak bandwidth (daily settlement)
+        :param _StatType: Statistic data
+`monthMax`: Billed monthly based on the monthly average daily peak traffic
+`day95`: Billed monthly based on the daily 95th percentile bandwidth
+`month95`: Billed monthly based on the monthly 95th percentile bandwidth
+`sum`: Billed daily/monthly based on the total traffic or requests
+`max`: Billed daily based on the peak bandwidth
         :type StatType: str
-        :param _RegionType: Billing method for regions outside the Chinese mainland:
+        :param _RegionType: Regionl billing
 `all`: Unified billing for all regions
 `multiple`: Region-specific billing
         :type RegionType: str
-        :param _CurrentPayType: The current billing mode in effect:
-`flux`: Billed by traffic
-`bandwidth`: Billed by bandwidth
-`request`: Billed by the number of requests
-`flux_sep`: Disused field
-`bandwidth_sep`: Disused field
+        :param _CurrentPayType: Current billing mode
+`flux`: Bill by traffic
+`bandwidth`: Bill by bandwidth
+`request`: Bill by the number of requests
+`flux_sep`: Bill by dynamic and static traffic separately 
+`bandwidth_sep`: Bill by dynamic and static bandwidth separately
         :type CurrentPayType: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -7622,7 +7678,7 @@ You must specify either a task ID or a starting time.
         :type Offset: int
         :param _Limit: Limit on paginated queries. Default value: 20
         :type Limit: int
-        :param _Area: Specifies a region for your query:
+        :param _Area: Specifies a region to query the prefetch records
 `mainland`: Chinese mainland
 `overseas`: Outside the Chinese mainland
 `global`: Globe
@@ -9296,17 +9352,17 @@ class DomainFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Filters by the field name, which includes:
+        :param _Name: Filter filter. Values:
 - `origin`: Primary origin server.
 - `domain`: Domain name.
 - `resourceId`: Domain name ID.
-- `status`: Domain name status. Valid values: `online`, `offline`, and `processing`.
-- `serviceType`: Service type. Valid values: `web`, `download`, `media`, `hybrid` and `dynamic`.
+- `status`: Domain name status. Values: `online`, `offline`, and `processing`.
+- `serviceType`: Service type. Values: `web`, `download`, `media`, `hybrid` and `dynamic`.
 - `projectId`: Project ID.
-- `domainType`: Primary origin server type. Valid values: `cname` (customer origin), `COS` (COS origin), and `third_party` (third-party object storage origin).
-- `fullUrlCache`: Whether to enable full-path cache, which can be `on` or `off`.
-- `https`: Whether to configure HTTPS, which can be `on`, `off` or `processing`.
-- `originPullProtocol`: Origin-pull protocol type, which can be `http`, `follow`, or `https`.
+- `domainType`: Primary origin type. Values: `cname` (customer origin), `COS` (COS origin), `third_party` (third-party object storage origin), and `igtm` (IGTM origin).
+- `fullUrlCache`: Whether to enable path cache. Values: `on`, `off`.
+- `https`: Whether to configure HTTPS. Values: `on`, `off` and `processing`.
+- `originPullProtocol`: Origin-pull protocol type. Value: `http`, `follow`, and `https`.
 - `tagKey`: Tag key.
         :type Name: str
         :param _Value: Filter field value.
@@ -9377,12 +9433,16 @@ class DomainLog(AbstractModel):
         :type Area: str
         :param _LogName: Log package filename
         :type LogName: str
+        :param _FileSize: File size, in bytes.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type FileSize: int
         """
         self._StartTime = None
         self._EndTime = None
         self._LogPath = None
         self._Area = None
         self._LogName = None
+        self._FileSize = None
 
     @property
     def StartTime(self):
@@ -9424,6 +9484,14 @@ class DomainLog(AbstractModel):
     def LogName(self, LogName):
         self._LogName = LogName
 
+    @property
+    def FileSize(self):
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
@@ -9431,6 +9499,7 @@ class DomainLog(AbstractModel):
         self._LogPath = params.get("LogPath")
         self._Area = params.get("Area")
         self._LogName = params.get("LogName")
+        self._FileSize = params.get("FileSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9448,7 +9517,7 @@ class DownstreamCapping(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Downstream speed configuration switch
+        :param _Switch: Whether to enable downstream speed limit. Values:
 `on`: Enable
 `off`: Disable
         :type Switch: str
@@ -9681,10 +9750,10 @@ class ErrorPage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Status code redirect configuration switch
+        :param _Switch: Whether to enable status code-based redirection. Values:
 `on`: Enable
 `off`: Disable
-Note: This field may return `null`, indicating that no valid value can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         :param _PageRules: Status code redirect rules configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -9849,7 +9918,7 @@ class FollowRedirect(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Origin-pull follow-redirect switch
+        :param _Switch: Whether to enable origin-pull to follow the origin configuration. Values:
 `on`: Enable
 `off`: Disable
         :type Switch: str
@@ -9899,10 +9968,10 @@ class ForceRedirect(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Access forced redirect configuration switch
+        :param _Switch: Whether to enable forced HTTPS redirects. Values:
 `on`: Enable
 `off`: Disable
-Note: This field may return `null`, indicating that no valid value can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         :param _RedirectType: Access forced redirect types
 http: forced HTTP redirect
@@ -10140,8 +10209,10 @@ class GuetzliAdapter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Switch. Valid values: on, off
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Switch: Whether to enable AvifAdapter for image optimization. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return·`null`, indicating that no valid values can be obtained.
         :type Switch: str
         """
         self._Switch = None
@@ -10219,8 +10290,10 @@ class HeaderKey(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to use it as part of `CacheKey`
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Switch: Whether to enable Cachekey control. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         :param _Value: Array of headers that make up the `CacheKey` (separated by ';')
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -10266,10 +10339,13 @@ class HeuristicCache(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: `on`: Enable
+        :param _Switch: Whether to enable heuristic caching. Values:
+`on`: Enable
 `off`: Disable
+Note: This field may return·`null`, indicating that no valid values can be obtained.
         :type Switch: str
         :param _CacheConfig: Heuristic cache validity configuration
+Note: This field may return·`null`, indicating that no valid values can be obtained.
         :type CacheConfig: :class:`tencentcloud.cdn.v20180606.models.CacheConfig`
         """
         self._Switch = None
@@ -10314,7 +10390,9 @@ class Hsts(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable. Valid values: on, off.
+        :param _Switch: Whether to enable HSTS. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         :param _MaxAge: `MaxAge` value.
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -10529,10 +10607,10 @@ class Https(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: HTTPS configuration switch
+        :param _Switch: Whether to enable HTTPS. Values:
 `on`: Enable
 `off`: Disable
-Note: this field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         :param _Http2: Whether to enable HTTP2
 `on`: Enable
@@ -10703,7 +10781,10 @@ class HttpsBilling(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: HTTPS (enabled by default), which will incur charges.
+        :param _Switch: Whether to enable HTTPS. Values:
+`on`: When it's enabled, HTTPS requests are allowed and incur charges. If not specified, his field uses the default value `on`.
+`off`: When it's disabled, HTTPS requests are blocked.
+
         :type Switch: str
         """
         self._Switch = None
@@ -10730,13 +10811,15 @@ class HttpsBilling(AbstractModel):
 
 
 class HwPrivateAccess(AbstractModel):
-    """Access authentication for Huawei Cloud OBS origin
+    """Origin-pull authentication for Huawei Cloud OBS origin
 
     """
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable access authentication. Valid values: `on`, `off`.
+        :param _Switch:  Whether to enable origin-pull authentication for Huawei Cloud OBS origin. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         :param _AccessKey: Access ID
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -10889,7 +10972,7 @@ class IpFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: IP blocklist/allowlist configuration switch
+        :param _Switch: Whether to enable IP blocklist/allowlist. Values:
 `on`: Enable
 `off`: Disable
         :type Switch: str
@@ -11070,7 +11153,7 @@ class IpFreqLimit(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: IP access limit configuration switch
+        :param _Switch: Whether to enable IP rate limit. Values:
 `on`: Enable
 `off`: Disable
         :type Switch: str
@@ -11196,14 +11279,16 @@ class IpStatus(AbstractModel):
 
 
 class Ipv6(AbstractModel):
-    """IPv6 activation configurations, which cannot be changed.
+    """IPv6 origin configuration (changes not allowed).
 
     """
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable the IPv6 feature for a domain name. Values include `on` or `off`.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Switch: Whether to enable an IPv6 address for the origin server. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         """
         self._Switch = None
@@ -11236,8 +11321,10 @@ class Ipv6Access(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable the IPv6 feature for a domain name. Values include `on` or `off`.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Switch: Whether to enable IPv6 access. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         """
         self._Switch = None
@@ -11662,14 +11749,12 @@ class ListTopDataRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _StartTime: Query start time in the format of `yyyy-MM-dd HH:mm:ss`
-Only supports data query at daily granularity. The date in the input parameter is used as the start date.
-If the specified start date is greater than 00:00:00, it will be rounded down to 00:00:00 on the date. For example, if `StartTime` is 2018-09-04 10:40:00, it will be rounded down to 2018-09-04 00:00:00.
-Only data from the last 90 days will be queried.
+Only data queries at the granularity of minutes are supported. The start time is truncated to minutes. For example, if the value of `StartTime` is 2018-09-04 10:40:23, the start time of the data returned is 2018-09-04 10:40:00.
+Only data for the last 90 days can be queried.
         :type StartTime: str
         :param _EndTime: Query end time in the format of `yyyy-MM-dd HH:mm:ss`
-Only supports data query at daily granularity. The date in the input parameter is used as the end date.
-If the specified end date is smaller than 23:59:59, it will be rounded up to 23:59:59 on the date. For example, if `EndTime` is 2018-09-05 22:40:00, it will be rounded up to 2018-09-05 23:59:59.
-`EndTime` must be later than or equal to `StartTime`
+Only data queries at the granularity of days are supported. Take the day in the input parameter as the end date, and the data generated on or before 23:59:59 on the end date is returned. For example, if the value of `EndTime` is 2018-09-05 22:40:00, the end time of the data returned is 2018-09-05 23:59:59.
+`EndTime` must be later than or equal to `StartTime`.
         :type EndTime: str
         :param _Metric: Objects to be sorted. Valid values:
 `url`: Sort by access URL (URLs carrying no parameters). Supported filters are `flux` and `request`.
@@ -12037,7 +12122,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 
 class MainlandConfig(AbstractModel):
-    """Specific configuration for domain names in the mainland China by region. UpdateDomainConfig API only supports modification of certain region configurations. A list of differences that may exist for older configurations will be provided for a compatibility check. The supported configuration list is as follows:
+    """Specific configuration for domain names in the Chinese mainland. Specific configuration by region. The `UpdateDomainConfig` API only supports modification of some region configurations. A list of differences that may exist for older configurations will be provided for a compatibility check. The supported configuration list is as follows:
     + Authentication
     + BandwidthAlert
     + ErrorPage
@@ -12632,10 +12717,10 @@ class MaxAge(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Browser cache configuration switch
+        :param _Switch: Whether to enable browser caching. Values:
 `on`: Enable
 `off`: Disable
-Note: This field may return `null`, indicating that no valid value can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         :param _MaxAgeRules: MaxAge rule
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -12822,6 +12907,88 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
+class ModifyDomainConfigRequest(AbstractModel):
+    """ModifyDomainConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: The domain name.
+        :type Domain: str
+        :param _Route: Name of the configuration parameter.
+        :type Route: str
+        :param _Value: Value of the configuration parameter. This field is serialized to a JSON string {key:value}, where **key** is fixed to `update`.
+        :type Value: str
+        """
+        self._Domain = None
+        self._Route = None
+        self._Value = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Route(self):
+        return self._Route
+
+    @Route.setter
+    def Route(self, Route):
+        self._Route = Route
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Route = params.get("Route")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDomainConfigResponse(AbstractModel):
+    """ModifyDomainConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class OfflineCache(AbstractModel):
     """Offline cache feature status switch.
 
@@ -12829,7 +12996,9 @@ class OfflineCache(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable offline cache. Valid values: `on` and `off`.
+        :param _Switch: Whether to enable offline caching. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         """
         self._Switch = None
@@ -12862,46 +13031,50 @@ class Origin(AbstractModel):
     + Origin-pull domain name configuration
     + Cloud Object Storage (COS) specified as origin server
     + Hot backup origin server specified as a single domain name
-    + Hot backup origin server specified as multiple IPs. Supported port range: 1-65535. At present, weight configuration is not supported.
+    + Hot backup origin server specified as multiple IPs. Supported port range: 1-65535. Weight configuration is not supported.
     + Hot backup origin server origin-pull domain name configuration
 
     """
 
     def __init__(self):
         r"""
-        :param _Origins: Primary origin server list
-When modifying the origin server, you need to enter the corresponding OriginType.
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _Origins: List of primary origin servers
+<font color=red>When modifying the origins, you need to specify `OriginType`.</font>
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Origins: list of str
         :param _OriginType: Primary origin server type
-The following types are supported for input parameters:
-`domain`: domain name
+<font color=red>This field is used together with `Origins`.</font>
+Input:
+`domain`: Domain name
 `domainv6`: IPv6 domain name
-cos: COS origin
+`cos`: COS bucket address
+`third_party`: Third-party object storage origin
+`igtm`: IGTM origin
 `ip`: IP address
-ipv6: origin server list is a single IPv6 address
-`ip_ipv6`: multiple IPv4 addresses and one IPv6 address
+`ipv6`: One IPv6 address
+`ip_ipv6`: Multiple IPv4 addresses and one IPv6 address
 `ip_domain`: IP addresses and domain names (only available to beta users)
 `ip_domainv6`: Multiple IPv4 addresses and one IPv6 domain name
-`ipv6_domain`: multiple IPv6 addresses and one domain name
+`ipv6_domain`: Multiple IPv6 addresses and one domain name
 `ipv6_domainv6`: Multiple IPv6 addresses and one IPv6 domain name
 `domain_domainv6`: Multiple IPv4 domain names and one IPv6 domain name
-`ip_ipv6_domain`: multiple IPv4 and IPv6 addresses and one domain name
+`ip_ipv6_domain`: Multiple IPv4 and IPv6 addresses and one domain name
 `ip_ipv6_domainv6`: Multiple IPv4 and IPv6 addresses and one IPv6 domain name
 `ip_domain_domainv6`: Multiple IPv4 addresses and IPv4 domain names and one IPv6 domain name
 `ipv6_domain_domainv6`: Multiple IPv4 domain names and IPv6 addresses and one IPv6 domain name
 `ip_ipv6_domain_domainv6`: Multiple IPv4 and IPv6 addresses and IPv4 domain names and one IPv6 domain name
-The following types of output parameters are added:
-image: Cloud Infinite origin
-ftp: legacy FTP origin, which is no longer maintained.
-When modifying `Origins`, you need to enter the corresponding OriginType.
-The IPv6 feature is not generally available yet. Please send in a whitelist application to use this feature.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+Output:
+`image`: Cloud Infinite origin
+`ftp`: FTP origin (disused)
+When modifying `Origins`, you need to specify `OriginType`.
+The IPv6 feature is now only available to beta users. Submit a ticket if you need it.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type OriginType: str
-        :param _ServerName: It is required when a COS origin or third-party origin is used for acceleration.
-Host header used when accessing the primary origin server. If it is left empty, the acceleration domain name will be used by default.
-If a wildcard domain name is accessed, then the sub-domain name during the access will be used by default.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _ServerName: Origin-pull host header.
+<font color=red>This field is required when `OriginType=cos/third-party`.</font>
+If not specified, this field defaults to the acceleration domain name.
+For a wildcard domain name, the sub-domain name during the access is used by default.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type ServerName: str
         :param _CosPrivateAccess: When OriginType is COS, you can specify if access to private buckets is allowed.
 Note: To enable this configuration, you need to first grant CDN access to the private bucket. Values: `on` and `off`.
@@ -12913,20 +13086,21 @@ follow: protocol follow origin-pull
 https: forced HTTPS origin-pull. This only supports origin server port 443 for origin-pull.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type OriginPullProtocol: str
-        :param _BackupOrigins: Backup origin server list
-When modifying the backup origin server, you need to enter the corresponding BackupOriginType.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _BackupOrigins: List of secondary origin servers
+<font color=red>This field is used together with `BackupOriginType`.</font>
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type BackupOrigins: list of str
-        :param _BackupOriginType: Backup origin server type, which supports the following types:
+        :param _BackupOriginType: Secondary origin type
+<font color=red>This field is used together with `BackupOrigins`.</font>
+Values:
 `domain`: Domain name
 `ip`: IP address
-When modifying BackupOrigins, you need to enter the corresponding BackupOriginType.
-The following backup origin servers are only available to beta users. Submit an application if you want to become a beta user.
+The following secondary origin types are only available to beta users. Submit a ticket to use it.
 `ipv6_domain`: Multiple IPv6 addresses and one domain name
 `ip_ipv6`: Multiple IPv4 addresses and one IPv6 address
 `ipv6_domain`: Multiple IPv6 addresses and one domain name
 `ip_ipv6_domain`: Multiple IPv4 and IPv6 addresses and one domain name
-Note: This field may return `null`, indicating that no valid value can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type BackupOriginType: str
         :param _BackupServerName: Host header used when accessing the backup origin server. If it is left empty, the `ServerName` of primary origin server will be used by default.
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -12940,11 +13114,21 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param _PathBasedOrigin: Path-based origin-pull configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type PathBasedOrigin: list of PathBasedOriginRule
+        :param _Sni: HTTPS origin-pull SNI
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type Sni: :class:`tencentcloud.cdn.v20180606.models.OriginSni`
         :param _AdvanceHttps: HTTPS advanced origin-pull configuration
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type AdvanceHttps: :class:`tencentcloud.cdn.v20180606.models.AdvanceHttps`
-        :param _OriginCompany: Object storage vendor
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _OriginCompany: Third-party object storage service vendor
+<font color=red>This field is required when `OriginType=third-party`.</font>
+Values:
+`aws_s3`: AWS S3
+`ali_oss`: Alibaba Cloud OSS
+`hw_obs`: Huawei Cloud OBS
+`Qiniu_kodo`: Qiniu Kodo
+`Others`: Other object storage service vendors. Only AWS signature-compatible object storage services are supported, such as Tencent Cloud COS for Finance Zone.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type OriginCompany: str
         """
         self._Origins = None
@@ -12958,6 +13142,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._BasePath = None
         self._PathRules = None
         self._PathBasedOrigin = None
+        self._Sni = None
         self._AdvanceHttps = None
         self._OriginCompany = None
 
@@ -13050,6 +13235,14 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._PathBasedOrigin = PathBasedOrigin
 
     @property
+    def Sni(self):
+        return self._Sni
+
+    @Sni.setter
+    def Sni(self, Sni):
+        self._Sni = Sni
+
+    @property
     def AdvanceHttps(self):
         return self._AdvanceHttps
 
@@ -13088,6 +13281,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
                 obj = PathBasedOriginRule()
                 obj._deserialize(item)
                 self._PathBasedOrigin.append(obj)
+        if params.get("Sni") is not None:
+            self._Sni = OriginSni()
+            self._Sni._deserialize(params.get("Sni"))
         if params.get("AdvanceHttps") is not None:
             self._AdvanceHttps = AdvanceHttps()
             self._AdvanceHttps._deserialize(params.get("AdvanceHttps"))
@@ -13109,8 +13305,11 @@ class OriginAuthentication(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Authentication switch, which can be on or off.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Switch: Whether to enable advanced origin-pull authentication. Values:
+`on`: Enable
+`off`: Disable
+
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         :param _TypeA: Authentication type configuration A
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -13192,7 +13391,9 @@ class OriginCombine(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable the merging pull requests feature. Valid values: `on` and `off`.
+        :param _Switch: Whether to enable origin-pull merge. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         """
         self._Switch = None
@@ -13258,7 +13459,7 @@ class OriginPullOptimization(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Cross-border origin-pull optimization configuration switch
+        :param _Switch: Whether to enable cross-MLC-border origin-pull optimization. Values:
 `on`: Enable
 `off`: Disable
         :type Switch: str
@@ -13348,6 +13549,54 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         
 
 
+class OriginSni(AbstractModel):
+    """HTTPS origin-pull SNI
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable HTTPS origin-pull SNI. Values:
+`on`: Enable
+`off`: Disable
+        :type Switch: str
+        :param _ServerName: Origin-pull domain name.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :type ServerName: str
+        """
+        self._Switch = None
+        self._ServerName = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def ServerName(self):
+        return self._ServerName
+
+    @ServerName.setter
+    def ServerName(self, ServerName):
+        self._ServerName = ServerName
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._ServerName = params.get("ServerName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OssPrivateAccess(AbstractModel):
     """Access authentication configuration for OSS origin
 
@@ -13355,7 +13604,9 @@ class OssPrivateAccess(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable access authentication. Valid values: `on`, `off`.
+        :param _Switch: Whether to enable OSS origin-pull authentication. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         :param _AccessKey: Access ID.
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -13440,7 +13691,9 @@ class OthersPrivateAccess(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable access authentication. Valid values: `on`, `off`.
+        :param _Switch: Whether to enable origin-pull authentication for other object storage origins. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         :param _AccessKey: Access ID.
 Note: This field may return `null`, indicating that no valid values can be obtained.
@@ -13519,7 +13772,7 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
 
 class OverseaConfig(AbstractModel):
-    """Specific configuration for domain names outside mainland China. UpdateDomainConfig API only supports modification of some region configurations. A list of differences that may exist for older configurations will be provided for a compatibility check. The supported configuration list is as follows:
+    """Specific configuration for domain names outside the Chinese mainland. The `UpdateDomainConfig` API only supports modification of some region configurations. A list of differences that may exist for older configurations will be provided for a compatibility check. The supported configuration list is as follows:
     + Authentication
     + BandwidthAlert
     + ErrorPage
@@ -14172,9 +14425,10 @@ class PostSize(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Limit the size of POST requests. The default value is 32 MB.
-off: Disable
-on: Enable
+        :param _Switch: Maximum size of the file uploaded for streaming via a POST request. Values:
+`on`: Enable. When enabled, it is set to 32 MB by default.
+`off`: Disable
+
         :type Switch: str
         :param _MaxSize: Maximum size. Value range: 1 MB to 200 MB.
         :type MaxSize: int
@@ -14813,7 +15067,9 @@ class QnPrivateAccess(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Switch. Valid values: `on`, `off`.
+        :param _Switch: Whether to enable origin-pull authentication for QiNiu Cloud Kodo. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         :param _AccessKey: Access ID
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -14871,14 +15127,20 @@ class QueryStringKey(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to use `QueryString` as part of `CacheKey`. Valid values: on, off
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Switch: Whether to include `QueryString` as part of `CacheKey`. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         :param _Reorder: Whether to sort again
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Reorder: str
-        :param _Action: Includes/excludes query parameters. Valid values: `includeAll`, `excludeAll`, `includeCustom`, `excludeCustom`
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Action: Whether to include URL parameters. Values:
+`includeAll`: Include all parameters.
+`excludeAll`: Exclude all parameters.
+`includeCustom`: Include custom parameters.
+`excludeCustom`: Exclude custom parameters.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Action: str
         :param _Value: Array of included/excluded query strings (separated by ';')
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -14944,7 +15206,9 @@ class Quic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable QUIC
+        :param _Switch: Whether to enable QUIC. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         """
         self._Switch = None
@@ -15046,7 +15310,7 @@ class RangeOriginPull(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Range GETs configuration switch
+        :param _Switch: Whether to enable Range GETs. Values:
 `on`: Enable
 `off`: Disable
         :type Switch: str
@@ -15099,7 +15363,9 @@ class RangeOriginPullRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Specifies whether Range GETs is enabled
+        :param _Switch: Whether to enable Range GETs. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         :param _RuleType: Rule types:
 `file`: effective for specified file suffixes.
@@ -15164,7 +15430,9 @@ class RedirectConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Configuration switch
+        :param _Switch: Whether to enable the custom origin-pull request to follow the host when a 302 code is returned. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         :param _FollowRedirectHost: The custom host header that is sent when the primary origin server follows 302 redirects
         :type FollowRedirectHost: str
@@ -15221,7 +15489,7 @@ class Referer(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Referer blacklist/whitelist configuration switch
+        :param _Switch: Whether to enable referer blocklist/allowlist. Values:
 `on`: Enable
 `off`: Disable
         :type Switch: str
@@ -15414,10 +15682,10 @@ class RemoteAuthentication(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Remote authentication switch
-`on`: enable
-`off`: disable
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _Switch: Whether to enable remote authentication. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         :param _RemoteAuthenticationRules: Remote authentication rule configuration
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -15686,7 +15954,7 @@ class RequestHeader(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Custom request header configuration switch
+        :param _Switch: Whether to enable custom request headers. Values:
 `on`: Enable
 `off`: Disable
         :type Switch: str
@@ -15901,7 +16169,7 @@ class ResponseHeader(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Custom response header switch
+        :param _Switch: Whether to enable custom response headers. Values:
 `on`: Enable
 `off`: Disable
         :type Switch: str
@@ -15954,7 +16222,7 @@ class ResponseHeaderCache(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Origin server header cache switch
+        :param _Switch: Whether to enable response header caching. Values:
 `on`: Enable
 `off`: Disable
         :type Switch: str
@@ -15989,8 +16257,11 @@ class Revalidate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to always forward to the origin server for verification. Valid values: on, off
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Switch: Whether to enable origin-pull authentication. Values:
+`on`: Enable
+`off`: Disable
+
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         :param _Path: Forwards to the origin server for verification only for specific request path
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -16176,7 +16447,7 @@ class RuleEngine(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Specifies whether to enable rule engine
+        :param _Switch: Whether to enable rule engine. Values:
 `on`: Enable
 `off`: Disable
         :type Switch: str
@@ -16224,8 +16495,11 @@ class RuleQueryString(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to use `QueryString` as part of `CacheKey`. Valid values: on, off
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Switch: Whether to include query string parameters. Values:
+`on`: Include `QueryString` as part of `CacheKey`.
+`off`: Do not include `QueryString` as part of `CacheKey`.
+
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         :param _Action: `includeCustom` will retain partial query strings
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -16284,7 +16558,9 @@ class ScdnAclConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable. Valid values: `on` and `off`.
+        :param _Switch: Whether to enable SCDN access. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         :param _ScriptData: This field is disused. Please use `AdvancedScriptData` instead.
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -16514,7 +16790,9 @@ class ScdnBotConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Valid values: `on` and `off`.
+        :param _Switch: Whether to enable SCDN bot configuration. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         :param _BotCookie: Bot cookie policy
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -16600,8 +16878,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param _FrequencyLimit: Frequency threshold
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type FrequencyLimit: int
-        :param _PunishmentSwitch: Whether to block or redirect requests from suspicious IPs. Valid values: `on` and `off`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _PunishmentSwitch: Whether to enable IP blocking. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type PunishmentSwitch: str
         :param _PunishmentTime: Suspicious IP restriction duration
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -16723,7 +17003,9 @@ class ScdnConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Valid values: `on` and `off`.
+        :param _Switch: Whether to enable SCDN CC configuration. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         :param _Rules: Custom CC attack defense rule
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -16810,7 +17092,9 @@ class ScdnDdosConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable DDoS defense. Valid values: `on` and `off`.
+        :param _Switch: Whether to enable SCDN DDoS configuration. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         """
         self._Switch = None
@@ -16992,7 +17276,9 @@ class ScdnWafConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable WAF. Valid values: `on` and `off`.
+        :param _Switch: Whether to enable SCDN WAF configuration. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         :param _Mode: WAF protection mode. Valid values: `intercept` and `observe`. Default value: `intercept`.
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -17000,8 +17286,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param _ErrorPage: Redirection error page
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ScdnErrorPage`
-        :param _WebShellSwitch: Whether to enable Web shell blocking. Valid values: `on` and `off`. Default value: `off`.
-Note: this field may return `null`, indicating that no valid values can be obtained.
+        :param _WebShellSwitch: Whether to enable webshell blocking. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type WebShellSwitch: str
         :param _Rules: Attack blocking rules
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -17009,8 +17297,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
         :param _Level: WAF rule level. Valid values: 100, 200, and 300.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Level: int
-        :param _SubRuleSwitch: WAF sub-rule switch
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _SubRuleSwitch: Whether to enable WAF sub-rules. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type SubRuleSwitch: list of WafSubRuleStatus
         """
         self._Switch = None
@@ -17160,8 +17450,10 @@ class SchemeKey(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to use the scheme as part of the cache key. Valid values: on, off
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Switch: Whether to enable scheme as part of the cache key. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         """
         self._Switch = None
@@ -17362,7 +17654,9 @@ class SecurityConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: on|off
+        :param _Switch: Whether to enable SCDN. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         """
         self._Switch = None
@@ -17395,10 +17689,10 @@ class Seo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: SEO configuration switch
+        :param _Switch: Whether to enable SEO. Values:
 `on`: Enable
 `off`: Disable
-Note: This field may return `null`, indicating that no valid value can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         """
         self._Switch = None
@@ -17558,14 +17852,16 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
 class ShareCname(AbstractModel):
     """Shared CNAME configuration
+    ShareCname is only available to beta users. Submit a ticket if you need it.
 
     """
 
     def __init__(self):
         r"""
-        :param _Switch: Specifies whether to enable Shared CNAME. If it is set to `off`, the default CNAME is used. If it is set to `on`, a shared CNAME is used.
+        :param _Switch: Whether to enable Shared CNAME. Values:
+`on`: Enable. When enabled, it uses a shared CNAME.
+`off`: Disable. When disabled, it uses a default CNAME.
 
-* ShareCname is only available to beta users. To use this feature, please submit a ticket for application.
         :type Switch: str
         :param _Cname: Shared CNAME to be configured
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -17974,16 +18270,20 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         :param _AlertPercentage: Threshold (in percentage) that triggers alarms
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type AlertPercentage: int
-        :param _AlertSwitch: Whether to enable the alarm threshold trigger. Values: `on`, `off`.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _AlertSwitch: Whether to enable alerts for cumulative usage limit. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type AlertSwitch: str
         :param _Metric: Metric type. `flux`: Traffic; `bandwidth`: Bandwidth.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type Metric: str
         :param _Cycle: 
         :type Cycle: int
-        :param _Switch: Whether to enable usage limit configuration. Values: `on`, `off`.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Switch: Whether to enable cumulative usage limit. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         """
         self._Type = None
@@ -18096,10 +18396,10 @@ class StatusCodeCache(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Status code cache expiration configuration switch
+        :param _Switch: Whether to enable status code caching. Values:
 `on`: Enable
 `off`: Disable
-Note: This field may return `null`, indicating that no valid value can be obtained.
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         :param _CacheRules: Status code cache expiration rules details
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -18591,8 +18891,10 @@ class TpgAdapter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Switch. Valid values: `on`, `off`
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Switch: Whether to enable TpgAdapter for image optimization. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         """
         self._Switch = None
@@ -18647,7 +18949,7 @@ class UpdateDomainConfigRequest(AbstractModel):
         :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
         :param _ErrorPage: Error code redirect configuration (This feature is in beta and not generally available yet.)
         :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
-        :param _RequestHeader: Request header configuration
+        :param _RequestHeader: Origin-pull request header configuration.
         :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
         :param _ResponseHeader: Response header configuration
         :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
@@ -19638,7 +19940,7 @@ class UrlRedirect(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable URL rewriting
+        :param _Switch: Whether to enable URL rewriting. Values:
 `on`: Enable
 `off`: Disable
         :type Switch: str
@@ -19774,8 +20076,10 @@ class UserAgentFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Switch. Valid values: on, off
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Switch: Whether to enable User-Agent blocklist/allowlist. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return `null`, indicating that no valid values can be obtained.
         :type Switch: str
         :param _FilterRules: UA blacklist/whitelist effect rule list
 Note: This field may return `null`, indicating that no valid value can be obtained.
@@ -19903,7 +20207,7 @@ class VideoSeek(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Video dragging switch
+        :param _Switch: Whether to enable video dragging. Values:
 `on`: Enable
 `off`: Disable
         :type Switch: str
@@ -19944,11 +20248,11 @@ class ViolationUrl(AbstractModel):
         :type RealUrl: str
         :param _DownloadUrl: Snapshot path. This is used to display a snapshot of the content in violation on the console.
         :type DownloadUrl: str
-        :param _UrlStatus: Current status of the resources in violation
+        :param _UrlStatus: Current status of non-compliant resource
 `forbid`: Blocked
 `release`: Unblocked
 `delay`: Processing delayed
-`reject`: Appeal dismissed. The status is still blocked.
+`reject`: Appeal dismissed. It is still in `forbid` status.
 `complain`: Appeal in process
         :type UrlStatus: str
         :param _CreateTime: Creation time
@@ -20036,7 +20340,9 @@ class WafSubRuleStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Sub-rule status. Valid values: `on` and `off`.
+        :param _Switch: Whether to enable WAF sub-rules. Values:
+`on`: Enable
+`off`: Disable
         :type Switch: str
         :param _SubIds: List of rule IDs
         :type SubIds: list of int
@@ -20076,14 +20382,16 @@ class WafSubRuleStatus(AbstractModel):
 
 class WebSocket(AbstractModel):
     """WebSocket configuration.
+    WebSocket is an ECDN feature. You can enable it in the ECDN domain name configuration.
 
     """
 
     def __init__(self):
         r"""
-        :param _Switch: Whether to enable custom WebSocket timeout setting. When it’s `off`: WebSocket connection is supported, and the default timeout period is 15 seconds. To change the timeout period, please set it to `on`.
+        :param _Switch: Whether to enable WebSocket connection timeout. Values:
+`on`: When it's enabled, the connection timeout can be configured.
+`off`: When it's disabled, the connection timeout is set to 15 seconds by default.
 
-* WebSocket is an ECDN feature. You can enable it in the ECDN domain name configuration.
         :type Switch: str
         :param _Timeout: Sets timeout period in seconds. Maximum value: 300
 Note: this field may return `null`, indicating that no valid values can be obtained.
@@ -20129,8 +20437,10 @@ class WebpAdapter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: Switch. Valid values: on, off
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Switch: Whether to enable WebpAdapter for image optimization. Values:
+`on`: Enable
+`off`: Disable
+Note: This field may return·`null`, indicating that no valid values can be obtained.
         :type Switch: str
         """
         self._Switch = None

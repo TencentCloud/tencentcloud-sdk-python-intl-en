@@ -186,7 +186,7 @@ class ApplyCertificateRequest(AbstractModel):
         :type ValidityPeriod: str
         :param _CsrEncryptAlgo: Encryption algorithm. RSA and ECC are supported.
         :type CsrEncryptAlgo: str
-        :param _CsrKeyParameter: Key pair parameter. RSA supports only the 2048-bit key and ECC supports only prime256v1.
+        :param _CsrKeyParameter: Key pair parameters. RSA supports only 2048. ECC supports only prime256v1. When the encryption algorithm is set to ECC, this parameter is mandatory.
         :type CsrKeyParameter: str
         :param _CsrKeyPassword: CSR encryption password
         :type CsrKeyPassword: str
@@ -1159,6 +1159,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _SMCert: Whether the certificate is a Chinese SM certificate.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SMCert: int
+        :param _CompanyType: Company type
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type CompanyType: int
         """
         self._DomainNumber = None
         self._OriginCertificateId = None
@@ -1166,6 +1169,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ReplacedFor = None
         self._RenewOrder = None
         self._SMCert = None
+        self._CompanyType = None
 
     @property
     def DomainNumber(self):
@@ -1215,6 +1219,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def SMCert(self, SMCert):
         self._SMCert = SMCert
 
+    @property
+    def CompanyType(self):
+        return self._CompanyType
+
+    @CompanyType.setter
+    def CompanyType(self, CompanyType):
+        self._CompanyType = CompanyType
+
 
     def _deserialize(self, params):
         self._DomainNumber = params.get("DomainNumber")
@@ -1223,6 +1235,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ReplacedFor = params.get("ReplacedFor")
         self._RenewOrder = params.get("RenewOrder")
         self._SMCert = params.get("SMCert")
+        self._CompanyType = params.get("CompanyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1317,8 +1330,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _IsVulnerability: Whether the vulnerability scanning feature is enabled
 Note: this field may return null, indicating that no valid values can be obtained.
         :type IsVulnerability: bool
-        :param _RenewAble: Whether the certificate can be reissued
-Note: this field may return null, indicating that no valid values can be obtained.
+        :param _RenewAble: Whether it can be renewed 
+Note: This field may return null, indicating that no valid value can be obtained.
         :type RenewAble: bool
         :param _ProjectInfo: Project information
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -1365,6 +1378,38 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _HostingRenewCertId: The hosted new certificate ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HostingRenewCertId: str
+        :param _HasRenewOrder: Existing renewed certificate ID
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type HasRenewOrder: str
+        :param _ReplaceOriCertIsDelete: Whether the original certificate is deleted when a certificate is reissued.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ReplaceOriCertIsDelete: bool
+        :param _IsExpiring: Whether the certificate is expiring soon. A certificate is considered to be expiring soon when there are 30 days or less left.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type IsExpiring: bool
+        :param _DVAuthDeadline: Validation expiration time for the addition of the DV certificate
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type DVAuthDeadline: str
+        :param _ValidationPassedTime: Domain name validation pass time
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ValidationPassedTime: str
+        :param _CertSANs: Multiple domain names with which the certificate is associated
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type CertSANs: list of str
+        :param _AwaitingValidationMsg: Domain name validation rejection information
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type AwaitingValidationMsg: str
+        :param _AllowDownload: Whether downloading is allowed
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type AllowDownload: bool
+        :param _IsDNSPODResolve: 
+        :type IsDNSPODResolve: bool
+        :param _IsPackage: 
+        :type IsPackage: bool
+        :param _KeyPasswordCustomFlag: 
+        :type KeyPasswordCustomFlag: bool
+        :param _SupportDownloadType: 
+        :type SupportDownloadType: :class:`tencentcloud.ssl.v20191205.models.SupportDownloadType`
         """
         self._OwnerUin = None
         self._ProjectId = None
@@ -1407,6 +1452,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._HostingStatus = None
         self._HostingCompleteTime = None
         self._HostingRenewCertId = None
+        self._HasRenewOrder = None
+        self._ReplaceOriCertIsDelete = None
+        self._IsExpiring = None
+        self._DVAuthDeadline = None
+        self._ValidationPassedTime = None
+        self._CertSANs = None
+        self._AwaitingValidationMsg = None
+        self._AllowDownload = None
+        self._IsDNSPODResolve = None
+        self._IsPackage = None
+        self._KeyPasswordCustomFlag = None
+        self._SupportDownloadType = None
 
     @property
     def OwnerUin(self):
@@ -1736,6 +1793,102 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def HostingRenewCertId(self, HostingRenewCertId):
         self._HostingRenewCertId = HostingRenewCertId
 
+    @property
+    def HasRenewOrder(self):
+        return self._HasRenewOrder
+
+    @HasRenewOrder.setter
+    def HasRenewOrder(self, HasRenewOrder):
+        self._HasRenewOrder = HasRenewOrder
+
+    @property
+    def ReplaceOriCertIsDelete(self):
+        return self._ReplaceOriCertIsDelete
+
+    @ReplaceOriCertIsDelete.setter
+    def ReplaceOriCertIsDelete(self, ReplaceOriCertIsDelete):
+        self._ReplaceOriCertIsDelete = ReplaceOriCertIsDelete
+
+    @property
+    def IsExpiring(self):
+        return self._IsExpiring
+
+    @IsExpiring.setter
+    def IsExpiring(self, IsExpiring):
+        self._IsExpiring = IsExpiring
+
+    @property
+    def DVAuthDeadline(self):
+        return self._DVAuthDeadline
+
+    @DVAuthDeadline.setter
+    def DVAuthDeadline(self, DVAuthDeadline):
+        self._DVAuthDeadline = DVAuthDeadline
+
+    @property
+    def ValidationPassedTime(self):
+        return self._ValidationPassedTime
+
+    @ValidationPassedTime.setter
+    def ValidationPassedTime(self, ValidationPassedTime):
+        self._ValidationPassedTime = ValidationPassedTime
+
+    @property
+    def CertSANs(self):
+        return self._CertSANs
+
+    @CertSANs.setter
+    def CertSANs(self, CertSANs):
+        self._CertSANs = CertSANs
+
+    @property
+    def AwaitingValidationMsg(self):
+        return self._AwaitingValidationMsg
+
+    @AwaitingValidationMsg.setter
+    def AwaitingValidationMsg(self, AwaitingValidationMsg):
+        self._AwaitingValidationMsg = AwaitingValidationMsg
+
+    @property
+    def AllowDownload(self):
+        return self._AllowDownload
+
+    @AllowDownload.setter
+    def AllowDownload(self, AllowDownload):
+        self._AllowDownload = AllowDownload
+
+    @property
+    def IsDNSPODResolve(self):
+        return self._IsDNSPODResolve
+
+    @IsDNSPODResolve.setter
+    def IsDNSPODResolve(self, IsDNSPODResolve):
+        self._IsDNSPODResolve = IsDNSPODResolve
+
+    @property
+    def IsPackage(self):
+        return self._IsPackage
+
+    @IsPackage.setter
+    def IsPackage(self, IsPackage):
+        self._IsPackage = IsPackage
+
+    @property
+    def KeyPasswordCustomFlag(self):
+        return self._KeyPasswordCustomFlag
+
+    @KeyPasswordCustomFlag.setter
+    def KeyPasswordCustomFlag(self, KeyPasswordCustomFlag):
+        self._KeyPasswordCustomFlag = KeyPasswordCustomFlag
+
+    @property
+    def SupportDownloadType(self):
+        return self._SupportDownloadType
+
+    @SupportDownloadType.setter
+    def SupportDownloadType(self, SupportDownloadType):
+        self._SupportDownloadType = SupportDownloadType
+
 
     def _deserialize(self, params):
         self._OwnerUin = params.get("OwnerUin")
@@ -1790,6 +1943,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._HostingStatus = params.get("HostingStatus")
         self._HostingCompleteTime = params.get("HostingCompleteTime")
         self._HostingRenewCertId = params.get("HostingRenewCertId")
+        self._HasRenewOrder = params.get("HasRenewOrder")
+        self._ReplaceOriCertIsDelete = params.get("ReplaceOriCertIsDelete")
+        self._IsExpiring = params.get("IsExpiring")
+        self._DVAuthDeadline = params.get("DVAuthDeadline")
+        self._ValidationPassedTime = params.get("ValidationPassedTime")
+        self._CertSANs = params.get("CertSANs")
+        self._AwaitingValidationMsg = params.get("AwaitingValidationMsg")
+        self._AllowDownload = params.get("AllowDownload")
+        self._IsDNSPODResolve = params.get("IsDNSPODResolve")
+        self._IsPackage = params.get("IsPackage")
+        self._KeyPasswordCustomFlag = params.get("KeyPasswordCustomFlag")
+        if params.get("SupportDownloadType") is not None:
+            self._SupportDownloadType = SupportDownloadType()
+            self._SupportDownloadType._deserialize(params.get("SupportDownloadType"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3328,6 +3495,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Status: int
         :param _CacheTime: The cache time of the current result.
         :type CacheTime: str
+        :param _TSE: Associated TSE resource details
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type TSE: list of TSEInstanceList
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -3343,6 +3513,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TEO = None
         self._Status = None
         self._CacheTime = None
+        self._TSE = None
         self._RequestId = None
 
     @property
@@ -3442,6 +3613,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CacheTime = CacheTime
 
     @property
+    def TSE(self):
+        return self._TSE
+
+    @TSE.setter
+    def TSE(self, TSE):
+        self._TSE = TSE
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -3513,6 +3692,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 self._TEO.append(obj)
         self._Status = params.get("Status")
         self._CacheTime = params.get("CacheTime")
+        if params.get("TSE") is not None:
+            self._TSE = []
+            for item in params.get("TSE"):
+                obj = TSEInstanceList()
+                obj._deserialize(item)
+                self._TSE.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -5300,6 +5485,283 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeHostUpdateRecordDetailRequest(AbstractModel):
+    """DescribeHostUpdateRecordDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployRecordId: One-click update record ID
+        :type DeployRecordId: str
+        :param _Limit: Number per page, 10 by default.
+        :type Limit: str
+        :param _Offset: Paging offset, starting from 0
+        :type Offset: str
+        """
+        self._DeployRecordId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def DeployRecordId(self):
+        return self._DeployRecordId
+
+    @DeployRecordId.setter
+    def DeployRecordId(self, DeployRecordId):
+        self._DeployRecordId = DeployRecordId
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._DeployRecordId = params.get("DeployRecordId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostUpdateRecordDetailResponse(AbstractModel):
+    """DescribeHostUpdateRecordDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total count
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type TotalCount: int
+        :param _RecordDetailList: Certificate deployment record list
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type RecordDetailList: list of UpdateRecordDetails
+        :param _SuccessTotalCount: Total successful deployments
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SuccessTotalCount: int
+        :param _FailedTotalCount: Total failed deployments
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type FailedTotalCount: int
+        :param _RunningTotalCount: Total running deployments
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type RunningTotalCount: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RecordDetailList = None
+        self._SuccessTotalCount = None
+        self._FailedTotalCount = None
+        self._RunningTotalCount = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RecordDetailList(self):
+        return self._RecordDetailList
+
+    @RecordDetailList.setter
+    def RecordDetailList(self, RecordDetailList):
+        self._RecordDetailList = RecordDetailList
+
+    @property
+    def SuccessTotalCount(self):
+        return self._SuccessTotalCount
+
+    @SuccessTotalCount.setter
+    def SuccessTotalCount(self, SuccessTotalCount):
+        self._SuccessTotalCount = SuccessTotalCount
+
+    @property
+    def FailedTotalCount(self):
+        return self._FailedTotalCount
+
+    @FailedTotalCount.setter
+    def FailedTotalCount(self, FailedTotalCount):
+        self._FailedTotalCount = FailedTotalCount
+
+    @property
+    def RunningTotalCount(self):
+        return self._RunningTotalCount
+
+    @RunningTotalCount.setter
+    def RunningTotalCount(self, RunningTotalCount):
+        self._RunningTotalCount = RunningTotalCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RecordDetailList") is not None:
+            self._RecordDetailList = []
+            for item in params.get("RecordDetailList"):
+                obj = UpdateRecordDetails()
+                obj._deserialize(item)
+                self._RecordDetailList.append(obj)
+        self._SuccessTotalCount = params.get("SuccessTotalCount")
+        self._FailedTotalCount = params.get("FailedTotalCount")
+        self._RunningTotalCount = params.get("RunningTotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHostUpdateRecordRequest(AbstractModel):
+    """DescribeHostUpdateRecord request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: Paging offset, starting from 0
+        :type Offset: int
+        :param _Limit: Number per page, 10 by default.
+        :type Limit: int
+        :param _CertificateId: New certificate ID
+        :type CertificateId: str
+        :param _OldCertificateId: Old certificate ID
+        :type OldCertificateId: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._CertificateId = None
+        self._OldCertificateId = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+    @property
+    def OldCertificateId(self):
+        return self._OldCertificateId
+
+    @OldCertificateId.setter
+    def OldCertificateId(self, OldCertificateId):
+        self._OldCertificateId = OldCertificateId
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._CertificateId = params.get("CertificateId")
+        self._OldCertificateId = params.get("OldCertificateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostUpdateRecordResponse(AbstractModel):
+    """DescribeHostUpdateRecord response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total count
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type TotalCount: int
+        :param _DeployRecordList: Certificate deployment record list
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type DeployRecordList: list of UpdateRecordInfo
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DeployRecordList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DeployRecordList(self):
+        return self._DeployRecordList
+
+    @DeployRecordList.setter
+    def DeployRecordList(self, DeployRecordList):
+        self._DeployRecordList = DeployRecordList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DeployRecordList") is not None:
+            self._DeployRecordList = []
+            for item in params.get("DeployRecordList"):
+                obj = UpdateRecordInfo()
+                obj._deserialize(item)
+                self._DeployRecordList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DownloadCertificateRequest(AbstractModel):
     """DownloadCertificate request structure.
 
@@ -5669,6 +6131,92 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self._FilterKey = params.get("FilterKey")
         self._FilterValue = params.get("FilterValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GatewayCertificate(AbstractModel):
+    """Cloud-native gateway certificate information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Gateway certificate ID
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Id: str
+        :param _Name: Gateway certificate information
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Name: str
+        :param _BindDomains: Bound domain name
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BindDomains: list of str
+        :param _CertSource: Certificate source
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type CertSource: str
+        :param _CertId: SSL certificate ID that is currently bound
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type CertId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._BindDomains = None
+        self._CertSource = None
+        self._CertId = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def BindDomains(self):
+        return self._BindDomains
+
+    @BindDomains.setter
+    def BindDomains(self, BindDomains):
+        self._BindDomains = BindDomains
+
+    @property
+    def CertSource(self):
+        return self._CertSource
+
+    @CertSource.setter
+    def CertSource(self, CertSource):
+        self._CertSource = CertSource
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._BindDomains = params.get("BindDomains")
+        self._CertSource = params.get("CertSource")
+        self._CertId = params.get("CertId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6611,6 +7159,51 @@ class ReplaceCertificateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ResourceTypeRegions(AbstractModel):
+    """Cloud resource region list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: Cloud resource type
+        :type ResourceType: str
+        :param _Regions: Region list
+        :type Regions: list of str
+        """
+        self._ResourceType = None
+        self._Regions = None
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Regions(self):
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._Regions = params.get("Regions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RootCertificates(AbstractModel):
     """Root certificate
 
@@ -7387,6 +7980,111 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class SupportDownloadType(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NGINX: 
+        :type NGINX: bool
+        :param _APACHE: 
+        :type APACHE: bool
+        :param _TOMCAT: 
+        :type TOMCAT: bool
+        :param _IIS: 
+        :type IIS: bool
+        :param _JKS: 
+        :type JKS: bool
+        :param _OTHER: 
+        :type OTHER: bool
+        :param _ROOT: 
+        :type ROOT: bool
+        """
+        self._NGINX = None
+        self._APACHE = None
+        self._TOMCAT = None
+        self._IIS = None
+        self._JKS = None
+        self._OTHER = None
+        self._ROOT = None
+
+    @property
+    def NGINX(self):
+        return self._NGINX
+
+    @NGINX.setter
+    def NGINX(self, NGINX):
+        self._NGINX = NGINX
+
+    @property
+    def APACHE(self):
+        return self._APACHE
+
+    @APACHE.setter
+    def APACHE(self, APACHE):
+        self._APACHE = APACHE
+
+    @property
+    def TOMCAT(self):
+        return self._TOMCAT
+
+    @TOMCAT.setter
+    def TOMCAT(self, TOMCAT):
+        self._TOMCAT = TOMCAT
+
+    @property
+    def IIS(self):
+        return self._IIS
+
+    @IIS.setter
+    def IIS(self, IIS):
+        self._IIS = IIS
+
+    @property
+    def JKS(self):
+        return self._JKS
+
+    @JKS.setter
+    def JKS(self, JKS):
+        self._JKS = JKS
+
+    @property
+    def OTHER(self):
+        return self._OTHER
+
+    @OTHER.setter
+    def OTHER(self, OTHER):
+        self._OTHER = OTHER
+
+    @property
+    def ROOT(self):
+        return self._ROOT
+
+    @ROOT.setter
+    def ROOT(self, ROOT):
+        self._ROOT = ROOT
+
+
+    def _deserialize(self, params):
+        self._NGINX = params.get("NGINX")
+        self._APACHE = params.get("APACHE")
+        self._TOMCAT = params.get("TOMCAT")
+        self._IIS = params.get("IIS")
+        self._JKS = params.get("JKS")
+        self._OTHER = params.get("OTHER")
+        self._ROOT = params.get("ROOT")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SyncTaskBindResourceResult(AbstractModel):
     """Result of an async task for querying associated cloud resources
 
@@ -7946,6 +8644,134 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class TSEInstanceDetail(AbstractModel):
+    """TSE instance details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: Gateway ID
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type GatewayId: str
+        :param _GatewayName: Gateway name
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type GatewayName: str
+        :param _CertificateList: Gateway certificate list
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type CertificateList: list of GatewayCertificate
+        """
+        self._GatewayId = None
+        self._GatewayName = None
+        self._CertificateList = None
+
+    @property
+    def GatewayId(self):
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GatewayName(self):
+        return self._GatewayName
+
+    @GatewayName.setter
+    def GatewayName(self, GatewayName):
+        self._GatewayName = GatewayName
+
+    @property
+    def CertificateList(self):
+        return self._CertificateList
+
+    @CertificateList.setter
+    def CertificateList(self, CertificateList):
+        self._CertificateList = CertificateList
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._GatewayName = params.get("GatewayName")
+        if params.get("CertificateList") is not None:
+            self._CertificateList = []
+            for item in params.get("CertificateList"):
+                obj = GatewayCertificate()
+                obj._deserialize(item)
+                self._CertificateList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TSEInstanceList(AbstractModel):
+    """TSE instance details - asynchronously associated cloud resource data structure
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceList: TSE instance details
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type InstanceList: list of TSEInstanceDetail
+        :param _TotalCount: Total TSE instances in this region	
+        :type TotalCount: int
+        :param _Region: Region	
+        :type Region: str
+        """
+        self._InstanceList = None
+        self._TotalCount = None
+        self._Region = None
+
+    @property
+    def InstanceList(self):
+        return self._InstanceList
+
+    @InstanceList.setter
+    def InstanceList(self, InstanceList):
+        self._InstanceList = InstanceList
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceList") is not None:
+            self._InstanceList = []
+            for item in params.get("InstanceList"):
+                obj = TSEInstanceDetail()
+                obj._deserialize(item)
+                self._InstanceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Tags(AbstractModel):
     """Tag
 
@@ -8433,6 +9259,1003 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._IngressList.append(obj)
         self._NoMatchDomains = params.get("NoMatchDomains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCertificateInstanceRequest(AbstractModel):
+    """UpdateCertificateInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OldCertificateId: One-click update old certificate ID
+        :type OldCertificateId: str
+        :param _ResourceTypes: Type of the resource that needs to be deployed. The following parameter values are optional: clb, cdn, waf, live, ddos, teo, apigateway, vod, tke, and tcb.
+        :type ResourceTypes: list of str
+        :param _CertificateId: One-click update new certificate ID
+        :type CertificateId: str
+        :param _Regions: List of regions that need to be deployed (deprecated)
+        :type Regions: list of str
+        :param _ResourceTypesRegions: List of regions for which cloud resources need to be deployed
+        :type ResourceTypesRegions: list of ResourceTypeRegions
+        :param _CertificatePublicKey: Public key of the certificate. If the public key of the certificate is uploaded, CertificateId does not need to be uploaded.
+        :type CertificatePublicKey: str
+        :param _CertificatePrivateKey: Private key of the certificate. If the public key of the certificate is uploaded, the private key of the certificate is required.
+        :type CertificatePrivateKey: str
+        :param _ExpiringNotificationSwitch: Whether an expiration reminder is ignored for the old certificate. 0: The notification is not ignored. 1: The notification is ignored.
+        :type ExpiringNotificationSwitch: int
+        :param _Repeatable: Whether repeated uploading of the same certificate is allowed. If the public key of the certificate is uploaded, this parameter can be configured.
+        :type Repeatable: bool
+        :param _AllowDownload: Whether downloading is allowed. If the public key of the certificate is uploaded, this parameter can be configured.
+        :type AllowDownload: bool
+        :param _Tags: Tag list. If the public key of the certificate is uploaded, this parameter can be configured.
+        :type Tags: list of Tags
+        :param _ProjectId: Project ID. If the public key of the certificate is uploaded, this parameter can be configured.
+        :type ProjectId: int
+        """
+        self._OldCertificateId = None
+        self._ResourceTypes = None
+        self._CertificateId = None
+        self._Regions = None
+        self._ResourceTypesRegions = None
+        self._CertificatePublicKey = None
+        self._CertificatePrivateKey = None
+        self._ExpiringNotificationSwitch = None
+        self._Repeatable = None
+        self._AllowDownload = None
+        self._Tags = None
+        self._ProjectId = None
+
+    @property
+    def OldCertificateId(self):
+        return self._OldCertificateId
+
+    @OldCertificateId.setter
+    def OldCertificateId(self, OldCertificateId):
+        self._OldCertificateId = OldCertificateId
+
+    @property
+    def ResourceTypes(self):
+        return self._ResourceTypes
+
+    @ResourceTypes.setter
+    def ResourceTypes(self, ResourceTypes):
+        self._ResourceTypes = ResourceTypes
+
+    @property
+    def CertificateId(self):
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+    @property
+    def Regions(self):
+        warnings.warn("parameter `Regions` is deprecated", DeprecationWarning) 
+
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        warnings.warn("parameter `Regions` is deprecated", DeprecationWarning) 
+
+        self._Regions = Regions
+
+    @property
+    def ResourceTypesRegions(self):
+        return self._ResourceTypesRegions
+
+    @ResourceTypesRegions.setter
+    def ResourceTypesRegions(self, ResourceTypesRegions):
+        self._ResourceTypesRegions = ResourceTypesRegions
+
+    @property
+    def CertificatePublicKey(self):
+        return self._CertificatePublicKey
+
+    @CertificatePublicKey.setter
+    def CertificatePublicKey(self, CertificatePublicKey):
+        self._CertificatePublicKey = CertificatePublicKey
+
+    @property
+    def CertificatePrivateKey(self):
+        return self._CertificatePrivateKey
+
+    @CertificatePrivateKey.setter
+    def CertificatePrivateKey(self, CertificatePrivateKey):
+        self._CertificatePrivateKey = CertificatePrivateKey
+
+    @property
+    def ExpiringNotificationSwitch(self):
+        return self._ExpiringNotificationSwitch
+
+    @ExpiringNotificationSwitch.setter
+    def ExpiringNotificationSwitch(self, ExpiringNotificationSwitch):
+        self._ExpiringNotificationSwitch = ExpiringNotificationSwitch
+
+    @property
+    def Repeatable(self):
+        return self._Repeatable
+
+    @Repeatable.setter
+    def Repeatable(self, Repeatable):
+        self._Repeatable = Repeatable
+
+    @property
+    def AllowDownload(self):
+        return self._AllowDownload
+
+    @AllowDownload.setter
+    def AllowDownload(self, AllowDownload):
+        self._AllowDownload = AllowDownload
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._OldCertificateId = params.get("OldCertificateId")
+        self._ResourceTypes = params.get("ResourceTypes")
+        self._CertificateId = params.get("CertificateId")
+        self._Regions = params.get("Regions")
+        if params.get("ResourceTypesRegions") is not None:
+            self._ResourceTypesRegions = []
+            for item in params.get("ResourceTypesRegions"):
+                obj = ResourceTypeRegions()
+                obj._deserialize(item)
+                self._ResourceTypesRegions.append(obj)
+        self._CertificatePublicKey = params.get("CertificatePublicKey")
+        self._CertificatePrivateKey = params.get("CertificatePrivateKey")
+        self._ExpiringNotificationSwitch = params.get("ExpiringNotificationSwitch")
+        self._Repeatable = params.get("Repeatable")
+        self._AllowDownload = params.get("AllowDownload")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCertificateInstanceResponse(AbstractModel):
+    """UpdateCertificateInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployRecordId: Cloud resource deployment task ID
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type DeployRecordId: int
+        :param _DeployStatus: Deployment status. 1 indicates that the deployment succeeded, and 0 indicates that the deployment failed.
+        :type DeployStatus: int
+        :param _UpdateSyncProgress: 
+        :type UpdateSyncProgress: list of UpdateSyncProgress
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DeployRecordId = None
+        self._DeployStatus = None
+        self._UpdateSyncProgress = None
+        self._RequestId = None
+
+    @property
+    def DeployRecordId(self):
+        return self._DeployRecordId
+
+    @DeployRecordId.setter
+    def DeployRecordId(self, DeployRecordId):
+        self._DeployRecordId = DeployRecordId
+
+    @property
+    def DeployStatus(self):
+        return self._DeployStatus
+
+    @DeployStatus.setter
+    def DeployStatus(self, DeployStatus):
+        self._DeployStatus = DeployStatus
+
+    @property
+    def UpdateSyncProgress(self):
+        return self._UpdateSyncProgress
+
+    @UpdateSyncProgress.setter
+    def UpdateSyncProgress(self, UpdateSyncProgress):
+        self._UpdateSyncProgress = UpdateSyncProgress
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DeployRecordId = params.get("DeployRecordId")
+        self._DeployStatus = params.get("DeployStatus")
+        if params.get("UpdateSyncProgress") is not None:
+            self._UpdateSyncProgress = []
+            for item in params.get("UpdateSyncProgress"):
+                obj = UpdateSyncProgress()
+                obj._deserialize(item)
+                self._UpdateSyncProgress.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateCertificateRecordRetryRequest(AbstractModel):
+    """UpdateCertificateRecordRetry request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployRecordId: To-be-redeployed record ID
+        :type DeployRecordId: int
+        :param _DeployRecordDetailId: To-be-redeployed record detail ID
+        :type DeployRecordDetailId: int
+        """
+        self._DeployRecordId = None
+        self._DeployRecordDetailId = None
+
+    @property
+    def DeployRecordId(self):
+        return self._DeployRecordId
+
+    @DeployRecordId.setter
+    def DeployRecordId(self, DeployRecordId):
+        self._DeployRecordId = DeployRecordId
+
+    @property
+    def DeployRecordDetailId(self):
+        return self._DeployRecordDetailId
+
+    @DeployRecordDetailId.setter
+    def DeployRecordDetailId(self, DeployRecordDetailId):
+        self._DeployRecordDetailId = DeployRecordDetailId
+
+
+    def _deserialize(self, params):
+        self._DeployRecordId = params.get("DeployRecordId")
+        self._DeployRecordDetailId = params.get("DeployRecordDetailId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCertificateRecordRetryResponse(AbstractModel):
+    """UpdateCertificateRecordRetry response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateCertificateRecordRollbackRequest(AbstractModel):
+    """UpdateCertificateRecordRollback request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployRecordId: To-be-redeployed record ID
+        :type DeployRecordId: int
+        """
+        self._DeployRecordId = None
+
+    @property
+    def DeployRecordId(self):
+        return self._DeployRecordId
+
+    @DeployRecordId.setter
+    def DeployRecordId(self, DeployRecordId):
+        self._DeployRecordId = DeployRecordId
+
+
+    def _deserialize(self, params):
+        self._DeployRecordId = params.get("DeployRecordId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCertificateRecordRollbackResponse(AbstractModel):
+    """UpdateCertificateRecordRollback response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeployRecordId: Rollback deployment record ID
+        :type DeployRecordId: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DeployRecordId = None
+        self._RequestId = None
+
+    @property
+    def DeployRecordId(self):
+        return self._DeployRecordId
+
+    @DeployRecordId.setter
+    def DeployRecordId(self, DeployRecordId):
+        self._DeployRecordId = DeployRecordId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DeployRecordId = params.get("DeployRecordId")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateRecordDetail(AbstractModel):
+    """Update record details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Detail record ID
+        :type Id: int
+        :param _CertId: New certificate ID
+        :type CertId: str
+        :param _OldCertId: Old certificate ID
+        :type OldCertId: str
+        :param _Domains: Deployment domain name list
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Domains: list of str
+        :param _ResourceType: Deployment resource type
+        :type ResourceType: str
+        :param _Region: Deployment region
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Region: str
+        :param _Status: Deployment status
+        :type Status: int
+        :param _ErrorMsg: Deployment error message
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ErrorMsg: str
+        :param _CreateTime: Deployment time
+        :type CreateTime: str
+        :param _UpdateTime: Last update time
+        :type UpdateTime: str
+        :param _InstanceId: Deployment instance ID
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type InstanceId: str
+        :param _InstanceName: Deployment instance name
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type InstanceName: str
+        :param _ListenerId: Deployment listener ID (only for CLB)
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ListenerId: str
+        :param _ListenerName: Deployment listener name (only for CLB)
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ListenerName: str
+        :param _Protocol: Protocol
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Protocol: str
+        :param _SniSwitch: Whether SNI is enabled (only for CLB)
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SniSwitch: int
+        :param _Bucket: Bucket name (only for COS)
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Bucket: str
+        :param _Port: Port
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Port: int
+        :param _Namespace: Namespace (only for TKE)
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Namespace: str
+        :param _SecretName: Secret name (only for TKE)
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SecretName: str
+        :param _EnvId: Environment ID
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type EnvId: str
+        :param _TCBType: TCB deployment type
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type TCBType: str
+        """
+        self._Id = None
+        self._CertId = None
+        self._OldCertId = None
+        self._Domains = None
+        self._ResourceType = None
+        self._Region = None
+        self._Status = None
+        self._ErrorMsg = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._ListenerId = None
+        self._ListenerName = None
+        self._Protocol = None
+        self._SniSwitch = None
+        self._Bucket = None
+        self._Port = None
+        self._Namespace = None
+        self._SecretName = None
+        self._EnvId = None
+        self._TCBType = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def OldCertId(self):
+        return self._OldCertId
+
+    @OldCertId.setter
+    def OldCertId(self, OldCertId):
+        self._OldCertId = OldCertId
+
+    @property
+    def Domains(self):
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ListenerId(self):
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def ListenerName(self):
+        return self._ListenerName
+
+    @ListenerName.setter
+    def ListenerName(self, ListenerName):
+        self._ListenerName = ListenerName
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def SniSwitch(self):
+        return self._SniSwitch
+
+    @SniSwitch.setter
+    def SniSwitch(self, SniSwitch):
+        self._SniSwitch = SniSwitch
+
+    @property
+    def Bucket(self):
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def SecretName(self):
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def TCBType(self):
+        return self._TCBType
+
+    @TCBType.setter
+    def TCBType(self, TCBType):
+        self._TCBType = TCBType
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._CertId = params.get("CertId")
+        self._OldCertId = params.get("OldCertId")
+        self._Domains = params.get("Domains")
+        self._ResourceType = params.get("ResourceType")
+        self._Region = params.get("Region")
+        self._Status = params.get("Status")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._ListenerId = params.get("ListenerId")
+        self._ListenerName = params.get("ListenerName")
+        self._Protocol = params.get("Protocol")
+        self._SniSwitch = params.get("SniSwitch")
+        self._Bucket = params.get("Bucket")
+        self._Port = params.get("Port")
+        self._Namespace = params.get("Namespace")
+        self._SecretName = params.get("SecretName")
+        self._EnvId = params.get("EnvId")
+        self._TCBType = params.get("TCBType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateRecordDetails(AbstractModel):
+    """Update record detail list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: Deployment resource type
+        :type ResourceType: str
+        :param _List: Deployment resource detail list
+        :type List: list of UpdateRecordDetail
+        :param _TotalCount: Total deployment resource count
+        :type TotalCount: int
+        """
+        self._ResourceType = None
+        self._List = None
+        self._TotalCount = None
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = UpdateRecordDetail()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateRecordInfo(AbstractModel):
+    """Deployment record information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Record ID
+        :type Id: int
+        :param _CertId: New certificate ID
+        :type CertId: str
+        :param _OldCertId: Old certificate ID
+        :type OldCertId: str
+        :param _ResourceTypes: Deployment resource type list
+        :type ResourceTypes: list of str
+        :param _Regions: Deployment region list
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Regions: list of str
+        :param _Status: Deployment status
+        :type Status: int
+        :param _CreateTime: Deployment time
+        :type CreateTime: str
+        :param _UpdateTime: Last update time
+        :type UpdateTime: str
+        """
+        self._Id = None
+        self._CertId = None
+        self._OldCertId = None
+        self._ResourceTypes = None
+        self._Regions = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def CertId(self):
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def OldCertId(self):
+        return self._OldCertId
+
+    @OldCertId.setter
+    def OldCertId(self, OldCertId):
+        self._OldCertId = OldCertId
+
+    @property
+    def ResourceTypes(self):
+        return self._ResourceTypes
+
+    @ResourceTypes.setter
+    def ResourceTypes(self, ResourceTypes):
+        self._ResourceTypes = ResourceTypes
+
+    @property
+    def Regions(self):
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._CertId = params.get("CertId")
+        self._OldCertId = params.get("OldCertId")
+        self._ResourceTypes = params.get("ResourceTypes")
+        self._Regions = params.get("Regions")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSyncProgress(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: 
+        :type ResourceType: str
+        :param _UpdateSyncProgressRegions: 
+        :type UpdateSyncProgressRegions: list of UpdateSyncProgressRegion
+        :param _Status: 
+        :type Status: int
+        """
+        self._ResourceType = None
+        self._UpdateSyncProgressRegions = None
+        self._Status = None
+
+    @property
+    def ResourceType(self):
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def UpdateSyncProgressRegions(self):
+        return self._UpdateSyncProgressRegions
+
+    @UpdateSyncProgressRegions.setter
+    def UpdateSyncProgressRegions(self, UpdateSyncProgressRegions):
+        self._UpdateSyncProgressRegions = UpdateSyncProgressRegions
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        if params.get("UpdateSyncProgressRegions") is not None:
+            self._UpdateSyncProgressRegions = []
+            for item in params.get("UpdateSyncProgressRegions"):
+                obj = UpdateSyncProgressRegion()
+                obj._deserialize(item)
+                self._UpdateSyncProgressRegions.append(obj)
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSyncProgressRegion(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 
+        :type Region: str
+        :param _TotalCount: 
+        :type TotalCount: int
+        :param _OffsetCount: 
+        :type OffsetCount: int
+        :param _Status: 
+        :type Status: int
+        """
+        self._Region = None
+        self._TotalCount = None
+        self._OffsetCount = None
+        self._Status = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def OffsetCount(self):
+        return self._OffsetCount
+
+    @OffsetCount.setter
+    def OffsetCount(self, OffsetCount):
+        self._OffsetCount = OffsetCount
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._TotalCount = params.get("TotalCount")
+        self._OffsetCount = params.get("OffsetCount")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

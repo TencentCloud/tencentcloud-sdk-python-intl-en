@@ -1750,7 +1750,7 @@ Note: u200dThis field may return null, indicating that no valid values can be ob
 <li>A port range, such as 81-82</li>
         :type OriginPort: str
         :param _RuleTag: Rule tag.
-Note: u200dThis field may returnu200d·`nullu200d`, indicating that no valid values can be obtained.
+Note: This field may return·`null`, indicating that no valid values can be obtained.
         :type RuleTag: str
         """
         self._Proto = None
@@ -2926,7 +2926,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _IgnoreCacheControl: Whether to enable force cache. Values:
 <li>`on`: Enable</li>
 <li>`off`: Disable </li>
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type IgnoreCacheControl: str
         """
         self._Switch = None
@@ -3463,12 +3463,12 @@ class CnameStatus(AbstractModel):
         :param _RecordName: The domain name.
         :type RecordName: str
         :param _Cname: The CNAME address.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Cname: str
         :param _Status: The CNAME status. Values:
 <li>`active`: Activated</li>
 <li>`moved`: Not activated </li>
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Status: str
         """
         self._RecordName = None
@@ -3604,6 +3604,116 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Algorithms = params.get("Algorithms")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigGroupVersionInfo(AbstractModel):
+    """Version information about the configuration group.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VersionId: Version ID.
+        :type VersionId: str
+        :param _VersionNumber: Version No.
+        :type VersionNumber: str
+        :param _GroupId: Configuraration group ID.
+        :type GroupId: str
+        :param _GroupType: Configuration group type. Valid values: 
+<li>l7_acceleration: L7 acceleration configuration group. </li>
+<li>edge_functions: Edge function configuration group. </li>
+        :type GroupType: str
+        :param _Description: Version description.
+        :type Description: str
+        :param _Status: Version status. Valid values: 
+<li>creating: Being created.</li>
+<li>inactive: Not effective.</li>
+<li>active: Effective. </li>
+        :type Status: str
+        :param _CreateTime: Version creation time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).
+        :type CreateTime: str
+        """
+        self._VersionId = None
+        self._VersionNumber = None
+        self._GroupId = None
+        self._GroupType = None
+        self._Description = None
+        self._Status = None
+        self._CreateTime = None
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def VersionNumber(self):
+        return self._VersionNumber
+
+    @VersionNumber.setter
+    def VersionNumber(self, VersionNumber):
+        self._VersionNumber = VersionNumber
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupType(self):
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._VersionId = params.get("VersionId")
+        self._VersionNumber = params.get("VersionNumber")
+        self._GroupId = params.get("GroupId")
+        self._GroupType = params.get("GroupType")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4282,6 +4392,112 @@ class CreateApplicationProxyRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateConfigGroupVersionRequest(AbstractModel):
+    """CreateConfigGroupVersion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _GroupId: GroupId of the version to be created.
+        :type GroupId: str
+        :param _Content: Configuration content to be imported. It is required to be in JSON format and encoded in UTF-8. Please refer to the example below for the configuration file content.
+        :type Content: str
+        :param _Description: Version description. The maximum length allowed is 50 characters. This field can be used to provide details about the application scenarios of this version.
+        :type Description: str
+        """
+        self._ZoneId = None
+        self._GroupId = None
+        self._Content = None
+        self._Description = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GroupId = params.get("GroupId")
+        self._Content = params.get("Content")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConfigGroupVersionResponse(AbstractModel):
+    """CreateConfigGroupVersion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VersionId: Version ID.
+        :type VersionId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._VersionId = None
+        self._RequestId = None
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VersionId = params.get("VersionId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateOriginGroupRequest(AbstractModel):
     """CreateOriginGroup request structure.
 
@@ -4660,9 +4876,9 @@ class CreatePurgeTaskRequest(AbstractModel):
 <li>`purge_all`: Purge all caches</li>
 <li>`purge_cache_tag`: Purge by the cache-tag </li>For more details, see [Cache Purge](https://intl.cloud.tencent.com/document/product/1552/70759?from_cn_redirect=1).
         :type Type: str
-        :param _Method: Configures how cache are purged. It works when `Type` is `purge_prefix`, `purge_host` or `purge_all`. Values: <li>`invalidate`: Only resources updated under the directory are purged.</li><li>`delete`: All resources under the directory are purged regardless of whether they are updated.</li>Note that when Type` is `purge_prefix`, it defaults to `invalidate`.
+        :param _Method: Configures how resources under the directory are purged when `Type = purge_prefix`. Values: <li>`invalidate`: Only resources updated under the directory are purged.</li><li>`delete`: All resources under the directory are purged regardless of whether they are updated. </li>Default value: `invalidate`.
         :type Method: str
-        :param _Targets: List of cached resources to purge. The format for input depends on the type of cache purging. See examples below for details. <li>By default, non-ASCII characters u200dare escaped based on RFC3986.</li><li>The maximum number of tasks per purging request is determined by the EdgeOne plan. See [Billing Overview (New)](https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1). </li>
+        :param _Targets: List of cached resources to purge. The format for input depends on the type of cache purging. See examples below for details. <li>By default, non-ASCII characters are escaped based on RFC3986.</li><li>The maximum number of tasks per purging request is determined by the EdgeOne plan. See [Billing Overview (New)](https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1). </li>
         :type Targets: list of str
         :param _EncodeUrl: Specifies whether to transcode non-ASCII URLs according to RFC3986.
 Note that if it’s enabled, the purging is based on the converted URLs.
@@ -6350,6 +6566,219 @@ class DeleteZoneResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeployConfigGroupVersionRequest(AbstractModel):
+    """DeployConfigGroupVersion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _EnvId: Environment ID. Please specify the environment ID to which the version should be released.
+        :type EnvId: str
+        :param _ConfigGroupVersionInfos: Version information required for release. Multiple versions of different configuration groups can be modified simultaneously, while each group allows modifying only one version at a time.
+        :type ConfigGroupVersionInfos: list of ConfigGroupVersionInfo
+        :param _Description: Change description. It is used to describe the content and reasons for this change. A maximum of 100 characters are supported.
+        :type Description: str
+        """
+        self._ZoneId = None
+        self._EnvId = None
+        self._ConfigGroupVersionInfos = None
+        self._Description = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ConfigGroupVersionInfos(self):
+        return self._ConfigGroupVersionInfos
+
+    @ConfigGroupVersionInfos.setter
+    def ConfigGroupVersionInfos(self, ConfigGroupVersionInfos):
+        self._ConfigGroupVersionInfos = ConfigGroupVersionInfos
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._EnvId = params.get("EnvId")
+        if params.get("ConfigGroupVersionInfos") is not None:
+            self._ConfigGroupVersionInfos = []
+            for item in params.get("ConfigGroupVersionInfos"):
+                obj = ConfigGroupVersionInfo()
+                obj._deserialize(item)
+                self._ConfigGroupVersionInfos.append(obj)
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeployConfigGroupVersionResponse(AbstractModel):
+    """DeployConfigGroupVersion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordId: Release record ID.
+        :type RecordId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RecordId = None
+        self._RequestId = None
+
+    @property
+    def RecordId(self):
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RecordId = params.get("RecordId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeployRecord(AbstractModel):
+    """Version release record details for the configuration group.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigGroupVersionInfos: Details about the released version.
+        :type ConfigGroupVersionInfos: list of ConfigGroupVersionInfo
+        :param _DeployTime: Release time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).
+        :type DeployTime: str
+        :param _Status: Release status. Valid values: 
+<li>deploying: Being released.</li>
+<li>failure: Release failed.</li>
+<li>success: Released successfully. </li>
+        :type Status: str
+        :param _Message: Release result information.
+        :type Message: str
+        :param _RecordId: Release record ID. 
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type RecordId: str
+        :param _Description: Change description.
+        :type Description: str
+        """
+        self._ConfigGroupVersionInfos = None
+        self._DeployTime = None
+        self._Status = None
+        self._Message = None
+        self._RecordId = None
+        self._Description = None
+
+    @property
+    def ConfigGroupVersionInfos(self):
+        return self._ConfigGroupVersionInfos
+
+    @ConfigGroupVersionInfos.setter
+    def ConfigGroupVersionInfos(self, ConfigGroupVersionInfos):
+        self._ConfigGroupVersionInfos = ConfigGroupVersionInfos
+
+    @property
+    def DeployTime(self):
+        return self._DeployTime
+
+    @DeployTime.setter
+    def DeployTime(self, DeployTime):
+        self._DeployTime = DeployTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RecordId(self):
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        if params.get("ConfigGroupVersionInfos") is not None:
+            self._ConfigGroupVersionInfos = []
+            for item in params.get("ConfigGroupVersionInfos"):
+                obj = ConfigGroupVersionInfo()
+                obj._deserialize(item)
+                self._ConfigGroupVersionInfos.append(obj)
+        self._DeployTime = params.get("DeployTime")
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        self._RecordId = params.get("RecordId")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeAccelerationDomainsRequest(AbstractModel):
     """DescribeAccelerationDomains request structure.
 
@@ -6666,7 +7095,7 @@ class DescribeApplicationProxiesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: The paginated query limit. Default value: 20. Maximum value: 1000.
         :type Limit: int
-        :param _Filters: Filters. Each filter can have up to 20 entries. Details: <li>proxy-id<br>   Filter by the <strong>Proxy ID</strong>u200d, such as: `proxy-ev2sawbwfd`. <br>   Type: String<br>   Required: No</li><li>zone-id<br>   Filter by the <strong>Site ID</strong>, such as `zone-vawer2vadg`. <br>   Type: String<br>   Required: No</li><li>rule-tag<br>   Filter by the <strong>Rule tag</strong>, such as `rule-service-1`. <br>   Type: String<br>   Required: No</li>
+        :param _Filters: Filters. Each filter can have up to 20 entries. Details: <li>proxy-id<br>   Filter by the <strong>Proxy ID</strong>, such as: `proxy-ev2sawbwfd`. <br>   Type: String<br>   Required: No</li><li>zone-id<br>   Filter by the <strong>Site ID</strong>, such as `zone-vawer2vadg`. <br>   Type: String<br>   Required: No</li><li>rule-tag<br>   Filter by the <strong>Rule tag</strong>, such as `rule-service-1`. <br>   Type: String<br>   Required: No</li>
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -6817,6 +7246,243 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = PlanInfo()
                 obj._deserialize(item)
                 self._PlanInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConfigGroupVersionDetailRequest(AbstractModel):
+    """DescribeConfigGroupVersionDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _VersionId: Version ID.
+        :type VersionId: str
+        """
+        self._ZoneId = None
+        self._VersionId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def VersionId(self):
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._VersionId = params.get("VersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigGroupVersionDetailResponse(AbstractModel):
+    """DescribeConfigGroupVersionDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigGroupVersionInfo: Version information.
+        :type ConfigGroupVersionInfo: :class:`tencentcloud.teo.v20220901.models.ConfigGroupVersionInfo`
+        :param _Content: Version file content. It is returned in JSON format.
+        :type Content: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ConfigGroupVersionInfo = None
+        self._Content = None
+        self._RequestId = None
+
+    @property
+    def ConfigGroupVersionInfo(self):
+        return self._ConfigGroupVersionInfo
+
+    @ConfigGroupVersionInfo.setter
+    def ConfigGroupVersionInfo(self, ConfigGroupVersionInfo):
+        self._ConfigGroupVersionInfo = ConfigGroupVersionInfo
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ConfigGroupVersionInfo") is not None:
+            self._ConfigGroupVersionInfo = ConfigGroupVersionInfo()
+            self._ConfigGroupVersionInfo._deserialize(params.get("ConfigGroupVersionInfo"))
+        self._Content = params.get("Content")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConfigGroupVersionsRequest(AbstractModel):
+    """DescribeConfigGroupVersions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _GroupId: Configuraration group ID.
+        :type GroupId: str
+        :param _Filters: Filtering condition. The maximum value of Filters.Values is 20. If this parameter is not specified, all version information for the selected configuration group is returned. Detailed filtering conditions: 
+<li>version-id: Filter by version ID.</li>
+        :type Filters: list of AdvancedFilter
+        :param _Offset: Paging query offset. The default value is 0.
+        :type Offset: int
+        :param _Limit: Limited entries in paging queries. The default value is 20 and the maximum value is 100. 
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._GroupId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GroupId = params.get("GroupId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConfigGroupVersionsResponse(AbstractModel):
+    """DescribeConfigGroupVersions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total versions.
+        :type TotalCount: int
+        :param _ConfigGroupVersionInfos: Version information list.
+        :type ConfigGroupVersionInfos: list of ConfigGroupVersionInfo
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ConfigGroupVersionInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ConfigGroupVersionInfos(self):
+        return self._ConfigGroupVersionInfos
+
+    @ConfigGroupVersionInfos.setter
+    def ConfigGroupVersionInfos(self, ConfigGroupVersionInfos):
+        self._ConfigGroupVersionInfos = ConfigGroupVersionInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ConfigGroupVersionInfos") is not None:
+            self._ConfigGroupVersionInfos = []
+            for item in params.get("ConfigGroupVersionInfos"):
+                obj = ConfigGroupVersionInfo()
+                obj._deserialize(item)
+                self._ConfigGroupVersionInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7615,6 +8281,210 @@ class DescribeDefaultCertificatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDeployHistoryRequest(AbstractModel):
+    """DescribeDeployHistory request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _EnvId: Environment ID.
+        :type EnvId: str
+        :param _Filters: Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: 
+<li>record-id: Filter by release record ID. </li>
+        :type Filters: list of AdvancedFilter
+        """
+        self._ZoneId = None
+        self._EnvId = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._EnvId = params.get("EnvId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeployHistoryResponse(AbstractModel):
+    """DescribeDeployHistory response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total release records.
+        :type TotalCount: int
+        :param _Records: Release record details.
+        :type Records: list of DeployRecord
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Records = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Records(self):
+        return self._Records
+
+    @Records.setter
+    def Records(self, Records):
+        self._Records = Records
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Records") is not None:
+            self._Records = []
+            for item in params.get("Records"):
+                obj = DeployRecord()
+                obj._deserialize(item)
+                self._Records.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEnvironmentsRequest(AbstractModel):
+    """DescribeEnvironments request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEnvironmentsResponse(AbstractModel):
+    """DescribeEnvironments response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total environments.
+        :type TotalCount: int
+        :param _EnvInfos: Environment list.
+        :type EnvInfos: list of EnvInfo
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._EnvInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def EnvInfos(self):
+        return self._EnvInfos
+
+    @EnvInfos.setter
+    def EnvInfos(self, EnvInfos):
+        self._EnvInfos = EnvInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("EnvInfos") is not None:
+            self._EnvInfos = []
+            for item in params.get("EnvInfos"):
+                obj = EnvInfo()
+                obj._deserialize(item)
+                self._EnvInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeHostsSettingRequest(AbstractModel):
     """DescribeHostsSetting request structure.
 
@@ -8147,10 +9017,10 @@ class DescribeOverviewL7DataRequest(AbstractModel):
 <li>`day`: One day</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.
         :type Interval: str
         :param _Filters: Filtering condition. The detailed filtering condition key values are as follows: 
-<li>socket<br>    Filter based on [<strong>HTTP protocol type</strong>]. <br>    Corresponding value options: <br>    HTTP: HTTP protocol；<br>    HTTPS: HTTPS protocol;<br>    QUIC: QUIC protocol. </li>
-<li>domains<br>    Filter based on [<strong>domain name</strong>]. </li>
-<li>tagKey<br>    Filter based on [<strong>Tag Key</strong>]. </li>
-<li>tagValue<br>    Filter based on [<strong>Tag Value</strong>]. </li>
+<li>socket<br>u2003u2003 Filter based on [<strong>HTTP protocol type</strong>]. <br>u2003u2003 Corresponding value options: <br>u2003u2003 HTTP: HTTP protocol；<br>u2003u2003 HTTPS: HTTPS protocol;<br>u2003u2003 QUIC: QUIC protocol. </li>
+<li>domains<br>u2003u2003 Filter based on [<strong>domain name</strong>]. </li>
+<li>tagKey<br>u2003u2003 Filter based on [<strong>Tag Key</strong>]. </li>
+<li>tagValue<br>u2003u2003 Filter based on [<strong>Tag Value</strong>]. </li>
         :type Filters: list of QueryCondition
         :param _Area: Geolocation scope. Values:
 <li>`overseas`: Regions outside the Chinese mainland</li>
@@ -8339,7 +9209,7 @@ The parameter is required.
         :type Offset: int
         :param _Limit: Limit on paginated queries. Default value: `20`. Maximum value: `1000`.
         :type Limit: int
-        :param _Filters: Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: <li>job-id<br>    Filter based on [<strong>task ID</strong>]. job-id format: 1379afjk91u32h. Multiple values are not supported. <br>    Type: String<br>    Required: No. <br>    Fuzz query: Not supported. </li><li>target<br>    Filter based on [<strong>target resource information</strong>]. target format: http://www.qq.com/1.txt. Multiple values are not supported. <br>    Type: String<br>    Required: No. <br>    Fuzz query: Not supported. </li><li>domains<br>    Filter based on [<strong>domain name</strong>]. domains format: www.qq.com. <br>    Type: String<br>    Required: No. <br>    Fuzz query: Not supported. </li><li>statuses<br>    Filter based on [<strong>task status</strong>]. <br>    Required: No<br>    Fuzz query: Not supported. <br>    Options:<br>    processing: Processing<br>    success: Success<br>    failed: Failure<br>    timeout: Timeout</li>
+        :param _Filters: Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: <li>job-id<br>u2003u2003 Filter based on [<strong>task ID</strong>]. job-id format: 1379afjk91u32h. Multiple values are not supported. <br>u2003u2003 Type: String<br>u2003u2003 Required: No. <br>u2003u2003 Fuzz query: Not supported. </li><li>target<br>u2003u2003 Filter based on [<strong>target resource information</strong>]. target format: http://www.qq.com/1.txt. Multiple values are not supported. <br>u2003u2003 Type: String<br>u2003u2003 Required: No. <br>u2003u2003 Fuzz query: Not supported. </li><li>domains<br>u2003u2003 Filter based on [<strong>domain name</strong>]. domains format: www.qq.com. <br>u2003u2003 Type: String<br>u2003u2003 Required: No. <br>u2003u2003 Fuzz query: Not supported. </li><li>statuses<br>u2003u2003 Filter based on [<strong>task status</strong>]. <br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported. <br>u2003u2003 Options:<br>u2003u2003 processing: Processing<br>u2003u2003 success: Success<br>u2003u2003 failed: Failure<br>u2003u2003 timeout: Timeout</li>
         :type Filters: list of AdvancedFilter
         """
         self._ZoneId = None
@@ -8492,7 +9362,7 @@ The parameter is required.
         :type Offset: int
         :param _Limit: Limit on paginated queries. Default value: `20`. Maximum value: `1000`.
         :type Limit: int
-        :param _Filters: Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: <li>job-id<br>    Filter based on [<strong>task ID</strong>]. job-id format: 1379afjk91u32h. Multiple values are not supported. <br>    Type: String<br>    Required: No<br>    Fuzz query: Not supported.</li><li>target<br>    Filter based on: [strong>target resource information</strong>. target format: http://www.qq.com/1.txt or tag1. Multiple values are not supported.<br>    Type: String<br>    Required: No<br>    Fuzz query: Not supported.</li><li>domains<br>    Filter based on [<strong>domain name</strong>]. domains format: www.qq.com<br>    Type: String<br>    Required: No<br>    Fuzz query: Not supported. </li><li>statuses<br>    Filter based on <strong>task status</strong>.<br>    Required: No<br>    Fuzz query: Not supported. <br>    Options:<br>    processing: Processing<br>    success: Success<br>    failed: Failure<br>    timeout: Timeout</li><li>type<br>    Filter based on [<strong>cleared cache type</strong>]. Multiple values are not supported. <br>    Type: String<br>    Required: No<br>    Fuzz query: Not supported.<br>    Options:<br>    purge_url: URL<br>    purge_prefix: Prefix<br>    purge_all: All cache content<br>    purge_host: Hostname<br>    purge_cache_tag: CacheTag</li>
+        :param _Filters: Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: <li>job-id<br>u2003u2003 Filter based on [<strong>task ID</strong>]. job-id format: 1379afjk91u32h. Multiple values are not supported. <br>u2003u2003 Type: String<br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported.</li><li>target<br>u2003u2003 Filter based on: [strong>target resource information</strong>. target format: http://www.qq.com/1.txt or tag1. Multiple values are not supported.<br>u2003u2003 Type: String<br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported.</li><li>domains<br>u2003u2003 Filter based on [<strong>domain name</strong>]. domains format: www.qq.com<br>u2003u2003 Type: String<br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported. </li><li>statuses<br>u2003u2003 Filter based on <strong>task status</strong>.<br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported. <br>u2003u2003 Options:<br>u2003u2003 processing: Processing<br>u2003u2003 success: Success<br>u2003u2003 failed: Failure<br>u2003u2003 timeout: Timeout</li><li>type<br>u2003u2003 Filter based on [<strong>cleared cache type</strong>]. Multiple values are not supported. <br>u2003u2003 Type: String<br>u2003u2003 Required: No<br>u2003u2003 Fuzz query: Not supported.<br>u2003u2003 Options:<br>u2003u2003 purge_url: URL<br>u2003u2003 purge_prefix: Prefix<br>u2003u2003 purge_all: All cache content<br>u2003u2003 purge_host: Hostname<br>u2003u2003 purge_cache_tag: CacheTag</li>
         :type Filters: list of AdvancedFilter
         """
         self._ZoneId = None
@@ -11057,6 +11927,124 @@ class EntityStatus(AbstractModel):
         
 
 
+class EnvInfo(AbstractModel):
+    """Environment information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: Environment ID.
+        :type EnvId: str
+        :param _EnvType: Environment type. Valid values: 
+<li>production: Production environment.</li><li> staging: Test environment. </li>
+        :type EnvType: str
+        :param _Status: Environment status. Valid values: 
+<li>creating: Being created.</li>
+<li>running: The environment is stable, with version changes allowed.</li>
+<li>version_deploying: The version is currently being deployed, with no more changes allowed. </li>
+        :type Status: str
+        :param _Scope: Effective scope of the configuration in the current environment. Valid values: 
+<li>ALL: It takes effect on the entire network when EnvType is set to production.</li>
+<li>It returns the IP address of the test node for host binding during testing when EnvType is set to staging. </li>
+        :type Scope: list of str
+        :param _CurrentConfigGroupVersionInfos: For the effective versions of each configuration group in the current environment, there are two possible scenarios based on the value of Status: 
+<li>When Status is set to version_deploying, the returned value of this field represents the previously effective version. In other words, during the deployment of the new version, the effective version is the one that was in effect before any changes were made.</li>
+<li>When Status is set to running, the value returned by this field is the currently effective version. </li>
+        :type CurrentConfigGroupVersionInfos: list of ConfigGroupVersionInfo
+        :param _CreateTime: Creation time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).
+        :type CreateTime: str
+        :param _UpdateTime: Update time. The time format follows the ISO 8601 standard and is represented in Coordinated Universal Time (UTC).
+        :type UpdateTime: str
+        """
+        self._EnvId = None
+        self._EnvType = None
+        self._Status = None
+        self._Scope = None
+        self._CurrentConfigGroupVersionInfos = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def EnvId(self):
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def EnvType(self):
+        return self._EnvType
+
+    @EnvType.setter
+    def EnvType(self, EnvType):
+        self._EnvType = EnvType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Scope(self):
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def CurrentConfigGroupVersionInfos(self):
+        return self._CurrentConfigGroupVersionInfos
+
+    @CurrentConfigGroupVersionInfos.setter
+    def CurrentConfigGroupVersionInfos(self, CurrentConfigGroupVersionInfos):
+        self._CurrentConfigGroupVersionInfos = CurrentConfigGroupVersionInfos
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._EnvType = params.get("EnvType")
+        self._Status = params.get("Status")
+        self._Scope = params.get("Scope")
+        if params.get("CurrentConfigGroupVersionInfos") is not None:
+            self._CurrentConfigGroupVersionInfos = []
+            for item in params.get("CurrentConfigGroupVersionInfos"):
+                obj = ConfigGroupVersionInfo()
+                obj._deserialize(item)
+                self._CurrentConfigGroupVersionInfos.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExceptConfig(AbstractModel):
     """Exception rules, which are used to bypass specific rules
 
@@ -13471,9 +14459,8 @@ Instance name when `ProxyType=instance`.
         :param _SessionPersistTime: The session persistence duration. Value range: 30-3600 (in seconds).
 The original configuration will apply if this field is not specified.
         :type SessionPersistTime: int
-        :param _ProxyType: The proxy type. Values:
-<li>`hostname`: The proxy is created by subdomain name.</li>
-<li>`instance`: The proxy is created by instance.</li>If not specified, this field uses the default value `instance`.
+        :param _ProxyType: L4 proxy mode. Valid values: 
+<li>instance: Instance mode. </li>If it is not specified, instance is used by default.
         :type ProxyType: str
         :param _Ipv6: IPv6 access configuration. The original configuration will apply if it is not specified.
         :type Ipv6: :class:`tencentcloud.teo.v20220901.models.Ipv6`
@@ -14557,7 +15544,7 @@ class ModifyZoneRequest(AbstractModel):
         :type ZoneId: str
         :param _Type: Access mode of the site. Values:
 <li> `full`: Access through a name server.</li>
-<li> `partial`: Access through a CNAME u200drecord. A site using domainless access can only switch to CNAME access. </li>The original configuration applies if this field is not specified.
+<li> `partial`: Access through a CNAME record. A site using domainless access can only switch to CNAME access. </li>The original configuration applies if this field is not specified.
         :type Type: str
         :param _VanityNameServers: The custom name servers. The original configuration applies if this field is not specified. It is not allowed to pass this field when a site is connected without using a domain name.
         :type VanityNameServers: :class:`tencentcloud.teo.v20220901.models.VanityNameServers`
@@ -17170,10 +18157,10 @@ class Resource(AbstractModel):
 <li>`plan`: Plan resources</li>
 <li>`pay-as-you-go`: Pay-as-you-go resources </li>
 <li>`value-added`: Value-added resources </li>
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Group: str
         :param _ZoneNumber: The sites that are associated with the current resources.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ZoneNumber: int
         """
         self._Id = None
@@ -19080,9 +20067,9 @@ class StandardDebug(AbstractModel):
 <li>`on`: Enable</li>
 <li>`off`: Disable </li>
         :type Switch: str
-        :param _AllowClientIPList: Allowed client source. IPv4 and IPv6 addresses and network segments are supported. 0.0.0.0/0 indicates that all IPv4 clients can be debugged, and ::/0 indicates that all IPv6 clients can be debugged.
+        :param _AllowClientIPList: The client IP to allow. It can be an IPv4/IPv6 address or a CIDR block. If not specified, it means to allow any client IP
         :type AllowClientIPList: list of str
-        :param _ExpireTime: The time when the standard debugging setting expires. If it is exceeded, this feature u200dbecomes invalid.
+        :param _ExpireTime: The time when the standard debugging setting expires. If it is exceeded, this feature becomes invalid.
         :type ExpireTime: str
         """
         self._Switch = None
@@ -19250,14 +20237,14 @@ class Sv(AbstractModel):
 <li>`custom-rule`: Quota for custom rules</li>
 <li>`rate-limiting-rule`: Quota for rate limiting rules</li>
 <li>`l4-proxy-instance`: Quota for L4 proxy instances </li>
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Pack: str
         :param _InstanceId: ID of the L4 proxy instance.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceId: str
         :param _ProtectionSpecs: The protection specification.
 Values: <li> `cm_30G`: 30 Gbps base protection bandwidth in **Chinese mainland** service area</li><li> `cm_60G`: 60 Gbps base protection bandwidth in **Chinese mainland** service area</li><li> `cm_100G`: 100 Gbps base protection bandwidth in **Chinese mainland** service area</li><li> `anycast_300G`: 300 Gbps Anycast-based protection in **Global (MLC)** service area</li><li> `anycast_unlimited`: Unlimited Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> `cm_30G_anycast_300G`: 30 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> `cm_30G_anycast_unlimited`: 30 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> cm_60G_anycast_300G`: 60 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> cm_60G_anycast_unlimited`: 60 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> `cm_100G_anycast_300G`: 100 Gbps base protection bandwidth in **Chinese mainland** service area and 300 Gbps Anycast-based protection bandwidth in **Global (MLC)** service area</li><li> cm_100G_anycast_unlimited`: 100 Gbps base protection bandwidth in **Chinese mainland** service area and unlimited Anycast-based protection bandwidth in **Global (MLC)** service area </li>
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ProtectionSpecs: str
         """
         self._Key = None
@@ -20815,7 +21802,7 @@ Note: This field may return `null`, indicating that no valid value was found.
 Note: This field may return `null`, indicating that no valid values can be obtained.
         :type AccelerateMainland: :class:`tencentcloud.teo.v20220901.models.AccelerateMainland`
         :param _StandardDebug: Standard debugging configuration.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type StandardDebug: :class:`tencentcloud.teo.v20220901.models.StandardDebug`
         """
         self._ZoneName = None

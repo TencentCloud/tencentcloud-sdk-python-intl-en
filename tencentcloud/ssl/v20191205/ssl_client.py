@@ -440,6 +440,52 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeHostUpdateRecord(self, request):
+        """Query certificate cloud resource update record list
+
+        :param request: Request instance for DescribeHostUpdateRecord.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUpdateRecordRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUpdateRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostUpdateRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostUpdateRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeHostUpdateRecordDetail(self, request):
+        """Query certificate cloud resource update record details list
+
+        :param request: Request instance for DescribeHostUpdateRecordDetail.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUpdateRecordDetailRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeHostUpdateRecordDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHostUpdateRecordDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHostUpdateRecordDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DownloadCertificate(self, request):
         """This API is used to download a certificate.
 
@@ -592,6 +638,75 @@ class SslClient(AbstractClient):
             body = self.call("SubmitCertificateInformation", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitCertificateInformationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateCertificateInstance(self, request):
+        """This API is used to update old certificate resources with one click and is an asynchronous interface. After this API is called, the returned DeployRecordId being 0 indicates that the task is in progress, and the returned DeployRecordId being greater than 0 indicates that the task is successfully created. If the creation fails, an exception is returned.
+
+        :param request: Request instance for UpdateCertificateInstance.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateInstanceRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCertificateInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateCertificateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateCertificateRecordRetry(self, request):
+        """Cloud resource update deployment retry record
+
+        :param request: Request instance for UpdateCertificateRecordRetry.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateRecordRetryRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateRecordRetryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCertificateRecordRetry", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateCertificateRecordRetryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateCertificateRecordRollback(self, request):
+        """Cloud resource update one-click rollback
+
+        :param request: Request instance for UpdateCertificateRecordRollback.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateRecordRollbackRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.UpdateCertificateRecordRollbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCertificateRecordRollback", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateCertificateRecordRollbackResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
