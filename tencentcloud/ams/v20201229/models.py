@@ -44,7 +44,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _Url: This field is used to return the URL where audio segments are stored, which is valid for 1 day.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Url: str
-        :param _Duration: This field is used to return the length of an audio file in seconds.
+        :param _Duration: This field is used to return the length of an audio file in milliseconds.
         :type Duration: str
         :param _Extra: This field is used to return additional information, and the returned information varies by customer or `Biztype`.
         :type Extra: str
@@ -237,10 +237,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _Score: This parameter is used to return the confidence under the current tag. Value range: 0 (**the lowest confidence**)–100 (**the highest confidence**), where a higher value indicates that the audio is more likely to fall into the category of the current returned language tag;
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Score: int
-        :param _StartTime: This parameter is used to return the start time of the segment of an audio file under the corresponding language tag in milliseconds.
+        :param _StartTime: This parameter is used to return the start time of the segment of an audio file under the corresponding language tag in seconds. 
 Note: this field may return null, indicating that no valid values can be obtained.
         :type StartTime: float
-        :param _EndTime: This parameter is used to return the end time of the segment of an audio file under the corresponding language tag in milliseconds.
+        :param _EndTime: This parameter is used to return the end time of the segment of an audio file under the corresponding language tag in seconds. 
 Note: this field may return null, indicating that no valid values can be obtained.
         :type EndTime: float
         :param _SubLabelCode: *This field is in beta test. Stay tuned*
@@ -322,9 +322,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :type Label: str
         :param _Score: This field is used to return the confidence of moan detection. Value range: 0 (**the lowest confidence**)–100 (**the highest confidence**), where a higher value indicates that the audio is more likely to fall into the category of moan.
         :type Score: int
-        :param _StartTime: This field is used to return the start time of the segment of an audio file under the corresponding moan tag in milliseconds.
+        :param _StartTime: This field is used to return the start time of the segment of an audio file under the corresponding moan tag in seconds.
         :type StartTime: float
-        :param _EndTime: This field is used to return the end time of the segment of an audio file under the corresponding moan tag in milliseconds.
+        :param _EndTime: This field is used to return the end time of the segment of an audio file under the corresponding moan tag in seconds.
         :type EndTime: float
         :param _SubLabelCode: *This field is in beta test. Stay tuned*
         :type SubLabelCode: str
@@ -599,11 +599,14 @@ class BucketInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Bucket: This field indicates a bucket name in Tencent Cloud COS. For more information on buckets, see [Basic Concepts](https://intl.cloud.tencent.com/document/product/436/44352?from_cn_redirect=1).
+        :param _Bucket: This field indicates a bucket name in Tencent Cloud COS. For more information on buckets, see Basic Concepts (https://intl.cloud.tencent.com/document/product/436/44352?from_cn_redirect=1). 
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Bucket: str
-        :param _Region: This field indicates a region where a Tencent Cloud managed data center is deployed. COS data is stored in buckets in these regions.
+        :param _Region: This field indicates a region where a Tencent Cloud COS managed data center is deployed. COS data is stored in buckets in these regions. 
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Region: str
-        :param _Object: This field indicates an object key in Tencent Cloud COS. An object is stored in a bucket as a basic storage unit. You can manage objects through the Tencent Cloud console, API, or SDK. For more information on objects, see [Object Overview](https://intl.cloud.tencent.com/document/product/436/13324?from_cn_redirect=1).
+        :param _Object: This field indicates an object key in Tencent Cloud COS. Object z is stored in a bucket as a basic storage unit. You can manage objects through the Tencent Cloud console, API, or SDK. For more information on objects, see Object Overview (https://intl.cloud.tencent.com/document/product/436/13324?from_cn_redirect=1). 
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Object: str
         """
         self._Bucket = None
@@ -889,54 +892,53 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: This field is used to return the task ID (in the `Results` parameter) after an audio moderation task is created. It is used to identify the moderation task for which to query the details.
+        :param _TaskId: 
 Note: this field may return null, indicating that no valid values can be obtained.
         :type TaskId: str
-        :param _DataId: This field is used to return the data ID parameter passed in within the `Tasks` parameter when the audio moderation API is called for easier data identification and management.
+        :param _DataId: 
 Note: this field may return null, indicating that no valid values can be obtained.
         :type DataId: str
-        :param _BizType: This field is used to return the `BizType` parameter passed in when the audio moderation API is called for easier data identification and management.
+        :param _BizType: 
 Note: this field may return null, indicating that no valid values can be obtained.
         :type BizType: str
-        :param _Name: This field is used to return the task name in the `TaskInput` parameter passed in when the audio moderation API is called for easier task identification and management.
+        :param _Name: 
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Name: str
-        :param _Status: This field is used to return the task status of the queried content.
-<br>Valid values: **FINISH** (task completed), **PENDING** (task pending), **RUNNING** (task in progress), **ERROR** (task error), **CANCELLED** (task canceled).
+        :param _Status: 
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Status: str
-        :param _Type: This field is used to return the audio moderation type passed in when the audio moderation API is called. Valid values: **AUDIO** (audio on demand), **LIVE_AUDIO** (audio live streaming). Default value: AUDIO.
+        :param _Type: 
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Type: str
-        :param _Suggestion: This field is used to return the operation suggestion for the maliciousness tag. When you get the determination result, the returned value indicates the operation suggested by the system. We recommend you handle different types of violations and suggestions according to your business needs. <br>Returned values: **Block**, **Review**, **Pass**.
+        :param _Suggestion: 
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Suggestion: str
-        :param _Labels: Label of the malicious content detected. <br>Values: **Porn**: pornographic; **Abuse**: abusive; **Ad**: advertising; **Custom**: custom type of non-compliant content and other offensive, unsafe, or inappropriate types of content.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Labels: 
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Labels: list of TaskLabel
-        :param _InputInfo: This field is used to return the media content information of the moderation service, mainly including the input file type and access URL.
+        :param _InputInfo: 
 Note: this field may return null, indicating that no valid values can be obtained.
         :type InputInfo: :class:`tencentcloud.ams.v20201229.models.InputInfo`
-        :param _AudioText: This field is used to return the recognized text content of an audio file. **Up to the first 1,000 characters** can be recognized.
+        :param _AudioText: 
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AudioText: str
-        :param _AudioSegments: This field is used to return the moderation result of an audio segment, mainly including the start time and audio moderation result.<br>For the specific output content, see the detailed description of the `AudioSegments` and `AudioResult` data structures.
+        :param _AudioSegments: 
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AudioSegments: list of AudioSegments
-        :param _ErrorType: If the task status is `Error`, this field will return the error type; otherwise, null will be returned by default.
+        :param _ErrorType: 
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ErrorType: str
-        :param _ErrorDescription: If the task status is `Error`, this field will return the error message; otherwise, null will be returned by default.
+        :param _ErrorDescription: 
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ErrorDescription: str
-        :param _CreatedAt: This field is used to return the creation time of the queried task in ISO 8601 format.
+        :param _CreatedAt: 
 Note: this field may return null, indicating that no valid values can be obtained.
         :type CreatedAt: str
-        :param _UpdatedAt: This field is used to return the last update time of the queried task in ISO 8601 format.
+        :param _UpdatedAt: 
 Note: this field may return null, indicating that no valid values can be obtained.
         :type UpdatedAt: str
-        :param _Label: If the recognition result is normal, this parameter is returned with the value `Normal`. If malicious content is recognized, the tag with the highest priority in the result of `Labels` is returned.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Label: 
+Note: this field may return null, indicating that no valid values can be obtained.
         :type Label: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
@@ -1351,7 +1353,7 @@ class MediaInfo(AbstractModel):
         r"""
         :param _Codecs: This field is used to return the codec of the media file passed in, such as WAV, MP3, AAC, FLAC, AMR, 3GP, M4A, WMA, OGG, and APE.
         :type Codecs: str
-        :param _Duration: This field is used to return the segment length of the input streaming media file in seconds. It is **15 seconds by default** and is customizable.
+        :param _Duration: This field is used to return the segment length of the input streaming media file in milliseconds.** It is 15 seconds** by default and is customizable.
         :type Duration: int
         :param _Width: *This field is in beta test. Stay tuned*
         :type Width: int

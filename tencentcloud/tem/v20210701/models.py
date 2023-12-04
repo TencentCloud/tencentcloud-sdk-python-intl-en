@@ -8776,6 +8776,8 @@ class RollingUpdateApplicationByVersionRequest(AbstractModel):
         :type BetaBatchNum: int
         :param _MinAvailable: Minimum number of available instances during the deployment
         :type MinAvailable: int
+        :param _Force: Whether to enable force release
+        :type Force: bool
         """
         self._ApplicationId = None
         self._EnvironmentId = None
@@ -8787,6 +8789,7 @@ class RollingUpdateApplicationByVersionRequest(AbstractModel):
         self._BatchInterval = None
         self._BetaBatchNum = None
         self._MinAvailable = None
+        self._Force = None
 
     @property
     def ApplicationId(self):
@@ -8868,6 +8871,14 @@ class RollingUpdateApplicationByVersionRequest(AbstractModel):
     def MinAvailable(self, MinAvailable):
         self._MinAvailable = MinAvailable
 
+    @property
+    def Force(self):
+        return self._Force
+
+    @Force.setter
+    def Force(self, Force):
+        self._Force = Force
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -8880,6 +8891,7 @@ class RollingUpdateApplicationByVersionRequest(AbstractModel):
         self._BatchInterval = params.get("BatchInterval")
         self._BetaBatchNum = params.get("BetaBatchNum")
         self._MinAvailable = params.get("MinAvailable")
+        self._Force = params.get("Force")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -349,6 +349,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
 `RESTARTING`: Restarting.
 `REMOVING`: Removing.
         :type ContainerStatus: str
+        :param _ClusterID: Cluster ID
+        :type ClusterID: str
+        :param _NodeType: Node type. Values: `NORMAL` (general node), `SUPER` (super node).
+        :type NodeType: str
+        :param _PodName: Pod name
+        :type PodName: str
+        :param _PodIP: Pod IP
+        :type PodIP: str
+        :param _NodeUniqueID: Cluster ID
+        :type NodeUniqueID: str
+        :param _PublicIP: Node public IP
+        :type PublicIP: str
+        :param _NodeName: Node name
+        :type NodeName: str
+        :param _NodeID: Node ID
+        :type NodeID: str
+        :param _HostID: uuid
+        :type HostID: str
+        :param _HostIP: Private IP of the node
+        :type HostIP: str
+        :param _ClusterName: Cluster name
+        :type ClusterName: str
         """
         self._ProcessPath = None
         self._EventType = None
@@ -376,6 +398,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ContainerNetSubStatus = None
         self._ContainerIsolateOperationSrc = None
         self._ContainerStatus = None
+        self._ClusterID = None
+        self._NodeType = None
+        self._PodName = None
+        self._PodIP = None
+        self._NodeUniqueID = None
+        self._PublicIP = None
+        self._NodeName = None
+        self._NodeID = None
+        self._HostID = None
+        self._HostIP = None
+        self._ClusterName = None
 
     @property
     def ProcessPath(self):
@@ -585,6 +618,94 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ContainerStatus(self, ContainerStatus):
         self._ContainerStatus = ContainerStatus
 
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def PublicIP(self):
+        return self._PublicIP
+
+    @PublicIP.setter
+    def PublicIP(self, PublicIP):
+        self._PublicIP = PublicIP
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def HostID(self):
+        return self._HostID
+
+    @HostID.setter
+    def HostID(self, HostID):
+        self._HostID = HostID
+
+    @property
+    def HostIP(self):
+        return self._HostIP
+
+    @HostIP.setter
+    def HostIP(self, HostIP):
+        self._HostIP = HostIP
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
 
     def _deserialize(self, params):
         self._ProcessPath = params.get("ProcessPath")
@@ -613,6 +734,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ContainerNetSubStatus = params.get("ContainerNetSubStatus")
         self._ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
         self._ContainerStatus = params.get("ContainerStatus")
+        self._ClusterID = params.get("ClusterID")
+        self._NodeType = params.get("NodeType")
+        self._PodName = params.get("PodName")
+        self._PodIP = params.get("PodIP")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._PublicIP = params.get("PublicIP")
+        self._NodeName = params.get("NodeName")
+        self._NodeID = params.get("NodeID")
+        self._HostID = params.get("HostID")
+        self._HostIP = params.get("HostIP")
+        self._ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1230,6 +1362,28 @@ class AccessControlEventInfo(AbstractModel):
 `RESTARTING`: Restarting.
 `REMOVING`: Removing.
         :type ContainerStatus: str
+        :param _NodeName: Node name: For super nodes, the node_id is displayed.
+        :type NodeName: str
+        :param _PodName: Pod name
+        :type PodName: str
+        :param _PodIP: Pod IP
+        :type PodIP: str
+        :param _NodeType: Node type. Values: `NORMAL` (general node), `SUPER` (super node).
+        :type NodeType: str
+        :param _ClusterID: Cluster ID
+        :type ClusterID: str
+        :param _NodeUniqueID: Node unique ID. It's used for super nodes.
+        :type NodeUniqueID: str
+        :param _PublicIP: Node public IP
+        :type PublicIP: str
+        :param _NodeID: Node ID
+        :type NodeID: str
+        :param _HostID: uuid
+        :type HostID: str
+        :param _HostIP: Private IP of the node
+        :type HostIP: str
+        :param _ClusterName: Cluster name
+        :type ClusterName: str
         """
         self._ProcessName = None
         self._MatchRuleName = None
@@ -1258,6 +1412,17 @@ class AccessControlEventInfo(AbstractModel):
         self._ContainerNetSubStatus = None
         self._ContainerIsolateOperationSrc = None
         self._ContainerStatus = None
+        self._NodeName = None
+        self._PodName = None
+        self._PodIP = None
+        self._NodeType = None
+        self._ClusterID = None
+        self._NodeUniqueID = None
+        self._PublicIP = None
+        self._NodeID = None
+        self._HostID = None
+        self._HostIP = None
+        self._ClusterName = None
 
     @property
     def ProcessName(self):
@@ -1475,6 +1640,94 @@ class AccessControlEventInfo(AbstractModel):
     def ContainerStatus(self, ContainerStatus):
         self._ContainerStatus = ContainerStatus
 
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def PublicIP(self):
+        return self._PublicIP
+
+    @PublicIP.setter
+    def PublicIP(self, PublicIP):
+        self._PublicIP = PublicIP
+
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def HostID(self):
+        return self._HostID
+
+    @HostID.setter
+    def HostID(self, HostID):
+        self._HostID = HostID
+
+    @property
+    def HostIP(self):
+        return self._HostIP
+
+    @HostIP.setter
+    def HostIP(self, HostIP):
+        self._HostIP = HostIP
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
 
     def _deserialize(self, params):
         self._ProcessName = params.get("ProcessName")
@@ -1504,6 +1757,17 @@ class AccessControlEventInfo(AbstractModel):
         self._ContainerNetSubStatus = params.get("ContainerNetSubStatus")
         self._ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
         self._ContainerStatus = params.get("ContainerStatus")
+        self._NodeName = params.get("NodeName")
+        self._PodName = params.get("PodName")
+        self._PodIP = params.get("PodIP")
+        self._NodeType = params.get("NodeType")
+        self._ClusterID = params.get("ClusterID")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._PublicIP = params.get("PublicIP")
+        self._NodeID = params.get("NodeID")
+        self._HostID = params.get("HostID")
+        self._HostIP = params.get("HostIP")
+        self._ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3353,6 +3617,8 @@ class AffectedNodeItem(AbstractModel):
         :type Region: str
         :param _VerifyInfo: Verification information of the check result
         :type VerifyInfo: str
+        :param _NodeName: Node name
+        :type NodeName: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -3363,6 +3629,7 @@ class AffectedNodeItem(AbstractModel):
         self._ContainerRuntime = None
         self._Region = None
         self._VerifyInfo = None
+        self._NodeName = None
 
     @property
     def ClusterId(self):
@@ -3436,6 +3703,14 @@ class AffectedNodeItem(AbstractModel):
     def VerifyInfo(self, VerifyInfo):
         self._VerifyInfo = VerifyInfo
 
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -3447,6 +3722,7 @@ class AffectedNodeItem(AbstractModel):
         self._ContainerRuntime = params.get("ContainerRuntime")
         self._Region = params.get("Region")
         self._VerifyInfo = params.get("VerifyInfo")
+        self._NodeName = params.get("NodeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3571,13 +3847,23 @@ class AssetClusterListItem(AbstractModel):
         :param _ClusterType: Cluster type:
 `CT_TKE`: TKE cluster
 `CT_USER_CREATE`: External cluster
+`CT_TKE_SERVERLESS`: TKE Serverless cluster
         :type ClusterType: str
+        :param _ClusterVersion: Cluster version
+        :type ClusterVersion: str
+        :param _MemLimit: MEM usage
+        :type MemLimit: int
+        :param _CpuLimit: cpu
+        :type CpuLimit: int
         """
         self._ClusterID = None
         self._ClusterName = None
         self._Status = None
         self._BindRuleName = None
         self._ClusterType = None
+        self._ClusterVersion = None
+        self._MemLimit = None
+        self._CpuLimit = None
 
     @property
     def ClusterID(self):
@@ -3619,6 +3905,30 @@ class AssetClusterListItem(AbstractModel):
     def ClusterType(self, ClusterType):
         self._ClusterType = ClusterType
 
+    @property
+    def ClusterVersion(self):
+        return self._ClusterVersion
+
+    @ClusterVersion.setter
+    def ClusterVersion(self, ClusterVersion):
+        self._ClusterVersion = ClusterVersion
+
+    @property
+    def MemLimit(self):
+        return self._MemLimit
+
+    @MemLimit.setter
+    def MemLimit(self, MemLimit):
+        self._MemLimit = MemLimit
+
+    @property
+    def CpuLimit(self):
+        return self._CpuLimit
+
+    @CpuLimit.setter
+    def CpuLimit(self, CpuLimit):
+        self._CpuLimit = CpuLimit
+
 
     def _deserialize(self, params):
         self._ClusterID = params.get("ClusterID")
@@ -3626,6 +3936,9 @@ class AssetClusterListItem(AbstractModel):
         self._Status = params.get("Status")
         self._BindRuleName = params.get("BindRuleName")
         self._ClusterType = params.get("ClusterType")
+        self._ClusterVersion = params.get("ClusterVersion")
+        self._MemLimit = params.get("MemLimit")
+        self._CpuLimit = params.get("CpuLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4912,6 +5225,51 @@ class ClusterCreateComponentItem(AbstractModel):
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._ClusterRegion = params.get("ClusterRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterCustomParameters(AbstractModel):
+    """Custom parameters of the cluster
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Parameter name
+        :type Name: str
+        :param _Values: Parameter value
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7431,16 +7789,36 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Version: Component version information
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Version: str
+        :param _FixedVersion: Fixed version
+Note: This field may return·`null`, indicating that no valid values can be obtained.
+        :type FixedVersion: str
+        :param _Path: Path
+Note: This field may return·`null`, indicating that no valid values can be obtained.
+        :type Path: str
+        :param _Type: Type
+Note: This field may return·`null`, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _Name: Add-on name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
         """
         self._Component = None
         self._Version = None
+        self._FixedVersion = None
+        self._Path = None
+        self._Type = None
+        self._Name = None
 
     @property
     def Component(self):
+        warnings.warn("parameter `Component` is deprecated", DeprecationWarning) 
+
         return self._Component
 
     @Component.setter
     def Component(self, Component):
+        warnings.warn("parameter `Component` is deprecated", DeprecationWarning) 
+
         self._Component = Component
 
     @property
@@ -7451,10 +7829,46 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Version(self, Version):
         self._Version = Version
 
+    @property
+    def FixedVersion(self):
+        return self._FixedVersion
+
+    @FixedVersion.setter
+    def FixedVersion(self, FixedVersion):
+        self._FixedVersion = FixedVersion
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Component = params.get("Component")
         self._Version = params.get("Version")
+        self._FixedVersion = params.get("FixedVersion")
+        self._Path = params.get("Path")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7614,6 +8028,26 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _IsolateTime: Isolation time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsolateTime: str
+        :param _NodeID: Super node ID
+        :type NodeID: str
+        :param _PodIP: Pod IP
+        :type PodIP: str
+        :param _PodName: Pod name
+        :type PodName: str
+        :param _NodeType: Node type. Valid values: `NORMAL` (general node), `SUPER` (super node)
+        :type NodeType: str
+        :param _NodeUniqueID: UID of the super node
+        :type NodeUniqueID: str
+        :param _PodCpu: Number of CPU cores used by the pod
+        :type PodCpu: int
+        :param _PodMem: Memory specification of the Pod
+        :type PodMem: int
+        :param _ClusterName: 
+        :type ClusterName: str
+        :param _ClusterID: 
+        :type ClusterID: str
+        :param _PodUid: 
+        :type PodUid: str
         """
         self._ContainerID = None
         self._ContainerName = None
@@ -7635,6 +8069,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._NetSubStatus = None
         self._IsolateSource = None
         self._IsolateTime = None
+        self._NodeID = None
+        self._PodIP = None
+        self._PodName = None
+        self._NodeType = None
+        self._NodeUniqueID = None
+        self._PodCpu = None
+        self._PodMem = None
+        self._ClusterName = None
+        self._ClusterID = None
+        self._PodUid = None
 
     @property
     def ContainerID(self):
@@ -7796,6 +8240,86 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def IsolateTime(self, IsolateTime):
         self._IsolateTime = IsolateTime
 
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def PodCpu(self):
+        return self._PodCpu
+
+    @PodCpu.setter
+    def PodCpu(self, PodCpu):
+        self._PodCpu = PodCpu
+
+    @property
+    def PodMem(self):
+        return self._PodMem
+
+    @PodMem.setter
+    def PodMem(self, PodMem):
+        self._PodMem = PodMem
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def PodUid(self):
+        return self._PodUid
+
+    @PodUid.setter
+    def PodUid(self, PodUid):
+        self._PodUid = PodUid
+
 
     def _deserialize(self, params):
         self._ContainerID = params.get("ContainerID")
@@ -7818,6 +8342,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._NetSubStatus = params.get("NetSubStatus")
         self._IsolateSource = params.get("IsolateSource")
         self._IsolateTime = params.get("IsolateTime")
+        self._NodeID = params.get("NodeID")
+        self._PodIP = params.get("PodIP")
+        self._PodName = params.get("PodName")
+        self._NodeType = params.get("NodeType")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._PodCpu = params.get("PodCpu")
+        self._PodMem = params.get("PodMem")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterID = params.get("ClusterID")
+        self._PodUid = params.get("PodUid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8369,10 +8903,21 @@ class CreateAssetImageRegistryScanTaskOneKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskID: 
+        :type TaskID: int
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self._TaskID = None
         self._RequestId = None
+
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
 
     @property
     def RequestId(self):
@@ -8384,6 +8929,7 @@ class CreateAssetImageRegistryScanTaskOneKeyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskID = params.get("TaskID")
         self._RequestId = params.get("RequestId")
 
 
@@ -8509,10 +9055,21 @@ class CreateAssetImageRegistryScanTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskID: 
+        :type TaskID: int
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self._TaskID = None
         self._RequestId = None
+
+    @property
+    def TaskID(self):
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
 
     @property
     def RequestId(self):
@@ -8524,6 +9081,7 @@ class CreateAssetImageRegistryScanTaskResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskID = params.get("TaskID")
         self._RequestId = params.get("RequestId")
 
 
@@ -11146,6 +11704,45 @@ class CreateRefreshTaskRequest(AbstractModel):
     """CreateRefreshTask request structure.
 
     """
+
+    def __init__(self):
+        r"""
+        :param _ClusterIDs: 
+        :type ClusterIDs: list of str
+        :param _IsSyncListOnly: 
+        :type IsSyncListOnly: bool
+        """
+        self._ClusterIDs = None
+        self._IsSyncListOnly = None
+
+    @property
+    def ClusterIDs(self):
+        return self._ClusterIDs
+
+    @ClusterIDs.setter
+    def ClusterIDs(self, ClusterIDs):
+        self._ClusterIDs = ClusterIDs
+
+    @property
+    def IsSyncListOnly(self):
+        return self._IsSyncListOnly
+
+    @IsSyncListOnly.setter
+    def IsSyncListOnly(self, IsSyncListOnly):
+        self._IsSyncListOnly = IsSyncListOnly
+
+
+    def _deserialize(self, params):
+        self._ClusterIDs = params.get("ClusterIDs")
+        self._IsSyncListOnly = params.get("IsSyncListOnly")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateRefreshTaskResponse(AbstractModel):
@@ -15895,12 +16492,15 @@ class DescribeAgentDaemonSetCmdRequest(AbstractModel):
         :type VpcId: str
         :param _ExpireDate: Command validity, which is required for non-Tencent Cloud instances.
         :type ExpireDate: str
+        :param _ClusterCustomParameters: Custom parameters of the cluster
+        :type ClusterCustomParameters: list of ClusterCustomParameters
         """
         self._IsCloud = None
         self._NetType = None
         self._RegionCode = None
         self._VpcId = None
         self._ExpireDate = None
+        self._ClusterCustomParameters = None
 
     @property
     def IsCloud(self):
@@ -15942,6 +16542,14 @@ class DescribeAgentDaemonSetCmdRequest(AbstractModel):
     def ExpireDate(self, ExpireDate):
         self._ExpireDate = ExpireDate
 
+    @property
+    def ClusterCustomParameters(self):
+        return self._ClusterCustomParameters
+
+    @ClusterCustomParameters.setter
+    def ClusterCustomParameters(self, ClusterCustomParameters):
+        self._ClusterCustomParameters = ClusterCustomParameters
+
 
     def _deserialize(self, params):
         self._IsCloud = params.get("IsCloud")
@@ -15949,6 +16557,12 @@ class DescribeAgentDaemonSetCmdRequest(AbstractModel):
         self._RegionCode = params.get("RegionCode")
         self._VpcId = params.get("VpcId")
         self._ExpireDate = params.get("ExpireDate")
+        if params.get("ClusterCustomParameters") is not None:
+            self._ClusterCustomParameters = []
+            for item in params.get("ClusterCustomParameters"):
+                obj = ClusterCustomParameters()
+                obj._deserialize(item)
+                self._ClusterCustomParameters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16664,6 +17278,32 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _IsolateTime: Isolation time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type IsolateTime: str
+        :param _NodeID: Node ID
+        :type NodeID: str
+        :param _NodeName: Node name
+        :type NodeName: str
+        :param _NodeSubNetID: Node subnet ID
+        :type NodeSubNetID: str
+        :param _NodeSubNetName: Node subnet name
+        :type NodeSubNetName: str
+        :param _NodeSubNetCIDR: Subnet IP range
+        :type NodeSubNetCIDR: str
+        :param _PodName: Pod name
+        :type PodName: str
+        :param _PodIP: Pod IP
+        :type PodIP: str
+        :param _PodStatus: Pod status
+        :type PodStatus: str
+        :param _ClusterID: Cluster ID
+        :type ClusterID: str
+        :param _ClusterName: Cluster name
+        :type ClusterName: str
+        :param _NodeType: Node type. Values: `NORMAL` (default), `SUPER`
+        :type NodeType: str
+        :param _NodeUniqueID: UID of the super node
+        :type NodeUniqueID: str
+        :param _PublicIP: Public IP
+        :type PublicIP: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -16694,6 +17334,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._NetSubStatus = None
         self._IsolateSource = None
         self._IsolateTime = None
+        self._NodeID = None
+        self._NodeName = None
+        self._NodeSubNetID = None
+        self._NodeSubNetName = None
+        self._NodeSubNetCIDR = None
+        self._PodName = None
+        self._PodIP = None
+        self._PodStatus = None
+        self._ClusterID = None
+        self._ClusterName = None
+        self._NodeType = None
+        self._NodeUniqueID = None
+        self._PublicIP = None
         self._RequestId = None
 
     @property
@@ -16913,6 +17566,110 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._IsolateTime = IsolateTime
 
     @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def NodeSubNetID(self):
+        return self._NodeSubNetID
+
+    @NodeSubNetID.setter
+    def NodeSubNetID(self, NodeSubNetID):
+        self._NodeSubNetID = NodeSubNetID
+
+    @property
+    def NodeSubNetName(self):
+        return self._NodeSubNetName
+
+    @NodeSubNetName.setter
+    def NodeSubNetName(self, NodeSubNetName):
+        self._NodeSubNetName = NodeSubNetName
+
+    @property
+    def NodeSubNetCIDR(self):
+        return self._NodeSubNetCIDR
+
+    @NodeSubNetCIDR.setter
+    def NodeSubNetCIDR(self, NodeSubNetCIDR):
+        self._NodeSubNetCIDR = NodeSubNetCIDR
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def PodStatus(self):
+        return self._PodStatus
+
+    @PodStatus.setter
+    def PodStatus(self, PodStatus):
+        self._PodStatus = PodStatus
+
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def PublicIP(self):
+        return self._PublicIP
+
+    @PublicIP.setter
+    def PublicIP(self, PublicIP):
+        self._PublicIP = PublicIP
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -16956,6 +17713,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._NetSubStatus = params.get("NetSubStatus")
         self._IsolateSource = params.get("IsolateSource")
         self._IsolateTime = params.get("IsolateTime")
+        self._NodeID = params.get("NodeID")
+        self._NodeName = params.get("NodeName")
+        self._NodeSubNetID = params.get("NodeSubNetID")
+        self._NodeSubNetName = params.get("NodeSubNetName")
+        self._NodeSubNetCIDR = params.get("NodeSubNetCIDR")
+        self._PodName = params.get("PodName")
+        self._PodIP = params.get("PodIP")
+        self._PodStatus = params.get("PodStatus")
+        self._ClusterID = params.get("ClusterID")
+        self._ClusterName = params.get("ClusterName")
+        self._NodeType = params.get("NodeType")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._PublicIP = params.get("PublicIP")
         self._RequestId = params.get("RequestId")
 
 
@@ -16970,14 +17740,19 @@ class DescribeAssetContainerListRequest(AbstractModel):
         :type Limit: int
         :param _Offset: Offset. Default value: `0`.
         :type Offset: int
-        :param _Filters: Filter
-<li>ContainerName - String - Required: No - Container name</li>
-<li>Status - String - Required: No - Container status. Valid values: `0` (created); `1` (running); `2` (paused); `3` (restarting); `4` (removing); `5` (exited); `6` (dead).</li>
-<li>Runas - String - Required: No - Operator</li>
-<li>ImageName- String - Required: No - Image name</li>
-<li>HostIP- string - Required: No - Server IP</li>
-<li>OrderBy - String - Required: No - Sorting field, which supports dynamic sorting by `cpu_usage` or `mem_usage` such as ["cpu_usage","+"]. '+' indicates ascending, and '-' indicates descending.</li>
-<li>NetStatus - String - Required: No - Container network status. Valid values: `normal`, `isolated`, `isolating`, `isolate_failed`, `restoring`, `restore_failed`.</li>
+        :param _Filters: Filter condition
+<li>`ContainerName`: String - Required: No - Container name</li>
+<li>`Status` - String - Required: No - Container status. Values: `0` (created); `1` (running); `2` (paused); `3` (restarting); `4` (removing); `5` (exited); `6` (dead).</li>
+<li>`Runas`: String - Required: No - Operator</li>
+<li>`ImageName`: String - Required: No - Image name</li>
+<li>`HostIP`: String - Required: No - Server IP</li>
+<li>`OrderBy` - String - Required: No - Sorting field, which supports dynamic sorting by `cpu_usage` or `mem_usage` such as ["cpu_usage","+"]. '+' indicates ascending, and '-' indicates descending.</li>
+<li>`NetStatus`: String - Required: No - Container network status. Values: `normal`, `isolated`, `isolating`, `isolate_failed`, `restoring`, `restore_failed`.</li>
+<li>`PodID`: String - Required: No- Pod ID </li>
+<li>`NodeUniqueID`: String - Required: No - Super Node</li>
+<li>`PodUid`: String - Required: No - Pod</li>
+<li>`PodIP`: String - Required: No - Pod IP</li>
+<li>`NodeType`: String - Required: No - Values: `NORMAL` (general nodes), `SUPER` (super nodes)</li>
         :type Filters: list of AssetFilters
         :param _By: Sorting field
         :type By: str
@@ -20246,6 +21021,38 @@ class DescribeAssetImageRegistrySummaryRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Filters: 
+        :type Filters: list of AssetFilters
+        """
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeAssetImageRegistrySummaryResponse(AbstractModel):
     """DescribeAssetImageRegistrySummary response structure.
@@ -22414,6 +23221,18 @@ class DescribeAssetSummaryResponse(AbstractModel):
         :type ImageUnsafeCnt: int
         :param _HostUnInstallCnt: Number of servers not installed with the agent
         :type HostUnInstallCnt: int
+        :param _SuperNodeCnt: Number of super nodes
+        :type SuperNodeCnt: int
+        :param _SuperNodeRunningCnt: Number of running super nodes
+        :type SuperNodeRunningCnt: int
+        :param _TodayNewImageCnt: 
+        :type TodayNewImageCnt: int
+        :param _TodayUnsafeImageCnt: 
+        :type TodayUnsafeImageCnt: int
+        :param _RecommendedFixImageCnt: 
+        :type RecommendedFixImageCnt: int
+        :param _ScannedImageCnt: 
+        :type ScannedImageCnt: int
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -22437,6 +23256,12 @@ class DescribeAssetSummaryResponse(AbstractModel):
         self._LatestImageScanTime = None
         self._ImageUnsafeCnt = None
         self._HostUnInstallCnt = None
+        self._SuperNodeCnt = None
+        self._SuperNodeRunningCnt = None
+        self._TodayNewImageCnt = None
+        self._TodayUnsafeImageCnt = None
+        self._RecommendedFixImageCnt = None
+        self._ScannedImageCnt = None
         self._RequestId = None
 
     @property
@@ -22600,6 +23425,54 @@ class DescribeAssetSummaryResponse(AbstractModel):
         self._HostUnInstallCnt = HostUnInstallCnt
 
     @property
+    def SuperNodeCnt(self):
+        return self._SuperNodeCnt
+
+    @SuperNodeCnt.setter
+    def SuperNodeCnt(self, SuperNodeCnt):
+        self._SuperNodeCnt = SuperNodeCnt
+
+    @property
+    def SuperNodeRunningCnt(self):
+        return self._SuperNodeRunningCnt
+
+    @SuperNodeRunningCnt.setter
+    def SuperNodeRunningCnt(self, SuperNodeRunningCnt):
+        self._SuperNodeRunningCnt = SuperNodeRunningCnt
+
+    @property
+    def TodayNewImageCnt(self):
+        return self._TodayNewImageCnt
+
+    @TodayNewImageCnt.setter
+    def TodayNewImageCnt(self, TodayNewImageCnt):
+        self._TodayNewImageCnt = TodayNewImageCnt
+
+    @property
+    def TodayUnsafeImageCnt(self):
+        return self._TodayUnsafeImageCnt
+
+    @TodayUnsafeImageCnt.setter
+    def TodayUnsafeImageCnt(self, TodayUnsafeImageCnt):
+        self._TodayUnsafeImageCnt = TodayUnsafeImageCnt
+
+    @property
+    def RecommendedFixImageCnt(self):
+        return self._RecommendedFixImageCnt
+
+    @RecommendedFixImageCnt.setter
+    def RecommendedFixImageCnt(self, RecommendedFixImageCnt):
+        self._RecommendedFixImageCnt = RecommendedFixImageCnt
+
+    @property
+    def ScannedImageCnt(self):
+        return self._ScannedImageCnt
+
+    @ScannedImageCnt.setter
+    def ScannedImageCnt(self, ScannedImageCnt):
+        self._ScannedImageCnt = ScannedImageCnt
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -22629,6 +23502,12 @@ class DescribeAssetSummaryResponse(AbstractModel):
         self._LatestImageScanTime = params.get("LatestImageScanTime")
         self._ImageUnsafeCnt = params.get("ImageUnsafeCnt")
         self._HostUnInstallCnt = params.get("HostUnInstallCnt")
+        self._SuperNodeCnt = params.get("SuperNodeCnt")
+        self._SuperNodeRunningCnt = params.get("SuperNodeRunningCnt")
+        self._TodayNewImageCnt = params.get("TodayNewImageCnt")
+        self._TodayUnsafeImageCnt = params.get("TodayUnsafeImageCnt")
+        self._RecommendedFixImageCnt = params.get("RecommendedFixImageCnt")
+        self._ScannedImageCnt = params.get("ScannedImageCnt")
         self._RequestId = params.get("RequestId")
 
 
@@ -23441,6 +24320,14 @@ class DescribeClusterSummaryResponse(AbstractModel):
         :type FailedClusterCount: int
         :param _NotImportedClusterCount: Number of clusters not imported
         :type NotImportedClusterCount: int
+        :param _ServerlessClusterCount: Number of EKS clusters
+        :type ServerlessClusterCount: int
+        :param _TkeClusterCount: 
+        :type TkeClusterCount: int
+        :param _UserCreateTencentClusterCount: 
+        :type UserCreateTencentClusterCount: int
+        :param _UserCreateHybridClusterCount: 
+        :type UserCreateHybridClusterCount: int
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -23455,6 +24342,10 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self._ManualCheckClusterCount = None
         self._FailedClusterCount = None
         self._NotImportedClusterCount = None
+        self._ServerlessClusterCount = None
+        self._TkeClusterCount = None
+        self._UserCreateTencentClusterCount = None
+        self._UserCreateHybridClusterCount = None
         self._RequestId = None
 
     @property
@@ -23546,6 +24437,38 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self._NotImportedClusterCount = NotImportedClusterCount
 
     @property
+    def ServerlessClusterCount(self):
+        return self._ServerlessClusterCount
+
+    @ServerlessClusterCount.setter
+    def ServerlessClusterCount(self, ServerlessClusterCount):
+        self._ServerlessClusterCount = ServerlessClusterCount
+
+    @property
+    def TkeClusterCount(self):
+        return self._TkeClusterCount
+
+    @TkeClusterCount.setter
+    def TkeClusterCount(self, TkeClusterCount):
+        self._TkeClusterCount = TkeClusterCount
+
+    @property
+    def UserCreateTencentClusterCount(self):
+        return self._UserCreateTencentClusterCount
+
+    @UserCreateTencentClusterCount.setter
+    def UserCreateTencentClusterCount(self, UserCreateTencentClusterCount):
+        self._UserCreateTencentClusterCount = UserCreateTencentClusterCount
+
+    @property
+    def UserCreateHybridClusterCount(self):
+        return self._UserCreateHybridClusterCount
+
+    @UserCreateHybridClusterCount.setter
+    def UserCreateHybridClusterCount(self, UserCreateHybridClusterCount):
+        self._UserCreateHybridClusterCount = UserCreateHybridClusterCount
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -23566,6 +24489,10 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self._ManualCheckClusterCount = params.get("ManualCheckClusterCount")
         self._FailedClusterCount = params.get("FailedClusterCount")
         self._NotImportedClusterCount = params.get("NotImportedClusterCount")
+        self._ServerlessClusterCount = params.get("ServerlessClusterCount")
+        self._TkeClusterCount = params.get("TkeClusterCount")
+        self._UserCreateTencentClusterCount = params.get("UserCreateTencentClusterCount")
+        self._UserCreateHybridClusterCount = params.get("UserCreateHybridClusterCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -24843,6 +25770,8 @@ class DescribeContainerAssetSummaryResponse(AbstractModel):
         :type ImageTotalCnt: int
         :param _HostUnInstallCnt: Number of servers not installed with the agent
         :type HostUnInstallCnt: int
+        :param _HostSuperNodeCnt: Number of super nodes
+        :type HostSuperNodeCnt: int
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -24857,6 +25786,7 @@ class DescribeContainerAssetSummaryResponse(AbstractModel):
         self._ImageRegistryCnt = None
         self._ImageTotalCnt = None
         self._HostUnInstallCnt = None
+        self._HostSuperNodeCnt = None
         self._RequestId = None
 
     @property
@@ -24948,6 +25878,14 @@ class DescribeContainerAssetSummaryResponse(AbstractModel):
         self._HostUnInstallCnt = HostUnInstallCnt
 
     @property
+    def HostSuperNodeCnt(self):
+        return self._HostSuperNodeCnt
+
+    @HostSuperNodeCnt.setter
+    def HostSuperNodeCnt(self, HostSuperNodeCnt):
+        self._HostSuperNodeCnt = HostSuperNodeCnt
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -24968,6 +25906,7 @@ class DescribeContainerAssetSummaryResponse(AbstractModel):
         self._ImageRegistryCnt = params.get("ImageRegistryCnt")
         self._ImageTotalCnt = params.get("ImageTotalCnt")
         self._HostUnInstallCnt = params.get("HostUnInstallCnt")
+        self._HostSuperNodeCnt = params.get("HostSuperNodeCnt")
         self._RequestId = params.get("RequestId")
 
 
@@ -27318,6 +28257,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Id: ID of the specified image
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Id: list of int non-negative
+        :param _Latest: Whether to scan the latest image tag
+Note: This field may return·`null`, indicating that no valid values can be obtained.
+        :type Latest: bool
+        :param _ScanEndTime: 
+        :type ScanEndTime: str
+        :param _RegistryType: 
+        :type RegistryType: list of str
+        :param _ContainerRunning: 
+        :type ContainerRunning: bool
+        :param _ScanScope: 
+        :type ScanScope: int
+        :param _Namespace: 
+        :type Namespace: list of str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -27328,6 +28280,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._All = None
         self._Images = None
         self._Id = None
+        self._Latest = None
+        self._ScanEndTime = None
+        self._RegistryType = None
+        self._ContainerRunning = None
+        self._ScanScope = None
+        self._Namespace = None
         self._RequestId = None
 
     @property
@@ -27364,10 +28322,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def All(self):
+        warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
+
         return self._All
 
     @All.setter
     def All(self, All):
+        warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
+
         self._All = All
 
     @property
@@ -27385,6 +28347,54 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @Id.setter
     def Id(self, Id):
         self._Id = Id
+
+    @property
+    def Latest(self):
+        return self._Latest
+
+    @Latest.setter
+    def Latest(self, Latest):
+        self._Latest = Latest
+
+    @property
+    def ScanEndTime(self):
+        return self._ScanEndTime
+
+    @ScanEndTime.setter
+    def ScanEndTime(self, ScanEndTime):
+        self._ScanEndTime = ScanEndTime
+
+    @property
+    def RegistryType(self):
+        return self._RegistryType
+
+    @RegistryType.setter
+    def RegistryType(self, RegistryType):
+        self._RegistryType = RegistryType
+
+    @property
+    def ContainerRunning(self):
+        return self._ContainerRunning
+
+    @ContainerRunning.setter
+    def ContainerRunning(self, ContainerRunning):
+        self._ContainerRunning = ContainerRunning
+
+    @property
+    def ScanScope(self):
+        return self._ScanScope
+
+    @ScanScope.setter
+    def ScanScope(self, ScanScope):
+        self._ScanScope = ScanScope
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
 
     @property
     def RequestId(self):
@@ -27408,6 +28418,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj._deserialize(item)
                 self._Images.append(obj)
         self._Id = params.get("Id")
+        self._Latest = params.get("Latest")
+        self._ScanEndTime = params.get("ScanEndTime")
+        self._RegistryType = params.get("RegistryType")
+        self._ContainerRunning = params.get("ContainerRunning")
+        self._ScanScope = params.get("ScanScope")
+        self._Namespace = params.get("Namespace")
         self._RequestId = params.get("RequestId")
 
 
@@ -30917,7 +31933,8 @@ class DescribeReverseShellEventsRequest(AbstractModel):
         :type Limit: int
         :param _Offset: Offset. Default value: `0`.
         :type Offset: int
-        :param _Filters: Filter parameter. "Filters":[{"Name":"Status","Values":["2"]}]
+        :param _Filters: Filter parameters
+`InnerNetAlarmShow` - int - Required: Values: `1` (show private network alert); `0` (do not show)
         :type Filters: list of RunTimeFilters
         :param _Order: Valid values: `asc`, `desc`.
         :type Order: str
@@ -34954,9 +35971,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _SourceType: Source. Valid values: `0` (quick scan); `1` (scheduled scan); `2` (real-time monitoring).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SourceType: int
-        :param _PodName: Cluster name
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type PodName: str
         :param _Tags: Tag
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Tags: list of str
@@ -34978,6 +35992,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _EventType: Event type
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EventType: str
+        :param _PodName: Cluster name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PodName: str
         :param _Status: `DEAL_NONE`: Pending.
 `DEAL_IGNORE`: Ignored.
 `DEAL_ADD_WHITELIST`: Allowed.
@@ -35054,6 +36071,30 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _FileModifyTime: File modified time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FileModifyTime: str
+        :param _NodeSubNetID: Node subnet ID
+        :type NodeSubNetID: str
+        :param _NodeSubNetName: Node subnet name
+        :type NodeSubNetName: str
+        :param _NodeSubNetCIDR: Subnet IP range
+        :type NodeSubNetCIDR: str
+        :param _ClusterID: Cluster ID
+        :type ClusterID: str
+        :param _PodIP: Pod IP
+        :type PodIP: str
+        :param _PodStatus: Pod status
+        :type PodStatus: str
+        :param _NodeUniqueID: UID of the node
+        :type NodeUniqueID: str
+        :param _NodeType: Node type. Values: `NORMAL` (general node), `SUPER` (super node).
+        :type NodeType: str
+        :param _NodeID: Node ID
+        :type NodeID: str
+        :param _ClusterName: Cluster name
+        :type ClusterName: str
+        :param _Namespace: 
+        :type Namespace: str
+        :param _WorkloadType: 
+        :type WorkloadType: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -35079,7 +36120,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ProcessStartAccount = None
         self._ProcessFileAuthority = None
         self._SourceType = None
-        self._PodName = None
         self._Tags = None
         self._HarmDescribe = None
         self._SuggestScheme = None
@@ -35087,6 +36127,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._FileName = None
         self._FileMd5 = None
         self._EventType = None
+        self._PodName = None
         self._Status = None
         self._SubStatus = None
         self._HostIP = None
@@ -35106,6 +36147,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CheckPlatform = None
         self._FileAccessTime = None
         self._FileModifyTime = None
+        self._NodeSubNetID = None
+        self._NodeSubNetName = None
+        self._NodeSubNetCIDR = None
+        self._ClusterID = None
+        self._PodIP = None
+        self._PodStatus = None
+        self._NodeUniqueID = None
+        self._NodeType = None
+        self._NodeID = None
+        self._ClusterName = None
+        self._Namespace = None
+        self._WorkloadType = None
         self._RequestId = None
 
     @property
@@ -35285,14 +36338,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SourceType = SourceType
 
     @property
-    def PodName(self):
-        return self._PodName
-
-    @PodName.setter
-    def PodName(self, PodName):
-        self._PodName = PodName
-
-    @property
     def Tags(self):
         return self._Tags
 
@@ -35347,6 +36392,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @EventType.setter
     def EventType(self, EventType):
         self._EventType = EventType
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
 
     @property
     def Status(self):
@@ -35501,6 +36554,102 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._FileModifyTime = FileModifyTime
 
     @property
+    def NodeSubNetID(self):
+        return self._NodeSubNetID
+
+    @NodeSubNetID.setter
+    def NodeSubNetID(self, NodeSubNetID):
+        self._NodeSubNetID = NodeSubNetID
+
+    @property
+    def NodeSubNetName(self):
+        return self._NodeSubNetName
+
+    @NodeSubNetName.setter
+    def NodeSubNetName(self, NodeSubNetName):
+        self._NodeSubNetName = NodeSubNetName
+
+    @property
+    def NodeSubNetCIDR(self):
+        return self._NodeSubNetCIDR
+
+    @NodeSubNetCIDR.setter
+    def NodeSubNetCIDR(self, NodeSubNetCIDR):
+        self._NodeSubNetCIDR = NodeSubNetCIDR
+
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def PodStatus(self):
+        return self._PodStatus
+
+    @PodStatus.setter
+    def PodStatus(self, PodStatus):
+        self._PodStatus = PodStatus
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def WorkloadType(self):
+        return self._WorkloadType
+
+    @WorkloadType.setter
+    def WorkloadType(self, WorkloadType):
+        self._WorkloadType = WorkloadType
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -35532,7 +36681,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ProcessStartAccount = params.get("ProcessStartAccount")
         self._ProcessFileAuthority = params.get("ProcessFileAuthority")
         self._SourceType = params.get("SourceType")
-        self._PodName = params.get("PodName")
         self._Tags = params.get("Tags")
         self._HarmDescribe = params.get("HarmDescribe")
         self._SuggestScheme = params.get("SuggestScheme")
@@ -35540,6 +36688,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._FileName = params.get("FileName")
         self._FileMd5 = params.get("FileMd5")
         self._EventType = params.get("EventType")
+        self._PodName = params.get("PodName")
         self._Status = params.get("Status")
         self._SubStatus = params.get("SubStatus")
         self._HostIP = params.get("HostIP")
@@ -35559,6 +36708,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CheckPlatform = params.get("CheckPlatform")
         self._FileAccessTime = params.get("FileAccessTime")
         self._FileModifyTime = params.get("FileModifyTime")
+        self._NodeSubNetID = params.get("NodeSubNetID")
+        self._NodeSubNetName = params.get("NodeSubNetName")
+        self._NodeSubNetCIDR = params.get("NodeSubNetCIDR")
+        self._ClusterID = params.get("ClusterID")
+        self._PodIP = params.get("PodIP")
+        self._PodStatus = params.get("PodStatus")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._NodeType = params.get("NodeType")
+        self._NodeID = params.get("NodeID")
+        self._ClusterName = params.get("ClusterName")
+        self._Namespace = params.get("Namespace")
+        self._WorkloadType = params.get("WorkloadType")
         self._RequestId = params.get("RequestId")
 
 
@@ -37261,9 +38422,13 @@ class DescribeVulDefenceHostRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: Filter
-<li>Status- String - Required: No - Plugin status. Valid values: `SUCCESS` (normal); `FAIL` (abnormal); `NO_DEFENCE` (not defended).</li>
-<li>KeyWords- string - Required: No - Server name/IP</li>
+        :param _Filters: Filter condition
+<li>`Status`: String - Required: No - Plugin status. Values: `SUCCESS` (normal); `FAIL` (abnormal); `NO_DEFENCE` (not defended).</li>
+<li>`HostName`: String - Required: No - Server/Super node name</li>
+<li>`HostIP`: String - Required: No - Server IP </li>
+<li>`NodeType`: String  - Required: No - Node type</li>
+<li>`HostName` - String - Required: No - Super node name </li>
+<li>`NodeSubNetCIDR`: String - Required: No - Super node CIDR block</li>
         :type Filters: list of RunTimeFilters
         :param _Limit: Number of results to be returned. Default value: `10`. Maximum value: `100`.
         :type Limit: int
@@ -37403,14 +38568,16 @@ class DescribeVulDefencePluginRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HostID: Server host ID, i.e., QUuid
+        :param _HostID: Host ID or unique super node ID
         :type HostID: str
         :param _Limit: Number of results to be returned. Default value: `10`. Maximum value: `100`.
         :type Limit: int
         :param _Offset: Offset. Default value: `0`.
         :type Offset: int
-        :param _Filters: Filter
-<li>Status- String - Required: No - Plugin status. Valid values: `INJECTING` (injecting); `SUCCESS` (injected successfully); `FAIL` (injection failed); `TIMEOUT` (plugin timed out); `QUIT` (plugin exited).</li>
+        :param _Filters: Filter condition
+<li>
+Status- String - Required: No - Plugin status. Valid values: `INJECTING` (injecting); `SUCCESS` (injected successfully); `FAIL` (injection failed); `TIMEOUT` (plugin timed out); `QUIT` (plugin exited).
+</li>
         :type Filters: list of RunTimeFilters
         """
         self._HostID = None
@@ -37555,6 +38722,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _SupportDefenseVulCount: Number of vulnerabilities that can be prevented
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SupportDefenseVulCount: int
+        :param _HostNodeCount: Number of normal nodes
+        :type HostNodeCount: int
+        :param _SuperScope: Super node scope
+        :type SuperScope: int
+        :param _SuperNodeCount: Number of super nodes
+        :type SuperNodeCount: int
+        :param _SuperNodeIds: List of super node IDs
+        :type SuperNodeIds: list of str
+        :param _NodeTotalCount: Total number of super nodes with TCSS activated
+        :type NodeTotalCount: int
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -37565,6 +38742,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._HostIDs = None
         self._HostTotalCount = None
         self._SupportDefenseVulCount = None
+        self._HostNodeCount = None
+        self._SuperScope = None
+        self._SuperNodeCount = None
+        self._SuperNodeIds = None
+        self._NodeTotalCount = None
         self._RequestId = None
 
     @property
@@ -37624,6 +38806,46 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SupportDefenseVulCount = SupportDefenseVulCount
 
     @property
+    def HostNodeCount(self):
+        return self._HostNodeCount
+
+    @HostNodeCount.setter
+    def HostNodeCount(self, HostNodeCount):
+        self._HostNodeCount = HostNodeCount
+
+    @property
+    def SuperScope(self):
+        return self._SuperScope
+
+    @SuperScope.setter
+    def SuperScope(self, SuperScope):
+        self._SuperScope = SuperScope
+
+    @property
+    def SuperNodeCount(self):
+        return self._SuperNodeCount
+
+    @SuperNodeCount.setter
+    def SuperNodeCount(self, SuperNodeCount):
+        self._SuperNodeCount = SuperNodeCount
+
+    @property
+    def SuperNodeIds(self):
+        return self._SuperNodeIds
+
+    @SuperNodeIds.setter
+    def SuperNodeIds(self, SuperNodeIds):
+        self._SuperNodeIds = SuperNodeIds
+
+    @property
+    def NodeTotalCount(self):
+        return self._NodeTotalCount
+
+    @NodeTotalCount.setter
+    def NodeTotalCount(self, NodeTotalCount):
+        self._NodeTotalCount = NodeTotalCount
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -37640,6 +38862,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._HostIDs = params.get("HostIDs")
         self._HostTotalCount = params.get("HostTotalCount")
         self._SupportDefenseVulCount = params.get("SupportDefenseVulCount")
+        self._HostNodeCount = params.get("HostNodeCount")
+        self._SuperScope = params.get("SuperScope")
+        self._SuperNodeCount = params.get("SuperNodeCount")
+        self._SuperNodeIds = params.get("SuperNodeIds")
+        self._NodeTotalCount = params.get("NodeTotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -38514,6 +39741,166 @@ class DescribeVulLevelSummaryResponse(AbstractModel):
         self._MediumLevelVulCount = params.get("MediumLevelVulCount")
         self._LowLevelVulCount = params.get("LowLevelVulCount")
         self._CriticalLevelVulCount = params.get("CriticalLevelVulCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulRegistryImageListRequest(AbstractModel):
+    """DescribeVulRegistryImageList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PocID: Vulnerability ID
+        :type PocID: str
+        :param _Limit: The number of results returned. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param _Offset: 
+        :type Offset: int
+        :param _Filters: Filter condition
+`OnlyAffectedNewestImage`: (bool) Whether the latest image is affected.
+`ImageDigest`: Image digest. Fuzzy query is supported.
+`ImageId`: Image ID.
+`Namespace`: Namespace. Fuzzy query is supported.
+`ImageTag`: Image tag. Fuzzy query is supported.
+`InstanceName`: Instance name. Fuzzy query is supported.
+`ImageName`: Image name. Fuzzy query is supported.
+`ImageRepoAddress`: Image address. Fuzzy query is supported.
+        :type Filters: list of AssetFilters
+        :param _Order: Sorting order
+        :type Order: str
+        :param _By: Sorting field
+        :type By: str
+        """
+        self._PocID = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def PocID(self):
+        return self._PocID
+
+    @PocID.setter
+    def PocID(self, PocID):
+        self._PocID = PocID
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Order(self):
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._PocID = params.get("PocID")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AssetFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulRegistryImageListResponse(AbstractModel):
+    """DescribeVulRegistryImageList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of images
+        :type TotalCount: int
+        :param _List: 
+        :type List: list of VulAffectedRegistryImageInfo
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def List(self):
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = VulAffectedRegistryImageInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -39819,13 +41206,14 @@ class EscapeEventInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventType: Event type
-   `ESCAPE_HOST_ACESS_FILE`: Host file access escape.
-   `ESCAPE_MOUNT_NAMESPACE`: Mount namespace escape.
-   `ESCAPE_PRIVILEDGE`: Program privilege escalation escape.
-   `ESCAPE_PRIVILEDGE_CONTAINER_START`: Privileged container startup escape.
-   `ESCAPE_MOUNT_SENSITIVE_PTAH`: Sensitive path mount.
-   `ESCAPE_SYSCALL`: Syscall escape.
+        :param _EventType: Event type.
+   `ESCAPE_CGROUPS`: Cgroup escape.
+   `ESCAPE_TAMPER_SENSITIVE_FILE`: File tamper escape.
+   `ESCAPE_DOCKER_API`: Docker API access escape.
+   `ESCAPE_VUL_OCCURRED`: Vulnerability exploit.
+   `MOUNT_SENSITIVE_PTAH`: Sensitive path mount.
+   `PRIVILEGE_CONTAINER_START`: Privileged container.
+   `PRIVILEGE`: Program privilege escalation escape.
         :type EventType: str
         :param _ContainerName: Container name
         :type ContainerName: str
@@ -39898,6 +41286,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
 `RESTARTING`: Restarting.
 `REMOVING`: Removing.
         :type ContainerStatus: str
+        :param _ClusterID: ID of the cluster where the node resides
+        :type ClusterID: str
+        :param _NodeType: Node type. Values: `NORMAL` (general node), `SUPER` (super node).
+        :type NodeType: str
+        :param _PodIP: Pod IP
+        :type PodIP: str
+        :param _NodeUniqueID: Unique node ID
+        :type NodeUniqueID: str
+        :param _PublicIP: Node public IP
+        :type PublicIP: str
+        :param _NodeID: Node ID
+        :type NodeID: str
+        :param _HostIP: Private IP of the node
+        :type HostIP: str
+        :param _ClusterName: Cluster name
+        :type ClusterName: str
         """
         self._EventType = None
         self._ContainerName = None
@@ -39920,6 +41324,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ContainerNetSubStatus = None
         self._ContainerIsolateOperationSrc = None
         self._ContainerStatus = None
+        self._ClusterID = None
+        self._NodeType = None
+        self._PodIP = None
+        self._NodeUniqueID = None
+        self._PublicIP = None
+        self._NodeID = None
+        self._HostIP = None
+        self._ClusterName = None
 
     @property
     def EventType(self):
@@ -40089,6 +41501,70 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ContainerStatus(self, ContainerStatus):
         self._ContainerStatus = ContainerStatus
 
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def PublicIP(self):
+        return self._PublicIP
+
+    @PublicIP.setter
+    def PublicIP(self, PublicIP):
+        self._PublicIP = PublicIP
+
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def HostIP(self):
+        return self._HostIP
+
+    @HostIP.setter
+    def HostIP(self, HostIP):
+        self._HostIP = HostIP
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
 
     def _deserialize(self, params):
         self._EventType = params.get("EventType")
@@ -40112,6 +41588,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ContainerNetSubStatus = params.get("ContainerNetSubStatus")
         self._ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
         self._ContainerStatus = params.get("ContainerStatus")
+        self._ClusterID = params.get("ClusterID")
+        self._NodeType = params.get("NodeType")
+        self._PodIP = params.get("PodIP")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._PublicIP = params.get("PublicIP")
+        self._NodeID = params.get("NodeID")
+        self._HostIP = params.get("HostIP")
+        self._ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40854,6 +42338,12 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param _Tags: Tags
 Note: This field may return `null`, indicating that no valid value was found.
         :type Tags: list of TagInfo
+        :param _ClusterID: Cluster ID
+        :type ClusterID: str
+        :param _ClusterName: 
+        :type ClusterName: str
+        :param _ClusterAccessedStatus: 
+        :type ClusterAccessedStatus: str
         """
         self._HostID = None
         self._HostIP = None
@@ -40872,6 +42362,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._RegionID = None
         self._Project = None
         self._Tags = None
+        self._ClusterID = None
+        self._ClusterName = None
+        self._ClusterAccessedStatus = None
 
     @property
     def HostID(self):
@@ -41009,6 +42502,30 @@ Note: This field may return `null`, indicating that no valid value was found.
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterAccessedStatus(self):
+        return self._ClusterAccessedStatus
+
+    @ClusterAccessedStatus.setter
+    def ClusterAccessedStatus(self, ClusterAccessedStatus):
+        self._ClusterAccessedStatus = ClusterAccessedStatus
+
 
     def _deserialize(self, params):
         self._HostID = params.get("HostID")
@@ -41035,6 +42552,9 @@ Note: This field may return `null`, indicating that no valid value was found.
                 obj = TagInfo()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._ClusterID = params.get("ClusterID")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterAccessedStatus = params.get("ClusterAccessedStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46678,10 +48198,16 @@ K8s API: k8s_api
         :type BindList: list of str
         :param _UnBindList: List of QUuids of servers to be unbound
         :type UnBindList: list of str
+        :param _NodeType: Node type.
+`NORMAL`: General node (default)
+`SUPER`: Super node
+
+        :type NodeType: str
         """
         self._LogType = None
         self._BindList = None
         self._UnBindList = None
+        self._NodeType = None
 
     @property
     def LogType(self):
@@ -46707,11 +48233,20 @@ K8s API: k8s_api
     def UnBindList(self, UnBindList):
         self._UnBindList = UnBindList
 
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
 
     def _deserialize(self, params):
         self._LogType = params.get("LogType")
         self._BindList = params.get("BindList")
         self._UnBindList = params.get("UnBindList")
+        self._NodeType = params.get("NodeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47573,14 +49108,20 @@ class ModifyVulDefenceSettingRequest(AbstractModel):
         r"""
         :param _IsEnabled: Whether it is enabled. Valid values: `0` (disabled); `1` (enabled).
         :type IsEnabled: int
-        :param _Scope: Scope of servers for which to enable exploit prevention. Valid values: `0` (specified servers); `1` (all servers). This parameter is required when `IsEnabled` is `1`.
+        :param _Scope: Servers to enable exploit prevention. Values: `0` (custom); `1` (all).
         :type Scope: int
-        :param _HostIDs: Specified servers for which to enable exploit prevention. This parameter is required when `Scope` is `0`.
+        :param _HostIDs: Specified servers with exploit prevention enabled
         :type HostIDs: list of str
+        :param _SuperScope: Super nodes to enable exploit prevention. Values: `0` (custom); `1` (all).
+        :type SuperScope: int
+        :param _NodeIds: List of super node IDs
+        :type NodeIds: list of str
         """
         self._IsEnabled = None
         self._Scope = None
         self._HostIDs = None
+        self._SuperScope = None
+        self._NodeIds = None
 
     @property
     def IsEnabled(self):
@@ -47606,11 +49147,29 @@ class ModifyVulDefenceSettingRequest(AbstractModel):
     def HostIDs(self, HostIDs):
         self._HostIDs = HostIDs
 
+    @property
+    def SuperScope(self):
+        return self._SuperScope
+
+    @SuperScope.setter
+    def SuperScope(self, SuperScope):
+        self._SuperScope = SuperScope
+
+    @property
+    def NodeIds(self):
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
 
     def _deserialize(self, params):
         self._IsEnabled = params.get("IsEnabled")
         self._Scope = params.get("Scope")
         self._HostIDs = params.get("HostIDs")
+        self._SuperScope = params.get("SuperScope")
+        self._NodeIds = params.get("NodeIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47672,6 +49231,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type AppId: int
         :param _Uin: Operator UIN
         :type Uin: str
+        :param _PolicyId: The policy ID.
+Note: This field may return·`null`, indicating that no valid values can be obtained.
+        :type PolicyId: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -47682,6 +49244,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._OperationTime = None
         self._AppId = None
         self._Uin = None
+        self._PolicyId = None
 
     @property
     def ClusterId(self):
@@ -47755,6 +49318,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Uin(self, Uin):
         self._Uin = Uin
 
+    @property
+    def PolicyId(self):
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -47766,6 +49337,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._OperationTime = params.get("OperationTime")
         self._AppId = params.get("AppId")
         self._Uin = params.get("Uin")
+        self._PolicyId = params.get("PolicyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47808,6 +49380,9 @@ class NetworkClusterInfoItem(AbstractModel):
         :param _NetworkPolicyPluginError: Error message of the cluster network plugin
 Note: This field may return null, indicating that no valid values can be obtained.
         :type NetworkPolicyPluginError: str
+        :param _ClusterNetworkSettings: Cluster network plugin
+Note: This field may return·`null`, indicating that no valid values can be obtained.
+        :type ClusterNetworkSettings: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -47821,6 +49396,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._EnableRuleCount = None
         self._NetworkPolicyPluginStatus = None
         self._NetworkPolicyPluginError = None
+        self._ClusterNetworkSettings = None
 
     @property
     def ClusterId(self):
@@ -47918,6 +49494,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def NetworkPolicyPluginError(self, NetworkPolicyPluginError):
         self._NetworkPolicyPluginError = NetworkPolicyPluginError
 
+    @property
+    def ClusterNetworkSettings(self):
+        return self._ClusterNetworkSettings
+
+    @ClusterNetworkSettings.setter
+    def ClusterNetworkSettings(self, ClusterNetworkSettings):
+        self._ClusterNetworkSettings = ClusterNetworkSettings
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -47932,6 +49516,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._EnableRuleCount = params.get("EnableRuleCount")
         self._NetworkPolicyPluginStatus = params.get("NetworkPolicyPluginStatus")
         self._NetworkPolicyPluginError = params.get("NetworkPolicyPluginError")
+        self._ClusterNetworkSettings = params.get("ClusterNetworkSettings")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48551,6 +50136,16 @@ class PortInfo(AbstractModel):
         :type HostName: str
         :param _PublicIp: Public IP
         :type PublicIp: str
+        :param _NodeID: Node ID
+        :type NodeID: str
+        :param _PodIP: Pod IP
+        :type PodIP: str
+        :param _PodName: Pod name
+        :type PodName: str
+        :param _NodeType: Node type.
+        :type NodeType: str
+        :param _NodeUniqueID: UID of the super node
+        :type NodeUniqueID: str
         """
         self._Type = None
         self._PublicIP = None
@@ -48566,6 +50161,11 @@ class PortInfo(AbstractModel):
         self._RunAs = None
         self._HostName = None
         self._PublicIp = None
+        self._NodeID = None
+        self._PodIP = None
+        self._PodName = None
+        self._NodeType = None
+        self._NodeUniqueID = None
 
     @property
     def Type(self):
@@ -48679,6 +50279,46 @@ class PortInfo(AbstractModel):
     def PublicIp(self, PublicIp):
         self._PublicIp = PublicIp
 
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -48695,6 +50335,11 @@ class PortInfo(AbstractModel):
         self._RunAs = params.get("RunAs")
         self._HostName = params.get("HostName")
         self._PublicIp = params.get("PublicIp")
+        self._NodeID = params.get("NodeID")
+        self._PodIP = params.get("PodIP")
+        self._PodName = params.get("PodName")
+        self._NodeType = params.get("NodeType")
+        self._NodeUniqueID = params.get("NodeUniqueID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49031,6 +50676,16 @@ class ProcessInfo(AbstractModel):
         :type HostName: str
         :param _PublicIp: Public IP
         :type PublicIp: str
+        :param _NodeID: Node ID
+        :type NodeID: str
+        :param _PodIP: Pod IP
+        :type PodIP: str
+        :param _PodName: Pod name
+        :type PodName: str
+        :param _NodeType: Node type.
+        :type NodeType: str
+        :param _NodeUniqueID: UID of the super node
+        :type NodeUniqueID: str
         """
         self._StartTime = None
         self._RunAs = None
@@ -49044,6 +50699,11 @@ class ProcessInfo(AbstractModel):
         self._ProcessName = None
         self._HostName = None
         self._PublicIp = None
+        self._NodeID = None
+        self._PodIP = None
+        self._PodName = None
+        self._NodeType = None
+        self._NodeUniqueID = None
 
     @property
     def StartTime(self):
@@ -49141,6 +50801,46 @@ class ProcessInfo(AbstractModel):
     def PublicIp(self, PublicIp):
         self._PublicIp = PublicIp
 
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
@@ -49155,6 +50855,11 @@ class ProcessInfo(AbstractModel):
         self._ProcessName = params.get("ProcessName")
         self._HostName = params.get("HostName")
         self._PublicIp = params.get("PublicIp")
+        self._NodeID = params.get("NodeID")
+        self._PodIP = params.get("PodIP")
+        self._PodName = params.get("PodName")
+        self._NodeType = params.get("NodeType")
+        self._NodeUniqueID = params.get("NodeUniqueID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50301,6 +52006,24 @@ class RiskSyscallEventInfo(AbstractModel):
 `RESTARTING`: Restarting.
 `REMOVING`: Removing.
         :type ContainerStatus: str
+        :param _NodeType: Node type. Values: `NORMAL` (general node), `SUPER` (super node).
+        :type NodeType: str
+        :param _ClusterID: Cluster ID
+        :type ClusterID: str
+        :param _PodIP: Pod IP
+        :type PodIP: str
+        :param _NodeUniqueID: Unique node ID
+        :type NodeUniqueID: str
+        :param _PublicIP: Node public IP
+        :type PublicIP: str
+        :param _NodeID: Node ID
+        :type NodeID: str
+        :param _HostID: uuid
+        :type HostID: str
+        :param _HostIP: Private IP of the node
+        :type HostIP: str
+        :param _ClusterName: Cluster name
+        :type ClusterName: str
         """
         self._ProcessName = None
         self._ProcessPath = None
@@ -50324,6 +52047,15 @@ class RiskSyscallEventInfo(AbstractModel):
         self._ContainerNetSubStatus = None
         self._ContainerIsolateOperationSrc = None
         self._ContainerStatus = None
+        self._NodeType = None
+        self._ClusterID = None
+        self._PodIP = None
+        self._NodeUniqueID = None
+        self._PublicIP = None
+        self._NodeID = None
+        self._HostID = None
+        self._HostIP = None
+        self._ClusterName = None
 
     @property
     def ProcessName(self):
@@ -50501,6 +52233,78 @@ class RiskSyscallEventInfo(AbstractModel):
     def ContainerStatus(self, ContainerStatus):
         self._ContainerStatus = ContainerStatus
 
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def PublicIP(self):
+        return self._PublicIP
+
+    @PublicIP.setter
+    def PublicIP(self, PublicIP):
+        self._PublicIP = PublicIP
+
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def HostID(self):
+        return self._HostID
+
+    @HostID.setter
+    def HostID(self, HostID):
+        self._HostID = HostID
+
+    @property
+    def HostIP(self):
+        return self._HostIP
+
+    @HostIP.setter
+    def HostIP(self, HostIP):
+        self._HostIP = HostIP
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
 
     def _deserialize(self, params):
         self._ProcessName = params.get("ProcessName")
@@ -50525,6 +52329,15 @@ class RiskSyscallEventInfo(AbstractModel):
         self._ContainerNetSubStatus = params.get("ContainerNetSubStatus")
         self._ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
         self._ContainerStatus = params.get("ContainerStatus")
+        self._NodeType = params.get("NodeType")
+        self._ClusterID = params.get("ClusterID")
+        self._PodIP = params.get("PodIP")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._PublicIP = params.get("PublicIP")
+        self._NodeID = params.get("NodeID")
+        self._HostID = params.get("HostID")
+        self._HostIP = params.get("HostIP")
+        self._ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50848,8 +52661,6 @@ class RunTimeEventBaseInfo(AbstractModel):
         :type ImageName: str
         :param _NodeName: Node name
         :type NodeName: str
-        :param _PodName: Pod name
-        :type PodName: str
         :param _Status: Status. `EVENT_UNDEAL`: Pending.
     `EVENT_DEALED`: Processed.
     `EVENT_INGNORE`: Ignored.
@@ -50904,6 +52715,34 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ContainerIsolateOperationSrc: Container isolation operation source
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ContainerIsolateOperationSrc: str
+        :param _NodeID: Node ID
+        :type NodeID: str
+        :param _NodeType: Node type. Valid values: `NORMAL` (general node), `SUPER` (super node)
+        :type NodeType: str
+        :param _NodeSubNetID: Node subnet ID
+        :type NodeSubNetID: str
+        :param _NodeSubNetName: Node subnet name
+        :type NodeSubNetName: str
+        :param _NodeSubNetCIDR: Subnet IP range
+        :type NodeSubNetCIDR: str
+        :param _PodName: Pod name
+        :type PodName: str
+        :param _PodIP: Pod IP
+        :type PodIP: str
+        :param _PodStatus: Pod status
+        :type PodStatus: str
+        :param _ClusterID: Cluster ID
+        :type ClusterID: str
+        :param _ClusterName: Cluster name
+        :type ClusterName: str
+        :param _NodeUniqueID: Unique node ID
+        :type NodeUniqueID: str
+        :param _HostID: uuid
+        :type HostID: str
+        :param _Namespace: 
+        :type Namespace: str
+        :param _WorkloadType: 
+        :type WorkloadType: str
         """
         self._EventId = None
         self._FoundTime = None
@@ -50912,7 +52751,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ImageId = None
         self._ImageName = None
         self._NodeName = None
-        self._PodName = None
         self._Status = None
         self._EventName = None
         self._EventType = None
@@ -50923,6 +52761,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ContainerNetStatus = None
         self._ContainerNetSubStatus = None
         self._ContainerIsolateOperationSrc = None
+        self._NodeID = None
+        self._NodeType = None
+        self._NodeSubNetID = None
+        self._NodeSubNetName = None
+        self._NodeSubNetCIDR = None
+        self._PodName = None
+        self._PodIP = None
+        self._PodStatus = None
+        self._ClusterID = None
+        self._ClusterName = None
+        self._NodeUniqueID = None
+        self._HostID = None
+        self._Namespace = None
+        self._WorkloadType = None
 
     @property
     def EventId(self):
@@ -50979,14 +52831,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @NodeName.setter
     def NodeName(self, NodeName):
         self._NodeName = NodeName
-
-    @property
-    def PodName(self):
-        return self._PodName
-
-    @PodName.setter
-    def PodName(self, PodName):
-        self._PodName = PodName
 
     @property
     def Status(self):
@@ -51068,6 +52912,118 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ContainerIsolateOperationSrc(self, ContainerIsolateOperationSrc):
         self._ContainerIsolateOperationSrc = ContainerIsolateOperationSrc
 
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeSubNetID(self):
+        return self._NodeSubNetID
+
+    @NodeSubNetID.setter
+    def NodeSubNetID(self, NodeSubNetID):
+        self._NodeSubNetID = NodeSubNetID
+
+    @property
+    def NodeSubNetName(self):
+        return self._NodeSubNetName
+
+    @NodeSubNetName.setter
+    def NodeSubNetName(self, NodeSubNetName):
+        self._NodeSubNetName = NodeSubNetName
+
+    @property
+    def NodeSubNetCIDR(self):
+        return self._NodeSubNetCIDR
+
+    @NodeSubNetCIDR.setter
+    def NodeSubNetCIDR(self, NodeSubNetCIDR):
+        self._NodeSubNetCIDR = NodeSubNetCIDR
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def PodStatus(self):
+        return self._PodStatus
+
+    @PodStatus.setter
+    def PodStatus(self, PodStatus):
+        self._PodStatus = PodStatus
+
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def HostID(self):
+        return self._HostID
+
+    @HostID.setter
+    def HostID(self, HostID):
+        self._HostID = HostID
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def WorkloadType(self):
+        return self._WorkloadType
+
+    @WorkloadType.setter
+    def WorkloadType(self, WorkloadType):
+        self._WorkloadType = WorkloadType
+
 
     def _deserialize(self, params):
         self._EventId = params.get("EventId")
@@ -51077,7 +53033,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ImageId = params.get("ImageId")
         self._ImageName = params.get("ImageName")
         self._NodeName = params.get("NodeName")
-        self._PodName = params.get("PodName")
         self._Status = params.get("Status")
         self._EventName = params.get("EventName")
         self._EventType = params.get("EventType")
@@ -51088,6 +53043,20 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ContainerNetStatus = params.get("ContainerNetStatus")
         self._ContainerNetSubStatus = params.get("ContainerNetSubStatus")
         self._ContainerIsolateOperationSrc = params.get("ContainerIsolateOperationSrc")
+        self._NodeID = params.get("NodeID")
+        self._NodeType = params.get("NodeType")
+        self._NodeSubNetID = params.get("NodeSubNetID")
+        self._NodeSubNetName = params.get("NodeSubNetName")
+        self._NodeSubNetCIDR = params.get("NodeSubNetCIDR")
+        self._PodName = params.get("PodName")
+        self._PodIP = params.get("PodIP")
+        self._PodStatus = params.get("PodStatus")
+        self._ClusterID = params.get("ClusterID")
+        self._ClusterName = params.get("ClusterName")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._HostID = params.get("HostID")
+        self._Namespace = params.get("Namespace")
+        self._WorkloadType = params.get("WorkloadType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52007,8 +53976,10 @@ class SecLogJoinInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Count: Number of accessed servers
+        :param _Count: Number of connected general nodes
         :type Count: int
+        :param _SuperNodeCount: Number of connected super nodes
+        :type SuperNodeCount: int
         :param _IsJoined: Whether it is accessed. Valid values: `true` (accessed); `false` (not accessed).
         :type IsJoined: bool
         :param _LogType: Log type (
@@ -52019,6 +53990,7 @@ K8s API: "k8s_api"
         :type LogType: str
         """
         self._Count = None
+        self._SuperNodeCount = None
         self._IsJoined = None
         self._LogType = None
 
@@ -52029,6 +54001,14 @@ K8s API: "k8s_api"
     @Count.setter
     def Count(self, Count):
         self._Count = Count
+
+    @property
+    def SuperNodeCount(self):
+        return self._SuperNodeCount
+
+    @SuperNodeCount.setter
+    def SuperNodeCount(self, SuperNodeCount):
+        self._SuperNodeCount = SuperNodeCount
 
     @property
     def IsJoined(self):
@@ -52049,6 +54029,7 @@ K8s API: "k8s_api"
 
     def _deserialize(self, params):
         self._Count = params.get("Count")
+        self._SuperNodeCount = params.get("SuperNodeCount")
         self._IsJoined = params.get("IsJoined")
         self._LogType = params.get("LogType")
         memeber_set = set(params.keys())
@@ -52314,6 +54295,16 @@ class ServiceInfo(AbstractModel):
         :type HostName: str
         :param _PublicIp: Public IP
         :type PublicIp: str
+        :param _NodeID: Node ID
+        :type NodeID: str
+        :param _PodIP: Pod IP
+        :type PodIP: str
+        :param _PodName: Pod name
+        :type PodName: str
+        :param _NodeType: Node type.
+        :type NodeType: str
+        :param _NodeUniqueID: UID of the super node
+        :type NodeUniqueID: str
         """
         self._ServiceID = None
         self._HostID = None
@@ -52336,6 +54327,11 @@ class ServiceInfo(AbstractModel):
         self._ContainerId = None
         self._HostName = None
         self._PublicIp = None
+        self._NodeID = None
+        self._PodIP = None
+        self._PodName = None
+        self._NodeType = None
+        self._NodeUniqueID = None
 
     @property
     def ServiceID(self):
@@ -52505,6 +54501,46 @@ class ServiceInfo(AbstractModel):
     def PublicIp(self, PublicIp):
         self._PublicIp = PublicIp
 
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
 
     def _deserialize(self, params):
         self._ServiceID = params.get("ServiceID")
@@ -52528,6 +54564,11 @@ class ServiceInfo(AbstractModel):
         self._ContainerId = params.get("ContainerId")
         self._HostName = params.get("HostName")
         self._PublicIp = params.get("PublicIp")
+        self._NodeID = params.get("NodeID")
+        self._PodIP = params.get("PodIP")
+        self._PodName = params.get("PodName")
+        self._NodeType = params.get("NodeType")
+        self._NodeUniqueID = params.get("NodeUniqueID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53020,6 +55061,45 @@ class SyncAssetImageRegistryAssetRequest(AbstractModel):
     """SyncAssetImageRegistryAsset request structure.
 
     """
+
+    def __init__(self):
+        r"""
+        :param _All: 
+        :type All: bool
+        :param _RegistryIds: 
+        :type RegistryIds: list of int non-negative
+        """
+        self._All = None
+        self._RegistryIds = None
+
+    @property
+    def All(self):
+        return self._All
+
+    @All.setter
+    def All(self, All):
+        self._All = All
+
+    @property
+    def RegistryIds(self):
+        return self._RegistryIds
+
+    @RegistryIds.setter
+    def RegistryIds(self, RegistryIds):
+        self._RegistryIds = RegistryIds
+
+
+    def _deserialize(self, params):
+        self._All = params.get("All")
+        self._RegistryIds = params.get("RegistryIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SyncAssetImageRegistryAssetResponse(AbstractModel):
@@ -53664,6 +55744,18 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
         :type All: bool
         :param _Id: ID of the image to be scanned
         :type Id: list of int non-negative
+        :param _Latest: Whether to scan for the latest version
+        :type Latest: bool
+        :param _ContainerRunning: 
+        :type ContainerRunning: bool
+        :param _ScanEndTime: 
+        :type ScanEndTime: str
+        :param _ScanScope: 
+        :type ScanScope: int
+        :param _RegistryType: 
+        :type RegistryType: list of str
+        :param _Namespace: 
+        :type Namespace: list of str
         """
         self._ScanPeriod = None
         self._Enable = None
@@ -53672,6 +55764,12 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
         self._Images = None
         self._All = None
         self._Id = None
+        self._Latest = None
+        self._ContainerRunning = None
+        self._ScanEndTime = None
+        self._ScanScope = None
+        self._RegistryType = None
+        self._Namespace = None
 
     @property
     def ScanPeriod(self):
@@ -53715,10 +55813,14 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
 
     @property
     def All(self):
+        warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
+
         return self._All
 
     @All.setter
     def All(self, All):
+        warnings.warn("parameter `All` is deprecated", DeprecationWarning) 
+
         self._All = All
 
     @property
@@ -53728,6 +55830,54 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
     @Id.setter
     def Id(self, Id):
         self._Id = Id
+
+    @property
+    def Latest(self):
+        return self._Latest
+
+    @Latest.setter
+    def Latest(self, Latest):
+        self._Latest = Latest
+
+    @property
+    def ContainerRunning(self):
+        return self._ContainerRunning
+
+    @ContainerRunning.setter
+    def ContainerRunning(self, ContainerRunning):
+        self._ContainerRunning = ContainerRunning
+
+    @property
+    def ScanEndTime(self):
+        return self._ScanEndTime
+
+    @ScanEndTime.setter
+    def ScanEndTime(self, ScanEndTime):
+        self._ScanEndTime = ScanEndTime
+
+    @property
+    def ScanScope(self):
+        return self._ScanScope
+
+    @ScanScope.setter
+    def ScanScope(self, ScanScope):
+        self._ScanScope = ScanScope
+
+    @property
+    def RegistryType(self):
+        return self._RegistryType
+
+    @RegistryType.setter
+    def RegistryType(self, RegistryType):
+        self._RegistryType = RegistryType
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
 
 
     def _deserialize(self, params):
@@ -53743,6 +55893,12 @@ class UpdateImageRegistryTimingScanTaskRequest(AbstractModel):
                 self._Images.append(obj)
         self._All = params.get("All")
         self._Id = params.get("Id")
+        self._Latest = params.get("Latest")
+        self._ContainerRunning = params.get("ContainerRunning")
+        self._ScanEndTime = params.get("ScanEndTime")
+        self._ScanScope = params.get("ScanScope")
+        self._RegistryType = params.get("RegistryType")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54244,6 +56400,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
 `5`: Threat intelligence.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CheckPlatform: list of str
+        :param _NodeID: Node ID.
+        :type NodeID: str
+        :param _NodeName: Node name
+        :type NodeName: str
+        :param _PodIP: Pod IP
+        :type PodIP: str
+        :param _PodName: Pod (instance) name
+        :type PodName: str
+        :param _ClusterID: ID of the cluster where the node resides
+        :type ClusterID: str
+        :param _NodeType: Node type. Values: `NORMAL` (general node), `SUPER` (super node).
+        :type NodeType: str
+        :param _PublicIP: Public IP of the node
+        :type PublicIP: str
+        :param _InnerIP: Node private IP
+        :type InnerIP: str
+        :param _NodeUniqueID: UID of the node
+        :type NodeUniqueID: str
+        :param _HostID: ID for u200dthe general node
+        :type HostID: str
+        :param _ClusterName: Cluster name
+        :type ClusterName: str
         """
         self._FileName = None
         self._FilePath = None
@@ -54266,6 +56444,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._MD5 = None
         self._RiskLevel = None
         self._CheckPlatform = None
+        self._NodeID = None
+        self._NodeName = None
+        self._PodIP = None
+        self._PodName = None
+        self._ClusterID = None
+        self._NodeType = None
+        self._PublicIP = None
+        self._InnerIP = None
+        self._NodeUniqueID = None
+        self._HostID = None
+        self._ClusterName = None
 
     @property
     def FileName(self):
@@ -54435,6 +56624,94 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def CheckPlatform(self, CheckPlatform):
         self._CheckPlatform = CheckPlatform
 
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def PublicIP(self):
+        return self._PublicIP
+
+    @PublicIP.setter
+    def PublicIP(self, PublicIP):
+        self._PublicIP = PublicIP
+
+    @property
+    def InnerIP(self):
+        return self._InnerIP
+
+    @InnerIP.setter
+    def InnerIP(self, InnerIP):
+        self._InnerIP = InnerIP
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def HostID(self):
+        return self._HostID
+
+    @HostID.setter
+    def HostID(self, HostID):
+        self._HostID = HostID
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
 
     def _deserialize(self, params):
         self._FileName = params.get("FileName")
@@ -54458,6 +56735,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._MD5 = params.get("MD5")
         self._RiskLevel = params.get("RiskLevel")
         self._CheckPlatform = params.get("CheckPlatform")
+        self._NodeID = params.get("NodeID")
+        self._NodeName = params.get("NodeName")
+        self._PodIP = params.get("PodIP")
+        self._PodName = params.get("PodName")
+        self._ClusterID = params.get("ClusterID")
+        self._NodeType = params.get("NodeType")
+        self._PublicIP = params.get("PublicIP")
+        self._InnerIP = params.get("InnerIP")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._HostID = params.get("HostID")
+        self._ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54483,9 +56771,9 @@ class VirusTaskInfo(AbstractModel):
         :type ImageName: str
         :param _ImageId: Image ID
         :type ImageId: str
-        :param _HostName: Server name
+        :param _HostName: Node name
         :type HostName: str
-        :param _HostIp: Server IP
+        :param _HostIp: Private IP of the node
         :type HostIp: str
         :param _Status: Scanning status:
 `WAIT`: Pending scanning.
@@ -54519,6 +56807,12 @@ class VirusTaskInfo(AbstractModel):
 `UNAUTH`: The image is not assigned with a license.
 `SEND_CANCEL_SUCCESSED`: Task submitted.
         :type ErrorMsg: str
+        :param _NodeType: Node type. Values: `NORMAL` (general node), `SUPER` (super node).
+        :type NodeType: str
+        :param _PublicIP: Public IP of the node
+        :type PublicIP: str
+        :param _NodeID: Node ID
+        :type NodeID: str
         """
         self._ContainerName = None
         self._ContainerId = None
@@ -54532,6 +56826,9 @@ class VirusTaskInfo(AbstractModel):
         self._RiskCnt = None
         self._Id = None
         self._ErrorMsg = None
+        self._NodeType = None
+        self._PublicIP = None
+        self._NodeID = None
 
     @property
     def ContainerName(self):
@@ -54629,6 +56926,30 @@ class VirusTaskInfo(AbstractModel):
     def ErrorMsg(self, ErrorMsg):
         self._ErrorMsg = ErrorMsg
 
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def PublicIP(self):
+        return self._PublicIP
+
+    @PublicIP.setter
+    def PublicIP(self, PublicIP):
+        self._PublicIP = PublicIP
+
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
 
     def _deserialize(self, params):
         self._ContainerName = params.get("ContainerName")
@@ -54643,6 +56964,9 @@ class VirusTaskInfo(AbstractModel):
         self._RiskCnt = params.get("RiskCnt")
         self._Id = params.get("Id")
         self._ErrorMsg = params.get("ErrorMsg")
+        self._NodeType = params.get("NodeType")
+        self._PublicIP = params.get("PublicIP")
+        self._NodeID = params.get("NodeID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54817,6 +57141,18 @@ class VulAffectedContainerInfo(AbstractModel):
         :type HostID: str
         :param _PublicIP: Public IP
         :type PublicIP: str
+        :param _ClusterID: Cluster ID
+        :type ClusterID: str
+        :param _ClusterName: Cluster name
+        :type ClusterName: str
+        :param _NodeType: Node type. Values: `NORMAL` (general node), `SUPER` (super node).
+        :type NodeType: str
+        :param _NodeUniqueID: UID of a super node
+        :type NodeUniqueID: str
+        :param _NodeID: ID of a super node
+        :type NodeID: str
+        :param _NodeName: Super node name
+        :type NodeName: str
         """
         self._HostIP = None
         self._ContainerID = None
@@ -54826,6 +57162,12 @@ class VulAffectedContainerInfo(AbstractModel):
         self._HostName = None
         self._HostID = None
         self._PublicIP = None
+        self._ClusterID = None
+        self._ClusterName = None
+        self._NodeType = None
+        self._NodeUniqueID = None
+        self._NodeID = None
+        self._NodeName = None
 
     @property
     def HostIP(self):
@@ -54891,6 +57233,54 @@ class VulAffectedContainerInfo(AbstractModel):
     def PublicIP(self, PublicIP):
         self._PublicIP = PublicIP
 
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
 
     def _deserialize(self, params):
         self._HostIP = params.get("HostIP")
@@ -54901,6 +57291,12 @@ class VulAffectedContainerInfo(AbstractModel):
         self._HostName = params.get("HostName")
         self._HostID = params.get("HostID")
         self._PublicIP = params.get("PublicIP")
+        self._ClusterID = params.get("ClusterID")
+        self._ClusterName = params.get("ClusterName")
+        self._NodeType = params.get("NodeType")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._NodeID = params.get("NodeID")
+        self._NodeName = params.get("NodeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55070,6 +57466,128 @@ class VulAffectedImageInfo(AbstractModel):
         
 
 
+class VulAffectedRegistryImageInfo(AbstractModel):
+    """This API is used to query the list of repository images u200daffected by a specific vulnerability.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageID: Image ID
+        :type ImageID: str
+        :param _ImageName: Image name
+        :type ImageName: str
+        :param _ImageTag: Image tag
+        :type ImageTag: str
+        :param _Namespace: Image namespace
+        :type Namespace: str
+        :param _ImageRepoAddress: Image address
+        :type ImageRepoAddress: str
+        :param _ComponentList: List of components
+        :type ComponentList: list of VulAffectedImageComponentInfo
+        :param _IsLatestImage: Whether it is the latest image tag
+        :type IsLatestImage: bool
+        :param _ImageAssetId: Internal image asset ID
+        :type ImageAssetId: int
+        """
+        self._ImageID = None
+        self._ImageName = None
+        self._ImageTag = None
+        self._Namespace = None
+        self._ImageRepoAddress = None
+        self._ComponentList = None
+        self._IsLatestImage = None
+        self._ImageAssetId = None
+
+    @property
+    def ImageID(self):
+        return self._ImageID
+
+    @ImageID.setter
+    def ImageID(self, ImageID):
+        self._ImageID = ImageID
+
+    @property
+    def ImageName(self):
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def ImageTag(self):
+        return self._ImageTag
+
+    @ImageTag.setter
+    def ImageTag(self, ImageTag):
+        self._ImageTag = ImageTag
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def ImageRepoAddress(self):
+        return self._ImageRepoAddress
+
+    @ImageRepoAddress.setter
+    def ImageRepoAddress(self, ImageRepoAddress):
+        self._ImageRepoAddress = ImageRepoAddress
+
+    @property
+    def ComponentList(self):
+        return self._ComponentList
+
+    @ComponentList.setter
+    def ComponentList(self, ComponentList):
+        self._ComponentList = ComponentList
+
+    @property
+    def IsLatestImage(self):
+        return self._IsLatestImage
+
+    @IsLatestImage.setter
+    def IsLatestImage(self, IsLatestImage):
+        self._IsLatestImage = IsLatestImage
+
+    @property
+    def ImageAssetId(self):
+        return self._ImageAssetId
+
+    @ImageAssetId.setter
+    def ImageAssetId(self, ImageAssetId):
+        self._ImageAssetId = ImageAssetId
+
+
+    def _deserialize(self, params):
+        self._ImageID = params.get("ImageID")
+        self._ImageName = params.get("ImageName")
+        self._ImageTag = params.get("ImageTag")
+        self._Namespace = params.get("Namespace")
+        self._ImageRepoAddress = params.get("ImageRepoAddress")
+        if params.get("ComponentList") is not None:
+            self._ComponentList = []
+            for item in params.get("ComponentList"):
+                obj = VulAffectedImageComponentInfo()
+                obj._deserialize(item)
+                self._ComponentList.append(obj)
+        self._IsLatestImage = params.get("IsLatestImage")
+        self._ImageAssetId = params.get("ImageAssetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VulDefenceEvent(AbstractModel):
     """Exploit prevention event details
 
@@ -55140,15 +57658,27 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ContainerIsolateOperationSrc: Container isolation operation source
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ContainerIsolateOperationSrc: str
-        :param _QUUID: Server QUuid
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _QUUID: Node QUuid/Super node ID
+Note: This field may return·`null`, indicating that no valid values can be obtained.
         :type QUUID: str
         :param _HostIP: Server private IP
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HostIP: str
-        :param _HostName: Server name
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _HostName: General node/Super node name
+Note: This field may return·`null`, indicating that no valid values can be obtained.
         :type HostName: str
+        :param _NodeType: Node type. Values: `NORMAL` (general node), `SUPER` (super node).
+        :type NodeType: str
+        :param _PublicIP: Public IP
+        :type PublicIP: str
+        :param _NodeUniqueID: UID of a super node
+        :type NodeUniqueID: str
+        :param _NodeID: ID of a super node
+        :type NodeID: str
+        :param _ClusterID: Cluster ID
+        :type ClusterID: str
+        :param _ClusterName: Cluster name
+        :type ClusterName: str
         """
         self._CVEID = None
         self._VulName = None
@@ -55172,6 +57702,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._QUUID = None
         self._HostIP = None
         self._HostName = None
+        self._NodeType = None
+        self._PublicIP = None
+        self._NodeUniqueID = None
+        self._NodeID = None
+        self._ClusterID = None
+        self._ClusterName = None
 
     @property
     def CVEID(self):
@@ -55349,6 +57885,54 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def HostName(self, HostName):
         self._HostName = HostName
 
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def PublicIP(self):
+        return self._PublicIP
+
+    @PublicIP.setter
+    def PublicIP(self, PublicIP):
+        self._PublicIP = PublicIP
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
 
     def _deserialize(self, params):
         self._CVEID = params.get("CVEID")
@@ -55373,6 +57957,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._QUUID = params.get("QUUID")
         self._HostIP = params.get("HostIP")
         self._HostName = params.get("HostName")
+        self._NodeType = params.get("NodeType")
+        self._PublicIP = params.get("PublicIP")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._NodeID = params.get("NodeID")
+        self._ClusterID = params.get("ClusterID")
+        self._ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55418,7 +58008,7 @@ class VulDefenceEventDetail(AbstractModel):
         :type SourcePort: list of str
         :param _EventID: Event ID
         :type EventID: int
-        :param _HostName: Server name
+        :param _HostName: General node/Super node name
         :type HostName: str
         :param _HostIP: Server private IP
         :type HostIP: str
@@ -55453,8 +58043,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ServerArg: Process command line parameter
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ServerArg: str
-        :param _QUUID: Server QUuid
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _QUUID: Node QUuid/Super node ID
+Note: This field may return·`null`, indicating that no valid values can be obtained.
         :type QUUID: str
         :param _ContainerNetStatus: Isolation status
 `NORMAL`: 	Not isolated.
@@ -55494,6 +58084,28 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _RaspDetail: RASP details
 Note: This field may return `null`, indicating that no valid value was found.
         :type RaspDetail: list of RaspInfo
+        :param _NodeSubNetName: Super node subnet name
+        :type NodeSubNetName: str
+        :param _NodeSubNetCIDR: Super node subnet IP range
+        :type NodeSubNetCIDR: str
+        :param _PodIP: Pod IP
+        :type PodIP: str
+        :param _NodeType: Node type. Values: `NORMAL` (general node), `SUPER` (super node).
+        :type NodeType: str
+        :param _NodeID: ID of a super node
+        :type NodeID: str
+        :param _NodeUniqueID: UID of a super node
+        :type NodeUniqueID: str
+        :param _NodeSubNetID: Super node subnet ID
+        :type NodeSubNetID: str
+        :param _ClusterID: Cluster ID
+        :type ClusterID: str
+        :param _ClusterName: Cluster name
+        :type ClusterName: str
+        :param _Namespace: 
+        :type Namespace: str
+        :param _WorkloadType: 
+        :type WorkloadType: str
         """
         self._CVEID = None
         self._VulName = None
@@ -55530,6 +58142,17 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._ContainerStatus = None
         self._JNDIUrl = None
         self._RaspDetail = None
+        self._NodeSubNetName = None
+        self._NodeSubNetCIDR = None
+        self._PodIP = None
+        self._NodeType = None
+        self._NodeID = None
+        self._NodeUniqueID = None
+        self._NodeSubNetID = None
+        self._ClusterID = None
+        self._ClusterName = None
+        self._Namespace = None
+        self._WorkloadType = None
 
     @property
     def CVEID(self):
@@ -55811,6 +58434,94 @@ Note: This field may return `null`, indicating that no valid value was found.
     def RaspDetail(self, RaspDetail):
         self._RaspDetail = RaspDetail
 
+    @property
+    def NodeSubNetName(self):
+        return self._NodeSubNetName
+
+    @NodeSubNetName.setter
+    def NodeSubNetName(self, NodeSubNetName):
+        self._NodeSubNetName = NodeSubNetName
+
+    @property
+    def NodeSubNetCIDR(self):
+        return self._NodeSubNetCIDR
+
+    @NodeSubNetCIDR.setter
+    def NodeSubNetCIDR(self, NodeSubNetCIDR):
+        self._NodeSubNetCIDR = NodeSubNetCIDR
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def NodeSubNetID(self):
+        return self._NodeSubNetID
+
+    @NodeSubNetID.setter
+    def NodeSubNetID(self, NodeSubNetID):
+        self._NodeSubNetID = NodeSubNetID
+
+    @property
+    def ClusterID(self):
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def ClusterName(self):
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def Namespace(self):
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def WorkloadType(self):
+        return self._WorkloadType
+
+    @WorkloadType.setter
+    def WorkloadType(self, WorkloadType):
+        self._WorkloadType = WorkloadType
+
 
     def _deserialize(self, params):
         self._CVEID = params.get("CVEID")
@@ -55853,6 +58564,17 @@ Note: This field may return `null`, indicating that no valid value was found.
                 obj = RaspInfo()
                 obj._deserialize(item)
                 self._RaspDetail.append(obj)
+        self._NodeSubNetName = params.get("NodeSubNetName")
+        self._NodeSubNetCIDR = params.get("NodeSubNetCIDR")
+        self._PodIP = params.get("PodIP")
+        self._NodeType = params.get("NodeType")
+        self._NodeID = params.get("NodeID")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._NodeSubNetID = params.get("NodeSubNetID")
+        self._ClusterID = params.get("ClusterID")
+        self._ClusterName = params.get("ClusterName")
+        self._Namespace = params.get("Namespace")
+        self._WorkloadType = params.get("WorkloadType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55915,11 +58637,11 @@ class VulDefenceHost(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HostName: Server name
+        :param _HostName: General node/Super node name
         :type HostName: str
         :param _HostIP: Server IP, which is the private IP
         :type HostIP: str
-        :param _HostID: Server QUuid
+        :param _HostID: Node QUuid/Super node ID
         :type HostID: str
         :param _Status: Plugin status. Valid values: `SUCCESS` (normal); `FAIL` (abnormal); `NO_DEFENDED` (not defended).
         :type Status: str
@@ -55929,6 +58651,22 @@ class VulDefenceHost(AbstractModel):
         :type CreateTime: str
         :param _ModifyTime: Update time
         :type ModifyTime: str
+        :param _NodeType: Node type. Values: `NORMAL` (general node), `SUPER` (super node).
+        :type NodeType: str
+        :param _NodeSubNetName: Super node subnet name
+        :type NodeSubNetName: str
+        :param _NodeSubNetCIDR: Super node subnet IP range
+        :type NodeSubNetCIDR: str
+        :param _NodeSubNetID: Super node subnet ID
+        :type NodeSubNetID: str
+        :param _NodeUniqueID: UID of a super node
+        :type NodeUniqueID: str
+        :param _NodeID: ID of a super node
+        :type NodeID: str
+        :param _PodIP: Pod IP
+        :type PodIP: str
+        :param _PodName: Pod name
+        :type PodName: str
         """
         self._HostName = None
         self._HostIP = None
@@ -55937,6 +58675,14 @@ class VulDefenceHost(AbstractModel):
         self._PublicIP = None
         self._CreateTime = None
         self._ModifyTime = None
+        self._NodeType = None
+        self._NodeSubNetName = None
+        self._NodeSubNetCIDR = None
+        self._NodeSubNetID = None
+        self._NodeUniqueID = None
+        self._NodeID = None
+        self._PodIP = None
+        self._PodName = None
 
     @property
     def HostName(self):
@@ -55994,6 +58740,70 @@ class VulDefenceHost(AbstractModel):
     def ModifyTime(self, ModifyTime):
         self._ModifyTime = ModifyTime
 
+    @property
+    def NodeType(self):
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeSubNetName(self):
+        return self._NodeSubNetName
+
+    @NodeSubNetName.setter
+    def NodeSubNetName(self, NodeSubNetName):
+        self._NodeSubNetName = NodeSubNetName
+
+    @property
+    def NodeSubNetCIDR(self):
+        return self._NodeSubNetCIDR
+
+    @NodeSubNetCIDR.setter
+    def NodeSubNetCIDR(self, NodeSubNetCIDR):
+        self._NodeSubNetCIDR = NodeSubNetCIDR
+
+    @property
+    def NodeSubNetID(self):
+        return self._NodeSubNetID
+
+    @NodeSubNetID.setter
+    def NodeSubNetID(self, NodeSubNetID):
+        self._NodeSubNetID = NodeSubNetID
+
+    @property
+    def NodeUniqueID(self):
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def NodeID(self):
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def PodIP(self):
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def PodName(self):
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
 
     def _deserialize(self, params):
         self._HostName = params.get("HostName")
@@ -56003,6 +58813,14 @@ class VulDefenceHost(AbstractModel):
         self._PublicIP = params.get("PublicIP")
         self._CreateTime = params.get("CreateTime")
         self._ModifyTime = params.get("ModifyTime")
+        self._NodeType = params.get("NodeType")
+        self._NodeSubNetName = params.get("NodeSubNetName")
+        self._NodeSubNetCIDR = params.get("NodeSubNetCIDR")
+        self._NodeSubNetID = params.get("NodeSubNetID")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._NodeID = params.get("NodeID")
+        self._PodIP = params.get("PodIP")
+        self._PodName = params.get("PodName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

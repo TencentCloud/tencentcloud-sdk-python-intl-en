@@ -38,7 +38,7 @@ FAILEDOPERATION_DESCRIBESERVICEERROR = 'FailedOperation.DescribeServiceError'
 # Failed to query the service list
 FAILEDOPERATION_DESCRIBESERVICELISTERROR = 'FailedOperation.DescribeServiceListError'
 
-# 
+# Failed to update the ingress
 FAILEDOPERATION_UPDATEINGRESSERROR = 'FailedOperation.UpdateIngressError'
 
 # Request timed out
@@ -167,6 +167,9 @@ INVALIDPARAMETERVALUE_ATLEASTONESCALERRULESHOULDBEAPPLIED = 'InvalidParameterVal
 # Only one auto scaler can be specified.
 INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = 'InvalidParameterValue.AutoScalerLargerThanOne'
 
+# 
+INVALIDPARAMETERVALUE_AUTOSCALERNAMEINVALID = 'InvalidParameterValue.AutoScalerNameInvalid'
+
 # The access mode of other applications cannot be overwritten. 
 INVALIDPARAMETERVALUE_CANNOTOVERWRITEOTHERAPPLICATIONSERVICE = 'InvalidParameterValue.CannotOverWriteOtherApplicationService'
 
@@ -178,6 +181,9 @@ INVALIDPARAMETERVALUE_CONFIGDATAALREADYEXIST = 'InvalidParameterValue.ConfigData
 
 # The configuration is incorrect.
 INVALIDPARAMETERVALUE_CONFIGDATAINVALID = 'InvalidParameterValue.ConfigDataInvalid'
+
+# 
+INVALIDPARAMETERVALUE_CREATENAMESPACEUNSUPPORTREGIONERROR = 'InvalidParameterValue.CreateNamespaceUnsupportRegionError'
 
 # The specified desired capacity of the scheduled action is incorrect.
 INVALIDPARAMETERVALUE_CRONHPAREPLICASINVALID = 'InvalidParameterValue.CronHpaReplicasInvalid'
@@ -263,6 +269,9 @@ INVALIDPARAMETERVALUE_PORTISRESERVED = 'InvalidParameterValue.PortIsReserved'
 # Invalid post start
 INVALIDPARAMETERVALUE_POSTSTARTNOTVALID = 'InvalidParameterValue.PostStartNotValid'
 
+# 
+INVALIDPARAMETERVALUE_PRESTOPNOTVALID = 'InvalidParameterValue.PreStopNotValid'
+
 # Public image parameter error
 INVALIDPARAMETERVALUE_PUBLICREPOTYPEPARAMETERERROR = 'InvalidParameterValue.PublicRepoTypeParameterError'
 
@@ -340,6 +349,9 @@ MISSINGPARAMETER_NAMESPACEIDNULL = 'MissingParameter.NamespaceIdNull'
 
 # The package name cannot be left empty.
 MISSINGPARAMETER_PKGNAMENULL = 'MissingParameter.PkgNameNull'
+
+# 
+MISSINGPARAMETER_REPOSERVERNULL = 'MissingParameter.RepoServerNull'
 
 # The scaling rule ID is missing.
 MISSINGPARAMETER_SCALERIDNULL = 'MissingParameter.ScalerIdNull'

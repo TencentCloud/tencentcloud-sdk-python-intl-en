@@ -284,7 +284,11 @@ class AttachDisksRequest(AbstractModel):
         :type DiskIds: list of str
         :param _InstanceId: Instance ID.
         :type InstanceId: str
-        :param _RenewFlag: Whether Auto-Renewal is enabled 
+        :param _RenewFlag: Specify whether to renew an instance automatically when it expires. Values: 
+
+`NOTIFY_AND_AUTO_RENEW`: Trigger expiration notification and renew automatically; `NOTIFY_AND_MANUAL_RENEW`: Trigger expiration notification but do not renew; `DISABLE_NOTIFY_AND_MANUAL_RENEW`: Do not trigger the notification and do not renew.
+
+Default: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the instance is automatically renewed on a monthly basis when the account balance is sufficient.
         :type RenewFlag: str
         """
         self._DiskIds = None
@@ -353,6 +357,63 @@ class AttachDisksResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class AutoMountConfiguration(AbstractModel):
+    """Automatically attach and initialize the data disk.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: ID of the instance to be mounted to. The instance must be **Running**.
+        :type InstanceId: str
+        :param _MountPoint: The mount point within the instance. Only Linux instances are supported. If it's not specified, the default mount point is "/data/disk".
+        :type MountPoint: str
+        :param _FileSystemType: The file system type. Values: `ext4` (default) and `xfs`. Only Linux instances are supported. 
+        :type FileSystemType: str
+        """
+        self._InstanceId = None
+        self._MountPoint = None
+        self._FileSystemType = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MountPoint(self):
+        return self._MountPoint
+
+    @MountPoint.setter
+    def MountPoint(self, MountPoint):
+        self._MountPoint = MountPoint
+
+    @property
+    def FileSystemType(self):
+        return self._FileSystemType
+
+    @FileSystemType.setter
+    def FileSystemType(self, FileSystemType):
+        self._FileSystemType = FileSystemType
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._MountPoint = params.get("MountPoint")
+        self._FileSystemType = params.get("FileSystemType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Blueprint(AbstractModel):
@@ -767,12 +828,12 @@ class Bundle(AbstractModel):
         :param _Memory: Memory size in GB.
         :type Memory: int
         :param _SystemDiskType: System disk type.
-Valid values: 
-<li> LOCAL_BASIC: local disk</li><li> LOCAL_SSD: local SSD disk</li><li> CLOUD_BASIC: HDD cloud disk</li><li> CLOUD_SSD: SSD cloud disk</li><li> CLOUD_PREMIUM: Premium Cloud Storage</li>
+Values: 
+<li>`CLOUD_SSD`: SSD cloud disks</li><li>`CLOUD_PREMIUM`: Premium cloud disks</li>
         :type SystemDiskType: str
-        :param _SystemDiskSize: System disk size.
+        :param _SystemDiskSize: System disk size in GB.
         :type SystemDiskSize: int
-        :param _MonthlyTraffic: Monthly network traffic in Gb.
+        :param _MonthlyTraffic: Monthly network traffic in GB.
         :type MonthlyTraffic: int
         :param _SupportLinuxUnixPlatform: Whether Linux/Unix is supported.
         :type SupportLinuxUnixPlatform: bool
@@ -1219,6 +1280,178 @@ class CreateBlueprintResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._BlueprintId = params.get("BlueprintId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDisksRequest(AbstractModel):
+    """CreateDisks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: Availability zone. You can call [DescribeZones](https://intl.cloud.tencent.com/document/product/1207/57513?from_cn_redirect=1) and get the information in the `Zone` parameter re 
+        :type Zone: str
+        :param _DiskSize: Cloud disk size in GB.
+        :type DiskSize: int
+        :param _DiskType: Cloud disk media type. Valid values: "CLOUD_PREMIUM" (premium cloud disk), "CLOUD_SSD" (SSD cloud disk).
+        :type DiskType: str
+        :param _DiskChargePrepaid: Parameters of monthly subscribed cloud disks
+        :type DiskChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.DiskChargePrepaid`
+        :param _DiskName: Image name, which can contain up to 60 characters.
+        :type DiskName: str
+        :param _DiskCount: Number of cloud disks. Range: [1, 30]. Default value: 1.
+        :type DiskCount: int
+        :param _DiskBackupQuota: Specify the quota of disk backups. No quota if it’s left empty. Only one quota is allowed.
+        :type DiskBackupQuota: int
+        :param _AutoVoucher: Whether to use the vouchers automatically. It defaults to No.
+        :type AutoVoucher: bool
+        :param _AutoMountConfiguration: Automatically mount and initialize the data disk.
+        :type AutoMountConfiguration: :class:`tencentcloud.lighthouse.v20200324.models.AutoMountConfiguration`
+        """
+        self._Zone = None
+        self._DiskSize = None
+        self._DiskType = None
+        self._DiskChargePrepaid = None
+        self._DiskName = None
+        self._DiskCount = None
+        self._DiskBackupQuota = None
+        self._AutoVoucher = None
+        self._AutoMountConfiguration = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def DiskSize(self):
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskChargePrepaid(self):
+        return self._DiskChargePrepaid
+
+    @DiskChargePrepaid.setter
+    def DiskChargePrepaid(self, DiskChargePrepaid):
+        self._DiskChargePrepaid = DiskChargePrepaid
+
+    @property
+    def DiskName(self):
+        return self._DiskName
+
+    @DiskName.setter
+    def DiskName(self, DiskName):
+        self._DiskName = DiskName
+
+    @property
+    def DiskCount(self):
+        return self._DiskCount
+
+    @DiskCount.setter
+    def DiskCount(self, DiskCount):
+        self._DiskCount = DiskCount
+
+    @property
+    def DiskBackupQuota(self):
+        return self._DiskBackupQuota
+
+    @DiskBackupQuota.setter
+    def DiskBackupQuota(self, DiskBackupQuota):
+        self._DiskBackupQuota = DiskBackupQuota
+
+    @property
+    def AutoVoucher(self):
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def AutoMountConfiguration(self):
+        return self._AutoMountConfiguration
+
+    @AutoMountConfiguration.setter
+    def AutoMountConfiguration(self, AutoMountConfiguration):
+        self._AutoMountConfiguration = AutoMountConfiguration
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._DiskSize = params.get("DiskSize")
+        self._DiskType = params.get("DiskType")
+        if params.get("DiskChargePrepaid") is not None:
+            self._DiskChargePrepaid = DiskChargePrepaid()
+            self._DiskChargePrepaid._deserialize(params.get("DiskChargePrepaid"))
+        self._DiskName = params.get("DiskName")
+        self._DiskCount = params.get("DiskCount")
+        self._DiskBackupQuota = params.get("DiskBackupQuota")
+        self._AutoVoucher = params.get("AutoVoucher")
+        if params.get("AutoMountConfiguration") is not None:
+            self._AutoMountConfiguration = AutoMountConfiguration()
+            self._AutoMountConfiguration._deserialize(params.get("AutoMountConfiguration"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDisksResponse(AbstractModel):
+    """CreateDisks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskIdSet: List of IDs created by using this API. The returning of IDs does not mean that the instances are created successfully.
+
+You can call `DescribeDisks` API, and find the disk ID in the `DiskSet` returned to check its status. If the status changes from `PENDING` to `UNATTACHED` or `ATTACHED`, the instance is created successfully.
+        :type DiskIdSet: list of str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DiskIdSet = None
+        self._RequestId = None
+
+    @property
+    def DiskIdSet(self):
+        return self._DiskIdSet
+
+    @DiskIdSet.setter
+    def DiskIdSet(self, DiskIdSet):
+        self._DiskIdSet = DiskIdSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DiskIdSet = params.get("DiskIdSet")
         self._RequestId = params.get("RequestId")
 
 
@@ -2528,23 +2761,23 @@ class DescribeBundlesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, please see the relevant section in the API [Overview](https://intl.cloud.tencent.com/document/product/1207/47578?from_cn_redirect=1).
         :type Limit: int
-        :param _Filters: Filter list
+        :param _Filters: Filter list.
 <li>bundle-id</li>Filter by the **bundle ID**.
 Type: String
 Required: No
-<li>support-platform-type</li>Filter by the **OS type**.
-Valid values: `LINUX_UNIX` (Linux or Unix), `WINDOWS` (Windows)
+<li>`support-platform-type`<li>Filter by the **system type**.
+Values: `LINUX_UNIX` (Linux/Unix), `WINDOWS` (Windows).
 Type: String
 Required: No
 <li>bundle-type</li>Filter by the **bundle type**.
-Valid values: `GENERAL_BUNDLE` (General bundle), `STORAGE_BUNDLE` (Storage bundle), `ENTERPRISE_BUNDLE` (Enterprise bundle), `EXCLUSIVE_BUNDLE` (Dedicated bundle), `BEFAST_BUNDLE` (BeFast bundle)
+Values: `GENERAL_BUNDLE` (General bundle), `STORAGE_BUNDLE` (Storage bundle), `ENTERPRISE_BUNDLE` (Enterprise bundle), `EXCLUSIVE_BUNDLE` (Dedicated bundle), `BEFAST_BUNDLE` (BeFast bundle), `STARTER_BUNDLE` (Beginner bundle); `CAREFREE_BUNDLE` (Carefree bundle);
 Type: String
 Required: No
 <li>bundle-state</li>Filter by the **bundle status**.
-Valid values: `ONLINE`, `OFFLINE`
+Values: `ONLINE`, `OFFLINE`
 Type: String
 Required: No
-Each request can contain up to 10 `Filters`, and up to 5 `Filter.Values` for each filter. You cannot specify both `BundleIds` and `Filters` at the same time.
+Each request can contain up to 10 `Filters` and 5 `Filter.Values`. You cannot specify both `BundleIds` and `Filters` at the same time.
         :type Filters: list of Filter
         :param _Zones: AZ list, which contains all AZs by default.
         :type Zones: list of str
@@ -5794,7 +6027,13 @@ class DiskChargePrepaid(AbstractModel):
         r"""
         :param _Period: Purchase duration.
         :type Period: int
-        :param _RenewFlag: Whether Auto-Renewal is enabled 
+        :param _RenewFlag: Auto-Renewal flag. Valid values:
+
+`NOTIFY_AND_AUTO_RENEW`: Trigger expiration notification and renew automatically
+`NOTIFY_AND_MANUAL_RENEW`: Trigger expiration notification but do not renew
+`u200cDISABLE_NOTIFY_AND_AUTO_RENEW`: Neither trigger expiration notification nor renew
+
+Default: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the instance is automatically renewed on a monthly basis when the account balance is sufficient.
         :type RenewFlag: str
         :param _TimeUnit: Purchase duration unit. Default value: "m" (month)
         :type TimeUnit: str
@@ -8080,6 +8319,64 @@ class InternetAccessible(AbstractModel):
         
 
 
+class IsolateDisksRequest(AbstractModel):
+    """IsolateDisks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskIds: IDs of cloud disks. The value can be obtained from the `InstanceId` parameter returned by the [DescribeDisks](https://intl.cloud.tencent.com/document/product/1207/66093?from_cn_redirect=1) API. Up to 20 disks can be processed at a time.
+        :type DiskIds: list of str
+        """
+        self._DiskIds = None
+
+    @property
+    def DiskIds(self):
+        return self._DiskIds
+
+    @DiskIds.setter
+    def DiskIds(self, DiskIds):
+        self._DiskIds = DiskIds
+
+
+    def _deserialize(self, params):
+        self._DiskIds = params.get("DiskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IsolateDisksResponse(AbstractModel):
+    """IsolateDisks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class IsolateInstancesRequest(AbstractModel):
     """IsolateInstances request structure.
 
@@ -8259,16 +8556,19 @@ class LoginConfiguration(AbstractModel):
         :param _AutoGeneratePassword: <li>`YES`: Random password. In this case, `Password` cannot be specified. </li>
 <li>`No`: Custom. `Password` must be specified. </li>
         :type AutoGeneratePassword: str
-        :param _Password: Instace login password.
-For Windows instances, the password must contain 12 to 30 characters of the following types. It cannot start with “/” and cannot include the username.
-<li>[a-z]</li>
-<li>[A-Z]</li>
-<li>[0-9]</li>
-<li>[()`~!@#$%^&*-+=_|{}[]:;' <>,.?/]</li>
+        :param _Password: Instance login password. 
+For Windows instances, the password must contain 12 to 30 characters of the following types. It cannot start with “/” and cannot include the username. 
+<li>Lowercase letters: [a–z]</li>
+<li>Uppercase letters: [A–Z]</li>
+<li>Digits: 0-9</li>
+<li>Symbols: ()`~!@#$%^&*-+=_|{}[]:;'<>,.?/</li>
         :type Password: str
+        :param _KeyIds: 
+        :type KeyIds: list of str
         """
         self._AutoGeneratePassword = None
         self._Password = None
+        self._KeyIds = None
 
     @property
     def AutoGeneratePassword(self):
@@ -8286,10 +8586,19 @@ For Windows instances, the password must contain 12 to 30 characters of the foll
     def Password(self, Password):
         self._Password = Password
 
+    @property
+    def KeyIds(self):
+        return self._KeyIds
+
+    @KeyIds.setter
+    def KeyIds(self, KeyIds):
+        self._KeyIds = KeyIds
+
 
     def _deserialize(self, params):
         self._AutoGeneratePassword = params.get("AutoGeneratePassword")
         self._Password = params.get("Password")
+        self._KeyIds = params.get("KeyIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9421,13 +9730,17 @@ class RenewDiskChargePrepaid(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Period: Purchase duration.
+        :param _Period: Renewal period
         :type Period: int
-        :param _RenewFlag: Whether Auto-Renewal is enabled 
+        :param _RenewFlag: Whether to renew the disk automatically. Values:
+
+`NOTIFY_AND_AUTO_RENEW`: Trigger expiration notification and renew automatically; `NOTIFY_AND_MANUAL_RENEW`: Trigger expiration notification but do not renew; `DISABLE_NOTIFY_AND_MANUAL_RENEW`: Do not trigger the notification and do not renew.
+
+Default: `NOTIFY_AND_MANUAL_RENEW`. If `NOTIFY_AND_AUTO_RENEW` is specified, the instance is automatically renewed on a monthly basis when the account balance is sufficient.
         :type RenewFlag: str
-        :param _TimeUnit: Duration unit. Default value: "m" (month).
+        :param _TimeUnit: Unit of the period. Values: `m` (month).
         :type TimeUnit: str
-        :param _CurInstanceDeadline: Expiration time of the current instance.
+        :param _CurInstanceDeadline: Expiration time of the current instance, such as "2018-01-01 00:00:00". Specify this parameter to align the expiration time of the instance and attached cloud disks. `CurInstanceDeadline` and `Period` cannot be both specified.
         :type CurInstanceDeadline: str
         """
         self._Period = None
@@ -9481,6 +9794,192 @@ class RenewDiskChargePrepaid(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RenewDisksRequest(AbstractModel):
+    """RenewDisks request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskIds: IDs of cloud disks. The value can be obtained from the `DiskId` parameter returned by the [DescribeDisks](https://intl.cloud.tencent.com/document/product/1207/66093?from_cn_redirect=1) API. Up to 50 disks can be requested at a time.
+        :type DiskIds: list of str
+        :param _RenewDiskChargePrepaid: Parameter settings for renewing the monthly subscribed cloud disk.
+        :type RenewDiskChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.RenewDiskChargePrepaid`
+        :param _AutoVoucher: Whether to use the vouchers automatically. It defaults to No.
+        :type AutoVoucher: bool
+        """
+        self._DiskIds = None
+        self._RenewDiskChargePrepaid = None
+        self._AutoVoucher = None
+
+    @property
+    def DiskIds(self):
+        return self._DiskIds
+
+    @DiskIds.setter
+    def DiskIds(self, DiskIds):
+        self._DiskIds = DiskIds
+
+    @property
+    def RenewDiskChargePrepaid(self):
+        return self._RenewDiskChargePrepaid
+
+    @RenewDiskChargePrepaid.setter
+    def RenewDiskChargePrepaid(self, RenewDiskChargePrepaid):
+        self._RenewDiskChargePrepaid = RenewDiskChargePrepaid
+
+    @property
+    def AutoVoucher(self):
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+
+    def _deserialize(self, params):
+        self._DiskIds = params.get("DiskIds")
+        if params.get("RenewDiskChargePrepaid") is not None:
+            self._RenewDiskChargePrepaid = RenewDiskChargePrepaid()
+            self._RenewDiskChargePrepaid._deserialize(params.get("RenewDiskChargePrepaid"))
+        self._AutoVoucher = params.get("AutoVoucher")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewDisksResponse(AbstractModel):
+    """RenewDisks response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RenewInstancesRequest(AbstractModel):
+    """RenewInstances request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: IDs of one or more instances to be operated. The value can be obtained from the `InstanceId` parameter returned by the [DescribeInstances](https://intl.cloud.tencent.com/document/api/1207/47573?from_cn_redirect=1) API. Up to 100 instances can be requested at a time.
+        :type InstanceIds: list of str
+        :param _InstanceChargePrepaid: Prepaid mode, i.e., monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. It is required for prepaid instances.
+        :type InstanceChargePrepaid: :class:`tencentcloud.lighthouse.v20200324.models.InstanceChargePrepaid`
+        :param _RenewDataDisk: Whether to renew elastic data disks. Values: 
+`TRUE`: Renew the elastic data disks attached to the instance as well when the related instance is renewed.
+`FALSE`: Do not renew the elastic data disks attached to the instance as well when the related instance is renewed.
+Default: `TRUE`
+        :type RenewDataDisk: bool
+        :param _AutoVoucher: Whether to automatically use vouchers. Values:
+`TRUE`: Use vouchers for payment automatically.
+`FALSE`: Do not use vouchers for payment automatically.
+Default: `FALSE`.
+        :type AutoVoucher: bool
+        """
+        self._InstanceIds = None
+        self._InstanceChargePrepaid = None
+        self._RenewDataDisk = None
+        self._AutoVoucher = None
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def InstanceChargePrepaid(self):
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+    @property
+    def RenewDataDisk(self):
+        return self._RenewDataDisk
+
+    @RenewDataDisk.setter
+    def RenewDataDisk(self, RenewDataDisk):
+        self._RenewDataDisk = RenewDataDisk
+
+    @property
+    def AutoVoucher(self):
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        if params.get("InstanceChargePrepaid") is not None:
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self._RenewDataDisk = params.get("RenewDataDisk")
+        self._AutoVoucher = params.get("AutoVoucher")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RenewInstancesResponse(AbstractModel):
+    """RenewInstances response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ResetAttachCcnRequest(AbstractModel):

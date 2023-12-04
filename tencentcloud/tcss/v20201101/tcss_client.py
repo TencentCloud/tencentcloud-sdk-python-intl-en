@@ -6170,6 +6170,29 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVulRegistryImageList(self, request):
+        """This API is used to query the list of repository images affected by vulnerabilities.
+
+        :param request: Request instance for DescribeVulRegistryImageList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVulRegistryImageListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVulRegistryImageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVulRegistryImageList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVulRegistryImageListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVulScanAuthorizedImageSummary(self, request):
         """This API is used to count the number of licensed but not scanned images on the vulnerability scanning page.
 

@@ -17,7 +17,7 @@
 # Error with CAM signature/authentication.
 AUTHFAILURE = 'AuthFailure'
 
-# 
+# This region is not open yet. Please select another one.
 AUTHFAILURE_INVALIDREGION = 'AuthFailure.InvalidRegion'
 
 # Operation failed.
@@ -25,6 +25,9 @@ FAILEDOPERATION = 'FailedOperation'
 
 # Failed to create the image.
 FAILEDOPERATION_CREATEBLUEPRINTFAILED = 'FailedOperation.CreateBlueprintFailed'
+
+# Failed to create the cloud disks.
+FAILEDOPERATION_CREATEDISKSFAILED = 'FailedOperation.CreateDisksFailed'
 
 # Failed to create the instance.
 FAILEDOPERATION_CREATEINSTANCESFAILED = 'FailedOperation.CreateInstancesFailed'
@@ -38,6 +41,12 @@ FAILEDOPERATION_DELETEKEYPAIRFAILED = 'FailedOperation.DeleteKeyPairFailed'
 # Failed to query the image. Try again later.
 FAILEDOPERATION_DESCRIBEBLUEPRINTSFAILED = 'FailedOperation.DescribeBlueprintsFailed'
 
+# 
+FAILEDOPERATION_DESCRIBEBUNDLEDISCOUNTFAILED = 'FailedOperation.DescribeBundleDiscountFailed'
+
+# 
+FAILEDOPERATION_DESCRIBEBUNDLESFAILED = 'FailedOperation.DescribeBundlesFailed'
+
 # An error occurred when querying the instance status.
 FAILEDOPERATION_DESCRIBEINSTANCESTATUS = 'FailedOperation.DescribeInstanceStatus'
 
@@ -50,7 +59,7 @@ FAILEDOPERATION_DESCRIBEINSTANCESRETURNABLEERROR = 'FailedOperation.DescribeInst
 # Failed to query traffic packages.
 FAILEDOPERATION_DESCRIBEINSTANCESTRAFFICPACKAGESFAILED = 'FailedOperation.DescribeInstancesTrafficPackagesFailed'
 
-# 
+# The query returns contents that do not meet the requirement.
 FAILEDOPERATION_DESCRIBERESOURCESRETURNABLEERROR = 'FailedOperation.DescribeResourcesReturnableError'
 
 # Unable to terminate the resource. Please retry later.
@@ -66,6 +75,9 @@ FAILEDOPERATION_IMPORTKEYPAIRFAILED = 'FailedOperation.ImportKeyPairFailed'
 FAILEDOPERATION_INSTANCEOPERATIONFAILED = 'FailedOperation.InstanceOperationFailed'
 
 # 
+FAILEDOPERATION_INSUFFICIENTBALANCE = 'FailedOperation.InsufficientBalance'
+
+# The command is not found.
 FAILEDOPERATION_INVALIDCOMMANDNOTFOUND = 'FailedOperation.InvalidCommandNotFound'
 
 # Failed to return the resource.
@@ -74,8 +86,11 @@ FAILEDOPERATION_ISOLATERESOURCESFAILED = 'FailedOperation.IsolateResourcesFailed
 # Failed to change the instance bundle.
 FAILEDOPERATION_MODIFYINSTANCESBUNDLEFAILED = 'FailedOperation.ModifyInstancesBundleFailed'
 
-# 
+# Failed to change the resource attribute. Try again later...
 FAILEDOPERATION_MODIFYRESOURCESATTRIBUTEFAILED = 'FailedOperation.ModifyResourcesAttributeFailed'
+
+# Unable to renew the resource
+FAILEDOPERATION_RENEWRESOURCESFAILED = 'FailedOperation.RenewResourcesFailed'
 
 # A request error occurred.
 FAILEDOPERATION_REQUESTERROR = 'FailedOperation.RequestError'
@@ -83,7 +98,7 @@ FAILEDOPERATION_REQUESTERROR = 'FailedOperation.RequestError'
 # Failed to manipulate the snapshot.
 FAILEDOPERATION_SNAPSHOTOPERATIONFAILED = 'FailedOperation.SnapshotOperationFailed'
 
-# 
+# Failed to call the billing gateway service. Please try again later.
 FAILEDOPERATION_TRADECALLBILLINGGATEWAYFAILED = 'FailedOperation.TradeCallBillingGatewayFailed'
 
 # Failed to query the price.
@@ -128,7 +143,7 @@ INTERNALERROR_INVALIDACTIONNOTFOUND = 'InternalError.InvalidActionNotFound'
 # The package price is incorrect.
 INTERNALERROR_INVALIDBUNDLEPRICE = 'InternalError.InvalidBundlePrice'
 
-# The command `DescribeInstanceLoginKeyPair` could not be found.
+# The command is not found.
 INTERNALERROR_INVALIDCOMMANDNOTFOUND = 'InternalError.InvalidCommandNotFound'
 
 # There was an error in the request.
@@ -149,7 +164,7 @@ INVALIDPARAMETER_BUNDLEANDBLUEPRINTNOTMATCH = 'InvalidParameter.BundleAndBluepri
 # Undefined service package ID.
 INVALIDPARAMETER_BUNDLEIDNOTFOUND = 'InvalidParameter.BundleIdNotFound'
 
-# 
+# Parameters conflicted.
 INVALIDPARAMETER_CONFLICT = 'InvalidParameter.Conflict'
 
 # Invalid parameter: the number of `Values` in the `Filter` parameter exceeds the allowed maximum number.
@@ -179,7 +194,7 @@ INVALIDPARAMETER_INVALIDFILTERNOTDICT = 'InvalidParameter.InvalidFilterNotDict'
 # Invalid parameter: there are unsupported `Name` values in the `Filter` parameter.
 INVALIDPARAMETER_INVALIDFILTERNOTSUPPORTEDNAME = 'InvalidParameter.InvalidFilterNotSupportedName'
 
-# 
+# Please specify at least one attribute to modify.
 INVALIDPARAMETER_MUSTSPECIFYONEATTRIBUTETOMODIFY = 'InvalidParameter.MustSpecifyOneAttributeToModify'
 
 # Invalid parameter: only one attribute can be modified at a time.
@@ -203,11 +218,17 @@ INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = 'InvalidParameterValue.BlueprintIdM
 # The package and the image do not match.
 INVALIDPARAMETERVALUE_BUNDLEANDBLUEPRINTNOTMATCH = 'InvalidParameterValue.BundleAndBlueprintNotMatch'
 
+# The selected package does not support the OS of the image.
+INVALIDPARAMETERVALUE_BUNDLENOTSUPPORTBLUEPRINTPLATFORM = 'InvalidParameterValue.BundleNotSupportBlueprintPlatform'
+
 # The ID format of the CCN instance is invalid.
 INVALIDPARAMETERVALUE_CCNIDMALFORMED = 'InvalidParameterValue.CcnIdMalformed'
 
-# 
+# The client token is too long.
 INVALIDPARAMETERVALUE_CLIENTTOKENTOOLONG = 'InvalidParameterValue.ClientTokenTooLong'
+
+# The AZ of cloud disk does not match the AZ of instance. 
+INVALIDPARAMETERVALUE_DISKINSTANCEZONENOTMATCH = 'InvalidParameterValue.DiskInstanceZoneNotMatch'
 
 # The disk name is too long.
 INVALIDPARAMETERVALUE_DISKNAMETOOLONG = 'InvalidParameterValue.DiskNameTooLong'
@@ -248,8 +269,14 @@ INVALIDPARAMETERVALUE_INVALIDBUNDLE = 'InvalidParameterValue.InvalidBundle'
 # The console display type is invalid.
 INVALIDPARAMETERVALUE_INVALIDCONSOLEDISPLAYTYPES = 'InvalidParameterValue.InvalidConsoleDisplayTypes'
 
+# The current instance expiration time cannot be earlier than the cloud disk expiration time.
+INVALIDPARAMETERVALUE_INVALIDCURINSTANCEDEADLINE = 'InvalidParameterValue.InvalidCurInstanceDeadline'
+
 # Invalid parameter value: the disk ID format is invalid.
 INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = 'InvalidParameterValue.InvalidDiskIdMalformed'
+
+# Invalid cloud disk type.
+INVALIDPARAMETERVALUE_INVALIDDISKTYPE = 'InvalidParameterValue.InvalidDiskType'
 
 # The value of setting whether to use the default key pair for login is incorrect.
 INVALIDPARAMETERVALUE_INVALIDINSTANCELOGINKEYPAIRPERMITLOGIN = 'InvalidParameterValue.InvalidInstanceLoginKeyPairPermitLogin'
@@ -302,6 +329,12 @@ INVALIDPARAMETERVALUE_NOTALLOWTOCHANGEPLATFORMTYPE = 'InvalidParameterValue.NotA
 # Invalid parametric value: it is not within the valid range.
 INVALIDPARAMETERVALUE_OUTOFRANGE = 'InvalidParameterValue.OutOfRange'
 
+# The instance OS does not support this file system.
+INVALIDPARAMETERVALUE_PLATFORMTYPENOTSUPPORTFILESYSTEM = 'InvalidParameterValue.PlatformTypeNotSupportFileSystem'
+
+# The instance OS does not support the specified mount point.
+INVALIDPARAMETERVALUE_PLATFORMTYPENOTSUPPORTMOUNTPOINT = 'InvalidParameterValue.PlatformTypeNotSupportMountPoint'
+
 # The region does not exist.
 INVALIDPARAMETERVALUE_REGIONNOTFOUND = 'InvalidParameterValue.RegionNotFound'
 
@@ -329,11 +362,14 @@ INVALIDPARAMETERVALUE_ZONEINVALID = 'InvalidParameterValue.ZoneInvalid'
 # Reached the quota limit.
 LIMITEXCEEDED = 'LimitExceeded'
 
-# Reached the upper limit of attached data disks of the instance
+# Failed to attach the disk: Reached the upper limit of attached data disks
 LIMITEXCEEDED_ATTACHDATADISKQUOTALIMITEXCEEDED = 'LimitExceeded.AttachDataDiskQuotaLimitExceeded'
 
-# 
+# Failed to create the custom image: Reached the upper limit of custom image quota.
 LIMITEXCEEDED_BLUEPRINTQUOTALIMITEXCEEDED = 'LimitExceeded.BlueprintQuotaLimitExceeded'
+
+# Failed to create the image: Insufficient quota.
+LIMITEXCEEDED_DISKQUOTALIMITEXCEEDED = 'LimitExceeded.DiskQuotaLimitExceeded'
 
 # The firewall rule quota is exceeded.
 LIMITEXCEEDED_FIREWALLRULESLIMITEXCEEDED = 'LimitExceeded.FirewallRulesLimitExceeded'
@@ -353,6 +389,9 @@ LIMITEXCEEDED_SNAPSHOTQUOTALIMITEXCEEDED = 'LimitExceeded.SnapshotQuotaLimitExce
 # Missing parameter.
 MISSINGPARAMETER = 'MissingParameter'
 
+# `Period` or `CurInstanceDeadline` is required. 
+MISSINGPARAMETER_MISSINGPARAMETERPERIODCURINSTANCEDEADLINE = 'MissingParameter.MissingParameterPeriodCurInstanceDeadline'
+
 # This instance does not support upgrading packages.
 OPERATIONDENIED_BUNDLENOTSUPPORTMODIFY = 'OperationDenied.BundleNotSupportModify'
 
@@ -371,7 +410,7 @@ OPERATIONDENIED_INSTANCECREATING = 'OperationDenied.InstanceCreating'
 # It is not allowed to manipulate this instance, as the last operation is still in progress.
 OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = 'OperationDenied.InstanceOperationInProgress'
 
-# 
+# Creating snapshot is not allowed.
 OPERATIONDENIED_OPERATIONDENIEDCREATESNAPSHOT = 'OperationDenied.OperationDeniedCreateSnapshot'
 
 # Instances using storage packages do not support snapshot creation.
@@ -401,6 +440,9 @@ RESOURCENOTFOUND_FIREWALLNOTFOUND = 'ResourceNotFound.FirewallNotFound'
 # The firewall rule does not exist.
 RESOURCENOTFOUND_FIREWALLRULESNOTFOUND = 'ResourceNotFound.FirewallRulesNotFound'
 
+# 
+RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = 'ResourceNotFound.FirewallTemplateNotFound'
+
 # There are no data disks mounted to the instance.
 RESOURCENOTFOUND_INSTANCEDATADISKNOTFOUND = 'ResourceNotFound.InstanceDataDiskNotFound'
 
@@ -412,6 +454,9 @@ RESOURCENOTFOUND_INSTANCENOTFOUND = 'ResourceNotFound.InstanceNotFound'
 
 # The key pair ID does not exist.
 RESOURCENOTFOUND_KEYIDNOTFOUND = 'ResourceNotFound.KeyIdNotFound'
+
+# 
+RESOURCENOTFOUND_KEYPAIRNOTFOUND = 'ResourceNotFound.KeyPairNotFound'
 
 # The custom image does not exist.
 RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = 'ResourceNotFound.PrivateBlueprintNotFound'
@@ -437,6 +482,9 @@ RESOURCEUNAVAILABLE_BLUEPRINTUNAVAILABLE = 'ResourceUnavailable.BlueprintUnavail
 # The package is not available.
 RESOURCEUNAVAILABLE_BUNDLEUNAVAILABLE = 'ResourceUnavailable.BundleUnavailable'
 
+# 
+RESOURCESSOLDOUT_BUNDLESOLDOUT = 'ResourcesSoldOut.BundleSoldOut'
+
 # There is no available configuration in the package.
 RESOURCESSOLDOUT_PURCHASESOURCEHASNOBUNDLECONFIGS = 'ResourcesSoldOut.PurchaseSourceHasNoBundleConfigs'
 
@@ -451,6 +499,9 @@ UNAUTHORIZEDOPERATION_MFANOTFOUND = 'UnauthorizedOperation.MFANotFound'
 
 # No permission
 UNAUTHORIZEDOPERATION_NOPERMISSION = 'UnauthorizedOperation.NoPermission'
+
+# 
+UNAUTHORIZEDOPERATION_TOKENINVALID = 'UnauthorizedOperation.TokenInvalid'
 
 # Unknown parameter error.
 UNKNOWNPARAMETER = 'UnknownParameter'
@@ -524,6 +575,9 @@ UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = 'UnsupportedOperation.LatestOpe
 # The shared image does not support this operation.
 UNSUPPORTEDOPERATION_NOTSUPPORTSHAREDBLUEPRINT = 'UnsupportedOperation.NotSupportSharedBlueprint'
 
+# 
+UNSUPPORTEDOPERATION_OPERATIONOFFLINE = 'UnsupportedOperation.OperationOffline'
+
 # Terminating a resource in the resource center failed.
 UNSUPPORTEDOPERATION_POSTDESTROYRESOURCEFAILED = 'UnsupportedOperation.PostDestroyResourceFailed'
 
@@ -538,6 +592,9 @@ UNSUPPORTEDOPERATION_SNAPSHOTBUSY = 'UnsupportedOperation.SnapshotBusy'
 
 # System busy
 UNSUPPORTEDOPERATION_SYSTEMBUSY = 'UnsupportedOperation.SystemBusy'
+
+# TAT agent on the instance is not online.
+UNSUPPORTEDOPERATION_TATAGENTNOTONLINE = 'UnsupportedOperation.TatAgentNotOnline'
 
 # Windows instances do not support binding key pairs.
 UNSUPPORTEDOPERATION_WINDOWSNOTALLOWTOASSOCIATEKEYPAIR = 'UnsupportedOperation.WindowsNotAllowToAssociateKeyPair'
