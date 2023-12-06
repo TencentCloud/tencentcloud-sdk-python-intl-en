@@ -20386,7 +20386,7 @@ class DescribeCDNDomainsRequest(AbstractModel):
         :type Limit: int
         :param _Offset: The starting offset of paged pull. Default value: 0.
         :type Offset: int
-        :param _SubAppId: VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.
+        :param _SubAppId: VOD [Subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?from_cn_redirect=1) ID. If you want to access resources in the Subapplication, enter the Subapplication ID in this field; otherwise, you do not need to fill in this field.
         :type SubAppId: int
         """
         self._Domains = None
@@ -24988,9 +24988,9 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>`FastClipMedia`: Quick clipping</li>
 <li>`RemoveWatermarkTask`: Watermark removal</li>
 <li>`DescribeFileAttributesTask`: Getting file attributes</li>
-<li>`RebuildMedia`; Remastering audio/video</li>
 <li> `ReviewAudioVideo`: Moderation</li>
 <li>`ExtractTraceWatermark`: Digital watermark extraction</li>
+<li>`QualityEnhance：Enhance audio/video</li>
         :type TaskType: str
         :param _Status: Task status. Valid values:
 <li>WAITING: waiting;</li>
@@ -27672,6 +27672,208 @@ class EnhanceMediaByTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class EnhanceMediaQualityOutputConfig(AbstractModel):
+    """Remaster result file output
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MediaName: Output file name, up to 64 characters. The system will specify the file name by default
+        :type MediaName: str
+        :param _ClassId: Category ID, used for media classification management, can be obtained by [creating a category](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) interface, create a category, get the category ID.
+<li>Default value: 0, which means other categories.</li>
+        :type ClassId: int
+        :param _ExpireTime: The expiration time of the output file, the file will be deleted after this time, the default is never to expire, the format is in accordance with the ISO 8601 standard, see [ISO date format description](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I)。
+        :type ExpireTime: str
+        """
+        self._MediaName = None
+        self._ClassId = None
+        self._ExpireTime = None
+
+    @property
+    def MediaName(self):
+        return self._MediaName
+
+    @MediaName.setter
+    def MediaName(self, MediaName):
+        self._MediaName = MediaName
+
+    @property
+    def ClassId(self):
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._MediaName = params.get("MediaName")
+        self._ClassId = params.get("ClassId")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnhanceMediaQualityRequest(AbstractModel):
+    """EnhanceMediaQuality request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: Media file ID, that is, the globally unique identifier of the file on VOD, which is assigned by the VOD backend after successful upload. This field can be obtained from [video upload completion event notification](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) or [vod console](https://console.cloud.tencent.com/vod/media).
+        :type FileId: str
+        :param _Definition: Remaster template ID, please contact Tencent Cloud for details
+        :type Definition: int
+        :param _SubAppId: <b>VOD [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you want to access resources in the Subapplication, enter the Subapplication ID in this field; otherwise, you do not need to fill in this field.</b>
+        :type SubAppId: int
+        :param _OutputConfig: Configuration of media files after Remaster
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.EnhanceMediaQualityOutputConfig`
+        :param _SessionId: The identification code used for deduplication. If there has been a request with the same identification code within three days, this request will return an error. Up to 50 characters, without or with an empty string means no deduplication
+        :type SessionId: str
+        :param _SessionContext: Source context, used to pass through user request information, Remaster completion callback will return this field value, up to 1000 characters
+        :type SessionContext: str
+        :param _TasksPriority: The priority of the task, the higher the value, the higher the priority, the range is -10 to 10, not filled in means 0
+        :type TasksPriority: int
+        """
+        self._FileId = None
+        self._Definition = None
+        self._SubAppId = None
+        self._OutputConfig = None
+        self._SessionId = None
+        self._SessionContext = None
+        self._TasksPriority = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def OutputConfig(self):
+        return self._OutputConfig
+
+    @OutputConfig.setter
+    def OutputConfig(self, OutputConfig):
+        self._OutputConfig = OutputConfig
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def TasksPriority(self):
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._Definition = params.get("Definition")
+        self._SubAppId = params.get("SubAppId")
+        if params.get("OutputConfig") is not None:
+            self._OutputConfig = EnhanceMediaQualityOutputConfig()
+            self._OutputConfig._deserialize(params.get("OutputConfig"))
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        self._TasksPriority = params.get("TasksPriority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnhanceMediaQualityResponse(AbstractModel):
+    """EnhanceMediaQuality response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Remaster task ID
+        :type TaskId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class EventContent(AbstractModel):
     """Event notification content, where TranscodeCompleteEvent, ConcatCompleteEvent, ClipCompleteEvent, CreateImageSpriteCompleteEvent, and SnapshotByTimeOffsetCompleteEvent are event notifications for tasks that are initiated by v2017-compatible APIs.
 
@@ -27772,6 +27974,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _QualityInspectCompleteEvent: 
 Note: This field may return null, indicating that no valid value can be obtained.
         :type QualityInspectCompleteEvent: :class:`tencentcloud.vod.v20180717.models.QualityInspectTask`
+        :param _QualityEnhanceCompleteEvent: Remaster completion event, valid when the event type is QualityEnhanceComplete.
+Pay attention to: this field may return null, indicating that no valid value can be obtained
+        :type QualityEnhanceCompleteEvent: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTask`
         """
         self._EventHandle = None
         self._EventType = None
@@ -27798,6 +28003,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._ReduceMediaBitrateCompleteEvent = None
         self._DescribeFileAttributesCompleteEvent = None
         self._QualityInspectCompleteEvent = None
+        self._QualityEnhanceCompleteEvent = None
 
     @property
     def EventHandle(self):
@@ -27999,6 +28205,14 @@ Note: This field may return null, indicating that no valid value can be obtained
     def QualityInspectCompleteEvent(self, QualityInspectCompleteEvent):
         self._QualityInspectCompleteEvent = QualityInspectCompleteEvent
 
+    @property
+    def QualityEnhanceCompleteEvent(self):
+        return self._QualityEnhanceCompleteEvent
+
+    @QualityEnhanceCompleteEvent.setter
+    def QualityEnhanceCompleteEvent(self, QualityEnhanceCompleteEvent):
+        self._QualityEnhanceCompleteEvent = QualityEnhanceCompleteEvent
+
 
     def _deserialize(self, params):
         self._EventHandle = params.get("EventHandle")
@@ -28072,6 +28286,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("QualityInspectCompleteEvent") is not None:
             self._QualityInspectCompleteEvent = QualityInspectTask()
             self._QualityInspectCompleteEvent._deserialize(params.get("QualityInspectCompleteEvent"))
+        if params.get("QualityEnhanceCompleteEvent") is not None:
+            self._QualityEnhanceCompleteEvent = QualityEnhanceTask()
+            self._QualityEnhanceCompleteEvent._deserialize(params.get("QualityEnhanceCompleteEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53954,6 +54171,71 @@ class SetVodDomainCertificateRequest(AbstractModel):
     """SetVodDomainCertificate request structure.
 
     """
+
+    def __init__(self):
+        r"""
+        :param _Domain: Domain name
+        :type Domain: str
+        :param _Operation: The operation type of this API call, optional value:
+<li>Set: Set the certificate required for the domain name HTTPS;</li>
+<li>Clear: Clear the domain name HTTPS configuration, after clearing, the domain name cannot support </li>
+        :type Operation: str
+        :param _SubAppId: <b>VOD [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you want to access resources in the Subapplication, enter the Subapplication ID in this field; otherwise, you do not need to fill in this field.</b>
+        :type SubAppId: int
+        :param _CertID: [Tencent Cloud SSL](https://intl.cloud.tencent.com/document/product/400/7572?from_cn_redirect=1) uploaded certificate ID. No need to fill in this field when clearing domain HTTPS configuration
+        :type CertID: str
+        """
+        self._Domain = None
+        self._Operation = None
+        self._SubAppId = None
+        self._CertID = None
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Operation(self):
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def CertID(self):
+        return self._CertID
+
+    @CertID.setter
+    def CertID(self, CertID):
+        self._CertID = CertID
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Operation = params.get("Operation")
+        self._SubAppId = params.get("SubAppId")
+        self._CertID = params.get("CertID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SetVodDomainCertificateResponse(AbstractModel):

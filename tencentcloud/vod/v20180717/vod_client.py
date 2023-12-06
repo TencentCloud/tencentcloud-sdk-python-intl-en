@@ -2573,6 +2573,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def EnhanceMediaQuality(self, request):
+        """Initiate a Remaster task for audio and video media in VOD
+
+        :param request: Request instance for EnhanceMediaQuality.
+        :type request: :class:`tencentcloud.vod.v20180717.models.EnhanceMediaQualityRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.EnhanceMediaQualityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnhanceMediaQuality", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnhanceMediaQualityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExecuteFunction(self, request):
         """This API is only used in special scenarios of custom development. Unless requested by VOD customer service, please do not call it.
 
