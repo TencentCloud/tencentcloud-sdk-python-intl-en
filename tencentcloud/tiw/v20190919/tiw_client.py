@@ -72,31 +72,6 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateOfflineRecord(self, request):
-        """课后录制服务已下线
-
-        This API is used to create an offline recording task.
-
-        :param request: Request instance for CreateOfflineRecord.
-        :type request: :class:`tencentcloud.tiw.v20190919.models.CreateOfflineRecordRequest`
-        :rtype: :class:`tencentcloud.tiw.v20190919.models.CreateOfflineRecordResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateOfflineRecord", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateOfflineRecordResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateSnapshotTask(self, request):
         """This API is used to create a whiteboard snapshot task. If a callback URL is provided, the whiteboard snapshot result is sent to the callback URL after the task is complete.
 
@@ -272,56 +247,6 @@ class TiwClient(AbstractClient):
             body = self.call("DescribeIMApplications", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeIMApplicationsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeOfflineRecord(self, request):
-        """课后录制服务已下线
-
-        This API is used to query the information about an offline recording task, including the recording progress and recording result.
-
-        :param request: Request instance for DescribeOfflineRecord.
-        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeOfflineRecordRequest`
-        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeOfflineRecordResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeOfflineRecord", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeOfflineRecordResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeOfflineRecordCallback(self, request):
-        """课后录制服务已下线
-
-        This API is used to query the offline recording callback URL.
-
-        :param request: Request instance for DescribeOfflineRecordCallback.
-        :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeOfflineRecordCallbackRequest`
-        :rtype: :class:`tencentcloud.tiw.v20190919.models.DescribeOfflineRecordCallbackResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeOfflineRecordCallback", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeOfflineRecordCallbackResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1002,33 +927,8 @@ class TiwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def SetOfflineRecordCallback(self, request):
-        """课后录制服务已下线
-
-        This API is used to set the offline recording callback URL.
-
-        :param request: Request instance for SetOfflineRecordCallback.
-        :type request: :class:`tencentcloud.tiw.v20190919.models.SetOfflineRecordCallbackRequest`
-        :rtype: :class:`tencentcloud.tiw.v20190919.models.SetOfflineRecordCallbackResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("SetOfflineRecordCallback", params, headers=headers)
-            response = json.loads(body)
-            model = models.SetOfflineRecordCallbackResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def SetOnlineRecordCallback(self, request):
-        """This API is used to set the real-time recording callback address. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40258?from_cn_redirect=1).
+        """This API is used to set the real-time recording callback address. For the callback format, please [see here](https://www.tencentcloud.com/document/product/1176/55569).
 
         :param request: Request instance for SetOnlineRecordCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetOnlineRecordCallbackRequest`
@@ -1051,7 +951,7 @@ class TiwClient(AbstractClient):
 
 
     def SetOnlineRecordCallbackKey(self, request):
-        """This API is used to set the callback authentication key for real-time recording. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).
+        """This API is used to set the callback authentication key for real-time recording. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).
 
         :param request: Request instance for SetOnlineRecordCallbackKey.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetOnlineRecordCallbackKeyRequest`
@@ -1074,7 +974,7 @@ class TiwClient(AbstractClient):
 
 
     def SetTranscodeCallback(self, request):
-        """This API is used to set the callback address for document transcoding. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40260?from_cn_redirect=1).
+        """This API is used to set the callback address for document transcoding. For the callback format, please [see here](https://www.tencentcloud.com/document/product/1176/55569).
 
         :param request: Request instance for SetTranscodeCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetTranscodeCallbackRequest`
@@ -1097,7 +997,7 @@ class TiwClient(AbstractClient):
 
 
     def SetTranscodeCallbackKey(self, request):
-        """This API is used to set the callback authentication key for document transcoding. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).
+        """This API is used to set the callback authentication key for document transcoding. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).
 
         :param request: Request instance for SetTranscodeCallbackKey.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetTranscodeCallbackKeyRequest`
@@ -1166,7 +1066,7 @@ class TiwClient(AbstractClient):
 
 
     def SetWhiteboardPushCallback(self, request):
-        """This API is used to set the whiteboard push callback URL. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).
+        """This API is used to set the whiteboard push callback URL. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).
 
         :param request: Request instance for SetWhiteboardPushCallback.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetWhiteboardPushCallbackRequest`
@@ -1189,7 +1089,7 @@ class TiwClient(AbstractClient):
 
 
     def SetWhiteboardPushCallbackKey(self, request):
-        """This API is used to set the callback authentication key for whiteboard push. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).
+        """This API is used to set the callback authentication key for whiteboard push. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).
 
         :param request: Request instance for SetWhiteboardPushCallbackKey.
         :type request: :class:`tencentcloud.tiw.v20190919.models.SetWhiteboardPushCallbackKeyRequest`

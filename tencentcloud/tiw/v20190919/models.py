@@ -420,117 +420,6 @@ class CreateApplicationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class CreateOfflineRecordRequest(AbstractModel):
-    """CreateOfflineRecord request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _SdkAppId: SdkAppId of the whiteboard application.
-        :type SdkAppId: int
-        :param _RoomId: Room ID corresponding to the recording task.
-        :type RoomId: int
-        :param _GroupId: Group ID corresponding to the recording task.
-        :type GroupId: str
-        :param _MixStream: Stream mixing parameters.
-The Custom parameter is not supported for offline recording tasks.
-        :type MixStream: :class:`tencentcloud.tiw.v20190919.models.MixStream`
-        :param _Whiteboard: Whiteboard parameters.
-        :type Whiteboard: :class:`tencentcloud.tiw.v20190919.models.Whiteboard`
-        """
-        self._SdkAppId = None
-        self._RoomId = None
-        self._GroupId = None
-        self._MixStream = None
-        self._Whiteboard = None
-
-    @property
-    def SdkAppId(self):
-        return self._SdkAppId
-
-    @SdkAppId.setter
-    def SdkAppId(self, SdkAppId):
-        self._SdkAppId = SdkAppId
-
-    @property
-    def RoomId(self):
-        return self._RoomId
-
-    @RoomId.setter
-    def RoomId(self, RoomId):
-        self._RoomId = RoomId
-
-    @property
-    def GroupId(self):
-        return self._GroupId
-
-    @GroupId.setter
-    def GroupId(self, GroupId):
-        self._GroupId = GroupId
-
-    @property
-    def MixStream(self):
-        return self._MixStream
-
-    @MixStream.setter
-    def MixStream(self, MixStream):
-        self._MixStream = MixStream
-
-    @property
-    def Whiteboard(self):
-        return self._Whiteboard
-
-    @Whiteboard.setter
-    def Whiteboard(self, Whiteboard):
-        self._Whiteboard = Whiteboard
-
-
-    def _deserialize(self, params):
-        self._SdkAppId = params.get("SdkAppId")
-        self._RoomId = params.get("RoomId")
-        self._GroupId = params.get("GroupId")
-        if params.get("MixStream") is not None:
-            self._MixStream = MixStream()
-            self._MixStream._deserialize(params.get("MixStream"))
-        if params.get("Whiteboard") is not None:
-            self._Whiteboard = Whiteboard()
-            self._Whiteboard._deserialize(params.get("Whiteboard"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateOfflineRecordResponse(AbstractModel):
-    """CreateOfflineRecord response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class CreateSnapshotTaskRequest(AbstractModel):
     """CreateSnapshotTask request structure.
 
@@ -1625,134 +1514,6 @@ class DescribeIMApplicationsRequest(AbstractModel):
 
 class DescribeIMApplicationsResponse(AbstractModel):
     """DescribeIMApplications response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeOfflineRecordCallbackRequest(AbstractModel):
-    """DescribeOfflineRecordCallback request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _SdkAppId: SdkAppId of the whiteboard application.
-        :type SdkAppId: int
-        """
-        self._SdkAppId = None
-
-    @property
-    def SdkAppId(self):
-        return self._SdkAppId
-
-    @SdkAppId.setter
-    def SdkAppId(self, SdkAppId):
-        self._SdkAppId = SdkAppId
-
-
-    def _deserialize(self, params):
-        self._SdkAppId = params.get("SdkAppId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeOfflineRecordCallbackResponse(AbstractModel):
-    """DescribeOfflineRecordCallback response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeOfflineRecordRequest(AbstractModel):
-    """DescribeOfflineRecord request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _SdkAppId: SdkAppId of the whiteboard application.
-        :type SdkAppId: int
-        :param _TaskId: ID of the offline recording task.
-        :type TaskId: str
-        """
-        self._SdkAppId = None
-        self._TaskId = None
-
-    @property
-    def SdkAppId(self):
-        return self._SdkAppId
-
-    @SdkAppId.setter
-    def SdkAppId(self, SdkAppId):
-        self._SdkAppId = SdkAppId
-
-    @property
-    def TaskId(self):
-        return self._TaskId
-
-    @TaskId.setter
-    def TaskId(self, TaskId):
-        self._TaskId = TaskId
-
-
-    def _deserialize(self, params):
-        self._SdkAppId = params.get("SdkAppId")
-        self._TaskId = params.get("TaskId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeOfflineRecordResponse(AbstractModel):
-    """DescribeOfflineRecord response structure.
 
     """
 
@@ -5814,76 +5575,6 @@ class RoomUsageDataItem(AbstractModel):
         
 
 
-class SetOfflineRecordCallbackRequest(AbstractModel):
-    """SetOfflineRecordCallback request structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _SdkAppId: SdkAppId of the whiteboard application.
-        :type SdkAppId: int
-        :param _Callback: Callback URL of the offline recording task result. If it is specified as null, the set callback URL is deleted. The callback URL only supports the HTTP or HTTPS protocol, and therefore the callback URL must start with `http://` or `https://`.
-        :type Callback: str
-        """
-        self._SdkAppId = None
-        self._Callback = None
-
-    @property
-    def SdkAppId(self):
-        return self._SdkAppId
-
-    @SdkAppId.setter
-    def SdkAppId(self, SdkAppId):
-        self._SdkAppId = SdkAppId
-
-    @property
-    def Callback(self):
-        return self._Callback
-
-    @Callback.setter
-    def Callback(self, Callback):
-        self._Callback = Callback
-
-
-    def _deserialize(self, params):
-        self._SdkAppId = params.get("SdkAppId")
-        self._Callback = params.get("Callback")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SetOfflineRecordCallbackResponse(AbstractModel):
-    """SetOfflineRecordCallback response structure.
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class SetOnlineRecordCallbackKeyRequest(AbstractModel):
     """SetOnlineRecordCallbackKey request structure.
 
@@ -5893,7 +5584,7 @@ class SetOnlineRecordCallbackKeyRequest(AbstractModel):
         r"""
         :param _SdkAppId: SdkAppId of the application
         :type SdkAppId: int
-        :param _CallbackKey: Authentication key for the real-time recording callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).
+        :param _CallbackKey: Authentication key for the real-time recording callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information, please [see here](https://www.tencentcloud.com/document/product/1176/55569).
         :type CallbackKey: str
         """
         self._SdkAppId = None
@@ -5963,7 +5654,7 @@ class SetOnlineRecordCallbackRequest(AbstractModel):
         r"""
         :param _SdkAppId: SdkAppId of the customer
         :type SdkAppId: int
-        :param _Callback: Callback address of the real-time recording task result. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`. For the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40258?from_cn_redirect=1).
+        :param _Callback: Callback address of the real-time recording task result. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`. For the callback format, please [see here](https://www.tencentcloud.com/document/product/1176/55569).
         :type Callback: str
         """
         self._SdkAppId = None
@@ -6033,7 +5724,7 @@ class SetTranscodeCallbackKeyRequest(AbstractModel):
         r"""
         :param _SdkAppId: SdkAppId of the application
         :type SdkAppId: int
-        :param _CallbackKey: Authentication key for the document transcoding callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information about callback authentication, please [see here](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).
+        :param _CallbackKey: Authentication key for the document transcoding callback. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key will be deleted. For more information about callback authentication, please [see here](https://www.tencentcloud.com/document/product/1176/55569).
         :type CallbackKey: str
         """
         self._SdkAppId = None
@@ -6104,7 +5795,7 @@ class SetTranscodeCallbackRequest(AbstractModel):
         :param _SdkAppId: SdkAppId of the customer
         :type SdkAppId: int
         :param _Callback: Callback address for the document transcoding progress. If an empty string is passed in, the existing callback address will be deleted. The callback address only supports the HTTP or HTTPS protocol, so the callback address must start with `http://` or `https://`.
-For more information about the callback format, please [see here](https://intl.cloud.tencent.com/document/product/1137/40260?from_cn_redirect=1).
+For more information about the callback format, please [see here](https://www.tencentcloud.com/document/product/1176/55569).
         :type Callback: str
         """
         self._SdkAppId = None
@@ -6314,7 +6005,7 @@ class SetWhiteboardPushCallbackKeyRequest(AbstractModel):
         r"""
         :param _SdkAppId: SdkAppId of the whiteboard application.
         :type SdkAppId: int
-        :param _CallbackKey: Callback authentication key for whiteboard push. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key is deleted. For more information, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).
+        :param _CallbackKey: Callback authentication key for whiteboard push. It is a string that can have up to 64 characters. If an empty string is passed in, the existing callback authentication key is deleted. For more information, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).
         :type CallbackKey: str
         """
         self._SdkAppId = None
@@ -6384,7 +6075,7 @@ class SetWhiteboardPushCallbackRequest(AbstractModel):
         r"""
         :param _SdkAppId: SdkAppId of the whiteboard application.
         :type SdkAppId: int
-        :param _Callback: Callback URL of the whiteboard push task result. If an empty string is passed in, the existing callback URL is deleted. The callback URL only supports the HTTP or HTTPS protocol, and therefore the callback URL must start with `http://` or `https://`. For the callback format, see [Event Notification](https://intl.cloud.tencent.com/document/product/1137/40257?from_cn_redirect=1).
+        :param _Callback: Callback URL of the whiteboard push task result. If an empty string is passed in, the existing callback URL is deleted. The callback URL only supports the HTTP or HTTPS protocol, and therefore the callback URL must start with `http://` or `https://`. For the callback format, see [Event Notification](https://www.tencentcloud.com/document/product/1176/55569).
         :type Callback: str
         """
         self._SdkAppId = None

@@ -24990,7 +24990,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>`DescribeFileAttributesTask`: Getting file attributes</li>
 <li> `ReviewAudioVideo`: Moderation</li>
 <li>`ExtractTraceWatermark`: Digital watermark extraction</li>
-<li>`QualityEnhance：Enhance audio/video</li>
+<li>`QualityEnhance`：Enhance audio/video</li>
         :type TaskType: str
         :param _Status: Task status. Valid values:
 <li>WAITING: waiting;</li>
@@ -27883,27 +27883,7 @@ class EventContent(AbstractModel):
         r"""
         :param _EventHandle: Event handler. The caller must call `ConfirmEvents` to confirm that the message has been received, and the confirmation is valid for 30 seconds. After the confirmation expires, the event can be obtained again.
         :type EventHandle: str
-        :param _EventType: <b>Supported event types:</b>
-<li>`NewFileUpload`: Video uploaded.</li>
-<li>`ProcedureStateChanged`: Task flow status changed.</li>
-<li>`FileDeleted`: Video deleted.</li>
-<li>`RestoreMediaComplete`: Video retrieved.</li>
-<li>`PullComplete`: Finished video pulling.</li>
-<li>`EditMediaComplete`: Finished video editing.</li>
-<li>`SplitMediaComplete`: Finished video splitting.</li>
-<li>`ComposeMediaComplete`: Finished producing the media file.</li>
-<li>`WechatMiniProgramPublishComplete`: Finished publishing on Weixin Mini Program.</li>
-<li>`RemoveWatermark`: Watermark removed.</li>
-<li>`RebuildMediaComplete`: Finished audio/video remastering.</li>
-<li>`ReviewAudioVideoComplete`: Finished moderation.</li>
-<li>`ExtractTraceWatermarkComplete`: Finished digital watermark extraction.</li>
-<li>`DescribeFileAttributesComplete`: Finished getting file attributes.</li>
-<b>v2017 task types:</b>
-<li>`TranscodeComplete`: Finished video transcoding.</li>
-<li>`ConcatComplete`: Finished video splicing.</li>
-<li>`ClipComplete`: Finished video clipping.</li>
-<li>`CreateImageSpriteComplete`: Finished image sprite generation.</li>
-<li>`CreateSnapshotByTimeOffsetComplete`: Finished time point screencapturing.</li>
+        :param _EventType: <b>Supported event types:</b><li>`NewFileUpload`: Video uploaded.</li><li>`ProcedureStateChanged`: Task flow status changed.</li><li>`FileDeleted`: Video deleted.</li><li>`RestoreMediaComplete`: Video retrieved.</li><li>`PullComplete`: Finished video pulling.</li><li>`EditMediaComplete`: Finished video editing.</li><li>`SplitMediaComplete`: Finished video splitting.</li><li>`ComposeMediaComplete`: Finished producing the media file.</li><li>`WechatMiniProgramPublishComplete`: Finished publishing on Weixin Mini Program.</li><li>`RemoveWatermark`: Watermark removed.</li><li>`RebuildMediaComplete`: Finished audio/video remastering.</li><li>`ReviewAudioVideoComplete`: Finished moderation.</li><li>`ExtractTraceWatermarkComplete`: Finished digital watermark extraction.</li><li>`DescribeFileAttributesComplete`: Finished getting file attributes.</li><li>`QualityEnhanceComplete`: FinishedQualityEnhance.</li><b>v2017 task types:</b><li>`TranscodeComplete`: Finished video transcoding.</li><li>`ConcatComplete`: Finished video splicing.</li><li>`ClipComplete`: Finished video clipping.</li><li>`CreateImageSpriteComplete`: Finished image sprite generation.</li><li>`CreateSnapshotByTimeOffsetComplete`: Finished time point screencapturing.</li>
         :type EventType: str
         :param _FileUploadEvent: 
 Note: This field may return null, indicating that no valid value can be obtained.
