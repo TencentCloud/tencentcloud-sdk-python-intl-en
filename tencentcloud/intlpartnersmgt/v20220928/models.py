@@ -1355,9 +1355,9 @@ class DescribeBillDetailRequest(AbstractModel):
         r"""
         :param _Month: The queried month in u200dthe format of “YYYY-MM”, such as 2023-01.
         :type Month: str
-        :param _PageSize: Page parameter: Indicates the number of entries per page. The maximum value is 200.
+        :param _PageSize: Page parameter: Indicates the number of entries per page. Value range: [1, 200]
         :type PageSize: int
-        :param _Page: A pagination parameter that specifies the current page number
+        :param _Page: Page parameter: Indicates the current page number. The minimum value is 1.
         :type Page: int
         :param _PayMode: Billing mode. Valid values: `prePay` (Monthly subscription), postPay` (Pay-As-You-Go resources).
         :type PayMode: str
@@ -1758,9 +1758,9 @@ class DescribeCustomerBillDetailRequest(AbstractModel):
         :type CustomerUin: int
         :param _Month: The queried month in “YYYY-MM” format, such as 2023-01.
         :type Month: str
-        :param _PageSize: Page parameter: Indicates the number of entries per page. The maximum value is 200.
+        :param _PageSize: Page parameter: Indicates the number of entries per page. Value range: [1, 200]
         :type PageSize: int
-        :param _Page: A pagination parameter that specifies the current page number
+        :param _Page: Page parameter: Indicates the current page number. The minimum value is 1.
         :type Page: int
         :param _PayMode: Billing mode. Valid values:
 `prePay` (Monthly subscription)
