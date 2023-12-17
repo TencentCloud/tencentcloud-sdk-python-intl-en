@@ -1353,7 +1353,7 @@ class DescribeBillDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Month: The queried month in u200dthe format of “YYYY-MM”, such as 2023-01.
+        :param _Month: The queried month in the format of “YYYY-MM”, such as 2023-01.
         :type Month: str
         :param _PageSize: Page parameter: Indicates the number of entries per page. Value range: [1, 200]
         :type PageSize: int

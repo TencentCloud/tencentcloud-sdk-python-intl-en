@@ -26,6 +26,9 @@ FAILEDOPERATION_MAILISREGISTERED = 'FailedOperation.MailIsRegistered'
 # Invalid UIN
 FAILEDOPERATION_UININVALID = 'FailedOperation.UinInvalid'
 
+# 
+FAILEDOPERATION_UINNOTAGENT = 'FailedOperation.UinNotAgent'
+
 # Internal error.
 INTERNALERROR = 'InternalError'
 
@@ -91,6 +94,9 @@ INVALIDPARAMETERVALUE_PASSWORDEMPTY = 'InvalidParameterValue.PasswordEmpty'
 
 # InvalidParameterValue.PhoneNumEmpty
 INVALIDPARAMETERVALUE_PHONENUMEMPTY = 'InvalidParameterValue.PhoneNumEmpty'
+
+# 
+INVALIDPARAMETERVALUE_UINLIST = 'InvalidParameterValue.UinList'
 
 # Missing parameter
 MISSINGPARAMETER = 'MissingParameter'
