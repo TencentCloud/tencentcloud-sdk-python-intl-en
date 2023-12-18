@@ -25,11 +25,11 @@ class AddResourceTagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagKey: Tag key.
+        :param _TagKey: The tag key that needs to be bound. For the requirements, refer to: https://intl.cloud.tencent.com/document/product/651/13354?from_cn_redirect=1
         :type TagKey: str
-        :param _TagValue: Tag value.
+        :param _TagValue: The tag value that needs to be bound. For the requirements, refer to: https://intl.cloud.tencent.com/document/product/651/13354?from_cn_redirect=1
         :type TagValue: str
-        :param _Resource: [Six-segment resource description](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)
+        :param _Resource: Resource to be associated, represented in the standard six-segment resource format. For the correct format, see https://intl.cloud.tencent.com/document/product/651/89122?from_cn_redirect=1
         :type Resource: str
         """
         self._TagKey = None
@@ -107,15 +107,15 @@ class AttachResourcesTagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceType: Resource service name (the third segment in the six-segment resource description)
+        :param _ServiceType: Service short name, which is the third segment of the six-segment resource format. For more information on the format, see https://intl.cloud.tencent.com/document/product/651/89122?from_cn_redirect=1
         :type ServiceType: str
         :param _ResourceIds: Resource ID array, which can contain up to 50 resources
         :type ResourceIds: list of str
-        :param _TagKey: Tag key
+        :param _TagKey: The tag key that needs to be bound. For the requirements, refer to: https://intl.cloud.tencent.com/document/product/651/13354?from_cn_redirect=1
         :type TagKey: str
-        :param _TagValue: Tag value
+        :param _TagValue: The tag value that needs to be bound. For the requirements, refer to: https://intl.cloud.tencent.com/document/product/651/13354?from_cn_redirect=1
         :type TagValue: str
-        :param _ResourceRegion: Resource region. If resources have the region attribute, this field is required; otherwise, it is optional.
+        :param _ResourceRegion: Region of the resource. This parameter can be left blank if region is not involved. The region must correspond to resources specified by ResourceIds.N. Once the region is specified, all resources specified by ResourceIds.N must locate in this region. Example: ap-beijing.
         :type ResourceRegion: str
         :param _ResourcePrefix: Resource prefix (the part before "/" in the last segment in the six-segment resource description), which is optional for COS buckets but required for other Tencent Cloud resources.
         :type ResourcePrefix: str
@@ -686,6 +686,8 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: Page size. The default value is 0.
         :type Limit: int
+        :param _Category: Tag type. Valid values: Custom: custom tag; System: system tag; All: all tags. Default value: All.
+        :type Category: str
         """
         self._ServiceType = None
         self._ResourcePrefix = None
@@ -693,6 +695,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
         self._ResourceRegion = None
         self._Offset = None
         self._Limit = None
+        self._Category = None
 
     @property
     def ServiceType(self):
@@ -742,6 +745,14 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._ServiceType = params.get("ServiceType")
@@ -750,6 +761,7 @@ class DescribeResourceTagsByResourceIdsRequest(AbstractModel):
         self._ResourceRegion = params.get("ResourceRegion")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1022,9 +1034,9 @@ class DescribeResourceTagsByTagKeysRequest(AbstractModel):
         :type ResourcePrefix: str
         :param _ResourceRegion: Resource region
         :type ResourceRegion: str
-        :param _ResourceIds: Unique resource ID
+        :param _ResourceIds: List of unique resource IDs, which can contain no more than 20 IDs.
         :type ResourceIds: list of str
-        :param _TagKeys: Resource tag key
+        :param _TagKeys: List of resource tag keys, which can contain no more than 20 keys.
         :type TagKeys: list of str
         :param _Limit: Number of entries per page. Default value: 400
         :type Limit: int
@@ -1800,15 +1812,18 @@ class DescribeTagKeysRequest(AbstractModel):
         :type CreateUin: int
         :param _Offset: Data offset. The default value is 0. Must be an integral multiple of the `Limit` parameter.
         :type Offset: int
-        :param _Limit: Page size. The default value is 0.
+        :param _Limit: Number of entries per page. Default: 15; maximum: 1,000.
         :type Limit: int
         :param _ShowProject: Whether to show project
         :type ShowProject: int
+        :param _Category: Tag type. Valid values: Custom: custom tag; System: system tag; All: all tags. Default value: All.
+        :type Category: str
         """
         self._CreateUin = None
         self._Offset = None
         self._Limit = None
         self._ShowProject = None
+        self._Category = None
 
     @property
     def CreateUin(self):
@@ -1842,12 +1857,21 @@ class DescribeTagKeysRequest(AbstractModel):
     def ShowProject(self, ShowProject):
         self._ShowProject = ShowProject
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._CreateUin = params.get("CreateUin")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._ShowProject = params.get("ShowProject")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1946,11 +1970,14 @@ class DescribeTagValuesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: Page size. The default value is 0.
         :type Limit: int
+        :param _Category: Tag type. Valid values: Custom: custom tag; System: system tag; All: all tags. Default value: All.
+        :type Category: str
         """
         self._TagKeys = None
         self._CreateUin = None
         self._Offset = None
         self._Limit = None
+        self._Category = None
 
     @property
     def TagKeys(self):
@@ -1984,12 +2011,21 @@ class DescribeTagValuesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._TagKeys = params.get("TagKeys")
         self._CreateUin = params.get("CreateUin")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2904,9 +2940,12 @@ Leave it empty for the first request.
         :param _MaxResults: Number of data entries to return per page (up to 1,000).
 Default value: 50.
         :type MaxResults: int
+        :param _Category: Tag type. Valid values: Custom: custom tag; System: system tag; All: all tags. Default value: All.
+        :type Category: str
         """
         self._PaginationToken = None
         self._MaxResults = None
+        self._Category = None
 
     @property
     def PaginationToken(self):
@@ -2924,10 +2963,19 @@ Default value: 50.
     def MaxResults(self, MaxResults):
         self._MaxResults = MaxResults
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._PaginationToken = params.get("PaginationToken")
         self._MaxResults = params.get("MaxResults")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3004,10 +3052,13 @@ Leave it empty for the first request.
         :param _MaxResults: Number of data entries to return per page (up to 1,000).
 Default value: 50.
         :type MaxResults: int
+        :param _Category: Tag type. Valid values: Custom: custom tag; System: system tag; All: all tags. Default value: All.
+        :type Category: str
         """
         self._TagKeys = None
         self._PaginationToken = None
         self._MaxResults = None
+        self._Category = None
 
     @property
     def TagKeys(self):
@@ -3033,11 +3084,20 @@ Default value: 50.
     def MaxResults(self, MaxResults):
         self._MaxResults = MaxResults
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._TagKeys = params.get("TagKeys")
         self._PaginationToken = params.get("PaginationToken")
         self._MaxResults = params.get("MaxResults")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3119,10 +3179,13 @@ Default value: 50.
 All tags corresponding to the list of tag keys.
 Maximum length: 20
         :type TagKeys: list of str
+        :param _Category: Tag type. Valid values: Custom: custom tag; System: system tag; All: all tags. Default value: All.
+        :type Category: str
         """
         self._PaginationToken = None
         self._MaxResults = None
         self._TagKeys = None
+        self._Category = None
 
     @property
     def PaginationToken(self):
@@ -3148,11 +3211,20 @@ Maximum length: 20
     def TagKeys(self, TagKeys):
         self._TagKeys = TagKeys
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._PaginationToken = params.get("PaginationToken")
         self._MaxResults = params.get("MaxResults")
         self._TagKeys = params.get("TagKeys")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3713,9 +3785,12 @@ class Tag(AbstractModel):
         :type TagKey: str
         :param _TagValue: Tag value.
         :type TagValue: str
+        :param _Category: Tag type. Valid values: Custom: custom tag; System: system tag; All: all tags. Default value: All.Note: This field may return null, indicating that no value is obtained.
+        :type Category: str
         """
         self._TagKey = None
         self._TagValue = None
+        self._Category = None
 
     @property
     def TagKey(self):
@@ -3733,10 +3808,19 @@ class Tag(AbstractModel):
     def TagValue(self, TagValue):
         self._TagValue = TagValue
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3845,6 +3929,8 @@ class TagResource(AbstractModel):
         :param _ServiceType: Resource type
 Note: this field may return null, indicating that no valid values found.
         :type ServiceType: str
+        :param _Category: Tag type. Valid values: Custom: custom tag; System: system tag.Note: This field may return null, indicating that no value is obtained.
+        :type Category: str
         """
         self._TagKey = None
         self._TagValue = None
@@ -3852,6 +3938,7 @@ Note: this field may return null, indicating that no valid values found.
         self._TagKeyMd5 = None
         self._TagValueMd5 = None
         self._ServiceType = None
+        self._Category = None
 
     @property
     def TagKey(self):
@@ -3901,6 +3988,14 @@ Note: this field may return null, indicating that no valid values found.
     def ServiceType(self, ServiceType):
         self._ServiceType = ServiceType
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
@@ -3909,6 +4004,7 @@ Note: this field may return null, indicating that no valid values found.
         self._TagKeyMd5 = params.get("TagKeyMd5")
         self._TagValueMd5 = params.get("TagValueMd5")
         self._ServiceType = params.get("ServiceType")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3926,9 +4022,8 @@ class TagResourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceList: Six-segment resource description list. Tencent Cloud uses a six-segment value to describe a resource. For more information, see [CAM](https://intl.cloud.tencent.com/document/product/598/67350?from_cn_redirect=1) > Overview > API List > Six-Segment Resource Information.
-For example: ResourceList.1 = qcs::${ServiceType}:${Region}:uin/${Account}:${ResourcePrefix}/${ResourceId}.
-Value range of N: 0–9
+        :param _ResourceList: Cloud resource to be bound, represented in the standard six-segment resource format. For the correct format, see [Resource Description Method](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1) and [Tagging-enabled Resources](https://intl.cloud.tencent.com/document/product/651/89122?from_cn_redirect=1).
+Value range of N: 0-9.
         :type ResourceList: list of str
         :param _Tags: Tag key and value.
 If multiple tags are specified, all such tags will be created and bound to the specified resources.
@@ -4032,10 +4127,13 @@ class TagWithDelete(AbstractModel):
         :type TagValue: str
         :param _CanDelete: If deletion is allowed.
         :type CanDelete: int
+        :param _Category: Tag type. Valid values: Custom: custom tag; System: system tag; All: all tags. Default value: All.Note: This field may return null, indicating that no value is obtained.
+        :type Category: str
         """
         self._TagKey = None
         self._TagValue = None
         self._CanDelete = None
+        self._Category = None
 
     @property
     def TagKey(self):
@@ -4061,11 +4159,20 @@ class TagWithDelete(AbstractModel):
     def CanDelete(self, CanDelete):
         self._CanDelete = CanDelete
 
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
         self._CanDelete = params.get("CanDelete")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

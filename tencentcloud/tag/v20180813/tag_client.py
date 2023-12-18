@@ -349,7 +349,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeTagKeys(self, request):
-        """This API is used to query tag keys in an existing tag list.
+        """This API is used to query tag keys in the list of created tags.
 
         :param request: Request instance for DescribeTagKeys.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagKeysRequest`
@@ -418,7 +418,7 @@ class TagClient(AbstractClient):
 
 
     def DescribeTags(self, request):
-        """This API is used to query existing tag lists.
+        """This API is used to query the list of created tags.
 
         :param request: Request instance for DescribeTags.
         :type request: :class:`tencentcloud.tag.v20180813.models.DescribeTagsRequest`
