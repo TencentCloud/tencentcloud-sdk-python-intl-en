@@ -50,31 +50,38 @@ class AmsClient(AbstractClient):
 
 
     def CreateAudioModerationTask(self, request):
-        """This API is used to submit audio content (such as an audio file or stream URL) for smart moderation. Before using it, you need to log in to the console with the Tencent Cloud root account [to activate AMS](https://console.cloud.tencent.com/cms/audio/package) and adjust the business configuration.<br>
+        """This API is used to submit audio content (such as an audio file or stream URL) for smart moderation. Before using it, you need to log in to the console with the Tencent Cloud root account to [activate AMS](https://console.cloud.tencent.com/cms) and adjust the business configuration. <br>
 
-        ### Feature use instructions
-        - Go to the "[CMS console - AMS](https://console.cloud.tencent.com/cms/audio/package)" to activate AMS.
-        - Default API request rate limit: **20 requests/sec**. When this limit is exceeded, requests for async moderation tasks (audio on demand) will automatically join the queue of requests pending moderation, while an error will be reported for sync moderation tasks (audio live streaming).
+        ### API use instructions
+        - Go to [CMS console - AMS](https://console.cloud.tencent.com/cms) to activate AMS. For initial activation, you can enjoy **10 hours** of free call of the API within one month.
+        - Default limit of API request rate: **20 requests/s**. When this limit is exceeded, requests will automatically join the queue of requests pending moderation for async moderation tasks (audio on demand), while an error will be reported for sync moderation tasks (audio live streaming).
+        - Default limit of concurrent moderation tasks: 10 for audio on demand and 100 for audio live streaming. When this limit is exceeded, requests will automatically queue up for async moderation tasks (audio on demand), while an error will be reported for sync moderation tasks (audio live streaming).
 
         ### API feature description
-        - It can detect audio streams or files for non-compliant content;
-        - You can set the callback address (Callback) to get the detection result (for moderation tasks in progress, the maximum callback time is the configured **segment length + 2s). You can also call the API for querying the audio detection result to poll the detection result;
-        - It can recognize various types of non-compliant content, including vulgarity, abuse, porn, and advertising;
+        - This API can detect audio streams or files for non-compliant content.
+        - You can set the callback address (Callback) to get the detection result (for moderation tasks in progress, the maximum callback time is the configured **segment length + 2s**). You can also call the API for querying the audio detection result to actively poll the detection result.
+        - This API can recognize various types of non-compliant content, including vulgarity, abuse, porn, and advertising.
         - You can submit **up to 10** detection tasks at a time.
 
+
         ### Call description for audio file
-        - Supported audio file size: **< 500 MB**;
-        - Supported audio file duration: **< 1 hour**;
-        - Supported audio bitrate: 128–256 Kbps;
-        - Supported audio file formats: WAV, MP3, AAC, FLAC, AMR, 3GP, M4A, WMA, OGG, and APE;
-        - **When the input is a video file**, the audio track can be extracted from it for audio content moderation.
+        - Supported audio file size: **< 500 MB**
+        - Supported audio file duration: **< 1 hour**
+        - Supported audio bitrate: 128–256 Kbps
+        - Supported audio file formats: WAV, MP3, AAC, FLAC, AMR, 3GP, M4A, WMA, OGG, and APE
+        - **When the input is a video file**, the audio track can be extracted for separate audio content moderation.
 
         ### Call description for audio stream
-        - Supported audio stream duration: **< 3 hours**;
-        - Supported audio bitrate: 128–256 Kbps;
-        - Supported audio stream transfer protocols: RTMP, HTTP, and HTTPS;
-        - Supported audio stream formats: RTP, SRTP, RTMP, RTMPS, MMSH, MMST, HLS, HTTP, TCP, HTTPS, and M3U8;
-        - **When the input is a video stream**, the audio track can be extracted from it for audio content moderation.
+        - Supported audio stream duration: **< 3 hours**
+        - Supported audio bitrate: 128–256 Kbps
+        - Supported audio stream transfer protocols: RTMP, HTTP, and HTTPS
+        - Supported audio stream formats: RTP, SRTP, RTMP, RTMPS, MMSH, MMST, HLS, HTTP, TCP, HTTPS, and M3U8
+        - **When the input is a video stream**, the audio track can be extracted for separate audio content moderation.
+
+        ### Handling description for live streaming interruption
+        - Ensure that the [CancelTask API](https://intl.cloud.tencent.com/document/product/1219/53258?from_cn_redirect=1) is connected.
+        - If the live streaming task is canceled or completed, this API terminates live streaming pulling and exits moderation.
+        - If the live streaming task is not canceled or completed and audio live streaming pushing is interrupted due to a fault, this API continues to try live streaming pulling within 10 minutes. If audio segment data is detected within 10 minutes, this API restores normal moderation. Otherwise, this API terminates pulling and exits moderation. If you still need moderation after pulling terminates, submit a moderation request again.
 
         :param request: Request instance for CreateAudioModerationTask.
         :type request: :class:`tencentcloud.ams.v20201229.models.CreateAudioModerationTaskRequest`
