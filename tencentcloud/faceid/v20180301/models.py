@@ -273,29 +273,23 @@ class ApplyWebVerificationBizTokenIntlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CompareImageBase64: The Base64-encoded string (max 8 MB in size) of the photo to be compared.
-        :type CompareImageBase64: str
         :param _RedirectURL: The web callback URL to redirect to after the verification is completed, including the protocol, hostname, and path. 
-Example: https://www.tencentcloud.com/products/faceid.
 After the verification process is completed, the BizToken of this process will be spliced to the callback URL in the format of https://www.tencentcloud.com/products/faceid?token={BizToken} before redirect.
+Example: https://www.tencentcloud.com/products/faceid.
         :type RedirectURL: str
+        :param _CompareImageBase64: The Base64-encoded string (max 8 MB in size) of the photo to be compared.The Data URI scheme header needs to be removed from the encoded string
+Example: xhBQAAACBjSFJNAAB6****AAAASUVORK5CYII=
+        :type CompareImageBase64: str
         :param _Extra: The passthrough parameter of the business, max 1,000 characters, which will be returned in GetWebVerificationResultIntl.
         :type Extra: str
         :param _Config: The parameter control the page configuration.
+Example: {"AutoSkip": true,"CheckMode": 1,"IdCardType": "HKIDCard"}
         :type Config: :class:`tencentcloud.faceid.v20180301.models.WebVerificationConfigIntl`
         """
-        self._CompareImageBase64 = None
         self._RedirectURL = None
+        self._CompareImageBase64 = None
         self._Extra = None
         self._Config = None
-
-    @property
-    def CompareImageBase64(self):
-        return self._CompareImageBase64
-
-    @CompareImageBase64.setter
-    def CompareImageBase64(self, CompareImageBase64):
-        self._CompareImageBase64 = CompareImageBase64
 
     @property
     def RedirectURL(self):
@@ -304,6 +298,14 @@ After the verification process is completed, the BizToken of this process will b
     @RedirectURL.setter
     def RedirectURL(self, RedirectURL):
         self._RedirectURL = RedirectURL
+
+    @property
+    def CompareImageBase64(self):
+        return self._CompareImageBase64
+
+    @CompareImageBase64.setter
+    def CompareImageBase64(self, CompareImageBase64):
+        self._CompareImageBase64 = CompareImageBase64
 
     @property
     def Extra(self):
@@ -323,8 +325,8 @@ After the verification process is completed, the BizToken of this process will b
 
 
     def _deserialize(self, params):
-        self._CompareImageBase64 = params.get("CompareImageBase64")
         self._RedirectURL = params.get("RedirectURL")
+        self._CompareImageBase64 = params.get("CompareImageBase64")
         self._Extra = params.get("Extra")
         if params.get("Config") is not None:
             self._Config = WebVerificationConfigIntl()
@@ -347,10 +349,13 @@ class ApplyWebVerificationBizTokenIntlResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _VerificationUrl: The token identifying this web-based verification process, valid for 7,200s after issuance. It is required for getting the result after the verification process is completed.
+Example: https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442
         :type VerificationUrl: str
         :param _BizToken: The token for the web-based verification, which is generated using the ApplyWebVerificationBizTokenIntl API.
+Example: 81EEF678-28EE-4759-A82E-6CBBBE6BC442
         :type BizToken: str
         :param _VerificationURL: The verification URL to be opened with a browser to start the verification process.
+Example: https://intl.faceid.qq.com/reflect/?token=81EEF678-28EE-4759-A82E-6CBBBE6BC442
         :type VerificationURL: str
         :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
         :type RequestId: str
