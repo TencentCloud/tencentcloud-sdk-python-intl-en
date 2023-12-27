@@ -26,7 +26,7 @@ FAILEDOPERATION_MAILISREGISTERED = 'FailedOperation.MailIsRegistered'
 # Invalid UIN
 FAILEDOPERATION_UININVALID = 'FailedOperation.UinInvalid'
 
-# 
+# UIN is not a reseller.
 FAILEDOPERATION_UINNOTAGENT = 'FailedOperation.UinNotAgent'
 
 # Internal error.
@@ -95,7 +95,7 @@ INVALIDPARAMETERVALUE_PASSWORDEMPTY = 'InvalidParameterValue.PasswordEmpty'
 # InvalidParameterValue.PhoneNumEmpty
 INVALIDPARAMETERVALUE_PHONENUMEMPTY = 'InvalidParameterValue.PhoneNumEmpty'
 
-# 
+# Invalid UinList. Array length value: 1-50.
 INVALIDPARAMETERVALUE_UINLIST = 'InvalidParameterValue.UinList'
 
 # Missing parameter

@@ -2219,7 +2219,7 @@ class DescribeCustomerInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CustomerUin: List of customer UINs
+        :param _CustomerUin: List of customer UIN. Array length value: 1-20.
         :type CustomerUin: list of int
         """
         self._CustomerUin = None
@@ -2843,7 +2843,7 @@ class QueryCreditByUinListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UinList: User list
+        :param _UinList: List of user. Array length value: 1-50.
         :type UinList: list of int non-negative
         """
         self._UinList = None
@@ -3515,7 +3515,7 @@ class QueryVoucherAmountByUinRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClientUins: Customer UIN list
+        :param _ClientUins: List of customer UIN. Array length value: 1-20.
         :type ClientUins: list of int non-negative
         """
         self._ClientUins = None
@@ -3652,7 +3652,7 @@ class QueryVoucherListByUinRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClientUins: Customer UIN list
+        :param _ClientUins: List of customer UIN. Array length value:1-20.
         :type ClientUins: list of int non-negative
         :param _Status: Voucher status. If this parameter is not passed in, all status will be queried by default. Valid values: `Unused`, `Used`, `Expired`.
         :type Status: str
