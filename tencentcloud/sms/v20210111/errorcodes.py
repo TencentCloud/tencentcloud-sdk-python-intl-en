@@ -47,7 +47,7 @@ FAILEDOPERATION_MISSINGTEMPLATELIST = 'FailedOperation.MissingTemplateList'
 # This template ID has not been submitted for approval or does not exist, so it cannot be modified. Please check whether the `TemplateId` is entered correctly.
 FAILEDOPERATION_MISSINGTEMPLATETOMODIFY = 'FailedOperation.MissingTemplateToModify'
 
-# Individual users cannot use the APIs related to signatures and templates. You can change your account identity type to enterprise as instructed [here](https://intl.cloud.tencent.com/document/product/378/34075?from_cn_redirect=1). The change will take effect in about one hour.
+# Individual users cannot use the APIs related to signatures and templates. You can change your account identity type to enterprise as instructed [here](https://www.tencentcloud.com/zh/document/product/378/37276). The change will take effect in about one hour.
 FAILEDOPERATION_NOTENTERPRISECERTIFICATION = 'FailedOperation.NotEnterpriseCertification'
 
 # Other error. Usually, this is because that the carried parameter is non-compliant. For more information, see the API description. If necessary, you can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
@@ -170,6 +170,9 @@ INVALIDPARAMETERVALUE_INVALIDUSEDMETHOD = 'InvalidParameterValue.InvalidUsedMeth
 # `Limit` parameter check failed.
 INVALIDPARAMETERVALUE_LIMITVERIFYFAIL = 'InvalidParameterValue.LimitVerifyFail'
 
+# 
+INVALIDPARAMETERVALUE_MARKETINGTEMPLATEWITHOUTUNSUBSCRIBE = 'InvalidParameterValue.MarketingTemplateWithoutUnsubscribe'
+
 # `Offset` parameter check failed.
 INVALIDPARAMETERVALUE_OFFSETVERIFYFAIL = 'InvalidParameterValue.OffsetVerifyFail'
 
@@ -251,8 +254,8 @@ UNAUTHORIZEDOPERATION_REQUESTPERMISSIONDENY = 'UnauthorizedOperation.RequestPerm
 # This `SdkAppId` is forbidden to provide services. If necessary, you can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).
 UNAUTHORIZEDOPERATION_SDKAPPIDISDISABLED = 'UnauthorizedOperation.SdkAppIdIsDisabled'
 
-# The service has been suspended due to overdue payments. You can log in to Tencent Cloud to make the payments.
-UNAUTHORIZEDOPERATION_SERIVCESUSPENDDUETOARREARS = 'UnauthorizedOperation.SerivceSuspendDueToArrears'
+# 
+UNAUTHORIZEDOPERATION_SERVICESUSPENDDUETOARREARS = 'UnauthorizedOperation.ServiceSuspendDueToArrears'
 
 # Failed to verify `SmsSdkAppId`. Please check whether [SmsSdkAppId](https://console.cloud.tencent.com/smsv2/app-manage) is under the account associated with the [TencentCloud API key](https://console.cloud.tencent.com/cam/capi).
 UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = 'UnauthorizedOperation.SmsSdkAppIdVerifyFail'
@@ -269,5 +272,5 @@ UNSUPPORTEDOPERATION_CONTAINDOMESTICANDINTERNATIONALPHONENUMBER = 'UnsupportedOp
 # A Global SMS template cannot be used to sent messages to Chinese mainland numbers. Please use a Chinese Mainland SMS template instead.
 UNSUPPORTEDOPERATION_GLOBALTEMPLATETOCHINESEMAINLANDPHONE = 'UnsupportedOperation.GlobalTemplateToChineseMainlandPhone'
 
-# SMS delivery to this region is not supported.
-UNSUPPORTEDOPERATION_UNSUPORTEDREGION = 'UnsupportedOperation.UnsuportedRegion'
+# 
+UNSUPPORTEDOPERATION_UNSUPPORTEDREGION = 'UnsupportedOperation.UnsupportedRegion'
