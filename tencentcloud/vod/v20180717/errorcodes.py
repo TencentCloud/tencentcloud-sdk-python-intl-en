@@ -647,6 +647,9 @@ RESOURCEUNAVAILABLE_MASTERPLAYLIST = 'ResourceUnavailable.MasterPlaylist'
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
 
+# 
+UNAUTHORIZEDOPERATION_DOMAINRECORDNOTVERIFIED = 'UnauthorizedOperation.DomainRecordNotVerified'
+
 # Unknown parameter error.
 UNKNOWNPARAMETER = 'UnknownParameter'
 

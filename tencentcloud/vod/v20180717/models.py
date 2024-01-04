@@ -8647,7 +8647,7 @@ class ApplyUploadRequest(AbstractModel):
         r"""
         :param _MediaType: Media type. For the detailed valid values, please see [Upload Overview](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E6.96.87.E4.BB.B6.E7.B1.BB.E5.9E.8B).
         :type MediaType: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _MediaName: Media name.
         :type MediaName: str
@@ -9208,7 +9208,7 @@ class AttachMediaSubtitlesRequest(AbstractModel):
         :type AdaptiveDynamicStreamingDefinition: int
         :param _SubtitleIds: Unique IDs of the subtitles
         :type SubtitleIds: list of str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._FileId = None
@@ -11737,7 +11737,7 @@ class CloneCDNDomainRequest(AbstractModel):
         :type Domain: str
         :param _ReferenceDomain: The cloned domain.
         :type ReferenceDomain: str
-        :param _SubAppId: VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Domain = None
@@ -11868,7 +11868,7 @@ class CommitUploadRequest(AbstractModel):
         r"""
         :param _VodSessionKey: VOD session, which takes the returned value (VodSessionKey) of the `ApplyUpload` API.
         :type VodSessionKey: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._VodSessionKey = None
@@ -12118,7 +12118,7 @@ class ComposeMediaRequest(AbstractModel):
         :type Tracks: list of MediaTrack
         :param _Output: Information of output media file.
         :type Output: :class:`tencentcloud.vod.v20180717.models.ComposeMediaOutput`
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Canvas: Canvas used for composing video file.
         :type Canvas: :class:`tencentcloud.vod.v20180717.models.Canvas`
@@ -12714,7 +12714,7 @@ Array length limit: 16.
         :type EventHandles: list of str
         :param _ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._EventHandles = None
@@ -13462,7 +13462,7 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Video content analysis template name. Length limit: 64 characters.
         :type Name: str
@@ -13626,7 +13626,7 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Video content recognition template name. Length limit: 64 characters.
         :type Name: str
@@ -13851,7 +13851,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         :param _StreamInfos: Parameter information of output substream for adaptive bitrate streaming. Up to 10 substreams can be output.
 Note: the frame rate of all substreams must be the same; otherwise, the frame rate of the first substream will be used as the output frame rate.
         :type StreamInfos: list of AdaptiveStreamTemplate
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Template name. Length limit: 64 characters.
         :type Name: str
@@ -14048,7 +14048,7 @@ class CreateAnimatedGraphicsTemplateRequest(AbstractModel):
         r"""
         :param _Fps: Video frame rate in Hz. Value range: [1, 30].
         :type Fps: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Width: Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].
 <li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
@@ -14229,7 +14229,7 @@ class CreateCDNDomainRequest(AbstractModel):
         :type Domain: str
         :param _Config: Domain Config
         :type Config: :class:`tencentcloud.vod.v20180717.models.CDNDomainConfig`
-        :param _SubAppId: VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Domain = None
@@ -14313,7 +14313,7 @@ class CreateClassRequest(AbstractModel):
         :type ParentId: int
         :param _ClassName: Category name. Length limit: 1-64 characters.
         :type ClassName: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._ParentId = None
@@ -14407,7 +14407,7 @@ class CreateContentReviewTemplateRequest(AbstractModel):
 <li>ON: yes</li>
 <li>OFF: no</li>
         :type ReviewWallSwitch: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Name of an intelligent content recognition template. Length limit: 64 characters.
         :type Name: str
@@ -14656,7 +14656,7 @@ class CreateEnhanceMediaTemplateRequest(AbstractModel):
         r"""
         :param _Container: Output file encapsulation format, optional values: mp4, flv, hls.
         :type Container: str
-        :param _SubAppId: VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Audio and video quality rebirth template name, length limit: 64 characters.
         :type Name: str
@@ -14848,7 +14848,7 @@ class CreateHeadTailTemplateRequest(AbstractModel):
         r"""
         :param _Name: Template name, length limit is 64 characters.
         :type Name: str
-        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Comment: Template description information, length limit is 256 characters.
         :type Comment: str
@@ -14984,7 +14984,7 @@ class CreateImageProcessingTemplateRequest(AbstractModel):
         :param _Operations: An array of image processing operations. The operations will be performed in the specified order.
 <li>Length limit: 10.</li>
         :type Operations: list of ImageOperation
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: The name of the image processing template. Length limit: 64 characters.
         :type Name: str
@@ -15233,7 +15233,7 @@ Note: The number of rows of the small image will affect the height of the final 
         :param _ColumnCount: The number of columns of small images in the sprite image. 
 Note: The number of columns of the small image will affect the width of the final large image. The maximum width of the large image is 15,000 pixels. The width of the large image is the product of the number of columns of the small image and the width of the small image.
         :type ColumnCount: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Name of an image sprite generating template. Length limit: 64 characters.
         :type Name: str
@@ -15453,7 +15453,7 @@ class CreateJustInTimeTranscodeTemplateRequest(AbstractModel):
         :type Name: str
         :param _VideoConfigure: Video parameter configuration.
         :type VideoConfigure: :class:`tencentcloud.vod.v20180717.models.VideoConfigureInfo`
-        :param _SubAppId: <b>VOD application ID. If you want to access resources in a sub-application, fill this field with the SubAppID; when empty, it means accessing the resources of the default application.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _WatermarkConfigure: Watermark parameter configuration.
         :type WatermarkConfigure: :class:`tencentcloud.vod.v20180717.models.WatermarkConfigureInfo`
@@ -15566,7 +15566,7 @@ class CreatePersonSampleRequest(AbstractModel):
 2. Review: used for inappropriate information recognition; equivalent to `Review.Face`
 3. All: equivalent to 1+2.
         :type Usages: list of str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Description: Description of a sample. Length limit: 1024 characters.
         :type Description: str
@@ -15716,7 +15716,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
         r"""
         :param _Name: Task flow name (up to 20 characters).
         :type Name: str
-        :param _SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Comment: Template description. Length limit: 256 characters.
         :type Comment: str
@@ -15867,7 +15867,7 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?has_map=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Media quality inspect template name.Length limit: 64 characters.
         :type Name: str
@@ -16115,7 +16115,7 @@ class CreateRebuildMediaTemplateRequest(AbstractModel):
         r"""
         :param _Container: The output container format. Valid values: `mp4`, `flv`, `hls`.
         :type Container: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: The remaster template name.
         :type Name: str
@@ -16307,7 +16307,7 @@ class CreateReviewTemplateRequest(AbstractModel):
         r"""
         :param _Labels: The violation labels to use. Valid values: <li>`Porn`: Pornographic content</li> <li>`Terror`: Terrorist content</li> <li>`Moan`: Moaning</li>
         :type Labels: list of str
-        :param _SubAppId: 
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: str
         :param _Name: 
         :type Name: str
@@ -16416,7 +16416,7 @@ class CreateRoundPlayRequest(AbstractModel):
         :param _RoundPlaylist: The files on the list.
 <li>Array length limit: 100.</li>
         :type RoundPlaylist: list of RoundPlayListItemInfo
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: The playlist name (not longer than 64 characters).
         :type Name: str
@@ -16425,7 +16425,7 @@ class CreateRoundPlayRequest(AbstractModel):
         :param _PlayBackMode: Play mode, optional values:
 <li>Loop: Play the playlist in a loop;</li>
 <li>Linear: Play once, stop playing after the playlist is played. </li>
-Default value：Loop。
+Default value: Loop.
         :type PlayBackMode: str
         """
         self._StartTime = None
@@ -16570,7 +16570,7 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 <li>If `SampleType` is `Percent`, sampling will be performed at an interval of the specified percentage.</li>
 <li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>
         :type SampleInterval: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Name of a sampled screencapturing template. Length limit: 64 characters.
         :type Name: str
@@ -16762,7 +16762,7 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Name of a time point screencapturing template. Length limit: 64 characters.
         :type Name: str
@@ -16936,7 +16936,7 @@ class CreateStorageRegionRequest(AbstractModel):
         r"""
         :param _StorageRegion: The region to enable storage in, which must be a storage region supported by VOD.
         :type StorageRegion: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._StorageRegion = None
@@ -17088,7 +17088,7 @@ class CreateSuperPlayerConfigRequest(AbstractModel):
         r"""
         :param _Name: Player configuration name, which can contain up to 64 letters, digits, underscores, and hyphens (such as test_ABC-123) and must be unique under a user.
         :type Name: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _AudioVideoType: Type of audio/video played. Valid values:
 <li>AdaptiveDynamicStreaming</li>
@@ -17308,7 +17308,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
         r"""
         :param _Container: The container format. Valid values: `mp4`, `flv`, `hls`, `mp3`, `flac`, `ogg`, `m4a`, `wav` ( `mp3`, `flac`, `ogg`, `m4a`, and `wav` are audio file formats).
         :type Container: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Transcoding template name. Length limit: 64 characters.
         :type Name: str
@@ -17507,7 +17507,7 @@ class CreateVodDomainRequest(AbstractModel):
 <li>`Global`</li>
 If `AccelerateArea` is not specified, VOD will enable acceleration in or outside Chinese mainland based on the regional information a user has configured with Tencent Cloud.
         :type AccelerateArea: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Domain = None
@@ -17590,7 +17590,7 @@ class CreateWatermarkTemplateRequest(AbstractModel):
 <li>text: text watermark;</li>
 <li>svg: SVG watermark.</li>
         :type Type: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Watermarking template name. Length limit: 64 characters.
         :type Name: str
@@ -17807,7 +17807,7 @@ class CreateWordSamplesRequest(AbstractModel):
         :type Usages: list of str
         :param _Words: Keyword. Array length limit: 100.
         :type Words: list of AiSampleWordInfo
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Usages = None
@@ -17949,7 +17949,7 @@ class DeleteAIAnalysisTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of video content analysis template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -18019,7 +18019,7 @@ class DeleteAIRecognitionTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of video content recognition template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -18089,7 +18089,7 @@ class DeleteAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of adaptive bitrate streaming template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -18159,7 +18159,7 @@ class DeleteAnimatedGraphicsTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of an animated image generating template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -18229,7 +18229,7 @@ class DeleteCDNDomainRequest(AbstractModel):
         r"""
         :param _Domain: Domain.
         :type Domain: str
-        :param _SubAppId: VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Domain = None
@@ -18299,7 +18299,7 @@ class DeleteClassRequest(AbstractModel):
         r"""
         :param _ClassId: Category ID
         :type ClassId: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._ClassId = None
@@ -18369,7 +18369,7 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of an intelligent content recognition template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -18439,7 +18439,7 @@ class DeleteEnhanceMediaTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Enhance Media Template ID
         :type Definition: int
-        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -18509,7 +18509,7 @@ class DeleteHeadTailTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Head Tail Template Number.
         :type Definition: int
-        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -18579,7 +18579,7 @@ class DeleteImageProcessingTemplateRequest(AbstractModel):
         r"""
         :param _Definition: The template ID.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -18649,7 +18649,7 @@ class DeleteImageSpriteTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of an image sprite generating template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -18719,7 +18719,7 @@ class DeleteJustInTimeTranscodeTemplateRequest(AbstractModel):
         r"""
         :param _Name: Template name.
         :type Name: str
-        :param _SubAppId: <b>VOD application ID. If you want to access resources in a sub-application, fill this field with the SubAppID; when empty, it means accessing the resources of the default application.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Name = None
@@ -18789,7 +18789,7 @@ class DeleteMediaRequest(AbstractModel):
         r"""
         :param _FileId: Unique media file ID.
         :type FileId: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _DeleteParts: Content to be deleted. The default value is "[]", which indicates to delete the media file and all its corresponding files generated by video processing.
         :type DeleteParts: list of MediaDeleteItem
@@ -18876,7 +18876,7 @@ class DeletePersonSampleRequest(AbstractModel):
         r"""
         :param _PersonId: ID of a sample.
         :type PersonId: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._PersonId = None
@@ -18946,7 +18946,7 @@ class DeleteProcedureTemplateRequest(AbstractModel):
         r"""
         :param _Name: Task flow name.
         :type Name: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Name = None
@@ -19016,7 +19016,7 @@ class DeleteQualityInspectTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Media quality inspection template ID.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?has_map=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -19086,7 +19086,7 @@ class DeleteRebuildMediaTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Rebuild Media Template ID.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -19156,7 +19156,7 @@ class DeleteReviewTemplateRequest(AbstractModel):
         r"""
         :param _Definition: The unique ID of the moderation template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -19226,7 +19226,7 @@ class DeleteRoundPlayRequest(AbstractModel):
         r"""
         :param _RoundPlayId: The playlist ID, which is unique.
         :type RoundPlayId: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._RoundPlayId = None
@@ -19296,7 +19296,7 @@ class DeleteSampleSnapshotTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of a sampled screencapturing template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -19366,7 +19366,7 @@ class DeleteSnapshotByTimeOffsetTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of a specified time point screencapturing template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -19436,7 +19436,7 @@ class DeleteSuperPlayerConfigRequest(AbstractModel):
         r"""
         :param _Name: Player configuration name.
         :type Name: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Name = None
@@ -19506,7 +19506,7 @@ class DeleteTranscodeTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of transcoding template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -19576,7 +19576,7 @@ class DeleteVodDomainRequest(AbstractModel):
         r"""
         :param _Domain: Domain name to delete from VOD
         :type Domain: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Domain = None
@@ -19646,7 +19646,7 @@ class DeleteWatermarkTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of watermarking template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Definition = None
@@ -19716,7 +19716,7 @@ class DeleteWordSamplesRequest(AbstractModel):
         r"""
         :param _Keywords: Keyword. Array length limit: 100 words.
         :type Keywords: list of str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Keywords = None
@@ -19784,7 +19784,7 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Definitions: Unique ID filter of video content analysis templates. Array length limit: 100.
         :type Definitions: list of int
@@ -19907,7 +19907,7 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Definitions: Unique ID filter of video content recognition templates. Array length limit: 100.
         :type Definitions: list of int
@@ -20030,7 +20030,7 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Definitions: Unique ID filter of transcoding to adaptive bitrate streaming templates. Array length limit: 100.
         :type Definitions: list of int non-negative
@@ -20167,7 +20167,7 @@ class DescribeAllClassRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._SubAppId = None
@@ -20243,7 +20243,7 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Definitions: Unique ID filter of animated image generating templates. Array length limit: 100.
         :type Definitions: list of int non-negative
@@ -20386,7 +20386,7 @@ class DescribeCDNDomainsRequest(AbstractModel):
         :type Limit: int
         :param _Offset: The starting offset of paged pull. Default value: 0.
         :type Offset: int
-        :param _SubAppId: VOD [Subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?from_cn_redirect=1) ID. If you want to access resources in the Subapplication, enter the Subapplication ID in this field; otherwise, you do not need to fill in this field.
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Domains = None
@@ -20514,7 +20514,7 @@ class DescribeCDNStatDetailsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: End time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
         :type EndTime: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _DomainNames: List of domain names. The usage data of up to 20 domain names can be queried at a time. The usage data of all domain names is returned by default.
         :type DomainNames: list of str
@@ -20754,8 +20754,7 @@ class DescribeCDNUsageDataRequest(AbstractModel):
 <li>Flux: traffic in bytes.</li>
 <li>Bandwidth: bandwidth in bps.</li>
         :type DataType: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
-You can set this parameter to 1 to query the total usage of all applications (including the primary application) as an admin (only 1-day granularity is supported).</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _DataInterval: Time granularity of usage data in minutes. Valid values:
 <li>5: 5-minute granularity. The data at 5-minute granularity in the query period will be returned.</li>
@@ -20906,7 +20905,7 @@ class DescribeCdnLogsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: End time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F), which must be after the start time.
         :type EndTime: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Limit: Maximum return results of pulling paginated queries. Default value: 100; maximum value: 1000
         :type Limit: int
@@ -21071,7 +21070,7 @@ class DescribeClientUploadAccelerationUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: The end date for the query in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format). The end date must be later than the start date.
         :type EndTime: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Type: The client upload acceleration type. Valid values:
 <li> AccelerationWithHTTP: Acceleration of HTTP transmission</li>
@@ -21181,7 +21180,7 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Definitions: Unique IDs for filters of an intelligent content recognition template. Array length limit: 100.
         :type Definitions: list of int
@@ -21308,7 +21307,7 @@ class DescribeDailyPlayStatFileListRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
         :type EndTime: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._StartTime = None
@@ -21403,7 +21402,7 @@ class DescribeDrmKeyProviderInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._SubAppId = None
@@ -21476,7 +21475,7 @@ class DescribeEnhanceMediaTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Definitions: List of Enhance media templates. Length limit: 100.
         :type Definitions: list of int
@@ -21615,7 +21614,7 @@ class DescribeFileAttributesRequest(AbstractModel):
         r"""
         :param _FileId: The file ID.
         :type FileId: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _SessionId: The session ID, which is used for de-duplication. If there was a request with the same session ID in the last three days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.
         :type SessionId: str
@@ -21935,7 +21934,7 @@ class DescribeHeadTailTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Definitions: Head Tail template number, array length limit: 100.
         :type Definitions: list of int
@@ -22058,7 +22057,7 @@ class DescribeImageProcessingTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Definitions: The IDs of the templates to query. Length limit: 100.
         :type Definitions: list of int non-negative
@@ -22199,7 +22198,7 @@ class DescribeImageReviewUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: The end date for the query in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732#iso-date-format). The end date must be later than the start date.
         :type EndTime: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._StartTime = None
@@ -22294,7 +22293,7 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Definitions: Unique ID filter of image sprite generating templates. Array length limit: 100.
         :type Definitions: list of int non-negative
@@ -22433,7 +22432,7 @@ class DescribeJustInTimeTranscodeTemplatesRequest(AbstractModel):
         r"""
         :param _Names: Template name filter condition, array length limit: 100.
         :type Names: list of str
-        :param _SubAppId: <b>VOD application ID. If you want to access resources in a sub-application, fill this field with the SubAppID; when empty, it means accessing the resources of the default application.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Type: Template type filter conditions, optional values:
 <li>Preset: system preset task flow template;</li>
@@ -22575,7 +22574,7 @@ class DescribeLicenseUsageDataRequest(AbstractModel):
         :param _LicenseType: The license type, which is DRM by default. Valid values:
 <li> DRM</li>
         :type LicenseType: str
-        :param _SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._StartTime = None
@@ -22682,7 +22681,7 @@ class DescribeMediaInfosRequest(AbstractModel):
         r"""
         :param _FileIds: List of media file IDs. N starts from 0 and can be up to 19.
         :type FileIds: list of str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Filters: The types of information to return. You can specify multiple information types. `N` starts from 0. If you do not specify this parameter, all information will be returned. The supported information types are as follows:
 <li>`basicInfo` (basic information)</li>
@@ -22809,7 +22808,7 @@ class DescribeMediaPlayStatDetailsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: The end time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
         :type EndTime: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Interval: Granularity. Valid values:
 <li>Hour</li>
@@ -22933,7 +22932,7 @@ class DescribeMediaProcessUsageDataRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). The end date must be on or after the start date.
         :type EndTime: str
-        :param _SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Type: Query the video processing task type. Currently supported task types include:
 <li> Transcoding: Normal transcoding</li>
@@ -23058,7 +23057,7 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Type: Type of samples to pull. Valid values:
 <li>UserDefine: custom sample library</li>
@@ -23222,7 +23221,7 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Names: Name filter of task flow template. Array length limit: 100.
         :type Names: list of str
@@ -23359,7 +23358,7 @@ class DescribeQualityInspectTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?has_map=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Definitions: Media quality inspect template list. Length limit: 100.
         :type Definitions: list of int
@@ -23496,7 +23495,7 @@ class DescribeRebuildMediaTemplatesRequest(AbstractModel):
         r"""
         :param _Definitions: List of rebuild media templates.
         :type Definitions: list of int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Type: The template type. Valid values:
 <li>`Preset`</li>
@@ -23635,7 +23634,7 @@ class DescribeReviewDetailsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: End date in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I). The end date must be after the start date.
         :type EndTime: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._StartTime = None
@@ -23754,7 +23753,7 @@ class DescribeReviewTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Definitions: The audit template uniquely identifies the filtering conditions, and the array length limit is: 100.
         :type Definitions: list of int
@@ -23891,7 +23890,7 @@ class DescribeRoundPlaysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _RoundPlayIds: The playlist IDs. Array length limit: 100.
         :type RoundPlayIds: list of str
@@ -24014,7 +24013,7 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Definitions: Unique ID filter of sampled screencapturing templates. Array length limit: 100.
         :type Definitions: list of int non-negative
@@ -24151,7 +24150,7 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Definitions: Unique ID filter of time point screencapturing templates. Array length limit: 100.
         :type Definitions: list of int non-negative
@@ -24288,7 +24287,7 @@ class DescribeStorageDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._SubAppId = None
@@ -24439,8 +24438,7 @@ class DescribeStorageDetailsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: End time in ISO 8601 format, which should be larger than the start time. For more information, please see [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
         :type EndTime: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
-You can set this parameter to 1 to query the total usage of all applications (including the primary application) as an admin.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Interval: Time granularity. Valid values:
 <li>Minute: 5-minute granularity</li>
@@ -24592,7 +24590,7 @@ class DescribeStorageRegionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._SubAppId = None
@@ -24795,7 +24793,7 @@ class DescribeSuperPlayerConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Names: Player configuration name filter. Array length limit: 100.
         :type Names: list of str
@@ -24934,7 +24932,7 @@ class DescribeTaskDetailRequest(AbstractModel):
         r"""
         :param _TaskId: Video processing task ID.
         :type TaskId: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._TaskId = None
@@ -24990,7 +24988,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li>`DescribeFileAttributesTask`: Getting file attributes</li>
 <li> `ReviewAudioVideo`: Moderation</li>
 <li>`ExtractTraceWatermark`: Digital watermark extraction</li>
-<li>`QualityEnhance`：Enhance audio/video</li>
+<li>`QualityEnhance`: Enhance audio/video</li>
         :type TaskType: str
         :param _Status: Task status. Valid values:
 <li>WAITING: waiting;</li>
@@ -25393,7 +25391,7 @@ class DescribeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Status: Filter: Task status. Valid values: WAITING (waiting), PROCESSING (processing), FINISH (completed).
         :type Status: str
@@ -25572,7 +25570,7 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Definitions: Unique ID filter of transcoding templates. Array length limit: 100.
         :type Definitions: list of int
@@ -25745,7 +25743,7 @@ class DescribeVodDomainsRequest(AbstractModel):
         :type Limit: int
         :param _Offset: Page number offset from the beginning of paginated queries. Default value: 0
         :type Offset: int
-        :param _SubAppId: VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Domains = None
@@ -25862,7 +25860,7 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Type: Watermark type filter. Valid values:
 <li>image: image watermark;</li>
@@ -26002,7 +26000,7 @@ class DescribeWordSamplesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Usages: <b>Keyword usage. Valid values:</b>
 1. Recognition.Ocr: OCR-based content recognition
@@ -26697,7 +26695,7 @@ class EditMediaRequest(AbstractModel):
         r"""
         :param _InputType: Input the type of video. The possible values u200bu200bare File and Stream.
         :type InputType: str
-        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _FileInfos: Input video file information, required when InputType is File.
         :type FileInfos: list of EditMediaFileInfo
@@ -27503,7 +27501,7 @@ class EnhanceMediaByTemplateRequest(AbstractModel):
         :type FileId: str
         :param _Definition: Enhance Media Template ID.
         :type Definition: int
-        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _StartTimeOffset: Starting offset time, unit: seconds, leaving it blank means intercepting from the beginning of the video.
         :type StartTimeOffset: float
@@ -28290,7 +28288,7 @@ class ExecuteFunctionRequest(AbstractModel):
         :type FunctionName: str
         :param _FunctionArg: API parameter. For specific parameter format, negotiate with the backend before calling.
         :type FunctionArg: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
@@ -28419,7 +28417,7 @@ class ExtractCopyRightWatermarkRequest(AbstractModel):
         r"""
         :param _Url: The media URL from which the watermark needs to be extracted.
         :type Url: str
-        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _SessionContext: Identifies the source context, which is used to transparently transmit user request information. This field value will be returned in the ExtractCopyRightWatermarkComplete callback and task flow status change callback, with a maximum length of 1000 characters.
         :type SessionContext: str
@@ -28758,7 +28756,7 @@ class ExtractTraceWatermarkRequest(AbstractModel):
         :param _FileId: The ID of the file specified by `Url`.
 <li><font color=red>Note</font>: This parameter is required.</li>
         :type FileId: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _SessionContext: The source context, which is used to pass through user request information. The `ExtractTraceWatermarkComplete` callback and the `ProcedureStateChanged` callback will return the value of this parameter. It can contain up to 1,000 characters.
         :type SessionContext: str
@@ -29690,7 +29688,7 @@ class ForbidMediaDistributionRequest(AbstractModel):
         :type FileIds: list of str
         :param _Operation: forbid: forbids, recover: unblocks.
         :type Operation: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._FileIds = None
@@ -31676,7 +31674,7 @@ class InspectMediaQualityRequest(AbstractModel):
         :type FileId: str
         :param _Definition: Media quality inspect template ID.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?has_map=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _TasksPriority: The priority of the task, the higher the numeric value, the higher the priority. The range is from -10 to 10, and not filled represents 0.
         :type TasksPriority: int
@@ -32243,7 +32241,7 @@ class LiveRealTimeClipRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: End time of stream clipping in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type EndTime: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _IsPersistence: Whether to clip persistently. 0: no, 1: yes. Default: no.
         :type IsPersistence: int
@@ -32251,8 +32249,8 @@ class LiveRealTimeClipRequest(AbstractModel):
         :type ExpireTime: str
         :param _Procedure: VOD task flow processing for video generated by persistent clipping. For more information, please see [Specifying Task Flow After Upload](https://intl.cloud.tencent.com/document/product/266/9759?from_cn_redirect=1). This parameter will be valid only when `IsPersistence` is 1.
         :type Procedure: str
-        :param _ClassId: The ID of the media file’s category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.
-<li>The default value is `0`, which means the “Other” category.</li>
+        :param _ClassId: The ID of the media file's category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.
+<li>The default value is `0`, which means the "Other" category.</li>
 This parameter is valid only if `IsPersistence` is `1`.
         :type ClassId: int
         :param _SourceContext: The source context, which is used to pass through user request information. The [NewFileUpload](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) callback will return the value of this parameter. It can contain up to 250 characters and is valid only if `IsPersistence` is `1`.
@@ -32686,7 +32684,7 @@ class ManageTaskRequest(AbstractModel):
         :param _OperationType: Operation type. Valid value:
 <li>Abort: terminate a task. You can only terminate initiated tasks in `WAITING` status.</li>
         :type OperationType: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._TaskId = None
@@ -37819,7 +37817,7 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of video content analysis template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Video content analysis template name. Length limit: 64 characters.
         :type Name: str
@@ -37983,7 +37981,7 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of video content recognition template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Video content recognition template name. Length limit: 64 characters.
         :type Name: str
@@ -38201,7 +38199,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of adaptive bitrate streaming template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Template name. Length limit: 64 characters.
         :type Name: str
@@ -38369,7 +38367,7 @@ class ModifyAnimatedGraphicsTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of an animated image generating template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Name of an animated image generating template. Length limit: 64 characters.
         :type Name: str
@@ -38550,7 +38548,7 @@ class ModifyCDNDomainConfigRequest(AbstractModel):
         :type Domain: str
         :param _Config: Domain Config.
         :type Config: :class:`tencentcloud.vod.v20180717.models.CDNDomainConfigForUpdate`
-        :param _SubAppId: VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Domain = None
@@ -38632,9 +38630,9 @@ class ModifyClassRequest(AbstractModel):
         r"""
         :param _ClassId: Category ID
         :type ClassId: int
-        :param _ClassName: Category name, which can contain 1–64 characters.
+        :param _ClassName: Category name, which can contain 1-64 characters.
         :type ClassName: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._ClassId = None
@@ -38714,7 +38712,7 @@ class ModifyContentReviewTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of an intelligent content recognition template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Name of an intelligent content recognition template. Length limit: 64 characters.
         :type Name: str
@@ -38906,7 +38904,7 @@ class ModifyDefaultStorageRegionRequest(AbstractModel):
         r"""
         :param _StorageRegion: The default storage region, which must be a region you have storage access to. You can use the `DescribeStorageRegions` API to query such regions.
         :type StorageRegion: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._StorageRegion = None
@@ -38976,7 +38974,7 @@ class ModifyEnhanceMediaTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Enhance Media Template ID.
         :type Definition: int
-        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Audio and video quality rebirth template name, length limit: 64 characters.
         :type Name: str
@@ -39177,7 +39175,7 @@ Note: If the NotificationUrl parameter is provided and the value is an empty str
         :type UploadMediaCompleteEventSwitch: str
         :param _DeleteMediaCompleteEventSwitch: Whether to receive [Video deletion completed](https://www.tencentcloud.com/document/product/266/33952) event notification, the default "OFF" means to ignore the event notification, "ON" means to receive the event notification .
         :type DeleteMediaCompleteEventSwitch: str
-        :param _SubAppId: VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Mode = None
@@ -39277,7 +39275,7 @@ class ModifyHeadTailTemplateRequest(AbstractModel):
         r"""
         :param _Definition: HeadTail template ID.
         :type Definition: int
-        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Template name, length limit is 64 characters. Not passing means not modifying.
         :type Name: str
@@ -39412,7 +39410,7 @@ class ModifyImageSpriteTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of an image sprite generating template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Name of an image sprite generating template. Length limit: 64 characters.
         :type Name: str
@@ -39627,7 +39625,7 @@ class ModifyJustInTimeTranscodeTemplateRequest(AbstractModel):
         r"""
         :param _Name: Template name.
         :type Name: str
-        :param _SubAppId: <b>VOD application ID. If you want to access resources in a sub-application, fill this field with the SubAppID; when empty, it means accessing the resources of the default application.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _VideoConfigure: Video parameter configuration.
         :type VideoConfigure: :class:`tencentcloud.vod.v20180717.models.VideoConfigureInfoForUpdate`
@@ -39737,7 +39735,7 @@ class ModifyMediaInfoRequest(AbstractModel):
         r"""
         :param _FileId: Unique media file ID.
         :type FileId: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Media filename, which can contain up to 64 characters.
         :type Name: str
@@ -40024,7 +40022,7 @@ class ModifyMediaStorageClassRequest(AbstractModel):
 <li>ARCHIVE</li>
 <li>DEEP_ARCHIVE</li>
         :type StorageClass: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _RestoreTier: The retrieval mode. When switching files from DEEP ARCHIVE or ARCHIVE to STANDARD, you need to specify the retrieval mode. For details, see [Data retrieval and retrieval mode](https://intl.cloud.tencent.com/document/product/266/43051#data-retrieval-and-retrieval-mode.3Ca-id.3D.22retake.22.3E.3C.2Fa.3E).
 If the current storage class is ARCHIVE, the valid values for this parameter are as follows:
@@ -40123,7 +40121,7 @@ class ModifyPersonSampleRequest(AbstractModel):
         r"""
         :param _PersonId: ID of a sample.
         :type PersonId: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Name. Length limit: 128 characters.
         :type Name: str
@@ -40292,7 +40290,7 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Media quality inspection template ID.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://www.tencentcloud.com/zh/document/product/266/33987?has_map=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Media quality inspection template name.Length limit: 64 characters.
         :type Name: str
@@ -40538,7 +40536,7 @@ class ModifyRebuildMediaTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Rebuild Media Template ID.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: str
         :param _Name: Rebuild Media Template Name.
         :type Name: str
@@ -40728,7 +40726,7 @@ class ModifyReviewTemplateRequest(AbstractModel):
         r"""
         :param _Definition: 
         :type Definition: int
-        :param _SubAppId: 
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: 
         :type Name: str
@@ -40834,7 +40832,7 @@ class ModifyRoundPlayRequest(AbstractModel):
         r"""
         :param _RoundPlayId: The playlist ID, which is unique.
         :type RoundPlayId: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _StartTime: The playback start time, in [ISO 8601 date format](https://intl.cloud.tencent.com/document/product/266/11732?lang=en&pg=).
         :type StartTime: str
@@ -40986,7 +40984,7 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of a sampled screencapturing template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Name of a sampled screencapturing template. Length limit: 64 characters.
         :type Name: str
@@ -41186,7 +41184,7 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of a specified time point screencapturing template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Name of a time point screencapturing template. Length limit: 64 characters.
         :type Name: str
@@ -41356,7 +41354,7 @@ class ModifySubAppIdInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Subapplication name. Length limit: 40 characters.
         :type Name: str
@@ -41438,13 +41436,13 @@ class ModifySubAppIdStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Status: Subapplication status. Valid values:
 <li>On: enabled</li>
 <li>Off: disabled</li>
 <li>Destroyed: terminated</li>
-You cannot enable a subapplication whose status is “Destroying”. You can enable it after it was terminated.
+You cannot enable a subapplication whose status is "Destroying". You can enable it after it was terminated.
         :type Status: str
         """
         self._SubAppId = None
@@ -41514,7 +41512,7 @@ class ModifySuperPlayerConfigRequest(AbstractModel):
         r"""
         :param _Name: Player configuration name.
         :type Name: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _AudioVideoType: Type of audio/video played. Valid values:
 <li>AdaptiveDynamicStreaming</li>
@@ -41719,7 +41717,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of transcoding template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Container: The container format. Valid values: `mp4`, `flv`, `hls`, `mp3`, `flac`, `ogg`, `m4a`, `wav` ( `mp3`, `flac`, `ogg`, `m4a`, and `wav` are audio file formats).
         :type Container: str
@@ -41918,7 +41916,7 @@ class ModifyVodDomainAccelerateConfigRequest(AbstractModel):
 <li>`Enabled`: enable</li>
 <li>`Disabled`: disable</li>
         :type Status: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Domain = None
@@ -42008,7 +42006,7 @@ class ModifyVodDomainConfigRequest(AbstractModel):
         r"""
         :param _Domain: Domain name
         :type Domain: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _RefererAuthPolicy: [Referer hotlink protection](https://intl.cloud.tencent.com/document/product/266/14046?from_cn_redirect=1) policy
         :type RefererAuthPolicy: :class:`tencentcloud.vod.v20180717.models.RefererAuthPolicy`
@@ -42120,7 +42118,7 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
         r"""
         :param _Definition: Unique ID of watermarking template.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Name: Watermarking template name. Length limit: 64 characters.
         :type Name: str
@@ -42313,7 +42311,7 @@ class ModifyWordSampleRequest(AbstractModel):
         r"""
         :param _Keyword: Keyword. Length limit: 128 characters.
         :type Keyword: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Usages: <b>Keyword usage. Valid values:</b>
 1. Recognition.Ocr: OCR-based content recognition
@@ -45454,7 +45452,7 @@ class ProcessMediaByProcedureRequest(AbstractModel):
         :type FileId: str
         :param _ProcedureName: [Task flow template](https://intl.cloud.tencent.com/document/product/266/11700?from_cn_redirect=1#.E4.BB.BB.E5.8A.A1.E6.B5.81.E6.A8.A1.E6.9D.BF) name.
         :type ProcedureName: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: -10-10. If this parameter is left empty, 0 will be used.
         :type TasksPriority: int
@@ -45634,7 +45632,7 @@ class ProcessMediaByUrlRequest(AbstractModel):
         :type SessionContext: str
         :param _SessionId: Used to identify duplicate requests. After you send a request, if any request with the same `SessionId` has already been sent in the last three days (72 hours), an error message will be returned. `SessionId` contains up to 50 characters. If this parameter is not carried or is an empty string, no deduplication will be performed.
         :type SessionId: str
-        :param _SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._InputInfo = None
@@ -45806,7 +45804,7 @@ class ProcessMediaRequest(AbstractModel):
         r"""
         :param _FileId: Media file ID, i.e., the globally unique ID of a file in VOD assigned by the VOD backend after successful upload. This field can be obtained through the [video upload completion event notification](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) or [VOD Console](https://console.cloud.tencent.com/vod/media).
         :type FileId: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _MediaProcessTask: Parameter of video processing task.
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
@@ -46341,7 +46339,7 @@ class PullEventsRequest(AbstractModel):
         r"""
         :param _ExtInfo: Reserved field for special purposes.
         :type ExtInfo: str
-        :param _SubAppId: [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID in VOD. If you need to access a resource in a subapplication, enter the subapplication ID in this field; otherwise, leave it empty.
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._ExtInfo = None
@@ -46433,7 +46431,7 @@ For more information about supported extensions, see [Media types](https://intl.
         :param _MediaType: The file format (extension). For information about supported extensions, see [Media Types](https://intl.cloud.tencent.com/document/product/266/9760?from_cn_redirect=1#.E5.AA.92.E4.BD.93.E7.B1.BB.E5.9E.8B).
 If you do not specify this parameter or pass in an empty string, the file obtained will have the same extension as `MediaUrl`.
         :type MediaType: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _MediaName: Media name.
         :type MediaName: str
@@ -46834,7 +46832,7 @@ class PushUrlCacheRequest(AbstractModel):
         r"""
         :param _Urls: List of prefetched URLs. Up to 20 ones can be specified at a time.
         :type Urls: list of str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Urls = None
@@ -48087,7 +48085,7 @@ class RebuildMediaByTemplateRequest(AbstractModel):
         :type FileId: str
         :param _Definition: Rebuild Media Template ID.
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: str
         :param _StartTimeOffset: The start offset (seconds). If you do not specify this, the segment will start from the beginning of the video.
         :type StartTimeOffset: float
@@ -48323,7 +48321,7 @@ class RebuildMediaRequest(AbstractModel):
         r"""
         :param _FileId: The file ID.
         :type FileId: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _StartTimeOffset: The start offset (seconds). If you do not specify this, the segment will start from the beginning of the video.
         :type StartTimeOffset: float
@@ -50579,7 +50577,7 @@ class RefreshUrlCacheRequest(AbstractModel):
         r"""
         :param _Urls: The URLs to purge. You can specify up to 20 URLs per request.
         :type Urls: list of str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Urls = None
@@ -50765,7 +50763,7 @@ class RemoveWatermarkRequest(AbstractModel):
         r"""
         :param _FileId: The ID of the media file.
         :type FileId: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _SessionId: The session ID, which is used for de-duplication. If there was a request with the same session ID in the last seven days, an error will be returned for the current request. The session ID can contain up to 50 characters. If you do not pass this parameter or pass in an empty string, duplicate sessions will not be identified.
         :type SessionId: str
@@ -51136,7 +51134,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
         r"""
         :param _Name: Task flow name
         :type Name: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _Comment: Template description. Length limit: 256 characters.
         :type Comment: str
@@ -51429,7 +51427,7 @@ class RestoreMediaRequest(AbstractModel):
         r"""
         :param _FileIds: Media file unique identifier list, maximum length: 100.
         :type FileIds: list of str
-        :param _SubAppId: The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _RestoreDay: The accessible duration of the unfrozen temporary media files must be greater than 0, and the unit is "days".
         :type RestoreDay: int
@@ -51637,7 +51635,7 @@ class ReviewAudioVideoRequest(AbstractModel):
         r"""
         :param _FileId: The media file ID, which is assigned after upload and uniquely identifies a file in VOD. You can view the ID of a file in the [NewFileUpload](https://www.tencentcloud.com/document/product/266/33950) callback or in the [VOD console](https://console.tencentcloud.com/vod/media).
         :type FileId: str
-        :param _SubAppId: <b>The VOD [subapplication](https://www.tencentcloud.com/document/product/266/33987) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _ReviewContents: The type of moderated content. Valid values:
 <li>`Media`: The original audio/video.</li>
@@ -52291,7 +52289,7 @@ class ReviewImageRequest(AbstractModel):
         :type FileId: str
         :param _Definition: The image moderation template ID. Valid values: <li>10: The preset template, whose violation labels are `Porn` and `Terror`.</li>
         :type Definition: int
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>	
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._FileId = None
@@ -53510,7 +53508,7 @@ class SearchMediaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _FileIds: File ID set. Any element in the set can be matched.
 <li>Array length limit: 10.</li>
@@ -54084,7 +54082,7 @@ class SetDrmKeyProviderInfoRequest(AbstractModel):
         r"""
         :param _SDMCInfo: The DRM key information provided by SDMC.
         :type SDMCInfo: :class:`tencentcloud.vod.v20180717.models.SDMCDrmKeyProviderInfo`
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._SDMCInfo = None
@@ -54160,7 +54158,7 @@ class SetVodDomainCertificateRequest(AbstractModel):
 <li>Set: Set the certificate required for the domain name HTTPS;</li>
 <li>Clear: Clear the domain name HTTPS configuration, after clearing, the domain name cannot support </li>
         :type Operation: str
-        :param _SubAppId: <b>VOD [Subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you want to access resources in the Subapplication, enter the Subapplication ID in this field; otherwise, you do not need to fill in this field.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _CertID: [Tencent Cloud SSL](https://intl.cloud.tencent.com/document/product/400/7572?from_cn_redirect=1) uploaded certificate ID. No need to fill in this field when clearing domain HTTPS configuration
         :type CertID: str
@@ -54300,7 +54298,7 @@ class SimpleHlsClipRequest(AbstractModel):
         r"""
         :param _Url: URL of the HLS video in VOD that needs to be clipped.
         :type Url: str
-        :param _SubAppId: <b>The VOD [subapplication](https://intl.cloud.tencent.com/document/product/266/14574?from_cn_redirect=1) ID. If you need to access a resource in a subapplication, set this parameter to the subapplication ID; otherwise, leave it empty.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _StartTimeOffset: Start offset time of clipping in seconds. Default value: 0, which means to clip from the beginning of the video. A negative number indicates how many seconds from the end of the video clipping will start at. For example, -10 means that clipping will start at the 10th second from the end.
         :type StartTimeOffset: float
@@ -54312,8 +54310,8 @@ class SimpleHlsClipRequest(AbstractModel):
         :type ExpireTime: str
         :param _Procedure: The task flow to execute on the video clipped for persistent storage. For details, see [Upload from Server](https://intl.cloud.tencent.com/document/product/266/33912). This parameter is valid only if `IsPersistence` is 1.
         :type Procedure: str
-        :param _ClassId: The ID of the media file’s category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.
-<li>The default value is `0`, which means the “Other” category.</li>
+        :param _ClassId: The ID of the media file's category. You can use the [CreateClass](https://intl.cloud.tencent.com/document/product/266/7812?from_cn_redirect=1) API to create a category and get the category ID.
+<li>The default value is `0`, which means the "Other" category.</li>
 This parameter is valid only if `IsPersistence` is `1`.
         :type ClassId: int
         :param _SourceContext: The source context, which is used to pass through user request information. The [NewFileUpload](https://intl.cloud.tencent.com/document/product/266/7830?from_cn_redirect=1) callback will return the value of this parameter. It can contain up to 250 characters and is valid only if `IsPersistence` is `1`.
@@ -55072,7 +55070,7 @@ class SplitMediaRequest(AbstractModel):
         :type FileId: str
         :param _Segments: Video splitting task information list, supporting up to 100 splitting messages at the same time.
         :type Segments: list of SplitMediaTaskConfig
-        :param _SubAppId: </b>VOD Application ID. If you want to access resources in a sub-app, fill in this field with the sub-app ID; otherwise, don't fill in this field.</b>
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         :param _SessionContext: Identifies the source context, which is used to transparently transmit user request information. This field value will be returned in the SplitMediaComplete callback and task flow status change callback, with a maximum length of 1000 characters.
         :type SessionContext: str
@@ -55583,7 +55581,7 @@ class StartCDNDomainRequest(AbstractModel):
         :type Domain: str
         :param _Operation: Domain name operation, value: <li>start: enable;</li> <li>stop: disable. </li>
         :type Operation: str
-        :param _SubAppId: VOD[Subapplication](/document/product/266/14574) ID。If you want to access resources in a Subapplication, fill this field with the Subapplication ID; otherwise, you don't need to fill in this field.
+        :param _SubAppId: <b>The VOD [application](https://intl.cloud.tencent.com/document/product/266/14574) ID. For customers who activate VOD service from December 25, 2023, if they want to access resources in a VOD application (whether it's the default application or a newly created one), they must fill in this field with the application ID.</b>
         :type SubAppId: int
         """
         self._Domain = None

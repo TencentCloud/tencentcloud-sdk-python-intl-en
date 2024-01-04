@@ -415,7 +415,6 @@ class SmsClient(AbstractClient):
         """This API is used to send SMS verification codes, notification, or marketing messages to users.
         >- Note: Because of the improved security of **TencentCloud API 3.0**, **API authentication** is more complicated. We recommend you use the Tencent Cloud SMS service with the [SDK](https://intl.cloud.tencent.com/document/product/382/43193?from_cn_redirect=1).
         >- Note: You can run this API directly in [API 3.0 Explorer](https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2021-01-11&Action=SendSms), which eliminates the signature calculation steps. After it is executed successfully, API Explorer can **automatically generate** SDK code samples.
-        >- Note: This API is currently on the 2021-01-11 version. If you are still using the [2019-07-11 version](https://intl.cloud.tencent.com/document/product/382/38778?from_cn_redirect=1), we recommend you use this latest version. For version differences, see [Version description](https://intl.cloud.tencent.com/document/product/382/63195?from_cn_redirect=1#.E7.89.88.E6.9C.AC.E6.8F.8F.E8.BF.B0).
 
         :param request: Request instance for SendSms.
         :type request: :class:`tencentcloud.sms.v20210111.models.SendSmsRequest`

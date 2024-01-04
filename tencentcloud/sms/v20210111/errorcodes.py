@@ -194,7 +194,7 @@ INVALIDPARAMETERVALUE_SIGNNAMELENGTHTOOLONG = 'InvalidParameterValue.SignNameLen
 # The parameter format of the verification code template is incorrect. For a verification code template, only 0–6 digits can be passed in as the template variable.
 INVALIDPARAMETERVALUE_TEMPLATEPARAMETERFORMATERROR = 'InvalidParameterValue.TemplateParameterFormatError'
 
-# There are more than 12 characters in a single template variable. There is no upper limit of variable characters for enterprise users. You can change your account identity type to enterprise as instructed [here](https://intl.cloud.tencent.com/document/product/378/34075?from_cn_redirect=1). The limit change will take effect in about one hour.
+# There are more than 12 characters in a single template variable. There is no upper limit of variable characters for enterprise users. You can change your account identity type to enterprise as instructed [here](https://www.tencentcloud.com/zh/document/product/378/37276). The limit change will take effect in about one hour.
 INVALIDPARAMETERVALUE_TEMPLATEPARAMETERLENGTHLIMIT = 'InvalidParameterValue.TemplateParameterLengthLimit'
 
 # The template content contains sensitive words. For more information, please see [Body Template Review Standards](https://intl.cloud.tencent.com/document/product/382/39023?from_cn_redirect=1).
