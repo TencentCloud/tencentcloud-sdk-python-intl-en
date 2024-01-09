@@ -20,6 +20,9 @@ FAILEDOPERATION = 'FailedOperation'
 # Operation failed.
 FAILEDOPERATION_CHECKIFSUPPORTPODSTRETCH = 'FailedOperation.CheckIfSupportPodStretch'
 
+# Failed to fetch resource tag.
+FAILEDOPERATION_DESCRIBERESOURCETAGSFAILED = 'FailedOperation.DescribeResourceTagsFailed'
+
 # Duplicate order. Please check the EMR console.
 FAILEDOPERATION_DUPLICATEORDERNOTALLOWED = 'FailedOperation.DuplicateOrderNotAllowed'
 
@@ -29,13 +32,13 @@ FAILEDOPERATION_GETCAMROLEFAILED = 'FailedOperation.GetCamRoleFailed'
 # Failed to call the CAM service.
 FAILEDOPERATION_GETCAMSERVERFAILED = 'FailedOperation.GetCamServerFailed'
 
-# 
+# Failed to fetch the specifications of the CVM.
 FAILEDOPERATION_GETCVMCONFIGQUOTAFAILED = 'FailedOperation.GetCvmConfigQuotaFailed'
 
-# 
+# Failed to call the CVM service.
 FAILEDOPERATION_GETCVMSERVERFAILED = 'FailedOperation.GetCvmServerFailed'
 
-# 
+# Failed to call the price inquiry center service.
 FAILEDOPERATION_GETTRADESERVERFAILED = 'FailedOperation.GetTradeServerFailed'
 
 # Operation failed. The pods are not supported.
@@ -76,6 +79,9 @@ INTERNALERROR_CONFIGCGWERROR = 'InternalError.ConfigCgwError'
 
 # An error occurred while calling another service API.
 INTERNALERROR_CVMERROR = 'InternalError.CvmError'
+
+# Database query error.
+INTERNALERROR_DBQUERYEXCEPTION = 'InternalError.DBQueryException'
 
 # Error in calling EKS.
 INTERNALERROR_EKSERROR = 'InternalError.EKSError'
@@ -119,6 +125,9 @@ INVALIDPARAMETER_DISPLAYSTRATEGYNOTMATCH = 'InvalidParameter.DisplayStrategyNotM
 # Parameter error.
 INVALIDPARAMETER_HALESSMASTERCOUNT = 'InvalidParameter.HALessMasterCount'
 
+# Impala query parameter error.
+INVALIDPARAMETER_IMPALAQUERYEXCEPTION = 'InvalidParameter.ImpalaQueryException'
+
 # The number of common nodes is invalid.
 INVALIDPARAMETER_INCORRECTCOMMONCOUNT = 'InvalidParameter.IncorrectCommonCount'
 
@@ -152,6 +161,12 @@ INVALIDPARAMETER_INVALIDCOMPONENT = 'InvalidParameter.InvalidComponent'
 # The number of core nodes is invalid.
 INVALIDPARAMETER_INVALIDCORECOUNT = 'InvalidParameter.InvalidCoreCount'
 
+# Parameter error.
+INVALIDPARAMETER_INVALIDCOREDISKTYPE = 'InvalidParameter.InvalidCoreDiskType'
+
+# 
+INVALIDPARAMETER_INVALIDCOSFILEURI = 'InvalidParameter.InvalidCosFileURI'
+
 # The count must be greater than 0.
 INVALIDPARAMETER_INVALIDCOUNT = 'InvalidParameter.InvalidCount'
 
@@ -164,6 +179,9 @@ INVALIDPARAMETER_INVALIDCUSTOMIZEDPODPARAM = 'InvalidParameter.InvalidCustomized
 # Conflict between`DependService` and `EnableKerberos`.
 INVALIDPARAMETER_INVALIDDEPENDSERVICEANDENABLEKERBEROSCONFLICT = 'InvalidParameter.InvalidDependServiceAndEnableKerberosConflict'
 
+# Invalid number of disks.
+INVALIDPARAMETER_INVALIDDISKNUM = 'InvalidParameter.InvalidDiskNum'
+
 # Invalid disk size.
 INVALIDPARAMETER_INVALIDDISKSIZE = 'InvalidParameter.InvalidDiskSize'
 
@@ -172,6 +190,9 @@ INVALIDPARAMETER_INVALIDEKSINSTANCE = 'InvalidParameter.InvalidEksInstance'
 
 # Invalid `CustomConfig`.
 INVALIDPARAMETER_INVALIDEXTENDFIELD = 'InvalidParameter.InvalidExtendField'
+
+# Invalid filter parameter.
+INVALIDPARAMETER_INVALIDFILTERKEY = 'InvalidParameter.InvalidFilterKey'
 
 # Invalid instance billing mode.
 INVALIDPARAMETER_INVALIDINSTANCECHARGETYPE = 'InvalidParameter.InvalidInstanceChargeType'
@@ -262,6 +283,9 @@ INVALIDPARAMETER_INVALIDSOFTWARENAME = 'InvalidParameter.InvalidSoftWareName'
 
 # The software version is invalid.
 INVALIDPARAMETER_INVALIDSOFTWAREVERSION = 'InvalidParameter.InvalidSoftWareVersion'
+
+# Invalid `StartTime` or `EndTime` parameter.
+INVALIDPARAMETER_INVALIDSTARTTIMEORENDTIME = 'InvalidParameter.InvalidStartTimeOrEndTime'
 
 # Invalid subnet ID.
 INVALIDPARAMETER_INVALIDSUBNETID = 'InvalidParameter.InvalidSubnetId'
@@ -374,6 +398,9 @@ RESOURCESSOLDOUT_CBSSOLDOUT = 'ResourcesSoldOut.CbsSoldOut'
 # CVM instances have been sold out.
 RESOURCESSOLDOUT_CVMSOLDOUT = 'ResourcesSoldOut.CvmSoldOut'
 
+# The `appId` is inconsistent.
+UNAUTHORIZEDOPERATION_APPIDMISMATCHED = 'UnauthorizedOperation.AppIdMismatched'
+
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION_CHECKCAMAUTH = 'UnauthorizedOperation.CheckCamAuth'
 
@@ -382,6 +409,9 @@ UNKNOWNPARAMETER = 'UnknownParameter'
 
 # Unsupported operation.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
+
+# This function is included in the allowlist.
+UNSUPPORTEDOPERATION_NOTINWHITELIST = 'UnsupportedOperation.NotInWhiteList'
 
 # This operation is not supported.
 UNSUPPORTEDOPERATION_SERVICENOTSUPPORT = 'UnsupportedOperation.ServiceNotSupport'

@@ -369,6 +369,185 @@ class ApplicationStatics(AbstractModel):
         
 
 
+class AutoScaleRecord(AbstractModel):
+    """Elastic Scaling Record
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyName: Name of the scale-in or scale-out rule.
+        :type StrategyName: str
+        :param _ScaleAction: "SCALE_OUT" and "SCALE_IN", representing expansion and reduction respectively.
+        :type ScaleAction: str
+        :param _ActionStatus: The values are "SUCCESS", "FAILED", "PART_SUCCESS", "IN_PROCESS", which indicate success, failure, partial success, and in-progress, respectively.
+        :type ActionStatus: str
+        :param _ActionTime: Process initiation time.
+        :type ActionTime: str
+        :param _ScaleInfo: Description related to auto-scaling.
+        :type ScaleInfo: str
+        :param _ExpectScaleNum: Valid only when ScaleAction is SCALE_OUT.
+        :type ExpectScaleNum: int
+        :param _EndTime: Process termination time.
+        :type EndTime: str
+        :param _StrategyType: Policy type. Valid values: 1 (load-based scaling), 2 (time-based scaling).
+        :type StrategyType: int
+        :param _SpecInfo: Specification information used during scale-out.
+        :type SpecInfo: str
+        :param _CompensateFlag: Compensatory scale-out. Valid values: 0 (disabled), 1 (enabled).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CompensateFlag: int
+        :param _CompensateCount: Number of compensations
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CompensateCount: int
+        :param _RetryCount: 
+        :type RetryCount: int
+        :param _RetryInfo: 
+        :type RetryInfo: str
+        """
+        self._StrategyName = None
+        self._ScaleAction = None
+        self._ActionStatus = None
+        self._ActionTime = None
+        self._ScaleInfo = None
+        self._ExpectScaleNum = None
+        self._EndTime = None
+        self._StrategyType = None
+        self._SpecInfo = None
+        self._CompensateFlag = None
+        self._CompensateCount = None
+        self._RetryCount = None
+        self._RetryInfo = None
+
+    @property
+    def StrategyName(self):
+        return self._StrategyName
+
+    @StrategyName.setter
+    def StrategyName(self, StrategyName):
+        self._StrategyName = StrategyName
+
+    @property
+    def ScaleAction(self):
+        return self._ScaleAction
+
+    @ScaleAction.setter
+    def ScaleAction(self, ScaleAction):
+        self._ScaleAction = ScaleAction
+
+    @property
+    def ActionStatus(self):
+        return self._ActionStatus
+
+    @ActionStatus.setter
+    def ActionStatus(self, ActionStatus):
+        self._ActionStatus = ActionStatus
+
+    @property
+    def ActionTime(self):
+        return self._ActionTime
+
+    @ActionTime.setter
+    def ActionTime(self, ActionTime):
+        self._ActionTime = ActionTime
+
+    @property
+    def ScaleInfo(self):
+        return self._ScaleInfo
+
+    @ScaleInfo.setter
+    def ScaleInfo(self, ScaleInfo):
+        self._ScaleInfo = ScaleInfo
+
+    @property
+    def ExpectScaleNum(self):
+        return self._ExpectScaleNum
+
+    @ExpectScaleNum.setter
+    def ExpectScaleNum(self, ExpectScaleNum):
+        self._ExpectScaleNum = ExpectScaleNum
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def StrategyType(self):
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def SpecInfo(self):
+        return self._SpecInfo
+
+    @SpecInfo.setter
+    def SpecInfo(self, SpecInfo):
+        self._SpecInfo = SpecInfo
+
+    @property
+    def CompensateFlag(self):
+        return self._CompensateFlag
+
+    @CompensateFlag.setter
+    def CompensateFlag(self, CompensateFlag):
+        self._CompensateFlag = CompensateFlag
+
+    @property
+    def CompensateCount(self):
+        return self._CompensateCount
+
+    @CompensateCount.setter
+    def CompensateCount(self, CompensateCount):
+        self._CompensateCount = CompensateCount
+
+    @property
+    def RetryCount(self):
+        return self._RetryCount
+
+    @RetryCount.setter
+    def RetryCount(self, RetryCount):
+        self._RetryCount = RetryCount
+
+    @property
+    def RetryInfo(self):
+        return self._RetryInfo
+
+    @RetryInfo.setter
+    def RetryInfo(self, RetryInfo):
+        self._RetryInfo = RetryInfo
+
+
+    def _deserialize(self, params):
+        self._StrategyName = params.get("StrategyName")
+        self._ScaleAction = params.get("ScaleAction")
+        self._ActionStatus = params.get("ActionStatus")
+        self._ActionTime = params.get("ActionTime")
+        self._ScaleInfo = params.get("ScaleInfo")
+        self._ExpectScaleNum = params.get("ExpectScaleNum")
+        self._EndTime = params.get("EndTime")
+        self._StrategyType = params.get("StrategyType")
+        self._SpecInfo = params.get("SpecInfo")
+        self._CompensateFlag = params.get("CompensateFlag")
+        self._CompensateCount = params.get("CompensateCount")
+        self._RetryCount = params.get("RetryCount")
+        self._RetryInfo = params.get("RetryInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class COSSettings(AbstractModel):
     """COS-related configuration
 
@@ -705,6 +884,52 @@ Note: This field may return `null`, indicating that no valid values can be obtai
         self._Service = params.get("Service")
         self._ClusterId = params.get("ClusterId")
         self._ClusterStatus = params.get("ClusterStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterIDToFlowID(AbstractModel):
+    """Mapping of cluster ID and process ID
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: Cluster IDNote: This field may return null, indicating that no valid values can be obtained.
+        :type ClusterId: str
+        :param _FlowId: Process ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FlowId: int
+        """
+        self._ClusterId = None
+        self._FlowId = None
+
+    @property
+    def ClusterId(self):
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._FlowId = params.get("FlowId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1725,19 +1950,21 @@ class CreateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductId: The product ID. Different product IDs represent different EMR product versions. Valid values:
-<li>16: EMR v2.3.0</li>
-<li>20: EMR v2.5.0</li>
-<li>25: EMR v3.1.0</li>
-<li>27: Kafka v1.0.0</li>
-<li>30: EMR v2.6.0</li>
-<li>33: EMR v3.2.1</li>
-<li>34: EMR v3.3.0</li>
-<li>36: StarRocks v1.0.0</li>
-<li>37: EMR v3.4.0</li>
-<li>38: EMR v2.7.0</li>
-<li>39: StarRocks v1.1.0</li>
-<li>41: Druid v1.1.0</li>
+        :param _ProductId: Product ID. Different product IDs stand for different EMR product versions. Valid range:
+51: STARROCKS-V1.4.0
+54: STARROCKS-V2.0.0
+27: KAFKA-V1.0.0
+50: KAFKA-V2.0.0
+16: EMR-V2.3.0
+20: EMR-V2.5.0
+30: EMR-V2.6.0
+38: EMR-V2.7.0
+25: EMR-V3.1.0
+33: EMR-V3.2.1
+34: EMR-V3.3.0
+37: EMR-V3.4.0
+44: EMR-V3.5.0
+53: EMR-V3.6.0
         :type ProductId: int
         :param _Software: List of deployed components. The list of component options varies by EMR product ID (i.e., `ProductId`; for specific meanings, please see the `ProductId` input parameter). For more information, please see [Component Version](https://intl.cloud.tencent.com/document/product/589/20279?from_cn_redirect=1).
 Enter an instance value: `hive` or `flink`.
@@ -2460,6 +2687,134 @@ class DependService(AbstractModel):
         
 
 
+class DescribeAutoScaleRecordsRequest(AbstractModel):
+    """DescribeAutoScaleRecords request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: The instance ID.
+        :type InstanceId: str
+        :param _Filters: Parameter for record filtration. Valid values: "StartTime", "EndTime" and "StrategyName". StartTime and EndTime support the time format of 2006-01-02 15:04:05 or 2006/01/02 15:04:05.
+        :type Filters: list of KeyValue
+        :param _Offset: Pagination parameters.
+        :type Offset: int
+        :param _Limit: Pagination parameters. Maximum value: 100
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = KeyValue()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAutoScaleRecordsResponse(AbstractModel):
+    """DescribeAutoScaleRecords response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total scale-in and scale-out records.
+        :type TotalCount: int
+        :param _RecordList: Record list.
+        :type RecordList: list of AutoScaleRecord
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RecordList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RecordList(self):
+        return self._RecordList
+
+    @RecordList.setter
+    def RecordList(self, RecordList):
+        self._RecordList = RecordList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RecordList") is not None:
+            self._RecordList = []
+            for item in params.get("RecordList"):
+                obj = AutoScaleRecord()
+                obj._deserialize(item)
+                self._RecordList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClusterNodesRequest(AbstractModel):
     """DescribeClusterNodes request structure.
 
@@ -2914,6 +3269,141 @@ class DescribeEmrApplicationStaticsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeHiveQueriesRequest(AbstractModel):
+    """DescribeHiveQueries request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: The cluster ID.
+        :type InstanceId: str
+        :param _StartTime: The start time in seconds.
+        :type StartTime: int
+        :param _EndTime: The end time in seconds. EndTime-StartTime should not exceed one day's duration, which is 86400 seconds.
+        :type EndTime: int
+        :param _Offset: Starting offset for pagination. Start value: 0
+        :type Offset: int
+        :param _Limit: Page size. Valid range: [1,100]
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHiveQueriesResponse(AbstractModel):
+    """DescribeHiveQueries response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total items
+        :type Total: int
+        :param _Results: Result list
+        :type Results: list of HiveQuery
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Results(self):
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = HiveQuery()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstancesListRequest(AbstractModel):
     """DescribeInstancesList request structure.
 
@@ -2929,7 +3419,7 @@ class DescribeInstancesListRequest(AbstractModel):
         :type Limit: int
         :param _OrderField: Sorting field. Valid values: <li>clusterId: Sorting by instance ID. </li><li>addTime: Sorting by instance creation time.</li><li>status: Sorting by instance status code.</li>
         :type OrderField: str
-        :param _Asc: Sort ascending or descending based on `OrderField`. Valid values:<li>0: Descending.</li><li>1: Ascending.</li>Default value: `0`.
+        :param _Asc: Sort according to OrderField in ascending or descending order. Valid range:<li>0: Descending order.</li><li>1: Ascending order.</li>Default: 0.
         :type Asc: int
         :param _Filters: Custom query
         :type Filters: list of Filters
@@ -4529,6 +5019,141 @@ class Filters(AbstractModel):
         
 
 
+class HiveQuery(AbstractModel):
+    """Hive query details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Statement: Query statementNote: This field may return null, indicating that no valid values can be obtained.
+        :type Statement: str
+        :param _Duration: Execution Duration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Duration: str
+        :param _StartTime: Start Time in Milliseconds
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StartTime: int
+        :param _EndTime: End Time in Milliseconds
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EndTime: int
+        :param _State: StatusNote: This field may return null, indicating that no valid values can be obtained.
+        :type State: str
+        :param _User: UserNote: This field may return null, indicating that no valid values can be obtained.
+        :type User: str
+        :param _JobIds: AppId List
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JobIds: list of str
+        :param _ExecutionEngine: Execution Engine
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutionEngine: str
+        :param _Id: Query ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Id: str
+        """
+        self._Statement = None
+        self._Duration = None
+        self._StartTime = None
+        self._EndTime = None
+        self._State = None
+        self._User = None
+        self._JobIds = None
+        self._ExecutionEngine = None
+        self._Id = None
+
+    @property
+    def Statement(self):
+        return self._Statement
+
+    @Statement.setter
+    def Statement(self, Statement):
+        self._Statement = Statement
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def JobIds(self):
+        return self._JobIds
+
+    @JobIds.setter
+    def JobIds(self, JobIds):
+        self._JobIds = JobIds
+
+    @property
+    def ExecutionEngine(self):
+        return self._ExecutionEngine
+
+    @ExecutionEngine.setter
+    def ExecutionEngine(self, ExecutionEngine):
+        self._ExecutionEngine = ExecutionEngine
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Statement = params.get("Statement")
+        self._Duration = params.get("Duration")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._State = params.get("State")
+        self._User = params.get("User")
+        self._JobIds = params.get("JobIds")
+        self._ExecutionEngine = params.get("ExecutionEngine")
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HostVolumeContext(AbstractModel):
     """Description of `HostPath` mounting method in the pod
 
@@ -5605,6 +6230,52 @@ Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60.
         
 
 
+class KeyValue(AbstractModel):
+    """Key-value pair, primarily used for filtering
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Key: str
+        :param _Value: ValueNote: This field may return null, indicating that no valid values can be obtained.
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LoginSettings(AbstractModel):
     """Login settings
 
@@ -5852,6 +6523,352 @@ class ModifyResourceSchedulerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyResourceTags(AbstractModel):
+    """Forcibly Modifying Tags
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: Cluster ID or CVM ID
+        :type ResourceId: str
+        :param _Resource: 6-segment resource expression
+        :type Resource: str
+        :param _ResourcePrefix: Resource prefix
+        :type ResourcePrefix: str
+        :param _ResourceRegion: ap-beijing
+        :type ResourceRegion: str
+        :param _ServiceType: emr
+        :type ServiceType: str
+        :param _DeleteTags: List of deleted tags
+        :type DeleteTags: list of Tag
+        :param _AddTags: List of added tags
+        :type AddTags: list of Tag
+        :param _ModifyTags: List of modified tags
+        :type ModifyTags: list of Tag
+        """
+        self._ResourceId = None
+        self._Resource = None
+        self._ResourcePrefix = None
+        self._ResourceRegion = None
+        self._ServiceType = None
+        self._DeleteTags = None
+        self._AddTags = None
+        self._ModifyTags = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Resource(self):
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def ResourcePrefix(self):
+        return self._ResourcePrefix
+
+    @ResourcePrefix.setter
+    def ResourcePrefix(self, ResourcePrefix):
+        self._ResourcePrefix = ResourcePrefix
+
+    @property
+    def ResourceRegion(self):
+        return self._ResourceRegion
+
+    @ResourceRegion.setter
+    def ResourceRegion(self, ResourceRegion):
+        self._ResourceRegion = ResourceRegion
+
+    @property
+    def ServiceType(self):
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def DeleteTags(self):
+        return self._DeleteTags
+
+    @DeleteTags.setter
+    def DeleteTags(self, DeleteTags):
+        self._DeleteTags = DeleteTags
+
+    @property
+    def AddTags(self):
+        return self._AddTags
+
+    @AddTags.setter
+    def AddTags(self, AddTags):
+        self._AddTags = AddTags
+
+    @property
+    def ModifyTags(self):
+        return self._ModifyTags
+
+    @ModifyTags.setter
+    def ModifyTags(self, ModifyTags):
+        self._ModifyTags = ModifyTags
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._Resource = params.get("Resource")
+        self._ResourcePrefix = params.get("ResourcePrefix")
+        self._ResourceRegion = params.get("ResourceRegion")
+        self._ServiceType = params.get("ServiceType")
+        if params.get("DeleteTags") is not None:
+            self._DeleteTags = []
+            for item in params.get("DeleteTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._DeleteTags.append(obj)
+        if params.get("AddTags") is not None:
+            self._AddTags = []
+            for item in params.get("AddTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._AddTags.append(obj)
+        if params.get("ModifyTags") is not None:
+            self._ModifyTags = []
+            for item in params.get("ModifyTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ModifyTags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResourcesTagsRequest(AbstractModel):
+    """ModifyResourcesTags request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModifyType: Tag type. Valid values: Cluster and Node
+        :type ModifyType: str
+        :param _ModifyResourceTagsInfoList: Tag information
+        :type ModifyResourceTagsInfoList: list of ModifyResourceTags
+        """
+        self._ModifyType = None
+        self._ModifyResourceTagsInfoList = None
+
+    @property
+    def ModifyType(self):
+        return self._ModifyType
+
+    @ModifyType.setter
+    def ModifyType(self, ModifyType):
+        self._ModifyType = ModifyType
+
+    @property
+    def ModifyResourceTagsInfoList(self):
+        return self._ModifyResourceTagsInfoList
+
+    @ModifyResourceTagsInfoList.setter
+    def ModifyResourceTagsInfoList(self, ModifyResourceTagsInfoList):
+        self._ModifyResourceTagsInfoList = ModifyResourceTagsInfoList
+
+
+    def _deserialize(self, params):
+        self._ModifyType = params.get("ModifyType")
+        if params.get("ModifyResourceTagsInfoList") is not None:
+            self._ModifyResourceTagsInfoList = []
+            for item in params.get("ModifyResourceTagsInfoList"):
+                obj = ModifyResourceTags()
+                obj._deserialize(item)
+                self._ModifyResourceTagsInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResourcesTagsResponse(AbstractModel):
+    """ModifyResourcesTags response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SuccessList: List of resource IDs with successful modification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SuccessList: list of str
+        :param _FailList: List of resource IDs with failed modification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FailList: list of str
+        :param _PartSuccessList: List of resource IDs with partial successful modification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PartSuccessList: list of str
+        :param _ClusterToFlowIdList: Mapping list of cluster IDs and process IDs
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ClusterToFlowIdList: list of ClusterIDToFlowID
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SuccessList = None
+        self._FailList = None
+        self._PartSuccessList = None
+        self._ClusterToFlowIdList = None
+        self._RequestId = None
+
+    @property
+    def SuccessList(self):
+        return self._SuccessList
+
+    @SuccessList.setter
+    def SuccessList(self, SuccessList):
+        self._SuccessList = SuccessList
+
+    @property
+    def FailList(self):
+        return self._FailList
+
+    @FailList.setter
+    def FailList(self, FailList):
+        self._FailList = FailList
+
+    @property
+    def PartSuccessList(self):
+        return self._PartSuccessList
+
+    @PartSuccessList.setter
+    def PartSuccessList(self, PartSuccessList):
+        self._PartSuccessList = PartSuccessList
+
+    @property
+    def ClusterToFlowIdList(self):
+        return self._ClusterToFlowIdList
+
+    @ClusterToFlowIdList.setter
+    def ClusterToFlowIdList(self, ClusterToFlowIdList):
+        self._ClusterToFlowIdList = ClusterToFlowIdList
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SuccessList = params.get("SuccessList")
+        self._FailList = params.get("FailList")
+        self._PartSuccessList = params.get("PartSuccessList")
+        if params.get("ClusterToFlowIdList") is not None:
+            self._ClusterToFlowIdList = []
+            for item in params.get("ClusterToFlowIdList"):
+                obj = ClusterIDToFlowID()
+                obj._deserialize(item)
+                self._ClusterToFlowIdList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyUserManagerPwdRequest(AbstractModel):
+    """ModifyUserManagerPwd request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster instance ID
+        :type InstanceId: str
+        :param _UserName: Username
+        :type UserName: str
+        :param _PassWord: Password
+        :type PassWord: str
+        """
+        self._InstanceId = None
+        self._UserName = None
+        self._PassWord = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserManagerPwdResponse(AbstractModel):
+    """ModifyUserManagerPwd response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class MultiDisk(AbstractModel):
     """Multi-cloud disk parameters
 
@@ -5859,14 +6876,15 @@ class MultiDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: Cloud disk type
-<li>`CLOUD_SSD`: SSD</li>
-<li>`CLOUD_PREMIUM`: Premium Cloud Storage</li>
-<li>`CLOUD_HSSD`: Enhanced SSD</li>
+        :param _DiskType: Disk type
+<li>CLOUD_SSD: Cloud SSD.</li>
+<li>CLOUD_PREMIUM: Premium cloud disk.</li>
+<li>CLOUD_HSSD: Enhanced SSD.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DiskType: str
-        :param _Volume: Cloud disk size
+        :param _Volume: Cloud disk sizeNote: This field may return null, indicating that no valid values can be obtained.
         :type Volume: int
-        :param _Count: Number of cloud disks of this type
+        :param _Count: Number of cloud disks of this typeNote: This field may return null, indicating that no valid values can be obtained.
         :type Count: int
         """
         self._DiskType = None
@@ -6381,6 +7399,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _TradeVersion: The billing version. Valid values: `0` (original billing) and `1` (new billing)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TradeVersion: int
+        :param _ServicesStatus: Status of each component. Zookeeper: STARTED; ResourceManager: STARTED. STARTED indicates "already in operation"; STOPPED indicates "ceased".
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ServicesStatus: str
         """
         self._AppId = None
         self._SerialNo = None
@@ -6432,6 +7453,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ServiceClient = None
         self._DisableApiTermination = None
         self._TradeVersion = None
+        self._ServicesStatus = None
 
     @property
     def AppId(self):
@@ -6833,6 +7855,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def TradeVersion(self, TradeVersion):
         self._TradeVersion = TradeVersion
 
+    @property
+    def ServicesStatus(self):
+        return self._ServicesStatus
+
+    @ServicesStatus.setter
+    def ServicesStatus(self, ServicesStatus):
+        self._ServicesStatus = ServicesStatus
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -6899,6 +7929,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ServiceClient = params.get("ServiceClient")
         self._DisableApiTermination = params.get("DisableApiTermination")
         self._TradeVersion = params.get("TradeVersion")
+        self._ServicesStatus = params.get("ServicesStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8236,6 +9267,8 @@ class PreExecuteFileSettings(AbstractModel):
         :type CosSecretKey: str
         :param _AppId: COS `appid`, which has been disused
         :type AppId: str
+        :param _Remark: Remarks
+        :type Remark: str
         """
         self._Path = None
         self._Args = None
@@ -8249,6 +9282,7 @@ class PreExecuteFileSettings(AbstractModel):
         self._CosSecretId = None
         self._CosSecretKey = None
         self._AppId = None
+        self._Remark = None
 
     @property
     def Path(self):
@@ -8346,6 +9380,14 @@ class PreExecuteFileSettings(AbstractModel):
     def AppId(self, AppId):
         self._AppId = AppId
 
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
@@ -8360,6 +9402,7 @@ class PreExecuteFileSettings(AbstractModel):
         self._CosSecretId = params.get("CosSecretId")
         self._CosSecretKey = params.get("CosSecretKey")
         self._AppId = params.get("AppId")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8857,9 +9900,9 @@ class ScaleOutClusterRequest(AbstractModel):
         :type InstanceChargePrepaid: :class:`tencentcloud.emr.v20190103.models.InstanceChargePrepaid`
         :param _ScriptBootstrapActionConfig: The [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings.
         :type ScriptBootstrapActionConfig: list of ScriptBootstrapActionConfig
-        :param _SoftDeployInfo: The services to be deployed for new nodes. By default, new nodes will inherit all services deployed for the current node type. Deployed services include default optional services. This parameter only supports optional services. For example, if `HDFS`, `YARN`, and `Impala` have been deployed for existing task nodes, only `HDFS` and `YARN` are passed in with this parameter if `Impala` is not deployed during the task node scale-out with API.
+        :param _SoftDeployInfo: The services to be deployed for new nodes. By default, new nodes will inherit services deployed for the current node type, including default optional services. This parameter only supports the inclusion of optional services. For example, if HDFS, YARN, and Impala have been deployed for existing task nodes, when using the API for task node scale-out without deploying Impala, only HDFS and YARN are included in with this parameter. Refer to the [component name mapping table](https://intl.cloud.tencent.com/document/product/589/98760?from_cn_redirect=1).
         :type SoftDeployInfo: list of int
-        :param _ServiceNodeInfo: The processes to be deployed. All processes for services to be added are deployed by default. Deployed processes can be changed. For example, `HDFS`, `YARN`, and `Impala` have been deployed for current task nodes, and default services are `DataNode`, `NodeManager`, and `ImpalaServer`; if you want to change deployed processes, you can set this parameter to `DataNode,NodeManager,ImpalaServerCoordinator` or `DataNode,NodeManager,ImpalaServerExecutor`.
+        :param _ServiceNodeInfo: The processes to be deployed. All processes for services to be added are deployed by default. Deployed processes can be changed. For example, HDFS, YARN, and Impala have been deployed for current task nodes, and default services are DataNode, NodeManager, and ImpalaServer; if you want to change deployed processes, you can set this parameter to DataNode,NodeManager,ImpalaServerCoordinator or DataNode,NodeManager,ImpalaServerExecutor. Refer to the [process name mapping table](https://intl.cloud.tencent.com/document/product/589/98760?from_cn_redirect=1).
         :type ServiceNodeInfo: list of int
         :param _DisasterRecoverGroupIds: The list of spread placement group IDs. Only one can be specified.
 You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/product/213/17810?from_cn_redirect=1) API and obtain this parameter from the `DisasterRecoverGroupId` field in the response.
@@ -10088,7 +11131,7 @@ class StrategyConfig(AbstractModel):
 `1`: Enable rolling restart
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RollingRestartSwitch: int
-        :param _BatchSize: The number of nodes to be restarted per batch in rolling restart, with a maximum value of 99,999.
+        :param _BatchSize: The quantity of restarts per batch during a rolling restart, with the maximum number of restarts being 99999
 Note: This field may return null, indicating that no valid values can be obtained.
         :type BatchSize: int
         :param _TimeWait: The wait time (in seconds) per batch in rolling restart, with a maximum value of 5 minutes.

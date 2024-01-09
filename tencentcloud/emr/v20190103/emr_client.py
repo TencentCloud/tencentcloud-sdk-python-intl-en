@@ -96,6 +96,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAutoScaleRecords(self, request):
+        """This API is used to inquiry detailed records of cluster autoscaling.
+
+        :param request: Request instance for DescribeAutoScaleRecords.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeAutoScaleRecordsRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeAutoScaleRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAutoScaleRecords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAutoScaleRecordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterNodes(self, request):
         """This API is used to query the information of nodes in a cluster.
 
@@ -133,6 +156,29 @@ class EmrClient(AbstractClient):
             body = self.call("DescribeEmrApplicationStatics", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeEmrApplicationStaticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeHiveQueries(self, request):
+        """This API is used to inquiry Hive query data.
+
+        :param request: Request instance for DescribeHiveQueries.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeHiveQueriesRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeHiveQueriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHiveQueries", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHiveQueriesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -373,6 +419,52 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyResourcesTags(self, request):
+        """This API is used to forcibly modify tags.
+
+        :param request: Request instance for ModifyResourcesTags.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyResourcesTagsRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyResourcesTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResourcesTags", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourcesTagsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyUserManagerPwd(self, request):
+        """This API is used to change user password (user management).
+
+        :param request: Request instance for ModifyUserManagerPwd.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyUserManagerPwdRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyUserManagerPwdResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserManagerPwd", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserManagerPwdResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ScaleOutCluster(self, request):
         """This API is used to scale out a cluster.
 
@@ -420,7 +512,7 @@ class EmrClient(AbstractClient):
 
 
     def StartStopServiceOrMonitor(self, request):
-        """This API is used to start or stop the monitor or services.
+        """This API is used to start, stop, or restart services.
 
         :param request: Request instance for StartStopServiceOrMonitor.
         :type request: :class:`tencentcloud.emr.v20190103.models.StartStopServiceOrMonitorRequest`
