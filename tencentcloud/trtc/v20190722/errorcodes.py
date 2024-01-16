@@ -32,6 +32,9 @@ FAILEDOPERATION = 'FailedOperation'
 # Unsupported on-cloud recording method.
 FAILEDOPERATION_CRUNSUPPORTMETHOD = 'FailedOperation.CRUnsupportMethod'
 
+# 
+FAILEDOPERATION_NOTRTMPFUNCTION = 'FailedOperation.NotRtmpFunction'
+
 # Query task failed
 FAILEDOPERATION_QUERYTASKINFOFAILED = 'FailedOperation.QueryTaskInfoFailed'
 
@@ -151,6 +154,9 @@ INVALIDPARAMETER_USERIDS = 'InvalidParameter.UserIds'
 
 # The number of users exceeds 6.
 INVALIDPARAMETER_USERIDSMORETHANSIX = 'InvalidParameter.UserIdsMorethanSix'
+
+# 
+INVALIDPARAMETER_USERSIG = 'InvalidParameter.UserSig'
 
 # Invalid RoomId.
 INVALIDPARAMETERVALUE_ROOMID = 'InvalidParameterValue.RoomId'
