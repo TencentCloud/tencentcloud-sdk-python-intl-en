@@ -7279,7 +7279,7 @@ If the type is RTMP or RTP, only one output is allowed; if it is HLS or DASH, 1-
         :type Outputs: list of OutputInfo
         :param _Destinations: Relay destinations. Quantity: [1, 2]
         :type Destinations: list of DestinationInfo
-        :param _HlsRemuxSettings: HLS protocol configuration information, which takes effect only for HLS/HLS_ARCHIVE outputs
+        :param _HlsRemuxSettings: HLS protocol configuration information, which takes effect only for HLS/HLS_ARCHIVE/HLS_STREAM_PACKAGE outputs.
 Note: this field may return `null`, indicating that no valid value was found.
         :type HlsRemuxSettings: :class:`tencentcloud.mdl.v20200326.models.HlsRemuxSettingsInfo`
         :param _DrmSettings: DRM configuration information
