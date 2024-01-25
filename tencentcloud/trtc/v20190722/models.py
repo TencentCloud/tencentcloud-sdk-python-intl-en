@@ -25,7 +25,7 @@ class AbnormalEvent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AbnormalEventId: The error event ID. For details, see https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1
+        :param _AbnormalEventId: The error event ID. For details, see https://www.tencentcloud.com/document/product/647/37906?has_map=1
         :type AbnormalEventId: int
         :param _PeerId: The remote user ID. If this parameter is empty, it indicates that the error event is not associated with a remote user.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -1825,6 +1825,443 @@ class DescribeStreamIngestResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTRTCMarketQualityDataRequest(AbstractModel):
+    """DescribeTRTCMarketQualityData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: User SDKAppId (e.g., 1400xxxxxx)
+        :type SdkAppId: str
+        :param _StartTime: Query start time, format is YYYY-MM-DD. (The query time range depends on the monitoring dashboard function version, the premium edition can query up to 30 days)
+        :type StartTime: str
+        :param _EndTime: Query end time, format is YYYY-MM-DD.
+        :type EndTime: str
+        :param _Period: The granularity of the returned data, which can be set to the following values:
+d: by day. This returns data for the entire UTC day of the query time range. 
+h: by hour. This returns data for the entire UTC hour of the query time range.
+        :type Period: str
+        """
+        self._SdkAppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Period = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTRTCMarketQualityDataResponse(AbstractModel):
+    """DescribeTRTCMarketQualityData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: TRTC Data Dashboard output parameters
+        :type Data: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResult`
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TRTCDataResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTRTCMarketScaleDataRequest(AbstractModel):
+    """DescribeTRTCMarketScaleData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: User SDKAppId
+        :type SdkAppId: str
+        :param _StartTime: Query start time, format is YYYY-MM-DD. (The query time range depends on the monitoring dashboard function version, the premium edition can query up to 60 days)
+        :type StartTime: str
+        :param _EndTime: Query end time, format is YYYY-MM-DD.
+        :type EndTime: str
+        :param _Period: The granularity of the returned data, which can be set to the following values:
+ d: by day. This returns data for the entire UTC day of the query time range.
+ h: by hour. This returns data for the entire UTC hour of the query time range.
+        :type Period: str
+        """
+        self._SdkAppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Period = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Period(self):
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTRTCMarketScaleDataResponse(AbstractModel):
+    """DescribeTRTCMarketScaleData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: TRTC Data Dashboard output parameters
+        :type Data: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResult`
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TRTCDataResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTRTCRealTimeQualityDataRequest(AbstractModel):
+    """DescribeTRTCRealTimeQualityData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: User SDKAppId (e.g., 1400xxxxxx)
+        :type SdkAppId: str
+        :param _StartTime: Start time, unix timestamp, Unit: seconds (Query time range depends on the monitoring dashboard function version, standard edition can query the last 3 hours, premium edition can query the last 12 hours)
+        :type StartTime: int
+        :param _EndTime: End time, unix timestamp, Unit: seconds
+        :type EndTime: int
+        :param _RoomId: Room ID
+        :type RoomId: str
+        """
+        self._SdkAppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._RoomId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTRTCRealTimeQualityDataResponse(AbstractModel):
+    """DescribeTRTCRealTimeQualityData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: TRTC Real- Time Monitoring output parameters
+        :type Data: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResult`
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TRTCDataResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTRTCRealTimeScaleDataRequest(AbstractModel):
+    """DescribeTRTCRealTimeScaleData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: User SDKAppId (e.g., 1400xxxxxx)
+        :type SdkAppId: str
+        :param _StartTime: Start time, unix timestamp, Unit: seconds (Query time range depends on the function version of the monitoring dashboard, premium edition can query up to 1 hours)
+        :type StartTime: int
+        :param _EndTime: End time, unix timestamp, Unit: seconds
+        :type EndTime: int
+        :param _RoomId: Room ID
+        :type RoomId: str
+        """
+        self._SdkAppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._RoomId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTRTCRealTimeScaleDataResponse(AbstractModel):
+    """DescribeTRTCRealTimeScaleData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: TRTC Real- Time Monitoring
+ output parameter
+        :type Data: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResult`
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = TRTCDataResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTrtcRoomUsageRequest(AbstractModel):
     """DescribeTrtcRoomUsage request structure.
 
@@ -2663,7 +3100,7 @@ class EventMessage(AbstractModel):
         :type Type: int
         :param _Time: The event reporting time in the format of UNIX timestamp (milliseconds), such as `1589891188801`.
         :type Time: int
-        :param _EventId: The event ID. Events are classified into SDK events and WebRTC events. For more information, see https://intl.cloud.tencent.com/document/product/647/44916?from_cn_redirect=1
+        :param _EventId: The event ID. Events are classified into SDK events and WebRTC events. For more information, see https://www.tencentcloud.com/document/product/647/37906?has_map=1
         :type EventId: int
         :param _ParamOne: The first event parameter, such as the video width.
         :type ParamOne: int
@@ -4901,6 +5338,39 @@ class RoomState(AbstractModel):
         
 
 
+class RowValues(AbstractModel):
+    """Two-dimensional array of SeriesInfo type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RowValue: Data value
+        :type RowValue: list of int
+        """
+        self._RowValue = None
+
+    @property
+    def RowValue(self):
+        return self._RowValue
+
+    @RowValue.setter
+    def RowValue(self, RowValue):
+        self._RowValue = RowValue
+
+
+    def _deserialize(self, params):
+        self._RowValue = params.get("RowValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ScaleInfomation(AbstractModel):
     """The room and user number.
 
@@ -4963,6 +5433,56 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._UserNumber = params.get("UserNumber")
         self._UserCount = params.get("UserCount")
         self._RoomNumbers = params.get("RoomNumbers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SeriesInfos(AbstractModel):
+    """SeriesInfos type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Columns: Data columns
+        :type Columns: list of str
+        :param _Values: Data values
+        :type Values: list of RowValues
+        """
+        self._Columns = None
+        self._Values = None
+
+    @property
+    def Columns(self):
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def Values(self):
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Columns = params.get("Columns")
+        if params.get("Values") is not None:
+            self._Values = []
+            for item in params.get("Values"):
+                obj = RowValues()
+                obj._deserialize(item)
+                self._Values.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5911,6 +6431,68 @@ class SubscribeStreamUserIds(AbstractModel):
         self._UnSubscribeAudioUserIds = params.get("UnSubscribeAudioUserIds")
         self._SubscribeVideoUserIds = params.get("SubscribeVideoUserIds")
         self._UnSubscribeVideoUserIds = params.get("UnSubscribeVideoUserIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TRTCDataResult(AbstractModel):
+    """TRTC Data Dashboard/Real-Time Monitoring API output parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatementID: StatementID value, fixed at 0 for Monitoring Dashboard.
+        :type StatementID: int
+        :param _Series: Query result data, returned in Columns-Values format.
+        :type Series: list of SeriesInfos
+        :param _Total: Total value, fixed at 1 for Monitoring Dashboard.
+        :type Total: int
+        """
+        self._StatementID = None
+        self._Series = None
+        self._Total = None
+
+    @property
+    def StatementID(self):
+        return self._StatementID
+
+    @StatementID.setter
+    def StatementID(self, StatementID):
+        self._StatementID = StatementID
+
+    @property
+    def Series(self):
+        return self._Series
+
+    @Series.setter
+    def Series(self, Series):
+        self._Series = Series
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+
+    def _deserialize(self, params):
+        self._StatementID = params.get("StatementID")
+        if params.get("Series") is not None:
+            self._Series = []
+            for item in params.get("Series"):
+                obj = SeriesInfos()
+                obj._deserialize(item)
+                self._Series.append(obj)
+        self._Total = params.get("Total")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
