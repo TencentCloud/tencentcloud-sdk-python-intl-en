@@ -21575,7 +21575,7 @@ class RemoteBackupInfo(AbstractModel):
     def __init__(self):
         r"""
         :param _SubBackupId: ID of the remote backup subtask
-        :type SubBackupId: list of int
+        :type SubBackupId: int
         :param _Region: The region where the remote backup resides
         :type Region: str
         :param _Status: Backup task status. Valid values: `SUCCESS` (backup succeeded), `FAILED` (backup failed), `RUNNING` (backup is in progress).
