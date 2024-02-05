@@ -31,7 +31,7 @@ class ApplyConcurrentRequest(AbstractModel):
         :type UserIp: str
         :param _ProjectId: The project ID.
         :type ProjectId: str
-        :param _ApplicationVersionId: The application version ID.
+        :param _ApplicationVersionId: Application version ID. If the application of the current version is requested, you do not need to fill in this field. If the application of other versions is requested, you need to specify the version through this field.
         :type ApplicationVersionId: str
         :param _ApplicationId: Application ID, which is used only by the multi-application project to specify applications. For a single-application project, this parameter is ignored, and the application bound to the project will be used.
         :type ApplicationId: str
@@ -274,6 +274,88 @@ class CreateSessionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ServerSession = params.get("ServerSession")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConcurrentCountRequest(AbstractModel):
+    """DescribeConcurrentCount request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Project ID
+        :type ProjectId: str
+        """
+        self._ProjectId = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConcurrentCountResponse(AbstractModel):
+    """DescribeConcurrentCount response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total Concurrency Count
+        :type Total: int
+        :param _Running: The number of concurrent executions, including those in pre-launch, connected, waiting for reconnection, to be cleaned up or recovered, and all non-idle concurrent executions. Therefore, refreshing projects or disconnecting user connections with concurrency packages will affect this value.
+        :type Running: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Running = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Running(self):
+        return self._Running
+
+    @Running.setter
+    def Running(self, Running):
+        self._Running = Running
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Running = params.get("Running")
         self._RequestId = params.get("RequestId")
 
 

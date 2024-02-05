@@ -72,8 +72,31 @@ class CarClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeConcurrentCount(self, request):
+        """Obtain the concurrency count.
+
+        :param request: Request instance for DescribeConcurrentCount.
+        :type request: :class:`tencentcloud.car.v20220110.models.DescribeConcurrentCountRequest`
+        :rtype: :class:`tencentcloud.car.v20220110.models.DescribeConcurrentCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConcurrentCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConcurrentCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DestroySession(self, request):
-        """This API is used to terminate a session.
+        """Terminate the session. If stream push has been initiated in this session, then the stream push will end upon session termination.
 
         :param request: Request instance for DestroySession.
         :type request: :class:`tencentcloud.car.v20220110.models.DestroySessionRequest`
@@ -96,7 +119,7 @@ class CarClient(AbstractClient):
 
 
     def StartPublishStream(self, request):
-        """This API is used to start stream push.
+        """Initiate stream push. The codec for the stream push is automatically adjusted based on the client's (SDK) capabilities, with a default order of H265, H264, VP8, and VP9.
 
         :param request: Request instance for StartPublishStream.
         :type request: :class:`tencentcloud.car.v20220110.models.StartPublishStreamRequest`
@@ -119,7 +142,7 @@ class CarClient(AbstractClient):
 
 
     def StartPublishStreamWithURL(self, request):
-        """This API is used to start stream push to the specified URL. It is billed separately. For billing details, see the [Push to third-party address](https://intl.cloud.tencent.com/document/product/1547/72168?from_cn_redirect=1#98ac188a-d122-4caf-88be-05268ecefdf6) section.
+        """Initiate stream push to the specified URL. The codec for the stream push is automatically adjusted based on the client's (SDK) capabilities, with a default order of H265, H264, VP8, and VP9. This stream push method will be charged separately. For details about the charging method, see [Charging for Stream Push to Specified URL](https://intl.cloud.tencent.com/document/product/1547/72168?from_cn_redirect=1#98ac188a-d122-4caf-88be-05268ecefdf6).
 
         :param request: Request instance for StartPublishStreamWithURL.
         :type request: :class:`tencentcloud.car.v20220110.models.StartPublishStreamWithURLRequest`
