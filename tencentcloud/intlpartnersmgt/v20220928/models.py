@@ -1052,6 +1052,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Id: ID
 Note: The return value may be null, indicating that no valid data can be obtained.
         :type Id: str
+        :param _Tags: Tag informationNote: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of TagInfo
         """
         self._PayerAccountId = None
         self._OwnerAccountId = None
@@ -1081,6 +1083,7 @@ Note: The return value may be null, indicating that no valid data can be obtaine
         self._Currency = None
         self._TotalCost = None
         self._Id = None
+        self._Tags = None
 
     @property
     def PayerAccountId(self):
@@ -1306,6 +1309,14 @@ Note: The return value may be null, indicating that no valid data can be obtaine
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._PayerAccountId = params.get("PayerAccountId")
@@ -1336,6 +1347,12 @@ Note: The return value may be null, indicating that no valid data can be obtaine
         self._Currency = params.get("Currency")
         self._TotalCost = params.get("TotalCost")
         self._Id = params.get("Id")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3515,7 +3532,7 @@ class QueryVoucherAmountByUinRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClientUins: List of customer UIN. Array length value: 1-20.
+        :param _ClientUins: Customer UIN list. Array length value: 1-20.
         :type ClientUins: list of int non-negative
         """
         self._ClientUins = None
@@ -3652,7 +3669,7 @@ class QueryVoucherListByUinRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClientUins: List of customer UIN. Array length value:1-20.
+        :param _ClientUins: Customer UIN list. Array length value: 1-20.
         :type ClientUins: list of int non-negative
         :param _Status: Voucher status. If this parameter is not passed in, all status will be queried by default. Valid values: `Unused`, `Used`, `Expired`.
         :type Status: str
@@ -3968,6 +3985,51 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._OriginalCost = params.get("OriginalCost")
         self._VoucherPayAmount = params.get("VoucherPayAmount")
         self._TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagInfo(AbstractModel):
+    """Cost Allocation Tags
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: Tag keyNote: This field may return null, indicating that no valid values can be obtained.
+        :type TagKey: str
+        :param _TagValue: Tag valueNote: This field may return null, indicating that no valid values can be obtained.
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
