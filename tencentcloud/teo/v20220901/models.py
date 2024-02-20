@@ -1715,13 +1715,11 @@ class ApplicationProxyRule(AbstractModel):
 <li>A port range, such as 81-82</li>
 Note that each rule can have up to 20 ports.
         :type Port: list of str
-        :param _OriginType: The origin type. Values:
-<li>`custom`: Specified origins</li>
-<li>`origins`: Origin group</li>
+        :param _OriginType: Origin server type. Valid values:<li>custom: Manually added;</li><li>loadbalancer: Cloud Load Balancer;</li><li>origins: Origin server group.</li>
         :type OriginType: str
-        :param _OriginValue: Origin server information:
-<li>When `OriginType=custom`, it indicates one or more origin servers, such as ["8.8.8.8","9.9.9.9"] or ["test.com"].</li>
-<li>When `OriginType=origins`, it indicates an origin group ID, such as ["origin-537f5b41-162a-11ed-abaa-525400c5da15"].</li>
+        :param _OriginValue: Details of the origin server:
+<li>When OriginType is custom, it indicates one or more origin servers, such as ["8.8.8.8","9.9.9.9"] or OriginValue=["test.com"];</li><li>When OriginType is loadbalancer, it indicates a single Cloud Load Balancer, such as ["lb-xdffsfasdfs"];</li>
+<li>When OriginType is origins, it requires one and only one element, which represents an origin server group ID, such as ["origin-537f5b41-162a-11ed-abaa-525400c5da15"].</li>
         :type OriginValue: list of str
         :param _RuleId: The rule ID.
         :type RuleId: str
@@ -1923,6 +1921,96 @@ class AscriptionInfo(AbstractModel):
         self._Subdomain = params.get("Subdomain")
         self._RecordType = params.get("RecordType")
         self._RecordValue = params.get("RecordValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillingData(AbstractModel):
+    """Billing data item
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: Time.
+        :type Time: str
+        :param _Value: Value.
+        :type Value: int
+        """
+        self._Time = None
+        self._Value = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BillingDataFilter(AbstractModel):
+    """Billing data filter criteria.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Parameter name.
+        :type Type: str
+        :param _Value: Parameter value.
+        :type Value: str
+        """
+        self._Type = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4011,9 +4099,7 @@ Instance name when `ProxyType=instance`.
 <li>`0`: Disable acceleration.</li>
 <li>`1`: Enable acceleration.</li>
         :type AccelerateType: int
-        :param _ProxyType: The proxy type. Values:
-<li>`hostname`: The proxy is created by subdomain name.</li>
-<li>`instance`: The proxy is created by instance.</li>If not specified, this field uses the default value `instance`.
+        :param _ProxyType: Layer 4 proxy mode, with value: <li>instance: instance mode.</li>If not specified, the default value instance will be used.
         :type ProxyType: str
         :param _SessionPersistTime: The session persistence duration. Value range: 30-3600 (in seconds).
 If not specified, this field uses the default value 600.
@@ -4205,13 +4291,10 @@ class CreateApplicationProxyRuleRequest(AbstractModel):
 <li>A single port, such as 80</li>
 <li>A port range, such as 81-90</li>
         :type Port: list of str
-        :param _OriginType: The origin type. Values:
-<li>`custom`: Specified origins</li>
-<li>`origins`: Origin group</li>
+        :param _OriginType: Origin server type. Valid values:<li>custom: Manually added;</li>
+<li>loadbalancer: Cloud Load Balancer;</li><li>origins: Origin server group.</li>
         :type OriginType: str
-        :param _OriginValue: Origin server information:
-<li>When `OriginType=custom`, it indicates one or more origin servers, such as ["8.8.8.8","9.9.9.9"] or ["test.com"].</li>
-<li>When `OriginType=origins`, it indicates an origin group ID, such as ["origin-537f5b41-162a-11ed-abaa-525400c5da15"].</li>
+        :param _OriginValue: Details of the origin server:<li>When OriginType is custom, it indicates one or more origin servers, such as ["8.8.8.8","9.9.9.9"] or OriginValue=["test.com"];</li><li>When OriginType is loadbalancer, it indicates a single Cloud Load Balancer, such as ["lb-xdffsfasdfs"];</li><li>When OriginType is origins, it requires one and only one element, which represents an origin server group ID, such as ["origin-537f5b41-162a-11ed-abaa-525400c5da15"].</li>
         :type OriginValue: list of str
         :param _ForwardClientIp: Passes the client IP. Values:
 <li>`TOA`: Pass the client IP via TOA (available only when `Proto=TCP`).</li>
@@ -4498,6 +4581,256 @@ class CreateConfigGroupVersionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateL4ProxyRequest(AbstractModel):
+    """CreateL4Proxy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _ProxyName: Layer 4 proxy instance name. You can enter 1-50 characters. Valid characters are a-z, 0-9, and hyphens (-). However, hyphens (-) cannot be used individually or consecutively and should not be placed at the beginning or end of the name. Modifications are not allowed after creation.
+        :type ProxyName: str
+        :param _Area: Acceleration zone of the Layer 4 proxy instance.<li>mainland: Availability zone in the Chinese mainland;</li><li>overseas: Global availability zone (excluding the Chinese mainland);</li><li>global: Global availability zone.</li>
+        :type Area: str
+        :param _Ipv6: Specifies whether to enable IPv6 access. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:<li>on: Enable;</li>
+<li>off: Disable.</li>
+
+        :type Ipv6: str
+        :param _StaticIp: Specifies whether to enable the fixed IP address. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:<li>on: Enable;</li>
+<li>off: Disable.</li>
+
+        :type StaticIp: str
+        :param _AccelerateMainland: Specifies whether to enable network optimization in the Chinese mainland. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:<li>on: Enable;</li>
+<li>off: Disable.</li>
+
+        :type AccelerateMainland: str
+        :param _DDosProtectionConfig: Layer 3/Layer 4 DDoS protection. The default protection option of the platform will be used if it is left empty. For details, see [Exclusive DDoS Protection Usage](https://intl.cloud.tencent.com/document/product/1552/95994?from_cn_redirect=1).
+        :type DDosProtectionConfig: :class:`tencentcloud.teo.v20220901.models.DDosProtectionConfig`
+        """
+        self._ZoneId = None
+        self._ProxyName = None
+        self._Area = None
+        self._Ipv6 = None
+        self._StaticIp = None
+        self._AccelerateMainland = None
+        self._DDosProtectionConfig = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ProxyName(self):
+        return self._ProxyName
+
+    @ProxyName.setter
+    def ProxyName(self, ProxyName):
+        self._ProxyName = ProxyName
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Ipv6(self):
+        return self._Ipv6
+
+    @Ipv6.setter
+    def Ipv6(self, Ipv6):
+        self._Ipv6 = Ipv6
+
+    @property
+    def StaticIp(self):
+        return self._StaticIp
+
+    @StaticIp.setter
+    def StaticIp(self, StaticIp):
+        self._StaticIp = StaticIp
+
+    @property
+    def AccelerateMainland(self):
+        return self._AccelerateMainland
+
+    @AccelerateMainland.setter
+    def AccelerateMainland(self, AccelerateMainland):
+        self._AccelerateMainland = AccelerateMainland
+
+    @property
+    def DDosProtectionConfig(self):
+        return self._DDosProtectionConfig
+
+    @DDosProtectionConfig.setter
+    def DDosProtectionConfig(self, DDosProtectionConfig):
+        self._DDosProtectionConfig = DDosProtectionConfig
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ProxyName = params.get("ProxyName")
+        self._Area = params.get("Area")
+        self._Ipv6 = params.get("Ipv6")
+        self._StaticIp = params.get("StaticIp")
+        self._AccelerateMainland = params.get("AccelerateMainland")
+        if params.get("DDosProtectionConfig") is not None:
+            self._DDosProtectionConfig = DDosProtectionConfig()
+            self._DDosProtectionConfig._deserialize(params.get("DDosProtectionConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateL4ProxyResponse(AbstractModel):
+    """CreateL4Proxy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProxyId: Layer 4 instance ID.
+        :type ProxyId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ProxyId = None
+        self._RequestId = None
+
+    @property
+    def ProxyId(self):
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ProxyId = params.get("ProxyId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateL4ProxyRulesRequest(AbstractModel):
+    """CreateL4ProxyRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _ProxyId: Layer 4 proxy instance ID.
+        :type ProxyId: str
+        :param _L4ProxyRules: List of forwarding rules. A single request supports up to 200 forwarding rules.
+Note: When L4ProxyRule is used here, Protocol, PortRange, OriginType, OriginValue, and OriginPortRange are required fields; ClientIPPassThroughMode, SessionPersist, SessionPersistTime, and RuleTag are optional fields; do not fill in RuleId and Status.
+        :type L4ProxyRules: list of L4ProxyRule
+        """
+        self._ZoneId = None
+        self._ProxyId = None
+        self._L4ProxyRules = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ProxyId(self):
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def L4ProxyRules(self):
+        return self._L4ProxyRules
+
+    @L4ProxyRules.setter
+    def L4ProxyRules(self, L4ProxyRules):
+        self._L4ProxyRules = L4ProxyRules
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ProxyId = params.get("ProxyId")
+        if params.get("L4ProxyRules") is not None:
+            self._L4ProxyRules = []
+            for item in params.get("L4ProxyRules"):
+                obj = L4ProxyRule()
+                obj._deserialize(item)
+                self._L4ProxyRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateL4ProxyRulesResponse(AbstractModel):
+    """CreateL4ProxyRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _L4ProxyRuleIds: IDs of newly added forwarding rules, returned as an array.
+        :type L4ProxyRuleIds: list of str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._L4ProxyRuleIds = None
+        self._RequestId = None
+
+    @property
+    def L4ProxyRuleIds(self):
+        return self._L4ProxyRuleIds
+
+    @L4ProxyRuleIds.setter
+    def L4ProxyRuleIds(self, L4ProxyRuleIds):
+        self._L4ProxyRuleIds = L4ProxyRuleIds
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._L4ProxyRuleIds = params.get("L4ProxyRuleIds")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateOriginGroupRequest(AbstractModel):
     """CreateOriginGroup request structure.
 
@@ -4738,9 +5071,9 @@ class CreatePrefetchTaskRequest(AbstractModel):
         r"""
         :param _ZoneId: ID of the site.
         :type ZoneId: str
-        :param _Targets: Resources to be pre-warmed, for example: 
-http://www.example.com/example.txt 
-Note: The number of submitted tasks is limited by the quota of the plan. For details, see [Billing Overview](https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1).
+        :param _Targets: List of resources to be preheated. Each element format is similar to the following:
+http://www.example.com/example.txt. The parameter value is currently required.
+Note: The number of tasks that can be submitted is limited by the quota of a billing package. For details, see [Billing Overview] (https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1).
         :type Targets: list of str
         :param _EncodeUrl: Whether to encode a URL according to RFC3986. Enable this field when the URL contains non-ASCII characters.
         :type EncodeUrl: bool
@@ -4876,9 +5209,9 @@ class CreatePurgeTaskRequest(AbstractModel):
 <li>`purge_all`: Purge all caches</li>
 <li>`purge_cache_tag`: Purge by the cache-tag </li>For more details, see [Cache Purge](https://intl.cloud.tencent.com/document/product/1552/70759?from_cn_redirect=1).
         :type Type: str
-        :param _Method: Configures how resources under the directory are purged when `Type = purge_prefix`. Values: <li>`invalidate`: Only resources updated under the directory are purged.</li><li>`delete`: All resources under the directory are purged regardless of whether they are updated. </li>Default value: `invalidate`.
+        :param _Method: Node cache purge method, valid for directory, hostname, and all cache refreshes. Valid values: <li>invalidate: Refreshes only resources that were updated under the directory; </li><li>delete: Refreshes all node resources, regardless of whether they were updated. </li>Default value: invalidate.
         :type Method: str
-        :param _Targets: List of cached resources to purge. The format for input depends on the type of cache purging. See examples below for details. <li>By default, non-ASCII characters are escaped based on RFC3986.</li><li>The maximum number of tasks per purging request is determined by the EdgeOne plan. See [Billing Overview (New)](https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1). </li>
+        :param _Targets: List of resources for which cache is to be purged. Each element format depends on the cache purge type and you can refer to the API examples for details. <li>The number of tasks that can be submitted at a time is limited by the quota of a billing package. For details, see [Billing Overview] (https://intl.cloud.tencent.com/document/product/1552/77380?from_cn_redirect=1).</li>
         :type Targets: list of str
         :param _EncodeUrl: Specifies whether to transcode non-ASCII URLs according to RFC3986.
 Note that if it’s enabled, the purging is based on the converted URLs.
@@ -5765,6 +6098,65 @@ class DDoSBlockData(AbstractModel):
         
 
 
+class DDosProtectionConfig(AbstractModel):
+    """Exclusive DDoS protection specifications configuration applicable to Layer 4 proxy or web site service.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LevelMainland: Exclusive DDoS protection specifications in the Chinese mainland. For details, see [Dedicated DDoS Mitigation Fee (Pay-as-You-Go)] (https://intl.cloud.tencent.com/document/product/1552/94162?from_cn_redirect=1).<li>PLATFORM: Default protection of the platform, i.e., Exclusive DDoS protection is not enabled;</li>
+<li>BASE30_MAX300: Exclusive DDoS protection enabled, providing a baseline protection bandwidth of 30 Gbps and an elastic protection bandwidth of up to 300 Gbps;</li><li>BASE60_MAX600: Exclusive DDoS protection enabled, providing a baseline protection bandwidth of 60 Gbps and an elastic protection bandwidth of up to 600 Gbps.</li>If no parameters are filled, the default value PLATFORM is used.
+        :type LevelMainland: str
+        :param _MaxBandwidthMainland: Configuration of elastic protection bandwidth for exclusive DDoS protection in the Chinese mainland.Valid only when exclusive DDoS protection in the Chinese mainland is enabled (refer to the LevelMainland parameter configuration), and the value has the following limitations:<li>When exclusive DDoS protection is enabled in the Chinese mainland and the 30 Gbps baseline protection bandwidth is used (the LevelMainland parameter value is BASE30_MAX300): the value range is 30 to 300 in Gbps;</li><li>When exclusive DDoS protection is enabled in the Chinese mainland and the 60 Gbps baseline protection bandwidth is used (the LevelMainland parameter value is BASE60_MAX600): the value range is 60 to 600 in Gbps;</li><li>When the default protection of the platform is used (the LevelMainland parameter value is PLATFORM): configuration is not supported, and the value of this parameter is invalid.</li>
+        :type MaxBandwidthMainland: int
+        :param _LevelOverseas: Exclusive DDoS protection specifications in the worldwide region (excluding the Chinese mainland).<li>PLATFORM: Default protection of the platform, i.e., Exclusive DDoS protection is not enabled;</li><li>ANYCAST300: Exclusive DDoS protection enabled, offering a total maximum protection bandwidth of 300 Gbps;</li>
+<li>ANYCAST_ALLIN: Exclusive DDoS protection enabled, utilizing all available protection resources for protection.</li>When no parameters are filled, the default value PLATFORM is used.
+        :type LevelOverseas: str
+        """
+        self._LevelMainland = None
+        self._MaxBandwidthMainland = None
+        self._LevelOverseas = None
+
+    @property
+    def LevelMainland(self):
+        return self._LevelMainland
+
+    @LevelMainland.setter
+    def LevelMainland(self, LevelMainland):
+        self._LevelMainland = LevelMainland
+
+    @property
+    def MaxBandwidthMainland(self):
+        return self._MaxBandwidthMainland
+
+    @MaxBandwidthMainland.setter
+    def MaxBandwidthMainland(self, MaxBandwidthMainland):
+        self._MaxBandwidthMainland = MaxBandwidthMainland
+
+    @property
+    def LevelOverseas(self):
+        return self._LevelOverseas
+
+    @LevelOverseas.setter
+    def LevelOverseas(self, LevelOverseas):
+        self._LevelOverseas = LevelOverseas
+
+
+    def _deserialize(self, params):
+        self._LevelMainland = params.get("LevelMainland")
+        self._MaxBandwidthMainland = params.get("MaxBandwidthMainland")
+        self._LevelOverseas = params.get("LevelOverseas")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DefaultServerCertInfo(AbstractModel):
     """HTTPS server certificate configuration
 
@@ -6228,6 +6620,158 @@ class DeleteApplicationProxyRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteL4ProxyRequest(AbstractModel):
+    """DeleteL4Proxy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _ProxyId: Layer 4 proxy instance ID.
+        :type ProxyId: str
+        """
+        self._ZoneId = None
+        self._ProxyId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ProxyId(self):
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ProxyId = params.get("ProxyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteL4ProxyResponse(AbstractModel):
+    """DeleteL4Proxy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteL4ProxyRulesRequest(AbstractModel):
+    """DeleteL4ProxyRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _ProxyId: Layer 4 proxy instance ID.
+        :type ProxyId: str
+        :param _RuleIds: List of forwarding rule IDs. It supports up to 200 forwarding rules at a time.
+        :type RuleIds: list of str
+        """
+        self._ZoneId = None
+        self._ProxyId = None
+        self._RuleIds = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ProxyId(self):
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def RuleIds(self):
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ProxyId = params.get("ProxyId")
+        self._RuleIds = params.get("RuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteL4ProxyRulesResponse(AbstractModel):
+    """DeleteL4ProxyRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteOriginGroupRequest(AbstractModel):
     """DeleteOriginGroup request structure.
 
@@ -6235,9 +6779,9 @@ class DeleteOriginGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: ID of the site.
+        :param _ZoneId: Zone ID.
         :type ZoneId: str
-        :param _GroupId: (Required) Origin group IDe group ID. This parameter is required.
+        :param _GroupId: Origin server group ID. This parameter is required.
         :type GroupId: str
         """
         self._ZoneId = None
@@ -6792,13 +7336,16 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 200.
         :type Limit: int
-        :param _Filters: Filter conditions. Up to 20 values for each filter. If it is not passed in, all domain names related with the specific zone-id are returned. 
-<li>`domain-name`: Acceleration domain name</li>
-<li>`origin-type`: Type of the origin</li>
-<li>`origin`: Primary origin address</li>
-<li>`backup-origin`: Secondary origin address</li>
-<li>`domain-cname`: CNAME</li>
-<li>`share-cname`: Shared CNAME</li>
+        :param _Filters: Filter conditions. The maximum value of Filters.Values is 20. If it is not specified, all domains related with the specific zone-id are returned.
+<li>domain-name: Filtering based on the acceleration domain name</li>
+<li>origin-type: Filtering based on the type of the origin server</li>
+<li>origin: Filtering based on the primary origin server address</li>
+<li>backup-origin: Filtering based on the secondary origin server address</li>
+<li>domain-cname: Filtering based on the CNAME</li>
+<li>share-cname: Filtering based on the shared CNAME</li>
+<li>vodeo-sub-app-id: Filtering based on [vodeo sub-application ID]</li>
+<li>vodeo-distribution-range: Filtering based on [vodeo distribution range]</li>
+<li>vodeo-bucket-id: Filtering based on [vodeo storage bucket ID];</li>
         :type Filters: list of AdvancedFilter
         :param _Order: Sort the returned results according to this field. Values include:
 <li>`created_on`: Creation time of the acceleration domain name</li>
@@ -7091,16 +7638,35 @@ class DescribeApplicationProxiesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ZoneId: Zone ID. This parameter is required.
+        :type ZoneId: str
+        :param _Filters: Filters. Each filter can have up to 20 entries. Details: <li>proxy-id<br>   Filter by the <strong>Proxy ID</strong>, such as: `proxy-ev2sawbwfd`. <br>   Type: String<br>   Required: No</li><li>zone-id<br>   Filter by the <strong>Site ID</strong>, such as `zone-vawer2vadg`. <br>   Type: String<br>   Required: No</li><li>rule-tag<br>   Filter by the <strong>Rule tag</strong>, such as `rule-service-1`. <br>   Type: String<br>   Required: No</li>
+        :type Filters: list of Filter
         :param _Offset: The paginated query offset. Default value: 0
         :type Offset: int
         :param _Limit: The paginated query limit. Default value: 20. Maximum value: 1000.
         :type Limit: int
-        :param _Filters: Filters. Each filter can have up to 20 entries. Details: <li>proxy-id<br>   Filter by the <strong>Proxy ID</strong>, such as: `proxy-ev2sawbwfd`. <br>   Type: String<br>   Required: No</li><li>zone-id<br>   Filter by the <strong>Site ID</strong>, such as `zone-vawer2vadg`. <br>   Type: String<br>   Required: No</li><li>rule-tag<br>   Filter by the <strong>Rule tag</strong>, such as `rule-service-1`. <br>   Type: String<br>   Required: No</li>
-        :type Filters: list of Filter
         """
+        self._ZoneId = None
+        self._Filters = None
         self._Offset = None
         self._Limit = None
-        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
     @property
     def Offset(self):
@@ -7118,24 +7684,17 @@ class DescribeApplicationProxiesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
-    @property
-    def Filters(self):
-        return self._Filters
-
-    @Filters.setter
-    def Filters(self, Filters):
-        self._Filters = Filters
-
 
     def _deserialize(self, params):
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
+        self._ZoneId = params.get("ZoneId")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7246,6 +7805,166 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = PlanInfo()
                 obj._deserialize(item)
                 self._PlanInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBillingDataRequest(AbstractModel):
+    """DescribeBillingData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: Start time of the query.
+        :type StartTime: str
+        :param _EndTime: End time of the query.
+        :type EndTime: str
+        :param _ZoneIds: Zone ID set. This parameter is required.
+        :type ZoneIds: list of str
+        :param _MetricName: Indicator list. Valid values:<li>acc_flux: Content acceleration traffic, in bytes;</li>
+<li>smt_flux: Intelligent acceleration traffic, in bytes;</li>
+<li>l4_flux: Layer 4 acceleration traffic, in bytes;</li>
+<li>sec_flux: Exclusive protection traffic, in bytes;</li>
+<li>zxctg_flux: Traffic for network optimization in the Chinese mainland, in bytes;</li>
+<li>acc_bandwidth: Bandwidth for content acceleration, in bps;</li>
+<li>smt_bandwidth: Bandwidth for intelligent acceleration, in bps;</li>
+<li>l4_bandwidth: Bandwidth for Layer 4 acceleration, in bps;</li>
+<li>sec_bandwidth: Bandwidth for exclusive protection, in bps;</li>
+<li>zxctg_bandwidth: Bandwidth for network optimization in the Chinese mainland, in bps;</li><li>sec_request_clean: HTTP/HTTPS requests, count;</li>
+<li>smt_request_clean: Intelligent acceleration requests, count;</li>
+<li>quic_request: QUIC requests, count;</li>
+<li>bot_request_clean: Bot requests, count;</li>
+<li>cls_count: Real-time log pushes, count;</li>
+<li>ddos_bandwidth: Elastic Anti-DDoS bandwidth, in bps.</li>
+        :type MetricName: str
+        :param _Interval: Query period granularity. Valid values:<li>5min: 5-minute granularity;</li>
+<li>hour: 1-hour granularity;</li>
+<li>day: 1-day granularity.</li>
+        :type Interval: str
+        :param _Filters: Filter criteria. The detailed filter criteria are as follows:
+<li>host<br>   Filters by <strong>Domain Name</strong>. Example: test.example.com<br>   Type: String<br>   Required: No</li>
+<li>proxy-id<br>   Filters by <strong>Layer 4 Proxy Instance ID</strong>. Example: sid-2rugn89bkla9<br>   Type: String<br>   Required: No</li>
+<li>region-id<br>   Filters by <strong>Billing Region</strong>.<br>   Type: String<br>   Required: No<br>   Options are:<br>   CH: Chinese mainland<br>   AF: Africa<br>   AS1: Asia-Pacific Region 1<br>   AS2: Asia-Pacific Region 2<br>   AS3: Asia-Pacific Region 3<br>   EU: Europe<br>   MidEast: Middle East<br>   NA: North America<br>   SA: South America</li>
+        :type Filters: list of BillingDataFilter
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._ZoneIds = None
+        self._MetricName = None
+        self._Interval = None
+        self._Filters = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ZoneIds(self):
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def MetricName(self):
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def Interval(self):
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ZoneIds = params.get("ZoneIds")
+        self._MetricName = params.get("MetricName")
+        self._Interval = params.get("Interval")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = BillingDataFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillingDataResponse(AbstractModel):
+    """DescribeBillingData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: List of data points.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Data: list of BillingData
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = BillingData()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7597,7 +8316,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 <li>`ddos_attackBandwidth`: Time-series data of attack bandwidth;</li>
 <li>`ddos_attackPackageRate`: Time-series data of attack packet rate.</li>
         :type MetricNames: list of str
-        :param _ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
+        :param _ZoneIds: ZoneId set. This parameter is required.
         :type ZoneIds: list of str
         :param _PolicyIds: IDs of DDoS policies to be queried. All policies will be selected if this field is not specified.
         :type PolicyIds: list of int
@@ -7758,19 +8477,19 @@ class DescribeDDoSAttackEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Start time of the query period.
+        :param _StartTime: Start time. Time range: 30 days.
         :type StartTime: str
-        :param _EndTime: End time of the query period.
+        :param _EndTime: End time. Time range: 30 days.
         :type EndTime: str
         :param _PolicyIds: List of DDoS policy IDs. All policies are selected if this field is not specified.
         :type PolicyIds: list of int
-        :param _ZoneIds: (Required) List of sites. No query results are returned if this field is not specified.
+        :param _ZoneIds: ZoneId set. This parameter is required.
         :type ZoneIds: list of str
         :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 1000.
         :type Limit: int
         :param _Offset: The page offset. Default value: 0.
         :type Offset: int
-        :param _ShowDetail: Whether to display the details.
+        :param _ShowDetail: Parameter to show attack details. If it is configured as false, only the number of attacks is returned without details. If it is configured as true, attack details are returned.
         :type ShowDetail: bool
         :param _Area: Geolocation scope. Values: 
 <li>`overseas`: Regions outside the Chinese mainland</li>
@@ -7973,7 +8692,7 @@ class DescribeDDoSAttackTopDataRequest(AbstractModel):
 <li>`ddos_attackFlux_sip`: Rank attacker IPs by the number of attacks.</li>
 <li>`ddos_attackFlux_sregion`: Rank attacker regions by the number of attacks.</li>
         :type MetricName: str
-        :param _ZoneIds: List of site IDs to be queried. All sites will be selected if this field is not specified.
+        :param _ZoneIds: Site ID set. This parameter is required.
         :type ZoneIds: list of str
         :param _PolicyIds: The list of DDoS policy IDs to be specified. All policies will be selected if this field is not specified.
         :type PolicyIds: list of int
@@ -8171,6 +8890,8 @@ class DescribeDefaultCertificatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
         :param _Filters: Filter criteria. Each filter criteria can have up to 5 entries.
 <li>`zone-id`: <br>Filter by <strong>site ID</strong>, such as zone-xxx<br>   Type: String<br>   Required: No</li>
         :type Filters: list of Filter
@@ -8179,9 +8900,18 @@ class DescribeDefaultCertificatesRequest(AbstractModel):
         :param _Limit: Limit on paginated queries. Default value: `20`. Maximum value: `100`.
         :type Limit: int
         """
+        self._ZoneId = None
         self._Filters = None
         self._Offset = None
         self._Limit = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
 
     @property
     def Filters(self):
@@ -8209,6 +8939,7 @@ class DescribeDefaultCertificatesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -8614,6 +9345,81 @@ class DescribeHostsSettingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeIPRegionRequest(AbstractModel):
+    """DescribeIPRegion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPs: List of IPs to be queried, supporting IPV4 and IPV6. Up to 100 can be queried.
+        :type IPs: list of str
+        """
+        self._IPs = None
+
+    @property
+    def IPs(self):
+        return self._IPs
+
+    @IPs.setter
+    def IPs(self, IPs):
+        self._IPs = IPs
+
+
+    def _deserialize(self, params):
+        self._IPs = params.get("IPs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIPRegionResponse(AbstractModel):
+    """DescribeIPRegion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IPRegionInfo: List of IP attribution information.
+        :type IPRegionInfo: list of IPRegionInfo
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._IPRegionInfo = None
+        self._RequestId = None
+
+    @property
+    def IPRegionInfo(self):
+        return self._IPRegionInfo
+
+    @IPRegionInfo.setter
+    def IPRegionInfo(self, IPRegionInfo):
+        self._IPRegionInfo = IPRegionInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("IPRegionInfo") is not None:
+            self._IPRegionInfo = []
+            for item in params.get("IPRegionInfo"):
+                obj = IPRegionInfo()
+                obj._deserialize(item)
+                self._IPRegionInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeIdentificationsRequest(AbstractModel):
     """DescribeIdentifications request structure.
 
@@ -8728,6 +9534,276 @@ class DescribeIdentificationsResponse(AbstractModel):
                 obj = Identification()
                 obj._deserialize(item)
                 self._Identifications.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeL4ProxyRequest(AbstractModel):
+    """DescribeL4Proxy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: ID of the zone where the Layer 4 proxy instance belongs.
+        :type ZoneId: str
+        :param _Offset: Paginated query offset. Defaults to 0 when not specified.
+        :type Offset: int
+        :param _Limit: Paginated query limit. Default value: 20. Maximum value: 1000.
+        :type Limit: int
+        :param _Filters: Filter criteria. The upper limit for Filters.Values is 20. If left empty, all Layer 4 proxy instance information under the current zone ID is returned. The detailed filter criteria are as follows: <li>proxy-id: Filters by Layer 4 proxy instance ID;</li>
+<li>ddos-protection-type: Filters by security protection type;</li>
+
+        :type Filters: list of Filter
+        """
+        self._ZoneId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeL4ProxyResponse(AbstractModel):
+    """DescribeL4Proxy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: The number of Layer 4 proxy instances.
+        :type TotalCount: int
+        :param _L4Proxies: List of Layer 4 proxy instances.
+        :type L4Proxies: list of L4Proxy
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._L4Proxies = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def L4Proxies(self):
+        return self._L4Proxies
+
+    @L4Proxies.setter
+    def L4Proxies(self, L4Proxies):
+        self._L4Proxies = L4Proxies
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("L4Proxies") is not None:
+            self._L4Proxies = []
+            for item in params.get("L4Proxies"):
+                obj = L4Proxy()
+                obj._deserialize(item)
+                self._L4Proxies.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeL4ProxyRulesRequest(AbstractModel):
+    """DescribeL4ProxyRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _ProxyId: Layer 4 proxy instance ID.
+        :type ProxyId: str
+        :param _Offset: Paginated query offset. Defaults to 0 when not specified.
+        :type Offset: int
+        :param _Limit: Paginated query limit. Default value: 20. Maximum value: 1000.
+        :type Limit: int
+        :param _Filters: Filter criteria. The upper limit for Filters.Values is 20. All rule information under the current Layer 4 instance will be returned if left empty. The detailed filter criteria are as follows: <li>rule-tag: Filters rules under the Layer 4 proxy instance according to rule tag.</li>
+        :type Filters: list of Filter
+        """
+        self._ZoneId = None
+        self._ProxyId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ProxyId(self):
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ProxyId = params.get("ProxyId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeL4ProxyRulesResponse(AbstractModel):
+    """DescribeL4ProxyRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: The total count of forwarding rules.
+        :type TotalCount: int
+        :param _L4ProxyRules: List of forwarding rules.	
+        :type L4ProxyRules: list of L4ProxyRule
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._L4ProxyRules = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def L4ProxyRules(self):
+        return self._L4ProxyRules
+
+    @L4ProxyRules.setter
+    def L4ProxyRules(self, L4ProxyRules):
+        self._L4ProxyRules = L4ProxyRules
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("L4ProxyRules") is not None:
+            self._L4ProxyRules = []
+            for item in params.get("L4ProxyRules"):
+                obj = L4ProxyRule()
+                obj._deserialize(item)
+                self._L4ProxyRules.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8867,7 +9943,7 @@ class DescribeOriginProtectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneIds: List of sites to be queried. All sites will be selected if this field is not specified.
+        :param _ZoneIds: Set of site IDs to be queried. This is a required parameter.
         :type ZoneIds: list of str
         :param _Filters: Filter conditions. Each filter condition can have up to 20 entries. See below for details:
 <li>`need-update`:<br>   Whether <strong>the intermediate IP update is needed for the site</strong>.<br>   Type: String<br>   Required: No<br>   Values:<br>   `true`: Update needed.<br>   `false`: Update not needed.<br></li>
@@ -9201,9 +10277,9 @@ class DescribePrefetchTasksRequest(AbstractModel):
         :param _ZoneId: ZoneId. 
 The parameter is required.
         :type ZoneId: str
-        :param _StartTime: Start time of the query.
+        :param _StartTime: Start time of the query. Either time or job-id is required.
         :type StartTime: str
-        :param _EndTime: End time of the query.
+        :param _EndTime: End time of the query. Either time or job-id is required.
         :type EndTime: str
         :param _Offset: Offset for paginated queries. Default value: `0`.
         :type Offset: int
@@ -9354,9 +10430,9 @@ class DescribePurgeTasksRequest(AbstractModel):
         :param _ZoneId: ZoneId. 
 The parameter is required.
         :type ZoneId: str
-        :param _StartTime: Start time of the query.
+        :param _StartTime: Start time of the query. Either time or job-id is required.
         :type StartTime: str
-        :param _EndTime: End time of the query.
+        :param _EndTime: End time of the query. Either time or job-id is required.
         :type EndTime: str
         :param _Offset: Offset for paginated queries. Default value: `0`.
         :type Offset: int
@@ -10347,7 +11423,7 @@ class DescribeTopL7AnalysisDataRequest(AbstractModel):
         :type MetricName: str
         :param _ZoneIds: ZoneId set. This parameter is required.
         :type ZoneIds: list of str
-        :param _Limit: Queries the top n rows of data. Maximum value: 1000. Top 10 rows of data will be queried if this field is not specified.
+        :param _Limit: Queries the top N data entries. Maximum value: 1000. Top 10 data entries will be queried if this field is not specified.
         :type Limit: int
         :param _Filters: Filters
 <li>`country`<br>Filter by the <strong> Country/Region</strong>. The country/region follows <a href="https://baike.baidu.com/item/ISO%203166-1/5269555">ISO 3166</a> specification. </li>
@@ -10552,7 +11628,7 @@ class DescribeTopL7CacheDataRequest(AbstractModel):
         :type MetricName: str
         :param _ZoneIds: ZoneId set. This parameter is required.
         :type ZoneIds: list of str
-        :param _Limit: Top rows of data to query. Maximum value: 1000. Top 10 rows of data are queried if this field is not specified.
+        :param _Limit: The number of data entries to be queried. The maximum value is 1000. If it is not specified, the value 10 is used by default, indicating that the top 10 data entries.
         :type Limit: int
         :param _Filters: Filter conditions. See below for details: 
 <li>`domain`<br>   Filter by the <strong>sub-domain name</strong>, such as `test.example.com`<br>   Type: String<br>   Required: No</li>
@@ -13068,7 +14144,7 @@ class IPGroup(AbstractModel):
         :type GroupId: int
         :param _Name: Group name.
         :type Name: str
-        :param _Content: IP group information, including IP and IP mask.
+        :param _Content: IP group content. Only supports IP and IP mask.
         :type Content: list of str
         """
         self._GroupId = None
@@ -13104,6 +14180,53 @@ class IPGroup(AbstractModel):
         self._GroupId = params.get("GroupId")
         self._Name = params.get("Name")
         self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IPRegionInfo(AbstractModel):
+    """IP location information query
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IP: IP address, IPV4 or IPV6.
+        :type IP: str
+        :param _IsEdgeOneIP: Whether the IP belongs to an EdgeOne node. Valid values:
+<li>yes: This IP belongs to an EdgeOne node;</li>
+<li>no: This IP does not belong to an EdgeOne node.</li>
+        :type IsEdgeOneIP: str
+        """
+        self._IP = None
+        self._IsEdgeOneIP = None
+
+    @property
+    def IP(self):
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def IsEdgeOneIP(self):
+        return self._IsEdgeOneIP
+
+    @IsEdgeOneIP.setter
+    def IsEdgeOneIP(self, IsEdgeOneIP):
+        self._IsEdgeOneIP = IsEdgeOneIP
+
+
+    def _deserialize(self, params):
+        self._IP = params.get("IP")
+        self._IsEdgeOneIP = params.get("IsEdgeOneIP")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13834,6 +14957,376 @@ class L4OfflineLog(AbstractModel):
         self._LogStartTime = params.get("LogStartTime")
         self._LogEndTime = params.get("LogEndTime")
         self._Size = params.get("Size")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class L4Proxy(AbstractModel):
+    """Layer 4 proxy instance.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _ProxyId: Layer 4 proxy instance ID.
+        :type ProxyId: str
+        :param _ProxyName: Layer 4 proxy instance name.
+        :type ProxyName: str
+        :param _Area: Acceleration zone of the Layer 4 proxy instance.<li>mainland: Availability zone in the Chinese mainland;</li><li>overseas: Global availability zone (excluding the Chinese mainland);</li><li>global: Global availability zone.</li>	
+        :type Area: str
+        :param _Cname: Access via CNAME.
+        :type Cname: str
+        :param _Ips: After the fixed IP address is enabled, this value will return the corresponding access IP address; if it is not enabled, this value will be empty.
+        :type Ips: list of str
+        :param _Status: Status of the Layer 4 proxy instance.<li>online: Enabled;</li>
+<li>offline: Disabled;</li>
+<li>progress: Deploying;</li>	
+<li>stopping: Disabling;</li>
+<li>banned: Blocked;</li>
+<li>fail: Failed to deploy or disable.</li>	
+        :type Status: str
+        :param _Ipv6: Specifies whether to enable IPv6 access.<li>on: Enable;</li> <li>off: Disable.</li>
+        :type Ipv6: str
+        :param _StaticIp: Specifies whether to enable the fixed IP address.<li>on: Enable;</li> <li>off: Disable.</li>
+        :type StaticIp: str
+        :param _AccelerateMainland: Specifies whether to enable network optimization in the Chinese mainland.<li>on: Enable</li> <li>off: Disable</li>
+        :type AccelerateMainland: str
+        :param _DDosProtectionConfig: Security protection configuration.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type DDosProtectionConfig: :class:`tencentcloud.teo.v20220901.models.DDosProtectionConfig`
+        :param _L4ProxyRuleCount: Number of forwarding rules under the Layer 4 proxy instance.
+        :type L4ProxyRuleCount: int
+        :param _UpdateTime: Latest modification time.
+        :type UpdateTime: str
+        """
+        self._ZoneId = None
+        self._ProxyId = None
+        self._ProxyName = None
+        self._Area = None
+        self._Cname = None
+        self._Ips = None
+        self._Status = None
+        self._Ipv6 = None
+        self._StaticIp = None
+        self._AccelerateMainland = None
+        self._DDosProtectionConfig = None
+        self._L4ProxyRuleCount = None
+        self._UpdateTime = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ProxyId(self):
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def ProxyName(self):
+        return self._ProxyName
+
+    @ProxyName.setter
+    def ProxyName(self, ProxyName):
+        self._ProxyName = ProxyName
+
+    @property
+    def Area(self):
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def Cname(self):
+        return self._Cname
+
+    @Cname.setter
+    def Cname(self, Cname):
+        self._Cname = Cname
+
+    @property
+    def Ips(self):
+        return self._Ips
+
+    @Ips.setter
+    def Ips(self, Ips):
+        self._Ips = Ips
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Ipv6(self):
+        return self._Ipv6
+
+    @Ipv6.setter
+    def Ipv6(self, Ipv6):
+        self._Ipv6 = Ipv6
+
+    @property
+    def StaticIp(self):
+        return self._StaticIp
+
+    @StaticIp.setter
+    def StaticIp(self, StaticIp):
+        self._StaticIp = StaticIp
+
+    @property
+    def AccelerateMainland(self):
+        return self._AccelerateMainland
+
+    @AccelerateMainland.setter
+    def AccelerateMainland(self, AccelerateMainland):
+        self._AccelerateMainland = AccelerateMainland
+
+    @property
+    def DDosProtectionConfig(self):
+        return self._DDosProtectionConfig
+
+    @DDosProtectionConfig.setter
+    def DDosProtectionConfig(self, DDosProtectionConfig):
+        self._DDosProtectionConfig = DDosProtectionConfig
+
+    @property
+    def L4ProxyRuleCount(self):
+        return self._L4ProxyRuleCount
+
+    @L4ProxyRuleCount.setter
+    def L4ProxyRuleCount(self, L4ProxyRuleCount):
+        self._L4ProxyRuleCount = L4ProxyRuleCount
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ProxyId = params.get("ProxyId")
+        self._ProxyName = params.get("ProxyName")
+        self._Area = params.get("Area")
+        self._Cname = params.get("Cname")
+        self._Ips = params.get("Ips")
+        self._Status = params.get("Status")
+        self._Ipv6 = params.get("Ipv6")
+        self._StaticIp = params.get("StaticIp")
+        self._AccelerateMainland = params.get("AccelerateMainland")
+        if params.get("DDosProtectionConfig") is not None:
+            self._DDosProtectionConfig = DDosProtectionConfig()
+            self._DDosProtectionConfig._deserialize(params.get("DDosProtectionConfig"))
+        self._L4ProxyRuleCount = params.get("L4ProxyRuleCount")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class L4ProxyRule(AbstractModel):
+    """Details of Layer 4 proxy forwarding rules.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: Forwarding rule ID.
+Note: Do not fill in this parameter when L4ProxyRule is used as an input parameter in CreateL4ProxyRules; it must be filled in when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules.
+        :type RuleId: str
+        :param _Protocol: Forwarding protocol. Valid values:
+<li>TCP: TCP protocol;</li>
+<li>UDP: UDP protocol.</li>
+Note: This parameter must be filled in when L4ProxyRule is used as an input parameter in CreateL4ProxyRules; it is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.
+        :type Protocol: str
+        :param _PortRange: Forwarding port, which can be set as follows:
+<li>A single port, such as 80;</li>
+<li>A range of ports, such as 81-85, representing ports 81, 82, 83, 84, 85.</li>
+Note: This parameter must be filled in when L4ProxyRule is used as an input parameter in CreateL4ProxyRules; it is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.
+        :type PortRange: list of str
+        :param _OriginType: Origin server type. Valid values:
+<li>IP_DOMAIN: IP/Domain name origin server;</li>
+<li>ORIGIN_GROUP: Origin server group;</li>
+<li>LB: Cloud Load Balancer, currently only open to the allowlist.</li>
+Note: This parameter must be filled in when L4ProxyRule is used as an input parameter in CreateL4ProxyRules; it is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.
+        :type OriginType: str
+        :param _OriginValue: Origin server address.
+<li>When OriginType is set to IP_DOMAIN, enter the IP address or domain name, such as 8.8.8.8 or test.com;</li>
+<li>When OriginType is set to ORIGIN_GROUP, enter the origin server group ID, such as og-537y24vf5b41;</li>
+<li>When OriginType is set to LB, enter the Cloud Load Balancer instance ID, such as lb-2qwk30xf7s9g.</li>
+Note: This parameter must be filled in when L4ProxyRule is used as an input parameter in CreateL4ProxyRules; it is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.
+        :type OriginValue: list of str
+        :param _OriginPortRange: Origin server port, which can be set as follows:<li>A single port, such as 80;</li>
+<li>A range of ports, such as 81-85, representing ports 81, 82, 83, 84, 85. When inputting a range of ports, ensure that the length corresponds with that of the forwarding port range. For example, if the forwarding port range is 80-90, this port range should be 90-100.</li>
+Note: This parameter must be filled in when L4ProxyRule is used as an input parameter in CreateL4ProxyRules; it is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.
+        :type OriginPortRange: str
+        :param _ClientIPPassThroughMode: Transmission of the client IP address. Valid values:<li>TOA: Available only when Protocol=TCP;</li> 
+<li>PPV1: Transmission via Proxy Protocol V1. Available only when Protocol=TCP;</li>
+<li>PPV2: Transmission via Proxy Protocol V2;</li> 
+<li>SPP: Transmission via Simple Proxy Protocol. Available only when Protocol=UDP;</li> 
+<li>OFF: No transmission.</li>
+Note: This parameter is optional when L4ProxyRule is used as an input parameter in CreateL4ProxyRules, and if not specified, the default value OFF will be used; it is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.
+        :type ClientIPPassThroughMode: str
+        :param _SessionPersist: Specifies whether to enable session persistence. Valid values:
+<li>on: Enable;</li>
+<li>off: Disable.</li>
+Note: This parameter is optional when L4ProxyRule is used as an input parameter in CreateL4ProxyRules, and if not specified, the default value off will be used; it is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.
+        :type SessionPersist: str
+        :param _SessionPersistTime: Session persistence period, with a range of 30-3600, measured in seconds.
+Note: This parameter is optional when L4ProxyRule is used as an input parameter in CreateL4ProxyRules. It is valid only when SessionPersist is set to on and defaults to 3600 if not specified. It is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.
+        :type SessionPersistTime: int
+        :param _RuleTag: Rule tag. Accepts 1-50 arbitrary characters.
+Note: This parameter is optional when L4ProxyRule is used as an input parameter in CreateL4ProxyRules; it is optional when L4ProxyRule is used as an input parameter in ModifyL4ProxyRules. If not specified, it will retain its existing value.
+        :type RuleTag: str
+        :param _Status: Rule status. Valid values:<li>online: Enabled;</li>
+<li>offline: Disabled;</li>
+<li>progress: Deploying;</li>
+<li>stopping: Disabling;</li>
+<li>fail: Failed to deploy or disable.</li>
+Note: Do not set this parameter when L4ProxyRule is used as an input parameter in CreateL4ProxyRules and ModifyL4ProxyRules.
+        :type Status: str
+        """
+        self._RuleId = None
+        self._Protocol = None
+        self._PortRange = None
+        self._OriginType = None
+        self._OriginValue = None
+        self._OriginPortRange = None
+        self._ClientIPPassThroughMode = None
+        self._SessionPersist = None
+        self._SessionPersistTime = None
+        self._RuleTag = None
+        self._Status = None
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def PortRange(self):
+        return self._PortRange
+
+    @PortRange.setter
+    def PortRange(self, PortRange):
+        self._PortRange = PortRange
+
+    @property
+    def OriginType(self):
+        return self._OriginType
+
+    @OriginType.setter
+    def OriginType(self, OriginType):
+        self._OriginType = OriginType
+
+    @property
+    def OriginValue(self):
+        return self._OriginValue
+
+    @OriginValue.setter
+    def OriginValue(self, OriginValue):
+        self._OriginValue = OriginValue
+
+    @property
+    def OriginPortRange(self):
+        return self._OriginPortRange
+
+    @OriginPortRange.setter
+    def OriginPortRange(self, OriginPortRange):
+        self._OriginPortRange = OriginPortRange
+
+    @property
+    def ClientIPPassThroughMode(self):
+        return self._ClientIPPassThroughMode
+
+    @ClientIPPassThroughMode.setter
+    def ClientIPPassThroughMode(self, ClientIPPassThroughMode):
+        self._ClientIPPassThroughMode = ClientIPPassThroughMode
+
+    @property
+    def SessionPersist(self):
+        return self._SessionPersist
+
+    @SessionPersist.setter
+    def SessionPersist(self, SessionPersist):
+        self._SessionPersist = SessionPersist
+
+    @property
+    def SessionPersistTime(self):
+        return self._SessionPersistTime
+
+    @SessionPersistTime.setter
+    def SessionPersistTime(self, SessionPersistTime):
+        self._SessionPersistTime = SessionPersistTime
+
+    @property
+    def RuleTag(self):
+        return self._RuleTag
+
+    @RuleTag.setter
+    def RuleTag(self, RuleTag):
+        self._RuleTag = RuleTag
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Protocol = params.get("Protocol")
+        self._PortRange = params.get("PortRange")
+        self._OriginType = params.get("OriginType")
+        self._OriginValue = params.get("OriginValue")
+        self._OriginPortRange = params.get("OriginPortRange")
+        self._ClientIPPassThroughMode = params.get("ClientIPPassThroughMode")
+        self._SessionPersist = params.get("SessionPersist")
+        self._SessionPersistTime = params.get("SessionPersistTime")
+        self._RuleTag = params.get("RuleTag")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15065,6 +16558,370 @@ Default value: `none`.
 
 class ModifyHostsCertificateResponse(AbstractModel):
     """ModifyHostsCertificate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyL4ProxyRequest(AbstractModel):
+    """ModifyL4Proxy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _ProxyId: Application ID.
+        :type ProxyId: str
+        :param _Ipv6: Specifies whether to enable IPv6 access. If this parameter is not filled, this configuration will not be modified. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance] (https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:<li>on: Enable;</li> 
+<li>off: Disable.</li>
+
+        :type Ipv6: str
+        :param _AccelerateMainland: Specifies whether to enable network optimization in the Chinese mainland. If this parameter is not filled, this configuration will not be modified. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance] (https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:<li>on: Enable;</li> 
+<li>off: Disable.</li>
+        :type AccelerateMainland: str
+        """
+        self._ZoneId = None
+        self._ProxyId = None
+        self._Ipv6 = None
+        self._AccelerateMainland = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ProxyId(self):
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def Ipv6(self):
+        return self._Ipv6
+
+    @Ipv6.setter
+    def Ipv6(self, Ipv6):
+        self._Ipv6 = Ipv6
+
+    @property
+    def AccelerateMainland(self):
+        return self._AccelerateMainland
+
+    @AccelerateMainland.setter
+    def AccelerateMainland(self, AccelerateMainland):
+        self._AccelerateMainland = AccelerateMainland
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ProxyId = params.get("ProxyId")
+        self._Ipv6 = params.get("Ipv6")
+        self._AccelerateMainland = params.get("AccelerateMainland")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyL4ProxyResponse(AbstractModel):
+    """ModifyL4Proxy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyL4ProxyRulesRequest(AbstractModel):
+    """ModifyL4ProxyRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _ProxyId: Layer 4 proxy instance ID.
+        :type ProxyId: str
+        :param _L4ProxyRules: List of forwarding rules. A single request supports up to 200 forwarding rules.
+Note: When L4ProxyRule is used here, RuleId is a required field; Protocol, PortRange, OriginType, OriginValue, OriginPortRange, ClientIPPassThroughMode, SessionPersist, SessionPersistTime, and RuleTag are all optional fields. No modification is made when no value is specified for those fields. Status should not be filled.
+        :type L4ProxyRules: list of L4ProxyRule
+        """
+        self._ZoneId = None
+        self._ProxyId = None
+        self._L4ProxyRules = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ProxyId(self):
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def L4ProxyRules(self):
+        return self._L4ProxyRules
+
+    @L4ProxyRules.setter
+    def L4ProxyRules(self, L4ProxyRules):
+        self._L4ProxyRules = L4ProxyRules
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ProxyId = params.get("ProxyId")
+        if params.get("L4ProxyRules") is not None:
+            self._L4ProxyRules = []
+            for item in params.get("L4ProxyRules"):
+                obj = L4ProxyRule()
+                obj._deserialize(item)
+                self._L4ProxyRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyL4ProxyRulesResponse(AbstractModel):
+    """ModifyL4ProxyRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyL4ProxyRulesStatusRequest(AbstractModel):
+    """ModifyL4ProxyRulesStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _ProxyId: Layer 4 proxy instance ID.
+        :type ProxyId: str
+        :param _RuleIds: List of forwarding rule IDs. It supports up to 200 forwarding rules at a time.
+        :type RuleIds: list of str
+        :param _Status: Status of forwarding rules. Valid values:
+<li>online: Enabled;</li>
+<li>offline: Disabled.</li>
+        :type Status: str
+        """
+        self._ZoneId = None
+        self._ProxyId = None
+        self._RuleIds = None
+        self._Status = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ProxyId(self):
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def RuleIds(self):
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ProxyId = params.get("ProxyId")
+        self._RuleIds = params.get("RuleIds")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyL4ProxyRulesStatusResponse(AbstractModel):
+    """ModifyL4ProxyRulesStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyL4ProxyStatusRequest(AbstractModel):
+    """ModifyL4ProxyStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _ProxyId: Layer 4 proxy instance ID.
+        :type ProxyId: str
+        :param _Status: Layer 4 proxy instance status. Valid values:<li>online: Enabled;</li>
+<li>offline: Disabled.</li>
+        :type Status: str
+        """
+        self._ZoneId = None
+        self._ProxyId = None
+        self._Status = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ProxyId(self):
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ProxyId = params.get("ProxyId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyL4ProxyStatusResponse(AbstractModel):
+    """ModifyL4ProxyStatus response structure.
 
     """
 
@@ -16325,28 +18182,43 @@ class OriginDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OriginType: The origin type. Values:
-<li>`IP_DOMAIN`: IPv4/IPv6 address or domain name</li>
-<li>`COS`: COS bucket address</li>
-<li>`ORIGIN_GROUP`: Origin group</li>
-<li>`AWS_S3`: AWS S3 bucket address</li>
+        :param _OriginType: Origin server type. Valid values:
+<li>IP_DOMAIN: IPV4, IPV6, or domain type origin server;</li>
+<li>COS: Tencent Cloud Object Storage origin server;</li>
+<li>AWS_S3: AWS S3 Cloud Object Storage origin server;</li>
+<li>ORIGIN_GROUP: Origin group type origin server;</li>
+<li>VODEO: Video on Demand (hybrid cloud edition);</li>
+<li>SPACE: Origin shield, currently only available to the whitelist;</li>
+<li>LB: Cloud Load Balancer, currently only available to the whitelist.</li>
         :type OriginType: str
-        :param _Origin: The origin address. Enter the origin group ID if `OriginType=ORIGIN_GROUP`.
+        :param _Origin: Origin server address, varying depending on the value of OriginType:
+<li>When OriginType is IP_DOMAIN, this parameter is IPv4 address, IPv6 address, or domain name;</li>
+<li>When OriginType is COS, this parameter is the COS bucket's access domain;</li>
+<li>When OriginType is AWS_S3, this parameter is the S3 bucket's access domain;</li>
+<li>When OriginType is ORIGIN_GROUP, this parameter is the origin group ID;</li>
+<li>When OriginType is VODEO, if VodeoDistributionRange is ALL, this parameter is "all-buckets-in-vodeo-application"; if VodeoDistributionRange is Bucket, this parameter is the corresponding bucket domain.</li>
+
         :type Origin: str
-        :param _BackupOrigin: ID of the secondary origin group (valid when `OriginType=ORIGIN_GROUP`). If it’s not specified, it indicates that secondary origins are not used.
+        :param _BackupOrigin: Secondary origin group ID. This parameter is valid only when OriginType is ORIGIN_GROUP and a secondary origin group is configured.
         :type BackupOrigin: str
-        :param _OriginGroupName: Name of the primary origin group (valid when `OriginType=ORIGIN_GROUP`).
+        :param _OriginGroupName: Primary origin group name. This parameter returns a value when OriginType is ORIGIN_GROUP.
         :type OriginGroupName: str
-        :param _BackOriginGroupName: Name of the secondary origin group (valid when `OriginType=ORIGIN_GROUP` and `BackupOrigin` is specified).
+        :param _BackOriginGroupName: Secondary origin group name. This parameter is valid only when OriginType is ORIGIN_GROUP and a secondary origin group is configured.
         :type BackOriginGroupName: str
-        :param _PrivateAccess: Whether to authenticate access to the private object storage origin (valid when `OriginType=COS/AWS_S3`). Values:
-<li>`on`: Enable private authentication.</li>
-<li>`off`: Disable private authentication.</li>
-If this field is not specified, the default value `off` is used.
+        :param _PrivateAccess: Whether access to the private Cloud Object Storage origin server is allowed. This parameter is valid only when OriginType is COS or AWS_S3. Valid values:
+<li>on: Enable private authentication;</li>
+<li>off: Disable private authentication.</li>
+If it is not specified, off is the default value.
         :type PrivateAccess: str
-        :param _PrivateParameters: The private authentication parameters. This field is valid when `PrivateAccess=on`.
+        :param _PrivateParameters: Private authentication parameter. This parameter is valid only when PrivateAccess is on.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PrivateParameters: list of PrivateParameter
+        :param _VodeoSubAppId: MO sub-application ID
+        :type VodeoSubAppId: int
+        :param _VodeoDistributionRange: MO distribution range. Valid values: <li>All: All</li> <li>Bucket: Bucket</li>
+        :type VodeoDistributionRange: str
+        :param _VodeoBucketId: MO bucket ID, required when the distribution range (DistributionRange) is bucket (Bucket)
+        :type VodeoBucketId: str
         """
         self._OriginType = None
         self._Origin = None
@@ -16355,6 +18227,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._BackOriginGroupName = None
         self._PrivateAccess = None
         self._PrivateParameters = None
+        self._VodeoSubAppId = None
+        self._VodeoDistributionRange = None
+        self._VodeoBucketId = None
 
     @property
     def OriginType(self):
@@ -16412,6 +18287,30 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def PrivateParameters(self, PrivateParameters):
         self._PrivateParameters = PrivateParameters
 
+    @property
+    def VodeoSubAppId(self):
+        return self._VodeoSubAppId
+
+    @VodeoSubAppId.setter
+    def VodeoSubAppId(self, VodeoSubAppId):
+        self._VodeoSubAppId = VodeoSubAppId
+
+    @property
+    def VodeoDistributionRange(self):
+        return self._VodeoDistributionRange
+
+    @VodeoDistributionRange.setter
+    def VodeoDistributionRange(self, VodeoDistributionRange):
+        self._VodeoDistributionRange = VodeoDistributionRange
+
+    @property
+    def VodeoBucketId(self):
+        return self._VodeoBucketId
+
+    @VodeoBucketId.setter
+    def VodeoBucketId(self, VodeoBucketId):
+        self._VodeoBucketId = VodeoBucketId
+
 
     def _deserialize(self, params):
         self._OriginType = params.get("OriginType")
@@ -16426,6 +18325,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = PrivateParameter()
                 obj._deserialize(item)
                 self._PrivateParameters.append(obj)
+        self._VodeoSubAppId = params.get("VodeoSubAppId")
+        self._VodeoDistributionRange = params.get("VodeoDistributionRange")
+        self._VodeoBucketId = params.get("VodeoBucketId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16634,30 +18536,50 @@ class OriginInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OriginType: The origin type. Values:
-<li>`IP_DOMAIN`: IPv4/IPv6 address or domain name</li>
-<li>`COS`: COS bucket address</li>
-<li>`ORIGIN_GROUP`: Origin group</li>
-<li>`AWS_S3`: AWS S3 bucket address</li>
-<li>`LB`: Tencent Cloud CLB instance</li>
-<li>`SPACE`: EdgeOne Shield Space</li>  
+        :param _OriginType: Origin server type. Valid values:
+<li>IP_DOMAIN: IPV4, IPV6, or domain type origin server;</li>
+<li>COS: Tencent Cloud Object Storage origin server;</li>
+<li>AWS_S3: AWS S3 Cloud Object Storage origin server;</li>
+<li>ORIGIN_GROUP: Origin group type origin server;</li>
+<li>VODEO: Video on Demand (hybrid cloud edition);</li>
+<li>SPACE: Origin shield, currently only available to the whitelist;</li>
+<li>LB: Cloud Load Balancer, currently only available to the whitelist.</li>
         :type OriginType: str
-        :param _Origin: The origin address. Enter the origin group ID if `OriginType=ORIGIN_GROUP`.
+        :param _Origin: Origin server address, varying depending on the value of OriginType:
+<li>When OriginType is IP_DOMAIN, specify this parameter with IPv4, IPv6, or domain name;</li>
+<li>When OriginType is COS, specify this parameter with the COS bucket access domain name;</li>
+<li>When OriginType is AWS_S3, specify this parameter with the S3 bucket access domain name;</li>
+<li>When OriginType is ORIGIN_GROUP, specify this parameter with the origin group ID;</li>
+<li>When OriginType is VODEO and VodeoDistributionRange is ALL, specify this parameter with "all-buckets-in-vodeo-application"; if VodeoDistributionRange is Bucket, specify this parameter with the corresponding storage bucket domain name;</li>
+<li>When OriginType is LB, specify the Cloud Load Balancer instance ID. This feature is currently only available to the whitelist;</li>
+<li>When OriginType is SPACE, specify this parameter with the origin shield space ID. This feature is currently only available to the whitelist.</li>
         :type Origin: str
-        :param _BackupOrigin: ID of the backup origin group (valid when `OriginType=ORIGIN_GROUP`). If it’s not specified, it indicates not to use backup origins.
+        :param _BackupOrigin: The ID of the secondary origin group. This parameter is valid only when OriginType is ORIGIN_GROUP. This field indicates the old version capability, which cannot be configured or modified on the control panel after being called. Please submit a ticket if required.
         :type BackupOrigin: str
-        :param _PrivateAccess: Whether to allow access to the private object storage origin (valid when `OriginType=COS/AWS_S3`). Values:
-u200c<li>`on`: Enable private authentication.</li>
-<li>`off`: (Default) Disable private authentication.</li>
+        :param _PrivateAccess: Whether access to the private Cloud Object Storage origin server is allowed. This parameter is valid only when OriginType is COS or AWS_S3. Valid values:
+<li>on: Enable private authentication;</li>
+<li>off: Disable private authentication.</li>
+If it is not specified, the default value is off.
         :type PrivateAccess: str
-        :param _PrivateParameters: The private authentication parameters. This field is valid when `PrivateAccess=on`.
+        :param _PrivateParameters: Private authentication parameter. This parameter is valid only when PrivateAccess is on.
         :type PrivateParameters: list of PrivateParameter
+        :param _VodeoSubAppId: VODEO sub-application ID. This parameter is required when OriginType is VODEO.
+        :type VodeoSubAppId: int
+        :param _VodeoDistributionRange: VODEO distribution range. This parameter is required when OriginType is VODEO. Valid values:
+<li>All: All storage buckets under the current application;</li>
+<li>Bucket: A specified storage bucket.</li>
+        :type VodeoDistributionRange: str
+        :param _VodeoBucketId: VODEO storage bucket ID. This parameter is required when OriginType is VODEO and VodeoDistributionRange is Bucket.
+        :type VodeoBucketId: str
         """
         self._OriginType = None
         self._Origin = None
         self._BackupOrigin = None
         self._PrivateAccess = None
         self._PrivateParameters = None
+        self._VodeoSubAppId = None
+        self._VodeoDistributionRange = None
+        self._VodeoBucketId = None
 
     @property
     def OriginType(self):
@@ -16699,6 +18621,30 @@ u200c<li>`on`: Enable private authentication.</li>
     def PrivateParameters(self, PrivateParameters):
         self._PrivateParameters = PrivateParameters
 
+    @property
+    def VodeoSubAppId(self):
+        return self._VodeoSubAppId
+
+    @VodeoSubAppId.setter
+    def VodeoSubAppId(self, VodeoSubAppId):
+        self._VodeoSubAppId = VodeoSubAppId
+
+    @property
+    def VodeoDistributionRange(self):
+        return self._VodeoDistributionRange
+
+    @VodeoDistributionRange.setter
+    def VodeoDistributionRange(self, VodeoDistributionRange):
+        self._VodeoDistributionRange = VodeoDistributionRange
+
+    @property
+    def VodeoBucketId(self):
+        return self._VodeoBucketId
+
+    @VodeoBucketId.setter
+    def VodeoBucketId(self, VodeoBucketId):
+        self._VodeoBucketId = VodeoBucketId
+
 
     def _deserialize(self, params):
         self._OriginType = params.get("OriginType")
@@ -16711,6 +18657,9 @@ u200c<li>`on`: Enable private authentication.</li>
                 obj = PrivateParameter()
                 obj._deserialize(item)
                 self._PrivateParameters.append(obj)
+        self._VodeoSubAppId = params.get("VodeoSubAppId")
+        self._VodeoDistributionRange = params.get("VodeoDistributionRange")
+        self._VodeoBucketId = params.get("VodeoBucketId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17259,17 +19208,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class PrivateParameter(AbstractModel):
-    """Private authentication parameters of object storage origins
+    """Private authentication parameters for Cloud Object Storage origin server
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: The parameter name. Values
-<li>`AccessKeyId`: Access Key ID</li>
-<li>`SecretAccessKey`: Secret Access Key</li>
-<li>`SignatureVersion`: Signature version. Values: `v2`, `v4`</li>
-<li>`Region`: Region of the storage bucket</li>
+        :param _Name: The name of the private authentication parameter. Valid values:
+<li>AccessKeyId: Access Key ID for authentication;</li>
+<li>SecretAccessKey: Secret Access Key for authentication;</li>
+<li>SignatureVersion: Authentication version, v2 or v4;</li>
+<li>Region: The region of the storage bucket.</li>
         :type Name: str
         :param _Value: The parameter value.
         :type Value: str
@@ -18162,6 +20111,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _ZoneNumber: The sites that are associated with the current resources.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ZoneNumber: int
+        :param _Type: Resource tag type. Valid values:
+<li>vodeo: vodeo resource.</li>
+        :type Type: str
         """
         self._Id = None
         self._PayMode = None
@@ -18175,6 +20127,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Area = None
         self._Group = None
         self._ZoneNumber = None
+        self._Type = None
 
     @property
     def Id(self):
@@ -18272,6 +20225,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ZoneNumber(self, ZoneNumber):
         self._ZoneNumber = ZoneNumber
 
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -18291,6 +20252,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Area = params.get("Area")
         self._Group = params.get("Group")
         self._ZoneNumber = params.get("ZoneNumber")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19391,35 +21353,31 @@ class SecurityConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WafConfig: The settings of the managed rule. If it is null, the settings that were last configured will be used.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _WafConfig: Managed rule. If the parameter is null or not filled, the configuration last set will be used by default.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type WafConfig: :class:`tencentcloud.teo.v20220901.models.WafConfig`
-        :param _RateLimitConfig: The settings of the rate limiting rule. If it is null, the settings that were last configured will be used.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _RateLimitConfig: Rate limiting. If the parameter is null or not filled, the configuration last set will be used by default.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type RateLimitConfig: :class:`tencentcloud.teo.v20220901.models.RateLimitConfig`
-        :param _AclConfig: The settings of the custom rule. If it is null, the settings that were last configured will be used.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _AclConfig: Custom rule. If the parameter is null or not filled, the configuration last set will be used by default.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type AclConfig: :class:`tencentcloud.teo.v20220901.models.AclConfig`
-        :param _BotConfig: The settings of the bot configuration. If it is null, the settings that were last configured will be used.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _BotConfig: Bot configuration. If the parameter is null or not filled, the configuration last set will be used by default.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type BotConfig: :class:`tencentcloud.teo.v20220901.models.BotConfig`
-        :param _SwitchConfig: The switch setting of the layer-7 protection. If it is null, the setting that was last configured will be used.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SwitchConfig: Switch setting of the 7-layer protection. If the parameter is null or not filled, the configuration last set will be used by default.Note: This field may return null, indicating that no valid value can be obtained.
         :type SwitchConfig: :class:`tencentcloud.teo.v20220901.models.SwitchConfig`
-        :param _IpTableConfig: The settings of the basic access control rule. If it is null, the settings that were last configured will be used.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IpTableConfig: Basic access control. If the parameter is null or not filled, the configuration last set will be used by default.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type IpTableConfig: :class:`tencentcloud.teo.v20220901.models.IpTableConfig`
-        :param _ExceptConfig: The settings of the exception rule. If it is null, the settings that were last configured will be used.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _ExceptConfig: Exception rule configuration. If the parameter is null or not filled, the configuration last set will be used by default.Note: This field may return null, indicating that no valid value can be obtained.
         :type ExceptConfig: :class:`tencentcloud.teo.v20220901.models.ExceptConfig`
-        :param _DropPageConfig: The settings of the custom block page. If it is null, the settings that were last configured will be used.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DropPageConfig: Custom block page settings. If the parameter is null or not filled, the configuration last set will be used by default.Note: This field may return null, indicating that no valid value can be obtained.
         :type DropPageConfig: :class:`tencentcloud.teo.v20220901.models.DropPageConfig`
         :param _TemplateConfig: Security template settings
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type TemplateConfig: :class:`tencentcloud.teo.v20220901.models.TemplateConfig`
-        :param _SlowPostConfig: Slow attack defense configuration. If it is `null`, the previous setting is used.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _SlowPostConfig: Settings for slow attack defense. If the parameter is null or not filled, the configuration last set will be used by default.Note: This field may return null, indicating that no valid value can be obtained.
         :type SlowPostConfig: :class:`tencentcloud.teo.v20220901.models.SlowPostConfig`
         """
         self._WafConfig = None
@@ -21434,10 +23392,11 @@ u200c<li>`moved`: The name server is changed to other service providers.</li>
 u200c<li>`deactivated`: The site is blocked.</li>
 <li>`initializing`: The site is not bound with any plan. </li>
         :type Status: str
-        :param _Type: Connection mode of the site. Values:
-<li>`full`: Connect via the name server.</li>
-<li>`partial`: Connect via the CNAME record.</li>
-<li>`noDomainAccess`: Connect without using a domain name</li>
+        :param _Type: Site connection method, valid values:
+<li>full: Connect via NS;</li>
+<li>partial: Connect via CNAME;</li>
+<li>noDomainAccess: Connect without using a domain name;</li>
+<li>vodeo: Connect by default when VODEO is enabled.</li>
         :type Type: str
         :param _Paused: Whether the site is disabled.
         :type Paused: bool

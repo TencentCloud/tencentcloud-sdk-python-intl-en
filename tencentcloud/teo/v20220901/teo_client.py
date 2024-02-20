@@ -167,7 +167,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateApplicationProxy(self, request):
-        """This API is used to create an application proxy.
+        """This API is on an earlier version. If you want to call it, please switch to the latest version [CreateL4Proxy] (https://intl.cloud.tencent.com/document/product/1552/103417?from_cn_redirect=1).
 
         :param request: Request instance for CreateApplicationProxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateApplicationProxyRequest`
@@ -190,7 +190,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateApplicationProxyRule(self, request):
-        """This API is used to create an application proxy rule.
+        """This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [CreateL4ProxyRules] (https://intl.cloud.tencent.com/document/product/1552/103416?from_cn_redirect=1).
 
         :param request: Request instance for CreateApplicationProxyRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateApplicationProxyRuleRequest`
@@ -226,6 +226,52 @@ class TeoClient(AbstractClient):
             body = self.call("CreateConfigGroupVersion", params, headers=headers)
             response = json.loads(body)
             model = models.CreateConfigGroupVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateL4Proxy(self, request):
+        """This API is used to create Layer 4 proxy instances.
+
+        :param request: Request instance for CreateL4Proxy.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateL4ProxyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateL4ProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateL4Proxy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateL4ProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateL4ProxyRules(self, request):
+        """This API is used to create Layer 4 proxy instance rules, supporting both individual and batch creation.
+
+        :param request: Request instance for CreateL4ProxyRules.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateL4ProxyRulesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateL4ProxyRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateL4ProxyRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateL4ProxyRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -470,7 +516,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteApplicationProxy(self, request):
-        """This API is used to delete an application proxy.
+        """This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [DeleteL4Proxy] (https://intl.cloud.tencent.com/document/product/1552/103415?from_cn_redirect=1).
 
         :param request: Request instance for DeleteApplicationProxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteApplicationProxyRequest`
@@ -493,7 +539,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteApplicationProxyRule(self, request):
-        """This API is used to delete an application proxy rule.
+        """This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [DeleteL4ProxyRules] (https://intl.cloud.tencent.com/document/product/1552/103414?from_cn_redirect=1).
 
         :param request: Request instance for DeleteApplicationProxyRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteApplicationProxyRuleRequest`
@@ -506,6 +552,52 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteApplicationProxyRule", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteApplicationProxyRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteL4Proxy(self, request):
+        """This API is used to delete a Layer 4 proxy instance.
+
+        :param request: Request instance for DeleteL4Proxy.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteL4ProxyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteL4ProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteL4Proxy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteL4ProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteL4ProxyRules(self, request):
+        """This API is used to delete Layer 4 proxy forwarding rules, supporting both individual and batch operation.
+
+        :param request: Request instance for DeleteL4ProxyRules.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteL4ProxyRulesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteL4ProxyRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteL4ProxyRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteL4ProxyRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -700,7 +792,7 @@ class TeoClient(AbstractClient):
 
 
     def DescribeApplicationProxies(self, request):
-        """This API is used to query the list of application proxies.
+        """This API is on an earlier version. If you want to call it, please switch to the latest version. In the latest version, this API has been split into two APIs: one for querying the Layer 4 proxy instance list and the other for querying Layer 4 forwarding rules. For details, see [DescribeL4Proxy] (https://intl.cloud.tencent.com/document/product/1552/103413?from_cn_redirect=1) and [DescribeL4ProxyRules] (https://intl.cloud.tencent.com/document/product/1552/103412?from_cn_redirect=1).
 
         :param request: Request instance for DescribeApplicationProxies.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeApplicationProxiesRequest`
@@ -736,6 +828,29 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeAvailablePlans", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAvailablePlansResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBillingData(self, request):
+        """This API is used to query billing data.
+
+        :param request: Request instance for DescribeBillingData.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeBillingDataRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeBillingDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillingData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillingDataResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -975,6 +1090,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeIPRegion(self, request):
+        """This API is used to check if the IP is an EdgeOne IP.
+
+        :param request: Request instance for DescribeIPRegion.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeIPRegionRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeIPRegionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIPRegion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIPRegionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeIdentifications(self, request):
         """This API is used to query the verification information of a site.
 
@@ -989,6 +1127,52 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeIdentifications", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeIdentificationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeL4Proxy(self, request):
+        """This API is used to query a Layer 4 proxy instance list.
+
+        :param request: Request instance for DescribeL4Proxy.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeL4ProxyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeL4ProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeL4Proxy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeL4ProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeL4ProxyRules(self, request):
+        """This API is used to query the forwarding rule list under a Layer 4 proxy instance.
+
+        :param request: Request instance for DescribeL4ProxyRules.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeL4ProxyRulesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeL4ProxyRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeL4ProxyRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeL4ProxyRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1505,7 +1689,8 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxy(self, request):
-        """This API is used to modify an application proxy.
+        """This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [ModifyL4Proxy
+        ] (https://intl.cloud.tencent.com/document/product/1552/103411?from_cn_redirect=1).
 
         :param request: Request instance for ModifyApplicationProxy.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyApplicationProxyRequest`
@@ -1528,7 +1713,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxyRule(self, request):
-        """This API is used to modify an application proxy rule.
+        """This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [ModifyL4ProxyRules] (https://intl.cloud.tencent.com/document/product/1552/103410?from_cn_redirect=1).
 
         :param request: Request instance for ModifyApplicationProxyRule.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyApplicationProxyRuleRequest`
@@ -1551,7 +1736,8 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxyRuleStatus(self, request):
-        """This API is used to modify the status of an application proxy rule.
+        """This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [ModifyL4ProxyRulesStatus
+        ] (https://intl.cloud.tencent.com/document/product/1552/103409?from_cn_redirect=1).
 
         :param request: Request instance for ModifyApplicationProxyRuleStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyApplicationProxyRuleStatusRequest`
@@ -1574,7 +1760,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyApplicationProxyStatus(self, request):
-        """This API is used to modify the status of an application proxy.
+        """This API is on an earlier version. If you want to call it, please switch to the latest version. For details, see [ModifyL4ProxyStatus] (https://intl.cloud.tencent.com/document/product/1552/103408?from_cn_redirect=1).
 
         :param request: Request instance for ModifyApplicationProxyStatus.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyApplicationProxyStatusRequest`
@@ -1612,6 +1798,98 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyHostsCertificate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyHostsCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyL4Proxy(self, request):
+        """This API is used to modify the configuration of a Layer 4 proxy instance.
+
+        :param request: Request instance for ModifyL4Proxy.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyL4Proxy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyL4ProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyL4ProxyRules(self, request):
+        """This API is used to modify Layer 4 proxy forwarding rules, supporting both individual and batch modification.
+
+        :param request: Request instance for ModifyL4ProxyRules.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyRulesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyL4ProxyRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyL4ProxyRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyL4ProxyRulesStatus(self, request):
+        """This API is used to start or stop Layer 4 proxy forwarding rules, supporting both individual and batch operation.
+
+        :param request: Request instance for ModifyL4ProxyRulesStatus.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyRulesStatusRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyRulesStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyL4ProxyRulesStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyL4ProxyRulesStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyL4ProxyStatus(self, request):
+        """This API is used to enable or disable a Layer 4 proxy instance.
+
+        :param request: Request instance for ModifyL4ProxyStatus.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyStatusRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyL4ProxyStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyL4ProxyStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyL4ProxyStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

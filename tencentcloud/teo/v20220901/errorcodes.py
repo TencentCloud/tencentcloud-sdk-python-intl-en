@@ -140,6 +140,9 @@ INVALIDPARAMETER_CLIENTIPCOUNTRYCONFLICTSWITHIPV6 = 'InvalidParameter.ClientIpCo
 # Unable to apply for a wildcard certificate under CNAME mode.
 INVALIDPARAMETER_CNAMEWILDHOSTNOTALLOWAPPLYCERTIFICATE = 'InvalidParameter.CnameWildHostNotAllowApplyCertificate'
 
+# Invalid compression algorithm.
+INVALIDPARAMETER_COMPRESSIONINVALIDALGORITHMS = 'InvalidParameter.CompressionInvalidAlgorithms'
+
 # The origin cannot be the same as the domain name.
 INVALIDPARAMETER_CONFLICTHOSTORIGIN = 'InvalidParameter.ConflictHostOrigin'
 
@@ -161,7 +164,7 @@ INVALIDPARAMETER_ERRINVALIDACTION = 'InvalidParameter.ErrInvalidAction'
 # Invalid operation: Duplicate operation configuration.
 INVALIDPARAMETER_ERRINVALIDACTIONDUPLICATEACTION = 'InvalidParameter.ErrInvalidActionDuplicateAction'
 
-# 
+# Invalid rule engine operation. The origin server IP cannot be a private network IP or loopback address.
 INVALIDPARAMETER_ERRINVALIDACTIONORIGINPRIVATEADDRESS = 'InvalidParameter.ErrInvalidActionOriginPrivateAddress'
 
 # Invalid operation: Invalid parameter.
@@ -190,6 +193,9 @@ INVALIDPARAMETER_ERRINVALIDACTIONTYPE = 'InvalidParameter.ErrInvalidActionType'
 
 # Invalid conditions.
 INVALIDPARAMETER_ERRINVALIDCONDITION = 'InvalidParameter.ErrInvalidCondition'
+
+# The operations of modifying the origin server cannot be only to configure host matching type.
+INVALIDPARAMETER_ERRINVALIDCONDITIONCANNOTONLYCONTAINHOSTWHENMODIFYORIGINACTIONCONFIGURED = 'InvalidParameter.ErrInvalidConditionCannotOnlyContainHostWhenModifyOriginActionConfigured'
 
 # You can only configure one host matching type when modifying the origin.
 INVALIDPARAMETER_ERRINVALIDCONDITIONHOSTTOOMANYWHENMODIFYORIGINACTIONCONFIGURED = 'InvalidParameter.ErrInvalidConditionHostTooManyWhenModifyOriginActionConfigured'
@@ -297,6 +303,9 @@ INVALIDPARAMETER_INVALIDCACHEKEYCOOKIE = 'InvalidParameter.InvalidCacheKeyCookie
 INVALIDPARAMETER_INVALIDCACHEKEYIGNORECASE = 'InvalidParameter.InvalidCacheKeyIgnoreCase'
 
 # Invalid query string.
+INVALIDPARAMETER_INVALIDCACHEKEYQUERYSTRINGACTION = 'InvalidParameter.InvalidCacheKeyQueryStringAction'
+
+# Invalid query string.
 INVALIDPARAMETER_INVALIDCACHEKEYQUERYSTRINGVALUE = 'InvalidParameter.InvalidCacheKeyQueryStringValue'
 
 # Invalid cache key scheme.
@@ -310,6 +319,9 @@ INVALIDPARAMETER_INVALIDCACHETIME = 'InvalidParameter.InvalidCacheTime'
 
 # Incorrect certificate information.
 INVALIDPARAMETER_INVALIDCERTINFO = 'InvalidParameter.InvalidCertInfo'
+
+# Invalid client IP location configuration. HeaderName consists of 1-100 alphanumeric characters and cannot start or end with hyphens (-).
+INVALIDPARAMETER_INVALIDCLIENTIPCOUNTRYHEADERNAME = 'InvalidParameter.InvalidClientIpCountryHeaderName'
 
 # Invalid client IP request header.
 INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = 'InvalidParameter.InvalidClientIpHeaderName'
@@ -353,6 +365,9 @@ INVALIDPARAMETER_INVALIDHTTPSHSTSMAXAGE = 'InvalidParameter.InvalidHttpsHstsMaxA
 # Invalid HTTPS TLS version.
 INVALIDPARAMETER_INVALIDHTTPSTLSVERSION = 'InvalidParameter.InvalidHttpsTlsVersion'
 
+# Invalid interval. The value should be either [min 5min hour day].
+INVALIDPARAMETER_INVALIDINTERVAL = 'InvalidParameter.InvalidInterval'
+
 # Invalid IPv6 settings.
 INVALIDPARAMETER_INVALIDIPV6SWITCH = 'InvalidParameter.InvalidIpv6Switch'
 
@@ -362,14 +377,23 @@ INVALIDPARAMETER_INVALIDMAXAGEFOLLOWORIGIN = 'InvalidParameter.InvalidMaxAgeFoll
 # Invalid browser cache.
 INVALIDPARAMETER_INVALIDMAXAGETIME = 'InvalidParameter.InvalidMaxAgeTime'
 
+# The query dimension is invalid.
+INVALIDPARAMETER_INVALIDMETRIC = 'InvalidParameter.InvalidMetric'
+
 # Invalid origin server.
 INVALIDPARAMETER_INVALIDORIGIN = 'InvalidParameter.InvalidOrigin'
+
+# The origin server group type is incorrect.
+INVALIDPARAMETER_INVALIDORIGINGROUPTYPE = 'InvalidParameter.InvalidOriginGroupType'
 
 # The origin cannot be a private IP or loopback address.
 INVALIDPARAMETER_INVALIDORIGINIP = 'InvalidParameter.InvalidOriginIp'
 
 # Incorrect origin server type.
 INVALIDPARAMETER_INVALIDORIGINTYPE = 'InvalidParameter.InvalidOriginType'
+
+# The origin server is incorrect or inexistent.
+INVALIDPARAMETER_INVALIDORIGINVALUE = 'InvalidParameter.InvalidOriginValue'
 
 # Invalid parameter.
 INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
@@ -464,7 +488,7 @@ INVALIDPARAMETER_KEYRULESINVALIDQUERYSTRINGVALUE = 'InvalidParameter.KeyRulesInv
 # Maximum parameter length exceeded.
 INVALIDPARAMETER_LENGTHEXCEEDSLIMIT = 'InvalidParameter.LengthExceedsLimit'
 
-# 
+# The Cloud Load Balancer instance ID is required in the operation of modifying the origin server.
 INVALIDPARAMETER_LOADBALANCEINSTANCEIDISREQUIRED = 'InvalidParameter.LoadBalanceInstanceIdIsRequired'
 
 # Smart routing is not supported.
@@ -479,19 +503,28 @@ INVALIDPARAMETER_OCDIRECTORIGINREQUIRESSMARTROUTING = 'InvalidParameter.OCDirect
 # The origin address cannot be a private IP address.
 INVALIDPARAMETER_ORIGINISINNERIP = 'InvalidParameter.OriginIsInnerIp'
 
+# The layer-4 proxy strictly prohibits mixing IPs and domain names.
+INVALIDPARAMETER_ORIGINL4RECORDIPV4MIXDOMAIN = 'InvalidParameter.OriginL4RecordIPV4MixDomain'
+
+# Usage of multi-domain origin server is forbidden for layer-4 proxy.
+INVALIDPARAMETER_ORIGINL4RECORDMULTIDOMAIN = 'InvalidParameter.OriginL4RecordMultiDomain'
+
 # The origin group name already exists.
 INVALIDPARAMETER_ORIGINNAMEEXISTS = 'InvalidParameter.OriginNameExists'
 
 # The origin group ID is required.
 INVALIDPARAMETER_ORIGINORIGINGROUPIDISREQUIRED = 'InvalidParameter.OriginOriginGroupIdIsRequired'
 
-# 
+# The return protocol is required in the operation of modifying the origin server.
 INVALIDPARAMETER_ORIGINPULLPROTOCOLISREQUIRED = 'InvalidParameter.OriginPullProtocolIsRequired'
 
 # Incorrect origin server format. 
 INVALIDPARAMETER_ORIGINRECORDFORMATERROR = 'InvalidParameter.OriginRecordFormatError'
 
-# Incorrect key format.
+# Weight value range: 0-100.
+INVALIDPARAMETER_ORIGINRECORDWEIGHTVALUE = 'InvalidParameter.OriginRecordWeightValue'
+
+# The key format is incorrect.
 INVALIDPARAMETER_ORIGINTHIRDPARTYPARAMFORMATERROR = 'InvalidParameter.OriginThirdPartyParamFormatError'
 
 # Parameter error: Invalid “End time”. The interval between the start and end time cannot exceed 7 days.
@@ -505,6 +538,12 @@ INVALIDPARAMETER_POSTMAXSIZELIMITEXCEEDED = 'InvalidParameter.PostMaxSizeLimitEx
 
 # The instance name already exists.
 INVALIDPARAMETER_PROXYNAMEDUPLICATING = 'InvalidParameter.ProxyNameDuplicating'
+
+# Instance name can contain 1 to 50 characters. The allowed characters are a to z, 0 to 9, and -. - cannot be registered alone or used continuously and cannot be placed at the beginning or the end.
+INVALIDPARAMETER_PROXYNAMENOTMATCHED = 'InvalidParameter.ProxyNameNotMatched'
+
+# Invalid response header.
+INVALIDPARAMETER_RESPONSEHEADERCACHECONTROLNOTALLOWDELETE = 'InvalidParameter.ResponseHeaderCacheControlNotAllowDelete'
 
 # Incorrect origin server information format of the rules.
 INVALIDPARAMETER_RULEORIGINFORMATERROR = 'InvalidParameter.RuleOriginFormatError'
@@ -548,6 +587,9 @@ INVALIDPARAMETER_TASKNOTGENERATED = 'InvalidParameter.TaskNotGenerated'
 # Internal error.
 INVALIDPARAMETER_TASKSYSTEMERROR = 'InvalidParameter.TaskSystemError'
 
+# TLS version is not continuous for HTTPS.
+INVALIDPARAMETER_TLSVERSIONNOTINSEQUENCE = 'InvalidParameter.TlsVersionNotInSequence'
+
 # Too many filter values.
 INVALIDPARAMETER_TOOMANYFILTERVALUES = 'InvalidParameter.TooManyFilterValues'
 
@@ -556,6 +598,9 @@ INVALIDPARAMETER_UPLOADURL = 'InvalidParameter.UploadUrl'
 
 # The site is already bound.
 INVALIDPARAMETER_ZONEHASBEENBOUND = 'InvalidParameter.ZoneHasBeenBound'
+
+# The zone is not bound to a package.
+INVALIDPARAMETER_ZONEHASNOTBEENBOUNDTOPLAN = 'InvalidParameter.ZoneHasNotBeenBoundToPlan'
 
 # The site is being upgraded. Changing is not supported. Please try again later.
 INVALIDPARAMETER_ZONEISGRAYPUBLISHING = 'InvalidParameter.ZoneIsGrayPublishing'
@@ -568,6 +613,9 @@ INVALIDPARAMETER_ZONENOTFOUND = 'InvalidParameter.ZoneNotFound'
 
 # Invalid parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# The domain name for this zone has been banned.
+INVALIDPARAMETERVALUE_ACCESSBLACKLIST = 'InvalidParameterValue.AccessBlacklist'
 
 # It conflicts with existing records.
 INVALIDPARAMETERVALUE_CONFLICTRECORD = 'InvalidParameterValue.ConflictRecord'
@@ -583,6 +631,9 @@ INVALIDPARAMETERVALUE_CONTENTSAMEASNAME = 'InvalidParameterValue.ContentSameAsNa
 
 # The specified domain name does not match the site. 
 INVALIDPARAMETERVALUE_DOMAINNOTMATCHZONE = 'InvalidParameterValue.DomainNotMatchZone'
+
+# The alias domain name is invalid. It must contain numerics, English characters, and hyphens, but hyphen is not allowed at the beginning or the end.
+INVALIDPARAMETERVALUE_INVALIDALIASDOMAINNAME = 'InvalidParameterValue.InvalidAliasDomainName'
 
 # Invalid alias domain suffix. This domain is for internal usage and cannot be used as the alias domain.
 INVALIDPARAMETERVALUE_INVALIDALIASNAMESUFFIX = 'InvalidParameterValue.InvalidAliasNameSuffix'
@@ -602,6 +653,9 @@ INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = 'InvalidParameterValue.InvalidDomain
 # Incorrect DNS proxy
 INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = 'InvalidParameterValue.InvalidProxyOrigin'
 
+# The tag value contains invalid characters.
+INVALIDPARAMETERVALUE_INVALIDTAGVALUE = 'InvalidParameterValue.InvalidTagValue'
+
 # Wildcard domain CNAMEs are not supported.
 INVALIDPARAMETERVALUE_NOTALLOWEDWILDCARDSHAREDCNAME = 'InvalidParameterValue.NotAllowedWildcardSharedCNAME'
 
@@ -610,6 +664,18 @@ INVALIDPARAMETERVALUE_ORIGINGROUPNOTEXISTS = 'InvalidParameterValue.OriginGroupN
 
 # Enter a valid shared CNAME prefix of up to 50 characters.
 INVALIDPARAMETERVALUE_SHAREDCNAMEPREFIXNOTMATCH = 'InvalidParameterValue.SharedCNAMEPrefixNotMatch'
+
+# The current domain suffix is not supported for access. Please contact us if you need to use it.
+INVALIDPARAMETERVALUE_TOPLEVELDOMAINNOTSUPPORT = 'InvalidParameterValue.TopLevelDomainNotSupport'
+
+# The zone name format is incorrect. Please input a correctly formed domain name.
+INVALIDPARAMETERVALUE_ZONENAMEINVALID = 'InvalidParameterValue.ZoneNameInvalid'
+
+# Punycode access is not supported at present.
+INVALIDPARAMETERVALUE_ZONENAMENOTSUPPORTPUNYCODE = 'InvalidParameterValue.ZoneNameNotSupportPunyCode'
+
+# The zone does not support subdomain access. Please use second-level domains for zone access.
+INVALIDPARAMETERVALUE_ZONENAMENOTSUPPORTSUBDOMAIN = 'InvalidParameterValue.ZoneNameNotSupportSubDomain'
 
 # The site alias already exists. 
 INVALIDPARAMETERVALUE_ZONESAMEASNAME = 'InvalidParameterValue.ZoneSameAsName'
@@ -626,6 +692,9 @@ LIMITEXCEEDED_DAILYQUOTA = 'LimitExceeded.DailyQuota'
 # Not supported by the plan.
 LIMITEXCEEDED_PACKNOTALLOW = 'LimitExceeded.PackNotAllow'
 
+# The number of rules imported has exceeded the limit.
+LIMITEXCEEDED_PROXYRULESLIMITEXCEEDED = 'LimitExceeded.ProxyRulesLimitExceeded'
+
 # Query time limit exceeded.
 LIMITEXCEEDED_QUERYTIMELIMITEXCEEDED = 'LimitExceeded.QueryTimeLimitExceeded'
 
@@ -638,7 +707,7 @@ LIMITEXCEEDED_RULELIMITEXCEEDED = 'LimitExceeded.RuleLimitExceeded'
 # Limit exceeded
 LIMITEXCEEDED_SECURITY = 'LimitExceeded.Security'
 
-# 
+# User instance quantity limitation.
 LIMITEXCEEDED_USERQUOTALIMITED = 'LimitExceeded.UserQuotaLimited'
 
 # Reached the upper limit of sites of the plan
@@ -656,13 +725,16 @@ OPERATIONDENIED_ACCELERATEMAINLANDDISABLE = 'OperationDenied.AccelerateMainlandD
 # Cross-MLC-border acceleration and IPv6 cannot be configured at the same time.
 OPERATIONDENIED_ACCELERATEMAINLANDIPV6CONFLICT = 'OperationDenied.AccelerateMainlandIpv6Conflict'
 
+# The existing domain feature under the current site conflicts with the Chinese mainland network optimization, and cannot be configured at the same time.
+OPERATIONDENIED_ACCELERATEMAINLANDMULTIPLYLAYERCONFLICT = 'OperationDenied.AccelerateMainlandMultiplyLayerConflict'
+
 # An L7 DNS service referencing the origin group is being deployed. Please edit later.
 OPERATIONDENIED_ACCELERATIONDOMAINSTATUSNOTINONLINE = 'OperationDenied.AccelerationDomainStatusNotInOnline'
 
 # The configuration is locked. Please unlock and try again.
 OPERATIONDENIED_CONFIGLOCKED = 'OperationDenied.ConfigLocked'
 
-# 
+# The pre-check failed during site deletion.
 OPERATIONDENIED_DELETEZONEPRECHECKFAILED = 'OperationDenied.DeleteZonePreCheckFailed'
 
 # The EdgeOne service of the site is being disabled. Please try again later.
@@ -683,7 +755,7 @@ OPERATIONDENIED_DOMAINNUMBERISNOTZERO = 'OperationDenied.DomainNumberIsNotZero'
 # Some domain names on the site are currently experiencing instability. The stable states for domain names are "online" and "offline".
 OPERATIONDENIED_DOMAINSTATUSUNSTABLE = 'OperationDenied.DomainStatusUnstable'
 
-# 
+# The site environment is not ready.
 OPERATIONDENIED_ENVNOTREADY = 'OperationDenied.EnvNotReady'
 
 # The EdgeOne service of the site is disabled. Please enable it and try again.
@@ -695,8 +767,20 @@ OPERATIONDENIED_INVALIDADVANCEDDEFENSESECURITYTYPE = 'OperationDenied.InvalidAdv
 # The acceleration regions of the site must be in the Chinese mainland when you enable the DDoS Protection.
 OPERATIONDENIED_INVALIDADVANCEDDEFENSEZONEAREA = 'OperationDenied.InvalidAdvancedDefenseZoneArea'
 
+# The layer-4 instance resource sales are skyrocketing and now the resources are sold out. Replenishing is in progress. Currently, new layer-4 proxies cannot be added. Please wait.
+OPERATIONDENIED_L4LACKOFRESOURCES = 'OperationDenied.L4LackOfResources'
+
+# The sale of Layer 4 port resources is booming and they have been sold out. We are urgently restocking. At present, it is not possible to add new Layer 4 proxies or rules, and we kindly ask for your patience.
+OPERATIONDENIED_L4PORTLACKOFRESOURCES = 'OperationDenied.L4PortLackOfResources'
+
 # Operation failed: The L4 proxy is blocked.
 OPERATIONDENIED_L4PROXYINBANNEDSTATUS = 'OperationDenied.L4ProxyInBannedStatus'
+
+# The Layer 4 channel is closed and rule addition is disallowed.
+OPERATIONDENIED_L4PROXYINOFFLINESTATUS = 'OperationDenied.L4ProxyInOfflineStatus'
+
+# The instance is currently in deployment and cannot be operated.
+OPERATIONDENIED_L4PROXYINPROCESSSTATUS = 'OperationDenied.L4ProxyInProcessStatus'
 
 # The EdgeOne service cannot be disabled for the site: A L4 proxy instance is being deployed.
 OPERATIONDENIED_L4PROXYINPROGRESSSTATUS = 'OperationDenied.L4ProxyInProgressStatus'
@@ -709,6 +793,9 @@ OPERATIONDENIED_L4STATUSNOTINONLINE = 'OperationDenied.L4StatusNotInOnline'
 
 # The EdgeOne service cannot be disabled for the site: An accelerated domain name is being deployed.
 OPERATIONDENIED_L7HOSTINPROCESSSTATUS = 'OperationDenied.L7HostInProcessStatus'
+
+# The affiliated Cloud Load Balancer is not in a running state. Operation is forbidden.
+OPERATIONDENIED_LOADBALANCESTATUSNOTINONLINE = 'OperationDenied.LoadBalanceStatusNotInOnline'
 
 # The site status does not support operations on load balancers.
 OPERATIONDENIED_LOADBALANCINGZONEISNOTACTIVE = 'OperationDenied.LoadBalancingZoneIsNotActive'
@@ -730,6 +817,15 @@ OPERATIONDENIED_NOTINVERSIONCONTROLWHITELIST = 'OperationDenied.NotInVersionCont
 
 # Failed to delete: The acceleration domain name is in use. 
 OPERATIONDENIED_ORIGINGROUPACCELERATIONDOMAINUSED = 'OperationDenied.OriginGroupAccelerationDomainUsed'
+
+# The Layer 4 proxy is in use and cannot be deleted.
+OPERATIONDENIED_ORIGINGROUPL4USED = 'OperationDenied.OriginGroupL4Used'
+
+# The Cloud Load Balancer is in use and cannot be deleted.
+OPERATIONDENIED_ORIGINGROUPLBUSED = 'OperationDenied.OriginGroupLBUsed'
+
+# The rule engine is in use and cannot be deleted.
+OPERATIONDENIED_ORIGINGROUPRULEENGINEUSED = 'OperationDenied.OriginGroupRuleEngineUsed'
 
 # Ownership verification failed. Please complete the site ownership verification first.
 OPERATIONDENIED_OWNERSHIPVERIFICATIONNOTPASSED = 'OperationDenied.OwnershipVerificationNotPassed'
@@ -755,7 +851,7 @@ OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDIPV6 = 'OperationDenied.SharedCNAMEUnsuppo
 # There is a test version in use. Please release the test version to the live environment, or roll back the test version and try again.
 OPERATIONDENIED_VERSIONCONTROLISGRAYING = 'OperationDenied.VersionControlIsGraying'
 
-# 
+# The operation is not allowed because the version management mode is applied.
 OPERATIONDENIED_VERSIONCONTROLLOCKED = 'OperationDenied.VersionControlLocked'
 
 # The specified site working mode is not applicable to the version management mode.
@@ -848,7 +944,7 @@ RESOURCEUNAVAILABLE_DOMAINALREADYEXISTS = 'ResourceUnavailable.DomainAlreadyExis
 # The requested accelerated domain name doesn’t exist. 
 RESOURCEUNAVAILABLE_DOMAINNOTFOUND = 'ResourceUnavailable.DomainNotFound'
 
-# 
+# The function does not exist or does not belong to this account.
 RESOURCEUNAVAILABLE_FUNCTIONNOTFOUND = 'ResourceUnavailable.FunctionNotFound'
 
 # The domain name does not exist or not use a proxy.
