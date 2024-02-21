@@ -848,12 +848,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type CardInfoOcrJson: :class:`tencentcloud.faceid.v20180301.models.FileInfo`
         :param _RequestId: The request ID of a single process.
         :type RequestId: str
+        :param _CardInfo: The recognition results of ID card
+        :type CardInfo: :class:`tencentcloud.faceid.v20180301.models.CardInfo`
         """
         self._IsPass = None
         self._CardVideo = None
         self._CardImage = None
         self._CardInfoOcrJson = None
         self._RequestId = None
+        self._CardInfo = None
 
     @property
     def IsPass(self):
@@ -895,6 +898,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def RequestId(self, RequestId):
         self._RequestId = RequestId
 
+    @property
+    def CardInfo(self):
+        return self._CardInfo
+
+    @CardInfo.setter
+    def CardInfo(self, CardInfo):
+        self._CardInfo = CardInfo
+
 
     def _deserialize(self, params):
         self._IsPass = params.get("IsPass")
@@ -908,6 +919,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._CardInfoOcrJson = FileInfo()
             self._CardInfoOcrJson._deserialize(params.get("CardInfoOcrJson"))
         self._RequestId = params.get("RequestId")
+        if params.get("CardInfo") is not None:
+            self._CardInfo = CardInfo()
+            self._CardInfo._deserialize(params.get("CardInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
