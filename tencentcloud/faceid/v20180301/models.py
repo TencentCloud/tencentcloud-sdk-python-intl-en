@@ -18,6 +18,147 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Address(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Country: Nationality.
+        :type Country: str
+        :param _PostalCode: Post code.
+        :type PostalCode: str
+        :param _Subdivision: Subregion.
+        :type Subdivision: str
+        :param _City: City.
+        :type City: str
+        :param _FormattedAddress: Complete address.
+        :type FormattedAddress: str
+        :param _LineOne: The first line of address.
+        :type LineOne: str
+        :param _LineTwo: The second line of address.
+        :type LineTwo: str
+        :param _LineThree: The third line of address.
+        :type LineThree: str
+        :param _LineFour: The fourth line of address.
+        :type LineFour: str
+        :param _LineFive: The fifth line of address.
+        :type LineFive: str
+        """
+        self._Country = None
+        self._PostalCode = None
+        self._Subdivision = None
+        self._City = None
+        self._FormattedAddress = None
+        self._LineOne = None
+        self._LineTwo = None
+        self._LineThree = None
+        self._LineFour = None
+        self._LineFive = None
+
+    @property
+    def Country(self):
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def PostalCode(self):
+        return self._PostalCode
+
+    @PostalCode.setter
+    def PostalCode(self, PostalCode):
+        self._PostalCode = PostalCode
+
+    @property
+    def Subdivision(self):
+        return self._Subdivision
+
+    @Subdivision.setter
+    def Subdivision(self, Subdivision):
+        self._Subdivision = Subdivision
+
+    @property
+    def City(self):
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def FormattedAddress(self):
+        return self._FormattedAddress
+
+    @FormattedAddress.setter
+    def FormattedAddress(self, FormattedAddress):
+        self._FormattedAddress = FormattedAddress
+
+    @property
+    def LineOne(self):
+        return self._LineOne
+
+    @LineOne.setter
+    def LineOne(self, LineOne):
+        self._LineOne = LineOne
+
+    @property
+    def LineTwo(self):
+        return self._LineTwo
+
+    @LineTwo.setter
+    def LineTwo(self, LineTwo):
+        self._LineTwo = LineTwo
+
+    @property
+    def LineThree(self):
+        return self._LineThree
+
+    @LineThree.setter
+    def LineThree(self, LineThree):
+        self._LineThree = LineThree
+
+    @property
+    def LineFour(self):
+        return self._LineFour
+
+    @LineFour.setter
+    def LineFour(self, LineFour):
+        self._LineFour = LineFour
+
+    @property
+    def LineFive(self):
+        return self._LineFive
+
+    @LineFive.setter
+    def LineFive(self, LineFive):
+        self._LineFive = LineFive
+
+
+    def _deserialize(self, params):
+        self._Country = params.get("Country")
+        self._PostalCode = params.get("PostalCode")
+        self._Subdivision = params.get("Subdivision")
+        self._City = params.get("City")
+        self._FormattedAddress = params.get("FormattedAddress")
+        self._LineOne = params.get("LineOne")
+        self._LineTwo = params.get("LineTwo")
+        self._LineThree = params.get("LineThree")
+        self._LineFour = params.get("LineFour")
+        self._LineFive = params.get("LineFive")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplyLivenessTokenRequest(AbstractModel):
     """ApplyLivenessToken request structure.
 
@@ -1671,9 +1812,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LastName: str
         :param _Sex: Gender on the license
-- M：male
-- F：female
-- X：other gender
+- M: male
+- F: female
+- X: other gender
 Note: This field may return null, indicating that no valid values can be obtained.
 Example: M
         :type Sex: str
@@ -1693,6 +1834,9 @@ Example: IND
         :param _RegistrationNumber: Registration number
 Note: This field may return null, indicating that no valid values can be obtained.
         :type RegistrationNumber: str
+        :param _Address: Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Address: :class:`tencentcloud.faceid.v20180301.models.Address`
         """
         self._LicenseNumber = None
         self._PersonalNumber = None
@@ -1712,6 +1856,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._BirthPlace = None
         self._Nationality = None
         self._RegistrationNumber = None
+        self._Address = None
 
     @property
     def LicenseNumber(self):
@@ -1857,6 +2002,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def RegistrationNumber(self, RegistrationNumber):
         self._RegistrationNumber = RegistrationNumber
 
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
 
     def _deserialize(self, params):
         self._LicenseNumber = params.get("LicenseNumber")
@@ -1877,6 +2030,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._BirthPlace = params.get("BirthPlace")
         self._Nationality = params.get("Nationality")
         self._RegistrationNumber = params.get("RegistrationNumber")
+        if params.get("Address") is not None:
+            self._Address = Address()
+            self._Address._deserialize(params.get("Address"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5047,6 +5203,8 @@ class WebVerificationConfigIntl(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AutoSkipStartPage: When starting verification, whether to skip the starting verification page. If true, enter the verification process directly. The default is false. This configuration will not take effect if the downgrade policy is triggered.
+        :type AutoSkipStartPage: bool
         :param _AutoSkip: When the verification passed, whether to skip the result page and automatically jump to RedirectURL. The default value is false.
 Example value: false
         :type AutoSkip: bool
@@ -5069,10 +5227,22 @@ Example value: 3
 9.InternationalIDPassport: ID cards of Hong Kong, Macao and Taiwan (China), and international passport.
 Example: HKIDCard
         :type IDCardType: str
+        :param _DisableCheckOcrWarnings: Whether to turn off document alarms, the default is false (the alarm detection function is turned on). When enabled, the identity authentication process will be intercepted based on the alarm status of the certificate. If you need to use the document authentication function, please contact us.
+        :type DisableCheckOcrWarnings: bool
         """
+        self._AutoSkipStartPage = None
         self._AutoSkip = None
         self._CheckMode = None
         self._IDCardType = None
+        self._DisableCheckOcrWarnings = None
+
+    @property
+    def AutoSkipStartPage(self):
+        return self._AutoSkipStartPage
+
+    @AutoSkipStartPage.setter
+    def AutoSkipStartPage(self, AutoSkipStartPage):
+        self._AutoSkipStartPage = AutoSkipStartPage
 
     @property
     def AutoSkip(self):
@@ -5098,11 +5268,21 @@ Example: HKIDCard
     def IDCardType(self, IDCardType):
         self._IDCardType = IDCardType
 
+    @property
+    def DisableCheckOcrWarnings(self):
+        return self._DisableCheckOcrWarnings
+
+    @DisableCheckOcrWarnings.setter
+    def DisableCheckOcrWarnings(self, DisableCheckOcrWarnings):
+        self._DisableCheckOcrWarnings = DisableCheckOcrWarnings
+
 
     def _deserialize(self, params):
+        self._AutoSkipStartPage = params.get("AutoSkipStartPage")
         self._AutoSkip = params.get("AutoSkip")
         self._CheckMode = params.get("CheckMode")
         self._IDCardType = params.get("IDCardType")
+        self._DisableCheckOcrWarnings = params.get("DisableCheckOcrWarnings")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
