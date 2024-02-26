@@ -159,6 +159,172 @@ class Address(AbstractModel):
         
 
 
+class ApplyCardVerificationRequest(AbstractModel):
+    """ApplyCardVerification request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Nationality: Please select the country code of ID document.
+IDN: Indonesia
+HKG: Hong Kong
+THA: Thailand
+MYS: Malaysia
+SGP: Singapore
+JPN: Japan
+AUTO: Automatic Identification
+        :type Nationality: str
+        :param _CardType: Please select the type of ID document. The supported options are:
+ID_CARD
+PASSPORT
+DRIVING_LICENSE
+AUTO
+        :type CardType: str
+        :param _ImageBase64Front: Base64 value for the front of the document. Supported image formats: PNG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. 
+The image download takes no more than 3 seconds. Supported image resolution: 8000*8000. One of ImageUrlFront and ImageBase64 Front of the image must be provided. If both are provided, only ImageUrlFront will be used.
+        :type ImageBase64Front: str
+        :param _ImageBase64Back: Base64 value of the reverse side of the document. Supported image formats: PNG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.
+        :type ImageBase64Back: str
+        :param _ImageUrlFront: The URL value on the back of the certificate. Supported image formats: PNG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. One of ImageUrlFront and ImageBase64Front of the image must be provided. If both are provided, only ImageUrlFront will be used.
+        :type ImageUrlFront: str
+        :param _ImageUrlBack: The URL value on the back of the certificate. Supported image formats: PNG, JPEG, GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.
+        :type ImageUrlBack: str
+        """
+        self._Nationality = None
+        self._CardType = None
+        self._ImageBase64Front = None
+        self._ImageBase64Back = None
+        self._ImageUrlFront = None
+        self._ImageUrlBack = None
+
+    @property
+    def Nationality(self):
+        return self._Nationality
+
+    @Nationality.setter
+    def Nationality(self, Nationality):
+        self._Nationality = Nationality
+
+    @property
+    def CardType(self):
+        return self._CardType
+
+    @CardType.setter
+    def CardType(self, CardType):
+        self._CardType = CardType
+
+    @property
+    def ImageBase64Front(self):
+        return self._ImageBase64Front
+
+    @ImageBase64Front.setter
+    def ImageBase64Front(self, ImageBase64Front):
+        self._ImageBase64Front = ImageBase64Front
+
+    @property
+    def ImageBase64Back(self):
+        return self._ImageBase64Back
+
+    @ImageBase64Back.setter
+    def ImageBase64Back(self, ImageBase64Back):
+        self._ImageBase64Back = ImageBase64Back
+
+    @property
+    def ImageUrlFront(self):
+        return self._ImageUrlFront
+
+    @ImageUrlFront.setter
+    def ImageUrlFront(self, ImageUrlFront):
+        self._ImageUrlFront = ImageUrlFront
+
+    @property
+    def ImageUrlBack(self):
+        return self._ImageUrlBack
+
+    @ImageUrlBack.setter
+    def ImageUrlBack(self, ImageUrlBack):
+        self._ImageUrlBack = ImageUrlBack
+
+
+    def _deserialize(self, params):
+        self._Nationality = params.get("Nationality")
+        self._CardType = params.get("CardType")
+        self._ImageBase64Front = params.get("ImageBase64Front")
+        self._ImageBase64Back = params.get("ImageBase64Back")
+        self._ImageUrlFront = params.get("ImageUrlFront")
+        self._ImageUrlBack = params.get("ImageUrlBack")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplyCardVerificationResponse(AbstractModel):
+    """ApplyCardVerification response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CardVerificationToken: The token used to identify an verification process. It can be used to get the verification result after the process is completed.
+        :type CardVerificationToken: str
+        :param _AsyncCardVerificationMaxPollingTimes: The maximum number of polls for calling the pull result interface polling.
+        :type AsyncCardVerificationMaxPollingTimes: int
+        :param _AsyncCardVerificationPollingWaitTime: The interval for polling when calling the pull result interface (in seconds).
+        :type AsyncCardVerificationPollingWaitTime: int
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._CardVerificationToken = None
+        self._AsyncCardVerificationMaxPollingTimes = None
+        self._AsyncCardVerificationPollingWaitTime = None
+        self._RequestId = None
+
+    @property
+    def CardVerificationToken(self):
+        return self._CardVerificationToken
+
+    @CardVerificationToken.setter
+    def CardVerificationToken(self, CardVerificationToken):
+        self._CardVerificationToken = CardVerificationToken
+
+    @property
+    def AsyncCardVerificationMaxPollingTimes(self):
+        return self._AsyncCardVerificationMaxPollingTimes
+
+    @AsyncCardVerificationMaxPollingTimes.setter
+    def AsyncCardVerificationMaxPollingTimes(self, AsyncCardVerificationMaxPollingTimes):
+        self._AsyncCardVerificationMaxPollingTimes = AsyncCardVerificationMaxPollingTimes
+
+    @property
+    def AsyncCardVerificationPollingWaitTime(self):
+        return self._AsyncCardVerificationPollingWaitTime
+
+    @AsyncCardVerificationPollingWaitTime.setter
+    def AsyncCardVerificationPollingWaitTime(self, AsyncCardVerificationPollingWaitTime):
+        self._AsyncCardVerificationPollingWaitTime = AsyncCardVerificationPollingWaitTime
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CardVerificationToken = params.get("CardVerificationToken")
+        self._AsyncCardVerificationMaxPollingTimes = params.get("AsyncCardVerificationMaxPollingTimes")
+        self._AsyncCardVerificationPollingWaitTime = params.get("AsyncCardVerificationPollingWaitTime")
+        self._RequestId = params.get("RequestId")
+
+
 class ApplyLivenessTokenRequest(AbstractModel):
     """ApplyLivenessToken request structure.
 
@@ -2149,6 +2315,162 @@ class GenerateReflectSequenceResponse(AbstractModel):
     def _deserialize(self, params):
         self._ReflectSequenceUrl = params.get("ReflectSequenceUrl")
         self._ReflectSequenceMd5 = params.get("ReflectSequenceMd5")
+        self._RequestId = params.get("RequestId")
+
+
+class GetCardVerificationResultRequest(AbstractModel):
+    """GetCardVerificationResult request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CardVerificationToken: The token used to identify an verification process. It can be used to get the verification result after the process is completed.
+        :type CardVerificationToken: str
+        """
+        self._CardVerificationToken = None
+
+    @property
+    def CardVerificationToken(self):
+        return self._CardVerificationToken
+
+    @CardVerificationToken.setter
+    def CardVerificationToken(self, CardVerificationToken):
+        self._CardVerificationToken = CardVerificationToken
+
+
+    def _deserialize(self, params):
+        self._CardVerificationToken = params.get("CardVerificationToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetCardVerificationResultResponse(AbstractModel):
+    """GetCardVerificationResult response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Pass status. When Warning and Rejected are returned, please check the specific reasons in the WarnInfo structure return. Example values are as follows:
+Passed
+Warning
+Rejected
+        :type Status: str
+        :param _WarnInfo: Warning information returned by document verification.
+        :type WarnInfo: list of str
+        :param _Nationality: Nationality code. Complies with standard ISO 3166-1 alpha-3. 
+
+Example value: IDN
+        :type Nationality: str
+        :param _CardType: Card Type. The supported options are:
+ID_CARD
+PASSPORT
+DRIVING_LICENSE
+AUTO
+
+Example value: ID_CARD
+        :type CardType: str
+        :param _CardSubType: Subtype of the ID document.
+
+        :type CardSubType: str
+        :param _CardInfo: Recognition results of the ID document.
+        :type CardInfo: :class:`tencentcloud.faceid.v20180301.models.CardInfo`
+        :param _IDVerificationToken: The token used to identify an verification process. It can be used to get the verification result after the process is completed.
+        :type IDVerificationToken: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Status = None
+        self._WarnInfo = None
+        self._Nationality = None
+        self._CardType = None
+        self._CardSubType = None
+        self._CardInfo = None
+        self._IDVerificationToken = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def WarnInfo(self):
+        return self._WarnInfo
+
+    @WarnInfo.setter
+    def WarnInfo(self, WarnInfo):
+        self._WarnInfo = WarnInfo
+
+    @property
+    def Nationality(self):
+        return self._Nationality
+
+    @Nationality.setter
+    def Nationality(self, Nationality):
+        self._Nationality = Nationality
+
+    @property
+    def CardType(self):
+        return self._CardType
+
+    @CardType.setter
+    def CardType(self, CardType):
+        self._CardType = CardType
+
+    @property
+    def CardSubType(self):
+        return self._CardSubType
+
+    @CardSubType.setter
+    def CardSubType(self, CardSubType):
+        self._CardSubType = CardSubType
+
+    @property
+    def CardInfo(self):
+        return self._CardInfo
+
+    @CardInfo.setter
+    def CardInfo(self, CardInfo):
+        self._CardInfo = CardInfo
+
+    @property
+    def IDVerificationToken(self):
+        return self._IDVerificationToken
+
+    @IDVerificationToken.setter
+    def IDVerificationToken(self, IDVerificationToken):
+        self._IDVerificationToken = IDVerificationToken
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._WarnInfo = params.get("WarnInfo")
+        self._Nationality = params.get("Nationality")
+        self._CardType = params.get("CardType")
+        self._CardSubType = params.get("CardSubType")
+        if params.get("CardInfo") is not None:
+            self._CardInfo = CardInfo()
+            self._CardInfo._deserialize(params.get("CardInfo"))
+        self._IDVerificationToken = params.get("IDVerificationToken")
         self._RequestId = params.get("RequestId")
 
 

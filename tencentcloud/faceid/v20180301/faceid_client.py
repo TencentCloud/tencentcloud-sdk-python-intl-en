@@ -26,6 +26,29 @@ class FaceidClient(AbstractClient):
     _service = 'faceid'
 
 
+    def ApplyCardVerification(self, request):
+        """The types of national cards supported by the API and whether instructions on the back of the card are required are as follows:  <table> <thead> <tr> <td style="width:200px"Nationality</td> <td style="width:200px">CardType</td> <td style="width:200px">Back side required</td> </tr> </thead> <tbody> <tr> <td>Indonesia</td> <td>ID card</td> <td>No</td> </tr> <tr> <td>Indonesia</td> <td>Drving license</td> <td>No</td> </tr> <tr> <td>Hongkong</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Thailand</td> <td>ID card</td> <td>No</td> </tr> <tr> <td>Thailand</td> <td>Drving license</td> <td>Yes</td> </tr> <tr> <td>Malaysia</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Malaysia</td> <td>Drving license</td> <td>Yes</td> </tr> <tr> <td>Singapore</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Singapore</td> <td>Drving license</td> <td>Yes</td> </tr> <tr> <td>Philippine</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Philippine</td> <td>Drving license</td> <td>No</td> </tr> <tr> <td>Japan</td> <td>ID card</td> <td>Yes</td> </tr> <tr> <td>Japan</td> <td>Drving license</td> <td>No</td> </tr> </tbody> </table>
+
+        :param request: Request instance for ApplyCardVerification.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.ApplyCardVerificationRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.ApplyCardVerificationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ApplyCardVerification", params, headers=headers)
+            response = json.loads(body)
+            model = models.ApplyCardVerificationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ApplyLivenessToken(self, request):
         """This API is used to apply for a token before calling the liveness detection service each time. This token is required for initiating the verification process and getting the result after the verification is completed.
 
@@ -204,6 +227,29 @@ class FaceidClient(AbstractClient):
             body = self.call("GenerateReflectSequence", params, headers=headers)
             response = json.loads(body)
             model = models.GenerateReflectSequenceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetCardVerificationResult(self, request):
+        """The interface supports obtaining the certificate authentication result based on the token.
+
+        :param request: Request instance for GetCardVerificationResult.
+        :type request: :class:`tencentcloud.faceid.v20180301.models.GetCardVerificationResultRequest`
+        :rtype: :class:`tencentcloud.faceid.v20180301.models.GetCardVerificationResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetCardVerificationResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetCardVerificationResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
