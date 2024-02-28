@@ -722,6 +722,9 @@ A valid value will be returned only when `InstanceAllocationPolicy` is set to `S
 <br><li>`TRUE`: yes. Before the spot instances in the scaling group are about to be automatically repossessed, AS will terminate them. The scale-in hook (if configured) will take effect before the termination. After the termination process starts, AS will asynchronously initiate a scaling activity to meet the desired capacity.
 <br><li>`FALSE`: no. AS will add instances to meet the desired capacity only after the spot instances are terminated.
         :type CapacityRebalance: bool
+        :param _InstanceNameIndexSettings: Instance name sequencing settings.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type InstanceNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
         """
         self._AutoScalingGroupId = None
         self._AutoScalingGroupName = None
@@ -754,6 +757,7 @@ A valid value will be returned only when `InstanceAllocationPolicy` is set to `S
         self._InstanceAllocationPolicy = None
         self._SpotMixedAllocationPolicy = None
         self._CapacityRebalance = None
+        self._InstanceNameIndexSettings = None
 
     @property
     def AutoScalingGroupId(self):
@@ -1003,6 +1007,14 @@ A valid value will be returned only when `InstanceAllocationPolicy` is set to `S
     def CapacityRebalance(self, CapacityRebalance):
         self._CapacityRebalance = CapacityRebalance
 
+    @property
+    def InstanceNameIndexSettings(self):
+        return self._InstanceNameIndexSettings
+
+    @InstanceNameIndexSettings.setter
+    def InstanceNameIndexSettings(self, InstanceNameIndexSettings):
+        self._InstanceNameIndexSettings = InstanceNameIndexSettings
+
 
     def _deserialize(self, params):
         self._AutoScalingGroupId = params.get("AutoScalingGroupId")
@@ -1050,6 +1062,9 @@ A valid value will be returned only when `InstanceAllocationPolicy` is set to `S
             self._SpotMixedAllocationPolicy = SpotMixedAllocationPolicy()
             self._SpotMixedAllocationPolicy._deserialize(params.get("SpotMixedAllocationPolicy"))
         self._CapacityRebalance = params.get("CapacityRebalance")
+        if params.get("InstanceNameIndexSettings") is not None:
+            self._InstanceNameIndexSettings = InstanceNameIndexSettings()
+            self._InstanceNameIndexSettings._deserialize(params.get("InstanceNameIndexSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1208,6 +1223,76 @@ class AutoScalingNotification(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CancelInstanceRefreshRequest(AbstractModel):
+    """CancelInstanceRefresh request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoScalingGroupId: Scaling group ID.
+        :type AutoScalingGroupId: str
+        :param _RefreshActivityId: Refresh activity ID.
+        :type RefreshActivityId: str
+        """
+        self._AutoScalingGroupId = None
+        self._RefreshActivityId = None
+
+    @property
+    def AutoScalingGroupId(self):
+        return self._AutoScalingGroupId
+
+    @AutoScalingGroupId.setter
+    def AutoScalingGroupId(self, AutoScalingGroupId):
+        self._AutoScalingGroupId = AutoScalingGroupId
+
+    @property
+    def RefreshActivityId(self):
+        return self._RefreshActivityId
+
+    @RefreshActivityId.setter
+    def RefreshActivityId(self, RefreshActivityId):
+        self._RefreshActivityId = RefreshActivityId
+
+
+    def _deserialize(self, params):
+        self._AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self._RefreshActivityId = params.get("RefreshActivityId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelInstanceRefreshResponse(AbstractModel):
+    """CancelInstanceRefresh response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ClearLaunchConfigurationAttributesRequest(AbstractModel):
@@ -1623,6 +1708,8 @@ This parameter is valid only when `InstanceAllocationPolicy ` is set to `SPOT_MI
 
 Default value: `False`.
         :type CapacityRebalance: bool
+        :param _InstanceNameIndexSettings: Instance name sequencing settings. If this parameter is not specified, the default is not enabled. When enabled, an incremental numeric sequence will be appended to the names of instances automatically created within the scaling group.
+        :type InstanceNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
         """
         self._AutoScalingGroupName = None
         self._LaunchConfigurationId = None
@@ -1648,6 +1735,7 @@ Default value: `False`.
         self._InstanceAllocationPolicy = None
         self._SpotMixedAllocationPolicy = None
         self._CapacityRebalance = None
+        self._InstanceNameIndexSettings = None
 
     @property
     def AutoScalingGroupName(self):
@@ -1841,6 +1929,14 @@ Default value: `False`.
     def CapacityRebalance(self, CapacityRebalance):
         self._CapacityRebalance = CapacityRebalance
 
+    @property
+    def InstanceNameIndexSettings(self):
+        return self._InstanceNameIndexSettings
+
+    @InstanceNameIndexSettings.setter
+    def InstanceNameIndexSettings(self, InstanceNameIndexSettings):
+        self._InstanceNameIndexSettings = InstanceNameIndexSettings
+
 
     def _deserialize(self, params):
         self._AutoScalingGroupName = params.get("AutoScalingGroupName")
@@ -1881,6 +1977,9 @@ Default value: `False`.
             self._SpotMixedAllocationPolicy = SpotMixedAllocationPolicy()
             self._SpotMixedAllocationPolicy._deserialize(params.get("SpotMixedAllocationPolicy"))
         self._CapacityRebalance = params.get("CapacityRebalance")
+        if params.get("InstanceNameIndexSettings") is not None:
+            self._InstanceNameIndexSettings = InstanceNameIndexSettings()
+            self._InstanceNameIndexSettings._deserialize(params.get("InstanceNameIndexSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4505,6 +4604,139 @@ class DescribeNotificationConfigurationsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRefreshActivitiesRequest(AbstractModel):
+    """DescribeRefreshActivities request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RefreshActivityIds: List of refresh activity IDs. IDs are formatted like: 'asr-5l2ejpfo'. The upper limit per request is 100. Parameters do not support specifying both RefreshActivityIds and Filters simultaneously.
+        :type RefreshActivityIds: list of str
+        :param _Filters: Filtering conditions.
+<li> auto-scaling-group-id - String - Required or not: No - (Filtering conditions) Filters by scaling group ID. </li>
+<li> refresh-activity-status-code - String - Required or not: No - (Filtering conditions) Filters by refresh activity status. (INIT: Initializing. | RUNNING: In progress. | SUCCESSFUL: Activity successful. | FAILED_PAUSE: Failed paused. | AUTO_PAUSE: Automatic pause. | MANUAL_PAUSE: Manual pause. | CANCELLED: Activity canceled. | FAILED: Activity failed.)</li>
+<li> refresh-activity-type - String - Required or not: No - (Filtering conditions) Filters by refresh activity type. (NORMAL: Normal refresh activity. | ROLLBACK: Rollback refresh activity.)</li>
+<li> refresh-activity-id - String - Required or not: No - (Filtering conditions) Filters by refresh activity ID. </li>
+<li> The maximum limit for Filters per request is 10, and the upper limit for Filter.Values is 5. Parameters do not support specifying both RefreshActivityIds and Filters simultaneously.
+        :type Filters: list of Filter
+        :param _Limit: Number of returned pieces. Default value: 20. Maximum value: 100. For further information on Limit, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :type Limit: int
+        :param _Offset: Offset, 0 by default. For further information on Offset, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :type Offset: int
+        """
+        self._RefreshActivityIds = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def RefreshActivityIds(self):
+        return self._RefreshActivityIds
+
+    @RefreshActivityIds.setter
+    def RefreshActivityIds(self, RefreshActivityIds):
+        self._RefreshActivityIds = RefreshActivityIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._RefreshActivityIds = params.get("RefreshActivityIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRefreshActivitiesResponse(AbstractModel):
+    """DescribeRefreshActivities response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Number of refresh activities that meet the conditions.
+        :type TotalCount: int
+        :param _RefreshActivitySet: A collection of information about refresh activities that meet the conditions.
+        :type RefreshActivitySet: list of RefreshActivity
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RefreshActivitySet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RefreshActivitySet(self):
+        return self._RefreshActivitySet
+
+    @RefreshActivitySet.setter
+    def RefreshActivitySet(self, RefreshActivitySet):
+        self._RefreshActivitySet = RefreshActivitySet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RefreshActivitySet") is not None:
+            self._RefreshActivitySet = []
+            for item in params.get("RefreshActivitySet"):
+                obj = RefreshActivity()
+                obj._deserialize(item)
+                self._RefreshActivitySet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeScalingPoliciesRequest(AbstractModel):
     """DescribeScalingPolicies request structure.
 
@@ -5345,6 +5577,89 @@ class ExecuteScalingPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ExitStandbyRequest(AbstractModel):
+    """ExitStandby request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoScalingGroupId: Scaling group ID.
+        :type AutoScalingGroupId: str
+        :param _InstanceIds: List of CVM instances in standby status.
+        :type InstanceIds: list of str
+        """
+        self._AutoScalingGroupId = None
+        self._InstanceIds = None
+
+    @property
+    def AutoScalingGroupId(self):
+        return self._AutoScalingGroupId
+
+    @AutoScalingGroupId.setter
+    def AutoScalingGroupId(self, AutoScalingGroupId):
+        self._AutoScalingGroupId = AutoScalingGroupId
+
+    @property
+    def InstanceIds(self):
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+
+    def _deserialize(self, params):
+        self._AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self._InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExitStandbyResponse(AbstractModel):
+    """ExitStandby response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActivityId: Scaling activity ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ActivityId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ActivityId = None
+        self._RequestId = None
+
+    @property
+    def ActivityId(self):
+        return self._ActivityId
+
+    @ActivityId.setter
+    def ActivityId(self, ActivityId):
+        self._ActivityId = ActivityId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ActivityId = params.get("ActivityId")
+        self._RequestId = params.get("RequestId")
+
+
 class Filter(AbstractModel):
     """> Describes key-value pair filters used for conditional queries, such as filtering results by ID, name and state.
     > * If there are multiple `Filter` parameters, the relationship among them will be logical `AND`.
@@ -5883,7 +6198,7 @@ class InstanceChargePrepaid(AbstractModel):
         r"""
         :param _Period: Purchased usage period of an instance in months. Value range: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
         :type Period: int
-        :param _RenewFlag: Auto-renewal flag. Value range: <br><li>NOTIFY_AND_AUTO_RENEW: Notify expiry and renew automatically <br><li>NOTIFY_AND_MANUAL_RENEW: Notify expiry but not renew automatically <br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Neither notify expiry nor renew automatically <br><br>Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is specified as NOTIFY_AND_AUTO_RENEW, the instance will be automatically renewed on a monthly basis if the account balance is sufficient.
+        :param _RenewFlag: Auto-renewal flag. Valid values: <li>NOTIFY_AND_AUTO_RENEW: Notify upon expiration and automatically renew.</li> <li>NOTIFY_AND_MANUAL_RENEW: Notify upon expiration but do not auto-renew.</li> <li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Do not notify and do not auto-renew</li> Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is set to NOTIFY_AND_AUTO_RENEW, and the account balance is sufficient, the instance will automatically renew monthly upon its expiration date.
         :type RenewFlag: str
         """
         self._Period = None
@@ -5967,6 +6282,53 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class InstanceNameIndexSettings(AbstractModel):
+    """Instance name sequencing settings.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: Whether to enable instance creation sequencing, which is disabled by default. Valid values: <li>TRUE: Indicates that instance creation sequencing is enabled. <li>FALSE: Indicates that instance creation sequencing is disabled.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Enabled: bool
+        :param _BeginIndex: Initial sequence number, with a value range of [0, 99,999,999]. When the sequence number exceeds this range after incrementing, scale-out activities will fail. <li>Upon the first enabling of instance name sequencing: The default value is 0. <li>Upon the enabling of instance name sequencing (not for the first time): If this parameter is not specified, the historical sequence number will be carried forward. Lowering the initial sequence number may result in duplicate instance name sequences within the scaling group.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BeginIndex: int
+        """
+        self._Enabled = None
+        self._BeginIndex = None
+
+    @property
+    def Enabled(self):
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def BeginIndex(self):
+        return self._BeginIndex
+
+    @BeginIndex.setter
+    def BeginIndex(self, BeginIndex):
+        self._BeginIndex = BeginIndex
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._BeginIndex = params.get("BeginIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceNameSettings(AbstractModel):
     """Settings of CVM instance names.
 
@@ -5974,10 +6336,7 @@ class InstanceNameSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceName: CVM instance name
-
-The `InstanceName` cannot start or end with a dot (.) or hyphen (-), and cannot contain consecutive dots and hyphens.
-The name contains 2 to 40 characters, and supports multiple dots (.). The string between two dots can consist of letters (case-insensitive), numbers, and hyphens (-), and cannot be all numbers.
+        :param _InstanceName: CVM instance name. Value range: 2-108.
         :type InstanceName: str
         :param _InstanceNameStyle: Type of CVM instance name. Valid values: `ORIGINAL` and `UNIQUE`. Default value: `ORIGINAL`.
 
@@ -6272,11 +6631,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
         :param _ImageId: Image ID.
         :type ImageId: str
-        :param _LaunchConfigurationStatus: Current status of the launch configuration. Value range: <br><li>NORMAL: normal <br><li>IMAGE_ABNORMAL: Exception with the image of the launch configuration <br><li>CBS_SNAP_ABNORMAL: Exception with the data disk snapshot of the launch configuration <br><li>SECURITY_GROUP_ABNORMAL: Exception with the security group of the launch configuration<br>
+        :param _LaunchConfigurationStatus: Current status of the launch configuration. Valid values: <li>NORMAL: Normal.</li> <li>IMAGE_ABNORMAL: Image exception in the launch configuration.</li> <li>CBS_SNAP_ABNORMAL: Exception with data disk snapshot in the launch configuration.</li> <li>SECURITY_GROUP_ABNORMAL: Security group exception in the launch configuration.</li>
         :type LaunchConfigurationStatus: str
-        :param _InstanceChargeType: Instance billing mode. CVM instances take `POSTPAID_BY_HOUR` by default. Valid values:
-<br><li>POSTPAID_BY_HOUR: pay-as-you-go hourly
-<br><li>SPOTPAID: spot instance
+        :param _InstanceChargeType: Instance billing type, with the CVM default value processed as POSTPAID_BY_HOUR. <li>POSTPAID_BY_HOUR: Hourly postpaid billing.</li> <li>SPOTPAID: Spot billing.</li>
         :type InstanceChargeType: str
         :param _InstanceMarketOptions: Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -6302,15 +6659,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         :param _InstanceChargePrepaid: Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
-        :param _DiskTypePolicy: Selection policy of cloud disks. Default value: ORIGINAL. Valid values:
-<br><li>ORIGINAL: uses the configured cloud disk type
-<br><li>AUTOMATIC: automatically chooses an available cloud disk type in the current availability zone
+        :param _DiskTypePolicy: Cloud disk type selection policy. Valid values: <li>ORIGINAL: Use the set cloud disk type.</li> <li>AUTOMATIC: Automatically select available cloud disk types in the current availability zone.</li>
         :type DiskTypePolicy: str
         :param _HpcClusterId: HPC ID<br>
 Note: This field is default to empty
         :type HpcClusterId: str
         :param _IPv6InternetAccessible: IPv6 public network bandwidth configuration.
         :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
+        :param _DisasterRecoverGroupIds: Placement group ID, supporting specification of only one.
+        :type DisasterRecoverGroupIds: list of str
         """
         self._ProjectId = None
         self._LaunchConfigurationId = None
@@ -6342,6 +6699,7 @@ Note: This field is default to empty
         self._DiskTypePolicy = None
         self._HpcClusterId = None
         self._IPv6InternetAccessible = None
+        self._DisasterRecoverGroupIds = None
 
     @property
     def ProjectId(self):
@@ -6583,6 +6941,14 @@ Note: This field is default to empty
     def IPv6InternetAccessible(self, IPv6InternetAccessible):
         self._IPv6InternetAccessible = IPv6InternetAccessible
 
+    @property
+    def DisasterRecoverGroupIds(self):
+        return self._DisasterRecoverGroupIds
+
+    @DisasterRecoverGroupIds.setter
+    def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
+        self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -6653,6 +7019,7 @@ Note: This field is default to empty
         if params.get("IPv6InternetAccessible") is not None:
             self._IPv6InternetAccessible = IPv6InternetAccessible()
             self._IPv6InternetAccessible._deserialize(params.get("IPv6InternetAccessible"))
+        self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7089,9 +7456,9 @@ class MetricAlarm(AbstractModel):
         r"""
         :param _ComparisonOperator: Comparison operator. Value range: <br><li>GREATER_THAN: greater than </li><li>GREATER_THAN_OR_EQUAL_TO: greater than or equal to </li><li>LESS_THAN: less than </li><li> LESS_THAN_OR_EQUAL_TO: less than or equal to </li><li> EQUAL_TO: equal to </li> <li>NOT_EQUAL_TO: not equal to </li>
         :type ComparisonOperator: str
-        :param _MetricName: Metric name. Value range: <br><li>CPU_UTILIZATION: CPU utilization </li><li>MEM_UTILIZATION: memory utilization </li><li>LAN_TRAFFIC_OUT: private network outbound bandwidth </li><li>LAN_TRAFFIC_IN: private network inbound bandwidth </li><li>WAN_TRAFFIC_OUT: public network outbound bandwidth </li><li>WAN_TRAFFIC_IN: public network inbound bandwidth </li>
+        :param _MetricName: Metric names, with the following optional fields: <br><li>CPU_UTILIZATION: CPU utilization.</li> <li>MEM_UTILIZATION: Memory utilization.</li> <li>LAN_TRAFFIC_OUT: Private network outbound bandwidth.</li> <li>LAN_TRAFFIC_IN: Private network inbound bandwidth.</li> <li>WAN_TRAFFIC_OUT: Public network outbound bandwidth.</li> <li>WAN_TRAFFIC_IN: Public network inbound bandwidth.</li> <li>TCP_CURR_ESTAB: TCP connections.</li>
         :type MetricName: str
-        :param _Threshold: Alarming threshold: <br><li>CPU_UTILIZATION: [1, 100] in % </li><li>MEM_UTILIZATION: [1, 100] in % </li><li>LAN_TRAFFIC_OUT: >0 in Mbps </li><li>LAN_TRAFFIC_IN: >0 in Mbps </li><li>WAN_TRAFFIC_OUT: >0 in Mbps </li><li>WAN_TRAFFIC_IN: >0 in Mbps </li>
+        :param _Threshold: Alarm threshold values: <br><li>CPU_UTILIZATION: [1, 100], Unit: %.</li> <li>MEM_UTILIZATION: [1, 100], Unit: %.</li> <li>LAN_TRAFFIC_OUT: >0, Unit: Mbps.</li> <li>LAN_TRAFFIC_IN: >0, Unit: Mbps.</li> <li>WAN_TRAFFIC_OUT: >0, Unit: Mbps.</li> <li>WAN_TRAFFIC_IN: >0, Unit: Mbps.</li> <li>TCP_CURR_ESTAB: >0, Unit: Count.</li>
         :type Threshold: int
         :param _Period: Time period in seconds. Enumerated values: 60, 300.
         :type Period: int
@@ -7099,7 +7466,7 @@ class MetricAlarm(AbstractModel):
         :type ContinuousTime: int
         :param _Statistic: Statistics type. Value range: <br><li>AVERAGE: average </li><li>MAXIMUM: maximum <li>MINIMUM: minimum </li><br> Default value: AVERAGE
         :type Statistic: str
-        :param _PreciseThreshold: Exact alarming threshold. This parameter is only used in API outputs. Values: <br><li>`CPU_UTILIZATION` (in %): (0, 100]</li><li>`MEM_UTILIZATION` (in %): (0, 100]</li><li>`LAN_TRAFFIC_OUT` (in Mbps): > 0</li><li>`LAN_TRAFFIC_IN` (in Mbps): > 0</li><li>`WAN_TRAFFIC_OUT` (in Mbps): > 0</li><li>`WAN_TRAFFIC_IN` (in Mbps): > 0</li>
+        :param _PreciseThreshold: Precise alarm threshold values. This parameter is not used as an input argument but is used solely as an output parameter for the query API: <br><li>CPU_UTILIZATION: (0, 100], Unit: %.</li> <li>MEM_UTILIZATION: (0, 100], Unit: %.</li> <li>LAN_TRAFFIC_OUT: >0, Unit: Mbps.</li> <li>LAN_TRAFFIC_IN: >0, Unit: Mbps.</li> <li>WAN_TRAFFIC_OUT: >0, Unit: Mbps.</li> <li>WAN_TRAFFIC_IN: >0, Unit: Mbps.</li> <li>TCP_CURR_ESTAB: >0, Unit: Count.</li>
         :type PreciseThreshold: float
         """
         self._ComparisonOperator = None
@@ -7260,6 +7627,8 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 <br><li>`TRUE`: yes. Before the spot instances in the scaling group are about to be automatically repossessed, AS will terminate them. The scale-in hook (if configured) will take effect before the termination. After the termination process starts, AS will asynchronously initiate a scaling activity to meet the desired capacity.
 <br><li>`FALSE`: no. In this case, AS will add instances to meet the desired capacity only after the spot instances are terminated.
         :type CapacityRebalance: bool
+        :param _InstanceNameIndexSettings: Instance name sequencing settings. When enabled, an incremental numeric sequence will be appended to the names of instances automatically created within the scaling group.
+        :type InstanceNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
         """
         self._AutoScalingGroupId = None
         self._AutoScalingGroupName = None
@@ -7283,6 +7652,7 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
         self._InstanceAllocationPolicy = None
         self._SpotMixedAllocationPolicy = None
         self._CapacityRebalance = None
+        self._InstanceNameIndexSettings = None
 
     @property
     def AutoScalingGroupId(self):
@@ -7460,6 +7830,14 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
     def CapacityRebalance(self, CapacityRebalance):
         self._CapacityRebalance = CapacityRebalance
 
+    @property
+    def InstanceNameIndexSettings(self):
+        return self._InstanceNameIndexSettings
+
+    @InstanceNameIndexSettings.setter
+    def InstanceNameIndexSettings(self, InstanceNameIndexSettings):
+        self._InstanceNameIndexSettings = InstanceNameIndexSettings
+
 
     def _deserialize(self, params):
         self._AutoScalingGroupId = params.get("AutoScalingGroupId")
@@ -7488,6 +7866,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
             self._SpotMixedAllocationPolicy = SpotMixedAllocationPolicy()
             self._SpotMixedAllocationPolicy._deserialize(params.get("SpotMixedAllocationPolicy"))
         self._CapacityRebalance = params.get("CapacityRebalance")
+        if params.get("InstanceNameIndexSettings") is not None:
+            self._InstanceNameIndexSettings = InstanceNameIndexSettings()
+            self._InstanceNameIndexSettings._deserialize(params.get("InstanceNameIndexSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7691,6 +8072,8 @@ Note: This field is default to empty
         :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
         :param _DisasterRecoverGroupIds: Placement group ID. Only one is allowed.
         :type DisasterRecoverGroupIds: list of str
+        :param _LoginSettings: Instance login settings, which include passwords, keys, or the original login settings inherited from the image. <br>Please note that specifying new login settings will overwrite the existing ones. For instance, if you previously used a password for login and then use this parameter to switch the login settings to a key, the original password will be removed.
+        :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
         """
         self._LaunchConfigurationId = None
         self._ImageId = None
@@ -7713,6 +8096,7 @@ Note: This field is default to empty
         self._HpcClusterId = None
         self._IPv6InternetAccessible = None
         self._DisasterRecoverGroupIds = None
+        self._LoginSettings = None
 
     @property
     def LaunchConfigurationId(self):
@@ -7882,6 +8266,14 @@ Note: This field is default to empty
     def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
         self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
 
+    @property
+    def LoginSettings(self):
+        return self._LoginSettings
+
+    @LoginSettings.setter
+    def LoginSettings(self, LoginSettings):
+        self._LoginSettings = LoginSettings
+
 
     def _deserialize(self, params):
         self._LaunchConfigurationId = params.get("LaunchConfigurationId")
@@ -7926,6 +8318,9 @@ Note: This field is default to empty
             self._IPv6InternetAccessible = IPv6InternetAccessible()
             self._IPv6InternetAccessible._deserialize(params.get("IPv6InternetAccessible"))
         self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        if params.get("LoginSettings") is not None:
+            self._LoginSettings = LoginSettings()
+            self._LoginSettings._deserialize(params.get("LoginSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8819,6 +9214,390 @@ class NotificationTarget(AbstractModel):
         
 
 
+class RefreshActivity(AbstractModel):
+    """Instance refresh activity.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoScalingGroupId: Scaling group ID.
+        :type AutoScalingGroupId: str
+        :param _RefreshActivityId: Refresh activity ID.
+        :type RefreshActivityId: str
+        :param _OriginRefreshActivityId: Original refresh activity ID, which exists only in the rollback refresh activity.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type OriginRefreshActivityId: str
+        :param _RefreshBatchSet: Refresh batch information list.
+        :type RefreshBatchSet: list of RefreshBatch
+        :param _RefreshMode: Refresh mode.
+        :type RefreshMode: str
+        :param _RefreshSettings: Instance update setting parameters.
+        :type RefreshSettings: :class:`tencentcloud.autoscaling.v20180419.models.RefreshSettings`
+        :param _ActivityType: Refresh activity type. Valid values: <br><li>NORMAL: Normal refresh activity.</li> <li>ROLLBACK: Rollback refresh activity.
+        :type ActivityType: str
+        :param _Status: Refresh activity status. Valid values: <br><li>INIT: Initializing.</li> <li>RUNNING: Running.</li> <li>SUCCESSFUL: Activity successful.</li> <li>FAILED_PAUSE: Paused due to a failed refresh batch.</li> <li>AUTO_PAUSE: Automatically paused according to pause policy.</li> <li>MANUAL_PAUSE: Manually paused.</li> <li>CANCELLED: Activity canceled.</li> <li>FAILED: Activity failed.
+        :type Status: str
+        :param _CurrentRefreshBatchNum: Current refresh batch number. For example, a value of 2 indicates that the current activity is refreshing the second batch of instances.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type CurrentRefreshBatchNum: int
+        :param _StartTime: Refresh activity start time.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type StartTime: str
+        :param _EndTime: Refresh activity end time.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type EndTime: str
+        :param _CreatedTime: Refresh activity creation time.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type CreatedTime: str
+        """
+        self._AutoScalingGroupId = None
+        self._RefreshActivityId = None
+        self._OriginRefreshActivityId = None
+        self._RefreshBatchSet = None
+        self._RefreshMode = None
+        self._RefreshSettings = None
+        self._ActivityType = None
+        self._Status = None
+        self._CurrentRefreshBatchNum = None
+        self._StartTime = None
+        self._EndTime = None
+        self._CreatedTime = None
+
+    @property
+    def AutoScalingGroupId(self):
+        return self._AutoScalingGroupId
+
+    @AutoScalingGroupId.setter
+    def AutoScalingGroupId(self, AutoScalingGroupId):
+        self._AutoScalingGroupId = AutoScalingGroupId
+
+    @property
+    def RefreshActivityId(self):
+        return self._RefreshActivityId
+
+    @RefreshActivityId.setter
+    def RefreshActivityId(self, RefreshActivityId):
+        self._RefreshActivityId = RefreshActivityId
+
+    @property
+    def OriginRefreshActivityId(self):
+        return self._OriginRefreshActivityId
+
+    @OriginRefreshActivityId.setter
+    def OriginRefreshActivityId(self, OriginRefreshActivityId):
+        self._OriginRefreshActivityId = OriginRefreshActivityId
+
+    @property
+    def RefreshBatchSet(self):
+        return self._RefreshBatchSet
+
+    @RefreshBatchSet.setter
+    def RefreshBatchSet(self, RefreshBatchSet):
+        self._RefreshBatchSet = RefreshBatchSet
+
+    @property
+    def RefreshMode(self):
+        return self._RefreshMode
+
+    @RefreshMode.setter
+    def RefreshMode(self, RefreshMode):
+        self._RefreshMode = RefreshMode
+
+    @property
+    def RefreshSettings(self):
+        return self._RefreshSettings
+
+    @RefreshSettings.setter
+    def RefreshSettings(self, RefreshSettings):
+        self._RefreshSettings = RefreshSettings
+
+    @property
+    def ActivityType(self):
+        return self._ActivityType
+
+    @ActivityType.setter
+    def ActivityType(self, ActivityType):
+        self._ActivityType = ActivityType
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CurrentRefreshBatchNum(self):
+        return self._CurrentRefreshBatchNum
+
+    @CurrentRefreshBatchNum.setter
+    def CurrentRefreshBatchNum(self, CurrentRefreshBatchNum):
+        self._CurrentRefreshBatchNum = CurrentRefreshBatchNum
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def CreatedTime(self):
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+
+    def _deserialize(self, params):
+        self._AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self._RefreshActivityId = params.get("RefreshActivityId")
+        self._OriginRefreshActivityId = params.get("OriginRefreshActivityId")
+        if params.get("RefreshBatchSet") is not None:
+            self._RefreshBatchSet = []
+            for item in params.get("RefreshBatchSet"):
+                obj = RefreshBatch()
+                obj._deserialize(item)
+                self._RefreshBatchSet.append(obj)
+        self._RefreshMode = params.get("RefreshMode")
+        if params.get("RefreshSettings") is not None:
+            self._RefreshSettings = RefreshSettings()
+            self._RefreshSettings._deserialize(params.get("RefreshSettings"))
+        self._ActivityType = params.get("ActivityType")
+        self._Status = params.get("Status")
+        self._CurrentRefreshBatchNum = params.get("CurrentRefreshBatchNum")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._CreatedTime = params.get("CreatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefreshBatch(AbstractModel):
+    """Instance refresh batch information, containing the refresh status, instances, start and end time, etc., of the batch.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RefreshBatchNum: Refresh batch number. For example, a value of 2 indicates that the current batch of instances will be refreshed in the second batch.
+        :type RefreshBatchNum: int
+        :param _RefreshBatchStatus: Refresh batch status. Valid values: <br><li>WAITING: Pending refresh.</li> <li>INIT: Initializing.</li> <li>RUNNING: Refreshing.</li> <li>FAILED: Refresh failed.</li> <li>PARTIALLY_SUCCESSFUL: Partially successful in the batch.</li> <li>CANCELLED: Canceled.</li> <li>SUCCESSFUL: Refreshed.
+        :type RefreshBatchStatus: str
+        :param _RefreshBatchRelatedInstanceSet: List of instances linked to a refresh batch.
+        :type RefreshBatchRelatedInstanceSet: list of RefreshBatchRelatedInstance
+        :param _StartTime: Refresh batch start time.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type StartTime: str
+        :param _EndTime: Refresh batch end time.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type EndTime: str
+        """
+        self._RefreshBatchNum = None
+        self._RefreshBatchStatus = None
+        self._RefreshBatchRelatedInstanceSet = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def RefreshBatchNum(self):
+        return self._RefreshBatchNum
+
+    @RefreshBatchNum.setter
+    def RefreshBatchNum(self, RefreshBatchNum):
+        self._RefreshBatchNum = RefreshBatchNum
+
+    @property
+    def RefreshBatchStatus(self):
+        return self._RefreshBatchStatus
+
+    @RefreshBatchStatus.setter
+    def RefreshBatchStatus(self, RefreshBatchStatus):
+        self._RefreshBatchStatus = RefreshBatchStatus
+
+    @property
+    def RefreshBatchRelatedInstanceSet(self):
+        return self._RefreshBatchRelatedInstanceSet
+
+    @RefreshBatchRelatedInstanceSet.setter
+    def RefreshBatchRelatedInstanceSet(self, RefreshBatchRelatedInstanceSet):
+        self._RefreshBatchRelatedInstanceSet = RefreshBatchRelatedInstanceSet
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._RefreshBatchNum = params.get("RefreshBatchNum")
+        self._RefreshBatchStatus = params.get("RefreshBatchStatus")
+        if params.get("RefreshBatchRelatedInstanceSet") is not None:
+            self._RefreshBatchRelatedInstanceSet = []
+            for item in params.get("RefreshBatchRelatedInstanceSet"):
+                obj = RefreshBatchRelatedInstance()
+                obj._deserialize(item)
+                self._RefreshBatchRelatedInstanceSet.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefreshBatchRelatedInstance(AbstractModel):
+    """Refresh batch associated instances, including the refresh activity status of individual instances and related scaling activity information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _InstanceStatus: Refresh instance status. If an instance is removed or destroyed during the refresh process, its status will be updated to NOT_FOUND. Valid values: <br><li>WAITING: pending refresh.</li> <li>INIT: Initializing.</li> <li>RUNNING: Refreshing in progress.</li> <li>FAILED: Refresh failed.</li> <li>CANCELLED: Canceled.</li> <li>SUCCESSFUL: Refreshed.</li> <li>NOT_FOUND: Instance not found.
+        :type InstanceStatus: str
+        :param _LastActivityId: The most recent scaling activity ID during instance refresh can be queried via the DescribeAutoScalingActivities API.
+Please note that scaling activities differ from instance refresh activities; a single instance refresh activity may involve multiple scaling activities.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type LastActivityId: str
+        :param _InstanceStatusMessage: Instance refresh status information.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type InstanceStatusMessage: str
+        """
+        self._InstanceId = None
+        self._InstanceStatus = None
+        self._LastActivityId = None
+        self._InstanceStatusMessage = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceStatus(self):
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def LastActivityId(self):
+        return self._LastActivityId
+
+    @LastActivityId.setter
+    def LastActivityId(self, LastActivityId):
+        self._LastActivityId = LastActivityId
+
+    @property
+    def InstanceStatusMessage(self):
+        return self._InstanceStatusMessage
+
+    @InstanceStatusMessage.setter
+    def InstanceStatusMessage(self, InstanceStatusMessage):
+        self._InstanceStatusMessage = InstanceStatusMessage
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._LastActivityId = params.get("LastActivityId")
+        self._InstanceStatusMessage = params.get("InstanceStatusMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RefreshSettings(AbstractModel):
+    """Instance refresh settings.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RollingUpdateSettings: Rolling update settings parameters. RefreshMode is the rolling update. This parameter must be filled in.Note: This field may return null, indicating that no valid value can be obtained.
+        :type RollingUpdateSettings: :class:`tencentcloud.autoscaling.v20180419.models.RollingUpdateSettings`
+        :param _CheckInstanceTargetHealth: Backend service health check status for instances, defaults to FALSE. This setting takes effect only for scaling groups bound with application load balancers. When enabled, if an instance fails the check after being refreshed, its load balancer port weight remains 0 and is marked as a refresh failure. Valid values: <br><li>TRUE: Enable the check.</li> <li>FALSE: Do not enable the check.
+        :type CheckInstanceTargetHealth: bool
+        """
+        self._RollingUpdateSettings = None
+        self._CheckInstanceTargetHealth = None
+
+    @property
+    def RollingUpdateSettings(self):
+        return self._RollingUpdateSettings
+
+    @RollingUpdateSettings.setter
+    def RollingUpdateSettings(self, RollingUpdateSettings):
+        self._RollingUpdateSettings = RollingUpdateSettings
+
+    @property
+    def CheckInstanceTargetHealth(self):
+        return self._CheckInstanceTargetHealth
+
+    @CheckInstanceTargetHealth.setter
+    def CheckInstanceTargetHealth(self, CheckInstanceTargetHealth):
+        self._CheckInstanceTargetHealth = CheckInstanceTargetHealth
+
+
+    def _deserialize(self, params):
+        if params.get("RollingUpdateSettings") is not None:
+            self._RollingUpdateSettings = RollingUpdateSettings()
+            self._RollingUpdateSettings._deserialize(params.get("RollingUpdateSettings"))
+        self._CheckInstanceTargetHealth = params.get("CheckInstanceTargetHealth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RelatedInstance(AbstractModel):
     """Information of the instances related to the current scaling activity.
 
@@ -8948,6 +9727,241 @@ class RemoveInstancesResponse(AbstractModel):
     def _deserialize(self, params):
         self._ActivityId = params.get("ActivityId")
         self._RequestId = params.get("RequestId")
+
+
+class ResumeInstanceRefreshRequest(AbstractModel):
+    """ResumeInstanceRefresh request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoScalingGroupId: Scaling group ID.
+        :type AutoScalingGroupId: str
+        :param _RefreshActivityId: Refresh activity ID.
+        :type RefreshActivityId: str
+        :param _ResumeMode: The recovery method for the current batch's failed instances. If there are no failed instances, this parameter becomes invalid. Default value: RETRY. Valid values: <br><li>RETRY: Retry refreshing failed instances in the current batch.</li> <li>CONTINUE: Skip failed instances in the current batch.
+        :type ResumeMode: str
+        """
+        self._AutoScalingGroupId = None
+        self._RefreshActivityId = None
+        self._ResumeMode = None
+
+    @property
+    def AutoScalingGroupId(self):
+        return self._AutoScalingGroupId
+
+    @AutoScalingGroupId.setter
+    def AutoScalingGroupId(self, AutoScalingGroupId):
+        self._AutoScalingGroupId = AutoScalingGroupId
+
+    @property
+    def RefreshActivityId(self):
+        return self._RefreshActivityId
+
+    @RefreshActivityId.setter
+    def RefreshActivityId(self, RefreshActivityId):
+        self._RefreshActivityId = RefreshActivityId
+
+    @property
+    def ResumeMode(self):
+        return self._ResumeMode
+
+    @ResumeMode.setter
+    def ResumeMode(self, ResumeMode):
+        self._ResumeMode = ResumeMode
+
+
+    def _deserialize(self, params):
+        self._AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self._RefreshActivityId = params.get("RefreshActivityId")
+        self._ResumeMode = params.get("ResumeMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumeInstanceRefreshResponse(AbstractModel):
+    """ResumeInstanceRefresh response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RollbackInstanceRefreshRequest(AbstractModel):
+    """RollbackInstanceRefresh request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoScalingGroupId: Scaling group ID.
+        :type AutoScalingGroupId: str
+        :param _RefreshSettings: Refresh settings.
+        :type RefreshSettings: :class:`tencentcloud.autoscaling.v20180419.models.RefreshSettings`
+        :param _OriginRefreshActivityId: Original refresh activity ID.
+        :type OriginRefreshActivityId: str
+        :param _RefreshMode: Refresh mode, currently, only rolling updates are supported, with the default value being ROLLING_UPDATE_RESET.
+        :type RefreshMode: str
+        """
+        self._AutoScalingGroupId = None
+        self._RefreshSettings = None
+        self._OriginRefreshActivityId = None
+        self._RefreshMode = None
+
+    @property
+    def AutoScalingGroupId(self):
+        return self._AutoScalingGroupId
+
+    @AutoScalingGroupId.setter
+    def AutoScalingGroupId(self, AutoScalingGroupId):
+        self._AutoScalingGroupId = AutoScalingGroupId
+
+    @property
+    def RefreshSettings(self):
+        return self._RefreshSettings
+
+    @RefreshSettings.setter
+    def RefreshSettings(self, RefreshSettings):
+        self._RefreshSettings = RefreshSettings
+
+    @property
+    def OriginRefreshActivityId(self):
+        return self._OriginRefreshActivityId
+
+    @OriginRefreshActivityId.setter
+    def OriginRefreshActivityId(self, OriginRefreshActivityId):
+        self._OriginRefreshActivityId = OriginRefreshActivityId
+
+    @property
+    def RefreshMode(self):
+        return self._RefreshMode
+
+    @RefreshMode.setter
+    def RefreshMode(self, RefreshMode):
+        self._RefreshMode = RefreshMode
+
+
+    def _deserialize(self, params):
+        self._AutoScalingGroupId = params.get("AutoScalingGroupId")
+        if params.get("RefreshSettings") is not None:
+            self._RefreshSettings = RefreshSettings()
+            self._RefreshSettings._deserialize(params.get("RefreshSettings"))
+        self._OriginRefreshActivityId = params.get("OriginRefreshActivityId")
+        self._RefreshMode = params.get("RefreshMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RollbackInstanceRefreshResponse(AbstractModel):
+    """RollbackInstanceRefresh response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RefreshActivityId: Refresh activity ID.
+        :type RefreshActivityId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RefreshActivityId = None
+        self._RequestId = None
+
+    @property
+    def RefreshActivityId(self):
+        return self._RefreshActivityId
+
+    @RefreshActivityId.setter
+    def RefreshActivityId(self, RefreshActivityId):
+        self._RefreshActivityId = RefreshActivityId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RefreshActivityId = params.get("RefreshActivityId")
+        self._RequestId = params.get("RequestId")
+
+
+class RollingUpdateSettings(AbstractModel):
+    """Rolling update settings.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BatchNumber: Batch quantity. The batch quantity should be a positive integer greater than 0, but cannot exceed the total number of instances pending refresh.
+        :type BatchNumber: int
+        :param _BatchPause: Pause policy between batches. Default value: Automatic. Valid values: <br><li>FIRST_BATCH_PAUSE: Pause after the first batch update completes.</li> <li>BATCH_INTERVAL_PAUSE: Pause between each batch update.</li> <li>AUTOMATIC: No pauses.
+        :type BatchPause: str
+        """
+        self._BatchNumber = None
+        self._BatchPause = None
+
+    @property
+    def BatchNumber(self):
+        return self._BatchNumber
+
+    @BatchNumber.setter
+    def BatchNumber(self, BatchNumber):
+        self._BatchNumber = BatchNumber
+
+    @property
+    def BatchPause(self):
+        return self._BatchPause
+
+    @BatchPause.setter
+    def BatchPause(self, BatchPause):
+        self._BatchPause = BatchPause
+
+
+    def _deserialize(self, params):
+        self._BatchNumber = params.get("BatchNumber")
+        self._BatchPause = params.get("BatchPause")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RunAutomationServiceEnabled(AbstractModel):
@@ -9922,6 +10936,102 @@ class StartAutoScalingInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StartInstanceRefreshRequest(AbstractModel):
+    """StartInstanceRefresh request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoScalingGroupId: Scaling group ID.
+        :type AutoScalingGroupId: str
+        :param _RefreshSettings: Refresh settings.
+        :type RefreshSettings: :class:`tencentcloud.autoscaling.v20180419.models.RefreshSettings`
+        :param _RefreshMode: Refresh mode, currently, only rolling updates are supported, with the default value being ROLLING_UPDATE_RESET.
+        :type RefreshMode: str
+        """
+        self._AutoScalingGroupId = None
+        self._RefreshSettings = None
+        self._RefreshMode = None
+
+    @property
+    def AutoScalingGroupId(self):
+        return self._AutoScalingGroupId
+
+    @AutoScalingGroupId.setter
+    def AutoScalingGroupId(self, AutoScalingGroupId):
+        self._AutoScalingGroupId = AutoScalingGroupId
+
+    @property
+    def RefreshSettings(self):
+        return self._RefreshSettings
+
+    @RefreshSettings.setter
+    def RefreshSettings(self, RefreshSettings):
+        self._RefreshSettings = RefreshSettings
+
+    @property
+    def RefreshMode(self):
+        return self._RefreshMode
+
+    @RefreshMode.setter
+    def RefreshMode(self, RefreshMode):
+        self._RefreshMode = RefreshMode
+
+
+    def _deserialize(self, params):
+        self._AutoScalingGroupId = params.get("AutoScalingGroupId")
+        if params.get("RefreshSettings") is not None:
+            self._RefreshSettings = RefreshSettings()
+            self._RefreshSettings._deserialize(params.get("RefreshSettings"))
+        self._RefreshMode = params.get("RefreshMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartInstanceRefreshResponse(AbstractModel):
+    """StartInstanceRefresh response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RefreshActivityId: Refresh activity ID.
+        :type RefreshActivityId: str
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RefreshActivityId = None
+        self._RequestId = None
+
+    @property
+    def RefreshActivityId(self):
+        return self._RefreshActivityId
+
+    @RefreshActivityId.setter
+    def RefreshActivityId(self, RefreshActivityId):
+        self._RefreshActivityId = RefreshActivityId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RefreshActivityId = params.get("RefreshActivityId")
+        self._RequestId = params.get("RequestId")
+
+
 class StopAutoScalingInstancesRequest(AbstractModel):
     """StopAutoScalingInstances request structure.
 
@@ -10016,6 +11126,76 @@ class StopAutoScalingInstancesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ActivityId = params.get("ActivityId")
+        self._RequestId = params.get("RequestId")
+
+
+class StopInstanceRefreshRequest(AbstractModel):
+    """StopInstanceRefresh request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AutoScalingGroupId: Scaling group ID.
+        :type AutoScalingGroupId: str
+        :param _RefreshActivityId: Refresh activity ID.
+        :type RefreshActivityId: str
+        """
+        self._AutoScalingGroupId = None
+        self._RefreshActivityId = None
+
+    @property
+    def AutoScalingGroupId(self):
+        return self._AutoScalingGroupId
+
+    @AutoScalingGroupId.setter
+    def AutoScalingGroupId(self, AutoScalingGroupId):
+        self._AutoScalingGroupId = AutoScalingGroupId
+
+    @property
+    def RefreshActivityId(self):
+        return self._RefreshActivityId
+
+    @RefreshActivityId.setter
+    def RefreshActivityId(self, RefreshActivityId):
+        self._RefreshActivityId = RefreshActivityId
+
+
+    def _deserialize(self, params):
+        self._AutoScalingGroupId = params.get("AutoScalingGroupId")
+        self._RefreshActivityId = params.get("RefreshActivityId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopInstanceRefreshResponse(AbstractModel):
+    """StopInstanceRefresh response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -10203,7 +11383,7 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
         :type InstanceTypesCheckPolicy: str
         :param _InternetAccessible: Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.
         :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
-        :param _LoginSettings: Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.
+        :param _LoginSettings: This parameter is now invalid and should not be used. Upgrading the launch configuration API does not allow modification or overwriting of the LoginSettings parameter. LoginSettings will not change after upgrade.
         :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
         :param _ProjectId: Project ID of the instance. Leave it blank as the default.
         :type ProjectId: int

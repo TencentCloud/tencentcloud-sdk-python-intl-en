@@ -113,6 +113,9 @@ INVALIDPARAMETERVALUE_ACCOUNTNOTSUPPORTBANDWIDTHPACKAGEID = 'InvalidParameterVal
 # The specified base capacity cannot exceed the max capacity.
 INVALIDPARAMETERVALUE_BASECAPACITYTOOLARGE = 'InvalidParameterValue.BaseCapacityTooLarge'
 
+# The batch count cannot exceed the total number of instances pending refresh.
+INVALIDPARAMETERVALUE_BATCHNUMBERTOOLARGE = 'InvalidParameterValue.BatchNumberTooLarge'
+
 # A classic CLB should be specified.
 INVALIDPARAMETERVALUE_CLASSICLB = 'InvalidParameterValue.ClassicLb'
 
@@ -372,6 +375,9 @@ RESOURCEINSUFFICIENT_INSERVICEINSTANCEABOVEMAXSIZE = 'ResourceInsufficient.InSer
 RESOURCEINSUFFICIENT_INSERVICEINSTANCEBELOWMINSIZE = 'ResourceInsufficient.InServiceInstanceBelowMinSize'
 
 # The scaling group does not exist.
+RESOURCENOTFOUND_AUTOSCALINGGROUPIDNOTFOUND = 'ResourceNotFound.AutoScalingGroupIdNotFound'
+
+# The scaling group does not exist.
 RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = 'ResourceNotFound.AutoScalingGroupNotFound'
 
 # The notification does not exist.
@@ -419,6 +425,9 @@ RESOURCENOTFOUND_LOADBALANCERNOTINAUTOSCALINGGROUP = 'ResourceNotFound.LoadBalan
 # The specified location does not exist.
 RESOURCENOTFOUND_LOCATIONNOTFOUND = 'ResourceNotFound.LocationNotFound'
 
+# The specified instance refresh activity does not exist.
+RESOURCENOTFOUND_REFRESHACTIVITYNOTFOUND = 'ResourceNotFound.RefreshActivityNotFound'
+
 # The alarm policy does not exist.
 RESOURCENOTFOUND_SCALINGPOLICYNOTFOUND = 'ResourceNotFound.ScalingPolicyNotFound'
 
@@ -440,6 +449,9 @@ RESOURCEUNAVAILABLE_AUTOSCALINGGROUPDISABLED = 'ResourceUnavailable.AutoScalingG
 # The auto scaling group is active.
 RESOURCEUNAVAILABLE_AUTOSCALINGGROUPINACTIVITY = 'ResourceUnavailable.AutoScalingGroupInActivity'
 
+# The scaling group is already involved in another instance refresh activity.
+RESOURCEUNAVAILABLE_AUTOSCALINGGROUPINREFRESHACTIVITY = 'ResourceUnavailable.AutoScalingGroupInRefreshActivity'
+
 # There are no subscribers for the specified CMQ topic.
 RESOURCEUNAVAILABLE_CMQTOPICHASNOSUBSCRIBER = 'ResourceUnavailable.CmqTopicHasNoSubscriber'
 
@@ -448,6 +460,9 @@ RESOURCEUNAVAILABLE_CVMVPCINCONSISTENT = 'ResourceUnavailable.CvmVpcInconsistent
 
 # You cannot modify the VPC of a scaling group bound with a load balancer.
 RESOURCEUNAVAILABLE_FORBIDDENMODIFYVPC = 'ResourceUnavailable.ForbiddenModifyVpc'
+
+# The instance reinstallation quotation failed, because the new image conflicts with other parameters of the instance or the new image does not exist.
+RESOURCEUNAVAILABLE_INQUIRYPRICERESETINSTANCEFAILED = 'ResourceUnavailable.InquiryPriceResetInstanceFailed'
 
 # Unable to add the instance to the scaling group.
 RESOURCEUNAVAILABLE_INSTANCECANNOTATTACH = 'ResourceUnavailable.InstanceCannotAttach'
@@ -479,8 +494,23 @@ RESOURCEUNAVAILABLE_LIFECYCLEACTIONRESULTHASSET = 'ResourceUnavailable.Lifecycle
 # CLB is active in the scaling group.
 RESOURCEUNAVAILABLE_LOADBALANCERINOPERATION = 'ResourceUnavailable.LoadBalancerInOperation'
 
+# There are no instances in running status within the scaling group, making it impossible to perform an instance refresh.
+RESOURCEUNAVAILABLE_NOINSTANCECANREFRESH = 'ResourceUnavailable.NoInstanceCanRefresh'
+
+# There are no instances eligible for rollback in the scaling group.
+RESOURCEUNAVAILABLE_NOINSTANCECANROLLBACK = 'ResourceUnavailable.NoInstanceCanRollback'
+
 # Project inconsistency.
 RESOURCEUNAVAILABLE_PROJECTINCONSISTENT = 'ResourceUnavailable.ProjectInconsistent'
+
+# The current refresh activity is in a successful status and not the most recent execution, so it cannot be rolled back.
+RESOURCEUNAVAILABLE_REFRESHACTIVITYCANNOTROLLBACK = 'ResourceUnavailable.RefreshActivityCanNotRollback'
+
+# The instance refresh activity status conflicts with the current operation.
+RESOURCEUNAVAILABLE_REFRESHACTIVITYSTATUSCONFLICTWITHOPERATION = 'ResourceUnavailable.RefreshActivityStatusConflictWithOperation'
+
+# Rollback type instance refresh activity cannot be rolled back again.
+RESOURCEUNAVAILABLE_ROLLBACKTYPEACTIVITYCANNOTROLLBACKAGAIN = 'ResourceUnavailable.RollbackTypeActivityCanNotRollbackAgain'
 
 # Unable to add instances to the scaling group when they are shut down.
 RESOURCEUNAVAILABLE_STOPPEDINSTANCENOTALLOWATTACH = 'ResourceUnavailable.StoppedInstanceNotAllowAttach'

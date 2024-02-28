@@ -74,6 +74,32 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelInstanceRefresh(self, request):
+        """This API is used to cancel the instance refresh activity of the scaling group.
+        * Batches that have already been refreshed or are currently being refreshed remain unaffected; batches pending refresh will be canceled.
+        * If a refresh fails, the affected instances will remain in the standby status and require manual intervention by the user to either attempt to exit the standby status or destroy the instances.
+        * Rollback operations are not allowed after cancellation, and resuming is also unsupported.
+
+        :param request: Request instance for CancelInstanceRefresh.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.CancelInstanceRefreshRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.CancelInstanceRefreshResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelInstanceRefresh", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelInstanceRefreshResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ClearLaunchConfigurationAttributes(self, request):
         """This API is used to clear specific attributes of the launch configuration.
 
@@ -698,6 +724,29 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRefreshActivities(self, request):
+        """This API (DescribeRefreshActivities) is used to query the instance refresh activity records of a scaling group.
+
+        :param request: Request instance for DescribeRefreshActivities.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.DescribeRefreshActivitiesRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.DescribeRefreshActivitiesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRefreshActivities", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRefreshActivitiesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeScalingPolicies(self, request):
         """This API (DescribeScalingPolicies) is used to query alarm trigger policies.
 
@@ -873,6 +922,31 @@ class AutoscalingClient(AbstractClient):
             body = self.call("ExecuteScalingPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.ExecuteScalingPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ExitStandby(self, request):
+        """This API is used to exit instances from the standby status in the scaling group.
+        * When an instance is in standby status, its load balancer weight is set to 0. Upon exiting the standby status, the weight value automatically gets restored.
+        * Initiating power-on/power-off actions on instances that are in standby status also results in them exiting from the standby status.
+
+        :param request: Request instance for ExitStandby.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ExitStandbyRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ExitStandbyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExitStandby", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExitStandbyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1123,6 +1197,56 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ResumeInstanceRefresh(self, request):
+        """This API is used to resume the paused instance refresh activity, allowing it to retry failed instances in the current batch or proceed with refreshing subsequent batches. Note that calling this interface is ineffective when the activity is not in a paused status.
+
+        :param request: Request instance for ResumeInstanceRefresh.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.ResumeInstanceRefreshRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ResumeInstanceRefreshResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeInstanceRefresh", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResumeInstanceRefreshResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RollbackInstanceRefresh(self, request):
+        """This API is used to generate a new instance refresh activity, which also supports batched refreshing and operations such as pausing, resuming, and canceling. The interface returns the RefreshActivityId for the rollback activity.
+        * Instances pending refresh in the original activity are updated to a canceled status. Nonexistent instances are disregarded, while instances in all other statuses proceed to enter the rollback process.
+        * Instances that were being refreshed in the original activity will not be immediately terminated; instead, the rollback activity will be executed after their refresh has been completed.
+        * Rollback is supported for activities that are in a paused status or those with the most recent successful refresh; it is not supported for activities in other statuses.
+        * When the original refresh activity involves reinstalling instances, for the ImageId parameter, it will automatically restore to the image ID before the rollback; for parameters such as UserData, EnhancedService, LoginSettings, and HostName, they will still be retrieved from the launch configuration, requiring users to manually modify the launch configuration before initiating the rollback.
+
+        :param request: Request instance for RollbackInstanceRefresh.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.RollbackInstanceRefreshRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RollbackInstanceRefreshResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RollbackInstanceRefresh", params, headers=headers)
+            response = json.loads(body)
+            model = models.RollbackInstanceRefreshResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ScaleInInstances(self, request):
         """This API is used to reduce the specified number of instances from the scaling group.
         * There is no on going scaling task.
@@ -1229,6 +1353,34 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartInstanceRefresh(self, request):
+        """This API is used to refresh running CVM instances in the scaling group and return the RefreshActivityId for the instance refresh activity based on parameters in the launch configuration.
+        * For refresh methods involving reinstallation (currently only reinstallation is supported), during reinstallation, only the ImageId, UserData, EnhancedService, HostName, and LoginSettings parameters will be fetched from the launch configuration for refreshing; other parameters of the instance will not be refreshed.
+        * During the instance refresh process (including paused status), the scaling group will be disabled. It is not recommended to modify the associated launch configuration during a refresh, as this may impact the refresh parameters, leading to inconsistent instance configurations.
+        * In rolling update mode, instance refreshes are performed in multiple batches. If there are failed refreshes within a batch, the activity will enter a failed paused status.
+        * Instances pending refresh that are removed or destroyed will be marked as NOT_FOUND status, but they will not block the instance refresh activity.
+        * Even if a running instance has parameters consistent with the latest launch configuration, it can still undergo another refresh.
+
+        :param request: Request instance for StartInstanceRefresh.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.StartInstanceRefreshRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.StartInstanceRefreshResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartInstanceRefresh", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartInstanceRefreshResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopAutoScalingInstances(self, request):
         """This API is used to shut down CVM instances in a scaling group.
         * Use the `SOFT_FIRST` shutdown, which means the CVM will be forcibly shut down if the soft shutdown fails.
@@ -1256,11 +1408,38 @@ class AutoscalingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def UpgradeLaunchConfiguration(self, request):
-        """This API is used to upgrade a launch configuration.
+    def StopInstanceRefresh(self, request):
+        """This API is used to pause the ongoing instance refresh activity.
+        * In the paused status, the scaling group will also be disabled.
+        * Instances that are currently being updated will not be paused, instances pending updates will have their updates paused.
 
-        * This API is used to upgrade a launch configuration in a "completely overriding" manner, i.e., it uniformly sets a new configuration according to the API parameters regardless of the original parameters. If optional fields are left empty, their default values will be used.
-        * After the launch configuration is upgraded, the existing instances that have been created by it will not be changed, but new instances will be created according to the new configuration.
+        :param request: Request instance for StopInstanceRefresh.
+        :type request: :class:`tencentcloud.autoscaling.v20180419.models.StopInstanceRefreshRequest`
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.StopInstanceRefreshResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopInstanceRefresh", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopInstanceRefreshResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradeLaunchConfiguration(self, request):
+        """已有替代接口ModifyLaunchConfiguration。该接口存在覆盖参数风险，目前官网已隐藏
+
+        There is a replacement API: ModifyLaunchConfiguration. This API carries the risk of parameter overwriting, and it has currently been hidden on the official website.
+        This API (UpgradeLaunchConfiguration) is used to upgrade the launch configuration.
+        * This API is used to upgrade the launch configuration, adopting an "entirely overwrite" approach. Regardless of previous parameter settings, they will be uniformly replaced with new configurations as specified in the interface parameters. For non-mandatory fields, if not filled in, default values will be assigned.
+        * After upgrading and modifying the launch configuration, existing instances that have been scaled out using this configuration will not undergo any changes. Subsequently, newly added instances using this upgraded launch configuration will be scaled out according to the new configuration.
 
         :param request: Request instance for UpgradeLaunchConfiguration.
         :type request: :class:`tencentcloud.autoscaling.v20180419.models.UpgradeLaunchConfigurationRequest`
