@@ -53,7 +53,7 @@ FAILEDOPERATION_GETTCRCLIENT = 'FailedOperation.GetTcrClient'
 # The operation is canceled.
 FAILEDOPERATION_OPERATIONCANCEL = 'FailedOperation.OperationCancel'
 
-# 
+# Prerequisites not met.
 FAILEDOPERATION_PRECONDITIONFAILED = 'FailedOperation.PreconditionFailed'
 
 # The transaction failed.

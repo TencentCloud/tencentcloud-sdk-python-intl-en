@@ -72,29 +72,6 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateCustomAccount(self, request):
-        """This API is used to create a custom account.
-
-        :param request: Request instance for CreateCustomAccount.
-        :type request: :class:`tencentcloud.tcr.v20190924.models.CreateCustomAccountRequest`
-        :rtype: :class:`tencentcloud.tcr.v20190924.models.CreateCustomAccountResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateCustomAccount", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateCustomAccountResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateImageAccelerationService(self, request):
         """This API is used to create an image acceleration service.
 
@@ -326,7 +303,7 @@ class TcrClient(AbstractClient):
 
 
     def CreateServiceAccount(self, request):
-        """This API is used to create a service account.
+        """This API is used to create a service level account.
 
         :param request: Request instance for CreateServiceAccount.
         :type request: :class:`tencentcloud.tcr.v20190924.models.CreateServiceAccountRequest`
@@ -454,29 +431,6 @@ class TcrClient(AbstractClient):
             body = self.call("CreateWebhookTrigger", params, headers=headers)
             response = json.loads(body)
             model = models.CreateWebhookTriggerResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteCustomAccount(self, request):
-        """This API is used to delete a custom account.
-
-        :param request: Request instance for DeleteCustomAccount.
-        :type request: :class:`tencentcloud.tcr.v20190924.models.DeleteCustomAccountRequest`
-        :rtype: :class:`tencentcloud.tcr.v20190924.models.DeleteCustomAccountResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteCustomAccount", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteCustomAccountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -870,29 +824,6 @@ class TcrClient(AbstractClient):
             body = self.call("DescribeChartDownloadInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeChartDownloadInfoResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeCustomAccounts(self, request):
-        """This API is used to query custom accounts.
-
-        :param request: Request instance for DescribeCustomAccounts.
-        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeCustomAccountsRequest`
-        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeCustomAccountsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeCustomAccounts", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeCustomAccountsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1500,6 +1431,29 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DuplicateImage(self, request):
+        """This API is used to duplicate the Enterprise Edition repository image version.
+
+        :param request: Request instance for DuplicateImage.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DuplicateImageRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DuplicateImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DuplicateImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DuplicateImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ManageExternalEndpoint(self, request):
         """This API is used to manage the public network access of an instance.
 
@@ -1560,29 +1514,6 @@ class TcrClient(AbstractClient):
             body = self.call("ManageReplication", params, headers=headers)
             response = json.loads(body)
             model = models.ManageReplicationResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyCustomAccount(self, request):
-        """This API is used to update a custom account.
-
-        :param request: Request instance for ModifyCustomAccount.
-        :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyCustomAccountRequest`
-        :rtype: :class:`tencentcloud.tcr.v20190924.models.ModifyCustomAccountResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyCustomAccount", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyCustomAccountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1744,6 +1675,29 @@ class TcrClient(AbstractClient):
             body = self.call("ModifyServiceAccount", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyServiceAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyServiceAccountPassword(self, request):
+        """This API is used to update the password for a service level account.
+
+        :param request: Request instance for ModifyServiceAccountPassword.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyServiceAccountPasswordRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ModifyServiceAccountPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyServiceAccountPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyServiceAccountPasswordResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
