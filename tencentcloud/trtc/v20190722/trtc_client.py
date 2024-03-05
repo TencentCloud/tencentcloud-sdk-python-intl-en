@@ -221,7 +221,7 @@ class TrtcClient(AbstractClient):
         """This API (the old `DescribeRoomInformation`) is used to query the rooms of an application (`SDKAppID`) in the last 14 days. Up to 100 records can be returned per call (10 are returned by default).
         **Note**:
         1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.
-        2. If you need to call this API, please upgrade the monitoring dashboard version to "Standard". For more details, please refer to: https://www.tencentcloud.com/document/product/647/54481.
+        2. If you need to call this API, please upgrade the monitoring dashboard version to "Standard". For more details, please refer to: https://trtc.io/document/54481
 
         :param request: Request instance for DescribeRoomInfo.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeRoomInfoRequest`
