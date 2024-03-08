@@ -257,7 +257,7 @@ class RedisClient(AbstractClient):
 
 
     def CreateInstanceAccount(self, request):
-        """This API is used to create an instance sub-account.
+        """This API is used to customize the account for accessing the instance.
 
         :param request: Request instance for CreateInstanceAccount.
         :type request: :class:`tencentcloud.redis.v20180412.models.CreateInstanceAccountRequest`
@@ -891,6 +891,29 @@ class RedisClient(AbstractClient):
             body = self.call("DescribeInstanceShards", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstanceShardsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceSupportFeature(self, request):
+        """This API (DescribeInstanceSupportFeature) is used to query the supported features of the instance.
+
+        :param request: Request instance for DescribeInstanceSupportFeature.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceSupportFeatureRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceSupportFeatureResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceSupportFeature", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceSupportFeatureResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1590,6 +1613,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceAvailabilityZones(self, request):
+        """This API is used to change the availability zone of the instance.
+
+        :param request: Request instance for ModifyInstanceAvailabilityZones.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceAvailabilityZonesRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceAvailabilityZonesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceAvailabilityZones", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceAvailabilityZonesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstanceParams(self, request):
         """This API is used to modify the parameters of TencentDB for Redis instances
 
@@ -1857,6 +1903,29 @@ class RedisClient(AbstractClient):
             body = self.call("StartupInstance", params, headers=headers)
             response = json.loads(body)
             model = models.StartupInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SwitchAccessNewInstance(self, request):
+        """This API is used to immediately switch instances that are in the time window pending switch operation. Users can manually initiate this operation.
+
+        :param request: Request instance for SwitchAccessNewInstance.
+        :type request: :class:`tencentcloud.redis.v20180412.models.SwitchAccessNewInstanceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.SwitchAccessNewInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchAccessNewInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchAccessNewInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -32,16 +32,16 @@ FAILEDOPERATION_JSONPARSEFAIL = 'FailedOperation.JsonParseFail'
 # Marketing SMS messages can only be sent between 8:00 and 22:00 in order not to disturb recipients.
 FAILEDOPERATION_MARKETINGSENDTIMECONSTRAINT = 'FailedOperation.MarketingSendTimeConstraint'
 
-# You cannot apply for a template before you apply for a signature. Please create a signature first as instructed in [Creating Signatures](https://intl.cloud.tencent.com/document/product/382/37794?from_cn_redirect=1#.E5.88.9B.E5.BB.BA.E7.AD.BE.E5.90.8D).
+# You cannot apply for a template before you apply for a signature. Please create a signature first as instructed in [Creating Signature](https://www.tencentcloud.com/document/product/382/35460).
 FAILEDOPERATION_MISSINGSIGNATURE = 'FailedOperation.MissingSignature'
 
-# Unable to identify the signature. Please check whether the signature has been approved. For more information, see the signature approval section in [Getting Started](https://intl.cloud.tencent.com/document/product/382/37745?from_cn_redirect=1).
+# Unable to identify the signature. Please check whether the signature has been approved. For more information, see the signature approval section in [Getting Started](https://www.tencentcloud.com/jp/document/product/382/35452).
 FAILEDOPERATION_MISSINGSIGNATURELIST = 'FailedOperation.MissingSignatureList'
 
 # This signature ID has not been submitted for approval or does not exist, so it cannot be modified. Please check whether the `SignId` is entered correctly.
 FAILEDOPERATION_MISSINGSIGNATURETOMODIFY = 'FailedOperation.MissingSignatureToModify'
 
-# Unable to identify the template. Please check whether the template has been approved. For more information, see the template approval section in [Getting Started](https://intl.cloud.tencent.com/document/product/382/37745?from_cn_redirect=1).
+# Unable to identify the template. Please check whether the template has been approved. For more information, see the template approval section in [Getting Started](https://www.tencentcloud.com/document/product/382/35452).
 FAILEDOPERATION_MISSINGTEMPLATELIST = 'FailedOperation.MissingTemplateList'
 
 # This template ID has not been submitted for approval or does not exist, so it cannot be modified. Please check whether the `TemplateId` is entered correctly.
@@ -137,7 +137,7 @@ INVALIDPARAMETER_INVALIDPARAMETERS = 'InvalidParameter.InvalidParameters'
 # `BeginTime` parameter check failed.
 INVALIDPARAMETERVALUE_BEGINTIMEVERIFYFAIL = 'InvalidParameterValue.BeginTimeVerifyFail'
 
-# The content of the requested SMS message is too long. For message length calculation rule, please see [Mainland China SMS Length Calculation Rule](https://intl.cloud.tencent.com/document/product/382/18058?from_cn_redirect=1).
+# The content of the requested SMS message is too long. For message length calculation rule, please see [SMS Length Calculation Rule](https://www.tencentcloud.com/document/product/382/18052#sms-length-calculation-rule).
 INVALIDPARAMETERVALUE_CONTENTLENGTHLIMIT = 'InvalidParameterValue.ContentLengthLimit'
 
 # `EndTime` parameter check failed.
