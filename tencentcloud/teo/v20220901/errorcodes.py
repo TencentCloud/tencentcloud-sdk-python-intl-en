@@ -53,6 +53,15 @@ FAILEDOPERATION_CONFIGUNKNOWNFIELD = 'FailedOperation.ConfigUnknownField'
 # The current configuration file version is not supported.
 FAILEDOPERATION_CONFIGUNSUPPORTEDFORMATVERSION = 'FailedOperation.ConfigUnsupportedFormatVersion'
 
+# Failed to create the log set. Check whether the log set name already exists.
+FAILEDOPERATION_CREATECLSLOGSETFAILED = 'FailedOperation.CreateClsLogSetFailed'
+
+# Failed to create the log topic task. Check whether the log topic name or task name already exists.
+FAILEDOPERATION_CREATECLSLOGTOPICTASKFAILED = 'FailedOperation.CreateClsLogTopicTaskFailed'
+
+# Authentication failed while creating a custom push task. Check whether the push address is correct.
+FAILEDOPERATION_CREATELOGTOPICTASKAUTHFAILURE = 'FailedOperation.CreateLogTopicTaskAuthFailure'
+
 # Insufficient account balance
 FAILEDOPERATION_INSUFFICIENTACCOUNTBALANCE = 'FailedOperation.InsufficientAccountBalance'
 
@@ -64,6 +73,12 @@ FAILEDOPERATION_MISSINGCONFIGCHUNK = 'FailedOperation.MissingConfigChunk'
 
 # Operation failed.
 FAILEDOPERATION_MODIFYFAILED = 'FailedOperation.ModifyFailed'
+
+# The real-time log authentication failed.
+FAILEDOPERATION_REALTIMELOGAUTHFAILURE = 'FailedOperation.RealtimeLogAuthFailure'
+
+# The real-time log push task does not exist.
+FAILEDOPERATION_REALTIMELOGNOTFOUND = 'FailedOperation.RealtimeLogNotFound'
 
 # Unknown configuration group type.
 FAILEDOPERATION_UNKNOWNCONFIGGROUPTYPE = 'FailedOperation.UnknownConfigGroupType'
@@ -541,6 +556,21 @@ INVALIDPARAMETER_PROXYNAMEDUPLICATING = 'InvalidParameter.ProxyNameDuplicating'
 
 # Instance name can contain 1 to 50 characters. The allowed characters are a to z, 0 to 9, and -. - cannot be registered alone or used continuously and cannot be placed at the beginning or the end.
 INVALIDPARAMETER_PROXYNAMENOTMATCHED = 'InvalidParameter.ProxyNameNotMatched'
+
+# The push instance has been created.
+INVALIDPARAMETER_REALTIMELOGENTITYALREADYCREATED = 'InvalidParameter.RealtimeLogEntityAlreadyCreated'
+
+# The log push region is invalid.
+INVALIDPARAMETER_REALTIMELOGINVALIDDELIVERYAREA = 'InvalidParameter.RealtimeLogInvalidDeliveryArea'
+
+# The log push type is invalid.
+INVALIDPARAMETER_REALTIMELOGINVALIDLOGTYPE = 'InvalidParameter.RealtimeLogInvalidLogType'
+
+# The real-time log delivery type is invalid.
+INVALIDPARAMETER_REALTIMELOGINVALIDTASKTYPE = 'InvalidParameter.RealtimeLogInvalidTaskType'
+
+# The real-time log push task data exceeded the limit.
+INVALIDPARAMETER_REALTIMELOGNUMSEXCEEDLIMIT = 'InvalidParameter.RealtimeLogNumsExceedLimit'
 
 # Invalid response header.
 INVALIDPARAMETER_RESPONSEHEADERCACHECONTROLNOTALLOWDELETE = 'InvalidParameter.ResponseHeaderCacheControlNotAllowDelete'

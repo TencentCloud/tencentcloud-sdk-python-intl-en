@@ -212,6 +212,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCLSIndex(self, request):
+        """This API is used to create key-value indexes for relevant delivered log fields in the corresponding Tencent Cloud CLS log topic for a specified real-time log delivery task (task-id). If such indexes have been created in CLS, this API will append indexes through merging.
+
+        :param request: Request instance for CreateCLSIndex.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateCLSIndexRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateCLSIndexResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCLSIndex", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCLSIndexResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateConfigGroupVersion(self, request):
         """This API is used to create a new version for the specified configuration group in version management mode. The version management feature is currently undergoing beta testing and is accessible only to users on the whitelist.
 
@@ -366,6 +389,30 @@ class TeoClient(AbstractClient):
             body = self.call("CreatePurgeTask", params, headers=headers)
             response = json.loads(body)
             model = models.CreatePurgeTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateRealtimeLogDeliveryTask(self, request):
+        """This API is used to create real-time log delivery tasks. This API has the following restrictions:
+        Under the same combination of data delivery type (LogType) and data delivery area (Area), an entity (Layer 7 domain or Layer 4 proxy instance) can be added to only one real-time log delivery task. It is recommended to first query the real-time log delivery task list by entity through the [DescribeRealtimeLogDeliveryTasks](https://tcloud4api.woa.com/document/product/1657/343539?!preview&!document=1) API to check whether an entity has been added to a real-time log delivery task.
+
+        :param request: Request instance for CreateRealtimeLogDeliveryTask.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateRealtimeLogDeliveryTaskRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateRealtimeLogDeliveryTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRealtimeLogDeliveryTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRealtimeLogDeliveryTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -621,6 +668,29 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteOriginGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteOriginGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRealtimeLogDeliveryTask(self, request):
+        """This API is used to delete a real-time log delivery task.
+
+        :param request: Request instance for DeleteRealtimeLogDeliveryTask.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteRealtimeLogDeliveryTaskRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteRealtimeLogDeliveryTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRealtimeLogDeliveryTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRealtimeLogDeliveryTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1297,6 +1367,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRealtimeLogDeliveryTasks(self, request):
+        """This API is used to query the real-time log delivery task list.
+
+        :param request: Request instance for DescribeRealtimeLogDeliveryTasks.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeRealtimeLogDeliveryTasksRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeRealtimeLogDeliveryTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRealtimeLogDeliveryTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRealtimeLogDeliveryTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRules(self, request):
         """This API is used to query the rules in the rule engine.
 
@@ -1913,6 +2006,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyOriginGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyOriginGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRealtimeLogDeliveryTask(self, request):
+        """This API is used to modify the real-time log delivery task configuration. This API has the following restrictions:<li>Does not support modifying the destination type of the real-time log delivery task (TaskType);</li><li>Does not support modifying the data delivery type (LogType)</li><li>Does not support modifying the data delivery area (Area)</li><li>Does not support modifying the detailed destination configuration, such as log set and log topic, when the destination of the original real-time log delivery task is Tencent Cloud CLS.</li>
+
+        :param request: Request instance for ModifyRealtimeLogDeliveryTask.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyRealtimeLogDeliveryTaskRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyRealtimeLogDeliveryTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRealtimeLogDeliveryTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRealtimeLogDeliveryTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
