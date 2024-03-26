@@ -2665,6 +2665,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def FastEditMedia(self, request):
+        """Implement fast splicing and editing of HLS videos to generate new HLS format media.
+
+        :param request: Request instance for FastEditMedia.
+        :type request: :class:`tencentcloud.vod.v20180717.models.FastEditMediaRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.FastEditMediaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("FastEditMedia", params, headers=headers)
+            response = json.loads(body)
+            model = models.FastEditMediaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ForbidMediaDistribution(self, request):
         """* After a media file is forbidden, except previewing it in the VOD Console, accessing the URLs of its various resources (such as source file, output files, and screenshots) in other scenarios will return error 403.
           It takes about 5-10 minutes for a forbidding/unblocking operation to take effect across the entire network.

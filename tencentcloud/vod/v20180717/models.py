@@ -29344,6 +29344,198 @@ Default value: `0.0`.
         
 
 
+class FastEditMediaFileInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: 
+        :type FileId: str
+        :param _AudioVideoType: 
+        :type AudioVideoType: str
+        :param _TranscodeDefinition: 
+        :type TranscodeDefinition: int
+        :param _StartTimeOffset: 
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: 
+        :type EndTimeOffset: float
+        """
+        self._FileId = None
+        self._AudioVideoType = None
+        self._TranscodeDefinition = None
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def AudioVideoType(self):
+        return self._AudioVideoType
+
+    @AudioVideoType.setter
+    def AudioVideoType(self, AudioVideoType):
+        self._AudioVideoType = AudioVideoType
+
+    @property
+    def TranscodeDefinition(self):
+        return self._TranscodeDefinition
+
+    @TranscodeDefinition.setter
+    def TranscodeDefinition(self, TranscodeDefinition):
+        self._TranscodeDefinition = TranscodeDefinition
+
+    @property
+    def StartTimeOffset(self):
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._AudioVideoType = params.get("AudioVideoType")
+        self._TranscodeDefinition = params.get("TranscodeDefinition")
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FastEditMediaRequest(AbstractModel):
+    """FastEditMedia request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileInfos: Input media file information. Support for up to 100 media inputs.
+        :type FileInfos: list of FastEditMediaFileInfo
+        :param _ClipMode: ClipMode is used to indicate whether to include this segment when the clipping time point falls in the middle of a TS segment. There are two values:<li>StartInclusiveEndInclusive: When the clip start time point and end time point fall in the middle of a segment, this segment will be included; </li> <li>StartInclusiveEndExclusive: When the starting time point falls in the middle of a segment, the segment will be included; when the end time point falls in the middle of a segment, the segment will not be included.</li> If not specified, the default is StartInclusiveEndInclusive.
+        :type ClipMode: str
+        :param _SubAppId: <b> VOD [Application](/document/product/266/14574) ID. Customers who activate VOD services from December 25, 2023, if they access resources in VOD applications (whether it is a default application or a newly created application), must fill in this field as the application ID. </b>
+        :type SubAppId: int
+        """
+        self._FileInfos = None
+        self._ClipMode = None
+        self._SubAppId = None
+
+    @property
+    def FileInfos(self):
+        return self._FileInfos
+
+    @FileInfos.setter
+    def FileInfos(self, FileInfos):
+        self._FileInfos = FileInfos
+
+    @property
+    def ClipMode(self):
+        return self._ClipMode
+
+    @ClipMode.setter
+    def ClipMode(self, ClipMode):
+        self._ClipMode = ClipMode
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        if params.get("FileInfos") is not None:
+            self._FileInfos = []
+            for item in params.get("FileInfos"):
+                obj = FastEditMediaFileInfo()
+                obj._deserialize(item)
+                self._FileInfos.append(obj)
+        self._ClipMode = params.get("ClipMode")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FastEditMediaResponse(AbstractModel):
+    """FastEditMedia response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: The unique identification of the media file of the fast edited video
+        :type FileId: str
+        :param _Url: Fast-edited media playback address
+        :type Url: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FileId = None
+        self._Url = None
+        self._RequestId = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._Url = params.get("Url")
+        self._RequestId = params.get("RequestId")
+
+
 class FileDeleteResultItem(AbstractModel):
     """The result of file deletion.
 
