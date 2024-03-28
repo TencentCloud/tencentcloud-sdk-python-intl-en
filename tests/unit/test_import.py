@@ -64,6 +64,11 @@ def test_import_cbs():
     from tencentcloud.cbs.v20170312 import models
 
 
+def test_import_ccc():
+    from tencentcloud.ccc.v20200210 import ccc_client
+    from tencentcloud.ccc.v20200210 import models
+
+
 def test_import_cdb():
     from tencentcloud.cdb.v20170320 import cdb_client
     from tencentcloud.cdb.v20170320 import models

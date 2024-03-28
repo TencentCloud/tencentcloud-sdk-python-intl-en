@@ -29345,21 +29345,21 @@ Default value: `0.0`.
 
 
 class FastEditMediaFileInfo(AbstractModel):
-    """
+    """VOD  fast media editing information
 
     """
 
     def __init__(self):
         r"""
-        :param _FileId: 
+        :param _FileId: Media file ID.
         :type FileId: str
-        :param _AudioVideoType: 
+        :param _AudioVideoType: The types of media. Valid values: <li>Transcode:Transcoded output; </li> <li>Original: Original audio and video. </li>The audio and video being operated on must be in HLS format.
         :type AudioVideoType: str
-        :param _TranscodeDefinition: 
+        :param _TranscodeDefinition: When AudioVideoType is set to Transcode, it is valid and indicates the transcoding template ID for the media being operated on.
         :type TranscodeDefinition: int
-        :param _StartTimeOffset: 
+        :param _StartTimeOffset: Offset time of the start of the video clip, unit: seconds.
         :type StartTimeOffset: float
-        :param _EndTimeOffset: 
+        :param _EndTimeOffset: Offset time at the end of the video clip, unit: seconds.
         :type EndTimeOffset: float
         """
         self._FileId = None
