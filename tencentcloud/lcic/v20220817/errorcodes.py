@@ -77,6 +77,9 @@ INVALIDPARAMETER_GROUPTEACHERSNOTEXIST = 'InvalidParameter.GroupTeachersNotExist
 # Group type error.
 INVALIDPARAMETER_GROUPTYPEINVALID = 'InvalidParameter.GroupTypeInvalid'
 
+# 
+INVALIDPARAMETER_ROOMTYPEINVALID = 'InvalidParameter.RoomTypeInvalid'
+
 # `SdkAppId` is incorrect.
 INVALIDPARAMETER_SDKAPPID = 'InvalidParameter.SdkAppId'
 
