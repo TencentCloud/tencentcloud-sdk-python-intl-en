@@ -4311,11 +4311,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type CardInfo: :class:`tencentcloud.faceid.v20180301.models.CardInfo`
         :param _RequestId: The request id
         :type RequestId: str
+        :param _CardCutImageBase64: Base64 of cropped image of ID card
+        :type CardCutImageBase64: str
+        :param _CardBackCutImageBase64: Base64 of the cropped image on the reverse side of the ID card
+        :type CardBackCutImageBase64: str
         """
         self._IsPass = None
         self._CardImageBase64 = None
         self._CardInfo = None
         self._RequestId = None
+        self._CardCutImageBase64 = None
+        self._CardBackCutImageBase64 = None
 
     @property
     def IsPass(self):
@@ -4349,6 +4355,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def RequestId(self, RequestId):
         self._RequestId = RequestId
 
+    @property
+    def CardCutImageBase64(self):
+        return self._CardCutImageBase64
+
+    @CardCutImageBase64.setter
+    def CardCutImageBase64(self, CardCutImageBase64):
+        self._CardCutImageBase64 = CardCutImageBase64
+
+    @property
+    def CardBackCutImageBase64(self):
+        return self._CardBackCutImageBase64
+
+    @CardBackCutImageBase64.setter
+    def CardBackCutImageBase64(self, CardBackCutImageBase64):
+        self._CardBackCutImageBase64 = CardBackCutImageBase64
+
 
     def _deserialize(self, params):
         self._IsPass = params.get("IsPass")
@@ -4357,6 +4379,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._CardInfo = CardInfo()
             self._CardInfo._deserialize(params.get("CardInfo"))
         self._RequestId = params.get("RequestId")
+        self._CardCutImageBase64 = params.get("CardCutImageBase64")
+        self._CardBackCutImageBase64 = params.get("CardBackCutImageBase64")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
