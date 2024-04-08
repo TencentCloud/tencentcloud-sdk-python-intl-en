@@ -38,11 +38,20 @@ FAILEDOPERATION_CREATEZONEFAILED = 'FailedOperation.CreateZoneFailed'
 # Data exception.
 FAILEDOPERATION_DATAERROR = 'FailedOperation.DataError'
 
+# The private domain is currently associated with a VPC. Please disassociate the VPC first before clearing its records.
+FAILEDOPERATION_DELETELASTBINDVPCRECORDFAILED = 'FailedOperation.DeleteLastBindVpcRecordFailed'
+
+# 
+FAILEDOPERATION_DELETERECORDFAILED = 'FailedOperation.DeleteRecordFailed'
+
 # Failed to modify the record.
 FAILEDOPERATION_MODIFYRECORDFAILED = 'FailedOperation.ModifyRecordFailed'
 
 # Failed to modify the private domain.
 FAILEDOPERATION_MODIFYZONEFAILED = 'FailedOperation.ModifyZoneFailed'
+
+# 
+FAILEDOPERATION_UPDATERECORDFAILED = 'FailedOperation.UpdateRecordFailed'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
@@ -79,6 +88,9 @@ INVALIDPARAMETER_ILLEGALVPCINFO = 'InvalidParameter.IllegalVpcInfo'
 
 # The MX value must be a multiple of 5 between 5 and 50.
 INVALIDPARAMETER_INVALIDMX = 'InvalidParameter.InvalidMX'
+
+# 
+INVALIDPARAMETER_MXNOTSUPPORTED = 'InvalidParameter.MXNotSupported'
 
 # The number of round-robin DNS AAAA records exceeds 50.
 INVALIDPARAMETER_RECORDAAAACOUNTEXCEED = 'InvalidParameter.RecordAAAACountExceed'
@@ -196,6 +208,9 @@ UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
 # Account not bound.
 UNSUPPORTEDOPERATION_ACCOUNTNOTBOUND = 'UnsupportedOperation.AccountNotBound'
+
+# 
+UNSUPPORTEDOPERATION_FREQUENCYLIMIT = 'UnsupportedOperation.FrequencyLimit'
 
 # Subdomain recursive DNS is not supported.
 UNSUPPORTEDOPERATION_NOTSUPPORTDNSFORWARD = 'UnsupportedOperation.NotSupportDnsForward'

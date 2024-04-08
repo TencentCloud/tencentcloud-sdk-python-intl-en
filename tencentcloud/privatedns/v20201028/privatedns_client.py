@@ -95,6 +95,29 @@ class PrivatednsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeletePrivateZoneRecord(self, request):
+        """This API is used to delete a DNS record for a private domain.
+
+        :param request: Request instance for DeletePrivateZoneRecord.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DeletePrivateZoneRecordRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DeletePrivateZoneRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePrivateZoneRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePrivateZoneRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAccountVpcList(self, request):
         """This API is used to get the VPC list of a Private DNS account.
 
@@ -178,6 +201,52 @@ class PrivatednsClient(AbstractClient):
             body = self.call("DescribePrivateDNSAccountList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePrivateDNSAccountListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePrivateZoneList(self, request):
+        """This API is used to get the list of private domains.
+
+        :param request: Request instance for DescribePrivateZoneList.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneListRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrivateZoneList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrivateZoneListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePrivateZoneRecordList(self, request):
+        """This API is used to get the list of records for a private domain.
+
+        :param request: Request instance for DescribePrivateZoneRecordList.
+        :type request: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneRecordListRequest`
+        :rtype: :class:`tencentcloud.privatedns.v20201028.models.DescribePrivateZoneRecordListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrivateZoneRecordList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrivateZoneRecordListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
