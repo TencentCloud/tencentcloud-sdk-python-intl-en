@@ -125,6 +125,9 @@ FAILEDOPERATION_GETROLEERROR = 'FailedOperation.GetRoleError'
 # The instance does not exist or is invalid.
 FAILEDOPERATION_INSTANCENOTEXIST = 'FailedOperation.InstanceNotExist'
 
+# 
+FAILEDOPERATION_INVALIDINPUTJSON = 'FailedOperation.InvalidInputJSON'
+
 # The Apis custom path conflicts with the default path.
 FAILEDOPERATION_ISDEFAULTMAPPING = 'FailedOperation.IsDefaultMapping'
 
@@ -158,6 +161,9 @@ FAILEDOPERATION_SUBDOMAINFORMATERROR = 'FailedOperation.SubDomainFormatError'
 # The tag was not bound to the specified service.
 FAILEDOPERATION_TAGBINDSERVICEERROR = 'FailedOperation.TagBindServiceError'
 
+# 
+FAILEDOPERATION_TASKALREADYEXIST = 'FailedOperation.TaskAlreadyExist'
+
 # The protocol type is incorrect.
 FAILEDOPERATION_UNKNOWNPROTOCOLTYPEERROR = 'FailedOperation.UnknownProtocolTypeError'
 
@@ -175,6 +181,9 @@ INTERNALERROR_CAUTHEXCEPTION = 'InternalError.CauthException'
 
 # CLB internal request error. Please try again. If the problem persists, please submit a ticket.
 INTERNALERROR_CLBEXCEPTION = 'InternalError.ClbException'
+
+# 
+INTERNALERROR_DBEXCEPTION = 'InternalError.DbException'
 
 # OSS internal request error. Please try again. If the problem persists, please contact the smart customer service or submit a ticket.
 INTERNALERROR_OSSEXCEPTION = 'InternalError.OssException'
@@ -331,6 +340,9 @@ INVALIDPARAMETERVALUE_PARAMETERVALUELIMITEXCEEDED = 'InvalidParameterValue.Param
 
 # The parameter value is incorrect, as it is not within the valid value range.
 INVALIDPARAMETERVALUE_RANGEEXCEEDED = 'InvalidParameterValue.RangeExceeded'
+
+# 
+INVALIDPARAMETERVALUE_TRAFFICCONTROL = 'InvalidParameterValue.TrafficControl'
 
 # Invalid parameter value.
 INVALIDPARAMETERVALUE_UNSUPPORTEDPARAMETER = 'InvalidParameterValue.UnsupportedParameter'
@@ -511,6 +523,9 @@ UNSUPPORTEDOPERATION_RESOURCEISINUSE = 'UnsupportedOperation.ResourceIsInUse'
 
 # The resource is not associated.
 UNSUPPORTEDOPERATION_RESOURCEUNASSOCIATED = 'UnsupportedOperation.ResourceUnassociated'
+
+# 
+UNSUPPORTEDOPERATION_SERVICEEXIST = 'UnsupportedOperation.ServiceExist'
 
 # 
 UNSUPPORTEDOPERATION_TAGSNOTEMPTY = 'UnsupportedOperation.TagsNotEmpty'

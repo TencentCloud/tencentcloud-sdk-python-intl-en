@@ -399,8 +399,8 @@ class TeoClient(AbstractClient):
 
 
     def CreateRealtimeLogDeliveryTask(self, request):
-        """This API is used to create real-time log delivery tasks. This API has the following restrictions:
-        Under the same combination of data delivery type (LogType) and data delivery area (Area), an entity (Layer 7 domain or Layer 4 proxy instance) can be added to only one real-time log delivery task. It is recommended to first query the real-time log delivery task list by entity through the [DescribeRealtimeLogDeliveryTasks](https://tcloud4api.woa.com/document/product/1657/343539?!preview&!document=1) API to check whether an entity has been added to a real-time log delivery task.
+        """This API is used to create a real-time log delivery task. The following limits apply:
+        An entity (a Layer 7 domain name or a Layer 4 proxy instance) under the combination of the same data delivery type (LogType) and data delivery area (Area) can be added to only one real-time log delivery task. It is recommended to first query the real-time log delivery task list by entity through the [DescribeRealtimeLogDeliveryTasks](https://intl.cloud.tencent.com/document/product/1552/104110?from_cn_redirect=1) API to check whether the entity has been added to another real-time log delivery task.
 
         :param request: Request instance for CreateRealtimeLogDeliveryTask.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateRealtimeLogDeliveryTaskRequest`
@@ -1427,6 +1427,29 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeRulesSetting", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRulesSettingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSecurityIPGroupInfo(self, request):
+        """This API is used to query the configuration information of an IP group, including the IP group name, IP group content, and the site the IP group belongs to.
+
+        :param request: Request instance for DescribeSecurityIPGroupInfo.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityIPGroupInfoRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityIPGroupInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityIPGroupInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityIPGroupInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

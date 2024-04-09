@@ -282,8 +282,6 @@ class OcrClient(AbstractClient):
     def MLIDPassportOCR(self, request):
         """This API is used to recognize a passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions. Recognizable fields include passport ID, name, date of birth, gender, expiration date, issuing country/region, and nationality. It has the features of cropping identity photos and alarming for photographed or photocopied documents.
 
-        This API is not fully available for the time being. For more information, please contact your [Tencent Cloud sales rep](https://intl.cloud.tencent.com/contact-sales).
-
         :param request: Request instance for MLIDPassportOCR.
         :type request: :class:`tencentcloud.ocr.v20181119.models.MLIDPassportOCRRequest`
         :rtype: :class:`tencentcloud.ocr.v20181119.models.MLIDPassportOCRResponse`
