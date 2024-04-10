@@ -72,6 +72,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckFunction(self, request):
+        """This API is used to verify the syntax of data processing DSL functions.
+
+        :param request: Request instance for CheckFunction.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CheckFunctionRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CheckFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckFunction", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckFunctionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckRechargeKafkaServer(self, request):
         """This API is used to check whether the Kafka service cluster is accessible.
 
@@ -164,6 +187,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAlarmShield(self, request):
+        """This API is used to create an alarm blocking rule.
+
+        :param request: Request instance for CreateAlarmShield.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateAlarmShieldRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateAlarmShieldResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAlarmShield", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAlarmShieldResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateConfig(self, request):
         """This API is used to create a collection rule configuration.
 
@@ -188,7 +234,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateConsumer(self, request):
-        """This API is used to create a shipping task.
+        """This API is used to create a CKafka delivery task.
 
         :param request: Request instance for CreateConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateConsumerRequest`
@@ -247,6 +293,29 @@ class ClsClient(AbstractClient):
             body = self.call("CreateDataTransform", params, headers=headers)
             response = json.loads(body)
             model = models.CreateDataTransformResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateDeliverCloudFunction(self, request):
+        """This API is used to create a delivery SCF task.
+
+        :param request: Request instance for CreateDeliverCloudFunction.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateDeliverCloudFunctionRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateDeliverCloudFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDeliverCloudFunction", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDeliverCloudFunctionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -371,6 +440,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateScheduledSql(self, request):
+        """This API is used to create a scheduled SQL analysis task.
+
+        :param request: Request instance for CreateScheduledSql.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateScheduledSqlRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateScheduledSqlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateScheduledSql", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateScheduledSqlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateShipper(self, request):
         """This API is used to create a task to ship to COS. Note: To use this API, you need to check whether you have configured the role and permission for shipping to COS. If not, see **Viewing and Configuring Shipping Authorization** at https://intl.cloud.tencent.com/document/product/614/71623.?from_cn_redirect=1
 
@@ -454,6 +546,29 @@ class ClsClient(AbstractClient):
             body = self.call("DeleteAlarmNotice", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAlarmNoticeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAlarmShield(self, request):
+        """This API is used to delete an alarm blocking rule.
+
+        :param request: Request instance for DeleteAlarmShield.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteAlarmShieldRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteAlarmShieldResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAlarmShield", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAlarmShieldResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -693,6 +808,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteScheduledSql(self, request):
+        """This API is used to delete scheduled SQL analysis tasks.
+
+        :param request: Request instance for DeleteScheduledSql.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteScheduledSqlRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteScheduledSqlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteScheduledSql", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteScheduledSqlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteShipper(self, request):
         """This API is used to delete a COS shipping task.
 
@@ -753,6 +891,29 @@ class ClsClient(AbstractClient):
             body = self.call("DescribeAlarmNotices", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAlarmNoticesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAlarmShields(self, request):
+        """Accesses alarm blocking configuration rules
+
+        :param request: Request instance for DescribeAlarmShields.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAlarmShieldsRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeAlarmShieldsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAlarmShields", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAlarmShieldsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -969,6 +1130,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeKafkaConsumer(self, request):
+        """Accesses Kafka protocol consumption information
+
+        :param request: Request instance for DescribeKafkaConsumer.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaConsumerRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaConsumerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKafkaConsumer", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKafkaConsumerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeKafkaRecharges(self, request):
         """This API is used to get the list of Kafka data subscription tasks.
 
@@ -993,7 +1177,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeLogContext(self, request):
-        """This API is used to search for content in the log context.
+        """This API is used to search for content near the log context. For more details, see [Context Search](https://intl.cloud.tencent.com/document/product/614/53248?from_cn_redirect=1).The maximum value of API's return data packet is 49MB. It is recommended to enable gzip compression (HTTP Request Header Accept-Encoding: gzip).
 
         :param request: Request instance for DescribeLogContext.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeLogContextRequest`
@@ -1108,7 +1292,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeMachines(self, request):
-        """This API is used to get the machine status in the specified machine group.
+        """Gets the status of a machine under the specified machine group
 
         :param request: Request instance for DescribeMachines.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeMachinesRequest`
@@ -1144,6 +1328,29 @@ class ClsClient(AbstractClient):
             body = self.call("DescribePartitions", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePartitionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeScheduledSqlInfo(self, request):
+        """This API is used to access the scheduled SQL analysis task list.
+
+        :param request: Request instance for DescribeScheduledSqlInfo.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeScheduledSqlInfoRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeScheduledSqlInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScheduledSqlInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeScheduledSqlInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1223,7 +1430,7 @@ class ClsClient(AbstractClient):
 
 
     def GetAlarmLog(self, request):
-        """This API is used to get the records of alarm tasks.
+        """This API is used to access alarm policy execution details.
 
         :param request: Request instance for GetAlarmLog.
         :type request: :class:`tencentcloud.cls.v20201016.models.GetAlarmLogRequest`
@@ -1314,6 +1521,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAlarmShield(self, request):
+        """This API is used to modify alarm blocking rules.
+
+        :param request: Request instance for ModifyAlarmShield.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyAlarmShieldRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyAlarmShieldResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAlarmShield", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAlarmShieldResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyConfig(self, request):
         """This API is used to modify a collection rule configuration.
 
@@ -1338,7 +1568,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyConsumer(self, request):
-        """This API is used to modify a shipping task.
+        """This API is used to modify a CKafka delivery task
 
         :param request: Request instance for ModifyConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyConsumerRequest`
@@ -1429,6 +1659,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyKafkaConsumer(self, request):
+        """Modifies Kafka Protocol consumption information
+
+        :param request: Request instance for ModifyKafkaConsumer.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyKafkaConsumerRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyKafkaConsumerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyKafkaConsumer", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyKafkaConsumerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyKafkaRecharge(self, request):
         """This API is used to modify a Kafka data subscription task.
 
@@ -1489,6 +1742,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyMachineGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMachineGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyScheduledSql(self, request):
+        """This API is used to modify scheduled SQL analysis tasks.
+
+        :param request: Request instance for ModifyScheduledSql.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyScheduledSqlRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyScheduledSqlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyScheduledSql", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyScheduledSqlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1590,6 +1866,52 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryMetric(self, request):
+        """Queries the latest metric value at a specified time
+
+        :param request: Request instance for QueryMetric.
+        :type request: :class:`tencentcloud.cls.v20201016.models.QueryMetricRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.QueryMetricResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryMetric", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryMetricResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryRangeMetric(self, request):
+        """This API is used to query the trend of metrics within a specified time range.
+
+        :param request: Request instance for QueryRangeMetric.
+        :type request: :class:`tencentcloud.cls.v20201016.models.QueryRangeMetricRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.QueryRangeMetricResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryRangeMetric", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryRangeMetricResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RetryShipperTask(self, request):
         """This API is used to retry a failed shipping task.
 
@@ -1613,8 +1935,32 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SearchCosRechargeInfo(self, request):
+        """This API is used to preview COS import information.
+
+        :param request: Request instance for SearchCosRechargeInfo.
+        :type request: :class:`tencentcloud.cls.v20201016.models.SearchCosRechargeInfoRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.SearchCosRechargeInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchCosRechargeInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchCosRechargeInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SearchLog(self, request):
-        """This API is used to search logs. It is subject to the default API rate limit, and the number of concurrent queries to the same log topic cannot exceed 15.
+        """This API is used to search and analyze logs. When using this API, please note the following:1. Besides being subject to the default API request frequency limit by this API, for a single log topic, the concurrency number cannot exceed 15. 2. For search syntax, it's recommended to use the CQL syntax rule. Please use the SyntaxRule parameter and set its value to 1.
+        3. The maximum value of API's response data packet is 49MB. It is recommended to enable gzip compression (HTTP Request Header Accept-Encoding: gzip).
 
         :param request: Request instance for SearchLog.
         :type request: :class:`tencentcloud.cls.v20201016.models.SearchLogRequest`
