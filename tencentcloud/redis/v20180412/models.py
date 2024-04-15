@@ -25,24 +25,20 @@ class Account(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Instance ID 
-Note:  This field may return null, indicating that no valid values can be obtained.
+        :param _InstanceId: Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceId: str
-        :param _AccountName: Account name 
-Note:  This field may return null, indicating that no valid values can be obtained.
+        :param _AccountName: Note: This field may return null, indicating that no valid values can be obtained.
         :type AccountName: str
-        :param _Remark: Account description information 
-Note:  This field may return null, indicating that no valid values can be obtained.
+        :param _Remark: Note: This field may return null, indicating that no valid values can be obtained.
         :type Remark: str
-        :param _Privilege: Read/write permission policy. Valid values: `r` (read-only),  `w` (write-only),  `rw`  (read/write). 
-Note:  This field may return null, indicating that no valid values can be obtained.
+        :param _Privilege: Note: This field may return null, indicating that no valid values can be obtained.
         :type Privilege: str
-        :param _ReadonlyPolicy: Read-only routing policy. Valid values: `master` (master node),  `replication`  (replica node). 
-Note:  This field may return null, indicating that no valid values can be obtained.
+        :param _ReadonlyPolicy: Note: This field may return null, indicating that no valid values can be obtained.
         :type ReadonlyPolicy: list of str
-        :param _Status: Sub-account status. Valid values:  `1` (being changed),  `2` (valid). `4` (deleted). 
-Note:  This field may return null, indicating that no valid values can be obtained.
+        :param _Status: Note: This field may return null, indicating that no valid values can be obtained.
         :type Status: int
+        :param _CreateTime: Creation time.Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
         """
         self._InstanceId = None
         self._AccountName = None
@@ -50,6 +46,7 @@ Note:  This field may return null, indicating that no valid values can be obtain
         self._Privilege = None
         self._ReadonlyPolicy = None
         self._Status = None
+        self._CreateTime = None
 
     @property
     def InstanceId(self):
@@ -99,6 +96,14 @@ Note:  This field may return null, indicating that no valid values can be obtain
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -107,6 +112,7 @@ Note:  This field may return null, indicating that no valid values can be obtain
         self._Privilege = params.get("Privilege")
         self._ReadonlyPolicy = params.get("ReadonlyPolicy")
         self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -115,6 +121,100 @@ Note:  This field may return null, indicating that no valid values can be obtain
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class AddReplicationInstanceRequest(AbstractModel):
+    """AddReplicationInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: Replication group ID.
+        :type GroupId: str
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _InstanceRole: Assigns roles to instances added to the replication group. <ul><li>rw: read-write;</li> <li>r: read-only.</li></ul>
+        :type InstanceRole: str
+        """
+        self._GroupId = None
+        self._InstanceId = None
+        self._InstanceRole = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceRole(self):
+        return self._InstanceRole
+
+    @InstanceRole.setter
+    def InstanceRole(self, InstanceRole):
+        self._InstanceRole = InstanceRole
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceRole = params.get("InstanceRole")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddReplicationInstanceResponse(AbstractModel):
+    """AddReplicationInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Asynchronous process ID.
+        :type TaskId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class AllocateWanAddressRequest(AbstractModel):
@@ -2151,6 +2251,100 @@ class CreateParamTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateReplicationGroupRequest(AbstractModel):
+    """CreateReplicationGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Specifies the ID of the primary instance in the replication group.
+        :type InstanceId: str
+        :param _GroupName: Replication group name. It supports only Chinese characters, letters, digits, underscores (_), and hyphens (-), with a length of 2-64 characters.
+        :type GroupName: str
+        :param _Remark: Remark information.
+        :type Remark: str
+        """
+        self._InstanceId = None
+        self._GroupName = None
+        self._Remark = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def GroupName(self):
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._GroupName = params.get("GroupName")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateReplicationGroupResponse(AbstractModel):
+    """CreateReplicationGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Asynchronous process ID.
+        :type TaskId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DelayDistribution(AbstractModel):
     """Delay distribution details
 
@@ -2345,6 +2539,100 @@ class DeleteParamTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteReplicationInstanceRequest(AbstractModel):
+    """DeleteReplicationInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: Replication group ID.
+        :type GroupId: str
+        :param _InstanceId: Instance ID.
+        :type InstanceId: str
+        :param _SyncType: Data synchronization type. Valid values: true (Strong synchronization is required.) and false (Strong synchronization is not required. This value applies only to primary instance deletion.)
+        :type SyncType: bool
+        """
+        self._GroupId = None
+        self._InstanceId = None
+        self._SyncType = None
+
+    @property
+    def GroupId(self):
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SyncType(self):
+        return self._SyncType
+
+    @SyncType.setter
+    def SyncType(self, SyncType):
+        self._SyncType = SyncType
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._InstanceId = params.get("InstanceId")
+        self._SyncType = params.get("SyncType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteReplicationInstanceResponse(AbstractModel):
+    """DeleteReplicationInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Asynchronous task ID.
+        :type TaskId: float
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -3858,6 +4146,177 @@ class DescribeInstanceDealDetailResponse(AbstractModel):
                 obj = TradeDealDetail()
                 obj._deserialize(item)
                 self._DealDetails.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceEventsRequest(AbstractModel):
+    """DescribeInstanceEvents request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecutionStartDate: Configures the start date for querying the event execution schedule.
+        :type ExecutionStartDate: str
+        :param _ExecutionEndDate: Configures the end date for querying the event execution schedule.
+        :type ExecutionEndDate: str
+        :param _InstanceId: Specifies the instance ID. Example: crs-xjhsdj****. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis) and copy the instance ID in the instance list.
+        :type InstanceId: str
+        :param _PageSize: Outputs the number of events displayed per page. Default value: 10.
+        :type PageSize: int
+        :param _PageNo: Configures the page number for querying events. You can query events on a certain page by specifying PageNo and PageSize. Default value: 1.
+        :type PageNo: int
+        :param _Status: Current status of the event.- Waiting: The event is waiting for execution on the execution date or during the operations period.- Running: The event is being executed during the operations period.- Finished: Execution of the event is completed.- Canceled: Execution of the event is canceled.
+        :type Status: list of str
+        :param _EventTypes: Event type. Currently, the type can only be related to instance migration, resource movement, and IDC deletion. This parameter can be set only to **InstanceMigration**.
+        :type EventTypes: list of str
+        :param _Grades: Configures the level of the queried event. Events are divided into Critical, High, Medium, and Low events according to the severity and urgency.- Critical- High- Medium- Low
+        :type Grades: list of str
+        """
+        self._ExecutionStartDate = None
+        self._ExecutionEndDate = None
+        self._InstanceId = None
+        self._PageSize = None
+        self._PageNo = None
+        self._Status = None
+        self._EventTypes = None
+        self._Grades = None
+
+    @property
+    def ExecutionStartDate(self):
+        return self._ExecutionStartDate
+
+    @ExecutionStartDate.setter
+    def ExecutionStartDate(self, ExecutionStartDate):
+        self._ExecutionStartDate = ExecutionStartDate
+
+    @property
+    def ExecutionEndDate(self):
+        return self._ExecutionEndDate
+
+    @ExecutionEndDate.setter
+    def ExecutionEndDate(self, ExecutionEndDate):
+        self._ExecutionEndDate = ExecutionEndDate
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNo(self):
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EventTypes(self):
+        return self._EventTypes
+
+    @EventTypes.setter
+    def EventTypes(self, EventTypes):
+        self._EventTypes = EventTypes
+
+    @property
+    def Grades(self):
+        return self._Grades
+
+    @Grades.setter
+    def Grades(self, Grades):
+        self._Grades = Grades
+
+
+    def _deserialize(self, params):
+        self._ExecutionStartDate = params.get("ExecutionStartDate")
+        self._ExecutionEndDate = params.get("ExecutionEndDate")
+        self._InstanceId = params.get("InstanceId")
+        self._PageSize = params.get("PageSize")
+        self._PageNo = params.get("PageNo")
+        self._Status = params.get("Status")
+        self._EventTypes = params.get("EventTypes")
+        self._Grades = params.get("Grades")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceEventsResponse(AbstractModel):
+    """DescribeInstanceEvents response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of events.
+        :type TotalCount: int
+        :param _RedisInstanceEvents: Instance event information.
+        :type RedisInstanceEvents: list of RedisInstanceEvent
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RedisInstanceEvents = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RedisInstanceEvents(self):
+        return self._RedisInstanceEvents
+
+    @RedisInstanceEvents.setter
+    def RedisInstanceEvents(self, RedisInstanceEvents):
+        self._RedisInstanceEvents = RedisInstanceEvents
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RedisInstanceEvents") is not None:
+            self._RedisInstanceEvents = []
+            for item in params.get("RedisInstanceEvents"):
+                obj = RedisInstanceEvent()
+                obj._deserialize(item)
+                self._RedisInstanceEvents.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9532,74 +9991,51 @@ class InstanceSet(AbstractModel):
         :type CloseTime: str
         :param _SlaveReadWeight: Read weight of a replica node
         :type SlaveReadWeight: int
-        :param _InstanceTags: Instance tag information
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _InstanceTags: Note: This field may return null, indicating that no valid values can be obtained.
         :type InstanceTags: list of InstanceTagInfo
-        :param _ProjectName: Project name
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _ProjectName: Note: This field may return null, indicating that no valid values can be obtained.
         :type ProjectName: str
-        :param _NoAuth: Whether an instance is password-free. <ul><li>`true`: Yes. </li><li>`false`: No. </li></ul>
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _NoAuth: Note: This field may return null, indicating that no valid values can be obtained.
         :type NoAuth: bool
-        :param _ClientLimit: Number of client connections
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _ClientLimit: Note: This field may return null, indicating that no valid values can be obtained.
         :type ClientLimit: int
-        :param _DtsStatus: DTS status (internal parameter, which can be ignored)
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _DtsStatus: Note: This field may return null, indicating that no valid values can be obtained.
         :type DtsStatus: int
-        :param _NetLimit: Upper shard bandwidth limit in MB
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _NetLimit: Note: This field may return null, indicating that no valid values can be obtained.
         :type NetLimit: int
-        :param _PasswordFree: Password-free instance flag (internal parameter, which can be ignored)
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _PasswordFree: Note: This field may return null, indicating that no valid values can be obtained.
         :type PasswordFree: int
-        :param _Vip6: Due to the naming irregularity of this parameter, it is recommended to use the parameter IPv6 instead. Internal parameters, which can be ignored by users.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Vip6: Note: This field may return null, indicating that no valid values can be obtained.
         :type Vip6: str
-        :param _IPv6: Internal parameters, which can be ignored by users.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _IPv6: Note: This field may return null, indicating that no valid values can be obtained.
         :type IPv6: str
-        :param _ReadOnly: Read-only instance flag (internal parameter, which can be ignored)
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _ReadOnly: Note: This field may return null, indicating that no valid values can be obtained.
         :type ReadOnly: int
-        :param _RemainBandwidthDuration: Internal parameter, which can be ignored.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _RemainBandwidthDuration: Note: This field may return null, indicating that no valid values can be obtained.
         :type RemainBandwidthDuration: str
-        :param _DiskSize: This parameter can be ignored for Redis instance.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _DiskSize: Note: This field may return null, indicating that no valid values can be obtained.
         :type DiskSize: int
-        :param _MonitorVersion: Monitoring granularity. <ul><li>`1m`: Monitoring at one-minute granularity. This granularity has been disused. For more information, see [1-Minute Granularity Will Be Disused](https://www.tencentcloud.com/document/product/239/50440).</li><li>`5s`: Monitoring at five-second granularity.</li></ul>
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _MonitorVersion: Note: This field may return null, indicating that no valid values can be obtained.
         :type MonitorVersion: str
-        :param _ClientLimitMin: The minimum number of max client connections
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _ClientLimitMin: Note: This field may return null, indicating that no valid values can be obtained.
         :type ClientLimitMin: int
-        :param _ClientLimitMax: The maximum number of max client connections
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _ClientLimitMax: Note: This field may return null, indicating that no valid values can be obtained.
         :type ClientLimitMax: int
-        :param _NodeSet: Instance node details
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _NodeSet: Note: This field may return null, indicating that no valid values can be obtained.
         :type NodeSet: list of RedisNodeInfo
-        :param _Region: Information of the region where the instance is deployed, such as `ap-guangzhou`.
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _Region: Note: This field may return null, indicating that no valid values can be obtained.
         :type Region: str
-        :param _WanAddress: Public IP
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _WanAddress: Note: This field may return null, indicating that no valid value can be obtained.
         :type WanAddress: str
-        :param _PolarisServer: Polaris service address, which is for internal use.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _PolarisServer: Note: This field may return null, indicating that no valid value can be obtained.
         :type PolarisServer: str
-        :param _CurrentProxyVersion: The current proxy version of an instance
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _CurrentProxyVersion: Note: This field may return null, indicating that no valid value can be obtained.
         :type CurrentProxyVersion: str
-        :param _CurrentRedisVersion: The current cache minor version of an instance
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _CurrentRedisVersion: Note: This field may return null, indicating that no valid value can be obtained.
         :type CurrentRedisVersion: str
-        :param _UpgradeProxyVersion: Proxy version, which can be upgraded for the instance
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _UpgradeProxyVersion: Note: This field may return null, indicating that no valid value can be obtained.
         :type UpgradeProxyVersion: str
-        :param _UpgradeRedisVersion: Cache minor version, which can be upgraded for the instance
-Note: This field may return null, indicating that no valid value can be obtained.
+        :param _UpgradeRedisVersion: Note: This field may return null, indicating that no valid value can be obtained.
         :type UpgradeRedisVersion: str
         """
         self._InstanceName = None
@@ -11278,6 +11714,100 @@ class ModifyBackupDownloadRestrictionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyConnectionConfigRequest(AbstractModel):
+    """ModifyConnectionConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID, which can contain 12 to 36 characters.
+        :type InstanceId: str
+        :param _Bandwidth: Additional bandwidth in MB, which should be greater than 0.
+        :type Bandwidth: int
+        :param _ClientLimit: Total number of connections of a single shard.When read-only replicas are not enabled, the lower limit is 10,000, and the upper limit is 40,000.When read-only replicas are enabled, the lower limit is 10,000, and the upper limit is 10,000 × (the number of read-only replicas + 3).
+        :type ClientLimit: int
+        """
+        self._InstanceId = None
+        self._Bandwidth = None
+        self._ClientLimit = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Bandwidth(self):
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def ClientLimit(self):
+        return self._ClientLimit
+
+    @ClientLimit.setter
+    def ClientLimit(self, ClientLimit):
+        self._ClientLimit = ClientLimit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Bandwidth = params.get("Bandwidth")
+        self._ClientLimit = params.get("ClientLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConnectionConfigResponse(AbstractModel):
+    """ModifyConnectionConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     """ModifyDBInstanceSecurityGroups request structure.
 
@@ -11603,6 +12133,136 @@ class ModifyInstanceAvailabilityZonesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceEventRequest(AbstractModel):
+    """ModifyInstanceEvent request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Specifies the instance ID. Example: crs-xjhsdj****. Log in to the [TencentDB for Redis console](https://console.cloud.tencent.com/redis#/) and copy the instance ID in the instance list.
+        :type InstanceId: str
+        :param _EventId: Event ID. Obtain the ID of the event to be modified using DescribeInstanceEvents.
+        :type EventId: int
+        :param _StartTime: Modifies the scheduled start time of event execution.
+        :type StartTime: str
+        :param _EndTime: Modifies the scheduled end time of event execution. After the start time is configured, the end time can only be 30 minutes, 1 hour, 1.5 hours, 2 hours, or 3 hours later than the start time.
+        :type EndTime: str
+        :param _ExecutionDate: Modifies the start date of the event execution schedule.
+        :type ExecutionDate: str
+        :param _Status: Modifies the running status of the event. Currently, this parameter can be set only to **Canceled**, indicating that the execution of the current event is canceled. You can query the running status and level of the current event using DescribeInstanceEvents.- Critical or High events cannot be canceled, which means that they must be executed.- Only events in the Waiting state (to be executed) can be canceled.
+        :type Status: str
+        """
+        self._InstanceId = None
+        self._EventId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ExecutionDate = None
+        self._Status = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ExecutionDate(self):
+        return self._ExecutionDate
+
+    @ExecutionDate.setter
+    def ExecutionDate(self, ExecutionDate):
+        self._ExecutionDate = ExecutionDate
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._EventId = params.get("EventId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ExecutionDate = params.get("ExecutionDate")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceEventResponse(AbstractModel):
+    """ModifyInstanceEvent response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventId: Event ID.
+        :type EventId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._EventId = None
+        self._RequestId = None
+
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EventId = params.get("EventId")
         self._RequestId = params.get("RequestId")
 
 
@@ -13367,6 +14027,189 @@ class RedisCommonInstanceList(AbstractModel):
         self._Createtime = params.get("Createtime")
         self._PayMode = params.get("PayMode")
         self._NetType = params.get("NetType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RedisInstanceEvent(AbstractModel):
+    """Instance event information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: Event ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ID: int
+        :param _InstanceId: Instance ID.Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceId: str
+        :param _InstanceName: Instance name.Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceName: str
+        :param _Type: Event type. Currently, the type can only be related to instance migration, resource movement, and IDC deletion. This parameter can be only set to **InstanceMigration**.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _Grade: Event levels are divided into Critical, High, Medium, and Low events according to the severity and urgency.- Critical
+- High
+- Middle
+- Low
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Grade: str
+        :param _ExecutionDate: Scheduled event execution date.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExecutionDate: str
+        :param _StartTime: Scheduled start time of event execution.Note: This field may return null, indicating that no valid values can be obtained.
+        :type StartTime: str
+        :param _EndTime: Scheduled end time of event execution.Note: This field may return null, indicating that no valid values can be obtained.
+        :type EndTime: str
+        :param _LatestExecutionDate: The latest execution date of the operations event. Event execution must be completed before this date. Otherwise, the business may be affected.Note: This field may return null, indicating that no valid values can be obtained.
+        :type LatestExecutionDate: str
+        :param _Status: Current event status.- Waiting: The event is waiting for execution on the execution date or during the operations period.- Running: The event is being executed during the operations period.- Finished: Execution of the event operations is completed.- Canceled: Execution of the event is canceled.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        :param _TaskEndTime: Completion time of the event execution task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskEndTime: str
+        :param _EffectInfo: Impact of the event.Note: This field may return null, indicating that no valid values can be obtained.
+        :type EffectInfo: str
+        :param _InitialExecutionDate: Initial scheduled execution date of the event.Note: This field may return null, indicating that no valid values can be obtained.
+        :type InitialExecutionDate: str
+        """
+        self._ID = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Type = None
+        self._Grade = None
+        self._ExecutionDate = None
+        self._StartTime = None
+        self._EndTime = None
+        self._LatestExecutionDate = None
+        self._Status = None
+        self._TaskEndTime = None
+        self._EffectInfo = None
+        self._InitialExecutionDate = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Grade(self):
+        return self._Grade
+
+    @Grade.setter
+    def Grade(self, Grade):
+        self._Grade = Grade
+
+    @property
+    def ExecutionDate(self):
+        return self._ExecutionDate
+
+    @ExecutionDate.setter
+    def ExecutionDate(self, ExecutionDate):
+        self._ExecutionDate = ExecutionDate
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def LatestExecutionDate(self):
+        return self._LatestExecutionDate
+
+    @LatestExecutionDate.setter
+    def LatestExecutionDate(self, LatestExecutionDate):
+        self._LatestExecutionDate = LatestExecutionDate
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskEndTime(self):
+        return self._TaskEndTime
+
+    @TaskEndTime.setter
+    def TaskEndTime(self, TaskEndTime):
+        self._TaskEndTime = TaskEndTime
+
+    @property
+    def EffectInfo(self):
+        return self._EffectInfo
+
+    @EffectInfo.setter
+    def EffectInfo(self, EffectInfo):
+        self._EffectInfo = EffectInfo
+
+    @property
+    def InitialExecutionDate(self):
+        return self._InitialExecutionDate
+
+    @InitialExecutionDate.setter
+    def InitialExecutionDate(self, InitialExecutionDate):
+        self._InitialExecutionDate = InitialExecutionDate
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Type = params.get("Type")
+        self._Grade = params.get("Grade")
+        self._ExecutionDate = params.get("ExecutionDate")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._LatestExecutionDate = params.get("LatestExecutionDate")
+        self._Status = params.get("Status")
+        self._TaskEndTime = params.get("TaskEndTime")
+        self._EffectInfo = params.get("EffectInfo")
+        self._InitialExecutionDate = params.get("InitialExecutionDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

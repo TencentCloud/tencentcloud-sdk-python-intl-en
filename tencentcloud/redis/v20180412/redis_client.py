@@ -26,6 +26,29 @@ class RedisClient(AbstractClient):
     _service = 'redis'
 
 
+    def AddReplicationInstance(self, request):
+        """This API is used to add replication group members.
+
+        :param request: Request instance for AddReplicationInstance.
+        :type request: :class:`tencentcloud.redis.v20180412.models.AddReplicationInstanceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.AddReplicationInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddReplicationInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddReplicationInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AllocateWanAddress(self, request):
         """This API is used to enable public network access.
 
@@ -325,6 +348,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateReplicationGroup(self, request):
+        """This API is used to create a replication group.
+
+        :param request: Request instance for CreateReplicationGroup.
+        :type request: :class:`tencentcloud.redis.v20180412.models.CreateReplicationGroupRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.CreateReplicationGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateReplicationGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateReplicationGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteInstanceAccount(self, request):
         """This API is used to delete an instance sub-account.
 
@@ -362,6 +408,29 @@ class RedisClient(AbstractClient):
             body = self.call("DeleteParamTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteParamTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteReplicationInstance(self, request):
+        """This API is used to remove replication group members. Note: The API is being deprecated. Please use RemoveReplicationInstance instead.
+
+        :param request: Request instance for DeleteReplicationInstance.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DeleteReplicationInstanceRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DeleteReplicationInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteReplicationInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteReplicationInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -592,6 +661,29 @@ class RedisClient(AbstractClient):
             body = self.call("DescribeInstanceDealDetail", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstanceDealDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceEvents(self, request):
+        """This API is used to query the event information on a TecentDB for Redis instance.
+
+        :param request: Request instance for DescribeInstanceEvents.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceEventsRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstanceEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceEvents", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceEventsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1544,6 +1636,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyConnectionConfig(self, request):
+        """This API is used to modify the connection configuration of an instance, including the bandwidth and maximum number of connections.
+
+        :param request: Request instance for ModifyConnectionConfig.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyConnectionConfigRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyConnectionConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyConnectionConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyConnectionConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDBInstanceSecurityGroups(self, request):
         """This API is used to modify the security groups bound to an instance.
 
@@ -1627,6 +1742,29 @@ class RedisClient(AbstractClient):
             body = self.call("ModifyInstanceAvailabilityZones", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyInstanceAvailabilityZonesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceEvent(self, request):
+        """This API is used to modify the operations event execution schedule of an instance.
+
+        :param request: Request instance for ModifyInstanceEvent.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceEventRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceEventResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
