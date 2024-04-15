@@ -50,7 +50,7 @@ class ClsClient(AbstractClient):
 
 
     def ApplyConfigToMachineGroup(self, request):
-        """This API is used to apply the collection configuration to the specified machine group.
+        """This API is used to apply the collection configuration to a specified machine group.
 
         :param request: Request instance for ApplyConfigToMachineGroup.
         :type request: :class:`tencentcloud.cls.v20201016.models.ApplyConfigToMachineGroupRequest`
@@ -211,7 +211,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateConfig(self, request):
-        """This API is used to create a collection rule configuration.
+        """This API is used to create collection rule configuration.
 
         :param request: Request instance for CreateConfig.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateConfigRequest`
@@ -326,7 +326,7 @@ class ClsClient(AbstractClient):
 
 
     def CreateExport(self, request):
-        """This API is used to create a download task. To get the returned download address, call `DescribeExports` to view the task list. The `CosPath` parameter is also included for download address. For more information, visit https://intl.cloud.tencent.com/document/product/614/56449.?from_cn_redirect=1
+        """This API is used to create a download task. To get the returned download address, call DescribeExports to view the task list. The CosPath parameter is also included for download address. For more information, visit https://intl.cloud.tencent.com/document/product/614/56449.?from_cn_redirect=1
 
         :param request: Request instance for CreateExport.
         :type request: :class:`tencentcloud.cls.v20201016.models.CreateExportRequest`
@@ -579,7 +579,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteConfig(self, request):
-        """This API is used to delete a collection rule configuration.
+        """This API is used to delete collection rule configuration.
 
         :param request: Request instance for DeleteConfig.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConfigRequest`
@@ -809,7 +809,7 @@ class ClsClient(AbstractClient):
 
 
     def DeleteScheduledSql(self, request):
-        """This API is used to delete scheduled SQL analysis tasks.
+        """This API is used to delete a scheduled SQL analysis task.
 
         :param request: Request instance for DeleteScheduledSql.
         :type request: :class:`tencentcloud.cls.v20201016.models.DeleteScheduledSqlRequest`
@@ -901,7 +901,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeAlarmShields(self, request):
-        """Accesses alarm blocking configuration rules
+        """This API is used to access alarm blocking configuration rules.
 
         :param request: Request instance for DescribeAlarmShields.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeAlarmShieldsRequest`
@@ -970,7 +970,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeConfigMachineGroups(self, request):
-        """This API is used to get the machine group bound to a collection rule configuration.
+        """This API is used to get the machine group bound to collection rule configuration.
 
         :param request: Request instance for DescribeConfigMachineGroups.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConfigMachineGroupsRequest`
@@ -993,7 +993,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeConfigs(self, request):
-        """This API is used to get a collection rule configuration.
+        """This API is used to get collection rule configuration.
 
         :param request: Request instance for DescribeConfigs.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConfigsRequest`
@@ -1131,7 +1131,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeKafkaConsumer(self, request):
-        """Accesses Kafka protocol consumption information
+        """This API is used to access Kafka protocol consumption information.
 
         :param request: Request instance for DescribeKafkaConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeKafkaConsumerRequest`
@@ -1292,7 +1292,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeMachines(self, request):
-        """Gets the status of a machine under the specified machine group
+        """This API is used to get the status of a machine under the specified machine group.
 
         :param request: Request instance for DescribeMachines.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeMachinesRequest`
@@ -1384,7 +1384,7 @@ class ClsClient(AbstractClient):
 
 
     def DescribeShippers(self, request):
-        """This API is used to get the configuration of the task of shipping to COS.
+        """This API is used to get the configuration of the task shipped to COS.
 
         :param request: Request instance for DescribeShippers.
         :type request: :class:`tencentcloud.cls.v20201016.models.DescribeShippersRequest`
@@ -1545,7 +1545,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyConfig(self, request):
-        """This API is used to modify a collection rule configuration.
+        """This API is used to modify collection rule configuration.
 
         :param request: Request instance for ModifyConfig.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyConfigRequest`
@@ -1568,7 +1568,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyConsumer(self, request):
-        """This API is used to modify a CKafka delivery task
+        """This API is used to modify a CKafka delivery task.
 
         :param request: Request instance for ModifyConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyConsumerRequest`
@@ -1660,7 +1660,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyKafkaConsumer(self, request):
-        """Modifies Kafka Protocol consumption information
+        """This API is used to modify Kafka protocol consumption information.
 
         :param request: Request instance for ModifyKafkaConsumer.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyKafkaConsumerRequest`
@@ -1752,7 +1752,7 @@ class ClsClient(AbstractClient):
 
 
     def ModifyScheduledSql(self, request):
-        """This API is used to modify scheduled SQL analysis tasks.
+        """This API is used to modify a scheduled SQL analysis task.
 
         :param request: Request instance for ModifyScheduledSql.
         :type request: :class:`tencentcloud.cls.v20201016.models.ModifyScheduledSqlRequest`
@@ -1867,7 +1867,7 @@ class ClsClient(AbstractClient):
 
 
     def QueryMetric(self, request):
-        """Queries the latest metric value at a specified time
+        """This API is used to query the latest metric value at a specified time.
 
         :param request: Request instance for QueryMetric.
         :type request: :class:`tencentcloud.cls.v20201016.models.QueryMetricRequest`
@@ -2072,7 +2072,7 @@ class ClsClient(AbstractClient):
 
         > ?Currently, protoc supports compilation in multiple programming languages such as Java, C++, and Python. For more information, see [protoc](https://github.com/protocolbuffers/protobuf).
 
-        #### 1. Install Protocol Buffers
+        #### 1. Install protocol buffers
 
         Download [Protocol Buffers](https://main.qcloudimg.com/raw/d7810aaf8b3073fbbc9d4049c21532aa/protobuf-2.6.1.tar.gz), decompress the package, and install the tool. The version used in the example is protobuf 2.6.1 running on CentOS 7.3. Run the following command to decompress the `protobuf-2.6.1.tar.gz` package to the `/usr/local` directory and go to the directory:
 
