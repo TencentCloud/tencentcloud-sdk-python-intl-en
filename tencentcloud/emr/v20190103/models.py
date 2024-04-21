@@ -9900,9 +9900,9 @@ class ScaleOutClusterRequest(AbstractModel):
         :type InstanceChargePrepaid: :class:`tencentcloud.emr.v20190103.models.InstanceChargePrepaid`
         :param _ScriptBootstrapActionConfig: The [Bootstrap action](https://intl.cloud.tencent.com/document/product/589/35656?from_cn_redirect=1) script settings.
         :type ScriptBootstrapActionConfig: list of ScriptBootstrapActionConfig
-        :param _SoftDeployInfo: The services to be deployed for new nodes. By default, new nodes will inherit services deployed for the current node type, including default optional services. This parameter only supports the inclusion of optional services. For example, if HDFS, YARN, and Impala have been deployed for existing task nodes, when using the API for task node scale-out without deploying Impala, only HDFS and YARN are included in with this parameter. Refer to the [component name mapping table](https://intl.cloud.tencent.com/document/product/589/98760?from_cn_redirect=1).
+        :param _SoftDeployInfo: The services to be deployed for new nodes. By default, new nodes will inherit services deployed for the current node type, including default optional services. This parameter only supports the inclusion of optional services. For example, if HDFS, YARN, and Impala have been deployed for existing task nodes, when using the API for task node scale-out without deploying Impala, only HDFS and YARN are included in with this parameter. 
         :type SoftDeployInfo: list of int
-        :param _ServiceNodeInfo: The processes to be deployed. All processes for services to be added are deployed by default. Deployed processes can be changed. For example, HDFS, YARN, and Impala have been deployed for current task nodes, and default services are DataNode, NodeManager, and ImpalaServer; if you want to change deployed processes, you can set this parameter to DataNode,NodeManager,ImpalaServerCoordinator or DataNode,NodeManager,ImpalaServerExecutor. Refer to the [process name mapping table](https://intl.cloud.tencent.com/document/product/589/98760?from_cn_redirect=1).
+        :param _ServiceNodeInfo: The processes to be deployed. All processes for services to be added are deployed by default. Deployed processes can be changed. For example, HDFS, YARN, and Impala have been deployed for current task nodes, and default services are DataNode, NodeManager, and ImpalaServer; if you want to change deployed processes, you can set this parameter to DataNode,NodeManager,ImpalaServerCoordinator or DataNode,NodeManager,ImpalaServerExecutor. 
         :type ServiceNodeInfo: list of int
         :param _DisasterRecoverGroupIds: The list of spread placement group IDs. Only one can be specified.
 You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/document/product/213/17810?from_cn_redirect=1) API and obtain this parameter from the `DisasterRecoverGroupId` field in the response.
@@ -9929,6 +9929,8 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
         :type Zone: str
         :param _SubnetId: The subnet, which defaults to the subnet used when the cluster is created.
         :type SubnetId: str
+        :param _ScaleOutServiceConfGroupsInfo: 
+        :type ScaleOutServiceConfGroupsInfo: list of ScaleOutServiceConfGroupsInfo
         """
         self._InstanceChargeType = None
         self._InstanceId = None
@@ -9949,6 +9951,7 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
         self._ResourceSpec = None
         self._Zone = None
         self._SubnetId = None
+        self._ScaleOutServiceConfGroupsInfo = None
 
     @property
     def InstanceChargeType(self):
@@ -10102,6 +10105,14 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
     def SubnetId(self, SubnetId):
         self._SubnetId = SubnetId
 
+    @property
+    def ScaleOutServiceConfGroupsInfo(self):
+        return self._ScaleOutServiceConfGroupsInfo
+
+    @ScaleOutServiceConfGroupsInfo.setter
+    def ScaleOutServiceConfGroupsInfo(self, ScaleOutServiceConfGroupsInfo):
+        self._ScaleOutServiceConfGroupsInfo = ScaleOutServiceConfGroupsInfo
+
 
     def _deserialize(self, params):
         self._InstanceChargeType = params.get("InstanceChargeType")
@@ -10141,6 +10152,12 @@ You can call the [DescribeDisasterRecoverGroups](https://intl.cloud.tencent.com/
             self._ResourceSpec._deserialize(params.get("ResourceSpec"))
         self._Zone = params.get("Zone")
         self._SubnetId = params.get("SubnetId")
+        if params.get("ScaleOutServiceConfGroupsInfo") is not None:
+            self._ScaleOutServiceConfGroupsInfo = []
+            for item in params.get("ScaleOutServiceConfGroupsInfo"):
+                obj = ScaleOutServiceConfGroupsInfo()
+                obj._deserialize(item)
+                self._ScaleOutServiceConfGroupsInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10166,7 +10183,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _FlowId: The scale-out workflow ID.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FlowId: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._InstanceId = None
@@ -10697,6 +10714,51 @@ class ScaleOutNodeConfig(AbstractModel):
     def _deserialize(self, params):
         self._NodeFlag = params.get("NodeFlag")
         self._NodeCount = params.get("NodeCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScaleOutServiceConfGroupsInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceComponentName: 
+        :type ServiceComponentName: str
+        :param _ConfGroupName: 
+        :type ConfGroupName: str
+        """
+        self._ServiceComponentName = None
+        self._ConfGroupName = None
+
+    @property
+    def ServiceComponentName(self):
+        return self._ServiceComponentName
+
+    @ServiceComponentName.setter
+    def ServiceComponentName(self, ServiceComponentName):
+        self._ServiceComponentName = ServiceComponentName
+
+    @property
+    def ConfGroupName(self):
+        return self._ConfGroupName
+
+    @ConfGroupName.setter
+    def ConfGroupName(self, ConfGroupName):
+        self._ConfGroupName = ConfGroupName
+
+
+    def _deserialize(self, params):
+        self._ServiceComponentName = params.get("ServiceComponentName")
+        self._ConfGroupName = params.get("ConfGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

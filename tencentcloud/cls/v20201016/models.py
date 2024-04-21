@@ -8740,7 +8740,7 @@ class DescribeMachineGroupsResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _MachineGroups: Machine group information list
-Note: this field may return `null`, indicating that no valid values can be obtained.
+Note: This field may return "null", indicating that no valid values can be obtained.
         :type MachineGroups: list of MachineGroupInfo
         :param _TotalCount: Total number of pages
         :type TotalCount: int
