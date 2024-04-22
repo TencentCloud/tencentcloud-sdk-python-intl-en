@@ -1805,6 +1805,8 @@ Node information of an instance. Currently, information about the node type (mas
         :type ProductVersion: str
         :param _RedisClusterId: Exclusive cluster ID. When `ProductVersion` is set to `cdc`, this parameter is required.
         :type RedisClusterId: str
+        :param _AlarmPolicyList: Alarm policy ID array.- Please log in to [Tencent Cloud Observability Platform - Alarm Management - Policy Management](https://console.cloud.tencent.com/monitor/alarm/policy) to access the alarm policy ID.- If this parameter is not configured, the default alarm policy will be bound. For the specific information about the default alarm policy, please log in to [Tencent Cloud Observability Platform - Alarm Management - Policy Management](https://console.cloud.tencent.com/monitor/alarm/policy) to view.
+        :type AlarmPolicyList: list of str
         """
         self._TypeId = None
         self._MemSize = None
@@ -1831,6 +1833,7 @@ Node information of an instance. Currently, information about the node type (mas
         self._DryRun = None
         self._ProductVersion = None
         self._RedisClusterId = None
+        self._AlarmPolicyList = None
 
     @property
     def TypeId(self):
@@ -2032,6 +2035,14 @@ Node information of an instance. Currently, information about the node type (mas
     def RedisClusterId(self, RedisClusterId):
         self._RedisClusterId = RedisClusterId
 
+    @property
+    def AlarmPolicyList(self):
+        return self._AlarmPolicyList
+
+    @AlarmPolicyList.setter
+    def AlarmPolicyList(self, AlarmPolicyList):
+        self._AlarmPolicyList = AlarmPolicyList
+
 
     def _deserialize(self, params):
         self._TypeId = params.get("TypeId")
@@ -2069,6 +2080,7 @@ Node information of an instance. Currently, information about the node type (mas
         self._DryRun = params.get("DryRun")
         self._ProductVersion = params.get("ProductVersion")
         self._RedisClusterId = params.get("RedisClusterId")
+        self._AlarmPolicyList = params.get("AlarmPolicyList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
