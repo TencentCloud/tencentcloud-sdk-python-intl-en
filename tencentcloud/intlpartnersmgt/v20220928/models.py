@@ -629,6 +629,103 @@ Note: The return value may be null, indicating that no valid data can be obtaine
         
 
 
+class BusinessInfo(AbstractModel):
+    """Product information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessCodeName: ProductNote: This field may return null, indicating that no valid values can be obtained.
+        :type BusinessCodeName: str
+        :param _BusinessCode: Product codeNote: This field may return null, indicating that no valid values can be obtained.
+        :type BusinessCode: str
+        :param _OriginalCost: Original price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginalCost: str
+        :param _VoucherPayAmount: Voucher amount
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VoucherPayAmount: str
+        :param _RICost: Daily deduction
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RICost: str
+        :param _TotalCost: Total amount
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCost: str
+        """
+        self._BusinessCodeName = None
+        self._BusinessCode = None
+        self._OriginalCost = None
+        self._VoucherPayAmount = None
+        self._RICost = None
+        self._TotalCost = None
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def OriginalCost(self):
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def RICost(self):
+        return self._RICost
+
+    @RICost.setter
+    def RICost(self, RICost):
+        self._RICost = RICost
+
+    @property
+    def TotalCost(self):
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
+
+
+    def _deserialize(self, params):
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._BusinessCode = params.get("BusinessCode")
+        self._OriginalCost = params.get("OriginalCost")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._RICost = params.get("RICost")
+        self._TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BusinessSummaryOverviewItem(AbstractModel):
     """Product details in the customer bill data totaled by product
 
@@ -1500,6 +1597,88 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBillDownloadUrlRequest(AbstractModel):
+    """DescribeBillDownloadUrl request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: Bill month in the format of "yyyy-mm"; the earliest month available for query is June, 2022. Current month's billing data may be inaccurate; please download the current month's bill after it is generated at 1:00 on the 5th of the next month.
+        :type Month: str
+        :param _FileType: Type of bill. Valid values: L2 or L3
+        :type FileType: str
+        """
+        self._Month = None
+        self._FileType = None
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def FileType(self):
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        self._FileType = params.get("FileType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillDownloadUrlResponse(AbstractModel):
+    """DescribeBillDownloadUrl response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DownloadUrl: File download address, valid for one hour.
+        :type DownloadUrl: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DownloadUrl = None
+        self._RequestId = None
+
+    @property
+    def DownloadUrl(self):
+        return self._DownloadUrl
+
+    @DownloadUrl.setter
+    def DownloadUrl(self, DownloadUrl):
+        self._DownloadUrl = DownloadUrl
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DownloadUrl = params.get("DownloadUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBillSummaryByPayModeRequest(AbstractModel):
     """DescribeBillSummaryByPayMode request structure.
 
@@ -1761,6 +1940,105 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = RegionSummaryOverviewItem()
                 obj._deserialize(item)
                 self._SummaryOverview.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBillSummaryRequest(AbstractModel):
+    """DescribeBillSummary request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: Bill month in the format of "yyyy-mm".
+        :type Month: str
+        :param _GroupType: Billing dimension. Optional parameters: product, project, tag
+        :type GroupType: str
+        :param _TagKey: Tag value list
+        :type TagKey: list of str
+        """
+        self._Month = None
+        self._GroupType = None
+        self._TagKey = None
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def GroupType(self):
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        self._GroupType = params.get("GroupType")
+        self._TagKey = params.get("TagKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillSummaryResponse(AbstractModel):
+    """DescribeBillSummary response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SummaryDetail: Detailed summary by billing dimensionNote: This field may return null, indicating that no valid values can be obtained.
+        :type SummaryDetail: list of SummaryDetails
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._SummaryDetail = None
+        self._RequestId = None
+
+    @property
+    def SummaryDetail(self):
+        return self._SummaryDetail
+
+    @SummaryDetail.setter
+    def SummaryDetail(self, SummaryDetail):
+        self._SummaryDetail = SummaryDetail
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SummaryDetail") is not None:
+            self._SummaryDetail = []
+            for item in params.get("SummaryDetail"):
+                obj = SummaryDetails()
+                obj._deserialize(item)
+                self._SummaryDetail.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -3985,6 +4263,122 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._OriginalCost = params.get("OriginalCost")
         self._VoucherPayAmount = params.get("VoucherPayAmount")
         self._TotalCost = params.get("TotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SummaryDetails(AbstractModel):
+    """Detailed summary by billing dimension
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Business: Product information list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Business: list of BusinessInfo
+        :param _OriginalCost: Original price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginalCost: str
+        :param _VoucherPayAmount: Voucher amount
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VoucherPayAmount: str
+        :param _RICost: Daily deduction
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RICost: str
+        :param _TotalCost: Total amount
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalCost: str
+        :param _GroupKey: Summary key by classification dimension Note: This field may return null, indicating that no valid values can be obtained.
+        :type GroupKey: str
+        :param _GroupValue:  Summary value by classification dimension
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GroupValue: str
+        """
+        self._Business = None
+        self._OriginalCost = None
+        self._VoucherPayAmount = None
+        self._RICost = None
+        self._TotalCost = None
+        self._GroupKey = None
+        self._GroupValue = None
+
+    @property
+    def Business(self):
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def OriginalCost(self):
+        return self._OriginalCost
+
+    @OriginalCost.setter
+    def OriginalCost(self, OriginalCost):
+        self._OriginalCost = OriginalCost
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def RICost(self):
+        return self._RICost
+
+    @RICost.setter
+    def RICost(self, RICost):
+        self._RICost = RICost
+
+    @property
+    def TotalCost(self):
+        return self._TotalCost
+
+    @TotalCost.setter
+    def TotalCost(self, TotalCost):
+        self._TotalCost = TotalCost
+
+    @property
+    def GroupKey(self):
+        return self._GroupKey
+
+    @GroupKey.setter
+    def GroupKey(self, GroupKey):
+        self._GroupKey = GroupKey
+
+    @property
+    def GroupValue(self):
+        return self._GroupValue
+
+    @GroupValue.setter
+    def GroupValue(self, GroupValue):
+        self._GroupValue = GroupValue
+
+
+    def _deserialize(self, params):
+        if params.get("Business") is not None:
+            self._Business = []
+            for item in params.get("Business"):
+                obj = BusinessInfo()
+                obj._deserialize(item)
+                self._Business.append(obj)
+        self._OriginalCost = params.get("OriginalCost")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._RICost = params.get("RICost")
+        self._TotalCost = params.get("TotalCost")
+        self._GroupKey = params.get("GroupKey")
+        self._GroupValue = params.get("GroupValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

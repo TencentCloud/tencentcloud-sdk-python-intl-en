@@ -99,6 +99,52 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBillDownloadUrl(self, request):
+        """This API is used to download billing files and return billing file URLs by customers.
+
+        :param request: Request instance for DescribeBillDownloadUrl.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillDownloadUrlRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillDownloadUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillDownloadUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillDownloadUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBillSummary(self, request):
+        """External API for the L1 billing of the customer billing center
+
+        :param request: Request instance for DescribeBillSummary.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillSummaryRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBillSummaryByPayMode(self, request):
         """This API is used to obtain the total amount of customer bills by payment mode.
 
