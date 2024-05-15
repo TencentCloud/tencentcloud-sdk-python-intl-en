@@ -329,6 +329,29 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyClientRemark(self, request):
+        """This API is used to modify customer remarks.
+
+        :param request: Request instance for ModifyClientRemark.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.ModifyClientRemarkRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.ModifyClientRemarkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClientRemark", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClientRemarkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryAccountVerificationStatus(self, request):
         """This API is used to query the account verification status.
 

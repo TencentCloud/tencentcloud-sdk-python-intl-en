@@ -5585,6 +5585,8 @@ Example: HKIDCard
         :type ThemeColor: str
         :param _Language: International language, the default value is en (English). Currently supported: th: Thai; en: English;
         :type Language: str
+        :param _AutoDowngrade: Automatic downgrade mode, with the following parameter values: 1: Downgrade to silent live mode; 2: Disable downgrade mode. The default value is 1.
+        :type AutoDowngrade: int
         """
         self._AutoSkipStartPage = None
         self._AutoSkip = None
@@ -5596,6 +5598,7 @@ Example: HKIDCard
         self._IdCardCutReturn = None
         self._ThemeColor = None
         self._Language = None
+        self._AutoDowngrade = None
 
     @property
     def AutoSkipStartPage(self):
@@ -5677,6 +5680,14 @@ Example: HKIDCard
     def Language(self, Language):
         self._Language = Language
 
+    @property
+    def AutoDowngrade(self):
+        return self._AutoDowngrade
+
+    @AutoDowngrade.setter
+    def AutoDowngrade(self, AutoDowngrade):
+        self._AutoDowngrade = AutoDowngrade
+
 
     def _deserialize(self, params):
         self._AutoSkipStartPage = params.get("AutoSkipStartPage")
@@ -5689,6 +5700,7 @@ Example: HKIDCard
         self._IdCardCutReturn = params.get("IdCardCutReturn")
         self._ThemeColor = params.get("ThemeColor")
         self._Language = params.get("Language")
+        self._AutoDowngrade = params.get("AutoDowngrade")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
