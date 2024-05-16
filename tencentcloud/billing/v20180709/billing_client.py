@@ -375,6 +375,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCostExplorerSummary(self, request):
+        """This API is used to view cost analysis details.
+
+        :param request: Request instance for DescribeCostExplorerSummary.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostExplorerSummaryRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeCostExplorerSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCostExplorerSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCostExplorerSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDosageCosDetailByDate(self, request):
         """This API is used to query COS usage details.
 

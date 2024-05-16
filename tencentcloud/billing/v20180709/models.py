@@ -159,6 +159,893 @@ class ActionSummaryOverviewItem(AbstractModel):
         
 
 
+class AnalyseActionTypeDetail(AbstractModel):
+    """Cost analysis transaction type complex type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionType: Transaction type codeNote: This field may return null, indicating that no valid values can be obtained.
+        :type ActionType: str
+        :param _ActionTypeName: Transaction type nameNote: This field may return null, indicating that no valid values can be obtained.
+        :type ActionTypeName: str
+        """
+        self._ActionType = None
+        self._ActionTypeName = None
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ActionTypeName(self):
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+
+    def _deserialize(self, params):
+        self._ActionType = params.get("ActionType")
+        self._ActionTypeName = params.get("ActionTypeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseAmountDetail(AbstractModel):
+    """Cost analysis amount return data model
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Fee typeNote: This field may return null, indicating that no valid values can be obtained.
+        :type Key: str
+        :param _Display: Whether to displayNote: This field may return null, indicating that no valid values can be obtained.
+        :type Display: int
+        """
+        self._Key = None
+        self._Display = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Display(self):
+        return self._Display
+
+    @Display.setter
+    def Display(self, Display):
+        self._Display = Display
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Display = params.get("Display")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseBusinessDetail(AbstractModel):
+    """Cost analysis product return complex type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessCode: Product codeNote: This field may return null, indicating that no valid values can be obtained.
+        :type BusinessCode: str
+        :param _BusinessCodeName: Product nameNote: This field may return null, indicating that no valid values can be obtained.
+        :type BusinessCodeName: str
+        """
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+
+    def _deserialize(self, params):
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseConditionDetail(AbstractModel):
+    """Cost analysis filter box complex type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Business: ProductNote: This field may return null, indicating that no valid values can be obtained.
+        :type Business: list of AnalyseBusinessDetail
+        :param _Project: ItemNote: This field may return null, indicating that no valid values can be obtained.
+        :type Project: list of AnalyseProjectDetail
+        :param _Region: RegionNote: This field may return null, indicating that no valid values can be obtained.
+        :type Region: list of AnalyseRegionDetail
+        :param _PayMode: Billing modeNote: This field may return null, indicating that no valid values can be obtained.
+        :type PayMode: list of AnalysePayModeDetail
+        :param _ActionType: Transaction typeNote: This field may return null, indicating that no valid values can be obtained.
+        :type ActionType: list of AnalyseActionTypeDetail
+        :param _Zone: Availability zoneNote: This field may return null, indicating that no valid values can be obtained.
+        :type Zone: list of AnalyseZoneDetail
+        :param _OwnerUin: Resource owner UINNote: This field may return null, indicating that no valid values can be obtained.
+        :type OwnerUin: list of AnalyseOwnerUinDetail
+        :param _Amount: Fee typeNote: This field may return null, indicating that no valid values can be obtained.
+        :type Amount: list of AnalyseAmountDetail
+        """
+        self._Business = None
+        self._Project = None
+        self._Region = None
+        self._PayMode = None
+        self._ActionType = None
+        self._Zone = None
+        self._OwnerUin = None
+        self._Amount = None
+
+    @property
+    def Business(self):
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def Project(self):
+        return self._Project
+
+    @Project.setter
+    def Project(self, Project):
+        self._Project = Project
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ActionType(self):
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def Amount(self):
+        return self._Amount
+
+    @Amount.setter
+    def Amount(self, Amount):
+        self._Amount = Amount
+
+
+    def _deserialize(self, params):
+        if params.get("Business") is not None:
+            self._Business = []
+            for item in params.get("Business"):
+                obj = AnalyseBusinessDetail()
+                obj._deserialize(item)
+                self._Business.append(obj)
+        if params.get("Project") is not None:
+            self._Project = []
+            for item in params.get("Project"):
+                obj = AnalyseProjectDetail()
+                obj._deserialize(item)
+                self._Project.append(obj)
+        if params.get("Region") is not None:
+            self._Region = []
+            for item in params.get("Region"):
+                obj = AnalyseRegionDetail()
+                obj._deserialize(item)
+                self._Region.append(obj)
+        if params.get("PayMode") is not None:
+            self._PayMode = []
+            for item in params.get("PayMode"):
+                obj = AnalysePayModeDetail()
+                obj._deserialize(item)
+                self._PayMode.append(obj)
+        if params.get("ActionType") is not None:
+            self._ActionType = []
+            for item in params.get("ActionType"):
+                obj = AnalyseActionTypeDetail()
+                obj._deserialize(item)
+                self._ActionType.append(obj)
+        if params.get("Zone") is not None:
+            self._Zone = []
+            for item in params.get("Zone"):
+                obj = AnalyseZoneDetail()
+                obj._deserialize(item)
+                self._Zone.append(obj)
+        if params.get("OwnerUin") is not None:
+            self._OwnerUin = []
+            for item in params.get("OwnerUin"):
+                obj = AnalyseOwnerUinDetail()
+                obj._deserialize(item)
+                self._OwnerUin.append(obj)
+        if params.get("Amount") is not None:
+            self._Amount = []
+            for item in params.get("Amount"):
+                obj = AnalyseAmountDetail()
+                obj._deserialize(item)
+                self._Amount.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseConditions(AbstractModel):
+    """Cost analysis query conditions
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessCodes: Product name codeNote: This field may return null, indicating that no valid values can be obtained.
+        :type BusinessCodes: str
+        :param _ProductCodes: Sub-product name codeNote: This field may return null, indicating that no valid values can be obtained.
+        :type ProductCodes: str
+        :param _ComponentCode: Component type codeNote: This field may return null, indicating that no valid values can be obtained.
+        :type ComponentCode: str
+        :param _ZoneIds: Availability zone ID: The availability zone ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.
+        :type ZoneIds: str
+        :param _RegionIds: Region ID: The region ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.
+        :type RegionIds: str
+        :param _ProjectIds: Project ID: The project ID to which the resource belongsNote: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectIds: str
+        :param _PayModes: Billing mode prePay (indicates monthly subscription)/postPay (indicates pay-as-you-go billing)Note: This field may return null, indicating that no valid values can be obtained.
+        :type PayModes: str
+        :param _ActionTypes: Transaction type. Query transaction type. (Use transaction type code input parameter.)Note: This field may return null, indicating that no valid values can be obtained.
+        :type ActionTypes: str
+        :param _Tags: Cost allocation tag keyNote: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: str
+        :param _FeeType: Fee type. Query fee type. (Use fee type code input parameter.) The input parameter enumeration is as follows:cashPayAmount: cash incentivePayAmount: free credits voucherPayAmount: coupons tax:taxes costBeforeTax: price before taxNote: This field may return null, indicating that no valid values can be obtained.
+        :type FeeType: str
+        :param _PayerUins: User UIN for querying cost analysis dataNote: This field may return null, indicating that no valid values can be obtained.
+        :type PayerUins: str
+        :param _OwnerUins: User UIN for using resourcesNote: This field may return null, indicating that no valid values can be obtained.
+        :type OwnerUins: str
+        :param _ConsumptionTypes: Consumption type. Query consumption type. (Use consumption type code input parameter.)Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConsumptionTypes: str
+        """
+        self._BusinessCodes = None
+        self._ProductCodes = None
+        self._ComponentCode = None
+        self._ZoneIds = None
+        self._RegionIds = None
+        self._ProjectIds = None
+        self._PayModes = None
+        self._ActionTypes = None
+        self._Tags = None
+        self._FeeType = None
+        self._PayerUins = None
+        self._OwnerUins = None
+        self._ConsumptionTypes = None
+
+    @property
+    def BusinessCodes(self):
+        return self._BusinessCodes
+
+    @BusinessCodes.setter
+    def BusinessCodes(self, BusinessCodes):
+        self._BusinessCodes = BusinessCodes
+
+    @property
+    def ProductCodes(self):
+        return self._ProductCodes
+
+    @ProductCodes.setter
+    def ProductCodes(self, ProductCodes):
+        self._ProductCodes = ProductCodes
+
+    @property
+    def ComponentCode(self):
+        return self._ComponentCode
+
+    @ComponentCode.setter
+    def ComponentCode(self, ComponentCode):
+        self._ComponentCode = ComponentCode
+
+    @property
+    def ZoneIds(self):
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
+    @property
+    def RegionIds(self):
+        return self._RegionIds
+
+    @RegionIds.setter
+    def RegionIds(self, RegionIds):
+        self._RegionIds = RegionIds
+
+    @property
+    def ProjectIds(self):
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def PayModes(self):
+        return self._PayModes
+
+    @PayModes.setter
+    def PayModes(self, PayModes):
+        self._PayModes = PayModes
+
+    @property
+    def ActionTypes(self):
+        return self._ActionTypes
+
+    @ActionTypes.setter
+    def ActionTypes(self, ActionTypes):
+        self._ActionTypes = ActionTypes
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def FeeType(self):
+        return self._FeeType
+
+    @FeeType.setter
+    def FeeType(self, FeeType):
+        self._FeeType = FeeType
+
+    @property
+    def PayerUins(self):
+        return self._PayerUins
+
+    @PayerUins.setter
+    def PayerUins(self, PayerUins):
+        self._PayerUins = PayerUins
+
+    @property
+    def OwnerUins(self):
+        return self._OwnerUins
+
+    @OwnerUins.setter
+    def OwnerUins(self, OwnerUins):
+        self._OwnerUins = OwnerUins
+
+    @property
+    def ConsumptionTypes(self):
+        return self._ConsumptionTypes
+
+    @ConsumptionTypes.setter
+    def ConsumptionTypes(self, ConsumptionTypes):
+        self._ConsumptionTypes = ConsumptionTypes
+
+
+    def _deserialize(self, params):
+        self._BusinessCodes = params.get("BusinessCodes")
+        self._ProductCodes = params.get("ProductCodes")
+        self._ComponentCode = params.get("ComponentCode")
+        self._ZoneIds = params.get("ZoneIds")
+        self._RegionIds = params.get("RegionIds")
+        self._ProjectIds = params.get("ProjectIds")
+        self._PayModes = params.get("PayModes")
+        self._ActionTypes = params.get("ActionTypes")
+        self._Tags = params.get("Tags")
+        self._FeeType = params.get("FeeType")
+        self._PayerUins = params.get("PayerUins")
+        self._OwnerUins = params.get("OwnerUins")
+        self._ConsumptionTypes = params.get("ConsumptionTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseDetail(AbstractModel):
+    """Cost analysis data complex type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Time
+        :type Name: str
+        :param _Total: Amount
+        :type Total: str
+        :param _TimeDetail: Date detailed amountNote: This field may return null, indicating that no valid values can be obtained.
+        :type TimeDetail: list of AnalyseTimeDetail
+        """
+        self._Name = None
+        self._Total = None
+        self._TimeDetail = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def TimeDetail(self):
+        return self._TimeDetail
+
+    @TimeDetail.setter
+    def TimeDetail(self, TimeDetail):
+        self._TimeDetail = TimeDetail
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Total = params.get("Total")
+        if params.get("TimeDetail") is not None:
+            self._TimeDetail = []
+            for item in params.get("TimeDetail"):
+                obj = AnalyseTimeDetail()
+                obj._deserialize(item)
+                self._TimeDetail.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseHeaderDetail(AbstractModel):
+    """Cost analysis header data complex type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HeadDetail: Header dateNote: This field may return null, indicating that no valid values can be obtained.
+        :type HeadDetail: list of AnalyseHeaderTimeDetail
+        :param _Name: TimeNote: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _Total: TotalNote: This field may return null, indicating that no valid values can be obtained.
+        :type Total: str
+        """
+        self._HeadDetail = None
+        self._Name = None
+        self._Total = None
+
+    @property
+    def HeadDetail(self):
+        return self._HeadDetail
+
+    @HeadDetail.setter
+    def HeadDetail(self, HeadDetail):
+        self._HeadDetail = HeadDetail
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+
+    def _deserialize(self, params):
+        if params.get("HeadDetail") is not None:
+            self._HeadDetail = []
+            for item in params.get("HeadDetail"):
+                obj = AnalyseHeaderTimeDetail()
+                obj._deserialize(item)
+                self._HeadDetail.append(obj)
+        self._Name = params.get("Name")
+        self._Total = params.get("Total")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseHeaderTimeDetail(AbstractModel):
+    """Cost analysis header data
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: DateNote: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        """
+        self._Name = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseOwnerUinDetail(AbstractModel):
+    """Cost analysis user UIN complex type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OwnerUin: User UIN
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OwnerUin: str
+        """
+        self._OwnerUin = None
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+
+    def _deserialize(self, params):
+        self._OwnerUin = params.get("OwnerUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalysePayModeDetail(AbstractModel):
+    """Cost analysis payment method complex type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayMode: Billing mode codeNote: This field may return null, indicating that no valid values can be obtained.
+        :type PayMode: str
+        :param _PayModeName: Billing mode nameNote: This field may return null, indicating that no valid values can be obtained.
+        :type PayModeName: str
+        """
+        self._PayMode = None
+        self._PayModeName = None
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeName(self):
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+
+    def _deserialize(self, params):
+        self._PayMode = params.get("PayMode")
+        self._PayModeName = params.get("PayModeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseProjectDetail(AbstractModel):
+    """Cost analysis project return complex type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Project ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectId: str
+        :param _ProjectName: Default projectNote: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectName: str
+        """
+        self._ProjectId = None
+        self._ProjectName = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseRegionDetail(AbstractModel):
+    """Cost analysis region return complex type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionId: Region ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RegionId: str
+        :param _RegionName: Region nameNote: This field may return null, indicating that no valid values can be obtained.
+        :type RegionName: str
+        """
+        self._RegionId = None
+        self._RegionName = None
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+
+    def _deserialize(self, params):
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseTimeDetail(AbstractModel):
+    """Cost analysis return value complex type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: DateNote: This field may return null, indicating that no valid values can be obtained.
+        :type Time: str
+        :param _Money: AmountNote: This field may return null, indicating that no valid values can be obtained.
+        :type Money: str
+        """
+        self._Time = None
+        self._Money = None
+
+    @property
+    def Time(self):
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Money(self):
+        return self._Money
+
+    @Money.setter
+    def Money(self, Money):
+        self._Money = Money
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._Money = params.get("Money")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AnalyseZoneDetail(AbstractModel):
+    """Cost analysis availability zone complex type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Availability zone IDNote: This field may return null, indicating that no valid values can be obtained.
+        :type ZoneId: str
+        :param _ZoneName: Availability zone nameNote: This field may return null, indicating that no valid values can be obtained.
+        :type ZoneName: str
+        """
+        self._ZoneId = None
+        self._ZoneName = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplicableProducts(AbstractModel):
     """The products that are applicable.
 
@@ -271,6 +1158,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _FormulaUrl: Billing rules: Official website links for detailed billing rules of each product.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FormulaUrl: str
+        :param _BillDay: Billing dayNote: This field may return null, indicating that no valid values can be obtained.
+        :type BillDay: str
+        :param _BillMonth: Billing monthNote: This field may return null, indicating that no valid values can be obtained.
+        :type BillMonth: str
+        :param _Id: Billing record IDNote: This field may return null, indicating that no valid values can be obtained.
+        :type Id: str
+        :param _RegionType: Domestic and international codesNote: This field may return null, indicating that no valid values can be obtained.
+        :type RegionType: str
+        :param _RegionTypeName: Domestic and International: The region type to which the resource belongs (domestic, international)Note: This field may return null, indicating that no valid values can be obtained.
+        :type RegionTypeName: str
+        :param _ReserveDetail: Note attributes (instance configuration): Other note information, such as the reserved instance, the reserved instance type, the transaction type, and the region information on both ends of the CCN product.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReserveDetail: str
         """
         self._BusinessCodeName = None
         self._ProductCodeName = None
@@ -300,6 +1199,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AssociatedOrder = None
         self._Formula = None
         self._FormulaUrl = None
+        self._BillDay = None
+        self._BillMonth = None
+        self._Id = None
+        self._RegionType = None
+        self._RegionTypeName = None
+        self._ReserveDetail = None
 
     @property
     def BusinessCodeName(self):
@@ -525,6 +1430,54 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def FormulaUrl(self, FormulaUrl):
         self._FormulaUrl = FormulaUrl
 
+    @property
+    def BillDay(self):
+        return self._BillDay
+
+    @BillDay.setter
+    def BillDay(self, BillDay):
+        self._BillDay = BillDay
+
+    @property
+    def BillMonth(self):
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RegionType(self):
+        return self._RegionType
+
+    @RegionType.setter
+    def RegionType(self, RegionType):
+        self._RegionType = RegionType
+
+    @property
+    def RegionTypeName(self):
+        return self._RegionTypeName
+
+    @RegionTypeName.setter
+    def RegionTypeName(self, RegionTypeName):
+        self._RegionTypeName = RegionTypeName
+
+    @property
+    def ReserveDetail(self):
+        return self._ReserveDetail
+
+    @ReserveDetail.setter
+    def ReserveDetail(self, ReserveDetail):
+        self._ReserveDetail = ReserveDetail
+
 
     def _deserialize(self, params):
         self._BusinessCodeName = params.get("BusinessCodeName")
@@ -567,6 +1520,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._AssociatedOrder._deserialize(params.get("AssociatedOrder"))
         self._Formula = params.get("Formula")
         self._FormulaUrl = params.get("FormulaUrl")
+        self._BillDay = params.get("BillDay")
+        self._BillMonth = params.get("BillMonth")
+        self._Id = params.get("Id")
+        self._RegionType = params.get("RegionType")
+        self._RegionTypeName = params.get("RegionTypeName")
+        self._ReserveDetail = params.get("ReserveDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1201,6 +2160,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type SPDeduction: str
         :param _OriginalCostWithSP: SP deduction (cost): The amount of cost deducted by a savings plan based on the component's original cost. SP deduction (cost) = Cost deduction by SP / SP deduction rate	
         :type OriginalCostWithSP: str
+        :param _BillMonth: Billing monthNote: This field may return null, indicating that no valid values can be obtained.
+        :type BillMonth: str
         """
         self._BusinessCodeName = None
         self._ProductCodeName = None
@@ -1239,6 +2200,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._OriginalCostWithRI = None
         self._SPDeduction = None
         self._OriginalCostWithSP = None
+        self._BillMonth = None
 
     @property
     def BusinessCodeName(self):
@@ -1540,6 +2502,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def OriginalCostWithSP(self, OriginalCostWithSP):
         self._OriginalCostWithSP = OriginalCostWithSP
 
+    @property
+    def BillMonth(self):
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
 
     def _deserialize(self, params):
         self._BusinessCodeName = params.get("BusinessCodeName")
@@ -1584,6 +2554,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._OriginalCostWithRI = params.get("OriginalCostWithRI")
         self._SPDeduction = params.get("SPDeduction")
         self._OriginalCostWithSP = params.get("OriginalCostWithSP")
+        self._BillMonth = params.get("BillMonth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1677,6 +2648,8 @@ class BillResourceSummary(AbstractModel):
         :type SPDeduction: str
         :param _OriginalCostWithSP: SP deduction (cost): SP deduction (cost) = Cost deduction by SP / SP deduction rate	
         :type OriginalCostWithSP: str
+        :param _BillMonth: Billing monthNote: This field may return null, indicating that no valid values can be obtained.
+        :type BillMonth: str
         """
         self._BusinessCodeName = None
         self._ProductCodeName = None
@@ -1716,6 +2689,7 @@ class BillResourceSummary(AbstractModel):
         self._OriginalCostWithRI = None
         self._SPDeduction = None
         self._OriginalCostWithSP = None
+        self._BillMonth = None
 
     @property
     def BusinessCodeName(self):
@@ -2025,6 +2999,14 @@ class BillResourceSummary(AbstractModel):
     def OriginalCostWithSP(self, OriginalCostWithSP):
         self._OriginalCostWithSP = OriginalCostWithSP
 
+    @property
+    def BillMonth(self):
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
 
     def _deserialize(self, params):
         self._BusinessCodeName = params.get("BusinessCodeName")
@@ -2070,6 +3052,7 @@ class BillResourceSummary(AbstractModel):
         self._OriginalCostWithRI = params.get("OriginalCostWithRI")
         self._SPDeduction = params.get("SPDeduction")
         self._OriginalCostWithSP = params.get("OriginalCostWithSP")
+        self._BillMonth = params.get("BillMonth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2623,7 +3606,7 @@ class CreateAllocationTagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -2681,7 +3664,7 @@ class DeleteAllocationTagResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -2738,7 +3721,7 @@ class DescribeAccountBalanceResponse(AbstractModel):
         :type CreditBalance: float
         :param _RealCreditBalance: Available account balance in cents, which takes the same calculation rules as `Balance`, `RealBalance`, and `CreditBalance`.
         :type RealCreditBalance: float
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Balance = None
@@ -2899,11 +3882,11 @@ class DescribeBillDetailForOrganizationRequest(AbstractModel):
         :type Limit: int
         :param _PeriodType: Cycle type, which can be `byUsedTime` (by billing cycle) or `byPayTime` (by deduction time). This value must be the same as the billing period type in Billing Center for that particular month. You can check your billing cycle at the top of the [Bill Overview](https://console.cloud.tencent.com/expense/bill/overview) page.
         :type PeriodType: str
-        :param _Month: Bill month in the format of "yyyy-mm". You only have to enter either `Month` or `BeginTime` and `EndTime`. When you enter values for `BeginTime` and `EndTime`, `Month` becomes invalid. This value must be no earlier than the month when Bill 2.0 is activated; last 18 months data is available.
+        :param _Month: The month is in the format of yyyy-mm. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. Data within the last 18 months can be pulled at most.
         :type Month: str
-        :param _BeginTime: Start time of the cycle in the format of "yyyy-mm-dd hh:ii:ss". You only have to enter either `Month` or `BeginTime` and `EndTime`. When you enter values for `BeginTime` and `EndTime`, `Month` becomes invalid. `BeginTime` and `EndTime` must be passed together, and their values must be of the same month. Query period must start and end on the same month, andthe query result returned will be of the entire month. This value must be no earlier than the month when Bill 2.0 is activated; last 18 months data is available.
+        :param _BeginTime: The start time of the period in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. BeginTime and EndTime must be specified together and must be in the same month. Cross-month queries are not supported and the query results are data for the entire month. Data within the last 18 months can be pulled at most.
         :type BeginTime: str
-        :param _EndTime: End time of the cycle in the format of "yyyy-mm-dd hh:ii:ss". You only have to enter either `Month` or `BeginTime` and `EndTime`. When you enter values for `BeginTime` and `EndTime`, `Month` becomes invalid. `BeginTime` and `EndTime` must be passed together, and their values must be of the same month. Query period must start and end on the same month, andthe query result returned will be of the entire month. This value must be no earlier than the month when Bill 2.0 is activated; last 18 months data is available.
+        :param _EndTime: The end time of the period in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be specified. If BeginTime&EndTime is specified, the Month field is invalid. BeginTime and EndTime must be specified together and must be in the same month. Cross-month queries are not supported and the query results are data for the entire month. Data within the last 18 months can be pulled at most.
         :type EndTime: str
         :param _NeedRecordNum: Indicates whether the total number of records is required, used for pagination.
 Valid values: `1` (required), `0` (not required).
@@ -2982,10 +3965,14 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def PeriodType(self):
+        warnings.warn("parameter `PeriodType` is deprecated", DeprecationWarning) 
+
         return self._PeriodType
 
     @PeriodType.setter
     def PeriodType(self, PeriodType):
+        warnings.warn("parameter `PeriodType` is deprecated", DeprecationWarning) 
+
         self._PeriodType = PeriodType
 
     @property
@@ -3108,7 +4095,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _Context: Context information of the current request, which can be used in the parameters of the next request to speed up the query.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Context: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._DetailSet = None
@@ -3267,10 +4254,14 @@ Note: To query the product codes used in the current month, call <a href="https:
 
     @property
     def PeriodType(self):
+        warnings.warn("parameter `PeriodType` is deprecated", DeprecationWarning) 
+
         return self._PeriodType
 
     @PeriodType.setter
     def PeriodType(self, PeriodType):
+        warnings.warn("parameter `PeriodType` is deprecated", DeprecationWarning) 
+
         self._PeriodType = PeriodType
 
     @property
@@ -3410,7 +4401,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type Total: int
         :param _Context: Context information returned by this request. The value can be passed in as the value of parameters in the next request to accelerate queries. Note: This field may return null, indicating that no valid values can be obtained.
         :type Context: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._DetailSet = None
@@ -3539,7 +4530,7 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
         :param _DownloadUrl: Bill download URL, valid for one hour.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type DownloadUrl: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Ready = None
@@ -3773,7 +4764,7 @@ class DescribeBillResourceSummaryForOrganizationResponse(AbstractModel):
         :param _Total: Total number of resource summary lists. It will not be returned if `NeedRecordNum` is `0`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Total: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._ResourceSummarySet = None
@@ -4014,7 +5005,7 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
         :type ResourceSummarySet: list of BillResourceSummary
         :param _Total: Total number of resource summary lists, which will not be returned when `NeedRecordNum` is `0`. This field may return null, indicating that no valid values can be obtained.
         :type Total: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._ResourceSummarySet = None
@@ -4126,7 +5117,7 @@ class DescribeBillSummaryByPayModeResponse(AbstractModel):
         :param _SummaryOverview: Detailed cost distribution for all billing modes
 Note: This field may return null, indicating that no valid value was found.
         :type SummaryOverview: list of PayModeSummaryOverviewItem
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Ready = None
@@ -4258,7 +5249,7 @@ Note: This field may return null, indicating that no valid value was found.
         :param _SummaryOverview: Cost distribution of all products
 Note: This field may return null, indicating that no valid value was found.
         :type SummaryOverview: list of BusinessSummaryOverviewItem
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Ready = None
@@ -4382,7 +5373,7 @@ class DescribeBillSummaryByProjectResponse(AbstractModel):
         :param _SummaryOverview: Detailed cost distribution for all projects
 Note: This field may return null, indicating that no valid value was found.
         :type SummaryOverview: list of ProjectSummaryOverviewItem
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Ready = None
@@ -4494,7 +5485,7 @@ class DescribeBillSummaryByRegionResponse(AbstractModel):
         :param _SummaryOverview: Detailed cost distribution for all regions
 Note: This field may return null, indicating that no valid value was found.
         :type SummaryOverview: list of RegionSummaryOverviewItem
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Ready = None
@@ -4633,7 +5624,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _SummaryTotal: Total cost
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type SummaryTotal: :class:`tencentcloud.billing.v20180709.models.SummaryTotal`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Ready = None
@@ -4756,7 +5747,7 @@ class DescribeBillSummaryForOrganizationResponse(AbstractModel):
         :type Ready: int
         :param _SummaryDetail: Bills summarized by multiple dimensions.
         :type SummaryDetail: list of SummaryDetail
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Ready = None
@@ -4867,7 +5858,7 @@ class DescribeBillSummaryResponse(AbstractModel):
         :type Ready: int
         :param _SummaryDetail: Detailed summary of costs by multiple dimensions
         :type SummaryDetail: list of SummaryDetail
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Ready = None
@@ -4907,6 +5898,261 @@ class DescribeBillSummaryResponse(AbstractModel):
                 obj = SummaryDetail()
                 obj._deserialize(item)
                 self._SummaryDetail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCostExplorerSummaryRequest(AbstractModel):
+    """DescribeCostExplorerSummary request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeginTime: The start time of the period in the format of yyyy-mm-dd hh:ii:ss.
+        :type BeginTime: str
+        :param _EndTime: The end time of the period in the format of yyyy-mm-dd hh:ii:ss.
+        :type EndTime: str
+        :param _BillType: Bill type: 1-cost bill, 2-consumption bill
+        :type BillType: str
+        :param _PeriodType: Statistical period: day-day, month-month;
+        :type PeriodType: str
+        :param _Dimensions: Classification dimension (data aggregation dimension). Query classification dimension. (Use classification dimension code input parameter.) Input parameter enumeration value:default = Total only
+feeType = Fee typebillType = Bill typebusiness = Product
+product = Sub-productregion=Region
+zone = Availability zoneactionType = Transaction typepayMode = Billing modetags = Tagproject = ProjectpayerUin = Payer accountownerUin = User account
+        :type Dimensions: str
+        :param _FeeType: Fee type: cost-total cost, totalCost-original price cost
+        :type FeeType: str
+        :param _PageSize: Quantity. The maximum value per page is 100.
+        :type PageSize: int
+        :param _PageNo: Starting page, where PageNo=1 indicates the first page, PageNo=2 indicates the second page, and so on.
+        :type PageNo: int
+        :param _TagKeyStr: Cost allocation tag value
+        :type TagKeyStr: str
+        :param _NeedConditionValue: Whether the filter box is needed: 1- indicates it is needed, 0- indicates it is not needed. If it is not specified, it is not required by default.
+        :type NeedConditionValue: str
+        :param _Conditions: Filter parameters
+        :type Conditions: :class:`tencentcloud.billing.v20180709.models.AnalyseConditions`
+        """
+        self._BeginTime = None
+        self._EndTime = None
+        self._BillType = None
+        self._PeriodType = None
+        self._Dimensions = None
+        self._FeeType = None
+        self._PageSize = None
+        self._PageNo = None
+        self._TagKeyStr = None
+        self._NeedConditionValue = None
+        self._Conditions = None
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def BillType(self):
+        return self._BillType
+
+    @BillType.setter
+    def BillType(self, BillType):
+        self._BillType = BillType
+
+    @property
+    def PeriodType(self):
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def Dimensions(self):
+        return self._Dimensions
+
+    @Dimensions.setter
+    def Dimensions(self, Dimensions):
+        self._Dimensions = Dimensions
+
+    @property
+    def FeeType(self):
+        return self._FeeType
+
+    @FeeType.setter
+    def FeeType(self, FeeType):
+        self._FeeType = FeeType
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNo(self):
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def TagKeyStr(self):
+        return self._TagKeyStr
+
+    @TagKeyStr.setter
+    def TagKeyStr(self, TagKeyStr):
+        self._TagKeyStr = TagKeyStr
+
+    @property
+    def NeedConditionValue(self):
+        return self._NeedConditionValue
+
+    @NeedConditionValue.setter
+    def NeedConditionValue(self, NeedConditionValue):
+        self._NeedConditionValue = NeedConditionValue
+
+    @property
+    def Conditions(self):
+        return self._Conditions
+
+    @Conditions.setter
+    def Conditions(self, Conditions):
+        self._Conditions = Conditions
+
+
+    def _deserialize(self, params):
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._BillType = params.get("BillType")
+        self._PeriodType = params.get("PeriodType")
+        self._Dimensions = params.get("Dimensions")
+        self._FeeType = params.get("FeeType")
+        self._PageSize = params.get("PageSize")
+        self._PageNo = params.get("PageNo")
+        self._TagKeyStr = params.get("TagKeyStr")
+        self._NeedConditionValue = params.get("NeedConditionValue")
+        if params.get("Conditions") is not None:
+            self._Conditions = AnalyseConditions()
+            self._Conditions._deserialize(params.get("Conditions"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCostExplorerSummaryResponse(AbstractModel):
+    """DescribeCostExplorerSummary response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Number of data entries
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Total: int
+        :param _Header: Header informationNote: This field may return null, indicating that no valid values can be obtained.
+        :type Header: :class:`tencentcloud.billing.v20180709.models.AnalyseHeaderDetail`
+        :param _Detail: Data detailsNote: This field may return null, indicating that no valid values can be obtained.
+        :type Detail: list of AnalyseDetail
+        :param _TotalDetail: Data amountNote: This field may return null, indicating that no valid values can be obtained.
+        :type TotalDetail: :class:`tencentcloud.billing.v20180709.models.AnalyseDetail`
+        :param _ConditionValue: Filter boxNote: This field may return null, indicating that no valid values can be obtained.
+        :type ConditionValue: :class:`tencentcloud.billing.v20180709.models.AnalyseConditionDetail`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Header = None
+        self._Detail = None
+        self._TotalDetail = None
+        self._ConditionValue = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Header(self):
+        return self._Header
+
+    @Header.setter
+    def Header(self, Header):
+        self._Header = Header
+
+    @property
+    def Detail(self):
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def TotalDetail(self):
+        return self._TotalDetail
+
+    @TotalDetail.setter
+    def TotalDetail(self, TotalDetail):
+        self._TotalDetail = TotalDetail
+
+    @property
+    def ConditionValue(self):
+        return self._ConditionValue
+
+    @ConditionValue.setter
+    def ConditionValue(self, ConditionValue):
+        self._ConditionValue = ConditionValue
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Header") is not None:
+            self._Header = AnalyseHeaderDetail()
+            self._Header._deserialize(params.get("Header"))
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = AnalyseDetail()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        if params.get("TotalDetail") is not None:
+            self._TotalDetail = AnalyseDetail()
+            self._TotalDetail._deserialize(params.get("TotalDetail"))
+        if params.get("ConditionValue") is not None:
+            self._ConditionValue = AnalyseConditionDetail()
+            self._ConditionValue._deserialize(params.get("ConditionValue"))
         self._RequestId = params.get("RequestId")
 
 
@@ -4976,7 +6222,7 @@ class DescribeDosageCosDetailByDateResponse(AbstractModel):
         r"""
         :param _DetailSets: Array of usage
         :type DetailSets: list of CosDetailSets
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._DetailSets = None
@@ -5101,7 +6347,7 @@ class DescribeTagListResponse(AbstractModel):
         :type RecordNum: int
         :param _Data: Tag information.
         :type Data: list of TagDataInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RecordNum = None
@@ -5181,6 +6427,10 @@ class DescribeVoucherInfoRequest(AbstractModel):
         :type PayScene: str
         :param _Operator: The operator. The default is the UIN of the current user.
         :type Operator: str
+        :param _VoucherMainType: The primary types of vouchers are has_price and no_price, which represent the cash voucher with a price and the cash voucher without a price respectively.
+        :type VoucherMainType: str
+        :param _VoucherSubType: Voucher subtype: Discount is a discount voucher, and deduct is a deduction voucher.
+        :type VoucherSubType: str
         """
         self._Limit = None
         self._Offset = None
@@ -5197,6 +6447,8 @@ class DescribeVoucherInfoRequest(AbstractModel):
         self._PayMode = None
         self._PayScene = None
         self._Operator = None
+        self._VoucherMainType = None
+        self._VoucherSubType = None
 
     @property
     def Limit(self):
@@ -5318,6 +6570,22 @@ class DescribeVoucherInfoRequest(AbstractModel):
     def Operator(self, Operator):
         self._Operator = Operator
 
+    @property
+    def VoucherMainType(self):
+        return self._VoucherMainType
+
+    @VoucherMainType.setter
+    def VoucherMainType(self, VoucherMainType):
+        self._VoucherMainType = VoucherMainType
+
+    @property
+    def VoucherSubType(self):
+        return self._VoucherSubType
+
+    @VoucherSubType.setter
+    def VoucherSubType(self, VoucherSubType):
+        self._VoucherSubType = VoucherSubType
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -5335,6 +6603,8 @@ class DescribeVoucherInfoRequest(AbstractModel):
         self._PayMode = params.get("PayMode")
         self._PayScene = params.get("PayScene")
         self._Operator = params.get("Operator")
+        self._VoucherMainType = params.get("VoucherMainType")
+        self._VoucherSubType = params.get("VoucherSubType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5359,7 +6629,7 @@ class DescribeVoucherInfoResponse(AbstractModel):
         :param _VoucherInfos: The voucher information.
 Note: This field may return `null`, indicating that no valid value was found.
         :type VoucherInfos: list of VoucherInfos
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -5495,7 +6765,7 @@ class DescribeVoucherUsageDetailsResponse(AbstractModel):
         :param _UsageRecords: The usage details.
 Note: This field may return `null`, indicating that no valid value was found.
         :type UsageRecords: list of UsageRecords
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -5618,6 +6888,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _FormulaUrl: Billing rules: Official website links for detailed billing rules of each product.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type FormulaUrl: str
+        :param _BillMonth: Billing monthNote: This field may return null, indicating that no valid values can be obtained.
+        :type BillMonth: str
+        :param _BillDay: Billing dayNote: This field may return null, indicating that no valid values can be obtained.
+        :type BillDay: str
         """
         self._BusinessCodeName = None
         self._ProductCodeName = None
@@ -5646,6 +6920,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AssociatedOrder = None
         self._Formula = None
         self._FormulaUrl = None
+        self._BillMonth = None
+        self._BillDay = None
 
     @property
     def BusinessCodeName(self):
@@ -5863,6 +7139,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def FormulaUrl(self, FormulaUrl):
         self._FormulaUrl = FormulaUrl
 
+    @property
+    def BillMonth(self):
+        return self._BillMonth
+
+    @BillMonth.setter
+    def BillMonth(self, BillMonth):
+        self._BillMonth = BillMonth
+
+    @property
+    def BillDay(self):
+        return self._BillDay
+
+    @BillDay.setter
+    def BillDay(self, BillDay):
+        self._BillDay = BillDay
+
 
     def _deserialize(self, params):
         self._BusinessCodeName = params.get("BusinessCodeName")
@@ -5904,6 +7196,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._AssociatedOrder._deserialize(params.get("AssociatedOrder"))
         self._Formula = params.get("Formula")
         self._FormulaUrl = params.get("FormulaUrl")
+        self._BillMonth = params.get("BillMonth")
+        self._BillDay = params.get("BillDay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
