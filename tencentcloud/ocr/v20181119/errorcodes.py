@@ -80,6 +80,9 @@ FAILEDOPERATION_UNKNOWERROR = 'FailedOperation.UnKnowError'
 # The service is not activated.
 FAILEDOPERATION_UNOPENERROR = 'FailedOperation.UnOpenError'
 
+# 
+FAILEDOPERATION_WARNINGSERVICEFAILED = 'FailedOperation.WarningServiceFailed'
+
 # Config is not in valid JSON format.
 INVALIDPARAMETER_CONFIGFORMATERROR = 'InvalidParameter.ConfigFormatError'
 
@@ -92,10 +95,10 @@ INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = 'InvalidParameterValue.Invali
 # The file is too large.
 LIMITEXCEEDED_TOOLARGEFILEERROR = 'LimitExceeded.TooLargeFileError'
 
-# 
+# The account is in arrears.
 RESOURCEUNAVAILABLE_INARREARS = 'ResourceUnavailable.InArrears'
 
-# 
+# The account resource package is exhausted.
 RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = 'ResourceUnavailable.ResourcePackageRunOut'
 
 # Exceptional billing status.
