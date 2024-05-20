@@ -4366,31 +4366,41 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class MacaoIDCard(AbstractModel):
-    """
+    """Macao ID Card
 
     """
 
     def __init__(self):
         r"""
-        :param _FirstName: 
+        :param _FirstName: First name
+Note: This field may return null, indicating that no valid values can be obtained.
         :type FirstName: str
-        :param _LastName: 
+        :param _LastName: Last name
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LastName: str
-        :param _Birthday: 
+        :param _Birthday: Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Birthday: str
-        :param _ExpirationDate: 
+        :param _ExpirationDate: Expiration date
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ExpirationDate: str
-        :param _LicenseNumber: 
+        :param _LicenseNumber: License number
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LicenseNumber: str
-        :param _Sex: 
+        :param _Sex: Sex
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Sex: str
-        :param _Age: 
+        :param _Age: Age
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Age: str
-        :param _IssuedCountry: 
+        :param _IssuedCountry: Issued country
+Note: This field may return null, indicating that no valid values can be obtained.
         :type IssuedCountry: str
-        :param _Field1: 
+        :param _Field1: MRZ1 on card
+Note: This field may return null, indicating that no valid values can be obtained. 
         :type Field1: str
-        :param _Field2: 
+        :param _Field2: MRZ2 on card
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Field2: str
         """
         self._FirstName = None

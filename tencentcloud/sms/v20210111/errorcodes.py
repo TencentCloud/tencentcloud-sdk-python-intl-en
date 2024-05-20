@@ -170,7 +170,7 @@ INVALIDPARAMETERVALUE_INVALIDUSEDMETHOD = 'InvalidParameterValue.InvalidUsedMeth
 # `Limit` parameter check failed.
 INVALIDPARAMETERVALUE_LIMITVERIFYFAIL = 'InvalidParameterValue.LimitVerifyFail'
 
-# 
+# Marketing messages must include an unsubscribe method.
 INVALIDPARAMETERVALUE_MARKETINGTEMPLATEWITHOUTUNSUBSCRIBE = 'InvalidParameterValue.MarketingTemplateWithoutUnsubscribe'
 
 # `Offset` parameter check failed.
@@ -254,7 +254,7 @@ UNAUTHORIZEDOPERATION_REQUESTPERMISSIONDENY = 'UnauthorizedOperation.RequestPerm
 # This `SdkAppId` is forbidden to provide services. If necessary, you can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81).
 UNAUTHORIZEDOPERATION_SDKAPPIDISDISABLED = 'UnauthorizedOperation.SdkAppIdIsDisabled'
 
-# 
+# If the service is suspended due to outstanding fees, you can log in to Tencent Cloud to recharge and clear the debt on your own.
 UNAUTHORIZEDOPERATION_SERVICESUSPENDDUETOARREARS = 'UnauthorizedOperation.ServiceSuspendDueToArrears'
 
 # Failed to verify `SmsSdkAppId`. Please check whether [SmsSdkAppId](https://console.cloud.tencent.com/smsv2/app-manage) is under the account associated with the [TencentCloud API key](https://console.cloud.tencent.com/cam/capi).

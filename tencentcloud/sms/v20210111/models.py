@@ -242,7 +242,8 @@ class AddSmsTemplateRequest(AbstractModel):
         :type TemplateName: str
         :param _TemplateContent: Template content.
         :type TemplateContent: str
-        :param _SmsType: SMS type. 0: regular SMS, 1: marketing SMS.
+        :param _SmsType: SMS type. 1: Marketing SMS, 2: Notification SMS, 3: OTP SMS.
+Note: The "Regular SMS" type template currently still supports submission. However, in order to further improve the quality of SMS service and increase the approval rate of SMS templates, it is recommended to apply for a new template according to the "Notification SMS" type or the "OTP SMS" type. You can Refer to [Optimization of Tencent Cloud SMS Template Types](https://www.tencentcloud.com/document/product/382/60410).
         :type SmsType: int
         :param _International: Whether it is Global SMS:
 0: Mainland China SMS.
@@ -1591,7 +1592,8 @@ class ModifySmsTemplateRequest(AbstractModel):
         :type TemplateName: str
         :param _TemplateContent: New template content.
         :type TemplateContent: str
-        :param _SmsType: SMS type. 0: regular SMS, 1: marketing SMS.
+        :param _SmsType: SMS type. 1: Marketing SMS, 2: Notification SMS, 3: OTP SMS.
+Note: The "Regular SMS" type template currently still supports submission. However, in order to further improve the quality of SMS service and increase the approval rate of SMS templates, it is recommended to apply for a new template according to the "Notification SMS" type or the "OTP SMS" type. You can Refer to [Optimization of Tencent Cloud SMS Template Types](https://www.tencentcloud.com/document/product/382/60410).
         :type SmsType: int
         :param _International: Whether it is Global SMS:
 0: Mainland China SMS.
