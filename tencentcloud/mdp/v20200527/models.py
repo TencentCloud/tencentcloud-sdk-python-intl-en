@@ -381,10 +381,22 @@ class CreateStreamPackageChannelEndpointRequest(AbstractModel):
         :type Name: str
         :param _AuthInfo: Authentication information
         :type AuthInfo: :class:`tencentcloud.mdp.v20200527.models.EndpointAuthInfo`
+        :param _Protocol: Endpoint protocol type, supports HLS, DASH, CMAF (only HLS type input can create CMAF Endpoint).
+        :type Protocol: str
+        :param _Manifest: Mainifest name, default is main.
+        :type Manifest: str
+        :param _TimeShiftEnable: Whether to turn on the TimeShift function, true: on, false: off, the default is off.
+        :type TimeShiftEnable: bool
+        :param _TimeShiftDuration: The number of days to look back in TimeShift, up to 30 days is supported.
+        :type TimeShiftDuration: int
         """
         self._Id = None
         self._Name = None
         self._AuthInfo = None
+        self._Protocol = None
+        self._Manifest = None
+        self._TimeShiftEnable = None
+        self._TimeShiftDuration = None
 
     @property
     def Id(self):
@@ -410,6 +422,38 @@ class CreateStreamPackageChannelEndpointRequest(AbstractModel):
     def AuthInfo(self, AuthInfo):
         self._AuthInfo = AuthInfo
 
+    @property
+    def Protocol(self):
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Manifest(self):
+        return self._Manifest
+
+    @Manifest.setter
+    def Manifest(self, Manifest):
+        self._Manifest = Manifest
+
+    @property
+    def TimeShiftEnable(self):
+        return self._TimeShiftEnable
+
+    @TimeShiftEnable.setter
+    def TimeShiftEnable(self, TimeShiftEnable):
+        self._TimeShiftEnable = TimeShiftEnable
+
+    @property
+    def TimeShiftDuration(self):
+        return self._TimeShiftDuration
+
+    @TimeShiftDuration.setter
+    def TimeShiftDuration(self, TimeShiftDuration):
+        self._TimeShiftDuration = TimeShiftDuration
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -417,6 +461,10 @@ class CreateStreamPackageChannelEndpointRequest(AbstractModel):
         if params.get("AuthInfo") is not None:
             self._AuthInfo = EndpointAuthInfo()
             self._AuthInfo._deserialize(params.get("AuthInfo"))
+        self._Protocol = params.get("Protocol")
+        self._Manifest = params.get("Manifest")
+        self._TimeShiftEnable = params.get("TimeShiftEnable")
+        self._TimeShiftDuration = params.get("TimeShiftDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
