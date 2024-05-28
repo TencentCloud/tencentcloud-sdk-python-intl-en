@@ -375,6 +375,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCostDetail(self, request):
+        """This API is used to query consumption details.
+
+        :param request: Request instance for DescribeCostDetail.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostDetailRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeCostDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCostDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCostDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCostExplorerSummary(self, request):
         """This API is used to view cost analysis details.
 
@@ -389,6 +412,98 @@ class BillingClient(AbstractClient):
             body = self.call("DescribeCostExplorerSummary", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCostExplorerSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCostSummaryByProduct(self, request):
+        """This API is used to obtain consumption details summarized by product.
+
+        :param request: Request instance for DescribeCostSummaryByProduct.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByProductRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByProductResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCostSummaryByProduct", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCostSummaryByProductResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCostSummaryByProject(self, request):
+        """This API is used to obtain consumption details summarized by project.
+
+        :param request: Request instance for DescribeCostSummaryByProject.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByProjectRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCostSummaryByProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCostSummaryByProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCostSummaryByRegion(self, request):
+        """This API is used to obtain consumption details summarized by region.
+
+        :param request: Request instance for DescribeCostSummaryByRegion.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByRegionRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByRegionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCostSummaryByRegion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCostSummaryByRegionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCostSummaryByResource(self, request):
+        """This API is used to obtain consumption details summarized by resource.
+
+        :param request: Request instance for DescribeCostSummaryByResource.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByResourceRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeCostSummaryByResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCostSummaryByResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCostSummaryByResourceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

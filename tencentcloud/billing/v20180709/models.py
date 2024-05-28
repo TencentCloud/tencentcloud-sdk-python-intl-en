@@ -3461,6 +3461,1503 @@ class BusinessSummaryTotal(AbstractModel):
         
 
 
+class ConditionBusiness(AbstractModel):
+    """Product filter criteria
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessCode: Product name code
+        :type BusinessCode: str
+        :param _BusinessCodeName: Product name
+        :type BusinessCodeName: str
+        """
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+
+    def _deserialize(self, params):
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConditionPayMode(AbstractModel):
+    """Payment mode filter criteria
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayMode: Payment mode
+        :type PayMode: str
+        :param _PayModeName: Payment mode name
+        :type PayModeName: str
+        """
+        self._PayMode = None
+        self._PayModeName = None
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeName(self):
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+
+    def _deserialize(self, params):
+        self._PayMode = params.get("PayMode")
+        self._PayModeName = params.get("PayModeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConditionProject(AbstractModel):
+    """Project filter criteria
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Project ID
+        :type ProjectId: str
+        :param _ProjectName: Project name
+        :type ProjectName: str
+        """
+        self._ProjectId = None
+        self._ProjectName = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConditionRegion(AbstractModel):
+    """Regional filter criteria
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionId: Region ID
+        :type RegionId: str
+        :param _RegionName: Region name
+        :type RegionName: str
+        """
+        self._RegionId = None
+        self._RegionName = None
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+
+    def _deserialize(self, params):
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Conditions(AbstractModel):
+    """Billing filter criteria object
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeRange: Only supports two values: 6 and 12.
+        :type TimeRange: int
+        :param _BusinessCode: Product name code
+        :type BusinessCode: str
+        :param _ProjectId: Project ID
+        :type ProjectId: int
+        :param _RegionId: Region ID
+        :type RegionId: int
+        :param _PayMode: Payment mode. Options include prePay and postPay.
+        :type PayMode: str
+        :param _ResourceKeyword: Resource keyword
+        :type ResourceKeyword: str
+        :param _BusinessCodes: Product name code
+        :type BusinessCodes: list of str
+        :param _ProductCodes: Subproduct name code
+        :type ProductCodes: list of str
+        :param _RegionIds: Region ID
+        :type RegionIds: list of int
+        :param _ProjectIds: Project ID
+        :type ProjectIds: list of int
+        :param _PayModes: Payment mode. Options include prePay and postPay.
+        :type PayModes: list of str
+        :param _ActionTypes: Transaction type
+        :type ActionTypes: list of str
+        :param _HideFreeCost: Whether to hide zero-amount transactions
+        :type HideFreeCost: int
+        :param _OrderByCost: Sorting rule. Options include desc and asc.
+        :type OrderByCost: str
+        :param _BillIds: Transaction ID
+        :type BillIds: list of str
+        :param _ComponentCodes: Component code
+        :type ComponentCodes: list of str
+        :param _FileIds: File ID
+        :type FileIds: list of str
+        :param _FileTypes: File type
+        :type FileTypes: list of str
+        :param _Status: Status
+        :type Status: list of int non-negative
+        """
+        self._TimeRange = None
+        self._BusinessCode = None
+        self._ProjectId = None
+        self._RegionId = None
+        self._PayMode = None
+        self._ResourceKeyword = None
+        self._BusinessCodes = None
+        self._ProductCodes = None
+        self._RegionIds = None
+        self._ProjectIds = None
+        self._PayModes = None
+        self._ActionTypes = None
+        self._HideFreeCost = None
+        self._OrderByCost = None
+        self._BillIds = None
+        self._ComponentCodes = None
+        self._FileIds = None
+        self._FileTypes = None
+        self._Status = None
+
+    @property
+    def TimeRange(self):
+        return self._TimeRange
+
+    @TimeRange.setter
+    def TimeRange(self, TimeRange):
+        self._TimeRange = TimeRange
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ResourceKeyword(self):
+        return self._ResourceKeyword
+
+    @ResourceKeyword.setter
+    def ResourceKeyword(self, ResourceKeyword):
+        self._ResourceKeyword = ResourceKeyword
+
+    @property
+    def BusinessCodes(self):
+        return self._BusinessCodes
+
+    @BusinessCodes.setter
+    def BusinessCodes(self, BusinessCodes):
+        self._BusinessCodes = BusinessCodes
+
+    @property
+    def ProductCodes(self):
+        return self._ProductCodes
+
+    @ProductCodes.setter
+    def ProductCodes(self, ProductCodes):
+        self._ProductCodes = ProductCodes
+
+    @property
+    def RegionIds(self):
+        return self._RegionIds
+
+    @RegionIds.setter
+    def RegionIds(self, RegionIds):
+        self._RegionIds = RegionIds
+
+    @property
+    def ProjectIds(self):
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+    @property
+    def PayModes(self):
+        return self._PayModes
+
+    @PayModes.setter
+    def PayModes(self, PayModes):
+        self._PayModes = PayModes
+
+    @property
+    def ActionTypes(self):
+        return self._ActionTypes
+
+    @ActionTypes.setter
+    def ActionTypes(self, ActionTypes):
+        self._ActionTypes = ActionTypes
+
+    @property
+    def HideFreeCost(self):
+        return self._HideFreeCost
+
+    @HideFreeCost.setter
+    def HideFreeCost(self, HideFreeCost):
+        self._HideFreeCost = HideFreeCost
+
+    @property
+    def OrderByCost(self):
+        return self._OrderByCost
+
+    @OrderByCost.setter
+    def OrderByCost(self, OrderByCost):
+        self._OrderByCost = OrderByCost
+
+    @property
+    def BillIds(self):
+        return self._BillIds
+
+    @BillIds.setter
+    def BillIds(self, BillIds):
+        self._BillIds = BillIds
+
+    @property
+    def ComponentCodes(self):
+        return self._ComponentCodes
+
+    @ComponentCodes.setter
+    def ComponentCodes(self, ComponentCodes):
+        self._ComponentCodes = ComponentCodes
+
+    @property
+    def FileIds(self):
+        return self._FileIds
+
+    @FileIds.setter
+    def FileIds(self, FileIds):
+        self._FileIds = FileIds
+
+    @property
+    def FileTypes(self):
+        return self._FileTypes
+
+    @FileTypes.setter
+    def FileTypes(self, FileTypes):
+        self._FileTypes = FileTypes
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._TimeRange = params.get("TimeRange")
+        self._BusinessCode = params.get("BusinessCode")
+        self._ProjectId = params.get("ProjectId")
+        self._RegionId = params.get("RegionId")
+        self._PayMode = params.get("PayMode")
+        self._ResourceKeyword = params.get("ResourceKeyword")
+        self._BusinessCodes = params.get("BusinessCodes")
+        self._ProductCodes = params.get("ProductCodes")
+        self._RegionIds = params.get("RegionIds")
+        self._ProjectIds = params.get("ProjectIds")
+        self._PayModes = params.get("PayModes")
+        self._ActionTypes = params.get("ActionTypes")
+        self._HideFreeCost = params.get("HideFreeCost")
+        self._OrderByCost = params.get("OrderByCost")
+        self._BillIds = params.get("BillIds")
+        self._ComponentCodes = params.get("ComponentCodes")
+        self._FileIds = params.get("FileIds")
+        self._FileTypes = params.get("FileTypes")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumptionBusinessSummaryDataItem(AbstractModel):
+    """Consumption details summarized by product
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessCode: Product name code
+        :type BusinessCode: str
+        :param _BusinessCodeName: Product name
+        :type BusinessCodeName: str
+        :param _RealTotalCost: Discounted total price
+        :type RealTotalCost: str
+        :param _Trend: Cost trend
+        :type Trend: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
+        :param _CashPayAmount: Cash
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CashPayAmount: str
+        :param _IncentivePayAmount: Bonus
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IncentivePayAmount: str
+        :param _VoucherPayAmount: VoucherNote: This field may return null, indicating that no valid values can be obtained.
+        :type VoucherPayAmount: str
+        :param _TransferPayAmount: Share revenueNote: This field may return null, indicating that no valid values can be obtained.
+        :type TransferPayAmount: str
+        :param _RegionName: Region name (only shown in regional summary)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RegionName: str
+        """
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+        self._RealTotalCost = None
+        self._Trend = None
+        self._CashPayAmount = None
+        self._IncentivePayAmount = None
+        self._VoucherPayAmount = None
+        self._TransferPayAmount = None
+        self._RegionName = None
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def Trend(self):
+        return self._Trend
+
+    @Trend.setter
+    def Trend(self, Trend):
+        self._Trend = Trend
+
+    @property
+    def CashPayAmount(self):
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def TransferPayAmount(self):
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+
+    def _deserialize(self, params):
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._RealTotalCost = params.get("RealTotalCost")
+        if params.get("Trend") is not None:
+            self._Trend = ConsumptionSummaryTrend()
+            self._Trend._deserialize(params.get("Trend"))
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        self._RegionName = params.get("RegionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumptionProjectSummaryDataItem(AbstractModel):
+    """Consumption details summarized by project
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Project ID
+        :type ProjectId: str
+        :param _ProjectName: Project name
+        :type ProjectName: str
+        :param _RealTotalCost: Discounted total price
+        :type RealTotalCost: str
+        :param _Trend: Trend
+        :type Trend: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
+        :param _Business: Product consumption details
+        :type Business: list of ConsumptionBusinessSummaryDataItem
+        :param _CashPayAmount: Cash
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CashPayAmount: str
+        :param _IncentivePayAmount: Bonus
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IncentivePayAmount: str
+        :param _VoucherPayAmount: VoucherNote: This field may return null, indicating that no valid values can be obtained.
+        :type VoucherPayAmount: str
+        :param _TransferPayAmount: Share revenueNote: This field may return null, indicating that no valid values can be obtained.
+        :type TransferPayAmount: str
+        """
+        self._ProjectId = None
+        self._ProjectName = None
+        self._RealTotalCost = None
+        self._Trend = None
+        self._Business = None
+        self._CashPayAmount = None
+        self._IncentivePayAmount = None
+        self._VoucherPayAmount = None
+        self._TransferPayAmount = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def Trend(self):
+        return self._Trend
+
+    @Trend.setter
+    def Trend(self, Trend):
+        self._Trend = Trend
+
+    @property
+    def Business(self):
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def CashPayAmount(self):
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def TransferPayAmount(self):
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._RealTotalCost = params.get("RealTotalCost")
+        if params.get("Trend") is not None:
+            self._Trend = ConsumptionSummaryTrend()
+            self._Trend._deserialize(params.get("Trend"))
+        if params.get("Business") is not None:
+            self._Business = []
+            for item in params.get("Business"):
+                obj = ConsumptionBusinessSummaryDataItem()
+                obj._deserialize(item)
+                self._Business.append(obj)
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumptionRegionSummaryDataItem(AbstractModel):
+    """Consumption details summarized by region
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionId: Region ID
+        :type RegionId: str
+        :param _RegionName: Region name
+        :type RegionName: str
+        :param _RealTotalCost: Discounted total price
+        :type RealTotalCost: str
+        :param _Trend: Trend
+        :type Trend: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTrend`
+        :param _Business: Product consumption details
+        :type Business: list of ConsumptionBusinessSummaryDataItem
+        :param _CashPayAmount: Cash
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CashPayAmount: str
+        :param _VoucherPayAmount: VoucherNote: This field may return null, indicating that no valid values can be obtained.
+        :type VoucherPayAmount: str
+        :param _IncentivePayAmount: Bonus
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IncentivePayAmount: str
+        :param _TransferPayAmount: Share revenueNote: This field may return null, indicating that no valid values can be obtained.
+        :type TransferPayAmount: str
+        """
+        self._RegionId = None
+        self._RegionName = None
+        self._RealTotalCost = None
+        self._Trend = None
+        self._Business = None
+        self._CashPayAmount = None
+        self._VoucherPayAmount = None
+        self._IncentivePayAmount = None
+        self._TransferPayAmount = None
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def Trend(self):
+        return self._Trend
+
+    @Trend.setter
+    def Trend(self, Trend):
+        self._Trend = Trend
+
+    @property
+    def Business(self):
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def CashPayAmount(self):
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def TransferPayAmount(self):
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+
+    def _deserialize(self, params):
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
+        self._RealTotalCost = params.get("RealTotalCost")
+        if params.get("Trend") is not None:
+            self._Trend = ConsumptionSummaryTrend()
+            self._Trend._deserialize(params.get("Trend"))
+        if params.get("Business") is not None:
+            self._Business = []
+            for item in params.get("Business"):
+                obj = ConsumptionBusinessSummaryDataItem()
+                obj._deserialize(item)
+                self._Business.append(obj)
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumptionResourceSummaryConditionValue(AbstractModel):
+    """Filter criteria of consumption details summarized by resource
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Business: Product list
+        :type Business: list of ConditionBusiness
+        :param _Project: Project list
+        :type Project: list of ConditionProject
+        :param _Region: Region list
+        :type Region: list of ConditionRegion
+        :param _PayMode: Payment mode list
+        :type PayMode: list of ConditionPayMode
+        """
+        self._Business = None
+        self._Project = None
+        self._Region = None
+        self._PayMode = None
+
+    @property
+    def Business(self):
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def Project(self):
+        return self._Project
+
+    @Project.setter
+    def Project(self, Project):
+        self._Project = Project
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+
+    def _deserialize(self, params):
+        if params.get("Business") is not None:
+            self._Business = []
+            for item in params.get("Business"):
+                obj = ConditionBusiness()
+                obj._deserialize(item)
+                self._Business.append(obj)
+        if params.get("Project") is not None:
+            self._Project = []
+            for item in params.get("Project"):
+                obj = ConditionProject()
+                obj._deserialize(item)
+                self._Project.append(obj)
+        if params.get("Region") is not None:
+            self._Region = []
+            for item in params.get("Region"):
+                obj = ConditionRegion()
+                obj._deserialize(item)
+                self._Region.append(obj)
+        if params.get("PayMode") is not None:
+            self._PayMode = []
+            for item in params.get("PayMode"):
+                obj = ConditionPayMode()
+                obj._deserialize(item)
+                self._PayMode.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumptionResourceSummaryDataItem(AbstractModel):
+    """Consumption details summarized by resource
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: Resource ID
+        :type ResourceId: str
+        :param _ResourceName: Resource name
+        :type ResourceName: str
+        :param _RealTotalCost: Discounted total price
+        :type RealTotalCost: str
+        :param _CashPayAmount: Cash expenditure
+        :type CashPayAmount: str
+        :param _ProjectId: Project ID
+        :type ProjectId: str
+        :param _ProjectName: Project name
+        :type ProjectName: str
+        :param _RegionId: Region ID
+        :type RegionId: str
+        :param _RegionName: Region name
+        :type RegionName: str
+        :param _PayMode: Payment mode
+        :type PayMode: str
+        :param _PayModeName: Payment mode name
+        :type PayModeName: str
+        :param _BusinessCode: Product name code
+        :type BusinessCode: str
+        :param _BusinessCodeName: Product name
+        :type BusinessCodeName: str
+        :param _ConsumptionTypeName: Consumption type
+        :type ConsumptionTypeName: str
+        :param _RealCost: Pre-discount priceNote: This field may return null, indicating that no valid values can be obtained.
+        :type RealCost: str
+        :param _FeeBeginTime: Start time of feesNote: This field may return null, indicating that no valid values can be obtained.
+        :type FeeBeginTime: str
+        :param _FeeEndTime: End time of feesNote: This field may return null, indicating that no valid values can be obtained.
+        :type FeeEndTime: str
+        :param _DayDiff: Days
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DayDiff: str
+        :param _DailyTotalCost: Daily consumptionNote: This field may return null, indicating that no valid values can be obtained.
+        :type DailyTotalCost: str
+        :param _OrderId: Order numberNote: This field may return null, indicating that no valid values can be obtained.
+        :type OrderId: str
+        :param _VoucherPayAmount: VoucherNote: This field may return null, indicating that no valid values can be obtained.
+        :type VoucherPayAmount: str
+        :param _IncentivePayAmount: Bonus
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IncentivePayAmount: str
+        :param _TransferPayAmount: Share revenueNote: This field may return null, indicating that no valid values can be obtained.
+        :type TransferPayAmount: str
+        :param _PayerUin: Payer UIN: the account ID of the payer, which is the unique identifier of a Tencent Cloud userNote: This field may return null, indicating that no valid values can be obtained.
+        :type PayerUin: str
+        :param _OwnerUin: User UIN: the account ID of the actual resource userNote: This field may return null, indicating that no valid values can be obtained.
+        :type OwnerUin: str
+        :param _OperateUin: Operator UIN: the account ID or role ID of the operator who places orders for prepaid resources or activates postpaid resourcesNote: This field may return null, indicating that no valid values can be obtained.
+        :type OperateUin: str
+        :param _ProductCode: Subproduct codeNote: This field may return null, indicating that no valid values can be obtained.
+        :type ProductCode: str
+        :param _ProductCodeName: Subproduct name: the subcategory of a product purchased by the user, such as CVM – Standard S1Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProductCodeName: str
+        :param _RegionType: Region typeNote: This field may return null, indicating that no valid values can be obtained.
+        :type RegionType: str
+        :param _RegionTypeName: Region type nameNote: This field may return null, indicating that no valid values can be obtained.
+        :type RegionTypeName: str
+        :param _Extend1: Extended field 1Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extend1: str
+        :param _Extend2: Extended field 2Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extend2: str
+        :param _Extend3: Extended field 3Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extend3: str
+        :param _Extend4: Extended field 4Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extend4: str
+        :param _Extend5: Extended field 5Note: This field may return null, indicating that no valid values can be obtained.
+        :type Extend5: str
+        :param _InstanceType: Instance typeNote: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceType: str
+        :param _InstanceTypeName: Instance type nameNote: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceTypeName: str
+        :param _PayTime: Deduction time: the time at which a payment is deductedNote: This field may return null, indicating that no valid values can be obtained.
+        :type PayTime: str
+        :param _ZoneName: Availability zone: availability zone of a resource, e.g. Guangzhou Zone 3Note: This field may return null, indicating that no valid values can be obtained.
+        :type ZoneName: str
+        :param _ComponentConfig: Configuration descriptionNote: This field may return null, indicating that no valid values can be obtained.
+        :type ComponentConfig: str
+        """
+        self._ResourceId = None
+        self._ResourceName = None
+        self._RealTotalCost = None
+        self._CashPayAmount = None
+        self._ProjectId = None
+        self._ProjectName = None
+        self._RegionId = None
+        self._RegionName = None
+        self._PayMode = None
+        self._PayModeName = None
+        self._BusinessCode = None
+        self._BusinessCodeName = None
+        self._ConsumptionTypeName = None
+        self._RealCost = None
+        self._FeeBeginTime = None
+        self._FeeEndTime = None
+        self._DayDiff = None
+        self._DailyTotalCost = None
+        self._OrderId = None
+        self._VoucherPayAmount = None
+        self._IncentivePayAmount = None
+        self._TransferPayAmount = None
+        self._PayerUin = None
+        self._OwnerUin = None
+        self._OperateUin = None
+        self._ProductCode = None
+        self._ProductCodeName = None
+        self._RegionType = None
+        self._RegionTypeName = None
+        self._Extend1 = None
+        self._Extend2 = None
+        self._Extend3 = None
+        self._Extend4 = None
+        self._Extend5 = None
+        self._InstanceType = None
+        self._InstanceTypeName = None
+        self._PayTime = None
+        self._ZoneName = None
+        self._ComponentConfig = None
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+    @property
+    def CashPayAmount(self):
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def PayModeName(self):
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+    @property
+    def BusinessCode(self):
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def ConsumptionTypeName(self):
+        return self._ConsumptionTypeName
+
+    @ConsumptionTypeName.setter
+    def ConsumptionTypeName(self, ConsumptionTypeName):
+        self._ConsumptionTypeName = ConsumptionTypeName
+
+    @property
+    def RealCost(self):
+        return self._RealCost
+
+    @RealCost.setter
+    def RealCost(self, RealCost):
+        self._RealCost = RealCost
+
+    @property
+    def FeeBeginTime(self):
+        return self._FeeBeginTime
+
+    @FeeBeginTime.setter
+    def FeeBeginTime(self, FeeBeginTime):
+        self._FeeBeginTime = FeeBeginTime
+
+    @property
+    def FeeEndTime(self):
+        return self._FeeEndTime
+
+    @FeeEndTime.setter
+    def FeeEndTime(self, FeeEndTime):
+        self._FeeEndTime = FeeEndTime
+
+    @property
+    def DayDiff(self):
+        return self._DayDiff
+
+    @DayDiff.setter
+    def DayDiff(self, DayDiff):
+        self._DayDiff = DayDiff
+
+    @property
+    def DailyTotalCost(self):
+        return self._DailyTotalCost
+
+    @DailyTotalCost.setter
+    def DailyTotalCost(self, DailyTotalCost):
+        self._DailyTotalCost = DailyTotalCost
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+    @property
+    def TransferPayAmount(self):
+        return self._TransferPayAmount
+
+    @TransferPayAmount.setter
+    def TransferPayAmount(self, TransferPayAmount):
+        self._TransferPayAmount = TransferPayAmount
+
+    @property
+    def PayerUin(self):
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def OwnerUin(self):
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OperateUin(self):
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def ProductCodeName(self):
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def RegionType(self):
+        return self._RegionType
+
+    @RegionType.setter
+    def RegionType(self, RegionType):
+        self._RegionType = RegionType
+
+    @property
+    def RegionTypeName(self):
+        return self._RegionTypeName
+
+    @RegionTypeName.setter
+    def RegionTypeName(self, RegionTypeName):
+        self._RegionTypeName = RegionTypeName
+
+    @property
+    def Extend1(self):
+        return self._Extend1
+
+    @Extend1.setter
+    def Extend1(self, Extend1):
+        self._Extend1 = Extend1
+
+    @property
+    def Extend2(self):
+        return self._Extend2
+
+    @Extend2.setter
+    def Extend2(self, Extend2):
+        self._Extend2 = Extend2
+
+    @property
+    def Extend3(self):
+        return self._Extend3
+
+    @Extend3.setter
+    def Extend3(self, Extend3):
+        self._Extend3 = Extend3
+
+    @property
+    def Extend4(self):
+        return self._Extend4
+
+    @Extend4.setter
+    def Extend4(self, Extend4):
+        self._Extend4 = Extend4
+
+    @property
+    def Extend5(self):
+        return self._Extend5
+
+    @Extend5.setter
+    def Extend5(self, Extend5):
+        self._Extend5 = Extend5
+
+    @property
+    def InstanceType(self):
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceTypeName(self):
+        return self._InstanceTypeName
+
+    @InstanceTypeName.setter
+    def InstanceTypeName(self, InstanceTypeName):
+        self._InstanceTypeName = InstanceTypeName
+
+    @property
+    def PayTime(self):
+        return self._PayTime
+
+    @PayTime.setter
+    def PayTime(self, PayTime):
+        self._PayTime = PayTime
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def ComponentConfig(self):
+        return self._ComponentConfig
+
+    @ComponentConfig.setter
+    def ComponentConfig(self, ComponentConfig):
+        self._ComponentConfig = ComponentConfig
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        self._RealTotalCost = params.get("RealTotalCost")
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._RegionId = params.get("RegionId")
+        self._RegionName = params.get("RegionName")
+        self._PayMode = params.get("PayMode")
+        self._PayModeName = params.get("PayModeName")
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._ConsumptionTypeName = params.get("ConsumptionTypeName")
+        self._RealCost = params.get("RealCost")
+        self._FeeBeginTime = params.get("FeeBeginTime")
+        self._FeeEndTime = params.get("FeeEndTime")
+        self._DayDiff = params.get("DayDiff")
+        self._DailyTotalCost = params.get("DailyTotalCost")
+        self._OrderId = params.get("OrderId")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        self._TransferPayAmount = params.get("TransferPayAmount")
+        self._PayerUin = params.get("PayerUin")
+        self._OwnerUin = params.get("OwnerUin")
+        self._OperateUin = params.get("OperateUin")
+        self._ProductCode = params.get("ProductCode")
+        self._ProductCodeName = params.get("ProductCodeName")
+        self._RegionType = params.get("RegionType")
+        self._RegionTypeName = params.get("RegionTypeName")
+        self._Extend1 = params.get("Extend1")
+        self._Extend2 = params.get("Extend2")
+        self._Extend3 = params.get("Extend3")
+        self._Extend4 = params.get("Extend4")
+        self._Extend5 = params.get("Extend5")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceTypeName = params.get("InstanceTypeName")
+        self._PayTime = params.get("PayTime")
+        self._ZoneName = params.get("ZoneName")
+        self._ComponentConfig = params.get("ComponentConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumptionSummaryTotal(AbstractModel):
+    """Consumption summary details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RealTotalCost: Discounted total price
+        :type RealTotalCost: str
+        """
+        self._RealTotalCost = None
+
+    @property
+    def RealTotalCost(self):
+        return self._RealTotalCost
+
+    @RealTotalCost.setter
+    def RealTotalCost(self, RealTotalCost):
+        self._RealTotalCost = RealTotalCost
+
+
+    def _deserialize(self, params):
+        self._RealTotalCost = params.get("RealTotalCost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumptionSummaryTrend(AbstractModel):
+    """Consumption cost trend
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Trend type, upward for rising, downward for falling, none for no change
+        :type Type: str
+        :param _Value: Trend value. The value is null when Type is none.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Value: str
+        """
+        self._Type = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CosDetailSets(AbstractModel):
     """Information about the data structure of the returned COS usage details
 
@@ -3556,6 +5053,389 @@ class CosDetailSets(AbstractModel):
         self._BillingItemCodeName = params.get("BillingItemCodeName")
         self._DosageValue = params.get("DosageValue")
         self._Unit = params.get("Unit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CostComponentSet(AbstractModel):
+    """Consumption component details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComponentCodeName: Component type name
+        :type ComponentCodeName: str
+        :param _ItemCodeName: Component name
+        :type ItemCodeName: str
+        :param _SinglePrice: List price
+        :type SinglePrice: str
+        :param _PriceUnit: List price unit
+        :type PriceUnit: str
+        :param _UsedAmount: Usage
+        :type UsedAmount: str
+        :param _UsedAmountUnit: Usage unit
+        :type UsedAmountUnit: str
+        :param _Cost: Original price
+        :type Cost: str
+        :param _Discount: Discount
+        :type Discount: str
+        :param _RealCost: Discounted price
+        :type RealCost: str
+        :param _VoucherPayAmount: Voucher payment amount
+        :type VoucherPayAmount: str
+        :param _CashPayAmount: Cash payment amount
+        :type CashPayAmount: str
+        :param _IncentivePayAmount: Bonus payment amount
+        :type IncentivePayAmount: str
+        """
+        self._ComponentCodeName = None
+        self._ItemCodeName = None
+        self._SinglePrice = None
+        self._PriceUnit = None
+        self._UsedAmount = None
+        self._UsedAmountUnit = None
+        self._Cost = None
+        self._Discount = None
+        self._RealCost = None
+        self._VoucherPayAmount = None
+        self._CashPayAmount = None
+        self._IncentivePayAmount = None
+
+    @property
+    def ComponentCodeName(self):
+        return self._ComponentCodeName
+
+    @ComponentCodeName.setter
+    def ComponentCodeName(self, ComponentCodeName):
+        self._ComponentCodeName = ComponentCodeName
+
+    @property
+    def ItemCodeName(self):
+        return self._ItemCodeName
+
+    @ItemCodeName.setter
+    def ItemCodeName(self, ItemCodeName):
+        self._ItemCodeName = ItemCodeName
+
+    @property
+    def SinglePrice(self):
+        return self._SinglePrice
+
+    @SinglePrice.setter
+    def SinglePrice(self, SinglePrice):
+        self._SinglePrice = SinglePrice
+
+    @property
+    def PriceUnit(self):
+        return self._PriceUnit
+
+    @PriceUnit.setter
+    def PriceUnit(self, PriceUnit):
+        self._PriceUnit = PriceUnit
+
+    @property
+    def UsedAmount(self):
+        return self._UsedAmount
+
+    @UsedAmount.setter
+    def UsedAmount(self, UsedAmount):
+        self._UsedAmount = UsedAmount
+
+    @property
+    def UsedAmountUnit(self):
+        return self._UsedAmountUnit
+
+    @UsedAmountUnit.setter
+    def UsedAmountUnit(self, UsedAmountUnit):
+        self._UsedAmountUnit = UsedAmountUnit
+
+    @property
+    def Cost(self):
+        return self._Cost
+
+    @Cost.setter
+    def Cost(self, Cost):
+        self._Cost = Cost
+
+    @property
+    def Discount(self):
+        return self._Discount
+
+    @Discount.setter
+    def Discount(self, Discount):
+        self._Discount = Discount
+
+    @property
+    def RealCost(self):
+        return self._RealCost
+
+    @RealCost.setter
+    def RealCost(self, RealCost):
+        self._RealCost = RealCost
+
+    @property
+    def VoucherPayAmount(self):
+        return self._VoucherPayAmount
+
+    @VoucherPayAmount.setter
+    def VoucherPayAmount(self, VoucherPayAmount):
+        self._VoucherPayAmount = VoucherPayAmount
+
+    @property
+    def CashPayAmount(self):
+        return self._CashPayAmount
+
+    @CashPayAmount.setter
+    def CashPayAmount(self, CashPayAmount):
+        self._CashPayAmount = CashPayAmount
+
+    @property
+    def IncentivePayAmount(self):
+        return self._IncentivePayAmount
+
+    @IncentivePayAmount.setter
+    def IncentivePayAmount(self, IncentivePayAmount):
+        self._IncentivePayAmount = IncentivePayAmount
+
+
+    def _deserialize(self, params):
+        self._ComponentCodeName = params.get("ComponentCodeName")
+        self._ItemCodeName = params.get("ItemCodeName")
+        self._SinglePrice = params.get("SinglePrice")
+        self._PriceUnit = params.get("PriceUnit")
+        self._UsedAmount = params.get("UsedAmount")
+        self._UsedAmountUnit = params.get("UsedAmountUnit")
+        self._Cost = params.get("Cost")
+        self._Discount = params.get("Discount")
+        self._RealCost = params.get("RealCost")
+        self._VoucherPayAmount = params.get("VoucherPayAmount")
+        self._CashPayAmount = params.get("CashPayAmount")
+        self._IncentivePayAmount = params.get("IncentivePayAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CostDetail(AbstractModel):
+    """Consumption details data type
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayerUin: Payer UIN
+        :type PayerUin: str
+        :param _BusinessCodeName: Product name
+        :type BusinessCodeName: str
+        :param _ProductCodeName: Subproduct name
+        :type ProductCodeName: str
+        :param _PayModeName: Billing mode name
+        :type PayModeName: str
+        :param _ProjectName: Project name
+        :type ProjectName: str
+        :param _RegionName: Region Name
+        :type RegionName: str
+        :param _ZoneName: Zone name
+        :type ZoneName: str
+        :param _ResourceId: Resource ID
+        :type ResourceId: str
+        :param _ResourceName: Resource name
+        :type ResourceName: str
+        :param _ActionTypeName: Type nameNote: This field may return null, indicating that no valid values can be obtained.
+        :type ActionTypeName: str
+        :param _OrderId: Order ID
+        :type OrderId: str
+        :param _BillId: Transaction ID
+        :type BillId: str
+        :param _FeeBeginTime: Start time of fees
+        :type FeeBeginTime: str
+        :param _FeeEndTime: End time of fees
+        :type FeeEndTime: str
+        :param _ComponentSet: Component details
+        :type ComponentSet: list of CostComponentSet
+        :param _ProductCode: Subproduct name code
+        :type ProductCode: str
+        """
+        self._PayerUin = None
+        self._BusinessCodeName = None
+        self._ProductCodeName = None
+        self._PayModeName = None
+        self._ProjectName = None
+        self._RegionName = None
+        self._ZoneName = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._ActionTypeName = None
+        self._OrderId = None
+        self._BillId = None
+        self._FeeBeginTime = None
+        self._FeeEndTime = None
+        self._ComponentSet = None
+        self._ProductCode = None
+
+    @property
+    def PayerUin(self):
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def BusinessCodeName(self):
+        return self._BusinessCodeName
+
+    @BusinessCodeName.setter
+    def BusinessCodeName(self, BusinessCodeName):
+        self._BusinessCodeName = BusinessCodeName
+
+    @property
+    def ProductCodeName(self):
+        return self._ProductCodeName
+
+    @ProductCodeName.setter
+    def ProductCodeName(self, ProductCodeName):
+        self._ProductCodeName = ProductCodeName
+
+    @property
+    def PayModeName(self):
+        return self._PayModeName
+
+    @PayModeName.setter
+    def PayModeName(self, PayModeName):
+        self._PayModeName = PayModeName
+
+    @property
+    def ProjectName(self):
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def RegionName(self):
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def ZoneName(self):
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ActionTypeName(self):
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+    @property
+    def OrderId(self):
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def BillId(self):
+        return self._BillId
+
+    @BillId.setter
+    def BillId(self, BillId):
+        self._BillId = BillId
+
+    @property
+    def FeeBeginTime(self):
+        return self._FeeBeginTime
+
+    @FeeBeginTime.setter
+    def FeeBeginTime(self, FeeBeginTime):
+        self._FeeBeginTime = FeeBeginTime
+
+    @property
+    def FeeEndTime(self):
+        return self._FeeEndTime
+
+    @FeeEndTime.setter
+    def FeeEndTime(self, FeeEndTime):
+        self._FeeEndTime = FeeEndTime
+
+    @property
+    def ComponentSet(self):
+        return self._ComponentSet
+
+    @ComponentSet.setter
+    def ComponentSet(self, ComponentSet):
+        self._ComponentSet = ComponentSet
+
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+
+    def _deserialize(self, params):
+        self._PayerUin = params.get("PayerUin")
+        self._BusinessCodeName = params.get("BusinessCodeName")
+        self._ProductCodeName = params.get("ProductCodeName")
+        self._PayModeName = params.get("PayModeName")
+        self._ProjectName = params.get("ProjectName")
+        self._RegionName = params.get("RegionName")
+        self._ZoneName = params.get("ZoneName")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        self._ActionTypeName = params.get("ActionTypeName")
+        self._OrderId = params.get("OrderId")
+        self._BillId = params.get("BillId")
+        self._FeeBeginTime = params.get("FeeBeginTime")
+        self._FeeEndTime = params.get("FeeEndTime")
+        if params.get("ComponentSet") is not None:
+            self._ComponentSet = []
+            for item in params.get("ComponentSet"):
+                obj = CostComponentSet()
+                obj._deserialize(item)
+                self._ComponentSet.append(obj)
+        self._ProductCode = params.get("ProductCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4399,7 +6279,7 @@ class DescribeBillDetailResponse(AbstractModel):
         :param _Total: 
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Total: int
-        :param _Context: Context information returned by this request. The value can be passed in as the value of parameters in the next request to accelerate queries. Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Context: Note: This field may return null, indicating that no valid values can be obtained.
         :type Context: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4527,8 +6407,7 @@ class DescribeBillDownloadUrlResponse(AbstractModel):
         r"""
         :param _Ready: Indicates whether the bill file is ready. Valid values: `0` (the file is being generated), `1` (the file has been generated).
         :type Ready: int
-        :param _DownloadUrl: Bill download URL, valid for one hour.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _DownloadUrl: Billing file download link, valid for 1 day. Note: This field may return null, indicating that no valid values can be obtained.
         :type DownloadUrl: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5901,6 +7780,190 @@ class DescribeBillSummaryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCostDetailRequest(AbstractModel):
+    """DescribeCostDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: The number of entries returned at a time. The maximum value is `100`.
+        :type Limit: int
+        :param _Offset: Offset
+        :type Offset: int
+        :param _BeginTime: Cycle start time in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be entered, and if this field is present, Month becomes invalid. BeginTime and EndTime must be entered together, and must be in the same month. Cross-month retrieval is not currently supported. Data retrievable is the data after cost analysis is activated and within the past 24 months.
+        :type BeginTime: str
+        :param _EndTime: Cycle end time in the format of yyyy-mm-dd hh:ii:ss. Either Month or BeginTime&EndTime must be entered, and if this field is present, Month becomes invalid. BeginTime and EndTime must be entered together, and must be in the same month. Cross-month retrieval is not currently supported. Data retrievable is the data after cost analysis is activated and within the past 24 months.
+        :type EndTime: str
+        :param _NeedRecordNum: Whether the total number of records in the list is needed, for frontend pagination1: needed, 0: not needed
+        :type NeedRecordNum: int
+        :param _Month: Month, in the format of yyyy-mm. Either Month or BeginTime&EndTime must be entered, and if BeginTime&EndTime is entered, Month becomes invalid. It cannot be earlier than the month when cost analysis is activated. Data of up to 24 months can be retrieved.
+        :type Month: str
+        :param _ProductCode: Used to query information of a specified product (currently not available)
+        :type ProductCode: str
+        :param _PayMode: Payment mode. Options include prePay and postPay.
+        :type PayMode: str
+        :param _ResourceId: Used to query information of a specified resource
+        :type ResourceId: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._NeedRecordNum = None
+        self._Month = None
+        self._ProductCode = None
+        self._PayMode = None
+        self._ResourceId = None
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def NeedRecordNum(self):
+        return self._NeedRecordNum
+
+    @NeedRecordNum.setter
+    def NeedRecordNum(self, NeedRecordNum):
+        self._NeedRecordNum = NeedRecordNum
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def ProductCode(self):
+        return self._ProductCode
+
+    @ProductCode.setter
+    def ProductCode(self, ProductCode):
+        self._ProductCode = ProductCode
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._NeedRecordNum = params.get("NeedRecordNum")
+        self._Month = params.get("Month")
+        self._ProductCode = params.get("ProductCode")
+        self._PayMode = params.get("PayMode")
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCostDetailResponse(AbstractModel):
+    """DescribeCostDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DetailSet: Consumption details
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DetailSet: list of CostDetail
+        :param _Total: Record countNote: This field may return null, indicating that no valid values can be obtained.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DetailSet = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def DetailSet(self):
+        return self._DetailSet
+
+    @DetailSet.setter
+    def DetailSet(self, DetailSet):
+        self._DetailSet = DetailSet
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DetailSet") is not None:
+            self._DetailSet = []
+            for item in params.get("DetailSet"):
+                obj = CostDetail()
+                obj._deserialize(item)
+                self._DetailSet.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCostExplorerSummaryRequest(AbstractModel):
     """DescribeCostExplorerSummary request structure.
 
@@ -6153,6 +8216,739 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("ConditionValue") is not None:
             self._ConditionValue = AnalyseConditionDetail()
             self._ConditionValue._deserialize(params.get("ConditionValue"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCostSummaryByProductRequest(AbstractModel):
+    """DescribeCostSummaryByProduct request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeginTime: The value must be of the same month as `EndTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type BeginTime: str
+        :param _EndTime: The value must be of the same month as `BeginTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type EndTime: str
+        :param _Limit: Data quantity per fetch. The maximum value is 100.
+        :type Limit: int
+        :param _Offset: Offset, which starts from 0 by default
+        :type Offset: int
+        :param _PayerUin: UIN of the user querying the bill data
+        :type PayerUin: str
+        :param _NeedRecordNum: Whether to return the record count. 0 for no, 1 for yes. Default is no.
+        :type NeedRecordNum: int
+        """
+        self._BeginTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Offset = None
+        self._PayerUin = None
+        self._NeedRecordNum = None
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def PayerUin(self):
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def NeedRecordNum(self):
+        return self._NeedRecordNum
+
+    @NeedRecordNum.setter
+    def NeedRecordNum(self, NeedRecordNum):
+        self._NeedRecordNum = NeedRecordNum
+
+
+    def _deserialize(self, params):
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._PayerUin = params.get("PayerUin")
+        self._NeedRecordNum = params.get("NeedRecordNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCostSummaryByProductResponse(AbstractModel):
+    """DescribeCostSummaryByProduct response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ready: Data readiness, 0 for not ready, 1 for ready
+        :type Ready: int
+        :param _Total: Consumption details
+        :type Total: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
+        :param _Data: Consumption details summarized by productNote: This field may return null, indicating that no valid values can be obtained.
+        :type Data: list of ConsumptionBusinessSummaryDataItem
+        :param _RecordNum: Record count. The system returns null when NeedRecordNum is 0.Note: This field may return null, indicating that no valid values can be obtained.
+        :type RecordNum: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Ready = None
+        self._Total = None
+        self._Data = None
+        self._RecordNum = None
+        self._RequestId = None
+
+    @property
+    def Ready(self):
+        return self._Ready
+
+    @Ready.setter
+    def Ready(self, Ready):
+        self._Ready = Ready
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RecordNum(self):
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Ready = params.get("Ready")
+        if params.get("Total") is not None:
+            self._Total = ConsumptionSummaryTotal()
+            self._Total._deserialize(params.get("Total"))
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ConsumptionBusinessSummaryDataItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RecordNum = params.get("RecordNum")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCostSummaryByProjectRequest(AbstractModel):
+    """DescribeCostSummaryByProject request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeginTime: The value must be of the same month as `EndTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type BeginTime: str
+        :param _EndTime: The value must be of the same month as `BeginTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type EndTime: str
+        :param _Limit: Data quantity per fetch. The maximum value is `100`.
+        :type Limit: int
+        :param _Offset: Offset, which starts from 0 by default
+        :type Offset: int
+        :param _PayerUin: UIN of the user querying the bill data
+        :type PayerUin: str
+        :param _NeedRecordNum: Whether to return the record count. 0 for no, 1 for yes. Default is no.
+        :type NeedRecordNum: int
+        """
+        self._BeginTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Offset = None
+        self._PayerUin = None
+        self._NeedRecordNum = None
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def PayerUin(self):
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def NeedRecordNum(self):
+        return self._NeedRecordNum
+
+    @NeedRecordNum.setter
+    def NeedRecordNum(self, NeedRecordNum):
+        self._NeedRecordNum = NeedRecordNum
+
+
+    def _deserialize(self, params):
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._PayerUin = params.get("PayerUin")
+        self._NeedRecordNum = params.get("NeedRecordNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCostSummaryByProjectResponse(AbstractModel):
+    """DescribeCostSummaryByProject response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ready: Data readiness, 0 for not ready, 1 for ready
+        :type Ready: int
+        :param _Total: Consumption details
+        :type Total: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
+        :param _Data: Consumption details summarized by business
+        :type Data: list of ConsumptionProjectSummaryDataItem
+        :param _RecordNum: Record count. The system returns null when NeedRecordNum is 0.
+        :type RecordNum: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Ready = None
+        self._Total = None
+        self._Data = None
+        self._RecordNum = None
+        self._RequestId = None
+
+    @property
+    def Ready(self):
+        return self._Ready
+
+    @Ready.setter
+    def Ready(self, Ready):
+        self._Ready = Ready
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RecordNum(self):
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Ready = params.get("Ready")
+        if params.get("Total") is not None:
+            self._Total = ConsumptionSummaryTotal()
+            self._Total._deserialize(params.get("Total"))
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ConsumptionProjectSummaryDataItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RecordNum = params.get("RecordNum")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCostSummaryByRegionRequest(AbstractModel):
+    """DescribeCostSummaryByRegion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeginTime: The value must be of the same month as `EndTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type BeginTime: str
+        :param _EndTime: The value must be of the same month as `BeginTime`. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both `BeginTime` and `EndTime` are `2018-09`, the data returned will be for the entire month of September 2018.
+        :type EndTime: str
+        :param _Limit: Data quantity per fetch. The maximum value is `100`.
+        :type Limit: int
+        :param _Offset: Offset, which starts from 0 by default
+        :type Offset: int
+        :param _PayerUin: UIN of the user querying the bill data
+        :type PayerUin: str
+        :param _NeedRecordNum: Whether to return the record count. 0 for no, 1 for yes. Default is no.
+        :type NeedRecordNum: int
+        """
+        self._BeginTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Offset = None
+        self._PayerUin = None
+        self._NeedRecordNum = None
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def PayerUin(self):
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def NeedRecordNum(self):
+        return self._NeedRecordNum
+
+    @NeedRecordNum.setter
+    def NeedRecordNum(self, NeedRecordNum):
+        self._NeedRecordNum = NeedRecordNum
+
+
+    def _deserialize(self, params):
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._PayerUin = params.get("PayerUin")
+        self._NeedRecordNum = params.get("NeedRecordNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCostSummaryByRegionResponse(AbstractModel):
+    """DescribeCostSummaryByRegion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ready: Data readiness, 0 for not ready, 1 for ready
+        :type Ready: int
+        :param _Total: Consumption details
+        :type Total: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
+        :param _Data: Consumption details summarized by region
+        :type Data: list of ConsumptionRegionSummaryDataItem
+        :param _RecordNum: Record count. The system returns null when NeedRecordNum is 0.Note: This field may return null, indicating that no valid values can be obtained.
+        :type RecordNum: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Ready = None
+        self._Total = None
+        self._Data = None
+        self._RecordNum = None
+        self._RequestId = None
+
+    @property
+    def Ready(self):
+        return self._Ready
+
+    @Ready.setter
+    def Ready(self, Ready):
+        self._Ready = Ready
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RecordNum(self):
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Ready = params.get("Ready")
+        if params.get("Total") is not None:
+            self._Total = ConsumptionSummaryTotal()
+            self._Total._deserialize(params.get("Total"))
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ConsumptionRegionSummaryDataItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RecordNum = params.get("RecordNum")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCostSummaryByResourceRequest(AbstractModel):
+    """DescribeCostSummaryByResource request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeginTime: The value must be of the same month as EndTime. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both BeginTime and EndTime are 2018-09, the data returned will be for the entire month of September 2018.
+        :type BeginTime: str
+        :param _EndTime: The value must be of the same month as BeginTime. The query period must start and end on the same month and the query result returned will be of the entire month. For example, if both BeginTime and EndTime are 2018-09, the data returned will be for the entire month of September 2018.
+        :type EndTime: str
+        :param _Limit: Data quantity per fetch. The maximum value is 100.
+        :type Limit: int
+        :param _Offset: Offset, which starts from 0 by default
+        :type Offset: int
+        :param _PayerUin: UIN of the user querying the bill data
+        :type PayerUin: str
+        :param _NeedRecordNum: Whether to return the record count. 0 for no, 1 for yes. Default is no.
+        :type NeedRecordNum: int
+        :param _NeedConditionValue: Whether to return filter criteria. 0 for no, 1 for yes. Default is no.
+        :type NeedConditionValue: int
+        :param _Conditions: Filter criteria. It only supports ResourceKeyword (resource keyword, which supports fuzzy query by resource ID or resource name), ProjectIds (project ID), RegionIds (region ID), PayModes (payment mode, prePay or postPay), HideFreeCost (whether to hide zero-amount transactions, 0 or 1), and OrderByCost (sorting rule by fees, desc or asc).
+        :type Conditions: :class:`tencentcloud.billing.v20180709.models.Conditions`
+        """
+        self._BeginTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Offset = None
+        self._PayerUin = None
+        self._NeedRecordNum = None
+        self._NeedConditionValue = None
+        self._Conditions = None
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def PayerUin(self):
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def NeedRecordNum(self):
+        return self._NeedRecordNum
+
+    @NeedRecordNum.setter
+    def NeedRecordNum(self, NeedRecordNum):
+        self._NeedRecordNum = NeedRecordNum
+
+    @property
+    def NeedConditionValue(self):
+        return self._NeedConditionValue
+
+    @NeedConditionValue.setter
+    def NeedConditionValue(self, NeedConditionValue):
+        self._NeedConditionValue = NeedConditionValue
+
+    @property
+    def Conditions(self):
+        return self._Conditions
+
+    @Conditions.setter
+    def Conditions(self, Conditions):
+        self._Conditions = Conditions
+
+
+    def _deserialize(self, params):
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._PayerUin = params.get("PayerUin")
+        self._NeedRecordNum = params.get("NeedRecordNum")
+        self._NeedConditionValue = params.get("NeedConditionValue")
+        if params.get("Conditions") is not None:
+            self._Conditions = Conditions()
+            self._Conditions._deserialize(params.get("Conditions"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCostSummaryByResourceResponse(AbstractModel):
+    """DescribeCostSummaryByResource response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ready: Data readiness, 0 for not ready, 1 for ready
+        :type Ready: int
+        :param _Total: Consumption detailsNote: This field may return null, indicating that no valid values can be obtained.
+        :type Total: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
+        :param _ConditionValue: Filter criteria
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConditionValue: :class:`tencentcloud.billing.v20180709.models.ConsumptionResourceSummaryConditionValue`
+        :param _RecordNum: Record countNote: This field may return null, indicating that no valid values can be obtained.
+        :type RecordNum: int
+        :param _Data: Resource consumption detailsNote: This field may return null, indicating that no valid values can be obtained.
+        :type Data: list of ConsumptionResourceSummaryDataItem
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Ready = None
+        self._Total = None
+        self._ConditionValue = None
+        self._RecordNum = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Ready(self):
+        return self._Ready
+
+    @Ready.setter
+    def Ready(self, Ready):
+        self._Ready = Ready
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def ConditionValue(self):
+        return self._ConditionValue
+
+    @ConditionValue.setter
+    def ConditionValue(self, ConditionValue):
+        self._ConditionValue = ConditionValue
+
+    @property
+    def RecordNum(self):
+        return self._RecordNum
+
+    @RecordNum.setter
+    def RecordNum(self, RecordNum):
+        self._RecordNum = RecordNum
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Ready = params.get("Ready")
+        if params.get("Total") is not None:
+            self._Total = ConsumptionSummaryTotal()
+            self._Total._deserialize(params.get("Total"))
+        if params.get("ConditionValue") is not None:
+            self._ConditionValue = ConsumptionResourceSummaryConditionValue()
+            self._ConditionValue._deserialize(params.get("ConditionValue"))
+        self._RecordNum = params.get("RecordNum")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ConsumptionResourceSummaryDataItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
