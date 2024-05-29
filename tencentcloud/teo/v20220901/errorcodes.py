@@ -62,7 +62,7 @@ FAILEDOPERATION_CREATECLSLOGTOPICTASKFAILED = 'FailedOperation.CreateClsLogTopic
 # Authentication failed while creating a custom push task. Check whether the push address is correct.
 FAILEDOPERATION_CREATELOGTOPICTASKAUTHFAILURE = 'FailedOperation.CreateLogTopicTaskAuthFailure'
 
-# Insufficient account balance
+# The account balance is insufficient.
 FAILEDOPERATION_INSUFFICIENTACCOUNTBALANCE = 'FailedOperation.InsufficientAccountBalance'
 
 # The site status is invalid.
@@ -290,6 +290,9 @@ INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPETIMEFORMAT = 'InvalidParameter.Invalid
 # Invalid authentication token parameter.
 INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPETIMEPARAM = 'InvalidParameter.InvalidAuthenticationTypeTimeParam'
 
+# The format of automatically used vouchers is incorrect. Enter the correct format.
+INVALIDPARAMETER_INVALIDAUTOUSEVOUCHER = 'InvalidParameter.InvalidAutoUseVoucher'
+
 # Invalid third-party object storage.
 INVALIDPARAMETER_INVALIDAWSPRIVATEACCESS = 'InvalidParameter.InvalidAwsPrivateAccess'
 
@@ -386,13 +389,13 @@ INVALIDPARAMETER_INVALIDINTERVAL = 'InvalidParameter.InvalidInterval'
 # Invalid IPv6 settings.
 INVALIDPARAMETER_INVALIDIPV6SWITCH = 'InvalidParameter.InvalidIpv6Switch'
 
-# 
+# The field separator in the log output format is incorrect.
 INVALIDPARAMETER_INVALIDLOGFORMATFIELDDELIMITER = 'InvalidParameter.InvalidLogFormatFieldDelimiter'
 
-# 
+# The log output format type is incorrect.
 INVALIDPARAMETER_INVALIDLOGFORMATFORMATTYPE = 'InvalidParameter.InvalidLogFormatFormatType'
 
-# 
+# The log record separator in the log output format is incorrect.
 INVALIDPARAMETER_INVALIDLOGFORMATRECORDDELIMITER = 'InvalidParameter.InvalidLogFormatRecordDelimiter'
 
 # Invalid browser cache.
@@ -422,6 +425,12 @@ INVALIDPARAMETER_INVALIDORIGINVALUE = 'InvalidParameter.InvalidOriginValue'
 # Invalid parameter.
 INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
 
+# The plan cycle format is incorrect. Enter the correct format.
+INVALIDPARAMETER_INVALIDPERIOD = 'InvalidParameter.InvalidPeriod'
+
+# The plan type format is incorrect. Enter the correct format.
+INVALIDPARAMETER_INVALIDPLANTYPE = 'InvalidParameter.InvalidPlanType'
+
 # The speciThe plan does not support limiting the max upload size.
 INVALIDPARAMETER_INVALIDPOSTMAXSIZEBILLING = 'InvalidParameter.InvalidPostMaxSizeBilling'
 
@@ -437,8 +446,17 @@ INVALIDPARAMETER_INVALIDPRIVATEACCESSSWITCH = 'InvalidParameter.InvalidPrivateAc
 # The plan does not support QUIC.
 INVALIDPARAMETER_INVALIDQUICBILLING = 'InvalidParameter.InvalidQuicBilling'
 
+# The quota quantity format is incorrect. Enter the correct format.
+INVALIDPARAMETER_INVALIDQUOTANUMBER = 'InvalidParameter.InvalidQuotaNumber'
+
+# The quota type format is incorrect. Enter the correct quota type format.
+INVALIDPARAMETER_INVALIDQUOTATYPE = 'InvalidParameter.InvalidQuotaType'
+
 # Invalid Range GETs.
 INVALIDPARAMETER_INVALIDRANGEORIGINPULL = 'InvalidParameter.InvalidRangeOriginPull'
+
+# The auto-renewal flag format is incorrect. Enter the correct format.
+INVALIDPARAMETER_INVALIDRENEWFLAG = 'InvalidParameter.InvalidRenewFlag'
 
 # Invalid request header.
 INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = 'InvalidParameter.InvalidRequestHeaderName'
@@ -725,6 +743,9 @@ LIMITEXCEEDED = 'LimitExceeded'
 # Reached the upper limit of resource number
 LIMITEXCEEDED_BATCHQUOTA = 'LimitExceeded.BatchQuota'
 
+# 
+LIMITEXCEEDED_CUSTOMLOGFIELDREGEXLIMITEXCEEDED = 'LimitExceeded.CustomLogFieldRegexLimitExceeded'
+
 # Reached the daily upper limit of resource number
 LIMITEXCEEDED_DAILYQUOTA = 'LimitExceeded.DailyQuota'
 
@@ -794,6 +815,15 @@ OPERATIONDENIED_DOMAINNUMBERISNOTZERO = 'OperationDenied.DomainNumberIsNotZero'
 # Some domain names on the site are currently experiencing instability. The stable states for domain names are "online" and "offline".
 OPERATIONDENIED_DOMAINSTATUSUNSTABLE = 'OperationDenied.DomainStatusUnstable'
 
+# The Enterprise Edition Plan does not support auto-renewal.
+OPERATIONDENIED_ENTERPRISEPLANAUTORENEWUNSUPPORTED = 'OperationDenied.EnterprisePlanAutoRenewUnsupported'
+
+# The Enterprise Edition Plan does not support renewal.
+OPERATIONDENIED_ENTERPRISEPLANRENEWUNSUPPORTED = 'OperationDenied.EnterprisePlanRenewUnsupported'
+
+# The Enterprise Edition Plan does not support upgrades.
+OPERATIONDENIED_ENTERPRISEPLANUPGRADEUNSUPPORTED = 'OperationDenied.EnterprisePlanUpgradeUnsupported'
+
 # The site environment is not ready.
 OPERATIONDENIED_ENVNOTREADY = 'OperationDenied.EnvNotReady'
 
@@ -805,6 +835,12 @@ OPERATIONDENIED_INVALIDADVANCEDDEFENSESECURITYTYPE = 'OperationDenied.InvalidAdv
 
 # The acceleration regions of the site must be in the Chinese mainland when you enable the DDoS Protection.
 OPERATIONDENIED_INVALIDADVANCEDDEFENSEZONEAREA = 'OperationDenied.InvalidAdvancedDefenseZoneArea'
+
+# 
+OPERATIONDENIED_IPV6ADVANCEDCONFLICT = 'OperationDenied.Ipv6AdvancedConflict'
+
+# 
+OPERATIONDENIED_IPV6STATICIPCONFLICT = 'OperationDenied.Ipv6StaticIpConflict'
 
 # The layer-4 instance resource sales are skyrocketing and now the resources are sold out. Replenishing is in progress. Currently, new layer-4 proxies cannot be added. Please wait.
 OPERATIONDENIED_L4LACKOFRESOURCES = 'OperationDenied.L4LackOfResources'
@@ -839,6 +875,9 @@ OPERATIONDENIED_LOADBALANCESTATUSNOTINONLINE = 'OperationDenied.LoadBalanceStatu
 # The site status does not support operations on load balancers.
 OPERATIONDENIED_LOADBALANCINGZONEISNOTACTIVE = 'OperationDenied.LoadBalancingZoneIsNotActive'
 
+# 
+OPERATIONDENIED_MSGIPV6ADVANCEDCONFLICT = 'OperationDenied.MsgIpv6AdvancedConflict'
+
 # Unable to switch to NS for multiple sites using CNAME.
 OPERATIONDENIED_MULTIPLECNAMEZONE = 'OperationDenied.MultipleCnameZone'
 
@@ -869,14 +908,32 @@ OPERATIONDENIED_ORIGINGROUPRULEENGINEUSED = 'OperationDenied.OriginGroupRuleEngi
 # Ownership verification failed. Please complete the site ownership verification first.
 OPERATIONDENIED_OWNERSHIPVERIFICATIONNOTPASSED = 'OperationDenied.OwnershipVerificationNotPassed'
 
+# A plan downgrade is not supported.
+OPERATIONDENIED_PLANDOWNGRADENOTALLOWED = 'OperationDenied.PlanDowngradeNotAllowed'
+
+# The plan has expired.
+OPERATIONDENIED_PLANHASBEENEXPIRED = 'OperationDenied.PlanHasBeenExpired'
+
+# The plan has been isolated.
+OPERATIONDENIED_PLANHASBEENISOLATED = 'OperationDenied.PlanHasBeenIsolated'
+
+# This plan does not support the purchase of additional plan quotas.
+OPERATIONDENIED_PLANINCREASEPLANQUOTAUNSUPPORTED = 'OperationDenied.PlanIncreasePlanQuotaUnsupported'
+
 # The specified plan does not support changing the service area of the site.
 OPERATIONDENIED_PLANNOTSUPPORTMODIFYZONEAREA = 'OperationDenied.PlanNotSupportModifyZoneArea'
 
 # This site is using Anycast IP scheduling mode and does not support Cross-MLC-border acceleration. 
 OPERATIONDENIED_PLATTYPEIPACCELERATEMAINLANDNOTSUPPORT = 'OperationDenied.PlatTypeIPAccelerateMainlandNotSupport'
 
+# To create an Enterprise Edition Plan, contact the business personnel.
+OPERATIONDENIED_PLEASECONTACTBUSINESSPERSONNEL = 'OperationDenied.PleaseContactBusinessPersonnel'
+
 # The DNS record cannot be added.
 OPERATIONDENIED_RECORDISFORBIDDEN = 'OperationDenied.RecordIsForbidden'
+
+# Billing resources are in operation. Try again later.
+OPERATIONDENIED_RESOURCEHASBEENLOCKED = 'OperationDenied.ResourceHasBeenLocked'
 
 # This operation conflicts with concurrent operations. Try again later.
 OPERATIONDENIED_RESOURCELOCKEDTEMPORARY = 'OperationDenied.ResourceLockedTemporary'
@@ -886,6 +943,9 @@ OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDACCELERATEMAINLAND = 'OperationDenied.Shar
 
 # The domain name is bound with a shared CNAME and cannot be changed to "IPv6 access". Please unbind the domain name from the shared CNAME first.
 OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDIPV6 = 'OperationDenied.SharedCNAMEUnsupportedIPv6'
+
+# 
+OPERATIONDENIED_STATICIPAREACONFLICT = 'OperationDenied.StaticIpAreaConflict'
 
 # There is a test version in use. Please release the test version to the live environment, or roll back the test version and try again.
 OPERATIONDENIED_VERSIONCONTROLISGRAYING = 'OperationDenied.VersionControlIsGraying'

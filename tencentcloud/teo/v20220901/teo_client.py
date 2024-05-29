@@ -327,6 +327,30 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePlan(self, request):
+        """If you need to use the EdgeOne product, you must create a billing plan through this interface.
+        > After creating a plan, you need to complete the process of creating a site and binding the plan through [CreateZone](https://intl.cloud.tencent.com/document/product/1552/80719?from_cn_redirect=1), so that the EdgeOne can provide services properly.
+
+        :param request: Request instance for CreatePlan.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreatePlanRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreatePlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePlanForZone(self, request):
         """This API is used to purchase a plan for a new site.
 
@@ -1643,6 +1667,36 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DestroyPlan(self, request):
+        """To stop billing for your EdgeOne plan, you can use this interface to terminate the billing plan.
+        > Terminating a billing plan requires the following conditions:
+            1. The plan has expired (except for the Enterprise Edition Plan);
+            2. All sites under the plan have been either shut down or deleted.
+
+        > The site status can be queried through the [Query Site List](https://intl.cloud.tencent.com/document/product/1552/80713?from_cn_redirect=1) interface.
+        A site can be deactivated by switching the site to a closed status through the [Switch Site Status](https://intl.cloud.tencent.com/document/product/1552/80707?from_cn_redirect=1) interface.
+        A site can be deleted by using the [Delete Site](https://intl.cloud.tencent.com/document/product/1552/80717?from_cn_redirect=1) interface.
+
+        :param request: Request instance for DestroyPlan.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DestroyPlanRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DestroyPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.DestroyPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DownloadL4Logs(self, request):
         """This API is used to download L4 logs.
 
@@ -1703,6 +1757,30 @@ class TeoClient(AbstractClient):
             body = self.call("IdentifyZone", params, headers=headers)
             response = json.loads(body)
             model = models.IdentifyZoneResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def IncreasePlanQuota(self, request):
+        """When the number of sites bound to your plan, the number of rules under "Web Protection - Custom Rules - Precision Matching Policy", or the number of rules under "Web Protection - Rate Limiting - Precision Rate Limiting Module" reaches the plan's quota, you can use this interface to purchase additional quotas.
+        > This interface only supports the Enterprise Edition Plan.
+
+        :param request: Request instance for IncreasePlanQuota.
+        :type request: :class:`tencentcloud.teo.v20220901.models.IncreasePlanQuotaRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.IncreasePlanQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("IncreasePlanQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.IncreasePlanQuotaResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2038,6 +2116,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyPlan(self, request):
+        """Modify the plan settings. Currently, only the auto-renewal switch of prepaid plans can be modified.
+
+        :param request: Request instance for ModifyPlan.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyPlanRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyRealtimeLogDeliveryTask(self, request):
         """This API is used to modify the real-time log delivery task configuration. This API has the following restrictions:<li>Does not support modifying the destination type of the real-time log delivery task (TaskType);</li><li>Does not support modifying the data delivery type (LogType)</li><li>Does not support modifying the data delivery area (Area)</li><li>Does not support modifying the detailed destination configuration, such as log set and log topic, when the destination of the original real-time log delivery task is Tencent Cloud CLS.</li>
 
@@ -2190,6 +2291,56 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyZoneStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyZoneStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RenewPlan(self, request):
+        """When your plan needs to be extended, you can use this interface to renew it. Plan renewal is only supported for the Personal, Basic, and Standard Editions.
+        > For cost details, refer to [Plan Fees](https://intl.cloud.tencent.com/document/product/1552/94158?from_cn_redirect=1).
+
+        :param request: Request instance for RenewPlan.
+        :type request: :class:`tencentcloud.teo.v20220901.models.RenewPlanRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.RenewPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradePlan(self, request):
+        """When you need features available only in higher-tier plans, you can upgrade your plan through this interface. Upgrades are only supported for Personal and Basic Edition Plans.
+        > For differences between EdgeOne billing plans, refer to [Comparison of EdgeOne Plans](https://intl.cloud.tencent.com/document/product/1552/94165?from_cn_redirect=1).
+        For EdgeOne plan upgrade rules and pricing details, refer to [EdgeOne Plan Upgrade Guide](https://intl.cloud.tencent.com/document/product/1552/95291?from_cn_redirect=1).
+        If your plan needs to upgrade to the Enterprise Edition, [Contact Us](https://intl.cloud.tencent.com/online?from_cn_redirect=1-service).
+
+        :param request: Request instance for UpgradePlan.
+        :type request: :class:`tencentcloud.teo.v20220901.models.UpgradePlanRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UpgradePlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradePlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradePlanResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
