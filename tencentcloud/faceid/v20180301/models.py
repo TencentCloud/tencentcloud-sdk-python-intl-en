@@ -421,18 +421,25 @@ Default value: 1
 Default value: 4
         :type SecurityLevel: int
         :param _IdCardType: The identity document type. Valid values: 
-1. `HK` (default): Identity card of Hong Kong (China)
-2. `ML`: Malaysian identity card
-3. `IndonesiaIDCard`: Indonesian identity card
-4. `PhilippinesVoteID`: Philippine voters ID card
-5. `PhilippinesDrivingLicense`: Philippine driver's license
-6. `PhilippinesTinID`: Philippine TIN ID card
-7. `PhilippinesSSSID`: Philippine SSS ID card
-8. `PhilippinesUMID`: Philippine UMID card
-9. `MLIDPassport`: Passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions
+1. HK (default): Identity card of Hong Kong (China)
+2. ML: Malaysian identity card
+3. IndonesiaIDCard: Indonesian identity card
+4. PhilippinesVoteID: Philippine voters ID card
+5. PhilippinesDrivingLicense: Philippine driver's license
+6. PhilippinesTinID: Philippine TIN ID card
+7. PhilippinesSSSID: Philippine SSS ID card
+8. PhilippinesUMID: Philippine UMID card
+9. MLIDPassport: Passport issued in Hong Kong/Macao/Taiwan (China) or other countries/regions
 10..MacaoIDCard: Macao ID Card
 11.ThailandIDCard: Thailand ID Card
 12.MainlandIDCard: Mainland ID Card
+13.SingaporeIDCard: Singapore ID Card
+14.JapanIDCard: Japan ID Card
+15.MLDrivingLicense: Malaysian Driving License
+16.IndonesiaDrivingLicense: Indonesia Driving License
+17.ThailandDrivingLicense: Thailand Driving License
+18.SingaporeDrivingLicense: Singapore Driving License
+19.JapanDrivingLicense: Japan Driving License
         :type IdCardType: str
         :param _CompareImage: The Base64-encoded value of the photo to compare, which is required only when `CheckMode` is set to `2`.
         :type CompareImage: str
