@@ -689,6 +689,15 @@ INVALIDPARAMETERVALUE_CONTENTSAMEASNAME = 'InvalidParameterValue.ContentSameAsNa
 # The specified domain name does not match the site. 
 INVALIDPARAMETERVALUE_DOMAINNOTMATCHZONE = 'InvalidParameterValue.DomainNotMatchZone'
 
+# 
+INVALIDPARAMETERVALUE_FORMATMISMATCH = 'InvalidParameterValue.FormatMismatch'
+
+# 
+INVALIDPARAMETERVALUE_GENERALMISMATCH = 'InvalidParameterValue.GeneralMismatch'
+
+# 
+INVALIDPARAMETERVALUE_INCLUDEINVALIDVALUE = 'InvalidParameterValue.IncludeInvalidValue'
+
 # The alias domain name is invalid. It must contain numerics, English characters, and hyphens, but hyphen is not allowed at the beginning or the end.
 INVALIDPARAMETERVALUE_INVALIDALIASDOMAINNAME = 'InvalidParameterValue.InvalidAliasDomainName'
 
@@ -713,17 +722,32 @@ INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = 'InvalidParameterValue.InvalidProxyOr
 # The tag value contains invalid characters.
 INVALIDPARAMETERVALUE_INVALIDTAGVALUE = 'InvalidParameterValue.InvalidTagValue'
 
+# 
+INVALIDPARAMETERVALUE_MISSINGNECESSARYPARAM = 'InvalidParameterValue.MissingNecessaryParam'
+
 # Wildcard domain CNAMEs are not supported.
 INVALIDPARAMETERVALUE_NOTALLOWEDWILDCARDSHAREDCNAME = 'InvalidParameterValue.NotAllowedWildcardSharedCNAME'
 
+# 
+INVALIDPARAMETERVALUE_NOTINENUMERATION = 'InvalidParameterValue.NotInEnumeration'
+
+# 
+INVALIDPARAMETERVALUE_NOTWITHINRANGE = 'InvalidParameterValue.NotWithinRange'
+
 # The specified origin group does not exist.
 INVALIDPARAMETERVALUE_ORIGINGROUPNOTEXISTS = 'InvalidParameterValue.OriginGroupNotExists'
+
+# 
+INVALIDPARAMETERVALUE_REGEXMISMATCH = 'InvalidParameterValue.RegExMismatch'
 
 # Enter a valid shared CNAME prefix of up to 50 characters.
 INVALIDPARAMETERVALUE_SHAREDCNAMEPREFIXNOTMATCH = 'InvalidParameterValue.SharedCNAMEPrefixNotMatch'
 
 # The current domain suffix is not supported for access. Please contact us if you need to use it.
 INVALIDPARAMETERVALUE_TOPLEVELDOMAINNOTSUPPORT = 'InvalidParameterValue.TopLevelDomainNotSupport'
+
+# 
+INVALIDPARAMETERVALUE_UNRECOGNIZABLEVALUE = 'InvalidParameterValue.UnrecognizableValue'
 
 # The zone name format is incorrect. Please input a correctly formed domain name.
 INVALIDPARAMETERVALUE_ZONENAMEINVALID = 'InvalidParameterValue.ZoneNameInvalid'
@@ -743,7 +767,7 @@ LIMITEXCEEDED = 'LimitExceeded'
 # Reached the upper limit of resource number
 LIMITEXCEEDED_BATCHQUOTA = 'LimitExceeded.BatchQuota'
 
-# 
+# The number of regular expression type fields in real-time log custom fields exceeds the limit.
 LIMITEXCEEDED_CUSTOMLOGFIELDREGEXLIMITEXCEEDED = 'LimitExceeded.CustomLogFieldRegexLimitExceeded'
 
 # Reached the daily upper limit of resource number
@@ -836,10 +860,10 @@ OPERATIONDENIED_INVALIDADVANCEDDEFENSESECURITYTYPE = 'OperationDenied.InvalidAdv
 # The acceleration regions of the site must be in the Chinese mainland when you enable the DDoS Protection.
 OPERATIONDENIED_INVALIDADVANCEDDEFENSEZONEAREA = 'OperationDenied.InvalidAdvancedDefenseZoneArea'
 
-# 
+# Exclusive DDoS protection conflicts with IPv6. They cannot be configured at the same time.
 OPERATIONDENIED_IPV6ADVANCEDCONFLICT = 'OperationDenied.Ipv6AdvancedConflict'
 
-# 
+# The IPv6 feature and static IP cannot be enabled at the same time.
 OPERATIONDENIED_IPV6STATICIPCONFLICT = 'OperationDenied.Ipv6StaticIpConflict'
 
 # The layer-4 instance resource sales are skyrocketing and now the resources are sold out. Replenishing is in progress. Currently, new layer-4 proxies cannot be added. Please wait.
@@ -875,7 +899,7 @@ OPERATIONDENIED_LOADBALANCESTATUSNOTINONLINE = 'OperationDenied.LoadBalanceStatu
 # The site status does not support operations on load balancers.
 OPERATIONDENIED_LOADBALANCINGZONEISNOTACTIVE = 'OperationDenied.LoadBalancingZoneIsNotActive'
 
-# 
+# IPv6 cannot be enabled for non-overseas exclusive protection.
 OPERATIONDENIED_MSGIPV6ADVANCEDCONFLICT = 'OperationDenied.MsgIpv6AdvancedConflict'
 
 # Unable to switch to NS for multiple sites using CNAME.
@@ -944,7 +968,7 @@ OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDACCELERATEMAINLAND = 'OperationDenied.Shar
 # The domain name is bound with a shared CNAME and cannot be changed to "IPv6 access". Please unbind the domain name from the shared CNAME first.
 OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDIPV6 = 'OperationDenied.SharedCNAMEUnsupportedIPv6'
 
-# 
+# The static IP cannot be enabled for this instance's region.
 OPERATIONDENIED_STATICIPAREACONFLICT = 'OperationDenied.StaticIpAreaConflict'
 
 # There is a test version in use. Please release the test version to the live environment, or roll back the test version and try again.

@@ -1460,8 +1460,34 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSecurityIPGroup(self, request):
+        """This API is used to query the configuration information of a security IP group, including the ID, name, and content of the security IP group.
+
+        :param request: Request instance for DescribeSecurityIPGroup.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityIPGroupRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityIPGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityIPGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityIPGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSecurityIPGroupInfo(self, request):
-        """This API is used to query the configuration information of an IP group, including the IP group name, IP group content, and the site the IP group belongs to.
+        """The API is deprecated and will be discontinued on June 30, 2024. Please use the API [DescribeSecurityIPGroup
+        ](https://intl.cloud.tencent.com/document/product/1552/105866?from_cn_redirect=1).
+
+        This API is used to query the configuration information of an IP group, including the IP group name, IP group content, and the site the IP group belongs to.
 
         :param request: Request instance for DescribeSecurityIPGroupInfo.
         :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSecurityIPGroupInfoRequest`
