@@ -258,6 +258,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCustomizeErrorPage(self, request):
+        """This API is used to create a custom response page.
+
+        :param request: Request instance for CreateCustomizeErrorPage.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateCustomizeErrorPageRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateCustomizeErrorPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCustomizeErrorPage", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCustomizeErrorPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateL4Proxy(self, request):
         """This API is used to create Layer 4 proxy instances.
 
@@ -623,6 +646,29 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteApplicationProxyRule", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteApplicationProxyRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCustomErrorPage(self, request):
+        """This API is used to delete a custom response page.
+
+        :param request: Request instance for DeleteCustomErrorPage.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteCustomErrorPageRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteCustomErrorPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCustomErrorPage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCustomErrorPageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1014,6 +1060,29 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeContentQuota", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeContentQuotaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCustomErrorPages(self, request):
+        """This API is used to query the custom response page list.
+
+        :param request: Request instance for DescribeCustomErrorPages.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeCustomErrorPagesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeCustomErrorPagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomErrorPages", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomErrorPagesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1993,6 +2062,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyApplicationProxyStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyApplicationProxyStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCustomErrorPage(self, request):
+        """This API is used to modify a custom response page.
+
+        :param request: Request instance for ModifyCustomErrorPage.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyCustomErrorPageRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyCustomErrorPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCustomErrorPage", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCustomErrorPageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

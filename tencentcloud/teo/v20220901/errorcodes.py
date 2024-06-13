@@ -686,16 +686,19 @@ INVALIDPARAMETERVALUE_CONFLICTWITHNSRECORD = 'InvalidParameterValue.ConflictWith
 # The host record cannot be the same as the record value.
 INVALIDPARAMETERVALUE_CONTENTSAMEASNAME = 'InvalidParameterValue.ContentSameAsName'
 
+# The page content does not match the Content-Type.
+INVALIDPARAMETERVALUE_CONTENTTYPENOTMATCH = 'InvalidParameterValue.ContentTypeNotMatch'
+
 # The specified domain name does not match the site. 
 INVALIDPARAMETERVALUE_DOMAINNOTMATCHZONE = 'InvalidParameterValue.DomainNotMatchZone'
 
-# 
+# Format mismatch.
 INVALIDPARAMETERVALUE_FORMATMISMATCH = 'InvalidParameterValue.FormatMismatch'
 
-# 
+# Configuration parameter format mismatch.
 INVALIDPARAMETERVALUE_GENERALMISMATCH = 'InvalidParameterValue.GeneralMismatch'
 
-# 
+# Contains invalid value.
 INVALIDPARAMETERVALUE_INCLUDEINVALIDVALUE = 'InvalidParameterValue.IncludeInvalidValue'
 
 # The alias domain name is invalid. It must contain numerics, English characters, and hyphens, but hyphen is not allowed at the beginning or the end.
@@ -722,22 +725,25 @@ INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = 'InvalidParameterValue.InvalidProxyOr
 # The tag value contains invalid characters.
 INVALIDPARAMETERVALUE_INVALIDTAGVALUE = 'InvalidParameterValue.InvalidTagValue'
 
-# 
+# Missing required configuration parameters.
 INVALIDPARAMETERVALUE_MISSINGNECESSARYPARAM = 'InvalidParameterValue.MissingNecessaryParam'
 
 # Wildcard domain CNAMEs are not supported.
 INVALIDPARAMETERVALUE_NOTALLOWEDWILDCARDSHAREDCNAME = 'InvalidParameterValue.NotAllowedWildcardSharedCNAME'
 
-# 
+# The value is not within the required collection.
 INVALIDPARAMETERVALUE_NOTINENUMERATION = 'InvalidParameterValue.NotInEnumeration'
 
-# 
+# The value is not within the specified range.
 INVALIDPARAMETERVALUE_NOTWITHINRANGE = 'InvalidParameterValue.NotWithinRange'
 
 # The specified origin group does not exist.
 INVALIDPARAMETERVALUE_ORIGINGROUPNOTEXISTS = 'InvalidParameterValue.OriginGroupNotExists'
 
-# 
+# The page name already exists.
+INVALIDPARAMETERVALUE_PAGENAMEALREADYEXIST = 'InvalidParameterValue.PageNameAlreadyExist'
+
+# Does not match the specified regular expression.
 INVALIDPARAMETERVALUE_REGEXMISMATCH = 'InvalidParameterValue.RegExMismatch'
 
 # Enter a valid shared CNAME prefix of up to 50 characters.
@@ -746,7 +752,7 @@ INVALIDPARAMETERVALUE_SHAREDCNAMEPREFIXNOTMATCH = 'InvalidParameterValue.SharedC
 # The current domain suffix is not supported for access. Please contact us if you need to use it.
 INVALIDPARAMETERVALUE_TOPLEVELDOMAINNOTSUPPORT = 'InvalidParameterValue.TopLevelDomainNotSupport'
 
-# 
+# Configuration item error.
 INVALIDPARAMETERVALUE_UNRECOGNIZABLEVALUE = 'InvalidParameterValue.UnrecognizableValue'
 
 # The zone name format is incorrect. Please input a correctly formed domain name.

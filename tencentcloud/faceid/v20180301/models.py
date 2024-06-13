@@ -4690,9 +4690,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _MacaoIDCard: Macao ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MacaoIDCard: :class:`tencentcloud.faceid.v20180301.models.MacaoIDCard`
-        :param _MainlandIDCard: Mainland ID Card
-Note: This field may return null, indicating that no valid values can be obtained.
-        :type MainlandIDCard: :class:`tencentcloud.faceid.v20180301.models.MainlandIDCard`
         """
         self._HKIDCard = None
         self._MLIDCard = None
@@ -4708,7 +4705,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ThailandIDCard = None
         self._SingaporeIDCard = None
         self._MacaoIDCard = None
-        self._MainlandIDCard = None
 
     @property
     def HKIDCard(self):
@@ -4822,14 +4818,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def MacaoIDCard(self, MacaoIDCard):
         self._MacaoIDCard = MacaoIDCard
 
-    @property
-    def MainlandIDCard(self):
-        return self._MainlandIDCard
-
-    @MainlandIDCard.setter
-    def MainlandIDCard(self, MainlandIDCard):
-        self._MainlandIDCard = MainlandIDCard
-
 
     def _deserialize(self, params):
         if params.get("HKIDCard") is not None:
@@ -4874,9 +4862,6 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("MacaoIDCard") is not None:
             self._MacaoIDCard = MacaoIDCard()
             self._MacaoIDCard._deserialize(params.get("MacaoIDCard"))
-        if params.get("MainlandIDCard") is not None:
-            self._MainlandIDCard = MainlandIDCard()
-            self._MainlandIDCard._deserialize(params.get("MainlandIDCard"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6234,25 +6219,37 @@ class SingaporeIDCard(AbstractModel):
         :param _ChName: Chinese name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ChName: str
+        :param _ChineseName: Chinese name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ChineseName: str
         :param _EnName: English name
 Note: This field may return null, indicating that no valid values can be obtained.
         :type EnName: str
+        :param _FullName: English name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FullName: str
         :param _ID: License number
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ID: str
+        :param _LicenseNumber: License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LicenseNumber: str
         :param _Sex: Gender
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Sex: str
         :param _CountryOfBirth: Country of birth
 Note: This field may return null, indicating that no valid values can be obtained.
         :type CountryOfBirth: str
+        :param _Nationality: Nationality
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Nationality: str
         :param _Birthday: Birthday
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Birthday: str
         :param _Address: Address (on the back)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Address: str
-        :param _Race: Nationality (on the back)
+        :param _Race: Race (on the back)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Race: str
         :param _NRICCode:  NRIC number (on the back)
@@ -6269,10 +6266,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type DateOfIssue: str
         """
         self._ChName = None
+        self._ChineseName = None
         self._EnName = None
+        self._FullName = None
         self._ID = None
+        self._LicenseNumber = None
         self._Sex = None
         self._CountryOfBirth = None
+        self._Nationality = None
         self._Birthday = None
         self._Address = None
         self._Race = None
@@ -6283,27 +6284,63 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChName(self):
+        warnings.warn("parameter `ChName` is deprecated", DeprecationWarning) 
+
         return self._ChName
 
     @ChName.setter
     def ChName(self, ChName):
+        warnings.warn("parameter `ChName` is deprecated", DeprecationWarning) 
+
         self._ChName = ChName
 
     @property
+    def ChineseName(self):
+        return self._ChineseName
+
+    @ChineseName.setter
+    def ChineseName(self, ChineseName):
+        self._ChineseName = ChineseName
+
+    @property
     def EnName(self):
+        warnings.warn("parameter `EnName` is deprecated", DeprecationWarning) 
+
         return self._EnName
 
     @EnName.setter
     def EnName(self, EnName):
+        warnings.warn("parameter `EnName` is deprecated", DeprecationWarning) 
+
         self._EnName = EnName
 
     @property
+    def FullName(self):
+        return self._FullName
+
+    @FullName.setter
+    def FullName(self, FullName):
+        self._FullName = FullName
+
+    @property
     def ID(self):
+        warnings.warn("parameter `ID` is deprecated", DeprecationWarning) 
+
         return self._ID
 
     @ID.setter
     def ID(self, ID):
+        warnings.warn("parameter `ID` is deprecated", DeprecationWarning) 
+
         self._ID = ID
+
+    @property
+    def LicenseNumber(self):
+        return self._LicenseNumber
+
+    @LicenseNumber.setter
+    def LicenseNumber(self, LicenseNumber):
+        self._LicenseNumber = LicenseNumber
 
     @property
     def Sex(self):
@@ -6315,11 +6352,23 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CountryOfBirth(self):
+        warnings.warn("parameter `CountryOfBirth` is deprecated", DeprecationWarning) 
+
         return self._CountryOfBirth
 
     @CountryOfBirth.setter
     def CountryOfBirth(self, CountryOfBirth):
+        warnings.warn("parameter `CountryOfBirth` is deprecated", DeprecationWarning) 
+
         self._CountryOfBirth = CountryOfBirth
+
+    @property
+    def Nationality(self):
+        return self._Nationality
+
+    @Nationality.setter
+    def Nationality(self, Nationality):
+        self._Nationality = Nationality
 
     @property
     def Birthday(self):
@@ -6380,10 +6429,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     def _deserialize(self, params):
         self._ChName = params.get("ChName")
+        self._ChineseName = params.get("ChineseName")
         self._EnName = params.get("EnName")
+        self._FullName = params.get("FullName")
         self._ID = params.get("ID")
+        self._LicenseNumber = params.get("LicenseNumber")
         self._Sex = params.get("Sex")
         self._CountryOfBirth = params.get("CountryOfBirth")
+        self._Nationality = params.get("Nationality")
         self._Birthday = params.get("Birthday")
         self._Address = params.get("Address")
         self._Race = params.get("Race")
