@@ -77,7 +77,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeBillDetail(self, request):
-        """This API is used to query the customer bill details.
+        """This API is used to query bill details by customers.
 
         :param request: Request instance for DescribeBillDetail.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeBillDetailRequest`
@@ -215,7 +215,7 @@ class IntlpartnersmgtClient(AbstractClient):
 
 
     def DescribeCustomerBillDetail(self, request):
-        """This API is used to query the customer bill details.
+        """This API is used to query the customer bill details by resellers.
 
         :param request: Request instance for DescribeCustomerBillDetail.
         :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.DescribeCustomerBillDetailRequest`

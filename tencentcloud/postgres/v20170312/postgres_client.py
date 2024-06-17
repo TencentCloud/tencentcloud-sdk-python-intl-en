@@ -119,7 +119,7 @@ class PostgresClient(AbstractClient):
 
 
     def CreateBaseBackup(self, request):
-        """This API is used to create a full backup of an instance.
+        """This API is used to create a data backup of an instance.
 
         :param request: Request instance for CreateBaseBackup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateBaseBackupRequest`
@@ -188,9 +188,9 @@ class PostgresClient(AbstractClient):
 
 
     def CreateInstances(self, request):
-        """This API is used to create and initialize one or more TencentDB for PostgreSQL instances.
-        <li>After an instance is created successfully, it will start up automatically and enter the "Running" status.
-        <li>If you create a monthly subscribed instance, you will be billed for the instance before the creation; if you create a pay-as-you-go instance billed on an hourly basis, the amount equivalent to the hourly rate will be frozen before the creation. Make sure your account balance is sufficient before calling this API.
+        """This API is used to create one or more PostgreSQL instances. Instances created through this interface do not need to be initialized and can be used directly.
+        <li>After an instance is successfully created, it will automatically start up, and its status changes to "Running".</li>
+        <li>For prepaid instances, the required amount for the instance purchase will be deducted in advance. For post-paid hourly instances, the amount required for the purchase within the first hour will be temporarily frozen. Please ensure that your account balance is sufficient before calling this interface.</li>
 
         :param request: Request instance for CreateInstances.
         :type request: :class:`tencentcloud.postgres.v20170312.models.CreateInstancesRequest`
@@ -328,7 +328,7 @@ class PostgresClient(AbstractClient):
 
 
     def DeleteBaseBackup(self, request):
-        """This API is used to delete the specified full backup of an instance.
+        """This API is used to delete a specified data backup for an instance.
 
         :param request: Request instance for DeleteBaseBackup.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteBaseBackupRequest`
@@ -650,7 +650,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeBaseBackups(self, request):
-        """This API is used to query the list of full backups.
+        """This API is used to query the list of data backups.
 
         :param request: Request instance for DescribeBaseBackups.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeBaseBackupsRequest`
@@ -928,7 +928,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBXlogs(self, request):
-        """This API is used to get the instance Xlog list. This API is disused and replaced by the [DescribeBaseBackups](https://intl.cloud.tencent.com/document/api/409/89022?from_cn_redirect=1) API.
+        """This API is used to get the instance Xlog list. This API is disused and replaced by the [DescribeBaseBackups](https://www.tencentcloud.com/zh/document/product/409/54343) API.
 
         :param request: Request instance for DescribeDBXlogs.
         :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBXlogsRequest`
@@ -1526,7 +1526,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyBaseBackupExpireTime(self, request):
-        """This API is used to modify the specified expiration time of a full backup for an instance.
+        """This API is used to modify the expiration time of a specified data backup for an instance.
 
         :param request: Request instance for ModifyBaseBackupExpireTime.
         :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyBaseBackupExpireTimeRequest`
@@ -1987,6 +1987,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RestoreDBInstanceObjects(self, request):
+        """This API is used to recover database-related objects such as databases and tables on the original instance based on the backup set or recovery target time.
+
+        :param request: Request instance for RestoreDBInstanceObjects.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.RestoreDBInstanceObjectsRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.RestoreDBInstanceObjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestoreDBInstanceObjects", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestoreDBInstanceObjectsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SetAutoRenewFlag(self, request):
         """This API is used to set auto-renewal.
 
@@ -2073,6 +2096,29 @@ class PostgresClient(AbstractClient):
             body = self.call("UpgradeDBInstanceKernelVersion", params, headers=headers)
             response = json.loads(body)
             model = models.UpgradeDBInstanceKernelVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradeDBInstanceMajorVersion(self, request):
+        """This API is used to upgrade the major kernel version of an instance, for example, from PostgreSQL 12 to PostgreSQL 15.
+
+        :param request: Request instance for UpgradeDBInstanceMajorVersion.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceMajorVersionRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.UpgradeDBInstanceMajorVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeDBInstanceMajorVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeDBInstanceMajorVersionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
