@@ -64,6 +64,34 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 `chs2eng`: Chinese speech to English text. 
 `chs2chseng`: Chinese speech to Chinese and English text.
         :type SubtitleConfiguration: str
+        :param _FaceBlurringEnabled: Whether to enable the face blur function, 1 is on, 0 is off, and the default is 0.
+        :type FaceBlurringEnabled: int
+        :param _AudioSelectorName: Only AttachedInputs.AudioSelectors.Name can be selected. The following types need to be filled in: 'RTP_PUSH', 'SRT_PUSH', 'UDP_PUSH', 'RTP-FEC_PUSH'.
+        :type AudioSelectorName: str
+        :param _AudioNormalization: Audio transcoding special configuration information.
+        :type AudioNormalization: :class:`tencentcloud.mdl.v20200326.models.AudioNormalizationSettings`
+        :param _AudioSampleRate: Audio sampling rate, unit HZ.
+        :type AudioSampleRate: int
+        :param _FrameRateType: This field indicates how to specify the output video frame rate. If FOLLOW_SOURCE is selected, the output video frame rate will be set equal to the input video frame rate of the first input. If SPECIFIED_FRACTION is selected, the output video frame rate is determined by the fraction (frame rate numerator and frame rate denominator). If SPECIFIED_HZ is selected, the frame rate of the output video is determined by the HZ you enter.
+        :type FrameRateType: str
+        :param _FrameRateNumerator: Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate numerator setting.
+        :type FrameRateNumerator: int
+        :param _FrameRateDenominator: Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate denominator setting.
+        :type FrameRateDenominator: int
+        :param _BFramesNum: The number of B frames can be selected from 1 to 3.
+        :type BFramesNum: int
+        :param _RefFramesNum: The number of reference frames can be selected from 1 to 16.
+        :type RefFramesNum: int
+        :param _AdditionalRateSettings: Additional video bitrate configuration.
+        :type AdditionalRateSettings: :class:`tencentcloud.mdl.v20200326.models.AdditionalRateSetting`
+        :param _VideoCodecDetails: Video encoding configuration.
+        :type VideoCodecDetails: :class:`tencentcloud.mdl.v20200326.models.VideoCodecDetail`
+        :param _AudioCodecDetails: Audio encoding configuration.
+        :type AudioCodecDetails: :class:`tencentcloud.mdl.v20200326.models.AudioCodecDetail`
+        :param _MultiAudioTrackEnabled: Whether to enable multiple audio tracks 0: Not required 1: Required Default value 0.
+        :type MultiAudioTrackEnabled: int
+        :param _AudioTracks: Quantity limit 0-20 Valid when MultiAudioTrackEnabled is turned on.
+        :type AudioTracks: list of AudioTrackInfo
         """
         self._Name = None
         self._NeedVideo = None
@@ -81,6 +109,20 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         self._WatermarkId = None
         self._SmartSubtitles = None
         self._SubtitleConfiguration = None
+        self._FaceBlurringEnabled = None
+        self._AudioSelectorName = None
+        self._AudioNormalization = None
+        self._AudioSampleRate = None
+        self._FrameRateType = None
+        self._FrameRateNumerator = None
+        self._FrameRateDenominator = None
+        self._BFramesNum = None
+        self._RefFramesNum = None
+        self._AdditionalRateSettings = None
+        self._VideoCodecDetails = None
+        self._AudioCodecDetails = None
+        self._MultiAudioTrackEnabled = None
+        self._AudioTracks = None
 
     @property
     def Name(self):
@@ -210,6 +252,118 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
     def SubtitleConfiguration(self, SubtitleConfiguration):
         self._SubtitleConfiguration = SubtitleConfiguration
 
+    @property
+    def FaceBlurringEnabled(self):
+        return self._FaceBlurringEnabled
+
+    @FaceBlurringEnabled.setter
+    def FaceBlurringEnabled(self, FaceBlurringEnabled):
+        self._FaceBlurringEnabled = FaceBlurringEnabled
+
+    @property
+    def AudioSelectorName(self):
+        return self._AudioSelectorName
+
+    @AudioSelectorName.setter
+    def AudioSelectorName(self, AudioSelectorName):
+        self._AudioSelectorName = AudioSelectorName
+
+    @property
+    def AudioNormalization(self):
+        return self._AudioNormalization
+
+    @AudioNormalization.setter
+    def AudioNormalization(self, AudioNormalization):
+        self._AudioNormalization = AudioNormalization
+
+    @property
+    def AudioSampleRate(self):
+        return self._AudioSampleRate
+
+    @AudioSampleRate.setter
+    def AudioSampleRate(self, AudioSampleRate):
+        self._AudioSampleRate = AudioSampleRate
+
+    @property
+    def FrameRateType(self):
+        return self._FrameRateType
+
+    @FrameRateType.setter
+    def FrameRateType(self, FrameRateType):
+        self._FrameRateType = FrameRateType
+
+    @property
+    def FrameRateNumerator(self):
+        return self._FrameRateNumerator
+
+    @FrameRateNumerator.setter
+    def FrameRateNumerator(self, FrameRateNumerator):
+        self._FrameRateNumerator = FrameRateNumerator
+
+    @property
+    def FrameRateDenominator(self):
+        return self._FrameRateDenominator
+
+    @FrameRateDenominator.setter
+    def FrameRateDenominator(self, FrameRateDenominator):
+        self._FrameRateDenominator = FrameRateDenominator
+
+    @property
+    def BFramesNum(self):
+        return self._BFramesNum
+
+    @BFramesNum.setter
+    def BFramesNum(self, BFramesNum):
+        self._BFramesNum = BFramesNum
+
+    @property
+    def RefFramesNum(self):
+        return self._RefFramesNum
+
+    @RefFramesNum.setter
+    def RefFramesNum(self, RefFramesNum):
+        self._RefFramesNum = RefFramesNum
+
+    @property
+    def AdditionalRateSettings(self):
+        return self._AdditionalRateSettings
+
+    @AdditionalRateSettings.setter
+    def AdditionalRateSettings(self, AdditionalRateSettings):
+        self._AdditionalRateSettings = AdditionalRateSettings
+
+    @property
+    def VideoCodecDetails(self):
+        return self._VideoCodecDetails
+
+    @VideoCodecDetails.setter
+    def VideoCodecDetails(self, VideoCodecDetails):
+        self._VideoCodecDetails = VideoCodecDetails
+
+    @property
+    def AudioCodecDetails(self):
+        return self._AudioCodecDetails
+
+    @AudioCodecDetails.setter
+    def AudioCodecDetails(self, AudioCodecDetails):
+        self._AudioCodecDetails = AudioCodecDetails
+
+    @property
+    def MultiAudioTrackEnabled(self):
+        return self._MultiAudioTrackEnabled
+
+    @MultiAudioTrackEnabled.setter
+    def MultiAudioTrackEnabled(self, MultiAudioTrackEnabled):
+        self._MultiAudioTrackEnabled = MultiAudioTrackEnabled
+
+    @property
+    def AudioTracks(self):
+        return self._AudioTracks
+
+    @AudioTracks.setter
+    def AudioTracks(self, AudioTracks):
+        self._AudioTracks = AudioTracks
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -228,6 +382,90 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         self._WatermarkId = params.get("WatermarkId")
         self._SmartSubtitles = params.get("SmartSubtitles")
         self._SubtitleConfiguration = params.get("SubtitleConfiguration")
+        self._FaceBlurringEnabled = params.get("FaceBlurringEnabled")
+        self._AudioSelectorName = params.get("AudioSelectorName")
+        if params.get("AudioNormalization") is not None:
+            self._AudioNormalization = AudioNormalizationSettings()
+            self._AudioNormalization._deserialize(params.get("AudioNormalization"))
+        self._AudioSampleRate = params.get("AudioSampleRate")
+        self._FrameRateType = params.get("FrameRateType")
+        self._FrameRateNumerator = params.get("FrameRateNumerator")
+        self._FrameRateDenominator = params.get("FrameRateDenominator")
+        self._BFramesNum = params.get("BFramesNum")
+        self._RefFramesNum = params.get("RefFramesNum")
+        if params.get("AdditionalRateSettings") is not None:
+            self._AdditionalRateSettings = AdditionalRateSetting()
+            self._AdditionalRateSettings._deserialize(params.get("AdditionalRateSettings"))
+        if params.get("VideoCodecDetails") is not None:
+            self._VideoCodecDetails = VideoCodecDetail()
+            self._VideoCodecDetails._deserialize(params.get("VideoCodecDetails"))
+        if params.get("AudioCodecDetails") is not None:
+            self._AudioCodecDetails = AudioCodecDetail()
+            self._AudioCodecDetails._deserialize(params.get("AudioCodecDetails"))
+        self._MultiAudioTrackEnabled = params.get("MultiAudioTrackEnabled")
+        if params.get("AudioTracks") is not None:
+            self._AudioTracks = []
+            for item in params.get("AudioTracks"):
+                obj = AudioTrackInfo()
+                obj._deserialize(item)
+                self._AudioTracks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AdditionalRateSetting(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoMaxBitrate: The maximum bit rate in a VBR scenario must be a multiple of 1000 and between 50000 - 40000000.
+        :type VideoMaxBitrate: int
+        :param _BufferSize: Cache configuration supports configuring a Max Bitrate value of 1-4 times.
+        :type BufferSize: int
+        :param _QualityLevel: VBR scene is valid, video quality level, only supports user input numbers between 1-51.
+        :type QualityLevel: int
+        """
+        self._VideoMaxBitrate = None
+        self._BufferSize = None
+        self._QualityLevel = None
+
+    @property
+    def VideoMaxBitrate(self):
+        return self._VideoMaxBitrate
+
+    @VideoMaxBitrate.setter
+    def VideoMaxBitrate(self, VideoMaxBitrate):
+        self._VideoMaxBitrate = VideoMaxBitrate
+
+    @property
+    def BufferSize(self):
+        return self._BufferSize
+
+    @BufferSize.setter
+    def BufferSize(self, BufferSize):
+        self._BufferSize = BufferSize
+
+    @property
+    def QualityLevel(self):
+        return self._QualityLevel
+
+    @QualityLevel.setter
+    def QualityLevel(self, QualityLevel):
+        self._QualityLevel = QualityLevel
+
+
+    def _deserialize(self, params):
+        self._VideoMaxBitrate = params.get("VideoMaxBitrate")
+        self._BufferSize = params.get("BufferSize")
+        self._QualityLevel = params.get("QualityLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -307,6 +545,96 @@ Note: this field may return `null`, indicating that no valid value was found.
         if params.get("FailOverSettings") is not None:
             self._FailOverSettings = FailOverSettings()
             self._FailOverSettings._deserialize(params.get("FailOverSettings"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioCodecDetail(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelMode: Channel configuration, optional values: MONO (mono), STEREO (two-channel), 5.1 (surround).
+        :type ChannelMode: str
+        :param _Profile: Level in aac case, optional values: "LC" "HE-AAC" "HE-AACV2".
+        :type Profile: str
+        """
+        self._ChannelMode = None
+        self._Profile = None
+
+    @property
+    def ChannelMode(self):
+        return self._ChannelMode
+
+    @ChannelMode.setter
+    def ChannelMode(self, ChannelMode):
+        self._ChannelMode = ChannelMode
+
+    @property
+    def Profile(self):
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+
+    def _deserialize(self, params):
+        self._ChannelMode = params.get("ChannelMode")
+        self._Profile = params.get("Profile")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioNormalizationSettings(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioNormalizationEnabled: 
+        :type AudioNormalizationEnabled: int
+        :param _TargetLUFS: 
+        :type TargetLUFS: float
+        """
+        self._AudioNormalizationEnabled = None
+        self._TargetLUFS = None
+
+    @property
+    def AudioNormalizationEnabled(self):
+        return self._AudioNormalizationEnabled
+
+    @AudioNormalizationEnabled.setter
+    def AudioNormalizationEnabled(self, AudioNormalizationEnabled):
+        self._AudioNormalizationEnabled = AudioNormalizationEnabled
+
+    @property
+    def TargetLUFS(self):
+        return self._TargetLUFS
+
+    @TargetLUFS.setter
+    def TargetLUFS(self, TargetLUFS):
+        self._TargetLUFS = TargetLUFS
+
+
+    def _deserialize(self, params):
+        self._AudioNormalizationEnabled = params.get("AudioNormalizationEnabled")
+        self._TargetLUFS = params.get("TargetLUFS")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -418,9 +746,15 @@ class AudioSelectorInfo(AbstractModel):
         :type Name: str
         :param _AudioPidSelection: Audio `Pid` selection.
         :type AudioPidSelection: :class:`tencentcloud.mdl.v20200326.models.AudioPidSelectionInfo`
+        :param _AudioSelectorType: Audio input type, optional values: 'PID_SELECTOR' 'TRACK_SELECTOR', default value PID_SELECTOR.
+        :type AudioSelectorType: str
+        :param _AudioTrackSelection: AudioTrack configuration.
+        :type AudioTrackSelection: :class:`tencentcloud.mdl.v20200326.models.InputTracks`
         """
         self._Name = None
         self._AudioPidSelection = None
+        self._AudioSelectorType = None
+        self._AudioTrackSelection = None
 
     @property
     def Name(self):
@@ -438,12 +772,32 @@ class AudioSelectorInfo(AbstractModel):
     def AudioPidSelection(self, AudioPidSelection):
         self._AudioPidSelection = AudioPidSelection
 
+    @property
+    def AudioSelectorType(self):
+        return self._AudioSelectorType
+
+    @AudioSelectorType.setter
+    def AudioSelectorType(self, AudioSelectorType):
+        self._AudioSelectorType = AudioSelectorType
+
+    @property
+    def AudioTrackSelection(self):
+        return self._AudioTrackSelection
+
+    @AudioTrackSelection.setter
+    def AudioTrackSelection(self, AudioTrackSelection):
+        self._AudioTrackSelection = AudioTrackSelection
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         if params.get("AudioPidSelection") is not None:
             self._AudioPidSelection = AudioPidSelectionInfo()
             self._AudioPidSelection._deserialize(params.get("AudioPidSelection"))
+        self._AudioSelectorType = params.get("AudioSelectorType")
+        if params.get("AudioTrackSelection") is not None:
+            self._AudioTrackSelection = InputTracks()
+            self._AudioTrackSelection._deserialize(params.get("AudioTrackSelection"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -472,12 +826,21 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
         :type AudioBitrate: int
         :param _LanguageCode: Audio language code, whose length is always 3 characters.
         :type LanguageCode: str
+        :param _AudioNormalization: Audio transcoding special configuration information.
+        :type AudioNormalization: :class:`tencentcloud.mdl.v20200326.models.AudioNormalizationSettings`
+        :param _AudioSampleRate: Audio sampling rate, unit HZ.
+        :type AudioSampleRate: int
+        :param _AudioCodecDetails: Audio encoding parameters.
+        :type AudioCodecDetails: :class:`tencentcloud.mdl.v20200326.models.AudioCodecDetail`
         """
         self._AudioSelectorName = None
         self._Name = None
         self._Acodec = None
         self._AudioBitrate = None
         self._LanguageCode = None
+        self._AudioNormalization = None
+        self._AudioSampleRate = None
+        self._AudioCodecDetails = None
 
     @property
     def AudioSelectorName(self):
@@ -519,6 +882,30 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
     def LanguageCode(self, LanguageCode):
         self._LanguageCode = LanguageCode
 
+    @property
+    def AudioNormalization(self):
+        return self._AudioNormalization
+
+    @AudioNormalization.setter
+    def AudioNormalization(self, AudioNormalization):
+        self._AudioNormalization = AudioNormalization
+
+    @property
+    def AudioSampleRate(self):
+        return self._AudioSampleRate
+
+    @AudioSampleRate.setter
+    def AudioSampleRate(self, AudioSampleRate):
+        self._AudioSampleRate = AudioSampleRate
+
+    @property
+    def AudioCodecDetails(self):
+        return self._AudioCodecDetails
+
+    @AudioCodecDetails.setter
+    def AudioCodecDetails(self, AudioCodecDetails):
+        self._AudioCodecDetails = AudioCodecDetails
+
 
     def _deserialize(self, params):
         self._AudioSelectorName = params.get("AudioSelectorName")
@@ -526,6 +913,108 @@ Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000,
         self._Acodec = params.get("Acodec")
         self._AudioBitrate = params.get("AudioBitrate")
         self._LanguageCode = params.get("LanguageCode")
+        if params.get("AudioNormalization") is not None:
+            self._AudioNormalization = AudioNormalizationSettings()
+            self._AudioNormalization._deserialize(params.get("AudioNormalization"))
+        self._AudioSampleRate = params.get("AudioSampleRate")
+        if params.get("AudioCodecDetails") is not None:
+            self._AudioCodecDetails = AudioCodecDetail()
+            self._AudioCodecDetails._deserialize(params.get("AudioCodecDetails"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioTrackInfo(AbstractModel):
+    """Audio track configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrackName: User input is limited to letters and numbers, the length should not exceed 20, and should not be repeated in the same channel.
+        :type TrackName: str
+        :param _AudioCodec: Only AAC is supported.
+        :type AudioCodec: str
+        :param _AudioBitrate: Audio bitrate.
+        :type AudioBitrate: int
+        :param _AudioSampleRate: Audio sample rate.
+        :type AudioSampleRate: int
+        :param _AudioSelectorName: Only values defined by AttachedInputs.$.AudioSelectors.$.audioPidSelection.pid can be entered.
+        :type AudioSelectorName: str
+        :param _AudioNormalization: Audio loudness configuration.
+        :type AudioNormalization: :class:`tencentcloud.mdl.v20200326.models.AudioNormalizationSettings`
+        """
+        self._TrackName = None
+        self._AudioCodec = None
+        self._AudioBitrate = None
+        self._AudioSampleRate = None
+        self._AudioSelectorName = None
+        self._AudioNormalization = None
+
+    @property
+    def TrackName(self):
+        return self._TrackName
+
+    @TrackName.setter
+    def TrackName(self, TrackName):
+        self._TrackName = TrackName
+
+    @property
+    def AudioCodec(self):
+        return self._AudioCodec
+
+    @AudioCodec.setter
+    def AudioCodec(self, AudioCodec):
+        self._AudioCodec = AudioCodec
+
+    @property
+    def AudioBitrate(self):
+        return self._AudioBitrate
+
+    @AudioBitrate.setter
+    def AudioBitrate(self, AudioBitrate):
+        self._AudioBitrate = AudioBitrate
+
+    @property
+    def AudioSampleRate(self):
+        return self._AudioSampleRate
+
+    @AudioSampleRate.setter
+    def AudioSampleRate(self, AudioSampleRate):
+        self._AudioSampleRate = AudioSampleRate
+
+    @property
+    def AudioSelectorName(self):
+        return self._AudioSelectorName
+
+    @AudioSelectorName.setter
+    def AudioSelectorName(self, AudioSelectorName):
+        self._AudioSelectorName = AudioSelectorName
+
+    @property
+    def AudioNormalization(self):
+        return self._AudioNormalization
+
+    @AudioNormalization.setter
+    def AudioNormalization(self, AudioNormalization):
+        self._AudioNormalization = AudioNormalization
+
+
+    def _deserialize(self, params):
+        self._TrackName = params.get("TrackName")
+        self._AudioCodec = params.get("AudioCodec")
+        self._AudioBitrate = params.get("AudioBitrate")
+        self._AudioSampleRate = params.get("AudioSampleRate")
+        self._AudioSelectorName = params.get("AudioSelectorName")
+        if params.get("AudioNormalization") is not None:
+            self._AudioNormalization = AudioNormalizationSettings()
+            self._AudioNormalization._deserialize(params.get("AudioNormalization"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1047,7 +1536,7 @@ class CreateStreamLiveChannelResponse(AbstractModel):
         r"""
         :param _Id: Channel ID
         :type Id: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Id = None
@@ -1160,7 +1649,7 @@ class CreateStreamLiveInputResponse(AbstractModel):
         r"""
         :param _Id: Input ID
         :type Id: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Id = None
@@ -1242,7 +1731,7 @@ class CreateStreamLiveInputSecurityGroupResponse(AbstractModel):
         r"""
         :param _Id: Security group ID
         :type Id: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Id = None
@@ -1324,7 +1813,7 @@ class CreateStreamLivePlanResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -1424,7 +1913,7 @@ class CreateStreamLiveWatermarkResponse(AbstractModel):
         r"""
         :param _Id: Watermark ID
         :type Id: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Id = None
@@ -1654,7 +2143,7 @@ class DeleteStreamLiveChannelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -1712,7 +2201,7 @@ class DeleteStreamLiveInputResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -1770,7 +2259,7 @@ class DeleteStreamLiveInputSecurityGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -1840,7 +2329,7 @@ class DeleteStreamLivePlanResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -1898,7 +2387,7 @@ class DeleteStreamLiveWatermarkResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -2108,7 +2597,7 @@ class DescribeStreamLiveChannelAlertsResponse(AbstractModel):
         r"""
         :param _Infos: Alarm information of the channel’s two pipelines
         :type Infos: :class:`tencentcloud.mdl.v20200326.models.ChannelAlertInfos`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Infos = None
@@ -2218,7 +2707,7 @@ class DescribeStreamLiveChannelInputStatisticsResponse(AbstractModel):
         r"""
         :param _Infos: Channel input statistics
         :type Infos: list of ChannelInputStatistics
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Infos = None
@@ -2319,7 +2808,7 @@ class DescribeStreamLiveChannelLogsResponse(AbstractModel):
         r"""
         :param _Infos: Pipeline push information
         :type Infos: :class:`tencentcloud.mdl.v20200326.models.PipelineLogInfo`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Infos = None
@@ -2429,7 +2918,7 @@ class DescribeStreamLiveChannelOutputStatisticsResponse(AbstractModel):
         r"""
         :param _Infos: Channel output information
         :type Infos: list of ChannelOutputsStatistics
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Infos = None
@@ -2504,7 +2993,7 @@ class DescribeStreamLiveChannelResponse(AbstractModel):
         r"""
         :param _Info: Channel information
         :type Info: :class:`tencentcloud.mdl.v20200326.models.StreamLiveChannelInfo`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Info = None
@@ -2550,7 +3039,7 @@ class DescribeStreamLiveChannelsResponse(AbstractModel):
         :param _Infos: List of channel information
 Note: this field may return `null`, indicating that no valid value was found.
         :type Infos: list of StreamLiveChannelInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Infos = None
@@ -2625,7 +3114,7 @@ class DescribeStreamLiveInputResponse(AbstractModel):
         r"""
         :param _Info: Input information
         :type Info: :class:`tencentcloud.mdl.v20200326.models.InputInfo`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Info = None
@@ -2697,7 +3186,7 @@ class DescribeStreamLiveInputSecurityGroupResponse(AbstractModel):
         r"""
         :param _Info: Input security group information
         :type Info: :class:`tencentcloud.mdl.v20200326.models.InputSecurityGroupInfo`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Info = None
@@ -2742,7 +3231,7 @@ class DescribeStreamLiveInputSecurityGroupsResponse(AbstractModel):
         r"""
         :param _Infos: List of input security group information
         :type Infos: list of InputSecurityGroupInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Infos = None
@@ -2791,7 +3280,7 @@ class DescribeStreamLiveInputsResponse(AbstractModel):
         :param _Infos: List of input information
 Note: this field may return `null`, indicating that no valid value was found.
         :type Infos: list of InputInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Infos = None
@@ -2867,7 +3356,7 @@ class DescribeStreamLivePlansResponse(AbstractModel):
         :param _Infos: List of event information
 Note: this field may return `null`, indicating that no valid value was found.
         :type Infos: list of PlanResp
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Infos = None
@@ -2915,7 +3404,7 @@ class DescribeStreamLiveRegionsResponse(AbstractModel):
         r"""
         :param _Info: StreamLive region information
         :type Info: :class:`tencentcloud.mdl.v20200326.models.StreamLiveRegionInfo`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Info = None
@@ -3047,7 +3536,7 @@ class DescribeStreamLiveTranscodeDetailResponse(AbstractModel):
         :type TotalNum: int
         :param _TotalPage: The total number of pages.
         :type TotalPage: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Infos = None
@@ -3162,7 +3651,7 @@ class DescribeStreamLiveWatermarkResponse(AbstractModel):
         r"""
         :param _Info: Watermark information
         :type Info: :class:`tencentcloud.mdl.v20200326.models.DescribeWatermarkInfo`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Info = None
@@ -3207,7 +3696,7 @@ class DescribeStreamLiveWatermarksResponse(AbstractModel):
         r"""
         :param _Infos: List of watermark information
         :type Infos: list of DescribeWatermarkInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Infos = None
@@ -4984,6 +5473,77 @@ class InputStreamInfo(AbstractModel):
         
 
 
+class InputTrack(AbstractModel):
+    """Audio track configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrackIndex: Audio track index 1-based index mapping to the specified audio track integer starting from 1.
+        :type TrackIndex: int
+        """
+        self._TrackIndex = None
+
+    @property
+    def TrackIndex(self):
+        return self._TrackIndex
+
+    @TrackIndex.setter
+    def TrackIndex(self, TrackIndex):
+        self._TrackIndex = TrackIndex
+
+
+    def _deserialize(self, params):
+        self._TrackIndex = params.get("TrackIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InputTracks(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tracks: Audio track configuration information.
+        :type Tracks: list of InputTrack
+        """
+        self._Tracks = None
+
+    @property
+    def Tracks(self):
+        return self._Tracks
+
+    @Tracks.setter
+    def Tracks(self, Tracks):
+        self._Tracks = Tracks
+
+
+    def _deserialize(self, params):
+        if params.get("Tracks") is not None:
+            self._Tracks = []
+            for item in params.get("Tracks"):
+                obj = InputTrack()
+                obj._deserialize(item)
+                self._Tracks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LogInfo(AbstractModel):
     """Log information.
 
@@ -5273,7 +5833,7 @@ class ModifyStreamLiveChannelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -5375,7 +5935,7 @@ class ModifyStreamLiveInputResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -5457,7 +6017,7 @@ class ModifyStreamLiveInputSecurityGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -5555,7 +6115,7 @@ class ModifyStreamLiveWatermarkResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -6267,7 +6827,7 @@ class QueryInputStreamStateResponse(AbstractModel):
         r"""
         :param _Info: The information of the StreamLive input queried.
         :type Info: :class:`tencentcloud.mdl.v20200326.models.QueryDispatchInputInfo`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Info = None
@@ -6813,7 +7373,7 @@ class StartStreamLiveChannelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -6871,7 +7431,7 @@ class StopStreamLiveChannelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -7926,6 +8486,87 @@ It indicates the end time for recording in UTC format (e.g., `2020-01-01T12:00:0
         
 
 
+class VideoCodecDetail(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Profile: The three image quality levels of h264 include: BASELINE, HIGH, and MAIN. The default option is MAIN.
+        :type Profile: str
+        :param _Level: Profile corresponding codec performance, options include: 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 2.3, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, 5.1, AUTO. The default option is AUTO.
+        :type Level: str
+        :param _EntropyEncoding: Codecs include entropy coding and lossless coding, and options include: CABAC and CAVLC. The default option is CABAC. .
+        :type EntropyEncoding: str
+        :param _AdaptiveQuantization: Mode, options include: AUTO, HIGH, HIGHER, LOW, MAX, MEDIUM, OFF. The default option is: AUTO. .
+        :type AdaptiveQuantization: str
+        :param _LookAheadRateControl: Analyze subsequent encoded frames in advance, options include: HIGH, LOW, MEDIUM. The default option is: MEDIUM. .
+        :type LookAheadRateControl: str
+        """
+        self._Profile = None
+        self._Level = None
+        self._EntropyEncoding = None
+        self._AdaptiveQuantization = None
+        self._LookAheadRateControl = None
+
+    @property
+    def Profile(self):
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def EntropyEncoding(self):
+        return self._EntropyEncoding
+
+    @EntropyEncoding.setter
+    def EntropyEncoding(self, EntropyEncoding):
+        self._EntropyEncoding = EntropyEncoding
+
+    @property
+    def AdaptiveQuantization(self):
+        return self._AdaptiveQuantization
+
+    @AdaptiveQuantization.setter
+    def AdaptiveQuantization(self, AdaptiveQuantization):
+        self._AdaptiveQuantization = AdaptiveQuantization
+
+    @property
+    def LookAheadRateControl(self):
+        return self._LookAheadRateControl
+
+    @LookAheadRateControl.setter
+    def LookAheadRateControl(self, LookAheadRateControl):
+        self._LookAheadRateControl = LookAheadRateControl
+
+
+    def _deserialize(self, params):
+        self._Profile = params.get("Profile")
+        self._Level = params.get("Level")
+        self._EntropyEncoding = params.get("EntropyEncoding")
+        self._AdaptiveQuantization = params.get("AdaptiveQuantization")
+        self._LookAheadRateControl = params.get("LookAheadRateControl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VideoPipelineInputStatistics(AbstractModel):
     """Pipeline input video statistics.
 
@@ -8011,6 +8652,22 @@ class VideoTemplateInfo(AbstractModel):
         :param _WatermarkId: Watermark ID
 Note: This field may return `null`, indicating that no valid value was found.
         :type WatermarkId: str
+        :param _FaceBlurringEnabled: Whether to enable the face blur function, 1 is on, 0 is off, and the default is 0.
+        :type FaceBlurringEnabled: int
+        :param _FrameRateType: This field indicates how to specify the output video frame rate. If FOLLOW_SOURCE is selected, the output video frame rate will be set equal to the input video frame rate of the first input. If SPECIFIED_FRACTION is selected, the output video frame rate is determined by the fraction (frame rate numerator and frame rate denominator). If SPECIFIED_HZ is selected, the frame rate of the output video is determined by the HZ you enter.
+        :type FrameRateType: str
+        :param _FrameRateNumerator: Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate numerator setting.
+        :type FrameRateNumerator: int
+        :param _FrameRateDenominator: Valid when the FrameRateType type you select is SPECIFIED_FRACTION, the output frame rate denominator setting.
+        :type FrameRateDenominator: int
+        :param _BFramesNum: The number of B frames can be selected from 1 to 3.
+        :type BFramesNum: int
+        :param _RefFramesNum: The number of reference frames can be selected from 1 to 16.
+        :type RefFramesNum: int
+        :param _AdditionalRateSettings: Additional video bitrate configuration.
+        :type AdditionalRateSettings: :class:`tencentcloud.mdl.v20200326.models.AdditionalRateSetting`
+        :param _VideoCodecDetails: Video encoding configuration.
+        :type VideoCodecDetails: :class:`tencentcloud.mdl.v20200326.models.VideoCodecDetail`
         """
         self._Name = None
         self._Vcodec = None
@@ -8022,6 +8679,14 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._BitrateCompressionRatio = None
         self._RateControlMode = None
         self._WatermarkId = None
+        self._FaceBlurringEnabled = None
+        self._FrameRateType = None
+        self._FrameRateNumerator = None
+        self._FrameRateDenominator = None
+        self._BFramesNum = None
+        self._RefFramesNum = None
+        self._AdditionalRateSettings = None
+        self._VideoCodecDetails = None
 
     @property
     def Name(self):
@@ -8103,6 +8768,70 @@ Note: This field may return `null`, indicating that no valid value was found.
     def WatermarkId(self, WatermarkId):
         self._WatermarkId = WatermarkId
 
+    @property
+    def FaceBlurringEnabled(self):
+        return self._FaceBlurringEnabled
+
+    @FaceBlurringEnabled.setter
+    def FaceBlurringEnabled(self, FaceBlurringEnabled):
+        self._FaceBlurringEnabled = FaceBlurringEnabled
+
+    @property
+    def FrameRateType(self):
+        return self._FrameRateType
+
+    @FrameRateType.setter
+    def FrameRateType(self, FrameRateType):
+        self._FrameRateType = FrameRateType
+
+    @property
+    def FrameRateNumerator(self):
+        return self._FrameRateNumerator
+
+    @FrameRateNumerator.setter
+    def FrameRateNumerator(self, FrameRateNumerator):
+        self._FrameRateNumerator = FrameRateNumerator
+
+    @property
+    def FrameRateDenominator(self):
+        return self._FrameRateDenominator
+
+    @FrameRateDenominator.setter
+    def FrameRateDenominator(self, FrameRateDenominator):
+        self._FrameRateDenominator = FrameRateDenominator
+
+    @property
+    def BFramesNum(self):
+        return self._BFramesNum
+
+    @BFramesNum.setter
+    def BFramesNum(self, BFramesNum):
+        self._BFramesNum = BFramesNum
+
+    @property
+    def RefFramesNum(self):
+        return self._RefFramesNum
+
+    @RefFramesNum.setter
+    def RefFramesNum(self, RefFramesNum):
+        self._RefFramesNum = RefFramesNum
+
+    @property
+    def AdditionalRateSettings(self):
+        return self._AdditionalRateSettings
+
+    @AdditionalRateSettings.setter
+    def AdditionalRateSettings(self, AdditionalRateSettings):
+        self._AdditionalRateSettings = AdditionalRateSettings
+
+    @property
+    def VideoCodecDetails(self):
+        return self._VideoCodecDetails
+
+    @VideoCodecDetails.setter
+    def VideoCodecDetails(self, VideoCodecDetails):
+        self._VideoCodecDetails = VideoCodecDetails
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -8115,6 +8844,18 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._BitrateCompressionRatio = params.get("BitrateCompressionRatio")
         self._RateControlMode = params.get("RateControlMode")
         self._WatermarkId = params.get("WatermarkId")
+        self._FaceBlurringEnabled = params.get("FaceBlurringEnabled")
+        self._FrameRateType = params.get("FrameRateType")
+        self._FrameRateNumerator = params.get("FrameRateNumerator")
+        self._FrameRateDenominator = params.get("FrameRateDenominator")
+        self._BFramesNum = params.get("BFramesNum")
+        self._RefFramesNum = params.get("RefFramesNum")
+        if params.get("AdditionalRateSettings") is not None:
+            self._AdditionalRateSettings = AdditionalRateSetting()
+            self._AdditionalRateSettings._deserialize(params.get("AdditionalRateSettings"))
+        if params.get("VideoCodecDetails") is not None:
+            self._VideoCodecDetails = VideoCodecDetail()
+            self._VideoCodecDetails._deserialize(params.get("VideoCodecDetails"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

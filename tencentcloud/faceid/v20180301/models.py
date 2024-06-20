@@ -2924,7 +2924,7 @@ class GetSdkVerificationResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkToken: The token used to identify an SDK-based verification process.
+        :param _SdkToken: The token used to identify an SDK-based verification process. 
         :type SdkToken: str
         """
         self._SdkToken = None
@@ -4690,6 +4690,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _MacaoIDCard: Macao ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MacaoIDCard: :class:`tencentcloud.faceid.v20180301.models.MacaoIDCard`
+        :param _MainlandIDCard: Mainland ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MainlandIDCard: :class:`tencentcloud.faceid.v20180301.models.MainlandIDCard`
         """
         self._HKIDCard = None
         self._MLIDCard = None
@@ -4705,6 +4708,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ThailandIDCard = None
         self._SingaporeIDCard = None
         self._MacaoIDCard = None
+        self._MainlandIDCard = None
 
     @property
     def HKIDCard(self):
@@ -4818,6 +4822,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def MacaoIDCard(self, MacaoIDCard):
         self._MacaoIDCard = MacaoIDCard
 
+    @property
+    def MainlandIDCard(self):
+        return self._MainlandIDCard
+
+    @MainlandIDCard.setter
+    def MainlandIDCard(self, MainlandIDCard):
+        self._MainlandIDCard = MainlandIDCard
+
 
     def _deserialize(self, params):
         if params.get("HKIDCard") is not None:
@@ -4862,6 +4874,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("MacaoIDCard") is not None:
             self._MacaoIDCard = MacaoIDCard()
             self._MacaoIDCard._deserialize(params.get("MacaoIDCard"))
+        if params.get("MainlandIDCard") is not None:
+            self._MainlandIDCard = MainlandIDCard()
+            self._MainlandIDCard._deserialize(params.get("MainlandIDCard"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6913,7 +6928,7 @@ Example: HKIDCard
         :type IDCardType: str
         :param _DisableCheckOcrWarnings: Whether to turn off document alarms, the default is false (the alarm detection function is turned on). When enabled, the identity authentication process will be intercepted based on the alarm status of the certificate. If you need to use the document authentication function, please contact us.
         :type DisableCheckOcrWarnings: bool
-        :param _SecurityLevel: Liveness security level: 1:Silent mode;2:Action mode;3:Lighting mode;4:Action+Lighting mode;default value is 3
+        :param _SecurityLevel: Liveness security level: 1:Silent mode;2:Action mode;3:Lighting mode;4:Action+Lighting mode;5:Action+Lighting(High security) mode; default value is 3
         :type SecurityLevel: int
         :param _SkipPrivacyPolicy: Whether to skip the agreement page, the default is false. When SkipPrivacyPolicy is false, the agreement page will be displayed and the privacy agreement needs to be checked; when SkipPrivacyPolicy is true, the agreement page will be skipped and the liveness process will be entered directly without checking the privacy agreement page.
         :type SkipPrivacyPolicy: bool
