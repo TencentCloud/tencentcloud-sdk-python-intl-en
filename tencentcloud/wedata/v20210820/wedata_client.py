@@ -854,6 +854,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTaskFolder(self, request):
+        """Orchestration Space - Workflow - Create Task Folder
+
+        :param request: Request instance for CreateTaskFolder.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.CreateTaskFolderRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.CreateTaskFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTaskFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTaskFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTaskVersionDs(self, request):
         """Submit Task Version
 
@@ -3825,7 +3848,7 @@ class WedataClient(AbstractClient):
 
 
     def DiagnosePro(self, request):
-        """Instance Diagnosis
+        """Instance diagnosis for diagnosing instances in INITIAL, DEPENDENCE, ALLOCATED, LAUNCHED, EVENT_LISTENING, BEFORE_ASPECT, EXPIRED, FAILED states
 
         :param request: Request instance for DiagnosePro.
         :type request: :class:`tencentcloud.wedata.v20210820.models.DiagnoseProRequest`
@@ -4531,6 +4554,29 @@ class WedataClient(AbstractClient):
             body = self.call("ModifyWorkflowSchedule", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyWorkflowScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def MoveTasksToFolder(self, request):
+        """Orchestration Space - Workflow - Move Task to Workflow Folder
+
+        :param request: Request instance for MoveTasksToFolder.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.MoveTasksToFolderRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.MoveTasksToFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("MoveTasksToFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.MoveTasksToFolderResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
