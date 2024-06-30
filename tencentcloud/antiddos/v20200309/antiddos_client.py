@@ -809,7 +809,9 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeBlackWhiteIpList(self, request):
-        """This API is used to get an Anti-DDoS IP blocklist/allowlist.
+        """接口变更
+
+        This API is used to get an Anti-DDoS IP blocklist/allowlist.
 
         :param request: Request instance for DescribeBlackWhiteIpList.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeBlackWhiteIpListRequest`
@@ -1269,7 +1271,9 @@ class AntiddosClient(AbstractClient):
 
 
     def DescribeListProtectThresholdConfig(self, request):
-        """This API is used to get a list of protection threshold configurations for AI protection switch, protection level, and CC threshold switch.
+        """接口变更
+
+        This API is used to get a list of protection threshold configurations for AI protection switch, protection level, and CC threshold switch.
 
         :param request: Request instance for DescribeListProtectThresholdConfig.
         :type request: :class:`tencentcloud.antiddos.v20200309.models.DescribeListProtectThresholdConfigRequest`
