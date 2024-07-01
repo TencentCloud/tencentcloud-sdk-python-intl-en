@@ -16914,9 +16914,9 @@ class Tag(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: Tag key.
+        :param _Key: Tag key
         :type Key: str
-        :param _Value: Tag value.
+        :param _Value: Tag value
         :type Value: str
         """
         self._Key = None
