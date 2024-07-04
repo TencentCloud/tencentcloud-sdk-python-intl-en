@@ -4476,6 +4476,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type ZoneName: str
         :param _ComponentConfig: Configuration descriptionNote: This field may return null, indicating that no valid values can be obtained.
         :type ComponentConfig: str
+        :param _Tags: Tag information.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: str
         """
         self._ResourceId = None
         self._ResourceName = None
@@ -4516,6 +4518,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._PayTime = None
         self._ZoneName = None
         self._ComponentConfig = None
+        self._Tags = None
 
     @property
     def ResourceId(self):
@@ -4829,6 +4832,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def ComponentConfig(self, ComponentConfig):
         self._ComponentConfig = ComponentConfig
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -4870,6 +4881,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._PayTime = params.get("PayTime")
         self._ZoneName = params.get("ZoneName")
         self._ComponentConfig = params.get("ComponentConfig")
+        self._Tags = params.get("Tags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
