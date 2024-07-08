@@ -113,11 +113,17 @@ INTERNALERROR = 'InternalError'
 # A database error occurred.
 INTERNALERROR_DBERROR = 'InternalError.DBError'
 
+# 
+INTERNALERROR_INTERNALSYSTEMEXCEPTION = 'InternalError.InternalSystemException'
+
 # The parameter is incorrect.
 INVALIDPARAMETER = 'InvalidParameter'
 
 # Duplicate engine name.
 INVALIDPARAMETER_DUPLICATEDATAENGINENAME = 'InvalidParameter.DuplicateDataEngineName'
+
+# 
+INVALIDPARAMETER_FILTERSVALUESNUMBEROUTOFLIMIT = 'InvalidParameter.FiltersValuesNumberOutOfLimit'
 
 # Invalid data engine mode.
 INVALIDPARAMETER_INVALIDDATAENGINEMODE = 'InvalidParameter.InvalidDataEngineMode'
@@ -133,6 +139,9 @@ INVALIDPARAMETER_INVALIDENGINETYPE = 'InvalidParameter.InvalidEngineType'
 
 # The fault tolerance policy is invalid.
 INVALIDPARAMETER_INVALIDFAILURETOLERANCE = 'InvalidParameter.InvalidFailureTolerance'
+
+# 
+INVALIDPARAMETER_INVALIDFILTERLENGTH = 'InvalidParameter.InvalidFilterLength'
 
 # Invalid maximum number of results.
 INVALIDPARAMETER_INVALIDMAXRESULTS = 'InvalidParameter.InvalidMaxResults'
@@ -161,14 +170,44 @@ INVALIDPARAMETER_INVALIDTASKID = 'InvalidParameter.InvalidTaskId'
 # The task type is invalid.
 INVALIDPARAMETER_INVALIDTASKTYPE = 'InvalidParameter.InvalidTaskType'
 
+# 
+INVALIDPARAMETER_INVALIDTIMEFORMAT = 'InvalidParameter.InvalidTimeFormat'
+
 # Invalid billing period.
 INVALIDPARAMETER_INVALIDTIMESPAN = 'InvalidParameter.InvalidTimeSpan'
 
 # Invalid unit of billing period.
 INVALIDPARAMETER_INVALIDTIMEUNIT = 'InvalidParameter.InvalidTimeUnit'
 
+# 
+INVALIDPARAMETER_PARAMETERBASE64DECODEFAILED = 'InvalidParameter.ParameterBase64DecodeFailed'
+
+# 
+INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = 'InvalidParameter.ParameterNotFoundOrBeNone'
+
+# 
+INVALIDPARAMETER_SQLTASKFILTERSKEYTYPENOTMATH = 'InvalidParameter.SQLTaskFiltersKeyTypeNotMath'
+
+# 
+INVALIDPARAMETER_SQLTASKNOTFOUND = 'InvalidParameter.SQLTaskNotFound'
+
+# 
+INVALIDPARAMETER_SQLTASKSORTBYTYPENOTMATCH = 'InvalidParameter.SQLTaskSortByTypeNotMatch'
+
+# 
+INVALIDPARAMETER_SPARKJOBFILTERSKEYTYPENOTMATH = 'InvalidParameter.SparkJobFiltersKeyTypeNotMath'
+
+# 
+INVALIDPARAMETER_SPARKJOBNOTFOUND = 'InvalidParameter.SparkJobNotFound'
+
+# 
+INVALIDPARAMETER_SPARKJOBSORTBYTYPENOTMATCH = 'InvalidParameter.SparkJobSortByTypeNotMatch'
+
 # The task has ended and cannot be canceled.
 INVALIDPARAMETER_TASKALREADYFINISHED = 'InvalidParameter.TaskAlreadyFinished'
+
+# 
+INVALIDPARAMETER_TASKSTATETYPENOTMATH = 'InvalidParameter.TaskStateTypeNotMath'
 
 # Invalid VPC CIDR format.
 INVALIDPARAMETER_VPCCIDRFORMATERROR = 'InvalidParameter.VpcCidrFormatError'
@@ -187,6 +226,9 @@ OPERATIONDENIED = 'OperationDenied'
 
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
+
+# 
+RESOURCENOTFOUND_BATCHSQLTASKNOTFOUND = 'ResourceNotFound.BatchSQLTaskNotFound'
 
 # No resources are available to create a session currently. Please try again later or use a monthly subscription cluster.
 RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_SESSIONINSUFFICIENTRESOURCES = 'ResourceNotFound.ResourceNotFoundCode_SessionInsufficientResources'

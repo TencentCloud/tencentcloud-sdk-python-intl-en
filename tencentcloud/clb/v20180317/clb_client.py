@@ -149,7 +149,7 @@ class ClbClient(AbstractClient):
         Instance attribute restrictions
           Only pay-as-you-go instances can be cloned. Monthly-subscribed instances cannot be cloned.
           CLB instances without any billable items cannot be cloned.
-          Classic CLB instances and CLB u200dinstances created for Anti-DDoS service cannot be cloned.
+          Classic CLB instances and CLB instances created for Anti-DDoS service cannot be cloned.
           Classic network-based instances cannot be cloned.
           IPv6 instances, IPv6 NAT64 instances, and instances bound with both IPv4 and IPv6 cannot be cloned.
           The following settings will not be cloned: **Custom configuration**, **Redirection configurations**, and **Allow Traffic by Default** in security groups.
@@ -158,7 +158,7 @@ class ClbClient(AbstractClient):
           Instances with QUIC listeners or port range listeners cannot be cloned.
           Private network CLB instances with TCP_SSL listeners cannot be cloned.
           Instances with layer-7 listeners that have no forwarding rules cannot be cloned.
-          u200dInstances u200dwith more than 50 listeners cannot be cloned.
+          Instances with more than 50 listeners cannot be cloned.
         Backend service restrictions
           Instances with target groups and SCF cloud functions as the backend services cannot be cloned.
 

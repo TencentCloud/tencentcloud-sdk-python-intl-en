@@ -2119,7 +2119,7 @@ class ApigatewayClient(AbstractClient):
 
 
     def UpdateService(self, request):
-        """u200dThis API is used to switch the running version of a service published in an environment to a specified version. After you create a service by using API Gateway and publish it to an environment, multiple versions will be generated during development. In this case, you can call this API to switch versions.
+        """This API is used to switch the running version of a service published in an environment to a specified version. After you create a service by using API Gateway and publish it to an environment, multiple versions will be generated during development. In this case, you can call this API to switch versions.
 
         :param request: Request instance for UpdateService.
         :type request: :class:`tencentcloud.apigateway.v20180808.models.UpdateServiceRequest`

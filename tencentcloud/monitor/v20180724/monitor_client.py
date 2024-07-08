@@ -1298,7 +1298,7 @@ class MonitorClient(AbstractClient):
 
 
     def DescribeClusterAgentCreatingProgress(self, request):
-        """This API is used to u200dobtain the binding status between the TencentCloud Managed Service for Prometheus instance and the TKE cluster.
+        """This API is used to obtain the binding status between the TencentCloud Managed Service for Prometheus instance and the TKE cluster.
 
         :param request: Request instance for DescribeClusterAgentCreatingProgress.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeClusterAgentCreatingProgressRequest`

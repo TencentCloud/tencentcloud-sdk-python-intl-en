@@ -376,7 +376,7 @@ class FaceidClient(AbstractClient):
 
 
     def GetWebVerificationResultIntl(self, request):
-        """This API is used to get the verification result with the corresponding BizToken after the u200dweb-based verification is completed. The token is valid for three days (259,200s) after issuance and can be called multiple times.
+        """This API is used to get the verification result with the corresponding BizToken after the web-based verification is completed. The token is valid for three days (259,200s) after issuance and can be called multiple times.
 
         :param request: Request instance for GetWebVerificationResultIntl.
         :type request: :class:`tencentcloud.faceid.v20180301.models.GetWebVerificationResultIntlRequest`

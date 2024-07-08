@@ -1198,6 +1198,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
 -9108 Alarm for blurry image,
 -9109 This capability is not enabled.
         :type WarnCardInfos: list of int
+        :param _EditDetails: Details of the OCR modifications for this EKYC card, when the user manually modifies the card recognition results (IsEdit=true), EditDetails will return the modified fields. When IsEdit=false, EditDetails is empty.
+        :type EditDetails: list of EditDetail
         """
         self._IsPass = None
         self._IsEdit = None
@@ -1208,6 +1210,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._CardInfo = None
         self._NormalCardInfo = None
         self._WarnCardInfos = None
+        self._EditDetails = None
 
     @property
     def IsPass(self):
@@ -1285,6 +1288,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def WarnCardInfos(self, WarnCardInfos):
         self._WarnCardInfos = WarnCardInfos
 
+    @property
+    def EditDetails(self):
+        return self._EditDetails
+
+    @EditDetails.setter
+    def EditDetails(self, EditDetails):
+        self._EditDetails = EditDetails
+
 
     def _deserialize(self, params):
         self._IsPass = params.get("IsPass")
@@ -1306,6 +1317,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._NormalCardInfo = NormalCardInfo()
             self._NormalCardInfo._deserialize(params.get("NormalCardInfo"))
         self._WarnCardInfos = params.get("WarnCardInfos")
+        if params.get("EditDetails") is not None:
+            self._EditDetails = []
+            for item in params.get("EditDetails"):
+                obj = EditDetail()
+                obj._deserialize(item)
+                self._EditDetails.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1951,6 +1968,63 @@ class DetectReflectLivenessAndCompareResponse(AbstractModel):
         self._Description = params.get("Description")
         self._Sim = params.get("Sim")
         self._RequestId = params.get("RequestId")
+
+
+class EditDetail(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldName: Modified Field Name
+        :type FieldName: str
+        :param _OriginalFieldValue: Value of the field before modification, the original OCR result
+        :type OriginalFieldValue: str
+        :param _RevisedFieldValue: Value of the field after modification,the user's manually entered result
+        :type RevisedFieldValue: str
+        """
+        self._FieldName = None
+        self._OriginalFieldValue = None
+        self._RevisedFieldValue = None
+
+    @property
+    def FieldName(self):
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+    @property
+    def OriginalFieldValue(self):
+        return self._OriginalFieldValue
+
+    @OriginalFieldValue.setter
+    def OriginalFieldValue(self, OriginalFieldValue):
+        self._OriginalFieldValue = OriginalFieldValue
+
+    @property
+    def RevisedFieldValue(self):
+        return self._RevisedFieldValue
+
+    @RevisedFieldValue.setter
+    def RevisedFieldValue(self, RevisedFieldValue):
+        self._RevisedFieldValue = RevisedFieldValue
+
+
+    def _deserialize(self, params):
+        self._FieldName = params.get("FieldName")
+        self._OriginalFieldValue = params.get("OriginalFieldValue")
+        self._RevisedFieldValue = params.get("RevisedFieldValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class FileInfo(AbstractModel):
@@ -3099,19 +3173,19 @@ class GetWebVerificationResultIntlResponse(AbstractModel):
         r"""
         :param _ErrorCode: The final result of this verification. `0` indicates that the person is the same as that in the photo.
 For other error codes, see <a href="https://www.tencentcloud.com/document/product/1061/55390?lang=en&pg=#8a960e1e-39c0-42cb-b181-b3164d77f81e">Liveness Detection and Face Comparison (Mobile HTML5) Error Codes</a>
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ErrorCode: int
         :param _ErrorMsg: The description of the final verification result.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ErrorMsg: str
         :param _VerificationDetailList: The detailed verification result list of this process. Retries are allowed, so a verification process may have several entries of results.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type VerificationDetailList: list of VerificationDetail
         :param _VideoBase64: The Base64-encoded string of the video collected from the video stream. Retries are allowed, and this field returns only the data collected in the last verification. If no video is collected, null is returned.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type VideoBase64: str
-        :param _BestFrameBase64: The Base64-encoded string of the best face screenshot u200dcollected from the video stream. Retries are allowed, and this field returns only the data collected in the last verification. If no best face screenshot is collected, null is returned.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+        :param _BestFrameBase64: The Base64-encoded string of the best face screenshot collected from the video stream. Retries are allowed, and this field returns only the data collected in the last verification. If no best face screenshot is collected, null is returned.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type BestFrameBase64: str
         :param _OCRResult: Card recognize result.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -6589,28 +6663,28 @@ class VerificationDetail(AbstractModel):
     def __init__(self):
         r"""
         :param _ErrorCode: The final result of this verification. `0` indicates that the person is the same as that in the photo.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ErrorCode: int
         :param _ErrorMsg: The description of the final verification result.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ErrorMsg: str
         :param _LivenessErrorCode: The result of this liveness detection process. `0` indicates success.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type LivenessErrorCode: int
         :param _LivenessErrorMsg: The result description of this liveness detection process.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type LivenessErrorMsg: str
         :param _CompareErrorCode: The result of this comparison process. `0` indicates that the person in the best face screenshot collected from the video stream is the same as that in the uploaded image for comparison.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CompareErrorCode: int
         :param _CompareErrorMsg: The result description of this comparison process.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type CompareErrorMsg: str
         :param _ReqTimestamp: The timestamp (ms) of this verification process.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ReqTimestamp: int
         :param _Similarity: The similarity of the best face screenshot collected from the video stream and the uploaded image for comparison in this verification process. Value range: [0.00, 100.00]. By default, the person in the screenshot is determined to be the same person in the image if the similarity is greater than or equal to 70.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Similarity: float
         :param _Seq: Unique ID of this verification process.
 Note: This field may return null, indicating that no valid values can be obtained.

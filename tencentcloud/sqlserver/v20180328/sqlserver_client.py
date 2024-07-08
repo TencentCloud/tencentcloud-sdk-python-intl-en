@@ -1247,7 +1247,7 @@ class SqlserverClient(AbstractClient):
 
 
     def ModifyDBEncryptAttributes(self, request):
-        """This API is used to u200denable or disable TDE of a database.
+        """This API is used to enable or disable TDE of a database.
 
         :param request: Request instance for ModifyDBEncryptAttributes.
         :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyDBEncryptAttributesRequest`
