@@ -1743,14 +1743,14 @@ Note that each rule can have up to 20 ports.
 <li>`false`: Disable</li>Default value: false
         :type SessionPersist: bool
         :param _SessionPersistTime: Duration for the persistent session. The value takes effect only when `SessionPersist = true`.
-Note: u200dThis field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type SessionPersistTime: int
         :param _OriginPort: The origin port, which can be:
 <li>A single port, such as 80</li>
 <li>A port range, such as 81-82</li>
         :type OriginPort: str
         :param _RuleTag: Rule tag.
-Note: This field may return·`null`, indicating that no valid values can be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type RuleTag: str
         """
         self._Proto = None

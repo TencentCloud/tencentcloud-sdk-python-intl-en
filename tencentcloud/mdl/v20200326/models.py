@@ -949,6 +949,8 @@ class AudioTrackInfo(AbstractModel):
         :type AudioSelectorName: str
         :param _AudioNormalization: Audio loudness configuration.
         :type AudioNormalization: :class:`tencentcloud.mdl.v20200326.models.AudioNormalizationSettings`
+        :param _AudioCodecDetails: Audio encoding configuration.
+        :type AudioCodecDetails: :class:`tencentcloud.mdl.v20200326.models.AudioCodecDetail`
         """
         self._TrackName = None
         self._AudioCodec = None
@@ -956,6 +958,7 @@ class AudioTrackInfo(AbstractModel):
         self._AudioSampleRate = None
         self._AudioSelectorName = None
         self._AudioNormalization = None
+        self._AudioCodecDetails = None
 
     @property
     def TrackName(self):
@@ -1005,6 +1008,14 @@ class AudioTrackInfo(AbstractModel):
     def AudioNormalization(self, AudioNormalization):
         self._AudioNormalization = AudioNormalization
 
+    @property
+    def AudioCodecDetails(self):
+        return self._AudioCodecDetails
+
+    @AudioCodecDetails.setter
+    def AudioCodecDetails(self, AudioCodecDetails):
+        self._AudioCodecDetails = AudioCodecDetails
+
 
     def _deserialize(self, params):
         self._TrackName = params.get("TrackName")
@@ -1015,6 +1026,9 @@ class AudioTrackInfo(AbstractModel):
         if params.get("AudioNormalization") is not None:
             self._AudioNormalization = AudioNormalizationSettings()
             self._AudioNormalization._deserialize(params.get("AudioNormalization"))
+        if params.get("AudioCodecDetails") is not None:
+            self._AudioCodecDetails = AudioCodecDetail()
+            self._AudioCodecDetails._deserialize(params.get("AudioCodecDetails"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4087,11 +4101,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _Password: Authentication password. Length limit: [1,128].
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Password: str
+        :param _DestinationType: The destination type of the retweet. Currently available values are: Standard, AWS_MediaPackageV1, AWS_MediaPackageV2. The default is: Standard.
+        :type DestinationType: str
         """
         self._OutputUrl = None
         self._AuthKey = None
         self._Username = None
         self._Password = None
+        self._DestinationType = None
 
     @property
     def OutputUrl(self):
@@ -4125,12 +4142,21 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def Password(self, Password):
         self._Password = Password
 
+    @property
+    def DestinationType(self):
+        return self._DestinationType
+
+    @DestinationType.setter
+    def DestinationType(self, DestinationType):
+        self._DestinationType = DestinationType
+
 
     def _deserialize(self, params):
         self._OutputUrl = params.get("OutputUrl")
         self._AuthKey = params.get("AuthKey")
         self._Username = params.get("Username")
         self._Password = params.get("Password")
+        self._DestinationType = params.get("DestinationType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
