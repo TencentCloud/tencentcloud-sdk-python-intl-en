@@ -79,6 +79,11 @@ def test_import_cdn():
     from tencentcloud.cdn.v20180606 import models
 
 
+def test_import_cdwdoris():
+    from tencentcloud.cdwdoris.v20211228 import cdwdoris_client
+    from tencentcloud.cdwdoris.v20211228 import models
+
+
 def test_import_cfs():
     from tencentcloud.cfs.v20190719 import cfs_client
     from tencentcloud.cfs.v20190719 import models
