@@ -420,7 +420,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
 
 
 class AdditionalRateSetting(AbstractModel):
-    """
+    """additional bit rate configuration.
 
     """
 
@@ -556,7 +556,7 @@ Note: this field may return `null`, indicating that no valid value was found.
 
 
 class AudioCodecDetail(AbstractModel):
-    """
+    """Audio codec configuration.
 
     """
 
@@ -1378,7 +1378,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         :type Name: str
         :param _AttachedInputs: Inputs to attach. You can attach 1 to 5 inputs.
         :type AttachedInputs: list of AttachedInput
-        :param _OutputGroups: Configuration information of the channel’s output groups. Quantity: [1, 10]
+        :param _OutputGroups: Configuration information of the channel's output groups. Quantity: [1, 10]
         :type OutputGroups: list of StreamLiveOutputGroupsInfo
         :param _AudioTemplates: Audio transcoding templates. Quantity: [1, 20]
         :type AudioTemplates: list of AudioTemplateInfo
@@ -1386,6 +1386,8 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         :type VideoTemplates: list of VideoTemplateInfo
         :param _AVTemplates: Audio/Video transcoding templates. Quantity: [1, 10]
         :type AVTemplates: list of AVTemplate
+        :param _CaptionTemplates: Subtitle template configuration, only AVTemplates are valid.
+        :type CaptionTemplates: list of SubtitleConf
         :param _PlanSettings: Event settings
         :type PlanSettings: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
         :param _EventNotifySettings: The callback settings.
@@ -1394,6 +1396,10 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         :type InputLossBehavior: :class:`tencentcloud.mdl.v20200326.models.InputLossBehaviorInfo`
         :param _PipelineInputSettings: Pipeline configuration.
         :type PipelineInputSettings: :class:`tencentcloud.mdl.v20200326.models.PipelineInputSettingsInfo`
+        :param _InputAnalysisSettings: Recognition configuration for input content.
+        :type InputAnalysisSettings: :class:`tencentcloud.mdl.v20200326.models.InputAnalysisInfo`
+        :param _Tags: Console tag list.
+        :type Tags: list of Tag
         """
         self._Name = None
         self._AttachedInputs = None
@@ -1401,10 +1407,13 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         self._AudioTemplates = None
         self._VideoTemplates = None
         self._AVTemplates = None
+        self._CaptionTemplates = None
         self._PlanSettings = None
         self._EventNotifySettings = None
         self._InputLossBehavior = None
         self._PipelineInputSettings = None
+        self._InputAnalysisSettings = None
+        self._Tags = None
 
     @property
     def Name(self):
@@ -1455,6 +1464,14 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         self._AVTemplates = AVTemplates
 
     @property
+    def CaptionTemplates(self):
+        return self._CaptionTemplates
+
+    @CaptionTemplates.setter
+    def CaptionTemplates(self, CaptionTemplates):
+        self._CaptionTemplates = CaptionTemplates
+
+    @property
     def PlanSettings(self):
         return self._PlanSettings
 
@@ -1485,6 +1502,22 @@ class CreateStreamLiveChannelRequest(AbstractModel):
     @PipelineInputSettings.setter
     def PipelineInputSettings(self, PipelineInputSettings):
         self._PipelineInputSettings = PipelineInputSettings
+
+    @property
+    def InputAnalysisSettings(self):
+        return self._InputAnalysisSettings
+
+    @InputAnalysisSettings.setter
+    def InputAnalysisSettings(self, InputAnalysisSettings):
+        self._InputAnalysisSettings = InputAnalysisSettings
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
@@ -1519,6 +1552,12 @@ class CreateStreamLiveChannelRequest(AbstractModel):
                 obj = AVTemplate()
                 obj._deserialize(item)
                 self._AVTemplates.append(obj)
+        if params.get("CaptionTemplates") is not None:
+            self._CaptionTemplates = []
+            for item in params.get("CaptionTemplates"):
+                obj = SubtitleConf()
+                obj._deserialize(item)
+                self._CaptionTemplates.append(obj)
         if params.get("PlanSettings") is not None:
             self._PlanSettings = PlanSettings()
             self._PlanSettings._deserialize(params.get("PlanSettings"))
@@ -1531,6 +1570,15 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         if params.get("PipelineInputSettings") is not None:
             self._PipelineInputSettings = PipelineInputSettingsInfo()
             self._PipelineInputSettings._deserialize(params.get("PipelineInputSettings"))
+        if params.get("InputAnalysisSettings") is not None:
+            self._InputAnalysisSettings = InputAnalysisInfo()
+            self._InputAnalysisSettings._deserialize(params.get("InputAnalysisSettings"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1550,10 +1598,13 @@ class CreateStreamLiveChannelResponse(AbstractModel):
         r"""
         :param _Id: Channel ID
         :type Id: str
+        :param _TagMsg: Tag prompt information, this information will be attached when the tag operation fails.
+        :type TagMsg: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Id = None
+        self._TagMsg = None
         self._RequestId = None
 
     @property
@@ -1563,6 +1614,14 @@ class CreateStreamLiveChannelResponse(AbstractModel):
     @Id.setter
     def Id(self, Id):
         self._Id = Id
+
+    @property
+    def TagMsg(self):
+        return self._TagMsg
+
+    @TagMsg.setter
+    def TagMsg(self, TagMsg):
+        self._TagMsg = TagMsg
 
     @property
     def RequestId(self):
@@ -1575,6 +1634,7 @@ class CreateStreamLiveChannelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._TagMsg = params.get("TagMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -2567,6 +2627,189 @@ class DescribeImageSettings(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeMediaLiveHighlightResultRequest(AbstractModel):
+    """DescribeMediaLiveHighlightResult request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Media live broadcast channel ID.
+        :type Id: str
+        :param _StartTime: Query start time, unix timestamp, query data within the last 6 hours by default, and the maximum query range supports the last 7 days.
+        :type StartTime: int
+        :param _EndTime: Query end time, Unix timestamp, query data within the last 6 hours by default, and the maximum query range supports the last 7 days.
+        :type EndTime: int
+        :param _PageNum: Paging query page number.
+        :type PageNum: int
+        :param _PageSize: Paging query the size of each page.
+        :type PageSize: int
+        """
+        self._Id = None
+        self._StartTime = None
+        self._EndTime = None
+        self._PageNum = None
+        self._PageSize = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMediaLiveHighlightResultResponse(AbstractModel):
+    """DescribeMediaLiveHighlightResult response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: Highlight results information.
+        :type Info: list of HighlightResInfoResp
+        :param _Id: Collection id.
+        :type Id: str
+        :param _ChannelId: Media live broadcast channel id.
+        :type ChannelId: str
+        :param _PageNum: Number of pages.
+        :type PageNum: int
+        :param _PageSize: Paging Size.
+        :type PageSize: int
+        :param _TotalNum: The total number of eligible entries in the background.
+        :type TotalNum: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Info = None
+        self._Id = None
+        self._ChannelId = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ChannelId(self):
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = []
+            for item in params.get("Info"):
+                obj = HighlightResInfoResp()
+                obj._deserialize(item)
+                self._Info.append(obj)
+        self._Id = params.get("Id")
+        self._ChannelId = params.get("ChannelId")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeStreamLiveChannelAlertsRequest(AbstractModel):
@@ -4805,6 +5048,228 @@ Note: this field may return `null`, indicating that no valid value was found.
         
 
 
+class HighlightInfo(AbstractModel):
+    """Collection configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighlightEnabled: Whether to enable input recognition 0: Disable 1 Enable Default value 0 Disable.
+        :type HighlightEnabled: int
+        :param _Type: The product where the results are saved, optional: COS. Currently, only Tencent Cloud COS is supported. In the future, it will be connected to AWS S3 and COS will be used by default.
+        :type Type: str
+        :param _Region: Valid when Type is COS, the region where COS is stored.
+        :type Region: str
+        :param _Bucket: Valid when Type is COS, the bucket name stored in COS.
+        :type Bucket: str
+        :param _Path: Valid when Type is COS, the path where cos is stored.
+        :type Path: str
+        :param _Filename: Valid when Type is COS, the file name stored in cos.
+        :type Filename: str
+        :param _TimestampFormat: Valid when Type is COS, the file name suffix stored in COS is automatically generated in the time format, optional values: unix, utc. Unix is the second-level timestamp and UTC is the year, month and day represented by the zero time zone.
+        :type TimestampFormat: str
+        :param _AudioSelectorNames: Audio selector list is optional and can be empty. If not filled in, an audio will be used as the output of the recognition result by default.
+        :type AudioSelectorNames: list of str
+        """
+        self._HighlightEnabled = None
+        self._Type = None
+        self._Region = None
+        self._Bucket = None
+        self._Path = None
+        self._Filename = None
+        self._TimestampFormat = None
+        self._AudioSelectorNames = None
+
+    @property
+    def HighlightEnabled(self):
+        return self._HighlightEnabled
+
+    @HighlightEnabled.setter
+    def HighlightEnabled(self, HighlightEnabled):
+        self._HighlightEnabled = HighlightEnabled
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Bucket(self):
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Filename(self):
+        return self._Filename
+
+    @Filename.setter
+    def Filename(self, Filename):
+        self._Filename = Filename
+
+    @property
+    def TimestampFormat(self):
+        return self._TimestampFormat
+
+    @TimestampFormat.setter
+    def TimestampFormat(self, TimestampFormat):
+        self._TimestampFormat = TimestampFormat
+
+    @property
+    def AudioSelectorNames(self):
+        return self._AudioSelectorNames
+
+    @AudioSelectorNames.setter
+    def AudioSelectorNames(self, AudioSelectorNames):
+        self._AudioSelectorNames = AudioSelectorNames
+
+
+    def _deserialize(self, params):
+        self._HighlightEnabled = params.get("HighlightEnabled")
+        self._Type = params.get("Type")
+        self._Region = params.get("Region")
+        self._Bucket = params.get("Bucket")
+        self._Path = params.get("Path")
+        self._Filename = params.get("Filename")
+        self._TimestampFormat = params.get("TimestampFormat")
+        self._AudioSelectorNames = params.get("AudioSelectorNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HighlightResInfoResp(AbstractModel):
+    """Highlight results information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: MPS task ID.
+        :type TaskId: str
+        :param _SegmentUrl: Highlights video link.
+        :type SegmentUrl: str
+        :param _CovImgUrl: Collection cover link.
+        :type CovImgUrl: str
+        :param _CreateTime: Generation time, UTC format.
+        :type CreateTime: int
+        :param _StartTime: Starting pts.
+        :type StartTime: float
+        :param _EndTime: End pts.
+        :type EndTime: float
+        :param _Duration: Duration in seconds.
+        :type Duration: float
+        """
+        self._TaskId = None
+        self._SegmentUrl = None
+        self._CovImgUrl = None
+        self._CreateTime = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Duration = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SegmentUrl(self):
+        return self._SegmentUrl
+
+    @SegmentUrl.setter
+    def SegmentUrl(self, SegmentUrl):
+        self._SegmentUrl = SegmentUrl
+
+    @property
+    def CovImgUrl(self):
+        return self._CovImgUrl
+
+    @CovImgUrl.setter
+    def CovImgUrl(self, CovImgUrl):
+        self._CovImgUrl = CovImgUrl
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._SegmentUrl = params.get("SegmentUrl")
+        self._CovImgUrl = params.get("CovImgUrl")
+        self._CreateTime = params.get("CreateTime")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HlsRemuxSettingsInfo(AbstractModel):
     """HLS protocol configuration.
 
@@ -4961,6 +5426,41 @@ Currently, fMP4 segments do not support DRM or time shifting.
         self._PartialSegmentPlaySite = params.get("PartialSegmentPlaySite")
         self._StreamOrder = params.get("StreamOrder")
         self._VideoResolution = params.get("VideoResolution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InputAnalysisInfo(AbstractModel):
+    """Recognition configuration for input content.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighlightSetting: Highlight configuration.
+        :type HighlightSetting: :class:`tencentcloud.mdl.v20200326.models.HighlightInfo`
+        """
+        self._HighlightSetting = None
+
+    @property
+    def HighlightSetting(self):
+        return self._HighlightSetting
+
+    @HighlightSetting.setter
+    def HighlightSetting(self, HighlightSetting):
+        self._HighlightSetting = HighlightSetting
+
+
+    def _deserialize(self, params):
+        if params.get("HighlightSetting") is not None:
+            self._HighlightSetting = HighlightInfo()
+            self._HighlightSetting._deserialize(params.get("HighlightSetting"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5679,7 +6179,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         :type Name: str
         :param _AttachedInputs: Inputs to attach. You can attach 1 to 5 inputs.
         :type AttachedInputs: list of AttachedInput
-        :param _OutputGroups: Configuration information of the channel’s output groups. Quantity: [1, 10]
+        :param _OutputGroups: Configuration information of the channel's output groups. Quantity: [1, 10]
         :type OutputGroups: list of StreamLiveOutputGroupsInfo
         :param _AudioTemplates: Audio transcoding templates. Quantity: [1, 20]
         :type AudioTemplates: list of AudioTemplateInfo
@@ -5687,6 +6187,8 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         :type VideoTemplates: list of VideoTemplateInfo
         :param _AVTemplates: Audio/Video transcoding templates. Quantity: [1, 10]
         :type AVTemplates: list of AVTemplate
+        :param _CaptionTemplates: Subtitle template configuration, only AVTemplates are valid.
+        :type CaptionTemplates: list of SubtitleConf
         :param _PlanSettings: Event settings
         :type PlanSettings: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
         :param _EventNotifySettings: The callback settings.
@@ -5695,6 +6197,10 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         :type InputLossBehavior: :class:`tencentcloud.mdl.v20200326.models.InputLossBehaviorInfo`
         :param _PipelineInputSettings: Pipeline configuration.
         :type PipelineInputSettings: :class:`tencentcloud.mdl.v20200326.models.PipelineInputSettingsInfo`
+        :param _InputAnalysisSettings: Recognition configuration for input content.
+        :type InputAnalysisSettings: :class:`tencentcloud.mdl.v20200326.models.InputAnalysisInfo`
+        :param _Tags: Console tag list.
+        :type Tags: list of Tag
         """
         self._Id = None
         self._Name = None
@@ -5703,10 +6209,13 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         self._AudioTemplates = None
         self._VideoTemplates = None
         self._AVTemplates = None
+        self._CaptionTemplates = None
         self._PlanSettings = None
         self._EventNotifySettings = None
         self._InputLossBehavior = None
         self._PipelineInputSettings = None
+        self._InputAnalysisSettings = None
+        self._Tags = None
 
     @property
     def Id(self):
@@ -5765,6 +6274,14 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         self._AVTemplates = AVTemplates
 
     @property
+    def CaptionTemplates(self):
+        return self._CaptionTemplates
+
+    @CaptionTemplates.setter
+    def CaptionTemplates(self, CaptionTemplates):
+        self._CaptionTemplates = CaptionTemplates
+
+    @property
     def PlanSettings(self):
         return self._PlanSettings
 
@@ -5795,6 +6312,22 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
     @PipelineInputSettings.setter
     def PipelineInputSettings(self, PipelineInputSettings):
         self._PipelineInputSettings = PipelineInputSettings
+
+    @property
+    def InputAnalysisSettings(self):
+        return self._InputAnalysisSettings
+
+    @InputAnalysisSettings.setter
+    def InputAnalysisSettings(self, InputAnalysisSettings):
+        self._InputAnalysisSettings = InputAnalysisSettings
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
@@ -5830,6 +6363,12 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
                 obj = AVTemplate()
                 obj._deserialize(item)
                 self._AVTemplates.append(obj)
+        if params.get("CaptionTemplates") is not None:
+            self._CaptionTemplates = []
+            for item in params.get("CaptionTemplates"):
+                obj = SubtitleConf()
+                obj._deserialize(item)
+                self._CaptionTemplates.append(obj)
         if params.get("PlanSettings") is not None:
             self._PlanSettings = PlanSettings()
             self._PlanSettings._deserialize(params.get("PlanSettings"))
@@ -5842,6 +6381,15 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         if params.get("PipelineInputSettings") is not None:
             self._PipelineInputSettings = PipelineInputSettingsInfo()
             self._PipelineInputSettings._deserialize(params.get("PipelineInputSettings"))
+        if params.get("InputAnalysisSettings") is not None:
+            self._InputAnalysisSettings = InputAnalysisInfo()
+            self._InputAnalysisSettings._deserialize(params.get("InputAnalysisSettings"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5859,10 +6407,21 @@ class ModifyStreamLiveChannelResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TagMsg: Tag prompt information, this information will be attached when the tag operation fails.
+        :type TagMsg: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
+        self._TagMsg = None
         self._RequestId = None
+
+    @property
+    def TagMsg(self):
+        return self._TagMsg
+
+    @TagMsg.setter
+    def TagMsg(self, TagMsg):
+        self._TagMsg = TagMsg
 
     @property
     def RequestId(self):
@@ -5874,6 +6433,7 @@ class ModifyStreamLiveChannelResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TagMsg = params.get("TagMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -6180,6 +6740,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _AVTemplateNames: Audio/Video transcoding template name. If `HlsRemuxSettings.Scheme` is `MERGE`, there is 1 audio/video transcoding template. Otherwise, this parameter is empty.
 Note: this field may return `null`, indicating that no valid value was found.
         :type AVTemplateNames: list of str
+        :param _CaptionTemplateNames: For the subtitle template used, only the AVTemplateNames is valid.
+        :type CaptionTemplateNames: list of str
         :param _TimedMetadataSettings: Meta information controls configuration.
         :type TimedMetadataSettings: :class:`tencentcloud.mdl.v20200326.models.TimedMetadataSettingInfo`
         """
@@ -6188,6 +6750,7 @@ Note: this field may return `null`, indicating that no valid value was found.
         self._VideoTemplateNames = None
         self._Scte35Settings = None
         self._AVTemplateNames = None
+        self._CaptionTemplateNames = None
         self._TimedMetadataSettings = None
 
     @property
@@ -6231,6 +6794,14 @@ Note: this field may return `null`, indicating that no valid value was found.
         self._AVTemplateNames = AVTemplateNames
 
     @property
+    def CaptionTemplateNames(self):
+        return self._CaptionTemplateNames
+
+    @CaptionTemplateNames.setter
+    def CaptionTemplateNames(self, CaptionTemplateNames):
+        self._CaptionTemplateNames = CaptionTemplateNames
+
+    @property
     def TimedMetadataSettings(self):
         return self._TimedMetadataSettings
 
@@ -6247,6 +6818,7 @@ Note: this field may return `null`, indicating that no valid value was found.
             self._Scte35Settings = Scte35SettingsInfo()
             self._Scte35Settings._deserialize(params.get("Scte35Settings"))
         self._AVTemplateNames = params.get("AVTemplateNames")
+        self._CaptionTemplateNames = params.get("CaptionTemplateNames")
         if params.get("TimedMetadataSettings") is not None:
             self._TimedMetadataSettings = TimedMetadataSettingInfo()
             self._TimedMetadataSettings._deserialize(params.get("TimedMetadataSettings"))
@@ -7671,6 +8243,8 @@ Note: this field may return `null`, indicating that no valid value was found.
         :param _AVTemplates: Audio/Video transcoding templates
 Note: this field may return `null`, indicating that no valid value was found.
         :type AVTemplates: list of AVTemplate
+        :param _CaptionTemplates: 
+        :type CaptionTemplates: list of SubtitleConf
         :param _PlanSettings: Event settings
 Note: This field may return `null`, indicating that no valid value was found.
         :type PlanSettings: :class:`tencentcloud.mdl.v20200326.models.PlanSettings`
@@ -7681,6 +8255,10 @@ Note: This field may return `null`, indicating that no valid value was found.
         :type InputLossBehavior: :class:`tencentcloud.mdl.v20200326.models.InputLossBehaviorInfo`
         :param _PipelineInputSettings: Pipeline configuration.
         :type PipelineInputSettings: :class:`tencentcloud.mdl.v20200326.models.PipelineInputSettingsInfo`
+        :param _InputAnalysisSettings: Recognition configuration for input content.
+        :type InputAnalysisSettings: :class:`tencentcloud.mdl.v20200326.models.InputAnalysisInfo`
+        :param _Tags: Console tag list.
+        :type Tags: list of Tag
         """
         self._Id = None
         self._State = None
@@ -7690,10 +8268,13 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._AudioTemplates = None
         self._VideoTemplates = None
         self._AVTemplates = None
+        self._CaptionTemplates = None
         self._PlanSettings = None
         self._EventNotifySettings = None
         self._InputLossBehavior = None
         self._PipelineInputSettings = None
+        self._InputAnalysisSettings = None
+        self._Tags = None
 
     @property
     def Id(self):
@@ -7760,6 +8341,14 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._AVTemplates = AVTemplates
 
     @property
+    def CaptionTemplates(self):
+        return self._CaptionTemplates
+
+    @CaptionTemplates.setter
+    def CaptionTemplates(self, CaptionTemplates):
+        self._CaptionTemplates = CaptionTemplates
+
+    @property
     def PlanSettings(self):
         return self._PlanSettings
 
@@ -7790,6 +8379,22 @@ Note: This field may return `null`, indicating that no valid value was found.
     @PipelineInputSettings.setter
     def PipelineInputSettings(self, PipelineInputSettings):
         self._PipelineInputSettings = PipelineInputSettings
+
+    @property
+    def InputAnalysisSettings(self):
+        return self._InputAnalysisSettings
+
+    @InputAnalysisSettings.setter
+    def InputAnalysisSettings(self, InputAnalysisSettings):
+        self._InputAnalysisSettings = InputAnalysisSettings
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
@@ -7826,6 +8431,12 @@ Note: This field may return `null`, indicating that no valid value was found.
                 obj = AVTemplate()
                 obj._deserialize(item)
                 self._AVTemplates.append(obj)
+        if params.get("CaptionTemplates") is not None:
+            self._CaptionTemplates = []
+            for item in params.get("CaptionTemplates"):
+                obj = SubtitleConf()
+                obj._deserialize(item)
+                self._CaptionTemplates.append(obj)
         if params.get("PlanSettings") is not None:
             self._PlanSettings = PlanSettings()
             self._PlanSettings._deserialize(params.get("PlanSettings"))
@@ -7838,6 +8449,15 @@ Note: This field may return `null`, indicating that no valid value was found.
         if params.get("PipelineInputSettings") is not None:
             self._PipelineInputSettings = PipelineInputSettingsInfo()
             self._PipelineInputSettings._deserialize(params.get("PipelineInputSettings"))
+        if params.get("InputAnalysisSettings") is not None:
+            self._InputAnalysisSettings = InputAnalysisInfo()
+            self._InputAnalysisSettings._deserialize(params.get("InputAnalysisSettings"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8208,6 +8828,361 @@ Note: this field may return null, indicating that no valid values can be obtaine
         
 
 
+class SubtitleConf(AbstractModel):
+    """Subtitle template configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Template name.
+        :type Name: str
+        :param _CaptionSource: Optional values: INPUT (source subtitle information), ANALYSIS (intelligent speech recognition to subtitles, currently only supports this option).
+        :type CaptionSource: str
+        :param _ContentType: Optional values: 1 Source, 2 Source+Target, 3 Target (original language only, original language + translation language, translation language).
+        :type ContentType: int
+        :param _TargetType: Output mode: 1 Burn in (currently only this option is supported).
+        :type TargetType: int
+        :param _SourceLanguage: Original phonetic language.
+Optional values: Chinese, English, Japanese, Korean.
+        :type SourceLanguage: str
+        :param _TargetLanguage: Target language.
+Optional values: Chinese, English, Japanese, Korean.
+        :type TargetLanguage: str
+        :param _FontStyle: Font style configuration.
+        :type FontStyle: :class:`tencentcloud.mdl.v20200326.models.SubtitleFontConf`
+        :param _StateEffectMode: There are two modes: STEADY and DYNAMIC, corresponding to steady state and unstable state respectively; the default is STEADY.
+        :type StateEffectMode: str
+        :param _SteadyStateDelayedTime: Steady-state delay time, unit seconds; optional values: 10, 20, default 10.
+        :type SteadyStateDelayedTime: int
+        """
+        self._Name = None
+        self._CaptionSource = None
+        self._ContentType = None
+        self._TargetType = None
+        self._SourceLanguage = None
+        self._TargetLanguage = None
+        self._FontStyle = None
+        self._StateEffectMode = None
+        self._SteadyStateDelayedTime = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CaptionSource(self):
+        return self._CaptionSource
+
+    @CaptionSource.setter
+    def CaptionSource(self, CaptionSource):
+        self._CaptionSource = CaptionSource
+
+    @property
+    def ContentType(self):
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def TargetType(self):
+        return self._TargetType
+
+    @TargetType.setter
+    def TargetType(self, TargetType):
+        self._TargetType = TargetType
+
+    @property
+    def SourceLanguage(self):
+        return self._SourceLanguage
+
+    @SourceLanguage.setter
+    def SourceLanguage(self, SourceLanguage):
+        self._SourceLanguage = SourceLanguage
+
+    @property
+    def TargetLanguage(self):
+        return self._TargetLanguage
+
+    @TargetLanguage.setter
+    def TargetLanguage(self, TargetLanguage):
+        self._TargetLanguage = TargetLanguage
+
+    @property
+    def FontStyle(self):
+        return self._FontStyle
+
+    @FontStyle.setter
+    def FontStyle(self, FontStyle):
+        self._FontStyle = FontStyle
+
+    @property
+    def StateEffectMode(self):
+        return self._StateEffectMode
+
+    @StateEffectMode.setter
+    def StateEffectMode(self, StateEffectMode):
+        self._StateEffectMode = StateEffectMode
+
+    @property
+    def SteadyStateDelayedTime(self):
+        return self._SteadyStateDelayedTime
+
+    @SteadyStateDelayedTime.setter
+    def SteadyStateDelayedTime(self, SteadyStateDelayedTime):
+        self._SteadyStateDelayedTime = SteadyStateDelayedTime
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._CaptionSource = params.get("CaptionSource")
+        self._ContentType = params.get("ContentType")
+        self._TargetType = params.get("TargetType")
+        self._SourceLanguage = params.get("SourceLanguage")
+        self._TargetLanguage = params.get("TargetLanguage")
+        if params.get("FontStyle") is not None:
+            self._FontStyle = SubtitleFontConf()
+            self._FontStyle._deserialize(params.get("FontStyle"))
+        self._StateEffectMode = params.get("StateEffectMode")
+        self._SteadyStateDelayedTime = params.get("SteadyStateDelayedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleFontConf(AbstractModel):
+    """Subtitle style configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LineSpacing: Line spacing.
+        :type LineSpacing: int
+        :param _Margins: Margins.
+        :type Margins: int
+        :param _Lines: Rows.
+        :type Lines: int
+        :param _CharactersPerLine: Number of characters per line.
+        :type CharactersPerLine: int
+        :param _SourceTextFont: Original font Helvetica: simhei.ttf Song Dynasty: simsun.ttc Dynacw Diamond Black: hkjgh.ttf Helvetica font: helvetica.ttf; Need to be set in Source or Source+Target mode
+        :type SourceTextFont: str
+        :param _TextColor: Font color is represented by 6 RGB hexadecimal characters.
+        :type TextColor: str
+        :param _BackgroundColor: The background color is represented by 6 RGB hexadecimal characters.
+        :type BackgroundColor: str
+        :param _BackgroundAlpha: Background transparency, a number from 0-100.
+        :type BackgroundAlpha: int
+        :param _PreviewContent: Preview copy.
+        :type PreviewContent: str
+        :param _PreviewWindowHeight: Preview window height.
+        :type PreviewWindowHeight: int
+        :param _PreviewWindowWidth: Preview window width.
+        :type PreviewWindowWidth: int
+        :param _TranslatedTextFont: Translation language font, the enumeration value is the same as Font, the fonts supported by the language need to be distinguished; TextColor needs to be set in Target or Source+Target mode
+        :type TranslatedTextFont: str
+        """
+        self._LineSpacing = None
+        self._Margins = None
+        self._Lines = None
+        self._CharactersPerLine = None
+        self._SourceTextFont = None
+        self._TextColor = None
+        self._BackgroundColor = None
+        self._BackgroundAlpha = None
+        self._PreviewContent = None
+        self._PreviewWindowHeight = None
+        self._PreviewWindowWidth = None
+        self._TranslatedTextFont = None
+
+    @property
+    def LineSpacing(self):
+        return self._LineSpacing
+
+    @LineSpacing.setter
+    def LineSpacing(self, LineSpacing):
+        self._LineSpacing = LineSpacing
+
+    @property
+    def Margins(self):
+        return self._Margins
+
+    @Margins.setter
+    def Margins(self, Margins):
+        self._Margins = Margins
+
+    @property
+    def Lines(self):
+        return self._Lines
+
+    @Lines.setter
+    def Lines(self, Lines):
+        self._Lines = Lines
+
+    @property
+    def CharactersPerLine(self):
+        return self._CharactersPerLine
+
+    @CharactersPerLine.setter
+    def CharactersPerLine(self, CharactersPerLine):
+        self._CharactersPerLine = CharactersPerLine
+
+    @property
+    def SourceTextFont(self):
+        return self._SourceTextFont
+
+    @SourceTextFont.setter
+    def SourceTextFont(self, SourceTextFont):
+        self._SourceTextFont = SourceTextFont
+
+    @property
+    def TextColor(self):
+        return self._TextColor
+
+    @TextColor.setter
+    def TextColor(self, TextColor):
+        self._TextColor = TextColor
+
+    @property
+    def BackgroundColor(self):
+        return self._BackgroundColor
+
+    @BackgroundColor.setter
+    def BackgroundColor(self, BackgroundColor):
+        self._BackgroundColor = BackgroundColor
+
+    @property
+    def BackgroundAlpha(self):
+        return self._BackgroundAlpha
+
+    @BackgroundAlpha.setter
+    def BackgroundAlpha(self, BackgroundAlpha):
+        self._BackgroundAlpha = BackgroundAlpha
+
+    @property
+    def PreviewContent(self):
+        return self._PreviewContent
+
+    @PreviewContent.setter
+    def PreviewContent(self, PreviewContent):
+        self._PreviewContent = PreviewContent
+
+    @property
+    def PreviewWindowHeight(self):
+        return self._PreviewWindowHeight
+
+    @PreviewWindowHeight.setter
+    def PreviewWindowHeight(self, PreviewWindowHeight):
+        self._PreviewWindowHeight = PreviewWindowHeight
+
+    @property
+    def PreviewWindowWidth(self):
+        return self._PreviewWindowWidth
+
+    @PreviewWindowWidth.setter
+    def PreviewWindowWidth(self, PreviewWindowWidth):
+        self._PreviewWindowWidth = PreviewWindowWidth
+
+    @property
+    def TranslatedTextFont(self):
+        return self._TranslatedTextFont
+
+    @TranslatedTextFont.setter
+    def TranslatedTextFont(self, TranslatedTextFont):
+        self._TranslatedTextFont = TranslatedTextFont
+
+
+    def _deserialize(self, params):
+        self._LineSpacing = params.get("LineSpacing")
+        self._Margins = params.get("Margins")
+        self._Lines = params.get("Lines")
+        self._CharactersPerLine = params.get("CharactersPerLine")
+        self._SourceTextFont = params.get("SourceTextFont")
+        self._TextColor = params.get("TextColor")
+        self._BackgroundColor = params.get("BackgroundColor")
+        self._BackgroundAlpha = params.get("BackgroundAlpha")
+        self._PreviewContent = params.get("PreviewContent")
+        self._PreviewWindowHeight = params.get("PreviewWindowHeight")
+        self._PreviewWindowWidth = params.get("PreviewWindowWidth")
+        self._TranslatedTextFont = params.get("TranslatedTextFont")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    """Console Tag, for documentation please refer to: https://www.tencentcloud.com/document/product/651.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: Tag key, for restrictions please refer to the tag documentation: https://www.tencentcloud.com/document/product/651/13354.
+        :type TagKey: str
+        :param _TagValue: Tag value, for restrictions please refer to the tag documentation: https://www.tencentcloud.com/document/product/651/13354.
+        :type TagValue: str
+        :param _Category: Tag type, optional; for documentation please refer to: https://www.tencentcloud.com/document/product/651/33023#tag.
+        :type Category: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+        self._Category = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        self._Category = params.get("Category")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TimeShiftSettingsInfo(AbstractModel):
     """Time-shift configuration. This parameter is valid only for HLS_ARCHIVE and DASH_ARCHIVE output groups.
 
@@ -8513,7 +9488,7 @@ It indicates the end time for recording in UTC format (e.g., `2020-01-01T12:00:0
 
 
 class VideoCodecDetail(AbstractModel):
-    """
+    """Video codec additional configuration.
 
     """
 
