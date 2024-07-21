@@ -165,7 +165,7 @@ class CynosdbClient(AbstractClient):
 
 
     def CloseProxy(self, request):
-        """This API is used to disable u200dthe database proxy.
+        """This API is used to disable the database proxy.
 
         :param request: Request instance for CloseProxy.
         :type request: :class:`tencentcloud.cynosdb.v20190107.models.CloseProxyRequest`

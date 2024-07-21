@@ -489,7 +489,7 @@ class DcdbClient(AbstractClient):
 
 
     def DescribeDBTmpInstances(self, request):
-        """This API is used to obtain u200da temp rollback instance.
+        """This API is used to obtain a temp rollback instance.
 
         :param request: Request instance for DescribeDBTmpInstances.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.DescribeDBTmpInstancesRequest`
@@ -1390,7 +1390,7 @@ class DcdbClient(AbstractClient):
 
 
     def UpgradeDedicatedDCDBInstance(self, request):
-        """This API is used to u200dupgrade a dedicated TDSQL cluster instance.
+        """This API is used to upgrade a dedicated TDSQL cluster instance.
 
         :param request: Request instance for UpgradeDedicatedDCDBInstance.
         :type request: :class:`tencentcloud.dcdb.v20180411.models.UpgradeDedicatedDCDBInstanceRequest`

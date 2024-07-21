@@ -332,7 +332,7 @@ class Advice(AbstractModel):
         :type Detail: str
         :param _Solution: Recommended resolutions
         :type Solution: str
-        :param _Level: u200dRisk level of the scaling group configuration. Valid values: <br>
+        :param _Level: Risk level of the scaling group configuration. Valid values: <br>
 <li>WARNING<br>
 <li>CRITICAL<br>
         :type Level: str
@@ -9609,7 +9609,7 @@ class RelatedInstance(AbstractModel):
         :type InstanceId: str
         :param _InstanceStatus: Status of the instance in the scaling activity. Valid values:
 `INIT`: Initializing
-`RUNNING`: u200dProcessing u200dthe instance
+`RUNNING`: Processing the instance
 `SUCCESSFUL`: Task succeeded on the instance
 `FAILED`: Task failed on the instance
         :type InstanceStatus: str
