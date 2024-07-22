@@ -33,6 +33,9 @@ FAILEDOPERATION = 'FailedOperation'
 FAILEDOPERATION_CRUNSUPPORTMETHOD = 'FailedOperation.CRUnsupportMethod'
 
 # 
+FAILEDOPERATION_NOTALLOWED = 'FailedOperation.NotAllowed'
+
+# 
 FAILEDOPERATION_NOTRTMPFUNCTION = 'FailedOperation.NotRtmpFunction'
 
 # Query task failed

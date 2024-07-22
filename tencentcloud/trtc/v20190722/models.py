@@ -5937,11 +5937,11 @@ class StartStreamIngestRequest(AbstractModel):
         :type SdkAppId: int
         :param _RoomId: TRTC's [RoomId](https://intl.cloud.tencent.com/document/product/647/46351?from_cn_redirect=1#roomid), the RoomId corresponding to the Record TRTC room.
         :type RoomId: str
-        :param _RoomIdType: Type of TRTC RoomId. 【*Note】Must be the same as the RoomId type corresponding to the Record room: 0: String type RoomId 1: 32-bit Integer type RoomId (default)
+        :param _RoomIdType: Type of TRTC RoomId. [*Note] Must be the same as the RoomId type corresponding to the Record room: 0: String type RoomId 1: 32-bit Integer type RoomId (default)
         :type RoomIdType: int
         :param _UserId: UserId of the Pull stream Relay Robot, used to enter the room and initiate the Pull stream Relay Task.
         :type UserId: str
-        :param _UserSig: UserSig corresponding to the Pull stream Relay Robot UserId, i.e., UserId and UserSig are equivalent to the Robot's Login password for entering the room. For the specific Calculation method, please refer to the TRTC [UserSig](https://intl.cloud.tencent.com/document/product/647/45910?from_cn_redirect=1#UserSig) Scheme.
+        :param _UserSig: UserSig corresponding to the Pull stream Relay Robot UserId, i.e., UserId and UserSig are equivalent to the Robot's Login password for entering the room. For the specific Calculation method, please refer to the TRTC [UserSig](https://www.tencentcloud.com/zh/document/product/647/39074) Scheme.
         :type UserSig: str
         :param _SourceUrl: 	
 Source URL. Example value: https://a.b/test.mp4
@@ -5952,6 +5952,8 @@ Source URL. Example value: https://a.b/test.mp4
         :type VideoEncodeParams: :class:`tencentcloud.trtc.v20190722.models.VideoEncodeParams`
         :param _AudioEncodeParams: Audio Codec Parameters. Optional, if not filled, Keep original stream Parameters.
         :type AudioEncodeParams: :class:`tencentcloud.trtc.v20190722.models.AudioEncodeParams`
+        :param _StreamUrl: 
+        :type StreamUrl: str
         """
         self._SdkAppId = None
         self._RoomId = None
@@ -5962,6 +5964,7 @@ Source URL. Example value: https://a.b/test.mp4
         self._PrivateMapKey = None
         self._VideoEncodeParams = None
         self._AudioEncodeParams = None
+        self._StreamUrl = None
 
     @property
     def SdkAppId(self):
@@ -6035,6 +6038,14 @@ Source URL. Example value: https://a.b/test.mp4
     def AudioEncodeParams(self, AudioEncodeParams):
         self._AudioEncodeParams = AudioEncodeParams
 
+    @property
+    def StreamUrl(self):
+        return self._StreamUrl
+
+    @StreamUrl.setter
+    def StreamUrl(self, StreamUrl):
+        self._StreamUrl = StreamUrl
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -6050,6 +6061,7 @@ Source URL. Example value: https://a.b/test.mp4
         if params.get("AudioEncodeParams") is not None:
             self._AudioEncodeParams = AudioEncodeParams()
             self._AudioEncodeParams._deserialize(params.get("AudioEncodeParams"))
+        self._StreamUrl = params.get("StreamUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -26,8 +26,14 @@ FAILEDOPERATION = 'FailedOperation'
 # An internal error occurs.
 INTERNALERROR = 'InternalError'
 
+# 
+INVALIDFILTER = 'InvalidFilter'
+
 # The parameter is incorrect.
 INVALIDPARAMETER = 'InvalidParameter'
+
+# Decrypt error
+INVALIDPARAMETER_DECRYPTERROR = 'InvalidParameter.DecryptError'
 
 # Invalid parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
@@ -40,6 +46,9 @@ MISSINGPARAMETER = 'MissingParameter'
 
 # Operation denied.
 OPERATIONDENIED = 'OperationDenied'
+
+# 
+REGIONERROR = 'RegionError'
 
 # Too many requests.
 REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
@@ -61,6 +70,12 @@ RESOURCESSOLDOUT = 'ResourcesSoldOut'
 
 # The operation is unauthorized.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# 
+UNAUTHORIZEDOPERATION_CLOUDAUDIT = 'UnauthorizedOperation.CloudAudit'
+
+# 
+UNAUTHORIZEDOPERATION_COS = 'UnauthorizedOperation.Cos'
 
 # The parameter is unknown.
 UNKNOWNPARAMETER = 'UnknownParameter'
