@@ -11612,7 +11612,7 @@ class LogRechargeRuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RechargeType: Import type. Valid values: `json_log` (JSON logs), `minimalist_log` (single-line full text), and fullregex_log u200d(single-line full regex)
+        :param _RechargeType: Import type. Valid values: `json_log` (JSON logs), `minimalist_log` (single-line full text), and fullregex_log (single-line full regex)
         :type RechargeType: str
         :param _EncodingFormat: Encoding format. Valid values: 0 (default, UTF-8) and 1 GBK).
         :type EncodingFormat: int
