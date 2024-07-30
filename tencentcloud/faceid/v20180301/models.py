@@ -2510,9 +2510,10 @@ class GetCardVerificationResultResponse(AbstractModel):
     def __init__(self):
         r"""
         :param _Status: Pass status. When Warning and Rejected are returned, please check the specific reasons in the WarnInfo structure return. Example values are as follows:
-Passed
-Warning
-Rejected
+PASSED
+WARNING
+REJECTED
+PROCESSING
         :type Status: str
         :param _WarnInfo: Warning information returned by document verification.
         :type WarnInfo: list of str

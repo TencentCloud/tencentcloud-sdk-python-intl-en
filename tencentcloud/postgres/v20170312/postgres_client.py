@@ -788,7 +788,7 @@ class PostgresClient(AbstractClient):
 
 
     def DescribeDBInstanceHAConfig(self, request):
-        """This API is used to query the HA configuration of an instance, u200cwhich includes:
+        """This API is used to query the HA configuration of an instance, which includes:
         <li>Allow a standby node to promote to a primary node.
         <li>Allow a semi-sync instance to adopt sync or async replication.
 
@@ -1595,7 +1595,7 @@ class PostgresClient(AbstractClient):
 
 
     def ModifyDBInstanceHAConfig(self, request):
-        """This API is used to modify the HA configuration of an instance. u200cwhich includes:
+        """This API is used to modify the HA configuration of an instance. which includes:
         <li>Allow the standby node to promote to the primary node.
         <li>Allow a semi-sync instance to adopt sync or async replication.
 
