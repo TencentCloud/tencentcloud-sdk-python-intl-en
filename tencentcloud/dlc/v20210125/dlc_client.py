@@ -26,6 +26,98 @@ class DlcClient(AbstractClient):
     _service = 'dlc'
 
 
+    def AddUsersToWorkGroup(self, request):
+        """This API is used to add users to working groups.
+
+        :param request: Request instance for AddUsersToWorkGroup.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.AddUsersToWorkGroupRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.AddUsersToWorkGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddUsersToWorkGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddUsersToWorkGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AttachUserPolicy(self, request):
+        """This API is used to bind the authentication policy to the user.
+
+        :param request: Request instance for AttachUserPolicy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.AttachUserPolicyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.AttachUserPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AttachUserPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.AttachUserPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AttachWorkGroupPolicy(self, request):
+        """This API is used to bind an authentication policy to a working group.
+
+        :param request: Request instance for AttachWorkGroupPolicy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.AttachWorkGroupPolicyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.AttachWorkGroupPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AttachWorkGroupPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.AttachWorkGroupPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def BindWorkGroupsToUser(self, request):
+        """This API is used to bind working groups to users.
+
+        :param request: Request instance for BindWorkGroupsToUser.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.BindWorkGroupsToUserRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.BindWorkGroupsToUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindWorkGroupsToUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindWorkGroupsToUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CancelSparkSessionBatchSQL(self, request):
         """This API is used to cancel a Spark SQL batch task.
 
@@ -63,6 +155,98 @@ class DlcClient(AbstractClient):
             body = self.call("CancelTask", params, headers=headers)
             response = json.loads(body)
             model = models.CancelTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CheckDataEngineConfigPairsValidity(self, request):
+        """This API is used to check the validity of the engine's user-defined parameters.
+
+        :param request: Request instance for CheckDataEngineConfigPairsValidity.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineConfigPairsValidityRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineConfigPairsValidityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckDataEngineConfigPairsValidity", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckDataEngineConfigPairsValidityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CheckDataEngineImageCanBeRollback(self, request):
+        """This API is used to check whether the cluster can be rolled back.
+
+        :param request: Request instance for CheckDataEngineImageCanBeRollback.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineImageCanBeRollbackRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineImageCanBeRollbackResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckDataEngineImageCanBeRollback", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckDataEngineImageCanBeRollbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CheckDataEngineImageCanBeUpgrade(self, request):
+        """This API is used to check whether the cluster image can be upgraded.
+
+        :param request: Request instance for CheckDataEngineImageCanBeUpgrade.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineImageCanBeUpgradeRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CheckDataEngineImageCanBeUpgradeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckDataEngineImageCanBeUpgrade", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckDataEngineImageCanBeUpgradeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCHDFSBindingProduct(self, request):
+        """This API is used to create metadata acceleration buckets and the binding relationship between products.
+
+        :param request: Request instance for CreateCHDFSBindingProduct.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateCHDFSBindingProductRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateCHDFSBindingProductResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCHDFSBindingProduct", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCHDFSBindingProductResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -210,6 +394,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateStoreLocation(self, request):
+        """This API is used to add or overwrite the storage location of results.
+
+        :param request: Request instance for CreateStoreLocation.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateStoreLocationRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateStoreLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStoreLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStoreLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTask(self, request):
         """This API is used to create and execute a SQL task. (`CreateTasks` is recommended.)
 
@@ -256,6 +463,98 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateUser(self, request):
+        """This API is used to create users.
+
+        :param request: Request instance for CreateUser.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateUserRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateWorkGroup(self, request):
+        """This API is used to create working groups.
+
+        :param request: Request instance for CreateWorkGroup.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateWorkGroupRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateWorkGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWorkGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateWorkGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCHDFSBindingProduct(self, request):
+        """This API is used to delete the binding relationship between metadata acceleration buckets and products.
+
+        :param request: Request instance for DeleteCHDFSBindingProduct.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteCHDFSBindingProductRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteCHDFSBindingProductResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCHDFSBindingProduct", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCHDFSBindingProductResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDataEngine(self, request):
+        """This API is used to delete the data engine.
+
+        :param request: Request instance for DeleteDataEngine.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteDataEngineRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteDataEngineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDataEngine", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDataEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteSparkApp(self, request):
         """This API is used to delete a Spark job.
 
@@ -270,6 +569,236 @@ class DlcClient(AbstractClient):
             body = self.call("DeleteSparkApp", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSparkAppResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteThirdPartyAccessUser(self, request):
+        """This API is used to remove visits through the third-party platform.
+
+        :param request: Request instance for DeleteThirdPartyAccessUser.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteThirdPartyAccessUserRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteThirdPartyAccessUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteThirdPartyAccessUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteThirdPartyAccessUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteUser(self, request):
+        """This API is used to delete users.
+
+        :param request: Request instance for DeleteUser.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteUserRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteUsersFromWorkGroup(self, request):
+        """This API is used to delete users from working groups.
+
+        :param request: Request instance for DeleteUsersFromWorkGroup.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteUsersFromWorkGroupRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteUsersFromWorkGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUsersFromWorkGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteUsersFromWorkGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteWorkGroup(self, request):
+        """This API is used to delete working groups.
+
+        :param request: Request instance for DeleteWorkGroup.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteWorkGroupRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteWorkGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteWorkGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteWorkGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAdvancedStoreLocation(self, request):
+        """This API is used to query the advanced settings of the SQL query interface.
+
+        :param request: Request instance for DescribeAdvancedStoreLocation.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeAdvancedStoreLocationRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeAdvancedStoreLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAdvancedStoreLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAdvancedStoreLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDLCCatalogAccess(self, request):
+        """This API is used to query the DLC Catalog authorization list.
+
+        :param request: Request instance for DescribeDLCCatalogAccess.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDLCCatalogAccessRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDLCCatalogAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDLCCatalogAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDLCCatalogAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataEngine(self, request):
+        """This API is used to obtain detailed data engine information based on names.
+
+        :param request: Request instance for DescribeDataEngine.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEngineRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEngineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataEngine", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataEngineImageVersions(self, request):
+        """This API is used to obtain the major version image list of exclusive clusters.
+
+        :param request: Request instance for DescribeDataEngineImageVersions.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEngineImageVersionsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEngineImageVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataEngineImageVersions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataEngineImageVersionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataEnginePythonSparkImages(self, request):
+        """This API is used to obtain the PYSPARK image list.
+
+        :param request: Request instance for DescribeDataEnginePythonSparkImages.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginePythonSparkImagesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginePythonSparkImagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataEnginePythonSparkImages", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataEnginePythonSparkImagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataEnginesScaleDetail(self, request):
+        """This API is used to query engine specification details.
+
+        :param request: Request instance for DescribeDataEnginesScaleDetail.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginesScaleDetailRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDataEnginesScaleDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataEnginesScaleDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataEnginesScaleDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -362,6 +891,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeLakeFsInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLakeFsInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeOtherCHDFSBindingList(self, request):
+        """This API is used to query the list of metadata acceleration buckets bound to other products.
+
+        :param request: Request instance for DescribeOtherCHDFSBindingList.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeOtherCHDFSBindingListRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeOtherCHDFSBindingListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOtherCHDFSBindingList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOtherCHDFSBindingListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -464,7 +1016,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSparkSessionBatchSqlLog(self, request):
-        """This API is used to obtain the logs of a Spark SQL batch task.
+        """This API is used to query Spark SQL batch task logs.
 
         :param request: Request instance for DescribeSparkSessionBatchSqlLog.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSparkSessionBatchSqlLogRequest`
@@ -477,6 +1029,75 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeSparkSessionBatchSqlLog", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSparkSessionBatchSqlLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStoreLocation(self, request):
+        """This API is used to query the storage location of calculation results.
+
+        :param request: Request instance for DescribeStoreLocation.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeStoreLocationRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeStoreLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStoreLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStoreLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSubUserAccessPolicy(self, request):
+        """This API is used to query the sub-user's visiting policy for users accessing through the third-party platform.
+
+        :param request: Request instance for DescribeSubUserAccessPolicy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSubUserAccessPolicyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeSubUserAccessPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSubUserAccessPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSubUserAccessPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTablesName(self, request):
+        """This API is used to query the data table name list.
+
+        :param request: Request instance for DescribeTablesName.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTablesNameRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeTablesNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTablesName", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTablesNameResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -532,6 +1153,98 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeThirdPartyAccessUser(self, request):
+        """This API is used to query the information of users visiting through the third-party platform.
+
+        :param request: Request instance for DescribeThirdPartyAccessUser.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeThirdPartyAccessUserRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeThirdPartyAccessUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeThirdPartyAccessUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeThirdPartyAccessUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUpdatableDataEngines(self, request):
+        """This API is used to query the list of engines that are able to upgrade their configuration.
+
+        :param request: Request instance for DescribeUpdatableDataEngines.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUpdatableDataEnginesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeUpdatableDataEnginesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUpdatableDataEngines", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUpdatableDataEnginesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserDataEngineConfig(self, request):
+        """This API is used to query user-defined engine parameters.
+
+        :param request: Request instance for DescribeUserDataEngineConfig.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserDataEngineConfigRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeUserDataEngineConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserDataEngineConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserDataEngineConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserInfo(self, request):
+        """This API is used to get detailed user information.
+
+        :param request: Request instance for DescribeUserInfo.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserInfoRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeUserInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUserRoles(self, request):
         """This API is used to enumerate user roles.
 
@@ -555,6 +1268,144 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserType(self, request):
+        """This API is used to get the types of users.
+
+        :param request: Request instance for DescribeUserType.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUserTypeRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeUserTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserType", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUsers(self, request):
+        """This API is used to obtain the user list.
+
+        :param request: Request instance for DescribeUsers.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeUsersRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUsersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWorkGroupInfo(self, request):
+        """This API is used to get detailed information about working groups.
+
+        :param request: Request instance for DescribeWorkGroupInfo.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeWorkGroupInfoRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeWorkGroupInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkGroupInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkGroupInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWorkGroups(self, request):
+        """This API is used to get a list of working groups.
+
+        :param request: Request instance for DescribeWorkGroups.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeWorkGroupsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeWorkGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DetachUserPolicy(self, request):
+        """This API is used to unbind the authentication policy from the user.
+
+        :param request: Request instance for DetachUserPolicy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DetachUserPolicyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DetachUserPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DetachUserPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DetachUserPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DetachWorkGroupPolicy(self, request):
+        """This API is used to unbind the authentication policy from the working group.
+
+        :param request: Request instance for DetachWorkGroupPolicy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DetachWorkGroupPolicyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DetachWorkGroupPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DetachWorkGroupPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DetachWorkGroupPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GenerateCreateMangedTableSql(self, request):
         """This API is used to generate SQL statements for creating a managed table.
 
@@ -569,6 +1420,98 @@ class DlcClient(AbstractClient):
             body = self.call("GenerateCreateMangedTableSql", params, headers=headers)
             response = json.loads(body)
             model = models.GenerateCreateMangedTableSqlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetOptimizerPolicy(self, request):
+        """GetOptimizerPolicy
+
+        :param request: Request instance for GetOptimizerPolicy.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetOptimizerPolicyRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetOptimizerPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetOptimizerPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetOptimizerPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GrantDLCCatalogAccess(self, request):
+        """This API is used to grant permissions for visiting DLC Catalog.
+
+        :param request: Request instance for GrantDLCCatalogAccess.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GrantDLCCatalogAccessRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GrantDLCCatalogAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GrantDLCCatalogAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.GrantDLCCatalogAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAdvancedStoreLocation(self, request):
+        """This API is used to modify the advanced settings of the SQL query interface.
+
+        :param request: Request instance for ModifyAdvancedStoreLocation.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyAdvancedStoreLocationRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifyAdvancedStoreLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAdvancedStoreLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAdvancedStoreLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDataEngineDescription(self, request):
+        """This API is used to modify the engine's description.
+
+        :param request: Request instance for ModifyDataEngineDescription.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyDataEngineDescriptionRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifyDataEngineDescriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDataEngineDescription", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDataEngineDescriptionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -647,6 +1590,236 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyUser(self, request):
+        """This API is used to modify user information.
+
+        :param request: Request instance for ModifyUser.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyUserRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifyUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyUserType(self, request):
+        """This API is used to modify the types of users. Only users who are also administrators can call this API to conduct the operation.
+
+        :param request: Request instance for ModifyUserType.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyUserTypeRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifyUserTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserType", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyWorkGroup(self, request):
+        """This API is used to modify working group information.
+
+        :param request: Request instance for ModifyWorkGroup.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyWorkGroupRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifyWorkGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyWorkGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyWorkGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryResult(self, request):
+        """This API is used to query the result of obtaining tasks.
+
+        :param request: Request instance for QueryResult.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.QueryResultRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.QueryResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryTaskCostDetail(self, request):
+        """This API is used to query task consumption details.
+
+        :param request: Request instance for QueryTaskCostDetail.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.QueryTaskCostDetailRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.QueryTaskCostDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryTaskCostDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryTaskCostDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RegisterThirdPartyAccessUser(self, request):
+        """This API is used to enable visits to the third-party platform.
+
+        :param request: Request instance for RegisterThirdPartyAccessUser.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.RegisterThirdPartyAccessUserRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.RegisterThirdPartyAccessUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RegisterThirdPartyAccessUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.RegisterThirdPartyAccessUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RenewDataEngine(self, request):
+        """This API is used to renew the data engine.
+
+        :param request: Request instance for RenewDataEngine.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.RenewDataEngineRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.RenewDataEngineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewDataEngine", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewDataEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RestartDataEngine(self, request):
+        """This API is used to restart engines.
+
+        :param request: Request instance for RestartDataEngine.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.RestartDataEngineRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.RestartDataEngineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestartDataEngine", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestartDataEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RevokeDLCCatalogAccess(self, request):
+        """This API is used to revoke permissions for visiting DLC Catalog.
+
+        :param request: Request instance for RevokeDLCCatalogAccess.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.RevokeDLCCatalogAccessRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.RevokeDLCCatalogAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RevokeDLCCatalogAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.RevokeDLCCatalogAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RollbackDataEngineImage(self, request):
+        """This API is used to roll back the versions of the engine image.
+
+        :param request: Request instance for RollbackDataEngineImage.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.RollbackDataEngineImageRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.RollbackDataEngineImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RollbackDataEngineImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.RollbackDataEngineImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SuspendResumeDataEngine(self, request):
         """This API is used to suspend or start a data engine.
 
@@ -693,6 +1866,98 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SwitchDataEngineImage(self, request):
+        """This API is used to switch the versions of the engine image.
+
+        :param request: Request instance for SwitchDataEngineImage.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.SwitchDataEngineImageRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.SwitchDataEngineImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchDataEngineImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchDataEngineImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UnbindWorkGroupsFromUser(self, request):
+        """This API is used to unbind a user group from a user.
+
+        :param request: Request instance for UnbindWorkGroupsFromUser.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UnbindWorkGroupsFromUserRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UnbindWorkGroupsFromUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnbindWorkGroupsFromUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnbindWorkGroupsFromUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateDataEngine(self, request):
+        """This API is used to upgrade data engine configuration.
+
+        :param request: Request instance for UpdateDataEngine.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateDataEngineRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateDataEngineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateDataEngine", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateDataEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateDataEngineConfig(self, request):
+        """This API is used to trigger the modification of the engine configuration by the user through a certain operation.
+
+        :param request: Request instance for UpdateDataEngineConfig.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateDataEngineConfigRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateDataEngineConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateDataEngineConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateDataEngineConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateRowFilter(self, request):
         """This API is used to update row filters. Please note that it updates filters only but not catalogs, databases, or tables.
 
@@ -707,6 +1972,52 @@ class DlcClient(AbstractClient):
             body = self.call("UpdateRowFilter", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateRowFilterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateUserDataEngineConfig(self, request):
+        """This API is used to modify the custom configuration of the user's engine.
+
+        :param request: Request instance for UpdateUserDataEngineConfig.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateUserDataEngineConfigRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateUserDataEngineConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateUserDataEngineConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateUserDataEngineConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradeDataEngineImage(self, request):
+        """This API is used to upgrade the engine image.
+
+        :param request: Request instance for UpgradeDataEngineImage.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpgradeDataEngineImageRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpgradeDataEngineImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeDataEngineImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeDataEngineImageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
