@@ -476,6 +476,123 @@ class AdditionalRateSetting(AbstractModel):
         
 
 
+class AmazonS3Settings(AbstractModel):
+    """Amazon S3 destination setting.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessKeyID: Access key ID of the S3 sub-account.
+        :type AccessKeyID: str
+        :param _SecretAccessKey: Secret access key of the S3 sub-account.
+        :type SecretAccessKey: str
+        :param _Region: Region of S3.
+        :type Region: str
+        :param _Bucket: Bucket name of S3.
+        :type Bucket: str
+        :param _FilePath: File output path, which can be empty. If it is not empty, it starts with / and ends with /.
+        :type FilePath: str
+        :param _FileName: User-defined name, supports alphanumeric characters, underscores, and hyphens, with a length between 1 and 32 characters.
+        :type FileName: str
+        :param _FileExt: File suffix, only supports `jpg`.
+        :type FileExt: str
+        :param _TimeFormat: Support `unix` or `utc0`, default unix.
+        :type TimeFormat: str
+        """
+        self._AccessKeyID = None
+        self._SecretAccessKey = None
+        self._Region = None
+        self._Bucket = None
+        self._FilePath = None
+        self._FileName = None
+        self._FileExt = None
+        self._TimeFormat = None
+
+    @property
+    def AccessKeyID(self):
+        return self._AccessKeyID
+
+    @AccessKeyID.setter
+    def AccessKeyID(self, AccessKeyID):
+        self._AccessKeyID = AccessKeyID
+
+    @property
+    def SecretAccessKey(self):
+        return self._SecretAccessKey
+
+    @SecretAccessKey.setter
+    def SecretAccessKey(self, SecretAccessKey):
+        self._SecretAccessKey = SecretAccessKey
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Bucket(self):
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def FilePath(self):
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileExt(self):
+        return self._FileExt
+
+    @FileExt.setter
+    def FileExt(self, FileExt):
+        self._FileExt = FileExt
+
+    @property
+    def TimeFormat(self):
+        return self._TimeFormat
+
+    @TimeFormat.setter
+    def TimeFormat(self, TimeFormat):
+        self._TimeFormat = TimeFormat
+
+
+    def _deserialize(self, params):
+        self._AccessKeyID = params.get("AccessKeyID")
+        self._SecretAccessKey = params.get("SecretAccessKey")
+        self._Region = params.get("Region")
+        self._Bucket = params.get("Bucket")
+        self._FilePath = params.get("FilePath")
+        self._FileName = params.get("FileName")
+        self._FileExt = params.get("FileExt")
+        self._TimeFormat = params.get("TimeFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AttachedInput(AbstractModel):
     """Channel-associated input
 
@@ -1258,6 +1375,99 @@ This time is available only after the alarm ends.
         
 
 
+class CosSettings(AbstractModel):
+    """Cos destination setting.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: Region of COS.
+        :type Region: str
+        :param _Bucket: Bucket name of COS.
+        :type Bucket: str
+        :param _FilePath: File output path, which can be empty. If it is not empty, it  ends with /.
+        :type FilePath: str
+        :param _FileName: User-defined name, supports alphanumeric characters, underscores, and hyphens, with a length between 1 and 32 characters.
+        :type FileName: str
+        :param _FileExt: File suffix, only supports `jpg`.
+        :type FileExt: str
+        :param _TimeFormat: Support `unix` or `utc0`, default unix.
+        :type TimeFormat: str
+        """
+        self._Region = None
+        self._Bucket = None
+        self._FilePath = None
+        self._FileName = None
+        self._FileExt = None
+        self._TimeFormat = None
+
+    @property
+    def Region(self):
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Bucket(self):
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def FilePath(self):
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileExt(self):
+        return self._FileExt
+
+    @FileExt.setter
+    def FileExt(self, FileExt):
+        self._FileExt = FileExt
+
+    @property
+    def TimeFormat(self):
+        return self._TimeFormat
+
+    @TimeFormat.setter
+    def TimeFormat(self, TimeFormat):
+        self._TimeFormat = TimeFormat
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._Bucket = params.get("Bucket")
+        self._FilePath = params.get("FilePath")
+        self._FileName = params.get("FileName")
+        self._FileExt = params.get("FileExt")
+        self._TimeFormat = params.get("TimeFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateImageSettings(AbstractModel):
     """Watermark image settings
 
@@ -1400,6 +1610,8 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         :type InputAnalysisSettings: :class:`tencentcloud.mdl.v20200326.models.InputAnalysisInfo`
         :param _Tags: Console tag list.
         :type Tags: list of Tag
+        :param _FrameCaptureTemplates: Frame capture templates.
+        :type FrameCaptureTemplates: list of FrameCaptureTemplate
         """
         self._Name = None
         self._AttachedInputs = None
@@ -1414,6 +1626,7 @@ class CreateStreamLiveChannelRequest(AbstractModel):
         self._PipelineInputSettings = None
         self._InputAnalysisSettings = None
         self._Tags = None
+        self._FrameCaptureTemplates = None
 
     @property
     def Name(self):
@@ -1519,6 +1732,14 @@ class CreateStreamLiveChannelRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def FrameCaptureTemplates(self):
+        return self._FrameCaptureTemplates
+
+    @FrameCaptureTemplates.setter
+    def FrameCaptureTemplates(self, FrameCaptureTemplates):
+        self._FrameCaptureTemplates = FrameCaptureTemplates
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1579,6 +1800,12 @@ class CreateStreamLiveChannelRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        if params.get("FrameCaptureTemplates") is not None:
+            self._FrameCaptureTemplates = []
+            for item in params.get("FrameCaptureTemplates"):
+                obj = FrameCaptureTemplate()
+                obj._deserialize(item)
+                self._FrameCaptureTemplates.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4344,14 +4571,20 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _Password: Authentication password. Length limit: [1,128].
 Note: this field may return null, indicating that no valid values can be obtained.
         :type Password: str
-        :param _DestinationType: The destination type of the retweet. Currently available values are: Standard, AWS_MediaPackageV1, AWS_MediaPackageV2. The default is: Standard.
+        :param _DestinationType: The destination type of the retweet. Currently available values are: Standard, AWS_MediaPackageV1, AWS_MediaPackageV2. The default is: Standard. When the output group type is FRAME_CAPTURE, valid values are: AWS_AmazonS3, COS.
         :type DestinationType: str
+        :param _AmazonS3Settings: Aws S3 destination setting.
+        :type AmazonS3Settings: :class:`tencentcloud.mdl.v20200326.models.AmazonS3Settings`
+        :param _CosSettings: Cos destination setting.
+        :type CosSettings: :class:`tencentcloud.mdl.v20200326.models.CosSettings`
         """
         self._OutputUrl = None
         self._AuthKey = None
         self._Username = None
         self._Password = None
         self._DestinationType = None
+        self._AmazonS3Settings = None
+        self._CosSettings = None
 
     @property
     def OutputUrl(self):
@@ -4393,6 +4626,22 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def DestinationType(self, DestinationType):
         self._DestinationType = DestinationType
 
+    @property
+    def AmazonS3Settings(self):
+        return self._AmazonS3Settings
+
+    @AmazonS3Settings.setter
+    def AmazonS3Settings(self, AmazonS3Settings):
+        self._AmazonS3Settings = AmazonS3Settings
+
+    @property
+    def CosSettings(self):
+        return self._CosSettings
+
+    @CosSettings.setter
+    def CosSettings(self, CosSettings):
+        self._CosSettings = CosSettings
+
 
     def _deserialize(self, params):
         self._OutputUrl = params.get("OutputUrl")
@@ -4400,6 +4649,12 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._Username = params.get("Username")
         self._Password = params.get("Password")
         self._DestinationType = params.get("DestinationType")
+        if params.get("AmazonS3Settings") is not None:
+            self._AmazonS3Settings = AmazonS3Settings()
+            self._AmazonS3Settings._deserialize(params.get("AmazonS3Settings"))
+        if params.get("CosSettings") is not None:
+            self._CosSettings = CosSettings()
+            self._CosSettings._deserialize(params.get("CosSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5038,6 +5293,111 @@ Note: this field may return `null`, indicating that no valid value was found.
         self._SecondaryInputId = params.get("SecondaryInputId")
         self._LossThreshold = params.get("LossThreshold")
         self._RecoverBehavior = params.get("RecoverBehavior")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FrameCaptureTemplate(AbstractModel):
+    """Frame capture template.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Name of frame capture template, limited to uppercase and lowercase letters and numbers, with a length between 1 and 20 characters.
+        :type Name: str
+        :param _Width: Width of frame capture, optional, input range is from 0 to 3000, must be a multiple of 2.
+        :type Width: int
+        :param _Height: Height of frame capture, optional, input range is from 0 to 3000, must be a multiple of 2.
+        :type Height: int
+        :param _CaptureInterval: Interval of frame capture, an integer between 1 and 3600.
+        :type CaptureInterval: int
+        :param _CaptureIntervalUnits: Interval units of frame capture, only supports SECONDS.
+        :type CaptureIntervalUnits: str
+        :param _ScalingBehavior: Scaling behavior of frame capture, supports DEFAULT or STRETCH_TO_OUTPUT, with DEFAULT being the default option.
+        :type ScalingBehavior: str
+        :param _Sharpness: Sharpness, an integer between 0 and 100.
+        :type Sharpness: int
+        """
+        self._Name = None
+        self._Width = None
+        self._Height = None
+        self._CaptureInterval = None
+        self._CaptureIntervalUnits = None
+        self._ScalingBehavior = None
+        self._Sharpness = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def CaptureInterval(self):
+        return self._CaptureInterval
+
+    @CaptureInterval.setter
+    def CaptureInterval(self, CaptureInterval):
+        self._CaptureInterval = CaptureInterval
+
+    @property
+    def CaptureIntervalUnits(self):
+        return self._CaptureIntervalUnits
+
+    @CaptureIntervalUnits.setter
+    def CaptureIntervalUnits(self, CaptureIntervalUnits):
+        self._CaptureIntervalUnits = CaptureIntervalUnits
+
+    @property
+    def ScalingBehavior(self):
+        return self._ScalingBehavior
+
+    @ScalingBehavior.setter
+    def ScalingBehavior(self, ScalingBehavior):
+        self._ScalingBehavior = ScalingBehavior
+
+    @property
+    def Sharpness(self):
+        return self._Sharpness
+
+    @Sharpness.setter
+    def Sharpness(self, Sharpness):
+        self._Sharpness = Sharpness
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._CaptureInterval = params.get("CaptureInterval")
+        self._CaptureIntervalUnits = params.get("CaptureIntervalUnits")
+        self._ScalingBehavior = params.get("ScalingBehavior")
+        self._Sharpness = params.get("Sharpness")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6201,6 +6561,8 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         :type InputAnalysisSettings: :class:`tencentcloud.mdl.v20200326.models.InputAnalysisInfo`
         :param _Tags: Console tag list.
         :type Tags: list of Tag
+        :param _FrameCaptureTemplates: Frame capture templates.
+        :type FrameCaptureTemplates: list of FrameCaptureTemplate
         """
         self._Id = None
         self._Name = None
@@ -6216,6 +6578,7 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
         self._PipelineInputSettings = None
         self._InputAnalysisSettings = None
         self._Tags = None
+        self._FrameCaptureTemplates = None
 
     @property
     def Id(self):
@@ -6329,6 +6692,14 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def FrameCaptureTemplates(self):
+        return self._FrameCaptureTemplates
+
+    @FrameCaptureTemplates.setter
+    def FrameCaptureTemplates(self, FrameCaptureTemplates):
+        self._FrameCaptureTemplates = FrameCaptureTemplates
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -6390,6 +6761,12 @@ class ModifyStreamLiveChannelRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        if params.get("FrameCaptureTemplates") is not None:
+            self._FrameCaptureTemplates = []
+            for item in params.get("FrameCaptureTemplates"):
+                obj = FrameCaptureTemplate()
+                obj._deserialize(item)
+                self._FrameCaptureTemplates.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6744,6 +7121,8 @@ Note: this field may return `null`, indicating that no valid value was found.
         :type CaptionTemplateNames: list of str
         :param _TimedMetadataSettings: Meta information controls configuration.
         :type TimedMetadataSettings: :class:`tencentcloud.mdl.v20200326.models.TimedMetadataSettingInfo`
+        :param _FrameCaptureTemplateNames: Frame capture template name array. Quantity limit: [0,1].
+        :type FrameCaptureTemplateNames: list of str
         """
         self._Name = None
         self._AudioTemplateNames = None
@@ -6752,6 +7131,7 @@ Note: this field may return `null`, indicating that no valid value was found.
         self._AVTemplateNames = None
         self._CaptionTemplateNames = None
         self._TimedMetadataSettings = None
+        self._FrameCaptureTemplateNames = None
 
     @property
     def Name(self):
@@ -6809,6 +7189,14 @@ Note: this field may return `null`, indicating that no valid value was found.
     def TimedMetadataSettings(self, TimedMetadataSettings):
         self._TimedMetadataSettings = TimedMetadataSettings
 
+    @property
+    def FrameCaptureTemplateNames(self):
+        return self._FrameCaptureTemplateNames
+
+    @FrameCaptureTemplateNames.setter
+    def FrameCaptureTemplateNames(self, FrameCaptureTemplateNames):
+        self._FrameCaptureTemplateNames = FrameCaptureTemplateNames
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -6822,6 +7210,7 @@ Note: this field may return `null`, indicating that no valid value was found.
         if params.get("TimedMetadataSettings") is not None:
             self._TimedMetadataSettings = TimedMetadataSettingInfo()
             self._TimedMetadataSettings._deserialize(params.get("TimedMetadataSettings"))
+        self._FrameCaptureTemplateNames = params.get("FrameCaptureTemplateNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8259,6 +8648,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         :type InputAnalysisSettings: :class:`tencentcloud.mdl.v20200326.models.InputAnalysisInfo`
         :param _Tags: Console tag list.
         :type Tags: list of Tag
+        :param _FrameCaptureTemplates: Frame capture templates.
+        :type FrameCaptureTemplates: list of FrameCaptureTemplate
         """
         self._Id = None
         self._State = None
@@ -8275,6 +8666,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._PipelineInputSettings = None
         self._InputAnalysisSettings = None
         self._Tags = None
+        self._FrameCaptureTemplates = None
 
     @property
     def Id(self):
@@ -8396,6 +8788,14 @@ Note: This field may return `null`, indicating that no valid value was found.
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def FrameCaptureTemplates(self):
+        return self._FrameCaptureTemplates
+
+    @FrameCaptureTemplates.setter
+    def FrameCaptureTemplates(self, FrameCaptureTemplates):
+        self._FrameCaptureTemplates = FrameCaptureTemplates
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -8458,6 +8858,12 @@ Note: This field may return `null`, indicating that no valid value was found.
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        if params.get("FrameCaptureTemplates") is not None:
+            self._FrameCaptureTemplates = []
+            for item in params.get("FrameCaptureTemplates"):
+                obj = FrameCaptureTemplate()
+                obj._deserialize(item)
+                self._FrameCaptureTemplates.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8478,7 +8884,7 @@ class StreamLiveOutputGroupsInfo(AbstractModel):
         :param _Name: Output group name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the channel level
         :type Name: str
         :param _Type: Output protocol
-Valid values: `HLS`, `DASH`, `HLS_ARCHIVE`, `HLS_STREAM_PACKAGE`, `DASH_STREAM_PACKAGE`
+Valid values: `HLS`, `DASH`, `HLS_ARCHIVE`, `HLS_STREAM_PACKAGE`, `DASH_STREAM_PACKAGE`, `FRAME_CAPTURE`
         :type Type: str
         :param _Outputs: Output information
 If the type is RTMP or RTP, only one output is allowed; if it is HLS or DASH, 1-10 outputs are allowed.
