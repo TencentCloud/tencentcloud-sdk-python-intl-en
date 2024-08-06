@@ -49,6 +49,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AlterDMSDatabase(self, request):
+        """This API is used to update databases in the DMS metadata module.
+
+        :param request: Request instance for AlterDMSDatabase.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.AlterDMSDatabaseRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.AlterDMSDatabaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AlterDMSDatabase", params, headers=headers)
+            response = json.loads(body)
+            model = models.AlterDMSDatabaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AttachUserPolicy(self, request):
         """This API is used to bind the authentication policy to the user.
 
@@ -247,6 +270,29 @@ class DlcClient(AbstractClient):
             body = self.call("CreateCHDFSBindingProduct", params, headers=headers)
             response = json.loads(body)
             model = models.CreateCHDFSBindingProductResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateDMSDatabase(self, request):
+        """This API is used to create databases in the DMS metadata module.
+
+        :param request: Request instance for CreateDMSDatabase.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateDMSDatabaseRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateDMSDatabaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDMSDatabase", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDMSDatabaseResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -707,6 +753,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeDLCCatalogAccess", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDLCCatalogAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDMSDatabase(self, request):
+        """This API is used to obtain databases in the DMS metadata module.
+
+        :param request: Request instance for DescribeDMSDatabase.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDMSDatabaseRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDMSDatabaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDMSDatabase", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDMSDatabaseResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1397,6 +1466,29 @@ class DlcClient(AbstractClient):
             body = self.call("DetachWorkGroupPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.DetachWorkGroupPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DropDMSDatabase(self, request):
+        """This API is used to delete databases in the DMS metadata module.
+
+        :param request: Request instance for DropDMSDatabase.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DropDMSDatabaseRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DropDMSDatabaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DropDMSDatabase", params, headers=headers)
+            response = json.loads(body)
+            model = models.DropDMSDatabaseResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
