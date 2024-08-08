@@ -14,6 +14,11 @@
 # limitations under the License.
 
 
+def test_import_advisor():
+    from tencentcloud.advisor.v20200721 import advisor_client
+    from tencentcloud.advisor.v20200721 import models
+
+
 def test_import_ams():
     from tencentcloud.ams.v20201229 import ams_client
     from tencentcloud.ams.v20201229 import models

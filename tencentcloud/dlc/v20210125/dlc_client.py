@@ -1498,6 +1498,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DropDMSTable(self, request):
+        """This API is used to delete tables in the DMS metadata module.
+
+        :param request: Request instance for DropDMSTable.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DropDMSTableRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DropDMSTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DropDMSTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.DropDMSTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GenerateCreateMangedTableSql(self, request):
         """This API is used to generate SQL statements for creating a managed table.
 
