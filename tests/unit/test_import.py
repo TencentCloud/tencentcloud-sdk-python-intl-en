@@ -454,6 +454,11 @@ def test_import_tchd():
     from tencentcloud.tchd.v20230306 import models
 
 
+def test_import_tcmpp():
+    from tencentcloud.tcmpp.v20240801 import tcmpp_client
+    from tencentcloud.tcmpp.v20240801 import models
+
+
 def test_import_tcr():
     from tencentcloud.tcr.v20190924 import tcr_client
     from tencentcloud.tcr.v20190924 import models
