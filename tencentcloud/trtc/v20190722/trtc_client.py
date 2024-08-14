@@ -863,3 +863,26 @@ class TrtcClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateStreamIngest(self, request):
+        """You can update the StreamUrl of the Relay task.
+
+        :param request: Request instance for UpdateStreamIngest.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.UpdateStreamIngestRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.UpdateStreamIngestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateStreamIngest", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateStreamIngestResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

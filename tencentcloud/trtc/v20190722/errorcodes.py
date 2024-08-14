@@ -56,6 +56,9 @@ FAILEDOPERATION_TASKEXIST = 'FailedOperation.TaskExist'
 # Task has ended when calling the interface.
 FAILEDOPERATION_TASKFINISHED = 'FailedOperation.TaskFinished'
 
+# TaskId Not Exist
+FAILEDOPERATION_TASKNOTEXIST = 'FailedOperation.TaskNotExist'
+
 # The user is not in the room.
 FAILEDOPERATION_USERNOTEXIST = 'FailedOperation.UserNotExist'
 
@@ -142,6 +145,9 @@ INVALIDPARAMETER_STARTTSOVERSIZE = 'InvalidParameter.StartTsOversize'
 
 # StrRoomId parameter error.
 INVALIDPARAMETER_STRROOMID = 'InvalidParameter.StrRoomId'
+
+# Invalid StreamUrl format
+INVALIDPARAMETER_STREAMURL = 'InvalidParameter.StreamUrl'
 
 # TaskId parameter error.
 INVALIDPARAMETER_TASKID = 'InvalidParameter.TaskId'

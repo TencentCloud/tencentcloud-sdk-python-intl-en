@@ -5943,28 +5943,40 @@ class StartStreamIngestRequest(AbstractModel):
         :type UserId: str
         :param _UserSig: UserSig corresponding to the Pull stream Relay Robot UserId, i.e., UserId and UserSig are equivalent to the Robot's Login password for entering the room. For the specific Calculation method, please refer to the TRTC [UserSig](https://www.tencentcloud.com/zh/document/product/647/39074) Scheme.
         :type UserSig: str
-        :param _SourceUrl: 	
-Source URL. Example value: https://a.b/test.mp4
-        :type SourceUrl: list of str
+        :param _StreamUrl: The Url of the media resource.
+        :type StreamUrl: str
         :param _PrivateMapKey: TRTC room permission Encryption ticket, only needed when advanced permission control is enabled in the Console. After enabling advanced permission control in the TRTC Console, TRTC's backend service system will verify a so-called [PrivateMapKey] 'Permission ticket', which contains an encrypted RoomId and an encrypted 'Permission bit list'. Since PrivateMapKey contains RoomId, providing only UserSig without PrivateMapKey does not allow entry into the specified room.
         :type PrivateMapKey: str
         :param _VideoEncodeParams: Video Codec Parameters. Optional, if not filled, Keep original stream Parameters.
         :type VideoEncodeParams: :class:`tencentcloud.trtc.v20190722.models.VideoEncodeParams`
         :param _AudioEncodeParams: Audio Codec Parameters. Optional, if not filled, Keep original stream Parameters.
         :type AudioEncodeParams: :class:`tencentcloud.trtc.v20190722.models.AudioEncodeParams`
-        :param _StreamUrl: 
-        :type StreamUrl: str
+        :param _SourceUrl: 	
+Source URL. Example value: https://a.b/test.mp4
+        :type SourceUrl: list of str
+        :param _SeekSecond: 
+        :type SeekSecond: int
+        :param _AutoPush: Enable auto relay to cdn, please make sure that this feature has been enabled in the console.
+        :type AutoPush: bool
+        :param _RepeatNum: Loop playback count, value range: [-1, 1000], default is 1 time. - 0 is an invalid value - -1 is for loop playback, task termination requires actively calling the stop interface or setting MaxDuration.
+        :type RepeatNum: int
+        :param _MaxDuration: Loop playback maximum duration, only effective when RepeatNum is set to -1, valid value range: [1, 10080], unit: minutes
+        :type MaxDuration: int
         """
         self._SdkAppId = None
         self._RoomId = None
         self._RoomIdType = None
         self._UserId = None
         self._UserSig = None
-        self._SourceUrl = None
+        self._StreamUrl = None
         self._PrivateMapKey = None
         self._VideoEncodeParams = None
         self._AudioEncodeParams = None
-        self._StreamUrl = None
+        self._SourceUrl = None
+        self._SeekSecond = None
+        self._AutoPush = None
+        self._RepeatNum = None
+        self._MaxDuration = None
 
     @property
     def SdkAppId(self):
@@ -6007,12 +6019,12 @@ Source URL. Example value: https://a.b/test.mp4
         self._UserSig = UserSig
 
     @property
-    def SourceUrl(self):
-        return self._SourceUrl
+    def StreamUrl(self):
+        return self._StreamUrl
 
-    @SourceUrl.setter
-    def SourceUrl(self, SourceUrl):
-        self._SourceUrl = SourceUrl
+    @StreamUrl.setter
+    def StreamUrl(self, StreamUrl):
+        self._StreamUrl = StreamUrl
 
     @property
     def PrivateMapKey(self):
@@ -6024,27 +6036,71 @@ Source URL. Example value: https://a.b/test.mp4
 
     @property
     def VideoEncodeParams(self):
+        warnings.warn("parameter `VideoEncodeParams` is deprecated", DeprecationWarning) 
+
         return self._VideoEncodeParams
 
     @VideoEncodeParams.setter
     def VideoEncodeParams(self, VideoEncodeParams):
+        warnings.warn("parameter `VideoEncodeParams` is deprecated", DeprecationWarning) 
+
         self._VideoEncodeParams = VideoEncodeParams
 
     @property
     def AudioEncodeParams(self):
+        warnings.warn("parameter `AudioEncodeParams` is deprecated", DeprecationWarning) 
+
         return self._AudioEncodeParams
 
     @AudioEncodeParams.setter
     def AudioEncodeParams(self, AudioEncodeParams):
+        warnings.warn("parameter `AudioEncodeParams` is deprecated", DeprecationWarning) 
+
         self._AudioEncodeParams = AudioEncodeParams
 
     @property
-    def StreamUrl(self):
-        return self._StreamUrl
+    def SourceUrl(self):
+        warnings.warn("parameter `SourceUrl` is deprecated", DeprecationWarning) 
 
-    @StreamUrl.setter
-    def StreamUrl(self, StreamUrl):
-        self._StreamUrl = StreamUrl
+        return self._SourceUrl
+
+    @SourceUrl.setter
+    def SourceUrl(self, SourceUrl):
+        warnings.warn("parameter `SourceUrl` is deprecated", DeprecationWarning) 
+
+        self._SourceUrl = SourceUrl
+
+    @property
+    def SeekSecond(self):
+        return self._SeekSecond
+
+    @SeekSecond.setter
+    def SeekSecond(self, SeekSecond):
+        self._SeekSecond = SeekSecond
+
+    @property
+    def AutoPush(self):
+        return self._AutoPush
+
+    @AutoPush.setter
+    def AutoPush(self, AutoPush):
+        self._AutoPush = AutoPush
+
+    @property
+    def RepeatNum(self):
+        return self._RepeatNum
+
+    @RepeatNum.setter
+    def RepeatNum(self, RepeatNum):
+        self._RepeatNum = RepeatNum
+
+    @property
+    def MaxDuration(self):
+        return self._MaxDuration
+
+    @MaxDuration.setter
+    def MaxDuration(self, MaxDuration):
+        self._MaxDuration = MaxDuration
 
 
     def _deserialize(self, params):
@@ -6053,7 +6109,7 @@ Source URL. Example value: https://a.b/test.mp4
         self._RoomIdType = params.get("RoomIdType")
         self._UserId = params.get("UserId")
         self._UserSig = params.get("UserSig")
-        self._SourceUrl = params.get("SourceUrl")
+        self._StreamUrl = params.get("StreamUrl")
         self._PrivateMapKey = params.get("PrivateMapKey")
         if params.get("VideoEncodeParams") is not None:
             self._VideoEncodeParams = VideoEncodeParams()
@@ -6061,7 +6117,11 @@ Source URL. Example value: https://a.b/test.mp4
         if params.get("AudioEncodeParams") is not None:
             self._AudioEncodeParams = AudioEncodeParams()
             self._AudioEncodeParams._deserialize(params.get("AudioEncodeParams"))
-        self._StreamUrl = params.get("StreamUrl")
+        self._SourceUrl = params.get("SourceUrl")
+        self._SeekSecond = params.get("SeekSecond")
+        self._AutoPush = params.get("AutoPush")
+        self._RepeatNum = params.get("RepeatNum")
+        self._MaxDuration = params.get("MaxDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6928,6 +6988,100 @@ class UpdatePublishCdnStreamResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateStreamIngestRequest(AbstractModel):
+    """UpdateStreamIngest request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: The SDKAppId of TRTC should be the same as the SDKAppId corresponding to the task room.
+        :type SdkAppId: int
+        :param _TaskId: The unique Id of the task, will return after successfully starting the task.
+        :type TaskId: str
+        :param _StreamUrl: The new url of the media resource.
+        :type StreamUrl: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+        self._StreamUrl = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def StreamUrl(self):
+        return self._StreamUrl
+
+    @StreamUrl.setter
+    def StreamUrl(self, StreamUrl):
+        self._StreamUrl = StreamUrl
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        self._StreamUrl = params.get("StreamUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateStreamIngestResponse(AbstractModel):
+    """UpdateStreamIngest response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status information. InProgress: Indicates that the current task is in progress. NotExist: Indicates that the current task does not exist. Example value: InProgress
+        :type Status: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
