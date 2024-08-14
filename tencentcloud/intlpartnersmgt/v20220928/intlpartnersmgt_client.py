@@ -26,6 +26,29 @@ class IntlpartnersmgtClient(AbstractClient):
     _service = 'intlpartnersmgt'
 
 
+    def AllocateCreditPool(self, request):
+        """This API is used to allocate credit pools to second-level resellers by distributors.
+
+        :param request: Request instance for AllocateCreditPool.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.AllocateCreditPoolRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.AllocateCreditPoolResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AllocateCreditPool", params, headers=headers)
+            response = json.loads(body)
+            model = models.AllocateCreditPoolResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AllocateCustomerCredit(self, request):
         """This API is used for a partner to set credit for a customer, such as increasing or lowering the credit and setting it to 0.
         1. The credit is valid permanently and will not be zeroed regularly.

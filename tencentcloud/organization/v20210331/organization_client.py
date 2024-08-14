@@ -95,6 +95,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOrgServiceAssign(self, request):
+        """This API is used to add a delegated admin of the organization service.
+
+        :param request: Request instance for CreateOrgServiceAssign.
+        :type request: :class:`tencentcloud.organization.v20210331.models.CreateOrgServiceAssignRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.CreateOrgServiceAssignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOrgServiceAssign", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOrgServiceAssignResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateOrganizationMember(self, request):
         """This API is used to create an organization member.
 
@@ -132,6 +155,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("CreateOrganizationMemberPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.CreateOrganizationMemberPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteOrgServiceAssign(self, request):
+        """This API is used to delete a delegated admin of the organization service.
+
+        :param request: Request instance for DeleteOrgServiceAssign.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DeleteOrgServiceAssignRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DeleteOrgServiceAssignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteOrgServiceAssign", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteOrgServiceAssignResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -325,6 +371,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListOrgServiceAssignMember(self, request):
+        """This API is used to obtain the list of delegated admins of the organization service.
+
+        :param request: Request instance for ListOrgServiceAssignMember.
+        :type request: :class:`tencentcloud.organization.v20210331.models.ListOrgServiceAssignMemberRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.ListOrgServiceAssignMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListOrgServiceAssignMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListOrgServiceAssignMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListOrganizationIdentity(self, request):
         """This API is used to get the list of access identities of an organization member.
 
@@ -339,6 +408,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("ListOrganizationIdentity", params, headers=headers)
             response = json.loads(body)
             model = models.ListOrganizationIdentityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListOrganizationService(self, request):
+        """This API is used to obtain the list of organization service settings.
+
+        :param request: Request instance for ListOrganizationService.
+        :type request: :class:`tencentcloud.organization.v20210331.models.ListOrganizationServiceRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.ListOrganizationServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListOrganizationService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListOrganizationServiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
