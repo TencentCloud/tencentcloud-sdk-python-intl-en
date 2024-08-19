@@ -611,11 +611,14 @@ Note: this field may return `null`, indicating that no valid value was found.
         :param _FailOverSettings: Input failover configuration
 Note: this field may return `null`, indicating that no valid value was found.
         :type FailOverSettings: :class:`tencentcloud.mdl.v20200326.models.FailOverSettings`
+        :param _CaptionSelectors: Caption selector for the input. There can be 0 to 1 audio selectors.
+        :type CaptionSelectors: list of CaptionSelector
         """
         self._Id = None
         self._AudioSelectors = None
         self._PullBehavior = None
         self._FailOverSettings = None
+        self._CaptionSelectors = None
 
     @property
     def Id(self):
@@ -649,6 +652,14 @@ Note: this field may return `null`, indicating that no valid value was found.
     def FailOverSettings(self, FailOverSettings):
         self._FailOverSettings = FailOverSettings
 
+    @property
+    def CaptionSelectors(self):
+        return self._CaptionSelectors
+
+    @CaptionSelectors.setter
+    def CaptionSelectors(self, CaptionSelectors):
+        self._CaptionSelectors = CaptionSelectors
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -662,6 +673,12 @@ Note: this field may return `null`, indicating that no valid value was found.
         if params.get("FailOverSettings") is not None:
             self._FailOverSettings = FailOverSettings()
             self._FailOverSettings._deserialize(params.get("FailOverSettings"))
+        if params.get("CaptionSelectors") is not None:
+            self._CaptionSelectors = []
+            for item in params.get("CaptionSelectors"):
+                obj = CaptionSelector()
+                obj._deserialize(item)
+                self._CaptionSelectors.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1146,6 +1163,51 @@ class AudioTrackInfo(AbstractModel):
         if params.get("AudioCodecDetails") is not None:
             self._AudioCodecDetails = AudioCodecDetail()
             self._AudioCodecDetails._deserialize(params.get("AudioCodecDetails"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CaptionSelector(AbstractModel):
+    """Caption selector.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Caption selector name, which can contain 1-32 letters, digits, and underscores.
+        :type Name: str
+        :param _CaptionSourceType: Caption source type, only support `SCTE-128`.
+        :type CaptionSourceType: str
+        """
+        self._Name = None
+        self._CaptionSourceType = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CaptionSourceType(self):
+        return self._CaptionSourceType
+
+    @CaptionSourceType.setter
+    def CaptionSourceType(self, CaptionSourceType):
+        self._CaptionSourceType = CaptionSourceType
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._CaptionSourceType = params.get("CaptionSourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9243,26 +9305,29 @@ class SubtitleConf(AbstractModel):
         r"""
         :param _Name: Template name.
         :type Name: str
-        :param _CaptionSource: Optional values: INPUT (source subtitle information), ANALYSIS (intelligent speech recognition to subtitles, currently only supports this option).
+        :param _CaptionSelectorName: Name of caption selector. Required when CaptionSource selects `INPUT`.
+        :type CaptionSelectorName: str
+        :param _CaptionSource: Optional values: INPUT (source subtitle information), ANALYSIS (intelligent speech recognition to subtitles).
         :type CaptionSource: str
-        :param _ContentType: Optional values: 1 Source, 2 Source+Target, 3 Target (original language only, original language + translation language, translation language).
+        :param _ContentType: Optional values: 1 Source, 2 Source+Target, 3 Target (original language only, original language + translation language, translation language). Required when CaptionSource selects `ANALYSIS `.
         :type ContentType: int
-        :param _TargetType: Output mode: 1 Burn in (currently only this option is supported).
+        :param _TargetType: Output mode: 1 Burn in, 2 Embedded. Support `2` when CaptionSource selects `INPUT`. Support `1` when CaptionSource selects `ANALYSIS `.
         :type TargetType: int
         :param _SourceLanguage: Original phonetic language.
-Optional values: Chinese, English, Japanese, Korean.
+Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource selects `ANALYSIS `.
         :type SourceLanguage: str
         :param _TargetLanguage: Target language.
-Optional values: Chinese, English, Japanese, Korean.
+Optional values: Chinese, English, Japanese, Korean. Required when CaptionSource selects `ANALYSIS `.
         :type TargetLanguage: str
-        :param _FontStyle: Font style configuration.
+        :param _FontStyle: Font style configuration. Required when CaptionSource selects `ANALYSIS `.
         :type FontStyle: :class:`tencentcloud.mdl.v20200326.models.SubtitleFontConf`
-        :param _StateEffectMode: There are two modes: STEADY and DYNAMIC, corresponding to steady state and unstable state respectively; the default is STEADY.
+        :param _StateEffectMode: There are two modes: STEADY and DYNAMIC, corresponding to steady state and unstable state respectively; the default is STEADY. Required when CaptionSource selects `ANALYSIS `.
         :type StateEffectMode: str
-        :param _SteadyStateDelayedTime: Steady-state delay time, unit seconds; optional values: 10, 20, default 10.
+        :param _SteadyStateDelayedTime: Steady-state delay time, unit seconds; optional values: 10, 20, default 10. Required when CaptionSource selects `ANALYSIS `.
         :type SteadyStateDelayedTime: int
         """
         self._Name = None
+        self._CaptionSelectorName = None
         self._CaptionSource = None
         self._ContentType = None
         self._TargetType = None
@@ -9279,6 +9344,14 @@ Optional values: Chinese, English, Japanese, Korean.
     @Name.setter
     def Name(self, Name):
         self._Name = Name
+
+    @property
+    def CaptionSelectorName(self):
+        return self._CaptionSelectorName
+
+    @CaptionSelectorName.setter
+    def CaptionSelectorName(self, CaptionSelectorName):
+        self._CaptionSelectorName = CaptionSelectorName
 
     @property
     def CaptionSource(self):
@@ -9347,6 +9420,7 @@ Optional values: Chinese, English, Japanese, Korean.
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
+        self._CaptionSelectorName = params.get("CaptionSelectorName")
         self._CaptionSource = params.get("CaptionSource")
         self._ContentType = params.get("ContentType")
         self._TargetType = params.get("TargetType")
