@@ -395,6 +395,9 @@ INVALIDPARAMETER_INVALIDWHITELISTKEY = 'InvalidParameter.InvalidWhiteListKey'
 # The working group name is invalid.
 INVALIDPARAMETER_INVALIDWORKGROUPNAME = 'InvalidParameter.InvalidWorkGroupName'
 
+# Job not found.
+INVALIDPARAMETER_JOBNOTFOUND = 'InvalidParameter.JobNotFound'
+
 # You are currently only allowed to view 100 results. If you need to make an adjustment, please contact us.
 INVALIDPARAMETER_MAXRESULTONLYSUPPORTHUNDRED = 'InvalidParameter.MaxResultOnlySupportHundred'
 
@@ -445,6 +448,9 @@ INVALIDPARAMETER_SPARKJOBSORTBYTYPENOTMATCH = 'InvalidParameter.SparkJobSortByTy
 
 # The task has ended and cannot be canceled.
 INVALIDPARAMETER_TASKALREADYFINISHED = 'InvalidParameter.TaskAlreadyFinished'
+
+# The task does not exist.
+INVALIDPARAMETER_TASKNOTFOUND = 'InvalidParameter.TaskNotFound'
 
 # The specified task status does not match. Currently, it only supports 0: initializing, 1: running, 2: successful, 3: writing data, 4: queuing, -1: failed, and -3: deleted.
 INVALIDPARAMETER_TASKSTATETYPENOTMATH = 'InvalidParameter.TaskStateTypeNotMath'

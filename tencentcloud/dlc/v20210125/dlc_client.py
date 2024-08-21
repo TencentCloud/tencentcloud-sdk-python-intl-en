@@ -256,6 +256,52 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckGrantedPermission(self, request):
+        """This API is used to check the permission status.
+
+        :param request: Request instance for CheckGrantedPermission.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CheckGrantedPermissionRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CheckGrantedPermissionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckGrantedPermission", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckGrantedPermissionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CopyDLCTable(self, request):
+        """This API is used to copy a table.
+
+        :param request: Request instance for CopyDLCTable.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CopyDLCTableRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CopyDLCTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CopyDLCTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.CopyDLCTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCHDFSBindingProduct(self, request):
         """This API is used to create metadata acceleration buckets and the binding relationship between products.
 
@@ -270,6 +316,29 @@ class DlcClient(AbstractClient):
             body = self.call("CreateCHDFSBindingProduct", params, headers=headers)
             response = json.loads(body)
             model = models.CreateCHDFSBindingProductResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateDLCTable(self, request):
+        """This API is used to create a table.
+
+        :param request: Request instance for CreateDLCTable.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateDLCTableRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateDLCTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDLCTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDLCTableResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -762,6 +831,52 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDLCTable(self, request):
+        """This API is used to obtain the table.
+
+        :param request: Request instance for DescribeDLCTable.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDLCTableRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDLCTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDLCTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDLCTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDLCTableList(self, request):
+        """This API is used to obtain the list of tables.
+
+        :param request: Request instance for DescribeDLCTableList.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDLCTableListRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDLCTableListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDLCTableList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDLCTableListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDMSDatabase(self, request):
         """This API is used to obtain databases in the DMS metadata module.
 
@@ -776,6 +891,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeDMSDatabase", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDMSDatabaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDMSDatabaseList(self, request):
+        """This API is used to obtain the list of databases.
+
+        :param request: Request instance for DescribeDMSDatabaseList.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeDMSDatabaseListRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeDMSDatabaseListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDMSDatabaseList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDMSDatabaseListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -923,6 +1061,52 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeJob(self, request):
+        """This API is used to obtain the job information.
+
+        :param request: Request instance for DescribeJob.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeJobRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeJobs(self, request):
+        """This API is used to obtain the list of job information.
+
+        :param request: Request instance for DescribeJobs.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeJobsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLakeFsDirSummary(self, request):
         """This API is used to query the summary of a specified directory in a managed storage.
 
@@ -983,6 +1167,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeOtherCHDFSBindingList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeOtherCHDFSBindingListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeQuery(self, request):
+        """This API is used to obtain the query results.
+
+        :param request: Request instance for DescribeQuery.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeQueryRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeQueryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeQuery", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeQueryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1190,6 +1397,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeTaskResult", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTaskResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTaskStatistics(self, request):
+        """This API is used to describe the information on task statistics.
+
+        :param request: Request instance for DescribeTaskStatistics.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTaskStatisticsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeTaskStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskStatisticsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1466,6 +1696,29 @@ class DlcClient(AbstractClient):
             body = self.call("DetachWorkGroupPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.DetachWorkGroupPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DropDLCTable(self, request):
+        """This API is used to delete the table.
+
+        :param request: Request instance for DropDLCTable.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DropDLCTableRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DropDLCTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DropDLCTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.DropDLCTableResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
