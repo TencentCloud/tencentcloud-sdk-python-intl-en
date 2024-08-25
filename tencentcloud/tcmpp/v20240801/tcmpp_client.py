@@ -27,7 +27,7 @@ class TcmppClient(AbstractClient):
 
 
     def AddTeamMember(self, request):
-        """This API is used to add users to a team
+        """This API is used to add a team member.
 
         :param request: Request instance for AddTeamMember.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.AddTeamMemberRequest`
@@ -72,8 +72,31 @@ class TcmppClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ConfigureMNPPreview(self, request):
+        """This API is used to configure the preview version of a mini program.
+
+        :param request: Request instance for ConfigureMNPPreview.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.ConfigureMNPPreviewRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.ConfigureMNPPreviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ConfigureMNPPreview", params, headers=headers)
+            response = json.loads(body)
+            model = models.ConfigureMNPPreviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateApplication(self, request):
-        """This API is used to add an application
+        """This API is used to create an application.
 
         :param request: Request instance for CreateApplication.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateApplicationRequest`
@@ -95,8 +118,31 @@ class TcmppClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateApplicationSensitiveAPI(self, request):
+        """This API is used to create a sensitive API of an application.
+
+        :param request: Request instance for CreateApplicationSensitiveAPI.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateApplicationSensitiveAPIRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.CreateApplicationSensitiveAPIResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateApplicationSensitiveAPI", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateApplicationSensitiveAPIResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateConsoleMNPVersionCompileTask(self, request):
-        """This API is used to add new mini program version to the console
+        """This API is used to add a new mini program version
 
         :param request: Request instance for CreateConsoleMNPVersionCompileTask.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateConsoleMNPVersionCompileTaskRequest`
@@ -164,6 +210,29 @@ class TcmppClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateGlobalDomainACL(self, request):
+        """This API is used to create a global domain allowlist or blocklist.
+
+        :param request: Request instance for CreateGlobalDomainACL.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateGlobalDomainACLRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.CreateGlobalDomainACLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGlobalDomainACL", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGlobalDomainACLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateMNP(self, request):
         """This API is used to create a mini program
 
@@ -178,6 +247,98 @@ class TcmppClient(AbstractClient):
             body = self.call("CreateMNP", params, headers=headers)
             response = json.loads(body)
             model = models.CreateMNPResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateMNPApproval(self, request):
+        """This API is used to create a mini program approval request.
+
+        :param request: Request instance for CreateMNPApproval.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateMNPApprovalRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.CreateMNPApprovalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMNPApproval", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMNPApprovalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateMNPDomainACL(self, request):
+        """This API is used to add a domain name to the allowlist/blocklist of a mini program.
+
+        :param request: Request instance for CreateMNPDomainACL.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateMNPDomainACLRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.CreateMNPDomainACLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMNPDomainACL", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMNPDomainACLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateMNPSensitiveAPIPermissionApproval(self, request):
+        """This API is used to create a permission request to allow a mini program calling sensitive APIs.
+
+        :param request: Request instance for CreateMNPSensitiveAPIPermissionApproval.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateMNPSensitiveAPIPermissionApprovalRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.CreateMNPSensitiveAPIPermissionApprovalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMNPSensitiveAPIPermissionApproval", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMNPSensitiveAPIPermissionApprovalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateMNPVersion(self, request):
+        """This API is used to create a mini program version.
+
+        :param request: Request instance for CreateMNPVersion.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateMNPVersionRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.CreateMNPVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMNPVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMNPVersionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -280,7 +441,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateSensitiveApiApply(self, request):
-        """This API is used to apply for sensitive API call permissions
+        """This API is used to apply for sensitive API permissions
 
         :param request: Request instance for CreateSensitiveApiApply.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateSensitiveApiApplyRequest`
@@ -303,7 +464,7 @@ class TcmppClient(AbstractClient):
 
 
     def CreateTeam(self, request):
-        """This API is used to create a team
+        """This API is used to create a team.
 
         :param request: Request instance for CreateTeam.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.CreateTeamRequest`
@@ -394,6 +555,29 @@ class TcmppClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteApplicationSensitiveAPI(self, request):
+        """This API is used to delete a sensitive API.
+
+        :param request: Request instance for DeleteApplicationSensitiveAPI.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DeleteApplicationSensitiveAPIRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DeleteApplicationSensitiveAPIResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteApplicationSensitiveAPI", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteApplicationSensitiveAPIResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteGlobalDomain(self, request):
         """This API is used to delete domains from allowlist or blocklist
 
@@ -441,7 +625,7 @@ class TcmppClient(AbstractClient):
 
 
     def DeleteSensitiveAPI(self, request):
-        """This API is used to delete a sensitive API
+        """This API is used to delete sensitive API
 
         :param request: Request instance for DeleteSensitiveAPI.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DeleteSensitiveAPIRequest`
@@ -533,7 +717,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeApplication(self, request):
-        """This API is used to query application details
+        """This API is used to query details of an application.
 
         :param request: Request instance for DescribeApplication.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeApplicationRequest`
@@ -578,8 +762,31 @@ class TcmppClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApplicationConfigFile(self, request):
+        """This API is used to query the configuration files of an application.
+
+        :param request: Request instance for DescribeApplicationConfigFile.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeApplicationConfigFileRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DescribeApplicationConfigFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationConfigFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApplicationConfigFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeApplicationList(self, request):
-        """This API is used to query application list data
+        """This API is used to query the list of application.
 
         :param request: Request instance for DescribeApplicationList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeApplicationListRequest`
@@ -624,8 +831,31 @@ class TcmppClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApplicationSensitiveAPIList(self, request):
+        """This API is used to list sensitive APIs of an application.
+
+        :param request: Request instance for DescribeApplicationSensitiveAPIList.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeApplicationSensitiveAPIListRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DescribeApplicationSensitiveAPIListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationSensitiveAPIList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApplicationSensitiveAPIListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeConsoleMNPVersionCompileTask(self, request):
-        """This API is used to query if the mini program version is uploaded successfully
+        """This API is used to query if the mini program version is created successfully
 
         :param request: Request instance for DescribeConsoleMNPVersionCompileTask.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeConsoleMNPVersionCompileTaskRequest`
@@ -693,6 +923,29 @@ class TcmppClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeGlobalDomainACL(self, request):
+        """This API is used to query the global domain allowlist and blocklist.
+
+        :param request: Request instance for DescribeGlobalDomainACL.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeGlobalDomainACLRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DescribeGlobalDomainACLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGlobalDomainACL", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGlobalDomainACLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGlobalDomainList(self, request):
         """This API is used to query domain allowlist and blocklist
 
@@ -707,6 +960,75 @@ class TcmppClient(AbstractClient):
             body = self.call("DescribeGlobalDomainList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeGlobalDomainListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNP(self, request):
+        """This API is used to query details of a mini program.
+
+        :param request: Request instance for DescribeMNP.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNP", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPAllStageVersions(self, request):
+        """This API is used to query the mini program version management information
+
+        :param request: Request instance for DescribeMNPAllStageVersions.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPAllStageVersionsRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPAllStageVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPAllStageVersions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPAllStageVersionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPApprovalList(self, request):
+        """This API is used to list the approval requests related with a mini program version.
+
+        :param request: Request instance for DescribeMNPApprovalList.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPApprovalListRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPApprovalListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPApprovalList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPApprovalListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -739,6 +1061,29 @@ class TcmppClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMNPCategory(self, request):
+        """This API is used to query the list of mini program types.
+
+        :param request: Request instance for DescribeMNPCategory.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPCategoryRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPCategoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPCategory", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPCategoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMNPDetail(self, request):
         """This API is used to query mini program details
 
@@ -753,6 +1098,52 @@ class TcmppClient(AbstractClient):
             body = self.call("DescribeMNPDetail", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeMNPDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPDomainACL(self, request):
+        """This API is used to query the domain name allowlist / blocklist of a mini program.
+
+        :param request: Request instance for DescribeMNPDomainACL.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPDomainACLRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPDomainACLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPDomainACL", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPDomainACLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPList(self, request):
+        """This API is used to query the list of mini programs.
+
+        :param request: Request instance for DescribeMNPList.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPListRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -808,6 +1199,52 @@ class TcmppClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMNPOfflinePackageURL(self, request):
+        """DescribeMNPOfflinePackageURL
+
+        :param request: Request instance for DescribeMNPOfflinePackageURL.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPOfflinePackageURLRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPOfflinePackageURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPOfflinePackageURL", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPOfflinePackageURLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPPreview(self, request):
+        """This API is used to query the details of a mini program preview version.
+
+        :param request: Request instance for DescribeMNPPreview.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPPreviewRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPPreviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPPreview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPPreviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMNPPrivacy(self, request):
         """This API is used to query the details filled in the service description
 
@@ -822,6 +1259,98 @@ class TcmppClient(AbstractClient):
             body = self.call("DescribeMNPPrivacy", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeMNPPrivacyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPReleasedVersionHistory(self, request):
+        """This API is used to list all released versions of a mini program.
+
+        :param request: Request instance for DescribeMNPReleasedVersionHistory.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPReleasedVersionHistoryRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPReleasedVersionHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPReleasedVersionHistory", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPReleasedVersionHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPSensitiveAPIPermissionApproval(self, request):
+        """This API is used to query details of a specific permission request to call sensitive APIs.
+
+        :param request: Request instance for DescribeMNPSensitiveAPIPermissionApproval.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPSensitiveAPIPermissionApprovalRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPSensitiveAPIPermissionApprovalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPSensitiveAPIPermissionApproval", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPSensitiveAPIPermissionApprovalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPSensitiveAPIPermissionApprovalList(self, request):
+        """This API is used to query permission requests to allow a mini program calling sensitive APIs.
+
+        :param request: Request instance for DescribeMNPSensitiveAPIPermissionApprovalList.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPSensitiveAPIPermissionApprovalListRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPSensitiveAPIPermissionApprovalListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPSensitiveAPIPermissionApprovalList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPSensitiveAPIPermissionApprovalListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMNPSensitiveAPIPermissionList(self, request):
+        """This API is used to query the list of sensitive APIs that available to a mini program.
+
+        :param request: Request instance for DescribeMNPSensitiveAPIPermissionList.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPSensitiveAPIPermissionListRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPSensitiveAPIPermissionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPSensitiveAPIPermissionList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPSensitiveAPIPermissionListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -854,8 +1383,31 @@ class TcmppClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMNPVersion(self, request):
+        """This API is used to query the result of the task to create a mini program version.
+
+        :param request: Request instance for DescribeMNPVersion.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPVersionRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMNPVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMNPVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMNPVersionPreview(self, request):
-        """This API is used to query the details of the mini program trial version
+        """This API is used to query the details of the mini program preview version
 
         :param request: Request instance for DescribeMNPVersionPreview.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeMNPVersionPreviewRequest`
@@ -901,7 +1453,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeOnlineVersion(self, request):
-        """This API is used to query the current release version of the mini program
+        """This API is used to query the release version history
 
         :param request: Request instance for DescribeOnlineVersion.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeOnlineVersionRequest`
@@ -947,7 +1499,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeRoleList(self, request):
-        """This API is used to query role list data
+        """This API is used to query the list of roles.
 
         :param request: Request instance for DescribeRoleList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeRoleListRequest`
@@ -1016,7 +1568,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeSensitiveApiApplyDetail(self, request):
-        """This API is used to query sensitive API call details
+        """This API is used to query sensitive API permission approval details
 
         :param request: Request instance for DescribeSensitiveApiApplyDetail.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeSensitiveApiApplyDetailRequest`
@@ -1039,7 +1591,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeSensitiveApiAuthList(self, request):
-        """This API is used to query the sensitive APIs that require permission
+        """This API is used to query the sensitive API permission list
 
         :param request: Request instance for DescribeSensitiveApiAuthList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeSensitiveApiAuthListRequest`
@@ -1108,7 +1660,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeTeam(self, request):
-        """This API is used to query team details
+        """This API is used to query details of a team.
 
         :param request: Request instance for DescribeTeam.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeTeamRequest`
@@ -1154,7 +1706,7 @@ class TcmppClient(AbstractClient):
 
 
     def DescribeTeamList(self, request):
-        """This API is used to query the team list that can be viewed by the current role permissions
+        """This API is used to query the list of teams.
 
         :param request: Request instance for DescribeTeamList.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeTeamListRequest`
@@ -1245,6 +1797,29 @@ class TcmppClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUser(self, request):
+        """This API is used to query details of a user.
+
+        :param request: Request instance for DescribeUser.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DescribeUserRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DescribeUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUserDetail(self, request):
         """This API is used to query user details
 
@@ -1291,6 +1866,29 @@ class TcmppClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisableApplicationSensitiveAPI(self, request):
+        """This API is used to set a sensitive API to Restricted.
+
+        :param request: Request instance for DisableApplicationSensitiveAPI.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.DisableApplicationSensitiveAPIRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.DisableApplicationSensitiveAPIResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableApplicationSensitiveAPI", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableApplicationSensitiveAPIResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisableTeamDomain(self, request):
         """This API is used to disable the company’s domain name that obtained the ICP filing
 
@@ -1305,6 +1903,29 @@ class TcmppClient(AbstractClient):
             body = self.call("DisableTeamDomain", params, headers=headers)
             response = json.loads(body)
             model = models.DisableTeamDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableApplicationSensitiveAPI(self, request):
+        """This API is used to set an application sensitive API to public.
+
+        :param request: Request instance for EnableApplicationSensitiveAPI.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.EnableApplicationSensitiveAPIRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.EnableApplicationSensitiveAPIResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableApplicationSensitiveAPI", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableApplicationSensitiveAPIResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1452,6 +2073,29 @@ class TcmppClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyMNPDomain(self, request):
+        """This API is used to edit the mini program domain information.
+
+        :param request: Request instance for ModifyMNPDomain.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyMNPDomainRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.ModifyMNPDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMNPDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMNPDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyMNPStatusOffline(self, request):
         """This API is used to remove the mini program
 
@@ -1476,7 +2120,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyMNPVersionPreview(self, request):
-        """This API is used to configure the mini program trial version
+        """This API is used to configure the mini program preview version
 
         :param request: Request instance for ModifyMNPVersionPreview.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyMNPVersionPreviewRequest`
@@ -1522,7 +2166,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyPlatformAuditStatus(self, request):
-        """This API is used to approve the release of the mini program version
+        """This API is used to approve or reject the release of the mini program version
 
         :param request: Request instance for ModifyPlatformAuditStatus.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyPlatformAuditStatusRequest`
@@ -1545,7 +2189,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifySensitiveAPIAuditStatus(self, request):
-        """This API is used to approve sensitive API call permission
+        """This API is used to approve or reject the sensitive API permission application
 
         :param request: Request instance for ModifySensitiveAPIAuditStatus.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifySensitiveAPIAuditStatusRequest`
@@ -1591,7 +2235,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyTeamMember(self, request):
-        """This API is used to change team member roles
+        """This API is used to modify team member information.
 
         :param request: Request instance for ModifyTeamMember.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyTeamMemberRequest`
@@ -1614,7 +2258,7 @@ class TcmppClient(AbstractClient):
 
 
     def ModifyUser(self, request):
-        """This API is used to edit user information
+        """This API is used to modify user information.
 
         :param request: Request instance for ModifyUser.
         :type request: :class:`tencentcloud.tcmpp.v20240801.models.ModifyUserRequest`
@@ -1650,6 +2294,121 @@ class TcmppClient(AbstractClient):
             body = self.call("ModifyUserPassword", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyUserPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ProcessMNPApproval(self, request):
+        """This API is used to approve or reject the release of a mini program version.
+
+        :param request: Request instance for ProcessMNPApproval.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.ProcessMNPApprovalRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.ProcessMNPApprovalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ProcessMNPApproval", params, headers=headers)
+            response = json.loads(body)
+            model = models.ProcessMNPApprovalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ProcessMNPSensitiveAPIPermissionApproval(self, request):
+        """This API is used to approve or reject the sensitive API permission application.
+
+        :param request: Request instance for ProcessMNPSensitiveAPIPermissionApproval.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.ProcessMNPSensitiveAPIPermissionApprovalRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.ProcessMNPSensitiveAPIPermissionApprovalResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ProcessMNPSensitiveAPIPermissionApproval", params, headers=headers)
+            response = json.loads(body)
+            model = models.ProcessMNPSensitiveAPIPermissionApprovalResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReleaseMNPVersion(self, request):
+        """This API is used to release a mini program version.
+
+        :param request: Request instance for ReleaseMNPVersion.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.ReleaseMNPVersionRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.ReleaseMNPVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReleaseMNPVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReleaseMNPVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RemoveMNP(self, request):
+        """This API is used to remove a mini program.
+
+        :param request: Request instance for RemoveMNP.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.RemoveMNPRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.RemoveMNPResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveMNP", params, headers=headers)
+            response = json.loads(body)
+            model = models.RemoveMNPResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RollbackMNPVersion(self, request):
+        """This API is used to rollback a mini program online version.
+
+        :param request: Request instance for RollbackMNPVersion.
+        :type request: :class:`tencentcloud.tcmpp.v20240801.models.RollbackMNPVersionRequest`
+        :rtype: :class:`tencentcloud.tcmpp.v20240801.models.RollbackMNPVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RollbackMNPVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.RollbackMNPVersionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
