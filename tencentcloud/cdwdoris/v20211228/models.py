@@ -18,6 +18,69 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccountDetailInfo(AbstractModel):
+    """Account details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserName: Username
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserName: str
+        :param _Host: Host name or IP address, which indicates the host to which the user belongs.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Host: str
+        :param _UserDescription: User description information
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserDescription: str
+        """
+        self._UserName = None
+        self._Host = None
+        self._UserDescription = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def UserDescription(self):
+        return self._UserDescription
+
+    @UserDescription.setter
+    def UserDescription(self, UserDescription):
+        self._UserDescription = UserDescription
+
+
+    def _deserialize(self, params):
+        self._UserName = params.get("UserName")
+        self._Host = params.get("Host")
+        self._UserDescription = params.get("UserDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AttachCBSSpec(AbstractModel):
     """Specifications of nodes in the cluster and disk specifications description
 
@@ -87,6 +150,698 @@ class AttachCBSSpec(AbstractModel):
         
 
 
+class BackUpJobDisplay(AbstractModel):
+    """Backup instance details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: Backup instance ID
+        :type JobId: int
+        :param _Snapshot: Backup instance name
+        :type Snapshot: str
+        :param _BackUpSize: Backup data volume
+        :type BackUpSize: int
+        :param _BackUpSingleSize: Backup single replica data volume
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackUpSingleSize: int
+        :param _BackUpTime: Instance creation time
+        :type BackUpTime: str
+        :param _ExpireTime: Instance expiration time
+        :type ExpireTime: str
+        :param _JobStatus: Instance status
+        :type JobStatus: str
+        :param _BackupType: 0: default; 1: one-time backup for the remote Doris
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackupType: int
+        :param _BackupTimeType: 0: default; 1: immediate backup; 2: migration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackupTimeType: int
+        :param _DorisSourceInfo: Connection information of the remote Doris
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DorisSourceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.DorisSourceInfo`
+        :param _JobStatusNum: The value corresponding to the instance status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JobStatusNum: int
+        :param _BackupCosInfo: Information about cos in the backup instance	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackupCosInfo: :class:`tencentcloud.cdwdoris.v20211228.models.BackupCosInfo`
+        """
+        self._JobId = None
+        self._Snapshot = None
+        self._BackUpSize = None
+        self._BackUpSingleSize = None
+        self._BackUpTime = None
+        self._ExpireTime = None
+        self._JobStatus = None
+        self._BackupType = None
+        self._BackupTimeType = None
+        self._DorisSourceInfo = None
+        self._JobStatusNum = None
+        self._BackupCosInfo = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Snapshot(self):
+        return self._Snapshot
+
+    @Snapshot.setter
+    def Snapshot(self, Snapshot):
+        self._Snapshot = Snapshot
+
+    @property
+    def BackUpSize(self):
+        return self._BackUpSize
+
+    @BackUpSize.setter
+    def BackUpSize(self, BackUpSize):
+        self._BackUpSize = BackUpSize
+
+    @property
+    def BackUpSingleSize(self):
+        return self._BackUpSingleSize
+
+    @BackUpSingleSize.setter
+    def BackUpSingleSize(self, BackUpSingleSize):
+        self._BackUpSingleSize = BackUpSingleSize
+
+    @property
+    def BackUpTime(self):
+        return self._BackUpTime
+
+    @BackUpTime.setter
+    def BackUpTime(self, BackUpTime):
+        self._BackUpTime = BackUpTime
+
+    @property
+    def ExpireTime(self):
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def JobStatus(self):
+        return self._JobStatus
+
+    @JobStatus.setter
+    def JobStatus(self, JobStatus):
+        self._JobStatus = JobStatus
+
+    @property
+    def BackupType(self):
+        return self._BackupType
+
+    @BackupType.setter
+    def BackupType(self, BackupType):
+        self._BackupType = BackupType
+
+    @property
+    def BackupTimeType(self):
+        return self._BackupTimeType
+
+    @BackupTimeType.setter
+    def BackupTimeType(self, BackupTimeType):
+        self._BackupTimeType = BackupTimeType
+
+    @property
+    def DorisSourceInfo(self):
+        return self._DorisSourceInfo
+
+    @DorisSourceInfo.setter
+    def DorisSourceInfo(self, DorisSourceInfo):
+        self._DorisSourceInfo = DorisSourceInfo
+
+    @property
+    def JobStatusNum(self):
+        return self._JobStatusNum
+
+    @JobStatusNum.setter
+    def JobStatusNum(self, JobStatusNum):
+        self._JobStatusNum = JobStatusNum
+
+    @property
+    def BackupCosInfo(self):
+        return self._BackupCosInfo
+
+    @BackupCosInfo.setter
+    def BackupCosInfo(self, BackupCosInfo):
+        self._BackupCosInfo = BackupCosInfo
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._Snapshot = params.get("Snapshot")
+        self._BackUpSize = params.get("BackUpSize")
+        self._BackUpSingleSize = params.get("BackUpSingleSize")
+        self._BackUpTime = params.get("BackUpTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._JobStatus = params.get("JobStatus")
+        self._BackupType = params.get("BackupType")
+        self._BackupTimeType = params.get("BackupTimeType")
+        if params.get("DorisSourceInfo") is not None:
+            self._DorisSourceInfo = DorisSourceInfo()
+            self._DorisSourceInfo._deserialize(params.get("DorisSourceInfo"))
+        self._JobStatusNum = params.get("JobStatusNum")
+        if params.get("BackupCosInfo") is not None:
+            self._BackupCosInfo = BackupCosInfo()
+            self._BackupCosInfo._deserialize(params.get("BackupCosInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupCosInfo(AbstractModel):
+    """Information about cos in the backup instance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBucket: The cos bucket where the backup file is located.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CosBucket: str
+        :param _CosPath: The full cos path where the backup file is located.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CosPath: str
+        :param _SnapShotPath: Backup file name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SnapShotPath: str
+        """
+        self._CosBucket = None
+        self._CosPath = None
+        self._SnapShotPath = None
+
+    @property
+    def CosBucket(self):
+        return self._CosBucket
+
+    @CosBucket.setter
+    def CosBucket(self, CosBucket):
+        self._CosBucket = CosBucket
+
+    @property
+    def CosPath(self):
+        return self._CosPath
+
+    @CosPath.setter
+    def CosPath(self, CosPath):
+        self._CosPath = CosPath
+
+    @property
+    def SnapShotPath(self):
+        return self._SnapShotPath
+
+    @SnapShotPath.setter
+    def SnapShotPath(self, SnapShotPath):
+        self._SnapShotPath = SnapShotPath
+
+
+    def _deserialize(self, params):
+        self._CosBucket = params.get("CosBucket")
+        self._CosPath = params.get("CosPath")
+        self._SnapShotPath = params.get("SnapShotPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupStatus(AbstractModel):
+    """Progress details of the backup task
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: Backup task ID
+        :type JobId: int
+        :param _SnapshotName: Snapshot name
+        :type SnapshotName: str
+        :param _DbName: Database name
+        :type DbName: str
+        :param _State: Status
+        :type State: str
+        :param _BackupObjects: Backup object
+        :type BackupObjects: str
+        :param _CreateTime: Creation time
+        :type CreateTime: str
+        :param _SnapshotFinishedTime: Snapshot end time
+        :type SnapshotFinishedTime: str
+        :param _UploadFinishedTime: Upload end time
+        :type UploadFinishedTime: str
+        :param _FinishedTime: End time
+        :type FinishedTime: str
+        :param _UnfinishedTasks: Unfinished tasks
+        :type UnfinishedTasks: str
+        :param _Progress: Progress
+        :type Progress: str
+        :param _TaskErrMsg: Error message
+        :type TaskErrMsg: str
+        :param _Status: Status
+        :type Status: str
+        :param _Timeout: Timeout information
+        :type Timeout: int
+        :param _BackupJobId: Backup instance ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackupJobId: int
+        :param _TaskId: The ID of the snapshoit corresponding to the instance
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskId: int
+        """
+        self._JobId = None
+        self._SnapshotName = None
+        self._DbName = None
+        self._State = None
+        self._BackupObjects = None
+        self._CreateTime = None
+        self._SnapshotFinishedTime = None
+        self._UploadFinishedTime = None
+        self._FinishedTime = None
+        self._UnfinishedTasks = None
+        self._Progress = None
+        self._TaskErrMsg = None
+        self._Status = None
+        self._Timeout = None
+        self._BackupJobId = None
+        self._TaskId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def SnapshotName(self):
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def BackupObjects(self):
+        return self._BackupObjects
+
+    @BackupObjects.setter
+    def BackupObjects(self, BackupObjects):
+        self._BackupObjects = BackupObjects
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def SnapshotFinishedTime(self):
+        return self._SnapshotFinishedTime
+
+    @SnapshotFinishedTime.setter
+    def SnapshotFinishedTime(self, SnapshotFinishedTime):
+        self._SnapshotFinishedTime = SnapshotFinishedTime
+
+    @property
+    def UploadFinishedTime(self):
+        return self._UploadFinishedTime
+
+    @UploadFinishedTime.setter
+    def UploadFinishedTime(self, UploadFinishedTime):
+        self._UploadFinishedTime = UploadFinishedTime
+
+    @property
+    def FinishedTime(self):
+        return self._FinishedTime
+
+    @FinishedTime.setter
+    def FinishedTime(self, FinishedTime):
+        self._FinishedTime = FinishedTime
+
+    @property
+    def UnfinishedTasks(self):
+        return self._UnfinishedTasks
+
+    @UnfinishedTasks.setter
+    def UnfinishedTasks(self, UnfinishedTasks):
+        self._UnfinishedTasks = UnfinishedTasks
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def TaskErrMsg(self):
+        return self._TaskErrMsg
+
+    @TaskErrMsg.setter
+    def TaskErrMsg(self, TaskErrMsg):
+        self._TaskErrMsg = TaskErrMsg
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def BackupJobId(self):
+        return self._BackupJobId
+
+    @BackupJobId.setter
+    def BackupJobId(self, BackupJobId):
+        self._BackupJobId = BackupJobId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._SnapshotName = params.get("SnapshotName")
+        self._DbName = params.get("DbName")
+        self._State = params.get("State")
+        self._BackupObjects = params.get("BackupObjects")
+        self._CreateTime = params.get("CreateTime")
+        self._SnapshotFinishedTime = params.get("SnapshotFinishedTime")
+        self._UploadFinishedTime = params.get("UploadFinishedTime")
+        self._FinishedTime = params.get("FinishedTime")
+        self._UnfinishedTasks = params.get("UnfinishedTasks")
+        self._Progress = params.get("Progress")
+        self._TaskErrMsg = params.get("TaskErrMsg")
+        self._Status = params.get("Status")
+        self._Timeout = params.get("Timeout")
+        self._BackupJobId = params.get("BackupJobId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupTableContent(AbstractModel):
+    """Backup table information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Database: Database
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Database: str
+        :param _Table: Table
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Table: str
+        :param _TotalBytes: Total number of bytes in the table
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TotalBytes: int
+        :param _SingleReplicaBytes: Size of a single replica
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SingleReplicaBytes: str
+        :param _BackupStatus: Backup status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackupStatus: int
+        :param _BackupErrorMsg: Error message of the backup
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackupErrorMsg: str
+        :param _IsOpenCoolDown: Whether to bind the cold storage policy to the database and table
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsOpenCoolDown: bool
+        """
+        self._Database = None
+        self._Table = None
+        self._TotalBytes = None
+        self._SingleReplicaBytes = None
+        self._BackupStatus = None
+        self._BackupErrorMsg = None
+        self._IsOpenCoolDown = None
+
+    @property
+    def Database(self):
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Table(self):
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def TotalBytes(self):
+        return self._TotalBytes
+
+    @TotalBytes.setter
+    def TotalBytes(self, TotalBytes):
+        self._TotalBytes = TotalBytes
+
+    @property
+    def SingleReplicaBytes(self):
+        return self._SingleReplicaBytes
+
+    @SingleReplicaBytes.setter
+    def SingleReplicaBytes(self, SingleReplicaBytes):
+        self._SingleReplicaBytes = SingleReplicaBytes
+
+    @property
+    def BackupStatus(self):
+        return self._BackupStatus
+
+    @BackupStatus.setter
+    def BackupStatus(self, BackupStatus):
+        self._BackupStatus = BackupStatus
+
+    @property
+    def BackupErrorMsg(self):
+        return self._BackupErrorMsg
+
+    @BackupErrorMsg.setter
+    def BackupErrorMsg(self, BackupErrorMsg):
+        self._BackupErrorMsg = BackupErrorMsg
+
+    @property
+    def IsOpenCoolDown(self):
+        return self._IsOpenCoolDown
+
+    @IsOpenCoolDown.setter
+    def IsOpenCoolDown(self, IsOpenCoolDown):
+        self._IsOpenCoolDown = IsOpenCoolDown
+
+
+    def _deserialize(self, params):
+        self._Database = params.get("Database")
+        self._Table = params.get("Table")
+        self._TotalBytes = params.get("TotalBytes")
+        self._SingleReplicaBytes = params.get("SingleReplicaBytes")
+        self._BackupStatus = params.get("BackupStatus")
+        self._BackupErrorMsg = params.get("BackupErrorMsg")
+        self._IsOpenCoolDown = params.get("IsOpenCoolDown")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindUser(AbstractModel):
+    """User information bound to the resource group requires username and host information for authorization.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserName: Username
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserName: str
+        :param _Host: Host information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Host: str
+        """
+        self._UserName = None
+        self._Host = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+
+    def _deserialize(self, params):
+        self._UserName = params.get("UserName")
+        self._Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelBackupJobRequest(AbstractModel):
+    """CancelBackupJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _BackUpJobId: Backup instance ID to be canceled
+        :type BackUpJobId: int
+        """
+        self._InstanceId = None
+        self._BackUpJobId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackUpJobId(self):
+        return self._BackUpJobId
+
+    @BackUpJobId.setter
+    def BackUpJobId(self, BackUpJobId):
+        self._BackUpJobId = BackUpJobId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackUpJobId = params.get("BackUpJobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelBackupJobResponse(AbstractModel):
+    """CancelBackupJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorMsg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class ChargeProperties(AbstractModel):
     """Cluster billing-related information
 
@@ -150,6 +905,100 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RenewFlag = params.get("RenewFlag")
         self._TimeSpan = params.get("TimeSpan")
         self._TimeUnit = params.get("TimeUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterConfigsHistory(AbstractModel):
+    """Modification history of the cluster configuration files
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: Configuration file's name
+        :type FileName: str
+        :param _NewConfValue: Modified configuration file content; base64 code
+        :type NewConfValue: str
+        :param _OldConfValue: Configuration file content before modification; base64 code
+        :type OldConfValue: str
+        :param _Remark: Reason for modification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Remark: str
+        :param _ModifyTime: Modification time
+        :type ModifyTime: str
+        :param _UserUin: Modify sub-account ID
+        :type UserUin: str
+        """
+        self._FileName = None
+        self._NewConfValue = None
+        self._OldConfValue = None
+        self._Remark = None
+        self._ModifyTime = None
+        self._UserUin = None
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def NewConfValue(self):
+        return self._NewConfValue
+
+    @NewConfValue.setter
+    def NewConfValue(self, NewConfValue):
+        self._NewConfValue = NewConfValue
+
+    @property
+    def OldConfValue(self):
+        return self._OldConfValue
+
+    @OldConfValue.setter
+    def OldConfValue(self, OldConfValue):
+        self._OldConfValue = OldConfValue
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ModifyTime(self):
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def UserUin(self):
+        return self._UserUin
+
+    @UserUin.setter
+    def UserUin(self, UserUin):
+        self._UserUin = UserUin
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._NewConfValue = params.get("NewConfValue")
+        self._OldConfValue = params.get("OldConfValue")
+        self._Remark = params.get("Remark")
+        self._ModifyTime = params.get("ModifyTime")
+        self._UserUin = params.get("UserUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -289,6 +1138,167 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class Column(AbstractModel):
+    """Column information of the table
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Column name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _Type: Column type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _AggType: Aggregation type: When the table is an aggregation model (AGG_KEY), the column with the aggregation type is set as the metric column, and other columns are dimension columns. Aggregation type: ●SUM: sum; the values of multiple rows are accumulated. ●REPLACE: replacement; the values in the next batch of data will replace the values in the previously imported rows. ●MAX: retain the maximum value.
+ ●MIN: retain the minimum value. ●REPLACE_IF_NOT_NULL: non-null values replacement. The difference from REPLACE is that null values are not replaced. ●HLL_UNION: aggregation method for HLL type columns, which is aggregated by HyperLogLog algorithm. ●BITMAP_UNION: aggregation method for BIMTAP type columns; bitmap union aggregation.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AggType: str
+        :param _IsNull: Whether the column value is allowed to be Null
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsNull: bool
+        :param _IsKey: Whether it is a Key column. The meaning of different data models:
+●DUP_KEY: The column specified afterwards is the sorting column.
+●AGG_KEY: The column specified afterwards is the dimension column.
+●UNI_KEY: The column specified afterward is the primary key column.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsKey: bool
+        :param _DefaultValue: Column's default value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DefaultValue: str
+        :param _IsPartition: Whether it is a partition column. The partition column must be a Key column.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsPartition: bool
+        :param _IsDistribution: Whether it is a bucket column. The bucket column of the aggregation model and primary key model must be Key columns, while the bucket column of the detail model can be any column.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsDistribution: bool
+        :param _AutoInc: Whether it is an auto-increment column. Supported by TCHouse-D 2.1 version and later.
+Limit:
+1. Only DUP_KEY and UNI_KEY model tables can contain auto-increment columns.
+2. A table can contain at most one auto-increment column.
+3. The type of the auto-increment column must be BIGINT type and cannot be null.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AutoInc: bool
+        :param _Comment: Column description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Comment: str
+        """
+        self._Name = None
+        self._Type = None
+        self._AggType = None
+        self._IsNull = None
+        self._IsKey = None
+        self._DefaultValue = None
+        self._IsPartition = None
+        self._IsDistribution = None
+        self._AutoInc = None
+        self._Comment = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AggType(self):
+        return self._AggType
+
+    @AggType.setter
+    def AggType(self, AggType):
+        self._AggType = AggType
+
+    @property
+    def IsNull(self):
+        return self._IsNull
+
+    @IsNull.setter
+    def IsNull(self, IsNull):
+        self._IsNull = IsNull
+
+    @property
+    def IsKey(self):
+        return self._IsKey
+
+    @IsKey.setter
+    def IsKey(self, IsKey):
+        self._IsKey = IsKey
+
+    @property
+    def DefaultValue(self):
+        return self._DefaultValue
+
+    @DefaultValue.setter
+    def DefaultValue(self, DefaultValue):
+        self._DefaultValue = DefaultValue
+
+    @property
+    def IsPartition(self):
+        return self._IsPartition
+
+    @IsPartition.setter
+    def IsPartition(self, IsPartition):
+        self._IsPartition = IsPartition
+
+    @property
+    def IsDistribution(self):
+        return self._IsDistribution
+
+    @IsDistribution.setter
+    def IsDistribution(self, IsDistribution):
+        self._IsDistribution = IsDistribution
+
+    @property
+    def AutoInc(self):
+        return self._AutoInc
+
+    @AutoInc.setter
+    def AutoInc(self, AutoInc):
+        self._AutoInc = AutoInc
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._AggType = params.get("AggType")
+        self._IsNull = params.get("IsNull")
+        self._IsKey = params.get("IsKey")
+        self._DefaultValue = params.get("DefaultValue")
+        self._IsPartition = params.get("IsPartition")
+        self._IsDistribution = params.get("IsDistribution")
+        self._AutoInc = params.get("AutoInc")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConfigKeyValue(AbstractModel):
     """Return the configuration file content (key-value)
 
@@ -373,6 +1383,521 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CopyTableDatasRequest(AbstractModel):
+    """CopyTableDatas request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Resource ID, which is the TCHouse-D resource ID used for table creation.
+        :type InstanceId: str
+        :param _CopiedFromDb: Name of the database where the source table is located
+        :type CopiedFromDb: str
+        :param _CopiedFromTable: Source table name
+        :type CopiedFromTable: str
+        :param _CopyToDb: Name of the database where the target table is located
+        :type CopyToDb: str
+        :param _CopyToTable: Target table name. If the table already exists, the structure of the source table and target table should be the same.
+        :type CopyToTable: str
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        :param _IsDataOverwrite: Whether the data in the target table is overwritten. The default value is False.
+        :type IsDataOverwrite: bool
+        """
+        self._InstanceId = None
+        self._CopiedFromDb = None
+        self._CopiedFromTable = None
+        self._CopyToDb = None
+        self._CopyToTable = None
+        self._UserName = None
+        self._PassWord = None
+        self._IsDataOverwrite = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CopiedFromDb(self):
+        return self._CopiedFromDb
+
+    @CopiedFromDb.setter
+    def CopiedFromDb(self, CopiedFromDb):
+        self._CopiedFromDb = CopiedFromDb
+
+    @property
+    def CopiedFromTable(self):
+        return self._CopiedFromTable
+
+    @CopiedFromTable.setter
+    def CopiedFromTable(self, CopiedFromTable):
+        self._CopiedFromTable = CopiedFromTable
+
+    @property
+    def CopyToDb(self):
+        return self._CopyToDb
+
+    @CopyToDb.setter
+    def CopyToDb(self, CopyToDb):
+        self._CopyToDb = CopyToDb
+
+    @property
+    def CopyToTable(self):
+        return self._CopyToTable
+
+    @CopyToTable.setter
+    def CopyToTable(self, CopyToTable):
+        self._CopyToTable = CopyToTable
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+    @property
+    def IsDataOverwrite(self):
+        return self._IsDataOverwrite
+
+    @IsDataOverwrite.setter
+    def IsDataOverwrite(self, IsDataOverwrite):
+        self._IsDataOverwrite = IsDataOverwrite
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._CopiedFromDb = params.get("CopiedFromDb")
+        self._CopiedFromTable = params.get("CopiedFromTable")
+        self._CopyToDb = params.get("CopyToDb")
+        self._CopyToTable = params.get("CopyToTable")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        self._IsDataOverwrite = params.get("IsDataOverwrite")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CopyTableDatasResponse(AbstractModel):
+    """CopyTableDatas response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class CosSourceInfo(AbstractModel):
+    """The customer provides cos authentication information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretId: ID in cos authentication
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SecretId: str
+        :param _SecretKey: Key in cos authentication
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SecretKey: str
+        :param _CosPath: Path in cos authentication
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CosPath: str
+        """
+        self._SecretId = None
+        self._SecretKey = None
+        self._CosPath = None
+
+    @property
+    def SecretId(self):
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def CosPath(self):
+        return self._CosPath
+
+    @CosPath.setter
+    def CosPath(self, CosPath):
+        self._CosPath = CosPath
+
+
+    def _deserialize(self, params):
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
+        self._CosPath = params.get("CosPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBackUpScheduleRequest(AbstractModel):
+    """CreateBackUpSchedule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScheduleId: Required to be uploaded when editing
+        :type ScheduleId: int
+        :param _WeekDays: Selected weeks, separated by commas.
+Discarded: Use ScheduleInfo.
+        :type WeekDays: str
+        :param _ExecuteHour: Hour for executing the backup taskDiscarded: Use ScheduleInfo.
+        :type ExecuteHour: int
+        :param _BackUpTables: Backup table list
+        :type BackUpTables: list of BackupTableContent
+        :param _BackupType: 0: default; 1: one-time backup for the remote Doris
+        :type BackupType: int
+        :param _DorisSourceInfo: Connection information of the remote doris cluster
+        :type DorisSourceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.DorisSourceInfo`
+        :param _BackupTimeType: 0: default; 1: one-time backup; 2: remote backup
+        :type BackupTimeType: int
+        :param _RestoreType: 0: default; 1: immediate recovery after the backup is completed.
+        :type RestoreType: int
+        :param _AuthType: 0: default; 1: connecting to COS using a custom key.
+        :type AuthType: int
+        :param _CosSourceInfo: Cos certification information
+        :type CosSourceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.CosSourceInfo`
+        """
+        self._ScheduleId = None
+        self._WeekDays = None
+        self._ExecuteHour = None
+        self._BackUpTables = None
+        self._BackupType = None
+        self._DorisSourceInfo = None
+        self._BackupTimeType = None
+        self._RestoreType = None
+        self._AuthType = None
+        self._CosSourceInfo = None
+
+    @property
+    def ScheduleId(self):
+        return self._ScheduleId
+
+    @ScheduleId.setter
+    def ScheduleId(self, ScheduleId):
+        self._ScheduleId = ScheduleId
+
+    @property
+    def WeekDays(self):
+        return self._WeekDays
+
+    @WeekDays.setter
+    def WeekDays(self, WeekDays):
+        self._WeekDays = WeekDays
+
+    @property
+    def ExecuteHour(self):
+        return self._ExecuteHour
+
+    @ExecuteHour.setter
+    def ExecuteHour(self, ExecuteHour):
+        self._ExecuteHour = ExecuteHour
+
+    @property
+    def BackUpTables(self):
+        return self._BackUpTables
+
+    @BackUpTables.setter
+    def BackUpTables(self, BackUpTables):
+        self._BackUpTables = BackUpTables
+
+    @property
+    def BackupType(self):
+        return self._BackupType
+
+    @BackupType.setter
+    def BackupType(self, BackupType):
+        self._BackupType = BackupType
+
+    @property
+    def DorisSourceInfo(self):
+        return self._DorisSourceInfo
+
+    @DorisSourceInfo.setter
+    def DorisSourceInfo(self, DorisSourceInfo):
+        self._DorisSourceInfo = DorisSourceInfo
+
+    @property
+    def BackupTimeType(self):
+        return self._BackupTimeType
+
+    @BackupTimeType.setter
+    def BackupTimeType(self, BackupTimeType):
+        self._BackupTimeType = BackupTimeType
+
+    @property
+    def RestoreType(self):
+        return self._RestoreType
+
+    @RestoreType.setter
+    def RestoreType(self, RestoreType):
+        self._RestoreType = RestoreType
+
+    @property
+    def AuthType(self):
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def CosSourceInfo(self):
+        return self._CosSourceInfo
+
+    @CosSourceInfo.setter
+    def CosSourceInfo(self, CosSourceInfo):
+        self._CosSourceInfo = CosSourceInfo
+
+
+    def _deserialize(self, params):
+        self._ScheduleId = params.get("ScheduleId")
+        self._WeekDays = params.get("WeekDays")
+        self._ExecuteHour = params.get("ExecuteHour")
+        if params.get("BackUpTables") is not None:
+            self._BackUpTables = []
+            for item in params.get("BackUpTables"):
+                obj = BackupTableContent()
+                obj._deserialize(item)
+                self._BackUpTables.append(obj)
+        self._BackupType = params.get("BackupType")
+        if params.get("DorisSourceInfo") is not None:
+            self._DorisSourceInfo = DorisSourceInfo()
+            self._DorisSourceInfo._deserialize(params.get("DorisSourceInfo"))
+        self._BackupTimeType = params.get("BackupTimeType")
+        self._RestoreType = params.get("RestoreType")
+        self._AuthType = params.get("AuthType")
+        if params.get("CosSourceInfo") is not None:
+            self._CosSourceInfo = CosSourceInfo()
+            self._CosSourceInfo._deserialize(params.get("CosSourceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBackUpScheduleResponse(AbstractModel):
+    """CreateBackUpSchedule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDatabaseRequest(AbstractModel):
+    """CreateDatabase request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Resource ID, which is the TCHouse-D resource ID used for table creation.
+        :type InstanceId: str
+        :param _DbName: Name of database to be created
+        :type DbName: str
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        :param _Properties: Database attributes. For keys with the same attributes, the priority of the table attribute is higher than that of the database attribute.
+        :type Properties: list of Property
+        """
+        self._InstanceId = None
+        self._DbName = None
+        self._UserName = None
+        self._PassWord = None
+        self._Properties = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DbName = params.get("DbName")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = Property()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDatabaseResponse(AbstractModel):
+    """CreateDatabase response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateInstanceNewRequest(AbstractModel):
@@ -710,6 +2235,315 @@ class CreateInstanceSpec(AbstractModel):
         
 
 
+class CreateTableRequest(AbstractModel):
+    """CreateTable request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Resource ID, which is the TCHouse-D resource ID used for table creation.
+        :type InstanceId: str
+        :param _DbName: The database where the table is located; if it does not exist, create one.
+        :type DbName: str
+        :param _TableName: Name of the table to be created
+        :type TableName: str
+        :param _KeysType: Table data model: 
+AGG_KEY: aggregation model; 
+UNI_KEY: primary key model; 
+DUP_KEY: detail model
+        :type KeysType: str
+        :param _Columns: Column information of the table
+        :type Columns: list of Column
+        :param _Distribution: Bucket information
+        :type Distribution: :class:`tencentcloud.cdwdoris.v20211228.models.Distribution`
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        :param _IndexInfos: Index information. The inverted index and N-Gram index can be configured through this parameter. The Prefix index is related to the sort key and key column, and do not require additional configuration. Configure bloom_filter_columns in the table attribute when BloomFilter index is required.
+        :type IndexInfos: list of IndexInfo
+        :param _Partition: Partition information
+        :type Partition: :class:`tencentcloud.cdwdoris.v20211228.models.Partition`
+        :param _TableComment: Table description
+        :type TableComment: str
+        :param _Properties: Table attribute
+        :type Properties: list of Property
+        """
+        self._InstanceId = None
+        self._DbName = None
+        self._TableName = None
+        self._KeysType = None
+        self._Columns = None
+        self._Distribution = None
+        self._UserName = None
+        self._PassWord = None
+        self._IndexInfos = None
+        self._Partition = None
+        self._TableComment = None
+        self._Properties = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def KeysType(self):
+        return self._KeysType
+
+    @KeysType.setter
+    def KeysType(self, KeysType):
+        self._KeysType = KeysType
+
+    @property
+    def Columns(self):
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def Distribution(self):
+        return self._Distribution
+
+    @Distribution.setter
+    def Distribution(self, Distribution):
+        self._Distribution = Distribution
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+    @property
+    def IndexInfos(self):
+        return self._IndexInfos
+
+    @IndexInfos.setter
+    def IndexInfos(self, IndexInfos):
+        self._IndexInfos = IndexInfos
+
+    @property
+    def Partition(self):
+        return self._Partition
+
+    @Partition.setter
+    def Partition(self, Partition):
+        self._Partition = Partition
+
+    @property
+    def TableComment(self):
+        return self._TableComment
+
+    @TableComment.setter
+    def TableComment(self, TableComment):
+        self._TableComment = TableComment
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DbName = params.get("DbName")
+        self._TableName = params.get("TableName")
+        self._KeysType = params.get("KeysType")
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = Column()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        if params.get("Distribution") is not None:
+            self._Distribution = Distribution()
+            self._Distribution._deserialize(params.get("Distribution"))
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        if params.get("IndexInfos") is not None:
+            self._IndexInfos = []
+            for item in params.get("IndexInfos"):
+                obj = IndexInfo()
+                obj._deserialize(item)
+                self._IndexInfos.append(obj)
+        if params.get("Partition") is not None:
+            self._Partition = Partition()
+            self._Partition._deserialize(params.get("Partition"))
+        self._TableComment = params.get("TableComment")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = Property()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTableResponse(AbstractModel):
+    """CreateTable response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateWorkloadGroupRequest(AbstractModel):
+    """CreateWorkloadGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID	
+        :type InstanceId: str
+        :param _WorkloadGroup: Resource group configuration
+        :type WorkloadGroup: :class:`tencentcloud.cdwdoris.v20211228.models.WorkloadGroupConfig`
+        """
+        self._InstanceId = None
+        self._WorkloadGroup = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def WorkloadGroup(self):
+        return self._WorkloadGroup
+
+    @WorkloadGroup.setter
+    def WorkloadGroup(self, WorkloadGroup):
+        self._WorkloadGroup = WorkloadGroup
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("WorkloadGroup") is not None:
+            self._WorkloadGroup = WorkloadGroupConfig()
+            self._WorkloadGroup._deserialize(params.get("WorkloadGroup"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateWorkloadGroupResponse(AbstractModel):
+    """CreateWorkloadGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: Error message
+        :type ErrorMsg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class DataBaseAuditRecord(AbstractModel):
     """Database audit
 
@@ -898,6 +2732,1140 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DatabasePermissions(AbstractModel):
+    """Database permission
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseName: Database name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DatabaseName: str
+        :param _Permissions: Permission name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Permissions: list of str
+        """
+        self._DatabaseName = None
+        self._Permissions = None
+
+    @property
+    def DatabaseName(self):
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def Permissions(self):
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+
+    def _deserialize(self, params):
+        self._DatabaseName = params.get("DatabaseName")
+        self._Permissions = params.get("Permissions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DbInfo(AbstractModel):
+    """Database information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbName: Database name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DbName: str
+        :param _Properties: Database attribute
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Properties: list of Property
+        :param _Location: Metadata address (Available when the data source is Hive or DLC.)
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Location: str
+        """
+        self._DbName = None
+        self._Properties = None
+        self._Location = None
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def Location(self):
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+
+    def _deserialize(self, params):
+        self._DbName = params.get("DbName")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = Property()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        self._Location = params.get("Location")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBackUpDataRequest(AbstractModel):
+    """DeleteBackUpData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _BackUpJobId: Task ID
+        :type BackUpJobId: int
+        :param _IsDeleteAll: Whether to delete all data
+        :type IsDeleteAll: bool
+        """
+        self._InstanceId = None
+        self._BackUpJobId = None
+        self._IsDeleteAll = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackUpJobId(self):
+        return self._BackUpJobId
+
+    @BackUpJobId.setter
+    def BackUpJobId(self, BackUpJobId):
+        self._BackUpJobId = BackUpJobId
+
+    @property
+    def IsDeleteAll(self):
+        return self._IsDeleteAll
+
+    @IsDeleteAll.setter
+    def IsDeleteAll(self, IsDeleteAll):
+        self._IsDeleteAll = IsDeleteAll
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackUpJobId = params.get("BackUpJobId")
+        self._IsDeleteAll = params.get("IsDeleteAll")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBackUpDataResponse(AbstractModel):
+    """DeleteBackUpData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTableRequest(AbstractModel):
+    """DeleteTable request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Resource ID, which is the TCHouse-D resource ID used for table creation.
+        :type InstanceId: str
+        :param _DbName: The name of the database where the table belongs needs to be deleted
+        :type DbName: str
+        :param _TableName: Table name to be deleted
+        :type TableName: str
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        :param _IsForce: True: The system will not check whether there are unfinished transactions in the table. The table will be deleted directly and cannot be recovered. False: The deleted table can be recovered within a period of time (default value).
+        :type IsForce: bool
+        """
+        self._InstanceId = None
+        self._DbName = None
+        self._TableName = None
+        self._UserName = None
+        self._PassWord = None
+        self._IsForce = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+    @property
+    def IsForce(self):
+        return self._IsForce
+
+    @IsForce.setter
+    def IsForce(self, IsForce):
+        self._IsForce = IsForce
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DbName = params.get("DbName")
+        self._TableName = params.get("TableName")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        self._IsForce = params.get("IsForce")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTableResponse(AbstractModel):
+    """DeleteTable response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteWorkloadGroupRequest(AbstractModel):
+    """DeleteWorkloadGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _WorkloadGroupName: Resource group name to be deleted
+        :type WorkloadGroupName: str
+        """
+        self._InstanceId = None
+        self._WorkloadGroupName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def WorkloadGroupName(self):
+        return self._WorkloadGroupName
+
+    @WorkloadGroupName.setter
+    def WorkloadGroupName(self, WorkloadGroupName):
+        self._WorkloadGroupName = WorkloadGroupName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._WorkloadGroupName = params.get("WorkloadGroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteWorkloadGroupResponse(AbstractModel):
+    """DeleteWorkloadGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: Error message
+        :type ErrorMsg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAreaRegionRequest(AbstractModel):
+    """DescribeAreaRegion request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsInternationalSite: Whether it is an international site
+        :type IsInternationalSite: bool
+        """
+        self._IsInternationalSite = None
+
+    @property
+    def IsInternationalSite(self):
+        return self._IsInternationalSite
+
+    @IsInternationalSite.setter
+    def IsInternationalSite(self, IsInternationalSite):
+        self._IsInternationalSite = IsInternationalSite
+
+
+    def _deserialize(self, params):
+        self._IsInternationalSite = params.get("IsInternationalSite")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAreaRegionResponse(AbstractModel):
+    """DescribeAreaRegion response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: Region list
+        :type Items: list of RegionAreaInfo
+        :param _FrontEndRules: Front-end rule description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FrontEndRules: list of FrontEndRule
+        :param _AvailableWhiteListNames: Return available allowlist names
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AvailableWhiteListNames: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Items = None
+        self._FrontEndRules = None
+        self._AvailableWhiteListNames = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def FrontEndRules(self):
+        return self._FrontEndRules
+
+    @FrontEndRules.setter
+    def FrontEndRules(self, FrontEndRules):
+        self._FrontEndRules = FrontEndRules
+
+    @property
+    def AvailableWhiteListNames(self):
+        return self._AvailableWhiteListNames
+
+    @AvailableWhiteListNames.setter
+    def AvailableWhiteListNames(self, AvailableWhiteListNames):
+        self._AvailableWhiteListNames = AvailableWhiteListNames
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = RegionAreaInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        if params.get("FrontEndRules") is not None:
+            self._FrontEndRules = []
+            for item in params.get("FrontEndRules"):
+                obj = FrontEndRule()
+                obj._deserialize(item)
+                self._FrontEndRules.append(obj)
+        self._AvailableWhiteListNames = params.get("AvailableWhiteListNames")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackUpJobDetailRequest(AbstractModel):
+    """DescribeBackUpJobDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _BackUpJobId: Task ID
+        :type BackUpJobId: int
+        """
+        self._InstanceId = None
+        self._BackUpJobId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackUpJobId(self):
+        return self._BackUpJobId
+
+    @BackUpJobId.setter
+    def BackUpJobId(self, BackUpJobId):
+        self._BackUpJobId = BackUpJobId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackUpJobId = params.get("BackUpJobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackUpJobDetailResponse(AbstractModel):
+    """DescribeBackUpJobDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableContents: Backup table details
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TableContents: list of BackupTableContent
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TableContents = None
+        self._RequestId = None
+
+    @property
+    def TableContents(self):
+        return self._TableContents
+
+    @TableContents.setter
+    def TableContents(self, TableContents):
+        self._TableContents = TableContents
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TableContents") is not None:
+            self._TableContents = []
+            for item in params.get("TableContents"):
+                obj = BackupTableContent()
+                obj._deserialize(item)
+                self._TableContents.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackUpJobRequest(AbstractModel):
+    """DescribeBackUpJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _PageSize: Pagination size
+        :type PageSize: int
+        :param _PageNum: Page number
+        :type PageNum: int
+        :param _BeginTime: Start time
+        :type BeginTime: str
+        :param _EndTime: End time
+        :type EndTime: str
+        :param _JobIdFiltersStr: String type of jobid
+        :type JobIdFiltersStr: str
+        """
+        self._InstanceId = None
+        self._PageSize = None
+        self._PageNum = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._JobIdFiltersStr = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def BeginTime(self):
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def JobIdFiltersStr(self):
+        return self._JobIdFiltersStr
+
+    @JobIdFiltersStr.setter
+    def JobIdFiltersStr(self, JobIdFiltersStr):
+        self._JobIdFiltersStr = JobIdFiltersStr
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._PageSize = params.get("PageSize")
+        self._PageNum = params.get("PageNum")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._JobIdFiltersStr = params.get("JobIdFiltersStr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackUpJobResponse(AbstractModel):
+    """DescribeBackUpJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackUpJobs: Task list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackUpJobs: list of BackUpJobDisplay
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._BackUpJobs = None
+        self._RequestId = None
+
+    @property
+    def BackUpJobs(self):
+        return self._BackUpJobs
+
+    @BackUpJobs.setter
+    def BackUpJobs(self, BackUpJobs):
+        self._BackUpJobs = BackUpJobs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BackUpJobs") is not None:
+            self._BackUpJobs = []
+            for item in params.get("BackUpJobs"):
+                obj = BackUpJobDisplay()
+                obj._deserialize(item)
+                self._BackUpJobs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackUpSchedulesRequest(AbstractModel):
+    """DescribeBackUpSchedules request structure.
+
+    """
+
+
+class DescribeBackUpSchedulesResponse(AbstractModel):
+    """DescribeBackUpSchedules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackUpTablesRequest(AbstractModel):
+    """DescribeBackUpTables request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _BackupType: It is 0 by default. It is 1 when a one-time backup of the remote doris is performed. It is 2 when one-time COS recovery is performed.
+        :type BackupType: int
+        :param _DorisSourceInfo: Connection information of the remote doris cluster
+        :type DorisSourceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.DorisSourceInfo`
+        :param _CosSourceInfo: COS information
+        :type CosSourceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.CosSourceInfo`
+        """
+        self._InstanceId = None
+        self._BackupType = None
+        self._DorisSourceInfo = None
+        self._CosSourceInfo = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackupType(self):
+        return self._BackupType
+
+    @BackupType.setter
+    def BackupType(self, BackupType):
+        self._BackupType = BackupType
+
+    @property
+    def DorisSourceInfo(self):
+        return self._DorisSourceInfo
+
+    @DorisSourceInfo.setter
+    def DorisSourceInfo(self, DorisSourceInfo):
+        self._DorisSourceInfo = DorisSourceInfo
+
+    @property
+    def CosSourceInfo(self):
+        return self._CosSourceInfo
+
+    @CosSourceInfo.setter
+    def CosSourceInfo(self, CosSourceInfo):
+        self._CosSourceInfo = CosSourceInfo
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackupType = params.get("BackupType")
+        if params.get("DorisSourceInfo") is not None:
+            self._DorisSourceInfo = DorisSourceInfo()
+            self._DorisSourceInfo._deserialize(params.get("DorisSourceInfo"))
+        if params.get("CosSourceInfo") is not None:
+            self._CosSourceInfo = CosSourceInfo()
+            self._CosSourceInfo._deserialize(params.get("CosSourceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackUpTablesResponse(AbstractModel):
+    """DescribeBackUpTables response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AvailableTables: List of tables available for backup
+        :type AvailableTables: list of BackupTableContent
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AvailableTables = None
+        self._RequestId = None
+
+    @property
+    def AvailableTables(self):
+        return self._AvailableTables
+
+    @AvailableTables.setter
+    def AvailableTables(self, AvailableTables):
+        self._AvailableTables = AvailableTables
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AvailableTables") is not None:
+            self._AvailableTables = []
+            for item in params.get("AvailableTables"):
+                obj = BackupTableContent()
+                obj._deserialize(item)
+                self._AvailableTables.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBackUpTaskDetailRequest(AbstractModel):
+    """DescribeBackUpTaskDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _BackUpJobId: Task ID
+        :type BackUpJobId: int
+        """
+        self._InstanceId = None
+        self._BackUpJobId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackUpJobId(self):
+        return self._BackUpJobId
+
+    @BackUpJobId.setter
+    def BackUpJobId(self, BackUpJobId):
+        self._BackUpJobId = BackUpJobId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackUpJobId = params.get("BackUpJobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackUpTaskDetailResponse(AbstractModel):
+    """DescribeBackUpTaskDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupStatus: Progress details of the backup task
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackupStatus: list of BackupStatus
+        :param _ErrorMsg: Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorMsg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._BackupStatus = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def BackupStatus(self):
+        return self._BackupStatus
+
+    @BackupStatus.setter
+    def BackupStatus(self, BackupStatus):
+        self._BackupStatus = BackupStatus
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BackupStatus") is not None:
+            self._BackupStatus = []
+            for item in params.get("BackupStatus"):
+                obj = BackupStatus()
+                obj._deserialize(item)
+                self._BackupStatus.append(obj)
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterConfigsHistoryRequest(AbstractModel):
+    """DescribeClusterConfigsHistory request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _Offset: Pagination parameters. The first page is 0, and the second page is 10.
+        :type Offset: int
+        :param _Limit: Pagination parameters. The pagination step length is 10 by default.
+        :type Limit: int
+        :param _StartTime: Start of the time range for configuration modification history
+        :type StartTime: str
+        :param _EndTime: End of the time range for configuration modification history
+        :type EndTime: str
+        :param _ConfigFileNames: Configuration file name array to be queried. If it is empty, all historical records will be queried. Currently supported configuration file names are as follows:
+apache_hdfs_broker.conf; be.conf; fe.conf; core-site.xml; hdfs-site.xml; odbcinst.ini
+        :type ConfigFileNames: list of str
+        """
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ConfigFileNames = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ConfigFileNames(self):
+        return self._ConfigFileNames
+
+    @ConfigFileNames.setter
+    def ConfigFileNames(self, ConfigFileNames):
+        self._ConfigFileNames = ConfigFileNames
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ConfigFileNames = params.get("ConfigFileNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterConfigsHistoryResponse(AbstractModel):
+    """DescribeClusterConfigsHistory response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of instances
+        :type TotalCount: int
+        :param _ClusterConfHistory: Modification history of the configuration file
+        :type ClusterConfHistory: list of ClusterConfigsHistory
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ClusterConfHistory = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ClusterConfHistory(self):
+        return self._ClusterConfHistory
+
+    @ClusterConfHistory.setter
+    def ClusterConfHistory(self, ClusterConfHistory):
+        self._ClusterConfHistory = ClusterConfHistory
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ClusterConfHistory") is not None:
+            self._ClusterConfHistory = []
+            for item in params.get("ClusterConfHistory"):
+                obj = ClusterConfigsHistory()
+                obj._deserialize(item)
+                self._ClusterConfHistory.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeClusterConfigsRequest(AbstractModel):
@@ -1501,6 +4469,155 @@ class DescribeDatabaseAuditRecordsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDatabaseRequest(AbstractModel):
+    """DescribeDatabase request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Resource ID, which is the TCHouse-D resource ID used for table creation.
+        :type InstanceId: str
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        :param _CatalogName: Query the data source where the database is located. If it is not filled in, the internal data source (internal) will be used by default.
+        :type CatalogName: str
+        :param _DbNames: The database information to be queried. If this parameter and FilterDbName are not filled in, all database information of the current data source will be queried by default.
+        :type DbNames: list of str
+        :param _FilterDbName: Display the filtered database information. For example, %infor indicates database names ending with infor. This parameter only supports scenarios where CatalogName is internal.
+        :type FilterDbName: str
+        """
+        self._InstanceId = None
+        self._UserName = None
+        self._PassWord = None
+        self._CatalogName = None
+        self._DbNames = None
+        self._FilterDbName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+    @property
+    def CatalogName(self):
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def DbNames(self):
+        return self._DbNames
+
+    @DbNames.setter
+    def DbNames(self, DbNames):
+        self._DbNames = DbNames
+
+    @property
+    def FilterDbName(self):
+        return self._FilterDbName
+
+    @FilterDbName.setter
+    def FilterDbName(self, FilterDbName):
+        self._FilterDbName = FilterDbName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        self._CatalogName = params.get("CatalogName")
+        self._DbNames = params.get("DbNames")
+        self._FilterDbName = params.get("FilterDbName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabaseResponse(AbstractModel):
+    """DescribeDatabase response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbInfos: Database information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DbInfos: list of DbInfo
+        :param _Message: Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._DbInfos = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def DbInfos(self):
+        return self._DbInfos
+
+    @DbInfos.setter
+    def DbInfos(self, DbInfos):
+        self._DbInfos = DbInfos
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DbInfos") is not None:
+            self._DbInfos = []
+            for item in params.get("DbInfos"):
+                obj = DbInfo()
+                obj._deserialize(item)
+                self._DbInfos.append(obj)
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceNodesInfoRequest(AbstractModel):
     """DescribeInstanceNodesInfo request structure.
 
@@ -1769,6 +4886,411 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceNodesRoleRequest(AbstractModel):
+    """DescribeInstanceNodesRole request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        :param _IpFilter: Filter IP addresses
+        :type IpFilter: str
+        """
+        self._InstanceId = None
+        self._IpFilter = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def IpFilter(self):
+        return self._IpFilter
+
+    @IpFilter.setter
+    def IpFilter(self, IpFilter):
+        self._IpFilter = IpFilter
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._IpFilter = params.get("IpFilter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceNodesRoleResponse(AbstractModel):
+    """DescribeInstanceNodesRole response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: Error code
+        :type ErrorMsg: str
+        :param _TotalCount: Total number of nodes
+        :type TotalCount: int
+        :param _NodeInfos: None
+        :type NodeInfos: list of NodeInfos
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._TotalCount = None
+        self._NodeInfos = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def NodeInfos(self):
+        return self._NodeInfos
+
+    @NodeInfos.setter
+    def NodeInfos(self, NodeInfos):
+        self._NodeInfos = NodeInfos
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._TotalCount = params.get("TotalCount")
+        if params.get("NodeInfos") is not None:
+            self._NodeInfos = []
+            for item in params.get("NodeInfos"):
+                obj = NodeInfos()
+                obj._deserialize(item)
+                self._NodeInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceOperationHistoryRequest(AbstractModel):
+    """DescribeInstanceOperationHistory request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _PageNum: Page number, which is 1 by default.
+        :type PageNum: int
+        :param _PageSize: Number of records per page, which is 10 by default.
+        :type PageSize: int
+        :param _StartTime: Start time
+        :type StartTime: str
+        :param _EndTime: End time
+        :type EndTime: str
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        """
+        self._InstanceId = None
+        self._PageNum = None
+        self._PageSize = None
+        self._StartTime = None
+        self._EndTime = None
+        self._UserName = None
+        self._PassWord = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceOperationHistoryResponse(AbstractModel):
+    """DescribeInstanceOperationHistory response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of operation records
+        :type TotalCount: int
+        :param _Operations: Specific data of operation records
+        :type Operations: list of InstanceOperation
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Operations = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Operations(self):
+        return self._Operations
+
+    @Operations.setter
+    def Operations(self, Operations):
+        self._Operations = Operations
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Operations") is not None:
+            self._Operations = []
+            for item in params.get("Operations"):
+                obj = InstanceOperation()
+                obj._deserialize(item)
+                self._Operations.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceOperationsRequest(AbstractModel):
+    """DescribeInstanceOperations request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 
+        :type InstanceId: str
+        :param _Offset: 
+        :type Offset: int
+        :param _Limit: 
+        :type Limit: int
+        :param _StartTime: 
+        :type StartTime: str
+        :param _EndTime: 
+        :type EndTime: str
+        """
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceOperationsResponse(AbstractModel):
+    """DescribeInstanceOperations response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 
+        :type TotalCount: int
+        :param _Operations: Note: This field may return null, indicating that no valid values can be obtained.
+        :type Operations: list of InstanceOperation
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Operations = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Operations(self):
+        return self._Operations
+
+    @Operations.setter
+    def Operations(self, Operations):
+        self._Operations = Operations
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Operations") is not None:
+            self._Operations = []
+            for item in params.get("Operations"):
+                obj = InstanceOperation()
+                obj._deserialize(item)
+                self._Operations.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceRequest(AbstractModel):
     """DescribeInstance request structure.
 
@@ -1976,6 +5498,177 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceUsedSubnetsRequest(AbstractModel):
+    """DescribeInstanceUsedSubnets request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceUsedSubnetsResponse(AbstractModel):
+    """DescribeInstanceUsedSubnets response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: VPC information used by the cluster
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VpcId: str
+        :param _UsedSubnets: Subnet information used by the cluster
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UsedSubnets: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._VpcId = None
+        self._UsedSubnets = None
+        self._RequestId = None
+
+    @property
+    def VpcId(self):
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def UsedSubnets(self):
+        return self._UsedSubnets
+
+    @UsedSubnets.setter
+    def UsedSubnets(self, UsedSubnets):
+        self._UsedSubnets = UsedSubnets
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._UsedSubnets = params.get("UsedSubnets")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstancesHealthStateRequest(AbstractModel):
+    """DescribeInstancesHealthState request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceID: Cluster ID
+        :type InstanceID: str
+        :param _Input: "" or a cluster ID
+        :type Input: str
+        """
+        self._InstanceID = None
+        self._Input = None
+
+    @property
+    def InstanceID(self):
+        warnings.warn("parameter `InstanceID` is deprecated", DeprecationWarning) 
+
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        warnings.warn("parameter `InstanceID` is deprecated", DeprecationWarning) 
+
+        self._InstanceID = InstanceID
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._Input = params.get("Input")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancesHealthStateResponse(AbstractModel):
+    """DescribeInstancesHealthState response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: Output parameter
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Data: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstancesRequest(AbstractModel):
     """DescribeInstances request structure.
 
@@ -2113,6 +5806,350 @@ class DescribeInstancesResponse(AbstractModel):
                 obj = InstanceInfo()
                 obj._deserialize(item)
                 self._InstancesList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeQueryAnalyseRequest(AbstractModel):
+    """DescribeQueryAnalyse request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        :param _StartTime: Start time of operation period
+        :type StartTime: str
+        :param _EndTime: End time of operation period
+        :type EndTime: str
+        :param _SQLFragment: SQL fragments (fuzzy query supported)
+        :type SQLFragment: str
+        :param _CatalogFilter: Catalog filter condition
+        :type CatalogFilter: str
+        :param _DatabaseFilter: Database name filter condition
+        :type DatabaseFilter: str
+        :param _SQLTypeFilter: SQL type filter criteria
+        :type SQLTypeFilter: str
+        :param _SortField: Sorting field
+        :type SortField: str
+        :param _SortOrder: Sorting order: asc (ascending) or desc (descending)
+        :type SortOrder: str
+        """
+        self._InstanceId = None
+        self._UserName = None
+        self._PassWord = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SQLFragment = None
+        self._CatalogFilter = None
+        self._DatabaseFilter = None
+        self._SQLTypeFilter = None
+        self._SortField = None
+        self._SortOrder = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SQLFragment(self):
+        return self._SQLFragment
+
+    @SQLFragment.setter
+    def SQLFragment(self, SQLFragment):
+        self._SQLFragment = SQLFragment
+
+    @property
+    def CatalogFilter(self):
+        return self._CatalogFilter
+
+    @CatalogFilter.setter
+    def CatalogFilter(self, CatalogFilter):
+        self._CatalogFilter = CatalogFilter
+
+    @property
+    def DatabaseFilter(self):
+        return self._DatabaseFilter
+
+    @DatabaseFilter.setter
+    def DatabaseFilter(self, DatabaseFilter):
+        self._DatabaseFilter = DatabaseFilter
+
+    @property
+    def SQLTypeFilter(self):
+        return self._SQLTypeFilter
+
+    @SQLTypeFilter.setter
+    def SQLTypeFilter(self, SQLTypeFilter):
+        self._SQLTypeFilter = SQLTypeFilter
+
+    @property
+    def SortField(self):
+        return self._SortField
+
+    @SortField.setter
+    def SortField(self, SortField):
+        self._SortField = SortField
+
+    @property
+    def SortOrder(self):
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SQLFragment = params.get("SQLFragment")
+        self._CatalogFilter = params.get("CatalogFilter")
+        self._DatabaseFilter = params.get("DatabaseFilter")
+        self._SQLTypeFilter = params.get("SQLTypeFilter")
+        self._SortField = params.get("SortField")
+        self._SortOrder = params.get("SortOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQueryAnalyseResponse(AbstractModel):
+    """DescribeQueryAnalyse response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QueryDetails: Query details
+        :type QueryDetails: list of QueryDetails
+        :param _TotalCount: Total number of records
+        :type TotalCount: int
+        :param _CurrentPage: Current page
+        :type CurrentPage: int
+        :param _PageSize: Number of records per page
+        :type PageSize: int
+        :param _TotalPages: Total pages
+        :type TotalPages: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._QueryDetails = None
+        self._TotalCount = None
+        self._CurrentPage = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._RequestId = None
+
+    @property
+    def QueryDetails(self):
+        return self._QueryDetails
+
+    @QueryDetails.setter
+    def QueryDetails(self, QueryDetails):
+        self._QueryDetails = QueryDetails
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def CurrentPage(self):
+        return self._CurrentPage
+
+    @CurrentPage.setter
+    def CurrentPage(self, CurrentPage):
+        self._CurrentPage = CurrentPage
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("QueryDetails") is not None:
+            self._QueryDetails = []
+            for item in params.get("QueryDetails"):
+                obj = QueryDetails()
+                obj._deserialize(item)
+                self._QueryDetails.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._CurrentPage = params.get("CurrentPage")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRestoreTaskDetailRequest(AbstractModel):
+    """DescribeRestoreTaskDetail request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _BackUpJobId: Task ID
+        :type BackUpJobId: int
+        """
+        self._InstanceId = None
+        self._BackUpJobId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackUpJobId(self):
+        return self._BackUpJobId
+
+    @BackUpJobId.setter
+    def BackUpJobId(self, BackUpJobId):
+        self._BackUpJobId = BackUpJobId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackUpJobId = params.get("BackUpJobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRestoreTaskDetailResponse(AbstractModel):
+    """DescribeRestoreTaskDetail response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RestoreStatus: Progress details of the recovery tasks
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RestoreStatus: list of RestoreStatus
+        :param _ErrorMsg: Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorMsg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RestoreStatus = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def RestoreStatus(self):
+        return self._RestoreStatus
+
+    @RestoreStatus.setter
+    def RestoreStatus(self, RestoreStatus):
+        self._RestoreStatus = RestoreStatus
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RestoreStatus") is not None:
+            self._RestoreStatus = []
+            for item in params.get("RestoreStatus"):
+                obj = RestoreStatus()
+                obj._deserialize(item)
+                self._RestoreStatus.append(obj)
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -2587,6 +6624,908 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSpecRequest(AbstractModel):
+    """DescribeSpec request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: Region information, such as ap-guangzhou-1.
+        :type Zone: str
+        :param _PayMode: Billing type. PREPAID: annual/monthly package; POSTPAID_BY_HOUR: pay-as-you-go
+        :type PayMode: str
+        :param _Zones: Multi-availability zone
+        :type Zones: list of str
+        :param _SpecName: Model name
+        :type SpecName: str
+        """
+        self._Zone = None
+        self._PayMode = None
+        self._Zones = None
+        self._SpecName = None
+
+    @property
+    def Zone(self):
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def PayMode(self):
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+    @property
+    def SpecName(self):
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._PayMode = params.get("PayMode")
+        self._Zones = params.get("Zones")
+        self._SpecName = params.get("SpecName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSpecResponse(AbstractModel):
+    """DescribeSpec response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MasterSpec: Zookeeper node specification description
+        :type MasterSpec: list of ResourceSpec
+        :param _CoreSpec: Data node specification description
+        :type CoreSpec: list of ResourceSpec
+        :param _AttachCBSSpec: Cloud disk list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AttachCBSSpec: list of DiskSpec
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._MasterSpec = None
+        self._CoreSpec = None
+        self._AttachCBSSpec = None
+        self._RequestId = None
+
+    @property
+    def MasterSpec(self):
+        return self._MasterSpec
+
+    @MasterSpec.setter
+    def MasterSpec(self, MasterSpec):
+        self._MasterSpec = MasterSpec
+
+    @property
+    def CoreSpec(self):
+        return self._CoreSpec
+
+    @CoreSpec.setter
+    def CoreSpec(self, CoreSpec):
+        self._CoreSpec = CoreSpec
+
+    @property
+    def AttachCBSSpec(self):
+        return self._AttachCBSSpec
+
+    @AttachCBSSpec.setter
+    def AttachCBSSpec(self, AttachCBSSpec):
+        self._AttachCBSSpec = AttachCBSSpec
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MasterSpec") is not None:
+            self._MasterSpec = []
+            for item in params.get("MasterSpec"):
+                obj = ResourceSpec()
+                obj._deserialize(item)
+                self._MasterSpec.append(obj)
+        if params.get("CoreSpec") is not None:
+            self._CoreSpec = []
+            for item in params.get("CoreSpec"):
+                obj = ResourceSpec()
+                obj._deserialize(item)
+                self._CoreSpec.append(obj)
+        if params.get("AttachCBSSpec") is not None:
+            self._AttachCBSSpec = []
+            for item in params.get("AttachCBSSpec"):
+                obj = DiskSpec()
+                obj._deserialize(item)
+                self._AttachCBSSpec.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSqlApisRequest(AbstractModel):
+    """DescribeSqlApis request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WhiteHost: The IP address of the user link
+        :type WhiteHost: str
+        :param _Catalog: catalog name
+        :type Catalog: str
+        :param _Catalogs: Catalog collection
+        :type Catalogs: list of str
+        """
+        self._WhiteHost = None
+        self._Catalog = None
+        self._Catalogs = None
+
+    @property
+    def WhiteHost(self):
+        return self._WhiteHost
+
+    @WhiteHost.setter
+    def WhiteHost(self, WhiteHost):
+        self._WhiteHost = WhiteHost
+
+    @property
+    def Catalog(self):
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def Catalogs(self):
+        return self._Catalogs
+
+    @Catalogs.setter
+    def Catalogs(self, Catalogs):
+        self._Catalogs = Catalogs
+
+
+    def _deserialize(self, params):
+        self._WhiteHost = params.get("WhiteHost")
+        self._Catalog = params.get("Catalog")
+        self._Catalogs = params.get("Catalogs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSqlApisResponse(AbstractModel):
+    """DescribeSqlApis response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTableListRequest(AbstractModel):
+    """DescribeTableList request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Resource ID, which is the TCHouse-D resource ID used for table creation.
+        :type InstanceId: str
+        :param _DbName: Database for obtaining the list of tables
+        :type DbName: str
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        :param _CatalogName: Query the data source where the database is located. If it is not filled in, the internal data source (internal) will be used by default.
+        :type CatalogName: str
+        """
+        self._InstanceId = None
+        self._DbName = None
+        self._UserName = None
+        self._PassWord = None
+        self._CatalogName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+    @property
+    def CatalogName(self):
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DbName = params.get("DbName")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        self._CatalogName = params.get("CatalogName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTableListResponse(AbstractModel):
+    """DescribeTableList response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableNames: List of table names
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TableNames: list of str
+        :param _Message: Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TableNames = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def TableNames(self):
+        return self._TableNames
+
+    @TableNames.setter
+    def TableNames(self, TableNames):
+        self._TableNames = TableNames
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TableNames = params.get("TableNames")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTableRequest(AbstractModel):
+    """DescribeTable request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Resource ID, which is the TCHouse-D resource ID used for table creation.
+        :type InstanceId: str
+        :param _DbName: Name of database where the table is located
+        :type DbName: str
+        :param _TableName: Table name (Currently only internal tables are supported.)
+        :type TableName: str
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        """
+        self._InstanceId = None
+        self._DbName = None
+        self._TableName = None
+        self._UserName = None
+        self._PassWord = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DbName = params.get("DbName")
+        self._TableName = params.get("TableName")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTableResponse(AbstractModel):
+    """DescribeTable response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeysType: Table data model: 
+AGG_KEY: aggregation model; 
+UNI_KEY: primary key model; 
+DUP_KEY: detail model
+        :type KeysType: str
+        :param _Columns: Table column information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Columns: list of Column
+        :param _IndexInfos: Index information. The inverted index and N-Gram index can be viewed through this parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IndexInfos: list of IndexInfo
+        :param _Partition: Partition information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Partition: :class:`tencentcloud.cdwdoris.v20211228.models.Partition`
+        :param _Distribution: Bucket information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Distribution: :class:`tencentcloud.cdwdoris.v20211228.models.Distribution`
+        :param _TableComment: Table description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TableComment: str
+        :param _Properties: Table attributes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Properties: list of Property
+        :param _Message: Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._KeysType = None
+        self._Columns = None
+        self._IndexInfos = None
+        self._Partition = None
+        self._Distribution = None
+        self._TableComment = None
+        self._Properties = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def KeysType(self):
+        return self._KeysType
+
+    @KeysType.setter
+    def KeysType(self, KeysType):
+        self._KeysType = KeysType
+
+    @property
+    def Columns(self):
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def IndexInfos(self):
+        return self._IndexInfos
+
+    @IndexInfos.setter
+    def IndexInfos(self, IndexInfos):
+        self._IndexInfos = IndexInfos
+
+    @property
+    def Partition(self):
+        return self._Partition
+
+    @Partition.setter
+    def Partition(self, Partition):
+        self._Partition = Partition
+
+    @property
+    def Distribution(self):
+        return self._Distribution
+
+    @Distribution.setter
+    def Distribution(self, Distribution):
+        self._Distribution = Distribution
+
+    @property
+    def TableComment(self):
+        return self._TableComment
+
+    @TableComment.setter
+    def TableComment(self, TableComment):
+        self._TableComment = TableComment
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._KeysType = params.get("KeysType")
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = Column()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        if params.get("IndexInfos") is not None:
+            self._IndexInfos = []
+            for item in params.get("IndexInfos"):
+                obj = IndexInfo()
+                obj._deserialize(item)
+                self._IndexInfos.append(obj)
+        if params.get("Partition") is not None:
+            self._Partition = Partition()
+            self._Partition._deserialize(params.get("Partition"))
+        if params.get("Distribution") is not None:
+            self._Distribution = Distribution()
+            self._Distribution._deserialize(params.get("Distribution"))
+        self._TableComment = params.get("TableComment")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = Property()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserBindWorkloadGroupRequest(AbstractModel):
+    """DescribeUserBindWorkloadGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserBindWorkloadGroupResponse(AbstractModel):
+    """DescribeUserBindWorkloadGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserBindInfos: Resource group information bound to the user
+        :type UserBindInfos: list of UserWorkloadGroup
+        :param _ErrorMsg: Error message
+        :type ErrorMsg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._UserBindInfos = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def UserBindInfos(self):
+        return self._UserBindInfos
+
+    @UserBindInfos.setter
+    def UserBindInfos(self, UserBindInfos):
+        self._UserBindInfos = UserBindInfos
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("UserBindInfos") is not None:
+            self._UserBindInfos = []
+            for item in params.get("UserBindInfos"):
+                obj = UserWorkloadGroup()
+                obj._deserialize(item)
+                self._UserBindInfos.append(obj)
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserPolicyRequest(AbstractModel):
+    """DescribeUserPolicy request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        :param _WhiteHost: You can specify one IP address or specify a percent sign (%) to indicate no limit.
+        :type WhiteHost: str
+        """
+        self._InstanceId = None
+        self._UserName = None
+        self._PassWord = None
+        self._WhiteHost = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+    @property
+    def WhiteHost(self):
+        return self._WhiteHost
+
+    @WhiteHost.setter
+    def WhiteHost(self, WhiteHost):
+        self._WhiteHost = WhiteHost
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        self._WhiteHost = params.get("WhiteHost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserPolicyResponse(AbstractModel):
+    """DescribeUserPolicy response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccountInfo: Account details
+        :type AccountInfo: :class:`tencentcloud.cdwdoris.v20211228.models.AccountDetailInfo`
+        :param _Permissions: Permission configuration information associated with different hosts
+        :type Permissions: list of PermissionHostInfo
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AccountInfo = None
+        self._Permissions = None
+        self._RequestId = None
+
+    @property
+    def AccountInfo(self):
+        return self._AccountInfo
+
+    @AccountInfo.setter
+    def AccountInfo(self, AccountInfo):
+        self._AccountInfo = AccountInfo
+
+    @property
+    def Permissions(self):
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AccountInfo") is not None:
+            self._AccountInfo = AccountDetailInfo()
+            self._AccountInfo._deserialize(params.get("AccountInfo"))
+        if params.get("Permissions") is not None:
+            self._Permissions = []
+            for item in params.get("Permissions"):
+                obj = PermissionHostInfo()
+                obj._deserialize(item)
+                self._Permissions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeWorkloadGroupRequest(AbstractModel):
+    """DescribeWorkloadGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWorkloadGroupResponse(AbstractModel):
+    """DescribeWorkloadGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkloadGroups: Resource group information
+        :type WorkloadGroups: list of WorkloadGroupConfig
+        :param _Status: Whether to enable the resource group: open and close
+        :type Status: str
+        :param _ErrorMsg: Error message
+        :type ErrorMsg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._WorkloadGroups = None
+        self._Status = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def WorkloadGroups(self):
+        return self._WorkloadGroups
+
+    @WorkloadGroups.setter
+    def WorkloadGroups(self, WorkloadGroups):
+        self._WorkloadGroups = WorkloadGroups
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("WorkloadGroups") is not None:
+            self._WorkloadGroups = []
+            for item in params.get("WorkloadGroups"):
+                obj = WorkloadGroupConfig()
+                obj._deserialize(item)
+                self._WorkloadGroups.append(obj)
+        self._Status = params.get("Status")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class DestroyInstanceRequest(AbstractModel):
     """DestroyInstance request structure.
 
@@ -2679,6 +7618,975 @@ class DestroyInstanceResponse(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
+
+
+class DiskSpec(AbstractModel):
+    """Disk specification description
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskType: Disk type, such as CLOUD_SSD and LOCAL_SSD
+        :type DiskType: str
+        :param _DiskDesc: Disk type description, such as cloud SSD and local SSD
+        :type DiskDesc: str
+        :param _MinDiskSize: Minimum disk size, in GB
+        :type MinDiskSize: int
+        :param _MaxDiskSize: Maximum disk size, in GB
+        :type MaxDiskSize: int
+        :param _DiskCount: Number of disks
+        :type DiskCount: int
+        """
+        self._DiskType = None
+        self._DiskDesc = None
+        self._MinDiskSize = None
+        self._MaxDiskSize = None
+        self._DiskCount = None
+
+    @property
+    def DiskType(self):
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskDesc(self):
+        return self._DiskDesc
+
+    @DiskDesc.setter
+    def DiskDesc(self, DiskDesc):
+        self._DiskDesc = DiskDesc
+
+    @property
+    def MinDiskSize(self):
+        return self._MinDiskSize
+
+    @MinDiskSize.setter
+    def MinDiskSize(self, MinDiskSize):
+        self._MinDiskSize = MinDiskSize
+
+    @property
+    def MaxDiskSize(self):
+        return self._MaxDiskSize
+
+    @MaxDiskSize.setter
+    def MaxDiskSize(self, MaxDiskSize):
+        self._MaxDiskSize = MaxDiskSize
+
+    @property
+    def DiskCount(self):
+        return self._DiskCount
+
+    @DiskCount.setter
+    def DiskCount(self, DiskCount):
+        self._DiskCount = DiskCount
+
+
+    def _deserialize(self, params):
+        self._DiskType = params.get("DiskType")
+        self._DiskDesc = params.get("DiskDesc")
+        self._MinDiskSize = params.get("MinDiskSize")
+        self._MaxDiskSize = params.get("MaxDiskSize")
+        self._DiskCount = params.get("DiskCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Distribution(AbstractModel):
+    """Bucket information of the table
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DistributionType: Bucket type:
+●Hash: hash bucket
+●Random: random number bucket
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DistributionType: str
+        :param _Count: Number of buckets
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Count: int
+        """
+        self._DistributionType = None
+        self._Count = None
+
+    @property
+    def DistributionType(self):
+        return self._DistributionType
+
+    @DistributionType.setter
+    def DistributionType(self, DistributionType):
+        self._DistributionType = DistributionType
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._DistributionType = params.get("DistributionType")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DorisSourceInfo(AbstractModel):
+    """Connection information of external Doris clusters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: The IP address of fe in the Doris cluster
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Host: str
+        :param _Port: The fe port number of the Doris cluster
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Port: int
+        :param _User: Account of the Doris cluster
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type User: str
+        :param _Password: Password of the Doris cluster
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Password: str
+        """
+        self._Host = None
+        self._Port = None
+        self._User = None
+        self._Password = None
+
+    @property
+    def Host(self):
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Port(self):
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def User(self):
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+
+    def _deserialize(self, params):
+        self._Host = params.get("Host")
+        self._Port = params.get("Port")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExecuteParametrizedQueryRequest(AbstractModel):
+    """ExecuteParametrizedQuery request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Database: Database name
+        :type Database: str
+        :param _Sql: SQL query statement
+        :type Sql: str
+        :param _QueryParameter: Query parameter array.
+        :type QueryParameter: list of PropertiesMap
+        :param _PageNum: Page number, which is 1 by default.
+        :type PageNum: int
+        :param _PageSize: Number of records per page, which is 10 by default.
+        :type PageSize: int
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        """
+        self._Database = None
+        self._Sql = None
+        self._QueryParameter = None
+        self._PageNum = None
+        self._PageSize = None
+        self._UserName = None
+        self._PassWord = None
+
+    @property
+    def Database(self):
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Sql(self):
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def QueryParameter(self):
+        return self._QueryParameter
+
+    @QueryParameter.setter
+    def QueryParameter(self, QueryParameter):
+        self._QueryParameter = QueryParameter
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+
+    def _deserialize(self, params):
+        self._Database = params.get("Database")
+        self._Sql = params.get("Sql")
+        if params.get("QueryParameter") is not None:
+            self._QueryParameter = []
+            for item in params.get("QueryParameter"):
+                obj = PropertiesMap()
+                obj._deserialize(item)
+                self._QueryParameter.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExecuteParametrizedQueryResponse(AbstractModel):
+    """ExecuteParametrizedQuery response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total records of query results
+        :type TotalCount: int
+        :param _Fields: Field name array of query results
+        :type Fields: list of str
+        :param _FieldTypes: Field type array of query results
+        :type FieldTypes: list of str
+        :param _Rows: Returned data record array. Each element is an array, containing the value of the corresponding field.
+        :type Rows: list of Rows
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Fields = None
+        self._FieldTypes = None
+        self._Rows = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Fields(self):
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def FieldTypes(self):
+        return self._FieldTypes
+
+    @FieldTypes.setter
+    def FieldTypes(self, FieldTypes):
+        self._FieldTypes = FieldTypes
+
+    @property
+    def Rows(self):
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._Fields = params.get("Fields")
+        self._FieldTypes = params.get("FieldTypes")
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = Rows()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ExecuteSelectQueryRequest(AbstractModel):
+    """ExecuteSelectQuery request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Database: Database name
+        :type Database: str
+        :param _Query: SQL query statements only support select statements.
+        :type Query: str
+        :param _PageNum: Page number, which is 1 by default.
+        :type PageNum: int
+        :param _PageSize: Number of records per page, which is 10 by default.
+        :type PageSize: int
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        """
+        self._Database = None
+        self._Query = None
+        self._PageNum = None
+        self._PageSize = None
+        self._UserName = None
+        self._PassWord = None
+
+    @property
+    def Database(self):
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Query(self):
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+
+    def _deserialize(self, params):
+        self._Database = params.get("Database")
+        self._Query = params.get("Query")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExecuteSelectQueryResponse(AbstractModel):
+    """ExecuteSelectQuery response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total records of query results
+        :type TotalCount: int
+        :param _Fields: Field name array of query results
+        :type Fields: list of str
+        :param _FieldTypes: Field type array of query results
+        :type FieldTypes: list of str
+        :param _Rows: Returned data record array. Each element is an array, containing the value of the corresponding field.
+        :type Rows: list of Rows
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Fields = None
+        self._FieldTypes = None
+        self._Rows = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Fields(self):
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def FieldTypes(self):
+        return self._FieldTypes
+
+    @FieldTypes.setter
+    def FieldTypes(self, FieldTypes):
+        self._FieldTypes = FieldTypes
+
+    @property
+    def Rows(self):
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._Fields = params.get("Fields")
+        self._FieldTypes = params.get("FieldTypes")
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = Rows()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class FrontEndRule(AbstractModel):
+    """Front-end rule description
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: ID sequence
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ID: int
+        :param _Name: Rule name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _Rule: Detailed rules
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Rule: str
+        """
+        self._ID = None
+        self._Name = None
+        self._Rule = None
+
+    @property
+    def ID(self):
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Rule(self):
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Rule = params.get("Rule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IndexInfo(AbstractModel):
+    """Index information of the table
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdxName: Index name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IdxName: str
+        :param _ColumnName: Column name for creating the index
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ColumnName: str
+        :param _IdxType: Index type:
+INVERTED: inverted index
+NGRAM_BF: N-Gram index
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IdxType: str
+        :param _IdxProperties: Index attributes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IdxProperties: list of Property
+        :param _IdxComment: Index description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IdxComment: str
+        """
+        self._IdxName = None
+        self._ColumnName = None
+        self._IdxType = None
+        self._IdxProperties = None
+        self._IdxComment = None
+
+    @property
+    def IdxName(self):
+        return self._IdxName
+
+    @IdxName.setter
+    def IdxName(self, IdxName):
+        self._IdxName = IdxName
+
+    @property
+    def ColumnName(self):
+        return self._ColumnName
+
+    @ColumnName.setter
+    def ColumnName(self, ColumnName):
+        self._ColumnName = ColumnName
+
+    @property
+    def IdxType(self):
+        return self._IdxType
+
+    @IdxType.setter
+    def IdxType(self, IdxType):
+        self._IdxType = IdxType
+
+    @property
+    def IdxProperties(self):
+        return self._IdxProperties
+
+    @IdxProperties.setter
+    def IdxProperties(self, IdxProperties):
+        self._IdxProperties = IdxProperties
+
+    @property
+    def IdxComment(self):
+        return self._IdxComment
+
+    @IdxComment.setter
+    def IdxComment(self, IdxComment):
+        self._IdxComment = IdxComment
+
+
+    def _deserialize(self, params):
+        self._IdxName = params.get("IdxName")
+        self._ColumnName = params.get("ColumnName")
+        self._IdxType = params.get("IdxType")
+        if params.get("IdxProperties") is not None:
+            self._IdxProperties = []
+            for item in params.get("IdxProperties"):
+                obj = Property()
+                obj._deserialize(item)
+                self._IdxProperties.append(obj)
+        self._IdxComment = params.get("IdxComment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InsertDatasToTableRequest(AbstractModel):
+    """InsertDatasToTable request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Database: Database name
+        :type Database: str
+        :param _Table: Table name
+        :type Table: str
+        :param _Strict: Whether to use the strict mode
+        :type Strict: bool
+        :param _MaxFilterRatio: Maximum filtration ratio, ranging from 0 to 1.0
+        :type MaxFilterRatio: float
+        :param _Columns: Array of column names
+        :type Columns: list of str
+        :param _Rows: Data line
+        :type Rows: list of Rows
+        :param _Label: Tags for inserting data
+        :type Label: str
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        :param _ColumnTypes: Column type
+        :type ColumnTypes: str
+        """
+        self._Database = None
+        self._Table = None
+        self._Strict = None
+        self._MaxFilterRatio = None
+        self._Columns = None
+        self._Rows = None
+        self._Label = None
+        self._UserName = None
+        self._PassWord = None
+        self._ColumnTypes = None
+
+    @property
+    def Database(self):
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Table(self):
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def Strict(self):
+        return self._Strict
+
+    @Strict.setter
+    def Strict(self, Strict):
+        self._Strict = Strict
+
+    @property
+    def MaxFilterRatio(self):
+        return self._MaxFilterRatio
+
+    @MaxFilterRatio.setter
+    def MaxFilterRatio(self, MaxFilterRatio):
+        self._MaxFilterRatio = MaxFilterRatio
+
+    @property
+    def Columns(self):
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def Rows(self):
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+    @property
+    def ColumnTypes(self):
+        return self._ColumnTypes
+
+    @ColumnTypes.setter
+    def ColumnTypes(self, ColumnTypes):
+        self._ColumnTypes = ColumnTypes
+
+
+    def _deserialize(self, params):
+        self._Database = params.get("Database")
+        self._Table = params.get("Table")
+        self._Strict = params.get("Strict")
+        self._MaxFilterRatio = params.get("MaxFilterRatio")
+        self._Columns = params.get("Columns")
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = Rows()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        self._Label = params.get("Label")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        self._ColumnTypes = params.get("ColumnTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InsertDatasToTableResponse(AbstractModel):
+    """InsertDatasToTable response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: Whether the insertion operation is successful
+        :type Success: bool
+        :param _Message: Message description of the operation result
+        :type Message: str
+        :param _InsertCount: Number of inserted data rows
+        :type InsertCount: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Success = None
+        self._Message = None
+        self._InsertCount = None
+        self._RequestId = None
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def InsertCount(self):
+        return self._InsertCount
+
+    @InsertCount.setter
+    def InsertCount(self, InsertCount):
+        self._InsertCount = InsertCount
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Success = params.get("Success")
+        self._Message = params.get("Message")
+        self._InsertCount = params.get("InsertCount")
+        self._RequestId = params.get("RequestId")
+
+
+class InstanceConfigItem(AbstractModel):
+    """KV configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfKey: key
+        :type ConfKey: str
+        :param _ConfValue: value
+        :type ConfValue: str
+        """
+        self._ConfKey = None
+        self._ConfValue = None
+
+    @property
+    def ConfKey(self):
+        return self._ConfKey
+
+    @ConfKey.setter
+    def ConfKey(self, ConfKey):
+        self._ConfKey = ConfKey
+
+    @property
+    def ConfValue(self):
+        return self._ConfValue
+
+    @ConfValue.setter
+    def ConfValue(self, ConfValue):
+        self._ConfValue = ConfValue
+
+
+    def _deserialize(self, params):
+        self._ConfKey = params.get("ConfKey")
+        self._ConfValue = params.get("ConfValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class InstanceInfo(AbstractModel):
@@ -3490,6 +9398,563 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class InstanceOperation(AbstractModel):
+    """Cluster operation description
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Operation name, such as create_instance, and scaleout_instance
+        :type Name: str
+        :param _Result: Operation result. Success indicates success; Fail indicates failure.
+        :type Result: str
+        :param _Desc: Operation name description, such as create, and modify the cluster name
+        :type Desc: str
+        :param _Level: Operation level, such as Critical, Normal
+        :type Level: str
+        :param _LevelDesc: Operation level description, such as high risk, and normal
+        :type LevelDesc: str
+        :param _StartTime: Operation start time
+        :type StartTime: str
+        :param _EndTime: Operation end time
+        :type EndTime: str
+        :param _ResultDesc: Operation result description, such as Success and Fail.
+        :type ResultDesc: str
+        :param _OperateUin: Operation user ID
+        :type OperateUin: str
+        :param _JobId: The jobid corresponding to the operation
+        :type JobId: int
+        :param _OperationDetail: Operation details
+        :type OperationDetail: str
+        """
+        self._Name = None
+        self._Result = None
+        self._Desc = None
+        self._Level = None
+        self._LevelDesc = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ResultDesc = None
+        self._OperateUin = None
+        self._JobId = None
+        self._OperationDetail = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Result(self):
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Level(self):
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def LevelDesc(self):
+        return self._LevelDesc
+
+    @LevelDesc.setter
+    def LevelDesc(self, LevelDesc):
+        self._LevelDesc = LevelDesc
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ResultDesc(self):
+        return self._ResultDesc
+
+    @ResultDesc.setter
+    def ResultDesc(self, ResultDesc):
+        self._ResultDesc = ResultDesc
+
+    @property
+    def OperateUin(self):
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def OperationDetail(self):
+        return self._OperationDetail
+
+    @OperationDetail.setter
+    def OperationDetail(self, OperationDetail):
+        self._OperationDetail = OperationDetail
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Result = params.get("Result")
+        self._Desc = params.get("Desc")
+        self._Level = params.get("Level")
+        self._LevelDesc = params.get("LevelDesc")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ResultDesc = params.get("ResultDesc")
+        self._OperateUin = params.get("OperateUin")
+        self._JobId = params.get("JobId")
+        self._OperationDetail = params.get("OperationDetail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListInfo(AbstractModel):
+    """List type partition information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionName: Partition name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PartitionName: str
+        :param _EnumValues: Enumeration values of each partition column
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnumValues: list of str
+        """
+        self._PartitionName = None
+        self._EnumValues = None
+
+    @property
+    def PartitionName(self):
+        return self._PartitionName
+
+    @PartitionName.setter
+    def PartitionName(self, PartitionName):
+        self._PartitionName = PartitionName
+
+    @property
+    def EnumValues(self):
+        return self._EnumValues
+
+    @EnumValues.setter
+    def EnumValues(self, EnumValues):
+        self._EnumValues = EnumValues
+
+
+    def _deserialize(self, params):
+        self._PartitionName = params.get("PartitionName")
+        self._EnumValues = params.get("EnumValues")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatabaseTableAccessRequest(AbstractModel):
+    """ModifyDatabaseTableAccess request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Database: Database name
+        :type Database: str
+        :param _Table: Table name. If it is null, it indicates that the entire database is authorized.
+        :type Table: str
+        :param _Privileges: Permission list
+        :type Privileges: list of str
+        :param _Role: Role name, if authorized to the role
+        :type Role: str
+        :param _GrantOrRevoke: Operation type: GRANT or REVOKE
+        :type GrantOrRevoke: str
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        """
+        self._Database = None
+        self._Table = None
+        self._Privileges = None
+        self._Role = None
+        self._GrantOrRevoke = None
+        self._UserName = None
+        self._PassWord = None
+
+    @property
+    def Database(self):
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Table(self):
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def Privileges(self):
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def GrantOrRevoke(self):
+        return self._GrantOrRevoke
+
+    @GrantOrRevoke.setter
+    def GrantOrRevoke(self, GrantOrRevoke):
+        self._GrantOrRevoke = GrantOrRevoke
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+
+    def _deserialize(self, params):
+        self._Database = params.get("Database")
+        self._Table = params.get("Table")
+        self._Privileges = params.get("Privileges")
+        self._Role = params.get("Role")
+        self._GrantOrRevoke = params.get("GrantOrRevoke")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDatabaseTableAccessResponse(AbstractModel):
+    """ModifyDatabaseTableAccess response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: Whether the operation is successful
+        :type Success: bool
+        :param _Message: Message description of the operation result
+        :type Message: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Success = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Success = params.get("Success")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceKeyValConfigsRequest(AbstractModel):
+    """ModifyInstanceKeyValConfigs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Instance ID
+        :type InstanceId: str
+        :param _FileName: File name
+        :type FileName: str
+        :param _AddItems: Add configuration list
+        :type AddItems: list of InstanceConfigItem
+        :param _UpdateItems: Update configuration list
+        :type UpdateItems: list of InstanceConfigItem
+        :param _DelItems: Delete configuration list
+        :type DelItems: list of InstanceConfigItem
+        :param _Message: Remarks (within 50 words)
+        :type Message: str
+        :param _HotUpdateItems: Hot update list
+        :type HotUpdateItems: list of InstanceConfigItem
+        :param _DeleteItems: Delete configuration list
+        :type DeleteItems: :class:`tencentcloud.cdwdoris.v20211228.models.InstanceConfigItem`
+        :param _IPAddress: IP address
+        :type IPAddress: str
+        """
+        self._InstanceId = None
+        self._FileName = None
+        self._AddItems = None
+        self._UpdateItems = None
+        self._DelItems = None
+        self._Message = None
+        self._HotUpdateItems = None
+        self._DeleteItems = None
+        self._IPAddress = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def FileName(self):
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def AddItems(self):
+        return self._AddItems
+
+    @AddItems.setter
+    def AddItems(self, AddItems):
+        self._AddItems = AddItems
+
+    @property
+    def UpdateItems(self):
+        return self._UpdateItems
+
+    @UpdateItems.setter
+    def UpdateItems(self, UpdateItems):
+        self._UpdateItems = UpdateItems
+
+    @property
+    def DelItems(self):
+        return self._DelItems
+
+    @DelItems.setter
+    def DelItems(self, DelItems):
+        self._DelItems = DelItems
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def HotUpdateItems(self):
+        return self._HotUpdateItems
+
+    @HotUpdateItems.setter
+    def HotUpdateItems(self, HotUpdateItems):
+        self._HotUpdateItems = HotUpdateItems
+
+    @property
+    def DeleteItems(self):
+        return self._DeleteItems
+
+    @DeleteItems.setter
+    def DeleteItems(self, DeleteItems):
+        self._DeleteItems = DeleteItems
+
+    @property
+    def IPAddress(self):
+        return self._IPAddress
+
+    @IPAddress.setter
+    def IPAddress(self, IPAddress):
+        self._IPAddress = IPAddress
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._FileName = params.get("FileName")
+        if params.get("AddItems") is not None:
+            self._AddItems = []
+            for item in params.get("AddItems"):
+                obj = InstanceConfigItem()
+                obj._deserialize(item)
+                self._AddItems.append(obj)
+        if params.get("UpdateItems") is not None:
+            self._UpdateItems = []
+            for item in params.get("UpdateItems"):
+                obj = InstanceConfigItem()
+                obj._deserialize(item)
+                self._UpdateItems.append(obj)
+        if params.get("DelItems") is not None:
+            self._DelItems = []
+            for item in params.get("DelItems"):
+                obj = InstanceConfigItem()
+                obj._deserialize(item)
+                self._DelItems.append(obj)
+        self._Message = params.get("Message")
+        if params.get("HotUpdateItems") is not None:
+            self._HotUpdateItems = []
+            for item in params.get("HotUpdateItems"):
+                obj = InstanceConfigItem()
+                obj._deserialize(item)
+                self._HotUpdateItems.append(obj)
+        if params.get("DeleteItems") is not None:
+            self._DeleteItems = InstanceConfigItem()
+            self._DeleteItems._deserialize(params.get("DeleteItems"))
+        self._IPAddress = params.get("IPAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceKeyValConfigsResponse(AbstractModel):
+    """ModifyInstanceKeyValConfigs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorMsg: str
+        :param _FlowId: ID
+        :type FlowId: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyInstanceRequest(AbstractModel):
     """ModifyInstance request structure.
 
@@ -3557,6 +10022,622 @@ class ModifyInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyNodeStatusRequest(AbstractModel):
+    """ModifyNodeStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID, such as cdwch-xxxx
+        :type InstanceId: str
+        :param _NodeInfos: Node information
+        :type NodeInfos: list of NodeInfos
+        :param _OperationCode: Node operation
+        :type OperationCode: str
+        :param _RestartTimeOut: Timeout period (s)
+        :type RestartTimeOut: str
+        """
+        self._InstanceId = None
+        self._NodeInfos = None
+        self._OperationCode = None
+        self._RestartTimeOut = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NodeInfos(self):
+        return self._NodeInfos
+
+    @NodeInfos.setter
+    def NodeInfos(self, NodeInfos):
+        self._NodeInfos = NodeInfos
+
+    @property
+    def OperationCode(self):
+        return self._OperationCode
+
+    @OperationCode.setter
+    def OperationCode(self, OperationCode):
+        self._OperationCode = OperationCode
+
+    @property
+    def RestartTimeOut(self):
+        return self._RestartTimeOut
+
+    @RestartTimeOut.setter
+    def RestartTimeOut(self, RestartTimeOut):
+        self._RestartTimeOut = RestartTimeOut
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("NodeInfos") is not None:
+            self._NodeInfos = []
+            for item in params.get("NodeInfos"):
+                obj = NodeInfos()
+                obj._deserialize(item)
+                self._NodeInfos.append(obj)
+        self._OperationCode = params.get("OperationCode")
+        self._RestartTimeOut = params.get("RestartTimeOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNodeStatusResponse(AbstractModel):
+    """ModifyNodeStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Process related information
+        :type FlowId: int
+        :param _ErrorMsg: Error message
+        :type ErrorMsg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySecurityGroupsRequest(AbstractModel):
+    """ModifySecurityGroups request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _OldSecurityGroupIds: Security group information before modification
+        :type OldSecurityGroupIds: list of str
+        :param _ModifySecurityGroupIds: Modified security group information
+        :type ModifySecurityGroupIds: list of str
+        """
+        self._InstanceId = None
+        self._OldSecurityGroupIds = None
+        self._ModifySecurityGroupIds = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def OldSecurityGroupIds(self):
+        return self._OldSecurityGroupIds
+
+    @OldSecurityGroupIds.setter
+    def OldSecurityGroupIds(self, OldSecurityGroupIds):
+        self._OldSecurityGroupIds = OldSecurityGroupIds
+
+    @property
+    def ModifySecurityGroupIds(self):
+        return self._ModifySecurityGroupIds
+
+    @ModifySecurityGroupIds.setter
+    def ModifySecurityGroupIds(self, ModifySecurityGroupIds):
+        self._ModifySecurityGroupIds = ModifySecurityGroupIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._OldSecurityGroupIds = params.get("OldSecurityGroupIds")
+        self._ModifySecurityGroupIds = params.get("ModifySecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySecurityGroupsResponse(AbstractModel):
+    """ModifySecurityGroups response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorMsg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyUserBindWorkloadGroupRequest(AbstractModel):
+    """ModifyUserBindWorkloadGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _BindUsers: The user information of the resource group needs to be bound. If an account has information of multiple hosts, all information needs to be uploaded.
+        :type BindUsers: list of BindUser
+        :param _OldWorkloadGroupName: Name of the resource group bound before modification
+        :type OldWorkloadGroupName: str
+        :param _NewWorkloadGroupName: Name of the resource group bound after modification
+        :type NewWorkloadGroupName: str
+        """
+        self._InstanceId = None
+        self._BindUsers = None
+        self._OldWorkloadGroupName = None
+        self._NewWorkloadGroupName = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BindUsers(self):
+        return self._BindUsers
+
+    @BindUsers.setter
+    def BindUsers(self, BindUsers):
+        self._BindUsers = BindUsers
+
+    @property
+    def OldWorkloadGroupName(self):
+        return self._OldWorkloadGroupName
+
+    @OldWorkloadGroupName.setter
+    def OldWorkloadGroupName(self, OldWorkloadGroupName):
+        self._OldWorkloadGroupName = OldWorkloadGroupName
+
+    @property
+    def NewWorkloadGroupName(self):
+        return self._NewWorkloadGroupName
+
+    @NewWorkloadGroupName.setter
+    def NewWorkloadGroupName(self, NewWorkloadGroupName):
+        self._NewWorkloadGroupName = NewWorkloadGroupName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("BindUsers") is not None:
+            self._BindUsers = []
+            for item in params.get("BindUsers"):
+                obj = BindUser()
+                obj._deserialize(item)
+                self._BindUsers.append(obj)
+        self._OldWorkloadGroupName = params.get("OldWorkloadGroupName")
+        self._NewWorkloadGroupName = params.get("NewWorkloadGroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserBindWorkloadGroupResponse(AbstractModel):
+    """ModifyUserBindWorkloadGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: Error message
+        :type ErrorMsg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyUserPrivilegesV3Request(AbstractModel):
+    """ModifyUserPrivilegesV3 request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _UserName: Username
+        :type UserName: str
+        :param _UserPrivileges: User permission
+        :type UserPrivileges: :class:`tencentcloud.cdwdoris.v20211228.models.UpdateUserPrivileges`
+        :param _WhiteHost: The IP address of the user link	
+        :type WhiteHost: str
+        """
+        self._InstanceId = None
+        self._UserName = None
+        self._UserPrivileges = None
+        self._WhiteHost = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def UserPrivileges(self):
+        return self._UserPrivileges
+
+    @UserPrivileges.setter
+    def UserPrivileges(self, UserPrivileges):
+        self._UserPrivileges = UserPrivileges
+
+    @property
+    def WhiteHost(self):
+        return self._WhiteHost
+
+    @WhiteHost.setter
+    def WhiteHost(self, WhiteHost):
+        self._WhiteHost = WhiteHost
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UserName = params.get("UserName")
+        if params.get("UserPrivileges") is not None:
+            self._UserPrivileges = UpdateUserPrivileges()
+            self._UserPrivileges._deserialize(params.get("UserPrivileges"))
+        self._WhiteHost = params.get("WhiteHost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserPrivilegesV3Response(AbstractModel):
+    """ModifyUserPrivilegesV3 response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: Error message; null means no error.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrorMsg: str
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyWorkloadGroupRequest(AbstractModel):
+    """ModifyWorkloadGroup request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _WorkloadGroup: Modified resource group information
+        :type WorkloadGroup: :class:`tencentcloud.cdwdoris.v20211228.models.WorkloadGroupConfig`
+        """
+        self._InstanceId = None
+        self._WorkloadGroup = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def WorkloadGroup(self):
+        return self._WorkloadGroup
+
+    @WorkloadGroup.setter
+    def WorkloadGroup(self, WorkloadGroup):
+        self._WorkloadGroup = WorkloadGroup
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("WorkloadGroup") is not None:
+            self._WorkloadGroup = WorkloadGroupConfig()
+            self._WorkloadGroup._deserialize(params.get("WorkloadGroup"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyWorkloadGroupResponse(AbstractModel):
+    """ModifyWorkloadGroup response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: Error message	
+        :type ErrorMsg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyWorkloadGroupStatusRequest(AbstractModel):
+    """ModifyWorkloadGroupStatus request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _OperationType: Whether to enable resource group: open and close
+        :type OperationType: str
+        """
+        self._InstanceId = None
+        self._OperationType = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def OperationType(self):
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._OperationType = params.get("OperationType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyWorkloadGroupStatusResponse(AbstractModel):
+    """ModifyWorkloadGroupStatus response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: Error message	
+        :type ErrorMsg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -3722,6 +10803,99 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._NodeRole = params.get("NodeRole")
         self._LastRestartTime = params.get("LastRestartTime")
         self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NodeInfos(AbstractModel):
+    """Node information list
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeName: Node name
+        :type NodeName: str
+        :param _Status: Node status
+        :type Status: int
+        :param _Ip: Node IP
+        :type Ip: str
+        :param _NodeRole: Node role
+        :type NodeRole: str
+        :param _ComponentName: Component name
+        :type ComponentName: str
+        :param _LastRestartTime: Last restart time
+        :type LastRestartTime: str
+        """
+        self._NodeName = None
+        self._Status = None
+        self._Ip = None
+        self._NodeRole = None
+        self._ComponentName = None
+        self._LastRestartTime = None
+
+    @property
+    def NodeName(self):
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Ip(self):
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def NodeRole(self):
+        return self._NodeRole
+
+    @NodeRole.setter
+    def NodeRole(self, NodeRole):
+        self._NodeRole = NodeRole
+
+    @property
+    def ComponentName(self):
+        return self._ComponentName
+
+    @ComponentName.setter
+    def ComponentName(self, ComponentName):
+        self._ComponentName = ComponentName
+
+    @property
+    def LastRestartTime(self):
+        return self._LastRestartTime
+
+    @LastRestartTime.setter
+    def LastRestartTime(self, LastRestartTime):
+        self._LastRestartTime = LastRestartTime
+
+
+    def _deserialize(self, params):
+        self._NodeName = params.get("NodeName")
+        self._Status = params.get("Status")
+        self._Ip = params.get("Ip")
+        self._NodeRole = params.get("NodeRole")
+        self._ComponentName = params.get("ComponentName")
+        self._LastRestartTime = params.get("LastRestartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3930,6 +11104,1244 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class Partition(AbstractModel):
+    """Partition information of the table
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionType: Partition type:
+●Range: The partition column is usually of time or integer type. Four writing methods are supported.
+●List: The partition value is an enumeration value.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PartitionType: str
+        :param _AutoPartition: Whether to automatically partition
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type AutoPartition: bool
+        :param _RangeInfos: Partition information when the partition type is Range
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RangeInfos: list of RangeInfo
+        :param _ListInfos: Partition information when the partition type is List
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ListInfos: list of ListInfo
+        """
+        self._PartitionType = None
+        self._AutoPartition = None
+        self._RangeInfos = None
+        self._ListInfos = None
+
+    @property
+    def PartitionType(self):
+        return self._PartitionType
+
+    @PartitionType.setter
+    def PartitionType(self, PartitionType):
+        self._PartitionType = PartitionType
+
+    @property
+    def AutoPartition(self):
+        return self._AutoPartition
+
+    @AutoPartition.setter
+    def AutoPartition(self, AutoPartition):
+        self._AutoPartition = AutoPartition
+
+    @property
+    def RangeInfos(self):
+        return self._RangeInfos
+
+    @RangeInfos.setter
+    def RangeInfos(self, RangeInfos):
+        self._RangeInfos = RangeInfos
+
+    @property
+    def ListInfos(self):
+        return self._ListInfos
+
+    @ListInfos.setter
+    def ListInfos(self, ListInfos):
+        self._ListInfos = ListInfos
+
+
+    def _deserialize(self, params):
+        self._PartitionType = params.get("PartitionType")
+        self._AutoPartition = params.get("AutoPartition")
+        if params.get("RangeInfos") is not None:
+            self._RangeInfos = []
+            for item in params.get("RangeInfos"):
+                obj = RangeInfo()
+                obj._deserialize(item)
+                self._RangeInfos.append(obj)
+        if params.get("ListInfos") is not None:
+            self._ListInfos = []
+            for item in params.get("ListInfos"):
+                obj = ListInfo()
+                obj._deserialize(item)
+                self._ListInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PermissionHostInfo(AbstractModel):
+    """Permission overview
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalPermissions: A list of user permissions in the global scope, which can be applied to all databases and tables.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type GlobalPermissions: list of str
+        :param _DatabasePermissions: The key is the database name, and the value is the permission list of the user on the database.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DatabasePermissions: list of DatabasePermissions
+        :param _TablePermissions: The key is the full name of the table, and the value is the permission list of the user on the table.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TablePermissions: list of TablePermissions
+        """
+        self._GlobalPermissions = None
+        self._DatabasePermissions = None
+        self._TablePermissions = None
+
+    @property
+    def GlobalPermissions(self):
+        return self._GlobalPermissions
+
+    @GlobalPermissions.setter
+    def GlobalPermissions(self, GlobalPermissions):
+        self._GlobalPermissions = GlobalPermissions
+
+    @property
+    def DatabasePermissions(self):
+        return self._DatabasePermissions
+
+    @DatabasePermissions.setter
+    def DatabasePermissions(self, DatabasePermissions):
+        self._DatabasePermissions = DatabasePermissions
+
+    @property
+    def TablePermissions(self):
+        return self._TablePermissions
+
+    @TablePermissions.setter
+    def TablePermissions(self, TablePermissions):
+        self._TablePermissions = TablePermissions
+
+
+    def _deserialize(self, params):
+        self._GlobalPermissions = params.get("GlobalPermissions")
+        if params.get("DatabasePermissions") is not None:
+            self._DatabasePermissions = []
+            for item in params.get("DatabasePermissions"):
+                obj = DatabasePermissions()
+                obj._deserialize(item)
+                self._DatabasePermissions.append(obj)
+        if params.get("TablePermissions") is not None:
+            self._TablePermissions = []
+            for item in params.get("TablePermissions"):
+                obj = TablePermissions()
+                obj._deserialize(item)
+                self._TablePermissions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PropertiesMap(AbstractModel):
+    """Property attribute
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PropertyKey: key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PropertyKey: str
+        :param _PropertyValue: value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PropertyValue: str
+        """
+        self._PropertyKey = None
+        self._PropertyValue = None
+
+    @property
+    def PropertyKey(self):
+        return self._PropertyKey
+
+    @PropertyKey.setter
+    def PropertyKey(self, PropertyKey):
+        self._PropertyKey = PropertyKey
+
+    @property
+    def PropertyValue(self):
+        return self._PropertyValue
+
+    @PropertyValue.setter
+    def PropertyValue(self, PropertyValue):
+        self._PropertyValue = PropertyValue
+
+
+    def _deserialize(self, params):
+        self._PropertyKey = params.get("PropertyKey")
+        self._PropertyValue = params.get("PropertyValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Property(AbstractModel):
+    """Attribute information of databases, tables, indexes, etc.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PropertyKey: Attribute key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PropertyKey: str
+        :param _PropertyValue: Attribute value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PropertyValue: str
+        """
+        self._PropertyKey = None
+        self._PropertyValue = None
+
+    @property
+    def PropertyKey(self):
+        return self._PropertyKey
+
+    @PropertyKey.setter
+    def PropertyKey(self, PropertyKey):
+        self._PropertyKey = PropertyKey
+
+    @property
+    def PropertyValue(self):
+        return self._PropertyValue
+
+    @PropertyValue.setter
+    def PropertyValue(self, PropertyValue):
+        self._PropertyValue = PropertyValue
+
+
+    def _deserialize(self, params):
+        self._PropertyKey = params.get("PropertyKey")
+        self._PropertyValue = params.get("PropertyValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryDetails(AbstractModel):
+    """Query and analyze details
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Initiator: Initiating User
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Initiator: str
+        :param _SourceAddress: Access source address
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SourceAddress: str
+        :param _InitialRequestId: Initial request ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InitialRequestId: str
+        :param _Catalog: catalog name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Catalog: str
+        :param _Database: Database name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Database: str
+        :param _SQLType: SQL type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SQLType: str
+        :param _SQLStatement: SQL statement
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SQLStatement: str
+        :param _StartTime: Execution start time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StartTime: str
+        :param _Duration: Runtime (s)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Duration: int
+        :param _RowsRead: The number of read rows
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RowsRead: int
+        :param _DataRead: Read data volume (MB)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DataRead: float
+        :param _MemoryUsage: Memory usage (MB)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MemoryUsage: float
+        """
+        self._Initiator = None
+        self._SourceAddress = None
+        self._InitialRequestId = None
+        self._Catalog = None
+        self._Database = None
+        self._SQLType = None
+        self._SQLStatement = None
+        self._StartTime = None
+        self._Duration = None
+        self._RowsRead = None
+        self._DataRead = None
+        self._MemoryUsage = None
+
+    @property
+    def Initiator(self):
+        return self._Initiator
+
+    @Initiator.setter
+    def Initiator(self, Initiator):
+        self._Initiator = Initiator
+
+    @property
+    def SourceAddress(self):
+        return self._SourceAddress
+
+    @SourceAddress.setter
+    def SourceAddress(self, SourceAddress):
+        self._SourceAddress = SourceAddress
+
+    @property
+    def InitialRequestId(self):
+        return self._InitialRequestId
+
+    @InitialRequestId.setter
+    def InitialRequestId(self, InitialRequestId):
+        self._InitialRequestId = InitialRequestId
+
+    @property
+    def Catalog(self):
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def Database(self):
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def SQLType(self):
+        return self._SQLType
+
+    @SQLType.setter
+    def SQLType(self, SQLType):
+        self._SQLType = SQLType
+
+    @property
+    def SQLStatement(self):
+        return self._SQLStatement
+
+    @SQLStatement.setter
+    def SQLStatement(self, SQLStatement):
+        self._SQLStatement = SQLStatement
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def RowsRead(self):
+        return self._RowsRead
+
+    @RowsRead.setter
+    def RowsRead(self, RowsRead):
+        self._RowsRead = RowsRead
+
+    @property
+    def DataRead(self):
+        return self._DataRead
+
+    @DataRead.setter
+    def DataRead(self, DataRead):
+        self._DataRead = DataRead
+
+    @property
+    def MemoryUsage(self):
+        return self._MemoryUsage
+
+    @MemoryUsage.setter
+    def MemoryUsage(self, MemoryUsage):
+        self._MemoryUsage = MemoryUsage
+
+
+    def _deserialize(self, params):
+        self._Initiator = params.get("Initiator")
+        self._SourceAddress = params.get("SourceAddress")
+        self._InitialRequestId = params.get("InitialRequestId")
+        self._Catalog = params.get("Catalog")
+        self._Database = params.get("Database")
+        self._SQLType = params.get("SQLType")
+        self._SQLStatement = params.get("SQLStatement")
+        self._StartTime = params.get("StartTime")
+        self._Duration = params.get("Duration")
+        self._RowsRead = params.get("RowsRead")
+        self._DataRead = params.get("DataRead")
+        self._MemoryUsage = params.get("MemoryUsage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryTableDataRequest(AbstractModel):
+    """QueryTableData request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Database: Database name
+        :type Database: str
+        :param _Table: Table name
+        :type Table: str
+        :param _SelectedFields: Array of fields to be queried
+        :type SelectedFields: list of str
+        :param _PageNum: Page number, which is 1 by default.
+        :type PageNum: int
+        :param _PageSize: Number of records per page, which is 10 by default.
+        :type PageSize: int
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        """
+        self._Database = None
+        self._Table = None
+        self._SelectedFields = None
+        self._PageNum = None
+        self._PageSize = None
+        self._UserName = None
+        self._PassWord = None
+
+    @property
+    def Database(self):
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Table(self):
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def SelectedFields(self):
+        return self._SelectedFields
+
+    @SelectedFields.setter
+    def SelectedFields(self, SelectedFields):
+        self._SelectedFields = SelectedFields
+
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+
+    def _deserialize(self, params):
+        self._Database = params.get("Database")
+        self._Table = params.get("Table")
+        self._SelectedFields = params.get("SelectedFields")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryTableDataResponse(AbstractModel):
+    """QueryTableData response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total records of query results
+        :type TotalCount: int
+        :param _Fields: Field name array of query results
+        :type Fields: list of str
+        :param _FieldTypes: Field type array of query results
+        :type FieldTypes: list of str
+        :param _Rows: Returned data record array. Each element is an array, containing the value of the corresponding field.
+        :type Rows: list of Rows
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Fields = None
+        self._FieldTypes = None
+        self._Rows = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Fields(self):
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def FieldTypes(self):
+        return self._FieldTypes
+
+    @FieldTypes.setter
+    def FieldTypes(self, FieldTypes):
+        self._FieldTypes = FieldTypes
+
+    @property
+    def Rows(self):
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._Fields = params.get("Fields")
+        self._FieldTypes = params.get("FieldTypes")
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = Rows()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class RangeInfo(AbstractModel):
+    """Information of Range type partition
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RangeType: Range partition type:
+●FIXED: Define the left closed and right open interval of the partition.
+●LESS THAN: Only define the upper bound of the partition.
+●BATCH RANGE: Batch create RANGE partitions of numeric and time types, define the left closed and right open intervals of the partitions, and set the step size.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RangeType: str
+        :param _PartitionName: Partition name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type PartitionName: str
+        :param _Left: The left-closed interval of each partition column when RangeType is FIXED or BATCH RANGE
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Left: str
+        :param _Right: The right open interval of each partition column when RangeType is FIXED or BATCH RANGE
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Right: str
+        :param _Max: The upper bound of each partition column when RangeType is LESS THAN
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Max: str
+        :param _StepLength: RangeType is the step size of BATCH RANGE
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StepLength: int
+        :param _Unit: Fill it in when RangeType is BATCH RANGE or automatic partitioning. It indicates the step size unit when the partition column is of time type.
+●YEAR: year
+●MONTH: month
+●WEEK: week
+●DAY: day
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Unit: str
+        """
+        self._RangeType = None
+        self._PartitionName = None
+        self._Left = None
+        self._Right = None
+        self._Max = None
+        self._StepLength = None
+        self._Unit = None
+
+    @property
+    def RangeType(self):
+        return self._RangeType
+
+    @RangeType.setter
+    def RangeType(self, RangeType):
+        self._RangeType = RangeType
+
+    @property
+    def PartitionName(self):
+        return self._PartitionName
+
+    @PartitionName.setter
+    def PartitionName(self, PartitionName):
+        self._PartitionName = PartitionName
+
+    @property
+    def Left(self):
+        return self._Left
+
+    @Left.setter
+    def Left(self, Left):
+        self._Left = Left
+
+    @property
+    def Right(self):
+        return self._Right
+
+    @Right.setter
+    def Right(self, Right):
+        self._Right = Right
+
+    @property
+    def Max(self):
+        return self._Max
+
+    @Max.setter
+    def Max(self, Max):
+        self._Max = Max
+
+    @property
+    def StepLength(self):
+        return self._StepLength
+
+    @StepLength.setter
+    def StepLength(self, StepLength):
+        self._StepLength = StepLength
+
+    @property
+    def Unit(self):
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+
+    def _deserialize(self, params):
+        self._RangeType = params.get("RangeType")
+        self._PartitionName = params.get("PartitionName")
+        self._Left = params.get("Left")
+        self._Right = params.get("Right")
+        self._Max = params.get("Max")
+        self._StepLength = params.get("StepLength")
+        self._Unit = params.get("Unit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecoverBackUpJobRequest(AbstractModel):
+    """RecoverBackUpJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _BackUpJobId: Task ID
+        :type BackUpJobId: int
+        :param _ReplicationNum: Number of new table replicas recovered
+        :type ReplicationNum: int
+        :param _ReserveSourceConfig: Whether to retain the configuration in the source table during recovery. 1 indicates that the configurations in the source table are retained.
+        :type ReserveSourceConfig: int
+        :param _RecoverType: 0: default; 1: cos recovery
+        :type RecoverType: int
+        :param _CosSourceInfo: CosSourceInfo object
+        :type CosSourceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.CosSourceInfo`
+        :param _ScheduleType: 0: default; 1: regular execution
+        :type ScheduleType: int
+        :param _NextTime: YY-MM-DD Hour : Minute : Second
+        :type NextTime: str
+        :param _ScheduleName: Scheduling name
+        :type ScheduleName: str
+        :param _OperationType: create update
+        :type OperationType: str
+        :param _RecoverScope: Recovery granularity: All, Database, and Table
+        :type RecoverScope: str
+        :param _RecoverDatabase: Recover database: If you back up by database, this field is required. Use commas to separate databases.
+        :type RecoverDatabase: str
+        """
+        self._InstanceId = None
+        self._BackUpJobId = None
+        self._ReplicationNum = None
+        self._ReserveSourceConfig = None
+        self._RecoverType = None
+        self._CosSourceInfo = None
+        self._ScheduleType = None
+        self._NextTime = None
+        self._ScheduleName = None
+        self._OperationType = None
+        self._RecoverScope = None
+        self._RecoverDatabase = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackUpJobId(self):
+        return self._BackUpJobId
+
+    @BackUpJobId.setter
+    def BackUpJobId(self, BackUpJobId):
+        self._BackUpJobId = BackUpJobId
+
+    @property
+    def ReplicationNum(self):
+        return self._ReplicationNum
+
+    @ReplicationNum.setter
+    def ReplicationNum(self, ReplicationNum):
+        self._ReplicationNum = ReplicationNum
+
+    @property
+    def ReserveSourceConfig(self):
+        return self._ReserveSourceConfig
+
+    @ReserveSourceConfig.setter
+    def ReserveSourceConfig(self, ReserveSourceConfig):
+        self._ReserveSourceConfig = ReserveSourceConfig
+
+    @property
+    def RecoverType(self):
+        return self._RecoverType
+
+    @RecoverType.setter
+    def RecoverType(self, RecoverType):
+        self._RecoverType = RecoverType
+
+    @property
+    def CosSourceInfo(self):
+        return self._CosSourceInfo
+
+    @CosSourceInfo.setter
+    def CosSourceInfo(self, CosSourceInfo):
+        self._CosSourceInfo = CosSourceInfo
+
+    @property
+    def ScheduleType(self):
+        return self._ScheduleType
+
+    @ScheduleType.setter
+    def ScheduleType(self, ScheduleType):
+        self._ScheduleType = ScheduleType
+
+    @property
+    def NextTime(self):
+        return self._NextTime
+
+    @NextTime.setter
+    def NextTime(self, NextTime):
+        self._NextTime = NextTime
+
+    @property
+    def ScheduleName(self):
+        return self._ScheduleName
+
+    @ScheduleName.setter
+    def ScheduleName(self, ScheduleName):
+        self._ScheduleName = ScheduleName
+
+    @property
+    def OperationType(self):
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
+    @property
+    def RecoverScope(self):
+        return self._RecoverScope
+
+    @RecoverScope.setter
+    def RecoverScope(self, RecoverScope):
+        self._RecoverScope = RecoverScope
+
+    @property
+    def RecoverDatabase(self):
+        return self._RecoverDatabase
+
+    @RecoverDatabase.setter
+    def RecoverDatabase(self, RecoverDatabase):
+        self._RecoverDatabase = RecoverDatabase
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackUpJobId = params.get("BackUpJobId")
+        self._ReplicationNum = params.get("ReplicationNum")
+        self._ReserveSourceConfig = params.get("ReserveSourceConfig")
+        self._RecoverType = params.get("RecoverType")
+        if params.get("CosSourceInfo") is not None:
+            self._CosSourceInfo = CosSourceInfo()
+            self._CosSourceInfo._deserialize(params.get("CosSourceInfo"))
+        self._ScheduleType = params.get("ScheduleType")
+        self._NextTime = params.get("NextTime")
+        self._ScheduleName = params.get("ScheduleName")
+        self._OperationType = params.get("OperationType")
+        self._RecoverScope = params.get("RecoverScope")
+        self._RecoverDatabase = params.get("RecoverDatabase")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecoverBackUpJobResponse(AbstractModel):
+    """RecoverBackUpJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ReduceInstanceRequest(AbstractModel):
+    """ReduceInstance request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _DelHosts: Node list
+        :type DelHosts: list of str
+        :param _Type: Role (MATER/CORE), MASTER corresponds to FE, CORE corresponds to BE.
+        :type Type: str
+        :param _HaType: High availability cluster type after scale-in. 0: non-high availability; 1: read high availability; 2: read-write high availability
+        :type HaType: int
+        """
+        self._InstanceId = None
+        self._DelHosts = None
+        self._Type = None
+        self._HaType = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DelHosts(self):
+        return self._DelHosts
+
+    @DelHosts.setter
+    def DelHosts(self, DelHosts):
+        self._DelHosts = DelHosts
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def HaType(self):
+        return self._HaType
+
+    @HaType.setter
+    def HaType(self, HaType):
+        self._HaType = HaType
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DelHosts = params.get("DelHosts")
+        self._Type = params.get("Type")
+        self._HaType = params.get("HaType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReduceInstanceResponse(AbstractModel):
+    """ReduceInstance response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Process ID
+        :type FlowId: str
+        :param _InstanceId: Cluster ID
+        :type InstanceId: str
+        :param _ErrorMsg: Error message
+        :type ErrorMsg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._InstanceId = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._InstanceId = params.get("InstanceId")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class RegionAreaInfo(AbstractModel):
+    """Description of the region categories for availability zones
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Region category information, such as south_china, east_china, etc.
+        :type Name: str
+        :param _Desc: Description of the corresponding Name, such as South China, East China, etc.
+        :type Desc: str
+        :param _Regions: Specific region list 1
+        :type Regions: list of RegionInfo
+        """
+        self._Name = None
+        self._Desc = None
+        self._Regions = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Regions(self):
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Desc = params.get("Desc")
+        if params.get("Regions") is not None:
+            self._Regions = []
+            for item in params.get("Regions"):
+                obj = RegionInfo()
+                obj._deserialize(item)
+                self._Regions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegionInfo(AbstractModel):
+    """Region description information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Region name, such as ap-guangzhou
+        :type Name: str
+        :param _Desc: Region description, such as Guangzhou
+        :type Desc: str
+        :param _RegionId: Unique marker of region
+        :type RegionId: int
+        :param _Zones: List of all availability zones in the region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Zones: list of ZoneInfo
+        :param _Count: Number of clusters in the region
+        :type Count: int
+        :param _IsInternationalSite: 0 indicates the international site; 1 indicates not.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsInternationalSite: int
+        :param _Bucket: Bucket
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Bucket: str
+        """
+        self._Name = None
+        self._Desc = None
+        self._RegionId = None
+        self._Zones = None
+        self._Count = None
+        self._IsInternationalSite = None
+        self._Bucket = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def RegionId(self):
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+    @property
+    def Count(self):
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def IsInternationalSite(self):
+        return self._IsInternationalSite
+
+    @IsInternationalSite.setter
+    def IsInternationalSite(self, IsInternationalSite):
+        self._IsInternationalSite = IsInternationalSite
+
+    @property
+    def Bucket(self):
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Desc = params.get("Desc")
+        self._RegionId = params.get("RegionId")
+        if params.get("Zones") is not None:
+            self._Zones = []
+            for item in params.get("Zones"):
+                obj = ZoneInfo()
+                obj._deserialize(item)
+                self._Zones.append(obj)
+        self._Count = params.get("Count")
+        self._IsInternationalSite = params.get("IsInternationalSite")
+        self._Bucket = params.get("Bucket")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResizeDiskRequest(AbstractModel):
     """ResizeDisk request structure.
 
@@ -4043,6 +12455,263 @@ class ResizeDiskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._FlowId = params.get("FlowId")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class ResourceSpec(AbstractModel):
+    """Resource specification description information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Specification name, such as SCH1
+        :type Name: str
+        :param _Cpu: Number of CPU cores
+        :type Cpu: int
+        :param _Mem: Memory size, in GB
+        :type Mem: int
+        :param _Type: Classification markers, STANDARD/BIGDATA/HIGHIO respectively represent standard type/big data type/high IO.
+        :type Type: str
+        :param _SystemDisk: System disk description information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SystemDisk: :class:`tencentcloud.cdwdoris.v20211228.models.DiskSpec`
+        :param _DataDisk: Data disk description information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DataDisk: :class:`tencentcloud.cdwdoris.v20211228.models.DiskSpec`
+        :param _MaxNodeSize: Limit of the maximum number of nodes
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MaxNodeSize: int
+        :param _Available: Whether it is available. False indicates sell-out.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Available: bool
+        :param _ComputeSpecDesc: Specification description information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ComputeSpecDesc: str
+        :param _InstanceQuota: CVM inventory
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceQuota: int
+        """
+        self._Name = None
+        self._Cpu = None
+        self._Mem = None
+        self._Type = None
+        self._SystemDisk = None
+        self._DataDisk = None
+        self._MaxNodeSize = None
+        self._Available = None
+        self._ComputeSpecDesc = None
+        self._InstanceQuota = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Cpu(self):
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SystemDisk(self):
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def DataDisk(self):
+        return self._DataDisk
+
+    @DataDisk.setter
+    def DataDisk(self, DataDisk):
+        self._DataDisk = DataDisk
+
+    @property
+    def MaxNodeSize(self):
+        return self._MaxNodeSize
+
+    @MaxNodeSize.setter
+    def MaxNodeSize(self, MaxNodeSize):
+        self._MaxNodeSize = MaxNodeSize
+
+    @property
+    def Available(self):
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+    @property
+    def ComputeSpecDesc(self):
+        return self._ComputeSpecDesc
+
+    @ComputeSpecDesc.setter
+    def ComputeSpecDesc(self, ComputeSpecDesc):
+        self._ComputeSpecDesc = ComputeSpecDesc
+
+    @property
+    def InstanceQuota(self):
+        return self._InstanceQuota
+
+    @InstanceQuota.setter
+    def InstanceQuota(self, InstanceQuota):
+        self._InstanceQuota = InstanceQuota
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        self._Type = params.get("Type")
+        if params.get("SystemDisk") is not None:
+            self._SystemDisk = DiskSpec()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("DataDisk") is not None:
+            self._DataDisk = DiskSpec()
+            self._DataDisk._deserialize(params.get("DataDisk"))
+        self._MaxNodeSize = params.get("MaxNodeSize")
+        self._Available = params.get("Available")
+        self._ComputeSpecDesc = params.get("ComputeSpecDesc")
+        self._InstanceQuota = params.get("InstanceQuota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartClusterForConfigsRequest(AbstractModel):
+    """RestartClusterForConfigs request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Cluster ID, such as cdwch-xxxx
+        :type InstanceId: str
+        :param _ConfigName: Configuration file's name
+        :type ConfigName: str
+        :param _OperationType: grace_restart is an elegant scrolling restart. If this parameter is not filled in, restart now by default.
+        :type OperationType: str
+        """
+        self._InstanceId = None
+        self._ConfigName = None
+        self._OperationType = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConfigName(self):
+        return self._ConfigName
+
+    @ConfigName.setter
+    def ConfigName(self, ConfigName):
+        self._ConfigName = ConfigName
+
+    @property
+    def OperationType(self):
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ConfigName = params.get("ConfigName")
+        self._OperationType = params.get("OperationType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestartClusterForConfigsResponse(AbstractModel):
+    """RestartClusterForConfigs response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: Process related information
+        :type FlowId: int
+        :param _ErrorMsg: Error message
+        :type ErrorMsg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def ErrorMsg(self):
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
         self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
@@ -4176,6 +12845,339 @@ class RestartClusterForNodeResponse(AbstractModel):
         self._FlowId = params.get("FlowId")
         self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
+
+
+class RestoreStatus(AbstractModel):
+    """Recover the task information
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: Recover the task ID
+        :type JobId: int
+        :param _Label: Recover the task tag
+        :type Label: str
+        :param _Timestamp: Recover the task timestamp
+        :type Timestamp: str
+        :param _DbName: Recover the database where the task is located
+        :type DbName: str
+        :param _State: Recover the task status
+        :type State: str
+        :param _AllowLoad: Whether to allow import during recovery
+        :type AllowLoad: bool
+        :param _ReplicationNum: Number of replicas
+        :type ReplicationNum: str
+        :param _ReplicaAllocation: Number of replicas
+        :type ReplicaAllocation: str
+        :param _RestoreObjects: Recover object
+        :type RestoreObjects: str
+        :param _CreateTime: Creation time
+        :type CreateTime: str
+        :param _MetaPreparedTime: Metadata preparation time
+        :type MetaPreparedTime: str
+        :param _SnapshotFinishedTime: Snapshot end time
+        :type SnapshotFinishedTime: str
+        :param _DownloadFinishedTime: Download end time
+        :type DownloadFinishedTime: str
+        :param _FinishedTime: End time
+        :type FinishedTime: str
+        :param _UnfinishedTasks: Unfinished tasks
+        :type UnfinishedTasks: str
+        :param _Progress: Progress
+        :type Progress: str
+        :param _TaskErrMsg: Error message
+        :type TaskErrMsg: str
+        :param _Status: Status
+        :type Status: str
+        :param _Timeout: Operation timeout period
+        :type Timeout: int
+        :param _ReserveReplica: Whether to maintain the number of replicas in the source table
+        :type ReserveReplica: bool
+        :param _ReserveDynamicPartitionEnable: Whether to maintain dynamic partitions in the source table
+        :type ReserveDynamicPartitionEnable: bool
+        :param _BackupJobId: Backup instance ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackupJobId: int
+        :param _TaskId: ID of the snapshot corresponding to the instance
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaskId: int
+        """
+        self._JobId = None
+        self._Label = None
+        self._Timestamp = None
+        self._DbName = None
+        self._State = None
+        self._AllowLoad = None
+        self._ReplicationNum = None
+        self._ReplicaAllocation = None
+        self._RestoreObjects = None
+        self._CreateTime = None
+        self._MetaPreparedTime = None
+        self._SnapshotFinishedTime = None
+        self._DownloadFinishedTime = None
+        self._FinishedTime = None
+        self._UnfinishedTasks = None
+        self._Progress = None
+        self._TaskErrMsg = None
+        self._Status = None
+        self._Timeout = None
+        self._ReserveReplica = None
+        self._ReserveDynamicPartitionEnable = None
+        self._BackupJobId = None
+        self._TaskId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def State(self):
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def AllowLoad(self):
+        return self._AllowLoad
+
+    @AllowLoad.setter
+    def AllowLoad(self, AllowLoad):
+        self._AllowLoad = AllowLoad
+
+    @property
+    def ReplicationNum(self):
+        return self._ReplicationNum
+
+    @ReplicationNum.setter
+    def ReplicationNum(self, ReplicationNum):
+        self._ReplicationNum = ReplicationNum
+
+    @property
+    def ReplicaAllocation(self):
+        return self._ReplicaAllocation
+
+    @ReplicaAllocation.setter
+    def ReplicaAllocation(self, ReplicaAllocation):
+        self._ReplicaAllocation = ReplicaAllocation
+
+    @property
+    def RestoreObjects(self):
+        return self._RestoreObjects
+
+    @RestoreObjects.setter
+    def RestoreObjects(self, RestoreObjects):
+        self._RestoreObjects = RestoreObjects
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def MetaPreparedTime(self):
+        return self._MetaPreparedTime
+
+    @MetaPreparedTime.setter
+    def MetaPreparedTime(self, MetaPreparedTime):
+        self._MetaPreparedTime = MetaPreparedTime
+
+    @property
+    def SnapshotFinishedTime(self):
+        return self._SnapshotFinishedTime
+
+    @SnapshotFinishedTime.setter
+    def SnapshotFinishedTime(self, SnapshotFinishedTime):
+        self._SnapshotFinishedTime = SnapshotFinishedTime
+
+    @property
+    def DownloadFinishedTime(self):
+        return self._DownloadFinishedTime
+
+    @DownloadFinishedTime.setter
+    def DownloadFinishedTime(self, DownloadFinishedTime):
+        self._DownloadFinishedTime = DownloadFinishedTime
+
+    @property
+    def FinishedTime(self):
+        return self._FinishedTime
+
+    @FinishedTime.setter
+    def FinishedTime(self, FinishedTime):
+        self._FinishedTime = FinishedTime
+
+    @property
+    def UnfinishedTasks(self):
+        return self._UnfinishedTasks
+
+    @UnfinishedTasks.setter
+    def UnfinishedTasks(self, UnfinishedTasks):
+        self._UnfinishedTasks = UnfinishedTasks
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def TaskErrMsg(self):
+        return self._TaskErrMsg
+
+    @TaskErrMsg.setter
+    def TaskErrMsg(self, TaskErrMsg):
+        self._TaskErrMsg = TaskErrMsg
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Timeout(self):
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def ReserveReplica(self):
+        return self._ReserveReplica
+
+    @ReserveReplica.setter
+    def ReserveReplica(self, ReserveReplica):
+        self._ReserveReplica = ReserveReplica
+
+    @property
+    def ReserveDynamicPartitionEnable(self):
+        return self._ReserveDynamicPartitionEnable
+
+    @ReserveDynamicPartitionEnable.setter
+    def ReserveDynamicPartitionEnable(self, ReserveDynamicPartitionEnable):
+        self._ReserveDynamicPartitionEnable = ReserveDynamicPartitionEnable
+
+    @property
+    def BackupJobId(self):
+        return self._BackupJobId
+
+    @BackupJobId.setter
+    def BackupJobId(self, BackupJobId):
+        self._BackupJobId = BackupJobId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._Label = params.get("Label")
+        self._Timestamp = params.get("Timestamp")
+        self._DbName = params.get("DbName")
+        self._State = params.get("State")
+        self._AllowLoad = params.get("AllowLoad")
+        self._ReplicationNum = params.get("ReplicationNum")
+        self._ReplicaAllocation = params.get("ReplicaAllocation")
+        self._RestoreObjects = params.get("RestoreObjects")
+        self._CreateTime = params.get("CreateTime")
+        self._MetaPreparedTime = params.get("MetaPreparedTime")
+        self._SnapshotFinishedTime = params.get("SnapshotFinishedTime")
+        self._DownloadFinishedTime = params.get("DownloadFinishedTime")
+        self._FinishedTime = params.get("FinishedTime")
+        self._UnfinishedTasks = params.get("UnfinishedTasks")
+        self._Progress = params.get("Progress")
+        self._TaskErrMsg = params.get("TaskErrMsg")
+        self._Status = params.get("Status")
+        self._Timeout = params.get("Timeout")
+        self._ReserveReplica = params.get("ReserveReplica")
+        self._ReserveDynamicPartitionEnable = params.get("ReserveDynamicPartitionEnable")
+        self._BackupJobId = params.get("BackupJobId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Rows(AbstractModel):
+    """Multiple rows of data
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataRow: A row of data
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DataRow: list of str
+        """
+        self._DataRow = None
+
+    @property
+    def DataRow(self):
+        return self._DataRow
+
+    @DataRow.setter
+    def DataRow(self, DataRow):
+        self._DataRow = DataRow
+
+
+    def _deserialize(self, params):
+        self._DataRow = params.get("DataRow")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ScaleOutInstanceRequest(AbstractModel):
@@ -4689,6 +13691,53 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class TablePermissions(AbstractModel):
+    """Table-level permissions
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableName: Full name of the table
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TableName: str
+        :param _Permissions: Table permission
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Permissions: list of str
+        """
+        self._TableName = None
+        self._Permissions = None
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Permissions(self):
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+
+    def _deserialize(self, params):
+        self._TableName = params.get("TableName")
+        self._Permissions = params.get("Permissions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Tag(AbstractModel):
     """Tag description
 
@@ -4724,6 +13773,596 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDatabaseRequest(AbstractModel):
+    """UpdateDatabase request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbName: The database name to be modified
+        :type DbName: str
+        :param _Operation: Modify the operation type, such as SET_QUOTA, RENAME, SET_REPLICA_QUOTA, and SET_PROPERTIES. Modify the operation type, such as SET_QUOTA, RENAME, SET_REPLICA_QUOTA, and SET_PROPERTIES.
+        :type Operation: str
+        :param _Quota: Quota value, which is used to set the quota of data volume or replicas.
+        :type Quota: str
+        :param _NewDbName: New database name, used for renaming operation.
+        :type NewDbName: str
+        :param _Properties: Attribute key-value pair to be set
+        :type Properties: list of PropertiesMap
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        """
+        self._DbName = None
+        self._Operation = None
+        self._Quota = None
+        self._NewDbName = None
+        self._Properties = None
+        self._UserName = None
+        self._PassWord = None
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def Operation(self):
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def Quota(self):
+        return self._Quota
+
+    @Quota.setter
+    def Quota(self, Quota):
+        self._Quota = Quota
+
+    @property
+    def NewDbName(self):
+        return self._NewDbName
+
+    @NewDbName.setter
+    def NewDbName(self, NewDbName):
+        self._NewDbName = NewDbName
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+
+    def _deserialize(self, params):
+        self._DbName = params.get("DbName")
+        self._Operation = params.get("Operation")
+        self._Quota = params.get("Quota")
+        self._NewDbName = params.get("NewDbName")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = PropertiesMap()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDatabaseResponse(AbstractModel):
+    """UpdateDatabase response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: Whether the operation is successful
+        :type Success: bool
+        :param _Message: Message description of the operation result
+        :type Message: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Success = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Success(self):
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Success = params.get("Success")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateTableSchemaRequest(AbstractModel):
+    """UpdateTableSchema request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: Resource ID, which is the TCHouse-D resource ID used for table creation.
+        :type InstanceId: str
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        :param _DbName: Database name
+        :type DbName: str
+        :param _TableName: Table name
+        :type TableName: str
+        :param _Columns: Column
+        :type Columns: list of Column
+        :param _IndexInfos: Index information. The inverted index and N-Gram index can be configured through this parameter. The Prefix index is related to the sort key and key column, and do not require additional configuration. Configure bloom_filter_columns in the table attribute when BloomFilter index is required.
+        :type IndexInfos: list of IndexInfo
+        :param _Distribution: Bucket information
+        :type Distribution: :class:`tencentcloud.cdwdoris.v20211228.models.Distribution`
+        :param _TableComment: Table description
+        :type TableComment: str
+        :param _Properties: Table attribute
+        :type Properties: list of Property
+        """
+        self._InstanceId = None
+        self._UserName = None
+        self._PassWord = None
+        self._DbName = None
+        self._TableName = None
+        self._Columns = None
+        self._IndexInfos = None
+        self._Distribution = None
+        self._TableComment = None
+        self._Properties = None
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+    @property
+    def DbName(self):
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def TableName(self):
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Columns(self):
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def IndexInfos(self):
+        return self._IndexInfos
+
+    @IndexInfos.setter
+    def IndexInfos(self, IndexInfos):
+        self._IndexInfos = IndexInfos
+
+    @property
+    def Distribution(self):
+        return self._Distribution
+
+    @Distribution.setter
+    def Distribution(self, Distribution):
+        self._Distribution = Distribution
+
+    @property
+    def TableComment(self):
+        return self._TableComment
+
+    @TableComment.setter
+    def TableComment(self, TableComment):
+        self._TableComment = TableComment
+
+    @property
+    def Properties(self):
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
+        self._DbName = params.get("DbName")
+        self._TableName = params.get("TableName")
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = Column()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        if params.get("IndexInfos") is not None:
+            self._IndexInfos = []
+            for item in params.get("IndexInfos"):
+                obj = IndexInfo()
+                obj._deserialize(item)
+                self._IndexInfos.append(obj)
+        if params.get("Distribution") is not None:
+            self._Distribution = Distribution()
+            self._Distribution._deserialize(params.get("Distribution"))
+        self._TableComment = params.get("TableComment")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = Property()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTableSchemaResponse(AbstractModel):
+    """UpdateTableSchema response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: Error message
+        :type Message: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateUserPrivileges(AbstractModel):
+    """Update user permission structure
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsSetGlobalCatalog: Whether to set catalog permission
+        :type IsSetGlobalCatalog: bool
+        """
+        self._IsSetGlobalCatalog = None
+
+    @property
+    def IsSetGlobalCatalog(self):
+        return self._IsSetGlobalCatalog
+
+    @IsSetGlobalCatalog.setter
+    def IsSetGlobalCatalog(self, IsSetGlobalCatalog):
+        self._IsSetGlobalCatalog = IsSetGlobalCatalog
+
+
+    def _deserialize(self, params):
+        self._IsSetGlobalCatalog = params.get("IsSetGlobalCatalog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserWorkloadGroup(AbstractModel):
+    """Resource group information bound to the user
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserName: test
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UserName: str
+        :param _WorkloadGroupName: normal
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WorkloadGroupName: str
+        """
+        self._UserName = None
+        self._WorkloadGroupName = None
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def WorkloadGroupName(self):
+        return self._WorkloadGroupName
+
+    @WorkloadGroupName.setter
+    def WorkloadGroupName(self, WorkloadGroupName):
+        self._WorkloadGroupName = WorkloadGroupName
+
+
+    def _deserialize(self, params):
+        self._UserName = params.get("UserName")
+        self._WorkloadGroupName = params.get("WorkloadGroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkloadGroupConfig(AbstractModel):
+    """Resource group configuration
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkloadGroupName: Resource group name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type WorkloadGroupName: str
+        :param _CpuShare: CPU weight
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CpuShare: int
+        :param _MemoryLimit: Memory limit. The sum of memory limit values of all resource groups should be less than or equal to 100.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type MemoryLimit: int
+        :param _EnableMemoryOverCommit: Whether to allow over-allocation
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EnableMemoryOverCommit: bool
+        :param _CpuHardLimit: CPU hard limit
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CpuHardLimit: str
+        """
+        self._WorkloadGroupName = None
+        self._CpuShare = None
+        self._MemoryLimit = None
+        self._EnableMemoryOverCommit = None
+        self._CpuHardLimit = None
+
+    @property
+    def WorkloadGroupName(self):
+        return self._WorkloadGroupName
+
+    @WorkloadGroupName.setter
+    def WorkloadGroupName(self, WorkloadGroupName):
+        self._WorkloadGroupName = WorkloadGroupName
+
+    @property
+    def CpuShare(self):
+        return self._CpuShare
+
+    @CpuShare.setter
+    def CpuShare(self, CpuShare):
+        self._CpuShare = CpuShare
+
+    @property
+    def MemoryLimit(self):
+        return self._MemoryLimit
+
+    @MemoryLimit.setter
+    def MemoryLimit(self, MemoryLimit):
+        self._MemoryLimit = MemoryLimit
+
+    @property
+    def EnableMemoryOverCommit(self):
+        return self._EnableMemoryOverCommit
+
+    @EnableMemoryOverCommit.setter
+    def EnableMemoryOverCommit(self, EnableMemoryOverCommit):
+        self._EnableMemoryOverCommit = EnableMemoryOverCommit
+
+    @property
+    def CpuHardLimit(self):
+        return self._CpuHardLimit
+
+    @CpuHardLimit.setter
+    def CpuHardLimit(self, CpuHardLimit):
+        self._CpuHardLimit = CpuHardLimit
+
+
+    def _deserialize(self, params):
+        self._WorkloadGroupName = params.get("WorkloadGroupName")
+        self._CpuShare = params.get("CpuShare")
+        self._MemoryLimit = params.get("MemoryLimit")
+        self._EnableMemoryOverCommit = params.get("EnableMemoryOverCommit")
+        self._CpuHardLimit = params.get("CpuHardLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneInfo(AbstractModel):
+    """Availability zone description
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Availability zone name, such as ap-guangzhou-1
+        :type Name: str
+        :param _Desc: Availability zone description, such as Guangzhou region 1
+        :type Desc: str
+        :param _ZoneId: Unique tag of the availability zone
+        :type ZoneId: int
+        :param _Encrypt: Encryptid
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Encrypt: int
+        """
+        self._Name = None
+        self._Desc = None
+        self._ZoneId = None
+        self._Encrypt = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Desc(self):
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Encrypt(self):
+        return self._Encrypt
+
+    @Encrypt.setter
+    def Encrypt(self, Encrypt):
+        self._Encrypt = Encrypt
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Desc = params.get("Desc")
+        self._ZoneId = params.get("ZoneId")
+        self._Encrypt = params.get("Encrypt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
