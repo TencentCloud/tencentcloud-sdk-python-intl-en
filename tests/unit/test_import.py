@@ -154,6 +154,11 @@ def test_import_cvm():
     from tencentcloud.cvm.v20170312 import models
 
 
+def test_import_cwp():
+    from tencentcloud.cwp.v20180228 import cwp_client
+    from tencentcloud.cwp.v20180228 import models
+
+
 def test_import_cynosdb():
     from tencentcloud.cynosdb.v20190107 import cynosdb_client
     from tencentcloud.cynosdb.v20190107 import models
