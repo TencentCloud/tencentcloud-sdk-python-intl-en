@@ -26,6 +26,29 @@ class CdwdorisClient(AbstractClient):
     _service = 'cdwdoris'
 
 
+    def ActionAlterUser(self, request):
+        """This API is used to add and modify a user.
+
+        :param request: Request instance for ActionAlterUser.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ActionAlterUserRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.ActionAlterUserResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ActionAlterUser", params, headers=headers)
+            response = json.loads(body)
+            model = models.ActionAlterUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CancelBackupJob(self, request):
         """This API is used to cancel the corresponding backup instance task.
 
@@ -40,6 +63,29 @@ class CdwdorisClient(AbstractClient):
             body = self.call("CancelBackupJob", params, headers=headers)
             response = json.loads(body)
             model = models.CancelBackupJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CheckCoolDownWorkingVariableConfigCorrect(self, request):
+        """This API is used to check whether variables and configurations for hot/cold data layering are correct.
+
+        :param request: Request instance for CheckCoolDownWorkingVariableConfigCorrect.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CheckCoolDownWorkingVariableConfigCorrectRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.CheckCoolDownWorkingVariableConfigCorrectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckCoolDownWorkingVariableConfigCorrect", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckCoolDownWorkingVariableConfigCorrectResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -86,6 +132,29 @@ class CdwdorisClient(AbstractClient):
             body = self.call("CreateBackUpSchedule", params, headers=headers)
             response = json.loads(body)
             model = models.CreateBackUpScheduleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCoolDownPolicy(self, request):
+        """This API is used to create a hot/cold data layering policy.
+
+        :param request: Request instance for CreateCoolDownPolicy.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.CreateCoolDownPolicyRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.CreateCoolDownPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCoolDownPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCoolDownPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -431,6 +500,98 @@ class CdwdorisClient(AbstractClient):
             body = self.call("DescribeClusterConfigsHistory", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeClusterConfigsHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCoolDownBackends(self, request):
+        """This API is used to query the list of backend nodes supporting hot/cold data layering.
+
+        :param request: Request instance for DescribeCoolDownBackends.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownBackendsRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownBackendsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCoolDownBackends", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCoolDownBackendsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCoolDownPolicies(self, request):
+        """This API is used to query the list of hot/cold data layering policies.
+
+        :param request: Request instance for DescribeCoolDownPolicies.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownPoliciesRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownPoliciesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCoolDownPolicies", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCoolDownPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCoolDownTableData(self, request):
+        """This API is used to query the layered hot and cold data in a table.
+
+        :param request: Request instance for DescribeCoolDownTableData.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownTableDataRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCoolDownTableDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCoolDownTableData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCoolDownTableDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCreateTablesDDL(self, request):
+        """This API is used to batch obtain the table creation DDL.
+
+        :param request: Request instance for DescribeCreateTablesDDL.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCreateTablesDDLRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeCreateTablesDDLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCreateTablesDDL", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCreateTablesDDLResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -855,7 +1016,7 @@ class CdwdorisClient(AbstractClient):
 
 
     def DescribeSqlApis(self, request):
-        """This API is used to query the CK cluster API for the driver SQL command.
+        """This API is used to query the cluster information by executing SQL commands.
 
         :param request: Request instance for DescribeSqlApis.
         :type request: :class:`tencentcloud.cdwdoris.v20211228.models.DescribeSqlApisRequest`
@@ -1084,6 +1245,52 @@ class CdwdorisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyClusterConfigs(self, request):
+        """This API is used to modify the XML cluster configuration file on the cluster configuration page.
+
+        :param request: Request instance for ModifyClusterConfigs.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyClusterConfigsRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyClusterConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterConfigsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCoolDownPolicy(self, request):
+        """This API is used to modify the hot/cold data layering policy.
+
+        :param request: Request instance for ModifyCoolDownPolicy.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyCoolDownPolicyRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.ModifyCoolDownPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCoolDownPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCoolDownPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDatabaseTableAccess(self, request):
         """This API is used to GRANT and REVOKE the database and table in the Doris database.
 
@@ -1291,6 +1498,52 @@ class CdwdorisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def OpenCoolDown(self, request):
+        """This API is used to enable hot/cold data layering.
+
+        :param request: Request instance for OpenCoolDown.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.OpenCoolDownRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.OpenCoolDownResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenCoolDown", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenCoolDownResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OpenCoolDownPolicy(self, request):
+        """This API is used to enable and describe the cold storage policy.
+
+        :param request: Request instance for OpenCoolDownPolicy.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.OpenCoolDownPolicyRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.OpenCoolDownPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenCoolDownPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenCoolDownPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryTableData(self, request):
         """This API is used to query data according to the specified database and table names, and support field selection and pagination.
 
@@ -1466,6 +1719,29 @@ class CdwdorisClient(AbstractClient):
             body = self.call("ScaleUpInstance", params, headers=headers)
             response = json.loads(body)
             model = models.ScaleUpInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateCoolDown(self, request):
+        """This API is used to update the hot/cold data layering information on a cluster.
+
+        :param request: Request instance for UpdateCoolDown.
+        :type request: :class:`tencentcloud.cdwdoris.v20211228.models.UpdateCoolDownRequest`
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.UpdateCoolDownResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCoolDown", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateCoolDownResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

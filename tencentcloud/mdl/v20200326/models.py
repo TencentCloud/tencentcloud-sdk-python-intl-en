@@ -1937,12 +1937,16 @@ class CreateStreamLiveInputRequest(AbstractModel):
         :param _Name: Input name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the region level
         :type Name: str
         :param _Type: Input type
-Valid values: `RTMP_PUSH`, `RTP_PUSH`, `UDP_PUSH`, `RTMP_PULL`, `HLS_PULL`, `MP4_PULL`
+Valid values: `RTMP_PUSH`, `RTP_PUSH`, `UDP_PUSH`, `RTMP_PULL`, `HLS_PULL`, `MP4_PULL`,`RTP-FEC_PUSH`,`RTSP_PULL`,`SRT_PUSH `,`SRT_PULL `
         :type Type: str
         :param _SecurityGroupIds: ID of the input security group to attach
 You can attach only one security group to an input.
         :type SecurityGroupIds: list of str
-        :param _InputSettings: Input settings. For the type `RTMP_PUSH`, `RTMP_PULL`, `HLS_PULL`, or `MP4_PULL`, 1 or 2 inputs of the corresponding type can be configured.
+        :param _InputSettings: Input settings. 
+For the type:
+`RTMP_PUSH`, `RTMP_PULL`, `HLS_PULL`,`RTSP_PULL`,`SRT_PULL` or `MP4_PULL`, 1 or 2 inputs of the corresponding type can be configured.
+For the type:
+`SRT_PUSH`, 0 or 2 inputs of the corresponding type can be configured.
         :type InputSettings: list of InputSettingInfo
         """
         self._Name = None
