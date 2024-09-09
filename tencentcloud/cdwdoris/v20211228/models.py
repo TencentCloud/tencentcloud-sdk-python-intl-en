@@ -3593,7 +3593,7 @@ class DeleteTableRequest(AbstractModel):
         r"""
         :param _InstanceId: Resource ID, which is the TCHouse-D resource ID used for table creation.
         :type InstanceId: str
-        :param _DbName: The name of the database where the table belongs needs to be deleted
+        :param _DbName: The name of the database where the table belongs needs to be deleted.
         :type DbName: str
         :param _TableName: Table name to be deleted
         :type TableName: str

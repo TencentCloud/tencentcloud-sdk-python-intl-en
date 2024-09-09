@@ -49,6 +49,29 @@ class MdcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateStreamLinkInput(self, request):
+        """Create an input configuration for the StreamLink.
+
+        :param request: Request instance for CreateStreamLinkInput.
+        :type request: :class:`tencentcloud.mdc.v20200828.models.CreateStreamLinkInputRequest`
+        :rtype: :class:`tencentcloud.mdc.v20200828.models.CreateStreamLinkInputResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamLinkInput", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStreamLinkInputResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateStreamLinkOutputInfo(self, request):
         """This API is used to create a StreamLink output.
 
