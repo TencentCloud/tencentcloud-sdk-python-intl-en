@@ -173,6 +173,7 @@ THA: Thailand
 MYS: Malaysia
 SGP: Singapore
 JPN: Japan
+TWN:Taiwan
 AUTO: Automatic Identification
         :type Nationality: str
         :param _CardType: Please select the type of ID document. The supported options are:
@@ -887,6 +888,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _MacaoIDCard: Macao ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MacaoIDCard: :class:`tencentcloud.faceid.v20180301.models.MacaoIDCard`
+        :param _TaiWanIDCard: TaiWan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaiWanIDCard: :class:`tencentcloud.faceid.v20180301.models.TaiWanIDCard`
+        :param _JapanIDCard: Japan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JapanIDCard: :class:`tencentcloud.faceid.v20180301.models.JapanIDCard`
         """
         self._HKIDCard = None
         self._MLIDCard = None
@@ -902,6 +909,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ThailandIDCard = None
         self._SingaporeIDCard = None
         self._MacaoIDCard = None
+        self._TaiWanIDCard = None
+        self._JapanIDCard = None
 
     @property
     def HKIDCard(self):
@@ -1015,6 +1024,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def MacaoIDCard(self, MacaoIDCard):
         self._MacaoIDCard = MacaoIDCard
 
+    @property
+    def TaiWanIDCard(self):
+        return self._TaiWanIDCard
+
+    @TaiWanIDCard.setter
+    def TaiWanIDCard(self, TaiWanIDCard):
+        self._TaiWanIDCard = TaiWanIDCard
+
+    @property
+    def JapanIDCard(self):
+        return self._JapanIDCard
+
+    @JapanIDCard.setter
+    def JapanIDCard(self, JapanIDCard):
+        self._JapanIDCard = JapanIDCard
+
 
     def _deserialize(self, params):
         if params.get("HKIDCard") is not None:
@@ -1059,6 +1084,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("MacaoIDCard") is not None:
             self._MacaoIDCard = MacaoIDCard()
             self._MacaoIDCard._deserialize(params.get("MacaoIDCard"))
+        if params.get("TaiWanIDCard") is not None:
+            self._TaiWanIDCard = TaiWanIDCard()
+            self._TaiWanIDCard._deserialize(params.get("TaiWanIDCard"))
+        if params.get("JapanIDCard") is not None:
+            self._JapanIDCard = JapanIDCard()
+            self._JapanIDCard._deserialize(params.get("JapanIDCard"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4129,6 +4160,105 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class JapanIDCard(AbstractModel):
+    """Japan ID card.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FullName: Full name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FullName: str
+        :param _LicenseNumber: License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LicenseNumber: str
+        :param _Age: Age
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Age: str
+        :param _Birthday: Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Birthday: str
+        :param _ExpirationDate: Expire date
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExpirationDate: str
+        :param _FormattedAddress: Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FormattedAddress: str
+        """
+        self._FullName = None
+        self._LicenseNumber = None
+        self._Age = None
+        self._Birthday = None
+        self._ExpirationDate = None
+        self._FormattedAddress = None
+
+    @property
+    def FullName(self):
+        return self._FullName
+
+    @FullName.setter
+    def FullName(self, FullName):
+        self._FullName = FullName
+
+    @property
+    def LicenseNumber(self):
+        return self._LicenseNumber
+
+    @LicenseNumber.setter
+    def LicenseNumber(self, LicenseNumber):
+        self._LicenseNumber = LicenseNumber
+
+    @property
+    def Age(self):
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Birthday(self):
+        return self._Birthday
+
+    @Birthday.setter
+    def Birthday(self, Birthday):
+        self._Birthday = Birthday
+
+    @property
+    def ExpirationDate(self):
+        return self._ExpirationDate
+
+    @ExpirationDate.setter
+    def ExpirationDate(self, ExpirationDate):
+        self._ExpirationDate = ExpirationDate
+
+    @property
+    def FormattedAddress(self):
+        return self._FormattedAddress
+
+    @FormattedAddress.setter
+    def FormattedAddress(self, FormattedAddress):
+        self._FormattedAddress = FormattedAddress
+
+
+    def _deserialize(self, params):
+        self._FullName = params.get("FullName")
+        self._LicenseNumber = params.get("LicenseNumber")
+        self._Age = params.get("Age")
+        self._Birthday = params.get("Birthday")
+        self._ExpirationDate = params.get("ExpirationDate")
+        self._FormattedAddress = params.get("FormattedAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LivenessCompareRequest(AbstractModel):
     """LivenessCompare request structure.
 
@@ -4768,6 +4898,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _MainlandIDCard: Mainland ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MainlandIDCard: :class:`tencentcloud.faceid.v20180301.models.MainlandIDCard`
+        :param _JapanIDCard: Japan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JapanIDCard: :class:`tencentcloud.faceid.v20180301.models.JapanIDCard`
+        :param _TaiWanIDCard: Taiwan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaiWanIDCard: :class:`tencentcloud.faceid.v20180301.models.TaiWanIDCard`
         """
         self._HKIDCard = None
         self._MLIDCard = None
@@ -4784,6 +4920,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SingaporeIDCard = None
         self._MacaoIDCard = None
         self._MainlandIDCard = None
+        self._JapanIDCard = None
+        self._TaiWanIDCard = None
 
     @property
     def HKIDCard(self):
@@ -4905,6 +5043,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def MainlandIDCard(self, MainlandIDCard):
         self._MainlandIDCard = MainlandIDCard
 
+    @property
+    def JapanIDCard(self):
+        return self._JapanIDCard
+
+    @JapanIDCard.setter
+    def JapanIDCard(self, JapanIDCard):
+        self._JapanIDCard = JapanIDCard
+
+    @property
+    def TaiWanIDCard(self):
+        return self._TaiWanIDCard
+
+    @TaiWanIDCard.setter
+    def TaiWanIDCard(self, TaiWanIDCard):
+        self._TaiWanIDCard = TaiWanIDCard
+
 
     def _deserialize(self, params):
         if params.get("HKIDCard") is not None:
@@ -4952,6 +5106,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("MainlandIDCard") is not None:
             self._MainlandIDCard = MainlandIDCard()
             self._MainlandIDCard._deserialize(params.get("MainlandIDCard"))
+        if params.get("JapanIDCard") is not None:
+            self._JapanIDCard = JapanIDCard()
+            self._JapanIDCard._deserialize(params.get("JapanIDCard"))
+        if params.get("TaiWanIDCard") is not None:
+            self._TaiWanIDCard = TaiWanIDCard()
+            self._TaiWanIDCard._deserialize(params.get("TaiWanIDCard"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6534,6 +6694,92 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._PostCode = params.get("PostCode")
         self._DateOfExpiration = params.get("DateOfExpiration")
         self._DateOfIssue = params.get("DateOfIssue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaiWanIDCard(AbstractModel):
+    """Taiwan ID card.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FullName: Full name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FullName: str
+        :param _LicenseNumber: License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LicenseNumber: str
+        :param _Sex: Gender
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Sex: str
+        :param _IssuedCountry: Issued country
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IssuedCountry: str
+        :param _RegistrationNumber: Registration number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RegistrationNumber: str
+        """
+        self._FullName = None
+        self._LicenseNumber = None
+        self._Sex = None
+        self._IssuedCountry = None
+        self._RegistrationNumber = None
+
+    @property
+    def FullName(self):
+        return self._FullName
+
+    @FullName.setter
+    def FullName(self, FullName):
+        self._FullName = FullName
+
+    @property
+    def LicenseNumber(self):
+        return self._LicenseNumber
+
+    @LicenseNumber.setter
+    def LicenseNumber(self, LicenseNumber):
+        self._LicenseNumber = LicenseNumber
+
+    @property
+    def Sex(self):
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def IssuedCountry(self):
+        return self._IssuedCountry
+
+    @IssuedCountry.setter
+    def IssuedCountry(self, IssuedCountry):
+        self._IssuedCountry = IssuedCountry
+
+    @property
+    def RegistrationNumber(self):
+        return self._RegistrationNumber
+
+    @RegistrationNumber.setter
+    def RegistrationNumber(self, RegistrationNumber):
+        self._RegistrationNumber = RegistrationNumber
+
+
+    def _deserialize(self, params):
+        self._FullName = params.get("FullName")
+        self._LicenseNumber = params.get("LicenseNumber")
+        self._Sex = params.get("Sex")
+        self._IssuedCountry = params.get("IssuedCountry")
+        self._RegistrationNumber = params.get("RegistrationNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
