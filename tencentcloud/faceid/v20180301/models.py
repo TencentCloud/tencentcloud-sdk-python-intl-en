@@ -5829,6 +5829,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type CardImageBase64: str
         :param _CardInfo: OCR result of the ID card.
         :type CardInfo: :class:`tencentcloud.faceid.v20180301.models.CardInfo`
+        :param _NormalCardInfo: OCR result of the ID card.
+        :type NormalCardInfo: :class:`tencentcloud.faceid.v20180301.models.NormalCardInfo`
         :param _RequestId: The request id
         :type RequestId: str
         :param _CardCutImageBase64: Base64 of cropped image of ID card
@@ -5839,6 +5841,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._IsPass = None
         self._CardImageBase64 = None
         self._CardInfo = None
+        self._NormalCardInfo = None
         self._RequestId = None
         self._CardCutImageBase64 = None
         self._CardBackCutImageBase64 = None
@@ -5861,11 +5864,23 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CardInfo(self):
+        warnings.warn("parameter `CardInfo` is deprecated", DeprecationWarning) 
+
         return self._CardInfo
 
     @CardInfo.setter
     def CardInfo(self, CardInfo):
+        warnings.warn("parameter `CardInfo` is deprecated", DeprecationWarning) 
+
         self._CardInfo = CardInfo
+
+    @property
+    def NormalCardInfo(self):
+        return self._NormalCardInfo
+
+    @NormalCardInfo.setter
+    def NormalCardInfo(self, NormalCardInfo):
+        self._NormalCardInfo = NormalCardInfo
 
     @property
     def RequestId(self):
@@ -5898,6 +5913,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("CardInfo") is not None:
             self._CardInfo = CardInfo()
             self._CardInfo._deserialize(params.get("CardInfo"))
+        if params.get("NormalCardInfo") is not None:
+            self._NormalCardInfo = NormalCardInfo()
+            self._NormalCardInfo._deserialize(params.get("NormalCardInfo"))
         self._RequestId = params.get("RequestId")
         self._CardCutImageBase64 = params.get("CardCutImageBase64")
         self._CardBackCutImageBase64 = params.get("CardBackCutImageBase64")
@@ -7245,6 +7263,17 @@ Example value: 3
 7.PhilippinesSSSID: Philippines SSSID card
 8.PhilippinesUMID: Philippines UMID card
 9.InternationalIDPassport: ID cards of Hong Kong, Macao and Taiwan (China), and international passport.
+10.IndonesiaDrivingLicense:Indonesia driving license
+11.ThailandIDCard: Thailand ID card
+12.ThailandDrivingLicense: Thailand driving license
+13.MLDrivingLicense: Malaysia driving license
+14.SingaporeIDCard: Singapore ID card
+15.SingaporeDrivingLicense: Singapore driving license
+16.JapanIDCard: Japan ID card
+17.JapanDrivingLicense: Japan driving license
+18.PhilippinesIDCard: Philippines ID card
+19.MainlandIDCard: Mainland ID card
+20.MacaoIDCard: Macao ID card
 Example: HKIDCard
         :type IDCardType: str
         :param _DisableCheckOcrWarnings: Whether to turn off document alarms, the default is false (the alarm detection function is turned on). When enabled, the identity authentication process will be intercepted based on the alarm status of the certificate. If you need to use the document authentication function, please contact us.
