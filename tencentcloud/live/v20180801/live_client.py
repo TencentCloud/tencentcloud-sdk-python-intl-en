@@ -958,7 +958,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeBillBandwidthAndFluxList(self, request):
-        """This API is used to query the data of billable LVB bandwidth and traffic.
+        """This API is used to query the data of billable bandwidth and traffic.
 
         :param request: Request instance for DescribeBillBandwidthAndFluxList.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeBillBandwidthAndFluxListRequest`

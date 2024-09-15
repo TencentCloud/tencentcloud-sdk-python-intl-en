@@ -6142,9 +6142,6 @@ class DescribeInstanceOperationHistoryRequest(AbstractModel):
         :type UserName: str
         :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
         :type PassWord: str
-        :param _Message: Information, deprecated.
-
-        :type Message: str
         """
         self._InstanceId = None
         self._PageNum = None
@@ -6153,7 +6150,6 @@ class DescribeInstanceOperationHistoryRequest(AbstractModel):
         self._EndTime = None
         self._UserName = None
         self._PassWord = None
-        self._Message = None
 
     @property
     def InstanceId(self):
@@ -6211,18 +6207,6 @@ class DescribeInstanceOperationHistoryRequest(AbstractModel):
     def PassWord(self, PassWord):
         self._PassWord = PassWord
 
-    @property
-    def Message(self):
-        warnings.warn("parameter `Message` is deprecated", DeprecationWarning) 
-
-        return self._Message
-
-    @Message.setter
-    def Message(self, Message):
-        warnings.warn("parameter `Message` is deprecated", DeprecationWarning) 
-
-        self._Message = Message
-
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -6232,7 +6216,6 @@ class DescribeInstanceOperationHistoryRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._UserName = params.get("UserName")
         self._PassWord = params.get("PassWord")
-        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6993,6 +6976,10 @@ class DescribeQueryAnalyseRequest(AbstractModel):
         :type SortOrder: str
         :param _QueryTime: Minimum query execution time, in milliseconds.
         :type QueryTime: int
+        :param _PageNum: Page number, defaults to 1.
+        :type PageNum: int
+        :param _PageSize: Number of records per page, defaults to 10.
+        :type PageSize: int
         """
         self._InstanceId = None
         self._UserName = None
@@ -7006,6 +6993,8 @@ class DescribeQueryAnalyseRequest(AbstractModel):
         self._SortField = None
         self._SortOrder = None
         self._QueryTime = None
+        self._PageNum = None
+        self._PageSize = None
 
     @property
     def InstanceId(self):
@@ -7103,6 +7092,22 @@ class DescribeQueryAnalyseRequest(AbstractModel):
     def QueryTime(self, QueryTime):
         self._QueryTime = QueryTime
 
+    @property
+    def PageNum(self):
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7117,6 +7122,8 @@ class DescribeQueryAnalyseRequest(AbstractModel):
         self._SortField = params.get("SortField")
         self._SortOrder = params.get("SortOrder")
         self._QueryTime = params.get("QueryTime")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9002,6 +9009,8 @@ class ExecuteParametrizedQueryRequest(AbstractModel):
         :type Database: str
         :param _Sql: SQL query statement
         :type Sql: str
+        :param _InstanceId: InstanceId
+        :type InstanceId: str
         :param _QueryParameter: Query parameter array.
         :type QueryParameter: list of PropertiesMap
         :param _PageNum: Page number, which is 1 by default.
@@ -9014,18 +9023,16 @@ class ExecuteParametrizedQueryRequest(AbstractModel):
         :type PassWord: str
         :param _CatalogName: Catalog name, defaults to 'internal' if not specified.
         :type CatalogName: str
-        :param _InstanceId: InstanceId
-        :type InstanceId: str
         """
         self._Database = None
         self._Sql = None
+        self._InstanceId = None
         self._QueryParameter = None
         self._PageNum = None
         self._PageSize = None
         self._UserName = None
         self._PassWord = None
         self._CatalogName = None
-        self._InstanceId = None
 
     @property
     def Database(self):
@@ -9042,6 +9049,14 @@ class ExecuteParametrizedQueryRequest(AbstractModel):
     @Sql.setter
     def Sql(self, Sql):
         self._Sql = Sql
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
     @property
     def QueryParameter(self):
@@ -9091,18 +9106,11 @@ class ExecuteParametrizedQueryRequest(AbstractModel):
     def CatalogName(self, CatalogName):
         self._CatalogName = CatalogName
 
-    @property
-    def InstanceId(self):
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
 
     def _deserialize(self, params):
         self._Database = params.get("Database")
         self._Sql = params.get("Sql")
+        self._InstanceId = params.get("InstanceId")
         if params.get("QueryParameter") is not None:
             self._QueryParameter = []
             for item in params.get("QueryParameter"):
@@ -9114,7 +9122,6 @@ class ExecuteParametrizedQueryRequest(AbstractModel):
         self._UserName = params.get("UserName")
         self._PassWord = params.get("PassWord")
         self._CatalogName = params.get("CatalogName")
-        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9226,6 +9233,8 @@ class ExecuteSelectQueryRequest(AbstractModel):
         :type Database: str
         :param _Query: SQL query statements only support select statements.
         :type Query: str
+        :param _InstanceId: InstanceId
+        :type InstanceId: str
         :param _PageNum: Page number, which is 1 by default.
         :type PageNum: int
         :param _PageSize: Number of records per page, which is 10 by default.
@@ -9237,17 +9246,15 @@ class ExecuteSelectQueryRequest(AbstractModel):
         :param _CatalogName: Catalog name, defaults to 'internal' if not specified.
 
         :type CatalogName: str
-        :param _InstanceId: InstanceId
-        :type InstanceId: str
         """
         self._Database = None
         self._Query = None
+        self._InstanceId = None
         self._PageNum = None
         self._PageSize = None
         self._UserName = None
         self._PassWord = None
         self._CatalogName = None
-        self._InstanceId = None
 
     @property
     def Database(self):
@@ -9264,6 +9271,14 @@ class ExecuteSelectQueryRequest(AbstractModel):
     @Query.setter
     def Query(self, Query):
         self._Query = Query
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
     @property
     def PageNum(self):
@@ -9305,24 +9320,16 @@ class ExecuteSelectQueryRequest(AbstractModel):
     def CatalogName(self, CatalogName):
         self._CatalogName = CatalogName
 
-    @property
-    def InstanceId(self):
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
 
     def _deserialize(self, params):
         self._Database = params.get("Database")
         self._Query = params.get("Query")
+        self._InstanceId = params.get("InstanceId")
         self._PageNum = params.get("PageNum")
         self._PageSize = params.get("PageSize")
         self._UserName = params.get("UserName")
         self._PassWord = params.get("PassWord")
         self._CatalogName = params.get("CatalogName")
-        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9588,43 +9595,40 @@ class InsertDatasToTableRequest(AbstractModel):
         :type Database: str
         :param _Table: Table name
         :type Table: str
-        :param _Strict: Whether to use the strict mode
-        :type Strict: bool
-        :param _MaxFilterRatio: Maximum filtration ratio, ranging from 0 to 1.0
-        :type MaxFilterRatio: float
         :param _Columns: Array of column names
         :type Columns: list of str
         :param _Rows: Data line
         :type Rows: list of Rows
+        :param _Types: Array of column types
+
+        :type Types: list of str
+        :param _InstanceId: InstanceId
+        :type InstanceId: str
+        :param _Strict: Whether to use the strict mode
+        :type Strict: bool
+        :param _MaxFilterRatio: Maximum filtration ratio, ranging from 0 to 1.0
+        :type MaxFilterRatio: float
         :param _Label: Tags for inserting data
         :type Label: str
         :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
         :type UserName: str
         :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
         :type PassWord: str
-        :param _ColumnTypes: Column type, this field has been deprecated, please use Types
-        :type ColumnTypes: str
-        :param _Types: Array of column types
-
-        :type Types: list of str
         :param _CatalogName: Catalog name, defaults to 'internal' if not specified.
         :type CatalogName: str
-        :param _InstanceId: InstanceId
-        :type InstanceId: str
         """
         self._Database = None
         self._Table = None
-        self._Strict = None
-        self._MaxFilterRatio = None
         self._Columns = None
         self._Rows = None
+        self._Types = None
+        self._InstanceId = None
+        self._Strict = None
+        self._MaxFilterRatio = None
         self._Label = None
         self._UserName = None
         self._PassWord = None
-        self._ColumnTypes = None
-        self._Types = None
         self._CatalogName = None
-        self._InstanceId = None
 
     @property
     def Database(self):
@@ -9643,22 +9647,6 @@ class InsertDatasToTableRequest(AbstractModel):
         self._Table = Table
 
     @property
-    def Strict(self):
-        return self._Strict
-
-    @Strict.setter
-    def Strict(self, Strict):
-        self._Strict = Strict
-
-    @property
-    def MaxFilterRatio(self):
-        return self._MaxFilterRatio
-
-    @MaxFilterRatio.setter
-    def MaxFilterRatio(self, MaxFilterRatio):
-        self._MaxFilterRatio = MaxFilterRatio
-
-    @property
     def Columns(self):
         return self._Columns
 
@@ -9673,6 +9661,38 @@ class InsertDatasToTableRequest(AbstractModel):
     @Rows.setter
     def Rows(self, Rows):
         self._Rows = Rows
+
+    @property
+    def Types(self):
+        return self._Types
+
+    @Types.setter
+    def Types(self, Types):
+        self._Types = Types
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Strict(self):
+        return self._Strict
+
+    @Strict.setter
+    def Strict(self, Strict):
+        self._Strict = Strict
+
+    @property
+    def MaxFilterRatio(self):
+        return self._MaxFilterRatio
+
+    @MaxFilterRatio.setter
+    def MaxFilterRatio(self, MaxFilterRatio):
+        self._MaxFilterRatio = MaxFilterRatio
 
     @property
     def Label(self):
@@ -9699,26 +9719,6 @@ class InsertDatasToTableRequest(AbstractModel):
         self._PassWord = PassWord
 
     @property
-    def ColumnTypes(self):
-        warnings.warn("parameter `ColumnTypes` is deprecated", DeprecationWarning) 
-
-        return self._ColumnTypes
-
-    @ColumnTypes.setter
-    def ColumnTypes(self, ColumnTypes):
-        warnings.warn("parameter `ColumnTypes` is deprecated", DeprecationWarning) 
-
-        self._ColumnTypes = ColumnTypes
-
-    @property
-    def Types(self):
-        return self._Types
-
-    @Types.setter
-    def Types(self, Types):
-        self._Types = Types
-
-    @property
     def CatalogName(self):
         return self._CatalogName
 
@@ -9726,20 +9726,10 @@ class InsertDatasToTableRequest(AbstractModel):
     def CatalogName(self, CatalogName):
         self._CatalogName = CatalogName
 
-    @property
-    def InstanceId(self):
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
 
     def _deserialize(self, params):
         self._Database = params.get("Database")
         self._Table = params.get("Table")
-        self._Strict = params.get("Strict")
-        self._MaxFilterRatio = params.get("MaxFilterRatio")
         self._Columns = params.get("Columns")
         if params.get("Rows") is not None:
             self._Rows = []
@@ -9747,13 +9737,14 @@ class InsertDatasToTableRequest(AbstractModel):
                 obj = Rows()
                 obj._deserialize(item)
                 self._Rows.append(obj)
+        self._Types = params.get("Types")
+        self._InstanceId = params.get("InstanceId")
+        self._Strict = params.get("Strict")
+        self._MaxFilterRatio = params.get("MaxFilterRatio")
         self._Label = params.get("Label")
         self._UserName = params.get("UserName")
         self._PassWord = params.get("PassWord")
-        self._ColumnTypes = params.get("ColumnTypes")
-        self._Types = params.get("Types")
         self._CatalogName = params.get("CatalogName")
-        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9776,7 +9767,7 @@ class InsertDatasToTableResponse(AbstractModel):
         :param _Message: Message description of the operation result
         :type Message: str
         :param _InsertCount: Number of inserted data rows
-        :type InsertCount: str
+        :type InsertCount: int
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -11184,34 +11175,34 @@ class ModifyDatabaseTableAccessRequest(AbstractModel):
         r"""
         :param _Database: Database name
         :type Database: str
-        :param _Table: Table name. If it is null, it indicates that the entire database is authorized.
-        :type Table: str
         :param _Privileges: Permission list
         :type Privileges: list of str
-        :param _Role: Role name, if authorized to the role
-        :type Role: str
         :param _GrantOrRevoke: Operation type: GRANT or REVOKE
         :type GrantOrRevoke: str
+        :param _InstanceId: InstanceId
+        :type InstanceId: str
+        :param _Table: Table name. If it is null, it indicates that the entire database is authorized.
+        :type Table: str
+        :param _Role: Role name, if authorized to the role
+        :type Role: str
         :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
         :type UserName: str
         :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
         :type PassWord: str
         :param _CatalogName: Catalog name, defaults to internal if not specified.
         :type CatalogName: str
-        :param _InstanceId: InstanceId
-        :type InstanceId: str
         :param _WhiteHost: Machine Group, defaults to % if not specified.
         :type WhiteHost: str
         """
         self._Database = None
-        self._Table = None
         self._Privileges = None
-        self._Role = None
         self._GrantOrRevoke = None
+        self._InstanceId = None
+        self._Table = None
+        self._Role = None
         self._UserName = None
         self._PassWord = None
         self._CatalogName = None
-        self._InstanceId = None
         self._WhiteHost = None
 
     @property
@@ -11223,14 +11214,6 @@ class ModifyDatabaseTableAccessRequest(AbstractModel):
         self._Database = Database
 
     @property
-    def Table(self):
-        return self._Table
-
-    @Table.setter
-    def Table(self, Table):
-        self._Table = Table
-
-    @property
     def Privileges(self):
         return self._Privileges
 
@@ -11239,20 +11222,36 @@ class ModifyDatabaseTableAccessRequest(AbstractModel):
         self._Privileges = Privileges
 
     @property
-    def Role(self):
-        return self._Role
-
-    @Role.setter
-    def Role(self, Role):
-        self._Role = Role
-
-    @property
     def GrantOrRevoke(self):
         return self._GrantOrRevoke
 
     @GrantOrRevoke.setter
     def GrantOrRevoke(self, GrantOrRevoke):
         self._GrantOrRevoke = GrantOrRevoke
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Table(self):
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def Role(self):
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
 
     @property
     def UserName(self):
@@ -11279,14 +11278,6 @@ class ModifyDatabaseTableAccessRequest(AbstractModel):
         self._CatalogName = CatalogName
 
     @property
-    def InstanceId(self):
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
     def WhiteHost(self):
         return self._WhiteHost
 
@@ -11297,14 +11288,14 @@ class ModifyDatabaseTableAccessRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Database = params.get("Database")
-        self._Table = params.get("Table")
         self._Privileges = params.get("Privileges")
-        self._Role = params.get("Role")
         self._GrantOrRevoke = params.get("GrantOrRevoke")
+        self._InstanceId = params.get("InstanceId")
+        self._Table = params.get("Table")
+        self._Role = params.get("Role")
         self._UserName = params.get("UserName")
         self._PassWord = params.get("PassWord")
         self._CatalogName = params.get("CatalogName")
-        self._InstanceId = params.get("InstanceId")
         self._WhiteHost = params.get("WhiteHost")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -13404,6 +13395,8 @@ class QueryTableDataRequest(AbstractModel):
         :type Database: str
         :param _Table: Table name
         :type Table: str
+        :param _InstanceId: InstanceId
+        :type InstanceId: str
         :param _SelectedFields: Array of fields to be queried
         :type SelectedFields: list of str
         :param _PageNum: Page number, which is 1 by default.
@@ -13417,18 +13410,16 @@ class QueryTableDataRequest(AbstractModel):
         :param _CatalogName: Catalog name, defaults to 'internal' if not specified.
 
         :type CatalogName: str
-        :param _InstanceId: InstanceId
-        :type InstanceId: str
         """
         self._Database = None
         self._Table = None
+        self._InstanceId = None
         self._SelectedFields = None
         self._PageNum = None
         self._PageSize = None
         self._UserName = None
         self._PassWord = None
         self._CatalogName = None
-        self._InstanceId = None
 
     @property
     def Database(self):
@@ -13445,6 +13436,14 @@ class QueryTableDataRequest(AbstractModel):
     @Table.setter
     def Table(self, Table):
         self._Table = Table
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
     @property
     def SelectedFields(self):
@@ -13494,25 +13493,17 @@ class QueryTableDataRequest(AbstractModel):
     def CatalogName(self, CatalogName):
         self._CatalogName = CatalogName
 
-    @property
-    def InstanceId(self):
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
 
     def _deserialize(self, params):
         self._Database = params.get("Database")
         self._Table = params.get("Table")
+        self._InstanceId = params.get("InstanceId")
         self._SelectedFields = params.get("SelectedFields")
         self._PageNum = params.get("PageNum")
         self._PageSize = params.get("PageSize")
         self._UserName = params.get("UserName")
         self._PassWord = params.get("PassWord")
         self._CatalogName = params.get("CatalogName")
-        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15832,6 +15823,8 @@ class UpdateDatabaseRequest(AbstractModel):
         :type DbName: str
         :param _Operation: Modify the operation type, such as SET_QUOTA, RENAME, SET_REPLICA_QUOTA, and SET_PROPERTIES. Modify the operation type, such as SET_QUOTA, RENAME, SET_REPLICA_QUOTA, and SET_PROPERTIES.
         :type Operation: str
+        :param _InstanceId: InstanceId
+        :type InstanceId: str
         :param _Quota: Quota value, which is used to set the quota of data volume or replicas.
         :type Quota: str
         :param _NewDbName: New database name, used for renaming operation.
@@ -15842,17 +15835,18 @@ class UpdateDatabaseRequest(AbstractModel):
         :type UserName: str
         :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
         :type PassWord: str
-        :param _InstanceId: InstanceId
-        :type InstanceId: str
+        :param _CatalogName: The name of the catalog, if left unspecified, defaults to "internal".
+        :type CatalogName: str
         """
         self._DbName = None
         self._Operation = None
+        self._InstanceId = None
         self._Quota = None
         self._NewDbName = None
         self._Properties = None
         self._UserName = None
         self._PassWord = None
-        self._InstanceId = None
+        self._CatalogName = None
 
     @property
     def DbName(self):
@@ -15869,6 +15863,14 @@ class UpdateDatabaseRequest(AbstractModel):
     @Operation.setter
     def Operation(self, Operation):
         self._Operation = Operation
+
+    @property
+    def InstanceId(self):
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
     @property
     def Quota(self):
@@ -15911,17 +15913,18 @@ class UpdateDatabaseRequest(AbstractModel):
         self._PassWord = PassWord
 
     @property
-    def InstanceId(self):
-        return self._InstanceId
+    def CatalogName(self):
+        return self._CatalogName
 
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
 
 
     def _deserialize(self, params):
         self._DbName = params.get("DbName")
         self._Operation = params.get("Operation")
+        self._InstanceId = params.get("InstanceId")
         self._Quota = params.get("Quota")
         self._NewDbName = params.get("NewDbName")
         if params.get("Properties") is not None:
@@ -15932,7 +15935,7 @@ class UpdateDatabaseRequest(AbstractModel):
                 self._Properties.append(obj)
         self._UserName = params.get("UserName")
         self._PassWord = params.get("PassWord")
-        self._InstanceId = params.get("InstanceId")
+        self._CatalogName = params.get("CatalogName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16001,33 +16004,33 @@ class UpdateTableSchemaRequest(AbstractModel):
         r"""
         :param _InstanceId: Resource ID, which is the TCHouse-D resource ID used for table creation.
         :type InstanceId: str
-        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
-        :type UserName: str
-        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
-        :type PassWord: str
         :param _DbName: Database name
         :type DbName: str
         :param _TableName: Table name
         :type TableName: str
         :param _Columns: Column
         :type Columns: list of Column
-        :param _IndexInfos: Index information. The inverted index and N-Gram index can be configured through this parameter. The Prefix index is related to the sort key and key column, and do not require additional configuration. Configure bloom_filter_columns in the table attribute when BloomFilter index is required.
-        :type IndexInfos: list of IndexInfo
         :param _Distribution: Bucket information
         :type Distribution: :class:`tencentcloud.cdwdoris.v20211228.models.Distribution`
+        :param _UserName: Use the user who has corresponding permissions for operations. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type UserName: str
+        :param _PassWord: Password corresponding to the user. If the TCHouse-D cluster uses a kernel account registered by a CAM user, you do not need to fill it in.
+        :type PassWord: str
+        :param _IndexInfos: Index information. The inverted index and N-Gram index can be configured through this parameter. The Prefix index is related to the sort key and key column, and do not require additional configuration. Configure bloom_filter_columns in the table attribute when BloomFilter index is required.
+        :type IndexInfos: list of IndexInfo
         :param _TableComment: Table description
         :type TableComment: str
         :param _Properties: Table attribute
         :type Properties: list of Property
         """
         self._InstanceId = None
-        self._UserName = None
-        self._PassWord = None
         self._DbName = None
         self._TableName = None
         self._Columns = None
-        self._IndexInfos = None
         self._Distribution = None
+        self._UserName = None
+        self._PassWord = None
+        self._IndexInfos = None
         self._TableComment = None
         self._Properties = None
 
@@ -16038,22 +16041,6 @@ class UpdateTableSchemaRequest(AbstractModel):
     @InstanceId.setter
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
-
-    @property
-    def UserName(self):
-        return self._UserName
-
-    @UserName.setter
-    def UserName(self, UserName):
-        self._UserName = UserName
-
-    @property
-    def PassWord(self):
-        return self._PassWord
-
-    @PassWord.setter
-    def PassWord(self, PassWord):
-        self._PassWord = PassWord
 
     @property
     def DbName(self):
@@ -16080,20 +16067,36 @@ class UpdateTableSchemaRequest(AbstractModel):
         self._Columns = Columns
 
     @property
-    def IndexInfos(self):
-        return self._IndexInfos
-
-    @IndexInfos.setter
-    def IndexInfos(self, IndexInfos):
-        self._IndexInfos = IndexInfos
-
-    @property
     def Distribution(self):
         return self._Distribution
 
     @Distribution.setter
     def Distribution(self, Distribution):
         self._Distribution = Distribution
+
+    @property
+    def UserName(self):
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def PassWord(self):
+        return self._PassWord
+
+    @PassWord.setter
+    def PassWord(self, PassWord):
+        self._PassWord = PassWord
+
+    @property
+    def IndexInfos(self):
+        return self._IndexInfos
+
+    @IndexInfos.setter
+    def IndexInfos(self, IndexInfos):
+        self._IndexInfos = IndexInfos
 
     @property
     def TableComment(self):
@@ -16114,8 +16117,6 @@ class UpdateTableSchemaRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
-        self._UserName = params.get("UserName")
-        self._PassWord = params.get("PassWord")
         self._DbName = params.get("DbName")
         self._TableName = params.get("TableName")
         if params.get("Columns") is not None:
@@ -16124,15 +16125,17 @@ class UpdateTableSchemaRequest(AbstractModel):
                 obj = Column()
                 obj._deserialize(item)
                 self._Columns.append(obj)
+        if params.get("Distribution") is not None:
+            self._Distribution = Distribution()
+            self._Distribution._deserialize(params.get("Distribution"))
+        self._UserName = params.get("UserName")
+        self._PassWord = params.get("PassWord")
         if params.get("IndexInfos") is not None:
             self._IndexInfos = []
             for item in params.get("IndexInfos"):
                 obj = IndexInfo()
                 obj._deserialize(item)
                 self._IndexInfos.append(obj)
-        if params.get("Distribution") is not None:
-            self._Distribution = Distribution()
-            self._Distribution._deserialize(params.get("Distribution"))
         self._TableComment = params.get("TableComment")
         if params.get("Properties") is not None:
             self._Properties = []
@@ -16160,7 +16163,7 @@ class UpdateTableSchemaResponse(AbstractModel):
         :param _Message: Error message
         :type Message: str
         :param _Success: Is it successful
-        :type Success: str
+        :type Success: bool
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
