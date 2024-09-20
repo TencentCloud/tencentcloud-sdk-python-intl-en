@@ -89,6 +89,11 @@ def test_import_cdwdoris():
     from tencentcloud.cdwdoris.v20211228 import models
 
 
+def test_import_cfg():
+    from tencentcloud.cfg.v20210820 import cfg_client
+    from tencentcloud.cfg.v20210820 import models
+
+
 def test_import_cfs():
     from tencentcloud.cfs.v20190719 import cfs_client
     from tencentcloud.cfs.v20190719 import models

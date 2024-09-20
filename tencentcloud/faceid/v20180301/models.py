@@ -182,14 +182,18 @@ PASSPORT
 DRIVING_LICENSE
 AUTO
         :type CardType: str
-        :param _ImageBase64Front: Base64 value for the front of the document. Supported image formats: PNG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding.
+        :param _ImageBase64Front: Base64 value for the front of the document. Supported image formats: PNG, JPEG. 
+GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding.
 The image download takes no more than 3 seconds. Supported image resolution: 8000*8000. One of ImageUrlFront and ImageBase64 Front of the image must be provided. If both are provided, only ImageUrlFront will be used.
         :type ImageBase64Front: str
-        :param _ImageBase64Back: Base64 value of the reverse side of the document. Supported image formats: PNG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.
+        :param _ImageBase64Back: Base64 value of the reverse side of the document. Supported image formats: PNG, JPEG. 
+GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.
         :type ImageBase64Back: str
-        :param _ImageUrlFront: The URL value on the back of the certificate. Supported image formats: PNG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. One of ImageUrlFront and ImageBase64Front of the image must be provided. If both are provided, only ImageUrlFront will be used.
+        :param _ImageUrlFront: The URL value on the back of the certificate. Supported image formats: PNG, JPEG. 
+GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. One of ImageUrlFront and ImageBase64Front of the image must be provided. If both are provided, only ImageUrlFront will be used.
         :type ImageUrlFront: str
-        :param _ImageUrlBack: The URL value on the back of the certificate. Supported image formats: PNG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.
+        :param _ImageUrlBack: The URL value on the back of the certificate. Supported image formats: PNG, JPEG. 
+GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.
         :type ImageUrlBack: str
         """
         self._Nationality = None
