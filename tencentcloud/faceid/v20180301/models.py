@@ -843,6 +843,39 @@ class ApplyWebVerificationTokenResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AttackRiskDetail(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 
+        :type Type: str
+        """
+        self._Type = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CardInfo(AbstractModel):
     """License OCR result
 
@@ -1851,6 +1884,145 @@ class CreateUploadUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DetectAIFakeFacesRequest(AbstractModel):
+    """DetectAIFakeFaces request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FaceInput: Enter the image or video with a face to be detected, in base64 encoding. Base64 value of the image: The overall image resolution is recommended to be 480x640, and the face size is 100X100 or larger; The image data size after Base64 encoding does not exceed 3M, and only supports jpg and png formats. Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. Base64 value of the video: The size after Base64 encoding does not exceed 8M, and supports mp4, avi, and flv formats. Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. The maximum supported video length is 20s, and the recommended length is 2 to 5s. The recommended video resolution is 480x640, and the frame rate is between 25fps and 30fps.
+        :type FaceInput: str
+        :param _FaceInputType: The type of input is 1- The input type is a picture 2- The input type is a video Others - Return error code InvalidParameter
+        :type FaceInputType: int
+        :param _Encryption: Whether the request information needs to be fully encrypted; Supported encryption algorithms: AES-256-CBC, SM4-GCM; Users with encryption requirements can use this parameter, for details, please click the link on the left.
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        :param _EncryptedBody: Encrypted ciphertext; The data format before encryption is as follows:{"FaceInput":"AAAAA","FaceInputType":1}
+        :type EncryptedBody: str
+        """
+        self._FaceInput = None
+        self._FaceInputType = None
+        self._Encryption = None
+        self._EncryptedBody = None
+
+    @property
+    def FaceInput(self):
+        return self._FaceInput
+
+    @FaceInput.setter
+    def FaceInput(self, FaceInput):
+        self._FaceInput = FaceInput
+
+    @property
+    def FaceInputType(self):
+        return self._FaceInputType
+
+    @FaceInputType.setter
+    def FaceInputType(self, FaceInputType):
+        self._FaceInputType = FaceInputType
+
+    @property
+    def Encryption(self):
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
+    def EncryptedBody(self):
+        return self._EncryptedBody
+
+    @EncryptedBody.setter
+    def EncryptedBody(self, EncryptedBody):
+        self._EncryptedBody = EncryptedBody
+
+
+    def _deserialize(self, params):
+        self._FaceInput = params.get("FaceInput")
+        self._FaceInputType = params.get("FaceInputType")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        self._EncryptedBody = params.get("EncryptedBody")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectAIFakeFacesResponse(AbstractModel):
+    """DetectAIFakeFaces response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AttackRiskLevel: Whether the detected image is an attack: Low: No attack risk Mid: Moderately suspected attack High: Highly suspected attack
+        :type AttackRiskLevel: str
+        :param _AttackRiskDetailList: A list of suspected attack traces detected. Note: When no attack traces are detected, an empty array is returned. This parameter is only used as a reference for result judgment. In actual applications, it is still recommended to use the result of AttackRiskLevel.
+        :type AttackRiskDetailList: list of AttackRiskDetail
+        :param _ExtraInfo: Additional Information
+        :type ExtraInfo: :class:`tencentcloud.faceid.v20180301.models.ExtraInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AttackRiskLevel = None
+        self._AttackRiskDetailList = None
+        self._ExtraInfo = None
+        self._RequestId = None
+
+    @property
+    def AttackRiskLevel(self):
+        return self._AttackRiskLevel
+
+    @AttackRiskLevel.setter
+    def AttackRiskLevel(self, AttackRiskLevel):
+        self._AttackRiskLevel = AttackRiskLevel
+
+    @property
+    def AttackRiskDetailList(self):
+        return self._AttackRiskDetailList
+
+    @AttackRiskDetailList.setter
+    def AttackRiskDetailList(self, AttackRiskDetailList):
+        self._AttackRiskDetailList = AttackRiskDetailList
+
+    @property
+    def ExtraInfo(self):
+        return self._ExtraInfo
+
+    @ExtraInfo.setter
+    def ExtraInfo(self, ExtraInfo):
+        self._ExtraInfo = ExtraInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AttackRiskLevel = params.get("AttackRiskLevel")
+        if params.get("AttackRiskDetailList") is not None:
+            self._AttackRiskDetailList = []
+            for item in params.get("AttackRiskDetailList"):
+                obj = AttackRiskDetail()
+                obj._deserialize(item)
+                self._AttackRiskDetailList.append(obj)
+        if params.get("ExtraInfo") is not None:
+            self._ExtraInfo = ExtraInfo()
+            self._ExtraInfo._deserialize(params.get("ExtraInfo"))
+        self._RequestId = params.get("RequestId")
+
+
 class DetectReflectLivenessAndCompareRequest(AbstractModel):
     """DetectReflectLivenessAndCompare request structure.
 
@@ -2052,6 +2224,125 @@ class EditDetail(AbstractModel):
         self._FieldName = params.get("FieldName")
         self._OriginalFieldValue = params.get("OriginalFieldValue")
         self._RevisedFieldValue = params.get("RevisedFieldValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Encryption(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EncryptList: 
+        :type EncryptList: list of str
+        :param _CiphertextBlob: 
+        :type CiphertextBlob: str
+        :param _Iv: 
+        :type Iv: str
+        :param _Algorithm: 
+        :type Algorithm: str
+        :param _TagList: 
+        :type TagList: list of str
+        """
+        self._EncryptList = None
+        self._CiphertextBlob = None
+        self._Iv = None
+        self._Algorithm = None
+        self._TagList = None
+
+    @property
+    def EncryptList(self):
+        return self._EncryptList
+
+    @EncryptList.setter
+    def EncryptList(self, EncryptList):
+        self._EncryptList = EncryptList
+
+    @property
+    def CiphertextBlob(self):
+        return self._CiphertextBlob
+
+    @CiphertextBlob.setter
+    def CiphertextBlob(self, CiphertextBlob):
+        self._CiphertextBlob = CiphertextBlob
+
+    @property
+    def Iv(self):
+        return self._Iv
+
+    @Iv.setter
+    def Iv(self, Iv):
+        self._Iv = Iv
+
+    @property
+    def Algorithm(self):
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
+    @property
+    def TagList(self):
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+
+    def _deserialize(self, params):
+        self._EncryptList = params.get("EncryptList")
+        self._CiphertextBlob = params.get("CiphertextBlob")
+        self._Iv = params.get("Iv")
+        self._Algorithm = params.get("Algorithm")
+        self._TagList = params.get("TagList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtraInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RetrievalLivenessExtraInfo: 
+        :type RetrievalLivenessExtraInfo: list of RetrievalLivenessExtraInfo
+        """
+        self._RetrievalLivenessExtraInfo = None
+
+    @property
+    def RetrievalLivenessExtraInfo(self):
+        return self._RetrievalLivenessExtraInfo
+
+    @RetrievalLivenessExtraInfo.setter
+    def RetrievalLivenessExtraInfo(self, RetrievalLivenessExtraInfo):
+        self._RetrievalLivenessExtraInfo = RetrievalLivenessExtraInfo
+
+
+    def _deserialize(self, params):
+        if params.get("RetrievalLivenessExtraInfo") is not None:
+            self._RetrievalLivenessExtraInfo = []
+            for item in params.get("RetrievalLivenessExtraInfo"):
+                obj = RetrievalLivenessExtraInfo()
+                obj._deserialize(item)
+                self._RetrievalLivenessExtraInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6471,6 +6762,63 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Citizenship = params.get("Citizenship")
         self._Address = params.get("Address")
         self._PrecinctNo = params.get("PrecinctNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RetrievalLivenessExtraInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HitGroup: 
+        :type HitGroup: str
+        :param _SimilarityScore: 
+        :type SimilarityScore: float
+        :param _HitTemplate: 
+        :type HitTemplate: str
+        """
+        self._HitGroup = None
+        self._SimilarityScore = None
+        self._HitTemplate = None
+
+    @property
+    def HitGroup(self):
+        return self._HitGroup
+
+    @HitGroup.setter
+    def HitGroup(self, HitGroup):
+        self._HitGroup = HitGroup
+
+    @property
+    def SimilarityScore(self):
+        return self._SimilarityScore
+
+    @SimilarityScore.setter
+    def SimilarityScore(self, SimilarityScore):
+        self._SimilarityScore = SimilarityScore
+
+    @property
+    def HitTemplate(self):
+        return self._HitTemplate
+
+    @HitTemplate.setter
+    def HitTemplate(self, HitTemplate):
+        self._HitTemplate = HitTemplate
+
+
+    def _deserialize(self, params):
+        self._HitGroup = params.get("HitGroup")
+        self._SimilarityScore = params.get("SimilarityScore")
+        self._HitTemplate = params.get("HitTemplate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
