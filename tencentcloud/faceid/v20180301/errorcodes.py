@@ -56,6 +56,12 @@ FAILEDOPERATION_COMPARELOWSIMILARITY = 'FailedOperation.CompareLowSimilarity'
 # Error calling the comparison engine API.
 FAILEDOPERATION_COMPARESYSTEMERROR = 'FailedOperation.CompareSystemError'
 
+# The face in the picture is blocked, please upload a picture without any blockage
+FAILEDOPERATION_COVEREDFACE = 'FailedOperation.CoveredFace'
+
+# The service engine call failed, please try again
+FAILEDOPERATION_DETECTENGINESYSTEMERROR = 'FailedOperation.DetectEngineSystemError'
+
 # File download failed.
 FAILEDOPERATION_DOWNLOADERROR = 'FailedOperation.DownLoadError'
 
@@ -70,6 +76,9 @@ FAILEDOPERATION_IMAGEDECODEFAILED = 'FailedOperation.ImageDecodeFailed'
 
 # The image is too large.
 FAILEDOPERATION_IMAGESIZETOOLARGE = 'FailedOperation.ImageSizeTooLarge'
+
+# No complete face was detected. Please enter a complete face image.
+FAILEDOPERATION_INCOMPLETEFACE = 'FailedOperation.IncompleteFace'
 
 # Multiple faces are detected.
 FAILEDOPERATION_LIFEPHOTODETECTFACES = 'FailedOperation.LifePhotoDetectFaces'
@@ -128,6 +137,9 @@ FAILEDOPERATION_LIVESSSYSTEMERROR = 'FailedOperation.LivessSystemError'
 # Video-based real person detection failed.
 FAILEDOPERATION_LIVESSUNKNOWNERROR = 'FailedOperation.LivessUnknownError'
 
+# The image quality is too poor, please check the image quality
+FAILEDOPERATION_POORIMAGEQUALITY = 'FailedOperation.PoorImageQuality'
+
 # Real person detection failed.
 FAILEDOPERATION_SILENTDETECTFAIL = 'FailedOperation.SilentDetectFail'
 
@@ -166,6 +178,9 @@ FAILEDOPERATION_UNKNOWN = 'FailedOperation.UnKnown'
 
 # The service is not activated.
 FAILEDOPERATION_UNOPENERROR = 'FailedOperation.UnOpenError'
+
+# Video decoding abnormality
+FAILEDOPERATION_VIDEODECODEFAILED = 'FailedOperation.VideoDecodeFailed'
 
 # Internal error.
 INTERNALERROR = 'InternalError'
@@ -238,6 +253,9 @@ UNAUTHORIZEDOPERATION_ACTIVATING = 'UnauthorizedOperation.Activating'
 
 # The account is in arrears.
 UNAUTHORIZEDOPERATION_ARREARS = 'UnauthorizedOperation.Arrears'
+
+# The billing status is abnormal.
+UNAUTHORIZEDOPERATION_CHARGESTATUSEXCEPTION = 'UnauthorizedOperation.ChargeStatusException'
 
 # Identity verification has not been completed for the account.
 UNAUTHORIZEDOPERATION_NONAUTHORIZE = 'UnauthorizedOperation.NonAuthorize'

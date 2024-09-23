@@ -50,7 +50,7 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         :type AudioBitrate: int
         :param _VideoBitrate: Video bitrate. Value range: [50000, 40000000]. The value must be an integer multiple of 1000. If this parameter is left empty, the original bitrate will be used.
         :type VideoBitrate: int
-        :param _RateControlMode: Bitrate control mode. Valid values: `CBR`, `ABR` (default)
+        :param _RateControlMode: Bitrate control mode. Valid values: `CBR`, `ABR` (default), `VBR`.
         :type RateControlMode: str
         :param _WatermarkId: Watermark ID
         :type WatermarkId: str
@@ -92,6 +92,10 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         :type MultiAudioTrackEnabled: int
         :param _AudioTracks: Quantity limit 0-20 Valid when MultiAudioTrackEnabled is turned on.
         :type AudioTracks: list of AudioTrackInfo
+        :param _VideoEnhanceEnabled: 
+        :type VideoEnhanceEnabled: int
+        :param _VideoEnhanceSettings: 
+        :type VideoEnhanceSettings: list of VideoEnhanceSetting
         """
         self._Name = None
         self._NeedVideo = None
@@ -123,6 +127,8 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         self._AudioCodecDetails = None
         self._MultiAudioTrackEnabled = None
         self._AudioTracks = None
+        self._VideoEnhanceEnabled = None
+        self._VideoEnhanceSettings = None
 
     @property
     def Name(self):
@@ -364,6 +370,22 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
     def AudioTracks(self, AudioTracks):
         self._AudioTracks = AudioTracks
 
+    @property
+    def VideoEnhanceEnabled(self):
+        return self._VideoEnhanceEnabled
+
+    @VideoEnhanceEnabled.setter
+    def VideoEnhanceEnabled(self, VideoEnhanceEnabled):
+        self._VideoEnhanceEnabled = VideoEnhanceEnabled
+
+    @property
+    def VideoEnhanceSettings(self):
+        return self._VideoEnhanceSettings
+
+    @VideoEnhanceSettings.setter
+    def VideoEnhanceSettings(self, VideoEnhanceSettings):
+        self._VideoEnhanceSettings = VideoEnhanceSettings
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -409,6 +431,13 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
                 obj = AudioTrackInfo()
                 obj._deserialize(item)
                 self._AudioTracks.append(obj)
+        self._VideoEnhanceEnabled = params.get("VideoEnhanceEnabled")
+        if params.get("VideoEnhanceSettings") is not None:
+            self._VideoEnhanceSettings = []
+            for item in params.get("VideoEnhanceSettings"):
+                obj = VideoEnhanceSetting()
+                obj._deserialize(item)
+                self._VideoEnhanceSettings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -735,15 +764,15 @@ class AudioCodecDetail(AbstractModel):
 
 
 class AudioNormalizationSettings(AbstractModel):
-    """
+    """Special configuration information for audio transcoding.
 
     """
 
     def __init__(self):
         r"""
-        :param _AudioNormalizationEnabled: 
+        :param _AudioNormalizationEnabled: Whether to enable special configuration for audio transcoding: 1: Enable 0: Disable, the default value is 0.
         :type AudioNormalizationEnabled: int
-        :param _TargetLUFS: 
+        :param _TargetLUFS: Loudness value, floating-point number, rounded to one decimal place, range -5 to -70.
         :type TargetLUFS: float
         """
         self._AudioNormalizationEnabled = None
@@ -4845,7 +4874,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _SDMCSettings: SDMC key configuration. This parameter is used when `Scheme` is set to `SDMCDRM`.
 Note: This field may return `null`, indicating that no valid value was found.
         :type SDMCSettings: :class:`tencentcloud.mdl.v20200326.models.SDMCSettingsInfo`
-        :param _DrmType: The DRM type. Valid values: `FAIRPLAY`, `WIDEVINE`, `AES128`, `PLAYREADY`. For HLS, this can be `FAIRPLAY` or `AES128` or `PLAYREADY`. For DASH, valid values: `WIDEVINE` or `PLAYREADY`. 
+        :param _DrmType: Optional Types:
+`FAIRPLAY`, `WIDEVINE`, `PLAYREADY`, `AES128`
+
+HLS-TS supports `FAIRPLAY` and `AES128`.
+
+HLS-FMP4 supports `FAIRPLAY`, `WIDEVINE`, `PLAYREADY`, `AES128`, and combinations of two or three from `FAIRPLAY`, `WIDEVINE`, and `PLAYREADY` (concatenated with commas, e.g., "FAIRPLAY,WIDEVINE,PLAYREADY").
+
+DASH supports `WIDEVINE`, `PLAYREADY`, and combinations of `PLAYREADY` and `WIDEVINE` (concatenated with commas, e.g., "PLAYREADY,WIDEVINE").
         :type DrmType: str
         """
         self._State = None
@@ -5705,7 +5741,7 @@ class HlsRemuxSettingsInfo(AbstractModel):
         r"""
         :param _SegmentDuration: Segment duration in ms. Value range: [1000,30000]. Default value: 4000. The value can only be a multiple of 1,000.
         :type SegmentDuration: int
-        :param _SegmentNumber: Number of segments. Value range: [1,30]. Default value: 5.
+        :param _SegmentNumber: Number of segments. Value range: [3,30]. Default value: 5.
         :type SegmentNumber: int
         :param _PdtInsertion: Whether to enable PDT insertion. Valid values: CLOSE/OPEN. Default value: CLOSE.
         :type PdtInsertion: str
@@ -6188,8 +6224,7 @@ Value range: 0 (default) or 10000-600000
 The value must be a multiple of 1,000.
 Note: This field may return `null`, indicating that no valid value was found.
         :type DelayTime: int
-        :param _InputDomain: The domain of an SRT_PUSH address. If this is a request parameter, you don’t need to specify it.
-Note: This field may return `null`, indicating that no valid value was found.
+        :param _InputDomain: The domain name of the SRT_PUSH push address. No need to fill in the input parameter.
         :type InputDomain: str
         :param _UserName: The username, which is used for authentication.
 Note: This field may return `null`, indicating that no valid value was found.
@@ -6197,6 +6232,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param _Password: The password, which is used for authentication.
 Note: This field may return `null`, indicating that no valid value was found.
         :type Password: str
+        :param _ContentType: This parameter is valid when the input source is HLS_PULL and MP4_PULL. It indicates the type of file the source is. The optional values are: LIVE, VOD. Please note that if you do not enter this parameter, the system will take the default input value VOD.
+        :type ContentType: str
         """
         self._AppName = None
         self._StreamName = None
@@ -6207,6 +6244,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._InputDomain = None
         self._UserName = None
         self._Password = None
+        self._ContentType = None
 
     @property
     def AppName(self):
@@ -6280,6 +6318,14 @@ Note: This field may return `null`, indicating that no valid value was found.
     def Password(self, Password):
         self._Password = Password
 
+    @property
+    def ContentType(self):
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
 
     def _deserialize(self, params):
         self._AppName = params.get("AppName")
@@ -6291,6 +6337,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._InputDomain = params.get("InputDomain")
         self._UserName = params.get("UserName")
         self._Password = params.get("Password")
+        self._ContentType = params.get("ContentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6893,9 +6940,13 @@ class ModifyStreamLiveInputRequest(AbstractModel):
         :type Name: str
         :param _SecurityGroupIds: List of the IDs of the security groups to attach
         :type SecurityGroupIds: list of str
-        :param _InputSettings: Input settings
-For the type `RTMP_PUSH`, `RTMP_PULL`, `HLS_PULL`, or `MP4_PULL`, 1 or 2 inputs of the corresponding type can be configured.
+        :param _InputSettings: Input settings. 
+For the type:
+`RTMP_PUSH`, `RTMP_PULL`, `HLS_PULL`,`RTSP_PULL`,`SRT_PULL` or `MP4_PULL`, 1 or 2 inputs of the corresponding type can be configured.
+For the type:
+`SRT_PUSH`, 0 or 2 inputs of the corresponding type can be configured.
 This parameter can be left empty for RTP_PUSH and UDP_PUSH inputs.
+
 Note: If this parameter is not specified or empty, the original input settings will be used.
         :type InputSettings: list of InputSettingInfo
         """
@@ -8950,7 +9001,7 @@ class StreamLiveOutputGroupsInfo(AbstractModel):
         :param _Name: Output group name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the channel level
         :type Name: str
         :param _Type: Output protocol
-Valid values: `HLS`, `DASH`, `HLS_ARCHIVE`, `HLS_STREAM_PACKAGE`, `DASH_STREAM_PACKAGE`, `FRAME_CAPTURE`
+Valid values: `HLS`, `DASH`, `HLS_ARCHIVE`, `DASH_ARCHIVE`,`HLS_STREAM_PACKAGE`, `DASH_STREAM_PACKAGE`, `FRAME_CAPTURE`,`RTP`,`RTMP`.
         :type Type: str
         :param _Outputs: Output information
 If the type is RTMP or RTP, only one output is allowed; if it is HLS or DASH, 1-10 outputs are allowed.
@@ -10052,6 +10103,51 @@ class VideoCodecDetail(AbstractModel):
         
 
 
+class VideoEnhanceSetting(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 
+        :type Type: str
+        :param _Strength: 
+        :type Strength: float
+        """
+        self._Type = None
+        self._Strength = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Strength(self):
+        return self._Strength
+
+    @Strength.setter
+    def Strength(self, Strength):
+        self._Strength = Strength
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Strength = params.get("Strength")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VideoPipelineInputStatistics(AbstractModel):
     """Pipeline input video statistics.
 
@@ -10132,7 +10228,7 @@ class VideoTemplateInfo(AbstractModel):
         :type TopSpeed: str
         :param _BitrateCompressionRatio: Top speed codec compression ratio. Value range: [0,50]. The lower the compression ratio, the higher the image quality.
         :type BitrateCompressionRatio: int
-        :param _RateControlMode: Bitrate control mode. Valid values: `CBR`, `ABR` (default)
+        :param _RateControlMode: Bitrate control mode. Valid values: `CBR`, `ABR` (default), `VBR`.
         :type RateControlMode: str
         :param _WatermarkId: Watermark ID
 Note: This field may return `null`, indicating that no valid value was found.
@@ -10153,6 +10249,10 @@ Note: This field may return `null`, indicating that no valid value was found.
         :type AdditionalRateSettings: :class:`tencentcloud.mdl.v20200326.models.AdditionalRateSetting`
         :param _VideoCodecDetails: Video encoding configuration.
         :type VideoCodecDetails: :class:`tencentcloud.mdl.v20200326.models.VideoCodecDetail`
+        :param _VideoEnhanceEnabled: 
+        :type VideoEnhanceEnabled: int
+        :param _VideoEnhanceSettings: 
+        :type VideoEnhanceSettings: list of VideoEnhanceSetting
         """
         self._Name = None
         self._Vcodec = None
@@ -10172,6 +10272,8 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._RefFramesNum = None
         self._AdditionalRateSettings = None
         self._VideoCodecDetails = None
+        self._VideoEnhanceEnabled = None
+        self._VideoEnhanceSettings = None
 
     @property
     def Name(self):
@@ -10317,6 +10419,22 @@ Note: This field may return `null`, indicating that no valid value was found.
     def VideoCodecDetails(self, VideoCodecDetails):
         self._VideoCodecDetails = VideoCodecDetails
 
+    @property
+    def VideoEnhanceEnabled(self):
+        return self._VideoEnhanceEnabled
+
+    @VideoEnhanceEnabled.setter
+    def VideoEnhanceEnabled(self, VideoEnhanceEnabled):
+        self._VideoEnhanceEnabled = VideoEnhanceEnabled
+
+    @property
+    def VideoEnhanceSettings(self):
+        return self._VideoEnhanceSettings
+
+    @VideoEnhanceSettings.setter
+    def VideoEnhanceSettings(self, VideoEnhanceSettings):
+        self._VideoEnhanceSettings = VideoEnhanceSettings
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -10341,6 +10459,13 @@ Note: This field may return `null`, indicating that no valid value was found.
         if params.get("VideoCodecDetails") is not None:
             self._VideoCodecDetails = VideoCodecDetail()
             self._VideoCodecDetails._deserialize(params.get("VideoCodecDetails"))
+        self._VideoEnhanceEnabled = params.get("VideoEnhanceEnabled")
+        if params.get("VideoEnhanceSettings") is not None:
+            self._VideoEnhanceSettings = []
+            for item in params.get("VideoEnhanceSettings"):
+                obj = VideoEnhanceSetting()
+                obj._deserialize(item)
+                self._VideoEnhanceSettings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

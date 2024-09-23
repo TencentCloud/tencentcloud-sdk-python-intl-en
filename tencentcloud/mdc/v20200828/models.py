@@ -27,7 +27,7 @@ class CreateInput(AbstractModel):
         r"""
         :param _InputName: Input name, which can contain 1 to 32 letters, digits, and underscores.
         :type InputName: str
-        :param _Protocol: Input protocol. Valid values: `SRT`, `RTP`, `RTMP`
+        :param _Protocol: Input protocol. Valid values: `SRT`, `RTP`, `RTMP`, `RTMP_PULL`, `RTSP_PULL `, `HLS_PULL`.
         :type Protocol: str
         :param _Description: Input description. Length: [0, 255].
         :type Description: str
@@ -39,16 +39,18 @@ class CreateInput(AbstractModel):
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTPSettings`
         :param _FailOver: Input failover. Valid values: `OPEN`, `CLOSE` (default)
         :type FailOver: str
-        :param _RTMPPullSettings: 
+        :param _RTMPPullSettings: Input RTMP_PULL configuration information.
         :type RTMPPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTMPPullSettings`
-        :param _RTSPPullSettings: 
+        :param _RTSPPullSettings: Input RTSP_PULL configuration information.
         :type RTSPPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTSPPullSettings`
-        :param _HLSPullSettings: 
+        :param _HLSPullSettings: Input HLS_PULL configuration information.
         :type HLSPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputHLSPullSettings`
-        :param _ResilientStream: 
+        :param _ResilientStream: Delayed broadcast smooth streaming configuration information.
         :type ResilientStream: :class:`tencentcloud.mdc.v20200828.models.ResilientStreamConf`
         :param _SecurityGroupIds: The bound security group IDs.
         :type SecurityGroupIds: list of str
+        :param _Zones: Availability zone, optional. If disaster recovery is enabled, you must enter two different availability zones. Otherwise, you can only enter one availability zone at most.
+        :type Zones: list of str
         """
         self._InputName = None
         self._Protocol = None
@@ -62,6 +64,7 @@ class CreateInput(AbstractModel):
         self._HLSPullSettings = None
         self._ResilientStream = None
         self._SecurityGroupIds = None
+        self._Zones = None
 
     @property
     def InputName(self):
@@ -159,6 +162,14 @@ class CreateInput(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
 
     def _deserialize(self, params):
         self._InputName = params.get("InputName")
@@ -185,6 +196,7 @@ class CreateInput(AbstractModel):
             self._ResilientStream = ResilientStreamConf()
             self._ResilientStream._deserialize(params.get("ResilientStream"))
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._Zones = params.get("Zones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -509,13 +521,14 @@ class CreateOutputInfo(AbstractModel):
         :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTMPSettings`
         :param _RTPSettings: The RTP configuration.
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputInfoRTPSettings`
-        :param _AllowIpList: The IP allowlist. The address must be in CIDR format, such as `0.0.0.0/0`.
-This parameter is valid if `Protocol` is set to `RTMP_PULL`. If it is left empty, there is no restriction on clients’ IP addresses.
+        :param _AllowIpList: IP whitelist, in CIDR format, such as 0.0.0.0/0. This is valid when Protocol is RTMP_PULL, and empty means no restriction on client IP.
         :type AllowIpList: list of str
-        :param _MaxConcurrent: 
+        :param _MaxConcurrent: The maximum number of concurrent stream pulls is 4, and the default value is 4.
         :type MaxConcurrent: int
         :param _SecurityGroupIds: The bound security group IDs.
         :type SecurityGroupIds: list of str
+        :param _Zones: Availability zone: output supports at most one availability zone as input.
+        :type Zones: list of str
         """
         self._OutputName = None
         self._Description = None
@@ -527,6 +540,7 @@ This parameter is valid if `Protocol` is set to `RTMP_PULL`. If it is left empty
         self._AllowIpList = None
         self._MaxConcurrent = None
         self._SecurityGroupIds = None
+        self._Zones = None
 
     @property
     def OutputName(self):
@@ -608,6 +622,14 @@ This parameter is valid if `Protocol` is set to `RTMP_PULL`. If it is left empty
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
 
     def _deserialize(self, params):
         self._OutputName = params.get("OutputName")
@@ -626,6 +648,7 @@ This parameter is valid if `Protocol` is set to `RTMP_PULL`. If it is left empty
         self._AllowIpList = params.get("AllowIpList")
         self._MaxConcurrent = params.get("MaxConcurrent")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._Zones = params.get("Zones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1030,10 +1053,13 @@ class CreateStreamLinkFlowRequest(AbstractModel):
         :type MaxBandwidth: int
         :param _InputGroup: Flow input group
         :type InputGroup: list of CreateInput
+        :param _EventId: The media transmission event ID associated with the Flow. Each flow can only be associated with one event.
+        :type EventId: str
         """
         self._FlowName = None
         self._MaxBandwidth = None
         self._InputGroup = None
+        self._EventId = None
 
     @property
     def FlowName(self):
@@ -1059,6 +1085,14 @@ class CreateStreamLinkFlowRequest(AbstractModel):
     def InputGroup(self, InputGroup):
         self._InputGroup = InputGroup
 
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
 
     def _deserialize(self, params):
         self._FlowName = params.get("FlowName")
@@ -1069,6 +1103,7 @@ class CreateStreamLinkFlowRequest(AbstractModel):
                 obj = CreateInput()
                 obj._deserialize(item)
                 self._InputGroup.append(obj)
+        self._EventId = params.get("EventId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1088,7 +1123,96 @@ class CreateStreamLinkFlowResponse(AbstractModel):
         r"""
         :param _Info: Information of the created flow
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = DescribeFlow()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateStreamLinkInputRequest(AbstractModel):
+    """CreateStreamLinkInput request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: StreamLink stream ID.
+        :type FlowId: str
+        :param _InputGroup: The input group of the Flow.
+        :type InputGroup: list of CreateInput
+        """
+        self._FlowId = None
+        self._InputGroup = None
+
+    @property
+    def FlowId(self):
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def InputGroup(self):
+        return self._InputGroup
+
+    @InputGroup.setter
+    def InputGroup(self, InputGroup):
+        self._InputGroup = InputGroup
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        if params.get("InputGroup") is not None:
+            self._InputGroup = []
+            for item in params.get("InputGroup"):
+                obj = CreateInput()
+                obj._deserialize(item)
+                self._InputGroup.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamLinkInputResponse(AbstractModel):
+    """CreateStreamLinkInput response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: Created Flow information.
+        :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Info = None
@@ -1174,7 +1298,7 @@ class CreateStreamLinkOutputInfoResponse(AbstractModel):
         r"""
         :param _Info: The information of the created output.
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeOutput`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Info = None
@@ -1244,7 +1368,7 @@ class DeleteStreamLinkFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -1314,7 +1438,7 @@ class DeleteStreamLinkOutputResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -1352,6 +1476,8 @@ class DescribeFlow(AbstractModel):
         :param _OutputGroup: Output group.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type OutputGroup: list of DescribeOutput
+        :param _EventId: EventId of the StreamLink event associated with this Flow.
+        :type EventId: str
         """
         self._FlowId = None
         self._FlowName = None
@@ -1359,6 +1485,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._MaxBandwidth = None
         self._InputGroup = None
         self._OutputGroup = None
+        self._EventId = None
 
     @property
     def FlowId(self):
@@ -1408,6 +1535,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
     def OutputGroup(self, OutputGroup):
         self._OutputGroup = OutputGroup
 
+    @property
+    def EventId(self):
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
@@ -1426,6 +1561,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
                 obj = DescribeOutput()
                 obj._deserialize(item)
                 self._OutputGroup.append(obj)
+        self._EventId = params.get("EventId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3016,7 +3152,7 @@ class DescribeStreamLinkFlowLogsResponse(AbstractModel):
         :type TotalNum: int
         :param _TotalPage: The total number of pages.
         :type TotalPage: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Infos = None
@@ -3205,7 +3341,7 @@ class DescribeStreamLinkFlowMediaStatisticsResponse(AbstractModel):
         r"""
         :param _Infos: A list of the media data.
         :type Infos: list of FlowMediaInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Infos = None
@@ -3306,7 +3442,7 @@ class DescribeStreamLinkFlowRealtimeStatusResponse(AbstractModel):
         :type Timestamp: int
         :param _Datas: A list of the real-time data.
         :type Datas: list of FlowRealtimeStatusItem
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Timestamp = None
@@ -3391,7 +3527,7 @@ class DescribeStreamLinkFlowResponse(AbstractModel):
         r"""
         :param _Info: Configuration information of a flow
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeFlow`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Info = None
@@ -3537,7 +3673,7 @@ class DescribeStreamLinkFlowSRTStatisticsResponse(AbstractModel):
         r"""
         :param _Infos: A list of the SRT streaming performance data.
         :type Infos: list of FlowSRTInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Infos = None
@@ -3686,7 +3822,7 @@ class DescribeStreamLinkFlowStatisticsResponse(AbstractModel):
         r"""
         :param _Infos: A list of the media data.
         :type Infos: list of FlowStatisticsArray
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Infos = None
@@ -3781,7 +3917,7 @@ class DescribeStreamLinkFlowsResponse(AbstractModel):
         :type TotalNum: int
         :param _TotalPage: Total number of pages
         :type TotalPage: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Infos = None
@@ -3869,7 +4005,7 @@ class DescribeStreamLinkRegionsResponse(AbstractModel):
         r"""
         :param _Info: StreamLink region information
         :type Info: :class:`tencentcloud.mdc.v20200828.models.StreamLinkRegionInfo`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Info = None
@@ -5185,16 +5321,18 @@ If there is an SRT input, the output must be SRT.
         :type Protocol: str
         :param _FailOver: Whether to enable input failover. Valid values: OPEN, CLOSE.
         :type FailOver: str
-        :param _RTMPPullSettings: 
+        :param _RTMPPullSettings: Configuration information for RTMP_PULL.
         :type RTMPPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTMPPullSettings`
-        :param _RTSPPullSettings: 
+        :param _RTSPPullSettings: Configuration information of RTSP_PULL.
         :type RTSPPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputRTSPPullSettings`
-        :param _HLSPullSettings: 
+        :param _HLSPullSettings: HLS_PULL configuration information.
         :type HLSPullSettings: :class:`tencentcloud.mdc.v20200828.models.CreateInputHLSPullSettings`
-        :param _ResilientStream: 
+        :param _ResilientStream: Delayed broadcast smooth streaming configuration information.
         :type ResilientStream: :class:`tencentcloud.mdc.v20200828.models.ResilientStreamConf`
-        :param _SecurityGroupIds: The bound security group IDs. 
+        :param _SecurityGroupIds: The ID of the input security group to bind. Only one security group can be associated.
         :type SecurityGroupIds: list of str
+        :param _Zones: Availability zone, optional, supports up to two availability zones. For interfaces that need to be changed, the second availability zone will participate in resource allocation. This is effective if disaster recovery is enabled for input or RTSP_PULL protocol switching is involved (addresses will be reallocated).
+        :type Zones: list of str
         """
         self._InputId = None
         self._InputName = None
@@ -5209,6 +5347,7 @@ If there is an SRT input, the output must be SRT.
         self._HLSPullSettings = None
         self._ResilientStream = None
         self._SecurityGroupIds = None
+        self._Zones = None
 
     @property
     def InputId(self):
@@ -5314,6 +5453,14 @@ If there is an SRT input, the output must be SRT.
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def Zones(self):
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
 
     def _deserialize(self, params):
         self._InputId = params.get("InputId")
@@ -5341,6 +5488,7 @@ If there is an SRT input, the output must be SRT.
             self._ResilientStream = ResilientStreamConf()
             self._ResilientStream._deserialize(params.get("ResilientStream"))
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._Zones = params.get("Zones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5372,10 +5520,9 @@ class ModifyOutputInfo(AbstractModel):
         :type RTPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputInfoRTPSettings`
         :param _RTMPSettings: The RTMP relay configuration.
         :type RTMPSettings: :class:`tencentcloud.mdc.v20200828.models.CreateOutputRTMPSettings`
-        :param _AllowIpList: The IP allowlist. The address must be in CIDR format, such as `0.0.0.0/0`.
-This parameter is valid if `Protocol` is set to `RTMP_PULL`. If it is left empty, there is no restriction on clients’ IP addresses.
+        :param _AllowIpList: IP whitelist, in CIDR format, such as 0.0.0.0/0. This is valid when Protocol is RTMP_PULL, and empty means no restriction on client IP.
         :type AllowIpList: list of str
-        :param _MaxConcurrent: 
+        :param _MaxConcurrent: The maximum number of concurrent stream pulls is 4, and the default value is 4.
         :type MaxConcurrent: int
         :param _SecurityGroupIds: The bound security group IDs.
         :type SecurityGroupIds: list of str
@@ -5551,7 +5698,7 @@ class ModifyStreamLinkFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -5625,7 +5772,7 @@ class ModifyStreamLinkInputResponse(AbstractModel):
         r"""
         :param _Info: The input information after modification.
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeInput`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Info = None
@@ -5711,7 +5858,7 @@ class ModifyStreamLinkOutputInfoResponse(AbstractModel):
         r"""
         :param _Info: The output configuration after modification.
         :type Info: :class:`tencentcloud.mdc.v20200828.models.DescribeOutput`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Info = None
@@ -6240,7 +6387,7 @@ class StartStreamLinkFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -6298,7 +6445,7 @@ class StopStreamLinkFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None

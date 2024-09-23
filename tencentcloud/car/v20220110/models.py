@@ -87,6 +87,255 @@ class ApplicationBaseInfo(AbstractModel):
         
 
 
+class ApplicationConcurrentPackage(AbstractModel):
+    """Cloud application concurrency packs.
+
+    """
+
+
+class ApplicationProject(AbstractModel):
+    """Cloud application project type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Project ID.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectId: str
+        :param _Name: Project name.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _Description: Project description.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Description: str
+        :param _Type: Concurrency type required for project operation.S1: concurrency for rendering small cloud applications.M1: concurrency for rendering medium cloud applications.L1: concurrency for rendering large cloud applications.L2: concurrency for rendering large cloud applications.XL2: concurrency for rendering extra large cloud applications.MM1_HD: concurrency for performance-based cloud ARM (HD).MM1_FHD: concurrency for performance-based cloud ARM (FHD).Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _ApplicationId: Cloud application ID.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ApplicationId: str
+        :param _IsPreload: Pre-launch.Note: This field may return null, indicating that no valid values can be obtained.
+        :type IsPreload: bool
+        :param _Amount: Number of concurrencies already configured.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Amount: int
+        :param _Using: Number of concurrencies in use.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Using: int
+        :param _ApplicationStatus: Application status. NoConcurrent: no concurrency pack configured; Online: activated. Cloud application status: applicationCreating: creating; applicationCreateFail: creation failed; applicationDeleting: deleting; applicationNoConfigured: startup parameters not configured.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ApplicationStatus: str
+        :param _ApplicationParams: Application startup parameters.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ApplicationParams: str
+        :param _CreateTime: Creation time.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param _ApplicationName: Application name.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ApplicationName: str
+        :param _Resolution: Resolution, in the format of widthxheight, such as 1920x1080.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Resolution: str
+        :param _ProjectType: Project type.SHARED: shared by all applications.EXCLUSIVE (default value): dedicated for one application.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectType: str
+        :param _Purpose: Purpose.EXPERIENCE: Experience.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Purpose: str
+        :param _ApplicationRegions: Application distribution area. Standard areas are as follows. ap-chinese-mainland: Chinese mainland; na-north-america: North America; eu-frankfurt: Frankfurt; ap-mumbai: Mumbai; ap-tokyo: Tokyo; ap-seoul: Seoul; ap-singapore: Singapore; ap-bangkok: Bangkok; ap-hongkong: Hong Kong (China). Fusion areas are as follows. me-middle-east-fusion: Middle East; na-north-america-fusion: North America; sa-south-america-fusion: South America; ap-tokyo-fusion: Tokyo; ap-seoul-fusion: Seoul; eu-frankfurt-fusion: Frankfurt; ap-singapore-fusion: Singapore; ap-hongkong-fusion: Hong Kong (China).Note: This field may return null, indicating that no valid values can be obtained.
+        :type ApplicationRegions: list of str
+        :param _ConcurrentRegions: Concurrency area. Standard areas are as follows. ap-chinese-mainland: Chinese mainland; na-north-america: North America; eu-frankfurt: Frankfurt; ap-mumbai: Mumbai; ap-tokyo: Tokyo; ap-seoul: Seoul; ap-singapore: Singapore; ap-bangkok: Bangkok; ap-hongkong: Hong Kong (China). Fusion areas are as follows. me-middle-east-fusion: Middle East; na-north-america-fusion: North America; sa-south-america-fusion: South America; ap-tokyo-fusion: Tokyo; ap-seoul-fusion: Seoul; eu-frankfurt-fusion: Frankfurt; ap-singapore-fusion: Singapore; ap-hongkong-fusion: Hong Kong (China).Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConcurrentRegions: list of str
+        :param _ProjectCategory: Project category.DESKTOP: desktop (default value).MOBILE: mobile.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectCategory: str
+        """
+        self._ProjectId = None
+        self._Name = None
+        self._Description = None
+        self._Type = None
+        self._ApplicationId = None
+        self._IsPreload = None
+        self._Amount = None
+        self._Using = None
+        self._ApplicationStatus = None
+        self._ApplicationParams = None
+        self._CreateTime = None
+        self._ApplicationName = None
+        self._Resolution = None
+        self._ProjectType = None
+        self._Purpose = None
+        self._ApplicationRegions = None
+        self._ConcurrentRegions = None
+        self._ProjectCategory = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def IsPreload(self):
+        return self._IsPreload
+
+    @IsPreload.setter
+    def IsPreload(self, IsPreload):
+        self._IsPreload = IsPreload
+
+    @property
+    def Amount(self):
+        return self._Amount
+
+    @Amount.setter
+    def Amount(self, Amount):
+        self._Amount = Amount
+
+    @property
+    def Using(self):
+        return self._Using
+
+    @Using.setter
+    def Using(self, Using):
+        self._Using = Using
+
+    @property
+    def ApplicationStatus(self):
+        return self._ApplicationStatus
+
+    @ApplicationStatus.setter
+    def ApplicationStatus(self, ApplicationStatus):
+        self._ApplicationStatus = ApplicationStatus
+
+    @property
+    def ApplicationParams(self):
+        return self._ApplicationParams
+
+    @ApplicationParams.setter
+    def ApplicationParams(self, ApplicationParams):
+        self._ApplicationParams = ApplicationParams
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ApplicationName(self):
+        return self._ApplicationName
+
+    @ApplicationName.setter
+    def ApplicationName(self, ApplicationName):
+        self._ApplicationName = ApplicationName
+
+    @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def ProjectType(self):
+        return self._ProjectType
+
+    @ProjectType.setter
+    def ProjectType(self, ProjectType):
+        self._ProjectType = ProjectType
+
+    @property
+    def Purpose(self):
+        return self._Purpose
+
+    @Purpose.setter
+    def Purpose(self, Purpose):
+        self._Purpose = Purpose
+
+    @property
+    def ApplicationRegions(self):
+        return self._ApplicationRegions
+
+    @ApplicationRegions.setter
+    def ApplicationRegions(self, ApplicationRegions):
+        self._ApplicationRegions = ApplicationRegions
+
+    @property
+    def ConcurrentRegions(self):
+        return self._ConcurrentRegions
+
+    @ConcurrentRegions.setter
+    def ConcurrentRegions(self, ConcurrentRegions):
+        self._ConcurrentRegions = ConcurrentRegions
+
+    @property
+    def ProjectCategory(self):
+        return self._ProjectCategory
+
+    @ProjectCategory.setter
+    def ProjectCategory(self, ProjectCategory):
+        self._ProjectCategory = ProjectCategory
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Type = params.get("Type")
+        self._ApplicationId = params.get("ApplicationId")
+        self._IsPreload = params.get("IsPreload")
+        self._Amount = params.get("Amount")
+        self._Using = params.get("Using")
+        self._ApplicationStatus = params.get("ApplicationStatus")
+        self._ApplicationParams = params.get("ApplicationParams")
+        self._CreateTime = params.get("CreateTime")
+        self._ApplicationName = params.get("ApplicationName")
+        self._Resolution = params.get("Resolution")
+        self._ProjectType = params.get("ProjectType")
+        self._Purpose = params.get("Purpose")
+        self._ApplicationRegions = params.get("ApplicationRegions")
+        self._ConcurrentRegions = params.get("ConcurrentRegions")
+        self._ProjectCategory = params.get("ProjectCategory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplyConcurrentRequest(AbstractModel):
     """ApplyConcurrent request structure.
 
@@ -190,6 +439,425 @@ class ApplyConcurrentResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class BackgroundImage(AbstractModel):
+    """Background image information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _COSFileId: ID of the COS file.Note: This field may return null, indicating that no valid values can be obtained.
+        :type COSFileId: str
+        :param _URL: Download URL.Note: This field may return null, indicating that no valid values can be obtained.
+        :type URL: str
+        :param _Name: Name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _CreateTime: Creation time.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        """
+        self._COSFileId = None
+        self._URL = None
+        self._Name = None
+        self._CreateTime = None
+
+    @property
+    def COSFileId(self):
+        return self._COSFileId
+
+    @COSFileId.setter
+    def COSFileId(self, COSFileId):
+        self._COSFileId = COSFileId
+
+    @property
+    def URL(self):
+        return self._URL
+
+    @URL.setter
+    def URL(self, URL):
+        self._URL = URL
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._COSFileId = params.get("COSFileId")
+        self._URL = params.get("URL")
+        self._Name = params.get("Name")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindConcurrentPackagesToProjectRequest(AbstractModel):
+    """BindConcurrentPackagesToProject request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConcurrentIds: Concurrency pack ID list.
+        :type ConcurrentIds: list of str
+        :param _ProjectId: Cloud application project ID.
+        :type ProjectId: str
+        """
+        self._ConcurrentIds = None
+        self._ProjectId = None
+
+    @property
+    def ConcurrentIds(self):
+        return self._ConcurrentIds
+
+    @ConcurrentIds.setter
+    def ConcurrentIds(self, ConcurrentIds):
+        self._ConcurrentIds = ConcurrentIds
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._ConcurrentIds = params.get("ConcurrentIds")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindConcurrentPackagesToProjectResponse(AbstractModel):
+    """BindConcurrentPackagesToProject response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateApplicationProjectRequest(AbstractModel):
+    """CreateApplicationProject request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Project name, which is user-defined.
+        :type Name: str
+        :param _ApplicationId: Bound application ID.
+        :type ApplicationId: str
+        :param _Type: Concurrency type required for project operation.S1: concurrency for rendering small cloud applications.M1: concurrency for rendering medium cloud applications.L1: concurrency for rendering large cloud applications.L2: concurrency for rendering large cloud applications.XL2: concurrency for rendering extra large cloud applications.MM1_HD: concurrency for performance-based cloud ARM (HD).MM1_FHD: concurrency for performance-based cloud ARM (FHD).
+        :type Type: str
+        :param _IsPreload: Whether to enable warm-up. The default value is false.
+        :type IsPreload: bool
+        :param _ApplicationParams: Application startup parameters.
+        :type ApplicationParams: str
+        :param _Resolution: Resolution, in the format of widthxheight, such as 1920x1080.
+        :type Resolution: str
+        :param _ProjectType: Project type.SHARED: shared by all applications.EXCLUSIVE (default value): dedicated for one application.
+        :type ProjectType: str
+        :param _FPS: Frame rate.
+        :type FPS: int
+        :param _PreloadDuration: Waiting time for application pre-launch.
+        :type PreloadDuration: str
+        :param _ReconnectTimeout: Waiting time for reconnection.
+        :type ReconnectTimeout: str
+        :param _MinBitrate: Minimum bitrate, in Mbps.
+        :type MinBitrate: int
+        :param _MaxBitrate: Maximum bitrate, in Mbps.
+        :type MaxBitrate: int
+        :param _UpstreamAudioOption: Upstream audio options.DisableMixIntoStreamPush: not mixing upstream audio in streaming.
+        :type UpstreamAudioOption: str
+        :param _VideoEncodeConfig: Video encoding configuration.
+        :type VideoEncodeConfig: :class:`tencentcloud.car.v20220110.models.VideoEncodeConfig`
+        :param _XRMaxWidth: Upper limit of the XR application resolution.If the project concurrency type is L or L2, the upper limit is 5000; if the project concurrency type is XL2, the upper limit is 6000.
+        :type XRMaxWidth: int
+        :param _BackgroundImageCOSFileId: ID of the background image COS file.
+        :type BackgroundImageCOSFileId: str
+        :param _ProjectCategory: Project category.DESKTOP: desktop (default value).MOBILE: mobile.
+        :type ProjectCategory: str
+        :param _DisableVideoCodecs: Disabled code list.
+        :type DisableVideoCodecs: list of str
+        """
+        self._Name = None
+        self._ApplicationId = None
+        self._Type = None
+        self._IsPreload = None
+        self._ApplicationParams = None
+        self._Resolution = None
+        self._ProjectType = None
+        self._FPS = None
+        self._PreloadDuration = None
+        self._ReconnectTimeout = None
+        self._MinBitrate = None
+        self._MaxBitrate = None
+        self._UpstreamAudioOption = None
+        self._VideoEncodeConfig = None
+        self._XRMaxWidth = None
+        self._BackgroundImageCOSFileId = None
+        self._ProjectCategory = None
+        self._DisableVideoCodecs = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ApplicationId(self):
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IsPreload(self):
+        return self._IsPreload
+
+    @IsPreload.setter
+    def IsPreload(self, IsPreload):
+        self._IsPreload = IsPreload
+
+    @property
+    def ApplicationParams(self):
+        return self._ApplicationParams
+
+    @ApplicationParams.setter
+    def ApplicationParams(self, ApplicationParams):
+        self._ApplicationParams = ApplicationParams
+
+    @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def ProjectType(self):
+        return self._ProjectType
+
+    @ProjectType.setter
+    def ProjectType(self, ProjectType):
+        self._ProjectType = ProjectType
+
+    @property
+    def FPS(self):
+        return self._FPS
+
+    @FPS.setter
+    def FPS(self, FPS):
+        self._FPS = FPS
+
+    @property
+    def PreloadDuration(self):
+        return self._PreloadDuration
+
+    @PreloadDuration.setter
+    def PreloadDuration(self, PreloadDuration):
+        self._PreloadDuration = PreloadDuration
+
+    @property
+    def ReconnectTimeout(self):
+        return self._ReconnectTimeout
+
+    @ReconnectTimeout.setter
+    def ReconnectTimeout(self, ReconnectTimeout):
+        self._ReconnectTimeout = ReconnectTimeout
+
+    @property
+    def MinBitrate(self):
+        return self._MinBitrate
+
+    @MinBitrate.setter
+    def MinBitrate(self, MinBitrate):
+        self._MinBitrate = MinBitrate
+
+    @property
+    def MaxBitrate(self):
+        return self._MaxBitrate
+
+    @MaxBitrate.setter
+    def MaxBitrate(self, MaxBitrate):
+        self._MaxBitrate = MaxBitrate
+
+    @property
+    def UpstreamAudioOption(self):
+        return self._UpstreamAudioOption
+
+    @UpstreamAudioOption.setter
+    def UpstreamAudioOption(self, UpstreamAudioOption):
+        self._UpstreamAudioOption = UpstreamAudioOption
+
+    @property
+    def VideoEncodeConfig(self):
+        return self._VideoEncodeConfig
+
+    @VideoEncodeConfig.setter
+    def VideoEncodeConfig(self, VideoEncodeConfig):
+        self._VideoEncodeConfig = VideoEncodeConfig
+
+    @property
+    def XRMaxWidth(self):
+        return self._XRMaxWidth
+
+    @XRMaxWidth.setter
+    def XRMaxWidth(self, XRMaxWidth):
+        self._XRMaxWidth = XRMaxWidth
+
+    @property
+    def BackgroundImageCOSFileId(self):
+        return self._BackgroundImageCOSFileId
+
+    @BackgroundImageCOSFileId.setter
+    def BackgroundImageCOSFileId(self, BackgroundImageCOSFileId):
+        self._BackgroundImageCOSFileId = BackgroundImageCOSFileId
+
+    @property
+    def ProjectCategory(self):
+        return self._ProjectCategory
+
+    @ProjectCategory.setter
+    def ProjectCategory(self, ProjectCategory):
+        self._ProjectCategory = ProjectCategory
+
+    @property
+    def DisableVideoCodecs(self):
+        return self._DisableVideoCodecs
+
+    @DisableVideoCodecs.setter
+    def DisableVideoCodecs(self, DisableVideoCodecs):
+        self._DisableVideoCodecs = DisableVideoCodecs
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ApplicationId = params.get("ApplicationId")
+        self._Type = params.get("Type")
+        self._IsPreload = params.get("IsPreload")
+        self._ApplicationParams = params.get("ApplicationParams")
+        self._Resolution = params.get("Resolution")
+        self._ProjectType = params.get("ProjectType")
+        self._FPS = params.get("FPS")
+        self._PreloadDuration = params.get("PreloadDuration")
+        self._ReconnectTimeout = params.get("ReconnectTimeout")
+        self._MinBitrate = params.get("MinBitrate")
+        self._MaxBitrate = params.get("MaxBitrate")
+        self._UpstreamAudioOption = params.get("UpstreamAudioOption")
+        if params.get("VideoEncodeConfig") is not None:
+            self._VideoEncodeConfig = VideoEncodeConfig()
+            self._VideoEncodeConfig._deserialize(params.get("VideoEncodeConfig"))
+        self._XRMaxWidth = params.get("XRMaxWidth")
+        self._BackgroundImageCOSFileId = params.get("BackgroundImageCOSFileId")
+        self._ProjectCategory = params.get("ProjectCategory")
+        self._DisableVideoCodecs = params.get("DisableVideoCodecs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateApplicationProjectResponse(AbstractModel):
+    """CreateApplicationProject response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Generated project ID.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ProjectId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ProjectId = None
+        self._RequestId = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
         self._RequestId = params.get("RequestId")
 
 
@@ -599,6 +1267,64 @@ class CreateSessionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ServerSession = params.get("ServerSession")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteApplicationProjectsRequest(AbstractModel):
+    """DeleteApplicationProjects request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectIds: ID list of cloud application projects.
+        :type ProjectIds: list of str
+        """
+        self._ProjectIds = None
+
+    @property
+    def ProjectIds(self):
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
+
+    def _deserialize(self, params):
+        self._ProjectIds = params.get("ProjectIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteApplicationProjectsResponse(AbstractModel):
+    """DeleteApplicationProjects response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -1046,6 +1772,344 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
 
 
+class DescribeApplicationProjectAdvancedConfigRequest(AbstractModel):
+    """DescribeApplicationProjectAdvancedConfig request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Application project ID.
+        :type ProjectId: str
+        """
+        self._ProjectId = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationProjectAdvancedConfigResponse(AbstractModel):
+    """DescribeApplicationProjectAdvancedConfig response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplicationParams: Application startup parameters.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ApplicationParams: str
+        :param _Resolution: Resolution, in the format of widthxheight, such as 1920x1080.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Resolution: str
+        :param _FPS: Frame rate. Valid values: 0, 30, 60.Note: This field may return null, indicating that no valid values can be obtained.
+        :type FPS: int
+        :param _MinBitrate: Minimum bitrate, in Mbps.Note: This field may return null, indicating that no valid values can be obtained.
+        :type MinBitrate: int
+        :param _MaxBitrate: Maximum bitrate, in Mbps.Note: This field may return null, indicating that no valid values can be obtained.
+        :type MaxBitrate: int
+        :param _PreloadDuration: Waiting time for application pre-launch.Note: This field may return null, indicating that no valid values can be obtained.
+        :type PreloadDuration: str
+        :param _ReconnectTimeout: Waiting time for reconnection.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReconnectTimeout: str
+        :param _UpstreamAudioOption: Upstream audio options.DisableMixIntoStreamPush: not mixing upstream audio in streaming.Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpstreamAudioOption: str
+        :param _VideoEncodeConfig: Video encoding configuration.Note: This field may return null, indicating that no valid values can be obtained.
+        :type VideoEncodeConfig: :class:`tencentcloud.car.v20220110.models.VideoEncodeConfig`
+        :param _XRMaxWidth: Upper limit of the XR application resolution.If the project concurrency type is L or L2, the upper limit is 5000; if the project concurrency type is XL2, the upper limit is 6000.Note: This field may return null, indicating that no valid values can be obtained.
+        :type XRMaxWidth: int
+        :param _BackgroundImage: Background image information.Note: This field may return null, indicating that no valid values can be obtained.
+        :type BackgroundImage: :class:`tencentcloud.car.v20220110.models.BackgroundImage`
+        :param _DisableVideoCodecs: Disabled code list.Note: This field may return null, indicating that no valid values can be obtained.
+        :type DisableVideoCodecs: list of str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._ApplicationParams = None
+        self._Resolution = None
+        self._FPS = None
+        self._MinBitrate = None
+        self._MaxBitrate = None
+        self._PreloadDuration = None
+        self._ReconnectTimeout = None
+        self._UpstreamAudioOption = None
+        self._VideoEncodeConfig = None
+        self._XRMaxWidth = None
+        self._BackgroundImage = None
+        self._DisableVideoCodecs = None
+        self._RequestId = None
+
+    @property
+    def ApplicationParams(self):
+        return self._ApplicationParams
+
+    @ApplicationParams.setter
+    def ApplicationParams(self, ApplicationParams):
+        self._ApplicationParams = ApplicationParams
+
+    @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def FPS(self):
+        return self._FPS
+
+    @FPS.setter
+    def FPS(self, FPS):
+        self._FPS = FPS
+
+    @property
+    def MinBitrate(self):
+        return self._MinBitrate
+
+    @MinBitrate.setter
+    def MinBitrate(self, MinBitrate):
+        self._MinBitrate = MinBitrate
+
+    @property
+    def MaxBitrate(self):
+        return self._MaxBitrate
+
+    @MaxBitrate.setter
+    def MaxBitrate(self, MaxBitrate):
+        self._MaxBitrate = MaxBitrate
+
+    @property
+    def PreloadDuration(self):
+        return self._PreloadDuration
+
+    @PreloadDuration.setter
+    def PreloadDuration(self, PreloadDuration):
+        self._PreloadDuration = PreloadDuration
+
+    @property
+    def ReconnectTimeout(self):
+        return self._ReconnectTimeout
+
+    @ReconnectTimeout.setter
+    def ReconnectTimeout(self, ReconnectTimeout):
+        self._ReconnectTimeout = ReconnectTimeout
+
+    @property
+    def UpstreamAudioOption(self):
+        return self._UpstreamAudioOption
+
+    @UpstreamAudioOption.setter
+    def UpstreamAudioOption(self, UpstreamAudioOption):
+        self._UpstreamAudioOption = UpstreamAudioOption
+
+    @property
+    def VideoEncodeConfig(self):
+        return self._VideoEncodeConfig
+
+    @VideoEncodeConfig.setter
+    def VideoEncodeConfig(self, VideoEncodeConfig):
+        self._VideoEncodeConfig = VideoEncodeConfig
+
+    @property
+    def XRMaxWidth(self):
+        return self._XRMaxWidth
+
+    @XRMaxWidth.setter
+    def XRMaxWidth(self, XRMaxWidth):
+        self._XRMaxWidth = XRMaxWidth
+
+    @property
+    def BackgroundImage(self):
+        return self._BackgroundImage
+
+    @BackgroundImage.setter
+    def BackgroundImage(self, BackgroundImage):
+        self._BackgroundImage = BackgroundImage
+
+    @property
+    def DisableVideoCodecs(self):
+        return self._DisableVideoCodecs
+
+    @DisableVideoCodecs.setter
+    def DisableVideoCodecs(self, DisableVideoCodecs):
+        self._DisableVideoCodecs = DisableVideoCodecs
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ApplicationParams = params.get("ApplicationParams")
+        self._Resolution = params.get("Resolution")
+        self._FPS = params.get("FPS")
+        self._MinBitrate = params.get("MinBitrate")
+        self._MaxBitrate = params.get("MaxBitrate")
+        self._PreloadDuration = params.get("PreloadDuration")
+        self._ReconnectTimeout = params.get("ReconnectTimeout")
+        self._UpstreamAudioOption = params.get("UpstreamAudioOption")
+        if params.get("VideoEncodeConfig") is not None:
+            self._VideoEncodeConfig = VideoEncodeConfig()
+            self._VideoEncodeConfig._deserialize(params.get("VideoEncodeConfig"))
+        self._XRMaxWidth = params.get("XRMaxWidth")
+        if params.get("BackgroundImage") is not None:
+            self._BackgroundImage = BackgroundImage()
+            self._BackgroundImage._deserialize(params.get("BackgroundImage"))
+        self._DisableVideoCodecs = params.get("DisableVideoCodecs")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeApplicationProjectsRequest(AbstractModel):
+    """DescribeApplicationProjects request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: Subscript.
+        :type Offset: int
+        :param _Limit: Number of entries per page.
+        :type Limit: int
+        :param _Filters: Filter.
+        :type Filters: list of Filter
+        :param _ProjectCategory: Project category.DESKTOP: desktop (default value).MOBILE: mobile.
+        :type ProjectCategory: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._ProjectCategory = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def ProjectCategory(self):
+        return self._ProjectCategory
+
+    @ProjectCategory.setter
+    def ProjectCategory(self, ProjectCategory):
+        self._ProjectCategory = ProjectCategory
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._ProjectCategory = params.get("ProjectCategory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationProjectsResponse(AbstractModel):
+    """DescribeApplicationProjects response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Projects: Project list.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Projects: list of ApplicationProject
+        :param _Total: Total number.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Total: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Projects = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Projects(self):
+        return self._Projects
+
+    @Projects.setter
+    def Projects(self, Projects):
+        self._Projects = Projects
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Projects") is not None:
+            self._Projects = []
+            for item in params.get("Projects"):
+                obj = ApplicationProject()
+                obj._deserialize(item)
+                self._Projects.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeApplicationStatusRequest(AbstractModel):
     """DescribeApplicationStatus request structure.
 
@@ -1275,6 +2339,179 @@ class DescribeConcurrentCountResponse(AbstractModel):
     def _deserialize(self, params):
         self._Total = params.get("Total")
         self._Running = params.get("Running")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConcurrentPackagesRequest(AbstractModel):
+    """DescribeConcurrentPackages request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: Subscript.
+        :type Offset: int
+        :param _Limit: Number of entries per page.
+        :type Limit: int
+        :param _Filters: Filter List
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConcurrentPackagesResponse(AbstractModel):
+    """DescribeConcurrentPackages response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total number.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Total: int
+        :param _ConcurrentPackages: Concurrency pack list.Note: This field may return null, indicating that no valid values can be obtained.
+        :type ConcurrentPackages: list of ApplicationConcurrentPackage
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._ConcurrentPackages = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def ConcurrentPackages(self):
+        return self._ConcurrentPackages
+
+    @ConcurrentPackages.setter
+    def ConcurrentPackages(self, ConcurrentPackages):
+        self._ConcurrentPackages = ConcurrentPackages
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("ConcurrentPackages") is not None:
+            self._ConcurrentPackages = []
+            for item in params.get("ConcurrentPackages"):
+                obj = ApplicationConcurrentPackage()
+                obj._deserialize(item)
+                self._ConcurrentPackages.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConcurrentSummaryRequest(AbstractModel):
+    """DescribeConcurrentSummary request structure.
+
+    """
+
+
+class DescribeConcurrentSummaryResponse(AbstractModel):
+    """DescribeConcurrentSummary response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrepaidConcurrentTotal: Total number of prepaid (monthly subscription) concurrencies.
+        :type PrepaidConcurrentTotal: int
+        :param _HourlyRemainDuration: Remaining duration of an hourly package.
+        :type HourlyRemainDuration: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._PrepaidConcurrentTotal = None
+        self._HourlyRemainDuration = None
+        self._RequestId = None
+
+    @property
+    def PrepaidConcurrentTotal(self):
+        return self._PrepaidConcurrentTotal
+
+    @PrepaidConcurrentTotal.setter
+    def PrepaidConcurrentTotal(self, PrepaidConcurrentTotal):
+        self._PrepaidConcurrentTotal = PrepaidConcurrentTotal
+
+    @property
+    def HourlyRemainDuration(self):
+        return self._HourlyRemainDuration
+
+    @HourlyRemainDuration.setter
+    def HourlyRemainDuration(self, HourlyRemainDuration):
+        self._HourlyRemainDuration = HourlyRemainDuration
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PrepaidConcurrentTotal = params.get("PrepaidConcurrentTotal")
+        self._HourlyRemainDuration = params.get("HourlyRemainDuration")
         self._RequestId = params.get("RequestId")
 
 
@@ -1684,6 +2921,258 @@ class ModifyApplicationBaseInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyApplicationProjectRequest(AbstractModel):
+    """ModifyApplicationProject request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Project ID returned by cloud.
+        :type ProjectId: str
+        :param _Name: Project name.
+        :type Name: str
+        :param _Type: Concurrency type required for project operation.
+        :type Type: str
+        :param _IsPreload: Whether to Enable Pre-launch.
+        :type IsPreload: bool
+        :param _ApplicationParams: Application startup parameters.
+        :type ApplicationParams: str
+        :param _Description: Cloud application project description.
+        :type Description: str
+        :param _Resolution: Resolution, in the format of widthxheight, such as 1920x1080.
+        :type Resolution: str
+        :param _FPS: Frame rate.
+        :type FPS: int
+        :param _PreloadDuration: Waiting time for application pre-launch.
+        :type PreloadDuration: str
+        :param _ReconnectTimeout: Waiting time for reconnection.
+        :type ReconnectTimeout: str
+        :param _MinBitrate: Minimum bitrate, in Mbps.
+        :type MinBitrate: int
+        :param _MaxBitrate: Maximum bitrate, in Mbps.
+        :type MaxBitrate: int
+        :param _UpstreamAudioOption: Upstream audio options.DisableMixIntoStreamPush: not mixing upstream audio in streaming.
+        :type UpstreamAudioOption: str
+        :param _VideoEncodeConfig: Video encoding configuration.
+        :type VideoEncodeConfig: :class:`tencentcloud.car.v20220110.models.VideoEncodeConfig`
+        :param _XRMaxWidth: Upper limit of the XR application resolution.If the project concurrency type is L or L2, the upper limit is 5000; if the project concurrency type is XL2, the upper limit is 6000.
+        :type XRMaxWidth: int
+        :param _BackgroundImageCOSFileId: ID of the background image COS file.
+        :type BackgroundImageCOSFileId: str
+        :param _DisableVideoCodecs: Disabled code list.
+        :type DisableVideoCodecs: list of str
+        """
+        self._ProjectId = None
+        self._Name = None
+        self._Type = None
+        self._IsPreload = None
+        self._ApplicationParams = None
+        self._Description = None
+        self._Resolution = None
+        self._FPS = None
+        self._PreloadDuration = None
+        self._ReconnectTimeout = None
+        self._MinBitrate = None
+        self._MaxBitrate = None
+        self._UpstreamAudioOption = None
+        self._VideoEncodeConfig = None
+        self._XRMaxWidth = None
+        self._BackgroundImageCOSFileId = None
+        self._DisableVideoCodecs = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IsPreload(self):
+        return self._IsPreload
+
+    @IsPreload.setter
+    def IsPreload(self, IsPreload):
+        self._IsPreload = IsPreload
+
+    @property
+    def ApplicationParams(self):
+        return self._ApplicationParams
+
+    @ApplicationParams.setter
+    def ApplicationParams(self, ApplicationParams):
+        self._ApplicationParams = ApplicationParams
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Resolution(self):
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def FPS(self):
+        return self._FPS
+
+    @FPS.setter
+    def FPS(self, FPS):
+        self._FPS = FPS
+
+    @property
+    def PreloadDuration(self):
+        return self._PreloadDuration
+
+    @PreloadDuration.setter
+    def PreloadDuration(self, PreloadDuration):
+        self._PreloadDuration = PreloadDuration
+
+    @property
+    def ReconnectTimeout(self):
+        return self._ReconnectTimeout
+
+    @ReconnectTimeout.setter
+    def ReconnectTimeout(self, ReconnectTimeout):
+        self._ReconnectTimeout = ReconnectTimeout
+
+    @property
+    def MinBitrate(self):
+        return self._MinBitrate
+
+    @MinBitrate.setter
+    def MinBitrate(self, MinBitrate):
+        self._MinBitrate = MinBitrate
+
+    @property
+    def MaxBitrate(self):
+        return self._MaxBitrate
+
+    @MaxBitrate.setter
+    def MaxBitrate(self, MaxBitrate):
+        self._MaxBitrate = MaxBitrate
+
+    @property
+    def UpstreamAudioOption(self):
+        return self._UpstreamAudioOption
+
+    @UpstreamAudioOption.setter
+    def UpstreamAudioOption(self, UpstreamAudioOption):
+        self._UpstreamAudioOption = UpstreamAudioOption
+
+    @property
+    def VideoEncodeConfig(self):
+        return self._VideoEncodeConfig
+
+    @VideoEncodeConfig.setter
+    def VideoEncodeConfig(self, VideoEncodeConfig):
+        self._VideoEncodeConfig = VideoEncodeConfig
+
+    @property
+    def XRMaxWidth(self):
+        return self._XRMaxWidth
+
+    @XRMaxWidth.setter
+    def XRMaxWidth(self, XRMaxWidth):
+        self._XRMaxWidth = XRMaxWidth
+
+    @property
+    def BackgroundImageCOSFileId(self):
+        return self._BackgroundImageCOSFileId
+
+    @BackgroundImageCOSFileId.setter
+    def BackgroundImageCOSFileId(self, BackgroundImageCOSFileId):
+        self._BackgroundImageCOSFileId = BackgroundImageCOSFileId
+
+    @property
+    def DisableVideoCodecs(self):
+        return self._DisableVideoCodecs
+
+    @DisableVideoCodecs.setter
+    def DisableVideoCodecs(self, DisableVideoCodecs):
+        self._DisableVideoCodecs = DisableVideoCodecs
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._IsPreload = params.get("IsPreload")
+        self._ApplicationParams = params.get("ApplicationParams")
+        self._Description = params.get("Description")
+        self._Resolution = params.get("Resolution")
+        self._FPS = params.get("FPS")
+        self._PreloadDuration = params.get("PreloadDuration")
+        self._ReconnectTimeout = params.get("ReconnectTimeout")
+        self._MinBitrate = params.get("MinBitrate")
+        self._MaxBitrate = params.get("MaxBitrate")
+        self._UpstreamAudioOption = params.get("UpstreamAudioOption")
+        if params.get("VideoEncodeConfig") is not None:
+            self._VideoEncodeConfig = VideoEncodeConfig()
+            self._VideoEncodeConfig._deserialize(params.get("VideoEncodeConfig"))
+        self._XRMaxWidth = params.get("XRMaxWidth")
+        self._BackgroundImageCOSFileId = params.get("BackgroundImageCOSFileId")
+        self._DisableVideoCodecs = params.get("DisableVideoCodecs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyApplicationProjectResponse(AbstractModel):
+    """ModifyApplicationProject response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyApplicationVersionRequest(AbstractModel):
     """ModifyApplicationVersion request structure.
 
@@ -1766,6 +3255,76 @@ class ModifyApplicationVersionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyConcurrentPackageRequest(AbstractModel):
+    """ModifyConcurrentPackage request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConcurrentId: Concurrency pack ID.
+        :type ConcurrentId: str
+        :param _Name: Concurrency pack name.
+        :type Name: str
+        """
+        self._ConcurrentId = None
+        self._Name = None
+
+    @property
+    def ConcurrentId(self):
+        return self._ConcurrentId
+
+    @ConcurrentId.setter
+    def ConcurrentId(self, ConcurrentId):
+        self._ConcurrentId = ConcurrentId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._ConcurrentId = params.get("ConcurrentId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConcurrentPackageResponse(AbstractModel):
+    """ModifyConcurrentPackage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyMobileApplicationInfoRequest(AbstractModel):
     """ModifyMobileApplicationInfo request structure.
 
@@ -1813,6 +3372,64 @@ class ModifyMobileApplicationInfoRequest(AbstractModel):
 
 class ModifyMobileApplicationInfoResponse(AbstractModel):
     """ModifyMobileApplicationInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResetConcurrentPackagesRequest(AbstractModel):
+    """ResetConcurrentPackages request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConcurrentPackageIds: Concurrency pack ID array.
+        :type ConcurrentPackageIds: list of str
+        """
+        self._ConcurrentPackageIds = None
+
+    @property
+    def ConcurrentPackageIds(self):
+        return self._ConcurrentPackageIds
+
+    @ConcurrentPackageIds.setter
+    def ConcurrentPackageIds(self, ConcurrentPackageIds):
+        self._ConcurrentPackageIds = ConcurrentPackageIds
+
+
+    def _deserialize(self, params):
+        self._ConcurrentPackageIds = params.get("ConcurrentPackageIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetConcurrentPackagesResponse(AbstractModel):
+    """ResetConcurrentPackages response structure.
 
     """
 
@@ -2098,6 +3715,76 @@ class StopPublishStreamRequest(AbstractModel):
 
 class StopPublishStreamResponse(AbstractModel):
     """StopPublishStream response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UnbindConcurrentPackagesFromProjectRequest(AbstractModel):
+    """UnbindConcurrentPackagesFromProject request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConcurrentIds: Concurrency pack ID list.
+        :type ConcurrentIds: list of str
+        :param _ProjectId: Cloud application project ID.
+        :type ProjectId: str
+        """
+        self._ConcurrentIds = None
+        self._ProjectId = None
+
+    @property
+    def ConcurrentIds(self):
+        return self._ConcurrentIds
+
+    @ConcurrentIds.setter
+    def ConcurrentIds(self, ConcurrentIds):
+        self._ConcurrentIds = ConcurrentIds
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._ConcurrentIds = params.get("ConcurrentIds")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindConcurrentPackagesFromProjectResponse(AbstractModel):
+    """UnbindConcurrentPackagesFromProject response structure.
 
     """
 
@@ -2765,6 +4452,39 @@ class UserMobileApplicationInfo(AbstractModel):
                 obj._deserialize(item)
                 self._ApplicationVersions.append(obj)
         self._ApplicationNature = params.get("ApplicationNature")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoEncodeConfig(AbstractModel):
+    """Video encoding configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StreamPushGOPSeconds: Streaming GOP length, in seconds.Note: This field may return null, indicating that no valid values can be obtained.
+        :type StreamPushGOPSeconds: int
+        """
+        self._StreamPushGOPSeconds = None
+
+    @property
+    def StreamPushGOPSeconds(self):
+        return self._StreamPushGOPSeconds
+
+    @StreamPushGOPSeconds.setter
+    def StreamPushGOPSeconds(self, StreamPushGOPSeconds):
+        self._StreamPushGOPSeconds = StreamPushGOPSeconds
+
+
+    def _deserialize(self, params):
+        self._StreamPushGOPSeconds = params.get("StreamPushGOPSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

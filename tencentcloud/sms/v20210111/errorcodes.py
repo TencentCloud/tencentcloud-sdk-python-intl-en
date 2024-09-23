@@ -158,6 +158,9 @@ INVALIDPARAMETERVALUE_INVALIDINTERNATIONAL = 'InvalidParameterValue.InvalidInter
 # `SignPurpose` field check failed. See the description of this field in the API description. If necessary, you can contact [SMS Helper](https://intl.cloud.tencent.com/document/product/382/3773?from_cn_redirect=1#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
 INVALIDPARAMETERVALUE_INVALIDSIGNPURPOSE = 'InvalidParameterValue.InvalidSignPurpose'
 
+# SmsType field check failed. See the description of this field in the API description. If necessary, you can contact [SMS Helper](https://www.tencentcloud.com/document/product/382/3773?has_map=2#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
+INVALIDPARAMETERVALUE_INVALIDSMSTYPE = 'InvalidParameterValue.InvalidSmsType'
+
 # Invalid start time or end time. The reason may be that the requested `SendDateTime` is later than `EndDateTime`.
 INVALIDPARAMETERVALUE_INVALIDSTARTTIME = 'InvalidParameterValue.InvalidStartTime'
 
@@ -199,6 +202,9 @@ INVALIDPARAMETERVALUE_TEMPLATEPARAMETERLENGTHLIMIT = 'InvalidParameterValue.Temp
 
 # The template content contains sensitive words. For more information, please see [Body Template Review Standards](https://intl.cloud.tencent.com/document/product/382/39023?from_cn_redirect=1).
 INVALIDPARAMETERVALUE_TEMPLATEWITHDIRTYWORDS = 'InvalidParameterValue.TemplateWithDirtyWords'
+
+# Notification and Marketing SMS template of Chinese mainland sms are not allowed to have variables. If necessary, you can contact [SMS Helper](https://www.tencentcloud.com/document/product/382/3773?has_map=2#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) for assistance.
+INVALIDPARAMETERVALUE_UNSUPPORTEDTEMPLATEVARIABLE = 'InvalidParameterValue.UnsupportedTemplateVariable'
 
 # The number of Global SMS messages sent to the specified country/region per day has exceeded the preset limit. You can adjust the message sending limit in **Application Management** > **Basic Configuration** in the SMS console.
 LIMITEXCEEDED_APPCOUNTRYORREGIONDAILYLIMIT = 'LimitExceeded.AppCountryOrRegionDailyLimit'

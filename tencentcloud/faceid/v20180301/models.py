@@ -173,6 +173,7 @@ THA: Thailand
 MYS: Malaysia
 SGP: Singapore
 JPN: Japan
+TWN:Taiwan
 AUTO: Automatic Identification
         :type Nationality: str
         :param _CardType: Please select the type of ID document. The supported options are:
@@ -181,14 +182,18 @@ PASSPORT
 DRIVING_LICENSE
 AUTO
         :type CardType: str
-        :param _ImageBase64Front: Base64 value for the front of the document. Supported image formats: PNG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding.
+        :param _ImageBase64Front: Base64 value for the front of the document. Supported image formats: PNG, JPEG. 
+GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding.
 The image download takes no more than 3 seconds. Supported image resolution: 8000*8000. One of ImageUrlFront and ImageBase64 Front of the image must be provided. If both are provided, only ImageUrlFront will be used.
         :type ImageBase64Front: str
-        :param _ImageBase64Back: Base64 value of the reverse side of the document. Supported image formats: PNG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.
+        :param _ImageBase64Back: Base64 value of the reverse side of the document. Supported image formats: PNG, JPEG. 
+GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.
         :type ImageBase64Back: str
-        :param _ImageUrlFront: The URL value on the back of the certificate. Supported image formats: PNG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. One of ImageUrlFront and ImageBase64Front of the image must be provided. If both are provided, only ImageUrlFront will be used.
+        :param _ImageUrlFront: The URL value on the back of the certificate. Supported image formats: PNG, JPEG. 
+GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. One of ImageUrlFront and ImageBase64Front of the image must be provided. If both are provided, only ImageUrlFront will be used.
         :type ImageUrlFront: str
-        :param _ImageUrlBack: The URL value on the back of the certificate. Supported image formats: PNG, JPEG. GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.
+        :param _ImageUrlBack: The URL value on the back of the certificate. Supported image formats: PNG, JPEG. 
+GIF format is not supported yet. Supported image size: The downloaded image cannot exceed 5M after Base64 encoding. The image download takes no more than 3 seconds. Maximum supported image resolution: 8000*8000. For some certificates, one of ImageUrlBack and ImageBase64Back must be provided. If both are provided, only ImageUrlBack will be used.
         :type ImageUrlBack: str
         """
         self._Nationality = None
@@ -838,6 +843,39 @@ class ApplyWebVerificationTokenResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AttackRiskDetail(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 
+        :type Type: str
+        """
+        self._Type = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CardInfo(AbstractModel):
     """License OCR result
 
@@ -887,6 +925,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _MacaoIDCard: Macao ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MacaoIDCard: :class:`tencentcloud.faceid.v20180301.models.MacaoIDCard`
+        :param _TaiWanIDCard: TaiWan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaiWanIDCard: :class:`tencentcloud.faceid.v20180301.models.TaiWanIDCard`
+        :param _JapanIDCard: Japan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JapanIDCard: :class:`tencentcloud.faceid.v20180301.models.JapanIDCard`
         """
         self._HKIDCard = None
         self._MLIDCard = None
@@ -902,6 +946,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ThailandIDCard = None
         self._SingaporeIDCard = None
         self._MacaoIDCard = None
+        self._TaiWanIDCard = None
+        self._JapanIDCard = None
 
     @property
     def HKIDCard(self):
@@ -1015,6 +1061,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def MacaoIDCard(self, MacaoIDCard):
         self._MacaoIDCard = MacaoIDCard
 
+    @property
+    def TaiWanIDCard(self):
+        return self._TaiWanIDCard
+
+    @TaiWanIDCard.setter
+    def TaiWanIDCard(self, TaiWanIDCard):
+        self._TaiWanIDCard = TaiWanIDCard
+
+    @property
+    def JapanIDCard(self):
+        return self._JapanIDCard
+
+    @JapanIDCard.setter
+    def JapanIDCard(self, JapanIDCard):
+        self._JapanIDCard = JapanIDCard
+
 
     def _deserialize(self, params):
         if params.get("HKIDCard") is not None:
@@ -1059,6 +1121,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("MacaoIDCard") is not None:
             self._MacaoIDCard = MacaoIDCard()
             self._MacaoIDCard._deserialize(params.get("MacaoIDCard"))
+        if params.get("TaiWanIDCard") is not None:
+            self._TaiWanIDCard = TaiWanIDCard()
+            self._TaiWanIDCard._deserialize(params.get("TaiWanIDCard"))
+        if params.get("JapanIDCard") is not None:
+            self._JapanIDCard = JapanIDCard()
+            self._JapanIDCard._deserialize(params.get("JapanIDCard"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1816,6 +1884,145 @@ class CreateUploadUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DetectAIFakeFacesRequest(AbstractModel):
+    """DetectAIFakeFaces request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FaceInput: Enter the image or video with a face to be detected, in base64 encoding. Base64 value of the image: The overall image resolution is recommended to be 480x640, and the face size is 100X100 or larger; The image data size after Base64 encoding does not exceed 3M, and only supports jpg and png formats. Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. Base64 value of the video: The size after Base64 encoding does not exceed 8M, and supports mp4, avi, and flv formats. Please use standard Base64 encoding (use = for padding). Refer to RFC4648 for encoding specifications. The maximum supported video length is 20s, and the recommended length is 2 to 5s. The recommended video resolution is 480x640, and the frame rate is between 25fps and 30fps.
+        :type FaceInput: str
+        :param _FaceInputType: The type of input is 1- The input type is a picture 2- The input type is a video Others - Return error code InvalidParameter
+        :type FaceInputType: int
+        :param _Encryption: Whether the request information needs to be fully encrypted; Supported encryption algorithms: AES-256-CBC, SM4-GCM; Users with encryption requirements can use this parameter, for details, please click the link on the left.
+        :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
+        :param _EncryptedBody: Encrypted ciphertext; The data format before encryption is as follows:{"FaceInput":"AAAAA","FaceInputType":1}
+        :type EncryptedBody: str
+        """
+        self._FaceInput = None
+        self._FaceInputType = None
+        self._Encryption = None
+        self._EncryptedBody = None
+
+    @property
+    def FaceInput(self):
+        return self._FaceInput
+
+    @FaceInput.setter
+    def FaceInput(self, FaceInput):
+        self._FaceInput = FaceInput
+
+    @property
+    def FaceInputType(self):
+        return self._FaceInputType
+
+    @FaceInputType.setter
+    def FaceInputType(self, FaceInputType):
+        self._FaceInputType = FaceInputType
+
+    @property
+    def Encryption(self):
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
+    def EncryptedBody(self):
+        return self._EncryptedBody
+
+    @EncryptedBody.setter
+    def EncryptedBody(self, EncryptedBody):
+        self._EncryptedBody = EncryptedBody
+
+
+    def _deserialize(self, params):
+        self._FaceInput = params.get("FaceInput")
+        self._FaceInputType = params.get("FaceInputType")
+        if params.get("Encryption") is not None:
+            self._Encryption = Encryption()
+            self._Encryption._deserialize(params.get("Encryption"))
+        self._EncryptedBody = params.get("EncryptedBody")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DetectAIFakeFacesResponse(AbstractModel):
+    """DetectAIFakeFaces response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AttackRiskLevel: Whether the detected image is an attack: Low: No attack risk Mid: Moderately suspected attack High: Highly suspected attack
+        :type AttackRiskLevel: str
+        :param _AttackRiskDetailList: A list of suspected attack traces detected. Note: When no attack traces are detected, an empty array is returned. This parameter is only used as a reference for result judgment. In actual applications, it is still recommended to use the result of AttackRiskLevel.
+        :type AttackRiskDetailList: list of AttackRiskDetail
+        :param _ExtraInfo: Additional Information
+        :type ExtraInfo: :class:`tencentcloud.faceid.v20180301.models.ExtraInfo`
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._AttackRiskLevel = None
+        self._AttackRiskDetailList = None
+        self._ExtraInfo = None
+        self._RequestId = None
+
+    @property
+    def AttackRiskLevel(self):
+        return self._AttackRiskLevel
+
+    @AttackRiskLevel.setter
+    def AttackRiskLevel(self, AttackRiskLevel):
+        self._AttackRiskLevel = AttackRiskLevel
+
+    @property
+    def AttackRiskDetailList(self):
+        return self._AttackRiskDetailList
+
+    @AttackRiskDetailList.setter
+    def AttackRiskDetailList(self, AttackRiskDetailList):
+        self._AttackRiskDetailList = AttackRiskDetailList
+
+    @property
+    def ExtraInfo(self):
+        return self._ExtraInfo
+
+    @ExtraInfo.setter
+    def ExtraInfo(self, ExtraInfo):
+        self._ExtraInfo = ExtraInfo
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AttackRiskLevel = params.get("AttackRiskLevel")
+        if params.get("AttackRiskDetailList") is not None:
+            self._AttackRiskDetailList = []
+            for item in params.get("AttackRiskDetailList"):
+                obj = AttackRiskDetail()
+                obj._deserialize(item)
+                self._AttackRiskDetailList.append(obj)
+        if params.get("ExtraInfo") is not None:
+            self._ExtraInfo = ExtraInfo()
+            self._ExtraInfo._deserialize(params.get("ExtraInfo"))
+        self._RequestId = params.get("RequestId")
+
+
 class DetectReflectLivenessAndCompareRequest(AbstractModel):
     """DetectReflectLivenessAndCompare request structure.
 
@@ -2017,6 +2224,125 @@ class EditDetail(AbstractModel):
         self._FieldName = params.get("FieldName")
         self._OriginalFieldValue = params.get("OriginalFieldValue")
         self._RevisedFieldValue = params.get("RevisedFieldValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Encryption(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EncryptList: 
+        :type EncryptList: list of str
+        :param _CiphertextBlob: 
+        :type CiphertextBlob: str
+        :param _Iv: 
+        :type Iv: str
+        :param _Algorithm: 
+        :type Algorithm: str
+        :param _TagList: 
+        :type TagList: list of str
+        """
+        self._EncryptList = None
+        self._CiphertextBlob = None
+        self._Iv = None
+        self._Algorithm = None
+        self._TagList = None
+
+    @property
+    def EncryptList(self):
+        return self._EncryptList
+
+    @EncryptList.setter
+    def EncryptList(self, EncryptList):
+        self._EncryptList = EncryptList
+
+    @property
+    def CiphertextBlob(self):
+        return self._CiphertextBlob
+
+    @CiphertextBlob.setter
+    def CiphertextBlob(self, CiphertextBlob):
+        self._CiphertextBlob = CiphertextBlob
+
+    @property
+    def Iv(self):
+        return self._Iv
+
+    @Iv.setter
+    def Iv(self, Iv):
+        self._Iv = Iv
+
+    @property
+    def Algorithm(self):
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
+    @property
+    def TagList(self):
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+
+    def _deserialize(self, params):
+        self._EncryptList = params.get("EncryptList")
+        self._CiphertextBlob = params.get("CiphertextBlob")
+        self._Iv = params.get("Iv")
+        self._Algorithm = params.get("Algorithm")
+        self._TagList = params.get("TagList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtraInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RetrievalLivenessExtraInfo: 
+        :type RetrievalLivenessExtraInfo: list of RetrievalLivenessExtraInfo
+        """
+        self._RetrievalLivenessExtraInfo = None
+
+    @property
+    def RetrievalLivenessExtraInfo(self):
+        return self._RetrievalLivenessExtraInfo
+
+    @RetrievalLivenessExtraInfo.setter
+    def RetrievalLivenessExtraInfo(self, RetrievalLivenessExtraInfo):
+        self._RetrievalLivenessExtraInfo = RetrievalLivenessExtraInfo
+
+
+    def _deserialize(self, params):
+        if params.get("RetrievalLivenessExtraInfo") is not None:
+            self._RetrievalLivenessExtraInfo = []
+            for item in params.get("RetrievalLivenessExtraInfo"):
+                obj = RetrievalLivenessExtraInfo()
+                obj._deserialize(item)
+                self._RetrievalLivenessExtraInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4129,6 +4455,105 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class JapanIDCard(AbstractModel):
+    """Japan ID card.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FullName: Full name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FullName: str
+        :param _LicenseNumber: License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LicenseNumber: str
+        :param _Age: Age
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Age: str
+        :param _Birthday: Birthday
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Birthday: str
+        :param _ExpirationDate: Expire date
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ExpirationDate: str
+        :param _FormattedAddress: Address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FormattedAddress: str
+        """
+        self._FullName = None
+        self._LicenseNumber = None
+        self._Age = None
+        self._Birthday = None
+        self._ExpirationDate = None
+        self._FormattedAddress = None
+
+    @property
+    def FullName(self):
+        return self._FullName
+
+    @FullName.setter
+    def FullName(self, FullName):
+        self._FullName = FullName
+
+    @property
+    def LicenseNumber(self):
+        return self._LicenseNumber
+
+    @LicenseNumber.setter
+    def LicenseNumber(self, LicenseNumber):
+        self._LicenseNumber = LicenseNumber
+
+    @property
+    def Age(self):
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Birthday(self):
+        return self._Birthday
+
+    @Birthday.setter
+    def Birthday(self, Birthday):
+        self._Birthday = Birthday
+
+    @property
+    def ExpirationDate(self):
+        return self._ExpirationDate
+
+    @ExpirationDate.setter
+    def ExpirationDate(self, ExpirationDate):
+        self._ExpirationDate = ExpirationDate
+
+    @property
+    def FormattedAddress(self):
+        return self._FormattedAddress
+
+    @FormattedAddress.setter
+    def FormattedAddress(self, FormattedAddress):
+        self._FormattedAddress = FormattedAddress
+
+
+    def _deserialize(self, params):
+        self._FullName = params.get("FullName")
+        self._LicenseNumber = params.get("LicenseNumber")
+        self._Age = params.get("Age")
+        self._Birthday = params.get("Birthday")
+        self._ExpirationDate = params.get("ExpirationDate")
+        self._FormattedAddress = params.get("FormattedAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LivenessCompareRequest(AbstractModel):
     """LivenessCompare request structure.
 
@@ -4768,6 +5193,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _MainlandIDCard: Mainland ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type MainlandIDCard: :class:`tencentcloud.faceid.v20180301.models.MainlandIDCard`
+        :param _JapanIDCard: Japan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JapanIDCard: :class:`tencentcloud.faceid.v20180301.models.JapanIDCard`
+        :param _TaiWanIDCard: Taiwan ID Card
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TaiWanIDCard: :class:`tencentcloud.faceid.v20180301.models.TaiWanIDCard`
         """
         self._HKIDCard = None
         self._MLIDCard = None
@@ -4784,6 +5215,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._SingaporeIDCard = None
         self._MacaoIDCard = None
         self._MainlandIDCard = None
+        self._JapanIDCard = None
+        self._TaiWanIDCard = None
 
     @property
     def HKIDCard(self):
@@ -4905,6 +5338,22 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def MainlandIDCard(self, MainlandIDCard):
         self._MainlandIDCard = MainlandIDCard
 
+    @property
+    def JapanIDCard(self):
+        return self._JapanIDCard
+
+    @JapanIDCard.setter
+    def JapanIDCard(self, JapanIDCard):
+        self._JapanIDCard = JapanIDCard
+
+    @property
+    def TaiWanIDCard(self):
+        return self._TaiWanIDCard
+
+    @TaiWanIDCard.setter
+    def TaiWanIDCard(self, TaiWanIDCard):
+        self._TaiWanIDCard = TaiWanIDCard
+
 
     def _deserialize(self, params):
         if params.get("HKIDCard") is not None:
@@ -4952,6 +5401,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("MainlandIDCard") is not None:
             self._MainlandIDCard = MainlandIDCard()
             self._MainlandIDCard._deserialize(params.get("MainlandIDCard"))
+        if params.get("JapanIDCard") is not None:
+            self._JapanIDCard = JapanIDCard()
+            self._JapanIDCard._deserialize(params.get("JapanIDCard"))
+        if params.get("TaiWanIDCard") is not None:
+            self._TaiWanIDCard = TaiWanIDCard()
+            self._TaiWanIDCard._deserialize(params.get("TaiWanIDCard"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5669,6 +6124,8 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type CardImageBase64: str
         :param _CardInfo: OCR result of the ID card.
         :type CardInfo: :class:`tencentcloud.faceid.v20180301.models.CardInfo`
+        :param _NormalCardInfo: OCR result of the ID card.
+        :type NormalCardInfo: :class:`tencentcloud.faceid.v20180301.models.NormalCardInfo`
         :param _RequestId: The request id
         :type RequestId: str
         :param _CardCutImageBase64: Base64 of cropped image of ID card
@@ -5679,6 +6136,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._IsPass = None
         self._CardImageBase64 = None
         self._CardInfo = None
+        self._NormalCardInfo = None
         self._RequestId = None
         self._CardCutImageBase64 = None
         self._CardBackCutImageBase64 = None
@@ -5701,11 +6159,23 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CardInfo(self):
+        warnings.warn("parameter `CardInfo` is deprecated", DeprecationWarning) 
+
         return self._CardInfo
 
     @CardInfo.setter
     def CardInfo(self, CardInfo):
+        warnings.warn("parameter `CardInfo` is deprecated", DeprecationWarning) 
+
         self._CardInfo = CardInfo
+
+    @property
+    def NormalCardInfo(self):
+        return self._NormalCardInfo
+
+    @NormalCardInfo.setter
+    def NormalCardInfo(self, NormalCardInfo):
+        self._NormalCardInfo = NormalCardInfo
 
     @property
     def RequestId(self):
@@ -5738,6 +6208,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("CardInfo") is not None:
             self._CardInfo = CardInfo()
             self._CardInfo._deserialize(params.get("CardInfo"))
+        if params.get("NormalCardInfo") is not None:
+            self._NormalCardInfo = NormalCardInfo()
+            self._NormalCardInfo._deserialize(params.get("NormalCardInfo"))
         self._RequestId = params.get("RequestId")
         self._CardCutImageBase64 = params.get("CardCutImageBase64")
         self._CardBackCutImageBase64 = params.get("CardBackCutImageBase64")
@@ -6299,6 +6772,63 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class RetrievalLivenessExtraInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HitGroup: 
+        :type HitGroup: str
+        :param _SimilarityScore: 
+        :type SimilarityScore: float
+        :param _HitTemplate: 
+        :type HitTemplate: str
+        """
+        self._HitGroup = None
+        self._SimilarityScore = None
+        self._HitTemplate = None
+
+    @property
+    def HitGroup(self):
+        return self._HitGroup
+
+    @HitGroup.setter
+    def HitGroup(self, HitGroup):
+        self._HitGroup = HitGroup
+
+    @property
+    def SimilarityScore(self):
+        return self._SimilarityScore
+
+    @SimilarityScore.setter
+    def SimilarityScore(self, SimilarityScore):
+        self._SimilarityScore = SimilarityScore
+
+    @property
+    def HitTemplate(self):
+        return self._HitTemplate
+
+    @HitTemplate.setter
+    def HitTemplate(self, HitTemplate):
+        self._HitTemplate = HitTemplate
+
+
+    def _deserialize(self, params):
+        self._HitGroup = params.get("HitGroup")
+        self._SimilarityScore = params.get("SimilarityScore")
+        self._HitTemplate = params.get("HitTemplate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SingaporeIDCard(AbstractModel):
     """Singapore ID Card
 
@@ -6534,6 +7064,92 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._PostCode = params.get("PostCode")
         self._DateOfExpiration = params.get("DateOfExpiration")
         self._DateOfIssue = params.get("DateOfIssue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaiWanIDCard(AbstractModel):
+    """Taiwan ID card.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FullName: Full name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FullName: str
+        :param _LicenseNumber: License number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LicenseNumber: str
+        :param _Sex: Gender
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Sex: str
+        :param _IssuedCountry: Issued country
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IssuedCountry: str
+        :param _RegistrationNumber: Registration number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RegistrationNumber: str
+        """
+        self._FullName = None
+        self._LicenseNumber = None
+        self._Sex = None
+        self._IssuedCountry = None
+        self._RegistrationNumber = None
+
+    @property
+    def FullName(self):
+        return self._FullName
+
+    @FullName.setter
+    def FullName(self, FullName):
+        self._FullName = FullName
+
+    @property
+    def LicenseNumber(self):
+        return self._LicenseNumber
+
+    @LicenseNumber.setter
+    def LicenseNumber(self, LicenseNumber):
+        self._LicenseNumber = LicenseNumber
+
+    @property
+    def Sex(self):
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def IssuedCountry(self):
+        return self._IssuedCountry
+
+    @IssuedCountry.setter
+    def IssuedCountry(self, IssuedCountry):
+        self._IssuedCountry = IssuedCountry
+
+    @property
+    def RegistrationNumber(self):
+        return self._RegistrationNumber
+
+    @RegistrationNumber.setter
+    def RegistrationNumber(self, RegistrationNumber):
+        self._RegistrationNumber = RegistrationNumber
+
+
+    def _deserialize(self, params):
+        self._FullName = params.get("FullName")
+        self._LicenseNumber = params.get("LicenseNumber")
+        self._Sex = params.get("Sex")
+        self._IssuedCountry = params.get("IssuedCountry")
+        self._RegistrationNumber = params.get("RegistrationNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6999,6 +7615,17 @@ Example value: 3
 7.PhilippinesSSSID: Philippines SSSID card
 8.PhilippinesUMID: Philippines UMID card
 9.InternationalIDPassport: ID cards of Hong Kong, Macao and Taiwan (China), and international passport.
+10.IndonesiaDrivingLicense:Indonesia driving license
+11.ThailandIDCard: Thailand ID card
+12.ThailandDrivingLicense: Thailand driving license
+13.MLDrivingLicense: Malaysia driving license
+14.SingaporeIDCard: Singapore ID card
+15.SingaporeDrivingLicense: Singapore driving license
+16.JapanIDCard: Japan ID card
+17.JapanDrivingLicense: Japan driving license
+18.PhilippinesIDCard: Philippines ID card
+19.MainlandIDCard: Mainland ID card
+20.MacaoIDCard: Macao ID card
 Example: HKIDCard
         :type IDCardType: str
         :param _DisableCheckOcrWarnings: Whether to turn off document alarms, the default is false (the alarm detection function is turned on). When enabled, the identity authentication process will be intercepted based on the alarm status of the certificate. If you need to use the document authentication function, please contact us.
