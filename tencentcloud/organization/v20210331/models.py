@@ -113,10 +113,13 @@ class AddOrganizationNodeRequest(AbstractModel):
         :type Name: str
         :param _Remark: Remarks.
         :type Remark: str
+        :param _Tags: Department tag list, with a maximum of 10.
+        :type Tags: list of Tag
         """
         self._ParentNodeId = None
         self._Name = None
         self._Remark = None
+        self._Tags = None
 
     @property
     def ParentNodeId(self):
@@ -142,11 +145,25 @@ class AddOrganizationNodeRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ParentNodeId = params.get("ParentNodeId")
         self._Name = params.get("Name")
         self._Remark = params.get("Remark")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -397,6 +414,54 @@ class AddUserToGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class AuthRelationFile(AbstractModel):
+    """Real-name mutual trust application proof file.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: File name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _Url: File path.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Url: str
+        """
+        self._Name = None
+        self._Url = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class BindOrganizationMemberAuthAccountRequest(AbstractModel):
@@ -957,6 +1022,8 @@ class CreateOrganizationMemberRequest(AbstractModel):
         :type IdentityRoleID: list of int non-negative
         :param _AuthRelationId: Verified entity relationship ID, which is required during creating members for different entities.
         :type AuthRelationId: int
+        :param _Tags: Member tag list, with a maximum of 10.
+        :type Tags: list of Tag
         """
         self._Name = None
         self._PolicyType = None
@@ -968,6 +1035,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
         self._PayUin = None
         self._IdentityRoleID = None
         self._AuthRelationId = None
+        self._Tags = None
 
     @property
     def Name(self):
@@ -1049,6 +1117,14 @@ class CreateOrganizationMemberRequest(AbstractModel):
     def AuthRelationId(self, AuthRelationId):
         self._AuthRelationId = AuthRelationId
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1061,6 +1137,12 @@ class CreateOrganizationMemberRequest(AbstractModel):
         self._PayUin = params.get("PayUin")
         self._IdentityRoleID = params.get("IdentityRoleID")
         self._AuthRelationId = params.get("AuthRelationId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2690,6 +2772,8 @@ class DescribeOrganizationMembersRequest(AbstractModel):
         :type AuthName: str
         :param _Product: Abbreviation of the trusted service, which is required during querying the trusted service admin.
         :type Product: str
+        :param _Tags: Member tag search list, with a maximum of 10.
+        :type Tags: list of Tag
         """
         self._Offset = None
         self._Limit = None
@@ -2697,6 +2781,7 @@ class DescribeOrganizationMembersRequest(AbstractModel):
         self._SearchKey = None
         self._AuthName = None
         self._Product = None
+        self._Tags = None
 
     @property
     def Offset(self):
@@ -2746,6 +2831,14 @@ class DescribeOrganizationMembersRequest(AbstractModel):
     def Product(self, Product):
         self._Product = Product
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -2754,6 +2847,12 @@ class DescribeOrganizationMembersRequest(AbstractModel):
         self._SearchKey = params.get("SearchKey")
         self._AuthName = params.get("AuthName")
         self._Product = params.get("Product")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2829,9 +2928,12 @@ class DescribeOrganizationNodesRequest(AbstractModel):
         :type Limit: int
         :param _Offset: Offset. Its value must be an integer multiple of the limit. Default value: 0.
         :type Offset: int
+        :param _Tags: Department tag search list, with a maximum of 10.
+        :type Tags: list of Tag
         """
         self._Limit = None
         self._Offset = None
+        self._Tags = None
 
     @property
     def Limit(self):
@@ -2849,10 +2951,24 @@ class DescribeOrganizationNodesRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4333,6 +4449,194 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class InviteOrganizationMemberRequest(AbstractModel):
+    """InviteOrganizationMember request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberUin: UIN of an invited account.
+        :type MemberUin: int
+        :param _Name: Member name, which contains up to 25 characters, including English letters, digits, and symbols `+@&._[]-:,`.
+        :type Name: str
+        :param _PolicyType: Relationship policy. Valid value: `Financial`.
+        :type PolicyType: str
+        :param _PermissionIds: List of member financial permission IDs. Valid values: 1: View bills. 2: View balance. 3: Transfer funds. 4: Consolidate bills. 5: Issue invoice. 6: Inherit discounts. 7: Pay on behalf. 1 and 2 are required by default.
+        :type PermissionIds: list of int non-negative
+        :param _NodeId: Node ID of the member's department, which can be obtained through [DescribeOrganizationNodes](https://intl.cloud.tencent.com/document/product/850/82926?from_cn_redirect=1).
+        :type NodeId: int
+        :param _Remark: Remarks.
+        :type Remark: str
+        :param _IsAllowQuit: Whether to allow a member to exit. Valid values: Allow, Denied.
+        :type IsAllowQuit: str
+        :param _PayUin: Payer UIN, which is required when pay-on-behalf mode is used.
+        :type PayUin: str
+        :param _RelationAuthName: Name of a mutual trust real-name entity.
+        :type RelationAuthName: str
+        :param _AuthFile: List of proof files of a mutual trust entity.
+        :type AuthFile: list of AuthRelationFile
+        :param _Tags: Member tag list, with a maximum of 10.
+        :type Tags: list of Tag
+        """
+        self._MemberUin = None
+        self._Name = None
+        self._PolicyType = None
+        self._PermissionIds = None
+        self._NodeId = None
+        self._Remark = None
+        self._IsAllowQuit = None
+        self._PayUin = None
+        self._RelationAuthName = None
+        self._AuthFile = None
+        self._Tags = None
+
+    @property
+    def MemberUin(self):
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PolicyType(self):
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PermissionIds(self):
+        return self._PermissionIds
+
+    @PermissionIds.setter
+    def PermissionIds(self, PermissionIds):
+        self._PermissionIds = PermissionIds
+
+    @property
+    def NodeId(self):
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def IsAllowQuit(self):
+        return self._IsAllowQuit
+
+    @IsAllowQuit.setter
+    def IsAllowQuit(self, IsAllowQuit):
+        self._IsAllowQuit = IsAllowQuit
+
+    @property
+    def PayUin(self):
+        return self._PayUin
+
+    @PayUin.setter
+    def PayUin(self, PayUin):
+        self._PayUin = PayUin
+
+    @property
+    def RelationAuthName(self):
+        return self._RelationAuthName
+
+    @RelationAuthName.setter
+    def RelationAuthName(self, RelationAuthName):
+        self._RelationAuthName = RelationAuthName
+
+    @property
+    def AuthFile(self):
+        return self._AuthFile
+
+    @AuthFile.setter
+    def AuthFile(self, AuthFile):
+        self._AuthFile = AuthFile
+
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._MemberUin = params.get("MemberUin")
+        self._Name = params.get("Name")
+        self._PolicyType = params.get("PolicyType")
+        self._PermissionIds = params.get("PermissionIds")
+        self._NodeId = params.get("NodeId")
+        self._Remark = params.get("Remark")
+        self._IsAllowQuit = params.get("IsAllowQuit")
+        self._PayUin = params.get("PayUin")
+        self._RelationAuthName = params.get("RelationAuthName")
+        if params.get("AuthFile") is not None:
+            self._AuthFile = []
+            for item in params.get("AuthFile"):
+                obj = AuthRelationFile()
+                obj._deserialize(item)
+                self._AuthFile.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InviteOrganizationMemberResponse(AbstractModel):
+    """InviteOrganizationMember response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class JoinedGroups(AbstractModel):
@@ -7238,6 +7542,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _PermissionStatus: Member permission status. Valid values: `Confirmed`, `UnConfirmed`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type PermissionStatus: str
+        :param _Tags: Member tag list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
         """
         self._MemberUin = None
         self._Name = None
@@ -7256,6 +7563,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._OrgIdentity = None
         self._BindStatus = None
         self._PermissionStatus = None
+        self._Tags = None
 
     @property
     def MemberUin(self):
@@ -7393,6 +7701,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def PermissionStatus(self, PermissionStatus):
         self._PermissionStatus = PermissionStatus
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._MemberUin = params.get("MemberUin")
@@ -7422,6 +7738,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 self._OrgIdentity.append(obj)
         self._BindStatus = params.get("BindStatus")
         self._PermissionStatus = params.get("PermissionStatus")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7871,6 +8193,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _UpdateTime: Update time
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
+        :param _Tags: Member tag list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Tags: list of Tag
         """
         self._NodeId = None
         self._Name = None
@@ -7878,6 +8203,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Remark = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._Tags = None
 
     @property
     def NodeId(self):
@@ -7927,6 +8253,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
@@ -7935,6 +8269,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Remark = params.get("Remark")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9824,6 +10164,55 @@ class SetExternalSAMLIdentityProviderResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class Tag(AbstractModel):
+    """Tag key-value pair.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: Tag key
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagKey: str
+        :param _TagValue: Tag value
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TaskInfo(AbstractModel):
