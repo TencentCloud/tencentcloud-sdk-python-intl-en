@@ -43,7 +43,7 @@ class AVTemplate(AbstractModel):
         :type BitrateCompressionRatio: int
         :param _NeedAudio: Whether audio is needed. `0`: not needed; `1`: needed
         :type NeedAudio: int
-        :param _Acodec: Audio codec. Valid value: `AAC` (default)
+        :param _Acodec: Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.
         :type Acodec: str
         :param _AudioBitrate: Audio bitrate. If this parameter is left empty, the original bitrate will be used.
 Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000`, `24000`, `28000`, `32000`, `40000`, `48000`, `56000`, `64000`, `80000`, `96000`, `112000`, `128000`, `160000`, `192000`, `224000`, `256000`, `288000`, `320000`, `384000`, `448000`, `512000`, `576000`, `640000`, `768000`, `896000`, `1024000`
@@ -982,7 +982,7 @@ class AudioTemplateInfo(AbstractModel):
         :type AudioSelectorName: str
         :param _Name: Audio transcoding template name, which can contain 1-20 letters and digits.
         :type Name: str
-        :param _Acodec: Audio codec. Valid value: AAC. Default value: AAC.
+        :param _Acodec: Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.
         :type Acodec: str
         :param _AudioBitrate: Audio bitrate. If this parameter is left empty, the original value will be used.
 Valid values: 6000, 7000, 8000, 10000, 12000, 14000, 16000, 20000, 24000, 28000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 288000, 320000, 384000, 448000, 512000, 576000, 640000, 768000, 896000, 1024000
@@ -1102,7 +1102,7 @@ class AudioTrackInfo(AbstractModel):
         r"""
         :param _TrackName: User input is limited to letters and numbers, the length should not exceed 20, and should not be repeated in the same channel.
         :type TrackName: str
-        :param _AudioCodec: Only AAC is supported.
+        :param _AudioCodec: Audio encoding format, only `AAC` and `PASSTHROUGH` are available, with `AAC` as the default.
         :type AudioCodec: str
         :param _AudioBitrate: Audio bitrate.
         :type AudioBitrate: int

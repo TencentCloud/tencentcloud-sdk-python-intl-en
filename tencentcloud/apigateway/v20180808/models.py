@@ -2356,7 +2356,7 @@ class AttachPluginRequest(AbstractModel):
         :type ServiceId: str
         :param _EnvironmentName: API environment.
         :type EnvironmentName: str
-        :param _ApiIds: List of APIs bound with the plugin.
+        :param _ApiIds: List of APIs bound with the plugin
         :type ApiIds: list of str
         """
         self._PluginId = None
