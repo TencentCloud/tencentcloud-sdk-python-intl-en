@@ -620,7 +620,7 @@ class CreateTaskFromActionRequest(AbstractModel):
         r"""
         :param _TaskActionId: Action ID, which can be obtained by using the action list API DescribeActionLibraryList.
         :type TaskActionId: int
-        :param _TaskInstances: ID of the instance participating in the experiment
+        :param _TaskInstances: ID of the instance participating in the experiment.
         :type TaskInstances: list of str
         :param _TaskTitle: Experiment name. If this parameter is left blank, the action name is used by default.
         :type TaskTitle: str

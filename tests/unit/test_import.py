@@ -19,6 +19,11 @@ def test_import_advisor():
     from tencentcloud.advisor.v20200721 import models
 
 
+def test_import_aiart():
+    from tencentcloud.aiart.v20221229 import aiart_client
+    from tencentcloud.aiart.v20221229 import models
+
+
 def test_import_ams():
     from tencentcloud.ams.v20201229 import ams_client
     from tencentcloud.ams.v20201229 import models
@@ -257,6 +262,11 @@ def test_import_emr():
 def test_import_es():
     from tencentcloud.es.v20180416 import es_client
     from tencentcloud.es.v20180416 import models
+
+
+def test_import_facefusion():
+    from tencentcloud.facefusion.v20220927 import facefusion_client
+    from tencentcloud.facefusion.v20220927 import models
 
 
 def test_import_faceid():
@@ -562,6 +572,11 @@ def test_import_vod():
 def test_import_vpc():
     from tencentcloud.vpc.v20170312 import vpc_client
     from tencentcloud.vpc.v20170312 import models
+
+
+def test_import_waf():
+    from tencentcloud.waf.v20180125 import waf_client
+    from tencentcloud.waf.v20180125 import models
 
 
 def test_import_wedata():
