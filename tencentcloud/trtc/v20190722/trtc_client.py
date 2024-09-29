@@ -87,7 +87,7 @@ class TrtcClient(AbstractClient):
         """This API (the old `DescribeCallDetail`) is used to query the user list and call quality data of a specified time range in the last 14 days. If `DataType` is not null, the data of up to six users during a period of up to one hour can be queried (the period can start and end on different days). If `DataType` is null, the data of up to 100 users can be returned per page (the value of `PageSize` cannot exceed 100). Six users are queried by default. The period queried cannot exceed four hours. This API is used to query call quality and is not recommended for billing purposes.
         **Note**:
         1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.
-        2. If you need to call this API, please upgrade the monitoring dashboard version to "Standard". For more details, please refer to: https://www.tencentcloud.com/document/product/647/54481.
+        2. If you need to call this API, please upgrade the monitoring dashboard version to "Standard". For more details, please refer to: https://trtc.io/document/54481?product=pricing.
 
         :param request: Request instance for DescribeCallDetailInfo.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCallDetailInfoRequest`
@@ -486,7 +486,7 @@ class TrtcClient(AbstractClient):
         """This API (the old `DescribeDetailEvent`) is used to query the events of a call in the last 14 days, including user entry and exit, turning the camera on/off, etc.
         **Note**:
         1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.
-        2. If you need to call this API, please upgrade the monitoring dashboard version to "Standard". For more details, please refer to: https://www.tencentcloud.com/document/product/647/54481.
+        2. If you need to call this API, please upgrade the monitoring dashboard version to "Standard". For more details, please refer to: https://trtc.io/document/54481?product=pricing.
 
         :param request: Request instance for DescribeUserEvent.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeUserEventRequest`
@@ -512,7 +512,7 @@ class TrtcClient(AbstractClient):
         """This API (the old `DescribeUserInformation`) is used to query the user list of a specified time range (up to four hours) in the last 14 days. The data of up to 100 users can be returned per page (six are returned by default).
         **Note**:
         1. You can use this API to query historical data or for reconciliation purposes, but we do not recommend you use it for crucial business logic.
-        2. If you need to call this API, please upgrade the monitoring dashboard version to "Standard". For more details, please refer to: https://www.tencentcloud.com/document/product/647/54481.
+        2. If you need to call this API, please upgrade the monitoring dashboard version to "Standard". For more details, please refer to: https://trtc.io/document/60214?product=pricing.
 
         :param request: Request instance for DescribeUserInfo.
         :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeUserInfoRequest`

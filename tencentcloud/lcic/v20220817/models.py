@@ -1622,7 +1622,9 @@ class CreateRoomRequest(AbstractModel):
         :type SdkAppId: int
         :param _Resolution: 	Resolution. Valid values: 1: SD; 2: HD; 3: FHD
         :type Resolution: int
-        :param _MaxMicNumber: Maximum number of mic-on users (excluding teachers). Value range: [0, 16]
+        :param _MaxMicNumber: Maximum number of mic-on users (excluding teachers). Value range: [0, 16]. This value affects billing, please set it according to the actual business situation. For billing rules, see "Billing Overview" under "Purchase Guide". Example:
+1: Billing based on the 1v1 rule;
+10: Billing based on the 1v7-12 rule.
         :type MaxMicNumber: int
         :param _SubType: The room subtype. Valid values: videodoc: Document + Video; video: Video only.
         :type SubType: str
@@ -1672,6 +1674,8 @@ class CreateRoomRequest(AbstractModel):
         :type RecordScene: str
         :param _RecordLang: Record customized language, only when recordlayout=9, this parameter is valid.
         :type RecordLang: str
+        :param _RecordStream: Recording type. 0: Records only mixed streams (default); 1: Records mixed streams and single streams. In this mode, in addition to the mixed streams, the audio and video streams of the teacher and students on stage are recorded separately. Each recording incurs corresponding recording fees. Example: 0.
+        :type RecordStream: int
         """
         self._Name = None
         self._StartTime = None
@@ -1702,6 +1706,7 @@ class CreateRoomRequest(AbstractModel):
         self._RecordBackground = None
         self._RecordScene = None
         self._RecordLang = None
+        self._RecordStream = None
 
     @property
     def Name(self):
@@ -1939,6 +1944,14 @@ class CreateRoomRequest(AbstractModel):
 
         self._RecordLang = RecordLang
 
+    @property
+    def RecordStream(self):
+        return self._RecordStream
+
+    @RecordStream.setter
+    def RecordStream(self, RecordStream):
+        self._RecordStream = RecordStream
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1970,6 +1983,7 @@ class CreateRoomRequest(AbstractModel):
         self._RecordBackground = params.get("RecordBackground")
         self._RecordScene = params.get("RecordScene")
         self._RecordLang = params.get("RecordLang")
+        self._RecordStream = params.get("RecordStream")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

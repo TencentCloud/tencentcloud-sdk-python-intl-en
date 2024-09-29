@@ -445,6 +445,8 @@ Default value: 4
 17.ThailandDrivingLicense: Thailand Driving License
 18.SingaporeDrivingLicense: Singapore Driving License
 19.JapanDrivingLicense: Japan Driving License
+20.TaiWanIDCard:Taiwan ID Card
+21.HMTPermit: exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan
         :type IdCardType: str
         :param _CompareImage: The Base64-encoded value of the photo to compare, which is required only when `CheckMode` is set to `2`.
         :type CompareImage: str
@@ -3924,6 +3926,123 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class HMTPermit(AbstractModel):
+    """Exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Name
+        :type Name: str
+        :param _EnglishName: English name
+        :type EnglishName: str
+        :param _Number: License number
+        :type Number: str
+        :param _Sex: Gender
+        :type Sex: str
+        :param _ValidDate: Valid date
+        :type ValidDate: str
+        :param _IssueAuthority: Issued authority
+        :type IssueAuthority: str
+        :param _IssueAddress: Issued address
+        :type IssueAddress: str
+        :param _Birthday: Birthday
+        :type Birthday: str
+        """
+        self._Name = None
+        self._EnglishName = None
+        self._Number = None
+        self._Sex = None
+        self._ValidDate = None
+        self._IssueAuthority = None
+        self._IssueAddress = None
+        self._Birthday = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def EnglishName(self):
+        return self._EnglishName
+
+    @EnglishName.setter
+    def EnglishName(self, EnglishName):
+        self._EnglishName = EnglishName
+
+    @property
+    def Number(self):
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+    @property
+    def Sex(self):
+        return self._Sex
+
+    @Sex.setter
+    def Sex(self, Sex):
+        self._Sex = Sex
+
+    @property
+    def ValidDate(self):
+        return self._ValidDate
+
+    @ValidDate.setter
+    def ValidDate(self, ValidDate):
+        self._ValidDate = ValidDate
+
+    @property
+    def IssueAuthority(self):
+        return self._IssueAuthority
+
+    @IssueAuthority.setter
+    def IssueAuthority(self, IssueAuthority):
+        self._IssueAuthority = IssueAuthority
+
+    @property
+    def IssueAddress(self):
+        return self._IssueAddress
+
+    @IssueAddress.setter
+    def IssueAddress(self, IssueAddress):
+        self._IssueAddress = IssueAddress
+
+    @property
+    def Birthday(self):
+        return self._Birthday
+
+    @Birthday.setter
+    def Birthday(self, Birthday):
+        self._Birthday = Birthday
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._EnglishName = params.get("EnglishName")
+        self._Number = params.get("Number")
+        self._Sex = params.get("Sex")
+        self._ValidDate = params.get("ValidDate")
+        self._IssueAuthority = params.get("IssueAuthority")
+        self._IssueAddress = params.get("IssueAddress")
+        self._Birthday = params.get("Birthday")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IndonesiaDrivingLicense(AbstractModel):
     """Indonesia driving license.
 
@@ -5199,6 +5318,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _TaiWanIDCard: Taiwan ID Card
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TaiWanIDCard: :class:`tencentcloud.faceid.v20180301.models.TaiWanIDCard`
+        :param _HMTPermitCard: exit/entry permit (card) for traveling to and from Hong Kong, Macao, or Taiwan.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HMTPermitCard: :class:`tencentcloud.faceid.v20180301.models.HMTPermit`
         """
         self._HKIDCard = None
         self._MLIDCard = None
@@ -5217,6 +5339,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._MainlandIDCard = None
         self._JapanIDCard = None
         self._TaiWanIDCard = None
+        self._HMTPermitCard = None
 
     @property
     def HKIDCard(self):
@@ -5354,6 +5477,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def TaiWanIDCard(self, TaiWanIDCard):
         self._TaiWanIDCard = TaiWanIDCard
 
+    @property
+    def HMTPermitCard(self):
+        return self._HMTPermitCard
+
+    @HMTPermitCard.setter
+    def HMTPermitCard(self, HMTPermitCard):
+        self._HMTPermitCard = HMTPermitCard
+
 
     def _deserialize(self, params):
         if params.get("HKIDCard") is not None:
@@ -5407,6 +5538,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("TaiWanIDCard") is not None:
             self._TaiWanIDCard = TaiWanIDCard()
             self._TaiWanIDCard._deserialize(params.get("TaiWanIDCard"))
+        if params.get("HMTPermitCard") is not None:
+            self._HMTPermitCard = HMTPermit()
+            self._HMTPermitCard._deserialize(params.get("HMTPermitCard"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
