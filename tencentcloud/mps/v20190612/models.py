@@ -198,6 +198,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _AsrWordsConfigure: Speech keyword recognition control parameter.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AsrWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfo`
+        :param _TranslateConfigure: Voice translation control parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TranslateConfigure: :class:`tencentcloud.mps.v20190612.models.TranslateConfigureInfo`
         :param _CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
         :type CreateTime: str
         :param _UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
@@ -216,6 +219,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._OcrWordsConfigure = None
         self._AsrFullTextConfigure = None
         self._AsrWordsConfigure = None
+        self._TranslateConfigure = None
         self._CreateTime = None
         self._UpdateTime = None
         self._Type = None
@@ -285,6 +289,14 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._AsrWordsConfigure = AsrWordsConfigure
 
     @property
+    def TranslateConfigure(self):
+        return self._TranslateConfigure
+
+    @TranslateConfigure.setter
+    def TranslateConfigure(self, TranslateConfigure):
+        self._TranslateConfigure = TranslateConfigure
+
+    @property
     def CreateTime(self):
         return self._CreateTime
 
@@ -328,6 +340,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         if params.get("AsrWordsConfigure") is not None:
             self._AsrWordsConfigure = AsrWordsConfigureInfo()
             self._AsrWordsConfigure._deserialize(params.get("AsrWordsConfigure"))
+        if params.get("TranslateConfigure") is not None:
+            self._TranslateConfigure = TranslateConfigureInfo()
+            self._TranslateConfigure._deserialize(params.get("TranslateConfigure"))
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._Type = params.get("Type")
@@ -348,18 +363,22 @@ class Activity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ActivityType: The subtask type.
-<li>`input`: The start.</li>
-<li>`output`: The end.</li>
-<li>`action-trans`: Transcoding.</li>
-<li>`action-samplesnapshot`: Sampled screencapturing.</li>
-<li>`action-AIAnalysis`: Content analysis.</li>
-<li>`action-AIRecognition`: Content recognition.</li>
-<li>`action-aiReview`: Content moderation.</li>
-<li>`action-animated-graphics`: Animated screenshot generation.</li>
-<li>`action-image-sprite`: Image sprite generation.</li>
-<li>`action-snapshotByTimeOffset`: Time point screencapturing.</li>
-<li>`action-adaptive-substream`: Adaptive bitrate streaming.</li>
+        :param _ActivityType: Atomic task type.
+<li>input: start node.</li>
+<li>output: termination node.</li>
+<li>action-trans: transcoding.</li>
+<li>action-samplesnapshot: sampled screenshot taking.</li>
+<li>action-AIAnalysis: analysis.</li>
+<li>action-AIRecognition: recognition.</li>
+<li>action-aiReview: auditing.</li>
+<li>action-animated-graphics: animated image generating.</li>
+<li>action-image-sprite: sprite image generating.</li>
+<li>action-snapshotByTimeOffset: time point screenshot taking.</li>
+<li>action-adaptive-substream: adaptive bitrate streaming.</li>
+<li>action-AIQualityControl: media quality inspection.</li>
+
+
+
 Note: This field may return null, indicating that no valid values can be obtained.
         :type ActivityType: str
         :param _ReardriveIndex: The indexes of the subsequent actions.
@@ -439,6 +458,9 @@ class ActivityPara(AbstractModel):
         :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
         :param _AiRecognitionTask: A content recognition task.
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        :param _QualityControlTask: Media quality inspection task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type QualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
         """
         self._TranscodeTask = None
         self._AnimatedGraphicTask = None
@@ -449,6 +471,7 @@ class ActivityPara(AbstractModel):
         self._AiContentReviewTask = None
         self._AiAnalysisTask = None
         self._AiRecognitionTask = None
+        self._QualityControlTask = None
 
     @property
     def TranscodeTask(self):
@@ -522,6 +545,14 @@ class ActivityPara(AbstractModel):
     def AiRecognitionTask(self, AiRecognitionTask):
         self._AiRecognitionTask = AiRecognitionTask
 
+    @property
+    def QualityControlTask(self):
+        return self._QualityControlTask
+
+    @QualityControlTask.setter
+    def QualityControlTask(self, QualityControlTask):
+        self._QualityControlTask = QualityControlTask
+
 
     def _deserialize(self, params):
         if params.get("TranscodeTask") is not None:
@@ -551,6 +582,9 @@ class ActivityPara(AbstractModel):
         if params.get("AiRecognitionTask") is not None:
             self._AiRecognitionTask = AiRecognitionTaskInput()
             self._AiRecognitionTask._deserialize(params.get("AiRecognitionTask"))
+        if params.get("QualityControlTask") is not None:
+            self._QualityControlTask = AiQualityControlTaskInput()
+            self._QualityControlTask._deserialize(params.get("QualityControlTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -576,7 +610,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type AnimatedGraphicTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAnimatedGraphicResult`
         :param _SnapshotByTimeOffsetTask: The result of a time point screenshot task.
 Note: This field may return null, indicating that no valid values can be obtained.
-        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
+        :type SnapshotByTimeOffsetTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSnapshotByTimeOffsetResult`
         :param _SampleSnapshotTask: The result of a sampled screenshot task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SampleSnapshotTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
@@ -595,6 +629,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _AnalysisTask: The result of a content analysis task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AnalysisTask: :class:`tencentcloud.mps.v20190612.models.ScheduleAnalysisTaskResult`
+        :param _QualityControlTask: Media quality inspection task output.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type QualityControlTask: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
         """
         self._TranscodeTask = None
         self._AnimatedGraphicTask = None
@@ -605,6 +642,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RecognitionTask = None
         self._ReviewTask = None
         self._AnalysisTask = None
+        self._QualityControlTask = None
 
     @property
     def TranscodeTask(self):
@@ -678,6 +716,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def AnalysisTask(self, AnalysisTask):
         self._AnalysisTask = AnalysisTask
 
+    @property
+    def QualityControlTask(self):
+        return self._QualityControlTask
+
+    @QualityControlTask.setter
+    def QualityControlTask(self, QualityControlTask):
+        self._QualityControlTask = QualityControlTask
+
 
     def _deserialize(self, params):
         if params.get("TranscodeTask") is not None:
@@ -687,7 +733,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._AnimatedGraphicTask = MediaProcessTaskAnimatedGraphicResult()
             self._AnimatedGraphicTask._deserialize(params.get("AnimatedGraphicTask"))
         if params.get("SnapshotByTimeOffsetTask") is not None:
-            self._SnapshotByTimeOffsetTask = MediaProcessTaskSampleSnapshotResult()
+            self._SnapshotByTimeOffsetTask = MediaProcessTaskSnapshotByTimeOffsetResult()
             self._SnapshotByTimeOffsetTask._deserialize(params.get("SnapshotByTimeOffsetTask"))
         if params.get("SampleSnapshotTask") is not None:
             self._SampleSnapshotTask = MediaProcessTaskSampleSnapshotResult()
@@ -707,6 +753,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("AnalysisTask") is not None:
             self._AnalysisTask = ScheduleAnalysisTaskResult()
             self._AnalysisTask._deserialize(params.get("AnalysisTask"))
+        if params.get("QualityControlTask") is not None:
+            self._QualityControlTask = ScheduleQualityControlTaskResult()
+            self._QualityControlTask._deserialize(params.get("QualityControlTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -724,16 +773,18 @@ class ActivityResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ActivityType: The type of the scheme’s subtask.
-<li>Transcode: Transcoding</li>
-<li>SampleSnapshot: Sampled screenshot</li>
-<li>AnimatedGraphics: Animated image generating</li>
-<li>SnapshotByTimeOffset: Time point screenshot</li>
-<li>ImageSprites: Image sprite generating</li>
-<li>AdaptiveDynamicStreaming: Adaptive bitrate streaming</li>
-<li>AiContentReview: Content moderation</li>
-<li>AIRecognition: Content recognition</li>
-<li>AIAnalysis: Content analysis</li>
+        :param _ActivityType: Atomic task type.
+<li>Transcode: transcoding.</li>
+<li>SampleSnapshot: sampled screenshot taking.</li>
+<li>AnimatedGraphics: animated image generating.</li>
+<li>SnapshotByTimeOffset: time point screenshot taking.</li>
+<li>ImageSprites: sprite image generating.</li>
+<li>AdaptiveDynamicStreaming: adaptive bitrate streaming.</li>
+<li>AiContentReview: content moderation.</li>
+<li>AIRecognition: intelligent identification.</li>
+<li>AIAnalysis: intelligent analysis.</li>
+
+<li>AiQualityControl: media quality inspection.</li>
         :type ActivityType: str
         :param _ActivityResItem: The execution results of the subtasks of the scheme.
         :type ActivityResItem: :class:`tencentcloud.mps.v20190612.models.ActivityResItem`
@@ -870,6 +921,11 @@ Note: This field may return·null, indicating that no valid values can be obtain
         :param _DrmInfo: 
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type DrmInfo: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
+        :param _DefinitionType: Adaptive transcoding template type.
+Common: audio-video.
+PureAudio: audio-only.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DefinitionType: str
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -879,6 +935,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
         self._SegmentObjectName = None
         self._AddOnSubtitles = None
         self._DrmInfo = None
+        self._DefinitionType = None
 
     @property
     def Definition(self):
@@ -944,6 +1001,14 @@ Note: This field may return·null, indicating that no valid values can be obtain
     def DrmInfo(self, DrmInfo):
         self._DrmInfo = DrmInfo
 
+    @property
+    def DefinitionType(self):
+        return self._DefinitionType
+
+    @DefinitionType.setter
+    def DefinitionType(self, DefinitionType):
+        self._DefinitionType = DefinitionType
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -968,6 +1033,7 @@ Note: This field may return·null, indicating that no valid values can be obtain
         if params.get("DrmInfo") is not None:
             self._DrmInfo = DrmInfo()
             self._DrmInfo._deserialize(params.get("DrmInfo"))
+        self._DefinitionType = params.get("DefinitionType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1013,6 +1079,19 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
         :type UpdateTime: str
+        :param _PureAudio: Whether it is an audio-only template. 0: video template. 1: audio-only template.Note: This field may return null, indicating that no valid values can be obtained.
+        :type PureAudio: int
+        :param _SegmentType: HLS segment type. Valid values:
+<li>ts-segment: HLS+TS segment.</li>
+<li>ts-byterange: HLS+TS byte range.</li>
+<li>mp4-segment: HLS+MP4 segment.</li>
+<li>mp4-byterange: HLS+MP4 byte range.</li>
+<li>ts-packed-audio: TS+Packed audio.</li>
+<li>mp4-packed-audio: MP4+Packed audio.</li>
+Default value: ts-segment.
+
+Note: The HLS segment format for adaptive bitrate streaming is based on this field.Note: This field may return null, indicating that no valid values can be obtained.
+        :type SegmentType: str
         """
         self._Definition = None
         self._Type = None
@@ -1024,6 +1103,8 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self._DisableHigherVideoResolution = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._PureAudio = None
+        self._SegmentType = None
 
     @property
     def Definition(self):
@@ -1105,6 +1186,22 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def PureAudio(self):
+        return self._PureAudio
+
+    @PureAudio.setter
+    def PureAudio(self, PureAudio):
+        self._PureAudio = PureAudio
+
+    @property
+    def SegmentType(self):
+        return self._SegmentType
+
+    @SegmentType.setter
+    def SegmentType(self, SegmentType):
+        self._SegmentType = SegmentType
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -1122,6 +1219,8 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self._DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._PureAudio = params.get("PureAudio")
+        self._SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1269,11 +1368,14 @@ class AiAnalysisResult(AbstractModel):
     def __init__(self):
         r"""
         :param _Type: Task type. Valid values:
-<li>Classification: intelligent categorization</li>
-<li>Cover: intelligent cover generating</li>
-<li>Tag: intelligent tagging</li>
-<li>FrameTag: intelligent frame-specific tagging</li>
-<li>Highlight: intelligent highlight generating</li>
+<li>Classification: intelligent classification.</li>
+<li>Cover: intelligent thumbnail generating.</li>
+<li>Tag: intelligent tagging.</li>
+<li>FrameTag: intelligent frame-by-frame tagging.</li>
+<li>Highlight: intelligent highlights generating.</li>
+
+<li>DeLogo: intelligent removal.</li>
+<li>Description: large model summarization.</li>
         :type Type: str
         :param _ClassificationTask: Query result of intelligent categorization task in video content analysis, which is valid if task type is `Classification`.
         :type ClassificationTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationResult`
@@ -1286,6 +1388,21 @@ class AiAnalysisResult(AbstractModel):
         :param _HighlightTask: The result of a highlight generation task. This parameter is valid if `Type` is `Highlight`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HighlightTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightResult`
+        :param _DeLogoTask: The query result of an intelligent removal task for video analysis, which is valid when the task type is DeLogo.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DeLogoTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoResult`
+        :param _SegmentTask: The query result of a splitting task for video analysis, which is valid when the task type is SegmentRecognition.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SegmentTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentResult`
+        :param _HeadTailTask: The query result of an opening and closing segments recognition task for video analysis, which is valid when the task type is HeadTailRecognition.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HeadTailTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailResult`
+        :param _DescriptionTask: The query result of a video analysis summarization task, which is valid when the task type is Description.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DescriptionTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionResult`
+        :param _HorizontalToVerticalTask: The query result of a landscape-to-portrait task for video analysis, which is valid when the task type is HorizontalToVertical.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HorizontalToVerticalTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalResult`
         """
         self._Type = None
         self._ClassificationTask = None
@@ -1293,6 +1410,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TagTask = None
         self._FrameTagTask = None
         self._HighlightTask = None
+        self._DeLogoTask = None
+        self._SegmentTask = None
+        self._HeadTailTask = None
+        self._DescriptionTask = None
+        self._HorizontalToVerticalTask = None
 
     @property
     def Type(self):
@@ -1342,6 +1464,46 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def HighlightTask(self, HighlightTask):
         self._HighlightTask = HighlightTask
 
+    @property
+    def DeLogoTask(self):
+        return self._DeLogoTask
+
+    @DeLogoTask.setter
+    def DeLogoTask(self, DeLogoTask):
+        self._DeLogoTask = DeLogoTask
+
+    @property
+    def SegmentTask(self):
+        return self._SegmentTask
+
+    @SegmentTask.setter
+    def SegmentTask(self, SegmentTask):
+        self._SegmentTask = SegmentTask
+
+    @property
+    def HeadTailTask(self):
+        return self._HeadTailTask
+
+    @HeadTailTask.setter
+    def HeadTailTask(self, HeadTailTask):
+        self._HeadTailTask = HeadTailTask
+
+    @property
+    def DescriptionTask(self):
+        return self._DescriptionTask
+
+    @DescriptionTask.setter
+    def DescriptionTask(self, DescriptionTask):
+        self._DescriptionTask = DescriptionTask
+
+    @property
+    def HorizontalToVerticalTask(self):
+        return self._HorizontalToVerticalTask
+
+    @HorizontalToVerticalTask.setter
+    def HorizontalToVerticalTask(self, HorizontalToVerticalTask):
+        self._HorizontalToVerticalTask = HorizontalToVerticalTask
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -1360,6 +1522,21 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("HighlightTask") is not None:
             self._HighlightTask = AiAnalysisTaskHighlightResult()
             self._HighlightTask._deserialize(params.get("HighlightTask"))
+        if params.get("DeLogoTask") is not None:
+            self._DeLogoTask = AiAnalysisTaskDelLogoResult()
+            self._DeLogoTask._deserialize(params.get("DeLogoTask"))
+        if params.get("SegmentTask") is not None:
+            self._SegmentTask = AiAnalysisTaskSegmentResult()
+            self._SegmentTask._deserialize(params.get("SegmentTask"))
+        if params.get("HeadTailTask") is not None:
+            self._HeadTailTask = AiAnalysisTaskHeadTailResult()
+            self._HeadTailTask._deserialize(params.get("HeadTailTask"))
+        if params.get("DescriptionTask") is not None:
+            self._DescriptionTask = AiAnalysisTaskDescriptionResult()
+            self._DescriptionTask._deserialize(params.get("DescriptionTask"))
+        if params.get("HorizontalToVerticalTask") is not None:
+            self._HorizontalToVerticalTask = AiAnalysisTaskHorizontalToVerticalResult()
+            self._HorizontalToVerticalTask._deserialize(params.get("HorizontalToVerticalTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1720,6 +1897,354 @@ class AiAnalysisTaskCoverResult(AbstractModel):
         
 
 
+class AiAnalysisTaskDelLogoInput(AbstractModel):
+    """Intelligent removal task input type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Intelligent removal template ID.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskDelLogoOutput(AbstractModel):
+    """Intelligent removal result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: Path of a file after removal.
+        :type Path: str
+        :param _OutputStorage: Storage location of a file after removal.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _OriginSubtitlePath: Path of a subtitle file extracted from a video.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OriginSubtitlePath: str
+        :param _TranslateSubtitlePath: Path of a subtitle translation file extracted from a video.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TranslateSubtitlePath: str
+        """
+        self._Path = None
+        self._OutputStorage = None
+        self._OriginSubtitlePath = None
+        self._TranslateSubtitlePath = None
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def OutputStorage(self):
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def OriginSubtitlePath(self):
+        return self._OriginSubtitlePath
+
+    @OriginSubtitlePath.setter
+    def OriginSubtitlePath(self, OriginSubtitlePath):
+        self._OriginSubtitlePath = OriginSubtitlePath
+
+    @property
+    def TranslateSubtitlePath(self):
+        return self._TranslateSubtitlePath
+
+    @TranslateSubtitlePath.setter
+    def TranslateSubtitlePath(self, TranslateSubtitlePath):
+        self._TranslateSubtitlePath = TranslateSubtitlePath
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._OriginSubtitlePath = params.get("OriginSubtitlePath")
+        self._TranslateSubtitlePath = params.get("TranslateSubtitlePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskDelLogoResult(AbstractModel):
+    """Intelligent removal result type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
+        :type Status: str
+        :param _ErrCode: Error code. `0`: Task successful. Other values: Task failed.
+        :type ErrCode: int
+        :param _Message: Error message.
+        :type Message: str
+        :param _Input: Intelligent removal task input.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoInput`
+        :param _Output: Intelligent removal task output.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskDelLogoInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskDelLogoOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskDescriptionInput(AbstractModel):
+    """Intelligent classification task input type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Intelligent description template ID.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskDescriptionOutput(AbstractModel):
+    """Intelligent description result information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DescriptionSet: Intelligent video description list.
+        :type DescriptionSet: list of MediaAiAnalysisDescriptionItem
+        """
+        self._DescriptionSet = None
+
+    @property
+    def DescriptionSet(self):
+        return self._DescriptionSet
+
+    @DescriptionSet.setter
+    def DescriptionSet(self, DescriptionSet):
+        self._DescriptionSet = DescriptionSet
+
+
+    def _deserialize(self, params):
+        if params.get("DescriptionSet") is not None:
+            self._DescriptionSet = []
+            for item in params.get("DescriptionSet"):
+                obj = MediaAiAnalysisDescriptionItem()
+                obj._deserialize(item)
+                self._DescriptionSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskDescriptionResult(AbstractModel):
+    """Intelligent description result type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
+        :type Status: str
+        :param _ErrCode: Error code. `0`: Task successful. Other values: Task failed.
+        :type ErrCode: int
+        :param _Message: Error message.
+        :type Message: str
+        :param _Input: Intelligent description task input.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionInput`
+        :param _Output: Intelligent description task output.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskDescriptionInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskDescriptionOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiAnalysisTaskFrameTagInput(AbstractModel):
     """Input type of intelligent frame-specific tagging task
 
@@ -1877,6 +2402,171 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
             self._Input._deserialize(params.get("Input"))
         if params.get("Output") is not None:
             self._Output = AiAnalysisTaskFrameTagOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskHeadTailInput(AbstractModel):
+    """Opening and closing segments recognition task input type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Opening and closing segments recognition template ID.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskHeadTailOutput(AbstractModel):
+    """Opening and closing segments recognition result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HeadTimeOffset: Opening segment PTS.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HeadTimeOffset: float
+        :param _TailTimeOffset: Closing segment PTS.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TailTimeOffset: float
+        """
+        self._HeadTimeOffset = None
+        self._TailTimeOffset = None
+
+    @property
+    def HeadTimeOffset(self):
+        return self._HeadTimeOffset
+
+    @HeadTimeOffset.setter
+    def HeadTimeOffset(self, HeadTimeOffset):
+        self._HeadTimeOffset = HeadTimeOffset
+
+    @property
+    def TailTimeOffset(self):
+        return self._TailTimeOffset
+
+    @TailTimeOffset.setter
+    def TailTimeOffset(self, TailTimeOffset):
+        self._TailTimeOffset = TailTimeOffset
+
+
+    def _deserialize(self, params):
+        self._HeadTimeOffset = params.get("HeadTimeOffset")
+        self._TailTimeOffset = params.get("TailTimeOffset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskHeadTailResult(AbstractModel):
+    """Opening and closing segments recognition result type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
+        :type Status: str
+        :param _ErrCode: Error code. `0`: Task successful. Other values: Task failed.
+        :type ErrCode: int
+        :param _Message: Error message.
+        :type Message: str
+        :param _Input: Opening and closing segments recognition task input.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailInput`
+        :param _Output: Opening and closing segments recognition task output.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskHeadTailInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskHeadTailOutput()
             self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -2060,6 +2750,195 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class AiAnalysisTaskHorizontalToVerticalInput(AbstractModel):
+    """Intelligent landscape-to-portrait task input type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Intelligent landscape-to-portrait template ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskHorizontalToVerticalOutput(AbstractModel):
+    """Intelligent landscape-to-portrait result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: Intelligent landscape-to-portrait video list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Path: str
+        :param _OutputStorage: Storage location of intelligent landscape-to-portrait videos.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _Confidence: Confidence.	
+	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Confidence: float
+        """
+        self._Path = None
+        self._OutputStorage = None
+        self._Confidence = None
+
+    @property
+    def Path(self):
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def OutputStorage(self):
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._Confidence = params.get("Confidence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskHorizontalToVerticalResult(AbstractModel):
+    """Intelligent landscape-to-portrait result type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Status: str
+        :param _ErrCode: Error code. 0: Task successful. Other values: Task failed.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ErrCode: int
+        :param _Message: Error message
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Message: str
+        :param _Input: Intelligent landscape-to-portrait task input.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalInput`
+        :param _Output: Intelligent landscape-to-portrait task output.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskHorizontalToVerticalInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskHorizontalToVerticalOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiAnalysisTaskInput(AbstractModel):
     """AI video intelligent analysis input parameter types
 
@@ -2097,6 +2976,162 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
         self._ExtendedParameter = params.get("ExtendedParameter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskSegmentInput(AbstractModel):
+    """Splitting task input type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Splitting task template ID.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskSegmentOutput(AbstractModel):
+    """Intelligent splitting result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SegmentSet: Intelligent splitting sub-segment list.
+        :type SegmentSet: list of SegmentRecognitionItem
+        """
+        self._SegmentSet = None
+
+    @property
+    def SegmentSet(self):
+        return self._SegmentSet
+
+    @SegmentSet.setter
+    def SegmentSet(self, SegmentSet):
+        self._SegmentSet = SegmentSet
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self._SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = SegmentRecognitionItem()
+                obj._deserialize(item)
+                self._SegmentSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskSegmentResult(AbstractModel):
+    """Splitting result type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
+        :type Status: str
+        :param _ErrCode: Error code. `0`: Task successful. Other values: Task failed.
+        :type ErrCode: int
+        :param _Message: Error message.
+        :type Message: str
+        :param _Input: Splitting task input.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentInput`
+        :param _Output: Splitting task output.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskSegmentInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskSegmentOutput()
+            self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2523,14 +3558,79 @@ class AiContentReviewTaskInput(AbstractModel):
         
 
 
-class AiQualityControlTaskInput(AbstractModel):
-    """The parameters for a video quality control task.
+class AiParagraphInfo(AbstractModel):
+    """Segment information.
 
     """
 
     def __init__(self):
         r"""
-        :param _Definition: The ID of the quality control template.
+        :param _Summary: Segment summary.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Summary: str
+        :param _StartTimeOffset: Segmentation start time point, in seconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: Segmentation end time point, in seconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type EndTimeOffset: float
+        """
+        self._Summary = None
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+
+    @property
+    def Summary(self):
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def StartTimeOffset(self):
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+
+    def _deserialize(self, params):
+        self._Summary = params.get("Summary")
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiQualityControlTaskInput(AbstractModel):
+    """Input parameter type for media quality inspection.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Media quality inspection template ID.
+You can directly use a preset template or customize a template in the console. The preset templates are as follows:
+- 10: Enable all quality inspection items.
+- 20: Only enable quality inspection items corresponding to format diagnosis.
+- 30: Only enable quality inspection items corresponding to no-reference scoring.
+- 40: Only enable quality inspection items corresponding to screen quality.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Definition: int
         :param _ChannelExtPara: The channel extension parameter, which is a serialized JSON string.
@@ -2609,6 +3709,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
  `TransTextRecognition`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TransTextTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResult`
+        :param _ObjectTask: Object recognition result, which is valid when Type is
+
+ObjectRecognition.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ObjectTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskObjectResult`
         """
         self._Type = None
         self._FaceTask = None
@@ -2617,6 +3722,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._OcrWordsTask = None
         self._OcrFullTextTask = None
         self._TransTextTask = None
+        self._ObjectTask = None
 
     @property
     def Type(self):
@@ -2674,6 +3780,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def TransTextTask(self, TransTextTask):
         self._TransTextTask = TransTextTask
 
+    @property
+    def ObjectTask(self):
+        return self._ObjectTask
+
+    @ObjectTask.setter
+    def ObjectTask(self, ObjectTask):
+        self._ObjectTask = ObjectTask
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -2695,6 +3809,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("TransTextTask") is not None:
             self._TransTextTask = AiRecognitionTaskTransTextResult()
             self._TransTextTask._deserialize(params.get("TransTextTask"))
+        if params.get("ObjectTask") is not None:
+            self._ObjectTask = AiRecognitionTaskObjectResult()
+            self._ObjectTask._deserialize(params.get("ObjectTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2725,6 +3842,9 @@ class AiRecognitionTaskAsrFullTextResult(AbstractModel):
         :param _Output: Output information of a full speech recognition task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResultOutput`
+        :param _Progress: Task progress.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Progress: int
         """
         self._Status = None
         self._ErrCodeExt = None
@@ -2732,6 +3852,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Message = None
         self._Input = None
         self._Output = None
+        self._Progress = None
 
     @property
     def Status(self):
@@ -2781,6 +3902,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Output(self, Output):
         self._Output = Output
 
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -2793,6 +3922,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self._Output = AiRecognitionTaskAsrFullTextResultOutput()
             self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3715,6 +4845,281 @@ class AiRecognitionTaskInput(AbstractModel):
         
 
 
+class AiRecognitionTaskObjectResult(AbstractModel):
+    """Object recognition result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status, including PROCESSING, SUCCESS, and FAIL.
+        :type Status: str
+        :param _ErrCode: Error code. `0`: Task successful. Other values: Task failed.
+        :type ErrCode: int
+        :param _Message: Error message.
+        :type Message: str
+        :param _Input: Object recognition task input.
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskObjectResultInput`
+        :param _Output: Object recognition task output.Note: This field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskObjectResultOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiRecognitionTaskObjectResultInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiRecognitionTaskObjectResultOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskObjectResultInput(AbstractModel):
+    """Object recognition task input type.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Object recognition template ID.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskObjectResultItem(AbstractModel):
+    """Single object recognition result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Name of a recognized object.
+        :type Name: str
+        :param _SegmentSet: List of segments that contain the object.
+        :type SegmentSet: list of AiRecognitionTaskObjectSeqmentItem
+        """
+        self._Name = None
+        self._SegmentSet = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SegmentSet(self):
+        return self._SegmentSet
+
+    @SegmentSet.setter
+    def SegmentSet(self, SegmentSet):
+        self._SegmentSet = SegmentSet
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("SegmentSet") is not None:
+            self._SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskObjectSeqmentItem()
+                obj._deserialize(item)
+                self._SegmentSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskObjectResultOutput(AbstractModel):
+    """Intelligent object recognition output.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultSet: Intelligent object recognition result set.
+        :type ResultSet: list of AiRecognitionTaskObjectResultItem
+        """
+        self._ResultSet = None
+
+    @property
+    def ResultSet(self):
+        return self._ResultSet
+
+    @ResultSet.setter
+    def ResultSet(self, ResultSet):
+        self._ResultSet = ResultSet
+
+
+    def _deserialize(self, params):
+        if params.get("ResultSet") is not None:
+            self._ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = AiRecognitionTaskObjectResultItem()
+                obj._deserialize(item)
+                self._ResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
+    """Object recognition result segment.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTimeOffset: Start time offset of a recognized segment, in seconds.
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: End time offset of a recognized segment, in seconds.
+        :type EndTimeOffset: float
+        :param _Confidence: Confidence of a recognized segment. Value range: 0-100.
+        :type Confidence: float
+        :param _AreaCoordSet: Zone coordinates of the recognition result. An array contains four elements: [x1, y1, x2, y2], representing the horizontal and vertical coordinates of the top-left and bottom-right corners, respectively.
+        :type AreaCoordSet: list of int
+        """
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+        self._Confidence = None
+        self._AreaCoordSet = None
+
+    @property
+    def StartTimeOffset(self):
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def AreaCoordSet(self):
+        return self._AreaCoordSet
+
+    @AreaCoordSet.setter
+    def AreaCoordSet(self, AreaCoordSet):
+        self._AreaCoordSet = AreaCoordSet
+
+
+    def _deserialize(self, params):
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        self._Confidence = params.get("Confidence")
+        self._AreaCoordSet = params.get("AreaCoordSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiRecognitionTaskOcrFullTextResult(AbstractModel):
     """Full text recognition result.
 
@@ -4311,6 +5716,9 @@ class AiRecognitionTaskTransTextResult(AbstractModel):
         :param _Output: The output of the translation task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResultOutput`
+        :param _Progress: Task progress.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Progress: int
         """
         self._Status = None
         self._ErrCodeExt = None
@@ -4318,6 +5726,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Message = None
         self._Input = None
         self._Output = None
+        self._Progress = None
 
     @property
     def Status(self):
@@ -4367,6 +5776,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Output(self, Output):
         self._Output = Output
 
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -4379,6 +5796,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("Output") is not None:
             self._Output = AiRecognitionTaskTransTextResultOutput()
             self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7065,7 +8483,14 @@ class AnimatedGraphicTaskInput(AbstractModel):
         :param _OutputStorage: Target bucket of a generated animated image file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputObjectPath: Output path to a generated animated image file, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_animatedGraphic_{definition}.{format}`.
+        :param _OutputObjectPath: Output path of a file after animated image generating, which can be a relative or absolute path.
+If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).
+Relative path example:
+<li>Filename_{Variable name}.{format}.</li>
+<li>Filename.{format}.</li>
+Absolute path example:
+<li>/Custom path/Filename_{Variable name}.{format}.</li>
+If left empty, a relative path is used by default: `{inputName}_animatedGraphic_{definition}.{format}`.
         :type OutputObjectPath: str
         """
         self._Definition = None
@@ -7801,21 +9226,23 @@ class AudioTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Codec: Audio stream codec.
-When the outer `Container` parameter is `mp3`, the valid value is:
-<li>libmp3lame.</li>
-When the outer `Container` parameter is `ogg` or `flac`, the valid value is:
+        :param _Codec: Audio stream encoding format.
+When audio transcoding is not needed, the value is:
+<li>copy.</li>
+When the outer parameter Container is mp3, the value is:
+<li>mp3.</li>
+When the outer parameter Container is ogg or flac, the value is:
 <li>flac.</li>
-When the outer `Container` parameter is `m4a`, the valid values include:
-<li>libfdk_aac;</li>
-<li>libmp3lame;</li>
+When the outer parameter Container is m4a, valid values are:
+<li>aac;</li>
 <li>ac3.</li>
-When the outer `Container` parameter is `mp4` or `flv`, the valid values include:
-<li>libfdk_aac: more suitable for mp4;</li>
-<li>libmp3lame: more suitable for flv.</li>
-When the outer `Container` parameter is `hls`, the valid values include:
-<li>libfdk_aac;</li>
-<li>libmp3lame.</li>
+When the outer parameter Container is mp4 or flv, valid values are:
+<li>aac: more suitable for mp4;</li>
+<li>mp3: more suitable for flv;</li>
+<li>mp2.</li>
+When the outer parameter Container is hls, valid values are:
+<li>aac;</li>
+<li>mp3.</li>
         :type Codec: str
         :param _Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256].
 If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
@@ -7826,12 +9253,12 @@ If the value is 0, the bitrate of the audio stream will be the same as that of t
 <li>48,000</li>
 In Hz.
         :type SampleRate: int
-        :param _AudioChannel: Audio channel system. Valid values:
-<li>1: Mono</li>
-<li>2: Dual</li>
-<li>6: Stereo</li>
-When the media is packaged in audio format (FLAC, OGG, MP3, M4A), the sound channel cannot be set to stereo.
-Default value: 2
+        :param _AudioChannel: Audio channel mode. Valid values:
+<li>1: single channel.</li>
+<li>2: dual channel.</li>
+<li>6: 5.1 surround sound.</li>
+When the media encapsulation format is audio (flac, ogg, mp3, and m4a), the number of channels cannot be set to 5.1 surround sound.
+Default value: 2.
         :type AudioChannel: int
         """
         self._Codec = None
@@ -7894,22 +9321,24 @@ class AudioTemplateInfoForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Codec: Audio stream codec.
-When the outer `Container` parameter is `mp3`, the valid value is:
-<li>libmp3lame.</li>
-When the outer `Container` parameter is `ogg` or `flac`, the valid value is:
+        :param _Codec: Audio stream encoding format.
+When audio transcoding is not needed, the value is:
+<li>copy.</li>
+When the outer parameter Container is mp3, the value is:
+<li>mp3.</li>
+When the outer parameter Container is ogg or flac, the value is:
 <li>flac.</li>
-When the outer `Container` parameter is `m4a`, the valid values include:
-<li>libfdk_aac;</li>
-<li>libmp3lame;</li>
+When the outer parameter Container is m4a, valid values are:
+<li>aac;</li>
 <li>ac3.</li>
-When the outer `Container` parameter is `mp4` or `flv`, the valid values include:
-<li>libfdk_aac: More suitable for mp4;</li>
-<li>libmp3lame: More suitable for flv;</li>
+When the outer parameter Container is mp4 or flv, valid values are:
+<li>aac: more suitable for mp4;</li>
+<li>mp3: more suitable for flv;</li>
 <li>mp2.</li>
-When the outer `Container` parameter is `hls`, the valid values include:
-<li>libfdk_aac;</li>
-<li>libmp3lame.</li>
+When the outer parameter Container is hls, valid values are:
+<li>aac;</li>
+<li>mp3.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Codec: str
         :param _Bitrate: Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
         :type Bitrate: int
@@ -7919,11 +9348,12 @@ When the outer `Container` parameter is `hls`, the valid values include:
 <li>48,000</li>
 In Hz.
         :type SampleRate: int
-        :param _AudioChannel: Audio channel system. Valid values:
-<li>1: Mono</li>
-<li>2: Dual</li>
-<li>6: Stereo</li>
-When the media is packaged in audio format (FLAC, OGG, MP3, M4A), the sound channel cannot be set to stereo.
+        :param _AudioChannel: Audio channel mode. Valid values:
+<li>1: single channel.</li>
+<li>2: dual channel.</li>
+<li>6: 5.1 surround sound.</li>
+When the media encapsulation format is audio (flac, ogg, mp3, and m4a), the number of channels cannot be set to 5.1 surround sound.
+Note: This field may return null, indicating that no valid values can be obtained.
         :type AudioChannel: int
         :param _StreamSelects: The audio tracks to retain. All audio tracks are retained by default.
         :type StreamSelects: list of int
@@ -8435,10 +9865,15 @@ class ComposeAudioStream(AbstractModel):
 u200c<li>`1`: Mono. </li>
 <li>`2`: Dual (default). </li>
         :type AudioChannel: int
+        :param _Bitrate: Reference bitrate, in kbps. Value range: 26-10000.
+If set, the encoder will try to encode at this bitrate.
+If not set, the service will automatically adopt a suitable bitrate based on audio parameters.
+        :type Bitrate: int
         """
         self._Codec = None
         self._SampleRate = None
         self._AudioChannel = None
+        self._Bitrate = None
 
     @property
     def Codec(self):
@@ -8464,11 +9899,20 @@ u200c<li>`1`: Mono. </li>
     def AudioChannel(self, AudioChannel):
         self._AudioChannel = AudioChannel
 
+    @property
+    def Bitrate(self):
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
         self._SampleRate = params.get("SampleRate")
         self._AudioChannel = params.get("AudioChannel")
+        self._Bitrate = params.get("Bitrate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9839,9 +11283,14 @@ class ComposeVideoStream(AbstractModel):
         :param _Fps: The video frame rate (Hz). Value range: 0–60.  
 The default value is `0`, which means that the frame rate will be the same as that of the first video.
         :type Fps: int
+        :param _Bitrate: Reference bitrate, in kbps. Value range: 50-35000.
+If set, the encoder will try to encode at this bitrate.
+If not set, the service will automatically adopt a suitable bitrate based on the complexity of an image.
+        :type Bitrate: int
         """
         self._Codec = None
         self._Fps = None
+        self._Bitrate = None
 
     @property
     def Codec(self):
@@ -9859,10 +11308,166 @@ The default value is `0`, which means that the frame rate will be the same as th
     def Fps(self, Fps):
         self._Fps = Fps
 
+    @property
+    def Bitrate(self):
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
         self._Fps = params.get("Fps")
+        self._Bitrate = params.get("Bitrate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContainerDiagnoseResultItem(AbstractModel):
+    """Container format diagnostic result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Category: Diagnosed exception category. Valid values:
+DecodeParamException: decoding parameter exception.
+TimeStampException: timestamp exception.
+FrameException: frame rate exception.
+StreamStatusException: stream status exception.
+StreamInfo: stream information exception.
+StreamAbnormalCharacteristics: stream characteristics exception.
+DecodeException: decoding exception.
+HLSRequirements: HLS format exception.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Category: str
+        :param _Type: Diagnosed specific exception type. Valid values:
+
+VideoResolutionChanged: video resolution change.
+AudioSampleRateChanged: audio sample rate change.
+AudioChannelsChanged: audio channel quantity change.
+ParameterSetsChanged: stream parameter set information change.
+DarOrSarInvalid: video aspect ratio exception.
+TimestampFallback: DTS timestamp rollback.
+DtsJitter: DTS jitter too high.
+PtsJitter: PTS jitter too high.
+AACDurationDeviation: improper AAC frame timestamp interval.
+AudioDroppingFrames: audio frame dropping.
+VideoDroppingFrames: video frame dropping.
+AVTimestampInterleave: improper audio-video interleaving.
+PtsLessThanDts: PTS less than DTS for media streams.
+ReceiveFpsJitter: significant jitter in the network receive frame rate.
+ReceiveFpsTooSmall: network receive video frame rate too low.
+FpsJitter: significant jitter in the stream frame rate calculated via PTS.
+StreamOpenFailed: stream open failure.
+StreamEnd: stream end.
+StreamParseFailed: stream parsing failure.
+VideoFirstFrameNotIdr: first frame not an IDR frame.
+StreamNALUError: NALU start code error.
+TsStreamNoAud: no AUD NALU in the H26x stream of MPEG-TS.
+AudioStreamLack: no audio stream.
+VideoStreamLack: no video stream.
+LackAudioRecover: missing audio stream recovery.
+LackVideoRecover: missing video stream recovery.
+VideoBitrateOutofRange: video stream bitrate (kbps) out of range.
+AudioBitrateOutofRange: audio stream bitrate (kbps) out of range.
+VideoDecodeFailed: video decoding error.
+AudioDecodeFailed: audio decoding error.
+AudioOutOfPhase: opposite phase in dual-channel audio.
+VideoDuplicatedFrame: duplicate frames in video streams.
+AudioDuplicatedFrame: duplicate frames in audio streams.
+VideoRotation: video rotation.
+TsMultiPrograms: multiple programs in MPEG2-TS streams
+Mp4InvalidCodecFourcc: codec FourCC in MP4 not meeting Apple HLS requirements.
+HLSBadM3u8Format: invalid M3U8 file.
+HLSInvalidMasterM3u8: invalid main M3U8 file.
+HLSInvalidMediaM3u8: invalid media M3U8 file.
+HLSMasterM3u8Recommended: parameters recommended by standards missing in main M3U8.
+HLSMediaM3u8Recommended: parameters recommended by standards missing in media M3U8.
+HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY in media M3U8.
+HLSMediaSegmentsStreamNumChange: changed number of streams in segments.
+HLSMediaSegmentsPTSJitterDeviation: PTS jumps between segments without EXT-X-DISCONTINUITY.
+HLSMediaSegmentsDTSJitterDeviation: DTS jumps between segments without EXT-X-DISCONTINUITY.
+TimecodeTrackExist: TMCD track in MP4.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _SeverityLevel: Diagnosed exception level. Valid values:
+Fatal: affecting subsequent playback and parsing.
+Error: may affect playback.
+Warning: potential risk, which may not necessarily affect playback.
+Notice: important stream information.
+Info: general stream information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SeverityLevel: str
+        :param _DateTimeSet: Timestamp of warning, in the format of 2022-12-25T13:14:16Z.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DateTimeSet: list of str
+        :param _TimestampSet: Timestamp.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TimestampSet: list of float
+        """
+        self._Category = None
+        self._Type = None
+        self._SeverityLevel = None
+        self._DateTimeSet = None
+        self._TimestampSet = None
+
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SeverityLevel(self):
+        return self._SeverityLevel
+
+    @SeverityLevel.setter
+    def SeverityLevel(self, SeverityLevel):
+        self._SeverityLevel = SeverityLevel
+
+    @property
+    def DateTimeSet(self):
+        return self._DateTimeSet
+
+    @DateTimeSet.setter
+    def DateTimeSet(self, DateTimeSet):
+        self._DateTimeSet = DateTimeSet
+
+    @property
+    def TimestampSet(self):
+        return self._TimestampSet
+
+    @TimestampSet.setter
+    def TimestampSet(self, TimestampSet):
+        self._TimestampSet = TimestampSet
+
+
+    def _deserialize(self, params):
+        self._Category = params.get("Category")
+        self._Type = params.get("Type")
+        self._SeverityLevel = params.get("SeverityLevel")
+        self._DateTimeSet = params.get("DateTimeSet")
+        self._TimestampSet = params.get("TimestampSet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10397,7 +12002,7 @@ class CreateAIAnalysisTemplateResponse(AbstractModel):
         r"""
         :param _Definition: Unique ID of video content analysis template.
         :type Definition: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Definition = None
@@ -10549,7 +12154,7 @@ class CreateAIRecognitionTemplateResponse(AbstractModel):
         r"""
         :param _Definition: Unique ID of a video content recognition template.
         :type Definition: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Definition = None
@@ -10605,6 +12210,19 @@ Default value: 0.
         :type DisableHigherVideoResolution: int
         :param _Comment: Template description. Length limit: 256 characters.
         :type Comment: str
+        :param _PureAudio: Whether it is an audio-only template. 0: video template. 1: audio-only template.When the value is 1:
+1. StreamInfos.N.RemoveVideo=1
+2. StreamInfos.N.RemoveAudio=0
+3. StreamInfos.N.Video.Codec=copy
+
+When the value is 0:
+
+1. StreamInfos.N.Video.Codec cannot be copy.
+2. StreamInfos.N.Video.Fps cannot be null.
+        :type PureAudio: int
+        :param _SegmentType: HLS segment type. Valid values: <li>ts-segment: HLS+TS segment.</li> <li>ts-byterange: HLS+TS byte range.</li> <li>mp4-segment: HLS+MP4 segment.</li> <li>mp4-byterange: HLS+MP4 byte range.</li> <li>ts-packed-audio: TS+Packed audio.</li> <li>mp4-packed-audio: MP4+Packed audio.</li> Default value: ts-segment.
+Note: The HLS segment format for adaptive bitrate streaming is based on this field.
+        :type SegmentType: str
         """
         self._Format = None
         self._StreamInfos = None
@@ -10612,6 +12230,8 @@ Default value: 0.
         self._DisableHigherVideoBitrate = None
         self._DisableHigherVideoResolution = None
         self._Comment = None
+        self._PureAudio = None
+        self._SegmentType = None
 
     @property
     def Format(self):
@@ -10661,6 +12281,22 @@ Default value: 0.
     def Comment(self, Comment):
         self._Comment = Comment
 
+    @property
+    def PureAudio(self):
+        return self._PureAudio
+
+    @PureAudio.setter
+    def PureAudio(self, PureAudio):
+        self._PureAudio = PureAudio
+
+    @property
+    def SegmentType(self):
+        return self._SegmentType
+
+    @SegmentType.setter
+    def SegmentType(self, SegmentType):
+        self._SegmentType = SegmentType
+
 
     def _deserialize(self, params):
         self._Format = params.get("Format")
@@ -10674,6 +12310,8 @@ Default value: 0.
         self._DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
         self._DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self._Comment = params.get("Comment")
+        self._PureAudio = params.get("PureAudio")
+        self._SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10693,7 +12331,7 @@ class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
         r"""
         :param _Definition: Unique ID of an adaptive bitrate streaming template.
         :type Definition: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Definition = None
@@ -10860,7 +12498,7 @@ class CreateAnimatedGraphicsTemplateResponse(AbstractModel):
         r"""
         :param _Definition: Unique ID of an animated image generating template.
         :type Definition: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Definition = None
@@ -11015,7 +12653,7 @@ class CreateContentReviewTemplateResponse(AbstractModel):
         r"""
         :param _Definition: The unique ID of the content moderation template.
         :type Definition: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Definition = None
@@ -11215,7 +12853,7 @@ class CreateImageSpriteTemplateResponse(AbstractModel):
         r"""
         :param _Definition: Unique ID of an image sprite generating template.
         :type Definition: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Definition = None
@@ -11341,7 +12979,7 @@ class CreatePersonSampleResponse(AbstractModel):
         :type Person: :class:`tencentcloud.mps.v20190612.models.AiSamplePerson`
         :param _FailFaceInfoSet: Information of images that failed the verification by facial feature positioning
         :type FailFaceInfoSet: list of AiSampleFailFaceInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Person = None
@@ -11383,6 +13021,105 @@ class CreatePersonSampleResponse(AbstractModel):
                 obj = AiSampleFailFaceInfo()
                 obj._deserialize(item)
                 self._FailFaceInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CreateQualityControlTemplateRequest(AbstractModel):
+    """CreateQualityControlTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Media quality inspection template name, with a length limit of 64 characters.
+        :type Name: str
+        :param _QualityControlItemSet: Media quality inspection control parameters.
+        :type QualityControlItemSet: list of QualityControlItemConfig
+        :param _Comment: Media quality inspection template description, with a length limit of 256 characters.
+        :type Comment: str
+        """
+        self._Name = None
+        self._QualityControlItemSet = None
+        self._Comment = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def QualityControlItemSet(self):
+        return self._QualityControlItemSet
+
+    @QualityControlItemSet.setter
+    def QualityControlItemSet(self, QualityControlItemSet):
+        self._QualityControlItemSet = QualityControlItemSet
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("QualityControlItemSet") is not None:
+            self._QualityControlItemSet = []
+            for item in params.get("QualityControlItemSet"):
+                obj = QualityControlItemConfig()
+                obj._deserialize(item)
+                self._QualityControlItemSet.append(obj)
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateQualityControlTemplateResponse(AbstractModel):
+    """CreateQualityControlTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of a media quality inspection template.
+        :type Definition: int
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
         self._RequestId = params.get("RequestId")
 
 
@@ -11536,7 +13273,7 @@ class CreateSampleSnapshotTemplateResponse(AbstractModel):
         r"""
         :param _Definition: Unique ID of a sampled screencapturing template.
         :type Definition: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Definition = None
@@ -11584,6 +13321,8 @@ If you do not specify this, the file will be saved to the trigger directory.
         :type OutputDir: str
         :param _TaskNotifyConfig: The notification configuration. If you do not specify this parameter, notifications will not be sent.
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param _ResourceId: Resource ID. Ensure the corresponding resource is in the enabled state. The default value is an account's primary resource ID.
+        :type ResourceId: str
         """
         self._ScheduleName = None
         self._Trigger = None
@@ -11591,6 +13330,7 @@ If you do not specify this, the file will be saved to the trigger directory.
         self._OutputStorage = None
         self._OutputDir = None
         self._TaskNotifyConfig = None
+        self._ResourceId = None
 
     @property
     def ScheduleName(self):
@@ -11640,6 +13380,14 @@ If you do not specify this, the file will be saved to the trigger directory.
     def TaskNotifyConfig(self, TaskNotifyConfig):
         self._TaskNotifyConfig = TaskNotifyConfig
 
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
 
     def _deserialize(self, params):
         self._ScheduleName = params.get("ScheduleName")
@@ -11659,6 +13407,7 @@ If you do not specify this, the file will be saved to the trigger directory.
         if params.get("TaskNotifyConfig") is not None:
             self._TaskNotifyConfig = TaskNotifyConfig()
             self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11678,7 +13427,7 @@ class CreateScheduleResponse(AbstractModel):
         r"""
         :param _ScheduleId: The scheme ID.
         :type ScheduleId: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._ScheduleId = None
@@ -11828,7 +13577,7 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
         r"""
         :param _Definition: Unique ID of a time point screencapturing template.
         :type Definition: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Definition = None
@@ -11863,7 +13612,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Container: Container format. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.
+        :param _Container: Container format. Valid values: mp4, flv, hls, ts, webm, mkv, mxf, mov, mp3, flac, ogg, and m4a. Among them, mp3, flac, ogg, and m4a are for audio-only files.
         :type Container: str
         :param _Name: Name of a transcoding template. Length limit: 64 characters.
         :type Name: str
@@ -12008,7 +13757,7 @@ class CreateTranscodeTemplateResponse(AbstractModel):
         r"""
         :param _Definition: Unique ID of a transcoding template.
         :type Definition: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Definition = None
@@ -12196,7 +13945,7 @@ class CreateWatermarkTemplateResponse(AbstractModel):
         :type Definition: int
         :param _ImageUrl: Watermark image address. This field is valid only when `Type` is `image`.
         :type ImageUrl: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Definition = None
@@ -12299,7 +14048,7 @@ class CreateWordSamplesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -12482,7 +14231,7 @@ class CreateWorkflowResponse(AbstractModel):
         r"""
         :param _WorkflowId: Workflow ID.
         :type WorkflowId: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._WorkflowId = None
@@ -12550,7 +14299,7 @@ class DeleteAIAnalysisTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -12608,7 +14357,7 @@ class DeleteAIRecognitionTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -12666,7 +14415,7 @@ class DeleteAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -12724,7 +14473,7 @@ class DeleteAnimatedGraphicsTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -12782,7 +14531,7 @@ class DeleteContentReviewTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -12840,7 +14589,7 @@ class DeleteImageSpriteTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -12898,7 +14647,65 @@ class DeletePersonSampleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteQualityControlTemplateRequest(AbstractModel):
+    """DeleteQualityControlTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of a media quality inspection template.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteQualityControlTemplateResponse(AbstractModel):
+    """DeleteQualityControlTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -12956,7 +14763,7 @@ class DeleteSampleSnapshotTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -13014,7 +14821,7 @@ class DeleteScheduleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -13072,7 +14879,7 @@ class DeleteSnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -13130,7 +14937,7 @@ class DeleteTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -13188,7 +14995,7 @@ class DeleteWatermarkTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -13246,7 +15053,7 @@ class DeleteWordSamplesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -13304,7 +15111,7 @@ class DeleteWorkflowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -13339,11 +15146,14 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 * Preset
 * Custom
         :type Type: str
+        :param _Name: Filter condition for video analysis template identifiers, with a length limit of 64 characters.
+        :type Name: str
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -13377,12 +15187,21 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13404,7 +15223,7 @@ class DescribeAIAnalysisTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _AIAnalysisTemplateSet: List of video content analysis template details.
         :type AIAnalysisTemplateSet: list of AIAnalysisTemplateItem
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -13464,11 +15283,14 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 * Preset
 * Custom
         :type Type: str
+        :param _Name: Filter condition for video recognition template identifiers, with a length limit of 64 characters.
+        :type Name: str
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -13502,12 +15324,21 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13529,7 +15360,7 @@ class DescribeAIRecognitionTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _AIRecognitionTemplateSet: List of video content recognition template details.
         :type AIRecognitionTemplateSet: list of AIRecognitionTemplateItem
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -13589,11 +15420,17 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 <li>Preset: preset template;</li>
 <li>Custom: custom template.</li>
         :type Type: str
+        :param _PureAudio: Whether it is an audio-only template. 0: video template. 1: audio-only template.
+        :type PureAudio: int
+        :param _Name: Filter condition for adaptive transcoding template identifiers, with a length limit of 64 characters.
+        :type Name: str
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._PureAudio = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -13627,12 +15464,30 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def PureAudio(self):
+        return self._PureAudio
+
+    @PureAudio.setter
+    def PureAudio(self, PureAudio):
+        self._PureAudio = PureAudio
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._PureAudio = params.get("PureAudio")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13654,7 +15509,7 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _AdaptiveDynamicStreamingTemplateSet: List of adaptive bitrate streaming template details.
         :type AdaptiveDynamicStreamingTemplateSet: list of AdaptiveDynamicStreamingTemplate
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -13714,11 +15569,14 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
 <li>Preset: Preset template;</li>
 <li>Custom: Custom template.</li>
         :type Type: str
+        :param _Name: Filter condition for animated image generating template identifiers, with a length limit of 64 characters.
+        :type Name: str
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -13752,12 +15610,21 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13779,7 +15646,7 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _AnimatedGraphicsTemplateSet: List of animated image generating template details.
         :type AnimatedGraphicsTemplateSet: list of AnimatedGraphicsTemplate
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -13839,11 +15706,14 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 * Preset
 * Custom
         :type Type: str
+        :param _Name: Filter condition for intelligent auditing template identifiers, with a length limit of 64 characters.
+        :type Name: str
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -13877,12 +15747,21 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13904,7 +15783,7 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _ContentReviewTemplateSet: List of content audit template details.
         :type ContentReviewTemplateSet: list of ContentReviewTemplateItem
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -13964,11 +15843,14 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
 <li>Preset: Preset template;</li>
 <li>Custom: Custom template.</li>
         :type Type: str
+        :param _Name: Filter condition for sprite template identifiers, with a length limit of 64 characters.
+        :type Name: str
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -14002,12 +15884,21 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14029,7 +15920,7 @@ class DescribeImageSpriteTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _ImageSpriteTemplateSet: List of image sprite generating template details.
         :type ImageSpriteTemplateSet: list of ImageSpriteTemplate
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -14116,7 +16007,7 @@ class DescribeMediaMetaDataResponse(AbstractModel):
         r"""
         :param _MetaData: Media metadata.
         :type MetaData: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._MetaData = None
@@ -14255,7 +16146,7 @@ class DescribePersonSamplesResponse(AbstractModel):
         :type TotalCount: int
         :param _PersonSet: Image information
         :type PersonSet: list of AiSamplePerson
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -14298,28 +16189,32 @@ class DescribePersonSamplesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
-    """DescribeSampleSnapshotTemplates request structure.
+class DescribeQualityControlTemplatesRequest(AbstractModel):
+    """DescribeQualityControlTemplates request structure.
 
     """
 
     def __init__(self):
         r"""
-        :param _Definitions: Unique ID filter of sampled screencapturing templates. Array length limit: 100.
-        :type Definitions: list of int non-negative
+        :param _Definitions: Filter condition for media quality inspection template unique identifiers, with an array length limit of 100.
+        :type Definitions: list of int
         :param _Offset: Paging offset. Default value: 0.
         :type Offset: int
-        :param _Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :param _Limit: Number of returned entries.
+
+<li>Default value: 10.</li>
+<li>Maximum value: 100.</li>
         :type Limit: int
-        :param _Type: Template type filter. Valid values:
-<li>Preset: Preset template;</li>
-<li>Custom: Custom template.</li>
+        :param _Type: Preset: preset template. Custom: custom template.
         :type Type: str
+        :param _Name: Filter condition for media quality inspection template identifiers, with a length limit of 64 characters.
+        :type Name: str
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -14353,12 +16248,159 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQualityControlTemplatesResponse(AbstractModel):
+    """DescribeQualityControlTemplates response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of records that meet filter conditions.
+        :type TotalCount: int
+        :param _QualityControlTemplateSet: Media quality inspection template details list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type QualityControlTemplateSet: list of QualityControlTemplate
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._QualityControlTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def QualityControlTemplateSet(self):
+        return self._QualityControlTemplateSet
+
+    @QualityControlTemplateSet.setter
+    def QualityControlTemplateSet(self, QualityControlTemplateSet):
+        self._QualityControlTemplateSet = QualityControlTemplateSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("QualityControlTemplateSet") is not None:
+            self._QualityControlTemplateSet = []
+            for item in params.get("QualityControlTemplateSet"):
+                obj = QualityControlTemplate()
+                obj._deserialize(item)
+                self._QualityControlTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
+    """DescribeSampleSnapshotTemplates request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definitions: Unique ID filter of sampled screencapturing templates. Array length limit: 100.
+        :type Definitions: list of int non-negative
+        :param _Offset: Paging offset. Default value: 0.
+        :type Offset: int
+        :param _Limit: Number of returned entries. Default value: 10. Maximum value: 100.
+        :type Limit: int
+        :param _Type: Template type filter. Valid values:
+<li>Preset: Preset template;</li>
+<li>Custom: Custom template.</li>
+        :type Type: str
+        :param _Name: Filter condition for sampled screenshot template identifiers, with a length limit of 64 characters.
+        :type Name: str
+        """
+        self._Definitions = None
+        self._Offset = None
+        self._Limit = None
+        self._Type = None
+        self._Name = None
+
+    @property
+    def Definitions(self):
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Definitions = params.get("Definitions")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14380,7 +16422,7 @@ class DescribeSampleSnapshotTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _SampleSnapshotTemplateSet: List of sampled screencapturing template details.
         :type SampleSnapshotTemplateSet: list of SampleSnapshotTemplate
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -14521,7 +16563,7 @@ class DescribeSchedulesResponse(AbstractModel):
         :type TotalCount: int
         :param _ScheduleInfoSet: The information of the schemes.
         :type ScheduleInfoSet: list of SchedulesInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -14581,11 +16623,14 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
 <li>Preset: Preset template;</li>
 <li>Custom: Custom template.</li>
         :type Type: str
+        :param _Name: Filter condition for time point screenshot template identifiers, with a length limit of 64 characters.
+        :type Name: str
         """
         self._Definitions = None
         self._Offset = None
         self._Limit = None
         self._Type = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -14619,12 +16664,21 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Type = params.get("Type")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14646,7 +16700,7 @@ class DescribeSnapshotByTimeOffsetTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _SnapshotByTimeOffsetTemplateSet: List of time point screencapturing template details.
         :type SnapshotByTimeOffsetTemplateSet: list of SnapshotByTimeOffsetTemplate
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -14729,11 +16783,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: The task type. Valid values:
-<li>WorkflowTask</li>
-<li>EditMediaTask</li>
-<li>LiveStreamProcessTask</li>
-<li>ScheduleTask (scheme)</li>
+        :param _TaskType: Task type. Valid values:<li>WorkflowTask: video workflow processing task.</li><li>EditMediaTask: video editing task.</li><li>LiveStreamProcessTask: live stream processing task.</li><li>ScheduleTask: orchestration processing task.</li><li>EvaluationTask: evaluation task.</li>
         :type TaskType: str
         :param _Status: Task status. Valid values:
 <li>WAITING: Waiting;</li>
@@ -14771,7 +16821,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _LiveScheduleTask: The information of a live scheme. This parameter is valid only if `TaskType` is `LiveScheduleTask`.
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type LiveScheduleTask: :class:`tencentcloud.mps.v20190612.models.LiveScheduleTask`
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TaskType = None
@@ -15021,7 +17071,7 @@ class DescribeTasksResponse(AbstractModel):
         :type ScrollToken: str
         :param _TotalCount: The total number of records that meet the conditions.
         :type TotalCount: int
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TaskSet = None
@@ -15105,6 +17155,8 @@ class DescribeTranscodeTemplatesRequest(AbstractModel):
 <li>Enhance: Audio/Video enhancement template.</li>
 This parameter is left empty by default, which indicates to return all types of templates.
         :type TranscodeType: str
+        :param _Name: Filter condition for transcoding template identifiers, with a length limit of 64 characters.	
+        :type Name: str
         """
         self._Definitions = None
         self._Type = None
@@ -15113,6 +17165,7 @@ This parameter is left empty by default, which indicates to return all types of 
         self._Offset = None
         self._Limit = None
         self._TranscodeType = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -15170,6 +17223,14 @@ This parameter is left empty by default, which indicates to return all types of 
     def TranscodeType(self, TranscodeType):
         self._TranscodeType = TranscodeType
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
@@ -15179,6 +17240,7 @@ This parameter is left empty by default, which indicates to return all types of 
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._TranscodeType = params.get("TranscodeType")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15200,7 +17262,7 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _TranscodeTemplateSet: List of transcoding template details.
         :type TranscodeTemplateSet: list of TranscodeTemplate
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -15262,11 +17324,14 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
 <li>Default value: 10;</li>
 <li>Maximum value: 100.</li>
         :type Limit: int
+        :param _Name: Filter condition for watermark template identifiers, with a length limit of 64 characters.
+        :type Name: str
         """
         self._Definitions = None
         self._Type = None
         self._Offset = None
         self._Limit = None
+        self._Name = None
 
     @property
     def Definitions(self):
@@ -15300,12 +17365,21 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Definitions = params.get("Definitions")
         self._Type = params.get("Type")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15327,7 +17401,7 @@ class DescribeWatermarkTemplatesResponse(AbstractModel):
         :type TotalCount: int
         :param _WatermarkTemplateSet: List of watermarking template details.
         :type WatermarkTemplateSet: list of WatermarkTemplate
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -15472,7 +17546,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _WordSet: Keyword information.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type WordSet: list of AiSampleWord
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -15598,7 +17672,7 @@ class DescribeWorkflowsResponse(AbstractModel):
         :type TotalCount: int
         :param _WorkflowInfoSet: Workflow information array.
         :type WorkflowInfoSet: list of WorkflowInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TotalCount = None
@@ -15641,6 +17715,155 @@ class DescribeWorkflowsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DiagnoseResult(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Category: Diagnosed exception category. Valid values:
+DecodeParamException: decoding parameter exception.
+TimeStampException: timestamp exception.
+FrameException: frame rate exception.
+StreamStatusException: stream status exception.
+StreamInfo: stream information exception.
+StreamAbnormalCharacteristics: stream characteristics exception.
+DecodeException: decoding exception.
+HLSRequirements: HLS format exception.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Category: str
+        :param _Type: Diagnosed specific exception type. Valid values:
+
+VideoResolutionChanged: video resolution change.
+AudioSampleRateChanged: audio sample rate change.
+AudioChannelsChanged: audio channel quantity change.ParameterSetsChanged: stream parameter set information change.
+DarOrSarInvalid: video aspect ratio exception.
+TimestampFallback: DTS timestamp rollback.DtsJitter: DTS jitter too high.
+PtsJitter: PTS jitter too high.
+AACDurationDeviation: improper AAC frame timestamp interval.
+AudioDroppingFrames: audio frame dropping.
+VideoDroppingFrames: video frame dropping.
+AVTimestampInterleave: improper audio-video interleaving.
+PtsLessThanDts: PTS less than DTS for media streams.
+ReceiveFpsJitter: significant jitter in the network receive frame rate.ReceiveFpsTooSmall: network receive video frame rate too low.FpsJitter: significant jitter in the stream frame rate calculated via PTS.StreamOpenFailed: stream open failure.
+StreamEnd: stream end.
+StreamParseFailed: stream parsing failure.
+VideoFirstFrameNotIdr: first frame not an IDR frame.
+StreamNALUError: NALU start code error.
+TsStreamNoAud: no AUD NALU in the H26x stream of MPEG-TS.AudioStreamLack: no audio stream.
+VideoStreamLack: no video stream.
+LackAudioRecover: missing audio stream recovery.
+LackVideoRecover: missing video stream recovery.
+VideoBitrateOutofRange: video stream bitrate (kbps) out of range.
+AudioBitrateOutofRange: audio stream bitrate (kbps) out of range.
+VideoDecodeFailed: video decoding error.
+AudioDecodeFailed: audio decoding error.
+AudioOutOfPhase: opposite phase in dual-channel audio.
+VideoDuplicatedFrame: duplicate frames in video streams.
+AudioDuplicatedFrame: duplicate frames in audio streams.
+VideoRotation: video rotation.
+TsMultiPrograms: multiple programs in MPEG2-TS streams.Mp4InvalidCodecFourcc: codec FourCC in MP4 not meeting Apple HLS requirements.
+HLSBadM3u8Format: invalid M3U8 file.
+HLSInvalidMasterM3u8: invalid main M3U8 file.
+HLSInvalidMediaM3u8: invalid media M3U8 file.
+HLSMasterM3u8Recommended: parameters recommended by standards missing in main M3U8.
+HLSMediaM3u8Recommended: parameters recommended by standards missing in media M3U8.
+HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY in media M3U8.
+HLSMediaSegmentsStreamNumChange: changed number of streams in segments.
+HLSMediaSegmentsPTSJitterDeviation: PTS jumps between segments without EXT-X-DISCONTINUITY.
+HLSMediaSegmentsDTSJitterDeviation: DTS jumps between segments without EXT-X-DISCONTINUITY.
+TimecodeTrackExist: TMCD track in MP4.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _Timestamp: 
+        :type Timestamp: float
+        :param _Description: 
+        :type Description: str
+        :param _DateTime: 
+        :type DateTime: str
+        :param _SeverityLevel: Diagnosed exception level. Valid values:
+Fatal: affecting subsequent playback and parsing.
+Error: may affect playback.
+Warning: potential risk, which may not necessarily affect playback.
+Notice: important stream information.
+Info: general stream information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SeverityLevel: str
+        """
+        self._Category = None
+        self._Type = None
+        self._Timestamp = None
+        self._Description = None
+        self._DateTime = None
+        self._SeverityLevel = None
+
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Timestamp(self):
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def DateTime(self):
+        return self._DateTime
+
+    @DateTime.setter
+    def DateTime(self, DateTime):
+        self._DateTime = DateTime
+
+    @property
+    def SeverityLevel(self):
+        return self._SeverityLevel
+
+    @SeverityLevel.setter
+    def SeverityLevel(self, SeverityLevel):
+        self._SeverityLevel = SeverityLevel
+
+
+    def _deserialize(self, params):
+        self._Category = params.get("Category")
+        self._Type = params.get("Type")
+        self._Timestamp = params.get("Timestamp")
+        self._Description = params.get("Description")
+        self._DateTime = params.get("DateTime")
+        self._SeverityLevel = params.get("SeverityLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DisableScheduleRequest(AbstractModel):
     """DisableSchedule request structure.
 
@@ -15681,7 +17904,7 @@ class DisableScheduleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -15739,7 +17962,7 @@ class DisableWorkflowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -16084,7 +18307,7 @@ class EditMediaResponse(AbstractModel):
         r"""
         :param _TaskId: Video editing task ID, which can be used to query the status of an editing task.
         :type TaskId: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TaskId = None
@@ -16338,7 +18561,7 @@ class EnableScheduleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -16396,7 +18619,7 @@ class EnableWorkflowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -16519,7 +18742,7 @@ class ExecuteFunctionResponse(AbstractModel):
         r"""
         :param _Result: Packed string, which will vary according to the custom API.
         :type Result: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Result = None
@@ -16911,12 +19134,12 @@ class HdrConfig(AbstractModel):
 <li>OFF</li>
 Default value: ON.
         :type Switch: str
-        :param _Type: The strength. Valid values:
+        :param _Type: Type. Valid values:
 <li>HDR10</li>
 <li>HLG</li>
-Default value: HDR10.
-Note: The video codec must be `libx265`.
-Note: The bit depth for video encoding is 10 bits.
+Default Value: HDR10.
+Note: The video encoding method should be H.265.
+Note: The video encoding bit depth is 10.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Type: str
         """
@@ -17023,10 +19246,14 @@ class HighlightSegmentItem(AbstractModel):
         :type StartTimeOffset: float
         :param _EndTimeOffset: The end time offset of the segment.
         :type EndTimeOffset: float
+        :param _SegmentTags: Segment tag.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SegmentTags: list of str
         """
         self._Confidence = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
+        self._SegmentTags = None
 
     @property
     def Confidence(self):
@@ -17052,11 +19279,20 @@ class HighlightSegmentItem(AbstractModel):
     def EndTimeOffset(self, EndTimeOffset):
         self._EndTimeOffset = EndTimeOffset
 
+    @property
+    def SegmentTags(self):
+        return self._SegmentTags
+
+    @SegmentTags.setter
+    def SegmentTags(self, SegmentTags):
+        self._SegmentTags = SegmentTags
+
 
     def _deserialize(self, params):
         self._Confidence = params.get("Confidence")
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
+        self._SegmentTags = params.get("SegmentTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17132,7 +19368,13 @@ class ImageSpriteTaskInput(AbstractModel):
         :param _OutputStorage: Target bucket of a generated image sprite. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputObjectPath: Output path to a generated image sprite file, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_imageSprite_{definition}_{number}.{format}`.
+        :param _OutputObjectPath: Output path of a captured sprite image file, which can be a relative or absolute path.
+If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).Relative path example:
+<li>Filename_{Variable name}.{format}.</li>
+<li>Filename.{format}.</li>
+Absolute path example:
+<li>/Custom path/Filename_{Variable name}.{format}.</li>
+If left empty, a relative path is used by default: `{inputName}_imageSprite_{definition}_{number}.{format}`.
         :type OutputObjectPath: str
         :param _WebVttObjectName: Output path to the WebVTT file after an image sprite is generated, which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_imageSprite_{definition}.{format}`.
         :type WebVttObjectName: str
@@ -17425,10 +19667,11 @@ class ImageWatermarkInput(AbstractModel):
         r"""
         :param _ImageContent: String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a watermark image. JPEG and PNG images are supported.
         :type ImageContent: str
-        :param _Width: Watermark width. % and px formats are supported:
-<li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width. For example, `10%` means that `Width` is 10% of the video width;</li>
-<li>If the string ends in px, the `Width` of the watermark will be in pixels. For example, `100px` means that `Width` is 100 pixels. Value range: [8, 4096].</li>
-Default value: 10%.
+        :param _Width: Width of a watermark, supporting two formats: % and px.
+<li>If a string ends with %, it indicates that the `Width` of a watermark is a percentage of a video's width. For example, `10%` means that `Width` is 10% of a video's width.</li>
+<li>If a string ends with px, the `Width` of a watermark will be in pixels. For example, `100px` means that `Width` is 100 pixels. Value range: [8, 4096].</li>
+
+When width and height are not specified or set to 0, the default value is 10%.
         :type Width: str
         :param _Height: Watermark height. % and px formats are supported:
 <li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height. For example, `10%` means that `Height` is 10% of the video height;</li>
@@ -17507,10 +19750,11 @@ class ImageWatermarkInputForUpdate(AbstractModel):
 <li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width. For example, `10%` means that `Width` is 10% of the video width;</li>
 <li>If the string ends in px, the `Width` of the watermark will be in pixels. For example, `100px` means that `Width` is 100 pixels. Value range: [8, 4096].</li>
         :type Width: str
-        :param _Height: Watermark height. % and px formats are supported:
-<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height. For example, `10%` means that `Height` is 10% of the video height;</li>
-<li>If the string ends in px, the `Height` of the watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels. Value range: 0 or [8, 4096].</li>
-Default value: 0px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
+        :param _Height: Height of a watermark, supporting two formats: % and px.
+<li>If a string ends with %, it indicates that the `Height` of a watermark is a percentage of a video's height. For example, `10%` means that `Height` is 10% of a video's height.</li>
+<li>If a string ends with px, the `Height` of a watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels. Value range: 0 or [8, 4096].</li>
+
+
         :type Height: str
         :param _RepeatType: Repeat type of an animated watermark. Valid values:
 <li>once: no longer appears after watermark playback ends.</li>
@@ -17658,8 +19902,12 @@ class LiveActivityResItem(AbstractModel):
         :param _LiveRecordTask: The output of a live recording task.
 Note: This field may return·null, indicating that no valid values can be obtained.
         :type LiveRecordTask: :class:`tencentcloud.mps.v20190612.models.LiveScheduleLiveRecordTaskResult`
+        :param _LiveQualityControlTask: Media quality inspection task output.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LiveQualityControlTask: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
         """
         self._LiveRecordTask = None
+        self._LiveQualityControlTask = None
 
     @property
     def LiveRecordTask(self):
@@ -17669,11 +19917,22 @@ Note: This field may return·null, indicating that no valid values can be obtain
     def LiveRecordTask(self, LiveRecordTask):
         self._LiveRecordTask = LiveRecordTask
 
+    @property
+    def LiveQualityControlTask(self):
+        return self._LiveQualityControlTask
+
+    @LiveQualityControlTask.setter
+    def LiveQualityControlTask(self, LiveQualityControlTask):
+        self._LiveQualityControlTask = LiveQualityControlTask
+
 
     def _deserialize(self, params):
         if params.get("LiveRecordTask") is not None:
             self._LiveRecordTask = LiveScheduleLiveRecordTaskResult()
             self._LiveRecordTask._deserialize(params.get("LiveRecordTask"))
+        if params.get("LiveQualityControlTask") is not None:
+            self._LiveQualityControlTask = ScheduleQualityControlTaskResult()
+            self._LiveQualityControlTask._deserialize(params.get("LiveQualityControlTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17691,9 +19950,10 @@ class LiveActivityResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ActivityType: The task type.
-<li>`LiveRecord`: Live recording. </li>
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _ActivityType: Atomic task type.
+<li>LiveRecord: live recording.</li>
+<li>AiQualityControl: media quality inspection.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type ActivityType: str
         :param _LiveActivityResItem: The task output.
 Note: This field may return·null, indicating that no valid values can be obtained.
@@ -18169,6 +20429,194 @@ Note: This field may return·null, indicating that no valid values can be obtain
         
 
 
+class LiveStreamAiAnalysisResultInfo(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultSet: 
+        :type ResultSet: list of LiveStreamAiAnalysisResultItem
+        """
+        self._ResultSet = None
+
+    @property
+    def ResultSet(self):
+        return self._ResultSet
+
+    @ResultSet.setter
+    def ResultSet(self, ResultSet):
+        self._ResultSet = ResultSet
+
+
+    def _deserialize(self, params):
+        if params.get("ResultSet") is not None:
+            self._ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = LiveStreamAiAnalysisResultItem()
+                obj._deserialize(item)
+                self._ResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveStreamAiAnalysisResultItem(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 
+        :type Type: str
+        :param _SegmentResultSet: 
+        :type SegmentResultSet: list of SegmentRecognitionItem
+        """
+        self._Type = None
+        self._SegmentResultSet = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SegmentResultSet(self):
+        return self._SegmentResultSet
+
+    @SegmentResultSet.setter
+    def SegmentResultSet(self, SegmentResultSet):
+        self._SegmentResultSet = SegmentResultSet
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("SegmentResultSet") is not None:
+            self._SegmentResultSet = []
+            for item in params.get("SegmentResultSet"):
+                obj = SegmentRecognitionItem()
+                obj._deserialize(item)
+                self._SegmentResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveStreamAiQualityControlResultInfo(AbstractModel):
+    """Live stream media quality inspection result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QualityControlResults: Content quality inspection result list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type QualityControlResults: list of QualityControlResult
+        :param _DiagnoseResults: 
+        :type DiagnoseResults: list of DiagnoseResult
+        :param _QualityControlResultSet: Content quality inspection result list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type QualityControlResultSet: list of QualityControlResult
+        :param _DiagnoseResultSet: Format diagnostic result list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type DiagnoseResultSet: list of DiagnoseResult
+        """
+        self._QualityControlResults = None
+        self._DiagnoseResults = None
+        self._QualityControlResultSet = None
+        self._DiagnoseResultSet = None
+
+    @property
+    def QualityControlResults(self):
+        warnings.warn("parameter `QualityControlResults` is deprecated", DeprecationWarning) 
+
+        return self._QualityControlResults
+
+    @QualityControlResults.setter
+    def QualityControlResults(self, QualityControlResults):
+        warnings.warn("parameter `QualityControlResults` is deprecated", DeprecationWarning) 
+
+        self._QualityControlResults = QualityControlResults
+
+    @property
+    def DiagnoseResults(self):
+        warnings.warn("parameter `DiagnoseResults` is deprecated", DeprecationWarning) 
+
+        return self._DiagnoseResults
+
+    @DiagnoseResults.setter
+    def DiagnoseResults(self, DiagnoseResults):
+        warnings.warn("parameter `DiagnoseResults` is deprecated", DeprecationWarning) 
+
+        self._DiagnoseResults = DiagnoseResults
+
+    @property
+    def QualityControlResultSet(self):
+        return self._QualityControlResultSet
+
+    @QualityControlResultSet.setter
+    def QualityControlResultSet(self, QualityControlResultSet):
+        self._QualityControlResultSet = QualityControlResultSet
+
+    @property
+    def DiagnoseResultSet(self):
+        return self._DiagnoseResultSet
+
+    @DiagnoseResultSet.setter
+    def DiagnoseResultSet(self, DiagnoseResultSet):
+        self._DiagnoseResultSet = DiagnoseResultSet
+
+
+    def _deserialize(self, params):
+        if params.get("QualityControlResults") is not None:
+            self._QualityControlResults = []
+            for item in params.get("QualityControlResults"):
+                obj = QualityControlResult()
+                obj._deserialize(item)
+                self._QualityControlResults.append(obj)
+        if params.get("DiagnoseResults") is not None:
+            self._DiagnoseResults = []
+            for item in params.get("DiagnoseResults"):
+                obj = DiagnoseResult()
+                obj._deserialize(item)
+                self._DiagnoseResults.append(obj)
+        if params.get("QualityControlResultSet") is not None:
+            self._QualityControlResultSet = []
+            for item in params.get("QualityControlResultSet"):
+                obj = QualityControlResult()
+                obj._deserialize(item)
+                self._QualityControlResultSet.append(obj)
+        if params.get("DiagnoseResultSet") is not None:
+            self._DiagnoseResultSet = []
+            for item in params.get("DiagnoseResultSet"):
+                obj = DiagnoseResult()
+                obj._deserialize(item)
+                self._DiagnoseResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LiveStreamAiRecognitionResultInfo(AbstractModel):
     """Live stream AI recognition results
 
@@ -18214,13 +20662,16 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: The result type. Valid values:
-<li>FaceRecognition: Face recognition</li>
-<li>AsrWordsRecognition: Speech keyword recognition</li>
-<li>OcrWordsRecognition: Text keyword recognition</li>
-<li>AsrFullTextRecognition: Full speech recognition</li>
-<li>OcrFullTextRecognition: Full text recognition</li>
-<li>TransTextRecognition: Speech translation</li>
+        :param _Type: Result type. Valid values:
+<li>FaceRecognition: face recognition.</li>
+<li>AsrWordsRecognition: speech keyword recognition.</li>
+<li>OcrWordsRecognition: text keyword recognition.</li>
+<li>AsrFullTextRecognition: full speech recognition.</li>
+<li>OcrFullTextRecognition: full text recognition.</li>
+<li>TransTextRecognition: speech translation.</li>
+
+<li>ObjectRecognition: object recognition.</li>
+<li>TagRecognition: highlights marking.</li>
         :type Type: str
         :param _FaceRecognitionResultSet: Face recognition result, which is valid when `Type` is
 `FaceRecognition`.
@@ -18239,6 +20690,10 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
         :type OcrFullTextRecognitionResultSet: list of LiveStreamOcrFullTextRecognitionResult
         :param _TransTextRecognitionResultSet: The translation result. This parameter is valid only if `Type` is `TransTextRecognition`.
         :type TransTextRecognitionResultSet: list of LiveStreamTransTextRecognitionResult
+        :param _ObjectRecognitionResultSet: Object recognition result, which is valid when Type is ObjectRecognition.
+        :type ObjectRecognitionResultSet: list of LiveStreamObjectRecognitionResult
+        :param _TagRecognitionResultSet: 
+        :type TagRecognitionResultSet: list of LiveStreamTagRecognitionResult
         """
         self._Type = None
         self._FaceRecognitionResultSet = None
@@ -18247,6 +20702,8 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
         self._AsrFullTextRecognitionResultSet = None
         self._OcrFullTextRecognitionResultSet = None
         self._TransTextRecognitionResultSet = None
+        self._ObjectRecognitionResultSet = None
+        self._TagRecognitionResultSet = None
 
     @property
     def Type(self):
@@ -18304,6 +20761,22 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
     def TransTextRecognitionResultSet(self, TransTextRecognitionResultSet):
         self._TransTextRecognitionResultSet = TransTextRecognitionResultSet
 
+    @property
+    def ObjectRecognitionResultSet(self):
+        return self._ObjectRecognitionResultSet
+
+    @ObjectRecognitionResultSet.setter
+    def ObjectRecognitionResultSet(self, ObjectRecognitionResultSet):
+        self._ObjectRecognitionResultSet = ObjectRecognitionResultSet
+
+    @property
+    def TagRecognitionResultSet(self):
+        return self._TagRecognitionResultSet
+
+    @TagRecognitionResultSet.setter
+    def TagRecognitionResultSet(self, TagRecognitionResultSet):
+        self._TagRecognitionResultSet = TagRecognitionResultSet
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -18343,6 +20816,18 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
                 obj = LiveStreamTransTextRecognitionResult()
                 obj._deserialize(item)
                 self._TransTextRecognitionResultSet.append(obj)
+        if params.get("ObjectRecognitionResultSet") is not None:
+            self._ObjectRecognitionResultSet = []
+            for item in params.get("ObjectRecognitionResultSet"):
+                obj = LiveStreamObjectRecognitionResult()
+                obj._deserialize(item)
+                self._ObjectRecognitionResultSet.append(obj)
+        if params.get("TagRecognitionResultSet") is not None:
+            self._TagRecognitionResultSet = []
+            for item in params.get("TagRecognitionResultSet"):
+                obj = LiveStreamTagRecognitionResult()
+                obj._deserialize(item)
+                self._TagRecognitionResultSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19190,6 +21675,100 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
         
 
 
+class LiveStreamObjectRecognitionResult(AbstractModel):
+    """Live streaming AI object recognition result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Name of a recognized object.
+        :type Name: str
+        :param _StartPtsOffset: Start PTS time of a recognized segment, in seconds.
+        :type StartPtsOffset: float
+        :param _EndPtsOffset: End PTS time of a recognized segment, in seconds.
+        :type EndPtsOffset: float
+        :param _Confidence: Confidence of a recognized segment. Value range: 0-100.
+        :type Confidence: float
+        :param _AreaCoordSet: Zone coordinates of the recognition result. An array contains four elements: [x1, y1, x2, y2], representing the horizontal and vertical coordinates of the top-left and bottom-right corners, respectively.
+        :type AreaCoordSet: list of int
+        :param _Url: Screenshot link.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Url: str
+        """
+        self._Name = None
+        self._StartPtsOffset = None
+        self._EndPtsOffset = None
+        self._Confidence = None
+        self._AreaCoordSet = None
+        self._Url = None
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def StartPtsOffset(self):
+        return self._StartPtsOffset
+
+    @StartPtsOffset.setter
+    def StartPtsOffset(self, StartPtsOffset):
+        self._StartPtsOffset = StartPtsOffset
+
+    @property
+    def EndPtsOffset(self):
+        return self._EndPtsOffset
+
+    @EndPtsOffset.setter
+    def EndPtsOffset(self, EndPtsOffset):
+        self._EndPtsOffset = EndPtsOffset
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def AreaCoordSet(self):
+        return self._AreaCoordSet
+
+    @AreaCoordSet.setter
+    def AreaCoordSet(self, AreaCoordSet):
+        self._AreaCoordSet = AreaCoordSet
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._StartPtsOffset = params.get("StartPtsOffset")
+        self._EndPtsOffset = params.get("EndPtsOffset")
+        self._Confidence = params.get("Confidence")
+        self._AreaCoordSet = params.get("AreaCoordSet")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LiveStreamOcrFullTextRecognitionResult(AbstractModel):
     """OCR-based full live stream recognition
 
@@ -19482,6 +22061,130 @@ class LiveStreamProcessTask(AbstractModel):
         
 
 
+class LiveStreamRecordResultInfo(AbstractModel):
+    """Live stream recording result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordOver: Whether recording ends.
+0: Recording does not end, returning a single file.
+1: Recording ends, returning all recording files.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type RecordOver: int
+        :param _FileResults: File list.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FileResults: list of LiveRecordFile
+        """
+        self._RecordOver = None
+        self._FileResults = None
+
+    @property
+    def RecordOver(self):
+        return self._RecordOver
+
+    @RecordOver.setter
+    def RecordOver(self, RecordOver):
+        self._RecordOver = RecordOver
+
+    @property
+    def FileResults(self):
+        return self._FileResults
+
+    @FileResults.setter
+    def FileResults(self, FileResults):
+        self._FileResults = FileResults
+
+
+    def _deserialize(self, params):
+        self._RecordOver = params.get("RecordOver")
+        if params.get("FileResults") is not None:
+            self._FileResults = []
+            for item in params.get("FileResults"):
+                obj = LiveRecordFile()
+                obj._deserialize(item)
+                self._FileResults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveStreamTagRecognitionResult(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 
+        :type Id: str
+        :param _StartPtsTime: 
+        :type StartPtsTime: float
+        :param _EndPtsTime: 
+        :type EndPtsTime: float
+        :param _Confidence: 
+        :type Confidence: float
+        """
+        self._Id = None
+        self._StartPtsTime = None
+        self._EndPtsTime = None
+        self._Confidence = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def StartPtsTime(self):
+        return self._StartPtsTime
+
+    @StartPtsTime.setter
+    def StartPtsTime(self, StartPtsTime):
+        self._StartPtsTime = StartPtsTime
+
+    @property
+    def EndPtsTime(self):
+        return self._EndPtsTime
+
+    @EndPtsTime.setter
+    def EndPtsTime(self, EndPtsTime):
+        self._EndPtsTime = EndPtsTime
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._StartPtsTime = params.get("StartPtsTime")
+        self._EndPtsTime = params.get("EndPtsTime")
+        self._Confidence = params.get("Confidence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LiveStreamTaskNotifyConfig(AbstractModel):
     """Event notification configuration of a task.
 
@@ -19489,6 +22192,10 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _NotifyType: The notification type, `CMQ` by default. If this parameter is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`.
+
+<font color="red">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>
+        :type NotifyType: str
         :param _CmqModel: CMQ model. There are two types: `Queue` and `Topic`. Currently, only `Queue` is supported.
         :type CmqModel: str
         :param _CmqRegion: CMQ region, such as `sh` and `bj`.
@@ -19497,19 +22204,27 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         :type QueueName: str
         :param _TopicName: This parameter is valid when the model is `Topic`, indicating the name of the CMQ topic for receiving event notifications.
         :type TopicName: str
-        :param _NotifyType: The notification type, `CMQ` by default. If this parameter is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`.
-
-<font color="red">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>
-        :type NotifyType: str
         :param _NotifyUrl: HTTP callback URL, required if `NotifyType` is set to `URL`
         :type NotifyUrl: str
+        :param _NotifyKey: Key used to generate a callback signature.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type NotifyKey: str
         """
+        self._NotifyType = None
         self._CmqModel = None
         self._CmqRegion = None
         self._QueueName = None
         self._TopicName = None
-        self._NotifyType = None
         self._NotifyUrl = None
+        self._NotifyKey = None
+
+    @property
+    def NotifyType(self):
+        return self._NotifyType
+
+    @NotifyType.setter
+    def NotifyType(self, NotifyType):
+        self._NotifyType = NotifyType
 
     @property
     def CmqModel(self):
@@ -19544,14 +22259,6 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
         self._TopicName = TopicName
 
     @property
-    def NotifyType(self):
-        return self._NotifyType
-
-    @NotifyType.setter
-    def NotifyType(self, NotifyType):
-        self._NotifyType = NotifyType
-
-    @property
     def NotifyUrl(self):
         return self._NotifyUrl
 
@@ -19559,14 +22266,23 @@ class LiveStreamTaskNotifyConfig(AbstractModel):
     def NotifyUrl(self, NotifyUrl):
         self._NotifyUrl = NotifyUrl
 
+    @property
+    def NotifyKey(self):
+        return self._NotifyKey
+
+    @NotifyKey.setter
+    def NotifyKey(self, NotifyKey):
+        self._NotifyKey = NotifyKey
+
 
     def _deserialize(self, params):
+        self._NotifyType = params.get("NotifyType")
         self._CmqModel = params.get("CmqModel")
         self._CmqRegion = params.get("CmqRegion")
         self._QueueName = params.get("QueueName")
         self._TopicName = params.get("TopicName")
-        self._NotifyType = params.get("NotifyType")
         self._NotifyUrl = params.get("NotifyUrl")
+        self._NotifyKey = params.get("NotifyKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19766,7 +22482,7 @@ class ManageTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -19864,6 +22580,69 @@ class MediaAiAnalysisCoverItem(AbstractModel):
     def _deserialize(self, params):
         self._CoverPath = params.get("CoverPath")
         self._Confidence = params.get("Confidence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaAiAnalysisDescriptionItem(AbstractModel):
+    """Intelligent description information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Description: Intelligent description.
+        :type Description: str
+        :param _Confidence: Confidence of the intelligent description, with a value range from 0 to 100.
+        :type Confidence: float
+        :param _Paragraphs: Segmentation result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Paragraphs: list of AiParagraphInfo
+        """
+        self._Description = None
+        self._Confidence = None
+        self._Paragraphs = None
+
+    @property
+    def Description(self):
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Paragraphs(self):
+        return self._Paragraphs
+
+    @Paragraphs.setter
+    def Paragraphs(self, Paragraphs):
+        self._Paragraphs = Paragraphs
+
+
+    def _deserialize(self, params):
+        self._Description = params.get("Description")
+        self._Confidence = params.get("Confidence")
+        if params.get("Paragraphs") is not None:
+            self._Paragraphs = []
+            for item in params.get("Paragraphs"):
+                obj = AiParagraphInfo()
+                obj._deserialize(item)
+                self._Paragraphs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22471,6 +25250,14 @@ Note: this field may return `null`, indicating that no valid value was found.
         :param _HdrType: HDR type
 Note: This field may return `null`, indicating that no valid value was found.
         :type HdrType: str
+        :param _Codecs: 
+        :type Codecs: str
+        :param _FpsNumerator: Numerator of the frame rate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FpsNumerator: int
+        :param _FpsDenominator: Denominator of the frame rate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FpsDenominator: int
         """
         self._Bitrate = None
         self._Height = None
@@ -22481,6 +25268,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._ColorSpace = None
         self._ColorTransfer = None
         self._HdrType = None
+        self._Codecs = None
+        self._FpsNumerator = None
+        self._FpsDenominator = None
 
     @property
     def Bitrate(self):
@@ -22554,6 +25344,30 @@ Note: This field may return `null`, indicating that no valid value was found.
     def HdrType(self, HdrType):
         self._HdrType = HdrType
 
+    @property
+    def Codecs(self):
+        return self._Codecs
+
+    @Codecs.setter
+    def Codecs(self, Codecs):
+        self._Codecs = Codecs
+
+    @property
+    def FpsNumerator(self):
+        return self._FpsNumerator
+
+    @FpsNumerator.setter
+    def FpsNumerator(self, FpsNumerator):
+        self._FpsNumerator = FpsNumerator
+
+    @property
+    def FpsDenominator(self):
+        return self._FpsDenominator
+
+    @FpsDenominator.setter
+    def FpsDenominator(self, FpsDenominator):
+        self._FpsDenominator = FpsDenominator
+
 
     def _deserialize(self, params):
         self._Bitrate = params.get("Bitrate")
@@ -22565,6 +25379,9 @@ Note: This field may return `null`, indicating that no valid value was found.
         self._ColorSpace = params.get("ColorSpace")
         self._ColorTransfer = params.get("ColorTransfer")
         self._HdrType = params.get("HdrType")
+        self._Codecs = params.get("Codecs")
+        self._FpsNumerator = params.get("FpsNumerator")
+        self._FpsDenominator = params.get("FpsDenominator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22695,7 +25512,7 @@ class ModifyAIAnalysisTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -22847,7 +25664,7 @@ class ModifyAIRecognitionTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -22893,6 +25710,19 @@ Note: the frame rate of each stream must be consistent; otherwise, the frame rat
         :type StreamInfos: list of AdaptiveStreamTemplate
         :param _Comment: Template description. Length limit: 256 characters.
         :type Comment: str
+        :param _PureAudio: Whether it is an audio-only template. 0: video template. 1: audio-only template.When the value is 1:
+1. StreamInfos.N.RemoveVideo=1
+2. StreamInfos.N.RemoveAudio=0
+3. StreamInfos.N.Video.Codec=copy
+
+When the value is 0:
+
+1. StreamInfos.N.Video.Codec cannot be copy.
+2. StreamInfos.N.Video.Fps cannot be null.
+        :type PureAudio: int
+        :param _SegmentType: HLS segment type. Valid values: <li>ts-segment: HLS+TS segment.</li> <li>ts-byterange: HLS+TS byte range.</li> <li>mp4-segment: HLS+MP4 segment.</li> <li>mp4-byterange: HLS+MP4 byte range.</li> <li>ts-packed-audio: TS+Packed audio.</li> <li>mp4-packed-audio: MP4+Packed audio.</li> Default value: ts-segment.
+Note: The HLS segment format for adaptive bitrate streaming is based on this field.
+        :type SegmentType: str
         """
         self._Definition = None
         self._Name = None
@@ -22901,6 +25731,8 @@ Note: the frame rate of each stream must be consistent; otherwise, the frame rat
         self._DisableHigherVideoResolution = None
         self._StreamInfos = None
         self._Comment = None
+        self._PureAudio = None
+        self._SegmentType = None
 
     @property
     def Definition(self):
@@ -22958,6 +25790,22 @@ Note: the frame rate of each stream must be consistent; otherwise, the frame rat
     def Comment(self, Comment):
         self._Comment = Comment
 
+    @property
+    def PureAudio(self):
+        return self._PureAudio
+
+    @PureAudio.setter
+    def PureAudio(self, PureAudio):
+        self._PureAudio = PureAudio
+
+    @property
+    def SegmentType(self):
+        return self._SegmentType
+
+    @SegmentType.setter
+    def SegmentType(self, SegmentType):
+        self._SegmentType = SegmentType
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -22972,6 +25820,8 @@ Note: the frame rate of each stream must be consistent; otherwise, the frame rat
                 obj._deserialize(item)
                 self._StreamInfos.append(obj)
         self._Comment = params.get("Comment")
+        self._PureAudio = params.get("PureAudio")
+        self._SegmentType = params.get("SegmentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22989,7 +25839,7 @@ class ModifyAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -23156,7 +26006,7 @@ class ModifyAnimatedGraphicsTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -23311,7 +26161,7 @@ class ModifyContentReviewTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -23511,7 +26361,7 @@ class ModifyImageSpriteTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -23641,7 +26491,7 @@ class ModifyPersonSampleResponse(AbstractModel):
         :param _FailFaceInfoSet: Information of images that failed the verification by facial feature positioning.
 Note: this field may return `null`, indicating that no valid values can be obtained.
         :type FailFaceInfoSet: list of AiSampleFailFaceInfo
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._Person = None
@@ -23683,6 +26533,105 @@ Note: this field may return `null`, indicating that no valid values can be obtai
                 obj = AiSampleFailFaceInfo()
                 obj._deserialize(item)
                 self._FailFaceInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyQualityControlTemplateRequest(AbstractModel):
+    """ModifyQualityControlTemplate request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of a media quality inspection template.
+        :type Definition: int
+        :param _Name: Media quality inspection template name, with a length limit of 64 characters.
+        :type Name: str
+        :param _Comment: Template description, with a length limit of 256 characters.
+        :type Comment: str
+        :param _QualityControlItemSet: Media quality inspection configuration parameters.
+        :type QualityControlItemSet: list of QualityControlItemConfig
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._QualityControlItemSet = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def QualityControlItemSet(self):
+        return self._QualityControlItemSet
+
+    @QualityControlItemSet.setter
+    def QualityControlItemSet(self, QualityControlItemSet):
+        self._QualityControlItemSet = QualityControlItemSet
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("QualityControlItemSet") is not None:
+            self._QualityControlItemSet = []
+            for item in params.get("QualityControlItemSet"):
+                obj = QualityControlItemConfig()
+                obj._deserialize(item)
+                self._QualityControlItemSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyQualityControlTemplateResponse(AbstractModel):
+    """ModifyQualityControlTemplate response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -23846,7 +26795,7 @@ class ModifySampleSnapshotTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -23887,6 +26836,8 @@ Note: If this parameter is left empty, the current `OutputDir` value will be inv
         :type OutputDir: str
         :param _TaskNotifyConfig: The notification configuration.
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        :param _ResourceId: Resource ID. Ensure the corresponding resource is in the enabled state.
+        :type ResourceId: str
         """
         self._ScheduleId = None
         self._ScheduleName = None
@@ -23895,6 +26846,7 @@ Note: If this parameter is left empty, the current `OutputDir` value will be inv
         self._OutputStorage = None
         self._OutputDir = None
         self._TaskNotifyConfig = None
+        self._ResourceId = None
 
     @property
     def ScheduleId(self):
@@ -23952,6 +26904,14 @@ Note: If this parameter is left empty, the current `OutputDir` value will be inv
     def TaskNotifyConfig(self, TaskNotifyConfig):
         self._TaskNotifyConfig = TaskNotifyConfig
 
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
 
     def _deserialize(self, params):
         self._ScheduleId = params.get("ScheduleId")
@@ -23972,6 +26932,7 @@ Note: If this parameter is left empty, the current `OutputDir` value will be inv
         if params.get("TaskNotifyConfig") is not None:
             self._TaskNotifyConfig = TaskNotifyConfig()
             self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23989,7 +26950,7 @@ class ModifyScheduleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -24139,7 +27100,7 @@ class ModifySnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -24317,7 +27278,7 @@ class ModifyTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -24487,7 +27448,7 @@ class ModifyWatermarkTemplateResponse(AbstractModel):
         r"""
         :param _ImageUrl: Image watermark address. This field is valid only when `ImageTemplate.ImageContent` is non-empty.
         :type ImageUrl: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._ImageUrl = None
@@ -24589,7 +27550,7 @@ class ModifyWordSampleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -25175,9 +28136,11 @@ class ParseLiveStreamProcessNotificationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NotificationType: Result type of live stream processing. Valid values:
-<li>AiReviewResult: Content audit result;</li>
-<li>ProcessEof: Live stream processing has been completed.</li>
+        :param _NotificationType: Live stream processing result type, including:
+<li>AiReviewResult: content moderation result;</li>
+<li>AiRecognitionResult: content recognition result;</li>
+<li>LiveRecordResult: live recording result;</li>
+<li>ProcessEof: live stream processing result.</li>
         :type NotificationType: str
         :param _TaskId: Video processing task ID.
         :type TaskId: str
@@ -25189,11 +28152,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type AiReviewResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiReviewResultInfo`
         :param _AiRecognitionResultInfo: Content recognition result, which is valid if `NotificationType` is `AiRecognitionResult`.
         :type AiRecognitionResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiRecognitionResultInfo`
+        :param _AiAnalysisResultInfo: 
+        :type AiAnalysisResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiAnalysisResultInfo`
+        :param _AiQualityControlResultInfo: 
+        :type AiQualityControlResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiQualityControlResultInfo`
+        :param _LiveRecordResultInfo: Live recording result is valid when NotificationType is LiveRecordResult.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type LiveRecordResultInfo: :class:`tencentcloud.mps.v20190612.models.LiveStreamRecordResultInfo`
         :param _SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
         :type SessionId: str
         :param _SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._NotificationType = None
@@ -25201,6 +28171,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ProcessEofInfo = None
         self._AiReviewResultInfo = None
         self._AiRecognitionResultInfo = None
+        self._AiAnalysisResultInfo = None
+        self._AiQualityControlResultInfo = None
+        self._LiveRecordResultInfo = None
         self._SessionId = None
         self._SessionContext = None
         self._RequestId = None
@@ -25246,6 +28219,30 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._AiRecognitionResultInfo = AiRecognitionResultInfo
 
     @property
+    def AiAnalysisResultInfo(self):
+        return self._AiAnalysisResultInfo
+
+    @AiAnalysisResultInfo.setter
+    def AiAnalysisResultInfo(self, AiAnalysisResultInfo):
+        self._AiAnalysisResultInfo = AiAnalysisResultInfo
+
+    @property
+    def AiQualityControlResultInfo(self):
+        return self._AiQualityControlResultInfo
+
+    @AiQualityControlResultInfo.setter
+    def AiQualityControlResultInfo(self, AiQualityControlResultInfo):
+        self._AiQualityControlResultInfo = AiQualityControlResultInfo
+
+    @property
+    def LiveRecordResultInfo(self):
+        return self._LiveRecordResultInfo
+
+    @LiveRecordResultInfo.setter
+    def LiveRecordResultInfo(self, LiveRecordResultInfo):
+        self._LiveRecordResultInfo = LiveRecordResultInfo
+
+    @property
     def SessionId(self):
         return self._SessionId
 
@@ -25282,6 +28279,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("AiRecognitionResultInfo") is not None:
             self._AiRecognitionResultInfo = LiveStreamAiRecognitionResultInfo()
             self._AiRecognitionResultInfo._deserialize(params.get("AiRecognitionResultInfo"))
+        if params.get("AiAnalysisResultInfo") is not None:
+            self._AiAnalysisResultInfo = LiveStreamAiAnalysisResultInfo()
+            self._AiAnalysisResultInfo._deserialize(params.get("AiAnalysisResultInfo"))
+        if params.get("AiQualityControlResultInfo") is not None:
+            self._AiQualityControlResultInfo = LiveStreamAiQualityControlResultInfo()
+            self._AiQualityControlResultInfo._deserialize(params.get("AiQualityControlResultInfo"))
+        if params.get("LiveRecordResultInfo") is not None:
+            self._LiveRecordResultInfo = LiveStreamRecordResultInfo()
+            self._LiveRecordResultInfo._deserialize(params.get("LiveRecordResultInfo"))
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
         self._RequestId = params.get("RequestId")
@@ -25350,9 +28356,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 - The format of this parameter is a decimal Unix timestamp, i.e., the number of seconds that have elapsed since 00:00 (UTC/GMT time) on January 1, 1970.
 
         :type Timestamp: int
-        :param _Sign: The notification signature. Sign = MD5 (Timestamp + NotifyKey) MPS concatenates `Timestamp` and `NotifyKey` in `TaskNotifyConfig` and calculates a signature using the MD5 algorithm. This signature is included in the notification sent to your backend server. If the signature in the notification matches your own calculation result, it indicates that the notification is from MPS.
+        :param _Sign: Event notification security signature. Sign = MD5 (Timestamp + NotifyKey). Note: Media Processing Service concatenates Timestamp and NotifyKey from TaskNotifyConfig as a string and calculates the Sign value through MD5. This value is included in the notification message. Your backend server can verify whether the Sign is correct using the same algorithm, to confirm whether the message is indeed from the Media Processing Service backend.
         :type Sign: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._EventType = None
@@ -26512,7 +29518,7 @@ class ProcessLiveStreamRequest(AbstractModel):
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
         :param _AiAnalysisTask: 
         :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
-        :param _AiQualityControlTask: 
+        :param _AiQualityControlTask: Media quality inspection type task parameters.
         :type AiQualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
         :param _SessionId: The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
         :type SessionId: str
@@ -26669,7 +29675,7 @@ class ProcessLiveStreamResponse(AbstractModel):
         r"""
         :param _TaskId: Task ID
         :type TaskId: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TaskId = None
@@ -26711,13 +29717,14 @@ class ProcessMediaRequest(AbstractModel):
         :param _OutputDir: The directory to save the media processing output file, which must start and end with `/`, such as `/movie/201907/`.
 If you do not specify this parameter, the file will be saved to the directory specified in `InputInfo`.
         :type OutputDir: str
-        :param _ScheduleId: The scheme ID.
-Note 1: About `OutputStorage` and `OutputDir`
-<li>If an output storage and directory are specified for a subtask of the scheme, those output settings will be applied.</li>
-<li>If an output storage and directory are not specified for the subtasks of a scheme, the output parameters passed in the `ProcessMedia` API will be applied.</li>
-Note 2: If `TaskNotifyConfig` is specified, the specified settings will be used instead of the default callback settings of the scheme.
+        :param _ScheduleId: Orchestration ID.
+Note 1: For parameters OutputStorage and OutputDir:
+<li>When a sub-task node in service orchestration has OutputStorage and OutputDir configured, the output configured in this sub-task node is used as the output of the sub-task.</li>
+<li>When a sub-task node in service orchestration does not have OutputStorage and OutputDir configured, if the task creation API (ProcessMedia) has specified an output, it will override the default output of the original orchestration.</li>
+<li>The priority of output settings is: Orchestration sub-task node > Output specified by the task API > Corresponding configuration within an orchestration.</li>
+Note 2: For the TaskNotifyConfig parameter, if the task creation API (ProcessMedia) has set this parameter, it will override the default callback of the original orchestration.
 
-Note 3: The trigger configured for a scheme is for automatically starting a scheme. It stops working when you manually call this API to start a scheme.
+Note 3: The trigger configured for an orchestration is for automatically starting the orchestration. It stops working when you manually call this API to start an orchestration.
         :type ScheduleId: int
         :param _MediaProcessTask: The media processing parameters to use.
         :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
@@ -26727,13 +29734,13 @@ Note 3: The trigger configured for a scheme is for automatically starting a sche
         :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
         :param _AiRecognitionTask: Type parameter of a video content recognition task.
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
-        :param _AiQualityControlTask: The parameters of a quality control task.
+        :param _AiQualityControlTask: Media quality inspection type task parameters.
         :type AiQualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
         :param _TaskNotifyConfig: Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         :param _TasksPriority: Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
         :type TasksPriority: int
-        :param _SessionId: The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
+        :param _SessionId: Identification code for deduplication, up to 50 characters. If a request with the same identification code was made within the past 3 days, an error will be returned for the current request. If this parameter is not provided or is an empty string, deduplication will not be performed for this request.
         :type SessionId: str
         :param _SessionContext: The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
         :type SessionContext: str
@@ -26920,7 +29927,7 @@ class ProcessMediaResponse(AbstractModel):
         r"""
         :param _TaskId: Task ID.
         :type TaskId: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._TaskId = None
@@ -27283,7 +30290,7 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
 
 
 class QualityControlData(AbstractModel):
-    """The quality check output.
+    """Media quality inspection result output.
 
     """
 
@@ -27298,14 +30305,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _QualityEvaluationScore: The no-reference video quality score. Value range: 0-100.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type QualityEvaluationScore: int
-        :param _QualityControlResultSet: The issues detected by quality control.
+        :param _QualityControlResultSet: Exception items detected in content quality inspection.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type QualityControlResultSet: list of QualityControlResult
+        :param _ContainerDiagnoseResultSet: Exception items detected in format diagnosis.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ContainerDiagnoseResultSet: list of ContainerDiagnoseResultItem
         """
         self._NoAudio = None
         self._NoVideo = None
         self._QualityEvaluationScore = None
         self._QualityControlResultSet = None
+        self._ContainerDiagnoseResultSet = None
 
     @property
     def NoAudio(self):
@@ -27339,6 +30350,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def QualityControlResultSet(self, QualityControlResultSet):
         self._QualityControlResultSet = QualityControlResultSet
 
+    @property
+    def ContainerDiagnoseResultSet(self):
+        return self._ContainerDiagnoseResultSet
+
+    @ContainerDiagnoseResultSet.setter
+    def ContainerDiagnoseResultSet(self, ContainerDiagnoseResultSet):
+        self._ContainerDiagnoseResultSet = ContainerDiagnoseResultSet
+
 
     def _deserialize(self, params):
         self._NoAudio = params.get("NoAudio")
@@ -27350,6 +30369,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
                 obj = QualityControlResult()
                 obj._deserialize(item)
                 self._QualityControlResultSet.append(obj)
+        if params.get("ContainerDiagnoseResultSet") is not None:
+            self._ContainerDiagnoseResultSet = []
+            for item in params.get("ContainerDiagnoseResultSet"):
+                obj = ContainerDiagnoseResultItem()
+                obj._deserialize(item)
+                self._ContainerDiagnoseResultSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27431,6 +30456,173 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class QualityControlItemConfig(AbstractModel):
+    """Quality inspection item configurations.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: Quality inspection item name. Valid values:
+<li>LowEvaluation: no-reference scoring.</li>
+<li>Mosaic: mosaic detection.</li>
+<li>CrashScreen: screen glitch detection.</li>
+<li>VideoFreezedFrame: video freezing.</li>
+<li>Blur: blur detection.</li>
+<li>BlackWhiteEdge: black and white edges detection.</li>
+<li>SolidColorScreen: solid color screen detection.</li>
+<li>LowLighting: low light.</li>
+<li>HighLighting: overexposure.</li>
+<li>NoVoice: no voice detection.</li>
+<li>LowVoice: low voice detection.</li>
+<li>HighVoice: high voice detection.</li>
+<li>Jitter: jitter detection.</li>
+<li>Noise: noise detection.</li>
+<li>QRCode: QR code detection.</li>
+<li>BarCode: barcode detection.</li>
+<li>AppletCode: mini program code detection.</li>
+<li>VideoResolutionChanged: video resolution change.</li>
+<li>AudioSampleRateChanged: audio sample rate change.</li>
+<li>AudioChannelsChanged: audio channel quantity change.</li>
+<li>ParameterSetsChanged: stream parameter set information change.</li>
+<li>DarOrSarInvalid: video aspect ratio exception.</li>
+<li>TimestampFallback: DTS timestamp rollback.</li>
+<li>DtsJitter: DTS jitter too high.</li>
+<li>PtsJitter: PTS jitter too high.</li>
+<li>AACDurationDeviation: improper AAC frame timestamp interval.</li>
+<li>AudioDroppingFrames: audio frame dropping.</li>
+<li>VideoDroppingFrames: video frame dropping.</li>
+<li>AVTimestampInterleave: improper audio-video interleaving.</li>
+<li>PtsLessThanDts: PTS less than DTS for media streams.</li>
+<li>ReceiveFpsJitter: significant jitter in the network receive frame rate.</li>
+<li>ReceiveFpsTooSmall: network receive video frame rate too low.</li>
+<li>FpsJitter: significant jitter in the stream frame rate calculated via PTS.</li>
+<li>StreamOpenFailed: stream open failure.</li>
+<li>StreamEnd: stream end.</li>
+<li>StreamParseFailed: stream parsing failure.</li>
+<li>VideoFirstFrameNotIdr: first frame not an IDR frame.</li>
+<li>StreamNALUError: NALU start code error.</li>
+<li>TsStreamNoAud: no AUD NALU in the H26x stream of MPEG-TS.</li>
+<li>AudioStreamLack: no audio stream.</li>
+<li>VideoStreamLack: no video stream.</li>
+<li>LackAudioRecover: missing audio stream recovery.</li>
+<li>LackVideoRecover: missing video stream recovery.</li>
+<li>VideoBitrateOutofRange: video stream bitrate (kbps) out of range.</li>
+<li>AudioBitrateOutofRange: audio stream bitrate (kbps) out of range.</li>
+<li>VideoDecodeFailed: video decoding error.</li>
+<li>AudioDecodeFailed: audio decoding error.</li>
+<li>AudioOutOfPhase: opposite phase in dual-channel audio.</li>
+<li>VideoDuplicatedFrame: duplicate frames in video streams.</li>
+<li>AudioDuplicatedFrame: duplicate frames in audio streams.</li>
+<li>VideoRotation: video rotation.</li>
+<li>TsMultiPrograms: multiple programs in MPEG2-TS streams.</li>
+<li>Mp4InvalidCodecFourcc: codec FourCC in MP4 not meeting Apple HLS requirements.</li>
+<li>HLSBadM3u8Format: invalid M3U8 file.</li>
+<li>HLSInvalidMasterM3u8: invalid main M3U8 file.</li>
+<li>HLSInvalidMediaM3u8: invalid media M3U8 file.</li>
+<li>HLSMasterM3u8Recommended: parameters recommended by standards missing in main M3U8.</li>
+<li>HLSMediaM3u8Recommended: parameters recommended by standards missing in media M3U8.</li>
+<li>HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY in media M3U8.</li>
+<li>HLSMediaSegmentsStreamNumChange: changed number of streams in segments.</li>
+<li>HLSMediaSegmentsPTSJitterDeviation: PTS jumps between segments without EXT-X-DISCONTINUITY.</li>
+<li>HLSMediaSegmentsDTSJitterDeviation: DTS jumps between segments without EXT-X-DISCONTINUITY.</li>
+<li>TimecodeTrackExist: TMCD track in MP4.</li>
+        :type Type: str
+        :param _Switch: Capability configuration switch. Valid values:
+<li>ON: enabled;</li>
+<li>OFF: disabled.</li>
+
+Default value: ON.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Switch: str
+        :param _Sampling: Sampling method, Valid value:
+- Time: sampling based on time interval.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Sampling: str
+        :param _IntervalTime: Sampling interval time, in ms.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type IntervalTime: int
+        :param _Duration: Duration of abnormality, in ms.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Duration: int
+        :param _Threshold: Threshold of a detection item. Different detection items have different thresholds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Threshold: str
+        """
+        self._Type = None
+        self._Switch = None
+        self._Sampling = None
+        self._IntervalTime = None
+        self._Duration = None
+        self._Threshold = None
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Sampling(self):
+        return self._Sampling
+
+    @Sampling.setter
+    def Sampling(self, Sampling):
+        self._Sampling = Sampling
+
+    @property
+    def IntervalTime(self):
+        return self._IntervalTime
+
+    @IntervalTime.setter
+    def IntervalTime(self, IntervalTime):
+        self._IntervalTime = IntervalTime
+
+    @property
+    def Duration(self):
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Threshold(self):
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Switch = params.get("Switch")
+        self._Sampling = params.get("Sampling")
+        self._IntervalTime = params.get("IntervalTime")
+        self._Duration = params.get("Duration")
+        self._Threshold = params.get("Threshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QualityControlResult(AbstractModel):
     """The issues detected by quality control.
 
@@ -27487,6 +30679,129 @@ class QualityControlResult(AbstractModel):
                 obj = QualityControlItem()
                 obj._deserialize(item)
                 self._QualityControlItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityControlTemplate(AbstractModel):
+    """Media quality inspection template details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Unique identifier of a media quality inspection template.
+        :type Definition: int
+        :param _Name: Media quality inspection template name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Name: str
+        :param _Comment: Template description.
+
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Comment: str
+        :param _Type: Template type. Valid values:
+<li>Preset: system preset template;</li>
+<li>Custom: custom template.</li>
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Type: str
+        :param _QualityControlItemSet: Media quality inspection configuration parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type QualityControlItemSet: list of QualityControlItemConfig
+        :param _CreateTime: Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type CreateTime: str
+        :param _UpdateTime: Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type UpdateTime: str
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._Type = None
+        self._QualityControlItemSet = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def QualityControlItemSet(self):
+        return self._QualityControlItemSet
+
+    @QualityControlItemSet.setter
+    def QualityControlItemSet(self, QualityControlItemSet):
+        self._QualityControlItemSet = QualityControlItemSet
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._Type = params.get("Type")
+        if params.get("QualityControlItemSet") is not None:
+            self._QualityControlItemSet = []
+            for item in params.get("QualityControlItemSet"):
+                obj = QualityControlItemConfig()
+                obj._deserialize(item)
+                self._QualityControlItemSet.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27789,7 +31104,8 @@ class ResetWorkflowRequest(AbstractModel):
         :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
         :param _OutputStorage: Output configuration of a video processing output file. If this parameter is left empty, the storage location in `Trigger` will be inherited.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputDir: Target directory of a video processing output file, such as `/movie/201907/`. If this parameter is left empty, the file will be outputted to the same directory where the source file is located, i.e.; `{inputDir}`.
+        :param _OutputDir: The target directory for the output files generated by video processing. It must start and end with a slash (/), such as `/movie/201907/`.
+If left empty, it is the same as the directory of the trigger file, that is, `{inputDir}`.
         :type OutputDir: str
         :param _MediaProcessTask: Parameter of a video processing task.
         :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
@@ -27948,7 +31264,7 @@ class ResetWorkflowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._RequestId = None
@@ -28131,7 +31447,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _OutputStorage: Target bucket of a sampled screenshot. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputObjectPath: Output path to a generated sampled screenshot, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_sampleSnapshot_{definition}_{number}.{format}`.
+        :param _OutputObjectPath: Output path of an image file after sampled screenshot taking, which can be a relative or absolute path.
+If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).Relative path example:
+<li>Filename_{Variable name}.{format}.</li>
+<li>Filename.{format}.</li>
+Absolute path example:
+<li>/Custom path/Filename_{Variable name}.{format}.</li>
+If left empty, a relative path is used by default: `{inputName}_sampleSnapshot_{definition}_{number}.{format}`.
         :type OutputObjectPath: str
         :param _ObjectNumberFormat: Rule of the `{number}` variable in the sampled screenshot output path.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -28508,7 +31830,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
 
 class ScheduleQualityControlTaskResult(AbstractModel):
-    """The result of a quality control task.
+    """Media quality inspection task result type.
 
     """
 
@@ -28522,10 +31844,9 @@ class ScheduleQualityControlTaskResult(AbstractModel):
         :type ErrCode: int
         :param _Message: The error message.
         :type Message: str
-        :param _Input: The input of the quality control task.
+        :param _Input: Media quality inspection task input.
         :type Input: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
-        :param _Output: The output of the quality control task.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Output: Media quality inspection task output.Note: This field may return null, indicating that no valid values can be obtained.
         :type Output: :class:`tencentcloud.mps.v20190612.models.QualityControlData`
         """
         self._Status = None
@@ -28969,6 +32290,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _UpdateTime: The last updated time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UpdateTime: str
+        :param _ResourceId: Resource ID. For those without an associated resource ID, fill in with an account's primary resource ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ResourceId: str
         """
         self._ScheduleId = None
         self._ScheduleName = None
@@ -28981,6 +32305,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._TaskNotifyConfig = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._ResourceId = None
 
     @property
     def ScheduleId(self):
@@ -29070,6 +32395,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def ResourceId(self):
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
 
     def _deserialize(self, params):
         self._ScheduleId = params.get("ScheduleId")
@@ -29094,6 +32427,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
             self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29144,6 +32478,101 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Intensity = params.get("Intensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SegmentRecognitionItem(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Confidence: 
+        :type Confidence: float
+        :param _StartTimeOffset: 
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: 
+        :type EndTimeOffset: float
+        :param _SegmentUrl: 
+        :type SegmentUrl: str
+        :param _Title: Segment title.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Title: str
+        :param _Summary: Segment summary.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Summary: str
+        """
+        self._Confidence = None
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+        self._SegmentUrl = None
+        self._Title = None
+        self._Summary = None
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def StartTimeOffset(self):
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+    @property
+    def SegmentUrl(self):
+        return self._SegmentUrl
+
+    @SegmentUrl.setter
+    def SegmentUrl(self, SegmentUrl):
+        self._SegmentUrl = SegmentUrl
+
+    @property
+    def Title(self):
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Summary(self):
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+
+    def _deserialize(self, params):
+        self._Confidence = params.get("Confidence")
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        self._SegmentUrl = params.get("SegmentUrl")
+        self._Title = params.get("Title")
+        self._Summary = params.get("Summary")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29285,7 +32714,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _OutputStorage: Target bucket of a generated time point screenshot file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputObjectPath: Output path to a generated time point screenshot, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_snapshotByTimeOffset_{definition}_{number}.{format}`.
+        :param _OutputObjectPath: Output path for an image file of screenshots taken at specific time points, which can be a relative or absolute path.
+If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).
+Relative path example:
+<li>Filename_{Variable name}.{format}.</li>
+<li>Filename.{format}.</li>
+Absolute path example:
+<li>/Custom path/Filename_{Variable name}.{format}.</li>
+If left empty, a relative path is used by default: `{inputName}_snapshotByTimeOffset_{definition}_{number}.{format}`.
         :type OutputObjectPath: str
         :param _ObjectNumberFormat: Rule of the `{number}` variable in the time point screenshot output path.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -30327,21 +33763,13 @@ class TerrorismConfigureInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImgReviewInfo: The parameters for detecting sensitive information in images.
-        :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfo`
         :param _OcrReviewInfo: The parameters for detecting sensitive information based on OCR.
         :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfo`
+        :param _ImgReviewInfo: The parameters for detecting sensitive information in images.
+        :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfo`
         """
-        self._ImgReviewInfo = None
         self._OcrReviewInfo = None
-
-    @property
-    def ImgReviewInfo(self):
-        return self._ImgReviewInfo
-
-    @ImgReviewInfo.setter
-    def ImgReviewInfo(self, ImgReviewInfo):
-        self._ImgReviewInfo = ImgReviewInfo
+        self._ImgReviewInfo = None
 
     @property
     def OcrReviewInfo(self):
@@ -30351,14 +33779,22 @@ class TerrorismConfigureInfo(AbstractModel):
     def OcrReviewInfo(self, OcrReviewInfo):
         self._OcrReviewInfo = OcrReviewInfo
 
+    @property
+    def ImgReviewInfo(self):
+        return self._ImgReviewInfo
+
+    @ImgReviewInfo.setter
+    def ImgReviewInfo(self, ImgReviewInfo):
+        self._ImgReviewInfo = ImgReviewInfo
+
 
     def _deserialize(self, params):
-        if params.get("ImgReviewInfo") is not None:
-            self._ImgReviewInfo = TerrorismImgReviewTemplateInfo()
-            self._ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
         if params.get("OcrReviewInfo") is not None:
             self._OcrReviewInfo = TerrorismOcrReviewTemplateInfo()
             self._OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
+        if params.get("ImgReviewInfo") is not None:
+            self._ImgReviewInfo = TerrorismImgReviewTemplateInfo()
+            self._ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30429,16 +33865,15 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 <li>ON</li>
 <li>OFF</li>
         :type Switch: str
-        :param _LabelSet: The filter labels for sensitive information detection in images, which specify the types of sensitive information to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:
-<li>guns</li>
-<li>crowd</li>
-<li>bloody</li>
-<li>police</li>
-<li>banners (sensitive flags)</li>
-<li>militant</li>
-<li>explosion</li>
-<li>terrorists</li>
-<li>scenario (sensitive scenes) </li>
+        :param _LabelSet: Sensitive content filter tags. The auditing results including the selected tags are returned. If the filter tag is empty, all auditing results will be returned. Valid values:
+<li>guns: weapons and guns;</li>
+<li>crowd: crowd gathering;</li>
+<li>bloody: bloodiness;</li>
+<li>police: police force;</li>
+<li>banners: sensitive flags;</li>
+<li>militant: militants;</li>
+<li>explosion: explosions and fires;</li>
+<li>terrorists: sensitive persons.</li>
         :type LabelSet: list of str
         :param _BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.
         :type BlockConfidence: int
@@ -30509,16 +33944,15 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 <li>ON</li>
 <li>OFF</li>
         :type Switch: str
-        :param _LabelSet: The filter labels for sensitive information detection in images, which specify the types of sensitive information to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:
-<li>guns</li>
-<li>crowd</li>
-<li>bloody</li>
-<li>police</li>
-<li>banners (sensitive flags)</li>
-<li>militant</li>
-<li>explosion</li>
-<li>terrorists</li>
-<li>scenario (sensitive scenes) </li>
+        :param _LabelSet: Sensitive content filter tags. The auditing results including the selected tags are returned. If the filter tag is empty, all auditing results will be returned. Valid values:
+<li>guns: weapons and guns;</li>
+<li>crowd: crowd gathering;</li>
+<li>bloody: bloodiness;</li>
+<li>police: police force;</li>
+<li>banners: sensitive flags;</li>
+<li>militant: militants;</li>
+<li>explosion: explosions and fires;</li>
+<li>terrorists: sensitive persons.</li>
         :type LabelSet: list of str
         :param _BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
         :type BlockConfidence: int
@@ -30707,7 +34141,7 @@ class TextWatermarkTemplateInput(AbstractModel):
 <li>simkai.ttf: Both Chinese and English are supported;</li>
 <li>arial.ttf: Only English is supported.</li>
         :type FontType: str
-        :param _FontSize: Font size in Npx format where N is a numeric value.
+        :param _FontSize: Font size, in the format of Npx. N is a numerical value with a value range of [0, 1] or [8, 4096].
         :type FontSize: str
         :param _FontColor: Font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).
         :type FontColor: str
@@ -30716,11 +34150,15 @@ class TextWatermarkTemplateInput(AbstractModel):
 <li>1: Completely opaque</li>
 Default value: 1.
         :type FontAlpha: float
+        :param _TextContent: Text content, up to 100 characters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type TextContent: str
         """
         self._FontType = None
         self._FontSize = None
         self._FontColor = None
         self._FontAlpha = None
+        self._TextContent = None
 
     @property
     def FontType(self):
@@ -30754,12 +34192,21 @@ Default value: 1.
     def FontAlpha(self, FontAlpha):
         self._FontAlpha = FontAlpha
 
+    @property
+    def TextContent(self):
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
 
     def _deserialize(self, params):
         self._FontType = params.get("FontType")
         self._FontSize = params.get("FontSize")
         self._FontColor = params.get("FontColor")
         self._FontAlpha = params.get("FontAlpha")
+        self._TextContent = params.get("TextContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30781,7 +34228,7 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
 <li>simkai.ttf: Both Chinese and English are supported;</li>
 <li>arial.ttf: Only English is supported.</li>
         :type FontType: str
-        :param _FontSize: Font size in Npx format where N is a numeric value.
+        :param _FontSize: Font size, in the format of Npx. N is a numerical value with a value range of [0, 1] or [8, 4096].
         :type FontSize: str
         :param _FontColor: Font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).
         :type FontColor: str
@@ -30789,11 +34236,14 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
 <li>0: Completely transparent</li>
 <li>1: Completely opaque</li>
         :type FontAlpha: float
+        :param _TextContent: Text content, up to 100 characters.
+        :type TextContent: str
         """
         self._FontType = None
         self._FontSize = None
         self._FontColor = None
         self._FontAlpha = None
+        self._TextContent = None
 
     @property
     def FontType(self):
@@ -30827,12 +34277,21 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
     def FontAlpha(self, FontAlpha):
         self._FontAlpha = FontAlpha
 
+    @property
+    def TextContent(self):
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
 
     def _deserialize(self, params):
         self._FontType = params.get("FontType")
         self._FontSize = params.get("FontSize")
         self._FontColor = params.get("FontColor")
         self._FontAlpha = params.get("FontAlpha")
+        self._TextContent = params.get("TextContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30878,7 +34337,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _OutputStorage: Target bucket of an output file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputObjectPath: Path to a primary output file, which can be a relative path or an absolute path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_transcode_{definition}.{format}`.
+        :param _OutputObjectPath: Output path of the main file after transcoding, which can be a relative or absolute path.
+If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).Relative path example:
+<li>Filename_{Variable name}.{format}.</li>
+<li>Filename.{format}.</li>
+Absolute path example:
+<li>/Custom path/Filename_{Variable name}.{format}.</li>
+If left empty, a relative path is used by default: `{inputName}_transcode_{definition}.{format}`.
         :type OutputObjectPath: str
         :param _SegmentObjectName: Path to an output file part (the path to ts during transcoding to HLS), which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_transcode_{definition}_{number}.{format}`.
         :type SegmentObjectName: str
@@ -31243,6 +34708,80 @@ Note: This field may return null, indicating that no valid values can be obtaine
         if params.get("EnhanceConfig") is not None:
             self._EnhanceConfig = EnhanceConfig()
             self._EnhanceConfig._deserialize(params.get("EnhanceConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranslateConfigureInfo(AbstractModel):
+    """Control parameter of a full speech recognition task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Switch of a full speech recognition task. Valid values:
+<li>ON: Enables an intelligent full speech recognition task;</li>
+<li>OFF: Disables an intelligent full speech recognition task.</li>
+        :type Switch: str
+        :param _SourceLanguage: 
+        :type SourceLanguage: str
+        :param _DestinationLanguage: 
+        :type DestinationLanguage: str
+        :param _SubtitleFormat: Generated subtitle file format. Leaving it as an empty string means no subtitle file will be generated. Valid value:
+<li>vtt: Generate a WebVTT subtitle file.</li>
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SubtitleFormat: str
+        """
+        self._Switch = None
+        self._SourceLanguage = None
+        self._DestinationLanguage = None
+        self._SubtitleFormat = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def SourceLanguage(self):
+        return self._SourceLanguage
+
+    @SourceLanguage.setter
+    def SourceLanguage(self, SourceLanguage):
+        self._SourceLanguage = SourceLanguage
+
+    @property
+    def DestinationLanguage(self):
+        return self._DestinationLanguage
+
+    @DestinationLanguage.setter
+    def DestinationLanguage(self, DestinationLanguage):
+        self._DestinationLanguage = DestinationLanguage
+
+    @property
+    def SubtitleFormat(self):
+        return self._SubtitleFormat
+
+    @SubtitleFormat.setter
+    def SubtitleFormat(self, SubtitleFormat):
+        self._SubtitleFormat = SubtitleFormat
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._SourceLanguage = params.get("SourceLanguage")
+        self._DestinationLanguage = params.get("DestinationLanguage")
+        self._SubtitleFormat = params.get("SubtitleFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32092,19 +35631,30 @@ class VideoTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Codec: The video codec. Valid values:
-<li>`libx264`: H.264</li>
-<li>`libx265`: H.265</li>
-<li>`av1`: AOMedia Video 1</li>
-Note: You must specify a resolution (not higher than 640 x 480) if the H.265 codec is used.
-Note: You can only use the AOMedia Video 1 codec for MP4 files.
+        :param _Codec: Video stream encoding format. Valid values:
+<li>h264: H.264 encoding.</li>
+<li>h265: H.265 encoding.</li>
+<li>h266: H.266 encoding.</li>
+<li>av1: AOMedia Video 1 encoding.</li>
+<li>vp8: VP8 encoding.</li>
+<li>vp9: VP9 encoding.</li>
+<li>mpeg2: MPEG2 encoding.</li>
+<li>dnxhd: DNxHD encoding.</li>
+<li>mv-hevc: MV-HEVC encoding.</li>
+Note: A resolution within 640x480 should be specified for H.265 encoding.
+
+Note: AV1 encoding containers only support mp4, webm, and mkv.
+Note: H.266 encoding containers only support mp4, hls, ts, and mov.
+Note: VP8 and VP9 encoding containers only support webm and mkv.
+Note: MPEG2 and DNxHD encoding containers only support mxf.
+Note: MV-HEVC encoding containers only support mp4, hls, and mov. Among them, the hls format only supports mp4 segmentation format.
         :type Codec: str
-        :param _Fps: The video frame rate (Hz). Value range: [0, 100].
+        :param _Fps: Video frame rate. Value range:
+When FpsDenominator is empty, the range is [0, 120], in Hz.
+When FpsDenominator is not empty, the Fps/FpsDenominator range is [0, 120].
 If the value is 0, the frame rate will be the same as that of the source video.
-Note: For adaptive bitrate streaming, the value range of this parameter is [0, 60].
         :type Fps: int
-        :param _Bitrate: The video bitrate (Kbps). Value range: 0 and [128, 35000].
-If the value is 0, the bitrate of the video will be the same as that of the source video.
+        :param _Bitrate: Bitrate of a video stream, in kbps. Value range: 0 and [128, 100000].If the value is 0, the bitrate of the video will be the same as that of the source video.
         :type Bitrate: int
         :param _ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: Enabled. When resolution adaption is enabled, `Width` indicates the long side of a video, while `Height` indicates the short side.</li>
@@ -32126,8 +35676,7 @@ Default value: 0.
 <li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
 Default value: 0.
         :type Height: int
-        :param _Gop: Frame interval between I keyframes. Value range: 0 and [1,100000].
-If this parameter is 0 or left empty, the system will automatically set the GOP length.
+        :param _Gop: Interval between I-frames, in frames. Value range: 0 and [1, 100000]. When it is set to 0 or not set, the system will automatically set the gop length.
         :type Gop: int
         :param _FillType: The fill mode, which indicates how a video is resized when the video’s original aspect ratio is different from the target aspect ratio. Valid values:
 <li>stretch: Stretch the image frame by frame to fill the entire screen. The video image may become "squashed" or "stretched" after transcoding.</li>
@@ -32141,6 +35690,25 @@ Note: Only `stretch` and `black` are supported for adaptive bitrate streaming.
 If this parameter is specified, CRF (a bitrate control method) will be used for transcoding. (Video bitrate will no longer take effect.)
 It is not recommended to specify this parameter if there are no special requirements.
         :type Vcrf: int
+        :param _SegmentType: HLS segment type. Valid values:
+<li>0: HLS+TS segment.</li>
+<li>2: HLS+TS byte range.</li>
+<li>7: HLS+MP4 segment.</li>
+<li>5: HLS+MP4 byte range.</li>
+Default value: 0
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SegmentType: int
+        :param _FpsDenominator: Denominator of the frame rate.
+Note: The value must be greater than 0.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FpsDenominator: int
+        :param _Stereo3dType: 3D video splicing mode, which is only valid for MV-HEVC 3D videos. Valid values:
+<li>side_by_side: side-by-side view.</li>
+<li>top_bottom: top-bottom view.</li>
+Default value: side_by_side.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Stereo3dType: str
         """
         self._Codec = None
         self._Fps = None
@@ -32151,6 +35719,9 @@ It is not recommended to specify this parameter if there are no special requirem
         self._Gop = None
         self._FillType = None
         self._Vcrf = None
+        self._SegmentType = None
+        self._FpsDenominator = None
+        self._Stereo3dType = None
 
     @property
     def Codec(self):
@@ -32224,6 +35795,30 @@ It is not recommended to specify this parameter if there are no special requirem
     def Vcrf(self, Vcrf):
         self._Vcrf = Vcrf
 
+    @property
+    def SegmentType(self):
+        return self._SegmentType
+
+    @SegmentType.setter
+    def SegmentType(self, SegmentType):
+        self._SegmentType = SegmentType
+
+    @property
+    def FpsDenominator(self):
+        return self._FpsDenominator
+
+    @FpsDenominator.setter
+    def FpsDenominator(self, FpsDenominator):
+        self._FpsDenominator = FpsDenominator
+
+    @property
+    def Stereo3dType(self):
+        return self._Stereo3dType
+
+    @Stereo3dType.setter
+    def Stereo3dType(self, Stereo3dType):
+        self._Stereo3dType = Stereo3dType
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -32235,6 +35830,9 @@ It is not recommended to specify this parameter if there are no special requirem
         self._Gop = params.get("Gop")
         self._FillType = params.get("FillType")
         self._Vcrf = params.get("Vcrf")
+        self._SegmentType = params.get("SegmentType")
+        self._FpsDenominator = params.get("FpsDenominator")
+        self._Stereo3dType = params.get("Stereo3dType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32252,18 +35850,30 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Codec: The video codec. Valid values:
-<li>libx264: H.264</li>
-<li>libx265: H.265</li>
-<li>av1: AOMedia Video 1</li>
-Note: You must specify a resolution (not higher than 640 x 480) if the H.265 codec is used.
-Note: You can only use the AOMedia Video 1 codec for MP4 files.
+        :param _Codec: Video stream encoding format. Valid values:
+<li>h264: H.264 encoding.</li>
+<li>h265: H.265 encoding.</li>
+<li>h266: H.266 encoding.</li>
+<li>av1: AOMedia Video 1 encoding.</li>
+<li>vp8: VP8 encoding.</li>
+<li>vp9: VP9 encoding.</li>
+<li>mpeg2: MPEG2 encoding.</li>
+<li>dnxhd: DNxHD encoding.</li>
+<li>mv-hevc: MV-HEVC encoding.</li>
+Note: A resolution within 640x480 should be specified for H.265 encoding.
+
+Note: AV1 encoding containers only support mp4, webm, and mkv.
+Note: H.266 encoding containers only support mp4, hls, ts, and mov.
+Note: VP8 and VP9 encoding containers only support webm and mkv.
+Note: MPEG2 and DNxHD encoding containers only support mxf.
+Note: MV-HEVC encoding containers only support mp4, hls, and mov. Among them, the hls format only supports mp4 segmentation format.Note: This field may return null, indicating that no valid values can be obtained.
         :type Codec: str
-        :param _Fps: Video frame rate in Hz. Value range: [0, 100].
-If the value is 0, the frame rate will be the same as that of the source video.
+        :param _Fps: Video frame rate. Value range:
+When FpsDenominator is empty, the range is [0, 120], in Hz.
+When FpsDenominator is not empty, the Fps/FpsDenominator range is [0, 120].
+If the value is 0, the frame rate will be the same as that of the source video.Note: This field may return null, indicating that no valid values can be obtained.
         :type Fps: int
-        :param _Bitrate: Bitrate of a video stream in Kbps. Value range: 0 and [128, 35,000].
-If the value is 0, the bitrate of the video will be the same as that of the source video.
+        :param _Bitrate: Bitrate of a video stream, in kbps. Value range: 0 and [128, 100000].If the value is 0, the bitrate of the video will be the same as that of the source video.Note: This field may return null, indicating that no valid values can be obtained.
         :type Bitrate: int
         :param _ResolutionAdaptive: Resolution adaption. Valid values:
 <li>open: Enabled. When resolution adaption is enabled, `Width` indicates the long side of a video, while `Height` indicates the short side.</li>
@@ -32294,6 +35904,25 @@ It is not recommended to specify this parameter if there are no special requirem
 <li>1: Enable</li>
 Default value: 0. If this parameter is set to `1`, multiple streams with different resolutions and bitrates will be generated automatically. The highest resolution, bitrate, and quality of the streams are determined by the values of `width` and `height`, `Bitrate`, and `Vcrf` in `VideoTemplate` respectively. If these parameters are not set in `VideoTemplate`, the highest resolution generated will be the same as that of the source video, and the highest video quality will be close to VMAF 95. To use this parameter or learn about the billing details of adaptive encoding, please contact your sales rep.
         :type ContentAdaptStream: int
+        :param _SegmentType: HLS segment type. Valid values:
+<li>0: HLS+TS segment.</li>
+<li>2: HLS+TS byte range.</li>
+<li>7: HLS+MP4 segment.</li>
+<li>5: HLS+MP4 byte range.</li>
+Default value: 0
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type SegmentType: int
+        :param _FpsDenominator: Denominator of the frame rate.
+Note: The value must be greater than 0.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type FpsDenominator: int
+        :param _Stereo3dType: 3D video splicing mode, which is only valid for MV-HEVC 3D videos. Valid values:
+<li>side_by_side: side-by-side view.</li>
+<li>top_bottom: top-bottom view.</li>
+Default value: side_by_side.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type Stereo3dType: str
         """
         self._Codec = None
         self._Fps = None
@@ -32305,6 +35934,9 @@ Default value: 0. If this parameter is set to `1`, multiple streams with differe
         self._FillType = None
         self._Vcrf = None
         self._ContentAdaptStream = None
+        self._SegmentType = None
+        self._FpsDenominator = None
+        self._Stereo3dType = None
 
     @property
     def Codec(self):
@@ -32386,6 +36018,30 @@ Default value: 0. If this parameter is set to `1`, multiple streams with differe
     def ContentAdaptStream(self, ContentAdaptStream):
         self._ContentAdaptStream = ContentAdaptStream
 
+    @property
+    def SegmentType(self):
+        return self._SegmentType
+
+    @SegmentType.setter
+    def SegmentType(self, SegmentType):
+        self._SegmentType = SegmentType
+
+    @property
+    def FpsDenominator(self):
+        return self._FpsDenominator
+
+    @FpsDenominator.setter
+    def FpsDenominator(self, FpsDenominator):
+        self._FpsDenominator = FpsDenominator
+
+    @property
+    def Stereo3dType(self):
+        return self._Stereo3dType
+
+    @Stereo3dType.setter
+    def Stereo3dType(self, Stereo3dType):
+        self._Stereo3dType = Stereo3dType
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -32398,6 +36054,9 @@ Default value: 0. If this parameter is set to `1`, multiple streams with differe
         self._FillType = params.get("FillType")
         self._Vcrf = params.get("Vcrf")
         self._ContentAdaptStream = params.get("ContentAdaptStream")
+        self._SegmentType = params.get("SegmentType")
+        self._FpsDenominator = params.get("FpsDenominator")
+        self._Stereo3dType = params.get("Stereo3dType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32479,15 +36138,19 @@ Text watermark is not available for screenshot.
         :param _SvgContent: SVG content of up to 2,000,000 characters. This field is required only when the watermark type is `SVG`.
 SVG watermark is not available for screenshot.
         :type SvgContent: str
-        :param _StartTimeOffset: Start time offset of a watermark in seconds. If this parameter is left empty or 0 is entered, the watermark will appear upon the first video frame.
-<li>If this parameter is left empty or 0 is entered, the watermark will appear upon the first video frame;</li>
-<li>If this value is greater than 0 (e.g., n), the watermark will appear at second n after the first video frame;</li>
-<li>If this value is smaller than 0 (e.g., -n), the watermark will appear at second n before the last video frame.</li>
+        :param _StartTimeOffset: Start time offset of a watermark, in seconds. If not set or set to 0, a watermark starts appearing when a video starts.
+<li>If not set or set to 0, a watermark starts appearing when a video starts.</li>
+<li>If the value is greater than 0 (for example, n), a watermark will appear at second n of a video.</li>
+<li>If the value is less than 0 (for example, -n), a watermark will appear n seconds before the end of a video.</li>
+
+Note: It is only used for video scenarios. Screenshots are not supported.
         :type StartTimeOffset: float
-        :param _EndTimeOffset: End time offset of a watermark in seconds.
-<li>If this parameter is left empty or 0 is entered, the watermark will exist till the last video frame;</li>
-<li>If this value is greater than 0 (e.g., n), the watermark will exist till second n;</li>
-<li>If this value is smaller than 0 (e.g., -n), the watermark will exist till second n before the last video frame.</li>
+        :param _EndTimeOffset: End time offset of a watermark, in seconds.
+<li>If not set or set to 0, a watermark will last until the end of a video.</li>
+<li>If the value is greater than 0 (for example, n), a watermark will disappear at second n.</li>
+<li>If the value is less than 0 (for example, -n), a watermark will disappear n seconds before the end of a video.</li>
+
+Note: It is only used for video scenarios. Screenshots are not supported.
         :type EndTimeOffset: float
         """
         self._Definition = None
@@ -32990,7 +36653,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type AiAnalysisResultSet: list of AiAnalysisResult
         :param _AiRecognitionResultSet: Execution status and result of a video content recognition task.
         :type AiRecognitionResultSet: list of AiRecognitionResult
-        :param _AiQualityControlTaskResult: The execution status and result of a quality control task.
+        :param _AiQualityControlTaskResult: Execution status and results of a media quality inspection task.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type AiQualityControlTaskResult: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
         """
