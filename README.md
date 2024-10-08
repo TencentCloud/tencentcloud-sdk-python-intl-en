@@ -71,3 +71,8 @@ If there is a proxy in your environment, you need to set the system environment 
 ## Certificate issue
 
 When you install Python 3.6 or above on macOS, you may encounter a certificate error: `Error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1056).`. This is because that on macOS, Python no longer uses the system's default certificate and does not provide a certificate itself. When an HTTPS request is made, the certificate provided by the `certifi` library needs to be used, but the SDK does not support specifying it; therefore, you can only solve this problem by installing the certificate with the `/Applications/Python 3.6/Install Certificates.command` command.
+
+# Update Notice
+
+## Change default language
+After the latest version is released, the default language of the SDK will be set to en-US, which may affect the call results of the SDK. If you need to revert to the previous language setting, please refer to the content of `examples/cvm/v20170312/describe_zone_by_language.py` to reset the language.
