@@ -41,6 +41,15 @@ FAILEDOPERATION_MYSQLDBOPERATIONFAILED = 'FailedOperation.MysqlDBOperationFailed
 # Failed to operate the Redis database.
 FAILEDOPERATION_REDISOPERATIONFAILED = 'FailedOperation.RedisOperationFailed'
 
+# The session being deleted is in use.
+FAILEDOPERATION_SESSIONINUSED = 'FailedOperation.SessionInUsed'
+
+# The number of additions to the blocklist/allowlist exceeds the limit.
+FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = 'FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit'
+
+# Reached the maximum number of one-time deletions.
+FAILEDOPERATION_THENUMBEROFONETIMEDELETIONSREACHEDTHEUPPERLIMIT = 'FailedOperation.TheNumberOfOneTimeDeletionsReachedTheUpperLimit'
+
 # Internal error.
 INTERNALERROR = 'InternalError'
 

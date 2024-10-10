@@ -95,6 +95,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddCustomWhiteRule(self, request):
+        """Add precision allowlist rules
+
+        :param request: Request instance for AddCustomWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.AddCustomWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.AddCustomWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddCustomWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddCustomWhiteRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddSpartaProtection(self, request):
         """Add SaaS WAF protection domain
 
@@ -155,6 +178,29 @@ class WafClient(AbstractClient):
             body = self.call("CreateHost", params, headers=headers)
             response = json.loads(body)
             model = models.CreateHostResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateIpAccessControl(self, request):
+        """This API is used to add WAF IP allowlists/blocklists.
+
+        :param request: Request instance for CreateIpAccessControl.
+        :type request: :class:`tencentcloud.waf.v20180125.models.CreateIpAccessControlRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.CreateIpAccessControlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateIpAccessControl", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateIpAccessControlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -256,6 +302,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCustomWhiteRule(self, request):
+        """Delete precision allowlist rules
+
+        :param request: Request instance for DeleteCustomWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteCustomWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteCustomWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCustomWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCustomWhiteRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteHost(self, request):
         """This API is used to delete a domain name protected by CLB WAF. Batch operation is supported.
 
@@ -270,6 +339,52 @@ class WafClient(AbstractClient):
             body = self.call("DeleteHost", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteHostResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteIpAccessControlV2(self, request):
+        """This API is used to delete latest versions of WAF IP allowlists/blocklists.
+
+        :param request: Request instance for DeleteIpAccessControlV2.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteIpAccessControlV2Request`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteIpAccessControlV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteIpAccessControlV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteIpAccessControlV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSession(self, request):
+        """Delete CC attack session settings
+
+        :param request: Request instance for DeleteSession.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteSessionRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteSessionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSession", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSessionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -563,6 +678,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCustomWhiteRule(self, request):
+        """Obtain the precision allowlist policy list in the protection configuration
+
+        :param request: Request instance for DescribeCustomWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeCustomWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeCustomWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCustomWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCustomWhiteRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDomainCountInfo(self, request):
         """Obtain domain overview
 
@@ -623,6 +761,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeDomainDetailsSaas", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDomainDetailsSaasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDomainVerifyResult(self, request):
+        """Obtain the result of adding domain operation
+
+        :param request: Request instance for DescribeDomainVerifyResult.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeDomainVerifyResultRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeDomainVerifyResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDomainVerifyResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDomainVerifyResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -770,6 +931,52 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstances(self, request):
+        """Query detailed information of all user instances
+
+        :param request: Request instance for DescribeInstances.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeInstancesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIpAccessControl(self, request):
+        """WAF IP blocklist/allowlist query
+
+        :param request: Request instance for DescribeIpAccessControl.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeIpAccessControlRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeIpAccessControlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIpAccessControl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIpAccessControlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeModuleStatus(self, request):
         """Query the switch status of each WAF basic security module, check if each module is enabled
 
@@ -853,6 +1060,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribePolicyStatus", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePolicyStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePorts(self, request):
+        """Obtain the SaaS-type WAF protection port list
+
+        :param request: Request instance for DescribePorts.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribePortsRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribePortsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePorts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePortsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -968,6 +1198,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeTopAttackDomain", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTopAttackDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserClbWafRegions(self, request):
+        """During the addition and modification of Domain Configuration for CLB-type WAF, it is required to display the supported region list for CLB-type WAF (clb-waf) through DescribeUserClbWafRegions to obtain the currently available region list for the customer.
+
+        :param request: Request instance for DescribeUserClbWafRegions.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeUserClbWafRegionsRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeUserClbWafRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserClbWafRegions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserClbWafRegionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1129,6 +1382,52 @@ class WafClient(AbstractClient):
             body = self.call("GetAttackTotalCount", params, headers=headers)
             response = json.loads(body)
             model = models.GetAttackTotalCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetInstanceQpsLimit(self, request):
+        """Obtain the elastic QPS limit of package instances
+
+        :param request: Request instance for GetInstanceQpsLimit.
+        :type request: :class:`tencentcloud.waf.v20180125.models.GetInstanceQpsLimitRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.GetInstanceQpsLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetInstanceQpsLimit", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetInstanceQpsLimitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ImportIpAccessControl(self, request):
+        """This API is used to import IP allowlists/blocklists.
+
+        :param request: Request instance for ImportIpAccessControl.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ImportIpAccessControlRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ImportIpAccessControlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImportIpAccessControl", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImportIpAccessControlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1322,6 +1621,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCustomWhiteRule(self, request):
+        """This API is used to edit a precise allowlist.
+
+        :param request: Request instance for ModifyCustomWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyCustomWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyCustomWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCustomWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCustomWhiteRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCustomWhiteRuleStatus(self, request):
         """Enable or disable a precision allowlist
 
@@ -1475,6 +1797,121 @@ class WafClient(AbstractClient):
             body = self.call("ModifyHostStatus", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyHostStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceElasticMode(self, request):
+        """Modify the QPS elastic billing switch for an instance
+
+        :param request: Request instance for ModifyInstanceElasticMode.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceElasticModeRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceElasticModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceElasticMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceElasticModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceName(self, request):
+        """Modify instance name
+
+        :param request: Request instance for ModifyInstanceName.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceNameRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceName", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceQpsLimit(self, request):
+        """Set elastic QPS limit for package instances
+
+        :param request: Request instance for ModifyInstanceQpsLimit.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceQpsLimitRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceQpsLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceQpsLimit", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceQpsLimitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceRenewFlag(self, request):
+        """Enable or disable auto-renewal for instance
+
+        :param request: Request instance for ModifyInstanceRenewFlag.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceRenewFlagRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyInstanceRenewFlagResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceRenewFlag", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceRenewFlagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyIpAccessControl(self, request):
+        """This API is used to edit WAF IP allowlists/blocklists.
+
+        :param request: Request instance for ModifyIpAccessControl.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyIpAccessControlRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyIpAccessControlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyIpAccessControl", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyIpAccessControlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1682,6 +2119,29 @@ class WafClient(AbstractClient):
             body = self.call("RefreshAccessCheckResult", params, headers=headers)
             response = json.loads(body)
             model = models.RefreshAccessCheckResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SwitchElasticMode(self, request):
+        """Toggle elasticity switch
+
+        :param request: Request instance for SwitchElasticMode.
+        :type request: :class:`tencentcloud.waf.v20180125.models.SwitchElasticModeRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.SwitchElasticModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchElasticMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchElasticModeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
