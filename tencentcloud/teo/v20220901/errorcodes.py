@@ -62,6 +62,9 @@ FAILEDOPERATION_CREATECLSLOGTOPICTASKFAILED = 'FailedOperation.CreateClsLogTopic
 # Authentication failed while creating a custom push task. Check whether the push address is correct.
 FAILEDOPERATION_CREATELOGTOPICTASKAUTHFAILURE = 'FailedOperation.CreateLogTopicTaskAuthFailure'
 
+# Another task is being deployed. Please try again later.
+FAILEDOPERATION_FUNCTIONDEPLOYING = 'FailedOperation.FunctionDeploying'
+
 # The account balance is insufficient.
 FAILEDOPERATION_INSUFFICIENTACCOUNTBALANCE = 'FailedOperation.InsufficientAccountBalance'
 
@@ -80,6 +83,9 @@ FAILEDOPERATION_REALTIMELOGAUTHFAILURE = 'FailedOperation.RealtimeLogAuthFailure
 # The real-time log push task does not exist.
 FAILEDOPERATION_REALTIMELOGNOTFOUND = 'FailedOperation.RealtimeLogNotFound'
 
+# Function rule operations conflict under this site.
+FAILEDOPERATION_RULEOPERATIONCONFLICT = 'FailedOperation.RuleOperationConflict'
+
 # Unknown configuration group type.
 FAILEDOPERATION_UNKNOWNCONFIGGROUPTYPE = 'FailedOperation.UnknownConfigGroupType'
 
@@ -97,6 +103,9 @@ INTERNALERROR_DBERROR = 'InternalError.DBError'
 
 # Failed to get configuration
 INTERNALERROR_DOMAINCONFIG = 'InternalError.DomainConfig'
+
+# Failed to call DNSPod. Please try again later. If the issue persists, please contact the intelligent customer service or submit a ticket.
+INTERNALERROR_FAILEDTOCALLDNSPOD = 'InternalError.FailedToCallDNSPod'
 
 # Failed to generate an upload link.
 INTERNALERROR_FAILEDTOGENERATEURL = 'InternalError.FailedToGenerateUrl'
@@ -131,6 +140,12 @@ INVALIDPARAMETER_ACTIONINPROGRESS = 'InvalidParameter.ActionInProgress'
 # Chinese SM certificates are not supported for alias domain names.
 INVALIDPARAMETER_ALIASDOMAINNOTSUPPORTSMCERT = 'InvalidParameter.AliasDomainNotSupportSMCert'
 
+# The function content has a syntax error.
+INVALIDPARAMETER_BADCONTENT = 'InvalidParameter.BadContent'
+
+# The function name does not meet specifications.
+INVALIDPARAMETER_BADFUNCTIONNAME = 'InvalidParameter.BadFunctionName'
+
 # Invalid query string.
 INVALIDPARAMETER_CACHEKEYQUERYSTRINGREQUIRESFULLURLCACHEOFF = 'InvalidParameter.CacheKeyQueryStringRequiresFullUrlCacheOff'
 
@@ -160,6 +175,9 @@ INVALIDPARAMETER_COMPRESSIONINVALIDALGORITHMS = 'InvalidParameter.CompressionInv
 
 # The origin cannot be the same as the domain name.
 INVALIDPARAMETER_CONFLICTHOSTORIGIN = 'InvalidParameter.ConflictHostOrigin'
+
+# The function content exceeds the size limit.
+INVALIDPARAMETER_CONTENTEXCEEDSLIMIT = 'InvalidParameter.ContentExceedsLimit'
 
 # The domain name does not exist or is not belong to this account.
 INVALIDPARAMETER_DOMAINNOTFOUND = 'InvalidParameter.DomainNotFound'
@@ -256,6 +274,9 @@ INVALIDPARAMETER_ERRINVALIDELSEWHENMODIFYORIGINACTIONCONFIGURED = 'InvalidParame
 
 # Empty condition.
 INVALIDPARAMETER_ERRNILCONDITION = 'InvalidParameter.ErrNilCondition'
+
+# The function name conflicts with that of another function under this account.
+INVALIDPARAMETER_FUNCTIONNAMECONFLICT = 'InvalidParameter.FunctionNameConflict'
 
 # To enable gRPC support, HTTP/2 support must be enabled as well.
 INVALIDPARAMETER_GRPCREQUIREHTTP2 = 'InvalidParameter.GrpcRequireHttp2'
@@ -364,6 +385,9 @@ INVALIDPARAMETER_INVALIDERRORPAGE = 'InvalidParameter.InvalidErrorPage'
 
 # Invalid custom error page.
 INVALIDPARAMETER_INVALIDERRORPAGEREDIRECTURL = 'InvalidParameter.InvalidErrorPageRedirectUrl'
+
+# Invalid filter field.
+INVALIDPARAMETER_INVALIDFILTERNAME = 'InvalidParameter.InvalidFilterName'
 
 # Invalid forced HTTPS direction settings
 INVALIDPARAMETER_INVALIDFORCEREDIRECTTYPE = 'InvalidParameter.InvalidForceRedirectType'
@@ -533,6 +557,9 @@ INVALIDPARAMETER_LENGTHEXCEEDSLIMIT = 'InvalidParameter.LengthExceedsLimit'
 # The Cloud Load Balancer instance ID is required in the operation of modifying the origin server.
 INVALIDPARAMETER_LOADBALANCEINSTANCEIDISREQUIRED = 'InvalidParameter.LoadBalanceInstanceIdIsRequired'
 
+# Modification parameters are missing.
+INVALIDPARAMETER_MODIFYPARAMETERSMISSING = 'InvalidParameter.ModifyParametersMissing'
+
 # Smart routing is not supported.
 INVALIDPARAMETER_MULTIPLYLAYERNOTSUPPORTSMARTROUTING = 'InvalidParameter.MultiplyLayerNotSupportSmartRouting'
 
@@ -650,6 +677,9 @@ INVALIDPARAMETER_TLSVERSIONNOTINSEQUENCE = 'InvalidParameter.TlsVersionNotInSequ
 # Too many filter values.
 INVALIDPARAMETER_TOOMANYFILTERVALUES = 'InvalidParameter.TooManyFilterValues'
 
+# Too many filter items.
+INVALIDPARAMETER_TOOMANYFILTERS = 'InvalidParameter.TooManyFilters'
+
 # Invalid file upload link.
 INVALIDPARAMETER_UPLOADURL = 'InvalidParameter.UploadUrl'
 
@@ -673,6 +703,15 @@ INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
 # The domain name for this zone has been banned.
 INVALIDPARAMETERVALUE_ACCESSBLACKLIST = 'InvalidParameterValue.AccessBlacklist'
+
+# 
+INVALIDPARAMETERVALUE_CERTIFICATEVERIFYCLIENTMUSTCA = 'InvalidParameterValue.CertificateVerifyClientMustCa'
+
+# 
+INVALIDPARAMETERVALUE_CERTIFICATEVERIFYCLIENTNEEDCERT = 'InvalidParameterValue.CertificateVerifyClientNeedCert'
+
+# 
+INVALIDPARAMETERVALUE_CLIENTCERTINFOQUOTALIMIT = 'InvalidParameterValue.ClientCertInfoQuotaLimit'
 
 # It conflicts with existing records.
 INVALIDPARAMETERVALUE_CONFLICTRECORD = 'InvalidParameterValue.ConflictRecord'
@@ -746,6 +785,12 @@ INVALIDPARAMETERVALUE_PAGENAMEALREADYEXIST = 'InvalidParameterValue.PageNameAlre
 # Does not match the specified regular expression.
 INVALIDPARAMETERVALUE_REGEXMISMATCH = 'InvalidParameterValue.RegExMismatch'
 
+# 
+INVALIDPARAMETERVALUE_SERVERCERTINFONEEDCONTAINRSAORECC = 'InvalidParameterValue.ServerCertInfoNeedContainRSAorECC'
+
+# 
+INVALIDPARAMETERVALUE_SERVERCERTINFONEEDCONTAINSM2 = 'InvalidParameterValue.ServerCertInfoNeedContainSM2'
+
 # Enter a valid shared CNAME prefix of up to 50 characters.
 INVALIDPARAMETERVALUE_SHAREDCNAMEPREFIXNOTMATCH = 'InvalidParameterValue.SharedCNAMEPrefixNotMatch'
 
@@ -778,6 +823,9 @@ LIMITEXCEEDED_CUSTOMLOGFIELDREGEXLIMITEXCEEDED = 'LimitExceeded.CustomLogFieldRe
 
 # Reached the daily upper limit of resource number
 LIMITEXCEEDED_DAILYQUOTA = 'LimitExceeded.DailyQuota'
+
+# The number of functions has reached the limit.
+LIMITEXCEEDED_FUNCTIONLIMITEXCEEDED = 'LimitExceeded.FunctionLimitExceeded'
 
 # Not supported by the plan.
 LIMITEXCEEDED_PACKNOTALLOW = 'LimitExceeded.PackNotAllow'
@@ -821,8 +869,14 @@ OPERATIONDENIED_ACCELERATEMAINLANDMULTIPLYLAYERCONFLICT = 'OperationDenied.Accel
 # An L7 DNS service referencing the origin group is being deployed. Please edit later.
 OPERATIONDENIED_ACCELERATIONDOMAINSTATUSNOTINONLINE = 'OperationDenied.AccelerationDomainStatusNotInOnline'
 
+# The current compliance status is banning.
+OPERATIONDENIED_COMPLIANCEFORBIDDEN = 'OperationDenied.ComplianceForbidden'
+
 # The configuration is locked. Please unlock and try again.
 OPERATIONDENIED_CONFIGLOCKED = 'OperationDenied.ConfigLocked'
+
+# The TEO_QCSLinkedRoleInDnspodAccessEO role is not authorized. Please authorize it and try again.
+OPERATIONDENIED_DNSPODUNAUTHORIZEDROLEOPERATION = 'OperationDenied.DNSPodUnauthorizedRoleOperation'
 
 # The pre-check failed during site deletion.
 OPERATIONDENIED_DELETEZONEPRECHECKFAILED = 'OperationDenied.DeleteZonePreCheckFailed'
@@ -1055,6 +1109,9 @@ RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 # The resource doesn’t exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# The domain name is not properly accessed via DNSPod. Please try again after DNSPod access.
+RESOURCENOTFOUND_DNSPODDOMAINNOTINACCOUNT = 'ResourceNotFound.DNSPodDomainNotInAccount'
+
 # Maximum upload size is not configured.
 RESOURCENOTFOUND_POSTMAXSIZEQUOTANOTFOUND = 'ResourceNotFound.PostMaxSizeQuotaNotFound'
 
@@ -1078,6 +1135,9 @@ RESOURCEUNAVAILABLE_FUNCTIONNOTFOUND = 'ResourceUnavailable.FunctionNotFound'
 
 # The domain name does not exist or not use a proxy.
 RESOURCEUNAVAILABLE_HOSTNOTFOUND = 'ResourceUnavailable.HostNotFound'
+
+# The rule does not exist or does not belong to the account.
+RESOURCEUNAVAILABLE_RULENOTFOUND = 'ResourceUnavailable.RuleNotFound'
 
 # The shared CNAME is used by others.
 RESOURCEUNAVAILABLE_SHAREDCNAMEALREADYEXISTS = 'ResourceUnavailable.SharedCNAMEAlreadyExists'

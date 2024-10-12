@@ -1708,49 +1708,53 @@ class ApplicationProxyRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Proto: The protocol. Values:
-<li>`TCP`: TCP protocol.</li>
-<li>`UDP`: UDP protocol.</li>
+        :param _Proto: Protocol. Valid values:
+<li>TCP: TCP protocol;</li>
+<li>UDP: UDP protocol.</li>
         :type Proto: str
-        :param _Port: The access port, which can be:
-<li>A single port, such as 80</li>
-<li>A port range, such as 81-82</li>
-Note that each rule can have up to 20 ports.
+        :param _Port: Port. Supported formats:
+<li>A single port, such as 80.</li>
+<li>A port range, such as 81-82, indicating two ports 81 and 82.</li>
+Note: Up to 20 ports can be input for each rule.
         :type Port: list of str
-        :param _OriginType: Origin server type. Valid values:<li>custom: Manually added;</li><li>loadbalancer: Cloud Load Balancer;</li><li>origins: Origin server group.</li>
+        :param _OriginType: Origin server type. Valid values:
+<li>custom: manually added;</li>
+<li>loadbalancer: cloud load balancer;</li>
+<li>origins: origin server group.</li>
         :type OriginType: str
-        :param _OriginValue: Details of the origin server:
-<li>When OriginType is custom, it indicates one or more origin servers, such as ["8.8.8.8","9.9.9.9"] or OriginValue=["test.com"];</li><li>When OriginType is loadbalancer, it indicates a single Cloud Load Balancer, such as ["lb-xdffsfasdfs"];</li>
-<li>When OriginType is origins, it requires one and only one element, which represents an origin server group ID, such as ["origin-537f5b41-162a-11ed-abaa-525400c5da15"].</li>
+        :param _OriginValue: Origin server information.
+<li>When OriginType is custom, it indicates one or more origin servers, such as `["8.8.8.8","9.9.9.9"]` or `OriginValue=["test.com"]`;</li>
+<li>When OriginType is loadbalancer, it indicates a cloud load balancer, such as ["lb-xdffsfasdfs"];</li>
+<li>When OriginType is origins, it requires one and only one element, indicating the origin server group ID, such as ["origin-537f5b41-162a-11ed-abaa-525400c5da15"].</li>
         :type OriginValue: list of str
-        :param _RuleId: The rule ID.
+        :param _RuleId: Rule ID.
         :type RuleId: str
-        :param _Status: The rule status. Values:
-<li>`online`: Enabled.</li>
-<li>`offline`: Disabled.</li>
-<li>`progress`: Deploying</li>
-<li>`stopping`: Disabling</li>
-<li>`fail`: Failed to deploy or disable</li>
+        :param _Status: Status. Valid values:
+<li>online: enabled;</li>
+<li>offline: disabled;</li>
+<li>progress: deploying;</li>
+<li>stopping: disabling;</li>
+<li>fail: deployment or disabling failed.</li>
         :type Status: str
-        :param _ForwardClientIp: Passes the client IP. Values:
-<li>`TOA`: Pass the client IP via TOA (available only when `Proto=TCP`).</li>
-<li>`PPV1`: Pass the client IP via Proxy Protocol V1 (available only when `Proto=TCP`).</li>
-<li>`PPV2`: Pass the client IP via Proxy Protocol V2.</li>
-<li>`OFF`: Not pass the client IP.</li>Default value: OFF.
+        :param _ForwardClientIp: Passing the client IP address. Valid values:
+<li>TOA: passing via TOA, available only when Proto = TCP;</li>
+<li>PPV1: passing via Proxy Protocol V1, available only when Proto = TCP;</li>
+<li>PPV2: passing via Proxy Protocol V2;</li>
+<li>OFF: no passing.</li>Default value: OFF.
         :type ForwardClientIp: str
-        :param _SessionPersist: Whether to enable session persistence. Values:
-<li>`true`: Enable</li>
-<li>`false`: Disable</li>Default value: false
+        :param _SessionPersist: Whether to enable session persistence. Valid values:
+<li>true: Enable;</li>
+<li>false: Disable.</li>Default value: false.
         :type SessionPersist: bool
-        :param _SessionPersistTime: Duration for the persistent session. The value takes effect only when `SessionPersist = true`.
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _SessionPersistTime: Duration for session persistence. The value takes effect only when SessionPersist is true.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type SessionPersistTime: int
-        :param _OriginPort: The origin port, which can be:
-<li>A single port, such as 80</li>
-<li>A port range, such as 81-82</li>
+        :param _OriginPort: Origin server port. Supported formats:
+<li>A single port, such as 80.</li>
+<li>A port range, such as 81-82, indicating two ports 81 and 82.</li>
         :type OriginPort: str
         :param _RuleTag: Rule tag.
-Note: This field may return null, indicating that no valid values can be obtained.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type RuleTag: str
         """
         self._Proto = None
@@ -4756,13 +4760,13 @@ class CreateCustomizeErrorPageRequest(AbstractModel):
         r"""
         :param _ZoneId: Zone ID.
         :type ZoneId: str
-        :param _Name: Custom response page name. The name must be 2-30 characters long.
+        :param _Name: Custom error page name. The name must be 2-30 characters long.
         :type Name: str
-        :param _ContentType: Custom response page type, with values:<li>text/html; </li><li>application/json;</li><li>text/plain;</li><li>text/xml.</li>
+        :param _ContentType: Custom error page type, with values:<li>text/html; </li><li>application/json;</li><li>text/plain;</li><li>text/xml.</li>
         :type ContentType: str
-        :param _Description: Custom response page description, not exceeding 60 characters.
+        :param _Description: Custom error page description, not exceeding 60 characters.
         :type Description: str
-        :param _Content: Custom response page content, not exceeding 2 KB.
+        :param _Content: Custom error page content, not exceeding 2 KB.
         :type Content: str
         """
         self._ZoneId = None
@@ -4835,7 +4839,7 @@ class CreateCustomizeErrorPageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageId: Custom response page ID.
+        :param _PageId: Page ID.
         :type PageId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -4865,6 +4869,223 @@ class CreateCustomizeErrorPageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateFunctionRequest(AbstractModel):
+    """CreateFunction request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _Name: Function name, which can contain up to 30 characters, including lowercase letters, digits, and hyphens. It should start and end with a digit or a letter.
+        :type Name: str
+        :param _Content: Function content, which currently only supports JavaScript code. Its maximum size is 5 MB.
+        :type Content: str
+        :param _Remark: Function description, which can contain up to 60 characters.
+        :type Remark: str
+        """
+        self._ZoneId = None
+        self._Name = None
+        self._Content = None
+        self._Remark = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Name = params.get("Name")
+        self._Content = params.get("Content")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFunctionResponse(AbstractModel):
+    """CreateFunction response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionId: Function ID.
+        :type FunctionId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FunctionId = None
+        self._RequestId = None
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FunctionId = params.get("FunctionId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateFunctionRuleRequest(AbstractModel):
+    """CreateFunctionRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _FunctionRuleConditions: Rule condition list. There is an OR relationship between different conditions of the same trigger rule.
+        :type FunctionRuleConditions: list of FunctionRuleCondition
+        :param _FunctionId: Function ID, specifying a function executed when a trigger rule condition is met.
+        :type FunctionId: str
+        :param _Remark: Rule description, which can contain up to 60 characters.
+        :type Remark: str
+        """
+        self._ZoneId = None
+        self._FunctionRuleConditions = None
+        self._FunctionId = None
+        self._Remark = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionRuleConditions(self):
+        return self._FunctionRuleConditions
+
+    @FunctionRuleConditions.setter
+    def FunctionRuleConditions(self, FunctionRuleConditions):
+        self._FunctionRuleConditions = FunctionRuleConditions
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("FunctionRuleConditions") is not None:
+            self._FunctionRuleConditions = []
+            for item in params.get("FunctionRuleConditions"):
+                obj = FunctionRuleCondition()
+                obj._deserialize(item)
+                self._FunctionRuleConditions.append(obj)
+        self._FunctionId = params.get("FunctionId")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFunctionRuleResponse(AbstractModel):
+    """CreateFunctionRule response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: Rule ID.
+        :type RuleId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RuleId = None
+        self._RequestId = None
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateL4ProxyRequest(AbstractModel):
     """CreateL4Proxy request structure.
 
@@ -4874,23 +5095,31 @@ class CreateL4ProxyRequest(AbstractModel):
         r"""
         :param _ZoneId: Zone ID.
         :type ZoneId: str
-        :param _ProxyName: Layer 4 proxy instance name. You can enter 1-50 characters. Valid characters are a-z, 0-9, and hyphens (-). However, hyphens (-) cannot be used individually or consecutively and should not be placed at the beginning or end of the name. Modifications are not allowed after creation.
+        :param _ProxyName: Name of the L4 proxy instance, which can contain 1-50 characters, including a-z, 0-9, and hyphens (-). However, hyphens (-) cannot be used individually or consecutively and should not be placed at the beginning or end of the name. Modification is not allowed after creation.
+
         :type ProxyName: str
-        :param _Area: Acceleration zone of the Layer 4 proxy instance.<li>mainland: Availability zone in the Chinese mainland;</li><li>overseas: Global availability zone (excluding the Chinese mainland);</li><li>global: Global availability zone.</li>
+        :param _Area: Acceleration zone of the L4 proxy instance.
+<li>mainland: Chinese mainland availability zone;</li>
+<li>overseas: global availability zone (excluding the Chinese mainland);</li>
+<li>global: global availability zone.</li>
         :type Area: str
-        :param _Ipv6: Specifies whether to enable IPv6 access. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:<li>on: Enable;</li>
+        :param _Ipv6: Whether to enable IPv6 access. If this parameter is not input, the default value `off` is used. This configuration can be enabled only in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance] (https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:
+<li>on: Enable;</li>
 <li>off: Disable.</li>
 
+
         :type Ipv6: str
-        :param _StaticIp: Specifies whether to enable the fixed IP address. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:<li>on: Enable;</li>
+        :param _StaticIp: Whether to enable static IP. If this parameter is not input, the default value `off` is used. This configuration can be enabled only in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance] (https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:
+<li>on: Enable;</li>
 <li>off: Disable.</li>
 
         :type StaticIp: str
-        :param _AccelerateMainland: Specifies whether to enable network optimization in the Chinese mainland. The default value off is used if left empty. This configuration can only be enabled in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance](https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:<li>on: Enable;</li>
+        :param _AccelerateMainland: Whether to enable network optimization for the Chinese mainland. If this parameter is not input, the default value `off` is used. This configuration can be enabled only in certain acceleration zones and security protection configurations. For details, see [Creating an L4 Proxy Instance] (https://intl.cloud.tencent.com/document/product/1552/90025?from_cn_redirect=1). Valid values:
+<li>on: Enable;</li>
 <li>off: Disable.</li>
 
         :type AccelerateMainland: str
-        :param _DDosProtectionConfig: Layer 3/Layer 4 DDoS protection. The default protection option of the platform will be used if it is left empty. For details, see [Exclusive DDoS Protection Usage](https://intl.cloud.tencent.com/document/product/1552/95994?from_cn_redirect=1).
+        :param _DDosProtectionConfig: Configuration of L3/L4 DDoS protection. If this parameter is not input, the default platform protection option is used. For details, see [Exclusive DDoS Protection Usage] (https://intl.cloud.tencent.com/document/product/1552/95994?from_cn_redirect=1).
         :type DDosProtectionConfig: :class:`tencentcloud.teo.v20220901.models.DDosProtectionConfig`
         """
         self._ZoneId = None
@@ -4985,7 +5214,7 @@ class CreateL4ProxyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyId: Layer 4 instance ID.
+        :param _ProxyId: L4 instance ID.
         :type ProxyId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -5353,14 +5582,14 @@ class CreatePlanRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlanType: Type of plan subscribed to. Valid values:<li>personal: Personal Edition Plan, prepaid;</li><li>basic: Basic Edition Plan, prepaid;</li><li>standard: Standard Edition Plan, prepaid;</li><li>enterprise: Enterprise Edition Plan, post-paid. </li>When subscribing to a prepaid plan, ensure there is sufficient balance in the account, as insufficient balance will result in a pending payment order.
-For an overview of billing, refer to [Billing Overview](https://intl.cloud.tencent.com/document/product/1552/94156?from_cn_redirect=1).
-For differences between plans, refer to [ Comparison of EdgeOne Plan](https://intl.cloud.tencent.com/document/product/1552/94165?from_cn_redirect=1).
+        :param _PlanType: Type of the subscribed plan. Valid values: <li>personal: Personal plan in prepaid mode;</li><li>basic: Basic plan in prepaid mode;</li><li>standard: Standard plan in prepaid mode;</li><li>enterprise: Enterprise plan in pay-as-you-go mode.</li>When subscribing to a prepaid plan, please ensure that your account balance is sufficient. If the balance is insufficient, an order to be paid will be generated.
+For an overview of billing, see [EdgeOne Billing Overview](https://intl.cloud.tencent.com/document/product/1552/94156?from_cn_redirect=1).
+For differences between plans, refer to [EdgeOne Billing Plan Comparison](https://intl.cloud.tencent.com/document/product/1552/94165?from_cn_redirect=1).
         :type PlanType: str
-        :param _AutoUseVoucher: Whether to automatically use a voucher. Valid values: <li>true: Yes;</li><li>false: No. </li> This parameter is valid only when PlanType is personal, basic, or standard.
+        :param _AutoUseVoucher: Whether to automatically use a voucher. Valid values: <li>true: Yes;</li><li>false: No.</li>This parameter is valid only when PlanType is personal, basic, or standard.
 If this field is not specified, the default value 'false' will be used.
         :type AutoUseVoucher: str
-        :param _PrepaidPlanParam: Parameters for subscribing to prepaid plans. When PlanType is personal, basic, or standard, this parameter can be optionally set to specify the subscription duration and whether to enable auto-renewal for the plan.
+        :param _PrepaidPlanParam: Parameters for subscribing to a prepaid plan. When PlanType is personal, basic, or standard, this parameter is optional and can be used to specify the subscription duration of the plan and enable auto-renewal.
 If this field is not specified, the default plan duration is 1 month, with auto-renewal disabled.
         :type PrepaidPlanParam: :class:`tencentcloud.teo.v20220901.models.PrepaidPlanParam`
         """
@@ -5758,46 +5987,46 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         r"""
         :param _ZoneId: Zone ID.
         :type ZoneId: str
-        :param _TaskName: The name of the real-time log delivery task, which is a combination of numbers, English letters, - and _, containing up to 200 characters.
+        :param _TaskName: Name of a real-time log shipping task, which can contain up to 200 characters, including digits, English letters, hyphens (-) and underscores (_).
         :type TaskName: str
-        :param _TaskType: The type of the real-time log delivery task. Valid values:
-<li>cls: Push to Tencent Cloud CLS;</li>
-<li>custom_endpoint: Push to a user-defined HTTP(S) address;</li>
-<li>s3: Push to an AWS S3-compatible bucket address.</li>
+        :param _TaskType: Type of a real-time log shipping task. Valid values:
+<li>cls: push to Tencent Cloud CLS;</li>
+<li>custom_endpoint: push to a custom HTTP(S) address;</li>
+<li>s3: push to an AWS S3-compatible bucket address.</li>
         :type TaskType: str
-        :param _EntityList: The list of entities (Layer 7 domains or Layer 4 proxy instances) corresponding to the real-time log delivery task. Valid value examples:
-<li>Layer 7 domain: domain.example.com;</li>
-<li>Layer 4 proxy instance: sid-2s69eb5wcms7.</li>
+        :param _EntityList: List of entities (L7 domain names or L4 proxy instances) corresponding to a real-time log shipping task. Valid value examples:
+<li>L7 domain name: domain.example.com;</li>
+<li>L4 proxy instance: sid-2s69eb5wcms7.</li>
         :type EntityList: list of str
-        :param _LogType: The type of data delivery. Valid values:
-<li>domain: Site acceleration log;</li>
-<li>application: Layer 4 proxy log;</li>
-<li>web-rateLiming: Rate limit and CC attack defense log;</li>
-<li>web-attack: Managed rule log;</li>
-<li>web-rule: Custom rule log;</li>
-<li>web-bot: Bot management log.</li>
+        :param _LogType: Data shipping type. Valid values:
+<li>domain: site acceleration logs;</li>
+<li>application: L4 proxy logs;</li>
+<li>web-rateLiming: rate limit and CC attack defense logs;</li>
+<li>web-attack: managed rule logs;</li>
+<li>web-rule: custom rule logs;</li>
+<li>web-bot: Bot management logs.</li>
         :type LogType: str
-        :param _Area: The data delivery area. Valid values:
-<li>mainland: Within the Chinese mainland;</li>
-<li>overseas: Global (excluding the Chinese mainland).</li>
+        :param _Area: Data shipping area. Valid values:
+<li>mainland: within the Chinese mainland;</li>
+<li>overseas: global (excluding the Chinese mainland).</li>
         :type Area: str
-        :param _Fields: The list of predefined fields for delivery.
+        :param _Fields: List of predefined fields for shipping.
         :type Fields: list of str
-        :param _CustomFields: The list of custom fields for delivery, supporting extracting specified field values from HTTP request headers, response headers, and cookies. Each custom field name must be unique and the maximum number of fields is 200.
+        :param _CustomFields: List of custom fields for shipping. It supports extracting specified field values from HTTP request headers, response headers, and cookies. The name of each custom field must be unique and the maximum number of fields is 200.
         :type CustomFields: list of CustomField
-        :param _DeliveryConditions: Log delivery filter conditions. If this field is not filled in, all logs will be delivered.
+        :param _DeliveryConditions: Filter criteria of log shipping. If this parameter is not input, all logs will be shipped.
         :type DeliveryConditions: list of DeliveryCondition
-        :param _Sample: The sampling ratio in permille. Value range: 1 to 1000. For example, 605 represents a sampling ratio of 60.5%. If this field is not filled in, the sampling ratio is 100%.
+        :param _Sample: Sampling ratio in permille. Value range: 1-1000. For example, 605 indicates a sampling ratio of 60.5%. If this parameter is not input, the sampling ratio is 100%.
         :type Sample: int
         :param _LogFormat: Output format for log delivery. If this field is not specified, the default format is used, which works as follows:
 <li>When TaskType is 'custom_endpoint', the default format is an array of JSON objects, with each JSON object representing a log entry;</li>
 <li>When TaskType is 's3', the default format is JSON Lines;</li>Specifically, when TaskType is 'cls', the only allowed value for LogFormat.FormatType is 'json', and other parameters in LogFormat will be ignored. It is recommended not to transfer LogFormat.
         :type LogFormat: :class:`tencentcloud.teo.v20220901.models.LogFormat`
-        :param _CLS: The configuration information of CLS. This parameter is required when TaskType is cls.
+        :param _CLS: Configuration information of CLS. This parameter is required when TaskType is cls.
         :type CLS: :class:`tencentcloud.teo.v20220901.models.CLSTopic`
-        :param _CustomEndpoint: The configuration information of the custom HTTP service. This parameter is required when TaskType is custom_endpoint.
+        :param _CustomEndpoint: Configuration information of the custom HTTP service. This parameter is required when TaskType is custom_endpoint.
         :type CustomEndpoint: :class:`tencentcloud.teo.v20220901.models.CustomEndpoint`
-        :param _S3: The configuration information of the AWS S3-compatible bucket. This parameter is required when TaskType is s3.
+        :param _S3: Configuration information of the AWS S3-compatible bucket. This parameter is required when TaskType is s3.
         :type S3: :class:`tencentcloud.teo.v20220901.models.S3`
         """
         self._ZoneId = None
@@ -5978,7 +6207,7 @@ class CreateRealtimeLogDeliveryTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: The ID of the successfully created task.
+        :param _TaskId: ID of the successfully created task.
         :type TaskId: str
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -6322,10 +6551,11 @@ class CreateZoneRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: Site access types. Options include:
-<li>`partial`: (Default) Access through a CNAME record</li>
-<li>`full`: Access through a name server</li>
-<li>`noDomainAccess`: Access without using a domain name</li>
+        :param _Type: Site access type. If this parameter is not input, the default value `partial` is used. Valid values of this parameter are as follows:
+<li>partial: CNAME access;</li>
+<li>full: NS access;</li>
+<li>noDomainAccess: access with no domain name.</li>
+<li>dnsPodAccess: DNSPod hosted access. To use this access mode, your domain name should have been hosted on DNSPod.</li>
         :type Type: str
         :param _ZoneName: Site name. For sites connected via CNAME/NS, pass in the secondary domain name (example.com). Leave it blank if the site is connected without a domain name. 
         :type ZoneName: str
@@ -6518,19 +6748,19 @@ class CustomEndpoint(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: The address of the custom HTTP interface for real-time log delivery. Currently, only HTTP and HTTPS protocols are supported.
+        :param _Url: Address of the custom HTTP API for real-time log shipping. Currently, only HTTP and HTTPS protocols are supported.
         :type Url: str
-        :param _AccessId: Specifies the custom SecretId for generating an encrypted signature. This parameter is required if the origin server needs authentication.
+        :param _AccessId: Custom SecretId used for generating an encrypted signature. This parameter is required if the origin server needs authentication.
         :type AccessId: str
-        :param _AccessKey: Specifies the custom SecretKey for generating an encrypted signature. This parameter is required if the origin server needs authentication.
+        :param _AccessKey: Custom SecretKey used for generating an encrypted signature. This parameter is required if the origin server needs authentication.
         :type AccessKey: str
-        :param _CompressType: The type of data compression. Valid values:<li>gzip: gzip compression.</li>If this field is not filled in, compression is disabled.
+        :param _CompressType: Type of data compression. Valid values:<li>gzip: gzip compression.</li>If this parameter is not input, compression is disabled.
         :type CompressType: str
-        :param _Protocol: The type of the application layer protocol used when POST requests log delivery. Valid values:
+        :param _Protocol: Type of the application layer protocol used in POST requests for log shipping. Valid values: 
 <li>http: HTTP protocol;</li>
-<li>https: HTTPS protocol.</li>If this field is not filled in, the protocol type will be parsed from the URL field.
+<li>https: HTTPS protocol.</li>If this parameter is not input, the protocol type is parsed from the URL field.	
         :type Protocol: str
-        :param _Headers: The custom request header carried during log delivery. If the header name you fill in is the default header carried by EdgeOne log delivery such as Content-Type, then the header value you fill in will override the default value. The header value supports referring to a single variable ${batchSize} to obtain the number of log entries included in each POST request.
+        :param _Headers: Custom request header carried in log shipping. For a header carried by default in EdgeOne log pushing, such as Content-Type, the header value you input will overwrite the default value. The header value references a single variable ${batchSize} to obtain the number of log entries included in each POST request.
         :type Headers: list of Header
         """
         self._Url = None
@@ -7575,7 +7805,7 @@ class DeleteCustomErrorPageRequest(AbstractModel):
         r"""
         :param _ZoneId: Zone ID.
         :type ZoneId: str
-        :param _PageId: Custom response page ID.
+        :param _PageId: Custom page ID.
         :type PageId: str
         """
         self._ZoneId = None
@@ -7613,6 +7843,146 @@ class DeleteCustomErrorPageRequest(AbstractModel):
 
 class DeleteCustomErrorPageResponse(AbstractModel):
     """DeleteCustomErrorPage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteFunctionRequest(AbstractModel):
+    """DeleteFunction request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _FunctionId: Function ID.
+        :type FunctionId: str
+        """
+        self._ZoneId = None
+        self._FunctionId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionId = params.get("FunctionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteFunctionResponse(AbstractModel):
+    """DeleteFunction response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteFunctionRulesRequest(AbstractModel):
+    """DeleteFunctionRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _RuleIds: Rule ID list.
+        :type RuleIds: list of str
+        """
+        self._ZoneId = None
+        self._RuleIds = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RuleIds(self):
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RuleIds = params.get("RuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteFunctionRulesResponse(AbstractModel):
+    """DeleteFunctionRules response structure.
 
     """
 
@@ -8203,11 +8573,11 @@ class DeliveryCondition(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Conditions: Log filter conditions. Detailed filter conditions are as follows:
-<li>EdgeResponseStatusCode: Filter by status code returned to the client by the EdgeOne node.<br>      Supported operators: equal, great, less, great_equal, less_equal<br>      Value range: Any integer greater than or equal to 0</li>
-<li>OriginResponseStatusCode: Filter by response status code of the origin server.<br>      Supported operators: equal, great, less, great_equal, less_equal<br>      Value range: Any integer greater than or equal to -1</li>
-<li>SecurityAction: Filter by final action after the request hits the security rule.<br>      Supported operators: equal<br>      Options are as follows:<br>      -: Unknown/unhit<br>      Monitor: Log only<br>      JSChallenge: JavaScript challenge<br>      Deny: Interception<br>      Allow: Allow<br>      BlockIP: IP ban<br>      Redirect: Redirect<br>      ReturnCustomPage: Return to custom page<br>      ManagedChallenge: Managed challenge<br>      Silence: Silence<br>      LongDelay: Response after a long wait<br>      ShortDelay: Response after a short wait</li>
-<li>SecurityModule: Filter according to the name of the security module that ultimately handles the request. <br>      Supported operators: equal<br>      Options are as follows:<br>      -: Unknown/miss<br>      CustomRule: Web protection - custom rules<br>      RateLimitingCustomRule: Web protection - rate limiting rule<br>      ManagedRule: Web Protection - Managed Rules<br>      L7DDoS: Web Protection - CC Attack Protection<br>      BotManagement: Bot Management - Bot Basic Management<br>      BotClientReputation: Bot Management - Client Reputation Analysis<br>      BotBehaviorAnalysis: Bot Management - Bot Intelligence Analysis<br>      BotCustomRule: Bot Management - Custom Bot Rules<br>      BotActiveDetection: Bot Management - Active Detection</li>
+        :param _Conditions: Log filter criteria. The detailed filter criteria are as follows:
+<li>EdgeResponseStatusCode: Filter by response status code returned from the EdgeOne node to the client.<br>?? Supported operators: equal, great, less, great_equal, less_equal<br>?? Valid values: any integer greater than or equal to 0</li>
+<li>OriginResponseStatusCode: Filter by response status code of the origin server.<br>?? Supported operators: equal, great, less, great_equal, less_equal.<br>?? Valid values: any integer greater than or equal to -1</li>
+<li>SecurityAction: Filter by final action after the request matches a security rule.<br>?? Supported operator: equal<br>?? Options:<br>?? -: unknown/not matched<br>?? Monitor: observation<br>?? JSChallenge: JavaScript challenge<br>?? Deny: blocking<br>?? Allow: allowing<br>?? BlockIP: IP blocking<br>?? Redirect: redirection<br>?? ReturnCustomPage: returning to a custom page<br>?? ManagedChallenge: managed challenge<br>?? Silence: silence<br>?? LongDelay: response after a long delay<br>?? ShortDelay: response after a short delay</li>
+<li>SecurityModule: Filter by name of the security module finally handling the request.<br>??Supported operator: equal<br>??Options:<br>?? -: unknown/not matched<br>?? CustomRule: Custom Rules in Web Protection<br>?? RateLimitingCustomRule: Rate Limiting Rules in Web Protection<br>?? ManagedRule: Managed Rules in Web Protection<br>?? L7DDoS: CC Attack Defense in Web Protection<br>?? BotManagement: Bot Basic Management in Bot Management<br>?? BotClientReputation: Client Reputation Analysis in Bot Management<br>?? BotBehaviorAnalysis: Bot Intelligent Analysis in Bot Management<br>?? BotCustomRule: Custom Bot Rules in Bot Management<br>?? BotActiveDetection: Active Detection in Bot Management</li>
         :type Conditions: list of QueryCondition
         """
         self._Conditions = None
@@ -8464,16 +8834,13 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: Limit on paginated queries. Default value: 20. Maximum value: 200.
         :type Limit: int
-        :param _Filters: Filter conditions. The maximum value of Filters.Values is 20. If it is not specified, all domains related with the specific zone-id are returned.
-<li>domain-name: Filtering based on the acceleration domain name</li>
-<li>origin-type: Filtering based on the type of the origin server</li>
-<li>origin: Filtering based on the primary origin server address</li>
-<li>backup-origin: Filtering based on the secondary origin server address</li>
-<li>domain-cname: Filtering based on the CNAME</li>
-<li>share-cname: Filtering based on the shared CNAME</li>
-<li>vodeo-sub-app-id: Filtering based on [vodeo sub-application ID]</li>
-<li>vodeo-distribution-range: Filtering based on [vodeo distribution range]</li>
-<li>vodeo-bucket-id: Filtering based on [vodeo storage bucket ID];</li>
+        :param _Filters: Filter criteria. The maximum number of Filters.Values is 20. If this parameter is not input, all domain name information under the current zone-id will be returned. The detailed filter criteria are as follows:
+<li>domain-name: Filter by acceleration domain name;</li>
+<li>origin-type: Filter by origin server type;</li>
+<li>origin: Filter by primary origin server address;</li>
+<li>backup-origin: Filter by replica origin server address;</li>
+<li>domain-cname: Filter by CNAME;</li>
+<li>share-cname: Filter by shared CNAME.</li>
         :type Filters: list of AdvancedFilter
         :param _Order: Sort the returned results according to this field. Values include:
 <li>`created_on`: Creation time of the acceleration domain name</li>
@@ -8944,36 +9311,39 @@ class DescribeBillingDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: Start time of the query.
+        :param _StartTime: Start time.
         :type StartTime: str
-        :param _EndTime: End time of the query.
+        :param _EndTime: End time.
         :type EndTime: str
-        :param _ZoneIds: Zone ID set. This parameter is required.
+        :param _ZoneIds: Site ID set. This parameter is required.
         :type ZoneIds: list of str
-        :param _MetricName: Indicator list. Valid values:<li>acc_flux: Content acceleration traffic, in bytes;</li>
-<li>smt_flux: Smart acceleration traffic, in bytes;</li>
-<li>l4_flux: Layer 4 acceleration traffic, in bytes;</li>
-<li>sec_flux: Exclusive DDoS mitigation traffic, in bytes;</li>
-<li>zxctg_flux: Cross-MLC-border acceleration traffic, in bytes;</li>
-<li>acc_bandwidth: Content acceleration bandwidth, in bps;</li>
-<li>smt_bandwidth: Smart acceleration bandwidth, in bps;</li>
-<li>l4_bandwidth: Layer 4 acceleration bandwidth, in bps;</li>
-<li>sec_bandwidth: Exclusive DDoS mitigation bandwidth, in bps;</li>
-<li>zxctg_bandwidth: Cross-MLC-border acceleration bandwidth, in bps;</li><li>sec_request_clean: HTTP/HTTPS requests, in count;</li>
-<li>smt_request_clean: Smart acceleration requests, in count;</li>
-<li>quic_request: QUIC requests, in count;</li>
-<li>bot_request_clean: Bot requests, in count;</li>
-<li>cls_count: Real-time log delivery log counts, in count;</li>
-<li>ddos_bandwidth: Exclusive DDoS mitigation elastic bandwidth, in bps.</li>
+        :param _MetricName: Metric list. Valid values:
+<li>acc_flux: content acceleration traffic, in bytes;</li>
+<li>smt_flux: smart acceleration traffic, in bytes;</li>
+<li>l4_flux: L4 acceleration traffic, in bytes;</li>
+<li>sec_flux: exclusive protection traffic, in bytes;</li>
+<li>zxctg_flux: network optimization traffic in the Chinese mainland, in bytes;</li>
+<li>acc_bandwidth: content acceleration bandwidth, in bps;</li>
+<li>smt_bandwidth: smart acceleration bandwidth, in bps;</li>
+<li>l4_bandwidth: L4 acceleration bandwidth, in bps;</li>
+<li>sec_bandwidth: exclusive protection bandwidth, in bps;</li>
+<li>zxctg_bandwidth: network optimization bandwidth in the Chinese mainland, in bps;</li>
+<li>sec_request_clean: number of HTTP/HTTPS requests;</li>
+<li>smt_request_clean: number of smart acceleration requests;</li>
+<li>quic_request: number of QUIC requests;</li>
+<li>bot_request_clean: number of Bot requests;</li>
+<li>cls_count: number of real-time log entries pushed;</li>
+<li>ddos_bandwidth: elastic DDoS protection bandwidth, in bps.</li>
         :type MetricName: str
-        :param _Interval: Query granularity. Valid values:<li>5min: 5-minute granularity;</li>
-<li>hour: 1-hour granularity;</li>
-<li>day: 1-day granularity.</li>
+        :param _Interval: Time granularity of the query. Valid values:
+<li>5min: 5 minutes;</li>
+<li>hour: 1 hour;</li>
+<li>day: 1 day.</li>
         :type Interval: str
-        :param _Filters: Filter. The detailed filters are as follows:
-<li>host: Filter by Domain Name. Example: test.example.com.<br></li>
-<li>proxy-id: Filter by Layer 4 Proxy Instance ID. Example: sid-2rugn89bkla9.<br></li>
-<li>region-id: Filter by Billing Region.Options are:<br>   CH: Chinese mainland<br>   AF: Africa<br>   AS1: Asia-Pacific Region 1<br>   AS2: Asia-Pacific Region 2<br>   AS3: Asia-Pacific Region 3<br>  EU: Europe<br>   MidEast: Middle East<br>   NA: North America<br>   SA: South America</li>
+        :param _Filters: Filter criteria. The detailed values of filter criteria are as follows:
+<li>host: Filter by domain name, such as test.example.com.<br></li>
+<li>proxy-id: Filter by L4 proxy instance ID, such as sid-2rugn89bkla9.<br></li>
+<li>region-id: Filter by billing region. Options:<br>  CH: Chinese mainland<br>  AF: Africa<br>  AS1: Asia-Pacific Region 1<br>  AS2: Asia-Pacific Region 2<br>  AS3: Asia-Pacific Region 3<br>  EU: Europe<br>  MidEast: Middle East<br>  NA: North America<br>  SA: South America</li>
         :type Filters: list of BillingDataFilter
         """
         self._StartTime = None
@@ -9061,8 +9431,8 @@ class DescribeBillingDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 
-Note: This field may return null, indicating that no valid values can be obtained.
+        :param _Data: Data point list.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type Data: list of BillingData
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -9437,7 +9807,7 @@ class DescribeCustomErrorPagesRequest(AbstractModel):
         r"""
         :param _ZoneId: Zone ID.
         :type ZoneId: str
-        :param _Filters: Filter criteria. The upper limit for Filters.Values is 20. The detailed filter criteria are as follows:
+        :param _Filters: Filter criteria. The maximum number of Filters.Values is 20. The detailed Name values of filter criteria are as follows:
 <li>page-id: Filter by page ID;</li>
 <li>name: Filter by page name;</li>
 <li>description: Filter by page description;</li>
@@ -9445,7 +9815,7 @@ class DescribeCustomErrorPagesRequest(AbstractModel):
         :type Filters: list of AdvancedFilter
         :param _Offset: The offset of paginated query. Default value: 0.
         :type Offset: int
-        :param _Limit: The limit of paginated query. Default value: 20. Maximum value: 1,000.
+        :param _Limit: The limit of paginated query. Default value: 20. Maximum value: 1,000.  
         :type Limit: int
         """
         self._ZoneId = None
@@ -9513,9 +9883,9 @@ class DescribeCustomErrorPagesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of custom response pages.
+        :param _TotalCount: Total number of custom error pages.
         :type TotalCount: int
-        :param _ErrorPages: Custom response page data list.
+        :param _ErrorPages: Custom error page data list.
         :type ErrorPages: list of CustomErrorPage
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -10477,6 +10847,330 @@ class DescribeEnvironmentsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeFunctionRulesRequest(AbstractModel):
+    """DescribeFunctionRules request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _Filters: Filter criteria list. There is an AND relationship between different criteria. The maximum number of Filters.Values is 20. The detailed filter criteria are as follows:
+<li>rule-id: Exact match by [rule ID].</li>
+<li>function-id: Exact match by [function ID].</li>
+<li>remark: Fuzzy match by [rule description].</li>
+        :type Filters: list of Filter
+        """
+        self._ZoneId = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFunctionRulesResponse(AbstractModel):
+    """DescribeFunctionRules response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionRules: Rule details list.
+        :type FunctionRules: list of FunctionRule
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._FunctionRules = None
+        self._RequestId = None
+
+    @property
+    def FunctionRules(self):
+        return self._FunctionRules
+
+    @FunctionRules.setter
+    def FunctionRules(self, FunctionRules):
+        self._FunctionRules = FunctionRules
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FunctionRules") is not None:
+            self._FunctionRules = []
+            for item in params.get("FunctionRules"):
+                obj = FunctionRule()
+                obj._deserialize(item)
+                self._FunctionRules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFunctionRuntimeEnvironmentRequest(AbstractModel):
+    """DescribeFunctionRuntimeEnvironment request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _FunctionId: Function ID.
+        :type FunctionId: str
+        """
+        self._ZoneId = None
+        self._FunctionId = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionId = params.get("FunctionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFunctionRuntimeEnvironmentResponse(AbstractModel):
+    """DescribeFunctionRuntimeEnvironment response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvironmentVariables: Environment variable list.
+        :type EnvironmentVariables: list of FunctionEnvironmentVariable
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._EnvironmentVariables = None
+        self._RequestId = None
+
+    @property
+    def EnvironmentVariables(self):
+        return self._EnvironmentVariables
+
+    @EnvironmentVariables.setter
+    def EnvironmentVariables(self, EnvironmentVariables):
+        self._EnvironmentVariables = EnvironmentVariables
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("EnvironmentVariables") is not None:
+            self._EnvironmentVariables = []
+            for item in params.get("EnvironmentVariables"):
+                obj = FunctionEnvironmentVariable()
+                obj._deserialize(item)
+                self._EnvironmentVariables.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFunctionsRequest(AbstractModel):
+    """DescribeFunctions request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _FunctionIds: Filter by function ID list.
+        :type FunctionIds: list of str
+        :param _Filters: Filter criteria list. There is an AND relationship between different criteria. The maximum number of Filters.Values is 20. The detailed filter criteria are as follows:
+<li>name: Fuzzy match by [function name].</li>
+<li>remark: Fuzzy match by [function description].</li>
+        :type Filters: list of Filter
+        :param _Offset: The offset of paginated query. Default value: 0.
+        :type Offset: int
+        :param _Limit: Number limit of paginated query. Default value: 20. Maximum value: 200.
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._FunctionIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionIds(self):
+        return self._FunctionIds
+
+    @FunctionIds.setter
+    def FunctionIds(self, FunctionIds):
+        self._FunctionIds = FunctionIds
+
+    @property
+    def Filters(self):
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionIds = params.get("FunctionIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFunctionsResponse(AbstractModel):
+    """DescribeFunctions response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: Total number of functions that meet the query condition.
+        :type TotalCount: int
+        :param _Functions: Information of all functions that meet the query condition.
+        :type Functions: list of Function
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Functions = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Functions(self):
+        return self._Functions
+
+    @Functions.setter
+    def Functions(self, Functions):
+        self._Functions = Functions
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Functions") is not None:
+            self._Functions = []
+            for item in params.get("Functions"):
+                obj = Function()
+                obj._deserialize(item)
+                self._Functions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeHostsSettingRequest(AbstractModel):
     """DescribeHostsSetting request structure.
 
@@ -11321,46 +12015,46 @@ class DescribeOverviewL7DataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: The start time.
+        :param _StartTime: Start time.
         :type StartTime: str
-        :param _EndTime: The end time.
+        :param _EndTime: End time.
         :type EndTime: str
-        :param _MetricNames: The metric to query. Values:
-<li>`l7Flow_outFlux`: Traffic used for EdegOne responses</li>
-<li>`l7Flow_inFlux`: Traffic used for EdegOne requests</li>
-<li>`l7Flow_outBandwidth`: Bandwidth used for EdegOne responses</li>
-<li>`l7Flow_inBandwidth`: Bandwidth used for EdegOne requests</li>
-<li>`l7Flow_hit_outFlux`: Traffic used for cache hit</li>
-<li>`l7Flow_request`: Access requests</li>
-<li>`l7Flow_flux`: Upstream and downstream traffic used for client access</li>
-<li>`l7Flow_bandwidth`: Upstream and downstream bandwidth used for client access</li>
+        :param _MetricNames: Queried metric. Valid values:
+<li>l7Flow_outFlux: EdgeOne response traffic;</li>
+<li>l7Flow_inFlux: EdgeOne request traffic;</li>
+<li>l7Flow_outBandwidth: EdgeOne response bandwidth;</li>
+<li>l7Flow_inBandwidth: EdgeOne request traffic;</li>
+<li>l7Flow_hit_outFlux: cache hit traffic;</li>
+<li>l7Flow_request: number of access requests;</li>
+<li>l7Flow_flux: upstream and downstream traffic of access requests;</li>
+<li>l7Flow_bandwidth: upstream and downstream bandwidths of access requests.</li>
         :type MetricNames: list of str
-        :param _ZoneIds: ZoneId set. This parameter is required.
+        :param _ZoneIds: Site ID set. This parameter is required.
         :type ZoneIds: list of str
-        :param _Domains: Queried domain name set. This parameter has been discarded.
+        :param _Domains: Queried domain name set. This parameter has been deprecated.
         :type Domains: list of str
-        :param _Protocol: The protocol type. Values:
-<li>`http`: HTTP protocol;</li>
-<li>`https`: HTTPS protocol;</li>
-<li>`http2`: HTTP2 protocol;</li>
-<li>`all`: All protocols. </li>If it's not specified, `all` is used. This parameter is not yet available now.
+        :param _Protocol: Protocol type of the query. Valid values:
+<li>http: HTTP protocol;</li>
+<li>https: HTTPS protocol;</li>
+<li>http2: HTTP/2 protocol;</li>
+<li>all: all protocols.</li>If this parameter is not input, the default value `all` is used. This parameter is not yet effective.
         :type Protocol: str
-        :param _Interval: The query granularity. Values:
-<li>`min`: 1 minute;</li>
-<li>`5min`: 5 minutes;</li>
-<li>`hour`: 1 hour;</li>
-<li>`day`: One day</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period <= 1 hour: `min`; <br>1 hour < Period <= 2 days: `5min`; <br>2 days < period <= 7 days: `hour`; <br>Period > 7 days: `day`.
+        :param _Interval: Time granularity of the query. Valid values:
+<li>min: 1 minute;</li>
+<li>5min: 5 minutes;</li>
+<li>hour: 1 hour;</li>
+<li>day: 1 day.</li>If this parameter is not input, the granularity will be automatically inferred based on the interval between the start time and end time. Specifically, the granularity value is min, 5min, hour, and day respectively for queries of data within 1 hour, within 2 days, within 7 days, and over 7 days.
         :type Interval: str
-        :param _Filters: Filtering condition. The detailed filtering condition key values are as follows: 
-<li>socket: Filter based on HTTP protocol type. Corresponding value options: <br> HTTP: HTTP protocol; <br> HTTPS: HTTPS protocol; <br> QUIC: QUIC protocol. </li>
-<li>domains: Filter based on domain name. </li>
-<li>tagKey: Filter based on Tag Key. </li>
-<li>tagValue: Filter based on Tag Value. </li>
+        :param _Filters: Filter criteria. The detailed Key values of filter criteria are as follows:
+<li>socket:<br>   Filter by [<strong>HTTP protocol type</strong>].<br>   Valid values:<br>   HTTP: HTTP protocol; <br>   HTTPS: HTTPS protocol;<br>   QUIC: QUIC protocol.</li>
+<li>domain<br>?? Filter by [<strong>domain name</strong>].</li>
+<li>tagKey<br>?? Filter by [<strong>tag key</strong>].</li>
+<li>tagValue<br>?? Filter by [<strong>tag value</strong>].</li>
         :type Filters: list of QueryCondition
-        :param _Area: Geolocation scope. Values:
-<li>`overseas`: Regions outside the Chinese mainland</li>
-<li>`mainland`: Chinese mainland</li>
-<li>`global`: Global</li>If this field is not specified, the default value `global` is used.
+        :param _Area: Data ownership area. Valid values:
+<li>overseas: global (excluding the Chinese mainland) data;</li>
+<li>mainland: Chinese mainland data;</li>
+<li>global: global data.</li>If this parameter is not input, the default value `global` is used.
         :type Area: str
         """
         self._StartTime = None
@@ -11478,9 +12172,10 @@ class DescribeOverviewL7DataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total number of query results.
+        :param _TotalCount: Total number of entries in the query result.
         :type TotalCount: int
-        :param _Data: Note: This field may return 'null', which indicates a failure to obtain a valid value.
+        :param _Data: List of time series traffic data in L7 monitoring.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type Data: list of TimingDataRecord
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -11532,25 +12227,17 @@ class DescribePrefetchTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: ZoneId. The parameter is required.
+        :param _ZoneId: Site ID. This parameter is required.
         :type ZoneId: str
         :param _StartTime: Start time of the query. Either time or job-id is required.
         :type StartTime: str
         :param _EndTime: End time of the query. Either time or job-id is required.
         :type EndTime: str
-        :param _Offset: Offset for paginated queries. Default value: `0`.
+        :param _Offset: Offset of paginated query. Default value: 0.
         :type Offset: int
-        :param _Limit: Limit on paginated queries. Default value: `20`. Maximum value: `1000`.
+        :param _Limit: Number limit of paginated query. Default value: 20. Maximum value: 1000.
         :type Limit: int
-        :param _Filters: Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: 
-<li>job-id 
-Filter based on task ID.  job-id format: 1379afjk91u32h. Multiple values are not supported, Fuzzy search is not supported. </li>
-<li>target
-Filter based on target resource information. target format: http://www.qq.com/1.txt. Multiple values are not supported, Fuzzy search is not supported. </li>
-<li>domains 
-Filter based on domain name. domains format: www.qq.com. Fuzzy search is not supported.</li>
-<li>statuses
-Filter based on task status.  Fuzzy search is not supported. Options:<br> processing: Processing<br> success: Success<br> failed: Failure<br> timeout: Timeout</li>
+        :param _Filters: Filter criteria. The maximum number of Filters.Values is 20. The detailed filter criteria are as follows: <li>job-id: Filter by task ID in the format like 1379afjk91u32h. Multiple values and fuzzy queries are not supported.</li><li>target: Filter by target resource information in the format like http://www.qq.com/1.txt. Multiple values and fuzzy queries are not supported.</li><li>domains: Filter by domain name in the format like www.qq.com. Fuzzy queries are not supported.</li><li>statuses: Filter by task status. Fuzzy queries are not supported. Options:<br>??processing: processing<br>??success: successful<br>??failed: failed<br>??timeout: timed out<br>??invalid: invalid, that is, the response status code of the origin server is not 2xx. Please check the origin server service.</li>
         :type Filters: list of AdvancedFilter
         """
         self._ZoneId = None
@@ -11638,9 +12325,9 @@ class DescribePrefetchTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total entries that match the specified query condition.
+        :param _TotalCount: Total number of items in the query condition.
         :type TotalCount: int
-        :param _Tasks: List of tasks returned.
+        :param _Tasks: Task result list.
         :type Tasks: list of Task
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -11692,27 +12379,22 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: ZoneId. The parameter is required.
+        :param _ZoneId: Site ID. This parameter is required.
         :type ZoneId: str
         :param _StartTime: Start time of the query. Either time or job-id is required.
         :type StartTime: str
         :param _EndTime: End time of the query. Either time or job-id is required.
         :type EndTime: str
-        :param _Offset: Offset for paginated queries. Default value: `0`.
+        :param _Offset: Offset of paginated query. Default value: 0.
         :type Offset: int
-        :param _Limit: Limit on paginated queries. Default value: `20`. Maximum value: `1000`.
+        :param _Limit: Number limit of paginated query. Default value: 20. Maximum value: 1000.
         :type Limit: int
-        :param _Filters: Filtering condition. The maximum value of Filters.Values is 20. Detailed filtering conditions: 
-<li>job-id
-Filter based on task ID. job-id format: 1379afjk91u32h. Multiple values are not supported, Fuzzy search is not supported;</li>
-<li>target
-Filter based on: target resource information. target format: http://www.qq.com/1.txt or tag1. Multiple values are not supported, Fuzzy search is not supported; </li>
-<li>domains
-Filter based on domain name. domains format: www.qq.com, Fuzzy search is not supported; </li>
-<li>statuses
-Filter based on task status, Fuzzy search is not supported. Options: <br>processing: Processing<br>success: Success<br>failed: Failure<br>timeout: Timeout</li>
-<li>type
-Filter based on cleared cache type. Multiple values are not supported, Fuzzy search is not supported. Options:<br> purge_url: URL<br> purge_prefix: Prefix<br> purge_all: All cache content<br> purge_host: Hostname<br> purge_cache_tag: CacheTag</li>
+        :param _Filters: Filter criteria. The maximum number of Filters.Values is 20. The detailed filter criteria are as follows:
+<li>job-id: Filter by task ID in the format like 1379afjk91u32h. Multiple values and fuzzy queries are not supported.</li>
+<li>target: Filter by target resource information in the format like http://www.qq.com/1.txt or tag1. Multiple values are not supported yet. Fuzzy queries are supported.</li>
+<li>domains: Filter by domain name in the format like www.qq.com. Fuzzy queries are not supported.</li>
+<li>statuses: Filter by task status. Fuzzy queries are not supported. Options:<br>?? processing: processing<br>?? success: successful<br>?? failed: failed<br>?? timeout: timed out</li>
+<li>type: Filter by cache clearance type. Multiple values and fuzzy queries are not supported yet. Options: <br>?? purge_url: URL<br>?? purge_prefix: prefix<br>?? purge_all: all cached content<br>?? purge_host: Hostname<br>?? purge_cache_tag: CacheTag</li>
         :type Filters: list of AdvancedFilter
         """
         self._ZoneId = None
@@ -11800,9 +12482,9 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: Total entries that match the specified query condition.
+        :param _TotalCount: Total number of items in the query condition.
         :type TotalCount: int
-        :param _Tasks: List of tasks returned.
+        :param _Tasks: Task result list.
         :type Tasks: list of Task
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
@@ -12452,9 +13134,9 @@ class DescribeTimingL4DataRequest(AbstractModel):
 <li>`hour`: 1 hour;</li>
 <li>`day`: 1 day.</li>If this field is not specified, the granularity will be determined based on the query period. <br>Period ≤ 1 hour: `min`; <br>1 hour < Period ≤ 2 days: `5min`; <br>2 days < period ≤ 7 days: `hour`; <br>Period > 7 days: `day`.
         :type Interval: str
-        :param _Filters: Filters
-<li>ruleId<br>   Filter by the specified <strong>forwarding rule ID</strong></li>
-<li>proxyId<br>   Filter by the specified <strong>L4 agent ID</strong></li>
+        :param _Filters: Filter criteria. The detailed Key values of filter criteria are as follows:
+<li>ruleId: Filter by forwarding rule ID.</li>
+<li>proxyId: Filter by L4 proxy instance ID.</li>
         :type Filters: list of QueryCondition
         :param _Area: Geolocation scope. Values:
 <li>`overseas`: Regions outside the Chinese mainland</li>
@@ -15540,6 +16222,342 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class Function(AbstractModel):
+    """Details of an edge function.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionId: Function ID.
+        :type FunctionId: str
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _Name: Function name.
+        :type Name: str
+        :param _Remark: Function description.
+        :type Remark: str
+        :param _Content: Function content.
+        :type Content: str
+        :param _Domain: Default domain name of a function.
+        :type Domain: str
+        :param _CreateTime: Creation time, which adopts Coordinated Universal Time (UTC) and follows the date and time format of the ISO 8601 standard.
+        :type CreateTime: str
+        :param _UpdateTime: Modification time, which adopts Coordinated Universal Time (UTC) and follows the date and time format of the ISO 8601 standard.
+        :type UpdateTime: str
+        """
+        self._FunctionId = None
+        self._ZoneId = None
+        self._Name = None
+        self._Remark = None
+        self._Content = None
+        self._Domain = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Domain(self):
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._FunctionId = params.get("FunctionId")
+        self._ZoneId = params.get("ZoneId")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        self._Content = params.get("Content")
+        self._Domain = params.get("Domain")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionEnvironmentVariable(AbstractModel):
+    """Environment variables of an edge function
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Variable name, which should be unique and can only contain uppercase and lowercase letters, digits, and special characters including at signs (@), periods (.), hyphens (-), and underscores (_). Its maximum size is 64 bytes.
+        :type Key: str
+        :param _Value: Variable value. Its maximum size is 5000 bytes. The default value is empty.
+        :type Value: str
+        :param _Type: Variable type. Valid values:
+<li>string: string type;</li>
+<li>json: JSON object type.</li>Default value: string.
+        :type Type: str
+        """
+        self._Key = None
+        self._Value = None
+        self._Type = None
+
+    @property
+    def Key(self):
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionRule(AbstractModel):
+    """Trigger rules for an edge function
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: Rule ID.
+        :type RuleId: str
+        :param _FunctionRuleConditions: Rule condition list. There is an OR relationship between items in the list.
+        :type FunctionRuleConditions: list of FunctionRuleCondition
+        :param _FunctionId: Function ID, specifying a function executed when a trigger rule condition is met.
+        :type FunctionId: str
+        :param _Remark: Rule description.
+        :type Remark: str
+        :param _FunctionName: Function name.
+        :type FunctionName: str
+        :param _Priority: Priority of a trigger rule for a function. The larger the value, the higher the priority.
+        :type Priority: int
+        :param _CreateTime: Creation time, which adopts Coordinated Universal Time (UTC) and follows the date and time format of the ISO 8601 standard.
+        :type CreateTime: str
+        :param _UpdateTime: Update time, which adopts Coordinated Universal Time (UTC) and follows the date and time format of the ISO 8601 standard.
+        :type UpdateTime: str
+        """
+        self._RuleId = None
+        self._FunctionRuleConditions = None
+        self._FunctionId = None
+        self._Remark = None
+        self._FunctionName = None
+        self._Priority = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def FunctionRuleConditions(self):
+        return self._FunctionRuleConditions
+
+    @FunctionRuleConditions.setter
+    def FunctionRuleConditions(self, FunctionRuleConditions):
+        self._FunctionRuleConditions = FunctionRuleConditions
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def FunctionName(self):
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Priority(self):
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def CreateTime(self):
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        if params.get("FunctionRuleConditions") is not None:
+            self._FunctionRuleConditions = []
+            for item in params.get("FunctionRuleConditions"):
+                obj = FunctionRuleCondition()
+                obj._deserialize(item)
+                self._FunctionRuleConditions.append(obj)
+        self._FunctionId = params.get("FunctionId")
+        self._Remark = params.get("Remark")
+        self._FunctionName = params.get("FunctionName")
+        self._Priority = params.get("Priority")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionRuleCondition(AbstractModel):
+    """Condition of a trigger rule for an edge function.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleConditions: Condition of a trigger rule for an edge function. This condition is considered met if all items in the list are met.
+        :type RuleConditions: list of RuleCondition
+        """
+        self._RuleConditions = None
+
+    @property
+    def RuleConditions(self):
+        return self._RuleConditions
+
+    @RuleConditions.setter
+    def RuleConditions(self, RuleConditions):
+        self._RuleConditions = RuleConditions
+
+
+    def _deserialize(self, params):
+        if params.get("RuleConditions") is not None:
+            self._RuleConditions = []
+            for item in params.get("RuleConditions"):
+                obj = RuleCondition()
+                obj._deserialize(item)
+                self._RuleConditions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Grpc(AbstractModel):
     """Configuration of gRPC support
 
@@ -15573,6 +16591,109 @@ class Grpc(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class HandleFunctionRuntimeEnvironmentRequest(AbstractModel):
+    """HandleFunctionRuntimeEnvironment request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _FunctionId: Function ID.
+        :type FunctionId: str
+        :param _Operation: Operation type. Valid values:
+<li>setEnvironmentVariable: Set an environment variable. If the environment variable exists, it will be modified; otherwise, it will be added.</li>
+<li>deleteEnvironmentVariable: Delete an environment variable.</li>
+<li>clearEnvironmentVariable: Clear an environment variable.</li>
+<li>resetEnvironmentVariable: Reset an environment variable.</li>
+        :type Operation: str
+        :param _EnvironmentVariables: Environment variable list. The runtime environment of a function supports up to 64 variables. This parameter is required when the value of Operation is setEnvironmentVariable, deleteEnvironmentVariable, or resetEnvironmentVariable.
+        :type EnvironmentVariables: list of FunctionEnvironmentVariable
+        """
+        self._ZoneId = None
+        self._FunctionId = None
+        self._Operation = None
+        self._EnvironmentVariables = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Operation(self):
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def EnvironmentVariables(self):
+        return self._EnvironmentVariables
+
+    @EnvironmentVariables.setter
+    def EnvironmentVariables(self, EnvironmentVariables):
+        self._EnvironmentVariables = EnvironmentVariables
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionId = params.get("FunctionId")
+        self._Operation = params.get("Operation")
+        if params.get("EnvironmentVariables") is not None:
+            self._EnvironmentVariables = []
+            for item in params.get("EnvironmentVariables"):
+                obj = FunctionEnvironmentVariable()
+                obj._deserialize(item)
+                self._EnvironmentVariables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HandleFunctionRuntimeEnvironmentResponse(AbstractModel):
+    """HandleFunctionRuntimeEnvironment response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class Header(AbstractModel):
@@ -16943,6 +18064,68 @@ Note: This field may return null, indicating that no valid value can be obtained
         
 
 
+class L4ProxyRemoteAuth(AbstractModel):
+    """L4 remote authentication information.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Whether to enable L4 remote authentication. Valid values:
+<li>on: Enable;</li>
+<li>off: Disable.</li>
+        :type Switch: str
+        :param _Address: Remote authentication service address, in the format of domain/ip:port, such as example.auth.com:8888.
+
+        :type Address: str
+        :param _ServerFaultyBehavior: Default origin-pull behavior based on L4 forwarding rules after the remote authentication service is disabled. Valid values:
+<li>reject: Block and deny access;</li>
+<li>allow: Allow access.</li>
+        :type ServerFaultyBehavior: str
+        """
+        self._Switch = None
+        self._Address = None
+        self._ServerFaultyBehavior = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Address(self):
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def ServerFaultyBehavior(self):
+        return self._ServerFaultyBehavior
+
+    @ServerFaultyBehavior.setter
+    def ServerFaultyBehavior(self, ServerFaultyBehavior):
+        self._ServerFaultyBehavior = ServerFaultyBehavior
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Address = params.get("Address")
+        self._ServerFaultyBehavior = params.get("ServerFaultyBehavior")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class L4ProxyRule(AbstractModel):
     """Details of Layer 4 proxy forwarding rules.
 
@@ -17006,6 +18189,10 @@ Note: Do not set this parameter when L4ProxyRule is used as an input parameter i
         :type Status: str
         :param _BuId: BuID.
         :type BuId: str
+        :param _RemoteAuth: Remote authentication information.
+Note: RemoteAuth cannot be used as an input parameter in CreateL4ProxyRules or ModifyL4ProxyRules. If this parameter is input, it will be ignored. If the returned data of DescribeL4ProxyRules is empty, it indicates that remote authentication is disabled.
+Note: This field may return null, which indicates a failure to obtain a valid value.
+        :type RemoteAuth: :class:`tencentcloud.teo.v20220901.models.L4ProxyRemoteAuth`
         """
         self._RuleId = None
         self._Protocol = None
@@ -17019,6 +18206,7 @@ Note: Do not set this parameter when L4ProxyRule is used as an input parameter i
         self._RuleTag = None
         self._Status = None
         self._BuId = None
+        self._RemoteAuth = None
 
     @property
     def RuleId(self):
@@ -17116,6 +18304,14 @@ Note: Do not set this parameter when L4ProxyRule is used as an input parameter i
     def BuId(self, BuId):
         self._BuId = BuId
 
+    @property
+    def RemoteAuth(self):
+        return self._RemoteAuth
+
+    @RemoteAuth.setter
+    def RemoteAuth(self, RemoteAuth):
+        self._RemoteAuth = RemoteAuth
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -17130,6 +18326,9 @@ Note: Do not set this parameter when L4ProxyRule is used as an input parameter i
         self._RuleTag = params.get("RuleTag")
         self._Status = params.get("Status")
         self._BuId = params.get("BuId")
+        if params.get("RemoteAuth") is not None:
+            self._RemoteAuth = L4ProxyRemoteAuth()
+            self._RemoteAuth._deserialize(params.get("RemoteAuth"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17266,9 +18465,9 @@ class LogFormat(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FormatType: Predefined output format type for log delivery. Valid values:
-<li>json: Use the predefined log output format JSON Lines, where fields in each log record are presented as key-value pairs;</li>
-<li>csv: Use the predefined log output format csv, where fields in each log record is only presented as field values, excluding field names. </li>
+        :param _FormatType: Predefined output format for log shipping. Valid values:
+<li>json: Use JSON Lines as the predefined log output format. In each log entry, fields are displayed as key-value pairs.</li>
+<li>csv: Use the predefined log output format csv, where each log entry only is presented as field values only, excluding field names. </li>
         :type FormatType: str
         :param _BatchPrefix: A string added before each log delivery batch. Each log delivery batch may contain multiple log records.
         :type BatchPrefix: str
@@ -17279,13 +18478,13 @@ class LogFormat(AbstractModel):
         :param _RecordSuffix: A string appended after each log record.
         :type RecordSuffix: str
         :param _RecordDelimiter: A string inserted between log records as a separator. Valid values:
-<li>\n: Line break;</li>
-<li>\t: Tab character;</li>
+<li>\n: line break;</li>
+<li>\t: tab character;</li>
 <li>,: Half-width comma. </li>
         :type RecordDelimiter: str
         :param _FieldDelimiter: A string inserted between fields as a separator within a single log record. Valid values:
-<li>\t: Tab character;</li>
-<li>,: Half-width comma;</li>
+<li>\t: tab character;</li>
+<li>,: half-width comma;</li>
 <li>;: Half-width semicolon. </li>
         :type FieldDelimiter: str
         """
@@ -18383,17 +19582,17 @@ class ModifyCustomErrorPageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageId: Custom response page ID.
+        :param _PageId: Custom error page ID.
         :type PageId: str
         :param _ZoneId: Zone ID.
         :type ZoneId: str
-        :param _Name: Custom response page name. The name must be 2-60 characters long.
+        :param _Name: Custom error page name. The name must be 2-60 characters long.
         :type Name: str
-        :param _Description: Custom response page description, not exceeding 60 characters.
+        :param _Description: Custom error page description, not exceeding 60 characters.
         :type Description: str
-        :param _ContentType: Custom response page type, with values:<li>text/html. </li><li>application/json.</li><li>plain/text.</li><li>text/xml.</li>
+        :param _ContentType: Custom error page type, with values:<li>text/html. </li><li>application/json.</li><li>plain/text.</li><li>text/xml.</li>
         :type ContentType: str
-        :param _Content: Custom response page content, not exceeding 2 KB.
+        :param _Content: Custom error page content, not exceeding 2 KB.
         :type Content: str
         """
         self._PageId = None
@@ -18471,6 +19670,281 @@ class ModifyCustomErrorPageRequest(AbstractModel):
 
 class ModifyCustomErrorPageResponse(AbstractModel):
     """ModifyCustomErrorPage response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyFunctionRequest(AbstractModel):
+    """ModifyFunction request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _FunctionId: Function ID.
+        :type FunctionId: str
+        :param _Remark: Function description, which can contain up to 60 characters. If this parameter is not input, the original configuration is maintained.
+        :type Remark: str
+        :param _Content: Function content, which currently only supports JavaScript code. Its maximum size is 5 MB. If this parameter is not input, the original configuration is maintained.
+        :type Content: str
+        """
+        self._ZoneId = None
+        self._FunctionId = None
+        self._Remark = None
+        self._Content = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Content(self):
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionId = params.get("FunctionId")
+        self._Remark = params.get("Remark")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFunctionResponse(AbstractModel):
+    """ModifyFunction response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyFunctionRulePriorityRequest(AbstractModel):
+    """ModifyFunctionRulePriority request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _RuleIds: Rule ID list. All rule IDs after priority adjustment must be input. Multiple rules are executed from top to bottom. If this parameter is not input, the original priority order is maintained.
+        :type RuleIds: list of str
+        """
+        self._ZoneId = None
+        self._RuleIds = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RuleIds(self):
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RuleIds = params.get("RuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFunctionRulePriorityResponse(AbstractModel):
+    """ModifyFunctionRulePriority response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyFunctionRuleRequest(AbstractModel):
+    """ModifyFunctionRule request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: Zone ID.
+        :type ZoneId: str
+        :param _RuleId: Rule ID.
+        :type RuleId: str
+        :param _FunctionRuleConditions: Rule condition list. There is an OR relationship between different conditions of the same trigger rule. If this parameter is not input, the original configuration is maintained.
+        :type FunctionRuleConditions: list of FunctionRuleCondition
+        :param _FunctionId: Function ID, specifying a function executed when a trigger rule condition is met. If this parameter is not input, the original configuration is maintained.
+        :type FunctionId: str
+        :param _Remark: Rule description, which can contain up to 60 characters. If this parameter is not input, the original configuration is maintained.
+        :type Remark: str
+        """
+        self._ZoneId = None
+        self._RuleId = None
+        self._FunctionRuleConditions = None
+        self._FunctionId = None
+        self._Remark = None
+
+    @property
+    def ZoneId(self):
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RuleId(self):
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def FunctionRuleConditions(self):
+        return self._FunctionRuleConditions
+
+    @FunctionRuleConditions.setter
+    def FunctionRuleConditions(self, FunctionRuleConditions):
+        self._FunctionRuleConditions = FunctionRuleConditions
+
+    @property
+    def FunctionId(self):
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Remark(self):
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RuleId = params.get("RuleId")
+        if params.get("FunctionRuleConditions") is not None:
+            self._FunctionRuleConditions = []
+            for item in params.get("FunctionRuleConditions"):
+                obj = FunctionRuleCondition()
+                obj._deserialize(item)
+                self._FunctionRuleConditions.append(obj)
+        self._FunctionId = params.get("FunctionId")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFunctionRuleResponse(AbstractModel):
+    """ModifyFunctionRule response structure.
 
     """
 
@@ -19721,9 +21195,10 @@ class ModifyZoneRequest(AbstractModel):
         r"""
         :param _ZoneId: The site ID.
         :type ZoneId: str
-        :param _Type: Access mode of the site. Values:
-<li> `full`: Access through a name server.</li>
-<li> `partial`: Access through a CNAME record. A site using domainless access can only switch to CNAME access. </li>The original configuration applies if this field is not specified.
+        :param _Type: Site access method. Valid values:
+<li>full: NS access.</li>
+<li>partial: CNAME access. If the site is currently accessed with no domain name, it can be switched only to CNAME access.</li>
+<li>dnsPodAccess: DNSPod hosted access. To use this access mode, your domain name should have been hosted on DNSPod.</li>If this parameter is not input, the original configuration is maintained.
         :type Type: str
         :param _VanityNameServers: The custom name servers. The original configuration applies if this field is not specified. It is not allowed to pass this field when a site is connected without using a domain name.
         :type VanityNameServers: :class:`tencentcloud.teo.v20220901.models.VanityNameServers`
@@ -20504,23 +21979,21 @@ class OriginDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OriginType: Origin server type, with values:
+        :param _OriginType: Origin server type. Valid values:
 <li>IP_DOMAIN: IPv4, IPv6, or domain name type origin server;</li>
 <li>COS: Tencent Cloud COS origin server;</li>
-<li>AWS_S3: AWS S3 origin server;</li>
-<li>ORIGIN_GROUP: origin server group type origin server;</li>
-<li>VODEO: VOD on EO;</li>
+<li>AWS_S3: AWS S3 COS origin server;</li>
+<li>ORIGIN_GROUP: origin server group;</li>
 <li>VOD: Video on Demand;</li>
-<li>SPACE: origin server uninstallation. Currently only available to the allowlist;</li>
+<li>SPACE: origin server uninstallation, currently only available to the allowlist;</li>
 <li>LB: load balancing. Currently only available to the allowlist. </li>
         :type OriginType: str
-        :param _Origin: Origin server address, which varies according to the value of OriginType:
-<li>When OriginType = IP_DOMAIN, this parameter should be an IPv4 address, an IPv6 address, or a domain name;</li>
-<li>When OriginType = COS, this parameter should be the access domain name of the COS bucket;</li>
-<li>When OriginType = AWS_S3, this parameter should be the access domain name of the S3 bucket;</li>
-<li>When OriginType = ORIGIN_GROUP, this parameter should be the origin server group ID;</li>
-<li>When OriginType = VOD, this parameter should be the VOD application ID;</li>
-<li>When OriginType = VODEO, if VodeoDistributionRange = ALL, then this parameter is "all-buckets-in-vodeo-application"; if VodeoDistributionRange = Bucket, then this parameter is the domain name of the corresponding bucket. </li>
+        :param _Origin: Origin server address, which varies with the value of OriginType:
+<li>When OriginType = IP_DOMAIN, this parameter is an IPv4 address, an IPv6 address, or a domain name.</li>
+<li>When OriginType = COS, this parameter is the access domain name of the COS bucket.</li>
+<li>When OriginType = AWS_S3, this parameter is the access domain name of the S3 bucket.</li>
+<li>When OriginType = ORIGIN_GROUP, this parameter is the origin server group ID.</li>
+<li>When OriginType = VOD, this parameter is the VOD application ID.</li>
         :type Origin: str
         :param _BackupOrigin: Secondary origin group ID. This parameter is valid only when OriginType is ORIGIN_GROUP and a secondary origin group is configured.
         :type BackupOrigin: str
@@ -20612,26 +22085,38 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VodeoSubAppId(self):
+        warnings.warn("parameter `VodeoSubAppId` is deprecated", DeprecationWarning) 
+
         return self._VodeoSubAppId
 
     @VodeoSubAppId.setter
     def VodeoSubAppId(self, VodeoSubAppId):
+        warnings.warn("parameter `VodeoSubAppId` is deprecated", DeprecationWarning) 
+
         self._VodeoSubAppId = VodeoSubAppId
 
     @property
     def VodeoDistributionRange(self):
+        warnings.warn("parameter `VodeoDistributionRange` is deprecated", DeprecationWarning) 
+
         return self._VodeoDistributionRange
 
     @VodeoDistributionRange.setter
     def VodeoDistributionRange(self, VodeoDistributionRange):
+        warnings.warn("parameter `VodeoDistributionRange` is deprecated", DeprecationWarning) 
+
         self._VodeoDistributionRange = VodeoDistributionRange
 
     @property
     def VodeoBucketId(self):
+        warnings.warn("parameter `VodeoBucketId` is deprecated", DeprecationWarning) 
+
         return self._VodeoBucketId
 
     @VodeoBucketId.setter
     def VodeoBucketId(self, VodeoBucketId):
+        warnings.warn("parameter `VodeoBucketId` is deprecated", DeprecationWarning) 
+
         self._VodeoBucketId = VodeoBucketId
 
 
@@ -20946,26 +22431,38 @@ If it is not specified, the default value is off.
 
     @property
     def VodeoSubAppId(self):
+        warnings.warn("parameter `VodeoSubAppId` is deprecated", DeprecationWarning) 
+
         return self._VodeoSubAppId
 
     @VodeoSubAppId.setter
     def VodeoSubAppId(self, VodeoSubAppId):
+        warnings.warn("parameter `VodeoSubAppId` is deprecated", DeprecationWarning) 
+
         self._VodeoSubAppId = VodeoSubAppId
 
     @property
     def VodeoDistributionRange(self):
+        warnings.warn("parameter `VodeoDistributionRange` is deprecated", DeprecationWarning) 
+
         return self._VodeoDistributionRange
 
     @VodeoDistributionRange.setter
     def VodeoDistributionRange(self, VodeoDistributionRange):
+        warnings.warn("parameter `VodeoDistributionRange` is deprecated", DeprecationWarning) 
+
         self._VodeoDistributionRange = VodeoDistributionRange
 
     @property
     def VodeoBucketId(self):
+        warnings.warn("parameter `VodeoBucketId` is deprecated", DeprecationWarning) 
+
         return self._VodeoBucketId
 
     @VodeoBucketId.setter
     def VodeoBucketId(self, VodeoBucketId):
+        warnings.warn("parameter `VodeoBucketId` is deprecated", DeprecationWarning) 
+
         self._VodeoBucketId = VodeoBucketId
 
 
@@ -22101,17 +23598,28 @@ class RateLimitTemplateDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mode: Note: This field may return null, which indicates a failure to obtain a valid value.
+        :param _Mode: Template level name. Valid values:
+<li>sup_loose: super loose;</li>
+<li>loose: loose;</li>
+<li>emergency: emergency;</li>
+<li>normal: normal;</li>
+<li>strict: strict;</li>
+<li>close: disabled, effective only for precise rate limiting.</li>
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type Mode: str
-        :param _ID: The unique ID.
+        :param _ID: Unique ID.
         :type ID: int
-        :param _Action: Note: This field may return null, which indicates a failure to obtain a valid value.
+        :param _Action: Template action. Valid values:
+<li>alg: JavaScript challenge;</li>
+<li>monitor: observation.</li>
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type Action: str
-        :param _PunishTime: Note: This field may return null, which indicates a failure to obtain a valid value.
+        :param _PunishTime: Penalty duration, in seconds. Value range: 0-2 days.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type PunishTime: int
-        :param _Threshold: The request threshold. Value range: 0-4294967294.
+        :param _Threshold: Statistical threshold, in times. Value range: 0-4294967294.
         :type Threshold: int
-        :param _Period: The statistical period. Value range: 0-120 seconds.
+        :param _Period: Statistical cycle. Value range: 0-120 seconds.
         :type Period: int
         """
         self._Mode = None
@@ -22434,42 +23942,45 @@ class RealtimeLogDeliveryTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: The ID of the real-time log delivery task.
+        :param _TaskId: ID of a real-time log shipping task.
         :type TaskId: str
-        :param _TaskName: The name of the real-time log delivery task.
+        :param _TaskName: Name of a real-time log shipping task.
         :type TaskName: str
-        :param _DeliveryStatus: The status of the real-time log delivery task. Valid values:<li>enabled: Enabled;</li><li>disabled: Disabled;</li><li>deleted: Abnormal deletion. Check whether the destination Tencent Cloud CLS log set/log topic has been deleted.</li>
+        :param _DeliveryStatus: Status of a real-time log shipping task. Valid values: <li>enabled: enabled;</li><li>disabled: disabled;</li><li>deleted: deleted abnormally. Check whether the destination log set/log topic of Tencent Cloud CLS has been deleted.</li>
         :type DeliveryStatus: str
-        :param _TaskType: The type of the real-time log delivery task. Valid values:<li>cls: Push to Tencent Cloud CLS;</li><li>custom_endpoint: Push to a custom HTTP(S) address;</li><li>s3: Push to an AWS S3-compatible bucket address.</li>
+        :param _TaskType: Type of a real-time log shipping task. Valid values:<li>cls: push to Tencent Cloud CLS;</li><li>custom_endpoint: push to a custom HTTP(S) address;</li><li>s3: push to an AWS S3-compatible bucket address.</li>
         :type TaskType: str
-        :param _EntityList: The list of entities (Layer 7 domains or Layer 4 proxy instances) corresponding to the real-time log delivery task. Valid value examples:<li>Layer 7 domain: domain.example.com;</li><li>Layer 4 proxy instance: sid-2s69eb5wcms7.</li>
+        :param _EntityList: List of entities (L7 domain names or L4 proxy instances) corresponding to a real-time log shipping task. Valid value examples: <li>L7 domain name: domain.example.com;</li><li>L4 proxy instance: sid-2s69eb5wcms7.</li>	
         :type EntityList: list of str
-        :param _LogType: The data delivery type. Valid values: <li>domain: Site acceleration log;</li><li>application: Layer 4 proxy log;</li><li>web-rateLiming: Rate limit and CC attack defense log;</li><li>web-attack: Managed rule log;</li><li>web-rule: Custom rule log;</li><li>web-bot: Bot management log.</li>
+        :param _LogType: Data shipping type. Valid values: <li>domain: site acceleration logs;</li><li>application: L4 proxy logs;</li><li>web-rateLiming: rate limiting and CC attack defense logs;</li><li>web-attack: managed rule logs;</li><li>web-rule: custom rule logs;</li><li>web-bot: Bot management logs.</li>
         :type LogType: str
-        :param _Area: The data delivery area. Valid values:<li>mainland: Within the Chinese mainland;</li><li>overseas: Global (excluding the Chinese mainland).</li>
+        :param _Area: Data shipping area. Valid values:<li>mainland: within the Chinese mainland;</li><li>overseas: global (excluding the Chinese mainland).</li>
         :type Area: str
-        :param _Fields: The list of predefined fields for delivery.
+        :param _Fields: List of predefined fields for shipping.
         :type Fields: list of str
-        :param _CustomFields: The list of custom fields for delivery.
+        :param _CustomFields: List of custom fields for shipping.
         :type CustomFields: list of CustomField
-        :param _DeliveryConditions: Log delivery filter conditions.
+        :param _DeliveryConditions: Filter criteria of log shipping.
         :type DeliveryConditions: list of DeliveryCondition
-        :param _Sample: The sampling ratio in permille. Value range: 1 to 1000. For example, 605 represents a sampling ratio of 60.5%.
+        :param _Sample: Sampling ratio in permille. Value range: 1-1000. For example, 605 indicates a sampling ratio of 60.5%.
         :type Sample: int
         :param _LogFormat: Output format for log delivery. When the output parameter is null, the default format is used, which works as follows:
 <li>When TaskType is 'custom_endpoint', the default format is an array of JSON objects, with each JSON object representing a log entry;</li>
 <li>When TaskType is 's3', the default format is JSON Lines. </li>
 Note: This field may return 'null', which indicates a failure to obtain a valid value.
         :type LogFormat: :class:`tencentcloud.teo.v20220901.models.LogFormat`
-        :param _CLS: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CLS: Configuration information of the CLS.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type CLS: :class:`tencentcloud.teo.v20220901.models.CLSTopic`
-        :param _CustomEndpoint: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _CustomEndpoint: Configuration information of the custom HTTP service.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type CustomEndpoint: :class:`tencentcloud.teo.v20220901.models.CustomEndpoint`
-        :param _S3: Note: This field may return null, indicating that no valid values can be obtained.
+        :param _S3: Configuration information of the AWS S3-compatible bucket.
+Note: This field may return null, which indicates a failure to obtain a valid value.
         :type S3: :class:`tencentcloud.teo.v20220901.models.S3`
-        :param _CreateTime: The creation time.
+        :param _CreateTime: Creation time.
         :type CreateTime: str
-        :param _UpdateTime: The update time.
+        :param _UpdateTime: Update time.
         :type UpdateTime: str
         """
         self._TaskId = None
@@ -23057,14 +24568,12 @@ class Rule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Conditions: Feature execution conditions.
-Note: If any condition in the array is met, the feature will run.
+        :param _Conditions: Judgment condition for executing the feature.
+Note: The feature can be executed if any condition in the array is met.
         :type Conditions: list of RuleAndConditions
-        :param _Actions: Feature to be executed.
-Note: Actions and SubRules cannot both be empty.
+        :param _Actions: Executed feature. Note: Actions and SubRules cannot be both empty.
         :type Actions: list of Action
-        :param _SubRules: The nested rule.
-Note: Actions and SubRules cannot both be empty.
+        :param _SubRules: Nested rule. Note: SubRules and Actions cannot be both empty.
         :type SubRules: list of SubRuleItem
         """
         self._Conditions = None
@@ -25399,7 +26908,7 @@ class TimingDataItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Timestamp: The query time recorded in seconds using UNIX timestamp.
+        :param _Timestamp: Time point for returning data, in the format of Unix timestamp in seconds.
         :type Timestamp: int
         :param _Value: The value.
         :type Value: int
@@ -26338,11 +27847,10 @@ u200c<li>`moved`: The name server is changed to other service providers.</li>
 u200c<li>`deactivated`: The site is blocked.</li>
 <li>`initializing`: The site is not bound with any plan. </li>
         :type Status: str
-        :param _Type: Site connection method, valid values:
-<li>full: Connect via NS;</li>
-<li>partial: Connect via CNAME;</li>
-<li>noDomainAccess: Connect without using a domain name;</li>
-<li>vodeo: Connect by default when VODEO is enabled.</li>
+        :param _Type: Site access method. Valid values:
+<li>full: NS access;</li>
+<li>partial: CNAME access;</li>
+<li>noDomainAccess: access with no domain name.</li>
         :type Type: str
         :param _Paused: Whether the site is disabled.
         :type Paused: bool

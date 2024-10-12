@@ -42105,7 +42105,7 @@ class OpsTaskCanvasInfoList(AbstractModel):
         :type LinksList: list of OpsTaskLinkInfoDto
         :param _CirculateTaskList: Canvas Cyclic Dependency Task Information
 Note: This field may return null, indicating that no valid value can be obtained.
-        :type CirculateTaskList: :class:`tencentcloud.wedata.v20210820.models.OpsTaskCanvasDto`
+        :type CirculateTaskList: list of OpsTaskCanvasDto
         """
         self._TasksList = None
         self._LinksList = None
@@ -42150,8 +42150,11 @@ Note: This field may return null, indicating that no valid value can be obtained
                 obj._deserialize(item)
                 self._LinksList.append(obj)
         if params.get("CirculateTaskList") is not None:
-            self._CirculateTaskList = OpsTaskCanvasDto()
-            self._CirculateTaskList._deserialize(params.get("CirculateTaskList"))
+            self._CirculateTaskList = []
+            for item in params.get("CirculateTaskList"):
+                obj = OpsTaskCanvasDto()
+                obj._deserialize(item)
+                self._CirculateTaskList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

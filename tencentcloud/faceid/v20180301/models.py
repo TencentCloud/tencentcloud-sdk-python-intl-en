@@ -6266,6 +6266,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :type CardCutImageBase64: str
         :param _CardBackCutImageBase64: Base64 of the cropped image on the reverse side of the ID card
         :type CardBackCutImageBase64: str
+        :param _WarnCardInfos: Card Warning Information
+
+-9101 Alarm for covered certificate,
+-9102 Alarm for photocopied certificate,
+-9103 Alarm for photographed certificate,
+-9104 Alarm for PS certificate,
+-9107 Alarm for reflective certificate,
+-9108 Alarm for blurry image,
+-9109 This capability is not enabled.
+        :type WarnCardInfos: list of int
         """
         self._IsPass = None
         self._CardImageBase64 = None
@@ -6274,6 +6284,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = None
         self._CardCutImageBase64 = None
         self._CardBackCutImageBase64 = None
+        self._WarnCardInfos = None
 
     @property
     def IsPass(self):
@@ -6335,6 +6346,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def CardBackCutImageBase64(self, CardBackCutImageBase64):
         self._CardBackCutImageBase64 = CardBackCutImageBase64
 
+    @property
+    def WarnCardInfos(self):
+        return self._WarnCardInfos
+
+    @WarnCardInfos.setter
+    def WarnCardInfos(self, WarnCardInfos):
+        self._WarnCardInfos = WarnCardInfos
+
 
     def _deserialize(self, params):
         self._IsPass = params.get("IsPass")
@@ -6348,6 +6367,7 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._RequestId = params.get("RequestId")
         self._CardCutImageBase64 = params.get("CardCutImageBase64")
         self._CardBackCutImageBase64 = params.get("CardBackCutImageBase64")
+        self._WarnCardInfos = params.get("WarnCardInfos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
