@@ -6210,7 +6210,7 @@ Note: This field may return `null`, indicating that no valid value was found.
         :param _StreamName: Stream name, which is valid if `Type` is `RTMP_PUSH` and can contain 1-32 letters and digits
 Note: This field may return `null`, indicating that no valid value was found.
         :type StreamName: str
-        :param _SourceUrl: Source URL, which is valid if `Type` is `RTMP_PULL`, `HLS_PULL`, or `MP4_PULL` and can contain 1-512 characters
+        :param _SourceUrl: Source URL, which is valid if `Type` is `RTMP_PULL`, `HLS_PULL`,  `MP4_PULL`, `RTSP_PULL` or `SRT_PULL`, and can contain 1-512 characters
 Note: This field may return `null`, indicating that no valid value was found.
         :type SourceUrl: str
         :param _InputAddress: RTP/UDP input address, which does not need to be entered for the input parameter.

@@ -212,6 +212,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # Up to one parameter can be specified.
 INVALIDPARAMETER_ATMOSTONE = 'InvalidParameter.AtMostOne'
 
+# 
+INVALIDPARAMETER_CDCNOTSUPPORTED = 'InvalidParameter.CdcNotSupported'
+
 # RootDisk ID should not be passed to DataDiskIds.
 INVALIDPARAMETER_DATADISKIDCONTAINSROOTDISK = 'InvalidParameter.DataDiskIdContainsRootDisk'
 
@@ -220,6 +223,18 @@ INVALIDPARAMETER_DATADISKNOTBELONGSPECIFIEDINSTANCE = 'InvalidParameter.DataDisk
 
 # Only one system disk snapshot can be included.
 INVALIDPARAMETER_DUPLICATESYSTEMSNAPSHOTS = 'InvalidParameter.DuplicateSystemSnapshots'
+
+# When specifying the CTCC/CUCC/CMCC public IP address parameter for edge zones, you need to first specify the public IP address parameter for the primary IP address.
+INVALIDPARAMETER_EDGEZONEMISSINTERNETACCESSIBLE = 'InvalidParameter.EdgeZoneMissInternetAccessible'
+
+# The specified CDH host does not support custom instance specifications.
+INVALIDPARAMETER_HOSTIDCUSTOMIZEDINSTANCETYPENOTSUPPORT = 'InvalidParameter.HostIdCustomizedInstanceTypeNotSupport'
+
+# The specified CDH host does not support the instance model specifications.
+INVALIDPARAMETER_HOSTIDINSTANCETYPENOTSUPPORT = 'InvalidParameter.HostIdInstanceTypeNotSupport'
+
+# The specified CDH host does not support standard instance specifications.
+INVALIDPARAMETER_HOSTIDSTANDARDINSTANCETYPENOTSUPPORT = 'InvalidParameter.HostIdStandardInstanceTypeNotSupport'
 
 # This operation is not supported under the current status of the CVM.
 INVALIDPARAMETER_HOSTIDSTATUSNOTSUPPORT = 'InvalidParameter.HostIdStatusNotSupport'
@@ -232,6 +247,9 @@ INVALIDPARAMETER_IMAGEIDSSNAPSHOTIDSMUSTONE = 'InvalidParameter.ImageIdsSnapshot
 
 # This API does not support instance images.
 INVALIDPARAMETER_INSTANCEIMAGENOTSUPPORT = 'InvalidParameter.InstanceImageNotSupport'
+
+# No CDH host supports the specified instance specifications.
+INVALIDPARAMETER_INSTANCETYPESUPPORTEDHOSTNOTFOUND = 'InvalidParameter.InstanceTypeSupportedHostNotFound'
 
 # Unable to set the public network bandwidth. 
 INVALIDPARAMETER_INTERNETACCESSIBLENOTSUPPORTED = 'InvalidParameter.InternetAccessibleNotSupported'
@@ -254,6 +272,9 @@ INVALIDPARAMETER_LACKCORECOUNTORTHREADPERCORE = 'InvalidParameter.LackCoreCountO
 # Local data disks cannot be used to create instance images.
 INVALIDPARAMETER_LOCALDATADISKNOTSUPPORT = 'InvalidParameter.LocalDataDiskNotSupport'
 
+# Only edge zones support this parameter.
+INVALIDPARAMETER_ONLYSUPPORTFOREDGEZONE = 'InvalidParameter.OnlySupportForEdgeZone'
+
 # Specifying an SSH key will override the original one of the image.
 INVALIDPARAMETER_PARAMETERCONFLICT = 'InvalidParameter.ParameterConflict'
 
@@ -262,6 +283,9 @@ INVALIDPARAMETER_PASSWORDNOTSUPPORTED = 'InvalidParameter.PasswordNotSupported'
 
 # The specified snapshot does not exist.
 INVALIDPARAMETER_SNAPSHOTNOTFOUND = 'InvalidParameter.SnapshotNotFound'
+
+# This parameter can only be used when the allowlist feature is enabled.
+INVALIDPARAMETER_SPECIALPARAMETERFORSPECIALACCOUNT = 'InvalidParameter.SpecialParameterForSpecialAccount'
 
 # At least one of the multiple parameters must be passed in.
 INVALIDPARAMETER_SPECIFYONEPARAMETER = 'InvalidParameter.SpecifyOneParameter'
@@ -293,6 +317,12 @@ INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = 'InvalidParameterValue.Bandw
 # The specified bandwidth package does not exist.
 INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDNOTFOUND = 'InvalidParameterValue.BandwidthPackageIdNotFound'
 
+# The ISP of the bandwidth package does not match the ISP parameter.
+INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEISPNOTMATCH = 'InvalidParameterValue.BandwidthPackageIspNotMatch'
+
+# The availability zone of the bandwidth package does not match the specified availability zone.
+INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEZONENOTMATCH = 'InvalidParameterValue.BandwidthPackageZoneNotMatch'
+
 # Only VPC is supported. The network type of the instance is classic network, which cannot be changed.
 INVALIDPARAMETERVALUE_BASICNETWORKINSTANCEFAMILY = 'InvalidParameterValue.BasicNetworkInstanceFamily'
 
@@ -314,6 +344,9 @@ INVALIDPARAMETERVALUE_CLOUDSSDDATADISKSIZETOOSMALL = 'InvalidParameterValue.Clou
 # Invalid number of cores.
 INVALIDPARAMETERVALUE_CORECOUNTVALUE = 'InvalidParameterValue.CoreCountValue'
 
+# 
+INVALIDPARAMETERVALUE_DEDICATEDCLUSTERNOTSUPPORTEDCHARGETYPE = 'InvalidParameterValue.DedicatedClusterNotSupportedChargeType'
+
 # A deployment VPC already exists.
 INVALIDPARAMETERVALUE_DEPLOYVPCALREADYEXISTS = 'InvalidParameterValue.DeployVpcAlreadyExists'
 
@@ -326,8 +359,14 @@ INVALIDPARAMETERVALUE_DUPLICATE = 'InvalidParameterValue.Duplicate'
 # Duplicate tags.
 INVALIDPARAMETERVALUE_DUPLICATETAGS = 'InvalidParameterValue.DuplicateTags'
 
+# The number of requested public IP addresses exceeds the quota of this instance type.
+INVALIDPARAMETERVALUE_EXTERNALIPQUOTALIMITED = 'InvalidParameterValue.ExternalIpQuotaLimited'
+
 # Non-GPU instances cannot be changed to the GPU instance.
 INVALIDPARAMETERVALUE_GPUINSTANCEFAMILY = 'InvalidParameterValue.GPUInstanceFamily'
+
+# 
+INVALIDPARAMETERVALUE_HPCCLUSTERIDZONEIDNOTMATCH = 'InvalidParameterValue.HpcClusterIdZoneIdNotMatch'
 
 # Invalid IP format
 INVALIDPARAMETERVALUE_IPADDRESSMALFORMED = 'InvalidParameterValue.IPAddressMalformed'
@@ -424,6 +463,12 @@ INVALIDPARAMETERVALUE_INVALIDUSERDATAFORMAT = 'InvalidParameterValue.InvalidUser
 
 # Invalid fuzzy query string
 INVALIDPARAMETERVALUE_INVALIDVAGUENAME = 'InvalidParameterValue.InvalidVagueName'
+
+# Edge zones do not support this ISP.
+INVALIDPARAMETERVALUE_ISPNOTSUPPORTFOREDGEZONE = 'InvalidParameterValue.IspNotSupportForEdgeZone'
+
+# Duplicate ISP parameter value specified.
+INVALIDPARAMETERVALUE_ISPVALUEREPEATED = 'InvalidParameterValue.IspValueRepeated'
 
 # The key does not exist.
 INVALIDPARAMETERVALUE_KEYPAIRNOTFOUND = 'InvalidParameterValue.KeyPairNotFound'
@@ -560,6 +605,9 @@ INVALIDZONE_MISMATCHREGION = 'InvalidZone.MismatchRegion'
 # An instance can be bound with up to 5 security groups.
 LIMITEXCEEDED_ASSOCIATEUSGLIMITEXCEEDED = 'LimitExceeded.AssociateUSGLimitExceeded'
 
+# The quota limit for purchasing instances has been reached.
+LIMITEXCEEDED_CVMINSTANCEQUOTA = 'LimitExceeded.CvmInstanceQuota'
+
 # The CVM ENIs associated with the security group has exceeded the limit.
 LIMITEXCEEDED_CVMSVIFSPERSECGROUPLIMITEXCEEDED = 'LimitExceeded.CvmsVifsPerSecGroupLimitExceeded'
 
@@ -599,6 +647,9 @@ LIMITEXCEEDED_PREHEATIMAGESNAPSHOTOUTOFQUOTA = 'LimitExceeded.PreheatImageSnapsh
 # Your quota for monthly-subscribed instances is used up. Increase your quota and try again.
 LIMITEXCEEDED_PREPAYQUOTA = 'LimitExceeded.PrepayQuota'
 
+# 
+LIMITEXCEEDED_PREPAYUNDERWRITEQUOTA = 'LimitExceeded.PrepayUnderwriteQuota'
+
 # The number of security groups exceeds the quota limit.
 LIMITEXCEEDED_SINGLEUSGQUOTA = 'LimitExceeded.SingleUSGQuota'
 
@@ -632,6 +683,9 @@ MISSINGPARAMETER_MONITORSERVICE = 'MissingParameter.MonitorService'
 # An identical job is running.
 MUTEXOPERATION_TASKRUNNING = 'MutexOperation.TaskRunning'
 
+# 
+OPERATIONDENIED_ACCOUNTNOTSUPPORTED = 'OperationDenied.AccountNotSupported'
+
 # A CHC instance without network configured is not allowed for the installation of a cloud image
 OPERATIONDENIED_CHCINSTALLCLOUDIMAGEWITHOUTDEPLOYNETWORK = 'OperationDenied.ChcInstallCloudImageWithoutDeployNetwork'
 
@@ -640,6 +694,9 @@ OPERATIONDENIED_INNERUSERPROHIBITACTION = 'OperationDenied.InnerUserProhibitActi
 
 # The instance has an operation in progress. Please try again later.
 OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = 'OperationDenied.InstanceOperationInProgress'
+
+# Bill-by-CVM users are not allowed to apply for edge zone public IP addresses.
+OPERATIONDENIED_NOTBANDWIDTHSHIFTUPUSERAPPLYEDGEZONEEIP = 'OperationDenied.NotBandwidthShiftUpUserApplyEdgeZoneEip'
 
 # The number of shared images exceeds the quota.
 OVERQUOTA = 'OverQuota'
@@ -652,6 +709,9 @@ RESOURCEINUSE = 'ResourceInUse'
 
 # The availability zone has been sold out.
 RESOURCEINSUFFICIENT_AVAILABILITYZONESOLDOUT = 'ResourceInsufficient.AvailabilityZoneSoldOut'
+
+# 
+RESOURCEINSUFFICIENT_CIDRBLOCK = 'ResourceInsufficient.CidrBlock'
 
 # The specified cloud disk has been sold out.
 RESOURCEINSUFFICIENT_CLOUDDISKSOLDOUT = 'ResourceInsufficient.CloudDiskSoldOut'
@@ -676,6 +736,9 @@ RESOURCENOTFOUND_INVALIDPLACEMENTSET = 'ResourceNotFound.InvalidPlacementSet'
 
 # This instance type is not supported in the AZ.
 RESOURCENOTFOUND_INVALIDZONEINSTANCETYPE = 'ResourceNotFound.InvalidZoneInstanceType'
+
+# 
+RESOURCENOTFOUND_KEYPAIRNOTFOUND = 'ResourceNotFound.KeyPairNotFound'
 
 # No default CBS resources are available.
 RESOURCENOTFOUND_NODEFAULTCBS = 'ResourceNotFound.NoDefaultCbs'
@@ -742,6 +805,9 @@ UNSUPPORTEDOPERATION_HETEROGENEOUSCHANGEINSTANCEFAMILY = 'UnsupportedOperation.H
 
 # Instances with hibernation disabled are not supported.
 UNSUPPORTEDOPERATION_HIBERNATIONFORNORMALINSTANCE = 'UnsupportedOperation.HibernationForNormalInstance'
+
+# 
+UNSUPPORTEDOPERATION_HIBERNATIONOSVERSION = 'UnsupportedOperation.HibernationOsVersion'
 
 # IPv6 instances cannot be migrated from Classiclink to VPC.
 UNSUPPORTEDOPERATION_IPV6NOTSUPPORTVPCMIGRATE = 'UnsupportedOperation.IPv6NotSupportVpcMigrate'
@@ -817,6 +883,12 @@ UNSUPPORTEDOPERATION_INSTANCESTATETERMINATED = 'UnsupportedOperation.InstanceSta
 
 # The instance is being terminated, and the operation is not supported.
 UNSUPPORTEDOPERATION_INSTANCESTATETERMINATING = 'UnsupportedOperation.InstanceStateTerminating'
+
+# The instance type does not support setting the `EnableJumboFrame` status.
+UNSUPPORTEDOPERATION_INSTANCETYPENOTSUPPORTJUMBOFRAME = 'UnsupportedOperation.InstanceTypeNotSupportJumboFrame'
+
+# Modifying Jumbo Frame status without a restart is not supported.
+UNSUPPORTEDOPERATION_INSTANCESENABLEJUMBOWITHOUTREBOOT = 'UnsupportedOperation.InstancesEnableJumboWithoutReboot'
 
 # The instance is under termination protection and cannot be terminated. Disable the termination protection and try again.
 UNSUPPORTEDOPERATION_INSTANCESPROTECTED = 'UnsupportedOperation.InstancesProtected'
