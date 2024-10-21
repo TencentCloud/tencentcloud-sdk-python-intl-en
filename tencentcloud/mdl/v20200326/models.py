@@ -96,6 +96,10 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         :type VideoEnhanceEnabled: int
         :param _VideoEnhanceSettings: 
         :type VideoEnhanceSettings: list of VideoEnhanceSetting
+        :param _GopSize: Key frame interval, 300-10000, optional.
+        :type GopSize: int
+        :param _GopSizeUnits: Keyframe units, only support MILLISECONDS (milliseconds).
+        :type GopSizeUnits: str
         """
         self._Name = None
         self._NeedVideo = None
@@ -129,6 +133,8 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
         self._AudioTracks = None
         self._VideoEnhanceEnabled = None
         self._VideoEnhanceSettings = None
+        self._GopSize = None
+        self._GopSizeUnits = None
 
     @property
     def Name(self):
@@ -386,6 +392,22 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
     def VideoEnhanceSettings(self, VideoEnhanceSettings):
         self._VideoEnhanceSettings = VideoEnhanceSettings
 
+    @property
+    def GopSize(self):
+        return self._GopSize
+
+    @GopSize.setter
+    def GopSize(self, GopSize):
+        self._GopSize = GopSize
+
+    @property
+    def GopSizeUnits(self):
+        return self._GopSizeUnits
+
+    @GopSizeUnits.setter
+    def GopSizeUnits(self, GopSizeUnits):
+        self._GopSizeUnits = GopSizeUnits
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -438,6 +460,8 @@ Valid values: `6000`, `7000`, `8000`, `10000`, `12000`, `14000`, `16000`, `20000
                 obj = VideoEnhanceSetting()
                 obj._deserialize(item)
                 self._VideoEnhanceSettings.append(obj)
+        self._GopSize = params.get("GopSize")
+        self._GopSizeUnits = params.get("GopSizeUnits")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9001,10 +9025,13 @@ class StreamLiveOutputGroupsInfo(AbstractModel):
         :param _Name: Output group name, which can contain 1-32 case-sensitive letters, digits, and underscores and must be unique at the channel level
         :type Name: str
         :param _Type: Output protocol
-Valid values: `HLS`, `DASH`, `HLS_ARCHIVE`, `DASH_ARCHIVE`,`HLS_STREAM_PACKAGE`, `DASH_STREAM_PACKAGE`, `FRAME_CAPTURE`,`RTP`,`RTMP`.
+Valid values: `HLS`, `DASH`, `HLS_ARCHIVE`, 
+ `DASH_ARCHIVE`, `HLS_STREAM_PACKAGE`, 
+ `DASH_STREAM_PACKAGE`, 
+ `FRAME_CAPTURE`, `RTP`, `RTMP`, `M2TS`.
         :type Type: str
         :param _Outputs: Output information
-If the type is RTMP or RTP, only one output is allowed; if it is HLS or DASH, 1-10 outputs are allowed.
+If the type is RTMP, RTP or FRAME_CAPTURE, only one output is allowed; if it is HLS or DASH, 1-10 outputs are allowed.
         :type Outputs: list of OutputInfo
         :param _Destinations: Relay destinations. Quantity: [1, 2]
         :type Destinations: list of DestinationInfo
