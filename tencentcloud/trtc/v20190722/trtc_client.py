@@ -26,6 +26,29 @@ class TrtcClient(AbstractClient):
     _service = 'trtc'
 
 
+    def ControlAIConversation(self, request):
+        """Provides server-side control of AI Conversation
+
+        :param request: Request instance for ControlAIConversation.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.ControlAIConversationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.ControlAIConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ControlAIConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.ControlAIConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCloudRecording(self, request):
         """API description:
         This API is used to start an on-cloud recording task. It records the audio and video streams in a room and saves them to the specified cloud storage. You can use this API to record the streams in a room separately, or you can mix the streams first and then record the mixed stream.
@@ -74,6 +97,52 @@ class TrtcClient(AbstractClient):
             body = self.call("DeleteCloudRecording", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCloudRecordingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAIConversation(self, request):
+        """Describe the AI conversation task status
+
+        :param request: Request instance for DescribeAIConversation.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeAIConversationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeAIConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAIConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAIConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAITranscription(self, request):
+        """Describe AI transcription task status
+
+        :param request: Request instance for DescribeAITranscription.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeAITranscriptionRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeAITranscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAITranscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAITranscriptionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -695,6 +764,56 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartAIConversation(self, request):
+        """Initiate AI conversation task, where the AI bot enters the TRTC room to engage in AI conversation with specified members in the room. This is suitable for scenarios such as intelligent customer service and AI language teachers. The TRTC AI conversation feature has built-in speech-to-text capabilities , allowing customers to flexibly specify third-party AI model (LLM) services and text-to-speech (TTS) services. For more [feature details](https://cloud.tencent.com/document/product/647/108901).
+
+        :param request: Request instance for StartAIConversation.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StartAIConversationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StartAIConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartAIConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartAIConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StartAITranscription(self, request):
+        """Initiate the transcription bot. The backend will pull the stream through the bot to perform real-time speech recognition and deliver subtitles and transcription messages. The transcription bot supports two stream pulling modes, controlled by the `TranscriptionMode` field:
+        - Pull the stream of the entire room.
+        - Pull the stream of a specific user.
+
+        The server delivers subtitles and transcription messages in real-time through TRTC's custom messages, with `CmdId` fixed at 1. The client only needs to listen for the callback of custom messages. For example, see the [C++ callback](https://cloud.tencent.com/document/product/647/79637#4cd82f4edb24992a15a25187089e1565). Other clients, such as Android, Web, etc., can also be found at the same link.
+
+        :param request: Request instance for StartAITranscription.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StartAITranscriptionRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StartAITranscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartAITranscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartAITranscriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StartPublishCdnStream(self, request):
         """In a TRTC room, there may be multiple audio and video streams concurrently active. You can use the MixTranscoding API to notify Tencent Cloud server to mix multiple video screens from the same room or multiple rooms together, and specify the position of each screen, while mixing multiple audio streams together. The final result is a single audio and video stream, which can be used for recording and live viewing. It also supports pushing this mixed audio and video stream back to the TRTC room.
 
@@ -795,6 +914,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StopAITranscription(self, request):
+        """Stop AI Transcription task
+
+        :param request: Request instance for StopAITranscription.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StopAITranscriptionRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StopAITranscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopAITranscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopAITranscriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopPublishCdnStream(self, request):
         """This API is used to stop a relaying task.
 
@@ -832,6 +974,29 @@ class TrtcClient(AbstractClient):
             body = self.call("StopStreamIngest", params, headers=headers)
             response = json.loads(body)
             model = models.StopStreamIngestResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateAIConversation(self, request):
+        """Update AI conversation task parameters
+
+        :param request: Request instance for UpdateAIConversation.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.UpdateAIConversationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.UpdateAIConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAIConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateAIConversationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

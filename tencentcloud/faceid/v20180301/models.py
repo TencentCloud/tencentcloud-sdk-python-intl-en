@@ -846,13 +846,16 @@ class ApplyWebVerificationTokenResponse(AbstractModel):
 
 
 class AttackRiskDetail(AbstractModel):
-    """
+    """Suspected attack detail
 
     """
 
     def __init__(self):
         r"""
-        :param _Type: 
+        :param _Type: Suspected attack trace types
+SuspectedSpoofingAttack: Suspected spoofing attack
+ SuspectedSynthesisImage: Suspected synthesis image SuspectedSynthesisVideo: Suspected synthesis video SuspectedeAnomalyAttack: Suspected anomaly attack SuspectedAdversarialAttack: Suspected adversarial attack SuspectedBlackIndustry: Suspected batch generation attack
+SuspectedWatermark: Suspected watermark
         :type Type: str
         """
         self._Type = None

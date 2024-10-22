@@ -2897,7 +2897,7 @@ class BindApiAppRequest(AbstractModel):
         :type ApiAppId: str
         :param _Environment: Environment to be bound.
         :type Environment: str
-        :param _ServiceId: Unique ID of the service to be bound
+        :param _ServiceId: Unique ID of the service to be bound.
         :type ServiceId: str
         :param _ApiId: Unique ID of the API to be bound.
         :type ApiId: str

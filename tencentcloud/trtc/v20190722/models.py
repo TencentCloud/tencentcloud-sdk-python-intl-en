@@ -150,6 +150,111 @@ class AbnormalExperience(AbstractModel):
         
 
 
+class AgentConfig(AbstractModel):
+    """Robot parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: The robot's UserId is used to enter a room and initiate tasks. [Note] This UserId cannot be repeated with the host viewer [UserId](https://cloud.tencent.com/document/product/647/46351#userid) in the current room. If multiple tasks are initiated in a room, the robot's UserId cannot be repeated, otherwise the previous task will be interrupted. The robot's UserId must be unique in the room.
+        :type UserId: str
+        :param _UserSig: The verification signature corresponding to the robot's UserId, that is, UserId and UserSig are equivalent to the robot's login password to enter the room. For the specific calculation method, please refer to the TRTC calculation [UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig) solution.
+        :type UserSig: str
+        :param _TargetUserId: The UserId of the robot pulling the media stream. After filling in, the robot will pull the media stream of the UserId for real-time processing
+        :type TargetUserId: str
+        :param _MaxIdleTime: If there is no streaming in the room for more than MaxIdleTime, the Service will automatically close the task. The default value is 60s.
+        :type MaxIdleTime: int
+        :param _WelcomeMessage: Robot's welcome message
+        :type WelcomeMessage: str
+        :param _InterruptMode: Intelligent interruption mode, the default value is 0, 0 means the server automatically interrupts, 1 means the server does not interrupt, and the client sends an interrupt signal to interrupt
+        :type InterruptMode: int
+        :param _InterruptSpeechDuration: Used when InterruptMode is 0, in milliseconds, with a default value of 500ms. This means that the server will interrupt when it detects a human voice that lasts for InterruptSpeechDuration milliseconds.
+        :type InterruptSpeechDuration: int
+        """
+        self._UserId = None
+        self._UserSig = None
+        self._TargetUserId = None
+        self._MaxIdleTime = None
+        self._WelcomeMessage = None
+        self._InterruptMode = None
+        self._InterruptSpeechDuration = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserSig(self):
+        return self._UserSig
+
+    @UserSig.setter
+    def UserSig(self, UserSig):
+        self._UserSig = UserSig
+
+    @property
+    def TargetUserId(self):
+        return self._TargetUserId
+
+    @TargetUserId.setter
+    def TargetUserId(self, TargetUserId):
+        self._TargetUserId = TargetUserId
+
+    @property
+    def MaxIdleTime(self):
+        return self._MaxIdleTime
+
+    @MaxIdleTime.setter
+    def MaxIdleTime(self, MaxIdleTime):
+        self._MaxIdleTime = MaxIdleTime
+
+    @property
+    def WelcomeMessage(self):
+        return self._WelcomeMessage
+
+    @WelcomeMessage.setter
+    def WelcomeMessage(self, WelcomeMessage):
+        self._WelcomeMessage = WelcomeMessage
+
+    @property
+    def InterruptMode(self):
+        return self._InterruptMode
+
+    @InterruptMode.setter
+    def InterruptMode(self, InterruptMode):
+        self._InterruptMode = InterruptMode
+
+    @property
+    def InterruptSpeechDuration(self):
+        return self._InterruptSpeechDuration
+
+    @InterruptSpeechDuration.setter
+    def InterruptSpeechDuration(self, InterruptSpeechDuration):
+        self._InterruptSpeechDuration = InterruptSpeechDuration
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserSig = params.get("UserSig")
+        self._TargetUserId = params.get("TargetUserId")
+        self._MaxIdleTime = params.get("MaxIdleTime")
+        self._WelcomeMessage = params.get("WelcomeMessage")
+        self._InterruptMode = params.get("InterruptMode")
+        self._InterruptSpeechDuration = params.get("InterruptSpeechDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AgentParams(AbstractModel):
     """The information of the relaying robot in the room.
 
@@ -524,6 +629,91 @@ class CloudVod(AbstractModel):
         
 
 
+class ControlAIConversationRequest(AbstractModel):
+    """ControlAIConversation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Unique ID of the task
+        :type TaskId: str
+        :param _Command: Control commands, currently supported commands are as follows:
+- ServerPushText, the server sends text to the AI robot, and the AI robot will play the text
+        :type Command: str
+        :param _ServerPushText: The server sends a text broadcast command. This is required when Command is ServerPushText.
+        :type ServerPushText: :class:`tencentcloud.trtc.v20190722.models.ServerPushText`
+        """
+        self._TaskId = None
+        self._Command = None
+        self._ServerPushText = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Command(self):
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def ServerPushText(self):
+        return self._ServerPushText
+
+    @ServerPushText.setter
+    def ServerPushText(self, ServerPushText):
+        self._ServerPushText = ServerPushText
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Command = params.get("Command")
+        if params.get("ServerPushText") is not None:
+            self._ServerPushText = ServerPushText()
+            self._ServerPushText._deserialize(params.get("ServerPushText"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ControlAIConversationResponse(AbstractModel):
+    """ControlAIConversation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCloudRecordingRequest(AbstractModel):
     """CreateCloudRecording request structure.
 
@@ -803,6 +993,266 @@ class DeleteCloudRecordingResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIConversationRequest(AbstractModel):
+    """DescribeAIConversation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC's [SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid) is the same as the SdkAppId used by the room that starts the transcription task.
+        :type SdkAppId: int
+        :param _TaskId: The unique ID of the task.
+        :type TaskId: str
+        :param _SessionId: The SessionId filled in when starting the task. 
+        :type SessionId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+        self._SessionId = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIConversationResponse(AbstractModel):
+    """DescribeAIConversation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: The time when the task starts.
+        :type StartTime: str
+        :param _Status: Task status. There are 4 values: 1. Idle means the task has not started 2. Preparing means the task is being prepared 3. InProgress means the task is running 4. Stopped means the task has stopped and resources are being cleaned up
+        :type Status: str
+        :param _TaskId: The unique ID of the task, generated when the task is started
+        :type TaskId: str
+        :param _SessionId: The SessionId filled in when opening the conversation task.
+        :type SessionId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._StartTime = None
+        self._Status = None
+        self._TaskId = None
+        self._SessionId = None
+        self._RequestId = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
+        self._SessionId = params.get("SessionId")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAITranscriptionRequest(AbstractModel):
+    """DescribeAITranscription request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Query the task status. If not in use, pass in an empty string. There are two query methods: 1. Fill in only TaskId. This method uses TaskId to query tasks. 2. TaskId is an empty string. Fill in SdkAppId and SessionId. This method does not require TaskId to query tasks.
+        :type TaskId: str
+        :param _SdkAppId: TRTC's SdkAppId is used together with SessionId.
+        :type SdkAppId: int
+        :param _SessionId: The SessionId passed in when starting the transcription task is used together with the SdkAppId.
+        :type SessionId: str
+        """
+        self._TaskId = None
+        self._SdkAppId = None
+        self._SessionId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._SdkAppId = params.get("SdkAppId")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAITranscriptionResponse(AbstractModel):
+    """DescribeAITranscription response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: The time when the task starts.
+        :type StartTime: str
+        :param _Status: Transcription task status. There are 4 values: 1. Idle means the task has not started 2. Preparing means the task is being prepared 3. InProgress means the task is running 4. Stopped means the task has stopped and resources are being cleaned up
+        :type Status: str
+        :param _TaskId: Uniquely identifies a task.
+        :type TaskId: str
+        :param _SessionId: The SessionId filled in when starting the transcription task. If not filled in, nothing is returned.
+        :type SessionId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._StartTime = None
+        self._Status = None
+        self._TaskId = None
+        self._SessionId = None
+        self._RequestId = None
+
+    @property
+    def StartTime(self):
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
+        self._SessionId = params.get("SessionId")
         self._RequestId = params.get("RequestId")
 
 
@@ -4956,6 +5406,74 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class RecognizeConfig(AbstractModel):
+    """Configuration used by speech recognition
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Language: The supported languages for speech recognition are as follows, with the default being "zh" for Chinese. The values for the `Language` field follow the [ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) standard. Here is the full list of supported languages:
+
+1. Chinese = "zh"
+2. Chinese_TW = "zh-TW"
+3. Chinese_DIALECT = "zh-dialect"
+4. English = "en"
+5. Vietnamese = "vi"
+6. Japanese = "ja"
+7. Korean = "ko"
+8. Indonesian = "id"
+9. Thai = "th"
+10. Portuguese = "pt"
+11. Turkish = "tr"
+12. Arabic = "ar"
+13. Spanish = "es"
+14. Hindi = "hi"
+15. French = "fr"
+16. Malay = "ms"
+17. Filipino = "fil"
+18. German = "de"
+19. Italian = "it"
+20. Russian = "ru"
+
+**Note:** If the language you need is not listed, please contact our technical support team.
+        :type Language: str
+        :param _AlternativeLanguage: Initiate fuzzy recognition to replace additional language types. Fill in up to 3 language types. Note: When Language is specified as "zh-dialect", fuzzy recognition is not supported and this field is invalid.
+        :type AlternativeLanguage: list of str
+        """
+        self._Language = None
+        self._AlternativeLanguage = None
+
+    @property
+    def Language(self):
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def AlternativeLanguage(self):
+        return self._AlternativeLanguage
+
+    @AlternativeLanguage.setter
+    def AlternativeLanguage(self, AlternativeLanguage):
+        self._AlternativeLanguage = AlternativeLanguage
+
+
+    def _deserialize(self, params):
+        self._Language = params.get("Language")
+        self._AlternativeLanguage = params.get("AlternativeLanguage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RecordParams(AbstractModel):
     """The on-cloud recording parameters.
 
@@ -5371,6 +5889,86 @@ class RowValues(AbstractModel):
         
 
 
+class STTConfig(AbstractModel):
+    """Speech-to-text parameters
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Language: The supported languages for speech recognition are as follows, with the default being "zh" for Chinese. The values for the `Language` field follow the [ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) standard. Here is the full list of supported languages:
+
+1. Chinese = "zh"
+2. Chinese_TW = "zh-TW"
+3. Chinese_DIALECT = "zh-dialect"
+4. English = "en"
+5. Vietnamese = "vi"
+6. Japanese = "ja"
+7. Korean = "ko"
+8. Indonesian = "id"
+9. Thai = "th"
+10. Portuguese = "pt"
+11. Turkish = "tr"
+12. Arabic = "ar"
+13. Spanish = "es"
+14. Hindi = "hi"
+15. French = "fr"
+16. Malay = "ms"
+17. Filipino = "fil"
+18. German = "de"
+19. Italian = "it"
+20. Russian = "ru"
+
+**Note:** If the language you need is not listed, please contact our technical support team.
+        :type Language: str
+        :param _AlternativeLanguage: Initiate fuzzy recognition to replace additional language types. Fill in up to 3 language types. Note: When Language is specified as "zh-dialect", fuzzy recognition is not supported and this field is invalid.
+        :type AlternativeLanguage: list of str
+        :param _VadSilenceTime: The time for speech recognition vad is in the range of 240-2000, the default value is 1000, and the unit is ms. A smaller value will make speech recognition sentence segmentation faster.
+        :type VadSilenceTime: int
+        """
+        self._Language = None
+        self._AlternativeLanguage = None
+        self._VadSilenceTime = None
+
+    @property
+    def Language(self):
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def AlternativeLanguage(self):
+        return self._AlternativeLanguage
+
+    @AlternativeLanguage.setter
+    def AlternativeLanguage(self, AlternativeLanguage):
+        self._AlternativeLanguage = AlternativeLanguage
+
+    @property
+    def VadSilenceTime(self):
+        return self._VadSilenceTime
+
+    @VadSilenceTime.setter
+    def VadSilenceTime(self, VadSilenceTime):
+        self._VadSilenceTime = VadSilenceTime
+
+
+    def _deserialize(self, params):
+        self._Language = params.get("Language")
+        self._AlternativeLanguage = params.get("AlternativeLanguage")
+        self._VadSilenceTime = params.get("VadSilenceTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ScaleInfomation(AbstractModel):
     """The room and user number.
 
@@ -5483,6 +6081,63 @@ class SeriesInfos(AbstractModel):
                 obj = RowValues()
                 obj._deserialize(item)
                 self._Values.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServerPushText(AbstractModel):
+    """The server controls the AI conversation robot to broadcast the specified text
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: Server push broadcast text
+        :type Text: str
+        :param _Interrupt: Allow this text to interrupt the robot
+        :type Interrupt: bool
+        :param _StopAfterPlay: After the text is finished, whether to automatically close the conversation task
+        :type StopAfterPlay: bool
+        """
+        self._Text = None
+        self._Interrupt = None
+        self._StopAfterPlay = None
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Interrupt(self):
+        return self._Interrupt
+
+    @Interrupt.setter
+    def Interrupt(self, Interrupt):
+        self._Interrupt = Interrupt
+
+    @property
+    def StopAfterPlay(self):
+        return self._StopAfterPlay
+
+    @StopAfterPlay.setter
+    def StopAfterPlay(self, StopAfterPlay):
+        self._StopAfterPlay = StopAfterPlay
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._Interrupt = params.get("Interrupt")
+        self._StopAfterPlay = params.get("StopAfterPlay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5714,6 +6369,300 @@ class SingleSubscribeParams(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class StartAIConversationRequest(AbstractModel):
+    """StartAIConversation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC's [SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid) is the same as the SdkAppId used by the room that starts the conversation task.
+        :type SdkAppId: int
+        :param _RoomId: TRTC's [RoomId](https://cloud.tencent.com/document/product/647/46351#roomid), which indicates the room number where the conversation task is started.
+        :type RoomId: str
+        :param _AgentConfig: Robot parameters
+        :type AgentConfig: :class:`tencentcloud.trtc.v20190722.models.AgentConfig`
+        :param _SessionId: The unique ID passed in by the caller can be used by the client to prevent repeated task initiation and to query the task status through this field.
+        :type SessionId: str
+        :param _RoomIdType: The type of TRTC room number. 0 represents a numeric room number, and 1 represents a string room number. If not filled in, the default is a numeric room number.
+        :type RoomIdType: int
+        :param _STTConfig: Speech recognition configuration.
+        :type STTConfig: :class:`tencentcloud.trtc.v20190722.models.STTConfig`
+        :param _LLMConfig: LLM configuration. It must comply with the openai specification and be a JSON string. The example is as follows: <pre> { <br> &emsp; "LLMType": "Large model type", // String required, such as: "openai" <br> &emsp; "Model": "Your model name", // String required, specify the model to be used<br> "APIKey": "Your LLM API key", // String required <br> &emsp; "APIUrl": "https://api.xxx.com/chat/completions", // String required, URL for LLM API access<br> &emsp; "Streaming": true // Boolean optional, specify whether to use streaming<br> &emsp;} </pre>
+        :type LLMConfig: str
+        :param _TTSConfig: TTS configuration, which is a JSON string. The Tencent Cloud TTS example is as follows: <pre>{ <br> &emsp; "AppId": your application ID, // Integer Required<br> &emsp; "TTSType": "TTS type", // String TTS type, fixed to "tencent"<br> &emsp; "SecretId": "Your key ID", // String Required<br> &emsp; "SecretKey": "Your keyKey", // String Required<br> &emsp; "VoiceType": 101001, // Integer Required, voice ID, including standard voice and premium voice. Premium voice has higher fidelity and different price from standard voice. For details, please refer to <a href="https://cloud.tencent.com/document/product/1073/34112">Overview of Speech Synthesis Billing</a>. For a complete list of timbre IDs, see <a href="https://cloud.tencent.com/document/product/1073/92668#55924b56-1a73-4663-a7a1-a8dd82d6e823">List of speech synthesis timbre IDs</a>. <br> &emsp; "Speed": 1.25, // Integer Optional, speaking speed, range: [-2, 6], corresponding to different speaking speeds: -2: 0.6 times -1: 0.8 times 0: 1.0 times (default) 1: 1.2 times 2: 1.5 times 6: 2.5 times If a more detailed speaking speed is required, 2 decimal places can be retained, such as 0.5/1.25/2.81, etc. For the conversion between parameter value and actual speech speed, please refer to <a href="https://sdk-1300466766.cos.ap-shanghai.myqcloud.com/sample/speed_sample.tar.gz">Speed Conversion</a><br> &emsp; "Volume": 5, // Integer Optional, volume size, range: [0, 10], corresponding to 11 levels of volume, the default value is 0, representing normal volume. <br> &emsp; "PrimaryLanguage": "zh-CN" // String Optional, primary language<br> &emsp;}</pre>
+        :type TTSConfig: str
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._AgentConfig = None
+        self._SessionId = None
+        self._RoomIdType = None
+        self._STTConfig = None
+        self._LLMConfig = None
+        self._TTSConfig = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def AgentConfig(self):
+        return self._AgentConfig
+
+    @AgentConfig.setter
+    def AgentConfig(self, AgentConfig):
+        self._AgentConfig = AgentConfig
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RoomIdType(self):
+        return self._RoomIdType
+
+    @RoomIdType.setter
+    def RoomIdType(self, RoomIdType):
+        self._RoomIdType = RoomIdType
+
+    @property
+    def STTConfig(self):
+        return self._STTConfig
+
+    @STTConfig.setter
+    def STTConfig(self, STTConfig):
+        self._STTConfig = STTConfig
+
+    @property
+    def LLMConfig(self):
+        return self._LLMConfig
+
+    @LLMConfig.setter
+    def LLMConfig(self, LLMConfig):
+        self._LLMConfig = LLMConfig
+
+    @property
+    def TTSConfig(self):
+        return self._TTSConfig
+
+    @TTSConfig.setter
+    def TTSConfig(self, TTSConfig):
+        self._TTSConfig = TTSConfig
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        if params.get("AgentConfig") is not None:
+            self._AgentConfig = AgentConfig()
+            self._AgentConfig._deserialize(params.get("AgentConfig"))
+        self._SessionId = params.get("SessionId")
+        self._RoomIdType = params.get("RoomIdType")
+        if params.get("STTConfig") is not None:
+            self._STTConfig = STTConfig()
+            self._STTConfig._deserialize(params.get("STTConfig"))
+        self._LLMConfig = params.get("LLMConfig")
+        self._TTSConfig = params.get("TTSConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartAIConversationResponse(AbstractModel):
+    """StartAIConversation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Used to uniquely identify a conversation task.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class StartAITranscriptionRequest(AbstractModel):
+    """StartAITranscription request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC's [SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid) is the same as the SdkAppId used by the room that starts the transcription task.
+        :type SdkAppId: int
+        :param _RoomId: TRTC's [RoomId](https://cloud.tencent.com/document/product/647/46351#roomid), which indicates the room number where the transcription task is started.
+        :type RoomId: str
+        :param _TranscriptionParams: Parameters of the transcription robot.
+        :type TranscriptionParams: :class:`tencentcloud.trtc.v20190722.models.TranscriptionParams`
+        :param _SessionId: The unique ID passed by the caller is used by the server to deduplicate. Note: If this parameter is passed, the server will use it first to deduplicate. If this parameter is not passed, the server's deduplication strategy is as follows: 
+- If the TranscriptionMode field is 0, only one task can be opened in a room
+- If the TranscriptionMode field is 1, only one task can be opened in a TargetUserId
+        :type SessionId: str
+        :param _RoomIdType: The type of TRTC room number. 0 represents a numeric room number, and 1 represents a string room number. If not filled in, the default is a numeric room number.
+        :type RoomIdType: int
+        :param _RecognizeConfig: Speech recognition configuration.
+        :type RecognizeConfig: :class:`tencentcloud.trtc.v20190722.models.RecognizeConfig`
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._TranscriptionParams = None
+        self._SessionId = None
+        self._RoomIdType = None
+        self._RecognizeConfig = None
+
+    @property
+    def SdkAppId(self):
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def TranscriptionParams(self):
+        return self._TranscriptionParams
+
+    @TranscriptionParams.setter
+    def TranscriptionParams(self, TranscriptionParams):
+        self._TranscriptionParams = TranscriptionParams
+
+    @property
+    def SessionId(self):
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RoomIdType(self):
+        return self._RoomIdType
+
+    @RoomIdType.setter
+    def RoomIdType(self, RoomIdType):
+        self._RoomIdType = RoomIdType
+
+    @property
+    def RecognizeConfig(self):
+        return self._RecognizeConfig
+
+    @RecognizeConfig.setter
+    def RecognizeConfig(self, RecognizeConfig):
+        self._RecognizeConfig = RecognizeConfig
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        if params.get("TranscriptionParams") is not None:
+            self._TranscriptionParams = TranscriptionParams()
+            self._TranscriptionParams._deserialize(params.get("TranscriptionParams"))
+        self._SessionId = params.get("SessionId")
+        self._RoomIdType = params.get("RoomIdType")
+        if params.get("RecognizeConfig") is not None:
+            self._RecognizeConfig = RecognizeConfig()
+            self._RecognizeConfig._deserialize(params.get("RecognizeConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartAITranscriptionResponse(AbstractModel):
+    """StartAITranscription response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Used to uniquely identify a transcription task.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class StartPublishCdnStreamRequest(AbstractModel):
@@ -6166,6 +7115,64 @@ class StartStreamIngestResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class StopAITranscriptionRequest(AbstractModel):
+    """StopAITranscription request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Uniquely identifies a transcription task.
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopAITranscriptionResponse(AbstractModel):
+    """StopAITranscription response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -6750,6 +7757,87 @@ class TimeValue(AbstractModel):
         
 
 
+class TranscriptionParams(AbstractModel):
+    """AI Transcription Params
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: The robot's UserId is used to enter a room and initiate tasks. [Note] This UserId cannot be repeated with the host viewer [UserId](https://cloud.tencent.com/document/product/647/46351#userid) in the current room. If multiple tasks are initiated in a room, the robot's UserId cannot be repeated, otherwise the previous task will be interrupted. The robot's UserId must be unique in the room.
+        :type UserId: str
+        :param _UserSig: The verification signature corresponding to the robot's UserId, that is, UserId and UserSig are equivalent to the robot's login password to enter the room. For the specific calculation method, please refer to the TRTC calculation [UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig) solution.
+        :type UserSig: str
+        :param _MaxIdleTime: If there is no streaming in the room for more than MaxIdleTime, the background will automatically close the task. The default value is 60s.
+        :type MaxIdleTime: int
+        :param _TranscriptionMode: 1 means the robot subscribes to the stream of only one person, 0 means the robot subscribes to the stream of the entire room. If it is not filled in, the robot subscribes to the stream of the entire room by default.
+        :type TranscriptionMode: int
+        :param _TargetUserId: Required when TranscriptionMode is 1. The robot will only pull the stream of the userid and ignore other users in the room.
+        :type TargetUserId: str
+        """
+        self._UserId = None
+        self._UserSig = None
+        self._MaxIdleTime = None
+        self._TranscriptionMode = None
+        self._TargetUserId = None
+
+    @property
+    def UserId(self):
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserSig(self):
+        return self._UserSig
+
+    @UserSig.setter
+    def UserSig(self, UserSig):
+        self._UserSig = UserSig
+
+    @property
+    def MaxIdleTime(self):
+        return self._MaxIdleTime
+
+    @MaxIdleTime.setter
+    def MaxIdleTime(self, MaxIdleTime):
+        self._MaxIdleTime = MaxIdleTime
+
+    @property
+    def TranscriptionMode(self):
+        return self._TranscriptionMode
+
+    @TranscriptionMode.setter
+    def TranscriptionMode(self, TranscriptionMode):
+        self._TranscriptionMode = TranscriptionMode
+
+    @property
+    def TargetUserId(self):
+        return self._TargetUserId
+
+    @TargetUserId.setter
+    def TargetUserId(self, TargetUserId):
+        self._TargetUserId = TargetUserId
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserSig = params.get("UserSig")
+        self._MaxIdleTime = params.get("MaxIdleTime")
+        self._TranscriptionMode = params.get("TranscriptionMode")
+        self._TargetUserId = params.get("TargetUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TrtcUsage(AbstractModel):
     """The TRTC audio/video duration generated in a certain time period.
 
@@ -6793,6 +7881,124 @@ class TrtcUsage(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateAIConversationRequest(AbstractModel):
+    """UpdateAIConversation request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task Unique ID
+        :type TaskId: str
+        :param _WelcomeMessage: If you do not fill in the form, no update will be performed. Welcome message from the robot
+        :type WelcomeMessage: str
+        :param _InterruptMode: If not filled in, no update will be performed. Intelligent interruption mode, 0 means the server automatically interrupts, 1 means the server does not interrupt, and the client sends an interrupt signal to interrupt
+        :type InterruptMode: int
+        :param _InterruptSpeechDuration: If not filled in, no update will be performed. Used when InterruptMode is 0, the unit is milliseconds, and the default is 500ms. It means that the server will interrupt when it detects a voice that lasts for InterruptSpeechDuration milliseconds.
+        :type InterruptSpeechDuration: int
+        :param _LLMConfig: If not filled in, no update will be performed. For LLM configuration, see the StartAIConversation API for details.
+        :type LLMConfig: str
+        :param _TTSConfig: If not filled in, no update will be performed. For TTS configuration, see the StartAIConversation API for details.
+        :type TTSConfig: str
+        """
+        self._TaskId = None
+        self._WelcomeMessage = None
+        self._InterruptMode = None
+        self._InterruptSpeechDuration = None
+        self._LLMConfig = None
+        self._TTSConfig = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def WelcomeMessage(self):
+        return self._WelcomeMessage
+
+    @WelcomeMessage.setter
+    def WelcomeMessage(self, WelcomeMessage):
+        self._WelcomeMessage = WelcomeMessage
+
+    @property
+    def InterruptMode(self):
+        return self._InterruptMode
+
+    @InterruptMode.setter
+    def InterruptMode(self, InterruptMode):
+        self._InterruptMode = InterruptMode
+
+    @property
+    def InterruptSpeechDuration(self):
+        return self._InterruptSpeechDuration
+
+    @InterruptSpeechDuration.setter
+    def InterruptSpeechDuration(self, InterruptSpeechDuration):
+        self._InterruptSpeechDuration = InterruptSpeechDuration
+
+    @property
+    def LLMConfig(self):
+        return self._LLMConfig
+
+    @LLMConfig.setter
+    def LLMConfig(self, LLMConfig):
+        self._LLMConfig = LLMConfig
+
+    @property
+    def TTSConfig(self):
+        return self._TTSConfig
+
+    @TTSConfig.setter
+    def TTSConfig(self, TTSConfig):
+        self._TTSConfig = TTSConfig
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._WelcomeMessage = params.get("WelcomeMessage")
+        self._InterruptMode = params.get("InterruptMode")
+        self._InterruptSpeechDuration = params.get("InterruptSpeechDuration")
+        self._LLMConfig = params.get("LLMConfig")
+        self._TTSConfig = params.get("TTSConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAIConversationResponse(AbstractModel):
+    """UpdateAIConversation response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UpdatePublishCdnStreamRequest(AbstractModel):

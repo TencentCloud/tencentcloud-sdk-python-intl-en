@@ -35,6 +35,9 @@ FAILEDOPERATION_BYOLIMAGESHAREFAILED = 'FailedOperation.BYOLImageShareFailed'
 # The specified spread placement group does not exist.
 FAILEDOPERATION_DISASTERRECOVERGROUPNOTFOUND = 'FailedOperation.DisasterRecoverGroupNotFound'
 
+# Failed to obtain the status of TencentCloud Automation Tools for the instance.
+FAILEDOPERATION_GETINSTANCETATAGENTSTATUSFAILED = 'FailedOperation.GetInstanceTATAgentStatusFailed'
+
 # The tag key contains invalid characters.
 FAILEDOPERATION_ILLEGALTAGKEY = 'FailedOperation.IllegalTagKey'
 
@@ -49,6 +52,9 @@ FAILEDOPERATION_INQUIRYREFUNDPRICEFAILED = 'FailedOperation.InquiryRefundPriceFa
 
 # The image is busy. Please try again later.
 FAILEDOPERATION_INVALIDIMAGESTATE = 'FailedOperation.InvalidImageState'
+
+# 
+FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLE = 'FailedOperation.InvalidInstanceApplicationRole'
 
 # The EMR instance `ins-xxxxxxxx` does not support this operation.
 FAILEDOPERATION_INVALIDINSTANCEAPPLICATIONROLEEMR = 'FailedOperation.InvalidInstanceApplicationRoleEmr'
@@ -212,6 +218,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # Up to one parameter can be specified.
 INVALIDPARAMETER_ATMOSTONE = 'InvalidParameter.AtMostOne'
 
+# Automatic snapshot creation is not supported.
+INVALIDPARAMETER_AUTOSNAPSHOTNOTSUPPORTED = 'InvalidParameter.AutoSnapshotNotSupported'
+
 # 
 INVALIDPARAMETER_CDCNOTSUPPORTED = 'InvalidParameter.CdcNotSupported'
 
@@ -265,6 +274,9 @@ INVALIDPARAMETER_INVALIDPARAMETERCOEXISTIMAGEIDSFILTERS = 'InvalidParameter.Inva
 
 # Invalid URL.
 INVALIDPARAMETER_INVALIDPARAMETERURLERROR = 'InvalidParameter.InvalidParameterUrlError'
+
+# The entered TargetOSType is invalid.
+INVALIDPARAMETER_INVALIDTARGETOSTYPE = 'InvalidParameter.InvalidTargetOSType'
 
 # `CoreCount` and `ThreadPerCore` must be specified at the same time.
 INVALIDPARAMETER_LACKCORECOUNTORTHREADPERCORE = 'InvalidParameter.LackCoreCountOrThreadPerCore'
@@ -332,6 +344,9 @@ INVALIDPARAMETERVALUE_BUCKETNOTFOUND = 'InvalidParameterValue.BucketNotFound'
 # Invalid `CamRoleName`. This parameter must contain only letters, numbers and symbols (`+`, `=`, `,`, `.`, `@`, `_`, `-`).
 INVALIDPARAMETERVALUE_CAMROLENAMEMALFORMED = 'InvalidParameterValue.CamRoleNameMalformed'
 
+# 
+INVALIDPARAMETERVALUE_CDHONLYLOCALDATADISKRESIZE = 'InvalidParameterValue.CdhOnlyLocalDataDiskResize'
+
 # Corresponding CHC hosts not found.
 INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = 'InvalidParameterValue.ChcHostsNotFound'
 
@@ -374,6 +389,9 @@ INVALIDPARAMETERVALUE_IPADDRESSMALFORMED = 'InvalidParameterValue.IPAddressMalfo
 # Invalid IPv6 address
 INVALIDPARAMETERVALUE_IPV6ADDRESSMALFORMED = 'InvalidParameterValue.IPv6AddressMalformed'
 
+# ISO files must be imported by force.
+INVALIDPARAMETERVALUE_ISOMUSTIMPORTBYFORCE = 'InvalidParameterValue.ISOMustImportByForce'
+
 # The value of HostName is invalid.
 INVALIDPARAMETERVALUE_ILLEGALHOSTNAME = 'InvalidParameterValue.IllegalHostName'
 
@@ -413,6 +431,9 @@ INVALIDPARAMETERVALUE_INVALIDFILENAMEPREFIXLIST = 'InvalidParameterValue.Invalid
 # Converting to a non-GPU or other type of GPU instance is not supported.
 INVALIDPARAMETERVALUE_INVALIDGPUFAMILYCHANGE = 'InvalidParameterValue.InvalidGPUFamilyChange'
 
+# Invalid format of image family name
+INVALIDPARAMETERVALUE_INVALIDIMAGEFAMILY = 'InvalidParameterValue.InvalidImageFamily'
+
 # The specified image does not support the specified instance type.
 INVALIDPARAMETERVALUE_INVALIDIMAGEFORGIVENINSTANCETYPE = 'InvalidParameterValue.InvalidImageForGivenInstanceType'
 
@@ -424,6 +445,9 @@ INVALIDPARAMETERVALUE_INVALIDIMAGEID = 'InvalidParameterValue.InvalidImageId'
 
 # The image cannot be used to reinstall the current instance.
 INVALIDPARAMETERVALUE_INVALIDIMAGEIDFORRETSETINSTANCE = 'InvalidParameterValue.InvalidImageIdForRetsetInstance'
+
+# 
+INVALIDPARAMETERVALUE_INVALIDIMAGEIDISSHARED = 'InvalidParameterValue.InvalidImageIdIsShared'
 
 # The operating system of the specified image is not available in the current region.
 INVALIDPARAMETERVALUE_INVALIDIMAGEOSNAME = 'InvalidParameterValue.InvalidImageOsName'
@@ -479,7 +503,7 @@ INVALIDPARAMETERVALUE_KEYPAIRNOTSUPPORTED = 'InvalidParameterValue.KeyPairNotSup
 # The default launch template version cannot be operated.
 INVALIDPARAMETERVALUE_LAUNCHTEMPLATEDEFAULTVERSION = 'InvalidParameterValue.LaunchTemplateDefaultVersion'
 
-# Incorrect format of instance launch template ID.
+# Incorrect format of instance launch template ID. Please provide a valid instance launch template ID, similar to lt-xxxxxxxx, where x represents a lowercase character or digit.
 INVALIDPARAMETERVALUE_LAUNCHTEMPLATEIDMALFORMED = 'InvalidParameterValue.LaunchTemplateIdMalformed'
 
 # The instance launch template ID does not exist.
@@ -518,8 +542,14 @@ INVALIDPARAMETERVALUE_PREHEATNOTSUPPORTEDINSTANCETYPE = 'InvalidParameterValue.P
 # Preheating is not supported in this availability zone.
 INVALIDPARAMETERVALUE_PREHEATNOTSUPPORTEDZONE = 'InvalidParameterValue.PreheatNotSupportedZone'
 
+# 
+INVALIDPARAMETERVALUE_PREHEATUNAVAILABLEZONES = 'InvalidParameterValue.PreheatUnavailableZones'
+
 #  Invalid parameter value: invalid parameter value range.
 INVALIDPARAMETERVALUE_RANGE = 'InvalidParameterValue.Range'
+
+# 
+INVALIDPARAMETERVALUE_REQUIREDLOCATIONIMAGE = 'InvalidParameterValue.RequiredLocationImage'
 
 # Invalid snapshot ID. Provide a snapshot ID in the format of snap-xxxxxxxx, where the letter x refers to lowercase letter or number.
 INVALIDPARAMETERVALUE_SNAPSHOTIDMALFORMED = 'InvalidParameterValue.SnapshotIdMalformed'
@@ -617,6 +647,9 @@ LIMITEXCEEDED_DISASTERRECOVERGROUP = 'LimitExceeded.DisasterRecoverGroup'
 # The number of EIPs of an ENI contained in a specific instance has exceeded the maximum allowed EIPs of the target instance type. Please delete some EIPs and try again.
 LIMITEXCEEDED_EIPNUMLIMIT = 'LimitExceeded.EipNumLimit'
 
+# 
+LIMITEXCEEDED_ENILIMITINSTANCETYPE = 'LimitExceeded.EniLimitInstanceType'
+
 # The number of ENIs on a specified instance exceeds the maximum ENIs allowed for the target instance type. Delete some ENIs and try again.
 LIMITEXCEEDED_ENINUMLIMIT = 'LimitExceeded.EniNumLimit'
 
@@ -707,6 +740,9 @@ REGIONABILITYLIMIT_UNSUPPORTEDTOIMPORTIMAGE = 'RegionAbilityLimit.UnsupportedToI
 # The resource is in use.
 RESOURCEINUSE = 'ResourceInUse'
 
+# 
+RESOURCEINUSE_DISKROLLBACKING = 'ResourceInUse.DiskRollbacking'
+
 # The availability zone has been sold out.
 RESOURCEINSUFFICIENT_AVAILABILITYZONESOLDOUT = 'ResourceInsufficient.AvailabilityZoneSoldOut'
 
@@ -721,6 +757,9 @@ RESOURCEINSUFFICIENT_CLOUDDISKUNAVAILABLE = 'ResourceInsufficient.CloudDiskUnava
 
 # The number of instances exceeded the quota limit of spread placement groups.
 RESOURCEINSUFFICIENT_DISASTERRECOVERGROUPCVMQUOTA = 'ResourceInsufficient.DisasterRecoverGroupCvmQuota'
+
+# 
+RESOURCEINSUFFICIENT_INSUFFICIENTGROUPQUOTA = 'ResourceInsufficient.InsufficientGroupQuota'
 
 # The specified instance type is insufficient.
 RESOURCEINSUFFICIENT_SPECIFIEDINSTANCETYPE = 'ResourceInsufficient.SpecifiedInstanceType'
@@ -788,11 +827,20 @@ UNKNOWNPARAMETER = 'UnknownParameter'
 # Unsupported operation.
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 
+# This operation is currently not supported for ARM machines.
+UNSUPPORTEDOPERATION_ARMARCHITECTURE = 'UnsupportedOperation.ArmArchitecture'
+
 # The specified instance or network cannot use the bandwidth package.
 UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = 'UnsupportedOperation.BandwidthPackageIdNotSupported'
 
 # Only one snapshot can be created in 24 hours. 
 UNSUPPORTEDOPERATION_DISKSNAPCREATETIMETOOOLD = 'UnsupportedOperation.DiskSnapCreateTimeTooOld'
+
+# 
+UNSUPPORTEDOPERATION_EDGEZONEINSTANCE = 'UnsupportedOperation.EdgeZoneInstance'
+
+# The selected edge zone does not support cloud disk operations.
+UNSUPPORTEDOPERATION_EDGEZONENOTSUPPORTCLOUDDISK = 'UnsupportedOperation.EdgeZoneNotSupportCloudDisk'
 
 # An ENI is bound to the CVM. Please unbind the ENI from the CVM before switching to VPC.
 UNSUPPORTEDOPERATION_ELASTICNETWORKINTERFACE = 'UnsupportedOperation.ElasticNetworkInterface'
@@ -821,8 +869,14 @@ UNSUPPORTEDOPERATION_INSTANCECHARGETYPE = 'UnsupportedOperation.InstanceChargeTy
 # A mixed payment mode is not supported.
 UNSUPPORTEDOPERATION_INSTANCEMIXEDPRICINGMODEL = 'UnsupportedOperation.InstanceMixedPricingModel'
 
+# The specified instance does not support operating system switching.
+UNSUPPORTEDOPERATION_INSTANCEOSCONVERTOSNOTSUPPORT = 'UnsupportedOperation.InstanceOsConvertOsNotSupport'
+
 # The instance `ins-xxxxxx` with the `Xserver windows2012cndatacenterx86_64` operating system does not support this operation.
 UNSUPPORTEDOPERATION_INSTANCEOSWINDOWS = 'UnsupportedOperation.InstanceOsWindows'
+
+# 
+UNSUPPORTEDOPERATION_INSTANCEREINSTALLFAILED = 'UnsupportedOperation.InstanceReinstallFailed'
 
 # This CVM is blocked. Please submit a ticket.
 UNSUPPORTEDOPERATION_INSTANCESTATEBANNING = 'UnsupportedOperation.InstanceStateBanning'
@@ -850,6 +904,9 @@ UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = 'UnsupportedOperation.InstanceStat
 
 # The instance is failed to create, so the operation is not supported.
 UNSUPPORTEDOPERATION_INSTANCESTATELAUNCHFAILED = 'UnsupportedOperation.InstanceStateLaunchFailed'
+
+# The specified operation is not supported for instances that are not in the running state.
+UNSUPPORTEDOPERATION_INSTANCESTATENOTRUNNING = 'UnsupportedOperation.InstanceStateNotRunning'
 
 # The instances are being created, and this operation is not supported.
 UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = 'UnsupportedOperation.InstanceStatePending'
@@ -899,6 +956,9 @@ UNSUPPORTEDOPERATION_INVALIDDATADISK = 'UnsupportedOperation.InvalidDataDisk'
 # The specified disk is not supported.
 UNSUPPORTEDOPERATION_INVALIDDISK = 'UnsupportedOperation.InvalidDisk'
 
+# 
+UNSUPPORTEDOPERATION_INVALIDDISKFASTROLLBACK = 'UnsupportedOperation.InvalidDiskFastRollback'
+
 # The image license type does not match the instance. Select another image.
 UNSUPPORTEDOPERATION_INVALIDIMAGELICENSETYPEFORRESET = 'UnsupportedOperation.InvalidImageLicenseTypeForReset'
 
@@ -907,6 +967,9 @@ UNSUPPORTEDOPERATION_INVALIDINSTANCENOTSUPPORTEDPROTECTEDINSTANCE = 'Unsupported
 
 # Instances with swap disks are not supported.
 UNSUPPORTEDOPERATION_INVALIDINSTANCEWITHSWAPDISK = 'UnsupportedOperation.InvalidInstanceWithSwapDisk'
+
+# The user does not have permissions to operate the current instance.
+UNSUPPORTEDOPERATION_INVALIDINSTANCESOWNER = 'UnsupportedOperation.InvalidInstancesOwner'
 
 # The current operation is only supported for Tencent Cloud International users.
 UNSUPPORTEDOPERATION_INVALIDPERMISSIONNONINTERNATIONALACCOUNT = 'UnsupportedOperation.InvalidPermissionNonInternationalAccount'
@@ -922,6 +985,12 @@ UNSUPPORTEDOPERATION_LOCALDATADISKCHANGEINSTANCEFAMILY = 'UnsupportedOperation.L
 
 # The specified disk is converting to a cloud disk. Try again later.
 UNSUPPORTEDOPERATION_LOCALDISKMIGRATINGTOCLOUDDISK = 'UnsupportedOperation.LocalDiskMigratingToCloudDisk'
+
+# This request does not support images in this region. Please change to another image.
+UNSUPPORTEDOPERATION_LOCATIONIMAGENOTSUPPORTED = 'UnsupportedOperation.LocationImageNotSupported'
+
+# Marketplace image instances do not support operating system switching.
+UNSUPPORTEDOPERATION_MARKETIMAGECONVERTOSUNSUPPORTED = 'UnsupportedOperation.MarketImageConvertOSUnsupported'
 
 # The custom images created with the market images cannot be exported.
 UNSUPPORTEDOPERATION_MARKETIMAGEEXPORTUNSUPPORTED = 'UnsupportedOperation.MarketImageExportUnsupported'
@@ -946,6 +1015,9 @@ UNSUPPORTEDOPERATION_NOTSUPPORTIMPORTINSTANCESACTIONTIMER = 'UnsupportedOperatio
 
 # The instance does not support this operation.
 UNSUPPORTEDOPERATION_NOTSUPPORTINSTANCEIMAGE = 'UnsupportedOperation.NotSupportInstanceImage'
+
+# There are unpaid orders for the instance.
+UNSUPPORTEDOPERATION_NOTSUPPORTUNPAIDORDER = 'UnsupportedOperation.NotSupportUnpaidOrder'
 
 # Only a prepaid account supports this operation.
 UNSUPPORTEDOPERATION_ONLYFORPREPAIDACCOUNT = 'UnsupportedOperation.OnlyForPrepaidAccount'
@@ -995,8 +1067,17 @@ UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = 'UnsupportedOperation.StoppedMode
 # Configuration adjustment of the same type is not supported for instances with no charges when shut down.
 UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGINGSAMEFAMILY = 'UnsupportedOperation.StoppedModeStopChargingSameFamily'
 
+# 
+UNSUPPORTEDOPERATION_SYSTEMDISKTYPE = 'UnsupportedOperation.SystemDiskType'
+
+# The operation is not supported when TencentCloud Automation Tools are offline.
+UNSUPPORTEDOPERATION_TATAGENTNOTONLINE = 'UnsupportedOperation.TatAgentNotOnline'
+
 # For an underwriting instance, `RenewFlag` can only be set to `NOTIFY_AND_AUTO_RENEW`.
 UNSUPPORTEDOPERATION_UNDERWRITINGINSTANCETYPEONLYSUPPORTAUTORENEW = 'UnsupportedOperation.UnderwritingInstanceTypeOnlySupportAutoRenew'
+
+# 
+UNSUPPORTEDOPERATION_UNSUPPORTEDARMCHANGEINSTANCEFAMILY = 'UnsupportedOperation.UnsupportedARMChangeInstanceFamily'
 
 # The specified model does not support cross-model configuration adjustment.
 UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCEFAMILY = 'UnsupportedOperation.UnsupportedChangeInstanceFamily'
@@ -1009,6 +1090,12 @@ UNSUPPORTEDOPERATION_UNSUPPORTEDCHANGEINSTANCETOTHISINSTANCEFAMILY = 'Unsupporte
 
 # This operation is not available for Tencent Cloud International users.
 UNSUPPORTEDOPERATION_UNSUPPORTEDINTERNATIONALUSER = 'UnsupportedOperation.UnsupportedInternationalUser'
+
+# The specified pool is illegal.
+UNSUPPORTEDOPERATION_UNSUPPORTEDPOOL = 'UnsupportedOperation.UnsupportedPool'
+
+# The specified user does not support performing operating system switching.
+UNSUPPORTEDOPERATION_USERCONVERTOSNOTSUPPORT = 'UnsupportedOperation.UserConvertOsNotSupport'
 
 # The quota of user limit operations is insufficient.
 UNSUPPORTEDOPERATION_USERLIMITOPERATIONEXCEEDQUOTA = 'UnsupportedOperation.UserLimitOperationExceedQuota'
