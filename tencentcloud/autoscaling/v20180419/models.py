@@ -1316,12 +1316,16 @@ Setting it to `true` will clear the instance name settings, which means that CVM
         :param _ClearDisasterRecoverGroupIds: Whether to clear placement group information. This parameter is optional. Default value: `false`.
 `True` means clearing placement group information. After that, no placement groups are specified for CVMs created based on the information.
         :type ClearDisasterRecoverGroupIds: bool
+        :param _ClearInstanceTags: Whether to clear the instance tag list. This parameter is optional, and its default value is false.
+If true is filled in, it indicates that the instance tag list should be cleared. After the list is cleared, the CVMs created based on this will not be bound to the tags in the list.
+        :type ClearInstanceTags: bool
         """
         self._LaunchConfigurationId = None
         self._ClearDataDisks = None
         self._ClearHostNameSettings = None
         self._ClearInstanceNameSettings = None
         self._ClearDisasterRecoverGroupIds = None
+        self._ClearInstanceTags = None
 
     @property
     def LaunchConfigurationId(self):
@@ -1363,6 +1367,14 @@ Setting it to `true` will clear the instance name settings, which means that CVM
     def ClearDisasterRecoverGroupIds(self, ClearDisasterRecoverGroupIds):
         self._ClearDisasterRecoverGroupIds = ClearDisasterRecoverGroupIds
 
+    @property
+    def ClearInstanceTags(self):
+        return self._ClearInstanceTags
+
+    @ClearInstanceTags.setter
+    def ClearInstanceTags(self, ClearInstanceTags):
+        self._ClearInstanceTags = ClearInstanceTags
+
 
     def _deserialize(self, params):
         self._LaunchConfigurationId = params.get("LaunchConfigurationId")
@@ -1370,6 +1382,7 @@ Setting it to `true` will clear the instance name settings, which means that CVM
         self._ClearHostNameSettings = params.get("ClearHostNameSettings")
         self._ClearInstanceNameSettings = params.get("ClearInstanceNameSettings")
         self._ClearDisasterRecoverGroupIds = params.get("ClearDisasterRecoverGroupIds")
+        self._ClearInstanceTags = params.get("ClearInstanceTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2069,12 +2082,12 @@ Note that this project ID is not the same as the project ID of the scaling group
         :type InstanceTypes: list of str
         :param _CamRoleName: CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.
         :type CamRoleName: str
-        :param _InstanceTypesCheckPolicy: Instance type verification policy. Value range: ALL, ANY. Default value: ANY.
-<br><li> ALL: The verification will success only if all instance types (InstanceType) are available; otherwise, an error will be reported.
-<br><li> ANY: The verification will success if any instance type (InstanceType) is available; otherwise, an error will be reported.
+        :param _InstanceTypesCheckPolicy: InstanceType verification policy, whose valid values include ALL and ANY, with the default value being ANY.
+<li>ALL: Verification passes if all InstanceTypes are available; otherwise, a verification error will be reported.</li>
+<li>ANY: Verification passes if any InstanceType is available; otherwise, a verification error will be reported.</li>
 
-Common reasons why an instance type is unavailable include stock-out of the instance type or the corresponding cloud disk.
-If a model in InstanceTypes does not exist or has been discontinued, a verification error will be reported regardless of the value of InstanceTypesCheckPolicy.
+Common reasons for unavailable InstanceTypes include the InstanceType being sold out, and the corresponding cloud disk being sold out.
+If a model in InstanceTypes does not exist or has been abolished, a verification error will be reported regardless of the valid values set for InstanceTypesCheckPolicy.
         :type InstanceTypesCheckPolicy: str
         :param _InstanceTags: List of tags. This parameter is used to bind up to 10 tags to newly added instances.
         :type InstanceTags: list of InstanceTag
@@ -2087,9 +2100,9 @@ If this field is configured in a launch configuration, the `InstanceName` of a C
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         :param _InstanceChargePrepaid: Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
-        :param _DiskTypePolicy: Selection policy of cloud disks. Default value: ORIGINAL. Valid values:
-<br><li>ORIGINAL: uses the configured cloud disk type
-<br><li>AUTOMATIC: automatically chooses an available cloud disk type
+        :param _DiskTypePolicy: Cloud disk type selection policy, whose default value is ORIGINAL. Valid values:
+<li>ORIGINAL: Use the set cloud disk type.</li>
+<li>AUTOMATIC: Automatically select the currently available cloud disk type.</li>
         :type DiskTypePolicy: str
         :param _HpcClusterId: HPC ID<br>
 Note: This field is default to empty
@@ -2098,6 +2111,8 @@ Note: This field is default to empty
         :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
         :param _DisasterRecoverGroupIds: Placement group ID. Only one is allowed.
         :type DisasterRecoverGroupIds: list of str
+        :param _ImageFamily: Image family name. Either image ID or image family name should be filled in, and only one of which can be filled.
+        :type ImageFamily: str
         """
         self._LaunchConfigurationName = None
         self._ImageId = None
@@ -2124,6 +2139,7 @@ Note: This field is default to empty
         self._HpcClusterId = None
         self._IPv6InternetAccessible = None
         self._DisasterRecoverGroupIds = None
+        self._ImageFamily = None
 
     @property
     def LaunchConfigurationName(self):
@@ -2325,6 +2341,14 @@ Note: This field is default to empty
     def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
         self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
 
+    @property
+    def ImageFamily(self):
+        return self._ImageFamily
+
+    @ImageFamily.setter
+    def ImageFamily(self, ImageFamily):
+        self._ImageFamily = ImageFamily
+
 
     def _deserialize(self, params):
         self._LaunchConfigurationName = params.get("LaunchConfigurationName")
@@ -2385,6 +2409,7 @@ Note: This field is default to empty
             self._IPv6InternetAccessible = IPv6InternetAccessible()
             self._IPv6InternetAccessible._deserialize(params.get("IPv6InternetAccessible"))
         self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        self._ImageFamily = params.get("ImageFamily")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3111,8 +3136,16 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: Data disk type. See [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>`LOCAL_BASIC`: Local disk<br><li>`LOCAL_SSD`: Local SSD disk<br><li>`CLOUD_BASIC`: HDD cloud disk<br><li>`CLOUD_PREMIUM`: Premium cloud storage<br><li>`CLOUD_SSD`: SSD cloud disk<br><li>`CLOUD_HSSD`: Enhanced SSD<br><li>`CLOUD_TSSD`: Tremendous SSD<br><br>The default value should be the same as the `DiskType` field under `SystemDisk`.
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _DiskType: Data disk type. For restrictions on data disk type, see [Cloud Block Storage Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). Valid values:
+<li>LOCAL_BASIC: Local hard disk.</li>
+<li>LOCAL_SSD: Local SSD.</li>
+<li>CLOUD_BASIC: General cloud disk.</li>
+<li>CLOUD_PREMIUM: Premium cloud disk.</li>
+<li>CLOUD_SSD: Cloud SSD.</li>
+<li>CLOUD_HSSD: Enhanced SSD.</li>
+<li>CLOUD_TSSD: Ultra SSD.</li>
+The default value is consistent with the system disk type (SystemDisk.DiskType).
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DiskType: str
         :param _DiskSize: Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [CVM Instance Configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
 Note: This field may return null, indicating that no valid values can be obtained.
@@ -3120,16 +3153,25 @@ Note: This field may return null, indicating that no valid values can be obtaine
         :param _SnapshotId: Data disk snapshot ID, such as `snap-l8psqwnt`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type SnapshotId: str
-        :param _DeleteWithInstance: Specifies whether the data disk is terminated along with the termination of the associated CVM instance.  Values: <br><li>`TRUE` (only available for pay-as-you-go cloud disks that are billed by hour) and `FALSE`.
-Note: this field may return `null`, indicating that no valid value can be obtained.
+        :param _DeleteWithInstance: Whether the data disk is terminated along with the instance. Valid values:
+<li>TRUE: When the instance is terminated, the data disk is also terminated. This option is only supported for hourly postpaid cloud disks.</li>
+<li>FALSE: When the instance is terminated, the data disk is retained.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type DeleteWithInstance: bool
-        :param _Encrypt: Data disk encryption. Valid values: <br><li>`TRUE`: Encrypted<br><li>`FALSE`: Not encrypted
-Note: This field may return `null`, indicating that no valid value can be obtained.
+        :param _Encrypt: Whether the data disk is encrypted. Valid values:
+<li>TRUE: Encrypted.</li>
+<li>FALSE: Not encrypted.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type Encrypt: bool
         :param _ThroughputPerformance: Cloud disk performance (MB/s). This parameter is used to purchase extra performance for the cloud disk. For details on the feature and limits, see [Enhanced SSD Performance](https://intl.cloud.tencent.com/document/product/362/51896?from_cn_redirect=1#. E5.A2.9E.E5.BC.BA.E5.9E.8B-ssd-.E4.BA.91.E7.A1.AC.E7.9B.98.E9.A2.9D.E5.A4.96 .E6.80.A7.E8.83.BD).
 This feature is only available to enhanced SSD (`CLOUD_HSSD`) and tremendous SSD (`CLOUD_TSSD`) disks with a capacity greater than 460 GB.
 Note: This field may return `null`, indicating that no valid value can be obtained.
         :type ThroughputPerformance: int
+        :param _BurstPerformance: Burst performance: Whether to enable burst performance. The default value is false.
+
+Note: This feature is in beta test and requires a ticket to be submitted for usage.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type BurstPerformance: bool
         """
         self._DiskType = None
         self._DiskSize = None
@@ -3137,6 +3179,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._DeleteWithInstance = None
         self._Encrypt = None
         self._ThroughputPerformance = None
+        self._BurstPerformance = None
 
     @property
     def DiskType(self):
@@ -3186,6 +3229,14 @@ Note: This field may return `null`, indicating that no valid value can be obtain
     def ThroughputPerformance(self, ThroughputPerformance):
         self._ThroughputPerformance = ThroughputPerformance
 
+    @property
+    def BurstPerformance(self):
+        return self._BurstPerformance
+
+    @BurstPerformance.setter
+    def BurstPerformance(self, BurstPerformance):
+        self._BurstPerformance = BurstPerformance
+
 
     def _deserialize(self, params):
         self._DiskType = params.get("DiskType")
@@ -3194,6 +3245,7 @@ Note: This field may return `null`, indicating that no valid value can be obtain
         self._DeleteWithInstance = params.get("DeleteWithInstance")
         self._Encrypt = params.get("Encrypt")
         self._ThroughputPerformance = params.get("ThroughputPerformance")
+        self._BurstPerformance = params.get("BurstPerformance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4214,15 +4266,15 @@ class DescribeLaunchConfigurationsRequest(AbstractModel):
         r"""
         :param _LaunchConfigurationIds: Queries by one or more launch configuration IDs in the format of `asc-ouy1ax38`. The maximum quantity per request is 100. This parameter does not support specifying both `LaunchConfigurationIds` and `Filters` at the same time.
         :type LaunchConfigurationIds: list of str
-        :param _Filters: Filters
-<li> `launch-configuration-id` - String - Required: No - Filter by launch configuration ID.</li>
-<li> `launch-configuration-name` - String - Required: No - Filter by launch configuration name.</li>
-<li> `launch-configuration-name` - String - Required: No - Fuzzy search by launch configuration name.</li>
-<li> `tag-key` - String - Required: No - Filter by the tag key.</li>
-<li> `tag-value` - String - Required: No - Filter by the tag value.</li>
-<li>tag:tag-key - String - Optional - Filter by tag key pair. Use a specific tag key to replace `tag-key`. See Example 3 for the detailed usage.</li>
-</li>
-The maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `LaunchConfigurationIds` and `Filters` at the same time.
+        :param _Filters: Filter criteria
+
+<li>launch-configuration-id - String - required: no - (filter condition) filter by launch configuration ID.</li>
+<li>launch-configuration-name - String - required: no - (filter condition) filter by launch configuration name.</li>
+<li>vague-launch-configuration-name - String - required: no - (filter condition) fuzzy search by launch configuration name.</li>
+<li>tag-key - String - required: no - (filter condition) filter by tag key.</li>
+<li>tag-value - String - required: no - (filter condition) filter by tag value.</li>
+<li>tag:tag-key - String - required: no - (filter condition) filter by Tag key-value pair. Replace tag-key with a specific tag key. See Example 3 for usage.</li>
+The maximum number of `Filters` per request is 10, and the maximum number of `Filter.Values` is 5. The parameter does not support specifying both `LaunchConfigurationIds` and `Filters`.
         :type Filters: list of Filter
         :param _Limit: The number of returned results. Default value: `20`. Maximum value: `100`. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
         :type Limit: int
@@ -5442,10 +5494,14 @@ class EnhancedService(AbstractModel):
 
     @property
     def AutomationService(self):
+        warnings.warn("parameter `AutomationService` is deprecated", DeprecationWarning) 
+
         return self._AutomationService
 
     @AutomationService.setter
     def AutomationService(self, AutomationService):
+        warnings.warn("parameter `AutomationService` is deprecated", DeprecationWarning) 
+
         self._AutomationService = AutomationService
 
     @property
@@ -5857,20 +5913,28 @@ class HostNameSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HostName: Hostname of a CVM
-<br><li>The `HostName` cannot start or end with a period (.) or hyphen (-), and cannot contain consecutive periods and hyphens.
-<br><li>This field is unavailable to CVM instances.
-<br><li>Other types of instances (such as Linux): the name contains 2 to 40 characters, and supports multiple periods (.). The string between two periods can consist of letters (case insensitive), numbers, and hyphens (-), and cannot be all numbers.
-Note: this field may return `null`, indicating that no valid value is obtained.
+        :param _HostName: CVM HostName.
+<li>Dots (.) and hyphens (-) cannot be used as the first or last character of HostName, and cannot be used consecutively.</li>
+<li>Windows instances are not supported.</li>
+<li>Instances of other types (e.g., Linux): The length of the character should be within the range of [2, 40]. Multiple dots (.) are allowed. Each segment between dot marks can consist of letters (case-insensitive), digits, and hyphens (-). Using only digits is not allowed.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
         :type HostName: str
-        :param _HostNameStyle: Type of CVM host name. Valid values: "ORIGINAL" and "UNIQUE". Default value: "ORIGINAL"
-<br><li> ORIGINAL. Auto Scaling transfers the HostName set in input parameters to the CVM directly. CVM may adds serial numbers for the HostName. The HostName of instances within the auto scaling group may conflict.
-<br><li> UNIQUE. The HostName set in input parameters is the prefix of a host name. Auto Scaling and CVM expand it. The HostName of an instance in the auto scaling group is unique.
+        :param _HostNameStyle: The style of the CVM HostName. Valid values include ORIGINAL and UNIQUE, and the default value is ORIGINAL.
+<li>ORIGINAL: AS passes HostName filled in the input parameters to CVM. CVM may append serial numbers to HostName, which can result in conflicts with HostName of instances in the scaling group.</li>
+<li> UNIQUE: HostName filled in the input parameters acts as a prefix for the HostName. AS and CVM will expand this prefix to ensure that HostName of the instance in the scaling group is unique.</li>
 Note: This field may return null, indicating that no valid values can be obtained.
         :type HostNameStyle: str
+        :param _HostNameSuffix: HostName suffix for CVM.
+<li>Dots (.) and hyphens (-) cannot be used as the first or last character of HostNameSuffix, and cannot be used consecutively.</li>
+<li>Windows instances are not supported.</li>
+<li>Instances of other types (e.g., Linux): The length of the character should be within the range of [1, 37], and the combined length with HostName should not exceed 39. Multiple dots (.) are allowed. Each segment between dots can consist of letters (case-insensitive), digits, and hyphens (-).</li>
+Assume the suffix name is suffix and the original HostName is test.0, then the final HostName is test.0.suffix.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type HostNameSuffix: str
         """
         self._HostName = None
         self._HostNameStyle = None
+        self._HostNameSuffix = None
 
     @property
     def HostName(self):
@@ -5888,10 +5952,19 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def HostNameStyle(self, HostNameStyle):
         self._HostNameStyle = HostNameStyle
 
+    @property
+    def HostNameSuffix(self):
+        return self._HostNameSuffix
+
+    @HostNameSuffix.setter
+    def HostNameSuffix(self, HostNameSuffix):
+        self._HostNameSuffix = HostNameSuffix
+
 
     def _deserialize(self, params):
         self._HostName = params.get("HostName")
         self._HostNameStyle = params.get("HostNameStyle")
+        self._HostNameSuffix = params.get("HostNameSuffix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6344,9 +6417,15 @@ class InstanceNameSettings(AbstractModel):
 
 `UNIQUE`: the input parameter `InstanceName` is the prefix of an instance name. Auto Scaling and CVM expand it. The `InstanceName` of an instance in the scaling group is unique.
         :type InstanceNameStyle: str
+        :param _InstanceNameSuffix: CVM instance name suffix. The length of the character is within the range of [1, 105], and the combined length with InstanceName should not exceed 107.
+
+Assume the suffix name is suffix and the original instance name is test.0, then the final instance name is test.0.suffix.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type InstanceNameSuffix: str
         """
         self._InstanceName = None
         self._InstanceNameStyle = None
+        self._InstanceNameSuffix = None
 
     @property
     def InstanceName(self):
@@ -6364,10 +6443,19 @@ class InstanceNameSettings(AbstractModel):
     def InstanceNameStyle(self, InstanceNameStyle):
         self._InstanceNameStyle = InstanceNameStyle
 
+    @property
+    def InstanceNameSuffix(self):
+        return self._InstanceNameSuffix
+
+    @InstanceNameSuffix.setter
+    def InstanceNameSuffix(self, InstanceNameSuffix):
+        self._InstanceNameSuffix = InstanceNameSuffix
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
         self._InstanceNameStyle = params.get("InstanceNameStyle")
+        self._InstanceNameSuffix = params.get("InstanceNameSuffix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6668,6 +6756,9 @@ Note: This field is default to empty
         :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
         :param _DisasterRecoverGroupIds: Placement group ID, supporting specification of only one.
         :type DisasterRecoverGroupIds: list of str
+        :param _ImageFamily: Image family name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ImageFamily: str
         """
         self._ProjectId = None
         self._LaunchConfigurationId = None
@@ -6700,6 +6791,7 @@ Note: This field is default to empty
         self._HpcClusterId = None
         self._IPv6InternetAccessible = None
         self._DisasterRecoverGroupIds = None
+        self._ImageFamily = None
 
     @property
     def ProjectId(self):
@@ -6949,6 +7041,14 @@ Note: This field is default to empty
     def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
         self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
 
+    @property
+    def ImageFamily(self):
+        return self._ImageFamily
+
+    @ImageFamily.setter
+    def ImageFamily(self, ImageFamily):
+        self._ImageFamily = ImageFamily
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -7020,6 +7120,7 @@ Note: This field is default to empty
             self._IPv6InternetAccessible = IPv6InternetAccessible()
             self._IPv6InternetAccessible._deserialize(params.get("IPv6InternetAccessible"))
         self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        self._ImageFamily = params.get("ImageFamily")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7577,55 +7678,55 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         :type ProjectId: int
         :param _SubnetIds: List of subnet IDs
         :type SubnetIds: list of str
-        :param _TerminationPolicies: Termination policy. Currently, the maximum length is 1. Value range: OLDEST_INSTANCE, NEWEST_INSTANCE.
-<br><li> OLDEST_INSTANCE: The oldest instance in the auto scaling group will be terminated first.
-<br><li> NEWEST_INSTANCE: The newest instance in the auto scaling group will be terminated first.
+        :param _TerminationPolicies: Termination policy, whose maximum length is currently 1. Valid values include OLDEST_INSTANCE and NEWEST_INSTANCE.
+<li>OLDEST_INSTANCE: Terminate the oldest instance in the scaling group first.</li>
+<li>NEWEST_INSTANCE: Terminate the newest instance in the scaling group first.</li>
         :type TerminationPolicies: list of str
         :param _VpcId: VPC ID. This field is left empty for basic networks. You need to specify SubnetIds when modifying the network of the auto scaling group to a VPC with a specified VPC ID. Specify Zones when modifying the network to a basic network.
         :type VpcId: str
         :param _Zones: List of availability zones
         :type Zones: list of str
-        :param _RetryPolicy: Retry policy. Valid values: `IMMEDIATE_RETRY` (default), `INCREMENTAL_INTERVALS`, `NO_RETRY`. A partially successful scaling is judged as a failed one.
-<br><li>
-`IMMEDIATE_RETRY`: Retrying immediately in a short period of time and stopping after five consecutive failures.
-<br><li>
-`INCREMENTAL_INTERVALS`: Retrying at incremental intervals. As the number of consecutive failures increases, the retry interval gradually increases, ranging from seconds to one day.
-<br><li>`NO_RETRY`: Do not retry. Actions are taken when the next call or alarm message comes.
+        :param _RetryPolicy: Retry policy, whose valid values include IMMEDIATE_RETRY, INCREMENTAL_INTERVALS, and NO_RETRY, with the default value being IMMEDIATE_RETRY. A partially successful scaling activity is considered a failed activity.
+<li>IMMEDIATE_RETRY: Immediately retry, and quickly retry in a short period. There will be no retry anymore after a certain number of consecutive failures (5).</li>
+<li>INCREMENTAL_INTERVALS: Retry with incremental intervals. As the number of consecutive failures increases, the retry intervals gradually become longer, ranging from seconds to one day.</li>
+<li>NO_RETRY: There will be no retry until another user call or alarm information is received.</li>
         :type RetryPolicy: str
-        :param _ZonesCheckPolicy: Availability zone verification policy. Value range: ALL, ANY. Default value: ANY. This will work when the resource-related fields (launch configuration, availability zone, or subnet) of the auto scaling group are actually modified.
-<br><li> ALL: The verification will succeed only if all availability zones (Zone) or subnets (SubnetId) are available; otherwise, an error will be reported.
-<br><li> ANY: The verification will success if any availability zone (Zone) or subnet (SubnetId) is available; otherwise, an error will be reported.
+        :param _ZonesCheckPolicy: AZ verification policy, whose valid values include ALL and ANY, with the default value being ANY. This policy comes into effect when actual changes are made to resource-related fields in the scaling group (such as launch configuration, AZ, or subnet).
+<li>ALL: Verification passes if all AZs or subnets are available; otherwise, a verification error will be reported.<li>
+<li>ANY: Verification passes if any AZ or subnet is available; otherwise, a verification error will be reported.</li>
 
-Common reasons why an availability zone or subnet is unavailable include stock-out of CVM instances or CBS cloud disks in the availability zone, insufficient quota in the availability zone, or insufficient IPs in the subnet.
-If an availability zone or subnet in Zones/SubnetIds does not exist, a verification error will be reported regardless of the value of ZonesCheckPolicy.
+Common reasons for unavailable AZs or subnets include the CVM InstanceType in the AZ being sold out, the CBS cloud disk in the AZ being sold out, insufficient quota in the AZ, and insufficient IP addresses in the subnet.
+If there is no AZ or subnet in Zones/SubnetIds, a verification error will be reported regardless of the values of ZonesCheckPolicy.
         :type ZonesCheckPolicy: str
         :param _ServiceSettings: Service settings such as unhealthy instance replacement.
         :type ServiceSettings: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
         :param _Ipv6AddressCount: The number of IPv6 addresses that an instance has. Valid values: 0 and 1.
         :type Ipv6AddressCount: int
-        :param _MultiZoneSubnetPolicy: Multi-availability zone/subnet policy. Valid values: `PRIORITY` and `EQUALITY`. Default value: `PRIORITY`.
-<br><li>`PRIORITY`: When an instance is being created, the availability zone/subnet is chosen from top to bottom in the list. The first availability zone/subnet is always used as long as instances can be created.
-<br><li>`EQUALITY`: Instances created for scaling out are distributed to multiple availability zones/subnets, so as to keep the number of instances in different availability zone/subnet in balance.
+        :param _MultiZoneSubnetPolicy: Multi-AZ/multi-subnet policy, whose valid values include PRIORITY and EQUALITY, with the default value being PRIORITY.
+<li>PRIORITY: Instances are attempted to be created taking the order of the AZ/subnet list as the priority. If the highest-priority AZ/subnet can create instances successfully, instances can always be created in that AZ/subnet.</li>
+<li>EQUALITY: The instances added through scale-out will be distributed across multiple AZs/subnets to ensure a relatively balanced number of instances in each AZ/subnet after scaling out.</li>
 
-Notes:
-<br><li> When the scaling group is based on the classic network, this policy applies to multiple availability zones. When the scaling group is based on a VPC, this policy applies to multiple subnets, and you do not need to consider availability zones. For example, if you have four subnets (A, B, C, and D) and A, B, and C are in availability zone 1 and D is in availability zone 2, you only need to decide the order of the four subnets, without worrying about the issue of availability zones.
-<br><li> This policy is applicable to multiple availability zones/subnets, but is not applicable to multiple models with launch configurations. Specify the models according to the model priority.
-<br><li> When `PRIORITY` policy is used, the multi-model policy prevails the multi-availability zones/subnet policy. For example, if you have Model A/B, and Subnet 1/2/3, the model-subnet combinations are tried in the following order: A1 -> A2 -> A3 -> B1 -> B2 -> B3. If A1 is sold out, A2 (not B1) is tried next.
+Points to consider regarding this policy:
+<li>When the scaling group is based on a classic network, this policy applies to the multi-AZ; when the scaling group is based on a VPC network, this policy applies to the multi-subnet, in this case, the AZs are no longer considered. For example, if there are four subnets labeled A, B, C, and D, where A, B, and C are in AZ 1 and D is in AZ 2, the subnets A, B, C, and D are considered for sorting without regard to AZs 1 and 2.</li>
+<li>This policy applies to the multi-AZ/multi-subnet and not to the InstanceTypes parameter of the launch configuration, which is selected according to the priority policy.</li>
+<li>When instances are created according to the PRIORITY policy, ensure the policy for multiple models first, followed by the policy for the multi-AZ/subnet. For example, with models A and B and subnets 1, 2, and 3, attempts will be made in the order of A1, A2, A3, B1, B2, and B3. If A1 is sold out, A2 will be attempted (instead of B1).</li>
         :type MultiZoneSubnetPolicy: str
-        :param _HealthCheckType: Health check type of instances in a scaling group.<br><li>CVM: confirm whether an instance is healthy based on the network status. If the pinged instance is unreachable, the instance will be considered unhealthy. For more information, see [Instance Health Check](https://intl.cloud.tencent.com/document/product/377/8553?from_cn_redirect=1)<br><li>CLB: confirm whether an instance is healthy based on the CLB health check status. For more information, see [Health Check Overview](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1).
+        :param _HealthCheckType: Scaling group instance health check type, whose valid values include:
+<li>CVM: Determines whether an instance is unhealthy based on its network status. An unhealthy network status is indicated by an event where instances become unreachable via PING. Detailed criteria of judgment can be found in [Instance Health Check](https://intl.cloud.tencent.com/document/product/377/8553?from_cn_redirect=1).</li>
+<li>CLB: Determines whether an instance is unhealthy based on the health check status of CLB. For principles behind CLB health checks, see [Health Check](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1).</li>
         :type HealthCheckType: str
         :param _LoadBalancerHealthCheckGracePeriod: Grace period of the CLB health check
         :type LoadBalancerHealthCheckGracePeriod: int
-        :param _InstanceAllocationPolicy: Specifies how to assign instances. Valid values: `LAUNCH_CONFIGURATION` and `SPOT_MIXED`.
-<br><li>`LAUNCH_CONFIGURATION`: the launch configuration mode.
-<br><li>`SPOT_MIXED`: a mixed instance mode. Currently, this mode is supported only when the launch configuration takes the pay-as-you-go billing mode. With this mode, the scaling group can provision a combination of pay-as-you-go instances and spot instances to meet the configured capacity. Note that the billing mode of the associated launch configuration cannot be modified when this mode is used.
+        :param _InstanceAllocationPolicy: Instance assignment policy, whose valid values include LAUNCH_CONFIGURATION and SPOT_MIXED.
+<li>LAUNCH_CONFIGURATION: Represent the traditional mode of assigning instances according to the launch configuration.</li>
+<li>SPOT_MIXED: Represent the spot mixed mode. Currently, this mode is supported only when the launch configuration is set to the pay-as-you-go billing mode. In the mixed mode, the scaling group will scale out pay-as-you-go models or spot models based on the predefined settings. When the mixed mode is used, the billing type of the associated launch configuration cannot be modified.</li>
         :type InstanceAllocationPolicy: str
         :param _SpotMixedAllocationPolicy: Specifies how to assign pay-as-you-go instances and spot instances.
 This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIXED`.
         :type SpotMixedAllocationPolicy: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
-        :param _CapacityRebalance: Indicates whether the capacity rebalancing feature is enabled. This parameter is only valid for spot instances in the scaling group. Valid values:
-<br><li>`TRUE`: yes. Before the spot instances in the scaling group are about to be automatically repossessed, AS will terminate them. The scale-in hook (if configured) will take effect before the termination. After the termination process starts, AS will asynchronously initiate a scaling activity to meet the desired capacity.
-<br><li>`FALSE`: no. In this case, AS will add instances to meet the desired capacity only after the spot instances are terminated.
+        :param _CapacityRebalance: Capacity rebalancing feature, which is applicable only to spot instances within the scaling group. Valid values:
+<li>TRUE: Enable this feature. When spot instances in the scaling group are about to be automatically recycled by the spot instance service, AS proactively initiates the termination process of the spot instances. If there is a configured scale-in hook, it will be triggered before termination. After the termination process starts, AS asynchronously initiates the scale-out to reach the expected number of instances.</li>
+<li>FALSE: Disable this feature. AS waits for the spot instance to be terminated before scaling out to reach the number of instances expected by the scaling group.</li>
         :type CapacityRebalance: bool
         :param _InstanceNameIndexSettings: Instance name sequencing settings. When enabled, an incremental numeric sequence will be appended to the names of instances automatically created within the scaling group.
         :type InstanceNameIndexSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
@@ -8012,12 +8113,11 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
         :param _InstanceTypes: List of instance types. Each type specifies different resource specifications. This list contains up to 10 instance types.
 The launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. Specifying the `InstanceTypes` field will invalidate the original `InstanceType`.
         :type InstanceTypes: list of str
-        :param _InstanceTypesCheckPolicy: Instance type verification policy which works when InstanceTypes is actually modified. Value range: ALL, ANY. Default value: ANY.
-<br><li> ALL: The verification will success only if all instance types (InstanceType) are available; otherwise, an error will be reported.
-<br><li> ANY: The verification will success if any instance type (InstanceType) is available; otherwise, an error will be reported.
-
-Common reasons why an instance type is unavailable include stock-out of the instance type or the corresponding cloud disk.
-If a model in InstanceTypes does not exist or has been discontinued, a verification error will be reported regardless of the value of InstanceTypesCheckPolicy.
+        :param _InstanceTypesCheckPolicy: InstanceType verification policy, which is effective when actual modification is made to InstanceTypes. Valid values include ALL and ANY and the default value is ANY.
+<li>ALL: Verification passes if all InstanceTypes are available; otherwise, a verification error will be reported.</li>
+<li>ANY: Verification passes if any InstanceType is available; otherwise, a verification error will be reported.</li>
+Common reasons for unavailable InstanceTypes include the InstanceType being sold out, and the corresponding cloud disk being sold out.
+If a model in InstanceTypes does not exist or has been abolished, a verification error will be reported regardless of the valid values set for InstanceTypesCheckPolicy.
         :type InstanceTypesCheckPolicy: str
         :param _LaunchConfigurationName: Display name of the launch configuration, which can contain Chinese characters, letters, numbers, underscores, separators ("-"), and decimal points with a maximum length of 60 bytes.
         :type LaunchConfigurationName: str
@@ -8043,9 +8143,9 @@ This parameter is required when changing the instance billing mode to spot insta
 This field requires passing in the `MaxPrice` field under the `SpotOptions`. Other fields that are not passed in will use their default values.
 This field can be modified only when the current billing mode is spot instance.
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
-        :param _DiskTypePolicy: Selection policy of cloud disks. Default value: ORIGINAL. Valid values:
-<br><li>ORIGINAL: uses the configured cloud disk type
-<br><li>AUTOMATIC: automatically chooses an available cloud disk type
+        :param _DiskTypePolicy: Cloud disk type selection policy. Valid values:
+<li>ORIGINAL: Use the set cloud disk type.</li>
+<li>AUTOMATIC: Automatically select the currently available cloud disk type.</li>
         :type DiskTypePolicy: str
         :param _SystemDisk: Instance system disk configurations
         :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
@@ -8074,6 +8174,11 @@ Note: This field is default to empty
         :type DisasterRecoverGroupIds: list of str
         :param _LoginSettings: Instance login settings, which include passwords, keys, or the original login settings inherited from the image. <br>Please note that specifying new login settings will overwrite the existing ones. For instance, if you previously used a password for login and then use this parameter to switch the login settings to a key, the original password will be removed.
         :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
+        :param _InstanceTags: Instance tag list. By specifying this parameter, the instances added through scale-out can be bound to the tag. Up to 10 Tags can be specified.
+This parameter will overwrite the original instance tag list. To add new tags, you need to pass the new tags along with the original tags.
+        :type InstanceTags: list of InstanceTag
+        :param _ImageFamily: Image family name.
+        :type ImageFamily: str
         """
         self._LaunchConfigurationId = None
         self._ImageId = None
@@ -8097,6 +8202,8 @@ Note: This field is default to empty
         self._IPv6InternetAccessible = None
         self._DisasterRecoverGroupIds = None
         self._LoginSettings = None
+        self._InstanceTags = None
+        self._ImageFamily = None
 
     @property
     def LaunchConfigurationId(self):
@@ -8274,6 +8381,22 @@ Note: This field is default to empty
     def LoginSettings(self, LoginSettings):
         self._LoginSettings = LoginSettings
 
+    @property
+    def InstanceTags(self):
+        return self._InstanceTags
+
+    @InstanceTags.setter
+    def InstanceTags(self, InstanceTags):
+        self._InstanceTags = InstanceTags
+
+    @property
+    def ImageFamily(self):
+        return self._ImageFamily
+
+    @ImageFamily.setter
+    def ImageFamily(self, ImageFamily):
+        self._ImageFamily = ImageFamily
+
 
     def _deserialize(self, params):
         self._LaunchConfigurationId = params.get("LaunchConfigurationId")
@@ -8321,6 +8444,13 @@ Note: This field is default to empty
         if params.get("LoginSettings") is not None:
             self._LoginSettings = LoginSettings()
             self._LoginSettings._deserialize(params.get("LoginSettings"))
+        if params.get("InstanceTags") is not None:
+            self._InstanceTags = []
+            for item in params.get("InstanceTags"):
+                obj = InstanceTag()
+                obj._deserialize(item)
+                self._InstanceTags.append(obj)
+        self._ImageFamily = params.get("ImageFamily")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8843,7 +8973,7 @@ class ModifyScalingPolicyRequest(AbstractModel):
         :type ScalingPolicyName: str
         :param _AdjustmentType: The method to adjust the desired capacity after the alarm is triggered. It’s only available when `ScalingPolicyType` is `Simple`. Valid values: <br><li>`CHANGE_IN_CAPACITY`: Increase or decrease the desired capacity </li><li>`EXACT_CAPACITY`: Adjust to the specified desired capacity </li> <li>`PERCENT_CHANGE_IN_CAPACITY`: Adjust the desired capacity by percentage </li>
         :type AdjustmentType: str
-        :param _AdjustmentValue: Specifies how to adjust the number of desired capacity when the alarm is triggered. It’s only available when `ScalingPolicyType` is `Simple`. Values: <br><li>`AdjustmentType`=`CHANGE_IN_CAPACITY`: Number of instances to add (positive number) or remove (negative number). </li> <li>`AdjustmentType`=`EXACT_CAPACITY`: Set the desired capacity to the specified number. It must be ≥ 0. </li> <li>`AdjustmentType`=`PERCENT_CHANGE_IN_CAPACITY`: Percentage of instance number. Add instances (positive value) or remove instances (negative value) accordingly.
+        :param _AdjustmentValue: The adjustment value for the expected number of instances after an alarm is triggered. It applies only to simple policies. <li>When AdjustmentType is CHANGE_IN_CAPACITY, a positive AdjustmentValue indicates an increase in the number of instances after the alarm is triggered, and a negative AdjustmentValue indicates a decrease in the number of instances after the alarm is triggered.</li> <li>When AdjustmentType is EXACT_CAPACITY, the value of AdjustmentValue represents the expected number of instances after the alarm is triggered, which should be greater than or equal to 0.</li> <li>When AdjustmentType is PERCENT_CHANGE_IN_CAPACITY, a positive AdjustmentValue indicates an increase in the number of instances by percentage after the alarm is triggered, and a negative AdjustmentValue indicates a decrease in the number of instances by percentage after the alarm is triggered. The unit is: %.</li>
         :type AdjustmentValue: int
         :param _Cooldown: Cooldown period (in seconds). It’s only available when `ScalingPolicyType` is `Simple`.
         :type Cooldown: int
@@ -10602,10 +10732,17 @@ Default value: CLASSIC_SCALING
         :type ScalingMode: str
         :param _ReplaceLoadBalancerUnhealthy: Enable unhealthy instance replacement. If this feature is enabled, AS will replace instances that are found unhealthy in the CLB health check. If this parameter is not specified, the default value `False` will be used.
         :type ReplaceLoadBalancerUnhealthy: bool
+        :param _ReplaceMode: Replace mode of unhealthy replacement service. Valid values:
+RECREATE: Rebuild an instance to replace the original unhealthy instance.
+RESET: Performing a system reinstallation on unhealthy instances to keep information such as data disks, private IP addresses, and instance IDs unchanged. The instance login settings, HostName, enhanced services, and UserData will remain consistent with the current launch configuration.
+Default value: RECREATE.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReplaceMode: str
         """
         self._ReplaceMonitorUnhealthy = None
         self._ScalingMode = None
         self._ReplaceLoadBalancerUnhealthy = None
+        self._ReplaceMode = None
 
     @property
     def ReplaceMonitorUnhealthy(self):
@@ -10631,11 +10768,20 @@ Default value: CLASSIC_SCALING
     def ReplaceLoadBalancerUnhealthy(self, ReplaceLoadBalancerUnhealthy):
         self._ReplaceLoadBalancerUnhealthy = ReplaceLoadBalancerUnhealthy
 
+    @property
+    def ReplaceMode(self):
+        return self._ReplaceMode
+
+    @ReplaceMode.setter
+    def ReplaceMode(self, ReplaceMode):
+        self._ReplaceMode = ReplaceMode
+
 
     def _deserialize(self, params):
         self._ReplaceMonitorUnhealthy = params.get("ReplaceMonitorUnhealthy")
         self._ScalingMode = params.get("ScalingMode")
         self._ReplaceLoadBalancerUnhealthy = params.get("ReplaceLoadBalancerUnhealthy")
+        self._ReplaceMode = params.get("ReplaceMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

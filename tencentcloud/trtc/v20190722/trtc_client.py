@@ -914,6 +914,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StopAIConversation(self, request):
+        """Stop AI conversation task
+
+        :param request: Request instance for StopAIConversation.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.StopAIConversationRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.StopAIConversationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopAIConversation", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopAIConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopAITranscription(self, request):
         """Stop AI Transcription task
 

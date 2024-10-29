@@ -5788,6 +5788,8 @@ Currently, fMP4 segments do not support DRM or time shifting.
         :type StreamOrder: int
         :param _VideoResolution: Whether the Hls main m3u8 file contains resolution information, optional values: 1: INCLUDE includes video resolution; 2: EXCLUDE does not include video resolution. Default value: 1.
         :type VideoResolution: int
+        :param _EndListTag: Whether to include the `EXT-X-ENDLIST` tag, 1 includes  `EXT-X-ENDLIST` tag, 2 does not include  `EXT-X-ENDLIST` tag; the default value is 1.
+        :type EndListTag: int
         """
         self._SegmentDuration = None
         self._SegmentNumber = None
@@ -5801,6 +5803,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
         self._PartialSegmentPlaySite = None
         self._StreamOrder = None
         self._VideoResolution = None
+        self._EndListTag = None
 
     @property
     def SegmentDuration(self):
@@ -5898,6 +5901,14 @@ Currently, fMP4 segments do not support DRM or time shifting.
     def VideoResolution(self, VideoResolution):
         self._VideoResolution = VideoResolution
 
+    @property
+    def EndListTag(self):
+        return self._EndListTag
+
+    @EndListTag.setter
+    def EndListTag(self, EndListTag):
+        self._EndListTag = EndListTag
+
 
     def _deserialize(self, params):
         self._SegmentDuration = params.get("SegmentDuration")
@@ -5912,6 +5923,7 @@ Currently, fMP4 segments do not support DRM or time shifting.
         self._PartialSegmentPlaySite = params.get("PartialSegmentPlaySite")
         self._StreamOrder = params.get("StreamOrder")
         self._VideoResolution = params.get("VideoResolution")
+        self._EndListTag = params.get("EndListTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
