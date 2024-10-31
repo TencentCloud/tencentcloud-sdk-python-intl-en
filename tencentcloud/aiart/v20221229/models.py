@@ -35,11 +35,11 @@ Image restrictions: The single-edge resolution must be less than 5,000 and great
         :type InputUrl: str
         :param _Prompt: Text description.
 It is used to increase the possibility that the generation result contains the described content.
-Chinese is recommended. A maximum of 256 UTF-8 characters are supported.
+A maximum of 256 UTF-8 characters are supported.
         :type Prompt: str
         :param _NegativePrompt: Negative text description.
 It is used to reduce the possibility that the generation result contains the described content, but such content cannot be completely avoided.
-Chinese is recommended. A maximum of 256 UTF-8 characters are supported.
+English is recommended. A maximum of 256 UTF-8 characters are supported.
         :type NegativePrompt: str
         :param _Styles: Image style.
 Select the desired style from the [Image Style List](https://intl.cloud.tencent.com/document/product/1668/86250?from_cn_redirect=1) and enter the style number.
@@ -69,7 +69,7 @@ The URL is valid for 1 hour.
         :param _EnhanceImage: Switch indicating whether to  enhance image clarity. Default value: 0.
 1: on
 0: off
-If the switch is turned on, the image clarity will be enhanced, but the generation time will increase.
+If the switch is turned on, the image clarity will be enhanced and the generation time will increase.
         :type EnhanceImage: int
         :param _RestoreFace: Maximum number of faces for detail restoration. Value range: 0 - 6. Default value: 0.
 If the input value is greater than 0, the value will be used as the maximum number of faces with a small area can be restored in each image. The generation time will increase according to the actual number of faces restored.

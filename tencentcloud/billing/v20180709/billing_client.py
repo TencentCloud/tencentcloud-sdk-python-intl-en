@@ -95,6 +95,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBillAdjustInfo(self, request):
+        """This API is used to check whether the current UIN has any adjustment, enabling customers to proactively obtain the adjustment status faster.
+
+        :param request: Request instance for DescribeBillAdjustInfo.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeBillAdjustInfoRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeBillAdjustInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillAdjustInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillAdjustInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBillDetail(self, request):
         """u200cThis API is used to get bill details.
         Note:

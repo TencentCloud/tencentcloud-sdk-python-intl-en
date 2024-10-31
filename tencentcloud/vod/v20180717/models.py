@@ -174,7 +174,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
 
 class AIRecognitionTemplateItem(AbstractModel):
-    """Video content recognition template details
+    """Video content recognition template details.
 
     """
 
@@ -186,6 +186,10 @@ class AIRecognitionTemplateItem(AbstractModel):
         :type Name: str
         :param _Comment: Video content recognition template description.
         :type Comment: str
+        :param _Type: Template type, values:
+<li>Preset: system preset template;</li>
+<li>Custom: user-defined template.</li>
+        :type Type: str
         :param _HeadTailConfigure: Control parameter of opening and closing credits recognition.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type HeadTailConfigure: :class:`tencentcloud.vod.v20180717.models.HeadTailConfigureInfo`
@@ -207,6 +211,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         :param _AsrWordsConfigure: Speech keyword recognition control parameter.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfo`
+        :param _AsrTranslateConfigure: Voice translation control parameter.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type AsrTranslateConfigure: :class:`tencentcloud.vod.v20180717.models.AsrTranslateConfigureInfo`
         :param _ObjectConfigure: Control parameter of object recognition.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`
@@ -220,6 +227,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._Definition = None
         self._Name = None
         self._Comment = None
+        self._Type = None
         self._HeadTailConfigure = None
         self._SegmentConfigure = None
         self._FaceConfigure = None
@@ -227,6 +235,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._OcrWordsConfigure = None
         self._AsrFullTextConfigure = None
         self._AsrWordsConfigure = None
+        self._AsrTranslateConfigure = None
         self._ObjectConfigure = None
         self._ScreenshotInterval = None
         self._CreateTime = None
@@ -255,6 +264,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
     @Comment.setter
     def Comment(self, Comment):
         self._Comment = Comment
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
     @property
     def HeadTailConfigure(self):
@@ -313,6 +330,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._AsrWordsConfigure = AsrWordsConfigure
 
     @property
+    def AsrTranslateConfigure(self):
+        return self._AsrTranslateConfigure
+
+    @AsrTranslateConfigure.setter
+    def AsrTranslateConfigure(self, AsrTranslateConfigure):
+        self._AsrTranslateConfigure = AsrTranslateConfigure
+
+    @property
     def ObjectConfigure(self):
         return self._ObjectConfigure
 
@@ -349,6 +374,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._Definition = params.get("Definition")
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
+        self._Type = params.get("Type")
         if params.get("HeadTailConfigure") is not None:
             self._HeadTailConfigure = HeadTailConfigureInfo()
             self._HeadTailConfigure._deserialize(params.get("HeadTailConfigure"))
@@ -370,6 +396,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("AsrWordsConfigure") is not None:
             self._AsrWordsConfigure = AsrWordsConfigureInfo()
             self._AsrWordsConfigure._deserialize(params.get("AsrWordsConfigure"))
+        if params.get("AsrTranslateConfigure") is not None:
+            self._AsrTranslateConfigure = AsrTranslateConfigureInfo()
+            self._AsrTranslateConfigure._deserialize(params.get("AsrTranslateConfigure"))
         if params.get("ObjectConfigure") is not None:
             self._ObjectConfigure = ObjectConfigureInfo()
             self._ObjectConfigure._deserialize(params.get("ObjectConfigure"))
@@ -2560,6 +2589,7 @@ class AiRecognitionResult(AbstractModel):
 <li>AsrWordsRecognition: speech keyword recognition,</li>
 <li>OcrWordsRecognition: text keyword recognition,</li>
 <li>AsrFullTextRecognition: full speech recognition,</li>
+<li>AsrTranslateRecognition: voice translation recognition,</li>
 <li>OcrFullTextRecognition: full text recognition,</li>
 <li>HeadTailRecognition: video opening and ending credits recognition,</li>
 <li>ObjectRecognition: object recognition.</li>
@@ -2584,6 +2614,8 @@ Note: this field may return null, indicating that no valid values can be obtaine
  `AsrFullTextRecognition`.
 Note: this field may return null, indicating that no valid values can be obtained.
         :type AsrFullTextTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrFullTextResult`
+        :param _AsrTranslateTask: Voice translation result, valid when Type is AsrTranslateRecognition.
+        :type AsrTranslateTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrTranslateResult`
         :param _OcrWordsTask: Text keyword recognition result, which is valid when `Type` is
  `OcrWordsRecognition`.
 Note: this field may return null, indicating that no valid values can be obtained.
@@ -2603,6 +2635,7 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._FaceTask = None
         self._AsrWordsTask = None
         self._AsrFullTextTask = None
+        self._AsrTranslateTask = None
         self._OcrWordsTask = None
         self._OcrFullTextTask = None
         self._ObjectTask = None
@@ -2656,6 +2689,14 @@ Note: this field may return null, indicating that no valid values can be obtaine
         self._AsrFullTextTask = AsrFullTextTask
 
     @property
+    def AsrTranslateTask(self):
+        return self._AsrTranslateTask
+
+    @AsrTranslateTask.setter
+    def AsrTranslateTask(self, AsrTranslateTask):
+        self._AsrTranslateTask = AsrTranslateTask
+
+    @property
     def OcrWordsTask(self):
         return self._OcrWordsTask
 
@@ -2697,6 +2738,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
         if params.get("AsrFullTextTask") is not None:
             self._AsrFullTextTask = AiRecognitionTaskAsrFullTextResult()
             self._AsrFullTextTask._deserialize(params.get("AsrFullTextTask"))
+        if params.get("AsrTranslateTask") is not None:
+            self._AsrTranslateTask = AiRecognitionTaskAsrTranslateResult()
+            self._AsrTranslateTask._deserialize(params.get("AsrTranslateTask"))
         if params.get("OcrWordsTask") is not None:
             self._OcrWordsTask = AiRecognitionTaskOcrWordsResult()
             self._OcrWordsTask._deserialize(params.get("OcrWordsTask"))
@@ -2976,12 +3020,20 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
 
 
 class AiRecognitionTaskAsrFullTextResultOutputSubtitleItem(AbstractModel):
-    """The subtitle information.
+    """Subtitle information.
 
     """
 
     def __init__(self):
         r"""
+        :param _Id: Media asset subtitle ID, used for media asset subtitle management, only valid when Format is vtt.
+<font color=red>Note:</font> Tasks before 2024-11-01T10:00:00Z return this field as invalid.
+        :type Id: str
+        :param _Name: Media asset subtitle name, used for player display, only valid when Format is vtt.
+<font color=red>Note:</font> Tasks before 2024-11-01T10:00:00Z return this field as invalid.
+        :type Name: str
+        :param _Language: Subtitle Language.
+        :type Language: str
         :param _Format: The format of the subtitle files. Valid values:
 <li>vtt</li>
 <li>srt</li>
@@ -2989,8 +3041,35 @@ class AiRecognitionTaskAsrFullTextResultOutputSubtitleItem(AbstractModel):
         :param _Url: The URL of a subtitle file.
         :type Url: str
         """
+        self._Id = None
+        self._Name = None
+        self._Language = None
         self._Format = None
         self._Url = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Language(self):
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
 
     @property
     def Format(self):
@@ -3010,6 +3089,9 @@ class AiRecognitionTaskAsrFullTextResultOutputSubtitleItem(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Language = params.get("Language")
         self._Format = params.get("Format")
         self._Url = params.get("Url")
         memeber_set = set(params.keys())
@@ -3081,6 +3163,334 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
         self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskAsrTranslateResult(AbstractModel):
+    """Voice translation result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param _ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param _ErrCode: Error code. 0 indicates the task is successful; other values indicate failure. It is not recommended to use this parameter, but to use the new parameter `ErrCodeExt`.
+        :type ErrCode: int
+        :param _Message: Error message.
+        :type Message: str
+        :param _Input: Input information of the voice translation task.
+        :type Input: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrTranslateResultInput`
+        :param _Output: Output information of the voice translation task.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskAsrTranslateResultOutput`
+        :param _Progress: Progress of the voice translation task, value range [0-100].
+        :type Progress: int
+        :param _BeginProcessTime: Begin process time of the voice translation task, in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :type BeginProcessTime: str
+        :param _FinishTime: The time when the voice translation task is completed, in [ISO date format](https://cloud.tencent.com/document/product/266/11732#I).
+        :type FinishTime: str
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._Progress = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def ErrCode(self):
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def BeginProcessTime(self):
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiRecognitionTaskAsrTranslateResultInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiRecognitionTaskAsrTranslateResultOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskAsrTranslateResultInput(AbstractModel):
+    """Input of voice translation.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Voice translation template ID.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskAsrTranslateResultOutput(AbstractModel):
+    """Voice translation result.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SegmentSet: Voice translation segments list.
+<font color=red>Note</font>: This list displays the first 100 results at most. You can get all the results from the file at the URL specified by `SegmentSetFileUrl`.
+        :type SegmentSet: list of AiRecognitionTaskAsrTranslateSegmentItem
+        :param _SegmentSetFileUrl: URL to the file of the list for voice translation segments. The file format is JSON, and the data structure is the same as `SegmentSet`. The file will be deleted upon the expiration time `SegmentSetFileUrlExpireTime`, instead of being stored permanently.
+        :type SegmentSetFileUrl: str
+        :param _SegmentSetFileUrlExpireTime: The expiration time of the URLs of voice translation segments in [ISO date format](https://cloud.tencent.com/document/product/266/11732#iso-date-format).
+        :type SegmentSetFileUrlExpireTime: str
+        :param _SubtitleSet: Generated subtitle list.
+        :type SubtitleSet: list of AiRecognitionTaskAsrFullTextResultOutputSubtitleItem
+        """
+        self._SegmentSet = None
+        self._SegmentSetFileUrl = None
+        self._SegmentSetFileUrlExpireTime = None
+        self._SubtitleSet = None
+
+    @property
+    def SegmentSet(self):
+        return self._SegmentSet
+
+    @SegmentSet.setter
+    def SegmentSet(self, SegmentSet):
+        self._SegmentSet = SegmentSet
+
+    @property
+    def SegmentSetFileUrl(self):
+        return self._SegmentSetFileUrl
+
+    @SegmentSetFileUrl.setter
+    def SegmentSetFileUrl(self, SegmentSetFileUrl):
+        self._SegmentSetFileUrl = SegmentSetFileUrl
+
+    @property
+    def SegmentSetFileUrlExpireTime(self):
+        return self._SegmentSetFileUrlExpireTime
+
+    @SegmentSetFileUrlExpireTime.setter
+    def SegmentSetFileUrlExpireTime(self, SegmentSetFileUrlExpireTime):
+        self._SegmentSetFileUrlExpireTime = SegmentSetFileUrlExpireTime
+
+    @property
+    def SubtitleSet(self):
+        return self._SubtitleSet
+
+    @SubtitleSet.setter
+    def SubtitleSet(self, SubtitleSet):
+        self._SubtitleSet = SubtitleSet
+
+
+    def _deserialize(self, params):
+        if params.get("SegmentSet") is not None:
+            self._SegmentSet = []
+            for item in params.get("SegmentSet"):
+                obj = AiRecognitionTaskAsrTranslateSegmentItem()
+                obj._deserialize(item)
+                self._SegmentSet.append(obj)
+        self._SegmentSetFileUrl = params.get("SegmentSetFileUrl")
+        self._SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
+        if params.get("SubtitleSet") is not None:
+            self._SubtitleSet = []
+            for item in params.get("SubtitleSet"):
+                obj = AiRecognitionTaskAsrFullTextResultOutputSubtitleItem()
+                obj._deserialize(item)
+                self._SubtitleSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiRecognitionTaskAsrTranslateSegmentItem(AbstractModel):
+    """Voice translation segment.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Confidence: Confidence level of the voice translation segment. Value: 0~100.
+        :type Confidence: float
+        :param _StartTimeOffset: Start time offset of the voice translation segment in seconds.
+        :type StartTimeOffset: float
+        :param _EndTimeOffset: End time offset of the voice translation segment in seconds.
+        :type EndTimeOffset: float
+        :param _Text: Recognized text.
+        :type Text: str
+        :param _Translation: The translation.
+        :type Translation: str
+        """
+        self._Confidence = None
+        self._StartTimeOffset = None
+        self._EndTimeOffset = None
+        self._Text = None
+        self._Translation = None
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def StartTimeOffset(self):
+        return self._StartTimeOffset
+
+    @StartTimeOffset.setter
+    def StartTimeOffset(self, StartTimeOffset):
+        self._StartTimeOffset = StartTimeOffset
+
+    @property
+    def EndTimeOffset(self):
+        return self._EndTimeOffset
+
+    @EndTimeOffset.setter
+    def EndTimeOffset(self, EndTimeOffset):
+        self._EndTimeOffset = EndTimeOffset
+
+    @property
+    def Text(self):
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Translation(self):
+        return self._Translation
+
+    @Translation.setter
+    def Translation(self, Translation):
+        self._Translation = Translation
+
+
+    def _deserialize(self, params):
+        self._Confidence = params.get("Confidence")
+        self._StartTimeOffset = params.get("StartTimeOffset")
+        self._EndTimeOffset = params.get("EndTimeOffset")
+        self._Text = params.get("Text")
+        self._Translation = params.get("Translation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8963,13 +9373,18 @@ class AsrFullTextConfigureInfo(AbstractModel):
 <li>srt</li>
 <font color='red'>Note: This parameter has been deprecated. Please use `SubtitleFormats` instead.</font>
         :type SubtitleFormat: str
-        :param _SrcLanguage: Media source language value range: <li>zh: Mandarin </li> <li>en: English</li> <li>ja: Japanese </li> <li>zh-ca: Cantonese</li><font color=red>Note：</font> If it fills in an empty string or leave this parameter blank, it will be automatically recognized (it is recommended to fill in the language corresponding to the media to improve the recognition accuracy).
+        :param _SrcLanguage: Media source language value range: <li>zh: Mandarin </li> <li>en: English</li> <li>ja: Japanese </li> <li>zh-ca: Cantonese</li><font color=red>Note: </font> If it fills in an empty string or leaves this parameter blank, it will be automatically recognized (it is recommended to fill in the language corresponding to the media to improve the recognition accuracy).
         :type SrcLanguage: str
+        :param _SubtitleName: Specify subtitle name, length limit: 64 characters. This value will be displayed by the player. If not provided, VOD will automatically generate it.
+<font color=red>Note:</font> This field is valid only when SubtitleFormats includes vtt.
+
+        :type SubtitleName: str
         """
         self._Switch = None
         self._SubtitleFormats = None
         self._SubtitleFormat = None
         self._SrcLanguage = None
+        self._SubtitleName = None
 
     @property
     def Switch(self):
@@ -9003,12 +9418,21 @@ class AsrFullTextConfigureInfo(AbstractModel):
     def SrcLanguage(self, SrcLanguage):
         self._SrcLanguage = SrcLanguage
 
+    @property
+    def SubtitleName(self):
+        return self._SubtitleName
+
+    @SubtitleName.setter
+    def SubtitleName(self, SubtitleName):
+        self._SubtitleName = SubtitleName
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._SubtitleFormats = params.get("SubtitleFormats")
         self._SubtitleFormat = params.get("SubtitleFormat")
         self._SrcLanguage = params.get("SrcLanguage")
+        self._SubtitleName = params.get("SubtitleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9039,11 +9463,14 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
         :type SubtitleFormat: str
         :param _SrcLanguage: Media source language value range: <li>zh: Mandarin </li> <li>en: English</li> <li>ja: Japanese </li> <li>zh-ca: Cantonese</li>
         :type SrcLanguage: str
+        :param _SubtitleName: Specify subtitle name, length limit: 64 characters. This value will be used for player display.
+        :type SubtitleName: str
         """
         self._Switch = None
         self._SubtitleFormatsOperation = None
         self._SubtitleFormat = None
         self._SrcLanguage = None
+        self._SubtitleName = None
 
     @property
     def Switch(self):
@@ -9077,6 +9504,14 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
     def SrcLanguage(self, SrcLanguage):
         self._SrcLanguage = SrcLanguage
 
+    @property
+    def SubtitleName(self):
+        return self._SubtitleName
+
+    @SubtitleName.setter
+    def SubtitleName(self, SubtitleName):
+        self._SubtitleName = SubtitleName
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
@@ -9085,6 +9520,384 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
             self._SubtitleFormatsOperation._deserialize(params.get("SubtitleFormatsOperation"))
         self._SubtitleFormat = params.get("SubtitleFormat")
         self._SrcLanguage = params.get("SrcLanguage")
+        self._SubtitleName = params.get("SubtitleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AsrTranslateConfigureInfo(AbstractModel):
+    """Control parameters of voice translation recognition task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Voice translation task switch, optional values:
+<li>ON: switch on;</li>
+<li>OFF: switch off.</li><font color=red>Note:</font> The task results of voice translation include asr full text recognition result. To avoid duplicate charges, simultaneous activation of voice translation and asr full text recognition features is prohibited.
+
+        :type Switch: str
+        :param _SrcLanguage: Media source language. When the Switch is ON, this parameter is mandatory. Value range:
+<li>`zh`: Chinese;</li>
+<li>`en`: English;</li>
+<li>`ja`: Japanese;</li>
+<li>`ko`: Korean;</li>
+<li>`vi`: Vietnamese;</li>
+<li>`ms`: Malay;</li>
+<li>`th`: Thai;</li>
+<li>`pt`: Portuguese;</li>
+<li>`tr`: Turkish;</li>
+<li>`ar`: Arabic;</li>
+<li>`es`: Spanish;</li>
+<li>`hi`: Hindi;</li>
+<li>`fr`: French.</li>
+        :type SrcLanguage: str
+        :param _DstLanguage: Translation target language. When the Switch is ON, this parameter is mandatory.
+When SrcLanguage is zh (Chinese), the value range:
+<li>`en`: English;</li>
+<li>`ja`: Japanese;</li>
+<li>`ko`: Korean;</li>
+<li>`fr`: French;</li>
+<li>`es`: Spanish;</li>
+<li>`it`: Italian;</li>
+<li>`de`: German;</li>
+<li>`tr`: Turkish;</li>
+<li>`ru`: Russian;</li>
+<li>`pt`: Portuguese;</li>
+<li>`vi`: Vietnamese;</li>
+<li>`id`: Indonesian;</li>
+<li>`th`: Thai;</li>
+<li>`ms`: Malay.</li>
+
+When SrcLanguage is en (English), the value range:
+<li>`zh`: Chinese;</li>
+<li>`ja`: Japanese;</li>
+<li>`ko`: Korean;</li>
+<li>`fr`: French;</li>
+<li>`es`: Spanish;</li>
+<li>`it`: Italian;</li>
+<li>`de`: German;</li>
+<li>`tr`: Turkish;</li>
+<li>`ru`: Russian;</li>
+<li>`pt`: Portuguese;</li>
+<li>`vi`: Vietnamese;</li>
+<li>`id`: Indonesian;</li>
+<li>`th`: Thai;</li>
+<li>`ms`: Malay;</li>
+<li>`ar`: Arabic;</li>
+<li>`hi`: Hindi.</li>
+
+When SrcLanguage is ja (Japanese), the valid options are:
+<li>`zh`: Chinese;</li>
+<li>`en`: English;</li>
+<li>`ko`: Korean.</li>
+
+When SrcLanguage is ko (Korean), the valid options are:
+<li>`zh`: Chinese;</li>
+<li>`en`: English;</li>
+<li>`ja`: Japanese.</li>
+
+When SrcLanguage is vi (Vietnamese), ms (Malay), or th (Thai), the valid options are:
+<li>`zh`: Chinese;</li>
+<li>`en`: English.</li>
+
+When SrcLanguage is pt (Portuguese), the valid options are:
+<li>`zh`: Chinese;</li>
+<li>`en`: English;</li>
+<li>`fr`: French;</li>
+<li>`es`: Spanish;</li>
+<li>`it`: Italian;</li>
+<li>`de`: German;</li>
+<li>`tr`: Turkish;</li>
+<li>`ru`: Russian.</li>
+
+When SrcLanguage is tr (Turkish), the value range is:
+<li>`zh`: Chinese;</li>
+<li>`en`: English;</li>
+<li>`fr`: French;</li>
+<li>`es`: Spanish;</li>
+<li>`it`: Italian;</li>
+<li>`de`: German;</li>
+<li>`ru`: Russian;</li>
+<li>`pt`: Portuguese.</li>
+
+When SrcLanguage is es (Spanish), the value range is:
+<li>`zh`: Chinese;</li>
+<li>`en`: English;</li>
+<li>`fr`: French;</li>
+<li>`it`: Italian;</li>
+<li>`de`: German;</li>
+<li>`tr`: Turkish;</li>
+<li>`ru`: Russian;</li>
+<li>`pt`: Portuguese.</li>
+
+When SrcLanguage is ar (Arabic) or hi (Hindi), the value range is:
+<li>`en`: English.</li>
+
+When SrcLanguage is fr (French), the value range is:
+<li>`zh`: Chinese;</li>
+<li>`en`: English;</li>
+<li>`es`: Spanish;</li>
+<li>`it`: Italian;</li>
+<li>`de`: German;</li>
+<li>`tr`: Turkish;</li>
+<li>`ru`: Russian;</li>
+<li>`pt`: Portuguese.</li>
+        :type DstLanguage: str
+        :param _SubtitleFormats: Generated subtitle file format list. If not filled or an empty array is provided, no subtitle file will be generated. Optional values:
+<li>vtt: generate WebVTT subtitle file;</li>
+<li>srt: generate SRT subtitle files.</li><font color=red>Note:</font> VOD media assets only support adding vtt subtitles. Therefore, VOD will add generated subtitles to media assets only when SubtitleFormats includes vtt.
+        :type SubtitleFormats: list of str
+        :param _SubtitleName: Specify subtitle name, length limit: 64 characters. This value will be displayed by the player. If not provided, VOD will automatically generate it.
+        :type SubtitleName: str
+        """
+        self._Switch = None
+        self._SrcLanguage = None
+        self._DstLanguage = None
+        self._SubtitleFormats = None
+        self._SubtitleName = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def SrcLanguage(self):
+        return self._SrcLanguage
+
+    @SrcLanguage.setter
+    def SrcLanguage(self, SrcLanguage):
+        self._SrcLanguage = SrcLanguage
+
+    @property
+    def DstLanguage(self):
+        return self._DstLanguage
+
+    @DstLanguage.setter
+    def DstLanguage(self, DstLanguage):
+        self._DstLanguage = DstLanguage
+
+    @property
+    def SubtitleFormats(self):
+        return self._SubtitleFormats
+
+    @SubtitleFormats.setter
+    def SubtitleFormats(self, SubtitleFormats):
+        self._SubtitleFormats = SubtitleFormats
+
+    @property
+    def SubtitleName(self):
+        return self._SubtitleName
+
+    @SubtitleName.setter
+    def SubtitleName(self, SubtitleName):
+        self._SubtitleName = SubtitleName
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._SrcLanguage = params.get("SrcLanguage")
+        self._DstLanguage = params.get("DstLanguage")
+        self._SubtitleFormats = params.get("SubtitleFormats")
+        self._SubtitleName = params.get("SubtitleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AsrTranslateConfigureInfoForUpdate(AbstractModel):
+    """Control parameters of voice translation.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Voice translation task switch, optional values:
+<li>ON: switch on;</li>
+<li>OFF: switch off.</li>
+        :type Switch: str
+        :param _SrcLanguage: Media source language, value range:
+<li>`zh`: Chinese;</li>
+<li>`en`: English;</li>
+<li>`ja`: Japanese;</li>
+<li>`ko`: Korean;</li>
+<li>`vi`: Vietnamese;</li>
+<li>`ms`: Malay;</li>
+<li>`th`: Thai;</li>
+<li>`pt`: Portuguese;</li>
+<li>`tr`: Turkish;</li>
+<li>`ar`: Arabic;</li>
+<li>`es`: Spanish;</li>
+<li>`hi`: Hindi;</li>
+<li>`fr`: French.</li>
+        :type SrcLanguage: str
+        :param _DstLanguage: Translation target language.
+When SrcLanguage is zh(Chinese), value range:
+<li>`en`: English;</li>
+<li>`ja`: Japanese;</li>
+<li>`ko`: Korean;</li>
+<li>`fr`: French;</li>
+<li>`es`: Spanish;</li>
+<li>`it`: Italian;</li>
+<li>`de`: German;</li>
+<li>`tr`: Turkish;</li>
+<li>`ru`: Russian;</li>
+<li>`pt`: Portuguese;</li>
+<li>`vi`: Vietnamese;</li>
+<li>`id`: Indonesian;</li>
+<li>`th`: Thai;</li>
+<li>`ms`: Malay.</li>
+
+When SrcLanguage is en(English), value range:
+<li>`zh`: Chinese;</li>
+<li>`ja`: Japanese;</li>
+<li>`ko`: Korean;</li>
+<li>`fr`: French;</li>
+<li>`es`: Spanish;</li>
+<li>`it`: Italian;</li>
+<li>`de`: German;</li>
+<li>`tr`: Turkish;</li>
+<li>`ru`: Russian;</li>
+<li>`pt`: Portuguese;</li>
+<li>`vi`: Vietnamese;</li>
+<li>`id`: Indonesian;</li>
+<li>`th`: Thai;</li>
+<li>`ms`: Malay;</li>
+<li>`ar`: Arabic;</li>
+<li>`hi`: Hindi.</li>
+
+When SrcLanguage is ja (Japanese), value range:
+<li>zh: Chinese;</li>
+<li>en: English;</li>
+<li>ko: Korean.</li>
+
+When SrcLanguage is ko (Korean), value range:
+<li>`zh`: Chinese;</li>
+<li>`en`: English;</li>
+<li>`ja`: Japanese.</li>
+
+When SrcLanguage is vi (Vietnamese) or ms (Malay) or th (Thai), value range:
+<li>`zh`: Chinese;</li>
+<li>`en`: English.</li>
+
+When SrcLanguage is pt (Portuguese), value range:
+<li>`zh`: Chinese;</li>
+<li>`en`: English;</li>
+<li>`fr`: French;</li>
+<li>`es`: Spanish;</li>
+<li>`it`: Italian;</li>
+<li>`de`: German;</li>
+<li>`tr`: Turkish;</li>
+<li>`ru`: Russian.</li>
+
+When SrcLanguage is tr (Turkish), value range:
+<li>`zh`: Chinese;</li>
+<li>`en`: English;</li>
+<li>`fr`: French;</li>
+<li>`es`: Spanish;</li>
+<li>`it`: Italian;</li>
+<li>`de`: German;</li>
+<li>`ru`: Russian;</li>
+<li>`pt`: Portuguese.</li>
+
+When SrcLanguage is es (Spanish), value range:
+<li>`zh`: Chinese;</li>
+<li>`en`: English;</li>
+<li>`fr`: French;</li>
+<li>`it`: Italian;</li>
+<li>`de`: German;</li>
+<li>`tr`: Turkish;</li>
+<li>`ru`: Russian;</li>
+<li>`pt`: Portuguese.</li>
+
+When SrcLanguage is ar (Arabic) or hi (Hindi), value range:
+<li>`en`: English.</li>
+
+When SrcLanguage is fr (French), value range:
+<li>`zh`: Chinese;</li>
+<li>`en`: English;</li>
+<li>`es`: Spanish;</li>
+<li>`it`: Italian;</li>
+<li>`de`: German;</li>
+<li>`tr`: Turkish;</li>
+<li>`ru`: Russian;</li>
+<li>`pt`: Portuguese.</li>
+        :type DstLanguage: str
+        :param _SubtitleFormatsOperation: Operation information about subtitle format list.
+        :type SubtitleFormatsOperation: :class:`tencentcloud.vod.v20180717.models.SubtitleFormatsOperation`
+        :param _SubtitleName: Specify subtitle name, length limit: 64 characters. This value will be used for player display.
+        :type SubtitleName: str
+        """
+        self._Switch = None
+        self._SrcLanguage = None
+        self._DstLanguage = None
+        self._SubtitleFormatsOperation = None
+        self._SubtitleName = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def SrcLanguage(self):
+        return self._SrcLanguage
+
+    @SrcLanguage.setter
+    def SrcLanguage(self, SrcLanguage):
+        self._SrcLanguage = SrcLanguage
+
+    @property
+    def DstLanguage(self):
+        return self._DstLanguage
+
+    @DstLanguage.setter
+    def DstLanguage(self, DstLanguage):
+        self._DstLanguage = DstLanguage
+
+    @property
+    def SubtitleFormatsOperation(self):
+        return self._SubtitleFormatsOperation
+
+    @SubtitleFormatsOperation.setter
+    def SubtitleFormatsOperation(self, SubtitleFormatsOperation):
+        self._SubtitleFormatsOperation = SubtitleFormatsOperation
+
+    @property
+    def SubtitleName(self):
+        return self._SubtitleName
+
+    @SubtitleName.setter
+    def SubtitleName(self, SubtitleName):
+        self._SubtitleName = SubtitleName
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._SrcLanguage = params.get("SrcLanguage")
+        self._DstLanguage = params.get("DstLanguage")
+        if params.get("SubtitleFormatsOperation") is not None:
+            self._SubtitleFormatsOperation = SubtitleFormatsOperation()
+            self._SubtitleFormatsOperation._deserialize(params.get("SubtitleFormatsOperation"))
+        self._SubtitleName = params.get("SubtitleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13646,6 +14459,8 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfo`
         :param _AsrWordsConfigure: Control parameter of speech keyword recognition.
         :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfo`
+        :param _AsrTranslateConfigure: Control parameter of voice translation.
+        :type AsrTranslateConfigure: :class:`tencentcloud.vod.v20180717.models.AsrTranslateConfigureInfo`
         :param _ObjectConfigure: Control parameter of object recognition.
         :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfo`
         :param _ScreenshotInterval: Frame capturing interval in seconds. If this parameter is left empty, 1 second will be used by default. Minimum value: 0.5 seconds.
@@ -13661,6 +14476,7 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         self._OcrWordsConfigure = None
         self._AsrFullTextConfigure = None
         self._AsrWordsConfigure = None
+        self._AsrTranslateConfigure = None
         self._ObjectConfigure = None
         self._ScreenshotInterval = None
 
@@ -13745,6 +14561,14 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         self._AsrWordsConfigure = AsrWordsConfigure
 
     @property
+    def AsrTranslateConfigure(self):
+        return self._AsrTranslateConfigure
+
+    @AsrTranslateConfigure.setter
+    def AsrTranslateConfigure(self, AsrTranslateConfigure):
+        self._AsrTranslateConfigure = AsrTranslateConfigure
+
+    @property
     def ObjectConfigure(self):
         return self._ObjectConfigure
 
@@ -13786,6 +14610,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
         if params.get("AsrWordsConfigure") is not None:
             self._AsrWordsConfigure = AsrWordsConfigureInfo()
             self._AsrWordsConfigure._deserialize(params.get("AsrWordsConfigure"))
+        if params.get("AsrTranslateConfigure") is not None:
+            self._AsrTranslateConfigure = AsrTranslateConfigureInfo()
+            self._AsrTranslateConfigure._deserialize(params.get("AsrTranslateConfigure"))
         if params.get("ObjectConfigure") is not None:
             self._ObjectConfigure = ObjectConfigureInfo()
             self._ObjectConfigure._deserialize(params.get("ObjectConfigure"))
@@ -19911,6 +20738,10 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
         :type SubAppId: int
         :param _Definitions: Unique ID filter of video content recognition templates. Array length limit: 100.
         :type Definitions: list of int
+        :param _Type: Template type filter. Optional values:
+<li>Preset: preset template;</li>
+<li>Custom: user-defined template.</li>If not filled default is empty, i.e., no template type filter.
+        :type Type: str
         :param _Offset: Pagination offset. Default value: 0.
         :type Offset: int
         :param _Limit: Number of returned entries. Default value: 10. Maximum value: 100.
@@ -19918,6 +20749,7 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
         """
         self._SubAppId = None
         self._Definitions = None
+        self._Type = None
         self._Offset = None
         self._Limit = None
 
@@ -19936,6 +20768,14 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
     @Definitions.setter
     def Definitions(self, Definitions):
         self._Definitions = Definitions
+
+    @property
+    def Type(self):
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
     @property
     def Offset(self):
@@ -19957,6 +20797,7 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
         self._Definitions = params.get("Definitions")
+        self._Type = params.get("Type")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
@@ -37430,10 +38271,19 @@ class MediaSubtitleInput(AbstractModel):
         :param _Name: Subtitle name. Length limit: 64 characters
         :type Name: str
         :param _Language: Subtitle language. Common values:
-<li>`cn`: Chinese</li>
+<li>`zh`: Chinese</li>
+<li>`en`: English</li>
 <li>`ja`: Japanese</li>
-<li>`en-US`: English</li>
-For other valid values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).
+<li>`ko`: Korean</li>
+<li>`vi`: Vietnamese</li>
+<li>`ms`: Malay</li>
+<li>`th`: Thai</li>
+<li>`pt`: Portuguese</li>
+<li>`tr`: Turkish</li>
+<li>`ar`: Arabic</li>
+<li>`es`: Spanish</li>
+<li>`hi`: Hindi</li>
+<li>`fr`: French</li>For other valid values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).
         :type Language: str
         :param _Format: Subtitle format. Valid value:
 <li>vtt</li>
@@ -37518,22 +38368,36 @@ class MediaSubtitleItem(AbstractModel):
         :param _Name: Subtitle name
         :type Name: str
         :param _Language: Subtitle language. Common values:
-<li>`cn`: Chinese</li>
+<li>`zh`: Chinese</li>
+<li>`en`: English</li>
 <li>`ja`: Japanese</li>
-<li>`en-US`: English</li>
-For other values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).
+<li>`ko`: Korean</li>
+<li>`vi`: Vietnamese</li>
+<li>`ms`: Malay</li>
+<li>`th`: Thai</li>
+<li>`pt`: Portuguese</li>
+<li>`tr`: Turkish</li>
+<li>`ar`: Arabic</li>
+<li>`es`: Spanish</li>
+<li>`hi`: Hindi</li>
+<li>`fr`: French</li>For other valid values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).
         :type Language: str
         :param _Format: Subtitle format. Valid value:
 <li>vtt</li>
         :type Format: str
         :param _Url: Subtitle URL
         :type Url: str
+        :param _Source: Subtitle source, values:
+<li>UserUploaded: user uploaded;</li>
+<li>AIRecognition: AI recognition, generated through asr full text recognition or voice translation.</li>
+        :type Source: str
         """
         self._Id = None
         self._Name = None
         self._Language = None
         self._Format = None
         self._Url = None
+        self._Source = None
 
     @property
     def Id(self):
@@ -37575,6 +38439,14 @@ For other values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).
     def Url(self, Url):
         self._Url = Url
 
+    @property
+    def Source(self):
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -37582,6 +38454,7 @@ For other values, see [RFC 5646](https://tools.ietf.org/html/rfc5646).
         self._Language = params.get("Language")
         self._Format = params.get("Format")
         self._Url = params.get("Url")
+        self._Source = params.get("Source")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38379,6 +39252,8 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         :type AsrFullTextConfigure: :class:`tencentcloud.vod.v20180717.models.AsrFullTextConfigureInfoForUpdate`
         :param _AsrWordsConfigure: Control parameter of speech keyword recognition.
         :type AsrWordsConfigure: :class:`tencentcloud.vod.v20180717.models.AsrWordsConfigureInfoForUpdate`
+        :param _AsrTranslateConfigure: Control parameter of voice translation.
+        :type AsrTranslateConfigure: :class:`tencentcloud.vod.v20180717.models.AsrTranslateConfigureInfoForUpdate`
         :param _ObjectConfigure: Control parameter of object recognition.
         :type ObjectConfigure: :class:`tencentcloud.vod.v20180717.models.ObjectConfigureInfoForUpdate`
         :param _ScreenshotInterval: Frame capturing interval in seconds. Minimum value: 0.5 seconds.
@@ -38395,6 +39270,7 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         self._OcrWordsConfigure = None
         self._AsrFullTextConfigure = None
         self._AsrWordsConfigure = None
+        self._AsrTranslateConfigure = None
         self._ObjectConfigure = None
         self._ScreenshotInterval = None
 
@@ -38487,6 +39363,14 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         self._AsrWordsConfigure = AsrWordsConfigure
 
     @property
+    def AsrTranslateConfigure(self):
+        return self._AsrTranslateConfigure
+
+    @AsrTranslateConfigure.setter
+    def AsrTranslateConfigure(self, AsrTranslateConfigure):
+        self._AsrTranslateConfigure = AsrTranslateConfigure
+
+    @property
     def ObjectConfigure(self):
         return self._ObjectConfigure
 
@@ -38529,6 +39413,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
         if params.get("AsrWordsConfigure") is not None:
             self._AsrWordsConfigure = AsrWordsConfigureInfoForUpdate()
             self._AsrWordsConfigure._deserialize(params.get("AsrWordsConfigure"))
+        if params.get("AsrTranslateConfigure") is not None:
+            self._AsrTranslateConfigure = AsrTranslateConfigureInfoForUpdate()
+            self._AsrTranslateConfigure._deserialize(params.get("AsrTranslateConfigure"))
         if params.get("ObjectConfigure") is not None:
             self._ObjectConfigure = ObjectConfigureInfoForUpdate()
             self._ObjectConfigure._deserialize(params.get("ObjectConfigure"))

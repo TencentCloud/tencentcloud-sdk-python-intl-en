@@ -159,6 +159,114 @@ class ActionSummaryOverviewItem(AbstractModel):
         
 
 
+class AdjustInfoDetail(AbstractModel):
+    """This API is used to view UIN exception adjustment details.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PayerUin: Payer UIN, namely the account ID of the payer. The account ID is the user's unique account identifier on Tencent Cloud.
+Note: This field may return null, indicating that no valid values can be obtained.
+Example value: 909619400.
+        :type PayerUin: str
+        :param _Month: Bill month. Format: yyyy-MM.
+Note: This field may return null, indicating that no valid value can be obtained.
+Example value: 2024-10.
+        :type Month: str
+        :param _AdjustType: Adjustment type.
+Adjustment: manualAdjustment.
+Supplementary settlement: supplementarySettlement.
+Re-settlement: reSettlement.
+Note: This field may return null, indicating that no valid value can be obtained.
+Example value: manualAdjustment.
+        :type AdjustType: str
+        :param _AdjustNum: Adjustment order number.
+Note: This field may return null, indicating that no valid value can be obtained.
+Example value: 2220726096135.
+        :type AdjustNum: str
+        :param _AdjustCompletionTime: Completion time of exception adjustment. Format: yyyy-MM-dd HH:mm:ss.
+Note: This field may return null, indicating that no valid value can be obtained.
+Example value: 2022-12-02 12:39:04.
+        :type AdjustCompletionTime: str
+        :param _AdjustAmount: Adjustment amount.
+Note: This field may return null, indicating that no valid value can be obtained.
+Example value: 333.00000000.
+        :type AdjustAmount: float
+        """
+        self._PayerUin = None
+        self._Month = None
+        self._AdjustType = None
+        self._AdjustNum = None
+        self._AdjustCompletionTime = None
+        self._AdjustAmount = None
+
+    @property
+    def PayerUin(self):
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def AdjustType(self):
+        return self._AdjustType
+
+    @AdjustType.setter
+    def AdjustType(self, AdjustType):
+        self._AdjustType = AdjustType
+
+    @property
+    def AdjustNum(self):
+        return self._AdjustNum
+
+    @AdjustNum.setter
+    def AdjustNum(self, AdjustNum):
+        self._AdjustNum = AdjustNum
+
+    @property
+    def AdjustCompletionTime(self):
+        return self._AdjustCompletionTime
+
+    @AdjustCompletionTime.setter
+    def AdjustCompletionTime(self, AdjustCompletionTime):
+        self._AdjustCompletionTime = AdjustCompletionTime
+
+    @property
+    def AdjustAmount(self):
+        return self._AdjustAmount
+
+    @AdjustAmount.setter
+    def AdjustAmount(self, AdjustAmount):
+        self._AdjustAmount = AdjustAmount
+
+
+    def _deserialize(self, params):
+        self._PayerUin = params.get("PayerUin")
+        self._Month = params.get("Month")
+        self._AdjustType = params.get("AdjustType")
+        self._AdjustNum = params.get("AdjustNum")
+        self._AdjustCompletionTime = params.get("AdjustCompletionTime")
+        self._AdjustAmount = params.get("AdjustAmount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AnalyseActionTypeDetail(AbstractModel):
     """Cost analysis transaction type complex type
 
@@ -5758,6 +5866,125 @@ class DescribeAccountBalanceResponse(AbstractModel):
         self._CreditAmount = params.get("CreditAmount")
         self._CreditBalance = params.get("CreditBalance")
         self._RealCreditBalance = params.get("RealCreditBalance")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBillAdjustInfoRequest(AbstractModel):
+    """DescribeBillAdjustInfo request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: Format: yyyy-MM.
+Billing month. Either Month or the combination of TimeFrom and TimeTo needs to be passed. If the TimeFrom and TimeTo are passed, the Month field is invalid.
+Example: 2024-10.
+        :type Month: str
+        :param _TimeFrom: Format: yyyy-MM-dd.
+Start date. Either Month or the combination of TimeFrom and TimeTo needs to be passed. If TimeFrom and TimeTo are passed, the Month field is invalid. TimeFrom and TimeTo should represent the same month and be passed in together. Cross-month queries are not supported. The result will include the full month's data.
+Example: 2024-10-01.
+        :type TimeFrom: str
+        :param _TimeTo: Format: yyyy-MM-dd.
+End date. Either Month or the combination of TimeFrom and TimeTo needs to be passed. If TimeFrom and TimeTo are passed, the Month field is invalid. TimeFrom and TimeTo should represent the same month and be passed in together. Cross-month queries are not supported. The result will include the full month's data.
+Example: 2024-10-02.
+        :type TimeTo: str
+        """
+        self._Month = None
+        self._TimeFrom = None
+        self._TimeTo = None
+
+    @property
+    def Month(self):
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def TimeFrom(self):
+        return self._TimeFrom
+
+    @TimeFrom.setter
+    def TimeFrom(self, TimeFrom):
+        self._TimeFrom = TimeFrom
+
+    @property
+    def TimeTo(self):
+        return self._TimeTo
+
+    @TimeTo.setter
+    def TimeTo(self, TimeTo):
+        self._TimeTo = TimeTo
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        self._TimeFrom = params.get("TimeFrom")
+        self._TimeTo = params.get("TimeTo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillAdjustInfoResponse(AbstractModel):
+    """DescribeBillAdjustInfo response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: Total amount of data.
+Example value: 10.
+        :type Total: int
+        :param _Data: Detailed data.
+Example value: [].
+        :type Data: list of AdjustInfoDetail
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = AdjustInfoDetail()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
