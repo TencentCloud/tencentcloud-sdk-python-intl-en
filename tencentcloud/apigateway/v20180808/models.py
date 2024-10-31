@@ -3986,15 +3986,18 @@ class CreateApiKeyRequest(AbstractModel):
         :type SecretName: str
         :param _AccessKeyType: Key type. Valid values: auto, manual (custom key). Default value: auto.
         :type AccessKeyType: str
-        :param _AccessKeyId: Custom key ID, which is required if `AccessKeyType` is `manual`. It can contain 5–50 letters, digits, and underscores.
+        :param _AccessKeyId: Custom key ID, which is required if `AccessKeyType` is `manual`. It can contain 5-50 letters, digits, and underscores.
         :type AccessKeyId: str
-        :param _AccessKeySecret: Custom key, which is required if `AccessKeyType` is `manual`. It can contain 10–50 letters, digits, and underscores.
+        :param _AccessKeySecret: Custom key, which is required if `AccessKeyType` is `manual`. It can contain 10-50 letters, digits, and underscores.
         :type AccessKeySecret: str
+        :param _Tags: 
+        :type Tags: list of Tag
         """
         self._SecretName = None
         self._AccessKeyType = None
         self._AccessKeyId = None
         self._AccessKeySecret = None
+        self._Tags = None
 
     @property
     def SecretName(self):
@@ -4028,12 +4031,26 @@ class CreateApiKeyRequest(AbstractModel):
     def AccessKeySecret(self, AccessKeySecret):
         self._AccessKeySecret = AccessKeySecret
 
+    @property
+    def Tags(self):
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._SecretName = params.get("SecretName")
         self._AccessKeyType = params.get("AccessKeyType")
         self._AccessKeyId = params.get("AccessKeyId")
         self._AccessKeySecret = params.get("AccessKeySecret")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
