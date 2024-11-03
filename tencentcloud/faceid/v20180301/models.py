@@ -459,6 +459,17 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
         :type DisableCheckOcrWarnings: bool
         :param _Extra: A passthrough field, which is returned together with the verification result and can contain up to 1,024 bits.
         :type Extra: str
+        :param _ActionList: This interface is used to control th action sequences.
+Action types are as follows:
+"blink"
+"mouth"
+"nod"
+"shake"
+You can choose 1-2 actions out of the four.
+Single action example: "blink"
+Multiple action example: "blink,mouth"
+The default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2 or 4; otherwise, the interface reports an error.
+        :type ActionList: str
         """
         self._CheckMode = None
         self._SecurityLevel = None
@@ -468,6 +479,7 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
         self._DisableChangeOcrResult = None
         self._DisableCheckOcrWarnings = None
         self._Extra = None
+        self._ActionList = None
 
     @property
     def CheckMode(self):
@@ -537,6 +549,14 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
     def Extra(self, Extra):
         self._Extra = Extra
 
+    @property
+    def ActionList(self):
+        return self._ActionList
+
+    @ActionList.setter
+    def ActionList(self, ActionList):
+        self._ActionList = ActionList
+
 
     def _deserialize(self, params):
         self._CheckMode = params.get("CheckMode")
@@ -547,6 +567,7 @@ This feature applies only to Hong Kong (China) identity cards, Malaysian identit
         self._DisableChangeOcrResult = params.get("DisableChangeOcrResult")
         self._DisableCheckOcrWarnings = params.get("DisableCheckOcrWarnings")
         self._Extra = params.get("Extra")
+        self._ActionList = params.get("ActionList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3122,11 +3143,23 @@ Default value: `4`.
         :type Image: str
         :param _Extra: The pass-through parameter, which can be omitted if there are no special requirements.
         :type Extra: str
+        :param _ActionList: This interface is used to control th action sequences.
+Action types are as follows:
+"blink"
+"mouth"
+"nod"
+"shake"
+You can choose 1-2 actions out of the four.
+Single action example: "blink"
+Multiple action example: "blink,mouth"
+The default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2 or 4; otherwise, the interface reports an error.
+        :type ActionList: str
         """
         self._CheckMode = None
         self._SecureLevel = None
         self._Image = None
         self._Extra = None
+        self._ActionList = None
 
     @property
     def CheckMode(self):
@@ -3160,12 +3193,21 @@ Default value: `4`.
     def Extra(self, Extra):
         self._Extra = Extra
 
+    @property
+    def ActionList(self):
+        return self._ActionList
+
+    @ActionList.setter
+    def ActionList(self, ActionList):
+        self._ActionList = ActionList
+
 
     def _deserialize(self, params):
         self._CheckMode = params.get("CheckMode")
         self._SecureLevel = params.get("SecureLevel")
         self._Image = params.get("Image")
         self._Extra = params.get("Extra")
+        self._ActionList = params.get("ActionList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7799,6 +7841,17 @@ Example: HKIDCard
         :type Language: str
         :param _AutoDowngrade: Automatic downgrade mode, with the following parameter values: 1: Downgrade to silent live mode; 2: Disable downgrade mode. The default value is 1.
         :type AutoDowngrade: int
+        :param _ActionList: This interface is used to control th action sequences.
+Action types are as follows:
+"blink"
+"mouth"
+"nod"
+"shake"
+You can choose 1-2 actions out of the four.
+Single action example: "blink"
+Multiple action example: "blink,mouth"
+The default value is blink. The different action types passed in this parameter take effect only when the SecurityLevel is 2, 4, or 5; otherwise, the interface reports an error.
+        :type ActionList: str
         """
         self._AutoSkipStartPage = None
         self._AutoSkip = None
@@ -7811,6 +7864,7 @@ Example: HKIDCard
         self._ThemeColor = None
         self._Language = None
         self._AutoDowngrade = None
+        self._ActionList = None
 
     @property
     def AutoSkipStartPage(self):
@@ -7900,6 +7954,14 @@ Example: HKIDCard
     def AutoDowngrade(self, AutoDowngrade):
         self._AutoDowngrade = AutoDowngrade
 
+    @property
+    def ActionList(self):
+        return self._ActionList
+
+    @ActionList.setter
+    def ActionList(self, ActionList):
+        self._ActionList = ActionList
+
 
     def _deserialize(self, params):
         self._AutoSkipStartPage = params.get("AutoSkipStartPage")
@@ -7913,6 +7975,7 @@ Example: HKIDCard
         self._ThemeColor = params.get("ThemeColor")
         self._Language = params.get("Language")
         self._AutoDowngrade = params.get("AutoDowngrade")
+        self._ActionList = params.get("ActionList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
