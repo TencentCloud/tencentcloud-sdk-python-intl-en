@@ -18480,7 +18480,7 @@ class UpdateApiKeyRequest(AbstractModel):
         r"""
         :param _AccessKeyId: ID of the key to be changed.
         :type AccessKeyId: str
-        :param _AccessKeySecret: Key to be updated, which is required when a custom key is updated. It can contain 10–50 letters, digits, and underscores.
+        :param _AccessKeySecret: Key to be updated, which is required when a custom key is updated. It can contain 10-50 letters, digits, and underscores.
         :type AccessKeySecret: str
         """
         self._AccessKeyId = None

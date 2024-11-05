@@ -603,3 +603,26 @@ class IntlpartnersmgtClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SendVerifyCode(self, request):
+        """This API is used to send a verification code for account registration.
+
+        :param request: Request instance for SendVerifyCode.
+        :type request: :class:`tencentcloud.intlpartnersmgt.v20220928.models.SendVerifyCodeRequest`
+        :rtype: :class:`tencentcloud.intlpartnersmgt.v20220928.models.SendVerifyCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SendVerifyCode", params, headers=headers)
+            response = json.loads(body)
+            model = models.SendVerifyCodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
