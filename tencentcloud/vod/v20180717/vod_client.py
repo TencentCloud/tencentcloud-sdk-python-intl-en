@@ -319,6 +319,39 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateComplexAdaptiveDynamicStreamingTask(self, request):
+        """Initiate an adaptive bitrate streaming processing task, with the following features:
+        1. Output HLS and MPEG-DASH adaptive streams based on the specified templates;
+        2. DRM options for the adaptive bitrate streaming include no encryption, Widevine, or FairPlay.
+        3. The output adaptive bitrate streaming can include multiple audio streams in different languages, with each language sourced from different media files.
+        4. The output adaptive stream can also include multiple subtitle streams in different languages.
+
+        **Notes:**
+        1. When using opening/closing credits, the video stream in the opening credit must be synchronized with the audio stream; otherwise, it will result in audio and video desynchronization in the output content.
+        2. If the output adaptive bitrate streaming needs to include audio from the main media, the FileId of the main media must be specified in the AudioSet parameter.
+        3. Subtitles must be added to the main media beforehand, which can be done through the ModifyMediaInfo API interface or the Video Management page in the console.
+        4. Support for TESHD transcoding and watermarking is currently not available.
+
+        :param request: Request instance for CreateComplexAdaptiveDynamicStreamingTask.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateComplexAdaptiveDynamicStreamingTaskRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateComplexAdaptiveDynamicStreamingTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateComplexAdaptiveDynamicStreamingTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateComplexAdaptiveDynamicStreamingTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateContentReviewTemplate(self, request):
         """We have <font color=red>stopped updating</font> this API. Our new moderation templates can moderate audio/video as well as images. For details, see [CreateReviewTemplate](https://intl.cloud.tencent.com/document/api/266/84391?from_cn_redirect=1).
         This API is used to create a custom audio/video moderation template. Up to 50 templates can be created in total.

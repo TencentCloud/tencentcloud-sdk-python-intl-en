@@ -21225,18 +21225,18 @@ class TradePrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalPrice: The non-discounted total price of monthly subscribed resources (unit: US cent)
+        :param _TotalPrice: The non-discounted total price of monthly subscribed resources (unit: 0.000001 cent)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalPrice: int
         :param _Discount: Total discount. `100` means no discount.
         :type Discount: float
-        :param _TotalPriceDiscount: The discounted total price of monthly subscribed resources (unit: US cent). If a discount is applied, `TotalPriceDiscount` will be the product of `TotalPrice` and `Discount`.
+        :param _TotalPriceDiscount: The discounted total price of monthly subscribed resources (unit: 0.000001 cent). If a discount is applied, `TotalPriceDiscount` will be the product of `TotalPrice` and `Discount`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type TotalPriceDiscount: int
-        :param _UnitPrice: The non-discounted unit price of pay-as-you-go resources (unit: US cent)
+        :param _UnitPrice: The non-discounted unit price of pay-as-you-go resources (unit: 0.000001 cent)
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UnitPrice: int
-        :param _UnitPriceDiscount: The discounted unit price of pay-as-you-go resources (unit: US cent). If a discount is applied, `UnitPriceDiscount` will be the product of `UnitPrice` and `Discount`.
+        :param _UnitPriceDiscount: The discounted unit price of pay-as-you-go resources (unit: 0.000001 cent). If a discount is applied, `UnitPriceDiscount` will be the product of `UnitPrice` and `Discount`.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type UnitPriceDiscount: int
         :param _ChargeUnit: Price unit

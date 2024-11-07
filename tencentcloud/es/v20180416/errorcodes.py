@@ -44,6 +44,9 @@ FAILEDOPERATION_NOPAYMENT = 'FailedOperation.NoPayment'
 # Unverified user.
 FAILEDOPERATION_NOTAUTHENTICATED = 'FailedOperation.NotAuthenticated'
 
+# 
+FAILEDOPERATION_REQUESTTIMEOUT = 'FailedOperation.RequestTimeOut'
+
 # Cannot increase the number of disks during rolling restart of scaled-out compute resources.
 FAILEDOPERATION_UNSUPPORTRESETNODETYPEANDSCALEOUTDISK = 'FailedOperation.UnsupportResetNodeTypeAndScaleoutDisk'
 
@@ -58,6 +61,45 @@ INTERNALERROR = 'InternalError'
 
 # Invalid parameter.
 INVALIDPARAMETER = 'InvalidParameter'
+
+# 
+INVALIDPARAMETER_INVALIDAPPID = 'InvalidParameter.InvalidAppId'
+
+# 
+INVALIDPARAMETER_INVALIDESVERSION = 'InvalidParameter.InvalidEsVersion'
+
+# 
+INVALIDPARAMETER_INVALIDINDEXMETAJSON = 'InvalidParameter.InvalidIndexMetaJson'
+
+# 
+INVALIDPARAMETER_INVALIDINDEXNAME = 'InvalidParameter.InvalidIndexName'
+
+# 
+INVALIDPARAMETER_INVALIDINDEXTYPE = 'InvalidParameter.InvalidIndexType'
+
+# 
+INVALIDPARAMETER_INVALIDINSTANCEID = 'InvalidParameter.InvalidInstanceId'
+
+# 
+INVALIDPARAMETER_INVALIDLIMIT = 'InvalidParameter.InvalidLimit'
+
+# 
+INVALIDPARAMETER_INVALIDLOGTYPE = 'InvalidParameter.InvalidLogType'
+
+# 
+INVALIDPARAMETER_INVALIDOFFSET = 'InvalidParameter.InvalidOffset'
+
+# 
+INVALIDPARAMETER_INVALIDORDERBYKEY = 'InvalidParameter.InvalidOrderByKey'
+
+# 
+INVALIDPARAMETER_INVALIDQUERYSTRING = 'InvalidParameter.InvalidQueryString'
+
+# 
+INVALIDPARAMETER_INVALIDREGION = 'InvalidParameter.InvalidRegion'
+
+# 
+INVALIDPARAMETER_INVALIDTIMEPARAM = 'InvalidParameter.InvalidTimeParam'
 
 # Incorrect parameter value.
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
@@ -85,6 +127,12 @@ RESOURCEINSUFFICIENT_SUBNET = 'ResourceInsufficient.Subnet'
 
 # The resource does not exist.
 RESOURCENOTFOUND = 'ResourceNotFound'
+
+# 
+RESOURCENOTFOUND_CLUSTERINFONOTFOUND = 'ResourceNotFound.ClusterInfoNotFound'
+
+# 
+RESOURCENOTFOUND_DBINFONOTFOUND = 'ResourceNotFound.DBInfoNotFound'
 
 # Unauthorized operation.
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'

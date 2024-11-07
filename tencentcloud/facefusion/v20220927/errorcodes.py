@@ -17,11 +17,17 @@
 # Insufficient balance, failed to open, please recharge and open again.
 FAILEDOPERATION_BALANCEINSUFFICIENT = 'FailedOperation.BalanceInsufficient'
 
+# The face corresponding to the specified ID does not exist in the video.
+FAILEDOPERATION_FACEIDNOTINVIDEO = 'FailedOperation.FaceIdNotInVideo'
+
 # The face was filtered because it was too small. It is recommended that the face size is not less than 34x34 pixels.
 FAILEDOPERATION_FACESIZETOOSMALL = 'FailedOperation.FaceSizeTooSmall'
 
 # The material has not been reviewed.
 FAILEDOPERATION_FUSEMATERIALNOTAUTH = 'FailedOperation.FuseMaterialNotAuth'
+
+# The material in this state cannot be used.
+FAILEDOPERATION_FUSEMATERIALNOTAVAILABLE = 'FailedOperation.FuseMaterialNotAvailable'
 
 # The material does not exist.
 FAILEDOPERATION_FUSEMATERIALNOTEXIST = 'FailedOperation.FuseMaterialNotExist'
@@ -31,6 +37,9 @@ FAILEDOPERATION_IMAGEDECODEFAILED = 'FailedOperation.ImageDecodeFailed'
 
 # Image download failed.
 FAILEDOPERATION_IMAGEDOWNLOADERROR = 'FailedOperation.ImageDownloadError'
+
+# The image size is too large. It is recommended to resize the image to below 2,000x2,000 pixels.
+FAILEDOPERATION_IMAGERESOLUTIONEXCEED = 'FailedOperation.ImageResolutionExceed'
 
 # The short edge resolution of the image is lower than 64 pixels.
 FAILEDOPERATION_IMAGERESOLUTIONTOOSMALL = 'FailedOperation.ImageResolutionTooSmall'
@@ -44,11 +53,20 @@ FAILEDOPERATION_IMAGESIZEINVALID = 'FailedOperation.ImageSizeInvalid'
 # Internal service error.
 FAILEDOPERATION_INNERERROR = 'FailedOperation.InnerError'
 
+# The task has been canceled. Please submit the task again.
+FAILEDOPERATION_JOBHASBEENCANCELED = 'FailedOperation.JobHasBeenCanceled'
+
+# The task does not exist.
+FAILEDOPERATION_JOBNOTEXIST = 'FailedOperation.JobNotExist'
+
 # The face cannot be detected because the face box is too small.
 FAILEDOPERATION_NOFACEDETECTED = 'FailedOperation.NoFaceDetected'
 
 # Parameter or value is invalid.
 FAILEDOPERATION_PARAMETERVALUEERROR = 'FailedOperation.ParameterValueError'
+
+# The authorization fee is not paid for the activity, or the activity has been disabled.
+FAILEDOPERATION_PROJECTNOTAUTH = 'FailedOperation.ProjectNotAuth'
 
 # The backend service timed out.
 FAILEDOPERATION_REQUESTTIMEOUT = 'FailedOperation.RequestTimeout'

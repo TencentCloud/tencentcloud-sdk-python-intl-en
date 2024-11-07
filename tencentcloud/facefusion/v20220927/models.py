@@ -243,6 +243,173 @@ class FuseFaceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class FuseFaceReviewDetail(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Field: 
+        :type Field: str
+        :param _Label: 
+        :type Label: str
+        :param _Confidence: 
+        :type Confidence: float
+        :param _Suggestion: 
+        :type Suggestion: str
+        """
+        self._Field = None
+        self._Label = None
+        self._Confidence = None
+        self._Suggestion = None
+
+    @property
+    def Field(self):
+        return self._Field
+
+    @Field.setter
+    def Field(self, Field):
+        self._Field = Field
+
+    @property
+    def Label(self):
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+
+    def _deserialize(self, params):
+        self._Field = params.get("Field")
+        self._Label = params.get("Label")
+        self._Confidence = params.get("Confidence")
+        self._Suggestion = params.get("Suggestion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FuseFaceReviewResult(AbstractModel):
+    """
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Category: 
+        :type Category: str
+        :param _Code: 
+        :type Code: str
+        :param _CodeDescription: 
+        :type CodeDescription: str
+        :param _Confidence: 
+        :type Confidence: float
+        :param _Suggestion: 
+        :type Suggestion: str
+        :param _DetailSet: 
+        :type DetailSet: list of FuseFaceReviewDetail
+        """
+        self._Category = None
+        self._Code = None
+        self._CodeDescription = None
+        self._Confidence = None
+        self._Suggestion = None
+        self._DetailSet = None
+
+    @property
+    def Category(self):
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Code(self):
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def CodeDescription(self):
+        return self._CodeDescription
+
+    @CodeDescription.setter
+    def CodeDescription(self, CodeDescription):
+        self._CodeDescription = CodeDescription
+
+    @property
+    def Confidence(self):
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Suggestion(self):
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def DetailSet(self):
+        return self._DetailSet
+
+    @DetailSet.setter
+    def DetailSet(self, DetailSet):
+        self._DetailSet = DetailSet
+
+
+    def _deserialize(self, params):
+        self._Category = params.get("Category")
+        self._Code = params.get("Code")
+        self._CodeDescription = params.get("CodeDescription")
+        self._Confidence = params.get("Confidence")
+        self._Suggestion = params.get("Suggestion")
+        if params.get("DetailSet") is not None:
+            self._DetailSet = []
+            for item in params.get("DetailSet"):
+                obj = FuseFaceReviewDetail()
+                obj._deserialize(item)
+                self._DetailSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FuseParam(AbstractModel):
     """Fusion parameter
 
@@ -507,6 +674,446 @@ class MetaData(AbstractModel):
     def _deserialize(self, params):
         self._MetaKey = params.get("MetaKey")
         self._MetaValue = params.get("MetaValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryVideoFaceFusionJobRequest(AbstractModel):
+    """QueryVideoFaceFusionJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: Job ID of the video face fusion task
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryVideoFaceFusionJobResponse(AbstractModel):
+    """QueryVideoFaceFusionJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobStatus: Current task status: queuing, processing, processing failed, or processing completed
+        :type JobStatus: str
+        :param _VideoFaceFusionOutput: Video face fusion result
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type VideoFaceFusionOutput: :class:`tencentcloud.facefusion.v20220927.models.VideoFaceFusionOutput`
+        :param _JobStatusCode: Task status code. 1: queuing; 3: processing; 5: processing failed; 7: processing completed.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JobStatusCode: int
+        :param _JobErrorCode: Task failure error code
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JobErrorCode: str
+        :param _JobErrorMsg: Task failure error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type JobErrorMsg: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._JobStatus = None
+        self._VideoFaceFusionOutput = None
+        self._JobStatusCode = None
+        self._JobErrorCode = None
+        self._JobErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def JobStatus(self):
+        return self._JobStatus
+
+    @JobStatus.setter
+    def JobStatus(self, JobStatus):
+        self._JobStatus = JobStatus
+
+    @property
+    def VideoFaceFusionOutput(self):
+        return self._VideoFaceFusionOutput
+
+    @VideoFaceFusionOutput.setter
+    def VideoFaceFusionOutput(self, VideoFaceFusionOutput):
+        self._VideoFaceFusionOutput = VideoFaceFusionOutput
+
+    @property
+    def JobStatusCode(self):
+        return self._JobStatusCode
+
+    @JobStatusCode.setter
+    def JobStatusCode(self, JobStatusCode):
+        self._JobStatusCode = JobStatusCode
+
+    @property
+    def JobErrorCode(self):
+        return self._JobErrorCode
+
+    @JobErrorCode.setter
+    def JobErrorCode(self, JobErrorCode):
+        self._JobErrorCode = JobErrorCode
+
+    @property
+    def JobErrorMsg(self):
+        return self._JobErrorMsg
+
+    @JobErrorMsg.setter
+    def JobErrorMsg(self, JobErrorMsg):
+        self._JobErrorMsg = JobErrorMsg
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobStatus = params.get("JobStatus")
+        if params.get("VideoFaceFusionOutput") is not None:
+            self._VideoFaceFusionOutput = VideoFaceFusionOutput()
+            self._VideoFaceFusionOutput._deserialize(params.get("VideoFaceFusionOutput"))
+        self._JobStatusCode = params.get("JobStatusCode")
+        self._JobErrorCode = params.get("JobErrorCode")
+        self._JobErrorMsg = params.get("JobErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitVideoFaceFusionJobRequest(AbstractModel):
+    """SubmitVideoFaceFusionJob request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: Activity ID. Check it in the video face fusion console.
+        :type ProjectId: str
+        :param _ModelId: Material ID. Check it in the video face fusion console.
+        :type ModelId: str
+        :param _MergeInfos: Face position information on the user face image and material template image. Only one entry is allowed.
+        :type MergeInfos: list of MergeInfo
+        :param _CelebrityIdentify: 0: inappropriate content recognition not required; 1: inappropriate content recognition required. Default value: 0.
+Note: Once the inappropriate content recognition service is enabled, you need to decide whether to adjust your business logic based on the returned results. For example, you need to replace the image if the system informs you that the image does not meet the requirements.
+**<font color=#1E90FF>Note: This field will be deprecated later due to business adjustments. It is not recommended for use.</font>**
+        :type CelebrityIdentify: int
+        :param _LogoParam: Video watermark logo parameter
+        :type LogoParam: :class:`tencentcloud.facefusion.v20220927.models.LogoParam`
+        :param _UserDesignatedUrl: COS pre-signed URL (PUT method). If this parameter is specified, the video after fusion will be uploaded to this URL.
+**<font color=#1E90FF>Note: If upload to this URL fails, the video will be uploaded to the default address of Tencent Cloud.</font>**
+        :type UserDesignatedUrl: str
+        :param _UserIp: User IP address
+        :type UserIp: str
+        :param _MetaData: Video metadata field
+        :type MetaData: list of MetaData
+        """
+        self._ProjectId = None
+        self._ModelId = None
+        self._MergeInfos = None
+        self._CelebrityIdentify = None
+        self._LogoParam = None
+        self._UserDesignatedUrl = None
+        self._UserIp = None
+        self._MetaData = None
+
+    @property
+    def ProjectId(self):
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ModelId(self):
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def MergeInfos(self):
+        return self._MergeInfos
+
+    @MergeInfos.setter
+    def MergeInfos(self, MergeInfos):
+        self._MergeInfos = MergeInfos
+
+    @property
+    def CelebrityIdentify(self):
+        return self._CelebrityIdentify
+
+    @CelebrityIdentify.setter
+    def CelebrityIdentify(self, CelebrityIdentify):
+        self._CelebrityIdentify = CelebrityIdentify
+
+    @property
+    def LogoParam(self):
+        return self._LogoParam
+
+    @LogoParam.setter
+    def LogoParam(self, LogoParam):
+        self._LogoParam = LogoParam
+
+    @property
+    def UserDesignatedUrl(self):
+        return self._UserDesignatedUrl
+
+    @UserDesignatedUrl.setter
+    def UserDesignatedUrl(self, UserDesignatedUrl):
+        self._UserDesignatedUrl = UserDesignatedUrl
+
+    @property
+    def UserIp(self):
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
+
+    @property
+    def MetaData(self):
+        return self._MetaData
+
+    @MetaData.setter
+    def MetaData(self, MetaData):
+        self._MetaData = MetaData
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ModelId = params.get("ModelId")
+        if params.get("MergeInfos") is not None:
+            self._MergeInfos = []
+            for item in params.get("MergeInfos"):
+                obj = MergeInfo()
+                obj._deserialize(item)
+                self._MergeInfos.append(obj)
+        self._CelebrityIdentify = params.get("CelebrityIdentify")
+        if params.get("LogoParam") is not None:
+            self._LogoParam = LogoParam()
+            self._LogoParam._deserialize(params.get("LogoParam"))
+        self._UserDesignatedUrl = params.get("UserDesignatedUrl")
+        self._UserIp = params.get("UserIp")
+        if params.get("MetaData") is not None:
+            self._MetaData = []
+            for item in params.get("MetaData"):
+                obj = MetaData()
+                obj._deserialize(item)
+                self._MetaData.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitVideoFaceFusionJobResponse(AbstractModel):
+    """SubmitVideoFaceFusionJob response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: Job ID of the video face fusion task
+        :type JobId: str
+        :param _EstimatedProcessTime: Estimated processing time of the video face fusion task, in seconds
+        :type EstimatedProcessTime: float
+        :param _JobQueueLength: Estimated processing time of the video face fusion task, in seconds
+        :type JobQueueLength: int
+        :param _ReviewResultSet: Inappropriate content recognition result. The element order of this array is the same as that of mergeinfo in the request, with a one-to-one relationship.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :type ReviewResultSet: list of FuseFaceReviewResult
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._EstimatedProcessTime = None
+        self._JobQueueLength = None
+        self._ReviewResultSet = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def EstimatedProcessTime(self):
+        return self._EstimatedProcessTime
+
+    @EstimatedProcessTime.setter
+    def EstimatedProcessTime(self, EstimatedProcessTime):
+        self._EstimatedProcessTime = EstimatedProcessTime
+
+    @property
+    def JobQueueLength(self):
+        return self._JobQueueLength
+
+    @JobQueueLength.setter
+    def JobQueueLength(self, JobQueueLength):
+        self._JobQueueLength = JobQueueLength
+
+    @property
+    def ReviewResultSet(self):
+        return self._ReviewResultSet
+
+    @ReviewResultSet.setter
+    def ReviewResultSet(self, ReviewResultSet):
+        self._ReviewResultSet = ReviewResultSet
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._EstimatedProcessTime = params.get("EstimatedProcessTime")
+        self._JobQueueLength = params.get("JobQueueLength")
+        if params.get("ReviewResultSet") is not None:
+            self._ReviewResultSet = []
+            for item in params.get("ReviewResultSet"):
+                obj = FuseFaceReviewResult()
+                obj._deserialize(item)
+                self._ReviewResultSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class VideoFaceFusionOutput(AbstractModel):
+    """Returned video face fusion result
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoUrl: URL of the video output after video face fusion
+        :type VideoUrl: str
+        :param _VideoMD5: MD5 value of the video output after video face fusion, which is used for verification
+        :type VideoMD5: str
+        :param _Width: Video width
+        :type Width: int
+        :param _Height: Video height
+        :type Height: int
+        :param _FPS: Frames per second
+        :type FPS: int
+        :param _DurationInSec: Video duration, in seconds
+        :type DurationInSec: float
+        :param _Frame: Number of frames
+        :type Frame: int
+        """
+        self._VideoUrl = None
+        self._VideoMD5 = None
+        self._Width = None
+        self._Height = None
+        self._FPS = None
+        self._DurationInSec = None
+        self._Frame = None
+
+    @property
+    def VideoUrl(self):
+        return self._VideoUrl
+
+    @VideoUrl.setter
+    def VideoUrl(self, VideoUrl):
+        self._VideoUrl = VideoUrl
+
+    @property
+    def VideoMD5(self):
+        return self._VideoMD5
+
+    @VideoMD5.setter
+    def VideoMD5(self, VideoMD5):
+        self._VideoMD5 = VideoMD5
+
+    @property
+    def Width(self):
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def FPS(self):
+        return self._FPS
+
+    @FPS.setter
+    def FPS(self, FPS):
+        self._FPS = FPS
+
+    @property
+    def DurationInSec(self):
+        return self._DurationInSec
+
+    @DurationInSec.setter
+    def DurationInSec(self, DurationInSec):
+        self._DurationInSec = DurationInSec
+
+    @property
+    def Frame(self):
+        return self._Frame
+
+    @Frame.setter
+    def Frame(self, Frame):
+        self._Frame = Frame
+
+
+    def _deserialize(self, params):
+        self._VideoUrl = params.get("VideoUrl")
+        self._VideoMD5 = params.get("VideoMD5")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._FPS = params.get("FPS")
+        self._DurationInSec = params.get("DurationInSec")
+        self._Frame = params.get("Frame")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

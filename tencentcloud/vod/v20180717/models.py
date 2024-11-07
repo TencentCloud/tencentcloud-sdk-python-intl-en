@@ -12778,6 +12778,428 @@ class CommitUploadResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ComplexAdaptiveDynamicStreamingTask(AbstractModel):
+    """Execution information of the adaptive bitrate streaming task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: str
+        :param _Status: Task status. Valid values:
+<li>PROCESSING: processing;</li>
+<li>FINISH: completed.</li>
+        :type Status: str
+        :param _ComplexAdaptiveDynamicStreamingTaskResultSet: Execution status and result of the complex adaptive bitrate streaming task. Each array element corresponds to an adaptive bitrate streaming template specified when initiating the task.
+        :type ComplexAdaptiveDynamicStreamingTaskResultSet: list of ComplexAdaptiveDynamicStreamingTaskResult
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ComplexAdaptiveDynamicStreamingTaskResultSet = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ComplexAdaptiveDynamicStreamingTaskResultSet(self):
+        return self._ComplexAdaptiveDynamicStreamingTaskResultSet
+
+    @ComplexAdaptiveDynamicStreamingTaskResultSet.setter
+    def ComplexAdaptiveDynamicStreamingTaskResultSet(self, ComplexAdaptiveDynamicStreamingTaskResultSet):
+        self._ComplexAdaptiveDynamicStreamingTaskResultSet = ComplexAdaptiveDynamicStreamingTaskResultSet
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        if params.get("ComplexAdaptiveDynamicStreamingTaskResultSet") is not None:
+            self._ComplexAdaptiveDynamicStreamingTaskResultSet = []
+            for item in params.get("ComplexAdaptiveDynamicStreamingTaskResultSet"):
+                obj = ComplexAdaptiveDynamicStreamingTaskResult()
+                obj._deserialize(item)
+                self._ComplexAdaptiveDynamicStreamingTaskResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComplexAdaptiveDynamicStreamingTaskAudioInput(AbstractModel):
+    """Input parameters for audio streams in the adaptive bitrate streaming task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: Media ID of the input audio file. The first audio stream in the media will be fixed, while video streams and other audio streams (if any) will be ignored.
+        :type FileId: str
+        :param _Name: Audio stream name in the output, supporting up to 16 characters.
+        :type Name: str
+        :param _Language: The language of the audio stream in the output, supporting up to 16 characters. It must comply with the RFC5646 specification.
+        :type Language: str
+        :param _Default: Whether to set as the default audio for adaptive bitrate streaming.
+<li>YES: Set as the default audio;</li>
+<li>NO: Not set as the default audio (default value).</li>
+        :type Default: str
+        """
+        self._FileId = None
+        self._Name = None
+        self._Language = None
+        self._Default = None
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Name(self):
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Language(self):
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def Default(self):
+        return self._Default
+
+    @Default.setter
+    def Default(self, Default):
+        self._Default = Default
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._Name = params.get("Name")
+        self._Language = params.get("Language")
+        self._Default = params.get("Default")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComplexAdaptiveDynamicStreamingTaskInput(AbstractModel):
+    """Input parameters for the adaptive bitrate streaming task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StreamPara: Adaptive bitrate streaming parameters.
+        :type StreamPara: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTaskStreamPara`
+        """
+        self._StreamPara = None
+
+    @property
+    def StreamPara(self):
+        return self._StreamPara
+
+    @StreamPara.setter
+    def StreamPara(self, StreamPara):
+        self._StreamPara = StreamPara
+
+
+    def _deserialize(self, params):
+        if params.get("StreamPara") is not None:
+            self._StreamPara = ComplexAdaptiveDynamicStreamingTaskStreamPara()
+            self._StreamPara._deserialize(params.get("StreamPara"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComplexAdaptiveDynamicStreamingTaskOutput(AbstractModel):
+    """Output of the adaptive bitrate streaming task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Adaptive bitrate streaming template ID.
+        :type Definition: int
+        :param _Format: The adaptive bitrate streaming format. Valid values:
+<li>HLS;</li>
+<li>MPEG-DASH.</li>
+
+        :type Format: str
+        :param _DrmType: DRM scheme type, value range:
+<li>Widevine;</li>
+<li>FairPlay.</li>
+The default value is an empty string, indicating that the video will not be DRM protected.
+        :type DrmType: str
+        :param _Url: Playback address of the output manifest.
+        :type Url: str
+        """
+        self._Definition = None
+        self._Format = None
+        self._DrmType = None
+        self._Url = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Format(self):
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def DrmType(self):
+        return self._DrmType
+
+    @DrmType.setter
+    def DrmType(self, DrmType):
+        self._DrmType = DrmType
+
+    @property
+    def Url(self):
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Format = params.get("Format")
+        self._DrmType = params.get("DrmType")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComplexAdaptiveDynamicStreamingTaskResult(AbstractModel):
+    """Execution information of a single adaptive bitrate stream in a complex adaptive bitrate streaming task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: Task status of a single adaptive bitrate stream. Valid values: PROCESSING, SUCCESS, FAIL.
+        :type Status: str
+        :param _ErrCodeExt: Error code. An empty string indicates the task is successful; other values indicate failure. For details, see [Video Processing Error Codes](https://intl.cloud.tencent.com/zh/document/product/266/39145).
+        :type ErrCodeExt: str
+        :param _Message: Error message.
+        :type Message: str
+        :param _Progress: The execution progress of a single adaptive bitrate stream. Value range: 0-100.
+        :type Progress: int
+        :param _Input: Input of a single adaptive bitrate stream.
+        :type Input: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTaskInput`
+        :param _Output: Output of a single adaptive bitrate stream.
+        :type Output: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTaskOutput`
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._Progress = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Progress(self):
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def Input(self):
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        self._Progress = params.get("Progress")
+        if params.get("Input") is not None:
+            self._Input = ComplexAdaptiveDynamicStreamingTaskInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = ComplexAdaptiveDynamicStreamingTaskOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComplexAdaptiveDynamicStreamingTaskStreamPara(AbstractModel):
+    """Input parameters related to the adaptive bitrate streaming template.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: Adaptive bitrate streaming template ID.
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComplexAdaptiveDynamicStreamingTaskSubtitleInput(AbstractModel):
+    """Input parameters for subtitles in the complex adaptive bitrate streaming task.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Subtitle ID, which must belongs to the main media.
+        :type Id: str
+        :param _Default: Whether to set as the default subtitle for adaptive bitrate streaming.
+<li>YES: Set as the default subtitle;</li>
+<li>NO: Not set as the default subtitle (default value).</li>
+        :type Default: str
+        """
+        self._Id = None
+        self._Default = None
+
+    @property
+    def Id(self):
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Default(self):
+        return self._Default
+
+    @Default.setter
+    def Default(self, Default):
+        self._Default = Default
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Default = params.get("Default")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ComposeMediaOutput(AbstractModel):
     """Information of output media file.
 
@@ -15220,6 +15642,156 @@ class CreateClassResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ClassId = params.get("ClassId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateComplexAdaptiveDynamicStreamingTaskRequest(AbstractModel):
+    """CreateComplexAdaptiveDynamicStreamingTask request structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: The VOD application ID.
+        :type SubAppId: int
+        :param _FileId: Media ID of the main media.
+        :type FileId: str
+        :param _StreamParaSet: Adaptive bitrate streaming parameters, supporting up to 8 entries.
+        :type StreamParaSet: list of ComplexAdaptiveDynamicStreamingTaskStreamPara
+        :param _HeadTailSet: List of video opening/closing credits configuration template IDs, supporting up to 4 entries. If this field is filled in, the start times of the media specified in AudioSet and SubtitleSet will be automatically adjusted to stay in sync with the main media.
+        :type HeadTailSet: list of HeadTailTaskInput
+        :param _AudioSet: Audio media parameters, supporting up to 16 entries. Each array element corresponds to an audio stream in the output. If you want to add the audio stream from the main media file to the output, you also need to specify it here. The order of elements in the array will determine the order of audio streams in the output. If the input media file contains both video and audio streams, the video stream will be ignored.
+        :type AudioSet: list of ComplexAdaptiveDynamicStreamingTaskAudioInput
+        :param _SubtitleSet: List of subtitle IDs, supporting up to 16 entries. Each array element corresponds to an subtitle stream in the output. The order of elements in the array will determine the order of subtitles in the output.
+        :type SubtitleSet: list of ComplexAdaptiveDynamicStreamingTaskSubtitleInput
+        """
+        self._SubAppId = None
+        self._FileId = None
+        self._StreamParaSet = None
+        self._HeadTailSet = None
+        self._AudioSet = None
+        self._SubtitleSet = None
+
+    @property
+    def SubAppId(self):
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def FileId(self):
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def StreamParaSet(self):
+        return self._StreamParaSet
+
+    @StreamParaSet.setter
+    def StreamParaSet(self, StreamParaSet):
+        self._StreamParaSet = StreamParaSet
+
+    @property
+    def HeadTailSet(self):
+        return self._HeadTailSet
+
+    @HeadTailSet.setter
+    def HeadTailSet(self, HeadTailSet):
+        self._HeadTailSet = HeadTailSet
+
+    @property
+    def AudioSet(self):
+        return self._AudioSet
+
+    @AudioSet.setter
+    def AudioSet(self, AudioSet):
+        self._AudioSet = AudioSet
+
+    @property
+    def SubtitleSet(self):
+        return self._SubtitleSet
+
+    @SubtitleSet.setter
+    def SubtitleSet(self, SubtitleSet):
+        self._SubtitleSet = SubtitleSet
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._FileId = params.get("FileId")
+        if params.get("StreamParaSet") is not None:
+            self._StreamParaSet = []
+            for item in params.get("StreamParaSet"):
+                obj = ComplexAdaptiveDynamicStreamingTaskStreamPara()
+                obj._deserialize(item)
+                self._StreamParaSet.append(obj)
+        if params.get("HeadTailSet") is not None:
+            self._HeadTailSet = []
+            for item in params.get("HeadTailSet"):
+                obj = HeadTailTaskInput()
+                obj._deserialize(item)
+                self._HeadTailSet.append(obj)
+        if params.get("AudioSet") is not None:
+            self._AudioSet = []
+            for item in params.get("AudioSet"):
+                obj = ComplexAdaptiveDynamicStreamingTaskAudioInput()
+                obj._deserialize(item)
+                self._AudioSet.append(obj)
+        if params.get("SubtitleSet") is not None:
+            self._SubtitleSet = []
+            for item in params.get("SubtitleSet"):
+                obj = ComplexAdaptiveDynamicStreamingTaskSubtitleInput()
+                obj._deserialize(item)
+                self._SubtitleSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateComplexAdaptiveDynamicStreamingTaskResponse(AbstractModel):
+    """CreateComplexAdaptiveDynamicStreamingTask response structure.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: Task ID.
+        :type TaskId: str
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -25950,6 +26522,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 <li> `ReviewAudioVideo`: Moderation</li>
 <li>`ExtractTraceWatermark`: Digital watermark extraction</li>
 <li>`QualityEnhance`: Enhance audio/video</li>
+<li>`ComplexAdaptiveDynamicStreaming`: Complex adaptive bitrate streaming processing task</li>
         :type TaskType: str
         :param _Status: Task status. Valid values:
 <li>WAITING: waiting;</li>
@@ -26025,6 +26598,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         :param _QualityEnhanceTask: Media Quality Enhance task information. This field has a value only when TaskType is QualityEnhance.
 Note: This field may return null, indicating that no valid value can be obtained.
         :type QualityEnhanceTask: :class:`tencentcloud.vod.v20180717.models.QualityEnhanceTask`
+        :param _ComplexAdaptiveDynamicStreamingTask: Complex adaptive bitrate streaming processing task information. This field has a value only when TaskType is ComplexAdaptiveDynamicStreaming. 
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type ComplexAdaptiveDynamicStreamingTask: :class:`tencentcloud.vod.v20180717.models.ComplexAdaptiveDynamicStreamingTask`
         :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
@@ -26054,6 +26630,7 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._DescribeFileAttributesTask = None
         self._QualityInspectTask = None
         self._QualityEnhanceTask = None
+        self._ComplexAdaptiveDynamicStreamingTask = None
         self._RequestId = None
 
     @property
@@ -26265,6 +26842,14 @@ Note: This field may return null, indicating that no valid value can be obtained
         self._QualityEnhanceTask = QualityEnhanceTask
 
     @property
+    def ComplexAdaptiveDynamicStreamingTask(self):
+        return self._ComplexAdaptiveDynamicStreamingTask
+
+    @ComplexAdaptiveDynamicStreamingTask.setter
+    def ComplexAdaptiveDynamicStreamingTask(self, ComplexAdaptiveDynamicStreamingTask):
+        self._ComplexAdaptiveDynamicStreamingTask = ComplexAdaptiveDynamicStreamingTask
+
+    @property
     def RequestId(self):
         return self._RequestId
 
@@ -26342,6 +26927,9 @@ Note: This field may return null, indicating that no valid value can be obtained
         if params.get("QualityEnhanceTask") is not None:
             self._QualityEnhanceTask = QualityEnhanceTask()
             self._QualityEnhanceTask._deserialize(params.get("QualityEnhanceTask"))
+        if params.get("ComplexAdaptiveDynamicStreamingTask") is not None:
+            self._ComplexAdaptiveDynamicStreamingTask = ComplexAdaptiveDynamicStreamingTask()
+            self._ComplexAdaptiveDynamicStreamingTask._deserialize(params.get("ComplexAdaptiveDynamicStreamingTask"))
         self._RequestId = params.get("RequestId")
 
 

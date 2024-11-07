@@ -902,24 +902,31 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: Adaptive bitrate streaming template ID.
+        :param _Definition: Adaptive dynamic streaming template ID.
         :type Definition: int
-        :param _WatermarkSet: List of up to 10 image or text watermarks.
+        :param _WatermarkSet: Watermark list. Multiple image or text watermarks up to a maximum of 10 are supported.
         :type WatermarkSet: list of WatermarkInput
-        :param _OutputStorage: 
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _OutputStorage: Target storage for files after adaptive dynamic streaming. If left blank, it inherits the upper-level OutputStorage value.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputObjectPath: The relative or absolute output path of the manifest file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}.{format}`.
+        :param _OutputObjectPath: Output path for the manifest file after adaptive dynamic streaming. It can be either a relative path or an absolute path.
+If you need to define an output path, the path must end with `.{format}`. Refer to [Filename Variable Description](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1) for variable names.
+Example of relative path:
+<li>filename_{variable name}.{format}</li>
+<li>filename.{format}</li>
+Example of absolute path:
+<li>/custom path/filename_{variable name}.{format}</li>
+If not filled in, it is a relative path by default: {inputName}_adaptiveDynamicStreaming_{definition}.{format}.
         :type OutputObjectPath: str
-        :param _SubStreamObjectName: The relative output path of the substream file after being transcoded to adaptive bitrate streaming. If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`.
+        :param _SubStreamObjectName: After adaptive dynamic streaming, the output path of substream files can only be a relative path. If not filled in, it is a relative path by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`.
         :type SubStreamObjectName: str
-        :param _SegmentObjectName: The relative output path of the segment file after being transcoded to adaptive bitrate streaming (in HLS format only). If this parameter is left empty, a relative path in the following format will be used by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`.
+        :param _SegmentObjectName: After adaptive dynamic streaming (for HLS only), the output path of segment files can only be a relative path. If not filled in, it is a relative path by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`.
         :type SegmentObjectName: str
-        :param _AddOnSubtitles: 
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _AddOnSubtitles: Subtitle file to be inserted.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type AddOnSubtitles: list of AddOnSubtitle
-        :param _DrmInfo: 
-Note: This field may return·null, indicating that no valid values can be obtained.
+        :param _DrmInfo: Drm information.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type DrmInfo: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
         :param _DefinitionType: Adaptive transcoding template type.
 Common: audio-video.
@@ -1238,10 +1245,10 @@ class AdaptiveStreamTemplate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Video: Video parameter information.
-        :type Video: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
         :param _Audio: Audio parameter information.
         :type Audio: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        :param _Video: Video parameter information.
+        :type Video: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
         :param _RemoveAudio: Whether to remove audio stream. Valid values:
 <li>0: no,</li>
 <li>1: yes.</li>
@@ -1251,18 +1258,10 @@ class AdaptiveStreamTemplate(AbstractModel):
 <li>1: yes.</li>
         :type RemoveVideo: int
         """
-        self._Video = None
         self._Audio = None
+        self._Video = None
         self._RemoveAudio = None
         self._RemoveVideo = None
-
-    @property
-    def Video(self):
-        return self._Video
-
-    @Video.setter
-    def Video(self, Video):
-        self._Video = Video
 
     @property
     def Audio(self):
@@ -1271,6 +1270,14 @@ class AdaptiveStreamTemplate(AbstractModel):
     @Audio.setter
     def Audio(self, Audio):
         self._Audio = Audio
+
+    @property
+    def Video(self):
+        return self._Video
+
+    @Video.setter
+    def Video(self, Video):
+        self._Video = Video
 
     @property
     def RemoveAudio(self):
@@ -1290,12 +1297,12 @@ class AdaptiveStreamTemplate(AbstractModel):
 
 
     def _deserialize(self, params):
-        if params.get("Video") is not None:
-            self._Video = VideoTemplateInfo()
-            self._Video._deserialize(params.get("Video"))
         if params.get("Audio") is not None:
             self._Audio = AudioTemplateInfo()
             self._Audio._deserialize(params.get("Audio"))
+        if params.get("Video") is not None:
+            self._Video = VideoTemplateInfo()
+            self._Video._deserialize(params.get("Video"))
         self._RemoveAudio = params.get("RemoveAudio")
         self._RemoveVideo = params.get("RemoveVideo")
         memeber_set = set(params.keys())
@@ -4002,10 +4009,14 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
+        warnings.warn("parameter `OutputStorage` is deprecated", DeprecationWarning) 
+
         return self._OutputStorage
 
     @OutputStorage.setter
     def OutputStorage(self, OutputStorage):
+        warnings.warn("parameter `OutputStorage` is deprecated", DeprecationWarning) 
+
         self._OutputStorage = OutputStorage
 
 
@@ -5851,12 +5862,9 @@ class AiRecognitionTaskTransTextResultOutput(AbstractModel):
         :type SegmentSet: list of AiRecognitionTaskTransTextSegmentItem
         :param _SubtitlePath: The subtitle URL.
         :type SubtitlePath: str
-        :param _OutputStorage: The subtitle storage location.
-        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._SegmentSet = None
         self._SubtitlePath = None
-        self._OutputStorage = None
 
     @property
     def SegmentSet(self):
@@ -5874,14 +5882,6 @@ class AiRecognitionTaskTransTextResultOutput(AbstractModel):
     def SubtitlePath(self, SubtitlePath):
         self._SubtitlePath = SubtitlePath
 
-    @property
-    def OutputStorage(self):
-        return self._OutputStorage
-
-    @OutputStorage.setter
-    def OutputStorage(self, OutputStorage):
-        self._OutputStorage = OutputStorage
-
 
     def _deserialize(self, params):
         if params.get("SegmentSet") is not None:
@@ -5891,9 +5891,6 @@ class AiRecognitionTaskTransTextResultOutput(AbstractModel):
                 obj._deserialize(item)
                 self._SegmentSet.append(obj)
         self._SubtitlePath = params.get("SubtitlePath")
-        if params.get("OutputStorage") is not None:
-            self._OutputStorage = TaskOutputStorage()
-            self._OutputStorage._deserialize(params.get("OutputStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16205,7 +16202,7 @@ class DescribeQualityControlTemplatesRequest(AbstractModel):
 <li>Default value: 10.</li>
 <li>Maximum value: 100.</li>
         :type Limit: int
-        :param _Type: Preset: preset template. Custom: custom template.
+        :param _Type: "Preset": preset template, "Custom": custom template
         :type Type: str
         :param _Name: Filter condition for media quality inspection template identifiers, with a length limit of 64 characters.
         :type Name: str
@@ -29712,7 +29709,9 @@ class ProcessMediaRequest(AbstractModel):
         r"""
         :param _InputInfo: The information of the file to process.
         :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
-        :param _OutputStorage: The storage location of the media processing output file. If this parameter is left empty, the storage location in `InputInfo` will be inherited.
+        :param _OutputStorage: Target storage for Media Processing Service output files. If left blank, it inherits the storage location in InputInfo.
+
+Note: When InputInfo.Type is URL, this parameter is required.
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _OutputDir: The directory to save the media processing output file, which must start and end with `/`, such as `/movie/201907/`.
 If you do not specify this parameter, the file will be saved to the directory specified in `InputInfo`.
@@ -32583,6 +32582,69 @@ Note: This field may return null, indicating that no valid values can be obtaine
         
 
 
+class SegmentSpecificInfo(AbstractModel):
+    """Information on special segment configuration.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: Switch for segment duration at startup. Optional values:
+on: Turn on the switch
+off: Turn off the switch
+Default value: off
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Switch: str
+        :param _FragmentTime: Segment duration at startup. Unit: second
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type FragmentTime: int
+        :param _FragmentEndNum: Number of effective segments, indicating the first FragmentEndNum segments with FragmentTime. Value range: >=1
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type FragmentEndNum: int
+        """
+        self._Switch = None
+        self._FragmentTime = None
+        self._FragmentEndNum = None
+
+    @property
+    def Switch(self):
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def FragmentTime(self):
+        return self._FragmentTime
+
+    @FragmentTime.setter
+    def FragmentTime(self, FragmentTime):
+        self._FragmentTime = FragmentTime
+
+    @property
+    def FragmentEndNum(self):
+        return self._FragmentEndNum
+
+    @FragmentEndNum.setter
+    def FragmentEndNum(self, FragmentEndNum):
+        self._FragmentEndNum = FragmentEndNum
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._FragmentTime = params.get("FragmentTime")
+        self._FragmentEndNum = params.get("FragmentEndNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SharpEnhanceConfig(AbstractModel):
     """Detail enhancement configuration.
 
@@ -33763,21 +33825,13 @@ class TerrorismConfigureInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OcrReviewInfo: The parameters for detecting sensitive information based on OCR.
-        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfo`
         :param _ImgReviewInfo: The parameters for detecting sensitive information in images.
         :type ImgReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfo`
+        :param _OcrReviewInfo: The parameters for detecting sensitive information based on OCR.
+        :type OcrReviewInfo: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfo`
         """
-        self._OcrReviewInfo = None
         self._ImgReviewInfo = None
-
-    @property
-    def OcrReviewInfo(self):
-        return self._OcrReviewInfo
-
-    @OcrReviewInfo.setter
-    def OcrReviewInfo(self, OcrReviewInfo):
-        self._OcrReviewInfo = OcrReviewInfo
+        self._OcrReviewInfo = None
 
     @property
     def ImgReviewInfo(self):
@@ -33787,14 +33841,22 @@ class TerrorismConfigureInfo(AbstractModel):
     def ImgReviewInfo(self, ImgReviewInfo):
         self._ImgReviewInfo = ImgReviewInfo
 
+    @property
+    def OcrReviewInfo(self):
+        return self._OcrReviewInfo
+
+    @OcrReviewInfo.setter
+    def OcrReviewInfo(self, OcrReviewInfo):
+        self._OcrReviewInfo = OcrReviewInfo
+
 
     def _deserialize(self, params):
-        if params.get("OcrReviewInfo") is not None:
-            self._OcrReviewInfo = TerrorismOcrReviewTemplateInfo()
-            self._OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
         if params.get("ImgReviewInfo") is not None:
             self._ImgReviewInfo = TerrorismImgReviewTemplateInfo()
             self._ImgReviewInfo._deserialize(params.get("ImgReviewInfo"))
+        if params.get("OcrReviewInfo") is not None:
+            self._OcrReviewInfo = TerrorismOcrReviewTemplateInfo()
+            self._OcrReviewInfo._deserialize(params.get("OcrReviewInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35327,7 +35389,7 @@ class UserDefineOcrTextReviewTemplateInfoForUpdate(AbstractModel):
         :type Switch: str
         :param _LabelSet: Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.
 There can be up to 10 tags, each with a length limit of 16 characters.
-        :type LabelSet: str
+        :type LabelSet: list of str
         :param _BlockConfidence: Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
         :type BlockConfidence: int
         :param _ReviewConfidence: Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
@@ -35631,22 +35693,21 @@ class VideoTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Codec: Video stream encoding format. Valid values:
-<li>h264: H.264 encoding.</li>
-<li>h265: H.265 encoding.</li>
-<li>h266: H.266 encoding.</li>
-<li>av1: AOMedia Video 1 encoding.</li>
-<li>vp8: VP8 encoding.</li>
-<li>vp9: VP9 encoding.</li>
-<li>mpeg2: MPEG2 encoding.</li>
-<li>dnxhd: DNxHD encoding.</li>
-<li>mv-hevc: MV-HEVC encoding.</li>
-Note: A resolution within 640x480 should be specified for H.265 encoding.
+        :param _Codec: Encoding format for video streams. Optional values:
+<li>h264: H.264 encoding</li>
+<li>h265: H.265 encoding</li>
+<li>h266: H.266 encoding</li>
+<li>av1: AOMedia Video 1 encoding</li>
+<li>vp8: VP8 encoding</li>
+<li>vp9: VP9 encoding</li>
+<li>mpeg2: MPEG2 encoding</li>
+<li>dnxhd: DNxHD encoding</li>
+<li>mv-hevc: MV-HEVC encoding</li>
 
-Note: AV1 encoding containers only support mp4, webm, and mkv.
-Note: H.266 encoding containers only support mp4, hls, ts, and mov.
-Note: VP8 and VP9 encoding containers only support webm and mkv.
-Note: MPEG2 and DNxHD encoding containers only support mxf.
+Note: AV1 encoding containers currently only support mp4, webm, and mkv.
+Note: H.266 encoding containers currently only support mp4, hls, ts, and mov.
+Note: VP8 and VP9 encoding containers currently only support webm and mkv.
+Note: MPEG2 and DNxHD encoding containers currently only support mxf.
 Note: MV-HEVC encoding containers only support mp4, hls, and mov. Among them, the hls format only supports mp4 segmentation format.
         :type Codec: str
         :param _Fps: Video frame rate. Value range:
@@ -35676,20 +35737,39 @@ Default value: 0.
 <li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
 Default value: 0.
         :type Height: int
-        :param _Gop: Interval between I-frames, in frames. Value range: 0 and [1, 100000]. When it is set to 0 or not set, the system will automatically set the gop length.
+        :param _Gop: Interval between I-frames (keyframes), which can be customized in frames or seconds. GOP value range: 0 and [1, 100000].
+If this parameter is 0 or left blank, the system will automatically set the GOP length.
         :type Gop: int
-        :param _FillType: The fill mode, which indicates how a video is resized when the video’s original aspect ratio is different from the target aspect ratio. Valid values:
-<li>stretch: Stretch the image frame by frame to fill the entire screen. The video image may become "squashed" or "stretched" after transcoding.</li>
-<li>black: Keep the image's original aspect ratio and fill the blank space with black bars.</li>
-<li>white: Keep the image’s original aspect ratio and fill the blank space with white bars.</li>
-<li>gauss: Keep the image’s original aspect ratio and apply Gaussian blur to the blank space.</li>
+        :param _GopUnit: GOP value unit. Optional values:
+frame: indicates frame
+second: indicates second
+Default value: frame
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type GopUnit: str
+        :param _FillType: Filling mode. When the configured aspect ratio parameter for video streams differs from the aspect ratio of the original video, the processing method for transcoding is "filling". Optional filling modes:
+<li>stretch: Each frame is stretched to fill the entire screen, which may cause the transcoded video to be "flattened" or "stretched".</li>
+<li>black: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with black.</li>
+<li>white: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with white.</li>
+<li>gauss: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with a Gaussian blur.</li>
+
+<li>smarttailor: Video images are smartly selected to ensure proportional image cropping.</li>
 Default value: black.
-Note: Only `stretch` and `black` are supported for adaptive bitrate streaming.
+Note: Only stretch and black are supported for adaptive bitrate streaming.
         :type FillType: str
-        :param _Vcrf: The control factor of video constant bitrate. Value range: [1, 51]
-If this parameter is specified, CRF (a bitrate control method) will be used for transcoding. (Video bitrate will no longer take effect.)
-It is not recommended to specify this parameter if there are no special requirements.
+        :param _Vcrf: Control factor for constant video bitrate. Value range: [0, 51].
+If this parameter is specified, the bitrate control mode for the CRF will be used for transcoding (the video bitrate will no longer take effect).
+It is recommended not to specify this parameter if there are no special requirements.
+
+Note:
+If Mode is set to ABR, the Vcrf value does not need to be configured.
+If Mode is set to CBR, the Vcrf value does not need to be configured.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Vcrf: int
+        :param _HlsTime: Average segment duration. Value range: (0-10], unit: second
+Default value: 10
+Note: It can be used only in the container format of hls.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type HlsTime: int
         :param _SegmentType: HLS segment type. Valid values:
 <li>0: HLS+TS segment.</li>
 <li>2: HLS+TS byte range.</li>
@@ -35709,6 +35789,59 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Default value: side_by_side.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Stereo3dType: str
+        :param _VideoProfile: Profile, suitable for different scenarios.
+baseline: It only supports I/P-frames and non-interlaced scenarios, and is suitable for scenarios such as video calls and mobile videos.
+main: It offers I-frames, P-frames, and B-frames, and supports both interlaced and non-interlaced modes. It is mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices.
+high: the highest encoding level, with 8x8 prediction added to the main profile and support for custom quantification. It is widely used in scenarios such as Blu-ray storage and HDTV.
+default: automatic filling along with the original video.    
+
+This configuration appears only when the encoding standard is set to H264. baseline/main/high is supported. Default value: default
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type VideoProfile: str
+        :param _VideoLevel: Encoder level. Default value: auto ("")
+If the encoding standard is set to H264, the following options are supported: "", 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1.
+If the encoding standard is set to H265, the following options are supported: "", 1, 2, 2.1, 3, 3.1, 4, 4.1, 5, 5.1, 5.2, 6, 6.1, 6.2, and 8.5.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type VideoLevel: str
+        :param _Bframes: Number of B-frames between reference frames. The default is auto, and a range of 0 - 16 is supported.
+Note: Leaving it blank means using the auto option.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Bframes: int
+        :param _Mode: Bitrate control mode. Optional values:
+VBR: variable bitrate. The output bitrate is adjusted based on the complexity of the video image, ensuring higher image quality. This mode is suitable for storage scenarios as well as applications with high image quality requirements.
+ABR: average bitrate. The average bitrate of the output video is kept stable to the greatest extent, but short-term bitrate fluctuations are allowed. This mode is suitable for scenarios where it is necessary to minimize the overall bitrate while a certain quality is maintained.
+CBR: constant bitrate. The output bitrate remains constant during the video encoding process, regardless of changes in image complexity. This mode is suitable for scenarios with strict network bandwidth requirements, such as live streaming.
+VCRF: constant rate factor. The video quality is controlled by setting a quality factor, achieving constant quality encoding of videos. The bitrate is automatically adjusted based on the complexity of the content. This mode is suitable for scenarios where maintaining a certain quality is desired.
+VBR is selected by default.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Mode: str
+        :param _Sar: Display aspect ratio. Optional values: [1:1, 2:1, default]
+Default value: default
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Sar: str
+        :param _NoScenecut: Adaptive I-frame decision. When it is enabled, Media Processing Service will automatically identify transition points between different scenarios in the video (usually they are visually distinct frames, such as those of switching from one shot to another) and adaptively insert keyframes (I-frames) at these points to improve the random accessibility and encoding efficiency of the video. Optional values:
+0: Disable the adaptive I-frame decision 
+1: Enable the adaptive I-frame decision
+Default value: 0
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type NoScenecut: int
+        :param _BitDepth: Bit: 8/10 is supported. Default value: 8
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BitDepth: int
+        :param _RawPts: Preservation of original timestamp. Optional values:
+0: Disabled
+1: Enabled
+Default value: Disabled
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type RawPts: int
+        :param _Compress: Proportional compression bitrate. When it is enabled, the bitrate of the output video will be adjusted according to the proportion. After the compression ratio is entered, the system will automatically calculate the target output bitrate based on the source video bitrate. Compression ratio range: 0-100
+Leaving this value blank means it is not enabled by default.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Compress: int
+        :param _SegmentSpecificInfo: Special segment configuration
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SegmentSpecificInfo: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
         """
         self._Codec = None
         self._Fps = None
@@ -35717,11 +35850,23 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Width = None
         self._Height = None
         self._Gop = None
+        self._GopUnit = None
         self._FillType = None
         self._Vcrf = None
+        self._HlsTime = None
         self._SegmentType = None
         self._FpsDenominator = None
         self._Stereo3dType = None
+        self._VideoProfile = None
+        self._VideoLevel = None
+        self._Bframes = None
+        self._Mode = None
+        self._Sar = None
+        self._NoScenecut = None
+        self._BitDepth = None
+        self._RawPts = None
+        self._Compress = None
+        self._SegmentSpecificInfo = None
 
     @property
     def Codec(self):
@@ -35780,6 +35925,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Gop = Gop
 
     @property
+    def GopUnit(self):
+        return self._GopUnit
+
+    @GopUnit.setter
+    def GopUnit(self, GopUnit):
+        self._GopUnit = GopUnit
+
+    @property
     def FillType(self):
         return self._FillType
 
@@ -35794,6 +35947,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @Vcrf.setter
     def Vcrf(self, Vcrf):
         self._Vcrf = Vcrf
+
+    @property
+    def HlsTime(self):
+        return self._HlsTime
+
+    @HlsTime.setter
+    def HlsTime(self, HlsTime):
+        self._HlsTime = HlsTime
 
     @property
     def SegmentType(self):
@@ -35819,6 +35980,86 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Stereo3dType(self, Stereo3dType):
         self._Stereo3dType = Stereo3dType
 
+    @property
+    def VideoProfile(self):
+        return self._VideoProfile
+
+    @VideoProfile.setter
+    def VideoProfile(self, VideoProfile):
+        self._VideoProfile = VideoProfile
+
+    @property
+    def VideoLevel(self):
+        return self._VideoLevel
+
+    @VideoLevel.setter
+    def VideoLevel(self, VideoLevel):
+        self._VideoLevel = VideoLevel
+
+    @property
+    def Bframes(self):
+        return self._Bframes
+
+    @Bframes.setter
+    def Bframes(self, Bframes):
+        self._Bframes = Bframes
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Sar(self):
+        return self._Sar
+
+    @Sar.setter
+    def Sar(self, Sar):
+        self._Sar = Sar
+
+    @property
+    def NoScenecut(self):
+        return self._NoScenecut
+
+    @NoScenecut.setter
+    def NoScenecut(self, NoScenecut):
+        self._NoScenecut = NoScenecut
+
+    @property
+    def BitDepth(self):
+        return self._BitDepth
+
+    @BitDepth.setter
+    def BitDepth(self, BitDepth):
+        self._BitDepth = BitDepth
+
+    @property
+    def RawPts(self):
+        return self._RawPts
+
+    @RawPts.setter
+    def RawPts(self, RawPts):
+        self._RawPts = RawPts
+
+    @property
+    def Compress(self):
+        return self._Compress
+
+    @Compress.setter
+    def Compress(self, Compress):
+        self._Compress = Compress
+
+    @property
+    def SegmentSpecificInfo(self):
+        return self._SegmentSpecificInfo
+
+    @SegmentSpecificInfo.setter
+    def SegmentSpecificInfo(self, SegmentSpecificInfo):
+        self._SegmentSpecificInfo = SegmentSpecificInfo
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -35828,11 +36069,25 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Width = params.get("Width")
         self._Height = params.get("Height")
         self._Gop = params.get("Gop")
+        self._GopUnit = params.get("GopUnit")
         self._FillType = params.get("FillType")
         self._Vcrf = params.get("Vcrf")
+        self._HlsTime = params.get("HlsTime")
         self._SegmentType = params.get("SegmentType")
         self._FpsDenominator = params.get("FpsDenominator")
         self._Stereo3dType = params.get("Stereo3dType")
+        self._VideoProfile = params.get("VideoProfile")
+        self._VideoLevel = params.get("VideoLevel")
+        self._Bframes = params.get("Bframes")
+        self._Mode = params.get("Mode")
+        self._Sar = params.get("Sar")
+        self._NoScenecut = params.get("NoScenecut")
+        self._BitDepth = params.get("BitDepth")
+        self._RawPts = params.get("RawPts")
+        self._Compress = params.get("Compress")
+        if params.get("SegmentSpecificInfo") is not None:
+            self._SegmentSpecificInfo = SegmentSpecificInfo()
+            self._SegmentSpecificInfo._deserialize(params.get("SegmentSpecificInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35850,23 +36105,24 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Codec: Video stream encoding format. Valid values:
-<li>h264: H.264 encoding.</li>
-<li>h265: H.265 encoding.</li>
-<li>h266: H.266 encoding.</li>
-<li>av1: AOMedia Video 1 encoding.</li>
-<li>vp8: VP8 encoding.</li>
-<li>vp9: VP9 encoding.</li>
-<li>mpeg2: MPEG2 encoding.</li>
-<li>dnxhd: DNxHD encoding.</li>
-<li>mv-hevc: MV-HEVC encoding.</li>
-Note: A resolution within 640x480 should be specified for H.265 encoding.
+        :param _Codec: Encoding format for video streams. Optional values:
+<li>h264: H.264 encoding</li>
+<li>h265: H.265 encoding</li>
+<li>h266: H.266 encoding</li>
+<li>av1: AOMedia Video 1 encoding</li>
+<li>vp8: VP8 encoding</li>
+<li>vp9: VP9 encoding</li>
+<li>mpeg2: MPEG2 encoding</li>
+<li>dnxhd: DNxHD encoding</li>
+<li>mv-hevc: MV-HEVC encoding</li>
 
-Note: AV1 encoding containers only support mp4, webm, and mkv.
-Note: H.266 encoding containers only support mp4, hls, ts, and mov.
-Note: VP8 and VP9 encoding containers only support webm and mkv.
-Note: MPEG2 and DNxHD encoding containers only support mxf.
-Note: MV-HEVC encoding containers only support mp4, hls, and mov. Among them, the hls format only supports mp4 segmentation format.Note: This field may return null, indicating that no valid values can be obtained.
+Note: AV1 encoding containers currently only support mp4, webm, and mkv.
+Note: H.266 encoding containers currently only support mp4, hls, ts, and mov.
+Note: VP8 and VP9 encoding containers currently only support webm and mkv.
+Note: MPEG2 and DNxHD encoding containers currently only support mxf.
+Note: MV-HEVC encoding containers only support mp4, hls, and mov. Among them, the hls format only supports mp4 segmentation format.
+
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Codec: str
         :param _Fps: Video frame rate. Value range:
 When FpsDenominator is empty, the range is [0, 120], in Hz.
@@ -35888,22 +36144,48 @@ Note: When resolution adaption is enabled, `Width` cannot be smaller than `Heigh
         :type Width: int
         :param _Height: Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
         :type Height: int
-        :param _Gop: Frame interval between I keyframes. Value range: 0 and [1,100000]. If this parameter is 0, the system will automatically set the GOP length.
+        :param _Gop: Interval between I-frames (keyframes), which can be customized in frames or seconds. GOP value range: 0 and [1, 100000].
+If this parameter is 0, the system will automatically set the GOP length.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Gop: int
-        :param _FillType: Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
-<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
-<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
-<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
-<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
+        :param _GopUnit: GOP value unit. Optional values: 
+frame: indicates frame 
+second: indicates second
+Default value: frame
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type GopUnit: str
+        :param _FillType: Filling mode. When the configured aspect ratio parameter for video streams differs from the aspect ratio of the original video, the processing method for transcoding is "filling". Optional filling modes:
+ <li>stretch: Each frame is stretched to fill the entire screen, which may cause the transcoded video to be "flattened" or "stretched".</li>
+<li>black: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with black.</li>
+<li>white: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with white.</li>
+<li>gauss: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with a Gaussian blur.</li>
+
+<li>smarttailor: Video images are smartly selected to ensure proportional image cropping.</li>
+Default value: black.
+
+Note: Only stretch and black are supported for adaptive bitrate streaming.
+
+Note: This field may return null, indicating that no valid value can be obtained.
         :type FillType: str
-        :param _Vcrf: The control factor of video constant bitrate. Value range: [0, 51]. This parameter will be disabled if you enter `0`.
-It is not recommended to specify this parameter if there are no special requirements.
+        :param _Vcrf: Control factor for constant video bitrate. Value range: [0, 51] and 100.
+It is recommended not to specify this parameter if there are no special requirements.
+
+Note:
+When you need to set it to auto, fill in 100.
+If Mode is set to ABR, the Vcrf value does not need to be configured.
+If Mode is set to CBR, the Vcrf value does not need to be configured.
+Note: This field may return null, indicating that no valid value can be obtained.
         :type Vcrf: int
         :param _ContentAdaptStream: Whether to enable adaptive encoding. Valid values:
 <li>0: Disable</li>
 <li>1: Enable</li>
 Default value: 0. If this parameter is set to `1`, multiple streams with different resolutions and bitrates will be generated automatically. The highest resolution, bitrate, and quality of the streams are determined by the values of `width` and `height`, `Bitrate`, and `Vcrf` in `VideoTemplate` respectively. If these parameters are not set in `VideoTemplate`, the highest resolution generated will be the same as that of the source video, and the highest video quality will be close to VMAF 95. To use this parameter or learn about the billing details of adaptive encoding, please contact your sales rep.
         :type ContentAdaptStream: int
+        :param _HlsTime: Average segment duration. Value range: (0-10], unit: second
+Default value: 10
+Note: It is used only in the format of HLS.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type HlsTime: int
         :param _SegmentType: HLS segment type. Valid values:
 <li>0: HLS+TS segment.</li>
 <li>2: HLS+TS byte range.</li>
@@ -35923,6 +36205,61 @@ Note: This field may return null, indicating that no valid values can be obtaine
 Default value: side_by_side.
 Note: This field may return null, indicating that no valid values can be obtained.
         :type Stereo3dType: str
+        :param _VideoProfile: Profile, suitable for different scenarios. 
+baseline: It only supports I/P-frames and non-interlaced scenarios, and is suitable for scenarios such as video calls and mobile videos. 
+main: It offers I-frames, P-frames, and B-frames, and supports both interlaced and non-interlaced modes. It is mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices. 
+high: the highest encoding level, with 8x8 prediction added to the main profile and support for custom quantification. It is widely used in scenarios such as Blu-ray storage and HDTV.
+default: automatic filling along with the original video
+
+This configuration appears only when the encoding standard is set to H264. Default value: default
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type VideoProfile: str
+        :param _VideoLevel: Encoder level. Default value: auto ("")
+If the encoding standard is set to H264, the following options are supported: "", 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1. 
+If the encoding standard is set to H265, the following options are supported: "", 1, 2, 2.1, 3, 3.1, 4, 4.1, 5, 5.1, 5.2, 6, 6.1, 6.2, and 8.5.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type VideoLevel: str
+        :param _Bframes: Maximum number of consecutive B-frames. The default is auto, and 0 - 16 and -1 are supported.
+Note:
+
+-1 indicates auto.	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Bframes: int
+        :param _Mode: Bitrate control mode. Optional values: 
+VBR: variable bitrate. The output bitrate is adjusted based on the complexity of the video image, ensuring higher image quality. This mode is suitable for storage scenarios as well as applications with high image quality requirements. 
+ABR: average bitrate. The average bitrate of the output video is kept stable to the greatest extent, but short-term bitrate fluctuations are allowed. This mode is suitable for scenarios where it is necessary to minimize the overall bitrate while a certain quality is maintained. 
+CBR: constant bitrate. The output bitrate remains constant during the video encoding process, regardless of changes in image complexity. This mode is suitable for scenarios with strict network bandwidth requirements, such as live streaming. 
+VCRF: constant rate factor. The video quality is controlled by setting a quality factor, achieving constant quality encoding of videos. The bitrate is automatically adjusted based on the complexity of the content. This mode is suitable for scenarios where maintaining a certain quality is desired. 
+VBR is selected by default.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Mode: str
+        :param _Sar: Display aspect ratio. Optional values: [1:1, 2:1, default]
+Default value: default
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Sar: str
+        :param _NoScenecut: Adaptive I-frame decision. When it is enabled, Media Processing Service will automatically identify transition points between different scenarios in the video (usually they are visually distinct frames, such as those of switching from one shot to another) and adaptively insert keyframes (I-frames) at these points to improve the random accessibility and encoding efficiency of the video. Optional values: 
+0: Disable the adaptive I-frame decision 
+1: Enable the adaptive I-frame decision 
+Default value: 0	
+	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type NoScenecut: int
+        :param _BitDepth: Bit: 8/10 is supported. Default value: 8	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type BitDepth: int
+        :param _RawPts: Preservation of original timestamp. Optional values: 
+0: Disabled 
+1: Enabled 
+Default value: Disabled	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type RawPts: int
+        :param _Compress: Proportional compression bitrate. When it is enabled, the bitrate of the output video will be adjusted according to the proportion. After the compression ratio is entered, the system will automatically calculate the target output bitrate based on the source video bitrate. Compression ratio range: 0-100, optional values: [0-100] and -1 
+Note: -1 indicates auto.	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type Compress: int
+        :param _SegmentSpecificInfo: Special segment configuration	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :type SegmentSpecificInfo: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
         """
         self._Codec = None
         self._Fps = None
@@ -35931,12 +36268,24 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Width = None
         self._Height = None
         self._Gop = None
+        self._GopUnit = None
         self._FillType = None
         self._Vcrf = None
         self._ContentAdaptStream = None
+        self._HlsTime = None
         self._SegmentType = None
         self._FpsDenominator = None
         self._Stereo3dType = None
+        self._VideoProfile = None
+        self._VideoLevel = None
+        self._Bframes = None
+        self._Mode = None
+        self._Sar = None
+        self._NoScenecut = None
+        self._BitDepth = None
+        self._RawPts = None
+        self._Compress = None
+        self._SegmentSpecificInfo = None
 
     @property
     def Codec(self):
@@ -35993,6 +36342,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
     @Gop.setter
     def Gop(self, Gop):
         self._Gop = Gop
+
+    @property
+    def GopUnit(self):
+        return self._GopUnit
+
+    @GopUnit.setter
+    def GopUnit(self, GopUnit):
+        self._GopUnit = GopUnit
 
     @property
     def FillType(self):
@@ -36019,6 +36376,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._ContentAdaptStream = ContentAdaptStream
 
     @property
+    def HlsTime(self):
+        return self._HlsTime
+
+    @HlsTime.setter
+    def HlsTime(self, HlsTime):
+        self._HlsTime = HlsTime
+
+    @property
     def SegmentType(self):
         return self._SegmentType
 
@@ -36042,6 +36407,86 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def Stereo3dType(self, Stereo3dType):
         self._Stereo3dType = Stereo3dType
 
+    @property
+    def VideoProfile(self):
+        return self._VideoProfile
+
+    @VideoProfile.setter
+    def VideoProfile(self, VideoProfile):
+        self._VideoProfile = VideoProfile
+
+    @property
+    def VideoLevel(self):
+        return self._VideoLevel
+
+    @VideoLevel.setter
+    def VideoLevel(self, VideoLevel):
+        self._VideoLevel = VideoLevel
+
+    @property
+    def Bframes(self):
+        return self._Bframes
+
+    @Bframes.setter
+    def Bframes(self, Bframes):
+        self._Bframes = Bframes
+
+    @property
+    def Mode(self):
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Sar(self):
+        return self._Sar
+
+    @Sar.setter
+    def Sar(self, Sar):
+        self._Sar = Sar
+
+    @property
+    def NoScenecut(self):
+        return self._NoScenecut
+
+    @NoScenecut.setter
+    def NoScenecut(self, NoScenecut):
+        self._NoScenecut = NoScenecut
+
+    @property
+    def BitDepth(self):
+        return self._BitDepth
+
+    @BitDepth.setter
+    def BitDepth(self, BitDepth):
+        self._BitDepth = BitDepth
+
+    @property
+    def RawPts(self):
+        return self._RawPts
+
+    @RawPts.setter
+    def RawPts(self, RawPts):
+        self._RawPts = RawPts
+
+    @property
+    def Compress(self):
+        return self._Compress
+
+    @Compress.setter
+    def Compress(self, Compress):
+        self._Compress = Compress
+
+    @property
+    def SegmentSpecificInfo(self):
+        return self._SegmentSpecificInfo
+
+    @SegmentSpecificInfo.setter
+    def SegmentSpecificInfo(self, SegmentSpecificInfo):
+        self._SegmentSpecificInfo = SegmentSpecificInfo
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -36051,12 +36496,26 @@ Note: This field may return null, indicating that no valid values can be obtaine
         self._Width = params.get("Width")
         self._Height = params.get("Height")
         self._Gop = params.get("Gop")
+        self._GopUnit = params.get("GopUnit")
         self._FillType = params.get("FillType")
         self._Vcrf = params.get("Vcrf")
         self._ContentAdaptStream = params.get("ContentAdaptStream")
+        self._HlsTime = params.get("HlsTime")
         self._SegmentType = params.get("SegmentType")
         self._FpsDenominator = params.get("FpsDenominator")
         self._Stereo3dType = params.get("Stereo3dType")
+        self._VideoProfile = params.get("VideoProfile")
+        self._VideoLevel = params.get("VideoLevel")
+        self._Bframes = params.get("Bframes")
+        self._Mode = params.get("Mode")
+        self._Sar = params.get("Sar")
+        self._NoScenecut = params.get("NoScenecut")
+        self._BitDepth = params.get("BitDepth")
+        self._RawPts = params.get("RawPts")
+        self._Compress = params.get("Compress")
+        if params.get("SegmentSpecificInfo") is not None:
+            self._SegmentSpecificInfo = SegmentSpecificInfo()
+            self._SegmentSpecificInfo._deserialize(params.get("SegmentSpecificInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
