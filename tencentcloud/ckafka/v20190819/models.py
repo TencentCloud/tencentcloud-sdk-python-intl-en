@@ -49,6 +49,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceType(self):
+        """ACL resource type. 0: UNKNOWN, 1: ANY, 2: TOPIC, 3: GROUP, 4: CLUSTER, 5: TRANSACTIONAL_ID. Currently, only `TOPIC` is available,
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -57,6 +60,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceName(self):
+        """Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -65,6 +71,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Principal(self):
+        """User list. The default value is `User:*`, which means that any user can access. The current user can only be one included in the user list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Principal
 
     @Principal.setter
@@ -73,6 +83,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Host(self):
+        """The default value is `*`, which means that any host can access. Currently, CKafka does not support the host as `*`, but the future product based on the open-source Kafka will directly support this
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -81,6 +95,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Operation(self):
+        """ACL operation mode. 0: UNKNOWN, 1: ANY, 2: ALL, 3: READ, 4: WRITE, 5: CREATE, 6: DELETE, 7: ALTER, 8: DESCRIBE, 9: CLUSTER_ACTION, 10: DESCRIBE_CONFIGS, 11: ALTER_CONFIGS, 12: IDEMPOTEN_WRITE
+        :rtype: int
+        """
         return self._Operation
 
     @Operation.setter
@@ -89,6 +106,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PermissionType(self):
+        """Permission type. 0: UNKNOWN, 1: ANY, 2: DENY, 3: ALLOW
+        :rtype: int
+        """
         return self._PermissionType
 
     @PermissionType.setter
@@ -131,6 +151,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Number of eligible data entries
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -139,6 +162,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AclList(self):
+        """ACL list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Acl
+        """
         return self._AclList
 
     @AclList.setter
@@ -227,6 +254,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RuleName(self):
+        """ACL rule name.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -235,6 +266,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceId(self):
+        """Instance ID.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -243,6 +278,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PatternType(self):
+        """Matching type. Currently, only prefix match is supported. Enumerated value list: PREFIXED
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PatternType
 
     @PatternType.setter
@@ -251,6 +290,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Pattern(self):
+        """Prefix value for prefix match.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Pattern
 
     @Pattern.setter
@@ -259,6 +302,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ResourceType(self):
+        """ACL resource type. Only “Topic” is supported. Enumerated value list: Topic.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -267,6 +314,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AclList(self):
+        """ACL information contained in the rule.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AclList
 
     @AclList.setter
@@ -275,6 +326,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateTimeStamp(self):
+        """Creation time of the rule.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreateTimeStamp
 
     @CreateTimeStamp.setter
@@ -283,6 +338,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsApplied(self):
+        """A parameter used to specify whether the preset ACL rule is applied to new topics.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._IsApplied
 
     @IsApplied.setter
@@ -291,6 +350,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UpdateTimeStamp(self):
+        """Rule update time.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UpdateTimeStamp
 
     @UpdateTimeStamp.setter
@@ -299,6 +362,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Comment(self):
+        """Remarks of the rule.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -307,6 +374,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TopicName(self):
+        """One of the corresponding topic names that is displayed.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -315,6 +386,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TopicCount(self):
+        """The number of topics that apply this ACL rule.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TopicCount
 
     @TopicCount.setter
@@ -323,6 +398,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PatternTypeTitle(self):
+        """Name of rule type.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PatternTypeTitle
 
     @PatternTypeTitle.setter
@@ -377,6 +456,9 @@ class AclRuleInfo(AbstractModel):
 
     @property
     def Operation(self):
+        """ACL operation types. Enumerated values: `All` (all operations), `Read` (read), `Write` (write).
+        :rtype: str
+        """
         return self._Operation
 
     @Operation.setter
@@ -385,6 +467,9 @@ class AclRuleInfo(AbstractModel):
 
     @property
     def PermissionType(self):
+        """Permission types: `Deny`, `Allow`.
+        :rtype: str
+        """
         return self._PermissionType
 
     @PermissionType.setter
@@ -393,6 +478,9 @@ class AclRuleInfo(AbstractModel):
 
     @property
     def Host(self):
+        """The default value is `*`, which means that any host can access the topic. CKafka currently does not support specifying a host value of * or an IP range.
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -401,6 +489,9 @@ class AclRuleInfo(AbstractModel):
 
     @property
     def Principal(self):
+        """The list of users allowed to access the topic. Default value: `User:*`, which means all users. The current user must be in the user list. Add the prefix `User:` before the user name (`User:A`, for example).
+        :rtype: str
+        """
         return self._Principal
 
     @Principal.setter
@@ -441,6 +532,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Total number of data entries
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -449,6 +543,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AclRuleList(self):
+        """ACL rule list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of AclRule
+        """
         return self._AclRuleList
 
     @AclRuleList.setter
@@ -492,6 +590,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Number of eligible `AppId`
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -500,6 +601,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppIdList(self):
+        """List of eligible `AppId`
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int
+        """
         return self._AppIdList
 
     @AppIdList.setter
@@ -538,6 +643,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
+        """Assignment version information
+        :rtype: int
+        """
         return self._Version
 
     @Version.setter
@@ -546,6 +654,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Topics(self):
+        """Topic information list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of GroupInfoTopics
+        """
         return self._Topics
 
     @Topics.setter
@@ -588,6 +700,9 @@ class BatchContent(AbstractModel):
 
     @property
     def Body(self):
+        """Message body that is sent.
+        :rtype: str
+        """
         return self._Body
 
     @Body.setter
@@ -596,6 +711,9 @@ class BatchContent(AbstractModel):
 
     @property
     def Key(self):
+        """Message sending key name.
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -639,6 +757,9 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -647,6 +768,9 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """ACL resource type. Default value: `2` (topic).
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -655,6 +779,9 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def ResourceNames(self):
+        """Resource list array.
+        :rtype: list of str
+        """
         return self._ResourceNames
 
     @ResourceNames.setter
@@ -663,6 +790,9 @@ class BatchCreateAclRequest(AbstractModel):
 
     @property
     def RuleList(self):
+        """ACL rule list.
+        :rtype: list of AclRuleInfo
+        """
         return self._RuleList
 
     @RuleList.setter
@@ -707,6 +837,9 @@ class BatchCreateAclResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Status code.
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -715,6 +848,9 @@ class BatchCreateAclResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -750,6 +886,9 @@ class BatchModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """Consumer group name.
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -758,6 +897,9 @@ class BatchModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance name.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -766,6 +908,9 @@ class BatchModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Partitions(self):
+        """Partition information.
+        :rtype: list of Partitions
+        """
         return self._Partitions
 
     @Partitions.setter
@@ -774,6 +919,9 @@ class BatchModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Name of the specified topic. Default value: names of all topics.
+        :rtype: list of str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -818,6 +966,9 @@ class BatchModifyGroupOffsetsResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -826,6 +977,9 @@ class BatchModifyGroupOffsetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -857,6 +1011,9 @@ class BatchModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -865,6 +1022,9 @@ class BatchModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def Topic(self):
+        """Topic attribute list
+        :rtype: list of BatchModifyTopicInfo
+        """
         return self._Topic
 
     @Topic.setter
@@ -907,6 +1067,9 @@ class BatchModifyTopicAttributesResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result.
+        :rtype: list of BatchModifyTopicResultDTO
+        """
         return self._Result
 
     @Result.setter
@@ -915,6 +1078,9 @@ class BatchModifyTopicAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -976,6 +1142,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name.
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -984,6 +1153,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def PartitionNum(self):
+        """The number of partitions.
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -992,6 +1164,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def Note(self):
+        """Remarks.
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -1000,6 +1175,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def ReplicaNum(self):
+        """Number of replicas.
+        :rtype: int
+        """
         return self._ReplicaNum
 
     @ReplicaNum.setter
@@ -1008,6 +1186,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def CleanUpPolicy(self):
+        """Message deletion policy. Valid values: `delete`, `compact`.
+        :rtype: str
+        """
         return self._CleanUpPolicy
 
     @CleanUpPolicy.setter
@@ -1016,6 +1197,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def MinInsyncReplicas(self):
+        """The minimum number of replicas specified by `min.insync.replicas` when the producer sets `request.required.acks` to `-1`.
+        :rtype: int
+        """
         return self._MinInsyncReplicas
 
     @MinInsyncReplicas.setter
@@ -1024,6 +1208,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def UncleanLeaderElectionEnable(self):
+        """Whether to allow a non-ISR replica to be the leader.
+        :rtype: bool
+        """
         return self._UncleanLeaderElectionEnable
 
     @UncleanLeaderElectionEnable.setter
@@ -1032,6 +1219,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def RetentionMs(self):
+        """Message retention period in topic dimension in milliseconds. Value range: 1 minute to 90 days.
+        :rtype: int
+        """
         return self._RetentionMs
 
     @RetentionMs.setter
@@ -1040,6 +1230,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def RetentionBytes(self):
+        """Message retention size in topic dimension. Value range: 1 MB - 1024 GB.
+        :rtype: int
+        """
         return self._RetentionBytes
 
     @RetentionBytes.setter
@@ -1048,6 +1241,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def SegmentMs(self):
+        """Segment rolling duration in milliseconds. Value range: 1-90 days.
+        :rtype: int
+        """
         return self._SegmentMs
 
     @SegmentMs.setter
@@ -1056,6 +1252,9 @@ class BatchModifyTopicInfo(AbstractModel):
 
     @property
     def MaxMessageBytes(self):
+        """Message size per batch. Value range: 1 KB - 12 MB.
+        :rtype: int
+        """
         return self._MaxMessageBytes
 
     @MaxMessageBytes.setter
@@ -1111,6 +1310,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceId(self):
+        """Instance ID.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1119,6 +1322,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TopicName(self):
+        """Topic name.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -1127,6 +1334,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ReturnCode(self):
+        """Status code.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ReturnCode
 
     @ReturnCode.setter
@@ -1135,6 +1346,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Message(self):
+        """Message status.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -1198,6 +1412,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ClusterId(self):
+        """Cluster ID
+        :rtype: int
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1206,6 +1423,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ClusterName(self):
+        """Cluster name
+        :rtype: str
+        """
         return self._ClusterName
 
     @ClusterName.setter
@@ -1214,6 +1434,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def MaxDiskSize(self):
+        """The cluster’s maximum disk capacity in GB
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxDiskSize
 
     @MaxDiskSize.setter
@@ -1222,6 +1446,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def MaxBandWidth(self):
+        """The cluster’s maximum bandwidth in MB/s
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxBandWidth
 
     @MaxBandWidth.setter
@@ -1230,6 +1458,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def AvailableDiskSize(self):
+        """The cluster’s available disk capacity in GB
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._AvailableDiskSize
 
     @AvailableDiskSize.setter
@@ -1238,6 +1470,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def AvailableBandWidth(self):
+        """The cluster’s available bandwidth in MB/s
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._AvailableBandWidth
 
     @AvailableBandWidth.setter
@@ -1246,6 +1482,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ZoneId(self):
+        """The AZ where the cluster resides
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -1254,6 +1494,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ZoneIds(self):
+        """The AZ where the cluster nodes reside. If the cluster is a multi-AZ cluster, this field means multiple AZs where the cluster nodes reside.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: list of int
+        """
         return self._ZoneIds
 
     @ZoneIds.setter
@@ -1324,6 +1568,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Retention(self):
+        """Message retention period
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Retention
 
     @Retention.setter
@@ -1332,6 +1580,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MinInsyncReplicas(self):
+        """Minimum number of sync replications
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MinInsyncReplicas
 
     @MinInsyncReplicas.setter
@@ -1340,6 +1592,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CleanUpPolicy(self):
+        """Log cleanup mode. Default value: delete.
+delete: logs will be deleted by save time; compact: logs will be compressed by key; compact, delete: logs will be compressed by key and deleted by save time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CleanUpPolicy
 
     @CleanUpPolicy.setter
@@ -1348,6 +1605,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SegmentMs(self):
+        """Segment rolling duration
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SegmentMs
 
     @SegmentMs.setter
@@ -1356,6 +1617,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UncleanLeaderElectionEnable(self):
+        """0: false, 1: true.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._UncleanLeaderElectionEnable
 
     @UncleanLeaderElectionEnable.setter
@@ -1364,6 +1629,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SegmentBytes(self):
+        """Number of bytes for segment rolling
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SegmentBytes
 
     @SegmentBytes.setter
@@ -1372,6 +1641,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MaxMessageBytes(self):
+        """Maximum number of message bytes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxMessageBytes
 
     @MaxMessageBytes.setter
@@ -1380,6 +1653,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RetentionBytes(self):
+        """Message retention file size.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RetentionBytes
 
     @RetentionBytes.setter
@@ -1423,6 +1700,9 @@ class ConsumerGroup(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
+        """User group name
+        :rtype: str
+        """
         return self._ConsumerGroupName
 
     @ConsumerGroupName.setter
@@ -1431,6 +1711,9 @@ class ConsumerGroup(AbstractModel):
 
     @property
     def SubscribedInfo(self):
+        """Subscribed message entity
+        :rtype: list of SubscribedInfo
+        """
         return self._SubscribedInfo
 
     @SubscribedInfo.setter
@@ -1498,6 +1781,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Number of eligible consumer groups
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1506,6 +1792,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicList(self):
+        """Topic list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ConsumerGroupTopic
+        """
         return self._TopicList
 
     @TopicList.setter
@@ -1514,6 +1804,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupList(self):
+        """Consumer group list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ConsumerGroup
+        """
         return self._GroupList
 
     @GroupList.setter
@@ -1522,6 +1816,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalPartition(self):
+        """Total number of partitions
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalPartition
 
     @TotalPartition.setter
@@ -1530,6 +1828,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PartitionListForMonitor(self):
+        """List of monitored partitions
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Partition
+        """
         return self._PartitionListForMonitor
 
     @PartitionListForMonitor.setter
@@ -1538,6 +1840,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalTopic(self):
+        """Total number of topics
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalTopic
 
     @TotalTopic.setter
@@ -1546,6 +1852,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicListForMonitor(self):
+        """List of monitored topics
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ConsumerGroupTopic
+        """
         return self._TopicListForMonitor
 
     @TopicListForMonitor.setter
@@ -1554,6 +1864,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupListForMonitor(self):
+        """List of monitored groups
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Group
+        """
         return self._GroupListForMonitor
 
     @GroupListForMonitor.setter
@@ -1622,6 +1936,9 @@ class ConsumerGroupTopic(AbstractModel):
 
     @property
     def TopicId(self):
+        """Topic ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -1630,6 +1947,9 @@ class ConsumerGroupTopic(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -1686,6 +2006,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Topic(self):
+        """Topic name
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -1694,6 +2017,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Partition(self):
+        """Partition ID
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -1702,6 +2028,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1710,6 +2039,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Key(self):
+        """Message key
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -1718,6 +2051,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
+        """Message value
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -1726,6 +2063,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Timestamp(self):
+        """Message timestamp
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -1734,6 +2075,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Headers(self):
+        """Message headers
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Headers
 
     @Headers.setter
@@ -1794,6 +2139,9 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID information
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1802,6 +2150,9 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """ACL resource type (`2`: TOPIC, `3`: GROUP, `4`: CLUSTER).
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -1810,6 +2161,9 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """ACL operation type (`2`: ALL, `3`: READ, `4`: WRITE, `5`: CREATE, `6`: DELETE, `7`: ALTER, `8`: DESCRIBE, `9`: CLUSTER_ACTION, `10`: DESCRIBE_CONFIGS, `11`: ALTER_CONFIGS, `12`: IDEMPOTENT_WRITE).
+        :rtype: int
+        """
         return self._Operation
 
     @Operation.setter
@@ -1818,6 +2172,9 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def PermissionType(self):
+        """Permission type (`2`: DENY, `3`: ALLOW). CKafka currently supports `ALLOW`, which is equivalent to allowlist. `DENY` will be supported for ACLs compatible with open-source Kafka.
+        :rtype: int
+        """
         return self._PermissionType
 
     @PermissionType.setter
@@ -1826,6 +2183,9 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def ResourceName(self):
+        """Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name; if `resourceType` is `CLUSTER`, this field can be left empty.
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -1834,6 +2194,9 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def Host(self):
+        """The default value is `*`, which means that any host can access. Currently, CKafka does not support the host as `*`, but the future product based on the open-source Kafka will directly support this
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -1842,6 +2205,9 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def Principal(self):
+        """The list of users allowed to access the topic. Default: User:*, meaning all users. The current user must be in the user list. Add `User:` before the user name (`User:A` for example).
+        :rtype: str
+        """
         return self._Principal
 
     @Principal.setter
@@ -1850,6 +2216,9 @@ class CreateAclRequest(AbstractModel):
 
     @property
     def ResourceNameList(self):
+        """The resource name list, which is in JSON string format. Either `ResourceName` or `resourceNameList` can be specified.
+        :rtype: str
+        """
         return self._ResourceNameList
 
     @ResourceNameList.setter
@@ -1893,6 +2262,9 @@ class CreateAclResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -1901,6 +2273,9 @@ class CreateAclResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1950,6 +2325,9 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1958,6 +2336,9 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """ACL resource type. Currently, the only valid value is `Topic`.
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -1966,6 +2347,9 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def PatternType(self):
+        """Matching type. Valid values: `PREFIXED`(match by prefix), `PRESET` (match by preset policy).
+        :rtype: str
+        """
         return self._PatternType
 
     @PatternType.setter
@@ -1974,6 +2358,9 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """Rule name
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -1982,6 +2369,9 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def RuleList(self):
+        """ACL rule list
+        :rtype: list of AclRuleInfo
+        """
         return self._RuleList
 
     @RuleList.setter
@@ -1990,6 +2380,9 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def Pattern(self):
+        """Prefix value for prefix match
+        :rtype: str
+        """
         return self._Pattern
 
     @Pattern.setter
@@ -1998,6 +2391,9 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def IsApplied(self):
+        """A parameter used to specify whether the preset ACL rule is applied to new topics
+        :rtype: int
+        """
         return self._IsApplied
 
     @IsApplied.setter
@@ -2006,6 +2402,9 @@ class CreateAclRuleRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """Remarks for ACL rules
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -2054,6 +2453,9 @@ class CreateAclRuleResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Unique key of a rule
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -2062,6 +2464,9 @@ class CreateAclRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2097,6 +2502,9 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2105,6 +2513,9 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """Group name.
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -2113,6 +2524,9 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name. You must specify the name of an existing topic for either `TopicName` or `TopicNameList`.
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -2121,6 +2535,9 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def TopicNameList(self):
+        """Topic name array.
+        :rtype: list of str
+        """
         return self._TopicNameList
 
     @TopicNameList.setter
@@ -2160,6 +2577,9 @@ class CreateConsumerResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Description of the created consumer group.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -2168,6 +2588,9 @@ class CreateConsumerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2208,6 +2631,9 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Topic name, which is a string of up to 128 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2216,6 +2642,9 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     @property
     def PartitionNum(self):
+        """Number of partitions, which should be greater than 0.
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -2224,6 +2653,9 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     @property
     def RetentionMs(self):
+        """Message retention period in milliseconds. The current minimum value is 60,000 ms.
+        :rtype: int
+        """
         return self._RetentionMs
 
     @RetentionMs.setter
@@ -2232,6 +2664,9 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     @property
     def Note(self):
+        """Topic remarks, which are a string of up to 128 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -2240,6 +2675,9 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Tag list
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2285,6 +2723,9 @@ class CreateDatahubTopicResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned creation result
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubTopicResp`
+        """
         return self._Result
 
     @Result.setter
@@ -2293,6 +2734,9 @@ class CreateDatahubTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2331,6 +2775,10 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def FlowId(self):
+        """This parameter has a fixed value of 0 returned by `CreateInstancePre`. It is only used for backend data alignment  and cannot be used as the query condition for `CheckTaskStatus`. 
+Note:  This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -2339,6 +2787,9 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def DealNames(self):
+        """List of order IDs Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._DealNames
 
     @DealNames.setter
@@ -2347,6 +2798,9 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def InstanceId(self):
+        """Instance ID. When multiple instances are purchased, the ID of the first one is returned by default . Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2355,6 +2809,9 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def DealNameInstanceIdMapping(self):
+        """Mapping between orders and the purchased instances.  Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DealInstanceDTO
+        """
         return self._DealNameInstanceIdMapping
 
     @DealNameInstanceIdMapping.setter
@@ -2447,6 +2904,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """Instance name, which is a string of up to 64 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -2455,6 +2915,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def BandWidth(self):
+        """Private network peak bandwidth of an instance  in MB/sec.  If you create a Standard Edition instance, pass in the corresponding peak bandwidth for the current instance specification.  If you create a Pro Edition instance, configure the peak bandwidth, partition count, and other parameters as required by Pro Edition.
+        :rtype: int
+        """
         return self._BandWidth
 
     @BandWidth.setter
@@ -2463,6 +2926,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """ID of the VPC where the default access point of the created instance resides.  This parameter is required as instances cannot be created in the classic network currently.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -2471,6 +2937,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """ID of the subnet  where the default access point of the created instance resides. 
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -2479,6 +2948,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def InstanceType(self):
+        """Instance specification.  This parameter is required for a Standard Edition instance but not for a Pro Edition instance.  Valid values:  `1` (Small),  `2` (Standard),  `3` (Advanced),  `4` (Large),  `5` (Xlarge L1),  `6` (Xlarge L2),  `7` (Xlarge L3),  `8` (Xlarge L4),  
+        :rtype: int
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -2487,6 +2959,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def MsgRetentionTime(self):
+        """The maximum instance log retention period in minutes by default.  If this parameter is left empty, the default retention period is 1,440 minutes (1 day) to 30 days.  If the message retention period of the topic is explicitly set, it will prevail.
+        :rtype: int
+        """
         return self._MsgRetentionTime
 
     @MsgRetentionTime.setter
@@ -2495,6 +2970,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """Cluster ID, which can be selected when you create an instance.  You don’t need to pass in this parameter if the cluster where the instance resides is not specified.
+        :rtype: int
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2503,6 +2981,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def KafkaVersion(self):
+        """Instance version.  Valid values: `0.10.2`, `1.1.1`, `2.4.2`, and `2.8.1`.
+        :rtype: str
+        """
         return self._KafkaVersion
 
     @KafkaVersion.setter
@@ -2511,6 +2992,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def SpecificationsType(self):
+        """Instance type. Valid values: `standard` (Standard Edition),  `profession`  (Pro Edition)
+        :rtype: str
+        """
         return self._SpecificationsType
 
     @SpecificationsType.setter
@@ -2519,6 +3003,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def DiskType(self):
+        """Instance disk type. Valid values:  `CLOUD_BASIC` (Premium Cloud Storage),  `CLOUD_SSD` (SSD).  If this parameter is left empty, the default value `CLOUD_BASIC` will be used.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -2527,6 +3014,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """Instance disk size, which must meet the requirement of the instance’s specification.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -2535,6 +3025,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """The maximum number of partitions of the instance, which must meet the requirement of the instance’s specification.
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -2543,6 +3036,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def TopicNum(self):
+        """The maximum number of topics of the instance, which must meet the requirement of the instance’s specification.
+        :rtype: int
+        """
         return self._TopicNum
 
     @TopicNum.setter
@@ -2551,6 +3047,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """AZ of the instance.  When a multi-AZ instance is created, the value of this parameter is the AZ ID of the subnet where the instance’s default access point resides.
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -2559,6 +3058,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def MultiZoneFlag(self):
+        """Whether the current instance is a multi-AZ instance
+        :rtype: bool
+        """
         return self._MultiZoneFlag
 
     @MultiZoneFlag.setter
@@ -2567,6 +3069,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
+        """This parameter indicates the list of AZ IDs when the instance is deployed in multiple AZs.  Note that `ZoneId` must be included in the array of this parameter.
+        :rtype: list of int
+        """
         return self._ZoneIds
 
     @ZoneIds.setter
@@ -2575,6 +3080,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def InstanceNum(self):
+        """The number of purchased instances.  Default value: `1`. This parameter is optional.  If it is passed in, multiple instances will be created, with their names being `instanceName` plus different suffixes.
+        :rtype: int
+        """
         return self._InstanceNum
 
     @InstanceNum.setter
@@ -2583,6 +3091,9 @@ class CreateInstancePostRequest(AbstractModel):
 
     @property
     def PublicNetworkMonthly(self):
+        """Public network bandwidth in Mbps.  The 3 Mbps of free bandwidth is not included here by default.  For example, if you need 3 Mbps of public network bandwidth, pass in `0`; if you need 6 Mbps, pass in `3`. The value must be an integer multiple of 3.
+        :rtype: int
+        """
         return self._PublicNetworkMonthly
 
     @PublicNetworkMonthly.setter
@@ -2639,6 +3150,9 @@ class CreateInstancePostResp(AbstractModel):
 
     @property
     def ReturnCode(self):
+        """Returned code. `0` indicates normal status while other codes indicate errors.
+        :rtype: str
+        """
         return self._ReturnCode
 
     @ReturnCode.setter
@@ -2647,6 +3161,9 @@ class CreateInstancePostResp(AbstractModel):
 
     @property
     def ReturnMessage(self):
+        """Message returned by the API. An error message will be returned if the API reports an error. 
+        :rtype: str
+        """
         return self._ReturnMessage
 
     @ReturnMessage.setter
@@ -2655,6 +3172,9 @@ class CreateInstancePostResp(AbstractModel):
 
     @property
     def Data(self):
+        """Returned data.  Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostData`
+        """
         return self._Data
 
     @Data.setter
@@ -2695,6 +3215,9 @@ class CreateInstancePostResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -2703,6 +3226,9 @@ class CreateInstancePostResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2742,6 +3268,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FlowId(self):
+        """The value returned by `CreateInstancePre` is 0, which is fixed and cannot be used as the query condition of `CheckTaskStatus`. It is only used to ensure the consistency with the backend data structure.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -2750,6 +3280,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DealNames(self):
+        """Order number list.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._DealNames
 
     @DealNames.setter
@@ -2758,6 +3292,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceId(self):
+        """Instance ID. When multiple instances are purchased, the ID of the first one is returned by default . Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2766,6 +3303,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DealNameInstanceIdMapping(self):
+        """Mapping between orders and the purchased instances.  Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DealInstanceDTO
+        """
         return self._DealNameInstanceIdMapping
 
     @DealNameInstanceIdMapping.setter
@@ -2817,6 +3357,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ReturnCode(self):
+        """Returned code. 0: Normal; other values: Error.
+        :rtype: str
+        """
         return self._ReturnCode
 
     @ReturnCode.setter
@@ -2825,6 +3368,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ReturnMessage(self):
+        """The message indicating whether the operation is successful.
+        :rtype: str
+        """
         return self._ReturnMessage
 
     @ReturnMessage.setter
@@ -2833,6 +3379,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Data(self):
+        """Data returned by the operation.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreData`
+        """
         return self._Data
 
     @Data.setter
@@ -2843,6 +3393,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
     def DeleteRouteTimestamp(self):
         warnings.warn("parameter `DeleteRouteTimestamp` is deprecated", DeprecationWarning) 
 
+        """Deletion time.  This parameter has been deprecated and will be deleted.  Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DeleteRouteTimestamp
 
     @DeleteRouteTimestamp.setter
@@ -2889,6 +3442,9 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2897,6 +3453,9 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -2905,6 +3464,9 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def PartitionNum(self):
+        """Number of topic partitions
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -2943,6 +3505,9 @@ class CreatePartitionResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result set
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -2951,6 +3516,9 @@ class CreatePartitionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3030,6 +3598,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """Instance name, which is a string of up to 64 letters, digits, and hyphens (-). It must start with a letter.
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -3038,6 +3609,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """ID of the VPC where the default access point of the created instance resides.  This parameter is required as instances cannot be created in the classic network currently.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -3046,6 +3620,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """ID of the subnet  where the default access point of the created instance resides.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -3054,6 +3631,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def InstanceType(self):
+        """Instance specification.  This parameter is required for a Standard Edition instance but not for a Pro Edition instance.  Valid values:  `1` (Small),  `2` (Standard),  `3` (Advanced),  `4` (Large),  `5` (Xlarge L1),  `6` (Xlarge L2),  `7` (Xlarge L3),  `8` (Xlarge L4),  
+        :rtype: int
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -3062,6 +3642,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def MsgRetentionTime(self):
+        """The maximum instance log retention period in minutes by default.  If this parameter is left empty, the default retention period is 1,440 minutes (1 day) to 30 days.  If the message retention period of the topic is explicitly set, it will prevail.
+        :rtype: int
+        """
         return self._MsgRetentionTime
 
     @MsgRetentionTime.setter
@@ -3070,6 +3653,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """Cluster ID, which can be selected when you create an instance.  You don’t need to pass in this parameter if the cluster where the instance resides is not specified.
+        :rtype: int
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3078,6 +3664,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def KafkaVersion(self):
+        """Instance version.  Valid values: `0.10.2`, `1.1.1`, `2.4.2`, and `2.8.1`.
+        :rtype: str
+        """
         return self._KafkaVersion
 
     @KafkaVersion.setter
@@ -3086,6 +3675,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def SpecificationsType(self):
+        """Instance type. `standard` (Standard Edition),  `profession`  (Pro Edition)
+        :rtype: str
+        """
         return self._SpecificationsType
 
     @SpecificationsType.setter
@@ -3094,6 +3686,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def DiskType(self):
+        """Instance disk type.  `CLOUD_BASIC` (Premium Cloud Storage),  `CLOUD_SSD` (SSD).  If this parameter is left empty, the default value `CLOUD_BASIC` will be used.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -3102,6 +3697,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def BandWidth(self):
+        """Private network peak bandwidth of an instance  in MB/sec.  If you create a Standard Edition instance, pass in the corresponding peak bandwidth for the current instance specification.  If you create a Pro Edition instance, configure the peak bandwidth, partition count, and other parameters as required by Pro Edition.
+        :rtype: int
+        """
         return self._BandWidth
 
     @BandWidth.setter
@@ -3110,6 +3708,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """Instance disk size, which must meet the requirement of the instance’s specification.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -3118,6 +3719,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """The maximum number of partitions of the instance, which must meet the requirement of the instance’s specification.
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -3126,6 +3730,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def TopicNum(self):
+        """The maximum number of topics of the instance, which must meet the requirement of the instance’s specification.
+        :rtype: int
+        """
         return self._TopicNum
 
     @TopicNum.setter
@@ -3134,6 +3741,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def ZoneId(self):
+        """AZ of the instance.  When a multi-AZ instance is created, the value of this parameter is the AZ ID of the subnet where the instance’s default access point resides.
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -3142,6 +3752,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def MultiZoneFlag(self):
+        """Whether the current instance is a multi-AZ instance
+        :rtype: bool
+        """
         return self._MultiZoneFlag
 
     @MultiZoneFlag.setter
@@ -3150,6 +3763,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
+        """This parameter indicates the list of AZ IDs when the instance is deployed in multiple AZs.  Note that `ZoneId` must be included in the array of this parameter.
+        :rtype: list of int
+        """
         return self._ZoneIds
 
     @ZoneIds.setter
@@ -3158,6 +3774,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def InstanceNum(self):
+        """The number of purchased instances.  Default value: `1`. This parameter is optional.  If it is passed in, multiple instances will be created, with their names being `instanceName` plus different suffixes.
+        :rtype: int
+        """
         return self._InstanceNum
 
     @InstanceNum.setter
@@ -3166,6 +3785,9 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def PublicNetworkMonthly(self):
+        """Public network bandwidth in Mbps.  The 3 Mbps of free bandwidth is not included here by default.  For example, if you need 3 Mbps of public network bandwidth, pass in `0`; if you need 6 Mbps, pass in `3`.  The value must be an integer multiple of 3.
+        :rtype: int
+        """
         return self._PublicNetworkMonthly
 
     @PublicNetworkMonthly.setter
@@ -3219,6 +3841,9 @@ class CreatePostPaidInstanceResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePostResp`
+        """
         return self._Result
 
     @Result.setter
@@ -3227,6 +3852,9 @@ class CreatePostPaidInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3261,6 +3889,9 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3269,6 +3900,9 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -3277,6 +3911,9 @@ class CreateTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def IpWhiteList(self):
+        """IP allowlist list
+        :rtype: list of str
+        """
         return self._IpWhiteList
 
     @IpWhiteList.setter
@@ -3315,6 +3952,9 @@ class CreateTopicIpWhiteListResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Result of deleting topic IP allowlist
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -3323,6 +3963,9 @@ class CreateTopicIpWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3399,6 +4042,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3407,6 +4053,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name, which is a string of up to 128 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -3415,6 +4064,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def PartitionNum(self):
+        """Number of partitions, which should be greater than 0
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -3423,6 +4075,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def ReplicaNum(self):
+        """Number of replicas, which cannot be higher than the number of brokers. Maximum value: 3
+        :rtype: int
+        """
         return self._ReplicaNum
 
     @ReplicaNum.setter
@@ -3431,6 +4086,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def EnableWhiteList(self):
+        """IP allowlist switch. 1: enabled, 0: disabled. Default value: 0
+        :rtype: int
+        """
         return self._EnableWhiteList
 
     @EnableWhiteList.setter
@@ -3439,6 +4097,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def IpWhiteList(self):
+        """IP allowlist list for quota limit, which is required if `enableWhileList` is 1
+        :rtype: list of str
+        """
         return self._IpWhiteList
 
     @IpWhiteList.setter
@@ -3447,6 +4108,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def CleanUpPolicy(self):
+        """Log cleanup policy, which is `delete` by default. `delete`: logs will be deleted by save time; `compact`: logs will be compressed by key; `compact, delete`: logs will be compressed by key and deleted by save time.
+        :rtype: str
+        """
         return self._CleanUpPolicy
 
     @CleanUpPolicy.setter
@@ -3455,6 +4119,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Note(self):
+        """Topic remarks string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`)
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -3463,6 +4130,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def MinInsyncReplicas(self):
+        """Default value: 1
+        :rtype: int
+        """
         return self._MinInsyncReplicas
 
     @MinInsyncReplicas.setter
@@ -3471,6 +4141,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def UncleanLeaderElectionEnable(self):
+        """Whether to allow an unsynced replica to be elected as leader. false: no, true: yes. Default value: false
+        :rtype: int
+        """
         return self._UncleanLeaderElectionEnable
 
     @UncleanLeaderElectionEnable.setter
@@ -3479,6 +4152,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def RetentionMs(self):
+        """Message retention period in milliseconds, which is optional. Min value: 60,000 ms.
+        :rtype: int
+        """
         return self._RetentionMs
 
     @RetentionMs.setter
@@ -3487,6 +4163,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def SegmentMs(self):
+        """Segment rolling duration in ms. The current minimum value is 3,600,000 ms
+        :rtype: int
+        """
         return self._SegmentMs
 
     @SegmentMs.setter
@@ -3495,6 +4174,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def MaxMessageBytes(self):
+        """Max message size in bytes. Value range: 1,024 bytes (1 KB) to 8,388,608 bytes (8 MB).
+        :rtype: int
+        """
         return self._MaxMessageBytes
 
     @MaxMessageBytes.setter
@@ -3503,6 +4185,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def EnableAclRule(self):
+        """Preset ACL rule. `1`: enable, `0`: disable. Default value: `0`.
+        :rtype: int
+        """
         return self._EnableAclRule
 
     @EnableAclRule.setter
@@ -3511,6 +4196,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def AclRuleName(self):
+        """Name of the preset ACL rule.
+        :rtype: str
+        """
         return self._AclRuleName
 
     @AclRuleName.setter
@@ -3519,6 +4207,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def RetentionBytes(self):
+        """Message retention file size in bytes, which is an optional parameter. Default value: -1. Currently, the min value that can be entered is 1,048,576 B.
+        :rtype: int
+        """
         return self._RetentionBytes
 
     @RetentionBytes.setter
@@ -3527,6 +4218,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Tag list.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -3581,6 +4275,9 @@ class CreateTopicResp(AbstractModel):
 
     @property
     def TopicId(self):
+        """Topic ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -3617,6 +4314,9 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned creation result
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateTopicResp`
+        """
         return self._Result
 
     @Result.setter
@@ -3625,6 +4325,9 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3659,6 +4362,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3667,6 +4373,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Username
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3675,6 +4384,9 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Password(self):
+        """User password
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -3713,6 +4425,9 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -3721,6 +4436,9 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3767,6 +4485,9 @@ class DatahubTopicDTO(AbstractModel):
 
     @property
     def Name(self):
+        """Name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3775,6 +4496,9 @@ class DatahubTopicDTO(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -3783,6 +4507,9 @@ class DatahubTopicDTO(AbstractModel):
 
     @property
     def TopicId(self):
+        """Topic ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -3791,6 +4518,9 @@ class DatahubTopicDTO(AbstractModel):
 
     @property
     def PartitionNum(self):
+        """The number of partitions
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -3799,6 +4529,9 @@ class DatahubTopicDTO(AbstractModel):
 
     @property
     def RetentionMs(self):
+        """Expiration time
+        :rtype: int
+        """
         return self._RetentionMs
 
     @RetentionMs.setter
@@ -3807,6 +4540,9 @@ class DatahubTopicDTO(AbstractModel):
 
     @property
     def Note(self):
+        """Remarks
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -3815,6 +4551,9 @@ class DatahubTopicDTO(AbstractModel):
 
     @property
     def Status(self):
+        """Status (`1`: In use; `2`: Deleting)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3858,6 +4597,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicName(self):
+        """Topic name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -3866,6 +4608,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicId(self):
+        """TopicId
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -3903,6 +4649,9 @@ class DealInstanceDTO(AbstractModel):
 
     @property
     def DealName(self):
+        """Order list.  Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DealName
 
     @DealName.setter
@@ -3911,6 +4660,9 @@ class DealInstanceDTO(AbstractModel):
 
     @property
     def InstanceIdList(self):
+        """ID list of the purchased CKafka instances corresponding to the order list.  Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._InstanceIdList
 
     @InstanceIdList.setter
@@ -3963,6 +4715,9 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID information
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3971,6 +4726,9 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """ACL resource type (`2`: TOPIC, `3`: GROUP, `4`: CLUSTER).
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -3979,6 +4737,9 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def ResourceName(self):
+        """Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name; if `resourceType` is `CLUSTER`, this field can be left empty.
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -3987,6 +4748,9 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def Operation(self):
+        """ACL operation type (`2`: ALL, `3`: READ, `4`: WRITE, `5`: CREATE, `6`: DELETE, `7`: ALTER, `8`: DESCRIBE, `9`: CLUSTER_ACTION, `10`: DESCRIBE_CONFIGS, `11`: ALTER_CONFIGS, `12`: IDEMPOTENT_WRITE).
+        :rtype: int
+        """
         return self._Operation
 
     @Operation.setter
@@ -3995,6 +4759,9 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def PermissionType(self):
+        """Permission type (`2`: DENY, `3`: ALLOW). CKafka currently supports `ALLOW`, which is equivalent to allowlist. `DENY` will be supported for ACLs compatible with open-source Kafka.
+        :rtype: int
+        """
         return self._PermissionType
 
     @PermissionType.setter
@@ -4003,6 +4770,9 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def Host(self):
+        """The default value is `*`, which means that any host can access. Currently, CKafka does not support the host as `*`, but the future product based on the open-source Kafka will directly support this
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -4011,6 +4781,9 @@ class DeleteAclRequest(AbstractModel):
 
     @property
     def Principal(self):
+        """User list. The default value is `*`, which means that any user can access. The current user can only be one included in the user list
+        :rtype: str
+        """
         return self._Principal
 
     @Principal.setter
@@ -4053,6 +4826,9 @@ class DeleteAclResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -4061,6 +4837,9 @@ class DeleteAclResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4089,6 +4868,9 @@ class DeleteInstancePreRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4125,6 +4907,9 @@ class DeleteInstancePreResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreResp`
+        """
         return self._Result
 
     @Result.setter
@@ -4133,6 +4918,9 @@ class DeleteInstancePreResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4170,6 +4958,9 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Unique instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4178,6 +4969,9 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def RouteId(self):
+        """Route ID.
+        :rtype: int
+        """
         return self._RouteId
 
     @RouteId.setter
@@ -4186,6 +4980,9 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def CallerAppid(self):
+        """AppId of the caller.
+        :rtype: int
+        """
         return self._CallerAppid
 
     @CallerAppid.setter
@@ -4194,6 +4991,9 @@ class DeleteRouteRequest(AbstractModel):
 
     @property
     def DeleteRouteTime(self):
+        """The time when a route was deleted.
+        :rtype: str
+        """
         return self._DeleteRouteTime
 
     @DeleteRouteTime.setter
@@ -4233,6 +5033,9 @@ class DeleteRouteResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -4241,6 +5044,9 @@ class DeleteRouteResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4269,6 +5075,9 @@ class DeleteRouteTriggerTimeRequest(AbstractModel):
 
     @property
     def DelayTime(self):
+        """Modification time.
+        :rtype: str
+        """
         return self._DelayTime
 
     @DelayTime.setter
@@ -4302,6 +5111,9 @@ class DeleteRouteTriggerTimeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4333,6 +5145,9 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4341,6 +5156,9 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -4349,6 +5167,9 @@ class DeleteTopicIpWhiteListRequest(AbstractModel):
 
     @property
     def IpWhiteList(self):
+        """IP allowlist list
+        :rtype: list of str
+        """
         return self._IpWhiteList
 
     @IpWhiteList.setter
@@ -4387,6 +5208,9 @@ class DeleteTopicIpWhiteListResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Result of deleting topic IP allowlist
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -4395,6 +5219,9 @@ class DeleteTopicIpWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4426,6 +5253,9 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """CKafka instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4434,6 +5264,9 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """CKafka topic name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -4471,6 +5304,9 @@ class DeleteTopicResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result set
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -4479,6 +5315,9 @@ class DeleteTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4510,6 +5349,9 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4518,6 +5360,9 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Username
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4555,6 +5400,9 @@ class DeleteUserResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -4563,6 +5411,9 @@ class DeleteUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4606,6 +5457,9 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4614,6 +5468,9 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """ACL resource type (`2`: TOPIC, `3`: GROUP, `4`: CLUSTER).
+        :rtype: int
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -4622,6 +5479,9 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def ResourceName(self):
+        """Resource name, which is related to `resourceType`. For example, if `resourceType` is `TOPIC`, this field indicates the topic name; if `resourceType` is `GROUP`, this field indicates the group name; if `resourceType` is `CLUSTER`, this field can be left empty.
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -4630,6 +5490,9 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset position
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4638,6 +5501,9 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Quantity limit
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4646,6 +5512,9 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """Keyword match
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -4687,6 +5556,9 @@ class DescribeACLResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned ACL result set object
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.AclResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -4695,6 +5567,9 @@ class DescribeACLResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4732,6 +5607,9 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4740,6 +5618,9 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """ACL rule name
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -4748,6 +5629,9 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def PatternType(self):
+        """ACL rule matching type
+        :rtype: str
+        """
         return self._PatternType
 
     @PatternType.setter
@@ -4756,6 +5640,9 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def IsSimplified(self):
+        """Whether to read simplified ACL rules
+        :rtype: bool
+        """
         return self._IsSimplified
 
     @IsSimplified.setter
@@ -4795,6 +5682,9 @@ class DescribeAclRuleResponse(AbstractModel):
 
     @property
     def Result(self):
+        """The set of returned ACL rules
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.AclRuleResp`
+        """
         return self._Result
 
     @Result.setter
@@ -4803,6 +5693,9 @@ class DescribeAclRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4834,6 +5727,9 @@ class DescribeAppInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset position
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4842,6 +5738,9 @@ class DescribeAppInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Maximum number of users to be queried in this request. Maximum value: 50. Default value: 50
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4879,6 +5778,9 @@ class DescribeAppInfoResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned list of eligible `AppId`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.AppIdResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -4887,6 +5789,9 @@ class DescribeAppInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4915,6 +5820,9 @@ class DescribeCkafkaZoneRequest(AbstractModel):
 
     @property
     def CdcId(self):
+        """Cloud Dedicated Cluster (CDC) business parameter.
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -4951,6 +5859,9 @@ class DescribeCkafkaZoneResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned results for the query
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ZoneResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -4959,6 +5870,9 @@ class DescribeCkafkaZoneResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4996,6 +5910,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IpAddr(self):
+        """IP address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IpAddr
 
     @IpAddr.setter
@@ -5004,6 +5922,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Time(self):
+        """Connection time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -5012,6 +5934,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsUnSupportVersion(self):
+        """Whether it is a supported version
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsUnSupportVersion
 
     @IsUnSupportVersion.setter
@@ -5059,6 +5985,9 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """CKafka instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5067,6 +5996,9 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """Name of the group to be queried, which is optional.
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -5075,6 +6007,9 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Name of the corresponding topic in the group to be queried, which is optional. If this parameter is specified but `group` is not specified, this parameter will be ignored.
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -5083,6 +6018,9 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned in this request
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5091,6 +6029,9 @@ class DescribeConsumerGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset position
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5131,6 +6072,9 @@ class DescribeConsumerGroupResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned consumer group information
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ConsumerGroupResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -5139,6 +6083,9 @@ class DescribeConsumerGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5167,6 +6114,9 @@ class DescribeDatahubTopicRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5229,6 +6179,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
+        """Name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5237,6 +6190,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicName(self):
+        """Topic name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -5245,6 +6201,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicId(self):
+        """Topic ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -5253,6 +6212,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PartitionNum(self):
+        """The number of partitions
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -5261,6 +6223,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RetentionMs(self):
+        """Expiration time
+        :rtype: int
+        """
         return self._RetentionMs
 
     @RetentionMs.setter
@@ -5269,6 +6234,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Note(self):
+        """Remarks
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -5277,6 +6246,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserName(self):
+        """Username
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -5285,6 +6257,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Password(self):
+        """Password
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -5293,6 +6268,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Status (`1`: In use; `2`: Deleting)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -5301,6 +6279,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Address(self):
+        """Service routing address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -5346,6 +6328,9 @@ class DescribeDatahubTopicResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result object
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicResp`
+        """
         return self._Result
 
     @Result.setter
@@ -5354,6 +6339,9 @@ class DescribeDatahubTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5388,6 +6376,9 @@ class DescribeDatahubTopicsRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """Keyword for query
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -5396,6 +6387,9 @@ class DescribeDatahubTopicsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Query offset, which defaults to `0`.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5404,6 +6398,9 @@ class DescribeDatahubTopicsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Maximum number of results to be returned in this request. Default value: `50`. Maximum value: `50`.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5443,6 +6440,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Total count
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5451,6 +6451,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicList(self):
+        """Topic list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DatahubTopicDTO
+        """
         return self._TopicList
 
     @TopicList.setter
@@ -5494,6 +6498,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
+        """Topic list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTopicsResp`
+        """
         return self._Result
 
     @Result.setter
@@ -5502,6 +6510,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5533,6 +6544,9 @@ class DescribeGroup(AbstractModel):
 
     @property
     def Group(self):
+        """groupId
+        :rtype: str
+        """
         return self._Group
 
     @Group.setter
@@ -5541,6 +6555,9 @@ class DescribeGroup(AbstractModel):
 
     @property
     def Protocol(self):
+        """Protocol used by the group.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -5578,6 +6595,9 @@ class DescribeGroupInfoRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """(Filter) filter by instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5586,6 +6606,9 @@ class DescribeGroupInfoRequest(AbstractModel):
 
     @property
     def GroupList(self):
+        """Kafka consumer group (`Consumer-group`), which is an array in the format of `GroupList.0=xxx&GroupList.1=yyy`.
+        :rtype: list of str
+        """
         return self._GroupList
 
     @GroupList.setter
@@ -5624,6 +6647,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
+        """Returned result
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of GroupInfoResponse
+        """
         return self._Result
 
     @Result.setter
@@ -5632,6 +6659,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5678,6 +6708,9 @@ class DescribeGroupOffsetsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """(Filter) filter by instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5686,6 +6719,9 @@ class DescribeGroupOffsetsRequest(AbstractModel):
 
     @property
     def Group(self):
+        """Kafka consumer group
+        :rtype: str
+        """
         return self._Group
 
     @Group.setter
@@ -5694,6 +6730,9 @@ class DescribeGroupOffsetsRequest(AbstractModel):
 
     @property
     def Topics(self):
+        """Array of the names of topics subscribed to by a group. If there is no such array, this parameter means the information of all topics in the specified group
+        :rtype: list of str
+        """
         return self._Topics
 
     @Topics.setter
@@ -5702,6 +6741,9 @@ class DescribeGroupOffsetsRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """Fuzzy match by `topicName`
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -5710,6 +6752,9 @@ class DescribeGroupOffsetsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset position of this query. Default value: 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5718,6 +6763,9 @@ class DescribeGroupOffsetsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Maximum number of results to be returned in this request. Default value: 50. Maximum value: 50
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5759,6 +6807,9 @@ class DescribeGroupOffsetsResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result object
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.GroupOffsetResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -5767,6 +6818,9 @@ class DescribeGroupOffsetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5804,6 +6858,9 @@ class DescribeGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5812,6 +6869,9 @@ class DescribeGroupRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """Search keyword
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -5820,6 +6880,9 @@ class DescribeGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5828,6 +6891,9 @@ class DescribeGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Maximum number of results to be returned
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5867,6 +6933,9 @@ class DescribeGroupResponse(AbstractModel):
 
     @property
     def Result(self):
+        """List of returned results
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.GroupResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -5875,6 +6944,9 @@ class DescribeGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5903,6 +6975,9 @@ class DescribeInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5939,6 +7014,9 @@ class DescribeInstanceAttributesResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result object of instance attributes
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceAttributesResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -5947,6 +7025,9 @@ class DescribeInstanceAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6002,6 +7083,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """(Filter) filter by instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6010,6 +7094,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """Filter by instance name, instance ID, AZ, VPC ID, or subnet ID. Fuzzy query is supported.
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -6018,6 +7105,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def Status(self):
+        """(Filter) instance status. 0: creating, 1: running, 2: deleting. If this parameter is left empty, all instances will be returned by default
+        :rtype: list of int
+        """
         return self._Status
 
     @Status.setter
@@ -6026,6 +7116,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. If this parameter is left empty, `0` will be used by default.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6034,6 +7127,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. If this parameter is left empty, `10` will be used by default. The maximum value is `20`.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6042,6 +7138,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def TagKey(self):
+        """Tag key match.
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -6050,6 +7149,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter. Valid values of `filter.Name` include `Ip`, `VpcId`, `SubNetId`, `InstanceType`, and `InstanceId`. Up to 10 values can be passed for `filter.Values`.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -6058,6 +7160,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """This parameter has been deprecated and replaced with `InstanceIdList`.
+        :rtype: str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -6066,6 +7171,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def InstanceIdList(self):
+        """Filter by instance ID.
+        :rtype: list of str
+        """
         return self._InstanceIdList
 
     @InstanceIdList.setter
@@ -6074,6 +7182,9 @@ class DescribeInstancesDetailRequest(AbstractModel):
 
     @property
     def TagList(self):
+        """Filter instances by a set of tags
+        :rtype: list of Tag
+        """
         return self._TagList
 
     @TagList.setter
@@ -6129,6 +7240,9 @@ class DescribeInstancesDetailResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result object of instance details
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceDetailResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -6137,6 +7251,9 @@ class DescribeInstancesDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6183,6 +7300,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """(Filter) filter by instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6191,6 +7311,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """(Filter) filter by instance name. Fuzzy search is supported
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -6199,6 +7322,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Status(self):
+        """(Filter) instance status. 0: creating, 1: running, 2: deleting. If this parameter is left empty, all instances will be returned by default
+        :rtype: list of int
+        """
         return self._Status
 
     @Status.setter
@@ -6207,6 +7333,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. If this parameter is left empty, 0 will be used by default
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6215,6 +7344,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6223,6 +7355,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def TagKey(self):
+        """Tag key value (this field has been deprecated).
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -6231,6 +7366,9 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -6273,6 +7411,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -6281,6 +7422,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6318,6 +7462,9 @@ class DescribeRegionRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """The offset value
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6326,6 +7473,9 @@ class DescribeRegionRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The maximum number of results returned
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6334,6 +7484,9 @@ class DescribeRegionRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Business field, which can be ignored.
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -6342,6 +7495,9 @@ class DescribeRegionRequest(AbstractModel):
 
     @property
     def CdcId(self):
+        """CDC business field, which can be ignored.
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -6382,6 +7538,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Result(self):
+        """List of the returned results of enumerated regions
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: list of Region
+        """
         return self._Result
 
     @Result.setter
@@ -6390,6 +7550,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6424,6 +7587,9 @@ class DescribeRouteRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Unique instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6432,6 +7598,9 @@ class DescribeRouteRequest(AbstractModel):
 
     @property
     def RouteId(self):
+        """Route ID
+        :rtype: int
+        """
         return self._RouteId
 
     @RouteId.setter
@@ -6469,6 +7638,9 @@ class DescribeRouteResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result set of route information
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.RouteResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -6477,6 +7649,9 @@ class DescribeRouteResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6505,6 +7680,9 @@ class DescribeTaskStatusRequest(AbstractModel):
 
     @property
     def FlowId(self):
+        """Unique task ID
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -6541,6 +7719,9 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TaskStatusResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -6549,6 +7730,9 @@ class DescribeTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6580,6 +7764,9 @@ class DescribeTopicAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6588,6 +7775,9 @@ class DescribeTopicAttributesRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -6625,6 +7815,9 @@ class DescribeTopicAttributesResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result object
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicAttributesResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -6633,6 +7826,9 @@ class DescribeTopicAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6673,6 +7869,9 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6681,6 +7880,9 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """(Filter) filter by `topicName`. Fuzzy search is supported
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -6689,6 +7891,9 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. If this parameter is left empty, 0 will be used by default
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6697,6 +7902,9 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20. This value must be greater than 0
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6705,6 +7913,9 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def AclRuleName(self):
+        """Name of the preset ACL rule.
+        :rtype: str
+        """
         return self._AclRuleName
 
     @AclRuleName.setter
@@ -6745,6 +7956,9 @@ class DescribeTopicDetailResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned entity of topic details
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicDetailResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -6753,6 +7967,9 @@ class DescribeTopicDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6784,6 +8001,9 @@ class DescribeTopicProduceConnectionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6792,6 +8012,9 @@ class DescribeTopicProduceConnectionRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -6829,6 +8052,9 @@ class DescribeTopicProduceConnectionResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Result set of returned connection information
+        :rtype: list of DescribeConnectInfoResultDTO
+        """
         return self._Result
 
     @Result.setter
@@ -6837,6 +8063,9 @@ class DescribeTopicProduceConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6880,6 +8109,9 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6888,6 +8120,9 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """Filter by `topicName`. Fuzzy search is supported
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -6896,6 +8131,9 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. If this parameter is left empty, 0 will be used by default
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6904,6 +8142,9 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of results to be returned, which defaults to 20 if left empty. The maximum value is 50.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6912,6 +8153,9 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def AclRuleName(self):
+        """Name of the preset ACL rule.
+        :rtype: str
+        """
         return self._AclRuleName
 
     @AclRuleName.setter
@@ -6953,6 +8197,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Result(self):
+        """Returned result
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicResult`
+        """
         return self._Result
 
     @Result.setter
@@ -6961,6 +8209,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6998,6 +8249,9 @@ class DescribeTopicSubscribeGroupRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7006,6 +8260,9 @@ class DescribeTopicSubscribeGroupRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -7014,6 +8271,9 @@ class DescribeTopicSubscribeGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Starting position of paging
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7022,6 +8282,9 @@ class DescribeTopicSubscribeGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results per page
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7061,6 +8324,9 @@ class DescribeTopicSubscribeGroupResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned results
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicSubscribeGroup`
+        """
         return self._Result
 
     @Result.setter
@@ -7069,6 +8335,9 @@ class DescribeTopicSubscribeGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7109,6 +8378,9 @@ class DescribeTopicSyncReplicaRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7117,6 +8389,9 @@ class DescribeTopicSyncReplicaRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -7125,6 +8400,9 @@ class DescribeTopicSyncReplicaRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. If this parameter is left empty, 0 will be used by default.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7133,6 +8411,9 @@ class DescribeTopicSyncReplicaRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. If this parameter is left empty, 10 will be used by default. The maximum value is 20.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7141,6 +8422,9 @@ class DescribeTopicSyncReplicaRequest(AbstractModel):
 
     @property
     def OutOfSyncReplicaOnly(self):
+        """Filters unsynced replicas only
+        :rtype: bool
+        """
         return self._OutOfSyncReplicaOnly
 
     @OutOfSyncReplicaOnly.setter
@@ -7181,6 +8465,9 @@ class DescribeTopicSyncReplicaResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returns topic replica details
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicInSyncReplicaResult`
+        """
         return self._Result
 
     @Result.setter
@@ -7189,6 +8476,9 @@ class DescribeTopicSyncReplicaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7226,6 +8516,9 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7234,6 +8527,9 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        """Filter by name
+        :rtype: str
+        """
         return self._SearchWord
 
     @SearchWord.setter
@@ -7242,6 +8538,9 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7250,6 +8549,9 @@ class DescribeUserRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned in this request
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7289,6 +8591,9 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result list
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.UserResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -7297,6 +8602,9 @@ class DescribeUserResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7338,6 +8646,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Enable(self):
+        """Whether to enable dynamic disk expansion configuration. `0`: disable, `1`: enable.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -7346,6 +8658,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def StepForwardPercentage(self):
+        """Percentage of dynamic disk expansion each time.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StepForwardPercentage
 
     @StepForwardPercentage.setter
@@ -7354,6 +8670,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiskQuotaPercentage(self):
+        """Disk quota threshold (in percentage) for triggering the automatic disk expansion event.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DiskQuotaPercentage
 
     @DiskQuotaPercentage.setter
@@ -7362,6 +8682,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MaxDiskSpace(self):
+        """Max disk space in GB.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxDiskSpace
 
     @MaxDiskSpace.setter
@@ -7411,6 +8735,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Enable(self):
+        """Whether the dynamic message retention time configuration is enabled. 0: disabled; 1: enabled
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -7419,6 +8747,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def DiskQuotaPercentage(self):
+        """Disk quota threshold (in percentage) for triggering the message retention time change event
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DiskQuotaPercentage
 
     @DiskQuotaPercentage.setter
@@ -7427,6 +8759,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def StepForwardPercentage(self):
+        """Percentage by which the message retention time is shortened each time
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StepForwardPercentage
 
     @StepForwardPercentage.setter
@@ -7435,6 +8771,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def BottomRetention(self):
+        """Minimum retention time, in minutes
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._BottomRetention
 
     @BottomRetention.setter
@@ -7480,6 +8820,9 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7488,6 +8831,9 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     @property
     def Topic(self):
+        """Topic name
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -7496,6 +8842,9 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """Partition ID
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -7504,6 +8853,9 @@ class FetchMessageByOffsetRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset information, which is required.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7543,6 +8895,9 @@ class FetchMessageByOffsetResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned results
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ConsumerRecord`
+        """
         return self._Result
 
     @Result.setter
@@ -7551,6 +8906,9 @@ class FetchMessageByOffsetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7591,6 +8949,9 @@ class FetchMessageListByOffsetRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7599,6 +8960,9 @@ class FetchMessageListByOffsetRequest(AbstractModel):
 
     @property
     def Topic(self):
+        """Topic name
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -7607,6 +8971,9 @@ class FetchMessageListByOffsetRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """Partition ID
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -7615,6 +8982,9 @@ class FetchMessageListByOffsetRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset information
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7623,6 +8993,9 @@ class FetchMessageListByOffsetRequest(AbstractModel):
 
     @property
     def SinglePartitionRecordNumber(self):
+        """The maximum number of messages that can be queried. Default value: 20. Maximum value: 20.
+        :rtype: int
+        """
         return self._SinglePartitionRecordNumber
 
     @SinglePartitionRecordNumber.setter
@@ -7663,6 +9036,9 @@ class FetchMessageListByOffsetResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result. Note: The returned list does not display the message content (key and value). To query the message content, call the `FetchMessageByOffset` API.
+        :rtype: list of ConsumerRecord
+        """
         return self._Result
 
     @Result.setter
@@ -7671,6 +9047,9 @@ class FetchMessageListByOffsetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7709,6 +9088,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """Field to be filtered.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -7717,6 +9099,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """Filter value of field.
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -7751,6 +9136,9 @@ class Group(AbstractModel):
 
     @property
     def GroupName(self):
+        """Group name
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -7793,6 +9181,9 @@ class GroupInfoMember(AbstractModel):
 
     @property
     def MemberId(self):
+        """Unique ID generated for consumer in consumer group by coordinator
+        :rtype: str
+        """
         return self._MemberId
 
     @MemberId.setter
@@ -7801,6 +9192,9 @@ class GroupInfoMember(AbstractModel):
 
     @property
     def ClientId(self):
+        """`client.id` information by the client consumer SDK
+        :rtype: str
+        """
         return self._ClientId
 
     @ClientId.setter
@@ -7809,6 +9203,9 @@ class GroupInfoMember(AbstractModel):
 
     @property
     def ClientHost(self):
+        """Generally stores client IP address
+        :rtype: str
+        """
         return self._ClientHost
 
     @ClientHost.setter
@@ -7817,6 +9214,9 @@ class GroupInfoMember(AbstractModel):
 
     @property
     def Assignment(self):
+        """Stores the information of partition assigned to this consumer
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.Assignment`
+        """
         return self._Assignment
 
     @Assignment.setter
@@ -7875,6 +9275,9 @@ Stable: each consumer in the consumer group has joined and is in stable state
 
     @property
     def ErrorCode(self):
+        """Error code. 0: success
+        :rtype: str
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -7883,6 +9286,14 @@ Stable: each consumer in the consumer group has joined and is in stable state
 
     @property
     def State(self):
+        """Group status description (common valid values: Empty, Stable, Dead):
+Dead: the consumer group does not exist
+Empty: there are currently no consumer subscriptions in the consumer group
+PreparingRebalance: the consumer group is currently in `rebalance` state
+CompletingRebalance: the consumer group is currently in `rebalance` state
+Stable: each consumer in the consumer group has joined and is in stable state
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -7891,6 +9302,9 @@ Stable: each consumer in the consumer group has joined and is in stable state
 
     @property
     def ProtocolType(self):
+        """The type of protocol selected by the consumer group, which is `consumer` for common consumers. However, some systems use their own protocols; for example, the protocol used by kafka-connect is `connect`. Only with the standard `consumer` protocol can this API get to know the specific assigning method and parse the specific partition assignment
+        :rtype: str
+        """
         return self._ProtocolType
 
     @ProtocolType.setter
@@ -7899,6 +9313,9 @@ Stable: each consumer in the consumer group has joined and is in stable state
 
     @property
     def Protocol(self):
+        """Consumer partition assignment algorithm, such as `range` (which is the default value for the Kafka consumer SDK), `roundrobin`, and `sticky`
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -7907,6 +9324,9 @@ Stable: each consumer in the consumer group has joined and is in stable state
 
     @property
     def Members(self):
+        """This array contains information only if `state` is `Stable` and `protocol_type` is `consumer`
+        :rtype: list of GroupInfoMember
+        """
         return self._Members
 
     @Members.setter
@@ -7915,6 +9335,9 @@ Stable: each consumer in the consumer group has joined and is in stable state
 
     @property
     def Group(self):
+        """Kafka consumer group
+        :rtype: str
+        """
         return self._Group
 
     @Group.setter
@@ -7962,6 +9385,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Topic(self):
+        """Name of assigned topics
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -7970,6 +9396,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Partitions(self):
+        """Information of assigned partition
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int
+        """
         return self._Partitions
 
     @Partitions.setter
@@ -8020,6 +9450,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Partition(self):
+        """Topic `partitionId`
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -8028,6 +9461,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Offset(self):
+        """Offset position submitted by consumer
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8036,6 +9472,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Metadata(self):
+        """Metadata can be passed in for other purposes when the consumer submits messages. Currently, this parameter is usually an empty string
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Metadata
 
     @Metadata.setter
@@ -8044,6 +9484,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorCode(self):
+        """Error code
+        :rtype: int
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -8052,6 +9495,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LogEndOffset(self):
+        """Latest offset of current partition
+        :rtype: int
+        """
         return self._LogEndOffset
 
     @LogEndOffset.setter
@@ -8060,6 +9506,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Lag(self):
+        """Number of unconsumed messages
+        :rtype: int
+        """
         return self._Lag
 
     @Lag.setter
@@ -8102,6 +9551,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Total number of eligible results
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8110,6 +9562,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicList(self):
+        """Array of partitions in the topic, where each element is a JSON object
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of GroupOffsetTopic
+        """
         return self._TopicList
 
     @TopicList.setter
@@ -8153,6 +9609,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Topic(self):
+        """Topic name
+        :rtype: str
+        """
         return self._Topic
 
     @Topic.setter
@@ -8161,6 +9620,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Partitions(self):
+        """Array of partitions in the topic, where each element is a JSON object
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of GroupOffsetPartition
+        """
         return self._Partitions
 
     @Partitions.setter
@@ -8209,6 +9672,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Count
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8217,6 +9684,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupList(self):
+        """GroupList
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DescribeGroup
+        """
         return self._GroupList
 
     @GroupList.setter
@@ -8225,6 +9696,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GroupCountQuota(self):
+        """Consumer group quota
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._GroupCountQuota
 
     @GroupCountQuota.setter
@@ -8301,6 +9776,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def InstanceType(self):
+        """`standard`: Standard Edition; `profession`: Pro Edition
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -8309,6 +9787,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def InstanceChargeParam(self):
+        """Billing mode for instance purchase/renewal. If this parameter is left empty when you purchase an instance, the fees for one month under the monthly subscription mode will be displayed by default.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceChargeParam`
+        """
         return self._InstanceChargeParam
 
     @InstanceChargeParam.setter
@@ -8317,6 +9798,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def InstanceNum(self):
+        """The number of instances to be purchased or renewed. If this parameter is left empty, the default value is `1`.
+        :rtype: int
+        """
         return self._InstanceNum
 
     @InstanceNum.setter
@@ -8325,6 +9809,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """Private network bandwidth in MB/sec, which is required when you purchase an instance.
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -8333,6 +9820,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def InquiryDiskParam(self):
+        """Disk type and size, which is required when you purchase an instance.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryDiskParam`
+        """
         return self._InquiryDiskParam
 
     @InquiryDiskParam.setter
@@ -8341,6 +9831,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def MessageRetention(self):
+        """Message retention period in hours, which is required when you purchase an instance.
+        :rtype: int
+        """
         return self._MessageRetention
 
     @MessageRetention.setter
@@ -8349,6 +9842,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def Topic(self):
+        """The number of instance topics to be purchased, which is required when you purchase an instance.
+        :rtype: int
+        """
         return self._Topic
 
     @Topic.setter
@@ -8357,6 +9853,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """The number of instance partitions to be purchased, which is required when you purchase an instance.
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -8365,6 +9864,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
+        """The region for instance purchase, which can be obtained via the `DescribeCkafkaZone` API.
+        :rtype: list of int
+        """
         return self._ZoneIds
 
     @ZoneIds.setter
@@ -8373,6 +9875,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def CategoryAction(self):
+        """Operation type flag. `purchase`: Making new purchases; `renew`: Renewing an instance. The default value is `purchase` if this parameter is left empty.
+        :rtype: str
+        """
         return self._CategoryAction
 
     @CategoryAction.setter
@@ -8381,6 +9886,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def BillType(self):
+        """This field is not required.
+        :rtype: str
+        """
         return self._BillType
 
     @BillType.setter
@@ -8389,6 +9897,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def PublicNetworkParam(self):
+        """Billing mode for public network bandwidth, which is required when you purchase public network bandwidth. Currently, public network bandwidth is only supported for Pro Edition.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryPublicNetworkParam`
+        """
         return self._PublicNetworkParam
 
     @PublicNetworkParam.setter
@@ -8397,6 +9908,9 @@ class InquireCkafkaPriceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the instance to be renewed, which is required when you renew an instance.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8453,6 +9967,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstancePrice(self):
+        """Instance price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryPrice`
+        """
         return self._InstancePrice
 
     @InstancePrice.setter
@@ -8461,6 +9979,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PublicNetworkBandwidthPrice(self):
+        """Public network bandwidth price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryPrice`
+        """
         return self._PublicNetworkBandwidthPrice
 
     @PublicNetworkBandwidthPrice.setter
@@ -8502,6 +10024,9 @@ class InquireCkafkaPriceResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Output parameters
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquireCkafkaPriceResp`
+        """
         return self._Result
 
     @Result.setter
@@ -8510,6 +10035,9 @@ class InquireCkafkaPriceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8579,6 +10107,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnitPrice(self):
+        """Original unit price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._UnitPrice
 
     @UnitPrice.setter
@@ -8587,6 +10119,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnitPriceDiscount(self):
+        """Discounted unit price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._UnitPriceDiscount
 
     @UnitPriceDiscount.setter
@@ -8595,6 +10131,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalPrice(self):
+        """Original price in total
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -8603,6 +10143,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountPrice(self):
+        """Discounted price in total
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -8611,6 +10155,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Discount(self):
+        """Discount (%)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Discount
 
     @Discount.setter
@@ -8619,6 +10167,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GoodsNum(self):
+        """Number of purchased items
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._GoodsNum
 
     @GoodsNum.setter
@@ -8627,6 +10179,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Currency(self):
+        """Currency for payment
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Currency
 
     @Currency.setter
@@ -8635,6 +10191,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
+        """Dedicated disk response parameter
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -8643,6 +10203,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeSpan(self):
+        """Validity period
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -8651,6 +10215,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeUnit(self):
+        """Unit of the validity period (`m`: Month; `h`: Hour)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -8659,6 +10227,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
+        """Purchase quantity
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -8719,6 +10291,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BandwidthPrice(self):
+        """Price of additional private network bandwidth
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        """
         return self._BandwidthPrice
 
     @BandwidthPrice.setter
@@ -8727,6 +10303,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskPrice(self):
+        """Disk price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        """
         return self._DiskPrice
 
     @DiskPrice.setter
@@ -8735,6 +10315,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PartitionPrice(self):
+        """Price of additional partitions
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        """
         return self._PartitionPrice
 
     @PartitionPrice.setter
@@ -8743,6 +10327,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicPrice(self):
+        """Price of additional topics
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        """
         return self._TopicPrice
 
     @TopicPrice.setter
@@ -8751,6 +10339,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceTypePrice(self):
+        """Instance package price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryBasePrice`
+        """
         return self._InstanceTypePrice
 
     @InstanceTypePrice.setter
@@ -8801,6 +10393,9 @@ class InquiryDiskParam(AbstractModel):
 
     @property
     def DiskType(self):
+        """Disk type. Valid values: `SSD` (SSD), `CLOUD_SSD` (SSD cloud disk), `CLOUD_PREMIUM` (Premium cloud disk), `CLOUD_BASIC` (Cloud disk).
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -8809,6 +10404,9 @@ class InquiryDiskParam(AbstractModel):
 
     @property
     def DiskSize(self):
+        """Size of the purchased disk in GB
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -8888,6 +10486,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnitPrice(self):
+        """Original unit price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._UnitPrice
 
     @UnitPrice.setter
@@ -8896,6 +10498,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UnitPriceDiscount(self):
+        """Discounted unit price
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._UnitPriceDiscount
 
     @UnitPriceDiscount.setter
@@ -8904,6 +10510,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginalPrice(self):
+        """Original price in total
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -8912,6 +10522,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiscountPrice(self):
+        """Discounted price in total
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -8920,6 +10534,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Discount(self):
+        """Discount (%)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Discount
 
     @Discount.setter
@@ -8928,6 +10546,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def GoodsNum(self):
+        """Number of purchased items
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._GoodsNum
 
     @GoodsNum.setter
@@ -8936,6 +10558,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Currency(self):
+        """Currency for payment
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Currency
 
     @Currency.setter
@@ -8944,6 +10570,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
+        """Dedicated disk response parameter
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -8952,6 +10582,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeSpan(self):
+        """Validity period
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TimeSpan
 
     @TimeSpan.setter
@@ -8960,6 +10594,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeUnit(self):
+        """Unit of the validity period (`m`: Month; `h`: Hour)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TimeUnit
 
     @TimeUnit.setter
@@ -8968,6 +10606,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
+        """Purchase quantity
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Value
 
     @Value.setter
@@ -8976,6 +10618,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DetailPrices(self):
+        """Prices of different purchased items
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InquiryDetailPrice`
+        """
         return self._DetailPrices
 
     @DetailPrices.setter
@@ -9025,6 +10671,9 @@ class InquiryPublicNetworkParam(AbstractModel):
 
     @property
     def PublicNetworkChargeType(self):
+        """Public network bandwidth billing mode (`BANDWIDTH_PREPAID`: Monthly subscription; `BANDWIDTH_POSTPAID_BY_HOUR`: Bill-by-hour)
+        :rtype: str
+        """
         return self._PublicNetworkChargeType
 
     @PublicNetworkChargeType.setter
@@ -9033,6 +10682,9 @@ class InquiryPublicNetworkParam(AbstractModel):
 
     @property
     def PublicNetworkMonthly(self):
+        """Public network bandwidth in MB
+        :rtype: int
+        """
         return self._PublicNetworkMonthly
 
     @PublicNetworkMonthly.setter
@@ -9077,6 +10729,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9085,6 +10740,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
+        """Instance name
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -9093,6 +10751,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Instance status. 0: creating, 1: running, 2: deleting, 5: isolated, -1: creation failed
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -9101,6 +10762,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IfCommunity(self):
+        """Whether it is an open-source instance. true: yes, false: no
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IfCommunity
 
     @IfCommunity.setter
@@ -9254,6 +10919,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9262,6 +10930,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceName(self):
+        """Instance name
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -9270,6 +10941,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VipList(self):
+        """VIP list information of access point
+        :rtype: list of VipEntity
+        """
         return self._VipList
 
     @VipList.setter
@@ -9278,6 +10952,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Vip(self):
+        """Virtual IP
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -9286,6 +10963,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Vport(self):
+        """Virtual port
+        :rtype: str
+        """
         return self._Vport
 
     @Vport.setter
@@ -9294,6 +10974,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Instance status. 0: creating, 1: running, 2: deleting
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -9302,6 +10985,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Bandwidth(self):
+        """Instance bandwidth in Mbps
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -9310,6 +10996,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DiskSize(self):
+        """Instance storage capacity in GB
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -9318,6 +11007,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ZoneId(self):
+        """AZ
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -9326,6 +11018,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VpcId(self):
+        """VPC ID. If this parameter is empty, it means the basic network
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -9334,6 +11029,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubnetId(self):
+        """Subnet ID. If this parameter is empty, it means the basic network
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -9342,6 +11040,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Healthy(self):
+        """Instance health status. 1: healthy, 2: alarmed, 3: exceptional
+        :rtype: int
+        """
         return self._Healthy
 
     @Healthy.setter
@@ -9350,6 +11051,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def HealthyMessage(self):
+        """Instance health information. Currently, the disk utilization is displayed with a maximum length of 256
+        :rtype: str
+        """
         return self._HealthyMessage
 
     @HealthyMessage.setter
@@ -9358,6 +11062,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -9366,6 +11073,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MsgRetentionTime(self):
+        """Message retention period in minutes
+        :rtype: int
+        """
         return self._MsgRetentionTime
 
     @MsgRetentionTime.setter
@@ -9374,6 +11084,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Config(self):
+        """Configuration for automatic topic creation. If this field is empty, it means that automatic creation is not enabled
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceConfigDO`
+        """
         return self._Config
 
     @Config.setter
@@ -9382,6 +11095,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RemainderPartitions(self):
+        """Number of remaining creatable partitions
+        :rtype: int
+        """
         return self._RemainderPartitions
 
     @RemainderPartitions.setter
@@ -9390,6 +11106,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RemainderTopics(self):
+        """Number of remaining creatable topics
+        :rtype: int
+        """
         return self._RemainderTopics
 
     @RemainderTopics.setter
@@ -9398,6 +11117,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedPartitions(self):
+        """Number of partitions already created
+        :rtype: int
+        """
         return self._CreatedPartitions
 
     @CreatedPartitions.setter
@@ -9406,6 +11128,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTopics(self):
+        """Number of topics already created
+        :rtype: int
+        """
         return self._CreatedTopics
 
     @CreatedTopics.setter
@@ -9414,6 +11139,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Tags(self):
+        """Tag array
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -9422,6 +11151,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ExpireTime(self):
+        """Expiration time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -9430,6 +11163,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ZoneIds(self):
+        """Cross-AZ
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int
+        """
         return self._ZoneIds
 
     @ZoneIds.setter
@@ -9438,6 +11175,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Version(self):
+        """Kafka version information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -9446,6 +11187,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MaxGroupNum(self):
+        """Maximum number of groups
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxGroupNum
 
     @MaxGroupNum.setter
@@ -9454,6 +11199,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Cvm(self):
+        """Offering type. `0`: Standard Edition; `1`: Professional Edition
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: int
+        """
         return self._Cvm
 
     @Cvm.setter
@@ -9462,6 +11211,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceType(self):
+        """Type.
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -9470,6 +11223,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Features(self):
+        """Features supported by the instance. `FEATURE_SUBNET_ACL` indicates that the ACL policy supports setting subnets. 
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._Features
 
     @Features.setter
@@ -9478,6 +11235,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RetentionTimeConfig(self):
+        """Dynamic message retention policy
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
+        """
         return self._RetentionTimeConfig
 
     @RetentionTimeConfig.setter
@@ -9486,6 +11247,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MaxConnection(self):
+        """Maximum number of connections
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxConnection
 
     @MaxConnection.setter
@@ -9494,6 +11259,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PublicNetwork(self):
+        """Public network bandwidth
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._PublicNetwork
 
     @PublicNetwork.setter
@@ -9502,6 +11271,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DeleteRouteTimestamp(self):
+        """Time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DeleteRouteTimestamp
 
     @DeleteRouteTimestamp.setter
@@ -9510,6 +11283,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RemainingPartitions(self):
+        """Number of remaining creatable partitions
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RemainingPartitions
 
     @RemainingPartitions.setter
@@ -9518,6 +11295,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RemainingTopics(self):
+        """Number of remaining creatable topics
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RemainingTopics
 
     @RemainingTopics.setter
@@ -9526,6 +11307,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DynamicDiskConfig(self):
+        """Dynamic disk expansion policy.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
+        """
         return self._DynamicDiskConfig
 
     @DynamicDiskConfig.setter
@@ -9612,6 +11397,9 @@ class InstanceChargeParam(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """Instance billing mode (`PREPAID`: Monthly subscription; `POSTPAID_BY_HOUR`: Pay-as-you-go)
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -9620,6 +11408,9 @@ class InstanceChargeParam(AbstractModel):
 
     @property
     def InstanceChargePeriod(self):
+        """Validity period, which is only required for the monthly subscription billing mode
+        :rtype: int
+        """
         return self._InstanceChargePeriod
 
     @InstanceChargePeriod.setter
@@ -9660,6 +11451,9 @@ class InstanceConfigDO(AbstractModel):
 
     @property
     def AutoCreateTopicsEnable(self):
+        """Whether to create topics automatically
+        :rtype: bool
+        """
         return self._AutoCreateTopicsEnable
 
     @AutoCreateTopicsEnable.setter
@@ -9668,6 +11462,9 @@ class InstanceConfigDO(AbstractModel):
 
     @property
     def DefaultNumPartitions(self):
+        """Number of partitions
+        :rtype: int
+        """
         return self._DefaultNumPartitions
 
     @DefaultNumPartitions.setter
@@ -9676,6 +11473,9 @@ class InstanceConfigDO(AbstractModel):
 
     @property
     def DefaultReplicationFactor(self):
+        """Default replication factor
+        :rtype: int
+        """
         return self._DefaultReplicationFactor
 
     @DefaultReplicationFactor.setter
@@ -9817,6 +11617,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9825,6 +11628,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
+        """Instance name
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -9833,6 +11639,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vip(self):
+        """Instance VIP information
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -9841,6 +11650,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vport(self):
+        """Instance port information
+        :rtype: str
+        """
         return self._Vport
 
     @Vport.setter
@@ -9849,6 +11661,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VipList(self):
+        """Virtual IP list
+        :rtype: list of VipEntity
+        """
         return self._VipList
 
     @VipList.setter
@@ -9857,6 +11672,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Instance status. 0: creating, 1: running, 2: deleting, 5: isolated, -1: creation failed
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -9865,6 +11683,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Bandwidth(self):
+        """Instance bandwidth in Mbps
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -9873,6 +11694,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskSize(self):
+        """Instance storage capacity in GB
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -9881,6 +11705,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneId(self):
+        """AZ ID
+        :rtype: int
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -9889,6 +11716,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
+        """vpcId. If this parameter is empty, it means the basic network
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -9897,6 +11727,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
+        """Subnet ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -9905,6 +11738,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RenewFlag(self):
+        """Whether to renew the instance automatically, which is an int-type enumerated value. 1: yes, 2: no
+        :rtype: int
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -9913,6 +11749,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Healthy(self):
+        """Instance status. An int-type value will be returned. `0`: Healthy, `1`: Alarmed, `2`: Exceptional
+        :rtype: int
+        """
         return self._Healthy
 
     @Healthy.setter
@@ -9921,6 +11760,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HealthyMessage(self):
+        """Instance status information
+        :rtype: str
+        """
         return self._HealthyMessage
 
     @HealthyMessage.setter
@@ -9929,6 +11771,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Instance creation time
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -9937,6 +11782,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
+        """Instance expiration time
+        :rtype: int
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -9945,6 +11793,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsInternal(self):
+        """Whether it is an internal customer. 1: yes
+        :rtype: int
+        """
         return self._IsInternal
 
     @IsInternal.setter
@@ -9953,6 +11804,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicNum(self):
+        """Number of topics
+        :rtype: int
+        """
         return self._TopicNum
 
     @TopicNum.setter
@@ -9961,6 +11815,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """Tag
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -9969,6 +11826,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
+        """Kafka version information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -9977,6 +11838,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ZoneIds(self):
+        """Cross-AZ
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int
+        """
         return self._ZoneIds
 
     @ZoneIds.setter
@@ -9985,6 +11850,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cvm(self):
+        """CKafka sale type
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Cvm
 
     @Cvm.setter
@@ -9993,6 +11862,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
+        """CKafka instance type
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -10001,6 +11874,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
+        """Disk type
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -10009,6 +11886,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxTopicNumber(self):
+        """Maximum number of topics for the current instance
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxTopicNumber
 
     @MaxTopicNumber.setter
@@ -10017,6 +11898,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxPartitionNumber(self):
+        """Maximum number of partitions for the current instance
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxPartitionNumber
 
     @MaxPartitionNumber.setter
@@ -10025,6 +11910,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RebalanceTime(self):
+        """Time of scheduled upgrade
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RebalanceTime
 
     @RebalanceTime.setter
@@ -10033,6 +11922,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PartitionNumber(self):
+        """Number of partitions in the current instance.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._PartitionNumber
 
     @PartitionNumber.setter
@@ -10041,6 +11934,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PublicNetworkChargeType(self):
+        """Public network bandwidth type.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PublicNetworkChargeType
 
     @PublicNetworkChargeType.setter
@@ -10049,6 +11946,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PublicNetwork(self):
+        """Public network bandwidth.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._PublicNetwork
 
     @PublicNetwork.setter
@@ -10057,6 +11958,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClusterType(self):
+        """Instance type.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ClusterType
 
     @ClusterType.setter
@@ -10065,6 +11970,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Features(self):
+        """Instance feature list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._Features
 
     @Features.setter
@@ -10142,6 +12051,9 @@ class InstanceDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of eligible instances
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10150,6 +12062,9 @@ class InstanceDetailResponse(AbstractModel):
 
     @property
     def InstanceList(self):
+        """List of eligible instance details
+        :rtype: list of InstanceDetail
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -10194,6 +12109,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def QuotaProducerByteRate(self):
+        """Production throttling in MB/sec.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._QuotaProducerByteRate
 
     @QuotaProducerByteRate.setter
@@ -10202,6 +12121,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def QuotaConsumerByteRate(self):
+        """Consumption throttling in MB/sec.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._QuotaConsumerByteRate
 
     @QuotaConsumerByteRate.setter
@@ -10241,6 +12164,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceList(self):
+        """List of eligible instances
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Instance
+        """
         return self._InstanceList
 
     @InstanceList.setter
@@ -10249,6 +12176,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Total number of eligible results
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -10295,6 +12226,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReturnCode(self):
+        """Returned code. 0: normal, other values: error
+        :rtype: str
+        """
         return self._ReturnCode
 
     @ReturnCode.setter
@@ -10303,6 +12237,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReturnMessage(self):
+        """Success message
+        :rtype: str
+        """
         return self._ReturnMessage
 
     @ReturnMessage.setter
@@ -10311,6 +12248,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
+        """Data returned by an operation, which may contain `flowId`, etc.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.OperateResponseData`
+        """
         return self._Data
 
     @Data.setter
@@ -10354,6 +12295,9 @@ class ModifyAclRuleRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10362,6 +12306,9 @@ class ModifyAclRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """ACL policy name
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -10370,6 +12317,9 @@ class ModifyAclRuleRequest(AbstractModel):
 
     @property
     def IsApplied(self):
+        """Whether to be applied to new topics
+        :rtype: int
+        """
         return self._IsApplied
 
     @IsApplied.setter
@@ -10408,6 +12358,9 @@ class ModifyAclRuleResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Unique key of a rule
+        :rtype: int
+        """
         return self._Result
 
     @Result.setter
@@ -10416,6 +12369,9 @@ class ModifyAclRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10451,6 +12407,9 @@ class ModifyDatahubTopicRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10459,6 +12418,9 @@ class ModifyDatahubTopicRequest(AbstractModel):
 
     @property
     def RetentionMs(self):
+        """Message retention period in ms. The current minimum value is 60,000 ms.
+        :rtype: int
+        """
         return self._RetentionMs
 
     @RetentionMs.setter
@@ -10467,6 +12429,9 @@ class ModifyDatahubTopicRequest(AbstractModel):
 
     @property
     def Note(self):
+        """Topic remarks, which are a string of up to 64 characters. It can contain letters, digits, and hyphens (-) and must start with a letter.
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -10475,6 +12440,9 @@ class ModifyDatahubTopicRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Tag list
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -10519,6 +12487,9 @@ class ModifyDatahubTopicResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result set
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -10527,6 +12498,9 @@ class ModifyDatahubTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10576,6 +12550,9 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Kafka instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10584,6 +12561,9 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Group(self):
+        """Kafka consumer group
+        :rtype: str
+        """
         return self._Group
 
     @Group.setter
@@ -10592,6 +12572,9 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Strategy(self):
+        """Offset resetting policy. Meanings of the input parameters: 0: equivalent to the `shift-by` parameter, which indicates to shift the offset forward or backward by the value of the `shift`. 1: equivalent to `by-duration`, `to-datetime`, `to-earliest`, or `to-latest`, which indicates to move the offset to the specified timestamp. 2: equivalent to `to-offset`, which indicates to move the offset to the specified offset position
+        :rtype: int
+        """
         return self._Strategy
 
     @Strategy.setter
@@ -10600,6 +12583,9 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Topics(self):
+        """Indicates the topics to be reset. If this parameter is left empty, all topics will be reset
+        :rtype: list of str
+        """
         return self._Topics
 
     @Topics.setter
@@ -10608,6 +12594,9 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Shift(self):
+        """When `strategy` is 0, this field is required. If it is above zero, the offset will be shifted backward by the value of the `shift`. If it is below zero, the offset will be shifted forward by the value of the `shift`. After a correct reset, the new offset should be (old_offset + shift). Note that if the new offset is smaller than the `earliest` parameter of the partition, it will be set to `earliest`, and if it is greater than the `latest` parameter of the partition, it will be set to `latest`
+        :rtype: int
+        """
         return self._Shift
 
     @Shift.setter
@@ -10616,6 +12605,9 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def ShiftTimestamp(self):
+        """Unit: ms. When `strategy` is 1, this field is required, where -2 indicates to reset the offset to the initial position, -1 indicates to reset to the latest position (equivalent to emptying), and other values represent the specified time, i.e., the offset of the topic at the specified time will be obtained and then reset. Note that if there is no message at the specified time, the last offset will be obtained
+        :rtype: int
+        """
         return self._ShiftTimestamp
 
     @ShiftTimestamp.setter
@@ -10624,6 +12616,9 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Position of the offset that needs to be reset. When `strategy` is 2, this field is required
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10632,6 +12627,9 @@ class ModifyGroupOffsetsRequest(AbstractModel):
 
     @property
     def Partitions(self):
+        """List of partitions that need to be reset. If the topics parameter is not specified, reset partitions in the corresponding partition list of all topics. If the topics parameter is specified, reset partitions of the corresponding partition list of the specified topic list.
+        :rtype: list of int
+        """
         return self._Partitions
 
     @Partitions.setter
@@ -10675,6 +12673,9 @@ class ModifyGroupOffsetsResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -10683,6 +12684,9 @@ class ModifyGroupOffsetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10717,6 +12721,9 @@ class ModifyInstanceAttributesConfig(AbstractModel):
 
     @property
     def AutoCreateTopicEnable(self):
+        """Automatic creation. true: enabled, false: not enabled
+        :rtype: bool
+        """
         return self._AutoCreateTopicEnable
 
     @AutoCreateTopicEnable.setter
@@ -10725,6 +12732,9 @@ class ModifyInstanceAttributesConfig(AbstractModel):
 
     @property
     def DefaultNumPartitions(self):
+        """Optional. If `auto.create.topic.enable` is set to `true` and this value is not set, 3 will be used by default
+        :rtype: int
+        """
         return self._DefaultNumPartitions
 
     @DefaultNumPartitions.setter
@@ -10733,6 +12743,9 @@ class ModifyInstanceAttributesConfig(AbstractModel):
 
     @property
     def DefaultReplicationFactor(self):
+        """If `auto.create.topic.enable` is set to `true` but this value is not set, 2 will be used by default
+        :rtype: int
+        """
         return self._DefaultReplicationFactor
 
     @DefaultReplicationFactor.setter
@@ -10792,6 +12805,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10800,6 +12816,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def MsgRetentionTime(self):
+        """Maximum retention period in minutes for instance log, which can be up to 30 days. 0 indicates not to enable the log retention period policy
+        :rtype: int
+        """
         return self._MsgRetentionTime
 
     @MsgRetentionTime.setter
@@ -10808,6 +12827,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """Instance name string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`)
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -10816,6 +12838,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def Config(self):
+        """Instance configuration
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ModifyInstanceAttributesConfig`
+        """
         return self._Config
 
     @Config.setter
@@ -10824,6 +12849,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def DynamicRetentionConfig(self):
+        """Dynamic message retention policy configuration
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DynamicRetentionTime`
+        """
         return self._DynamicRetentionConfig
 
     @DynamicRetentionConfig.setter
@@ -10832,6 +12860,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def RebalanceTime(self):
+        """Modification of the rebalancing time after upgrade
+        :rtype: int
+        """
         return self._RebalanceTime
 
     @RebalanceTime.setter
@@ -10840,6 +12871,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def PublicNetwork(self):
+        """Public network bandwidth
+        :rtype: int
+        """
         return self._PublicNetwork
 
     @PublicNetwork.setter
@@ -10848,6 +12882,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def DynamicDiskConfig(self):
+        """Dynamic disk expansion policy configuration.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DynamicDiskConfig`
+        """
         return self._DynamicDiskConfig
 
     @DynamicDiskConfig.setter
@@ -10856,6 +12893,9 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def MaxMessageByte(self):
+        """The size of a single message in bytes at the instance level.
+        :rtype: int
+        """
         return self._MaxMessageByte
 
     @MaxMessageByte.setter
@@ -10906,6 +12946,9 @@ class ModifyInstanceAttributesResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -10914,6 +12957,9 @@ class ModifyInstanceAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10951,6 +12997,9 @@ class ModifyInstancePreRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance name.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10959,6 +13008,9 @@ class ModifyInstancePreRequest(AbstractModel):
 
     @property
     def DiskSize(self):
+        """Estimated disk capacity, which can be increased by increment.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -10967,6 +13019,9 @@ class ModifyInstancePreRequest(AbstractModel):
 
     @property
     def BandWidth(self):
+        """Estimated bandwidth, which can be increased by increment.
+        :rtype: int
+        """
         return self._BandWidth
 
     @BandWidth.setter
@@ -10975,6 +13030,9 @@ class ModifyInstancePreRequest(AbstractModel):
 
     @property
     def Partition(self):
+        """Estimated partition count, which can be increased by increment.
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -11014,6 +13072,9 @@ class ModifyInstancePreResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Response structure of modifying the configurations of a prepaid instance.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateInstancePreResp`
+        """
         return self._Result
 
     @Result.setter
@@ -11022,6 +13083,9 @@ class ModifyInstancePreResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11059,6 +13123,9 @@ class ModifyPasswordRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11067,6 +13134,9 @@ class ModifyPasswordRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Username
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -11075,6 +13145,9 @@ class ModifyPasswordRequest(AbstractModel):
 
     @property
     def Password(self):
+        """Current user password
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -11083,6 +13156,9 @@ class ModifyPasswordRequest(AbstractModel):
 
     @property
     def PasswordNew(self):
+        """New user password
+        :rtype: str
+        """
         return self._PasswordNew
 
     @PasswordNew.setter
@@ -11122,6 +13198,9 @@ class ModifyPasswordResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -11130,6 +13209,9 @@ class ModifyPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11209,6 +13291,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -11217,6 +13302,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name.
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -11225,6 +13313,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def Note(self):
+        """Topic remarks string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -11233,6 +13324,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def EnableWhiteList(self):
+        """IP allowlist switch. 1: enabled, 0: disabled.
+        :rtype: int
+        """
         return self._EnableWhiteList
 
     @EnableWhiteList.setter
@@ -11241,6 +13335,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def MinInsyncReplicas(self):
+        """Default value: 1.
+        :rtype: int
+        """
         return self._MinInsyncReplicas
 
     @MinInsyncReplicas.setter
@@ -11249,6 +13346,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def UncleanLeaderElectionEnable(self):
+        """0: false, 1: true. Default value: 0.
+        :rtype: int
+        """
         return self._UncleanLeaderElectionEnable
 
     @UncleanLeaderElectionEnable.setter
@@ -11257,6 +13357,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def RetentionMs(self):
+        """Message retention period in ms. The current minimum value is 60,000 ms.
+        :rtype: int
+        """
         return self._RetentionMs
 
     @RetentionMs.setter
@@ -11265,6 +13368,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def SegmentMs(self):
+        """Segment rolling duration in ms. The current minimum value is 86,400,000 ms.
+        :rtype: int
+        """
         return self._SegmentMs
 
     @SegmentMs.setter
@@ -11273,6 +13379,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def MaxMessageBytes(self):
+        """Max message size in bytes. Max value: 8,388,608 bytes (8 MB).
+        :rtype: int
+        """
         return self._MaxMessageBytes
 
     @MaxMessageBytes.setter
@@ -11281,6 +13390,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def CleanUpPolicy(self):
+        """Message deletion policy. Valid values: delete, compact
+        :rtype: str
+        """
         return self._CleanUpPolicy
 
     @CleanUpPolicy.setter
@@ -11289,6 +13401,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def IpWhiteList(self):
+        """IP allowlist, which is required if the value of `enableWhileList` is 1.
+        :rtype: list of str
+        """
         return self._IpWhiteList
 
     @IpWhiteList.setter
@@ -11297,6 +13412,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def EnableAclRule(self):
+        """Preset ACL rule. `1`: enable, `0`: disable. Default value: `0`.
+        :rtype: int
+        """
         return self._EnableAclRule
 
     @EnableAclRule.setter
@@ -11305,6 +13423,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def AclRuleName(self):
+        """Name of the preset ACL rule.
+        :rtype: str
+        """
         return self._AclRuleName
 
     @AclRuleName.setter
@@ -11313,6 +13434,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def RetentionBytes(self):
+        """Message retention file size in bytes, which is an optional parameter. Default value: -1. Currently, the min value that can be entered is 1,048,576 B.
+        :rtype: int
+        """
         return self._RetentionBytes
 
     @RetentionBytes.setter
@@ -11321,6 +13445,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Tag list.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -11329,6 +13456,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def QuotaProducerByteRate(self):
+        """Production throttling in MB/sec.
+        :rtype: int
+        """
         return self._QuotaProducerByteRate
 
     @QuotaProducerByteRate.setter
@@ -11337,6 +13467,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def QuotaConsumerByteRate(self):
+        """Consumption throttling in MB/sec.
+        :rtype: int
+        """
         return self._QuotaConsumerByteRate
 
     @QuotaConsumerByteRate.setter
@@ -11345,6 +13478,9 @@ class ModifyTopicAttributesRequest(AbstractModel):
 
     @property
     def ReplicaNum(self):
+        """The number of topic replicas.
+        :rtype: int
+        """
         return self._ReplicaNum
 
     @ReplicaNum.setter
@@ -11403,6 +13539,9 @@ class ModifyTopicAttributesResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned result set
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
         return self._Result
 
     @Result.setter
@@ -11411,6 +13550,9 @@ class ModifyTopicAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11443,6 +13585,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FlowId(self):
+        """FlowId11
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -11451,6 +13597,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RouteDTO(self):
+        """RouteIdDto Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.RouteDTO`
+        """
         return self._RouteDTO
 
     @RouteDTO.setter
@@ -11487,6 +13636,9 @@ class Partition(AbstractModel):
 
     @property
     def PartitionId(self):
+        """Partition ID
+        :rtype: int
+        """
         return self._PartitionId
 
     @PartitionId.setter
@@ -11525,6 +13677,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Partition(self):
+        """Partition, such as "0" or "1"
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Partition
 
     @Partition.setter
@@ -11533,6 +13689,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Offset(self):
+        """Offset, such as 100
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11570,6 +13730,9 @@ class Partitions(AbstractModel):
 
     @property
     def Partition(self):
+        """Partition.
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -11578,6 +13741,9 @@ class Partitions(AbstractModel):
 
     @property
     def Offset(self):
+        """Partition consumption offset.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11615,6 +13781,9 @@ class Price(AbstractModel):
 
     @property
     def RealTotalCost(self):
+        """Discounted price
+        :rtype: float
+        """
         return self._RealTotalCost
 
     @RealTotalCost.setter
@@ -11623,6 +13792,9 @@ class Price(AbstractModel):
 
     @property
     def TotalCost(self):
+        """Original price
+        :rtype: float
+        """
         return self._TotalCost
 
     @TotalCost.setter
@@ -11683,6 +13855,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def RegionId(self):
+        """Region ID
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -11691,6 +13866,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def RegionName(self):
+        """Region name
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -11699,6 +13877,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def AreaName(self):
+        """Area name
+        :rtype: str
+        """
         return self._AreaName
 
     @AreaName.setter
@@ -11707,6 +13888,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def RegionCode(self):
+        """Region code
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RegionCode
 
     @RegionCode.setter
@@ -11715,6 +13900,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def RegionCodeV3(self):
+        """Region code (v3)
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RegionCodeV3
 
     @RegionCodeV3.setter
@@ -11723,6 +13912,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Support(self):
+        """NONE: no special models are supported by default.\nCVM: the CVM type is supported.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Support
 
     @Support.setter
@@ -11731,6 +13924,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Ipv6(self):
+        """Whether IPv6 is supported. `0` indicates no, and `1` indicates yes.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Ipv6
 
     @Ipv6.setter
@@ -11739,6 +13936,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def MultiZone(self):
+        """Whether cross-AZ clusters are supported.`0` indicates no, and `1` indicates yes.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MultiZone
 
     @MultiZone.setter
@@ -11804,6 +14005,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessType(self):
+        """Instance connection method
+0: PLAINTEXT (plaintext method, which does not carry user information and is supported for legacy versions and Community Edition)
+1: SASL_PLAINTEXT (plaintext method, which authenticates the login through SASL before data start and is supported only for Community Edition)
+2: SSL (SSL-encrypted communication, which does not carry user information and is supported for legacy versions and Community Edition)
+3: SASL_SSL (SSL-encrypted communication, which authenticates the login through SASL before data start and is supported only for Community Edition)
+        :rtype: int
+        """
         return self._AccessType
 
     @AccessType.setter
@@ -11812,6 +14020,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RouteId(self):
+        """Route ID
+        :rtype: int
+        """
         return self._RouteId
 
     @RouteId.setter
@@ -11820,6 +14031,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VipType(self):
+        """VIP network type (1: Public network TGW; 2: Classic network; 3: VPC; 4: Supporting network (IDC environment); 5: SSL public network access; 6: BM VPC; 7: Supporting network (CVM environment)).
+        :rtype: int
+        """
         return self._VipType
 
     @VipType.setter
@@ -11828,6 +14042,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VipList(self):
+        """Virtual IP list
+        :rtype: list of VipEntity
+        """
         return self._VipList
 
     @VipList.setter
@@ -11836,6 +14053,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
+        """Domain name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -11844,6 +14065,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainPort(self):
+        """Domain name port
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DomainPort
 
     @DomainPort.setter
@@ -11852,6 +14077,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeleteTimestamp(self):
+        """Timestamp
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DeleteTimestamp
 
     @DeleteTimestamp.setter
@@ -11896,6 +14125,9 @@ class RouteDTO(AbstractModel):
 
     @property
     def RouteId(self):
+        """RouteId11 Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RouteId
 
     @RouteId.setter
@@ -11930,6 +14162,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Routers(self):
+        """Route information list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Route
+        """
         return self._Routers
 
     @Routers.setter
@@ -11981,6 +14217,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Flag(self):
+        """Manually set flag.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._Flag
 
     @Flag.setter
@@ -11989,6 +14229,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Version(self):
+        """CKafka version (v1.1.1/2.4.2/0.10.2）
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -11997,6 +14241,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Platform(self):
+        """Whether it is Pro Edition or Standard Edition.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -12005,6 +14253,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SoldOut(self):
+        """Whether it has been sold out. `true`: sold out.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._SoldOut
 
     @SoldOut.setter
@@ -12044,6 +14296,9 @@ class SendMessageRequest(AbstractModel):
 
     @property
     def DataHubId(self):
+        """Datahub access ID.
+        :rtype: str
+        """
         return self._DataHubId
 
     @DataHubId.setter
@@ -12052,6 +14307,9 @@ class SendMessageRequest(AbstractModel):
 
     @property
     def Message(self):
+        """Content of the message that has been sent. Up to 500 messages can be sent in a single request.
+        :rtype: list of BatchContent
+        """
         return self._Message
 
     @Message.setter
@@ -12094,6 +14352,9 @@ class SendMessageResponse(AbstractModel):
 
     @property
     def MessageId(self):
+        """Message ID list.
+        :rtype: list of str
+        """
         return self._MessageId
 
     @MessageId.setter
@@ -12102,6 +14363,9 @@ class SendMessageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12140,6 +14404,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicName(self):
+        """Subscribed topic name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -12148,6 +14415,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Partition(self):
+        """Subscribed partition
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int
+        """
         return self._Partition
 
     @Partition.setter
@@ -12156,6 +14427,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PartitionOffset(self):
+        """Partition offset information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of PartitionOffset
+        """
         return self._PartitionOffset
 
     @PartitionOffset.setter
@@ -12164,6 +14439,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicId(self):
+        """ID of the subscribed topic. 
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -12208,6 +14487,9 @@ class Tag(AbstractModel):
 
     @property
     def TagKey(self):
+        """Tag key
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -12216,6 +14498,9 @@ class Tag(AbstractModel):
 
     @property
     def TagValue(self):
+        """Tag value
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -12253,6 +14538,9 @@ class TaskStatusResponse(AbstractModel):
 
     @property
     def Status(self):
+        """Task status. `0` (Successful), `1` (Failed), `2` ( Running)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -12261,6 +14549,9 @@ class TaskStatusResponse(AbstractModel):
 
     @property
     def Output(self):
+        """Output information Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Output
 
     @Output.setter
@@ -12302,6 +14593,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicId(self):
+        """Topic ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -12310,6 +14604,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicName(self):
+        """Topic name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -12318,6 +14615,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Note(self):
+        """Remarks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -12391,6 +14692,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicId(self):
+        """Topic ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -12399,6 +14703,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -12407,6 +14714,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Note(self):
+        """Topic remarks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -12415,6 +14726,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PartitionNum(self):
+        """Number of partitions
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -12423,6 +14737,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableWhiteList(self):
+        """IP allowlist switch. 1: enabled, 0: disabled
+        :rtype: int
+        """
         return self._EnableWhiteList
 
     @EnableWhiteList.setter
@@ -12431,6 +14748,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IpWhiteList(self):
+        """IP allowlist list
+        :rtype: list of str
+        """
         return self._IpWhiteList
 
     @IpWhiteList.setter
@@ -12439,6 +14759,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Config(self):
+        """Topic configuration array
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.Config`
+        """
         return self._Config
 
     @Config.setter
@@ -12447,6 +14770,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Partitions(self):
+        """Partition details
+        :rtype: list of TopicPartitionDO
+        """
         return self._Partitions
 
     @Partitions.setter
@@ -12455,6 +14781,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableAclRule(self):
+        """Switch of the preset ACL rule. `1`: enable, `0`: disable.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._EnableAclRule
 
     @EnableAclRule.setter
@@ -12463,6 +14793,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AclRuleList(self):
+        """Preset ACL rule list.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: list of AclRule
+        """
         return self._AclRuleList
 
     @AclRuleList.setter
@@ -12471,6 +14805,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QuotaConfig(self):
+        """Traffic throttling policy in topic dimension.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceQuotaConfigResp`
+        """
         return self._QuotaConfig
 
     @QuotaConfig.setter
@@ -12479,6 +14817,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReplicaNum(self):
+        """Number of replicas
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ReplicaNum
 
     @ReplicaNum.setter
@@ -12585,6 +14927,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicName(self):
+        """Topic name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -12593,6 +14938,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicId(self):
+        """Topic ID
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -12601,6 +14949,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PartitionNum(self):
+        """Number of partitions
+        :rtype: int
+        """
         return self._PartitionNum
 
     @PartitionNum.setter
@@ -12609,6 +14960,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReplicaNum(self):
+        """Number of replicas
+        :rtype: int
+        """
         return self._ReplicaNum
 
     @ReplicaNum.setter
@@ -12617,6 +14971,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Note(self):
+        """Remarks
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Note
 
     @Note.setter
@@ -12625,6 +14983,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -12633,6 +14994,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableWhiteList(self):
+        """Whether to enable IP authentication allowlist. true: yes, false: no
+        :rtype: bool
+        """
         return self._EnableWhiteList
 
     @EnableWhiteList.setter
@@ -12641,6 +15005,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IpWhiteListCount(self):
+        """Number of IPs in IP allowlist
+        :rtype: int
+        """
         return self._IpWhiteListCount
 
     @IpWhiteListCount.setter
@@ -12649,6 +15016,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ForwardCosBucket(self):
+        """COS bucket for data backup: address of the destination COS bucket
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ForwardCosBucket
 
     @ForwardCosBucket.setter
@@ -12657,6 +15028,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ForwardStatus(self):
+        """Status of data backup to COS. 1: not enabled, 0: enabled
+        :rtype: int
+        """
         return self._ForwardStatus
 
     @ForwardStatus.setter
@@ -12665,6 +15039,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ForwardInterval(self):
+        """Frequency of data backup to COS
+        :rtype: int
+        """
         return self._ForwardInterval
 
     @ForwardInterval.setter
@@ -12673,6 +15050,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Config(self):
+        """Advanced configuration
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.Config`
+        """
         return self._Config
 
     @Config.setter
@@ -12681,6 +15062,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RetentionTimeConfig(self):
+        """Message retention time configuration (for recording the latest retention time)
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicRetentionTimeConfigRsp`
+        """
         return self._RetentionTimeConfig
 
     @RetentionTimeConfig.setter
@@ -12689,6 +15074,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """`0`: normal, `1`: deleted, `2`: deleting
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -12697,6 +15086,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """Tag list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -12757,6 +15150,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicList(self):
+        """List of returned topic details
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TopicDetail
+        """
         return self._TopicList
 
     @TopicList.setter
@@ -12765,6 +15162,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Number of all eligible topic details
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -12829,6 +15229,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Partition(self):
+        """Partition name
+        :rtype: str
+        """
         return self._Partition
 
     @Partition.setter
@@ -12837,6 +15240,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Leader(self):
+        """Leader ID
+        :rtype: int
+        """
         return self._Leader
 
     @Leader.setter
@@ -12845,6 +15251,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Replica(self):
+        """Replica set
+        :rtype: str
+        """
         return self._Replica
 
     @Replica.setter
@@ -12853,6 +15262,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InSyncReplica(self):
+        """ISR
+        :rtype: str
+        """
         return self._InSyncReplica
 
     @InSyncReplica.setter
@@ -12861,6 +15273,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BeginOffset(self):
+        """Starting offset
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._BeginOffset
 
     @BeginOffset.setter
@@ -12869,6 +15285,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndOffset(self):
+        """Ending offset
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._EndOffset
 
     @EndOffset.setter
@@ -12877,6 +15297,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MessageCount(self):
+        """Number of messages
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MessageCount
 
     @MessageCount.setter
@@ -12885,6 +15309,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutOfSyncReplica(self):
+        """Unsynced replica set
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OutOfSyncReplica
 
     @OutOfSyncReplica.setter
@@ -12928,6 +15356,9 @@ class TopicInSyncReplicaResult(AbstractModel):
 
     @property
     def TopicInSyncReplicaList(self):
+        """Set of topic details and replicas
+        :rtype: list of TopicInSyncReplicaInfo
+        """
         return self._TopicInSyncReplicaList
 
     @TopicInSyncReplicaList.setter
@@ -12936,6 +15367,9 @@ class TopicInSyncReplicaResult(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -12984,6 +15418,9 @@ class TopicPartitionDO(AbstractModel):
 
     @property
     def Partition(self):
+        """Partition ID
+        :rtype: int
+        """
         return self._Partition
 
     @Partition.setter
@@ -12992,6 +15429,9 @@ class TopicPartitionDO(AbstractModel):
 
     @property
     def LeaderStatus(self):
+        """Leader running status
+        :rtype: int
+        """
         return self._LeaderStatus
 
     @LeaderStatus.setter
@@ -13000,6 +15440,9 @@ class TopicPartitionDO(AbstractModel):
 
     @property
     def IsrNum(self):
+        """ISR quantity
+        :rtype: int
+        """
         return self._IsrNum
 
     @IsrNum.setter
@@ -13008,6 +15451,9 @@ class TopicPartitionDO(AbstractModel):
 
     @property
     def ReplicaNum(self):
+        """Number of replicas
+        :rtype: int
+        """
         return self._ReplicaNum
 
     @ReplicaNum.setter
@@ -13049,6 +15495,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicList(self):
+        """List of returned topic information
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Topic
+        """
         return self._TopicList
 
     @TopicList.setter
@@ -13057,6 +15507,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Number of eligible topics
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -13105,6 +15559,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Expect(self):
+        """Expected value, i.e., the topic message retention time (min) configured
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Expect
 
     @Expect.setter
@@ -13113,6 +15571,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Current(self):
+        """Current value (min), i.e., the retention time currently in effect, which may be dynamically adjusted
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Current
 
     @Current.setter
@@ -13121,6 +15583,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ModTimeStamp(self):
+        """Last modified time
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ModTimeStamp
 
     @ModTimeStamp.setter
@@ -13167,6 +15633,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TotalCount(self):
+        """Total number
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -13175,6 +15644,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def StatusCountInfo(self):
+        """Number of consumer group status
+        :rtype: str
+        """
         return self._StatusCountInfo
 
     @StatusCountInfo.setter
@@ -13183,6 +15655,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def GroupsInfo(self):
+        """Consumer group information
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of GroupInfoResponse
+        """
         return self._GroupsInfo
 
     @GroupsInfo.setter
@@ -13191,6 +15667,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Whether a request is asynchronous. If there are fewer consumer groups in the instances, the result will be returned directly, and status code is 1. When there are many consumer groups in the instances, cache will be updated asynchronously. When status code is 0, grouping information will not be returned until cache update is completed and status code becomes 1.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -13241,6 +15721,9 @@ class User(AbstractModel):
 
     @property
     def UserId(self):
+        """User ID
+        :rtype: int
+        """
         return self._UserId
 
     @UserId.setter
@@ -13249,6 +15732,9 @@ class User(AbstractModel):
 
     @property
     def Name(self):
+        """Username
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13257,6 +15743,9 @@ class User(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -13265,6 +15754,9 @@ class User(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """Last updated time
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -13305,6 +15797,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Users(self):
+        """List of eligible users
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of User
+        """
         return self._Users
 
     @Users.setter
@@ -13313,6 +15809,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Total number of eligible users
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -13355,6 +15854,9 @@ class VipEntity(AbstractModel):
 
     @property
     def Vip(self):
+        """Virtual IP
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -13363,6 +15865,9 @@ class VipEntity(AbstractModel):
 
     @property
     def Vport(self):
+        """Virtual port
+        :rtype: str
+        """
         return self._Vport
 
     @Vport.setter
@@ -13422,6 +15927,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ZoneId(self):
+        """Zone ID
+        :rtype: str
+        """
         return self._ZoneId
 
     @ZoneId.setter
@@ -13430,6 +15938,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsInternalApp(self):
+        """Whether it is an internal application.
+        :rtype: int
+        """
         return self._IsInternalApp
 
     @IsInternalApp.setter
@@ -13438,6 +15949,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AppId(self):
+        """Application ID
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -13446,6 +15960,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Flag(self):
+        """Flag
+        :rtype: bool
+        """
         return self._Flag
 
     @Flag.setter
@@ -13454,6 +15971,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ZoneName(self):
+        """Zone name
+        :rtype: str
+        """
         return self._ZoneName
 
     @ZoneName.setter
@@ -13462,6 +15982,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ZoneStatus(self):
+        """Zone status
+        :rtype: int
+        """
         return self._ZoneStatus
 
     @ZoneStatus.setter
@@ -13470,6 +15993,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Exflag(self):
+        """Extra flag
+        :rtype: str
+        """
         return self._Exflag
 
     @Exflag.setter
@@ -13478,6 +16004,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SoldOut(self):
+        """JSON object. The key is the model. The value `true` means “sold out”, and `false` means “not sold out”.
+        :rtype: str
+        """
         return self._SoldOut
 
     @SoldOut.setter
@@ -13486,6 +16015,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SalesInfo(self):
+        """Information on whether Standard Edition has been sold out.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of SaleInfo
+        """
         return self._SalesInfo
 
     @SalesInfo.setter
@@ -13572,6 +16105,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ZoneList(self):
+        """Zone list
+        :rtype: list of ZoneInfo
+        """
         return self._ZoneList
 
     @ZoneList.setter
@@ -13580,6 +16116,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MaxBuyInstanceNum(self):
+        """Maximum number of instances to be purchased
+        :rtype: int
+        """
         return self._MaxBuyInstanceNum
 
     @MaxBuyInstanceNum.setter
@@ -13588,6 +16127,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MaxBandwidth(self):
+        """Maximum bandwidth in MB/S
+        :rtype: int
+        """
         return self._MaxBandwidth
 
     @MaxBandwidth.setter
@@ -13596,6 +16138,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UnitPrice(self):
+        """Pay-as-you-go unit price
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.Price`
+        """
         return self._UnitPrice
 
     @UnitPrice.setter
@@ -13604,6 +16149,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MessagePrice(self):
+        """Pay-as-you-go unit message price
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.Price`
+        """
         return self._MessagePrice
 
     @MessagePrice.setter
@@ -13612,6 +16160,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ClusterInfo(self):
+        """Cluster information dedicated to a user
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: list of ClusterInfo
+        """
         return self._ClusterInfo
 
     @ClusterInfo.setter
@@ -13620,6 +16172,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Standard(self):
+        """Purchase of Standard Edition configurations
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Standard
 
     @Standard.setter
@@ -13628,6 +16184,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def StandardS2(self):
+        """Purchase of Standard S2 Edition configurations
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StandardS2
 
     @StandardS2.setter
@@ -13636,6 +16196,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Profession(self):
+        """Purchase of Pro Edition configurations
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Profession
 
     @Profession.setter
@@ -13644,6 +16208,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Physical(self):
+        """Purchase of Physical Dedicated Edition configurations
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Physical
 
     @Physical.setter
@@ -13652,6 +16220,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PublicNetwork(self):
+        """Public network bandwidth.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PublicNetwork
 
     @PublicNetwork.setter
@@ -13660,6 +16232,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PublicNetworkLimit(self):
+        """Public network bandwidth configuration.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PublicNetworkLimit
 
     @PublicNetworkLimit.setter

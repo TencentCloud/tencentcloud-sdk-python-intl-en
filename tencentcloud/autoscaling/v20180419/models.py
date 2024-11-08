@@ -87,6 +87,9 @@ class Activity(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID.
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -95,6 +98,9 @@ class Activity(AbstractModel):
 
     @property
     def ActivityId(self):
+        """Scaling activity ID.
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -103,6 +109,13 @@ class Activity(AbstractModel):
 
     @property
     def ActivityType(self):
+        """Type of the scaling activity. Valid values:<br>
+<li>`SCALE_OUT`: Scale out. <li>`SCALE_IN`: Scale in. <li>`ATTACH_INSTANCES`: Add instances. <li>`REMOVE_INSTANCES`: Terminate instances. <li>`DETACH_INSTANCES`: Remove instances. <li>`TERMINATE_INSTANCES_UNEXPECTEDLY`: Terminate instances in the CVM console. <li>`REPLACE_UNHEALTHY_INSTANCE`: Replace an unhealthy instance.
+<li>`START_INSTANCES`: Starts up instances.
+<li>`STOP_INSTANCES`: Shut down instances.
+<li>`INVOKE_COMMAND`: Execute commands
+        :rtype: str
+        """
         return self._ActivityType
 
     @ActivityType.setter
@@ -111,6 +124,15 @@ class Activity(AbstractModel):
 
     @property
     def StatusCode(self):
+        """Scaling activity status. Value range:<br>
+<li>INIT: initializing
+<li>RUNNING: running
+<li>SUCCESSFUL: succeeded
+<li>PARTIALLY_SUCCESSFUL: partially succeeded
+<li>FAILED: failed
+<li>CANCELLED: canceled
+        :rtype: str
+        """
         return self._StatusCode
 
     @StatusCode.setter
@@ -119,6 +141,9 @@ class Activity(AbstractModel):
 
     @property
     def StatusMessage(self):
+        """Description of the scaling activity status.
+        :rtype: str
+        """
         return self._StatusMessage
 
     @StatusMessage.setter
@@ -127,6 +152,9 @@ class Activity(AbstractModel):
 
     @property
     def Cause(self):
+        """Cause of the scaling activity.
+        :rtype: str
+        """
         return self._Cause
 
     @Cause.setter
@@ -135,6 +163,9 @@ class Activity(AbstractModel):
 
     @property
     def Description(self):
+        """Description of the scaling activity.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -143,6 +174,9 @@ class Activity(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time of the scaling activity.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -151,6 +185,9 @@ class Activity(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time of the scaling activity.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -159,6 +196,9 @@ class Activity(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """Creation time of the scaling activity.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -169,6 +209,9 @@ class Activity(AbstractModel):
     def ActivityRelatedInstanceSet(self):
         warnings.warn("parameter `ActivityRelatedInstanceSet` is deprecated", DeprecationWarning) 
 
+        """This parameter has been deprecated.
+        :rtype: list of ActivtyRelatedInstance
+        """
         return self._ActivityRelatedInstanceSet
 
     @ActivityRelatedInstanceSet.setter
@@ -179,6 +222,9 @@ class Activity(AbstractModel):
 
     @property
     def StatusMessageSimplified(self):
+        """Brief description of the scaling activity status.
+        :rtype: str
+        """
         return self._StatusMessageSimplified
 
     @StatusMessageSimplified.setter
@@ -187,6 +233,9 @@ class Activity(AbstractModel):
 
     @property
     def LifecycleActionResultSet(self):
+        """Result of the lifecycle hook action in the scaling activity
+        :rtype: list of LifecycleActionResultInfo
+        """
         return self._LifecycleActionResultSet
 
     @LifecycleActionResultSet.setter
@@ -195,6 +244,9 @@ class Activity(AbstractModel):
 
     @property
     def DetailedStatusMessageSet(self):
+        """Detailed description of scaling activity status
+        :rtype: list of DetailedStatusMessage
+        """
         return self._DetailedStatusMessageSet
 
     @DetailedStatusMessageSet.setter
@@ -203,6 +255,9 @@ class Activity(AbstractModel):
 
     @property
     def InvocationResultSet(self):
+        """Result of the command execution
+        :rtype: list of InvocationResult
+        """
         return self._InvocationResultSet
 
     @InvocationResultSet.setter
@@ -211,6 +266,9 @@ class Activity(AbstractModel):
 
     @property
     def RelatedInstanceSet(self):
+        """Information set of the instances related to the scaling activity.
+        :rtype: list of RelatedInstance
+        """
         return self._RelatedInstanceSet
 
     @RelatedInstanceSet.setter
@@ -291,6 +349,9 @@ class ActivtyRelatedInstance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -299,6 +360,13 @@ class ActivtyRelatedInstance(AbstractModel):
 
     @property
     def InstanceStatus(self):
+        """Status of the instance in the scaling activity. Value range:
+<li>INIT: initializing
+<li>RUNNING: running
+<li>SUCCESSFUL: succeeded
+<li>FAILED: failed
+        :rtype: str
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -344,6 +412,9 @@ class Advice(AbstractModel):
 
     @property
     def Problem(self):
+        """Problem Description
+        :rtype: str
+        """
         return self._Problem
 
     @Problem.setter
@@ -352,6 +423,9 @@ class Advice(AbstractModel):
 
     @property
     def Detail(self):
+        """Problem Details
+        :rtype: str
+        """
         return self._Detail
 
     @Detail.setter
@@ -360,6 +434,9 @@ class Advice(AbstractModel):
 
     @property
     def Solution(self):
+        """Recommended resolutions
+        :rtype: str
+        """
         return self._Solution
 
     @Solution.setter
@@ -368,6 +445,11 @@ class Advice(AbstractModel):
 
     @property
     def Level(self):
+        """Risk level of the scaling group configuration. Valid values: <br>
+<li>WARNING<br>
+<li>CRITICAL<br>
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -407,6 +489,9 @@ class AttachInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -415,6 +500,9 @@ class AttachInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """List of CVM instance IDs
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -452,6 +540,9 @@ class AttachInstancesResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """Scaling activity ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -460,6 +551,9 @@ class AttachInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -492,6 +586,9 @@ class AttachLoadBalancersRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -500,6 +597,9 @@ class AttachLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
+        """List of classic CLB IDs. Up to 20 classic CLBs can be bound to a security group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        :rtype: list of str
+        """
         return self._LoadBalancerIds
 
     @LoadBalancerIds.setter
@@ -508,6 +608,9 @@ class AttachLoadBalancersRequest(AbstractModel):
 
     @property
     def ForwardLoadBalancers(self):
+        """List of application CLBs. Up to 100 application CLBs can be bound to a scaling group. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        :rtype: list of ForwardLoadBalancer
+        """
         return self._ForwardLoadBalancers
 
     @ForwardLoadBalancers.setter
@@ -551,6 +654,9 @@ class AttachLoadBalancersResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """Scaling activity ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -559,6 +665,9 @@ class AttachLoadBalancersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -594,6 +703,9 @@ class AutoScalingAdvice(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -602,6 +714,12 @@ class AutoScalingAdvice(AbstractModel):
 
     @property
     def Level(self):
+        """Scaling group warning level. Valid values:<br>
+<li>NORMAL: Normal<br>
+<li>WARNING: Warning<br>
+<li>CRITICAL: Serious warning<br>
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -610,6 +728,9 @@ class AutoScalingAdvice(AbstractModel):
 
     @property
     def Advices(self):
+        """A collection of suggestions for scaling group configurations.
+        :rtype: list of Advice
+        """
         return self._Advices
 
     @Advices.setter
@@ -761,6 +882,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -769,6 +893,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def AutoScalingGroupName(self):
+        """Auto scaling group name
+        :rtype: str
+        """
         return self._AutoScalingGroupName
 
     @AutoScalingGroupName.setter
@@ -777,6 +904,19 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def AutoScalingGroupStatus(self):
+        """Current scaling group status. Valid values:<br>
+<li>NORMAL: Normal<br>
+<li>CVM_ABNORMAL: Abnormal launch configuration<br>
+<li>LB_ABNORMAL: Abnormal load balancer<br>
+<li>LB_LISTENER_ABNORMAL: Abnormal load balancer listener<br>
+<li>LB_LOCATION_ABNORMAL: Abnormal forwarding configuration of the load balancer listener<br>
+<li>VPC_ABNORMAL: VPC network error<br>
+<li>SUBNET_ABNORMAL: VPC subnet exception<br>
+<li>INSUFFICIENT_BALANCE: Insufficient account balance<br>
+<li>LB_BACKEND_REGION_NOT_MATCH: The CLB backend and the AS service are not in the same region.<br>
+<li>LB_BACKEND_VPC_NOT_MATCH: The CLB instance and the scaling group are not in the same VPC.
+        :rtype: str
+        """
         return self._AutoScalingGroupStatus
 
     @AutoScalingGroupStatus.setter
@@ -785,6 +925,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CreatedTime(self):
+        """Creation time in UTC format
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -793,6 +936,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DefaultCooldown(self):
+        """Default cooldown period in seconds
+        :rtype: int
+        """
         return self._DefaultCooldown
 
     @DefaultCooldown.setter
@@ -801,6 +947,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def DesiredCapacity(self):
+        """Desired number of instances
+        :rtype: int
+        """
         return self._DesiredCapacity
 
     @DesiredCapacity.setter
@@ -809,6 +958,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def EnabledStatus(self):
+        """Enabled status. Value range: `ENABLED`, `DISABLED`
+        :rtype: str
+        """
         return self._EnabledStatus
 
     @EnabledStatus.setter
@@ -817,6 +969,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ForwardLoadBalancerSet(self):
+        """List of application load balancers
+        :rtype: list of ForwardLoadBalancer
+        """
         return self._ForwardLoadBalancerSet
 
     @ForwardLoadBalancerSet.setter
@@ -825,6 +980,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceCount(self):
+        """Number of instances
+        :rtype: int
+        """
         return self._InstanceCount
 
     @InstanceCount.setter
@@ -833,6 +991,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InServiceInstanceCount(self):
+        """Number of instances in `IN_SERVICE` status
+        :rtype: int
+        """
         return self._InServiceInstanceCount
 
     @InServiceInstanceCount.setter
@@ -841,6 +1002,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def LaunchConfigurationId(self):
+        """Launch configuration ID
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -849,6 +1013,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def LaunchConfigurationName(self):
+        """Launch configuration name
+        :rtype: str
+        """
         return self._LaunchConfigurationName
 
     @LaunchConfigurationName.setter
@@ -857,6 +1024,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def LoadBalancerIdSet(self):
+        """List of Classic load balancer IDs
+        :rtype: list of str
+        """
         return self._LoadBalancerIdSet
 
     @LoadBalancerIdSet.setter
@@ -865,6 +1035,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def MaxSize(self):
+        """Maximum number of instances
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -873,6 +1046,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def MinSize(self):
+        """Minimum number of instances
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -881,6 +1057,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ProjectId(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -889,6 +1068,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SubnetIdSet(self):
+        """List of subnet IDs
+        :rtype: list of str
+        """
         return self._SubnetIdSet
 
     @SubnetIdSet.setter
@@ -897,6 +1079,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def TerminationPolicySet(self):
+        """Termination policy
+        :rtype: list of str
+        """
         return self._TerminationPolicySet
 
     @TerminationPolicySet.setter
@@ -905,6 +1090,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def VpcId(self):
+        """VPC ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -913,6 +1101,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ZoneSet(self):
+        """List of availability zones
+        :rtype: list of str
+        """
         return self._ZoneSet
 
     @ZoneSet.setter
@@ -921,6 +1112,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RetryPolicy(self):
+        """Retry policy
+        :rtype: str
+        """
         return self._RetryPolicy
 
     @RetryPolicy.setter
@@ -929,6 +1123,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InActivityStatus(self):
+        """Whether the auto scaling group is performing a scaling activity. `IN_ACTIVITY` indicates yes, and `NOT_IN_ACTIVITY` indicates no.
+        :rtype: str
+        """
         return self._InActivityStatus
 
     @InActivityStatus.setter
@@ -937,6 +1134,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Tags(self):
+        """List of auto scaling group tags
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -945,6 +1145,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ServiceSettings(self):
+        """Service settings
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
+        """
         return self._ServiceSettings
 
     @ServiceSettings.setter
@@ -953,6 +1156,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Ipv6AddressCount(self):
+        """The number of IPv6 addresses that an instance has.
+        :rtype: int
+        """
         return self._Ipv6AddressCount
 
     @Ipv6AddressCount.setter
@@ -961,6 +1167,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def MultiZoneSubnetPolicy(self):
+        """The policy applied when there are multiple availability zones/subnets
+<br><li> PRIORITY: when creating instances, choose the availability zone/subnet based on the order in the list from top to bottom. If the first instance is successfully created in the availability zone/subnet of the highest priority, all instances will be created in this availability zone/subnet.
+<br><li> EQUALITY: chooses the availability zone/subnet with the least instances for scale-out. This gives each availability zone/subnet an opportunity for scale-out and disperses the instances created during multiple scale-out operations across different availability zones/subnets.
+        :rtype: str
+        """
         return self._MultiZoneSubnetPolicy
 
     @MultiZoneSubnetPolicy.setter
@@ -969,6 +1180,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def HealthCheckType(self):
+        """Health check type of instances in a scaling group.<br><li>CVM: confirm whether an instance is healthy based on the network status. If the pinged instance is unreachable, the instance will be considered unhealthy. For more information, see [Instance Health Check](https://intl.cloud.tencent.com/document/product/377/8553?from_cn_redirect=1)<br><li>CLB: confirm whether an instance is healthy based on the CLB health check status. For more information, see [Health Check Overview](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._HealthCheckType
 
     @HealthCheckType.setter
@@ -977,6 +1191,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def LoadBalancerHealthCheckGracePeriod(self):
+        """Grace period of the CLB health check
+        :rtype: int
+        """
         return self._LoadBalancerHealthCheckGracePeriod
 
     @LoadBalancerHealthCheckGracePeriod.setter
@@ -985,6 +1202,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceAllocationPolicy(self):
+        """Specifies how to assign instances. Valid values: `LAUNCH_CONFIGURATION` and `SPOT_MIXED`.
+<br><li>`LAUNCH_CONFIGURATION`: the launch configuration mode.
+<br><li>`SPOT_MIXED`: a mixed instance mode. Currently, this mode is supported only when the launch configuration takes the pay-as-you-go billing mode. With this mode, the scaling group can provision a combination of pay-as-you-go instances and spot instances to meet the configured capacity. Note that the billing mode of the associated launch configuration cannot be modified when this mode is used.
+        :rtype: str
+        """
         return self._InstanceAllocationPolicy
 
     @InstanceAllocationPolicy.setter
@@ -993,6 +1215,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SpotMixedAllocationPolicy(self):
+        """Specifies how to assign pay-as-you-go instances and spot instances.
+A valid value will be returned only when `InstanceAllocationPolicy` is set to `SPOT_MIXED`.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
+        """
         return self._SpotMixedAllocationPolicy
 
     @SpotMixedAllocationPolicy.setter
@@ -1001,6 +1227,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CapacityRebalance(self):
+        """Indicates whether the capacity rebalancing feature is enabled. This parameter is only valid for spot instances in the scaling group. Valid values:
+<br><li>`TRUE`: yes. Before the spot instances in the scaling group are about to be automatically repossessed, AS will terminate them. The scale-in hook (if configured) will take effect before the termination. After the termination process starts, AS will asynchronously initiate a scaling activity to meet the desired capacity.
+<br><li>`FALSE`: no. AS will add instances to meet the desired capacity only after the spot instances are terminated.
+        :rtype: bool
+        """
         return self._CapacityRebalance
 
     @CapacityRebalance.setter
@@ -1009,6 +1240,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceNameIndexSettings(self):
+        """Instance name sequencing settings.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
+        """
         return self._InstanceNameIndexSettings
 
     @InstanceNameIndexSettings.setter
@@ -1092,6 +1327,9 @@ class AutoScalingGroupAbstract(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -1100,6 +1338,9 @@ class AutoScalingGroupAbstract(AbstractModel):
 
     @property
     def AutoScalingGroupName(self):
+        """Auto scaling group name.
+        :rtype: str
+        """
         return self._AutoScalingGroupName
 
     @AutoScalingGroupName.setter
@@ -1152,6 +1393,9 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID.
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -1160,6 +1404,9 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def NotificationUserGroupIds(self):
+        """List of user group IDs.
+        :rtype: list of str
+        """
         return self._NotificationUserGroupIds
 
     @NotificationUserGroupIds.setter
@@ -1168,6 +1415,9 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def NotificationTypes(self):
+        """List of notification events.
+        :rtype: list of str
+        """
         return self._NotificationTypes
 
     @NotificationTypes.setter
@@ -1176,6 +1426,9 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def AutoScalingNotificationId(self):
+        """Event notification ID.
+        :rtype: str
+        """
         return self._AutoScalingNotificationId
 
     @AutoScalingNotificationId.setter
@@ -1184,6 +1437,9 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def TargetType(self):
+        """Notification receiver type.
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -1192,6 +1448,9 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def QueueName(self):
+        """CMQ queue name.
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -1200,6 +1459,9 @@ class AutoScalingNotification(AbstractModel):
 
     @property
     def TopicName(self):
+        """CMQ topic name.
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -1242,6 +1504,9 @@ class CancelInstanceRefreshRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Scaling group ID.
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -1250,6 +1515,9 @@ class CancelInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshActivityId(self):
+        """Refresh activity ID.
+        :rtype: str
+        """
         return self._RefreshActivityId
 
     @RefreshActivityId.setter
@@ -1284,6 +1552,9 @@ class CancelInstanceRefreshResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1329,6 +1600,9 @@ If true is filled in, it indicates that the instance tag list should be cleared.
 
     @property
     def LaunchConfigurationId(self):
+        """Launch configuration ID
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -1337,6 +1611,10 @@ If true is filled in, it indicates that the instance tag list should be cleared.
 
     @property
     def ClearDataDisks(self):
+        """Whether to clear data disk information. This parameter is optional and the default value is `false`.
+Setting it to `true` will clear data disks, which means that CVM newly created on this launch configuration will have no data disk.
+        :rtype: bool
+        """
         return self._ClearDataDisks
 
     @ClearDataDisks.setter
@@ -1345,6 +1623,10 @@ If true is filled in, it indicates that the instance tag list should be cleared.
 
     @property
     def ClearHostNameSettings(self):
+        """Whether to clear the CVM hostname settings. This parameter is optional and the default value is `false`.
+Setting it to `true` will clear the hostname settings, which means that CVM newly created on this launch configuration will have no hostname.
+        :rtype: bool
+        """
         return self._ClearHostNameSettings
 
     @ClearHostNameSettings.setter
@@ -1353,6 +1635,10 @@ If true is filled in, it indicates that the instance tag list should be cleared.
 
     @property
     def ClearInstanceNameSettings(self):
+        """Whether to clear the CVM instance name settings. This parameter is optional and the default value is `false`.
+Setting it to `true` will clear the instance name settings, which means that CVM newly created on this launch configuration will be named in the “as-{{AutoScalingGroupName}} format.
+        :rtype: bool
+        """
         return self._ClearInstanceNameSettings
 
     @ClearInstanceNameSettings.setter
@@ -1361,6 +1647,10 @@ If true is filled in, it indicates that the instance tag list should be cleared.
 
     @property
     def ClearDisasterRecoverGroupIds(self):
+        """Whether to clear placement group information. This parameter is optional. Default value: `false`.
+`True` means clearing placement group information. After that, no placement groups are specified for CVMs created based on the information.
+        :rtype: bool
+        """
         return self._ClearDisasterRecoverGroupIds
 
     @ClearDisasterRecoverGroupIds.setter
@@ -1369,6 +1659,10 @@ If true is filled in, it indicates that the instance tag list should be cleared.
 
     @property
     def ClearInstanceTags(self):
+        """Whether to clear the instance tag list. This parameter is optional, and its default value is false.
+If true is filled in, it indicates that the instance tag list should be cleared. After the list is cleared, the CVMs created based on this will not be bound to the tags in the list.
+        :rtype: bool
+        """
         return self._ClearInstanceTags
 
     @ClearInstanceTags.setter
@@ -1407,6 +1701,9 @@ class ClearLaunchConfigurationAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1441,6 +1738,9 @@ class CompleteLifecycleActionRequest(AbstractModel):
 
     @property
     def LifecycleHookId(self):
+        """Lifecycle hook ID
+        :rtype: str
+        """
         return self._LifecycleHookId
 
     @LifecycleHookId.setter
@@ -1449,6 +1749,9 @@ class CompleteLifecycleActionRequest(AbstractModel):
 
     @property
     def LifecycleActionResult(self):
+        """Result of the lifecycle action. Value range: "CONTINUE", "ABANDON"
+        :rtype: str
+        """
         return self._LifecycleActionResult
 
     @LifecycleActionResult.setter
@@ -1457,6 +1760,9 @@ class CompleteLifecycleActionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID. Either "InstanceId" or "LifecycleActionToken" must be specified
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1465,6 +1771,9 @@ class CompleteLifecycleActionRequest(AbstractModel):
 
     @property
     def LifecycleActionToken(self):
+        """Either "InstanceId" or "LifecycleActionToken" must be specified
+        :rtype: str
+        """
         return self._LifecycleActionToken
 
     @LifecycleActionToken.setter
@@ -1501,6 +1810,9 @@ class CompleteLifecycleActionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1541,6 +1853,9 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     @property
     def AutoScalingGroupName(self):
+        """The scaling group name. It must be unique under your account. The name can only contain letters, numbers, underscore, hyphen “-” and periods. It cannot exceed 55 bytes.
+        :rtype: str
+        """
         return self._AutoScalingGroupName
 
     @AutoScalingGroupName.setter
@@ -1549,6 +1864,9 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """The instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1557,6 +1875,9 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     @property
     def MinSize(self):
+        """The minimum number of instances. Value range: 0-2000.
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -1565,6 +1886,9 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     @property
     def MaxSize(self):
+        """The maximum number of instances. Value range: 0-2000.
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -1573,6 +1897,9 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     @property
     def DesiredCapacity(self):
+        """The desired capacity. Its value must be greater than the minimum and smaller than the maximum.
+        :rtype: int
+        """
         return self._DesiredCapacity
 
     @DesiredCapacity.setter
@@ -1581,6 +1908,9 @@ class CreateAutoScalingGroupFromInstanceRequest(AbstractModel):
 
     @property
     def InheritInstanceTag(self):
+        """Whether to inherit the instance tag. Default value: False
+        :rtype: bool
+        """
         return self._InheritInstanceTag
 
     @InheritInstanceTag.setter
@@ -1622,6 +1952,9 @@ class CreateAutoScalingGroupFromInstanceResponse(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """The scaling group ID.
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -1630,6 +1963,9 @@ class CreateAutoScalingGroupFromInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1752,6 +2088,9 @@ Default value: `False`.
 
     @property
     def AutoScalingGroupName(self):
+        """Auto scaling group name, which can only contain letters, numbers, underscores, hyphens ("-"), and decimal points with a maximum length of 55 bytes and must be unique under your account.
+        :rtype: str
+        """
         return self._AutoScalingGroupName
 
     @AutoScalingGroupName.setter
@@ -1760,6 +2099,9 @@ Default value: `False`.
 
     @property
     def LaunchConfigurationId(self):
+        """Launch configuration ID
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -1768,6 +2110,9 @@ Default value: `False`.
 
     @property
     def MaxSize(self):
+        """Maximum number of instances. Value range: 0-2,000.
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -1776,6 +2121,9 @@ Default value: `False`.
 
     @property
     def MinSize(self):
+        """Minimum number of instances. Value range: 0-2,000.
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -1784,6 +2132,9 @@ Default value: `False`.
 
     @property
     def VpcId(self):
+        """VPC ID; if on a basic network, enter an empty string
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1792,6 +2143,9 @@ Default value: `False`.
 
     @property
     def DefaultCooldown(self):
+        """Default cooldown period in seconds. Default value: 300
+        :rtype: int
+        """
         return self._DefaultCooldown
 
     @DefaultCooldown.setter
@@ -1800,6 +2154,9 @@ Default value: `False`.
 
     @property
     def DesiredCapacity(self):
+        """Desired number of instances. The number should be no larger than the maximum and no smaller than minimum number of instances
+        :rtype: int
+        """
         return self._DesiredCapacity
 
     @DesiredCapacity.setter
@@ -1808,6 +2165,9 @@ Default value: `False`.
 
     @property
     def LoadBalancerIds(self):
+        """List of classic CLB IDs. Currently, the maximum length is 20. You cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time.
+        :rtype: list of str
+        """
         return self._LoadBalancerIds
 
     @LoadBalancerIds.setter
@@ -1816,6 +2176,9 @@ Default value: `False`.
 
     @property
     def ProjectId(self):
+        """Project ID of an instance in a scaling group. The default project is used if it’s left blank.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1824,6 +2187,9 @@ Default value: `False`.
 
     @property
     def ForwardLoadBalancers(self):
+        """List of application CLBs. Up to 100 CLBs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        :rtype: list of ForwardLoadBalancer
+        """
         return self._ForwardLoadBalancers
 
     @ForwardLoadBalancers.setter
@@ -1832,6 +2198,9 @@ Default value: `False`.
 
     @property
     def SubnetIds(self):
+        """List of subnet IDs. A subnet must be specified in the VPC scenario. If multiple subnets are entered, their priority will be determined by the order in which they are entered, and they will be tried one by one until instances can be successfully created.
+        :rtype: list of str
+        """
         return self._SubnetIds
 
     @SubnetIds.setter
@@ -1840,6 +2209,11 @@ Default value: `False`.
 
     @property
     def TerminationPolicies(self):
+        """Termination policy. Currently, the maximum length is 1. Value range: OLDEST_INSTANCE, NEWEST_INSTANCE. Default value: OLDEST_INSTANCE.
+<br><li> OLDEST_INSTANCE: The oldest instance in the auto scaling group will be terminated first.
+<br><li> NEWEST_INSTANCE: The newest instance in the auto scaling group will be terminated first.
+        :rtype: list of str
+        """
         return self._TerminationPolicies
 
     @TerminationPolicies.setter
@@ -1848,6 +2222,9 @@ Default value: `False`.
 
     @property
     def Zones(self):
+        """List of availability zones. An availability zone must be specified in the basic network scenario. If multiple availability zones are entered, their priority will be determined by the order in which they are entered, and they will be tried one by one until instances can be successfully created.
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -1856,6 +2233,12 @@ Default value: `False`.
 
     @property
     def RetryPolicy(self):
+        """Retry policy. Valid values: `IMMEDIATE_RETRY` (default), `INCREMENTAL_INTERVALS`, `NO_RETRY`. A partially successful scaling is judged as a failed one.
+<br><li>`IMMEDIATE_RETRY`: Retry immediately. Stop retrying after five consecutive failures.
+<br><li>`INCREMENTAL_INTERVALS`: Retry at incremental intervals. As the number of consecutive failures increases, the retry interval gradually increases, ranging from seconds to one day.
+<br><li>`NO_RETRY`: Do not retry. Actions are taken when the next call or alarm message comes.
+        :rtype: str
+        """
         return self._RetryPolicy
 
     @RetryPolicy.setter
@@ -1864,6 +2247,14 @@ Default value: `False`.
 
     @property
     def ZonesCheckPolicy(self):
+        """Availability zone verification policy. Value range: ALL, ANY. Default value: ANY.
+<br><li> ALL: The verification will succeed only if all availability zones (Zone) or subnets (SubnetId) are available; otherwise, an error will be reported.
+<br><li> ANY: The verification will success if any availability zone (Zone) or subnet (SubnetId) is available; otherwise, an error will be reported.
+
+Common reasons why an availability zone or subnet is unavailable include stock-out of CVM instances or CBS cloud disks in the availability zone, insufficient quota in the availability zone, or insufficient IPs in the subnet.
+If an availability zone or subnet in Zones/SubnetIds does not exist, a verification error will be reported regardless of the value of ZonesCheckPolicy.
+        :rtype: str
+        """
         return self._ZonesCheckPolicy
 
     @ZonesCheckPolicy.setter
@@ -1872,6 +2263,9 @@ Default value: `False`.
 
     @property
     def Tags(self):
+        """List of tag descriptions. In this parameter, you can specify the tags to be bound with a scaling group as well as corresponding resource instances. Each scaling group can have up to 30 tags.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1880,6 +2274,9 @@ Default value: `False`.
 
     @property
     def ServiceSettings(self):
+        """Service settings such as unhealthy instance replacement.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
+        """
         return self._ServiceSettings
 
     @ServiceSettings.setter
@@ -1888,6 +2285,9 @@ Default value: `False`.
 
     @property
     def Ipv6AddressCount(self):
+        """The number of IPv6 addresses that an instance has. Valid values: 0 and 1. Default value: 0.
+        :rtype: int
+        """
         return self._Ipv6AddressCount
 
     @Ipv6AddressCount.setter
@@ -1896,6 +2296,16 @@ Default value: `False`.
 
     @property
     def MultiZoneSubnetPolicy(self):
+        """Multi-availability zone/subnet policy. Valid values: PRIORITY and EQUALITY. Default value: PRIORITY.
+<br><li> PRIORITY: when creating instances, choose the availability zone/subnet based on the order in the list from top to bottom. If the first instance is successfully created in the availability zone/subnet of the highest priority, all instances will be created in this availability zone/subnet.
+<br><li>EQUALITY: instances created for scale-out are distributed to multiple availability zones/subnets, so as to keep the number of instances in different availability zone/subnet in balance.
+
+Notes: 
+<br><li> When the scaling group is based on the classic network, this policy applies to multiple availability zones. When the scaling group is based on a VPC, this policy applies to multiple subnets, and you do not need to consider availability zones. For example, if you have four subnets (A, B, C, and D) and A, B, and C are in availability zone 1 and D is in availability zone 2, you only need to decide the order of the four subnets, without worrying about the issue of availability zones.
+<br><li> This policy is applicable to multiple availability zones/subnets, but is not applicable to multiple models with launch configurations. Specify the models according to the model priority.
+<br><li> When creating instances based on the PRIORITY policy, apply the multi-model policy and then apply the multi-availability zones/subnet policy. For example, if you have models A and B and subnets 1, 2, and 3, creation will be attempted in the following order: A1, A2, A3, B1, B2, and B3. If A1 is sold out, A2 (not B1) is tried next.
+        :rtype: str
+        """
         return self._MultiZoneSubnetPolicy
 
     @MultiZoneSubnetPolicy.setter
@@ -1904,6 +2314,9 @@ Default value: `False`.
 
     @property
     def HealthCheckType(self):
+        """Health check type of instances in a scaling group.<br><li>CVM: confirm whether an instance is healthy based on the network status. If the pinged instance is unreachable, the instance will be considered unhealthy. For more information, see [Instance Health Check](https://intl.cloud.tencent.com/document/product/377/8553?from_cn_redirect=1)<br><li>CLB: confirm whether an instance is healthy based on the CLB health check status. For more information, see [Health Check Overview](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1).<br>If the parameter is set to `CLB`, the scaling group will check both the network status and the CLB health check status. If the network check indicates unhealthy, the `HealthStatus` field will return `UNHEALTHY`. If the CLB health check indicates unhealthy, the `HealthStatus` field will return `CLB_UNHEALTHY`. If both checks indicate unhealthy, the `HealthStatus` field will return `UNHEALTHY|CLB_UNHEALTHY`. Default value: `CLB`.
+        :rtype: str
+        """
         return self._HealthCheckType
 
     @HealthCheckType.setter
@@ -1912,6 +2325,9 @@ Default value: `False`.
 
     @property
     def LoadBalancerHealthCheckGracePeriod(self):
+        """Grace period of the CLB health check during which the `IN_SERVICE` instances added will not be marked as `CLB_UNHEALTHY`.<br>Valid range: 0-7200, in seconds. Default value: `0`.
+        :rtype: int
+        """
         return self._LoadBalancerHealthCheckGracePeriod
 
     @LoadBalancerHealthCheckGracePeriod.setter
@@ -1920,6 +2336,11 @@ Default value: `False`.
 
     @property
     def InstanceAllocationPolicy(self):
+        """Specifies how to assign instances. Valid values: `LAUNCH_CONFIGURATION` and `SPOT_MIXED`; default value: `LAUNCH_CONFIGURATION`.
+<br><li>`LAUNCH_CONFIGURATION`: the launch configuration mode.
+<br><li>`SPOT_MIXED`: a mixed instance mode. Currently, this mode is supported only when the launch configuration takes the pay-as-you-go billing mode. With this mode, the scaling group can provision a combination of pay-as-you-go instances and spot instances to meet the configured capacity. Note that the billing mode of the associated launch configuration cannot be modified when this mode is used.
+        :rtype: str
+        """
         return self._InstanceAllocationPolicy
 
     @InstanceAllocationPolicy.setter
@@ -1928,6 +2349,10 @@ Default value: `False`.
 
     @property
     def SpotMixedAllocationPolicy(self):
+        """Specifies how to assign pay-as-you-go instances and spot instances.
+This parameter is valid only when `InstanceAllocationPolicy ` is set to `SPOT_MIXED`.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
+        """
         return self._SpotMixedAllocationPolicy
 
     @SpotMixedAllocationPolicy.setter
@@ -1936,6 +2361,13 @@ Default value: `False`.
 
     @property
     def CapacityRebalance(self):
+        """Indicates whether the capacity re-balancing feature is enabled. This parameter is only valid for spot instances in the scaling group. Valid values:
+<br><li>`TRUE`: yes. Before the spot instances in the scaling group are about to be automatically repossessed, AS will terminate them. The scale-in hook (if configured) will take effect before the termination. After the termination process starts, AS will asynchronously initiate a scaling activity to meet the desired capacity.
+<br><li>`FALSE`: no. In this case, AS will add instances to meet the desired capacity only after the spot instances are terminated.
+
+Default value: `False`.
+        :rtype: bool
+        """
         return self._CapacityRebalance
 
     @CapacityRebalance.setter
@@ -1944,6 +2376,9 @@ Default value: `False`.
 
     @property
     def InstanceNameIndexSettings(self):
+        """Instance name sequencing settings. If this parameter is not specified, the default is not enabled. When enabled, an incremental numeric sequence will be appended to the names of instances automatically created within the scaling group.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
+        """
         return self._InstanceNameIndexSettings
 
     @InstanceNameIndexSettings.setter
@@ -2020,6 +2455,9 @@ class CreateAutoScalingGroupResponse(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -2028,6 +2466,9 @@ class CreateAutoScalingGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2143,6 +2584,9 @@ Note: This field is default to empty
 
     @property
     def LaunchConfigurationName(self):
+        """Display name of the launch configuration, which can contain letters, digits, underscores and hyphens (-), and dots. Up to of 60 bytes allowed..
+        :rtype: str
+        """
         return self._LaunchConfigurationName
 
     @LaunchConfigurationName.setter
@@ -2151,6 +2595,9 @@ Note: This field is default to empty
 
     @property
     def ImageId(self):
+        """[Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><br/>You can obtain the image IDs in the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE).</li><li>You can also use the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -2159,6 +2606,10 @@ Note: This field is default to empty
 
     @property
     def ProjectId(self):
+        """Project ID of the launch configuration. The default project is used if it’s left blank.
+Note that this project ID is not the same as the project ID of the scaling group. 
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2167,6 +2618,10 @@ Note: This field is default to empty
 
     @property
     def InstanceType(self):
+        """Instance model. Different instance models specify different resource specifications. The specific value can be obtained by calling the [DescribeInstanceTypeConfigs](https://intl.cloud.tencent.com/document/api/213/15749?from_cn_redirect=1) API to get the latest specification table or referring to the descriptions in [Instance Types](https://intl.cloud.tencent.com/document/product/213/11518?from_cn_redirect=1).
+`InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered.
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -2175,6 +2630,9 @@ Note: This field is default to empty
 
     @property
     def SystemDisk(self):
+        """System disk configuration of the instance. If this parameter is not specified, the default value will be used.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -2183,6 +2641,9 @@ Note: This field is default to empty
 
     @property
     def DataDisks(self):
+        """Information of the instance's data disk configuration. If this parameter is not specified, no data disk is purchased by default. Up to 11 data disks can be supported.
+        :rtype: list of DataDisk
+        """
         return self._DataDisks
 
     @DataDisks.setter
@@ -2191,6 +2652,9 @@ Note: This field is default to empty
 
     @property
     def InternetAccessible(self):
+        """Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
+        """
         return self._InternetAccessible
 
     @InternetAccessible.setter
@@ -2199,6 +2663,9 @@ Note: This field is default to empty
 
     @property
     def LoginSettings(self):
+        """Login settings of the instance. You can use this parameter to set the login method, password, and key of the instance or keep the login settings of the original image. By default, a random password will be generated and sent to you via the Message Center.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -2207,6 +2674,9 @@ Note: This field is default to empty
 
     @property
     def SecurityGroupIds(self):
+        """The security group to which the instance belongs. This parameter can be obtained by calling the `SecurityGroupId` field in the returned value of [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1). If this parameter is not specified, no security group will be bound by default.
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -2215,6 +2685,9 @@ Note: This field is default to empty
 
     @property
     def EnhancedService(self):
+        """Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Security and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
+        """
         return self._EnhancedService
 
     @EnhancedService.setter
@@ -2223,6 +2696,9 @@ Note: This field is default to empty
 
     @property
     def UserData(self):
+        """Base64-encoded custom data of up to 16 KB.
+        :rtype: str
+        """
         return self._UserData
 
     @UserData.setter
@@ -2231,6 +2707,11 @@ Note: This field is default to empty
 
     @property
     def InstanceChargeType(self):
+        """Instance billing mode. CVM instances take `POSTPAID_BY_HOUR` by default. Valid values:
+<br><li>POSTPAID_BY_HOUR: pay-as-you-go hourly
+<br><li>SPOTPAID: spot instance
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -2239,6 +2720,9 @@ Note: This field is default to empty
 
     @property
     def InstanceMarketOptions(self):
+        """Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
+        """
         return self._InstanceMarketOptions
 
     @InstanceMarketOptions.setter
@@ -2247,6 +2731,10 @@ Note: This field is default to empty
 
     @property
     def InstanceTypes(self):
+        """List of instance models. Different instance models specify different resource specifications. Up to 10 instance models can be supported.
+`InstanceType` and `InstanceTypes` are mutually exclusive, and one and only one of them must be entered.
+        :rtype: list of str
+        """
         return self._InstanceTypes
 
     @InstanceTypes.setter
@@ -2255,6 +2743,9 @@ Note: This field is default to empty
 
     @property
     def CamRoleName(self):
+        """CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.
+        :rtype: str
+        """
         return self._CamRoleName
 
     @CamRoleName.setter
@@ -2263,6 +2754,14 @@ Note: This field is default to empty
 
     @property
     def InstanceTypesCheckPolicy(self):
+        """InstanceType verification policy, whose valid values include ALL and ANY, with the default value being ANY.
+<li>ALL: Verification passes if all InstanceTypes are available; otherwise, a verification error will be reported.</li>
+<li>ANY: Verification passes if any InstanceType is available; otherwise, a verification error will be reported.</li>
+
+Common reasons for unavailable InstanceTypes include the InstanceType being sold out, and the corresponding cloud disk being sold out.
+If a model in InstanceTypes does not exist or has been abolished, a verification error will be reported regardless of the valid values set for InstanceTypesCheckPolicy.
+        :rtype: str
+        """
         return self._InstanceTypesCheckPolicy
 
     @InstanceTypesCheckPolicy.setter
@@ -2271,6 +2770,9 @@ Note: This field is default to empty
 
     @property
     def InstanceTags(self):
+        """List of tags. This parameter is used to bind up to 10 tags to newly added instances.
+        :rtype: list of InstanceTag
+        """
         return self._InstanceTags
 
     @InstanceTags.setter
@@ -2279,6 +2781,9 @@ Note: This field is default to empty
 
     @property
     def Tags(self):
+        """List of tags. You can specify tags that you want to bind to the launch configuration. Each launch configuration can have up to 30 tags.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2287,6 +2792,9 @@ Note: This field is default to empty
 
     @property
     def HostNameSettings(self):
+        """CVM hostname settings.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
+        """
         return self._HostNameSettings
 
     @HostNameSettings.setter
@@ -2295,6 +2803,10 @@ Note: This field is default to empty
 
     @property
     def InstanceNameSettings(self):
+        """Settings of CVM instance names
+If this field is configured in a launch configuration, the `InstanceName` of a CVM created by the scaling group will be generated according to the configuration; otherwise, it will be in the `as-{{AutoScalingGroupName }}` format.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
+        """
         return self._InstanceNameSettings
 
     @InstanceNameSettings.setter
@@ -2303,6 +2815,9 @@ Note: This field is default to empty
 
     @property
     def InstanceChargePrepaid(self):
+        """Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -2311,6 +2826,11 @@ Note: This field is default to empty
 
     @property
     def DiskTypePolicy(self):
+        """Cloud disk type selection policy, whose default value is ORIGINAL. Valid values:
+<li>ORIGINAL: Use the set cloud disk type.</li>
+<li>AUTOMATIC: Automatically select the currently available cloud disk type.</li>
+        :rtype: str
+        """
         return self._DiskTypePolicy
 
     @DiskTypePolicy.setter
@@ -2319,6 +2839,10 @@ Note: This field is default to empty
 
     @property
     def HpcClusterId(self):
+        """HPC ID<br>
+Note: This field is default to empty
+        :rtype: str
+        """
         return self._HpcClusterId
 
     @HpcClusterId.setter
@@ -2327,6 +2851,9 @@ Note: This field is default to empty
 
     @property
     def IPv6InternetAccessible(self):
+        """IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
+        """
         return self._IPv6InternetAccessible
 
     @IPv6InternetAccessible.setter
@@ -2335,6 +2862,9 @@ Note: This field is default to empty
 
     @property
     def DisasterRecoverGroupIds(self):
+        """Placement group ID. Only one is allowed.
+        :rtype: list of str
+        """
         return self._DisasterRecoverGroupIds
 
     @DisasterRecoverGroupIds.setter
@@ -2343,6 +2873,9 @@ Note: This field is default to empty
 
     @property
     def ImageFamily(self):
+        """Image family name. Either image ID or image family name should be filled in, and only one of which can be filled.
+        :rtype: str
+        """
         return self._ImageFamily
 
     @ImageFamily.setter
@@ -2437,6 +2970,9 @@ class CreateLaunchConfigurationResponse(AbstractModel):
 
     @property
     def LaunchConfigurationId(self):
+        """This parameter is returned when a launch configuration is created through this API, indicating the launch configuration ID.
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -2445,6 +2981,9 @@ class CreateLaunchConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2495,6 +3034,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -2503,6 +3045,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleHookName(self):
+        """Lifecycle hook name, which can contain Chinese characters, letters, numbers, underscores (_), hyphens (-), and periods (.) with a maximum length of 128 bytes.
+        :rtype: str
+        """
         return self._LifecycleHookName
 
     @LifecycleHookName.setter
@@ -2511,6 +3056,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleTransition(self):
+        """Scenario for the lifecycle hook. Valid values: "INSTANCE_LAUNCHING" and "INSTANCE_TERMINATING"
+        :rtype: str
+        """
         return self._LifecycleTransition
 
     @LifecycleTransition.setter
@@ -2519,6 +3067,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def DefaultResult(self):
+        """Defined actions when lifecycle hook times out. Valid values: "CONTINUE" and "ABANDON". Default value: "CONTINUE"
+        :rtype: str
+        """
         return self._DefaultResult
 
     @DefaultResult.setter
@@ -2527,6 +3078,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def HeartbeatTimeout(self):
+        """The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7200. Default value: 300
+        :rtype: int
+        """
         return self._HeartbeatTimeout
 
     @HeartbeatTimeout.setter
@@ -2535,6 +3089,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def NotificationMetadata(self):
+        """Additional information of a notification that Auto Scaling sends to targets. This parameter is set when you configure a notification (default value: ""). Up to 1024 characters are allowed.
+        :rtype: str
+        """
         return self._NotificationMetadata
 
     @NotificationMetadata.setter
@@ -2543,6 +3100,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def NotificationTarget(self):
+        """Notification target. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        """
         return self._NotificationTarget
 
     @NotificationTarget.setter
@@ -2551,6 +3111,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleTransitionType(self):
+        """The scenario where the lifecycle hook is applied. `EXTENSION`: the lifecycle hook will be triggered when AttachInstances, DetachInstances or RemoveInstaces is called. `NORMAL`: the lifecycle hook is not triggered by the above APIs. 
+        :rtype: str
+        """
         return self._LifecycleTransitionType
 
     @LifecycleTransitionType.setter
@@ -2559,6 +3122,9 @@ class CreateLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleCommand(self):
+        """Remote command execution object. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
+        """
         return self._LifecycleCommand
 
     @LifecycleCommand.setter
@@ -2607,6 +3173,9 @@ class CreateLifecycleHookResponse(AbstractModel):
 
     @property
     def LifecycleHookId(self):
+        """Lifecycle hook ID
+        :rtype: str
+        """
         return self._LifecycleHookId
 
     @LifecycleHookId.setter
@@ -2615,6 +3184,9 @@ class CreateLifecycleHookResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2669,6 +3241,9 @@ Default value: `USER_GROUP`.
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID.
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -2677,6 +3252,15 @@ Default value: `USER_GROUP`.
 
     @property
     def NotificationTypes(self):
+        """Notification type, i.e., the set of types of notifications to be subscribed to. Value range:
+<li>SCALE_OUT_SUCCESSFUL: scale-out succeeded</li>
+<li>SCALE_OUT_FAILED: scale-out failed</li>
+<li>SCALE_IN_SUCCESSFUL: scale-in succeeded</li>
+<li>SCALE_IN_FAILED: scale-in failed</li>
+<li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL: unhealthy instance replacement succeeded</li>
+<li>REPLACE_UNHEALTHY_INSTANCE_FAILED: unhealthy instance replacement failed</li>
+        :rtype: list of str
+        """
         return self._NotificationTypes
 
     @NotificationTypes.setter
@@ -2685,6 +3269,9 @@ Default value: `USER_GROUP`.
 
     @property
     def NotificationUserGroupIds(self):
+        """Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
         return self._NotificationUserGroupIds
 
     @NotificationUserGroupIds.setter
@@ -2693,6 +3280,16 @@ Default value: `USER_GROUP`.
 
     @property
     def TargetType(self):
+        """Notification receiver type. Valid values:
+<br><li>USER_GROUP:User group
+<br><li>CMQ_QUEUE:CMQ queue
+<br><li>CMQ_TOPIC:CMQ topic
+<br><li>TDMQ_CMQ_TOPIC:TDMQ CMQ topic
+<br><li>TDMQ_CMQ_QUEUE:TDMQ CMQ queue
+
+Default value: `USER_GROUP`.
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -2701,6 +3298,9 @@ Default value: `USER_GROUP`.
 
     @property
     def QueueName(self):
+        """CMQ queue name. This parameter is required when `TargetType` is `CMQ_QUEUE` or `TDMQ_CMQ_QUEUE`.
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -2709,6 +3309,9 @@ Default value: `USER_GROUP`.
 
     @property
     def TopicName(self):
+        """CMQ topic name. This parameter is required when `TargetType` is `CMQ_TOPIC` or `TDMQ_CMQ_TOPIC`.
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -2750,6 +3353,9 @@ class CreateNotificationConfigurationResponse(AbstractModel):
 
     @property
     def AutoScalingNotificationId(self):
+        """Notification ID.
+        :rtype: str
+        """
         return self._AutoScalingNotificationId
 
     @AutoScalingNotificationId.setter
@@ -2758,6 +3364,9 @@ class CreateNotificationConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2818,6 +3427,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID.
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -2826,6 +3438,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def ScalingPolicyName(self):
+        """Alarm trigger policy name.
+        :rtype: str
+        """
         return self._ScalingPolicyName
 
     @ScalingPolicyName.setter
@@ -2834,6 +3449,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def ScalingPolicyType(self):
+        """Scaling policy type. Valid values: <br><li>`SIMPLE` (default): A simple policy</li><li>`TARGET_TRACKING`: A target tracking policy</li>.
+        :rtype: str
+        """
         return self._ScalingPolicyType
 
     @ScalingPolicyType.setter
@@ -2842,6 +3460,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def AdjustmentType(self):
+        """The method to adjust the desired capacity after the alarm is triggered. It’s only available when `ScalingPolicyType` is `Simple`. Valid values: <br><li>`CHANGE_IN_CAPACITY`: Increase or decrease the desired capacity </li><li>`EXACT_CAPACITY`: Adjust to the specified desired capacity </li> <li>`PERCENT_CHANGE_IN_CAPACITY`: Adjust the desired capacity by percentage </li>
+        :rtype: str
+        """
         return self._AdjustmentType
 
     @AdjustmentType.setter
@@ -2850,6 +3471,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def AdjustmentValue(self):
+        """Specifies how to adjust the number of desired capacity when the alarm is triggered. It’s only available when `ScalingPolicyType` is `Simple`. Values: <br><li>`AdjustmentType`=`CHANGE_IN_CAPACITY`: Number of instances to add (positive number) or remove (negative number). </li> <li>`AdjustmentType`=`EXACT_CAPACITY`: Set the desired capacity to the specified number. It must be ≥ 0. </li> <li>`AdjustmentType`=`PERCENT_CHANGE_IN_CAPACITY`: Percentage of instance number. Add instances (positive value) or remove instances (negative value) accordingly.
+        :rtype: int
+        """
         return self._AdjustmentValue
 
     @AdjustmentValue.setter
@@ -2858,6 +3482,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def Cooldown(self):
+        """Cooldown period (in seconds). This parameter is only applicable to a simple policy. Default value: 300.
+        :rtype: int
+        """
         return self._Cooldown
 
     @Cooldown.setter
@@ -2866,6 +3493,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def MetricAlarm(self):
+        """Alarm monitoring metric. It’s only available when `ScalingPolicyType` is `Simple`.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
+        """
         return self._MetricAlarm
 
     @MetricAlarm.setter
@@ -2874,6 +3504,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def PredefinedMetricType(self):
+        """Preset monitoring item. It’s only available when `ScalingPolicyType` is `TARGET_TRACKING`. Valid values: <br><li>ASG_AVG_CPU_UTILIZATION: Average CPU utilization</li><li>ASG_AVG_LAN_TRAFFIC_OUT: Average private bandwidth out</li><li>ASG_AVG_LAN_TRAFFIC_IN: Average private bandwidth in</li><li>ASG_AVG_WAN_TRAFFIC_OUT: Average public bandwidth out</li><li>ASG_AVG_WAN_TRAFFIC_IN: Average public bandwidth in</li>
+        :rtype: str
+        """
         return self._PredefinedMetricType
 
     @PredefinedMetricType.setter
@@ -2882,6 +3515,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def TargetValue(self):
+        """Target value. It’s only available when `ScalingPolicyType` is `TARGET_TRACKING`. Value ranges: <br><li>`ASG_AVG_CPU_UTILIZATION` (in %): [1, 100)</li><li>`ASG_AVG_LAN_TRAFFIC_OUT` (in Mbps): >0</li><li>`ASG_AVG_LAN_TRAFFIC_IN` (in Mbps): >0</li><li>`ASG_AVG_WAN_TRAFFIC_OUT` (in Mbps): >0</li><li>`ASG_AVG_WAN_TRAFFIC_IN` (in Mbps): >0</li>
+        :rtype: int
+        """
         return self._TargetValue
 
     @TargetValue.setter
@@ -2890,6 +3526,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def EstimatedInstanceWarmup(self):
+        """Instance warm-up period (in seconds). It’s only available when `ScalingPolicyType` is `TARGET_TRACKING`. Value range: 0-3600. Default value: 300.
+        :rtype: int
+        """
         return self._EstimatedInstanceWarmup
 
     @EstimatedInstanceWarmup.setter
@@ -2898,6 +3537,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def DisableScaleIn(self):
+        """Whether to disable scale-in. It’s only available when `ScalingPolicyType` is `TARGET_TRACKING`. Valid values: <br><li>`true`: Do not scale in </li><li>`false` (default): Both scale-out and scale-in can be triggered.</li>
+        :rtype: bool
+        """
         return self._DisableScaleIn
 
     @DisableScaleIn.setter
@@ -2906,6 +3548,10 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def NotificationUserGroupIds(self):
+        """This parameter is diused. Please use [CreateNotificationConfiguration](https://intl.cloud.tencent.com/document/api/377/33185?from_cn_redirect=1) instead.
+Notification group ID, which is the set of user group IDs.
+        :rtype: list of str
+        """
         return self._NotificationUserGroupIds
 
     @NotificationUserGroupIds.setter
@@ -2955,6 +3601,9 @@ class CreateScalingPolicyResponse(AbstractModel):
 
     @property
     def AutoScalingPolicyId(self):
+        """Alarm trigger policy ID.
+        :rtype: str
+        """
         return self._AutoScalingPolicyId
 
     @AutoScalingPolicyId.setter
@@ -2963,6 +3612,9 @@ class CreateScalingPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3010,6 +3662,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -3018,6 +3673,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def ScheduledActionName(self):
+        """Scheduled task name, which can only contain letters, numbers, underscores, hyphens ("-"), and decimal points with a maximum length of 60 bytes and must be unique in an auto scaling group.
+        :rtype: str
+        """
         return self._ScheduledActionName
 
     @ScheduledActionName.setter
@@ -3026,6 +3684,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def MaxSize(self):
+        """The maximum number of instances set for the auto scaling group when the scheduled task is triggered.
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -3034,6 +3695,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def MinSize(self):
+        """The minimum number of instances set for the auto scaling group when the scheduled task is triggered.
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -3042,6 +3706,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def DesiredCapacity(self):
+        """The desired number of instances set for the auto scaling group when the scheduled task is triggered.
+        :rtype: int
+        """
         return self._DesiredCapacity
 
     @DesiredCapacity.setter
@@ -3050,6 +3717,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Initial triggered time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3058,6 +3728,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard. <br><br>This parameter and `Recurrence` need to be specified at the same time. After the end time, the scheduled task will no longer take effect.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3066,6 +3739,9 @@ class CreateScheduledActionRequest(AbstractModel):
 
     @property
     def Recurrence(self):
+        """Repeating mode of the scheduled task, which is in standard cron format. <br><br>This parameter and `EndTime` need to be specified at the same time.
+        :rtype: str
+        """
         return self._Recurrence
 
     @Recurrence.setter
@@ -3109,6 +3785,9 @@ class CreateScheduledActionResponse(AbstractModel):
 
     @property
     def ScheduledActionId(self):
+        """Scheduled task ID
+        :rtype: str
+        """
         return self._ScheduledActionId
 
     @ScheduledActionId.setter
@@ -3117,6 +3796,9 @@ class CreateScheduledActionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3183,6 +3865,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
+        """Data disk type. For restrictions on data disk type, see [Cloud Block Storage Types](https://intl.cloud.tencent.com/document/product/362/2353?from_cn_redirect=1). Valid values:
+<li>LOCAL_BASIC: Local hard disk.</li>
+<li>LOCAL_SSD: Local SSD.</li>
+<li>CLOUD_BASIC: General cloud disk.</li>
+<li>CLOUD_PREMIUM: Premium cloud disk.</li>
+<li>CLOUD_SSD: Cloud SSD.</li>
+<li>CLOUD_HSSD: Enhanced SSD.</li>
+<li>CLOUD_TSSD: Ultra SSD.</li>
+The default value is consistent with the system disk type (SystemDisk.DiskType).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -3191,6 +3885,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskSize(self):
+        """Data disk size (in GB). The minimum adjustment increment is 10 GB. The value range varies by data disk type. For more information on limits, see [CVM Instance Configuration](https://intl.cloud.tencent.com/document/product/213/2177?from_cn_redirect=1). The default value is 0, indicating that no data disk is purchased. For more information, see the product documentation.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -3199,6 +3897,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotId(self):
+        """Data disk snapshot ID, such as `snap-l8psqwnt`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SnapshotId
 
     @SnapshotId.setter
@@ -3207,6 +3909,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeleteWithInstance(self):
+        """Whether the data disk is terminated along with the instance. Valid values:
+<li>TRUE: When the instance is terminated, the data disk is also terminated. This option is only supported for hourly postpaid cloud disks.</li>
+<li>FALSE: When the instance is terminated, the data disk is retained.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._DeleteWithInstance
 
     @DeleteWithInstance.setter
@@ -3215,6 +3923,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Encrypt(self):
+        """Whether the data disk is encrypted. Valid values:
+<li>TRUE: Encrypted.</li>
+<li>FALSE: Not encrypted.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._Encrypt
 
     @Encrypt.setter
@@ -3223,6 +3937,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ThroughputPerformance(self):
+        """Cloud disk performance (MB/s). This parameter is used to purchase extra performance for the cloud disk. For details on the feature and limits, see [Enhanced SSD Performance](https://intl.cloud.tencent.com/document/product/362/51896?from_cn_redirect=1#. E5.A2.9E.E5.BC.BA.E5.9E.8B-ssd-.E4.BA.91.E7.A1.AC.E7.9B.98.E9.A2.9D.E5.A4.96 .E6.80.A7.E8.83.BD).
+This feature is only available to enhanced SSD (`CLOUD_HSSD`) and tremendous SSD (`CLOUD_TSSD`) disks with a capacity greater than 460 GB.
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._ThroughputPerformance
 
     @ThroughputPerformance.setter
@@ -3231,6 +3950,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BurstPerformance(self):
+        """Burst performance: Whether to enable burst performance. The default value is false.
+
+Note: This feature is in beta test and requires a ticket to be submitted for usage.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._BurstPerformance
 
     @BurstPerformance.setter
@@ -3270,6 +3995,9 @@ class DeleteAutoScalingGroupRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -3303,6 +4031,9 @@ class DeleteAutoScalingGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3328,6 +4059,9 @@ class DeleteLaunchConfigurationRequest(AbstractModel):
 
     @property
     def LaunchConfigurationId(self):
+        """ID of the launch configuration to be deleted.
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -3361,6 +4095,9 @@ class DeleteLaunchConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3386,6 +4123,9 @@ class DeleteLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleHookId(self):
+        """Lifecycle hook ID
+        :rtype: str
+        """
         return self._LifecycleHookId
 
     @LifecycleHookId.setter
@@ -3419,6 +4159,9 @@ class DeleteLifecycleHookResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3444,6 +4187,9 @@ class DeleteNotificationConfigurationRequest(AbstractModel):
 
     @property
     def AutoScalingNotificationId(self):
+        """ID of the notification to be deleted.
+        :rtype: str
+        """
         return self._AutoScalingNotificationId
 
     @AutoScalingNotificationId.setter
@@ -3477,6 +4223,9 @@ class DeleteNotificationConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3502,6 +4251,9 @@ class DeleteScalingPolicyRequest(AbstractModel):
 
     @property
     def AutoScalingPolicyId(self):
+        """ID of the alarm policy to be deleted.
+        :rtype: str
+        """
         return self._AutoScalingPolicyId
 
     @AutoScalingPolicyId.setter
@@ -3535,6 +4287,9 @@ class DeleteScalingPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3560,6 +4315,9 @@ class DeleteScheduledActionRequest(AbstractModel):
 
     @property
     def ScheduledActionId(self):
+        """ID of the scheduled task to be deleted.
+        :rtype: str
+        """
         return self._ScheduledActionId
 
     @ScheduledActionId.setter
@@ -3593,6 +4351,9 @@ class DeleteScheduledActionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3636,6 +4397,9 @@ class DescribeAccountLimitsResponse(AbstractModel):
 
     @property
     def MaxNumberOfLaunchConfigurations(self):
+        """Maximum number of launch configurations allowed for creation by the user account
+        :rtype: int
+        """
         return self._MaxNumberOfLaunchConfigurations
 
     @MaxNumberOfLaunchConfigurations.setter
@@ -3644,6 +4408,9 @@ class DescribeAccountLimitsResponse(AbstractModel):
 
     @property
     def NumberOfLaunchConfigurations(self):
+        """Current number of launch configurations under the user account
+        :rtype: int
+        """
         return self._NumberOfLaunchConfigurations
 
     @NumberOfLaunchConfigurations.setter
@@ -3652,6 +4419,9 @@ class DescribeAccountLimitsResponse(AbstractModel):
 
     @property
     def MaxNumberOfAutoScalingGroups(self):
+        """Maximum number of auto scaling groups allowed for creation by the user account
+        :rtype: int
+        """
         return self._MaxNumberOfAutoScalingGroups
 
     @MaxNumberOfAutoScalingGroups.setter
@@ -3660,6 +4430,9 @@ class DescribeAccountLimitsResponse(AbstractModel):
 
     @property
     def NumberOfAutoScalingGroups(self):
+        """Current number of auto scaling groups under the user account
+        :rtype: int
+        """
         return self._NumberOfAutoScalingGroups
 
     @NumberOfAutoScalingGroups.setter
@@ -3668,6 +4441,9 @@ class DescribeAccountLimitsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3717,6 +4493,9 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def ActivityIds(self):
+        """Queries by one or more scaling activity IDs in the format of `asa-5l2ejpfo`. The maximum quantity per request is 100. This parameter does not support specifying both `ActivityIds` and `Filters` at the same time.
+        :rtype: list of str
+        """
         return self._ActivityIds
 
     @ActivityIds.setter
@@ -3725,6 +4504,14 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def Filters(self):
+        """Filter.
+<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
+<li> activity-status-code - String - Required: No - (Filter) Filter by scaling activity status . (INIT: initializing | RUNNING: running | SUCCESSFUL: succeeded | PARTIALLY_SUCCESSFUL: partially succeeded | FAILED: failed | CANCELLED: canceled)</li>
+<li> activity-type - String - Required: No - (Filter) Filter by scaling activity type. (SCALE_OUT: scale-out | SCALE_IN: scale-in | ATTACH_INSTANCES: adding an instance | REMOVE_INSTANCES: terminating an instance | DETACH_INSTANCES: removing an instance | TERMINATE_INSTANCES_UNEXPECTEDLY: terminating an instance in the CVM console | REPLACE_UNHEALTHY_INSTANCE: replacing an unhealthy instance | UPDATE_LOAD_BALANCERS: updating a load balancer)</li>
+<li> activity-id - String - Required: No - (Filter) Filter by scaling activity ID.</li>
+The maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `ActivityIds` and `Filters` at the same time.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3733,6 +4520,9 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3741,6 +4531,9 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def Offset(self):
+        """Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3749,6 +4542,9 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def StartTime(self):
+        """The earliest start time of the scaling activity, which will be ignored if ActivityIds is specified. The value is in `UTC time` in the format of `YYYY-MM-DDThh:mm:ssZ` according to the `ISO8601` standard.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3757,6 +4553,9 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def EndTime(self):
+        """The latest end time of the scaling activity, which will be ignored if ActivityIds is specified. The value is in `UTC time` in the format of `YYYY-MM-DDThh:mm:ssZ` according to the `ISO8601` standard.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3806,6 +4605,9 @@ class DescribeAutoScalingActivitiesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible scaling activities.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3814,6 +4616,9 @@ class DescribeAutoScalingActivitiesResponse(AbstractModel):
 
     @property
     def ActivitySet(self):
+        """Information set of eligible scaling activities.
+        :rtype: list of Activity
+        """
         return self._ActivitySet
 
     @ActivitySet.setter
@@ -3822,6 +4627,9 @@ class DescribeAutoScalingActivitiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3854,6 +4662,9 @@ class DescribeAutoScalingAdvicesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupIds(self):
+        """List of scaling groups to be queried. Upper limit: 100.
+        :rtype: list of str
+        """
         return self._AutoScalingGroupIds
 
     @AutoScalingGroupIds.setter
@@ -3890,6 +4701,9 @@ class DescribeAutoScalingAdvicesResponse(AbstractModel):
 
     @property
     def AutoScalingAdviceSet(self):
+        """A collection of suggestions for scaling group configurations.
+        :rtype: list of AutoScalingAdvice
+        """
         return self._AutoScalingAdviceSet
 
     @AutoScalingAdviceSet.setter
@@ -3898,6 +4712,9 @@ class DescribeAutoScalingAdvicesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3929,6 +4746,9 @@ class DescribeAutoScalingGroupLastActivitiesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupIds(self):
+        """ID list of an auto scaling group.
+        :rtype: list of str
+        """
         return self._AutoScalingGroupIds
 
     @AutoScalingGroupIds.setter
@@ -3965,6 +4785,9 @@ class DescribeAutoScalingGroupLastActivitiesResponse(AbstractModel):
 
     @property
     def ActivitySet(self):
+        """Information set of eligible scaling activities. Scaling groups without scaling activities are not returned. For example, if there are 50 auto scaling group IDs but only 45 records are returned, it indicates that 5 of the auto scaling groups do not have scaling activities.
+        :rtype: list of Activity
+        """
         return self._ActivitySet
 
     @ActivitySet.setter
@@ -3973,6 +4796,9 @@ class DescribeAutoScalingGroupLastActivitiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4021,6 +4847,9 @@ The maximum number of `Filters` in each request is 10. The upper limit for `Filt
 
     @property
     def AutoScalingGroupIds(self):
+        """Queries by one or more auto scaling group IDs in the format of `asg-nkdwoui0`. The maximum quantity per request is 100. This parameter does not support specifying both `AutoScalingGroupIds` and `Filters` at the same time.
+        :rtype: list of str
+        """
         return self._AutoScalingGroupIds
 
     @AutoScalingGroupIds.setter
@@ -4029,6 +4858,17 @@ The maximum number of `Filters` in each request is 10. The upper limit for `Filt
 
     @property
     def Filters(self):
+        """Filters.
+<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
+<li> auto-scaling-group-name - String - Required: No - (Filter) Filter by auto scaling group name.</li>
+<li> vague-auto-scaling-group-name - String - Required: No - (Filter) Fuzzy search by auto scaling group name.</li>
+<li> launch-configuration-id - String - Required: No - (Filter) Filter by launch configuration ID.</li>
+<li> tag-key - String - Required: No - (Filter) Filter by tag key.</li>
+<li> tag-value - String - Required: No - (Filter) Filter by tag value.</li>
+<li> tag:tag-key - String - Required: No - (Filter) Filter by tag key-value pair. The tag-key should be replaced with a specified tag key. For more information, see example 2.</li>
+The maximum number of `Filters` in each request is 10. The upper limit for `Filter.Values` is 5. This parameter cannot specify `AutoScalingGroupIds` and `Filters` at the same time.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4037,6 +4877,9 @@ The maximum number of `Filters` in each request is 10. The upper limit for `Filt
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4045,6 +4888,9 @@ The maximum number of `Filters` in each request is 10. The upper limit for `Filt
 
     @property
     def Offset(self):
+        """Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4092,6 +4938,9 @@ class DescribeAutoScalingGroupsResponse(AbstractModel):
 
     @property
     def AutoScalingGroupSet(self):
+        """List of auto scaling group details.
+        :rtype: list of AutoScalingGroup
+        """
         return self._AutoScalingGroupSet
 
     @AutoScalingGroupSet.setter
@@ -4100,6 +4949,9 @@ class DescribeAutoScalingGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible auto scaling groups.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4108,6 +4960,9 @@ class DescribeAutoScalingGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4152,6 +5007,9 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def InstanceIds(self):
+        """IDs of the CVM instances to query. Up to 100 IDs can be queried at one time. `InstanceIds` and `Filters` can not be both specified.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -4160,6 +5018,12 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def Filters(self):
+        """Filter.
+<li> instance-id - String - Required: No - (Filter) Filter by instance ID.</li>
+<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
+The maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `InstanceIds` and `Filters` at the same time.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4168,6 +5032,9 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def Offset(self):
+        """Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4176,6 +5043,9 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def Limit(self):
+        """The number of returned results. Default value: `20`. Maximum value: `100`. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4223,6 +5093,9 @@ class DescribeAutoScalingInstancesResponse(AbstractModel):
 
     @property
     def AutoScalingInstanceSet(self):
+        """List of instance details.
+        :rtype: list of Instance
+        """
         return self._AutoScalingInstanceSet
 
     @AutoScalingInstanceSet.setter
@@ -4231,6 +5104,9 @@ class DescribeAutoScalingInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible instances.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4239,6 +5115,9 @@ class DescribeAutoScalingInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4288,6 +5167,9 @@ The maximum number of `Filters` per request is 10, and the maximum number of `Fi
 
     @property
     def LaunchConfigurationIds(self):
+        """Queries by one or more launch configuration IDs in the format of `asc-ouy1ax38`. The maximum quantity per request is 100. This parameter does not support specifying both `LaunchConfigurationIds` and `Filters` at the same time.
+        :rtype: list of str
+        """
         return self._LaunchConfigurationIds
 
     @LaunchConfigurationIds.setter
@@ -4296,6 +5178,17 @@ The maximum number of `Filters` per request is 10, and the maximum number of `Fi
 
     @property
     def Filters(self):
+        """Filter criteria
+
+<li>launch-configuration-id - String - required: no - (filter condition) filter by launch configuration ID.</li>
+<li>launch-configuration-name - String - required: no - (filter condition) filter by launch configuration name.</li>
+<li>vague-launch-configuration-name - String - required: no - (filter condition) fuzzy search by launch configuration name.</li>
+<li>tag-key - String - required: no - (filter condition) filter by tag key.</li>
+<li>tag-value - String - required: no - (filter condition) filter by tag value.</li>
+<li>tag:tag-key - String - required: no - (filter condition) filter by Tag key-value pair. Replace tag-key with a specific tag key. See Example 3 for usage.</li>
+The maximum number of `Filters` per request is 10, and the maximum number of `Filter.Values` is 5. The parameter does not support specifying both `LaunchConfigurationIds` and `Filters`.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4304,6 +5197,9 @@ The maximum number of `Filters` per request is 10, and the maximum number of `Fi
 
     @property
     def Limit(self):
+        """The number of returned results. Default value: `20`. Maximum value: `100`. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4312,6 +5208,9 @@ The maximum number of `Filters` per request is 10, and the maximum number of `Fi
 
     @property
     def Offset(self):
+        """The offset. Default value: `0`. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4359,6 +5258,9 @@ class DescribeLaunchConfigurationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible launch configurations.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4367,6 +5269,9 @@ class DescribeLaunchConfigurationsResponse(AbstractModel):
 
     @property
     def LaunchConfigurationSet(self):
+        """List of launch configuration details.
+        :rtype: list of LaunchConfiguration
+        """
         return self._LaunchConfigurationSet
 
     @LaunchConfigurationSet.setter
@@ -4375,6 +5280,9 @@ class DescribeLaunchConfigurationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4420,6 +5328,9 @@ Up to 10 filters can be included in a request and up to 5 values for each filter
 
     @property
     def LifecycleHookIds(self):
+        """Queries by one or more lifecycle hook IDs in the format of `ash-8azjzxcl`. The maximum quantity per request is 100. This parameter does not support specifying both `LifecycleHookIds` and `Filters` at the same time.
+        :rtype: list of str
+        """
         return self._LifecycleHookIds
 
     @LifecycleHookIds.setter
@@ -4428,6 +5339,13 @@ Up to 10 filters can be included in a request and up to 5 values for each filter
 
     @property
     def Filters(self):
+        """Filters.
+<li> `lifecycle-hook-id` - String - Required: No - (Filter) Filter by lifecycle hook ID.</li>
+<li> `lifecycle-hook-name` - String - Required: No - (Filter) Filter by lifecycle hook name.</li>
+<li> `auto-scaling-group-id` - String - Required: No - (Filter) Filter by scaling group ID.</li>
+Up to 10 filters can be included in a request and up to 5 values for each filter. It cannot be specified with `LifecycleHookIds` at the same time.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4436,6 +5354,9 @@ Up to 10 filters can be included in a request and up to 5 values for each filter
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4444,6 +5365,9 @@ Up to 10 filters can be included in a request and up to 5 values for each filter
 
     @property
     def Offset(self):
+        """Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4491,6 +5415,9 @@ class DescribeLifecycleHooksResponse(AbstractModel):
 
     @property
     def LifecycleHookSet(self):
+        """Array of lifecycle hooks
+        :rtype: list of LifecycleHook
+        """
         return self._LifecycleHookSet
 
     @LifecycleHookSet.setter
@@ -4499,6 +5426,9 @@ class DescribeLifecycleHooksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total quantity
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4507,6 +5437,9 @@ class DescribeLifecycleHooksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4551,6 +5484,9 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def AutoScalingNotificationIds(self):
+        """Queries by one or more notification IDs in the format of asn-2sestqbr. The maximum number of instances per request is 100. This parameter does not support specifying both `AutoScalingNotificationIds` and `Filters` at the same time.
+        :rtype: list of str
+        """
         return self._AutoScalingNotificationIds
 
     @AutoScalingNotificationIds.setter
@@ -4559,6 +5495,12 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def Filters(self):
+        """Filter.
+<li> auto-scaling-notification-id - String - Required: No - (Filter) Filter by notification ID.</li>
+<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
+The maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. This parameter does not support specifying both `AutoScalingNotificationIds` and `Filters` at the same time.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4567,6 +5509,9 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4575,6 +5520,9 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def Offset(self):
+        """Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4622,6 +5570,9 @@ class DescribeNotificationConfigurationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible notifications.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4630,6 +5581,9 @@ class DescribeNotificationConfigurationsResponse(AbstractModel):
 
     @property
     def AutoScalingNotificationSet(self):
+        """List of AS event notification details.
+        :rtype: list of AutoScalingNotification
+        """
         return self._AutoScalingNotificationSet
 
     @AutoScalingNotificationSet.setter
@@ -4638,6 +5592,9 @@ class DescribeNotificationConfigurationsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4684,6 +5641,9 @@ class DescribeRefreshActivitiesRequest(AbstractModel):
 
     @property
     def RefreshActivityIds(self):
+        """List of refresh activity IDs. IDs are formatted like: 'asr-5l2ejpfo'. The upper limit per request is 100. Parameters do not support specifying both RefreshActivityIds and Filters simultaneously.
+        :rtype: list of str
+        """
         return self._RefreshActivityIds
 
     @RefreshActivityIds.setter
@@ -4692,6 +5652,14 @@ class DescribeRefreshActivitiesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filtering conditions.
+<li> auto-scaling-group-id - String - Required or not: No - (Filtering conditions) Filters by scaling group ID. </li>
+<li> refresh-activity-status-code - String - Required or not: No - (Filtering conditions) Filters by refresh activity status. (INIT: Initializing. | RUNNING: In progress. | SUCCESSFUL: Activity successful. | FAILED_PAUSE: Failed paused. | AUTO_PAUSE: Automatic pause. | MANUAL_PAUSE: Manual pause. | CANCELLED: Activity canceled. | FAILED: Activity failed.)</li>
+<li> refresh-activity-type - String - Required or not: No - (Filtering conditions) Filters by refresh activity type. (NORMAL: Normal refresh activity. | ROLLBACK: Rollback refresh activity.)</li>
+<li> refresh-activity-id - String - Required or not: No - (Filtering conditions) Filters by refresh activity ID. </li>
+<li> The maximum limit for Filters per request is 10, and the upper limit for Filter.Values is 5. Parameters do not support specifying both RefreshActivityIds and Filters simultaneously.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4700,6 +5668,9 @@ class DescribeRefreshActivitiesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned pieces. Default value: 20. Maximum value: 100. For further information on Limit, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4708,6 +5679,9 @@ class DescribeRefreshActivitiesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset, 0 by default. For further information on Offset, please refer to relevant sections in API [Overview] (https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4755,6 +5729,9 @@ class DescribeRefreshActivitiesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of refresh activities that meet the conditions.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4763,6 +5740,9 @@ class DescribeRefreshActivitiesResponse(AbstractModel):
 
     @property
     def RefreshActivitySet(self):
+        """A collection of information about refresh activities that meet the conditions.
+        :rtype: list of RefreshActivity
+        """
         return self._RefreshActivitySet
 
     @RefreshActivitySet.setter
@@ -4771,6 +5751,9 @@ class DescribeRefreshActivitiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4817,6 +5800,9 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def AutoScalingPolicyIds(self):
+        """Queries by one or more alarm policy IDs in the format of asp-i9vkg894. The maximum number of instances per request is 100. This parameter does not support specifying both `AutoScalingPolicyIds` and `Filters` at the same time.
+        :rtype: list of str
+        """
         return self._AutoScalingPolicyIds
 
     @AutoScalingPolicyIds.setter
@@ -4825,6 +5811,14 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def Filters(self):
+        """Filters.
+<li> `auto-scaling-policy-id` - String - Optional - Filter by the alarm policy ID.</li>
+<li> `auto-scaling-group-id` - String - Optional - Filter by the scaling group ID.</li>
+<li> `scaling-policy-name` - String - Optional - Filter by the alarm policy name.</li>
+<li> `scaling-policy-type` - String - Optional - Filter by the alarm policy type. Valid values: `SIMPLE`, `TARGET_TRACKING`.</li>
+The maximum number of `Filters` per request is 10. The upper limit for `Filter.Values` is 5. You cannot specify `AutoScalingPolicyIds` and `Filters` at the same time.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4833,6 +5827,9 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4841,6 +5838,9 @@ The maximum number of `Filters` per request is 10. The upper limit for `Filter.V
 
     @property
     def Offset(self):
+        """Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4888,6 +5888,9 @@ class DescribeScalingPoliciesResponse(AbstractModel):
 
     @property
     def ScalingPolicySet(self):
+        """List of AS alarm trigger policy details.
+        :rtype: list of ScalingPolicy
+        """
         return self._ScalingPolicySet
 
     @ScalingPolicySet.setter
@@ -4896,6 +5899,9 @@ class DescribeScalingPoliciesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible notifications.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4904,6 +5910,9 @@ class DescribeScalingPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4948,6 +5957,9 @@ class DescribeScheduledActionsRequest(AbstractModel):
 
     @property
     def ScheduledActionIds(self):
+        """Queries by one or more scheduled task IDs in the format of asst-am691zxo. The maximum number of instances per request is 100. This parameter does not support specifying both ScheduledActionIds` and `Filters` at the same time.
+        :rtype: list of str
+        """
         return self._ScheduledActionIds
 
     @ScheduledActionIds.setter
@@ -4956,6 +5968,12 @@ class DescribeScheduledActionsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+<li> scheduled-action-id - String - Required: No - (Filter) Filter by scheduled task ID.</li>
+<li> scheduled-action-name - String - Required: No - (Filter) Filter by scheduled task name.</li>
+<li> auto-scaling-group-id - String - Required: No - (Filter) Filter by auto scaling group ID.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4964,6 +5982,9 @@ class DescribeScheduledActionsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0. For more information on `Offset`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4972,6 +5993,9 @@ class DescribeScheduledActionsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API [overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5019,6 +6043,9 @@ class DescribeScheduledActionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible scheduled tasks.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5027,6 +6054,9 @@ class DescribeScheduledActionsResponse(AbstractModel):
 
     @property
     def ScheduledActionSet(self):
+        """List of scheduled task details.
+        :rtype: list of ScheduledAction
+        """
         return self._ScheduledActionSet
 
     @ScheduledActionSet.setter
@@ -5035,6 +6065,9 @@ class DescribeScheduledActionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5070,6 +6103,9 @@ class DetachInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -5078,6 +6114,9 @@ class DetachInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """List of CVM instance IDs
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -5115,6 +6154,9 @@ class DetachInstancesResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """Scaling activity ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -5123,6 +6165,9 @@ class DetachInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5155,6 +6200,9 @@ class DetachLoadBalancersRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -5163,6 +6211,9 @@ class DetachLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
+        """List of classic CLB IDs. Up to 20 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancerIdentifications` cannot be specified at the same time.
+        :rtype: list of str
+        """
         return self._LoadBalancerIds
 
     @LoadBalancerIds.setter
@@ -5171,6 +6222,9 @@ class DetachLoadBalancersRequest(AbstractModel):
 
     @property
     def ForwardLoadBalancerIdentifications(self):
+        """List of application CLB IDs. Up to 100 IDs are allowed. `LoadBalancerIds` and `ForwardLoadBalancerIdentifications` cannot be specified at the same time.
+        :rtype: list of ForwardLoadBalancerIdentification
+        """
         return self._ForwardLoadBalancerIdentifications
 
     @ForwardLoadBalancerIdentifications.setter
@@ -5214,6 +6268,9 @@ class DetachLoadBalancersResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """Scaling activity ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -5222,6 +6279,9 @@ class DetachLoadBalancersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5266,6 +6326,9 @@ class DetailedStatusMessage(AbstractModel):
 
     @property
     def Code(self):
+        """Error type
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -5274,6 +6337,9 @@ class DetailedStatusMessage(AbstractModel):
 
     @property
     def Zone(self):
+        """AZ information
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -5282,6 +6348,9 @@ class DetailedStatusMessage(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5290,6 +6359,9 @@ class DetailedStatusMessage(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """Instance billing mode
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -5298,6 +6370,9 @@ class DetailedStatusMessage(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Subnet ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -5306,6 +6381,9 @@ class DetailedStatusMessage(AbstractModel):
 
     @property
     def Message(self):
+        """Error message
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -5314,6 +6392,9 @@ class DetailedStatusMessage(AbstractModel):
 
     @property
     def InstanceType(self):
+        """Instance type
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -5353,6 +6434,9 @@ class DisableAutoScalingGroupRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -5386,6 +6470,9 @@ class DisableAutoScalingGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5411,6 +6498,9 @@ class EnableAutoScalingGroupRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -5444,6 +6534,9 @@ class EnableAutoScalingGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5478,6 +6571,9 @@ class EnhancedService(AbstractModel):
 
     @property
     def SecurityService(self):
+        """Enables the Cloud Security service. If this parameter is not specified, the Cloud Security service will be enabled by default.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RunSecurityServiceEnabled`
+        """
         return self._SecurityService
 
     @SecurityService.setter
@@ -5486,6 +6582,9 @@ class EnhancedService(AbstractModel):
 
     @property
     def MonitorService(self):
+        """Enables the Cloud Monitor service. If this parameter is not specified, the Cloud Monitor service will be enabled by default.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RunMonitorServiceEnabled`
+        """
         return self._MonitorService
 
     @MonitorService.setter
@@ -5496,6 +6595,9 @@ class EnhancedService(AbstractModel):
     def AutomationService(self):
         warnings.warn("parameter `AutomationService` is deprecated", DeprecationWarning) 
 
+        """Deprecated parameter.
+        :rtype: list of RunAutomationServiceEnabled
+        """
         return self._AutomationService
 
     @AutomationService.setter
@@ -5506,6 +6608,9 @@ class EnhancedService(AbstractModel):
 
     @property
     def AutomationToolsService(self):
+        """Enable TAT service. If this parameter is not specified, the default logic is the same as that of the CVM instance. Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RunAutomationServiceEnabled`
+        """
         return self._AutomationToolsService
 
     @AutomationToolsService.setter
@@ -5559,6 +6664,9 @@ class ExecuteScalingPolicyRequest(AbstractModel):
 
     @property
     def AutoScalingPolicyId(self):
+        """Auto-scaling policy ID. This parameter is not available to a target tracking policy.
+        :rtype: str
+        """
         return self._AutoScalingPolicyId
 
     @AutoScalingPolicyId.setter
@@ -5567,6 +6675,9 @@ class ExecuteScalingPolicyRequest(AbstractModel):
 
     @property
     def HonorCooldown(self):
+        """Whether to check if the auto scaling group is in the cooldown period. Default value: false
+        :rtype: bool
+        """
         return self._HonorCooldown
 
     @HonorCooldown.setter
@@ -5575,6 +6686,9 @@ class ExecuteScalingPolicyRequest(AbstractModel):
 
     @property
     def TriggerSource(self):
+        """Source that triggers the scaling policy. Valid values: API and CLOUD_MONITOR. Default value: API. The value `CLOUD_MONITOR` is specific to the Cloud Monitor service.
+        :rtype: str
+        """
         return self._TriggerSource
 
     @TriggerSource.setter
@@ -5613,6 +6727,9 @@ class ExecuteScalingPolicyResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """Scaling activity ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -5621,6 +6738,9 @@ class ExecuteScalingPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5650,6 +6770,9 @@ class ExitStandbyRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Scaling group ID.
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -5658,6 +6781,9 @@ class ExitStandbyRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """List of CVM instances in standby status.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -5696,6 +6822,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ActivityId(self):
+        """Scaling activity ID.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -5704,6 +6834,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5735,6 +6868,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """Field to be filtered.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5743,6 +6879,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """Filter value of the field.
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -5789,6 +6928,9 @@ class ForwardLoadBalancer(AbstractModel):
 
     @property
     def LoadBalancerId(self):
+        """Load balancer ID
+        :rtype: str
+        """
         return self._LoadBalancerId
 
     @LoadBalancerId.setter
@@ -5797,6 +6939,9 @@ class ForwardLoadBalancer(AbstractModel):
 
     @property
     def ListenerId(self):
+        """Application load balancer listener ID
+        :rtype: str
+        """
         return self._ListenerId
 
     @ListenerId.setter
@@ -5805,6 +6950,9 @@ class ForwardLoadBalancer(AbstractModel):
 
     @property
     def TargetAttributes(self):
+        """List of target rule attributes
+        :rtype: list of TargetAttribute
+        """
         return self._TargetAttributes
 
     @TargetAttributes.setter
@@ -5813,6 +6961,9 @@ class ForwardLoadBalancer(AbstractModel):
 
     @property
     def LocationId(self):
+        """ID of a forwarding rule. This parameter is required for layer-7 listeners.
+        :rtype: str
+        """
         return self._LocationId
 
     @LocationId.setter
@@ -5821,6 +6972,9 @@ class ForwardLoadBalancer(AbstractModel):
 
     @property
     def Region(self):
+        """The region of CLB instance. It defaults to the region of AS service and is in the format of the common parameter `Region`, such as `ap-guangzhou`.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -5869,6 +7023,9 @@ class ForwardLoadBalancerIdentification(AbstractModel):
 
     @property
     def LoadBalancerId(self):
+        """ID of the CLB
+        :rtype: str
+        """
         return self._LoadBalancerId
 
     @LoadBalancerId.setter
@@ -5877,6 +7034,9 @@ class ForwardLoadBalancerIdentification(AbstractModel):
 
     @property
     def ListenerId(self):
+        """Application CLB listener ID
+        :rtype: str
+        """
         return self._ListenerId
 
     @ListenerId.setter
@@ -5885,6 +7045,9 @@ class ForwardLoadBalancerIdentification(AbstractModel):
 
     @property
     def LocationId(self):
+        """ID of a forwarding rule. This parameter is required for layer-7 listeners.
+        :rtype: str
+        """
         return self._LocationId
 
     @LocationId.setter
@@ -5938,6 +7101,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HostName(self):
+        """CVM HostName.
+<li>Dots (.) and hyphens (-) cannot be used as the first or last character of HostName, and cannot be used consecutively.</li>
+<li>Windows instances are not supported.</li>
+<li>Instances of other types (e.g., Linux): The length of the character should be within the range of [2, 40]. Multiple dots (.) are allowed. Each segment between dot marks can consist of letters (case-insensitive), digits, and hyphens (-). Using only digits is not allowed.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._HostName
 
     @HostName.setter
@@ -5946,6 +7116,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HostNameStyle(self):
+        """The style of the CVM HostName. Valid values include ORIGINAL and UNIQUE, and the default value is ORIGINAL.
+<li>ORIGINAL: AS passes HostName filled in the input parameters to CVM. CVM may append serial numbers to HostName, which can result in conflicts with HostName of instances in the scaling group.</li>
+<li> UNIQUE: HostName filled in the input parameters acts as a prefix for the HostName. AS and CVM will expand this prefix to ensure that HostName of the instance in the scaling group is unique.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._HostNameStyle
 
     @HostNameStyle.setter
@@ -5954,6 +7130,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HostNameSuffix(self):
+        """HostName suffix for CVM.
+<li>Dots (.) and hyphens (-) cannot be used as the first or last character of HostNameSuffix, and cannot be used consecutively.</li>
+<li>Windows instances are not supported.</li>
+<li>Instances of other types (e.g., Linux): The length of the character should be within the range of [1, 37], and the combined length with HostName should not exceed 39. Multiple dots (.) are allowed. Each segment between dots can consist of letters (case-insensitive), digits, and hyphens (-).</li>
+Assume the suffix name is suffix and the original HostName is test.0, then the final HostName is test.0.suffix.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._HostNameSuffix
 
     @HostNameSuffix.setter
@@ -6000,6 +7184,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InternetChargeType(self):
+        """Network billing mode. Valid values: TRAFFIC_POSTPAID_BY_HOUR, BANDWIDTH_PACKAGE. Default value: TRAFFIC_POSTPAID_BY_HOUR. For the current account type, see [Account Type Description](https://intl.cloud.tencent.com/document/product/684/15246?from_cn_redirect=1#judge).
+<br><li> IPv6 supports `TRAFFIC_POSTPAID_BY_HOUR` under a bill-by-IP account.
+<br><li> IPv6 supports `BANDWIDTH_PACKAGE` under a bill-by-CVM account.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InternetChargeType
 
     @InternetChargeType.setter
@@ -6008,6 +7198,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InternetMaxBandwidthOut(self):
+        """Outbound bandwidth cap of the public network (in Mbps). <br>It defaults to `0`, which indicates no public network bandwidth is allocated to IPv6. The value range of bandwidth caps varies with the model, availability zone and billing mode. For more information, see [Public Network Bandwidth Cap](https://intl.cloud.tencent.com/document/product/213/12523?from_cn_redirect=1).
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -6016,6 +7210,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BandwidthPackageId(self):
+        """Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) API.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BandwidthPackageId
 
     @BandwidthPackageId.setter
@@ -6117,6 +7315,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6125,6 +7326,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -6133,6 +7337,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LaunchConfigurationId(self):
+        """Launch configuration ID
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -6141,6 +7348,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LaunchConfigurationName(self):
+        """Launch configuration name
+        :rtype: str
+        """
         return self._LaunchConfigurationName
 
     @LaunchConfigurationName.setter
@@ -6149,6 +7359,28 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LifeCycleState(self):
+        """Lifecycle status. Valid values:<br>
+<li>`IN_SERVICE`: The instance is running.
+<li>`CREATING`: The instance is being created.
+<li>`CREATION_FAILED`: The instance fails to be created.
+<li>`TERMINATING`: The instance is being terminated.
+<li>`TERMINATION_FAILED`: The instance fails to be terminated.
+<li>`ATTACHING`: The instance is being bound.
+<li>`ATTACH_FAILED`: The instance fails to be bound.
+<li>`DETACHING`: The instance is being unbound.
+<li>`DETACH_FAILED`: The instance fails to be unbound.
+<li>`ATTACHING_LB`: The LB is being bound.
+<li>DETACHING_LB: The LB is being unbound.
+<li>`MODIFYING_LB`: The LB is being modified.
+<li>`STARTING`: The instance is being started up.
+<li>`START_FAILED`: The instance fails to be started up.
+<li>`STOPPING`: The instance is being shut down.
+<li>`STOP_FAILED`: The instance fails to be shut down.
+<li>`STOPPED`: The instance is shut down.
+<li>`IN_LAUNCHING_HOOK`: The lifecycle hook is being scaled out.
+<li>`IN_TERMINATING_HOOK`: The lifecycle hook is being scaled in.
+        :rtype: str
+        """
         return self._LifeCycleState
 
     @LifeCycleState.setter
@@ -6157,6 +7389,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def HealthStatus(self):
+        """Health status. Value range: HEALTHY, UNHEALTHY
+        :rtype: str
+        """
         return self._HealthStatus
 
     @HealthStatus.setter
@@ -6165,6 +7400,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProtectedFromScaleIn(self):
+        """Whether to add scale-in protection
+        :rtype: bool
+        """
         return self._ProtectedFromScaleIn
 
     @ProtectedFromScaleIn.setter
@@ -6173,6 +7411,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Zone(self):
+        """Availability zone
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -6181,6 +7422,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreationType(self):
+        """Creation type. Value range: AUTO_CREATION, MANUAL_ATTACHING.
+        :rtype: str
+        """
         return self._CreationType
 
     @CreationType.setter
@@ -6189,6 +7433,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AddTime(self):
+        """Instance addition time
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -6197,6 +7444,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceType(self):
+        """Instance type
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -6205,6 +7455,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VersionNumber(self):
+        """Version number
+        :rtype: int
+        """
         return self._VersionNumber
 
     @VersionNumber.setter
@@ -6213,6 +7466,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AutoScalingGroupName(self):
+        """Auto scaling group name
+        :rtype: str
+        """
         return self._AutoScalingGroupName
 
     @AutoScalingGroupName.setter
@@ -6221,6 +7477,13 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def WarmupStatus(self):
+        """Warming up status. Valid values:
+<li>`WAITING_ENTER_WARMUP`: The instance is waiting to be warmed up.
+<li>`NO_NEED_WARMUP`: Warming up is not required.
+<li>`IN_WARMUP`: The instance is being warmed up.
+<li>`AFTER_WARMUP`: Warming up is completed.
+        :rtype: str
+        """
         return self._WarmupStatus
 
     @WarmupStatus.setter
@@ -6229,6 +7492,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DisasterRecoverGroupIds(self):
+        """Placement group ID. Only one is allowed.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._DisasterRecoverGroupIds
 
     @DisasterRecoverGroupIds.setter
@@ -6279,6 +7546,9 @@ class InstanceChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
+        """Purchased usage period of an instance in months. Value range: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36.
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -6287,6 +7557,9 @@ class InstanceChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """Auto-renewal flag. Valid values: <li>NOTIFY_AND_AUTO_RENEW: Notify upon expiration and automatically renew.</li> <li>NOTIFY_AND_MANUAL_RENEW: Notify upon expiration but do not auto-renew.</li> <li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Do not notify and do not auto-renew</li> Default value: NOTIFY_AND_MANUAL_RENEW. If this parameter is set to NOTIFY_AND_AUTO_RENEW, and the account balance is sufficient, the instance will automatically renew monthly upon its expiration date.
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -6325,6 +7598,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SpotOptions(self):
+        """Bidding-related options
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SpotMarketOptions`
+        """
         return self._SpotOptions
 
     @SpotOptions.setter
@@ -6333,6 +7609,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MarketType(self):
+        """Market option type. Currently, this only supports the value "spot"
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._MarketType
 
     @MarketType.setter
@@ -6374,6 +7654,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Enabled(self):
+        """Whether to enable instance creation sequencing, which is disabled by default. Valid values: <li>TRUE: Indicates that instance creation sequencing is enabled. <li>FALSE: Indicates that instance creation sequencing is disabled.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -6382,6 +7666,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def BeginIndex(self):
+        """Initial sequence number, with a value range of [0, 99,999,999]. When the sequence number exceeds this range after incrementing, scale-out activities will fail. <li>Upon the first enabling of instance name sequencing: The default value is 0. <li>Upon the enabling of instance name sequencing (not for the first time): If this parameter is not specified, the historical sequence number will be carried forward. Lowering the initial sequence number may result in duplicate instance name sequences within the scaling group.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._BeginIndex
 
     @BeginIndex.setter
@@ -6429,6 +7717,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
+        """CVM instance name. Value range: 2-108.
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -6437,6 +7728,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceNameStyle(self):
+        """Type of CVM instance name. Valid values: `ORIGINAL` and `UNIQUE`. Default value: `ORIGINAL`.
+
+`ORIGINAL`: Auto Scaling sends the input parameter `InstanceName` to the CVM directly. The CVM may append a serial number to the `InstanceName`. The `InstanceName` of the instances within the scaling group may conflict.
+
+`UNIQUE`: the input parameter `InstanceName` is the prefix of an instance name. Auto Scaling and CVM expand it. The `InstanceName` of an instance in the scaling group is unique.
+        :rtype: str
+        """
         return self._InstanceNameStyle
 
     @InstanceNameStyle.setter
@@ -6445,6 +7743,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceNameSuffix(self):
+        """CVM instance name suffix. The length of the character is within the range of [1, 105], and the combined length with InstanceName should not exceed 107.
+
+Assume the suffix name is suffix and the original instance name is test.0, then the final instance name is test.0.suffix.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceNameSuffix
 
     @InstanceNameSuffix.setter
@@ -6483,6 +7787,9 @@ class InstanceTag(AbstractModel):
 
     @property
     def Key(self):
+        """Tag key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -6491,6 +7798,9 @@ class InstanceTag(AbstractModel):
 
     @property
     def Value(self):
+        """Tag value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -6538,6 +7848,10 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def InternetChargeType(self):
+        """Network billing method. Value range: <br><li>BANDWIDTH_PREPAID: Prepaid by bandwidth <br><li>TRAFFIC_POSTPAID_BY_HOUR: Postpaid by traffic on a per hour basis <br><li>BANDWIDTH_POSTPAID_BY_HOUR: Postpaid by bandwidth on a per hour basis <br><li>BANDWIDTH_PACKAGE: BWP user <br>Default value: TRAFFIC_POSTPAID_BY_HOUR.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InternetChargeType
 
     @InternetChargeType.setter
@@ -6546,6 +7860,10 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def InternetMaxBandwidthOut(self):
+        """The maximum outbound bandwidth in Mbps of the public network. The default value is 0 Mbps. The upper limit of bandwidth varies by model. For more information, see [Purchase Network Bandwidth](https://intl.cloud.tencent.com/document/product/213/509?from_cn_redirect=1).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -6554,6 +7872,10 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def PublicIpAssigned(self):
+        """Whether to assign a public IP. Value range: <br><li>TRUE: Assign a public IP <br><li>FALSE: Do not assign a public IP <br><br>If the public network bandwidth is greater than 0 Mbps, you are free to choose whether to enable the public IP (which is enabled by default). If the public network bandwidth is 0 Mbps, no public IP will be allowed to be assigned.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._PublicIpAssigned
 
     @PublicIpAssigned.setter
@@ -6562,6 +7884,10 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def BandwidthPackageId(self):
+        """Bandwidth package ID. You can obtain the ID from the `BandwidthPackageId` field in the response of the [DescribeBandwidthPackages](https://intl.cloud.tencent.com/document/api/215/19209?from_cn_redirect=1) API.
+Note: this field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._BandwidthPackageId
 
     @BandwidthPackageId.setter
@@ -6619,6 +7945,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """Instance ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6627,6 +7957,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InvocationId(self):
+        """Execution activity ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InvocationId
 
     @InvocationId.setter
@@ -6635,6 +7969,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InvocationTaskId(self):
+        """Execution task ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InvocationTaskId
 
     @InvocationTaskId.setter
@@ -6643,6 +7981,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CommandId(self):
+        """Command ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -6651,6 +7993,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskStatus(self):
+        """Execution Status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -6659,6 +8005,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorMessage(self):
+        """Execution exception information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -6795,6 +8145,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
+        """Project ID of the instance.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -6803,6 +8156,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LaunchConfigurationId(self):
+        """Launch configuration ID
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -6811,6 +8167,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LaunchConfigurationName(self):
+        """Launch configuration name.
+        :rtype: str
+        """
         return self._LaunchConfigurationName
 
     @LaunchConfigurationName.setter
@@ -6819,6 +8178,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
+        """Instance model.
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -6827,6 +8189,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SystemDisk(self):
+        """Information of the instance's system disk configuration.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -6835,6 +8200,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DataDisks(self):
+        """Information of the instance's data disk configuration.
+        :rtype: list of DataDisk
+        """
         return self._DataDisks
 
     @DataDisks.setter
@@ -6843,6 +8211,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LoginSettings(self):
+        """Instance login settings.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LimitedLoginSettings`
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -6851,6 +8222,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InternetAccessible(self):
+        """Information of the public network bandwidth configuration.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
+        """
         return self._InternetAccessible
 
     @InternetAccessible.setter
@@ -6859,6 +8233,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecurityGroupIds(self):
+        """Security group of the instance.
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -6867,6 +8244,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoScalingGroupAbstractSet(self):
+        """Auto scaling group associated with the launch configuration.
+        :rtype: list of AutoScalingGroupAbstract
+        """
         return self._AutoScalingGroupAbstractSet
 
     @AutoScalingGroupAbstractSet.setter
@@ -6875,6 +8255,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserData(self):
+        """Custom data.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UserData
 
     @UserData.setter
@@ -6883,6 +8267,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
+        """Creation time of the launch configuration.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -6891,6 +8278,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnhancedService(self):
+        """Conditions of enhancement services for the instance and their settings.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
+        """
         return self._EnhancedService
 
     @EnhancedService.setter
@@ -6899,6 +8289,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageId(self):
+        """Image ID.
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -6907,6 +8300,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LaunchConfigurationStatus(self):
+        """Current status of the launch configuration. Valid values: <li>NORMAL: Normal.</li> <li>IMAGE_ABNORMAL: Image exception in the launch configuration.</li> <li>CBS_SNAP_ABNORMAL: Exception with data disk snapshot in the launch configuration.</li> <li>SECURITY_GROUP_ABNORMAL: Security group exception in the launch configuration.</li>
+        :rtype: str
+        """
         return self._LaunchConfigurationStatus
 
     @LaunchConfigurationStatus.setter
@@ -6915,6 +8311,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceChargeType(self):
+        """Instance billing type, with the CVM default value processed as POSTPAID_BY_HOUR. <li>POSTPAID_BY_HOUR: Hourly postpaid billing.</li> <li>SPOTPAID: Spot billing.</li>
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -6923,6 +8322,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceMarketOptions(self):
+        """Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
+        """
         return self._InstanceMarketOptions
 
     @InstanceMarketOptions.setter
@@ -6931,6 +8334,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceTypes(self):
+        """List of instance models.
+        :rtype: list of str
+        """
         return self._InstanceTypes
 
     @InstanceTypes.setter
@@ -6939,6 +8345,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceTags(self):
+        """List of instance tags, which will be added to instances created by the scale-out activity. Up to 10 tags allowed.
+        :rtype: list of InstanceTag
+        """
         return self._InstanceTags
 
     @InstanceTags.setter
@@ -6947,6 +8356,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """Tag list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -6955,6 +8368,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VersionNumber(self):
+        """Version
+        :rtype: int
+        """
         return self._VersionNumber
 
     @VersionNumber.setter
@@ -6963,6 +8379,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdatedTime(self):
+        """Update time
+        :rtype: str
+        """
         return self._UpdatedTime
 
     @UpdatedTime.setter
@@ -6971,6 +8390,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CamRoleName(self):
+        """CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.
+        :rtype: str
+        """
         return self._CamRoleName
 
     @CamRoleName.setter
@@ -6979,6 +8401,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastOperationInstanceTypesCheckPolicy(self):
+        """Value of InstanceTypesCheckPolicy upon the last operation.
+        :rtype: str
+        """
         return self._LastOperationInstanceTypesCheckPolicy
 
     @LastOperationInstanceTypesCheckPolicy.setter
@@ -6987,6 +8412,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HostNameSettings(self):
+        """CVM hostname settings.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
+        """
         return self._HostNameSettings
 
     @HostNameSettings.setter
@@ -6995,6 +8423,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceNameSettings(self):
+        """Settings of CVM instance names
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
+        """
         return self._InstanceNameSettings
 
     @InstanceNameSettings.setter
@@ -7003,6 +8434,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceChargePrepaid(self):
+        """Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -7011,6 +8445,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskTypePolicy(self):
+        """Cloud disk type selection policy. Valid values: <li>ORIGINAL: Use the set cloud disk type.</li> <li>AUTOMATIC: Automatically select available cloud disk types in the current availability zone.</li>
+        :rtype: str
+        """
         return self._DiskTypePolicy
 
     @DiskTypePolicy.setter
@@ -7019,6 +8456,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HpcClusterId(self):
+        """HPC ID<br>
+Note: This field is default to empty
+        :rtype: str
+        """
         return self._HpcClusterId
 
     @HpcClusterId.setter
@@ -7027,6 +8468,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IPv6InternetAccessible(self):
+        """IPv6 public network bandwidth configuration.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
+        """
         return self._IPv6InternetAccessible
 
     @IPv6InternetAccessible.setter
@@ -7035,6 +8479,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisasterRecoverGroupIds(self):
+        """Placement group ID, supporting specification of only one.
+        :rtype: list of str
+        """
         return self._DisasterRecoverGroupIds
 
     @DisasterRecoverGroupIds.setter
@@ -7043,6 +8490,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageFamily(self):
+        """Image family name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ImageFamily
 
     @ImageFamily.setter
@@ -7177,6 +8628,9 @@ class LifecycleActionResultInfo(AbstractModel):
 
     @property
     def LifecycleHookId(self):
+        """ID of the lifecycle hook
+        :rtype: str
+        """
         return self._LifecycleHookId
 
     @LifecycleHookId.setter
@@ -7185,6 +8639,9 @@ class LifecycleActionResultInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the instance
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7193,6 +8650,9 @@ class LifecycleActionResultInfo(AbstractModel):
 
     @property
     def InvocationId(self):
+        """Execution task ID. You can query the result by using the [DescribeInvocations](https://intl.cloud.tencent.com/document/api/1340/52679?from_cn_redirect=1) API of TAT. 
+        :rtype: str
+        """
         return self._InvocationId
 
     @InvocationId.setter
@@ -7201,6 +8661,12 @@ class LifecycleActionResultInfo(AbstractModel):
 
     @property
     def InvokeCommandResult(self):
+        """Result of command invocation,
+<li>`SUCCESSFUL`: Successful command invocation. It does mean that the task is successfully. You can query the task result with the `InvocationId.</li>
+<li>`FAILED`: Failed to invoke the command</li>
+<li>`NONE`</li>
+        :rtype: str
+        """
         return self._InvokeCommandResult
 
     @InvokeCommandResult.setter
@@ -7209,6 +8675,12 @@ class LifecycleActionResultInfo(AbstractModel):
 
     @property
     def NotificationResult(self):
+        """Notification result, which indicates whether it is successful to notify CMQ/TDMQ.<br>
+<li>SUCCESSFUL: It is successful to notify CMQ/TDMQ.</li>
+<li>FAILED: It is failed to notify CMQ/TDMQ.</li>
+<li>NONE</li>
+        :rtype: str
+        """
         return self._NotificationResult
 
     @NotificationResult.setter
@@ -7217,6 +8689,9 @@ class LifecycleActionResultInfo(AbstractModel):
 
     @property
     def LifecycleActionResult(self):
+        """Result of the lifecyle hook action. Values: CONTINUE, ABANDON
+        :rtype: str
+        """
         return self._LifecycleActionResult
 
     @LifecycleActionResult.setter
@@ -7225,6 +8700,17 @@ class LifecycleActionResultInfo(AbstractModel):
 
     @property
     def ResultReason(self):
+        """Reason of the result <br>
+<li>`HEARTBEAT_TIMEOUT`: Heartbeat timed out. The setting of `DefaultResult` is used.</li>
+<li>`NOTIFICATION_FAILURE`: Failed to send the notification. The setting of `DefaultResult` is used.</li>
+<li>`CALL_INTERFACE`: Calls the `CompleteLifecycleAction` to set the result</li>
+<li>ANOTHER_ACTION_ABANDON: It has been set to `ABANDON` by another operation.</li>
+<li>COMMAND_CALL_FAILURE: Failed to call the command. The DefaultResult is applied.</li>
+<li>COMMAND_EXEC_FINISH: Command completed</li>
+<li>COMMAND_CALL_FAILURE: Failed to execute the command. The DefaultResult is applied.</li>
+<li>COMMAND_EXEC_RESULT_CHECK_FAILURE: Failed to check the command result. The DefaultResult is applied.</li>
+        :rtype: str
+        """
         return self._ResultReason
 
     @ResultReason.setter
@@ -7272,6 +8758,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CommandId(self):
+        """Remote command ID. It’s required to execute a command.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CommandId
 
     @CommandId.setter
@@ -7280,6 +8770,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Parameters(self):
+        """Custom parameter. The field type is JSON encoded string. For example, {"varA": "222"}.
+`key` is the name of the custom parameter and `value` is the default value. Both `key` and `value` are strings.
+If this parameter is not specified, the `DefaultParameters` of `Command` is used.
+Up to 20 customer parameters allowed. The parameter name can contain up to 64 characters, including [a-z], [A-Z], [0-9] and [-_].
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Parameters
 
     @Parameters.setter
@@ -7345,6 +8842,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LifecycleHookId(self):
+        """Lifecycle hook ID
+        :rtype: str
+        """
         return self._LifecycleHookId
 
     @LifecycleHookId.setter
@@ -7353,6 +8853,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LifecycleHookName(self):
+        """Lifecycle hook name
+        :rtype: str
+        """
         return self._LifecycleHookName
 
     @LifecycleHookName.setter
@@ -7361,6 +8864,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -7369,6 +8875,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultResult(self):
+        """Default result of the lifecycle hook
+        :rtype: str
+        """
         return self._DefaultResult
 
     @DefaultResult.setter
@@ -7377,6 +8886,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HeartbeatTimeout(self):
+        """Wait timeout period of the lifecycle hook
+        :rtype: int
+        """
         return self._HeartbeatTimeout
 
     @HeartbeatTimeout.setter
@@ -7385,6 +8897,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LifecycleTransition(self):
+        """Applicable scenario of the lifecycle hook
+        :rtype: str
+        """
         return self._LifecycleTransition
 
     @LifecycleTransition.setter
@@ -7393,6 +8908,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotificationMetadata(self):
+        """Additional information for the notification target
+        :rtype: str
+        """
         return self._NotificationMetadata
 
     @NotificationMetadata.setter
@@ -7401,6 +8919,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -7409,6 +8930,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotificationTarget(self):
+        """Notification target
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        """
         return self._NotificationTarget
 
     @NotificationTarget.setter
@@ -7417,6 +8941,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LifecycleTransitionType(self):
+        """Applicable scenario of the lifecycle hook
+        :rtype: str
+        """
         return self._LifecycleTransitionType
 
     @LifecycleTransitionType.setter
@@ -7425,6 +8952,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LifecycleCommand(self):
+        """Remote command execution object.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
+        """
         return self._LifecycleCommand
 
     @LifecycleCommand.setter
@@ -7472,6 +9003,9 @@ class LimitedLoginSettings(AbstractModel):
 
     @property
     def KeyIds(self):
+        """List of key IDs.
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -7511,6 +9045,9 @@ class LoginSettings(AbstractModel):
 
     @property
     def Password(self):
+        """Instance login password. <br><li>Linux: 8-16 characters. It should contain at least two sets of the following categories: [a-z], [A-Z], [0-9] and [()`~!@#$%^&*-+=|{}[]:;',.?/]. <br><li>Windows: 12-16 characters. It should contain at least three sets of the following categories: [a-z], [A-Z], [0-9] and [()`~!@#$%^&*-+={}[]:;',.?/]. <br><br>If this parameter is not specified, a random password is generated and sent to you via the Message Center.
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -7519,6 +9056,9 @@ class LoginSettings(AbstractModel):
 
     @property
     def KeyIds(self):
+        """List of key IDs. After an instance is associated with a key, you can access the instance with the private key in the key pair. You can call `DescribeKeyPairs` to obtain `KeyId`. Key and password cannot be specified at the same time. Windows instances do not support keys. Currently, you can only specify one key when purchasing an instance.
+        :rtype: list of str
+        """
         return self._KeyIds
 
     @KeyIds.setter
@@ -7527,6 +9067,9 @@ class LoginSettings(AbstractModel):
 
     @property
     def KeepImageLogin(self):
+        """Whether to keep the original settings of an image. It cannot be specified together with `Password` or `KeyIds.N`. You can specify this parameter as `TRUE` only when you create an instance using a custom image, a shared image, or an imported image. Valid values: <br><li>`TRUE`: Keep the login settings of the image <br><li>`FALSE` (Default): Do not keep the login settings of the image <br>
+        :rtype: bool
+        """
         return self._KeepImageLogin
 
     @KeepImageLogin.setter
@@ -7580,6 +9123,9 @@ class MetricAlarm(AbstractModel):
 
     @property
     def ComparisonOperator(self):
+        """Comparison operator. Value range: <br><li>GREATER_THAN: greater than </li><li>GREATER_THAN_OR_EQUAL_TO: greater than or equal to </li><li>LESS_THAN: less than </li><li> LESS_THAN_OR_EQUAL_TO: less than or equal to </li><li> EQUAL_TO: equal to </li> <li>NOT_EQUAL_TO: not equal to </li>
+        :rtype: str
+        """
         return self._ComparisonOperator
 
     @ComparisonOperator.setter
@@ -7588,6 +9134,9 @@ class MetricAlarm(AbstractModel):
 
     @property
     def MetricName(self):
+        """Metric names, with the following optional fields: <br><li>CPU_UTILIZATION: CPU utilization.</li> <li>MEM_UTILIZATION: Memory utilization.</li> <li>LAN_TRAFFIC_OUT: Private network outbound bandwidth.</li> <li>LAN_TRAFFIC_IN: Private network inbound bandwidth.</li> <li>WAN_TRAFFIC_OUT: Public network outbound bandwidth.</li> <li>WAN_TRAFFIC_IN: Public network inbound bandwidth.</li> <li>TCP_CURR_ESTAB: TCP connections.</li>
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -7596,6 +9145,9 @@ class MetricAlarm(AbstractModel):
 
     @property
     def Threshold(self):
+        """Alarm threshold values: <br><li>CPU_UTILIZATION: [1, 100], Unit: %.</li> <li>MEM_UTILIZATION: [1, 100], Unit: %.</li> <li>LAN_TRAFFIC_OUT: >0, Unit: Mbps.</li> <li>LAN_TRAFFIC_IN: >0, Unit: Mbps.</li> <li>WAN_TRAFFIC_OUT: >0, Unit: Mbps.</li> <li>WAN_TRAFFIC_IN: >0, Unit: Mbps.</li> <li>TCP_CURR_ESTAB: >0, Unit: Count.</li>
+        :rtype: int
+        """
         return self._Threshold
 
     @Threshold.setter
@@ -7604,6 +9156,9 @@ class MetricAlarm(AbstractModel):
 
     @property
     def Period(self):
+        """Time period in seconds. Enumerated values: 60, 300.
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -7612,6 +9167,9 @@ class MetricAlarm(AbstractModel):
 
     @property
     def ContinuousTime(self):
+        """Number of repetitions. Value range: [1, 10]
+        :rtype: int
+        """
         return self._ContinuousTime
 
     @ContinuousTime.setter
@@ -7620,6 +9178,9 @@ class MetricAlarm(AbstractModel):
 
     @property
     def Statistic(self):
+        """Statistics type. Value range: <br><li>AVERAGE: average </li><li>MAXIMUM: maximum <li>MINIMUM: minimum </li><br> Default value: AVERAGE
+        :rtype: str
+        """
         return self._Statistic
 
     @Statistic.setter
@@ -7628,6 +9189,9 @@ class MetricAlarm(AbstractModel):
 
     @property
     def PreciseThreshold(self):
+        """Precise alarm threshold values. This parameter is not used as an input argument but is used solely as an output parameter for the query API: <br><li>CPU_UTILIZATION: (0, 100], Unit: %.</li> <li>MEM_UTILIZATION: (0, 100], Unit: %.</li> <li>LAN_TRAFFIC_OUT: >0, Unit: Mbps.</li> <li>LAN_TRAFFIC_IN: >0, Unit: Mbps.</li> <li>WAN_TRAFFIC_OUT: >0, Unit: Mbps.</li> <li>WAN_TRAFFIC_IN: >0, Unit: Mbps.</li> <li>TCP_CURR_ESTAB: >0, Unit: Count.</li>
+        :rtype: float
+        """
         return self._PreciseThreshold
 
     @PreciseThreshold.setter
@@ -7757,6 +9321,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -7765,6 +9332,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def AutoScalingGroupName(self):
+        """Auto scaling group name, which can only contain letters, numbers, underscores, hyphens ("-"), and decimal points with a maximum length of 55 bytes and must be unique under your account.
+        :rtype: str
+        """
         return self._AutoScalingGroupName
 
     @AutoScalingGroupName.setter
@@ -7773,6 +9343,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def DefaultCooldown(self):
+        """Default cooldown period in seconds. Default value: 300
+        :rtype: int
+        """
         return self._DefaultCooldown
 
     @DefaultCooldown.setter
@@ -7781,6 +9354,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def DesiredCapacity(self):
+        """Desired number of instances. The number should be no larger than the maximum and no smaller than minimum number of instances
+        :rtype: int
+        """
         return self._DesiredCapacity
 
     @DesiredCapacity.setter
@@ -7789,6 +9365,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def LaunchConfigurationId(self):
+        """Launch configuration ID
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -7797,6 +9376,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def MaxSize(self):
+        """Maximum number of instances. Value range: 0-2,000.
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -7805,6 +9387,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def MinSize(self):
+        """Minimum number of instances. Value range: 0-2,000.
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -7813,6 +9398,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def ProjectId(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -7821,6 +9409,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def SubnetIds(self):
+        """List of subnet IDs
+        :rtype: list of str
+        """
         return self._SubnetIds
 
     @SubnetIds.setter
@@ -7829,6 +9420,11 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def TerminationPolicies(self):
+        """Termination policy, whose maximum length is currently 1. Valid values include OLDEST_INSTANCE and NEWEST_INSTANCE.
+<li>OLDEST_INSTANCE: Terminate the oldest instance in the scaling group first.</li>
+<li>NEWEST_INSTANCE: Terminate the newest instance in the scaling group first.</li>
+        :rtype: list of str
+        """
         return self._TerminationPolicies
 
     @TerminationPolicies.setter
@@ -7837,6 +9433,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def VpcId(self):
+        """VPC ID. This field is left empty for basic networks. You need to specify SubnetIds when modifying the network of the auto scaling group to a VPC with a specified VPC ID. Specify Zones when modifying the network to a basic network.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -7845,6 +9444,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def Zones(self):
+        """List of availability zones
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -7853,6 +9455,12 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def RetryPolicy(self):
+        """Retry policy, whose valid values include IMMEDIATE_RETRY, INCREMENTAL_INTERVALS, and NO_RETRY, with the default value being IMMEDIATE_RETRY. A partially successful scaling activity is considered a failed activity.
+<li>IMMEDIATE_RETRY: Immediately retry, and quickly retry in a short period. There will be no retry anymore after a certain number of consecutive failures (5).</li>
+<li>INCREMENTAL_INTERVALS: Retry with incremental intervals. As the number of consecutive failures increases, the retry intervals gradually become longer, ranging from seconds to one day.</li>
+<li>NO_RETRY: There will be no retry until another user call or alarm information is received.</li>
+        :rtype: str
+        """
         return self._RetryPolicy
 
     @RetryPolicy.setter
@@ -7861,6 +9469,14 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def ZonesCheckPolicy(self):
+        """AZ verification policy, whose valid values include ALL and ANY, with the default value being ANY. This policy comes into effect when actual changes are made to resource-related fields in the scaling group (such as launch configuration, AZ, or subnet).
+<li>ALL: Verification passes if all AZs or subnets are available; otherwise, a verification error will be reported.<li>
+<li>ANY: Verification passes if any AZ or subnet is available; otherwise, a verification error will be reported.</li>
+
+Common reasons for unavailable AZs or subnets include the CVM InstanceType in the AZ being sold out, the CBS cloud disk in the AZ being sold out, insufficient quota in the AZ, and insufficient IP addresses in the subnet.
+If there is no AZ or subnet in Zones/SubnetIds, a verification error will be reported regardless of the values of ZonesCheckPolicy.
+        :rtype: str
+        """
         return self._ZonesCheckPolicy
 
     @ZonesCheckPolicy.setter
@@ -7869,6 +9485,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def ServiceSettings(self):
+        """Service settings such as unhealthy instance replacement.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.ServiceSettings`
+        """
         return self._ServiceSettings
 
     @ServiceSettings.setter
@@ -7877,6 +9496,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def Ipv6AddressCount(self):
+        """The number of IPv6 addresses that an instance has. Valid values: 0 and 1.
+        :rtype: int
+        """
         return self._Ipv6AddressCount
 
     @Ipv6AddressCount.setter
@@ -7885,6 +9507,16 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def MultiZoneSubnetPolicy(self):
+        """Multi-AZ/multi-subnet policy, whose valid values include PRIORITY and EQUALITY, with the default value being PRIORITY.
+<li>PRIORITY: Instances are attempted to be created taking the order of the AZ/subnet list as the priority. If the highest-priority AZ/subnet can create instances successfully, instances can always be created in that AZ/subnet.</li>
+<li>EQUALITY: The instances added through scale-out will be distributed across multiple AZs/subnets to ensure a relatively balanced number of instances in each AZ/subnet after scaling out.</li>
+
+Points to consider regarding this policy:
+<li>When the scaling group is based on a classic network, this policy applies to the multi-AZ; when the scaling group is based on a VPC network, this policy applies to the multi-subnet, in this case, the AZs are no longer considered. For example, if there are four subnets labeled A, B, C, and D, where A, B, and C are in AZ 1 and D is in AZ 2, the subnets A, B, C, and D are considered for sorting without regard to AZs 1 and 2.</li>
+<li>This policy applies to the multi-AZ/multi-subnet and not to the InstanceTypes parameter of the launch configuration, which is selected according to the priority policy.</li>
+<li>When instances are created according to the PRIORITY policy, ensure the policy for multiple models first, followed by the policy for the multi-AZ/subnet. For example, with models A and B and subnets 1, 2, and 3, attempts will be made in the order of A1, A2, A3, B1, B2, and B3. If A1 is sold out, A2 will be attempted (instead of B1).</li>
+        :rtype: str
+        """
         return self._MultiZoneSubnetPolicy
 
     @MultiZoneSubnetPolicy.setter
@@ -7893,6 +9525,11 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def HealthCheckType(self):
+        """Scaling group instance health check type, whose valid values include:
+<li>CVM: Determines whether an instance is unhealthy based on its network status. An unhealthy network status is indicated by an event where instances become unreachable via PING. Detailed criteria of judgment can be found in [Instance Health Check](https://intl.cloud.tencent.com/document/product/377/8553?from_cn_redirect=1).</li>
+<li>CLB: Determines whether an instance is unhealthy based on the health check status of CLB. For principles behind CLB health checks, see [Health Check](https://intl.cloud.tencent.com/document/product/214/6097?from_cn_redirect=1).</li>
+        :rtype: str
+        """
         return self._HealthCheckType
 
     @HealthCheckType.setter
@@ -7901,6 +9538,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def LoadBalancerHealthCheckGracePeriod(self):
+        """Grace period of the CLB health check
+        :rtype: int
+        """
         return self._LoadBalancerHealthCheckGracePeriod
 
     @LoadBalancerHealthCheckGracePeriod.setter
@@ -7909,6 +9549,11 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def InstanceAllocationPolicy(self):
+        """Instance assignment policy, whose valid values include LAUNCH_CONFIGURATION and SPOT_MIXED.
+<li>LAUNCH_CONFIGURATION: Represent the traditional mode of assigning instances according to the launch configuration.</li>
+<li>SPOT_MIXED: Represent the spot mixed mode. Currently, this mode is supported only when the launch configuration is set to the pay-as-you-go billing mode. In the mixed mode, the scaling group will scale out pay-as-you-go models or spot models based on the predefined settings. When the mixed mode is used, the billing type of the associated launch configuration cannot be modified.</li>
+        :rtype: str
+        """
         return self._InstanceAllocationPolicy
 
     @InstanceAllocationPolicy.setter
@@ -7917,6 +9562,10 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def SpotMixedAllocationPolicy(self):
+        """Specifies how to assign pay-as-you-go instances and spot instances.
+This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIXED`.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SpotMixedAllocationPolicy`
+        """
         return self._SpotMixedAllocationPolicy
 
     @SpotMixedAllocationPolicy.setter
@@ -7925,6 +9574,11 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def CapacityRebalance(self):
+        """Capacity rebalancing feature, which is applicable only to spot instances within the scaling group. Valid values:
+<li>TRUE: Enable this feature. When spot instances in the scaling group are about to be automatically recycled by the spot instance service, AS proactively initiates the termination process of the spot instances. If there is a configured scale-in hook, it will be triggered before termination. After the termination process starts, AS asynchronously initiates the scale-out to reach the expected number of instances.</li>
+<li>FALSE: Disable this feature. AS waits for the spot instance to be terminated before scaling out to reach the number of instances expected by the scaling group.</li>
+        :rtype: bool
+        """
         return self._CapacityRebalance
 
     @CapacityRebalance.setter
@@ -7933,6 +9587,9 @@ This parameter is valid only when `InstanceAllocationPolicy` is set to `SPOT_MIX
 
     @property
     def InstanceNameIndexSettings(self):
+        """Instance name sequencing settings. When enabled, an incremental numeric sequence will be appended to the names of instances automatically created within the scaling group.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameIndexSettings`
+        """
         return self._InstanceNameIndexSettings
 
     @InstanceNameIndexSettings.setter
@@ -7994,6 +9651,9 @@ class ModifyAutoScalingGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8028,6 +9688,9 @@ class ModifyDesiredCapacityRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -8036,6 +9699,9 @@ class ModifyDesiredCapacityRequest(AbstractModel):
 
     @property
     def DesiredCapacity(self):
+        """Desired capacity
+        :rtype: int
+        """
         return self._DesiredCapacity
 
     @DesiredCapacity.setter
@@ -8044,6 +9710,9 @@ class ModifyDesiredCapacityRequest(AbstractModel):
 
     @property
     def MinSize(self):
+        """Minimum number of instances. Value range: 0-2000.
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -8052,6 +9721,9 @@ class ModifyDesiredCapacityRequest(AbstractModel):
 
     @property
     def MaxSize(self):
+        """Maximum number of instances. Value range: 0-2000.
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -8088,6 +9760,9 @@ class ModifyDesiredCapacityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8207,6 +9882,9 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def LaunchConfigurationId(self):
+        """Launch configuration ID
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -8215,6 +9893,9 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def ImageId(self):
+        """[Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><br/>You can obtain the image IDs in the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE).</li><li>You can also use the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -8223,6 +9904,10 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def InstanceTypes(self):
+        """List of instance types. Each type specifies different resource specifications. This list contains up to 10 instance types.
+The launch configuration uses `InstanceType` to indicate one single instance type and `InstanceTypes` to indicate multiple instance types. Specifying the `InstanceTypes` field will invalidate the original `InstanceType`.
+        :rtype: list of str
+        """
         return self._InstanceTypes
 
     @InstanceTypes.setter
@@ -8231,6 +9916,13 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def InstanceTypesCheckPolicy(self):
+        """InstanceType verification policy, which is effective when actual modification is made to InstanceTypes. Valid values include ALL and ANY and the default value is ANY.
+<li>ALL: Verification passes if all InstanceTypes are available; otherwise, a verification error will be reported.</li>
+<li>ANY: Verification passes if any InstanceType is available; otherwise, a verification error will be reported.</li>
+Common reasons for unavailable InstanceTypes include the InstanceType being sold out, and the corresponding cloud disk being sold out.
+If a model in InstanceTypes does not exist or has been abolished, a verification error will be reported regardless of the valid values set for InstanceTypesCheckPolicy.
+        :rtype: str
+        """
         return self._InstanceTypesCheckPolicy
 
     @InstanceTypesCheckPolicy.setter
@@ -8239,6 +9931,9 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def LaunchConfigurationName(self):
+        """Display name of the launch configuration, which can contain Chinese characters, letters, numbers, underscores, separators ("-"), and decimal points with a maximum length of 60 bytes.
+        :rtype: str
+        """
         return self._LaunchConfigurationName
 
     @LaunchConfigurationName.setter
@@ -8247,6 +9942,9 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def UserData(self):
+        """Base64-encoded custom data of up to 16 KB. If you want to clear `UserData`, set it to an empty string.
+        :rtype: str
+        """
         return self._UserData
 
     @UserData.setter
@@ -8255,6 +9953,10 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def SecurityGroupIds(self):
+        """Security group to which the instance belongs. This parameter can be obtained from the `SecurityGroupId` field in the response of the [`DescribeSecurityGroups`](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1) API.
+At least one security group is required for this parameter. The security group specified is sequential.
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -8263,6 +9965,10 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def InternetAccessible(self):
+        """Information of the public network bandwidth configuration.
+When the public outbound network bandwidth is 0 Mbps, assigning a public IP is not allowed. Accordingly, if a public IP is assigned, the new public network outbound bandwidth must be greater than 0 Mbps.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
+        """
         return self._InternetAccessible
 
     @InternetAccessible.setter
@@ -8271,6 +9977,11 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def InstanceChargeType(self):
+        """Instance billing mode. Valid values:
+<br><li>POSTPAID_BY_HOUR: pay-as-you-go hourly
+<br><li>SPOTPAID: spot instance
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -8279,6 +9990,12 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def InstanceChargePrepaid(self):
+        """Parameter setting for the prepaid mode (monthly subscription mode). This parameter can specify the renewal period, whether to set the auto-renewal, and other attributes of the monthly-subscribed instances.
+This parameter is required when changing the instance billing mode to monthly subscription. It will be automatically discarded after you choose another billing mode.
+This field requires passing in the `Period` field. Other fields that are not passed in will use their default values.
+This field can be modified only when the current billing mode is monthly subscription.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -8287,6 +10004,12 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def InstanceMarketOptions(self):
+        """Market-related options for instances, such as parameters related to spot instances.
+This parameter is required when changing the instance billing mode to spot instance. It will be automatically discarded after you choose another instance billing mode.
+This field requires passing in the `MaxPrice` field under the `SpotOptions`. Other fields that are not passed in will use their default values.
+This field can be modified only when the current billing mode is spot instance.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
+        """
         return self._InstanceMarketOptions
 
     @InstanceMarketOptions.setter
@@ -8295,6 +10018,11 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def DiskTypePolicy(self):
+        """Cloud disk type selection policy. Valid values:
+<li>ORIGINAL: Use the set cloud disk type.</li>
+<li>AUTOMATIC: Automatically select the currently available cloud disk type.</li>
+        :rtype: str
+        """
         return self._DiskTypePolicy
 
     @DiskTypePolicy.setter
@@ -8303,6 +10031,9 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def SystemDisk(self):
+        """Instance system disk configurations
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -8311,6 +10042,11 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def DataDisks(self):
+        """Configuration information of instance data disks.
+Up to 11 data disks can be specified and will be collectively modified. Please provide all the new values for the modification.
+The default data disk should be the same as the system disk.
+        :rtype: list of DataDisk
+        """
         return self._DataDisks
 
     @DataDisks.setter
@@ -8319,6 +10055,11 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def HostNameSettings(self):
+        """CVM hostname settings.
+This field is not supported for Windows instances.
+This field requires passing the `HostName` field. Other fields that are not passed in will use their default values.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
+        """
         return self._HostNameSettings
 
     @HostNameSettings.setter
@@ -8327,6 +10068,11 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def InstanceNameSettings(self):
+        """Settings of CVM instance names. 
+If this field is configured in a launch configuration, the `InstanceName` of a CVM created by the scaling group will be generated according to the configuration; otherwise, it will be in the `as-{{AutoScalingGroupName }}` format.
+This field requires passing in the `InstanceName` field. Other fields that are not passed in will use their default values.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
+        """
         return self._InstanceNameSettings
 
     @InstanceNameSettings.setter
@@ -8335,6 +10081,9 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def EnhancedService(self):
+        """Specifies whether to enable additional services, such as security services and monitoring service.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
+        """
         return self._EnhancedService
 
     @EnhancedService.setter
@@ -8343,6 +10092,9 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def CamRoleName(self):
+        """CAM role name. This parameter can be obtained from the `roleName` field returned by DescribeRoleList API.
+        :rtype: str
+        """
         return self._CamRoleName
 
     @CamRoleName.setter
@@ -8351,6 +10103,10 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def HpcClusterId(self):
+        """HPC ID<br>
+Note: This field is default to empty
+        :rtype: str
+        """
         return self._HpcClusterId
 
     @HpcClusterId.setter
@@ -8359,6 +10115,9 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def IPv6InternetAccessible(self):
+        """IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
+        """
         return self._IPv6InternetAccessible
 
     @IPv6InternetAccessible.setter
@@ -8367,6 +10126,9 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def DisasterRecoverGroupIds(self):
+        """Placement group ID. Only one is allowed.
+        :rtype: list of str
+        """
         return self._DisasterRecoverGroupIds
 
     @DisasterRecoverGroupIds.setter
@@ -8375,6 +10137,9 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def LoginSettings(self):
+        """Instance login settings, which include passwords, keys, or the original login settings inherited from the image. <br>Please note that specifying new login settings will overwrite the existing ones. For instance, if you previously used a password for login and then use this parameter to switch the login settings to a key, the original password will be removed.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -8383,6 +10148,10 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def InstanceTags(self):
+        """Instance tag list. By specifying this parameter, the instances added through scale-out can be bound to the tag. Up to 10 Tags can be specified.
+This parameter will overwrite the original instance tag list. To add new tags, you need to pass the new tags along with the original tags.
+        :rtype: list of InstanceTag
+        """
         return self._InstanceTags
 
     @InstanceTags.setter
@@ -8391,6 +10160,9 @@ This parameter will overwrite the original instance tag list. To add new tags, y
 
     @property
     def ImageFamily(self):
+        """Image family name.
+        :rtype: str
+        """
         return self._ImageFamily
 
     @ImageFamily.setter
@@ -8475,6 +10247,9 @@ class ModifyLaunchConfigurationAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8528,6 +10303,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleHookId(self):
+        """Lifecycle hook ID.
+        :rtype: str
+        """
         return self._LifecycleHookId
 
     @LifecycleHookId.setter
@@ -8536,6 +10314,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleHookName(self):
+        """Lifecycle hook name.
+        :rtype: str
+        """
         return self._LifecycleHookName
 
     @LifecycleHookName.setter
@@ -8544,6 +10325,11 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleTransition(self):
+        """The time when the lifecycle hook is applied. Valid values:
+<li> `INSTANCE_LAUNCHING`: After the instance launch
+<li> `INSTANCE_TERMINATING`: Before the instance termination
+        :rtype: str
+        """
         return self._LifecycleTransition
 
     @LifecycleTransition.setter
@@ -8552,6 +10338,11 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def DefaultResult(self):
+        """Actions after the lifecycle hook times out. Valid values:
+<li> `CONTINUE`: Continue the scaling activity after the timeout
+<li> `ABANDON`: Terminate the scaling activity after the timeout
+        :rtype: str
+        """
         return self._DefaultResult
 
     @DefaultResult.setter
@@ -8560,6 +10351,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def HeartbeatTimeout(self):
+        """The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30 - 7,200 seconds.
+        :rtype: int
+        """
         return self._HeartbeatTimeout
 
     @HeartbeatTimeout.setter
@@ -8568,6 +10362,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def NotificationMetadata(self):
+        """Additional information sent by AS to the notification target.
+        :rtype: str
+        """
         return self._NotificationMetadata
 
     @NotificationMetadata.setter
@@ -8576,6 +10373,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleTransitionType(self):
+        """The scenario where the lifecycle hook is applied. `EXTENSION`: The lifecycle hook will be triggered when `AttachInstances`, `DetachInstances` or `RemoveInstances` is called. `NORMAL`: The lifecycle hook is not triggered by the above APIs.
+        :rtype: str
+        """
         return self._LifecycleTransitionType
 
     @LifecycleTransitionType.setter
@@ -8584,6 +10384,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def NotificationTarget(self):
+        """Information of the notification target.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        """
         return self._NotificationTarget
 
     @NotificationTarget.setter
@@ -8592,6 +10395,9 @@ class ModifyLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleCommand(self):
+        """Remote command execution object.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
+        """
         return self._LifecycleCommand
 
     @LifecycleCommand.setter
@@ -8637,6 +10443,9 @@ class ModifyLifecycleHookResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8665,6 +10474,9 @@ class ModifyLoadBalancerTargetAttributesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -8673,6 +10485,9 @@ class ModifyLoadBalancerTargetAttributesRequest(AbstractModel):
 
     @property
     def ForwardLoadBalancers(self):
+        """List of application CLBs to modify. Up to 100 CLBs allowed.
+        :rtype: list of ForwardLoadBalancer
+        """
         return self._ForwardLoadBalancers
 
     @ForwardLoadBalancers.setter
@@ -8715,6 +10530,9 @@ class ModifyLoadBalancerTargetAttributesResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """Scaling activity ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -8723,6 +10541,9 @@ class ModifyLoadBalancerTargetAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8760,6 +10581,9 @@ class ModifyLoadBalancersRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -8768,6 +10592,9 @@ class ModifyLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
+        """List of classic CLB IDs. Currently, the maximum length is 20. You cannot specify LoadBalancerIds and ForwardLoadBalancers at the same time.
+        :rtype: list of str
+        """
         return self._LoadBalancerIds
 
     @LoadBalancerIds.setter
@@ -8776,6 +10603,9 @@ class ModifyLoadBalancersRequest(AbstractModel):
 
     @property
     def ForwardLoadBalancers(self):
+        """List of application CLBs. Up to 100 CLBs are allowed. `LoadBalancerIds` and `ForwardLoadBalancers` cannot be specified at the same time.
+        :rtype: list of ForwardLoadBalancer
+        """
         return self._ForwardLoadBalancers
 
     @ForwardLoadBalancers.setter
@@ -8784,6 +10614,11 @@ class ModifyLoadBalancersRequest(AbstractModel):
 
     @property
     def LoadBalancersCheckPolicy(self):
+        """CLB verification policy. Valid values: "ALL" and "DIFF". Default value: "ALL"
+<br><li> ALL. Verification is successful only when all CLBs are valid. Otherwise, verification fails.
+<br><li> DIFF. Only the changes in the CLB parameters are verified. If valid, the verification is successful. Otherwise, verification fails.
+        :rtype: str
+        """
         return self._LoadBalancersCheckPolicy
 
     @LoadBalancersCheckPolicy.setter
@@ -8828,6 +10663,9 @@ class ModifyLoadBalancersResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """Scaling activity ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -8836,6 +10674,9 @@ class ModifyLoadBalancersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8880,6 +10721,9 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 
     @property
     def AutoScalingNotificationId(self):
+        """ID of the notification to be modified.
+        :rtype: str
+        """
         return self._AutoScalingNotificationId
 
     @AutoScalingNotificationId.setter
@@ -8888,6 +10732,15 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 
     @property
     def NotificationTypes(self):
+        """Notification type, i.e., the set of types of notifications to be subscribed to. Value range:
+<li>SCALE_OUT_SUCCESSFUL: scale-out succeeded</li>
+<li>SCALE_OUT_FAILED: scale-out failed</li>
+<li>SCALE_IN_SUCCESSFUL: scale-in succeeded</li>
+<li>SCALE_IN_FAILED: scale-in failed</li>
+<li>REPLACE_UNHEALTHY_INSTANCE_SUCCESSFUL: unhealthy instance replacement succeeded</li>
+<li>REPLACE_UNHEALTHY_INSTANCE_FAILED: unhealthy instance replacement failed</li>
+        :rtype: list of str
+        """
         return self._NotificationTypes
 
     @NotificationTypes.setter
@@ -8896,6 +10749,9 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 
     @property
     def NotificationUserGroupIds(self):
+        """Notification group ID, which is the set of user group IDs. You can query the user group IDs through the [ListGroups](https://intl.cloud.tencent.com/document/product/598/34589?from_cn_redirect=1) API.
+        :rtype: list of str
+        """
         return self._NotificationUserGroupIds
 
     @NotificationUserGroupIds.setter
@@ -8904,6 +10760,9 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 
     @property
     def QueueName(self):
+        """CMQ or TDMQ CMQ queue name.
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -8912,6 +10771,9 @@ class ModifyNotificationConfigurationRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """CMQ or TDMQ CMQ toipc name.
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -8949,6 +10811,9 @@ class ModifyNotificationConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9005,6 +10870,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def AutoScalingPolicyId(self):
+        """Alarm policy ID.
+        :rtype: str
+        """
         return self._AutoScalingPolicyId
 
     @AutoScalingPolicyId.setter
@@ -9013,6 +10881,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def ScalingPolicyName(self):
+        """Alarm policy name.
+        :rtype: str
+        """
         return self._ScalingPolicyName
 
     @ScalingPolicyName.setter
@@ -9021,6 +10892,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def AdjustmentType(self):
+        """The method to adjust the desired capacity after the alarm is triggered. It’s only available when `ScalingPolicyType` is `Simple`. Valid values: <br><li>`CHANGE_IN_CAPACITY`: Increase or decrease the desired capacity </li><li>`EXACT_CAPACITY`: Adjust to the specified desired capacity </li> <li>`PERCENT_CHANGE_IN_CAPACITY`: Adjust the desired capacity by percentage </li>
+        :rtype: str
+        """
         return self._AdjustmentType
 
     @AdjustmentType.setter
@@ -9029,6 +10903,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def AdjustmentValue(self):
+        """The adjustment value for the expected number of instances after an alarm is triggered. It applies only to simple policies. <li>When AdjustmentType is CHANGE_IN_CAPACITY, a positive AdjustmentValue indicates an increase in the number of instances after the alarm is triggered, and a negative AdjustmentValue indicates a decrease in the number of instances after the alarm is triggered.</li> <li>When AdjustmentType is EXACT_CAPACITY, the value of AdjustmentValue represents the expected number of instances after the alarm is triggered, which should be greater than or equal to 0.</li> <li>When AdjustmentType is PERCENT_CHANGE_IN_CAPACITY, a positive AdjustmentValue indicates an increase in the number of instances by percentage after the alarm is triggered, and a negative AdjustmentValue indicates a decrease in the number of instances by percentage after the alarm is triggered. The unit is: %.</li>
+        :rtype: int
+        """
         return self._AdjustmentValue
 
     @AdjustmentValue.setter
@@ -9037,6 +10914,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def Cooldown(self):
+        """Cooldown period (in seconds). It’s only available when `ScalingPolicyType` is `Simple`.
+        :rtype: int
+        """
         return self._Cooldown
 
     @Cooldown.setter
@@ -9045,6 +10925,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def MetricAlarm(self):
+        """Alarm monitoring metric. It’s only available when `ScalingPolicyType` is `Simple`.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
+        """
         return self._MetricAlarm
 
     @MetricAlarm.setter
@@ -9053,6 +10936,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def PredefinedMetricType(self):
+        """Preset monitoring item. It’s only available when `ScalingPolicyType` is `TARGET_TRACKING`. Valid values: <br><li>ASG_AVG_CPU_UTILIZATION: Average CPU utilization</li><li>ASG_AVG_LAN_TRAFFIC_OUT: Average private bandwidth out</li><li>ASG_AVG_LAN_TRAFFIC_IN: Average private bandwidth in</li><li>ASG_AVG_WAN_TRAFFIC_OUT: Average public bandwidth out</li><li>ASG_AVG_WAN_TRAFFIC_IN: Average public bandwidth in</li>
+        :rtype: str
+        """
         return self._PredefinedMetricType
 
     @PredefinedMetricType.setter
@@ -9061,6 +10947,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def TargetValue(self):
+        """Target value. It’s only available when `ScalingPolicyType` is `TARGET_TRACKING`. Value ranges: <br><li>`ASG_AVG_CPU_UTILIZATION` (in %): [1, 100)</li><li>`ASG_AVG_LAN_TRAFFIC_OUT` (in Mbps): >0</li><li>`ASG_AVG_LAN_TRAFFIC_IN` (in Mbps): >0</li><li>`ASG_AVG_WAN_TRAFFIC_OUT` (in Mbps): >0</li><li>`ASG_AVG_WAN_TRAFFIC_IN` (in Mbps): >0</li>
+        :rtype: int
+        """
         return self._TargetValue
 
     @TargetValue.setter
@@ -9069,6 +10958,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def EstimatedInstanceWarmup(self):
+        """Instance warm-up period (in seconds). It’s only available when `ScalingPolicyType` is `TARGET_TRACKING`. Value range: 0-3600.
+        :rtype: int
+        """
         return self._EstimatedInstanceWarmup
 
     @EstimatedInstanceWarmup.setter
@@ -9077,6 +10969,9 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def DisableScaleIn(self):
+        """Whether to disable scale-in. It’s only available when `ScalingPolicyType` is `TARGET_TRACKING`. Valid values: <br><li>`true`: Scaling in is not allowed.</li><li>`false`: Allows both scale-out and scale-in</li>
+        :rtype: bool
+        """
         return self._DisableScaleIn
 
     @DisableScaleIn.setter
@@ -9085,6 +10980,10 @@ Notification group ID, which is the set of user group IDs.
 
     @property
     def NotificationUserGroupIds(self):
+        """This parameter is diused. Please use [CreateNotificationConfiguration](https://intl.cloud.tencent.com/document/api/377/33185?from_cn_redirect=1) instead.
+Notification group ID, which is the set of user group IDs.
+        :rtype: list of str
+        """
         return self._NotificationUserGroupIds
 
     @NotificationUserGroupIds.setter
@@ -9130,6 +11029,9 @@ class ModifyScalingPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9176,6 +11078,9 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def ScheduledActionId(self):
+        """ID of the scheduled task to be edited
+        :rtype: str
+        """
         return self._ScheduledActionId
 
     @ScheduledActionId.setter
@@ -9184,6 +11089,9 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def ScheduledActionName(self):
+        """Scheduled task name, which can only contain letters, numbers, underscores, hyphens ("-"), and decimal points with a maximum length of 60 bytes and must be unique in an auto scaling group.
+        :rtype: str
+        """
         return self._ScheduledActionName
 
     @ScheduledActionName.setter
@@ -9192,6 +11100,9 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def MaxSize(self):
+        """The maximum number of instances set for the auto scaling group when the scheduled task is triggered.
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -9200,6 +11111,9 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def MinSize(self):
+        """The minimum number of instances set for the auto scaling group when the scheduled task is triggered.
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -9208,6 +11122,9 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def DesiredCapacity(self):
+        """The desired number of instances set for the auto scaling group when the scheduled task is triggered.
+        :rtype: int
+        """
         return self._DesiredCapacity
 
     @DesiredCapacity.setter
@@ -9216,6 +11133,9 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Initial triggered time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9224,6 +11144,9 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard. <br>This parameter and `Recurrence` need to be specified at the same time. After the end time, the scheduled task will no longer take effect.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9232,6 +11155,9 @@ class ModifyScheduledActionRequest(AbstractModel):
 
     @property
     def Recurrence(self):
+        """Repeating mode of the scheduled task, which is in standard cron format. <br>This parameter and `EndTime` need to be specified at the same time.
+        :rtype: str
+        """
         return self._Recurrence
 
     @Recurrence.setter
@@ -9272,6 +11198,9 @@ class ModifyScheduledActionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9307,6 +11236,13 @@ class NotificationTarget(AbstractModel):
 
     @property
     def TargetType(self):
+        """Target type. Valid values: `CMQ_QUEUE`, `CMQ_TOPIC`, `TDMQ_CMQ_QUEUE` and `TDMQ_CMQ_TOPIC`.
+<li> CMQ_QUEUE: Tencent Cloud message queue - queue model.</li>
+<li> CMQ_TOPIC: Tencent Cloud message queue - topic model.</li>
+<li> TDMQ_CMQ_QUEUE: Tencent Cloud TDMQ message queue - queue model.</li>
+<li> TDMQ_CMQ_TOPIC: Tencent Cloud TDMQ message queue - topic model.</li>
+        :rtype: str
+        """
         return self._TargetType
 
     @TargetType.setter
@@ -9315,6 +11251,9 @@ class NotificationTarget(AbstractModel):
 
     @property
     def QueueName(self):
+        """Queue name. This parameter is required when `TargetType` is `CMQ_QUEUE` or `TDMQ_CMQ_QUEUE`.
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -9323,6 +11262,9 @@ class NotificationTarget(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name. This parameter is required when `TargetType` is `CMQ_TOPIC` or `TDMQ_CMQ_TOPIC`.
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -9396,6 +11338,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def AutoScalingGroupId(self):
+        """Scaling group ID.
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -9404,6 +11349,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RefreshActivityId(self):
+        """Refresh activity ID.
+        :rtype: str
+        """
         return self._RefreshActivityId
 
     @RefreshActivityId.setter
@@ -9412,6 +11360,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def OriginRefreshActivityId(self):
+        """Original refresh activity ID, which exists only in the rollback refresh activity.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._OriginRefreshActivityId
 
     @OriginRefreshActivityId.setter
@@ -9420,6 +11372,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RefreshBatchSet(self):
+        """Refresh batch information list.
+        :rtype: list of RefreshBatch
+        """
         return self._RefreshBatchSet
 
     @RefreshBatchSet.setter
@@ -9428,6 +11383,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RefreshMode(self):
+        """Refresh mode.
+        :rtype: str
+        """
         return self._RefreshMode
 
     @RefreshMode.setter
@@ -9436,6 +11394,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RefreshSettings(self):
+        """Instance update setting parameters.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RefreshSettings`
+        """
         return self._RefreshSettings
 
     @RefreshSettings.setter
@@ -9444,6 +11405,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ActivityType(self):
+        """Refresh activity type. Valid values: <br><li>NORMAL: Normal refresh activity.</li> <li>ROLLBACK: Rollback refresh activity.
+        :rtype: str
+        """
         return self._ActivityType
 
     @ActivityType.setter
@@ -9452,6 +11416,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Status(self):
+        """Refresh activity status. Valid values: <br><li>INIT: Initializing.</li> <li>RUNNING: Running.</li> <li>SUCCESSFUL: Activity successful.</li> <li>FAILED_PAUSE: Paused due to a failed refresh batch.</li> <li>AUTO_PAUSE: Automatically paused according to pause policy.</li> <li>MANUAL_PAUSE: Manually paused.</li> <li>CANCELLED: Activity canceled.</li> <li>FAILED: Activity failed.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -9460,6 +11427,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CurrentRefreshBatchNum(self):
+        """Current refresh batch number. For example, a value of 2 indicates that the current activity is refreshing the second batch of instances.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._CurrentRefreshBatchNum
 
     @CurrentRefreshBatchNum.setter
@@ -9468,6 +11439,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def StartTime(self):
+        """Refresh activity start time.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9476,6 +11451,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def EndTime(self):
+        """Refresh activity end time.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9484,6 +11463,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CreatedTime(self):
+        """Refresh activity creation time.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -9549,6 +11532,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RefreshBatchNum(self):
+        """Refresh batch number. For example, a value of 2 indicates that the current batch of instances will be refreshed in the second batch.
+        :rtype: int
+        """
         return self._RefreshBatchNum
 
     @RefreshBatchNum.setter
@@ -9557,6 +11543,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RefreshBatchStatus(self):
+        """Refresh batch status. Valid values: <br><li>WAITING: Pending refresh.</li> <li>INIT: Initializing.</li> <li>RUNNING: Refreshing.</li> <li>FAILED: Refresh failed.</li> <li>PARTIALLY_SUCCESSFUL: Partially successful in the batch.</li> <li>CANCELLED: Canceled.</li> <li>SUCCESSFUL: Refreshed.
+        :rtype: str
+        """
         return self._RefreshBatchStatus
 
     @RefreshBatchStatus.setter
@@ -9565,6 +11554,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RefreshBatchRelatedInstanceSet(self):
+        """List of instances linked to a refresh batch.
+        :rtype: list of RefreshBatchRelatedInstance
+        """
         return self._RefreshBatchRelatedInstanceSet
 
     @RefreshBatchRelatedInstanceSet.setter
@@ -9573,6 +11565,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def StartTime(self):
+        """Refresh batch start time.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9581,6 +11577,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def EndTime(self):
+        """Refresh batch end time.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9635,6 +11635,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceId(self):
+        """Instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9643,6 +11646,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceStatus(self):
+        """Refresh instance status. If an instance is removed or destroyed during the refresh process, its status will be updated to NOT_FOUND. Valid values: <br><li>WAITING: pending refresh.</li> <li>INIT: Initializing.</li> <li>RUNNING: Refreshing in progress.</li> <li>FAILED: Refresh failed.</li> <li>CANCELLED: Canceled.</li> <li>SUCCESSFUL: Refreshed.</li> <li>NOT_FOUND: Instance not found.
+        :rtype: str
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -9651,6 +11657,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def LastActivityId(self):
+        """The most recent scaling activity ID during instance refresh can be queried via the DescribeAutoScalingActivities API.
+Please note that scaling activities differ from instance refresh activities; a single instance refresh activity may involve multiple scaling activities.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._LastActivityId
 
     @LastActivityId.setter
@@ -9659,6 +11670,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def InstanceStatusMessage(self):
+        """Instance refresh status information.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._InstanceStatusMessage
 
     @InstanceStatusMessage.setter
@@ -9698,6 +11713,9 @@ class RefreshSettings(AbstractModel):
 
     @property
     def RollingUpdateSettings(self):
+        """Rolling update settings parameters. RefreshMode is the rolling update. This parameter must be filled in.Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RollingUpdateSettings`
+        """
         return self._RollingUpdateSettings
 
     @RollingUpdateSettings.setter
@@ -9706,6 +11724,9 @@ class RefreshSettings(AbstractModel):
 
     @property
     def CheckInstanceTargetHealth(self):
+        """Backend service health check status for instances, defaults to FALSE. This setting takes effect only for scaling groups bound with application load balancers. When enabled, if an instance fails the check after being refreshed, its load balancer port weight remains 0 and is marked as a refresh failure. Valid values: <br><li>TRUE: Enable the check.</li> <li>FALSE: Do not enable the check.
+        :rtype: bool
+        """
         return self._CheckInstanceTargetHealth
 
     @CheckInstanceTargetHealth.setter
@@ -9749,6 +11770,9 @@ class RelatedInstance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9757,6 +11781,13 @@ class RelatedInstance(AbstractModel):
 
     @property
     def InstanceStatus(self):
+        """Status of the instance in the scaling activity. Valid values:
+`INIT`: Initializing
+`RUNNING`: Processing the instance
+`SUCCESSFUL`: Task succeeded on the instance
+`FAILED`: Task failed on the instance
+        :rtype: str
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -9794,6 +11825,9 @@ class RemoveInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -9802,6 +11836,9 @@ class RemoveInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """List of CVM instance IDs
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -9839,6 +11876,9 @@ class RemoveInstancesResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """Scaling activity ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -9847,6 +11887,9 @@ class RemoveInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9879,6 +11922,9 @@ class ResumeInstanceRefreshRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Scaling group ID.
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -9887,6 +11933,9 @@ class ResumeInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshActivityId(self):
+        """Refresh activity ID.
+        :rtype: str
+        """
         return self._RefreshActivityId
 
     @RefreshActivityId.setter
@@ -9895,6 +11944,9 @@ class ResumeInstanceRefreshRequest(AbstractModel):
 
     @property
     def ResumeMode(self):
+        """The recovery method for the current batch's failed instances. If there are no failed instances, this parameter becomes invalid. Default value: RETRY. Valid values: <br><li>RETRY: Retry refreshing failed instances in the current batch.</li> <li>CONTINUE: Skip failed instances in the current batch.
+        :rtype: str
+        """
         return self._ResumeMode
 
     @ResumeMode.setter
@@ -9930,6 +11982,9 @@ class ResumeInstanceRefreshResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9964,6 +12019,9 @@ class RollbackInstanceRefreshRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Scaling group ID.
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -9972,6 +12030,9 @@ class RollbackInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshSettings(self):
+        """Refresh settings.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RefreshSettings`
+        """
         return self._RefreshSettings
 
     @RefreshSettings.setter
@@ -9980,6 +12041,9 @@ class RollbackInstanceRefreshRequest(AbstractModel):
 
     @property
     def OriginRefreshActivityId(self):
+        """Original refresh activity ID.
+        :rtype: str
+        """
         return self._OriginRefreshActivityId
 
     @OriginRefreshActivityId.setter
@@ -9988,6 +12052,9 @@ class RollbackInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshMode(self):
+        """Refresh mode, currently, only rolling updates are supported, with the default value being ROLLING_UPDATE_RESET.
+        :rtype: str
+        """
         return self._RefreshMode
 
     @RefreshMode.setter
@@ -10029,6 +12096,9 @@ class RollbackInstanceRefreshResponse(AbstractModel):
 
     @property
     def RefreshActivityId(self):
+        """Refresh activity ID.
+        :rtype: str
+        """
         return self._RefreshActivityId
 
     @RefreshActivityId.setter
@@ -10037,6 +12107,9 @@ class RollbackInstanceRefreshResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10066,6 +12139,9 @@ class RollingUpdateSettings(AbstractModel):
 
     @property
     def BatchNumber(self):
+        """Batch quantity. The batch quantity should be a positive integer greater than 0, but cannot exceed the total number of instances pending refresh.
+        :rtype: int
+        """
         return self._BatchNumber
 
     @BatchNumber.setter
@@ -10074,6 +12150,9 @@ class RollingUpdateSettings(AbstractModel):
 
     @property
     def BatchPause(self):
+        """Pause policy between batches. Default value: Automatic. Valid values: <br><li>FIRST_BATCH_PAUSE: Pause after the first batch update completes.</li> <li>BATCH_INTERVAL_PAUSE: Pause between each batch update.</li> <li>AUTOMATIC: No pauses.
+        :rtype: str
+        """
         return self._BatchPause
 
     @BatchPause.setter
@@ -10109,6 +12188,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Enabled(self):
+        """Whether to enable [TencentCloud Automation Tools](https://intl.cloud.tencent.com/document/product/1340?from_cn_redirect=1). Valid values:<br><li>`TRUE`: Enable<br><li>`FALSE`: Not enable.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -10143,6 +12226,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Enabled(self):
+        """Whether to enable the [Cloud Monitor](https://intl.cloud.tencent.com/document/product/248?from_cn_redirect=1) service. Value range: <br><li>TRUE: Cloud Monitor is enabled <br><li>FALSE: Cloud Monitor is disabled <br><br>Default value: TRUE. |
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -10177,6 +12264,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Enabled(self):
+        """Whether to enable the [Cloud Security](https://intl.cloud.tencent.com/document/product/296?from_cn_redirect=1) service. Value range: <br><li>TRUE: Cloud Security is enabled <br><li>FALSE: Cloud Security is disabled <br><br>Default value: TRUE.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -10213,6 +12304,9 @@ class ScaleInInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -10221,6 +12315,9 @@ class ScaleInInstancesRequest(AbstractModel):
 
     @property
     def ScaleInNumber(self):
+        """Number of instances to be reduced
+        :rtype: int
+        """
         return self._ScaleInNumber
 
     @ScaleInNumber.setter
@@ -10258,6 +12355,9 @@ class ScaleInInstancesResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """Scaling activity ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -10266,6 +12366,9 @@ class ScaleInInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10295,6 +12398,9 @@ class ScaleOutInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Scaling group ID
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -10303,6 +12409,9 @@ class ScaleOutInstancesRequest(AbstractModel):
 
     @property
     def ScaleOutNumber(self):
+        """Number of instances to be added
+        :rtype: int
+        """
         return self._ScaleOutNumber
 
     @ScaleOutNumber.setter
@@ -10340,6 +12449,9 @@ class ScaleOutInstancesResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """Scaling activity ID
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -10348,6 +12460,9 @@ class ScaleOutInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10420,6 +12535,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID.
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -10428,6 +12546,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AutoScalingPolicyId(self):
+        """Alarm trigger policy ID.
+        :rtype: str
+        """
         return self._AutoScalingPolicyId
 
     @AutoScalingPolicyId.setter
@@ -10436,6 +12557,11 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ScalingPolicyType(self):
+        """Scaling policy type. Valid values:
+- `SIMPLE`: A simple policy.
+- `TARGET_TRACKING`: A target tracking policy.
+        :rtype: str
+        """
         return self._ScalingPolicyType
 
     @ScalingPolicyType.setter
@@ -10444,6 +12570,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ScalingPolicyName(self):
+        """Alarm trigger policy name.
+        :rtype: str
+        """
         return self._ScalingPolicyName
 
     @ScalingPolicyName.setter
@@ -10452,6 +12581,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AdjustmentType(self):
+        """The method to adjust the desired capacity after the alarm is triggered. It’s only available when `ScalingPolicyType` is `Simple`. Valid values: <br><li>`CHANGE_IN_CAPACITY`: Increase or decrease the desired capacity </li><li>`EXACT_CAPACITY`: Adjust to the specified desired capacity </li> <li>`PERCENT_CHANGE_IN_CAPACITY`: Adjust the desired capacity by percentage </li>
+        :rtype: str
+        """
         return self._AdjustmentType
 
     @AdjustmentType.setter
@@ -10460,6 +12592,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AdjustmentValue(self):
+        """The adjusted value of desired capacity after the alarm is triggered. This parameter is only applicable to a simple policy.
+        :rtype: int
+        """
         return self._AdjustmentValue
 
     @AdjustmentValue.setter
@@ -10468,6 +12603,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Cooldown(self):
+        """Cooldown period. This parameter is only applicable to a simple policy.
+        :rtype: int
+        """
         return self._Cooldown
 
     @Cooldown.setter
@@ -10476,6 +12614,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MetricAlarm(self):
+        """Alarm monitoring metrics of a simple policy.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.MetricAlarm`
+        """
         return self._MetricAlarm
 
     @MetricAlarm.setter
@@ -10484,6 +12625,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PredefinedMetricType(self):
+        """Preset monitoring item. It’s only available when `ScalingPolicyType` is `TARGET_TRACKING`. Valid values: <br><li>ASG_AVG_CPU_UTILIZATION: Average CPU utilization</li><li>ASG_AVG_LAN_TRAFFIC_OUT: Average private bandwidth out</li><li>ASG_AVG_LAN_TRAFFIC_IN: Average private bandwidth in</li><li>ASG_AVG_WAN_TRAFFIC_OUT: Average public bandwidth out</li><li>ASG_AVG_WAN_TRAFFIC_IN: Average public bandwidth in</li>
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PredefinedMetricType
 
     @PredefinedMetricType.setter
@@ -10492,6 +12637,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TargetValue(self):
+        """Target value. It’s only available when `ScalingPolicyType` is `TARGET_TRACKING`. Value ranges: <br><li>`ASG_AVG_CPU_UTILIZATION` (in %): [1, 100)</li><li>`ASG_AVG_LAN_TRAFFIC_OUT` (in Mbps): >0</li><li>`ASG_AVG_LAN_TRAFFIC_IN` (in Mbps): >0</li><li>`ASG_AVG_WAN_TRAFFIC_OUT` (in Mbps): >0</li><li>`ASG_AVG_WAN_TRAFFIC_IN` (in Mbps): >0</li>
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TargetValue
 
     @TargetValue.setter
@@ -10500,6 +12649,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EstimatedInstanceWarmup(self):
+        """Instance warm-up period (in seconds). It’s only available when `ScalingPolicyType` is `TARGET_TRACKING`. Value range: 0-3600.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._EstimatedInstanceWarmup
 
     @EstimatedInstanceWarmup.setter
@@ -10508,6 +12661,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DisableScaleIn(self):
+        """Whether to disable scale-in. It’s only available when `ScalingPolicyType` is `TARGET_TRACKING`. Valid values: <br><li>`true`: Scaling in is not allowed.</li><li>`false`: Allows both scale-out and scale-in</li>
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._DisableScaleIn
 
     @DisableScaleIn.setter
@@ -10516,6 +12673,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MetricAlarms(self):
+        """List of alarm monitoring metrics. This parameter is only applicable to a target tracking policy.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of MetricAlarm
+        """
         return self._MetricAlarms
 
     @MetricAlarms.setter
@@ -10524,6 +12685,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NotificationUserGroupIds(self):
+        """Notification group ID, which is the set of user group IDs.
+        :rtype: list of str
+        """
         return self._NotificationUserGroupIds
 
     @NotificationUserGroupIds.setter
@@ -10607,6 +12771,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def ScheduledActionId(self):
+        """Scheduled task ID.
+        :rtype: str
+        """
         return self._ScheduledActionId
 
     @ScheduledActionId.setter
@@ -10615,6 +12782,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def ScheduledActionName(self):
+        """Scheduled task name.
+        :rtype: str
+        """
         return self._ScheduledActionName
 
     @ScheduledActionName.setter
@@ -10623,6 +12793,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """ID of the auto scaling group where the scheduled task is located.
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -10631,6 +12804,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10639,6 +12815,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def Recurrence(self):
+        """Repeating mode of the scheduled task.
+        :rtype: str
+        """
         return self._Recurrence
 
     @Recurrence.setter
@@ -10647,6 +12826,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time of the scheduled task. The value is in `Beijing time` (UTC+8) in the format of `YYYY-MM-DDThh:mm:ss+08:00` according to the `ISO8601` standard.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10655,6 +12837,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def MaxSize(self):
+        """Maximum number of instances set by the scheduled task.
+        :rtype: int
+        """
         return self._MaxSize
 
     @MaxSize.setter
@@ -10663,6 +12848,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def DesiredCapacity(self):
+        """Desired number of instances set by the scheduled task.
+        :rtype: int
+        """
         return self._DesiredCapacity
 
     @DesiredCapacity.setter
@@ -10671,6 +12859,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def MinSize(self):
+        """Minimum number of instances set by the scheduled task.
+        :rtype: int
+        """
         return self._MinSize
 
     @MinSize.setter
@@ -10679,6 +12870,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """Creation time of the scheduled task. The value is in `UTC time` in the format of `YYYY-MM-DDThh:mm:ssZ` according to the `ISO8601` standard.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -10687,6 +12881,9 @@ class ScheduledAction(AbstractModel):
 
     @property
     def ScheduledType(self):
+        """Specifies how the scheduled action is executed. <br><li>`CRONTAB`: execute repeatedly <br><li>`ONCE`: execute only once
+        :rtype: str
+        """
         return self._ScheduledType
 
     @ScheduledType.setter
@@ -10746,6 +12943,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReplaceMonitorUnhealthy(self):
+        """Enables unhealthy instance replacement. If this feature is enabled, AS will replace instances that are flagged as unhealthy by Cloud Monitor. If this parameter is not specified, the value will be False by default.
+        :rtype: bool
+        """
         return self._ReplaceMonitorUnhealthy
 
     @ReplaceMonitorUnhealthy.setter
@@ -10754,6 +12954,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ScalingMode(self):
+        """Valid values: 
+CLASSIC_SCALING: this is the typical scaling method, which creates and terminates instances to perform scaling operations. 
+WAKE_UP_STOPPED_SCALING: this scaling method first tries to start stopped instances. If the number of instances woken up is insufficient, the system creates new instances for scale-out. For scale-in, instances are terminated as in the typical method. You can use the StopAutoScalingInstances API to stop instances in the scaling group. Scale-out operations triggered by alarms will still create new instances.
+Default value: CLASSIC_SCALING
+        :rtype: str
+        """
         return self._ScalingMode
 
     @ScalingMode.setter
@@ -10762,6 +12968,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReplaceLoadBalancerUnhealthy(self):
+        """Enable unhealthy instance replacement. If this feature is enabled, AS will replace instances that are found unhealthy in the CLB health check. If this parameter is not specified, the default value `False` will be used.
+        :rtype: bool
+        """
         return self._ReplaceLoadBalancerUnhealthy
 
     @ReplaceLoadBalancerUnhealthy.setter
@@ -10770,6 +12979,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReplaceMode(self):
+        """Replace mode of unhealthy replacement service. Valid values:
+RECREATE: Rebuild an instance to replace the original unhealthy instance.
+RESET: Performing a system reinstallation on unhealthy instances to keep information such as data disks, private IP addresses, and instance IDs unchanged. The instance login settings, HostName, enhanced services, and UserData will remain consistent with the current launch configuration.
+Default value: RECREATE.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ReplaceMode
 
     @ReplaceMode.setter
@@ -10812,6 +13028,9 @@ class SetInstancesProtectionRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Auto scaling group ID.
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -10820,6 +13039,9 @@ class SetInstancesProtectionRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -10828,6 +13050,9 @@ class SetInstancesProtectionRequest(AbstractModel):
 
     @property
     def ProtectedFromScaleIn(self):
+        """Whether to enable scale-in protection for this instance
+        :rtype: bool
+        """
         return self._ProtectedFromScaleIn
 
     @ProtectedFromScaleIn.setter
@@ -10863,6 +13088,9 @@ class SetInstancesProtectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10892,6 +13120,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxPrice(self):
+        """Bidding price such as "1.05"
+        :rtype: str
+        """
         return self._MaxPrice
 
     @MaxPrice.setter
@@ -10900,6 +13131,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SpotInstanceType(self):
+        """Bid request type. Currently, only "one-time" type is supported. Default value: one-time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SpotInstanceType
 
     @SpotInstanceType.setter
@@ -10954,6 +13189,10 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def BaseCapacity(self):
+        """The minimum number of the scaling group’s capacity that must be fulfilled by pay-as-you-go instances. It defaults to 0 if not specified. Its value cannot exceed the max capacity of the scaling group.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._BaseCapacity
 
     @BaseCapacity.setter
@@ -10962,6 +13201,11 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def OnDemandPercentageAboveBaseCapacity(self):
+        """Controls the percentage of pay-as-you-go instances for the additional capacity beyond `BaseCapacity`. Valid range: 0-100. The value 0 indicates that only spot instances are provisioned, while the value 100 indicates that only pay-as-you-go instances are provisioned. It defaults to 70 if not specified. The number of pay-as-you-go instances calculated on the percentage should be rounded up.
+For example, if the desired capacity is 3, the `BaseCapacity` is set to 1, and the `OnDemandPercentageAboveBaseCapacity` is set to 1, the scaling group will have 2 pay-as-you-go instance (one comes from the base capacity, and the other comes from the rounded up value of the proportion), and 1 spot instance.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._OnDemandPercentageAboveBaseCapacity
 
     @OnDemandPercentageAboveBaseCapacity.setter
@@ -10970,6 +13214,12 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def SpotAllocationStrategy(self):
+        """Specifies how to assign spot instances in a mixed instance mode. Valid values: `COST_OPTIMIZED` and `CAPACITY_OPTIMIZED`; default value: `COST_OPTIMIZED`.
+<br><li>`COST_OPTIMIZED`: the lowest cost policy. For each model in the launch configuration, AS tries to purchase it based on the lowest unit price per core in each availability zone. If the purchase failed, try the second-lowest unit price.
+<br><li>`CAPACITY_OPTIMIZED`: the optimal capacity policy. For each model in the launch configuration, AS tries to purchase it based on the largest stock in each availability zone, minimizing the automatic repossession probability of spot instances.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._SpotAllocationStrategy
 
     @SpotAllocationStrategy.setter
@@ -10978,6 +13228,14 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CompensateWithBaseInstance(self):
+        """Whether to replace with pay-as-you go instances. Valid values:
+<br><li>`TRUE`: yes. After the purchase of spot instances failed due to insufficient stock and other reasons, purchase pay-as-you-go instances.
+<br><li>`FALSE`: no. The scaling group only tries the configured model of spot instances when it needs to add spot instances.
+
+Default value: `TRUE`.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :rtype: bool
+        """
         return self._CompensateWithBaseInstance
 
     @CompensateWithBaseInstance.setter
@@ -11017,6 +13275,9 @@ class StartAutoScalingInstancesRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """The scaling group ID.
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -11025,6 +13286,9 @@ class StartAutoScalingInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """The list of the CVM instances you want to start up.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -11062,6 +13326,9 @@ class StartAutoScalingInstancesResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """The scaling activity ID.
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -11070,6 +13337,9 @@ class StartAutoScalingInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11102,6 +13372,9 @@ class StartInstanceRefreshRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Scaling group ID.
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -11110,6 +13383,9 @@ class StartInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshSettings(self):
+        """Refresh settings.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.RefreshSettings`
+        """
         return self._RefreshSettings
 
     @RefreshSettings.setter
@@ -11118,6 +13394,9 @@ class StartInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshMode(self):
+        """Refresh mode, currently, only rolling updates are supported, with the default value being ROLLING_UPDATE_RESET.
+        :rtype: str
+        """
         return self._RefreshMode
 
     @RefreshMode.setter
@@ -11158,6 +13437,9 @@ class StartInstanceRefreshResponse(AbstractModel):
 
     @property
     def RefreshActivityId(self):
+        """Refresh activity ID.
+        :rtype: str
+        """
         return self._RefreshActivityId
 
     @RefreshActivityId.setter
@@ -11166,6 +13448,9 @@ class StartInstanceRefreshResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11201,6 +13486,9 @@ Default value: KEEP_CHARGING.
 
     @property
     def AutoScalingGroupId(self):
+        """The scaling group ID.
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -11209,6 +13497,9 @@ Default value: KEEP_CHARGING.
 
     @property
     def InstanceIds(self):
+        """The list of the CVM instances you want to shut down.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -11217,6 +13508,12 @@ Default value: KEEP_CHARGING.
 
     @property
     def StoppedMode(self):
+        """Whether the shutdown instances will be charged. Valid values:  
+KEEP_CHARGING: keep charging after shutdown.  
+STOP_CHARGING: stop charging after shutdown.
+Default value: KEEP_CHARGING.
+        :rtype: str
+        """
         return self._StoppedMode
 
     @StoppedMode.setter
@@ -11255,6 +13552,9 @@ class StopAutoScalingInstancesResponse(AbstractModel):
 
     @property
     def ActivityId(self):
+        """The scaling activity ID.
+        :rtype: str
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -11263,6 +13563,9 @@ class StopAutoScalingInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11292,6 +13595,9 @@ class StopInstanceRefreshRequest(AbstractModel):
 
     @property
     def AutoScalingGroupId(self):
+        """Scaling group ID.
+        :rtype: str
+        """
         return self._AutoScalingGroupId
 
     @AutoScalingGroupId.setter
@@ -11300,6 +13606,9 @@ class StopInstanceRefreshRequest(AbstractModel):
 
     @property
     def RefreshActivityId(self):
+        """Refresh activity ID.
+        :rtype: str
+        """
         return self._RefreshActivityId
 
     @RefreshActivityId.setter
@@ -11334,6 +13643,9 @@ class StopInstanceRefreshResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11364,6 +13676,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskType(self):
+        """System disk type. For more information on limits of system disk types, see [Cloud Disk Types](https://intl.cloud.tencent.com/document/product/362/31636). Valid values:<br><li>`LOCAL_BASIC`: local disk <br><li>`LOCAL_SSD`: local SSD disk <br><li>`CLOUD_BASIC`: HDD cloud disk <br><li>`CLOUD_PREMIUM`: premium cloud storage<br><li>`CLOUD_SSD`: SSD cloud disk <br><br>Default value: `CLOUD_PREMIUM`.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._DiskType
 
     @DiskType.setter
@@ -11372,6 +13688,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiskSize(self):
+        """System disk size in GB. Default value: 50
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DiskSize
 
     @DiskSize.setter
@@ -11413,6 +13733,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Key(self):
+        """Tag key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -11421,6 +13744,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
+        """Tag value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -11429,6 +13755,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceType(self):
+        """Type of the resource binded to the tag. Currently supported types include "auto-scaling-group"
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -11467,6 +13797,9 @@ class TargetAttribute(AbstractModel):
 
     @property
     def Port(self):
+        """Port
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -11475,6 +13808,9 @@ class TargetAttribute(AbstractModel):
 
     @property
     def Weight(self):
+        """Weight
+        :rtype: int
+        """
         return self._Weight
 
     @Weight.setter
@@ -11581,6 +13917,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def LaunchConfigurationId(self):
+        """Launch configuration ID.
+        :rtype: str
+        """
         return self._LaunchConfigurationId
 
     @LaunchConfigurationId.setter
@@ -11589,6 +13928,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def ImageId(self):
+        """[Image](https://intl.cloud.tencent.com/document/product/213/4940?from_cn_redirect=1) ID in the format of `img-xxx`. There are three types of images: <br/><li>Public images </li><li>Custom images </li><li>Shared images </li><br/>You can obtain the image IDs in the [CVM console](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE).</li><li>You can also use the [DescribeImages](https://intl.cloud.tencent.com/document/api/213/15715?from_cn_redirect=1) and look for `ImageId` in the response.</li>
+        :rtype: str
+        """
         return self._ImageId
 
     @ImageId.setter
@@ -11597,6 +13939,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def InstanceTypes(self):
+        """List of instance models. Different instance models specify different resource specifications. Up to 5 instance models can be supported.
+        :rtype: list of str
+        """
         return self._InstanceTypes
 
     @InstanceTypes.setter
@@ -11605,6 +13950,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def LaunchConfigurationName(self):
+        """Display name of the launch configuration, which can contain letters, digits, underscores and hyphens (-), and dots. Up to of 60 bytes allowed..
+        :rtype: str
+        """
         return self._LaunchConfigurationName
 
     @LaunchConfigurationName.setter
@@ -11613,6 +13961,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def DataDisks(self):
+        """Information of the instance's data disk configuration. If this parameter is not specified, no data disk is purchased by default. Up to 11 data disks can be supported.
+        :rtype: list of DataDisk
+        """
         return self._DataDisks
 
     @DataDisks.setter
@@ -11621,6 +13972,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def EnhancedService(self):
+        """Enhanced services. You can use this parameter to specify whether to enable services such as Cloud Security and Cloud Monitor. If this parameter is not specified, Cloud Monitor and Cloud Security will be enabled by default.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
+        """
         return self._EnhancedService
 
     @EnhancedService.setter
@@ -11629,6 +13983,11 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def InstanceChargeType(self):
+        """Instance billing type. CVM instances are POSTPAID_BY_HOUR by default.
+<br><li>POSTPAID_BY_HOUR: Pay-as-you-go on an hourly basis
+<br><li>SPOTPAID: Bidding
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -11637,6 +13996,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def InstanceMarketOptions(self):
+        """Market options of the instance, such as parameters related to spot instances. This parameter is required for spot instances.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
+        """
         return self._InstanceMarketOptions
 
     @InstanceMarketOptions.setter
@@ -11645,6 +14007,14 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def InstanceTypesCheckPolicy(self):
+        """Instance type verification policy. Value range: ALL, ANY. Default value: ANY.
+<br><li> ALL: The verification will success only if all instance types (InstanceType) are available; otherwise, an error will be reported.
+<br><li> ANY: The verification will success if any instance type (InstanceType) is available; otherwise, an error will be reported.
+
+Common reasons why an instance type is unavailable include stock-out of the instance type or the corresponding cloud disk.
+If a model in InstanceTypes does not exist or has been discontinued, a verification error will be reported regardless of the value of InstanceTypesCheckPolicy.
+        :rtype: str
+        """
         return self._InstanceTypesCheckPolicy
 
     @InstanceTypesCheckPolicy.setter
@@ -11653,6 +14023,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def InternetAccessible(self):
+        """Configuration of public network bandwidth. If this parameter is not specified, 0 Mbps will be used by default.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
+        """
         return self._InternetAccessible
 
     @InternetAccessible.setter
@@ -11661,6 +14034,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def LoginSettings(self):
+        """This parameter is now invalid and should not be used. Upgrading the launch configuration API does not allow modification or overwriting of the LoginSettings parameter. LoginSettings will not change after upgrade.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
+        """
         return self._LoginSettings
 
     @LoginSettings.setter
@@ -11669,6 +14045,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def ProjectId(self):
+        """Project ID of the instance. Leave it blank as the default.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -11677,6 +14056,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def SecurityGroupIds(self):
+        """The security group to which the instance belongs. This parameter can be obtained by calling the `SecurityGroupId` field in the returned value of [DescribeSecurityGroups](https://intl.cloud.tencent.com/document/api/215/15808?from_cn_redirect=1). If this parameter is not specified, no security group will be bound by default.
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -11685,6 +14067,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def SystemDisk(self):
+        """System disk configuration of the instance. If this parameter is not specified, the default value will be used.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
+        """
         return self._SystemDisk
 
     @SystemDisk.setter
@@ -11693,6 +14078,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def UserData(self):
+        """Base64-encoded custom data of up to 16 KB.
+        :rtype: str
+        """
         return self._UserData
 
     @UserData.setter
@@ -11701,6 +14089,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def InstanceTags(self):
+        """List of tags. This parameter is used to bind up to 10 tags to newly added instances.
+        :rtype: list of InstanceTag
+        """
         return self._InstanceTags
 
     @InstanceTags.setter
@@ -11709,6 +14100,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def CamRoleName(self):
+        """CAM role name, which can be obtained from the roleName field in the return value of the DescribeRoleList API.
+        :rtype: str
+        """
         return self._CamRoleName
 
     @CamRoleName.setter
@@ -11717,6 +14111,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def HostNameSettings(self):
+        """CVM hostname settings.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
+        """
         return self._HostNameSettings
 
     @HostNameSettings.setter
@@ -11725,6 +14122,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def InstanceNameSettings(self):
+        """Settings of CVM instance names
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
+        """
         return self._InstanceNameSettings
 
     @InstanceNameSettings.setter
@@ -11733,6 +14133,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def InstanceChargePrepaid(self):
+        """Details of the monthly subscription, including the purchase period, auto-renewal. It is required if the `InstanceChargeType` is `PREPAID`.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -11741,6 +14144,11 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def DiskTypePolicy(self):
+        """Selection policy of cloud disks. Default value: ORIGINAL. Valid values:
+<br><li>ORIGINAL: uses the configured cloud disk type
+<br><li>AUTOMATIC: automatically chooses an available cloud disk type
+        :rtype: str
+        """
         return self._DiskTypePolicy
 
     @DiskTypePolicy.setter
@@ -11749,6 +14157,9 @@ If a model in InstanceTypes does not exist or has been discontinued, a verificat
 
     @property
     def IPv6InternetAccessible(self):
+        """IPv6 public network bandwidth configuration. If the IPv6 address is available in the new instance, public network bandwidth can be allocated to the IPv6 address. This parameter is invalid if `Ipv6AddressCount` of the scaling group associated with the launch configuration is 0.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
+        """
         return self._IPv6InternetAccessible
 
     @IPv6InternetAccessible.setter
@@ -11831,6 +14242,9 @@ class UpgradeLaunchConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11880,6 +14294,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleHookId(self):
+        """Lifecycle hook ID
+        :rtype: str
+        """
         return self._LifecycleHookId
 
     @LifecycleHookId.setter
@@ -11888,6 +14305,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleHookName(self):
+        """Lifecycle hook name
+        :rtype: str
+        """
         return self._LifecycleHookName
 
     @LifecycleHookName.setter
@@ -11896,6 +14316,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleTransition(self):
+        """Scenario for the lifecycle hook. Value range: "INSTANCE_LAUNCHING", "INSTANCE_TERMINATING"
+        :rtype: str
+        """
         return self._LifecycleTransition
 
     @LifecycleTransition.setter
@@ -11904,6 +14327,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def DefaultResult(self):
+        """Defines the action to be taken by the auto scaling group upon lifecycle hook timeout. Value range: "CONTINUE", "ABANDON". Default value: "CONTINUE"
+        :rtype: str
+        """
         return self._DefaultResult
 
     @DefaultResult.setter
@@ -11912,6 +14338,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def HeartbeatTimeout(self):
+        """The maximum length of time (in seconds) that can elapse before the lifecycle hook times out. Value range: 30-7200. Default value: 300
+        :rtype: int
+        """
         return self._HeartbeatTimeout
 
     @HeartbeatTimeout.setter
@@ -11920,6 +14349,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def NotificationMetadata(self):
+        """Additional information of a notification that Auto Scaling sends to targets. This parameter is set when you configure a notification (default value: "").
+        :rtype: str
+        """
         return self._NotificationMetadata
 
     @NotificationMetadata.setter
@@ -11928,6 +14360,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def NotificationTarget(self):
+        """Notification result. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.NotificationTarget`
+        """
         return self._NotificationTarget
 
     @NotificationTarget.setter
@@ -11936,6 +14371,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleTransitionType(self):
+        """The scenario where the lifecycle hook is applied. `EXTENSION`: the lifecycle hook will be triggered when AttachInstances, DetachInstances or RemoveInstaces is called. `NORMAL`: the lifecycle hook is not triggered by the above APIs. 
+        :rtype: str
+        """
         return self._LifecycleTransitionType
 
     @LifecycleTransitionType.setter
@@ -11944,6 +14382,9 @@ class UpgradeLifecycleHookRequest(AbstractModel):
 
     @property
     def LifecycleCommand(self):
+        """Remote command execution object. `NotificationTarget` and `LifecycleCommand` cannot be specified at the same time.
+        :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LifecycleCommand`
+        """
         return self._LifecycleCommand
 
     @LifecycleCommand.setter
@@ -11989,6 +14430,9 @@ class UpgradeLifecycleHookResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

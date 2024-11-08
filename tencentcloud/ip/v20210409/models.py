@@ -35,6 +35,9 @@ class AllocateCustomerCreditRequest(AbstractModel):
 
     @property
     def AddedCredit(self):
+        """Specific value of the credit allocated to the customer
+        :rtype: float
+        """
         return self._AddedCredit
 
     @AddedCredit.setter
@@ -43,6 +46,9 @@ class AllocateCustomerCreditRequest(AbstractModel):
 
     @property
     def ClientUin(self):
+        """Customer UIN
+        :rtype: int
+        """
         return self._ClientUin
 
     @ClientUin.setter
@@ -83,6 +89,9 @@ class AllocateCustomerCreditResponse(AbstractModel):
 
     @property
     def TotalCredit(self):
+        """The updated total credit
+        :rtype: float
+        """
         return self._TotalCredit
 
     @TotalCredit.setter
@@ -91,6 +100,9 @@ class AllocateCustomerCreditResponse(AbstractModel):
 
     @property
     def RemainingCredit(self):
+        """The updated available credit
+        :rtype: float
+        """
         return self._RemainingCredit
 
     @RemainingCredit.setter
@@ -99,6 +111,9 @@ class AllocateCustomerCreditResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -138,6 +153,9 @@ class CountryCodeItem(AbstractModel):
 
     @property
     def EnName(self):
+        """Country/region name in English
+        :rtype: str
+        """
         return self._EnName
 
     @EnName.setter
@@ -146,6 +164,9 @@ class CountryCodeItem(AbstractModel):
 
     @property
     def Name(self):
+        """Country/region name in Chinese
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -154,6 +175,9 @@ class CountryCodeItem(AbstractModel):
 
     @property
     def IOS2(self):
+        """IOS2 standard country/region code
+        :rtype: str
+        """
         return self._IOS2
 
     @IOS2.setter
@@ -162,6 +186,9 @@ class CountryCodeItem(AbstractModel):
 
     @property
     def IOS3(self):
+        """IOS3 standard country/region code
+        :rtype: str
+        """
         return self._IOS3
 
     @IOS3.setter
@@ -170,6 +197,9 @@ class CountryCodeItem(AbstractModel):
 
     @property
     def Code(self):
+        """Phone code
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -232,6 +262,9 @@ A global mobile number within 1-32 digits is allowed, such as 18888888888.
 
     @property
     def AccountType(self):
+        """Account type of a new customer. Valid values: `personal`, `company`.
+        :rtype: str
+        """
         return self._AccountType
 
     @AccountType.setter
@@ -240,6 +273,10 @@ A global mobile number within 1-32 digits is allowed, such as 18888888888.
 
     @property
     def Mail(self):
+        """Registered email address, which should be valid and correct.
+For example, account@qq.com.
+        :rtype: str
+        """
         return self._Mail
 
     @Mail.setter
@@ -248,6 +285,11 @@ A global mobile number within 1-32 digits is allowed, such as 18888888888.
 
     @property
     def Password(self):
+        """Account password
+Length limit: 8-20 characters
+A password must contain numbers, letters, and special symbols [!@#$%^&*()]. Spaces are not allowed.
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -256,6 +298,9 @@ A global mobile number within 1-32 digits is allowed, such as 18888888888.
 
     @property
     def ConfirmPassword(self):
+        """Confirm the password. It must be the same as the `Password` field.
+        :rtype: str
+        """
         return self._ConfirmPassword
 
     @ConfirmPassword.setter
@@ -264,6 +309,10 @@ A global mobile number within 1-32 digits is allowed, such as 18888888888.
 
     @property
     def PhoneNum(self):
+        """Customer mobile number, which should be valid and correct.
+A global mobile number within 1-32 digits is allowed, such as 18888888888.
+        :rtype: str
+        """
         return self._PhoneNum
 
     @PhoneNum.setter
@@ -272,6 +321,9 @@ A global mobile number within 1-32 digits is allowed, such as 18888888888.
 
     @property
     def CountryCode(self):
+        """Customer’s country/region code, which can be obtained via the `GetCountryCodes` API, such as “852”.
+        :rtype: str
+        """
         return self._CountryCode
 
     @CountryCode.setter
@@ -280,6 +332,9 @@ A global mobile number within 1-32 digits is allowed, such as 18888888888.
 
     @property
     def Area(self):
+        """Customer’s ISO2 standard country/region code, which can be obtained via the `GetCountryCodes` API. It should correspond to the `CountryCode` field, such as `HK`.
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -288,6 +343,9 @@ A global mobile number within 1-32 digits is allowed, such as 18888888888.
 
     @property
     def Extended(self):
+        """Expanded field, which is left empty by default.
+        :rtype: str
+        """
         return self._Extended
 
     @Extended.setter
@@ -331,6 +389,9 @@ class CreateAccountResponse(AbstractModel):
 
     @property
     def Uin(self):
+        """Account UIN
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -339,6 +400,9 @@ class CreateAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -374,6 +438,9 @@ class GetCountryCodesResponse(AbstractModel):
 
     @property
     def Data(self):
+        """List of country/region codes
+        :rtype: list of CountryCodeItem
+        """
         return self._Data
 
     @Data.setter
@@ -382,6 +449,9 @@ class GetCountryCodesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -422,6 +492,9 @@ class QueryCreditAllocationHistoryData(AbstractModel):
 
     @property
     def AllocatedTime(self):
+        """Allocation time
+        :rtype: str
+        """
         return self._AllocatedTime
 
     @AllocatedTime.setter
@@ -430,6 +503,9 @@ class QueryCreditAllocationHistoryData(AbstractModel):
 
     @property
     def Operator(self):
+        """Operator
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -438,6 +514,9 @@ class QueryCreditAllocationHistoryData(AbstractModel):
 
     @property
     def Credit(self):
+        """Allocated credit value
+        :rtype: float
+        """
         return self._Credit
 
     @Credit.setter
@@ -446,6 +525,9 @@ class QueryCreditAllocationHistoryData(AbstractModel):
 
     @property
     def AllocatedCredit(self):
+        """The allocated total credit
+        :rtype: float
+        """
         return self._AllocatedCredit
 
     @AllocatedCredit.setter
@@ -488,6 +570,9 @@ class QueryCreditAllocationHistoryRequest(AbstractModel):
 
     @property
     def ClientUin(self):
+        """Customer UIN
+        :rtype: int
+        """
         return self._ClientUin
 
     @ClientUin.setter
@@ -496,6 +581,9 @@ class QueryCreditAllocationHistoryRequest(AbstractModel):
 
     @property
     def Page(self):
+        """Page number
+        :rtype: int
+        """
         return self._Page
 
     @Page.setter
@@ -504,6 +592,9 @@ class QueryCreditAllocationHistoryRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """Number of data entries per page
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -547,6 +638,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
+        """Total number of records
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -555,6 +650,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def History(self):
+        """List of record details
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of QueryCreditAllocationHistoryData
+        """
         return self._History
 
     @History.setter
@@ -563,6 +662,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -631,6 +733,9 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def Name(self):
+        """Name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -639,6 +744,9 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def Type(self):
+        """Type
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -647,6 +755,9 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def Mobile(self):
+        """Phone
+        :rtype: str
+        """
         return self._Mobile
 
     @Mobile.setter
@@ -655,6 +766,9 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def Email(self):
+        """Email
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -663,6 +777,9 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def Arrears(self):
+        """Overdue payment flag
+        :rtype: str
+        """
         return self._Arrears
 
     @Arrears.setter
@@ -671,6 +788,9 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def AssociationTime(self):
+        """Binding time
+        :rtype: str
+        """
         return self._AssociationTime
 
     @AssociationTime.setter
@@ -679,6 +799,9 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def RecentExpiry(self):
+        """Expiration time
+        :rtype: str
+        """
         return self._RecentExpiry
 
     @RecentExpiry.setter
@@ -687,6 +810,9 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def ClientUin(self):
+        """The UIN of reseller’s customer
+        :rtype: int
+        """
         return self._ClientUin
 
     @ClientUin.setter
@@ -695,6 +821,9 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def Credit(self):
+        """Credit granted to reseller’s customer
+        :rtype: float
+        """
         return self._Credit
 
     @Credit.setter
@@ -703,6 +832,9 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def RemainingCredit(self):
+        """The remaining credit of reseller’s customer
+        :rtype: float
+        """
         return self._RemainingCredit
 
     @RemainingCredit.setter
@@ -711,6 +843,9 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def IdentifyType(self):
+        """0: Identity not verified; 1: Individual identity verified; 2: Enterprise identity verified.
+        :rtype: int
+        """
         return self._IdentifyType
 
     @IdentifyType.setter
@@ -719,6 +854,9 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def Remark(self):
+        """Customer remarks
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -727,6 +865,9 @@ class QueryCustomersCreditData(AbstractModel):
 
     @property
     def Force(self):
+        """Forced status
+        :rtype: int
+        """
         return self._Force
 
     @Force.setter
@@ -784,6 +925,9 @@ class QueryCustomersCreditRequest(AbstractModel):
 
     @property
     def FilterType(self):
+        """Search condition type. You can only search by UIN, name, or remarks.
+        :rtype: str
+        """
         return self._FilterType
 
     @FilterType.setter
@@ -792,6 +936,9 @@ class QueryCustomersCreditRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """Search condition
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -800,6 +947,9 @@ class QueryCustomersCreditRequest(AbstractModel):
 
     @property
     def Page(self):
+        """A pagination parameter that specifies the current page number, with a value starting from 1.
+        :rtype: int
+        """
         return self._Page
 
     @Page.setter
@@ -808,6 +958,9 @@ class QueryCustomersCreditRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """A pagination parameter that specifies the number of entries per page.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -816,6 +969,9 @@ class QueryCustomersCreditRequest(AbstractModel):
 
     @property
     def Order(self):
+        """A sort parameter that specifies the sort order. Valid values: `desc` (descending order), or `asc` (ascending order) based on `AssociationTime`. The value will be `desc` if left empty.
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -860,6 +1016,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
+        """Queries the list of customers
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of QueryCustomersCreditData
+        """
         return self._Data
 
     @Data.setter
@@ -868,6 +1028,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
+        """Number of customers
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -876,6 +1039,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -923,6 +1089,9 @@ class QueryPartnerCreditResponse(AbstractModel):
 
     @property
     def AllocatedCredit(self):
+        """Allocated credit
+        :rtype: float
+        """
         return self._AllocatedCredit
 
     @AllocatedCredit.setter
@@ -931,6 +1100,9 @@ class QueryPartnerCreditResponse(AbstractModel):
 
     @property
     def TotalCredit(self):
+        """Total credit
+        :rtype: float
+        """
         return self._TotalCredit
 
     @TotalCredit.setter
@@ -939,6 +1111,9 @@ class QueryPartnerCreditResponse(AbstractModel):
 
     @property
     def RemainingCredit(self):
+        """Remaining credit
+        :rtype: float
+        """
         return self._RemainingCredit
 
     @RemainingCredit.setter
@@ -947,6 +1122,9 @@ class QueryPartnerCreditResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

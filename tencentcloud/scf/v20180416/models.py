@@ -51,6 +51,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FunctionVersion(self):
+        """Master version pointed to by the alias
+        :rtype: str
+        """
         return self._FunctionVersion
 
     @FunctionVersion.setter
@@ -59,6 +62,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
+        """Alias name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -67,6 +73,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoutingConfig(self):
+        """Routing information of alias
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
+        """
         return self._RoutingConfig
 
     @RoutingConfig.setter
@@ -75,6 +85,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """Description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -83,6 +97,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddTime(self):
+        """Creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -91,6 +109,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModTime(self):
+        """Update time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -146,6 +168,9 @@ class AsyncEvent(AbstractModel):
 
     @property
     def InvokeRequestId(self):
+        """Invocation request ID
+        :rtype: str
+        """
         return self._InvokeRequestId
 
     @InvokeRequestId.setter
@@ -154,6 +179,9 @@ class AsyncEvent(AbstractModel):
 
     @property
     def InvokeType(self):
+        """Invocation type
+        :rtype: str
+        """
         return self._InvokeType
 
     @InvokeType.setter
@@ -162,6 +190,9 @@ class AsyncEvent(AbstractModel):
 
     @property
     def Qualifier(self):
+        """Function version
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -170,6 +201,9 @@ class AsyncEvent(AbstractModel):
 
     @property
     def Status(self):
+        """Event status. Values: `RUNNING`; `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed)
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -178,6 +212,9 @@ class AsyncEvent(AbstractModel):
 
     @property
     def StartTime(self):
+        """Invocation start time in the format of "%Y-%m-%d %H:%M:%S.%f"
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -186,6 +223,9 @@ class AsyncEvent(AbstractModel):
 
     @property
     def EndTime(self):
+        """Invocation end time in the format of "%Y-%m-%d %H:%M:%S.%f"
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -230,6 +270,9 @@ class AsyncEventStatus(AbstractModel):
 
     @property
     def Status(self):
+        """Async event status. Values: `RUNNING` (running); `FINISHED` (invoked successfully); `ABORTED` (invocation ended); `FAILED` (invocation failed).
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -238,6 +281,9 @@ class AsyncEventStatus(AbstractModel):
 
     @property
     def StatusCode(self):
+        """Request status code
+        :rtype: int
+        """
         return self._StatusCode
 
     @StatusCode.setter
@@ -246,6 +292,9 @@ class AsyncEventStatus(AbstractModel):
 
     @property
     def InvokeRequestId(self):
+        """Async execution request ID
+        :rtype: str
+        """
         return self._InvokeRequestId
 
     @InvokeRequestId.setter
@@ -284,6 +333,9 @@ class AsyncTriggerConfig(AbstractModel):
 
     @property
     def RetryConfig(self):
+        """Async retry configuration of function upon user error
+        :rtype: list of RetryConfig
+        """
         return self._RetryConfig
 
     @RetryConfig.setter
@@ -292,6 +344,9 @@ class AsyncTriggerConfig(AbstractModel):
 
     @property
     def MsgTTL(self):
+        """Message retention period
+        :rtype: int
+        """
         return self._MsgTTL
 
     @MsgTTL.setter
@@ -373,6 +428,9 @@ class Code(AbstractModel):
 
     @property
     def CosBucketName(self):
+        """Object bucket name (enter the custom part of the bucket name without `-appid`)
+        :rtype: str
+        """
         return self._CosBucketName
 
     @CosBucketName.setter
@@ -381,6 +439,9 @@ class Code(AbstractModel):
 
     @property
     def CosObjectName(self):
+        """File path of code package stored in COS, which should start with “/”
+        :rtype: str
+        """
         return self._CosObjectName
 
     @CosObjectName.setter
@@ -389,6 +450,9 @@ class Code(AbstractModel):
 
     @property
     def ZipFile(self):
+        """This parameter contains a .zip file (up to 50 MB) of the function code file and its dependencies. When this API is used, the content of the .zip file needs to be Base64-encoded
+        :rtype: str
+        """
         return self._ZipFile
 
     @ZipFile.setter
@@ -397,6 +461,9 @@ class Code(AbstractModel):
 
     @property
     def CosBucketRegion(self):
+        """COS region. For Beijing regions, you need to import `ap-beijing`. For Beijing Region 1, you need to input `ap-beijing-1`. For other regions, no import is required.
+        :rtype: str
+        """
         return self._CosBucketRegion
 
     @CosBucketRegion.setter
@@ -405,6 +472,9 @@ class Code(AbstractModel):
 
     @property
     def DemoId(self):
+        """`DemoId` is required if Demo is used for the creation.
+        :rtype: str
+        """
         return self._DemoId
 
     @DemoId.setter
@@ -413,6 +483,9 @@ class Code(AbstractModel):
 
     @property
     def TempCosObjectName(self):
+        """`TempCosObjectName` is required if TempCos is used for the creation.
+        :rtype: str
+        """
         return self._TempCosObjectName
 
     @TempCosObjectName.setter
@@ -421,6 +494,9 @@ class Code(AbstractModel):
 
     @property
     def GitUrl(self):
+        """(Disused) Git address
+        :rtype: str
+        """
         return self._GitUrl
 
     @GitUrl.setter
@@ -429,6 +505,9 @@ class Code(AbstractModel):
 
     @property
     def GitUserName(self):
+        """(Disused) Git username
+        :rtype: str
+        """
         return self._GitUserName
 
     @GitUserName.setter
@@ -437,6 +516,9 @@ class Code(AbstractModel):
 
     @property
     def GitPassword(self):
+        """(Disused) Git password
+        :rtype: str
+        """
         return self._GitPassword
 
     @GitPassword.setter
@@ -445,6 +527,9 @@ class Code(AbstractModel):
 
     @property
     def GitPasswordSecret(self):
+        """(Disused) Git password after encryption. It’s usually not required.
+        :rtype: str
+        """
         return self._GitPasswordSecret
 
     @GitPasswordSecret.setter
@@ -453,6 +538,9 @@ class Code(AbstractModel):
 
     @property
     def GitBranch(self):
+        """(Disused) Git branch
+        :rtype: str
+        """
         return self._GitBranch
 
     @GitBranch.setter
@@ -461,6 +549,9 @@ class Code(AbstractModel):
 
     @property
     def GitDirectory(self):
+        """(Disused) Directory to the codes in the Git repository. 
+        :rtype: str
+        """
         return self._GitDirectory
 
     @GitDirectory.setter
@@ -469,6 +560,9 @@ class Code(AbstractModel):
 
     @property
     def GitCommitId(self):
+        """(Disused) 
+        :rtype: str
+        """
         return self._GitCommitId
 
     @GitCommitId.setter
@@ -477,6 +571,9 @@ class Code(AbstractModel):
 
     @property
     def GitUserNameSecret(self):
+        """(Disused) Git username after encryption. It’s usually not required.
+        :rtype: str
+        """
         return self._GitUserNameSecret
 
     @GitUserNameSecret.setter
@@ -485,6 +582,9 @@ class Code(AbstractModel):
 
     @property
     def ImageConfig(self):
+        """TCR image configurations
+        :rtype: :class:`tencentcloud.scf.v20180416.models.ImageConfig`
+        """
         return self._ImageConfig
 
     @ImageConfig.setter
@@ -560,6 +660,9 @@ FALSE: Does not replicate the function configuration.
 
     @property
     def FunctionName(self):
+        """Name of the function to be replicated
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -568,6 +671,9 @@ FALSE: Does not replicate the function configuration.
 
     @property
     def NewFunctionName(self):
+        """Name of the new function
+        :rtype: str
+        """
         return self._NewFunctionName
 
     @NewFunctionName.setter
@@ -576,6 +682,9 @@ FALSE: Does not replicate the function configuration.
 
     @property
     def Namespace(self):
+        """Namespace of the function to be replicated. The default value is `default`.
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -584,6 +693,9 @@ FALSE: Does not replicate the function configuration.
 
     @property
     def TargetNamespace(self):
+        """Namespace of the replicated function. The default value is default.
+        :rtype: str
+        """
         return self._TargetNamespace
 
     @TargetNamespace.setter
@@ -592,6 +704,9 @@ FALSE: Does not replicate the function configuration.
 
     @property
     def Description(self):
+        """Description of the new function
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -600,6 +715,9 @@ FALSE: Does not replicate the function configuration.
 
     @property
     def TargetRegion(self):
+        """Region of the target of the function replication. If the value is not set, the current region is used by default.
+        :rtype: str
+        """
         return self._TargetRegion
 
     @TargetRegion.setter
@@ -608,6 +726,12 @@ FALSE: Does not replicate the function configuration.
 
     @property
     def Override(self):
+        """It specifies whether to replace the function with the same name in the target namespace. The default option is `FALSE`.
+(Note: The `TRUE` option results in deletion of the function in the target namespace. Please operate with caution.)
+TRUE: Replaces the function.
+FALSE: Does not replace the function.
+        :rtype: bool
+        """
         return self._Override
 
     @Override.setter
@@ -616,6 +740,11 @@ FALSE: Does not replicate the function configuration.
 
     @property
     def CopyConfiguration(self):
+        """It specifies whether to replicate the function attributes, including environment variables, memory, timeout, function description, labels, and VPC. The default value is `TRUE`.
+TRUE: Replicates the function configuration.
+FALSE: Does not replicate the function configuration.
+        :rtype: bool
+        """
         return self._CopyConfiguration
 
     @CopyConfiguration.setter
@@ -656,6 +785,9 @@ class CopyFunctionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -696,6 +828,9 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Alias name, which must be unique in the function, can contain 1 to 64 letters, digits, `_`, and `-`, and must begin with a letter
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -704,6 +839,9 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -712,6 +850,9 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def FunctionVersion(self):
+        """Master version pointed to by the alias
+        :rtype: str
+        """
         return self._FunctionVersion
 
     @FunctionVersion.setter
@@ -720,6 +861,9 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -728,6 +872,9 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def RoutingConfig(self):
+        """Request routing configuration of alias
+        :rtype: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
+        """
         return self._RoutingConfig
 
     @RoutingConfig.setter
@@ -736,6 +883,9 @@ class CreateAliasRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Alias description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -776,6 +926,9 @@ class CreateAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -804,6 +957,9 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Namespace name
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -812,6 +968,9 @@ class CreateNamespaceRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Namespace description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -846,6 +1005,9 @@ class CreateNamespaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -895,6 +1057,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Name of the function bound to the new trigger
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -903,6 +1068,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def TriggerName(self):
+        """Name of a new trigger. For a timer trigger, the name can contain up to 100 letters, digits, dashes, and underscores; for a COS trigger, it should be an access domain name of the corresponding COS bucket applicable to the XML API (e.g., 5401-5ff414-12345.cos.ap-shanghai.myqcloud.com); for other triggers, please see the descriptions of parameters bound to the specific trigger.
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -911,6 +1079,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Type of trigger. Values: `cos`, `cmq`, `timer`, `ckafka` and `apigw`. To create a CLS trigger, please refer to [Creating Shipping Task (SCF)](https://intl.cloud.tencent.com/document/product/614/61096?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -919,6 +1090,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def TriggerDesc(self):
+        """For parameters of triggers, see [Trigger Description](https://intl.cloud.tencent.com/document/product/583/39901?from_cn_redirect=1)
+        :rtype: str
+        """
         return self._TriggerDesc
 
     @TriggerDesc.setter
@@ -927,6 +1101,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -935,6 +1112,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -943,6 +1123,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """Initial enabling status of the trigger. `OPEN` indicates enabled, and `CLOSE` indicates disabled.
+        :rtype: str
+        """
         return self._Enable
 
     @Enable.setter
@@ -951,6 +1134,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def CustomArgument(self):
+        """Custom argument, supporting only the timer trigger.
+        :rtype: str
+        """
         return self._CustomArgument
 
     @CustomArgument.setter
@@ -959,6 +1145,9 @@ class CreateTriggerRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Trigger description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1003,6 +1192,9 @@ class CreateTriggerResponse(AbstractModel):
 
     @property
     def TriggerInfo(self):
+        """Trigger information
+        :rtype: :class:`tencentcloud.scf.v20180416.models.Trigger`
+        """
         return self._TriggerInfo
 
     @TriggerInfo.setter
@@ -1011,6 +1203,9 @@ class CreateTriggerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1045,6 +1240,9 @@ class DeleteAliasRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -1053,6 +1251,9 @@ class DeleteAliasRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Alias name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1061,6 +1262,9 @@ class DeleteAliasRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1096,6 +1300,9 @@ class DeleteAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1127,6 +1334,9 @@ class DeleteFunctionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Name of the function to be deleted
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -1135,6 +1345,9 @@ class DeleteFunctionRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1143,6 +1356,9 @@ class DeleteFunctionRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """ID of the version to delete. All versions are deleted if it’s left empty.
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -1178,6 +1394,9 @@ class DeleteFunctionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1206,6 +1425,9 @@ class DeleteLayerVersionRequest(AbstractModel):
 
     @property
     def LayerName(self):
+        """Layer name
+        :rtype: str
+        """
         return self._LayerName
 
     @LayerName.setter
@@ -1214,6 +1436,9 @@ class DeleteLayerVersionRequest(AbstractModel):
 
     @property
     def LayerVersion(self):
+        """Version number
+        :rtype: int
+        """
         return self._LayerVersion
 
     @LayerVersion.setter
@@ -1248,6 +1473,9 @@ class DeleteLayerVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1273,6 +1501,9 @@ class DeleteNamespaceRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Namespace name
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1306,6 +1537,9 @@ class DeleteNamespaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1337,6 +1571,9 @@ class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Name of the function for which to delete the provisioned concurrency
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -1345,6 +1582,9 @@ class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """Function version number
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -1353,6 +1593,9 @@ class DeleteProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace. Default value: `default`
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1388,6 +1631,9 @@ class DeleteProvisionedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1416,6 +1662,9 @@ class DeleteReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Specifies the function of which you want to delete the reserved quota
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -1424,6 +1673,9 @@ class DeleteReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace. Default value: `default`
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1458,6 +1710,9 @@ class DeleteReservedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1498,6 +1753,9 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -1506,6 +1764,9 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def TriggerName(self):
+        """Name of the trigger to be deleted
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -1514,6 +1775,9 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Type of the trigger to be deleted. Currently, COS, CMQ, timer, and ckafka triggers are supported.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1522,6 +1786,9 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1530,6 +1797,9 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def TriggerDesc(self):
+        """This field is required if a COS trigger is to be deleted. It stores the data {"event":"cos:ObjectCreated:*"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.
+        :rtype: str
+        """
         return self._TriggerDesc
 
     @TriggerDesc.setter
@@ -1538,6 +1808,9 @@ class DeleteTriggerRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -1576,6 +1849,9 @@ class DeleteTriggerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1609,6 +1885,12 @@ When `Name` is `Runtime`, `CustomImage` refers to the image type function
 
     @property
     def Name(self):
+        """Fields to be filtered. Up to 10 conditions allowed.
+Values of `Name`: `VpcId`, `SubnetId`, `ClsTopicId`, `ClsLogsetId`, `Role`, `CfsId`, `CfsMountInsId`, `Eip`. Values limit: 1.
+Name options: Status, Runtime, FunctionType, PublicNetStatus, AsyncRunEnable, TraceEnable. Values limit: 20.
+When `Name` is `Runtime`, `CustomImage` refers to the image type function 
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1617,6 +1899,9 @@ When `Name` is `Runtime`, `CustomImage` refers to the image type function
 
     @property
     def Values(self):
+        """Filter values of the field
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -1699,6 +1984,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModTime(self):
+        """Modification time
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -1707,6 +1995,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -1715,6 +2006,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Runtime(self):
+        """Runtime 
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Runtime
 
     @Runtime.setter
@@ -1723,6 +2018,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -1731,6 +2029,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FunctionId(self):
+        """Function ID
+        :rtype: str
+        """
         return self._FunctionId
 
     @FunctionId.setter
@@ -1739,6 +2040,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Namespace(self):
+        """Namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -1747,6 +2051,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Function status. For valid values and status change process, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1)
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1755,6 +2062,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusDesc(self):
+        """Function status details
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -1763,6 +2073,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """Function description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1771,6 +2084,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """Function tag
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1779,6 +2095,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """Function type. The value is `HTTP` or `Event`.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1787,6 +2106,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusReasons(self):
+        """Cause of function failure
+        :rtype: list of StatusReason
+        """
         return self._StatusReasons
 
     @StatusReasons.setter
@@ -1795,6 +2117,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalProvisionedConcurrencyMem(self):
+        """Sum of provisioned concurrence memory for all function versions
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalProvisionedConcurrencyMem
 
     @TotalProvisionedConcurrencyMem.setter
@@ -1803,6 +2129,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReservedConcurrencyMem(self):
+        """Reserved memory for function concurrence
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ReservedConcurrencyMem
 
     @ReservedConcurrencyMem.setter
@@ -1811,6 +2141,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AsyncRunEnable(self):
+        """Asynchronization attribute of the function. Values: `TRUE` and `FALSE`.
+        :rtype: str
+        """
         return self._AsyncRunEnable
 
     @AsyncRunEnable.setter
@@ -1819,6 +2152,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TraceEnable(self):
+        """Whether to enable call tracing for ansynchronized functions. Values: `TRUE` and `FALSE`.
+        :rtype: str
+        """
         return self._TraceEnable
 
     @TraceEnable.setter
@@ -1913,6 +2249,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -1921,6 +2260,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def RetMsg(self):
+        """Return value after the function is executed
+        :rtype: str
+        """
         return self._RetMsg
 
     @RetMsg.setter
@@ -1929,6 +2271,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def RequestId(self):
+        """RequestId corresponding to the executed function
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1937,6 +2282,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time of the function execution
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1945,6 +2293,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def RetCode(self):
+        """Function execution result. `0` indicates successful execution and other values indicate failure.
+        :rtype: int
+        """
         return self._RetCode
 
     @RetCode.setter
@@ -1953,6 +2304,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def InvokeFinished(self):
+        """It specifies whether the function invocation is finished. `1` indicates execution completion and other values indicate that exceptions occurred during the invocation.
+        :rtype: int
+        """
         return self._InvokeFinished
 
     @InvokeFinished.setter
@@ -1961,6 +2315,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def Duration(self):
+        """Duration of the function execution. The unit is millisecond (ms).
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -1969,6 +2326,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def BillDuration(self):
+        """Function billing duration. The unit is millisecond (ms). The value is rounded up to a multiple of 100 ms.
+        :rtype: int
+        """
         return self._BillDuration
 
     @BillDuration.setter
@@ -1977,6 +2337,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def MemUsage(self):
+        """Actual memory size used during the function execution. The unit is byte.
+        :rtype: int
+        """
         return self._MemUsage
 
     @MemUsage.setter
@@ -1985,6 +2348,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def Log(self):
+        """Function execution logs
+        :rtype: str
+        """
         return self._Log
 
     @Log.setter
@@ -1993,6 +2359,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def Level(self):
+        """Log level
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -2001,6 +2370,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def Source(self):
+        """Log source
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -2009,6 +2381,9 @@ class FunctionLog(AbstractModel):
 
     @property
     def RetryNum(self):
+        """Number of retries
+        :rtype: int
+        """
         return self._RetryNum
 
     @RetryNum.setter
@@ -2070,6 +2445,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Version(self):
+        """Function version name
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -2078,6 +2456,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Description(self):
+        """Version description
+Note: This field may return null, indicating that no valid values is found.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2086,6 +2468,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AddTime(self):
+        """The creation time
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -2094,6 +2480,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ModTime(self):
+        """Update time
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -2102,6 +2492,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Version status
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2151,6 +2545,9 @@ class GetAccountResponse(AbstractModel):
 
     @property
     def AccountUsage(self):
+        """Namespace usage information
+        :rtype: :class:`tencentcloud.scf.v20180416.models.UsageInfo`
+        """
         return self._AccountUsage
 
     @AccountUsage.setter
@@ -2159,6 +2556,9 @@ class GetAccountResponse(AbstractModel):
 
     @property
     def AccountLimit(self):
+        """Namespace limit information
+        :rtype: :class:`tencentcloud.scf.v20180416.models.LimitsInfo`
+        """
         return self._AccountLimit
 
     @AccountLimit.setter
@@ -2167,6 +2567,9 @@ class GetAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2204,6 +2607,9 @@ class GetAliasRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -2212,6 +2618,9 @@ class GetAliasRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Alias name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2220,6 +2629,9 @@ class GetAliasRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -2276,6 +2688,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FunctionVersion(self):
+        """Master version pointed to by the alias
+        :rtype: str
+        """
         return self._FunctionVersion
 
     @FunctionVersion.setter
@@ -2284,6 +2699,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
+        """Alias name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2292,6 +2710,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoutingConfig(self):
+        """Routing information of alias
+        :rtype: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
+        """
         return self._RoutingConfig
 
     @RoutingConfig.setter
@@ -2300,6 +2721,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """Alias description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2308,6 +2733,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddTime(self):
+        """Creation time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -2316,6 +2745,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModTime(self):
+        """Update time
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -2324,6 +2757,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2357,6 +2793,9 @@ class GetAsyncEventStatusRequest(AbstractModel):
 
     @property
     def InvokeRequestId(self):
+        """ID of the async execution request
+        :rtype: str
+        """
         return self._InvokeRequestId
 
     @InvokeRequestId.setter
@@ -2393,6 +2832,9 @@ class GetAsyncEventStatusResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Async event status
+        :rtype: :class:`tencentcloud.scf.v20180416.models.AsyncEventStatus`
+        """
         return self._Result
 
     @Result.setter
@@ -2401,6 +2843,9 @@ class GetAsyncEventStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2435,6 +2880,9 @@ class GetFunctionAddressRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -2443,6 +2891,9 @@ class GetFunctionAddressRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """Function version
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -2451,6 +2902,9 @@ class GetFunctionAddressRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -2492,6 +2946,9 @@ class GetFunctionAddressResponse(AbstractModel):
 
     @property
     def Url(self):
+        """Cos address of the function
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -2500,6 +2957,9 @@ class GetFunctionAddressResponse(AbstractModel):
 
     @property
     def CodeSha256(self):
+        """SHA256 code of the function
+        :rtype: str
+        """
         return self._CodeSha256
 
     @CodeSha256.setter
@@ -2508,6 +2968,9 @@ class GetFunctionAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2541,6 +3004,9 @@ class GetFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -2549,6 +3015,9 @@ class GetFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace. Default value: default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -2557,6 +3026,9 @@ class GetFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """Function version. Default value: $LATEST
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -2595,6 +3067,9 @@ class GetFunctionEventInvokeConfigResponse(AbstractModel):
 
     @property
     def AsyncTriggerConfig(self):
+        """Async retry configuration information
+        :rtype: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`
+        """
         return self._AsyncTriggerConfig
 
     @AsyncTriggerConfig.setter
@@ -2603,6 +3078,9 @@ class GetFunctionEventInvokeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2666,6 +3144,11 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name.
+- To ensure the compatibility of the [`GetFunctionLogs`](https://intl.cloud.tencent.com/document/product/583/18583?from_cn_redirect=1) API, the input parameter `FunctionName` is optional, but we recommend you enter it; otherwise, log acquisition may fail.
+- After the function is connected to CLS, we recommend you use the [related CLS API](https://intl.cloud.tencent.com/document/product/614/16875?from_cn_redirect=1) to get the best log retrieval experience.
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -2674,6 +3157,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Data offset. The addition of `Offset` and `Limit` cannot exceed 10,000.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2682,6 +3168,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Length of the return data. The addition of `Offset` and `Limit` cannot exceed 10,000.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2690,6 +3179,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """It specifies whether to sort the logs in an ascending or descending order. The value is `desc` or `asc`.
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -2698,6 +3190,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """It specifies the sorting order of the logs based on a specified field, such as `function_name`, `duration`, `mem_usage`, and `start_time`.
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -2706,6 +3201,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """Log filter used to identify whether to return logs of successful or failed requests. `filter.RetCode=not0` indicates that only the logs of failed requests will be returned. `filter.RetCode=is0` indicates that only the logs of successful requests will be returned. If this parameter is left blank, all logs will be returned. 
+        :rtype: :class:`tencentcloud.scf.v20180416.models.LogFilter`
+        """
         return self._Filter
 
     @Filter.setter
@@ -2714,6 +3212,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -2722,6 +3223,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """Function version
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -2730,6 +3234,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def FunctionRequestId(self):
+        """RequestId corresponding to the executed function
+        :rtype: str
+        """
         return self._FunctionRequestId
 
     @FunctionRequestId.setter
@@ -2738,6 +3245,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Query date, for example, 2017-05-16 20:00:00. The date must be within one day of the end time.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2746,6 +3256,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Query date, for example, 2017-05-16 20:59:59. The date must be within one day of the start time.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2754,6 +3267,9 @@ class GetFunctionLogsRequest(AbstractModel):
 
     @property
     def SearchContext(self):
+        """This field is disused.
+        :rtype: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
+        """
         return self._SearchContext
 
     @SearchContext.setter
@@ -2811,6 +3327,9 @@ class GetFunctionLogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of function logs
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2819,6 +3338,9 @@ class GetFunctionLogsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Function log information
+        :rtype: list of FunctionLog
+        """
         return self._Data
 
     @Data.setter
@@ -2827,6 +3349,9 @@ class GetFunctionLogsResponse(AbstractModel):
 
     @property
     def SearchContext(self):
+        """This field is disused.
+        :rtype: :class:`tencentcloud.scf.v20180416.models.LogSearchContext`
+        """
         return self._SearchContext
 
     @SearchContext.setter
@@ -2835,6 +3360,9 @@ class GetFunctionLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2873,6 +3401,9 @@ class GetLayerVersionRequest(AbstractModel):
 
     @property
     def LayerName(self):
+        """Layer name
+        :rtype: str
+        """
         return self._LayerName
 
     @LayerName.setter
@@ -2881,6 +3412,9 @@ class GetLayerVersionRequest(AbstractModel):
 
     @property
     def LayerVersion(self):
+        """Version number
+        :rtype: int
+        """
         return self._LayerVersion
 
     @LayerVersion.setter
@@ -2942,6 +3476,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def CompatibleRuntimes(self):
+        """Compatible runtimes
+        :rtype: list of str
+        """
         return self._CompatibleRuntimes
 
     @CompatibleRuntimes.setter
@@ -2950,6 +3487,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def CodeSha256(self):
+        """SHA256 encoding of version file on the layer
+        :rtype: str
+        """
         return self._CodeSha256
 
     @CodeSha256.setter
@@ -2958,6 +3498,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def Location(self):
+        """Download address of version file on the layer
+        :rtype: str
+        """
         return self._Location
 
     @Location.setter
@@ -2966,6 +3509,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def AddTime(self):
+        """Version creation time
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -2974,6 +3520,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def Description(self):
+        """Version description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2982,6 +3531,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def LicenseInfo(self):
+        """License information
+        :rtype: str
+        """
         return self._LicenseInfo
 
     @LicenseInfo.setter
@@ -2990,6 +3542,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def LayerVersion(self):
+        """Version number
+        :rtype: int
+        """
         return self._LayerVersion
 
     @LayerVersion.setter
@@ -2998,6 +3553,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def LayerName(self):
+        """Layer name
+        :rtype: str
+        """
         return self._LayerName
 
     @LayerName.setter
@@ -3006,6 +3564,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def Status(self):
+        """Current status of specific layer version. For the status values, [see here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3014,6 +3575,9 @@ class GetLayerVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3054,6 +3618,9 @@ class GetProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Name of the function for which to get the provisioned concurrency details.
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -3062,6 +3629,9 @@ class GetProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace. Default value: default.
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3070,6 +3640,9 @@ class GetProvisionedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """Function version number. If this parameter is left empty, the provisioned concurrency information of all function versions will be returned.
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -3111,6 +3684,9 @@ class GetProvisionedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def UnallocatedConcurrencyNum(self):
+        """Unallocated provisioned concurrency amount of function.
+        :rtype: int
+        """
         return self._UnallocatedConcurrencyNum
 
     @UnallocatedConcurrencyNum.setter
@@ -3119,6 +3695,9 @@ class GetProvisionedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def Allocated(self):
+        """Allocated provisioned concurrency amount of function.
+        :rtype: list of VersionProvisionedConcurrencyInfo
+        """
         return self._Allocated
 
     @Allocated.setter
@@ -3127,6 +3706,9 @@ class GetProvisionedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3171,6 +3753,9 @@ class GetRequestStatusRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -3179,6 +3764,9 @@ class GetRequestStatusRequest(AbstractModel):
 
     @property
     def FunctionRequestId(self):
+        """ID of the request to be queried
+        :rtype: str
+        """
         return self._FunctionRequestId
 
     @FunctionRequestId.setter
@@ -3187,6 +3775,9 @@ class GetRequestStatusRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3195,6 +3786,9 @@ class GetRequestStatusRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time of the query, for example `2017-05-16 20:00:00`. If it’s left empty, it defaults to 15 minutes before the current time.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3203,6 +3797,9 @@ class GetRequestStatusRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time of the query. such as `2017-05-16 20:59:59`. If `StartTime` is not specified, `EndTime` defaults to the current time. If `StartTime` is specified, `EndTime` is required, and it need to be later than the `StartTime`.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3248,6 +3845,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TotalCount(self):
+        """Total running functions
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3256,6 +3857,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Data(self):
+        """Details of the function running status
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of RequestStatus
+        """
         return self._Data
 
     @Data.setter
@@ -3264,6 +3869,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3299,6 +3907,9 @@ class GetReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Specifies the function of which you want to obtain the reserved quota
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -3307,6 +3918,9 @@ class GetReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace. Default value: default.
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3345,6 +3959,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ReservedMem(self):
+        """The reserved quota of the function
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ReservedMem
 
     @ReservedMem.setter
@@ -3353,6 +3971,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3409,6 +4030,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageType(self):
+        """Image repository type, which can be `personal` or `enterprise`
+        :rtype: str
+        """
         return self._ImageType
 
     @ImageType.setter
@@ -3417,6 +4041,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageUri(self):
+        """{domain}/{namespace}/{imageName}:{tag}@{digest}
+        :rtype: str
+        """
         return self._ImageUri
 
     @ImageUri.setter
@@ -3425,6 +4052,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegistryId(self):
+        """The temp token that a TCR Enterprise instance uses to obtain an image. It’s required when `ImageType` is `enterprise`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RegistryId
 
     @RegistryId.setter
@@ -3433,6 +4064,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EntryPoint(self):
+        """Disused
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EntryPoint
 
     @EntryPoint.setter
@@ -3441,6 +4076,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Command(self):
+        """The command to start up the container, such as `python`. If it’s not specified, Entrypoint in Dockerfile is used.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Command
 
     @Command.setter
@@ -3449,6 +4088,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Args(self):
+        """The parameters to start up the container. Separate parameters with spaces, such as `u app.py`. If it’s not specified, `CMD in Dockerfile is used.
+Note: This field may return `null`, indicating that no valid value can be found.
+        :rtype: str
+        """
         return self._Args
 
     @Args.setter
@@ -3457,6 +4100,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ContainerImageAccelerate(self):
+        """Whether to enable image acceleration. It defaults to `False`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._ContainerImageAccelerate
 
     @ContainerImageAccelerate.setter
@@ -3465,6 +4112,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImagePort(self):
+        """Image function port settings
+`-1`: No port-specific image functions
+`0`: Default port (Port 9000)
+Others: Special ports
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ImagePort
 
     @ImagePort.setter
@@ -3520,6 +4174,9 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -3528,6 +4185,9 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """Version or alias of the function. It defaults to `$DEFAULT`.
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -3536,6 +4196,9 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def Event(self):
+        """Function running parameter, which is in the JSON format. Maximum parameter size is 6 MB. This field corresponds to [event input parameter](https://intl.cloud.tencent.com/document/product/583/9210?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E).
+        :rtype: str
+        """
         return self._Event
 
     @Event.setter
@@ -3544,6 +4207,9 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def LogType(self):
+        """Valid value: `None` (default) or `Tail`. If the value is `Tail`, `log` in the response will contain the corresponding function execution log (up to 4KB).
+        :rtype: str
+        """
         return self._LogType
 
     @LogType.setter
@@ -3552,6 +4218,9 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Namespace. `default` is used if it’s left empty.
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3560,6 +4229,9 @@ class InvokeFunctionRequest(AbstractModel):
 
     @property
     def RoutingKey(self):
+        """Traffic routing config in json format, e.g., {"k":"v"}. Please note that both "k" and "v" must be strings. Up to 1024 bytes allowed.
+        :rtype: str
+        """
         return self._RoutingKey
 
     @RoutingKey.setter
@@ -3601,6 +4273,9 @@ class InvokeFunctionResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Function execution result
+        :rtype: :class:`tencentcloud.scf.v20180416.models.Result`
+        """
         return self._Result
 
     @Result.setter
@@ -3609,6 +4284,9 @@ class InvokeFunctionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3655,6 +4333,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -3663,6 +4344,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def InvocationType(self):
+        """Fill in `RequestResponse` for synchronized invocations (default and recommended) and `Event` for asychronized invocations. Note that for synchronized invocations, the max timeout period is 300s. Choose asychronized invocations if the required timeout period is longer than 300 seconds. You can also use [InvokeFunction](https://intl.cloud.tencent.com/document/product/583/58400?from_cn_redirect=1) for synchronized invocations. 
+        :rtype: str
+        """
         return self._InvocationType
 
     @InvocationType.setter
@@ -3671,6 +4355,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """The version or alias of the triggered function. It defaults to $LATEST
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -3679,6 +4366,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def ClientContext(self):
+        """Function running parameter, which is in the JSON format. The maximum parameter size is 6 MB for synchronized invocations and 128KB for asynchronized invocations. This field corresponds to [event input parameter](https://intl.cloud.tencent.com/document/product/583/9210?from_cn_redirect=1#.E5.87.BD.E6.95.B0.E5.85.A5.E5.8F.82.3Ca-id.3D.22input.22.3E.3C.2Fa.3E).
+        :rtype: str
+        """
         return self._ClientContext
 
     @ClientContext.setter
@@ -3687,6 +4377,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def LogType(self):
+        """Null for async invocations
+        :rtype: str
+        """
         return self._LogType
 
     @LogType.setter
@@ -3695,6 +4388,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3703,6 +4399,9 @@ class InvokeRequest(AbstractModel):
 
     @property
     def RoutingKey(self):
+        """Traffic routing config in json format, e.g., {"k":"v"}. Please note that both "k" and "v" must be strings. Up to 1024 bytes allowed.
+        :rtype: str
+        """
         return self._RoutingKey
 
     @RoutingKey.setter
@@ -3745,6 +4444,9 @@ class InvokeResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Function execution result
+        :rtype: :class:`tencentcloud.scf.v20180416.models.Result`
+        """
         return self._Result
 
     @Result.setter
@@ -3753,6 +4455,9 @@ class InvokeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3806,6 +4511,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompatibleRuntimes(self):
+        """Runtime applicable to a version
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._CompatibleRuntimes
 
     @CompatibleRuntimes.setter
@@ -3814,6 +4523,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -3822,6 +4534,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """Version description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3830,6 +4546,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LicenseInfo(self):
+        """License information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LicenseInfo
 
     @LicenseInfo.setter
@@ -3838,6 +4558,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LayerVersion(self):
+        """Version number
+        :rtype: int
+        """
         return self._LayerVersion
 
     @LayerVersion.setter
@@ -3846,6 +4569,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LayerName(self):
+        """Layer name
+        :rtype: str
+        """
         return self._LayerName
 
     @LayerName.setter
@@ -3854,6 +4580,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Current status of specific layer version. For valid values, please see [here](https://intl.cloud.tencent.com/document/product/583/47175?from_cn_redirect=1#.E5.B1.82.EF.BC.88layer.EF.BC.89.E7.8A.B6.E6.80.81)
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3862,6 +4591,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Stamp(self):
+        """Stamp
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Stamp
 
     @Stamp.setter
@@ -3905,6 +4638,9 @@ class LimitsInfo(AbstractModel):
 
     @property
     def NamespacesCount(self):
+        """Limit of namespace quantity
+        :rtype: int
+        """
         return self._NamespacesCount
 
     @NamespacesCount.setter
@@ -3913,6 +4649,9 @@ class LimitsInfo(AbstractModel):
 
     @property
     def Namespace(self):
+        """Namespace limit information
+        :rtype: list of NamespaceLimit
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3964,6 +4703,9 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -3972,6 +4714,9 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -3980,6 +4725,9 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def FunctionVersion(self):
+        """If this parameter is provided, only aliases associated with this function version will be returned.
+        :rtype: str
+        """
         return self._FunctionVersion
 
     @FunctionVersion.setter
@@ -3988,6 +4736,9 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Data offset. Default value: 0
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -3996,6 +4747,9 @@ class ListAliasesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 20
+        :rtype: str
+        """
         return self._Limit
 
     @Limit.setter
@@ -4040,6 +4794,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Aliases(self):
+        """Alias list
+        :rtype: list of Alias
+        """
         return self._Aliases
 
     @Aliases.setter
@@ -4048,6 +4805,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Total number of aliases
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4056,6 +4817,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4121,6 +4885,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -4129,6 +4896,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -4137,6 +4907,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """Filter (function version)
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -4145,6 +4918,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def InvokeType(self):
+        """Filter (invocation type list)
+        :rtype: list of str
+        """
         return self._InvokeType
 
     @InvokeType.setter
@@ -4153,6 +4929,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Filter (event status list)
+        :rtype: list of str
+        """
         return self._Status
 
     @Status.setter
@@ -4161,6 +4940,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def StartTimeInterval(self):
+        """Filter (left-closed-right-open range of execution start time)
+        :rtype: :class:`tencentcloud.scf.v20180416.models.TimeInterval`
+        """
         return self._StartTimeInterval
 
     @StartTimeInterval.setter
@@ -4169,6 +4951,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def EndTimeInterval(self):
+        """Filter (left-closed-right-open range of execution end time)
+        :rtype: :class:`tencentcloud.scf.v20180416.models.TimeInterval`
+        """
         return self._EndTimeInterval
 
     @EndTimeInterval.setter
@@ -4177,6 +4962,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """Valid values: ASC, DESC. Default value: DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -4185,6 +4973,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Orderby(self):
+        """Valid values: StartTime, EndTime. Default value: StartTime
+        :rtype: str
+        """
         return self._Orderby
 
     @Orderby.setter
@@ -4193,6 +4984,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Data offset. Default value: 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4201,6 +4995,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 20. Maximum value: 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4209,6 +5006,9 @@ class ListAsyncEventsRequest(AbstractModel):
 
     @property
     def InvokeRequestId(self):
+        """Filter (event invocation request ID)
+        :rtype: str
+        """
         return self._InvokeRequestId
 
     @InvokeRequestId.setter
@@ -4263,6 +5063,9 @@ class ListAsyncEventsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of events that meet the filter
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4271,6 +5074,9 @@ class ListAsyncEventsResponse(AbstractModel):
 
     @property
     def EventList(self):
+        """Async event list
+        :rtype: list of AsyncEvent
+        """
         return self._EventList
 
     @EventList.setter
@@ -4279,6 +5085,9 @@ class ListAsyncEventsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4335,6 +5144,9 @@ The maximum number of `Filters` for each request is 10, and that of `Filter.Valu
 
     @property
     def Order(self):
+        """It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -4343,6 +5155,9 @@ The maximum number of `Filters` for each request is 10, and that of `Filter.Valu
 
     @property
     def Orderby(self):
+        """It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`, and `FunctionName`.
+        :rtype: str
+        """
         return self._Orderby
 
     @Orderby.setter
@@ -4351,6 +5166,9 @@ The maximum number of `Filters` for each request is 10, and that of `Filter.Valu
 
     @property
     def Offset(self):
+        """Data offset. The default value is `0`.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4359,6 +5177,9 @@ The maximum number of `Filters` for each request is 10, and that of `Filter.Valu
 
     @property
     def Limit(self):
+        """Return data length. The default value is `20`.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4367,6 +5188,9 @@ The maximum number of `Filters` for each request is 10, and that of `Filter.Valu
 
     @property
     def SearchKey(self):
+        """It specifies whether to support fuzzy matching for the function name.
+        :rtype: str
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -4375,6 +5199,9 @@ The maximum number of `Filters` for each request is 10, and that of `Filter.Valu
 
     @property
     def Namespace(self):
+        """Namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -4383,6 +5210,9 @@ The maximum number of `Filters` for each request is 10, and that of `Filter.Valu
 
     @property
     def Description(self):
+        """Function description. Fuzzy search is supported.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4391,6 +5221,12 @@ The maximum number of `Filters` for each request is 10, and that of `Filter.Valu
 
     @property
     def Filters(self):
+        """Filters
+- tag:tag-key - String - Required: No - Filtering criteria based on tag-key - value pairs. Replace `tag-key` with a specific tag-key.
+
+The maximum number of `Filters` for each request is 10, and that of `Filter.Values` is 5.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4442,6 +5278,9 @@ class ListFunctionsResponse(AbstractModel):
 
     @property
     def Functions(self):
+        """Function list
+        :rtype: list of Function
+        """
         return self._Functions
 
     @Functions.setter
@@ -4450,6 +5289,9 @@ class ListFunctionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4458,6 +5300,9 @@ class ListFunctionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4493,6 +5338,9 @@ class ListLayerVersionsRequest(AbstractModel):
 
     @property
     def LayerName(self):
+        """Layer name
+        :rtype: str
+        """
         return self._LayerName
 
     @LayerName.setter
@@ -4501,6 +5349,9 @@ class ListLayerVersionsRequest(AbstractModel):
 
     @property
     def CompatibleRuntime(self):
+        """Compatible runtimes
+        :rtype: list of str
+        """
         return self._CompatibleRuntime
 
     @CompatibleRuntime.setter
@@ -4538,6 +5389,9 @@ class ListLayerVersionsResponse(AbstractModel):
 
     @property
     def LayerVersions(self):
+        """Layer version list
+        :rtype: list of LayerVersionInfo
+        """
         return self._LayerVersions
 
     @LayerVersions.setter
@@ -4546,6 +5400,9 @@ class ListLayerVersionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4586,6 +5443,9 @@ class ListLayersRequest(AbstractModel):
 
     @property
     def CompatibleRuntime(self):
+        """Compatible runtimes
+        :rtype: str
+        """
         return self._CompatibleRuntime
 
     @CompatibleRuntime.setter
@@ -4594,6 +5454,9 @@ class ListLayersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4602,6 +5465,9 @@ class ListLayersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Limit
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4610,6 +5476,9 @@ class ListLayersRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """Query key, which fuzzily matches the name
+        :rtype: str
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -4652,6 +5521,9 @@ class ListLayersResponse(AbstractModel):
 
     @property
     def Layers(self):
+        """Layer list
+        :rtype: list of LayerVersionInfo
+        """
         return self._Layers
 
     @Layers.setter
@@ -4660,6 +5532,9 @@ class ListLayersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of layers
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4668,6 +5543,9 @@ class ListLayersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4712,6 +5590,9 @@ class ListNamespacesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Return data length. The default value is `20`.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4720,6 +5601,9 @@ class ListNamespacesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Data offset. The default value is `0`.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4728,6 +5612,9 @@ class ListNamespacesRequest(AbstractModel):
 
     @property
     def Orderby(self):
+        """It specifies the sorting order of the results according to a specified field, such as `Name` and `Updatetime`.
+        :rtype: str
+        """
         return self._Orderby
 
     @Orderby.setter
@@ -4736,6 +5623,9 @@ class ListNamespacesRequest(AbstractModel):
 
     @property
     def Order(self):
+        """It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -4744,6 +5634,9 @@ class ListNamespacesRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """Specifies the range and keyword for search. The value of `Key` can be `Namespace` or `Description`. Multiple AND conditions can be specified.
+        :rtype: list of SearchKey
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -4792,6 +5685,9 @@ class ListNamespacesResponse(AbstractModel):
 
     @property
     def Namespaces(self):
+        """Namespace details
+        :rtype: list of Namespace
+        """
         return self._Namespaces
 
     @Namespaces.setter
@@ -4800,6 +5696,9 @@ class ListNamespacesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of return namespaces
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4808,6 +5707,9 @@ class ListNamespacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4860,6 +5762,9 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -4868,6 +5773,9 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Namespace. Default value: default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -4876,6 +5784,9 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Data offset. Default value: 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4884,6 +5795,9 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4892,6 +5806,9 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """Indicates by which field to sort the returned results. Valid values: add_time, mod_time. Default value: mod_time
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -4900,6 +5817,9 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def Order(self):
+        """Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC. Default value: DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -4908,6 +5828,11 @@ class ListTriggersRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """* Qualifier: Version/Alias of trigger function 
+*TriggerName: Name of the trigger 
+*Description: Function trigger description
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4958,6 +5883,9 @@ class ListTriggersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of triggers
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4966,6 +5894,9 @@ class ListTriggersResponse(AbstractModel):
 
     @property
     def Triggers(self):
+        """Trigger list
+        :rtype: list of TriggerInfo
+        """
         return self._Triggers
 
     @Triggers.setter
@@ -4974,6 +5905,9 @@ class ListTriggersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5021,6 +5955,9 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function Name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -5029,6 +5966,9 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """The namespace where the function locates
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5037,6 +5977,9 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Data offset. The default value is `0`.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5045,6 +5988,9 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Return data length. The default value is `20`.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5053,6 +5999,9 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def Order(self):
+        """It specifies whether to return the results in ascending or descending order. The value is `ASC` or `DESC`.
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -5061,6 +6010,9 @@ class ListVersionByFunctionRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """It specifies the sorting order of the results according to a specified field, such as `AddTime`, `ModTime`.
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -5110,6 +6062,9 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def FunctionVersion(self):
+        """Function version
+        :rtype: list of str
+        """
         return self._FunctionVersion
 
     @FunctionVersion.setter
@@ -5118,6 +6073,10 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def Versions(self):
+        """Function version list
+Note: This field may return null, indicating that no valid values is found.
+        :rtype: list of FunctionVersion
+        """
         return self._Versions
 
     @Versions.setter
@@ -5126,6 +6085,10 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def TotalCount(self):
+        """Total number of function versions
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5134,6 +6097,9 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5173,6 +6139,15 @@ Blank, indicating that all logs will be returned.
 
     @property
     def RetCode(self):
+        """Values of `filter.RetCode` include:
+not0, indicating that only logs of failed execution will be returned.
+is0, indicating that only logs of successful execution will be returned.
+TimeLimitExceeded, indicating that logs of function invocations which timed out will be returned.
+ResourceLimitExceeded, indicating that logs of function invocations during which resources exceeded the upper limit will be returned.
+UserCodeException, indicating that logs of function invocations during which a user code error occurred will be returned.
+Blank, indicating that all logs will be returned.
+        :rtype: str
+        """
         return self._RetCode
 
     @RetCode.setter
@@ -5215,6 +6190,9 @@ class LogSearchContext(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset.
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -5223,6 +6201,9 @@ class LogSearchContext(AbstractModel):
 
     @property
     def Limit(self):
+        """Log record number
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5231,6 +6212,9 @@ class LogSearchContext(AbstractModel):
 
     @property
     def Keyword(self):
+        """Log keyword
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -5239,6 +6223,9 @@ class LogSearchContext(AbstractModel):
 
     @property
     def Type(self):
+        """Log type. The value is `Application` (default) or `Platform`.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -5287,6 +6274,9 @@ class Namespace(AbstractModel):
 
     @property
     def ModTime(self):
+        """Creation time of the namespace
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -5295,6 +6285,9 @@ class Namespace(AbstractModel):
 
     @property
     def AddTime(self):
+        """Modification time of the namespace
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -5303,6 +6296,9 @@ class Namespace(AbstractModel):
 
     @property
     def Description(self):
+        """Namespace description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -5311,6 +6307,9 @@ class Namespace(AbstractModel):
 
     @property
     def Name(self):
+        """Namespace name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5319,6 +6318,9 @@ class Namespace(AbstractModel):
 
     @property
     def Type(self):
+        """The default value is default. TCB indicates that the namespace is developed and created through the mini-program cloud.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -5384,6 +6386,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FunctionsCount(self):
+        """Total number of functions
+        :rtype: int
+        """
         return self._FunctionsCount
 
     @FunctionsCount.setter
@@ -5392,6 +6397,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Trigger(self):
+        """Trigger information
+        :rtype: :class:`tencentcloud.scf.v20180416.models.TriggerCount`
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -5400,6 +6408,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Namespace(self):
+        """Namespace name
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5408,6 +6419,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConcurrentExecutions(self):
+        """Concurrency
+        :rtype: int
+        """
         return self._ConcurrentExecutions
 
     @ConcurrentExecutions.setter
@@ -5416,6 +6430,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeoutLimit(self):
+        """Timeout limit
+        :rtype: int
+        """
         return self._TimeoutLimit
 
     @TimeoutLimit.setter
@@ -5424,6 +6441,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TestModelLimit(self):
+        """Test event limit
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TestModelLimit
 
     @TestModelLimit.setter
@@ -5432,6 +6453,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InitTimeoutLimit(self):
+        """Initialization timeout limit
+        :rtype: int
+        """
         return self._InitTimeoutLimit
 
     @InitTimeoutLimit.setter
@@ -5440,6 +6464,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RetryNumLimit(self):
+        """Limit of async retry attempt quantity
+        :rtype: int
+        """
         return self._RetryNumLimit
 
     @RetryNumLimit.setter
@@ -5448,6 +6475,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MinMsgTTL(self):
+        """Lower limit of message retention time for async retry
+        :rtype: int
+        """
         return self._MinMsgTTL
 
     @MinMsgTTL.setter
@@ -5456,6 +6486,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxMsgTTL(self):
+        """Upper limit of message retention time for async retry
+        :rtype: int
+        """
         return self._MaxMsgTTL
 
     @MaxMsgTTL.setter
@@ -5518,6 +6551,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Functions(self):
+        """Function array
+        :rtype: list of str
+        """
         return self._Functions
 
     @Functions.setter
@@ -5526,6 +6562,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Namespace(self):
+        """Namespace name
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5534,6 +6573,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FunctionsCount(self):
+        """Number of functions in namespace
+        :rtype: int
+        """
         return self._FunctionsCount
 
     @FunctionsCount.setter
@@ -5542,6 +6584,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TotalConcurrencyMem(self):
+        """Total memory quota of the namespace
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalConcurrencyMem
 
     @TotalConcurrencyMem.setter
@@ -5550,6 +6596,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TotalAllocatedConcurrencyMem(self):
+        """Concurrency usage of the namespace
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._TotalAllocatedConcurrencyMem
 
     @TotalAllocatedConcurrencyMem.setter
@@ -5558,6 +6608,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TotalAllocatedProvisionedMem(self):
+        """Provisioned concurrency usage of the namespace
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._TotalAllocatedProvisionedMem
 
     @TotalAllocatedProvisionedMem.setter
@@ -5608,6 +6662,9 @@ class PublishLayerVersionRequest(AbstractModel):
 
     @property
     def LayerName(self):
+        """Layer name, which can contain 1-64 English letters, digits, hyphens, and underscores, must begin with a letter, and cannot end with a hyphen or underscore
+        :rtype: str
+        """
         return self._LayerName
 
     @LayerName.setter
@@ -5616,6 +6673,9 @@ class PublishLayerVersionRequest(AbstractModel):
 
     @property
     def CompatibleRuntimes(self):
+        """Runtimes compatible with layer. Multiple choices are allowed. The valid values of this parameter correspond to the valid values of the `Runtime` of the function.
+        :rtype: list of str
+        """
         return self._CompatibleRuntimes
 
     @CompatibleRuntimes.setter
@@ -5624,6 +6684,9 @@ class PublishLayerVersionRequest(AbstractModel):
 
     @property
     def Content(self):
+        """Layer file source or content
+        :rtype: :class:`tencentcloud.scf.v20180416.models.Code`
+        """
         return self._Content
 
     @Content.setter
@@ -5632,6 +6695,9 @@ class PublishLayerVersionRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Layer version description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -5640,6 +6706,9 @@ class PublishLayerVersionRequest(AbstractModel):
 
     @property
     def LicenseInfo(self):
+        """Software license of layer
+        :rtype: str
+        """
         return self._LicenseInfo
 
     @LicenseInfo.setter
@@ -5682,6 +6751,9 @@ class PublishLayerVersionResponse(AbstractModel):
 
     @property
     def LayerVersion(self):
+        """Version number of the layer created in this request
+        :rtype: int
+        """
         return self._LayerVersion
 
     @LayerVersion.setter
@@ -5690,6 +6762,9 @@ class PublishLayerVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5722,6 +6797,9 @@ class PublishVersionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Name of the released function
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -5730,6 +6808,9 @@ class PublishVersionRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Function description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -5738,6 +6819,9 @@ class PublishVersionRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5798,6 +6882,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def FunctionVersion(self):
+        """Function version
+        :rtype: str
+        """
         return self._FunctionVersion
 
     @FunctionVersion.setter
@@ -5806,6 +6893,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def CodeSize(self):
+        """Code size
+        :rtype: int
+        """
         return self._CodeSize
 
     @CodeSize.setter
@@ -5814,6 +6904,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def MemorySize(self):
+        """Maximum available memory
+        :rtype: int
+        """
         return self._MemorySize
 
     @MemorySize.setter
@@ -5822,6 +6915,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Description(self):
+        """Function description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -5830,6 +6926,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Handler(self):
+        """Function entry
+        :rtype: str
+        """
         return self._Handler
 
     @Handler.setter
@@ -5838,6 +6937,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Timeout(self):
+        """Function timeout
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -5846,6 +6948,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Runtime(self):
+        """Function running environment 
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Runtime
 
     @Runtime.setter
@@ -5854,6 +6960,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Namespace(self):
+        """Function namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5862,6 +6971,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5924,6 +7036,9 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def FunctionName(self):
+        """Name of the function for which to set the provisioned concurrency
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -5932,6 +7047,9 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def Qualifier(self):
+        """Function version number. Note: the `$LATEST` version does not support provisioned concurrency
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -5940,6 +7058,9 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def VersionProvisionedConcurrencyNum(self):
+        """Provisioned concurrency amount. Note: there is an upper limit for the sum of provisioned concurrency amounts of all versions, which currently is the function's maximum concurrency quota minus 100
+        :rtype: int
+        """
         return self._VersionProvisionedConcurrencyNum
 
     @VersionProvisionedConcurrencyNum.setter
@@ -5948,6 +7069,9 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def Namespace(self):
+        """Function namespace. Default value: `default`
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -5956,6 +7080,9 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def TriggerActions(self):
+        """Scheduled provisioned concurrency scaling action
+        :rtype: list of TriggerAction
+        """
         return self._TriggerActions
 
     @TriggerActions.setter
@@ -5964,6 +7091,14 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def ProvisionedType(self):
+        """Specifies the provisioned concurrency type.
+`Default`: Static provisioned concurrency. 
+`ConcurrencyUtilizationTracking`: Scales the concurrency automatically according to the concurrency utilization.
+If `ConcurrencyUtilizationTracking` is passed in, 
+
+`TrackingTarget`, `MinCapacity` and `MaxCapacity` are required, and `VersionProvisionedConcurrencyNum` must be `0`. 
+        :rtype: str
+        """
         return self._ProvisionedType
 
     @ProvisionedType.setter
@@ -5972,6 +7107,9 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def TrackingTarget(self):
+        """The target concurrency utilization. Range: (0,1) (two decimal places)
+        :rtype: float
+        """
         return self._TrackingTarget
 
     @TrackingTarget.setter
@@ -5980,6 +7118,9 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def MinCapacity(self):
+        """The minimum number of instances. It can not be smaller than `1`.
+        :rtype: int
+        """
         return self._MinCapacity
 
     @MinCapacity.setter
@@ -5988,6 +7129,9 @@ If `ConcurrencyUtilizationTracking` is passed in,
 
     @property
     def MaxCapacity(self):
+        """The maximum number of instances
+        :rtype: int
+        """
         return self._MaxCapacity
 
     @MaxCapacity.setter
@@ -6034,6 +7178,9 @@ class PutProvisionedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6065,6 +7212,9 @@ class PutReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Specifies the function of which you want to configure the reserved quota
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -6073,6 +7223,9 @@ class PutReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def ReservedConcurrencyMem(self):
+        """Reserved memory quota of the function. Note: the upper limit for the total reserved quota of the function is the user's total concurrency memory minus 12800
+        :rtype: int
+        """
         return self._ReservedConcurrencyMem
 
     @ReservedConcurrencyMem.setter
@@ -6081,6 +7234,9 @@ class PutReservedConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace. Default value: `default`
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -6116,6 +7272,9 @@ class PutReservedConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6144,6 +7303,9 @@ class PutTotalConcurrencyConfigRequest(AbstractModel):
 
     @property
     def TotalConcurrencyMem(self):
+        """Account concurrency memory quota. Note: the lower limit for the account concurrency memory quota is the user's total concurrency memory used + 12800
+        :rtype: int
+        """
         return self._TotalConcurrencyMem
 
     @TotalConcurrencyMem.setter
@@ -6152,6 +7314,9 @@ class PutTotalConcurrencyConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Namespace. Default value: `default`
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -6186,6 +7351,9 @@ class PutTotalConcurrencyConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6232,6 +7400,9 @@ class RequestStatus(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -6240,6 +7411,9 @@ class RequestStatus(AbstractModel):
 
     @property
     def RetMsg(self):
+        """Return value after the function is executed
+        :rtype: str
+        """
         return self._RetMsg
 
     @RetMsg.setter
@@ -6248,6 +7422,9 @@ class RequestStatus(AbstractModel):
 
     @property
     def RequestId(self):
+        """Request ID
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6256,6 +7433,9 @@ class RequestStatus(AbstractModel):
 
     @property
     def StartTime(self):
+        """Request start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6264,6 +7444,9 @@ class RequestStatus(AbstractModel):
 
     @property
     def RetCode(self):
+        """Result of the request. `0`: succeeded, `1`: running, `-1`: exception
+        :rtype: int
+        """
         return self._RetCode
 
     @RetCode.setter
@@ -6272,6 +7455,9 @@ class RequestStatus(AbstractModel):
 
     @property
     def Duration(self):
+        """Time consumed for the request in ms
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -6280,6 +7466,9 @@ class RequestStatus(AbstractModel):
 
     @property
     def MemUsage(self):
+        """Time consumed by the request in MB
+        :rtype: float
+        """
         return self._MemUsage
 
     @MemUsage.setter
@@ -6288,6 +7477,9 @@ class RequestStatus(AbstractModel):
 
     @property
     def RetryNum(self):
+        """Retry Attempts
+        :rtype: int
+        """
         return self._RetryNum
 
     @RetryNum.setter
@@ -6349,6 +7541,9 @@ class Result(AbstractModel):
 
     @property
     def Log(self):
+        """It indicates the log output during the function execution. Null is returned for asynchronous invocations.
+        :rtype: str
+        """
         return self._Log
 
     @Log.setter
@@ -6357,6 +7552,9 @@ class Result(AbstractModel):
 
     @property
     def RetMsg(self):
+        """It indicates the response from the executed function. Null is returned for asynchronous invocations.
+        :rtype: str
+        """
         return self._RetMsg
 
     @RetMsg.setter
@@ -6365,6 +7563,9 @@ class Result(AbstractModel):
 
     @property
     def ErrMsg(self):
+        """It indicates the error message of the executed function. Null is returned for asynchronous invocations.
+        :rtype: str
+        """
         return self._ErrMsg
 
     @ErrMsg.setter
@@ -6373,6 +7574,9 @@ class Result(AbstractModel):
 
     @property
     def MemUsage(self):
+        """It indicates the memory size (in bytes) when the function is running. Null is returned for asynchronous invocations.
+        :rtype: int
+        """
         return self._MemUsage
 
     @MemUsage.setter
@@ -6381,6 +7585,9 @@ class Result(AbstractModel):
 
     @property
     def Duration(self):
+        """It indicates the duration (in milliseconds) required for running the function. Null is returned for asynchronous invocations.
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -6389,6 +7596,9 @@ class Result(AbstractModel):
 
     @property
     def BillDuration(self):
+        """It indicates the billing duration (in milliseconds) for the function. Null is returned for asynchronous invocations.
+        :rtype: int
+        """
         return self._BillDuration
 
     @BillDuration.setter
@@ -6397,6 +7607,9 @@ class Result(AbstractModel):
 
     @property
     def FunctionRequestId(self):
+        """ID of the executed function
+        :rtype: str
+        """
         return self._FunctionRequestId
 
     @FunctionRequestId.setter
@@ -6405,6 +7618,9 @@ class Result(AbstractModel):
 
     @property
     def InvokeResult(self):
+        """The [status code](https://intl.cloud.tencent.com/document/product/583/42611?from_cn_redirect=1) of the request. It’s not available for `Invoke` API. 
+        :rtype: int
+        """
         return self._InvokeResult
 
     @InvokeResult.setter
@@ -6445,6 +7661,9 @@ class RetryConfig(AbstractModel):
 
     @property
     def RetryNum(self):
+        """Number of retry attempts
+        :rtype: int
+        """
         return self._RetryNum
 
     @RetryNum.setter
@@ -6481,6 +7700,9 @@ class RoutingConfig(AbstractModel):
 
     @property
     def AdditionalVersionWeights(self):
+        """Additional version with random weight-based routing
+        :rtype: list of VersionWeight
+        """
         return self._AdditionalVersionWeights
 
     @AdditionalVersionWeights.setter
@@ -6489,6 +7711,9 @@ class RoutingConfig(AbstractModel):
 
     @property
     def AddtionVersionMatchs(self):
+        """Additional version with rule-based routing
+        :rtype: list of VersionMatch
+        """
         return self._AddtionVersionMatchs
 
     @AddtionVersionMatchs.setter
@@ -6536,6 +7761,9 @@ class SearchKey(AbstractModel):
 
     @property
     def Key(self):
+        """Search range
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -6544,6 +7772,9 @@ class SearchKey(AbstractModel):
 
     @property
     def Value(self):
+        """Keyword for search
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -6581,6 +7812,9 @@ class StatusReason(AbstractModel):
 
     @property
     def ErrorCode(self):
+        """Error code
+        :rtype: str
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -6589,6 +7823,9 @@ class StatusReason(AbstractModel):
 
     @property
     def ErrorMessage(self):
+        """Error message
+        :rtype: str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -6626,6 +7863,9 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """Tag key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -6634,6 +7874,9 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """Tag value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -6677,6 +7920,9 @@ class TerminateAsyncEventRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -6685,6 +7931,9 @@ class TerminateAsyncEventRequest(AbstractModel):
 
     @property
     def InvokeRequestId(self):
+        """Terminated invocation request ID
+        :rtype: str
+        """
         return self._InvokeRequestId
 
     @InvokeRequestId.setter
@@ -6693,6 +7942,9 @@ class TerminateAsyncEventRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -6701,6 +7953,9 @@ class TerminateAsyncEventRequest(AbstractModel):
 
     @property
     def GraceShutdown(self):
+        """Whether to enable grace shutdown. If it’s `true`, a `SIGTERM` signal is sent to the specified request. See [Sending termination signal](https://intl.cloud.tencent.com/document/product/583/63969?from_cn_redirect=1#.E5.8F.91.E9.80.81.E7.BB.88.E6.AD.A2.E4.BF.A1.E5.8F.B7]. It’s set to `false` by default.
+        :rtype: bool
+        """
         return self._GraceShutdown
 
     @GraceShutdown.setter
@@ -6737,6 +7992,9 @@ class TerminateAsyncEventResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6765,6 +8023,9 @@ class TimeInterval(AbstractModel):
 
     @property
     def Start(self):
+        """Start time (inclusive) in the format of "%Y-%m-%d %H:%M:%S"
+        :rtype: str
+        """
         return self._Start
 
     @Start.setter
@@ -6773,6 +8034,9 @@ class TimeInterval(AbstractModel):
 
     @property
     def End(self):
+        """End time (exclusive) in the format of "%Y-%m-%d %H:%M:%S"
+        :rtype: str
+        """
         return self._End
 
     @End.setter
@@ -6843,6 +8107,9 @@ class Trigger(AbstractModel):
 
     @property
     def ModTime(self):
+        """Latest modification time of the trigger
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -6851,6 +8118,9 @@ class Trigger(AbstractModel):
 
     @property
     def Type(self):
+        """Trigger type
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -6859,6 +8129,9 @@ class Trigger(AbstractModel):
 
     @property
     def TriggerDesc(self):
+        """Detailed trigger configuration
+        :rtype: str
+        """
         return self._TriggerDesc
 
     @TriggerDesc.setter
@@ -6867,6 +8140,9 @@ class Trigger(AbstractModel):
 
     @property
     def TriggerName(self):
+        """Trigger name
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -6875,6 +8151,9 @@ class Trigger(AbstractModel):
 
     @property
     def AddTime(self):
+        """Creation time of the trigger
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -6883,6 +8162,9 @@ class Trigger(AbstractModel):
 
     @property
     def Enable(self):
+        """Enabling switch
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -6891,6 +8173,9 @@ class Trigger(AbstractModel):
 
     @property
     def CustomArgument(self):
+        """Custom parameter
+        :rtype: str
+        """
         return self._CustomArgument
 
     @CustomArgument.setter
@@ -6899,6 +8184,9 @@ class Trigger(AbstractModel):
 
     @property
     def AvailableStatus(self):
+        """Trigger status
+        :rtype: str
+        """
         return self._AvailableStatus
 
     @AvailableStatus.setter
@@ -6909,6 +8197,9 @@ class Trigger(AbstractModel):
     def ResourceId(self):
         warnings.warn("parameter `ResourceId` is deprecated", DeprecationWarning) 
 
+        """Minimum resource ID of trigger
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -6921,6 +8212,9 @@ class Trigger(AbstractModel):
     def BindStatus(self):
         warnings.warn("parameter `BindStatus` is deprecated", DeprecationWarning) 
 
+        """Trigger-Function binding status
+        :rtype: str
+        """
         return self._BindStatus
 
     @BindStatus.setter
@@ -6933,6 +8227,9 @@ class Trigger(AbstractModel):
     def TriggerAttribute(self):
         warnings.warn("parameter `TriggerAttribute` is deprecated", DeprecationWarning) 
 
+        """Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
+        :rtype: str
+        """
         return self._TriggerAttribute
 
     @TriggerAttribute.setter
@@ -6943,6 +8240,9 @@ class Trigger(AbstractModel):
 
     @property
     def Qualifier(self):
+        """The alias or version bound with the trigger
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -6951,6 +8251,9 @@ class Trigger(AbstractModel):
 
     @property
     def Description(self):
+        """Trigger description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -7009,6 +8312,10 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def TriggerName(self):
+        """Scheduled action name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -7017,6 +8324,10 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def TriggerProvisionedConcurrencyNum(self):
+        """Target provisioned concurrency of the scheduled scaling action 
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TriggerProvisionedConcurrencyNum
 
     @TriggerProvisionedConcurrencyNum.setter
@@ -7025,6 +8336,10 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def TriggerCronConfig(self):
+        """Trigger time of the scheduled action in Cron expression. Seven fields are required and should be separated with a space.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TriggerCronConfig
 
     @TriggerCronConfig.setter
@@ -7033,6 +8348,10 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ProvisionedType(self):
+        """The provision type. Value: `Default`
+Note: This field may return `null`, indicating that no valid value can be found.
+        :rtype: str
+        """
         return self._ProvisionedType
 
     @ProvisionedType.setter
@@ -7103,6 +8422,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Cos(self):
+        """Number of COS triggers
+        :rtype: int
+        """
         return self._Cos
 
     @Cos.setter
@@ -7111,6 +8433,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Timer(self):
+        """Number of timer triggers
+        :rtype: int
+        """
         return self._Timer
 
     @Timer.setter
@@ -7119,6 +8444,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Cmq(self):
+        """Number of CMQ triggers
+        :rtype: int
+        """
         return self._Cmq
 
     @Cmq.setter
@@ -7127,6 +8455,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Total(self):
+        """Total number of triggers
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -7135,6 +8466,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Ckafka(self):
+        """Number of CKafka triggers
+        :rtype: int
+        """
         return self._Ckafka
 
     @Ckafka.setter
@@ -7143,6 +8477,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Apigw(self):
+        """Number of API Gateway triggers
+        :rtype: int
+        """
         return self._Apigw
 
     @Apigw.setter
@@ -7151,6 +8488,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Cls(self):
+        """Number of CLS triggers
+        :rtype: int
+        """
         return self._Cls
 
     @Cls.setter
@@ -7159,6 +8499,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Clb(self):
+        """Number of CLB triggers
+        :rtype: int
+        """
         return self._Clb
 
     @Clb.setter
@@ -7167,6 +8510,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Mps(self):
+        """Number of MPS triggers
+        :rtype: int
+        """
         return self._Mps
 
     @Mps.setter
@@ -7175,6 +8521,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Cm(self):
+        """Number of CM triggers
+        :rtype: int
+        """
         return self._Cm
 
     @Cm.setter
@@ -7183,6 +8532,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Vod(self):
+        """Number of VOD triggers
+        :rtype: int
+        """
         return self._Vod
 
     @Vod.setter
@@ -7191,6 +8543,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Eb(self):
+        """Number of EventBridge triggers
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Eb
 
     @Eb.setter
@@ -7273,6 +8629,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Enable(self):
+        """Whether to enable
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -7281,6 +8640,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Qualifier(self):
+        """Function version or alias
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -7289,6 +8651,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def TriggerName(self):
+        """Trigger name
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -7297,6 +8662,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Type(self):
+        """Trigger type
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -7305,6 +8673,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def TriggerDesc(self):
+        """Detailed configuration of trigger
+        :rtype: str
+        """
         return self._TriggerDesc
 
     @TriggerDesc.setter
@@ -7313,6 +8684,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def AvailableStatus(self):
+        """Whether the trigger is available
+        :rtype: str
+        """
         return self._AvailableStatus
 
     @AvailableStatus.setter
@@ -7321,6 +8695,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def CustomArgument(self):
+        """Custom parameter
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CustomArgument
 
     @CustomArgument.setter
@@ -7329,6 +8707,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def AddTime(self):
+        """Trigger creation time
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -7337,6 +8718,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def ModTime(self):
+        """Trigger last modified time
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -7347,6 +8731,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
     def ResourceId(self):
         warnings.warn("parameter `ResourceId` is deprecated", DeprecationWarning) 
 
+        """Minimum resource ID of trigger
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -7359,6 +8746,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
     def BindStatus(self):
         warnings.warn("parameter `BindStatus` is deprecated", DeprecationWarning) 
 
+        """Trigger-Function binding status
+        :rtype: str
+        """
         return self._BindStatus
 
     @BindStatus.setter
@@ -7371,6 +8761,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
     def TriggerAttribute(self):
         warnings.warn("parameter `TriggerAttribute` is deprecated", DeprecationWarning) 
 
+        """Trigger type. Two-way means that the trigger can be manipulated in both consoles, while one-way means that the trigger can be created only in the SCF Console
+        :rtype: str
+        """
         return self._TriggerAttribute
 
     @TriggerAttribute.setter
@@ -7381,6 +8774,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Description(self):
+        """Description of a custom trigger 
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -7441,6 +8838,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -7449,6 +8849,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Alias name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -7457,6 +8860,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def FunctionVersion(self):
+        """Master version pointed to by the alias
+        :rtype: str
+        """
         return self._FunctionVersion
 
     @FunctionVersion.setter
@@ -7465,6 +8871,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -7473,6 +8882,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def RoutingConfig(self):
+        """Routing information of alias, which is required if you need to specify an additional version for the alias.
+        :rtype: :class:`tencentcloud.scf.v20180416.models.RoutingConfig`
+        """
         return self._RoutingConfig
 
     @RoutingConfig.setter
@@ -7481,6 +8893,9 @@ class UpdateAliasRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Alias description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -7521,6 +8936,9 @@ class UpdateAliasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7579,6 +8997,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Name of the function to be modified
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -7587,6 +9008,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def Handler(self):
+        """Function handler name, which is in the `file name.function name` form. Use a period (.) to separate a file name and function name. The file name and function name must start and end with letters and contain 2-60 characters, including letters, digits, underscores (_), and hyphens (-).
+        :rtype: str
+        """
         return self._Handler
 
     @Handler.setter
@@ -7595,6 +9019,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def CosBucketName(self):
+        """COS bucket name
+        :rtype: str
+        """
         return self._CosBucketName
 
     @CosBucketName.setter
@@ -7603,6 +9030,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def CosObjectName(self):
+        """COS object path
+        :rtype: str
+        """
         return self._CosObjectName
 
     @CosObjectName.setter
@@ -7611,6 +9041,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def ZipFile(self):
+        """It contains a function code file and its dependencies in the ZIP format. When you use this API, the ZIP file needs to be encoded with Base64. Up to 20 MB is supported.
+        :rtype: str
+        """
         return self._ZipFile
 
     @ZipFile.setter
@@ -7619,6 +9052,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -7627,6 +9063,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def CosBucketRegion(self):
+        """COS region. Note: Beijing includes ap-beijing and ap-beijing-1.
+        :rtype: str
+        """
         return self._CosBucketRegion
 
     @CosBucketRegion.setter
@@ -7635,6 +9074,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def InstallDependency(self):
+        """Whether to install dependencies automatically
+        :rtype: str
+        """
         return self._InstallDependency
 
     @InstallDependency.setter
@@ -7643,6 +9085,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def EnvId(self):
+        """Function environment
+        :rtype: str
+        """
         return self._EnvId
 
     @EnvId.setter
@@ -7651,6 +9096,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def Publish(self):
+        """It specifies whether to synchronously release a new version during the update. The default value is `FALSE`, indicating not to release a new version.
+        :rtype: str
+        """
         return self._Publish
 
     @Publish.setter
@@ -7659,6 +9107,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def Code(self):
+        """Function code
+        :rtype: :class:`tencentcloud.scf.v20180416.models.Code`
+        """
         return self._Code
 
     @Code.setter
@@ -7667,6 +9118,9 @@ class UpdateFunctionCodeRequest(AbstractModel):
 
     @property
     def CodeSource(self):
+        """Code source. Valid values: ZipFile, Cos, Inline
+        :rtype: str
+        """
         return self._CodeSource
 
     @CodeSource.setter
@@ -7713,6 +9167,9 @@ class UpdateFunctionCodeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7744,6 +9201,9 @@ class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def AsyncTriggerConfig(self):
+        """Async retry configuration information
+        :rtype: :class:`tencentcloud.scf.v20180416.models.AsyncTriggerConfig`
+        """
         return self._AsyncTriggerConfig
 
     @AsyncTriggerConfig.setter
@@ -7752,6 +9212,9 @@ class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -7760,6 +9223,9 @@ class UpdateFunctionEventInvokeConfigRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace. Default value: default
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -7797,6 +9263,9 @@ class UpdateFunctionEventInvokeConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7825,6 +9294,9 @@ class UpdateNamespaceRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Namespace name
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -7833,6 +9305,9 @@ class UpdateNamespaceRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Namespace description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -7867,6 +9342,9 @@ class UpdateNamespaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7910,6 +9388,9 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """Initial status of the trigger. Values: `OPEN` (enabled); `CLOSE` disabled)
+        :rtype: str
+        """
         return self._Enable
 
     @Enable.setter
@@ -7918,6 +9399,9 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name.
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -7926,6 +9410,9 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def TriggerName(self):
+        """Trigger name
+        :rtype: str
+        """
         return self._TriggerName
 
     @TriggerName.setter
@@ -7934,6 +9421,9 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Trigger Type
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -7942,6 +9432,9 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def Qualifier(self):
+        """Function version. It defaults to `$LATEST`. It’s recommended to use `[$DEFAULT](https://intl.cloud.tencent.com/document/product/583/36149?from_cn_redirect=1#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)` for canary release.
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -7950,6 +9443,9 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def Namespace(self):
+        """Function namespace
+        :rtype: str
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -7958,6 +9454,9 @@ class UpdateTriggerStatusRequest(AbstractModel):
 
     @property
     def TriggerDesc(self):
+        """To update a COS trigger, this field is required. It stores the data {"event":"cos:ObjectCreated:*"} in the JSON format. The data content of this field is in the same format as that of SetTrigger. This field is optional if a scheduled trigger or CMQ trigger is to be deleted.
+        :rtype: str
+        """
         return self._TriggerDesc
 
     @TriggerDesc.setter
@@ -7997,6 +9496,9 @@ class UpdateTriggerStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8034,6 +9536,9 @@ class UsageInfo(AbstractModel):
 
     @property
     def NamespacesCount(self):
+        """Number of namespaces
+        :rtype: int
+        """
         return self._NamespacesCount
 
     @NamespacesCount.setter
@@ -8042,6 +9547,9 @@ class UsageInfo(AbstractModel):
 
     @property
     def Namespace(self):
+        """Namespace details
+        :rtype: list of NamespaceUsage
+        """
         return self._Namespace
 
     @Namespace.setter
@@ -8050,6 +9558,9 @@ class UsageInfo(AbstractModel):
 
     @property
     def TotalConcurrencyMem(self):
+        """Upper limit of user concurrency memory in the current region
+        :rtype: int
+        """
         return self._TotalConcurrencyMem
 
     @TotalConcurrencyMem.setter
@@ -8058,6 +9569,9 @@ class UsageInfo(AbstractModel):
 
     @property
     def TotalAllocatedConcurrencyMem(self):
+        """Quota of configured user concurrency memory in the current region
+        :rtype: int
+        """
         return self._TotalAllocatedConcurrencyMem
 
     @TotalAllocatedConcurrencyMem.setter
@@ -8066,6 +9580,9 @@ class UsageInfo(AbstractModel):
 
     @property
     def UserConcurrencyMemLimit(self):
+        """Quota of account concurrency actually configured by user
+        :rtype: int
+        """
         return self._UserConcurrencyMemLimit
 
     @UserConcurrencyMemLimit.setter
@@ -8124,6 +9641,9 @@ Exact string match
 
     @property
     def Version(self):
+        """Function version name
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -8132,6 +9652,11 @@ Exact string match
 
     @property
     def Key(self):
+        """Matching rule key. When the API is called, pass in the `key` to route the request to the specified version based on the matching rule
+Header method:
+Enter "invoke.headers.User" for `key` and pass in `RoutingKey:{"User":"value"}` when invoking a function through `invoke` for invocation based on rule matching
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -8140,6 +9665,11 @@ Exact string match
 
     @property
     def Method(self):
+        """Match method. Valid values:
+range: range match
+exact: exact string match
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -8148,6 +9678,12 @@ Exact string match
 
     @property
     def Expression(self):
+        """Rule requirements for range match:
+It should be described in an open or closed range, i.e., `(a,b)` or `[a,b]`, where both a and b are integers
+Rule requirements for exact match:
+Exact string match
+        :rtype: str
+        """
         return self._Expression
 
     @Expression.setter
@@ -8200,6 +9736,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AllocatedProvisionedConcurrencyNum(self):
+        """Set provisioned concurrency amount.
+        :rtype: int
+        """
         return self._AllocatedProvisionedConcurrencyNum
 
     @AllocatedProvisionedConcurrencyNum.setter
@@ -8208,6 +9747,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AvailableProvisionedConcurrencyNum(self):
+        """Currently available provisioned concurrency amount.
+        :rtype: int
+        """
         return self._AvailableProvisionedConcurrencyNum
 
     @AvailableProvisionedConcurrencyNum.setter
@@ -8216,6 +9758,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Provisioned concurrency setting task status. `Done`: completed; `InProgress`: in progress; `Failed`: partially or completely failed.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -8224,6 +9769,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def StatusReason(self):
+        """Status description of provisioned concurrency setting task.
+        :rtype: str
+        """
         return self._StatusReason
 
     @StatusReason.setter
@@ -8232,6 +9780,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Qualifier(self):
+        """Function version number
+        :rtype: str
+        """
         return self._Qualifier
 
     @Qualifier.setter
@@ -8240,6 +9791,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TriggerActions(self):
+        """List of scheduled provisioned concurrency scaling actions
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of TriggerAction
+        """
         return self._TriggerActions
 
     @TriggerActions.setter
@@ -8286,6 +9841,9 @@ class VersionWeight(AbstractModel):
 
     @property
     def Version(self):
+        """Function version name
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -8294,6 +9852,9 @@ class VersionWeight(AbstractModel):
 
     @property
     def Weight(self):
+        """Version weight
+        :rtype: float
+        """
         return self._Weight
 
     @Weight.setter

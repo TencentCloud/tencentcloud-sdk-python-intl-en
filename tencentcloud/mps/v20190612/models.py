@@ -62,6 +62,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Definition(self):
+        """Unique ID of intelligent analysis template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -70,6 +73,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Name(self):
+        """Intelligent analysis template name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -78,6 +84,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Comment(self):
+        """Intelligent analysis template description.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -86,6 +95,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def ClassificationConfigure(self):
+        """Control parameter of intelligent categorization task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfo`
+        """
         return self._ClassificationConfigure
 
     @ClassificationConfigure.setter
@@ -94,6 +106,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TagConfigure(self):
+        """Control parameter of intelligent tagging task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfo`
+        """
         return self._TagConfigure
 
     @TagConfigure.setter
@@ -102,6 +117,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CoverConfigure(self):
+        """Control parameter of intelligent cover generating task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfo`
+        """
         return self._CoverConfigure
 
     @CoverConfigure.setter
@@ -110,6 +128,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FrameTagConfigure(self):
+        """Control parameter of intelligent frame-specific tagging task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfo`
+        """
         return self._FrameTagConfigure
 
     @FrameTagConfigure.setter
@@ -118,6 +139,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CreateTime(self):
+        """Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -126,6 +150,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def UpdateTime(self):
+        """Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -134,6 +161,12 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Type(self):
+        """The template type. Valid values:
+* Preset
+* Custom
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -226,6 +259,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Definition(self):
+        """Unique ID of a video content recognition template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -234,6 +270,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Name(self):
+        """Name of a video content recognition template.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -242,6 +281,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Comment(self):
+        """Description of a video content recognition template.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -250,6 +292,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def FaceConfigure(self):
+        """Face recognition control parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FaceConfigureInfo`
+        """
         return self._FaceConfigure
 
     @FaceConfigure.setter
@@ -258,6 +304,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def OcrFullTextConfigure(self):
+        """Full text recognition control parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.OcrFullTextConfigureInfo`
+        """
         return self._OcrFullTextConfigure
 
     @OcrFullTextConfigure.setter
@@ -266,6 +316,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def OcrWordsConfigure(self):
+        """Text keyword recognition control parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.OcrWordsConfigureInfo`
+        """
         return self._OcrWordsConfigure
 
     @OcrWordsConfigure.setter
@@ -274,6 +328,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def AsrFullTextConfigure(self):
+        """Full speech recognition control parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrFullTextConfigureInfo`
+        """
         return self._AsrFullTextConfigure
 
     @AsrFullTextConfigure.setter
@@ -282,6 +340,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def AsrWordsConfigure(self):
+        """Speech keyword recognition control parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfo`
+        """
         return self._AsrWordsConfigure
 
     @AsrWordsConfigure.setter
@@ -290,6 +352,10 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def TranslateConfigure(self):
+        """Voice translation control parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TranslateConfigureInfo`
+        """
         return self._TranslateConfigure
 
     @TranslateConfigure.setter
@@ -298,6 +364,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def CreateTime(self):
+        """Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -306,6 +375,9 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def UpdateTime(self):
+        """Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -314,6 +386,12 @@ Note: This field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Type(self):
+        """The template type. Valid values:
+* Preset
+* Custom
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -394,6 +472,25 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActivityType(self):
+        """Atomic task type.
+<li>input: start node.</li>
+<li>output: termination node.</li>
+<li>action-trans: transcoding.</li>
+<li>action-samplesnapshot: sampled screenshot taking.</li>
+<li>action-AIAnalysis: analysis.</li>
+<li>action-AIRecognition: recognition.</li>
+<li>action-aiReview: auditing.</li>
+<li>action-animated-graphics: animated image generating.</li>
+<li>action-image-sprite: sprite image generating.</li>
+<li>action-snapshotByTimeOffset: time point screenshot taking.</li>
+<li>action-adaptive-substream: adaptive bitrate streaming.</li>
+<li>action-AIQualityControl: media quality inspection.</li>
+
+
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ActivityType
 
     @ActivityType.setter
@@ -402,6 +499,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReardriveIndex(self):
+        """The indexes of the subsequent actions.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int
+        """
         return self._ReardriveIndex
 
     @ReardriveIndex.setter
@@ -410,6 +511,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActivityPara(self):
+        """The parameters of a subtask.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ActivityPara`
+        """
         return self._ActivityPara
 
     @ActivityPara.setter
@@ -475,6 +580,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TranscodeTask(self):
+        """A transcoding task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TranscodeTaskInput`
+        """
         return self._TranscodeTask
 
     @TranscodeTask.setter
@@ -483,6 +591,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AnimatedGraphicTask(self):
+        """An animated screenshot generation task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AnimatedGraphicTaskInput`
+        """
         return self._AnimatedGraphicTask
 
     @AnimatedGraphicTask.setter
@@ -491,6 +602,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotByTimeOffsetTask(self):
+        """A time point screencapturing task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
+        """
         return self._SnapshotByTimeOffsetTask
 
     @SnapshotByTimeOffsetTask.setter
@@ -499,6 +613,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SampleSnapshotTask(self):
+        """A sampled screencapturing task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
+        """
         return self._SampleSnapshotTask
 
     @SampleSnapshotTask.setter
@@ -507,6 +624,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageSpriteTask(self):
+        """An image sprite generation task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageSpriteTaskInput`
+        """
         return self._ImageSpriteTask
 
     @ImageSpriteTask.setter
@@ -515,6 +635,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdaptiveDynamicStreamingTask(self):
+        """An adaptive bitrate streaming task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingTaskInput`
+        """
         return self._AdaptiveDynamicStreamingTask
 
     @AdaptiveDynamicStreamingTask.setter
@@ -523,6 +646,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiContentReviewTask(self):
+        """A content moderation task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        """
         return self._AiContentReviewTask
 
     @AiContentReviewTask.setter
@@ -531,6 +657,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiAnalysisTask(self):
+        """A content analysis task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        """
         return self._AiAnalysisTask
 
     @AiAnalysisTask.setter
@@ -539,6 +668,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiRecognitionTask(self):
+        """A content recognition task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        """
         return self._AiRecognitionTask
 
     @AiRecognitionTask.setter
@@ -547,6 +679,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QualityControlTask(self):
+        """Media quality inspection task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
+        """
         return self._QualityControlTask
 
     @QualityControlTask.setter
@@ -646,6 +782,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TranscodeTask(self):
+        """The result of a transcoding task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskTranscodeResult`
+        """
         return self._TranscodeTask
 
     @TranscodeTask.setter
@@ -654,6 +794,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AnimatedGraphicTask(self):
+        """The result of an animated image generating task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAnimatedGraphicResult`
+        """
         return self._AnimatedGraphicTask
 
     @AnimatedGraphicTask.setter
@@ -662,6 +806,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotByTimeOffsetTask(self):
+        """The result of a time point screenshot task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSnapshotByTimeOffsetResult`
+        """
         return self._SnapshotByTimeOffsetTask
 
     @SnapshotByTimeOffsetTask.setter
@@ -670,6 +818,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SampleSnapshotTask(self):
+        """The result of a sampled screenshot task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
+        """
         return self._SampleSnapshotTask
 
     @SampleSnapshotTask.setter
@@ -678,6 +830,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageSpriteTask(self):
+        """The result of an image sprite task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`
+        """
         return self._ImageSpriteTask
 
     @ImageSpriteTask.setter
@@ -686,6 +842,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdaptiveDynamicStreamingTask(self):
+        """The result of an adaptive bitrate streaming task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAdaptiveDynamicStreamingResult`
+        """
         return self._AdaptiveDynamicStreamingTask
 
     @AdaptiveDynamicStreamingTask.setter
@@ -694,6 +854,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecognitionTask(self):
+        """The result of a content recognition task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleRecognitionTaskResult`
+        """
         return self._RecognitionTask
 
     @RecognitionTask.setter
@@ -702,6 +866,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReviewTask(self):
+        """The result of a content moderation task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleReviewTaskResult`
+        """
         return self._ReviewTask
 
     @ReviewTask.setter
@@ -710,6 +878,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AnalysisTask(self):
+        """The result of a content analysis task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleAnalysisTaskResult`
+        """
         return self._AnalysisTask
 
     @AnalysisTask.setter
@@ -718,6 +890,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QualityControlTask(self):
+        """Media quality inspection task output.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
+        """
         return self._QualityControlTask
 
     @QualityControlTask.setter
@@ -794,6 +970,20 @@ class ActivityResult(AbstractModel):
 
     @property
     def ActivityType(self):
+        """Atomic task type.
+<li>Transcode: transcoding.</li>
+<li>SampleSnapshot: sampled screenshot taking.</li>
+<li>AnimatedGraphics: animated image generating.</li>
+<li>SnapshotByTimeOffset: time point screenshot taking.</li>
+<li>ImageSprites: sprite image generating.</li>
+<li>AdaptiveDynamicStreaming: adaptive bitrate streaming.</li>
+<li>AiContentReview: content moderation.</li>
+<li>AIRecognition: intelligent identification.</li>
+<li>AIAnalysis: intelligent analysis.</li>
+
+<li>AiQualityControl: media quality inspection.</li>
+        :rtype: str
+        """
         return self._ActivityType
 
     @ActivityType.setter
@@ -802,6 +992,9 @@ class ActivityResult(AbstractModel):
 
     @property
     def ActivityResItem(self):
+        """The execution results of the subtasks of the scheme.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ActivityResItem`
+        """
         return self._ActivityResItem
 
     @ActivityResItem.setter
@@ -847,6 +1040,9 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def Definition(self):
+        """Adaptive bitrate streaming specification.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -855,6 +1051,9 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def Package(self):
+        """Container format. Valid values: HLS, MPEG-DASH.
+        :rtype: str
+        """
         return self._Package
 
     @Package.setter
@@ -863,6 +1062,9 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def Path(self):
+        """Playback address.
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -871,6 +1073,9 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def Storage(self):
+        """Storage location of adaptive bitrate streaming files.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._Storage
 
     @Storage.setter
@@ -946,6 +1151,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Definition(self):
+        """Adaptive dynamic streaming template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -954,6 +1162,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WatermarkSet(self):
+        """Watermark list. Multiple image or text watermarks up to a maximum of 10 are supported.
+        :rtype: list of WatermarkInput
+        """
         return self._WatermarkSet
 
     @WatermarkSet.setter
@@ -962,6 +1173,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
+        """Target storage for files after adaptive dynamic streaming. If left blank, it inherits the upper-level OutputStorage value.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -970,6 +1185,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputObjectPath(self):
+        """Output path for the manifest file after adaptive dynamic streaming. It can be either a relative path or an absolute path.
+If you need to define an output path, the path must end with `.{format}`. Refer to [Filename Variable Description](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1) for variable names.
+Example of relative path:
+<li>filename_{variable name}.{format}</li>
+<li>filename.{format}</li>
+Example of absolute path:
+<li>/custom path/filename_{variable name}.{format}</li>
+If not filled in, it is a relative path by default: {inputName}_adaptiveDynamicStreaming_{definition}.{format}.
+        :rtype: str
+        """
         return self._OutputObjectPath
 
     @OutputObjectPath.setter
@@ -978,6 +1203,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubStreamObjectName(self):
+        """After adaptive dynamic streaming, the output path of substream files can only be a relative path. If not filled in, it is a relative path by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}.{format}`.
+        :rtype: str
+        """
         return self._SubStreamObjectName
 
     @SubStreamObjectName.setter
@@ -986,6 +1214,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SegmentObjectName(self):
+        """After adaptive dynamic streaming (for HLS only), the output path of segment files can only be a relative path. If not filled in, it is a relative path by default: `{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`.
+        :rtype: str
+        """
         return self._SegmentObjectName
 
     @SegmentObjectName.setter
@@ -994,6 +1225,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddOnSubtitles(self):
+        """Subtitle file to be inserted.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: list of AddOnSubtitle
+        """
         return self._AddOnSubtitles
 
     @AddOnSubtitles.setter
@@ -1002,6 +1237,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DrmInfo(self):
+        """Drm information.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DrmInfo`
+        """
         return self._DrmInfo
 
     @DrmInfo.setter
@@ -1010,6 +1249,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefinitionType(self):
+        """Adaptive transcoding template type.
+Common: audio-video.
+PureAudio: audio-only.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DefinitionType
 
     @DefinitionType.setter
@@ -1115,6 +1360,9 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def Definition(self):
+        """Unique ID of an adaptive bitrate streaming template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -1123,6 +1371,11 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def Type(self):
+        """Template type. Valid values:
+<li>Preset: preset template;</li>
+<li>Custom: custom template.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1131,6 +1384,9 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def Name(self):
+        """Name of an adaptive bitrate streaming template.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1139,6 +1395,9 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def Comment(self):
+        """Description of an adaptive bitrate streaming template.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -1147,6 +1406,11 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def Format(self):
+        """Adaptive bitrate streaming format. Valid values:
+<li>HLS;</li>
+<li>MPEG-DASH.</li>
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -1155,6 +1419,9 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def StreamInfos(self):
+        """Parameter information of input streams for transcoding to adaptive bitrate streaming. Up to 10 streams can be input.
+        :rtype: list of AdaptiveStreamTemplate
+        """
         return self._StreamInfos
 
     @StreamInfos.setter
@@ -1163,6 +1430,11 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def DisableHigherVideoBitrate(self):
+        """Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :rtype: int
+        """
         return self._DisableHigherVideoBitrate
 
     @DisableHigherVideoBitrate.setter
@@ -1171,6 +1443,11 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def DisableHigherVideoResolution(self):
+        """Whether to prohibit transcoding from low resolution to high resolution. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :rtype: int
+        """
         return self._DisableHigherVideoResolution
 
     @DisableHigherVideoResolution.setter
@@ -1179,6 +1456,9 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def CreateTime(self):
+        """Creation time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1187,6 +1467,9 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def UpdateTime(self):
+        """Last modified time of template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#I).
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -1195,6 +1478,9 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def PureAudio(self):
+        """Whether it is an audio-only template. 0: video template. 1: audio-only template.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._PureAudio
 
     @PureAudio.setter
@@ -1203,6 +1489,18 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def SegmentType(self):
+        """HLS segment type. Valid values:
+<li>ts-segment: HLS+TS segment.</li>
+<li>ts-byterange: HLS+TS byte range.</li>
+<li>mp4-segment: HLS+MP4 segment.</li>
+<li>mp4-byterange: HLS+MP4 byte range.</li>
+<li>ts-packed-audio: TS+Packed audio.</li>
+<li>mp4-packed-audio: MP4+Packed audio.</li>
+Default value: ts-segment.
+
+Note: The HLS segment format for adaptive bitrate streaming is based on this field.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SegmentType
 
     @SegmentType.setter
@@ -1265,6 +1563,9 @@ class AdaptiveStreamTemplate(AbstractModel):
 
     @property
     def Audio(self):
+        """Audio parameter information.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        """
         return self._Audio
 
     @Audio.setter
@@ -1273,6 +1574,9 @@ class AdaptiveStreamTemplate(AbstractModel):
 
     @property
     def Video(self):
+        """Video parameter information.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
+        """
         return self._Video
 
     @Video.setter
@@ -1281,6 +1585,11 @@ class AdaptiveStreamTemplate(AbstractModel):
 
     @property
     def RemoveAudio(self):
+        """Whether to remove audio stream. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -1289,6 +1598,11 @@ class AdaptiveStreamTemplate(AbstractModel):
 
     @property
     def RemoveVideo(self):
+        """Whether to remove video stream. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -1337,6 +1651,13 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Type(self):
+        """The mode. Valid values:
+<li>`subtitle-stream`: Add a subtitle track.</li>
+<li>`close-caption-708`: Embed CEA-708 subtitles in SEI frames.</li>
+<li>`close-caption-608`: Embed CEA-608 subtitles in SEI frames.</li>
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1345,6 +1666,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Subtitle(self):
+        """The subtitle file.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
         return self._Subtitle
 
     @Subtitle.setter
@@ -1425,6 +1750,17 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """Task type. Valid values:
+<li>Classification: intelligent classification.</li>
+<li>Cover: intelligent thumbnail generating.</li>
+<li>Tag: intelligent tagging.</li>
+<li>FrameTag: intelligent frame-by-frame tagging.</li>
+<li>Highlight: intelligent highlights generating.</li>
+
+<li>DeLogo: intelligent removal.</li>
+<li>Description: large model summarization.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1433,6 +1769,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClassificationTask(self):
+        """Query result of intelligent categorization task in video content analysis, which is valid if task type is `Classification`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationResult`
+        """
         return self._ClassificationTask
 
     @ClassificationTask.setter
@@ -1441,6 +1780,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CoverTask(self):
+        """Query result of intelligent cover generating task in video content analysis, which is valid if task type is `Cover`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverResult`
+        """
         return self._CoverTask
 
     @CoverTask.setter
@@ -1449,6 +1791,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagTask(self):
+        """Query result of intelligent tagging task in video content analysis, which is valid if task type is `Tag`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagResult`
+        """
         return self._TagTask
 
     @TagTask.setter
@@ -1457,6 +1802,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FrameTagTask(self):
+        """Query result of intelligent frame-specific tagging task in video content analysis, which is valid if task type is `FrameTag`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagResult`
+        """
         return self._FrameTagTask
 
     @FrameTagTask.setter
@@ -1465,6 +1813,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HighlightTask(self):
+        """The result of a highlight generation task. This parameter is valid if `Type` is `Highlight`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightResult`
+        """
         return self._HighlightTask
 
     @HighlightTask.setter
@@ -1473,6 +1825,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeLogoTask(self):
+        """The query result of an intelligent removal task for video analysis, which is valid when the task type is DeLogo.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoResult`
+        """
         return self._DeLogoTask
 
     @DeLogoTask.setter
@@ -1481,6 +1837,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SegmentTask(self):
+        """The query result of a splitting task for video analysis, which is valid when the task type is SegmentRecognition.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentResult`
+        """
         return self._SegmentTask
 
     @SegmentTask.setter
@@ -1489,6 +1849,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HeadTailTask(self):
+        """The query result of an opening and closing segments recognition task for video analysis, which is valid when the task type is HeadTailRecognition.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailResult`
+        """
         return self._HeadTailTask
 
     @HeadTailTask.setter
@@ -1497,6 +1861,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DescriptionTask(self):
+        """The query result of a video analysis summarization task, which is valid when the task type is Description.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionResult`
+        """
         return self._DescriptionTask
 
     @DescriptionTask.setter
@@ -1505,6 +1873,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HorizontalToVerticalTask(self):
+        """The query result of a landscape-to-portrait task for video analysis, which is valid when the task type is HorizontalToVertical.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalResult`
+        """
         return self._HorizontalToVerticalTask
 
     @HorizontalToVerticalTask.setter
@@ -1568,6 +1940,9 @@ class AiAnalysisTaskClassificationInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Intelligent video categorization template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -1601,6 +1976,9 @@ class AiAnalysisTaskClassificationOutput(AbstractModel):
 
     @property
     def ClassificationSet(self):
+        """List of intelligently generated video categories.
+        :rtype: list of MediaAiAnalysisClassificationItem
+        """
         return self._ClassificationSet
 
     @ClassificationSet.setter
@@ -1654,6 +2032,9 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1662,6 +2043,9 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -1670,6 +2054,9 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -1678,6 +2065,9 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -1686,6 +2076,9 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def Input(self):
+        """Input of intelligent categorization task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationInput`
+        """
         return self._Input
 
     @Input.setter
@@ -1694,6 +2087,9 @@ class AiAnalysisTaskClassificationResult(AbstractModel):
 
     @property
     def Output(self):
+        """Output of intelligent categorization task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -1736,6 +2132,9 @@ class AiAnalysisTaskCoverInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Intelligent video cover generating template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -1772,6 +2171,9 @@ class AiAnalysisTaskCoverOutput(AbstractModel):
 
     @property
     def CoverSet(self):
+        """List of intelligently generated covers.
+        :rtype: list of MediaAiAnalysisCoverItem
+        """
         return self._CoverSet
 
     @CoverSet.setter
@@ -1780,6 +2182,9 @@ class AiAnalysisTaskCoverOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """Storage location of intelligently generated cover.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -1836,6 +2241,9 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1844,6 +2252,9 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -1852,6 +2263,9 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -1860,6 +2274,9 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -1868,6 +2285,9 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def Input(self):
+        """Input of intelligent cover generating task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverInput`
+        """
         return self._Input
 
     @Input.setter
@@ -1876,6 +2296,9 @@ class AiAnalysisTaskCoverResult(AbstractModel):
 
     @property
     def Output(self):
+        """Output of intelligent cover generating task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -1918,6 +2341,9 @@ class AiAnalysisTaskDelLogoInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Intelligent removal template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -1962,6 +2388,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Path(self):
+        """Path of a file after removal.
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -1970,6 +2399,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
+        """Storage location of a file after removal.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -1978,6 +2410,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginSubtitlePath(self):
+        """Path of a subtitle file extracted from a video.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OriginSubtitlePath
 
     @OriginSubtitlePath.setter
@@ -1986,6 +2422,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TranslateSubtitlePath(self):
+        """Path of a subtitle translation file extracted from a video.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TranslateSubtitlePath
 
     @TranslateSubtitlePath.setter
@@ -2036,6 +2476,9 @@ class AiAnalysisTaskDelLogoResult(AbstractModel):
 
     @property
     def Status(self):
+        """Task status, including PROCESSING, SUCCESS, and FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2044,6 +2487,9 @@ class AiAnalysisTaskDelLogoResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """Error code. `0`: Task successful. Other values: Task failed.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -2052,6 +2498,9 @@ class AiAnalysisTaskDelLogoResult(AbstractModel):
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -2060,6 +2509,9 @@ class AiAnalysisTaskDelLogoResult(AbstractModel):
 
     @property
     def Input(self):
+        """Intelligent removal task input.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoInput`
+        """
         return self._Input
 
     @Input.setter
@@ -2068,6 +2520,9 @@ class AiAnalysisTaskDelLogoResult(AbstractModel):
 
     @property
     def Output(self):
+        """Intelligent removal task output.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -2109,6 +2564,9 @@ class AiAnalysisTaskDescriptionInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Intelligent description template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -2142,6 +2600,9 @@ class AiAnalysisTaskDescriptionOutput(AbstractModel):
 
     @property
     def DescriptionSet(self):
+        """Intelligent video description list.
+        :rtype: list of MediaAiAnalysisDescriptionItem
+        """
         return self._DescriptionSet
 
     @DescriptionSet.setter
@@ -2193,6 +2654,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status, including PROCESSING, SUCCESS, and FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2201,6 +2665,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """Error code. `0`: Task successful. Other values: Task failed.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -2209,6 +2676,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -2217,6 +2687,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """Intelligent description task input.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionInput`
+        """
         return self._Input
 
     @Input.setter
@@ -2225,6 +2698,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """Intelligent description task output.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -2266,6 +2743,9 @@ class AiAnalysisTaskFrameTagInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Intelligent frame-specific video tagging template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -2299,6 +2779,9 @@ class AiAnalysisTaskFrameTagOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """List of frame-specific video tags.
+        :rtype: list of MediaAiAnalysisFrameTagSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -2352,6 +2835,9 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2360,6 +2846,9 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -2368,6 +2857,9 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -2376,6 +2868,9 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -2384,6 +2879,9 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def Input(self):
+        """Input of intelligent frame-specific tagging task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagInput`
+        """
         return self._Input
 
     @Input.setter
@@ -2392,6 +2890,9 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
 
     @property
     def Output(self):
+        """Output of intelligent frame-specific tagging task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -2434,6 +2935,9 @@ class AiAnalysisTaskHeadTailInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Opening and closing segments recognition template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -2472,6 +2976,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HeadTimeOffset(self):
+        """Opening segment PTS.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._HeadTimeOffset
 
     @HeadTimeOffset.setter
@@ -2480,6 +2988,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TailTimeOffset(self):
+        """Closing segment PTS.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._TailTimeOffset
 
     @TailTimeOffset.setter
@@ -2526,6 +3038,9 @@ class AiAnalysisTaskHeadTailResult(AbstractModel):
 
     @property
     def Status(self):
+        """Task status, including PROCESSING, SUCCESS, and FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2534,6 +3049,9 @@ class AiAnalysisTaskHeadTailResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """Error code. `0`: Task successful. Other values: Task failed.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -2542,6 +3060,9 @@ class AiAnalysisTaskHeadTailResult(AbstractModel):
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -2550,6 +3071,9 @@ class AiAnalysisTaskHeadTailResult(AbstractModel):
 
     @property
     def Input(self):
+        """Opening and closing segments recognition task input.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailInput`
+        """
         return self._Input
 
     @Input.setter
@@ -2558,6 +3082,9 @@ class AiAnalysisTaskHeadTailResult(AbstractModel):
 
     @property
     def Output(self):
+        """Opening and closing segments recognition task output.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -2599,6 +3126,9 @@ class AiAnalysisTaskHighlightInput(AbstractModel):
 
     @property
     def Definition(self):
+        """The ID of the intelligent highlight generation template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -2636,6 +3166,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def HighlightSet(self):
+        """A list of the highlight segments generated.
+        :rtype: list of MediaAiAnalysisHighlightItem
+        """
         return self._HighlightSet
 
     @HighlightSet.setter
@@ -2644,6 +3177,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def OutputStorage(self):
+        """The storage location of the highlight segments.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -2698,6 +3235,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """The task status. Valid values: `PROCESSING`, `SUCCESS`, `FAIL`.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2706,6 +3246,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """Error code. `0`: The task succeeded; other values: The task failed.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -2714,6 +3257,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """The error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -2722,6 +3268,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """The input of the intelligent highlight generation task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightInput`
+        """
         return self._Input
 
     @Input.setter
@@ -2730,6 +3279,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """The output of the intelligent highlight generation task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -2772,6 +3325,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Definition(self):
+        """Intelligent landscape-to-portrait template ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -2815,6 +3372,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Path(self):
+        """Intelligent landscape-to-portrait video list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -2823,6 +3384,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
+        """Storage location of intelligent landscape-to-portrait videos.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -2831,6 +3396,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Confidence(self):
+        """Confidence.	
+	
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -2887,6 +3457,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status, including PROCESSING, SUCCESS, and FAIL.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2895,6 +3469,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """Error code. 0: Task successful. Other values: Task failed.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -2903,6 +3482,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Error message
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -2911,6 +3495,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """Intelligent landscape-to-portrait task input.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalInput`
+        """
         return self._Input
 
     @Input.setter
@@ -2919,6 +3507,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """Intelligent landscape-to-portrait task output.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -2965,6 +3557,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Definition(self):
+        """Video content analysis template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -2973,6 +3568,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtendedParameter(self):
+        """An extended parameter, whose value is a stringfied JSON.
+Note: This parameter is for customers with special requirements. It needs to be customized offline.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExtendedParameter
 
     @ExtendedParameter.setter
@@ -3007,6 +3607,9 @@ class AiAnalysisTaskSegmentInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Splitting task template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -3040,6 +3643,9 @@ class AiAnalysisTaskSegmentOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """Intelligent splitting sub-segment list.
+        :rtype: list of SegmentRecognitionItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -3090,6 +3696,9 @@ class AiAnalysisTaskSegmentResult(AbstractModel):
 
     @property
     def Status(self):
+        """Task status, including PROCESSING, SUCCESS, and FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3098,6 +3707,9 @@ class AiAnalysisTaskSegmentResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """Error code. `0`: Task successful. Other values: Task failed.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -3106,6 +3718,9 @@ class AiAnalysisTaskSegmentResult(AbstractModel):
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -3114,6 +3729,9 @@ class AiAnalysisTaskSegmentResult(AbstractModel):
 
     @property
     def Input(self):
+        """Splitting task input.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentInput`
+        """
         return self._Input
 
     @Input.setter
@@ -3122,6 +3740,9 @@ class AiAnalysisTaskSegmentResult(AbstractModel):
 
     @property
     def Output(self):
+        """Splitting task output.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -3163,6 +3784,9 @@ class AiAnalysisTaskTagInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Intelligent video tagging template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -3196,6 +3820,9 @@ class AiAnalysisTaskTagOutput(AbstractModel):
 
     @property
     def TagSet(self):
+        """List of intelligently generated video tags.
+        :rtype: list of MediaAiAnalysisTagItem
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -3249,6 +3876,9 @@ class AiAnalysisTaskTagResult(AbstractModel):
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3257,6 +3887,9 @@ class AiAnalysisTaskTagResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -3265,6 +3898,9 @@ class AiAnalysisTaskTagResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -3273,6 +3909,9 @@ class AiAnalysisTaskTagResult(AbstractModel):
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -3281,6 +3920,9 @@ class AiAnalysisTaskTagResult(AbstractModel):
 
     @property
     def Input(self):
+        """Input of intelligent tagging task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagInput`
+        """
         return self._Input
 
     @Input.setter
@@ -3289,6 +3931,9 @@ class AiAnalysisTaskTagResult(AbstractModel):
 
     @property
     def Output(self):
+        """Output of intelligent tagging task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -3385,6 +4030,19 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Type(self):
+        """Task type. Valid values:
+<li>Porn (in images)</li>
+<li>Terrorism (in images)</li>
+<li>Political (in images)</li>
+<li>Porn.Asr</li>
+<li>Porn.Ocr</li>
+<li>Political.Asr</li>
+<li>Political.Ocr</li>
+<li>Terrorism.Ocr</li>
+<li>Prohibited.Asr</li>
+<li>Prohibited.Ocr</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3393,6 +4051,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SampleRate(self):
+        """Sample rate, which indicates the number of video frames captured per second for audit
+        :rtype: float
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -3401,6 +4062,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Duration(self):
+        """Audited video duration in seconds.
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -3409,6 +4073,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PornTask(self):
+        """Query result of an intelligent porn information detection in image task in video content audit, which is valid when task type is `Porn`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornResult`
+        """
         return self._PornTask
 
     @PornTask.setter
@@ -3417,6 +4085,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TerrorismTask(self):
+        """The result of detecting terrorism content in images, which is valid when the task type is `Terrorism`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismResult`
+        """
         return self._TerrorismTask
 
     @TerrorismTask.setter
@@ -3425,6 +4097,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PoliticalTask(self):
+        """The result of detecting politically sensitive information in images, which is valid when the task type is `Political`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalResult`
+        """
         return self._PoliticalTask
 
     @PoliticalTask.setter
@@ -3433,6 +4109,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PornAsrTask(self):
+        """Query result of an ASR-based porn information detection in text task in video content audit, which is valid when task type is `Porn.Asr`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornAsrResult`
+        """
         return self._PornAsrTask
 
     @PornAsrTask.setter
@@ -3441,6 +4121,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PornOcrTask(self):
+        """Query result of an OCR-based porn information detection in text task in video content audit, which is valid when task type is `Porn.Ocr`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPornOcrResult`
+        """
         return self._PornOcrTask
 
     @PornOcrTask.setter
@@ -3449,6 +4133,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PoliticalAsrTask(self):
+        """The result of detecting politically sensitive information based on ASR, which is valid when the task type is `Political.Asr`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalAsrResult`
+        """
         return self._PoliticalAsrTask
 
     @PoliticalAsrTask.setter
@@ -3457,6 +4145,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PoliticalOcrTask(self):
+        """The result of detecting politically sensitive information based on OCR, which is valid when the task type is `Political.Ocr`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskPoliticalOcrResult`
+        """
         return self._PoliticalOcrTask
 
     @PoliticalOcrTask.setter
@@ -3465,6 +4157,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TerrorismOcrTask(self):
+        """The result of detecting terrorism content based on OCR, which is valid when task type is `Terrorism.Ocr`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskTerrorismOcrResult`
+        """
         return self._TerrorismOcrTask
 
     @TerrorismOcrTask.setter
@@ -3473,6 +4169,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProhibitedAsrTask(self):
+        """Query result of ASR-based prohibited information detection in speech task in video content audit, which is valid if task type is `Prohibited.Asr`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskProhibitedAsrResult`
+        """
         return self._ProhibitedAsrTask
 
     @ProhibitedAsrTask.setter
@@ -3481,6 +4180,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProhibitedOcrTask(self):
+        """Query result of OCR-based prohibited information detection in text task in video content audit, which is valid if task type is `Prohibited.Ocr`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTaskProhibitedOcrResult`
+        """
         return self._ProhibitedOcrTask
 
     @ProhibitedOcrTask.setter
@@ -3546,6 +4248,9 @@ class AiContentReviewTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Video content audit template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -3588,6 +4293,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Summary(self):
+        """Segment summary.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Summary
 
     @Summary.setter
@@ -3596,6 +4305,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTimeOffset(self):
+        """Segmentation start time point, in seconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -3604,6 +4317,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTimeOffset(self):
+        """Segmentation end time point, in seconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -3649,6 +4366,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Definition(self):
+        """Media quality inspection template ID.
+You can directly use a preset template or customize a template in the console. The preset templates are as follows:
+- 10: Enable all quality inspection items.
+- 20: Only enable quality inspection items corresponding to format diagnosis.
+- 30: Only enable quality inspection items corresponding to no-reference scoring.
+- 40: Only enable quality inspection items corresponding to screen quality.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -3657,6 +4383,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ChannelExtPara(self):
+        """The channel extension parameter, which is a serialized JSON string.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ChannelExtPara
 
     @ChannelExtPara.setter
@@ -3733,6 +4463,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """The task type. Valid values:
+<li>FaceRecognition: Face recognition</li>
+<li>AsrWordsRecognition: Speech keyword recognition</li>
+<li>OcrWordsRecognition: Text keyword recognition</li>
+<li>AsrFullTextRecognition: Full speech recognition</li>
+<li>OcrFullTextRecognition: Full text recognition</li>
+<li>TransTextRecognition: Speech translation</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3741,6 +4480,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FaceTask(self):
+        """Face recognition result, which is valid when `Type` is 
+ `FaceRecognition`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResult`
+        """
         return self._FaceTask
 
     @FaceTask.setter
@@ -3749,6 +4493,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AsrWordsTask(self):
+        """Speech keyword recognition result, which is valid when `Type` is
+ `AsrWordsRecognition`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResult`
+        """
         return self._AsrWordsTask
 
     @AsrWordsTask.setter
@@ -3757,6 +4506,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AsrFullTextTask(self):
+        """Full speech recognition result, which is valid when `Type` is
+ `AsrFullTextRecognition`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResult`
+        """
         return self._AsrFullTextTask
 
     @AsrFullTextTask.setter
@@ -3765,6 +4519,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OcrWordsTask(self):
+        """Text keyword recognition result, which is valid when `Type` is
+ `OcrWordsRecognition`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResult`
+        """
         return self._OcrWordsTask
 
     @OcrWordsTask.setter
@@ -3773,6 +4532,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OcrFullTextTask(self):
+        """Full text recognition result, which is valid when `Type` is
+ `OcrFullTextRecognition`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResult`
+        """
         return self._OcrFullTextTask
 
     @OcrFullTextTask.setter
@@ -3781,6 +4545,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransTextTask(self):
+        """The translation result. This parameter is valid only if `Type` is
+ `TransTextRecognition`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResult`
+        """
         return self._TransTextTask
 
     @TransTextTask.setter
@@ -3789,6 +4558,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectTask(self):
+        """Object recognition result, which is valid when Type is
+
+ObjectRecognition.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskObjectResult`
+        """
         return self._ObjectTask
 
     @ObjectTask.setter
@@ -3863,6 +4638,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3871,6 +4649,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -3879,6 +4660,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -3887,6 +4671,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -3895,6 +4682,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """Input information of a full speech recognition task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResultInput`
+        """
         return self._Input
 
     @Input.setter
@@ -3903,6 +4693,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """Output information of a full speech recognition task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrFullTextResultOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -3911,6 +4705,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Progress(self):
+        """Task progress.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -3954,6 +4752,9 @@ class AiRecognitionTaskAsrFullTextResultInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Full speech recognition template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -3993,6 +4794,9 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """List of full speech recognition segments.
+        :rtype: list of AiRecognitionTaskAsrFullTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -4001,6 +4805,9 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
 
     @property
     def SubtitlePath(self):
+        """Subtitles file address.
+        :rtype: str
+        """
         return self._SubtitlePath
 
     @SubtitlePath.setter
@@ -4011,6 +4818,9 @@ class AiRecognitionTaskAsrFullTextResultOutput(AbstractModel):
     def OutputStorage(self):
         warnings.warn("parameter `OutputStorage` is deprecated", DeprecationWarning) 
 
+        """Subtitles file storage location.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -4064,6 +4874,9 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """Confidence of a recognition segment. Value range: 0-100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -4072,6 +4885,9 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """Start time offset of a recognition segment in seconds.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -4080,6 +4896,9 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """End time offset of a recognition segment in seconds.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -4088,6 +4907,9 @@ class AiRecognitionTaskAsrFullTextSegmentItem(AbstractModel):
 
     @property
     def Text(self):
+        """Recognized text.
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -4140,6 +4962,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -4148,6 +4973,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -4156,6 +4984,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -4164,6 +4995,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -4172,6 +5006,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """Input information of a speech keyword recognition task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResultInput`
+        """
         return self._Input
 
     @Input.setter
@@ -4180,6 +5017,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """Output information of a speech keyword recognition task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskAsrWordsResultOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -4222,6 +5063,9 @@ class AiRecognitionTaskAsrWordsResultInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Speech keyword recognition template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -4258,6 +5102,9 @@ class AiRecognitionTaskAsrWordsResultItem(AbstractModel):
 
     @property
     def Word(self):
+        """Speech keyword.
+        :rtype: str
+        """
         return self._Word
 
     @Word.setter
@@ -4266,6 +5113,9 @@ class AiRecognitionTaskAsrWordsResultItem(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """List of time segments that contain the speech keyword.
+        :rtype: list of AiRecognitionTaskAsrWordsSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -4305,6 +5155,9 @@ class AiRecognitionTaskAsrWordsResultOutput(AbstractModel):
 
     @property
     def ResultSet(self):
+        """Speech keyword recognition result set.
+        :rtype: list of AiRecognitionTaskAsrWordsResultItem
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -4349,6 +5202,9 @@ class AiRecognitionTaskAsrWordsSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """Start time offset of a recognition segment in seconds.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -4357,6 +5213,9 @@ class AiRecognitionTaskAsrWordsSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """End time offset of a recognition segment in seconds.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -4365,6 +5224,9 @@ class AiRecognitionTaskAsrWordsSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """Confidence of a recognition segment. Value range: 0-100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -4416,6 +5278,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -4424,6 +5289,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -4432,6 +5300,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -4440,6 +5311,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -4448,6 +5322,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """Input information of a face recognition task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResultInput`
+        """
         return self._Input
 
     @Input.setter
@@ -4456,6 +5333,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """Output information of a face recognition task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskFaceResultOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -4498,6 +5379,9 @@ class AiRecognitionTaskFaceResultInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Face recognition template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -4584,6 +5468,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Id(self):
+        """Unique ID of a figure.
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -4592,6 +5479,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Type(self):
+        """Figure library type, indicating to which figure library the recognized figure belongs:
+<li>Default: Default figure library;</li>
+<li>UserDefine: Custom figure library.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -4600,6 +5492,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Name(self):
+        """Name of a figure.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4608,6 +5503,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SegmentSet(self):
+        """Result set of segments that contain a figure.
+        :rtype: list of AiRecognitionTaskFaceSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -4616,6 +5514,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Gender(self):
+        """The person’s gender.
+<li>Male</li>
+<li>Female</li>
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Gender
 
     @Gender.setter
@@ -4624,6 +5528,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Birthday(self):
+        """The person’s birth date.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Birthday
 
     @Birthday.setter
@@ -4632,6 +5540,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Profession(self):
+        """The person’s job or job title.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Profession
 
     @Profession.setter
@@ -4640,6 +5552,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SchoolOfGraduation(self):
+        """The college the person graduated from.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._SchoolOfGraduation
 
     @SchoolOfGraduation.setter
@@ -4648,6 +5564,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Abstract(self):
+        """The person’s profile.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Abstract
 
     @Abstract.setter
@@ -4656,6 +5576,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def PlaceOfBirth(self):
+        """The person’s place of birth.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._PlaceOfBirth
 
     @PlaceOfBirth.setter
@@ -4664,6 +5588,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def PersonType(self):
+        """Whether the person is a politician or artist.
+<li>Politician</li>
+<li>Artist</li>
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._PersonType
 
     @PersonType.setter
@@ -4672,6 +5602,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Remark(self):
+        """Sensitivity
+<li>Normal</li>
+<li>Sensitive</li>
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -4680,6 +5616,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Url(self):
+        """The screenshot URL.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -4730,6 +5670,9 @@ class AiRecognitionTaskFaceResultOutput(AbstractModel):
 
     @property
     def ResultSet(self):
+        """Intelligent face recognition result set.
+        :rtype: list of AiRecognitionTaskFaceResultItem
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -4777,6 +5720,9 @@ class AiRecognitionTaskFaceSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """Start time offset of a recognition segment in seconds.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -4785,6 +5731,9 @@ class AiRecognitionTaskFaceSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """End time offset of a recognition segment in seconds.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -4793,6 +5742,9 @@ class AiRecognitionTaskFaceSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """Confidence of a recognition segment. Value range: 0-100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -4801,6 +5753,9 @@ class AiRecognitionTaskFaceSegmentItem(AbstractModel):
 
     @property
     def AreaCoordSet(self):
+        """Zone coordinates of a recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -4837,6 +5792,9 @@ class AiRecognitionTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Intelligent video recognition template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -4882,6 +5840,9 @@ class AiRecognitionTaskObjectResult(AbstractModel):
 
     @property
     def Status(self):
+        """Task status, including PROCESSING, SUCCESS, and FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -4890,6 +5851,9 @@ class AiRecognitionTaskObjectResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """Error code. `0`: Task successful. Other values: Task failed.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -4898,6 +5862,9 @@ class AiRecognitionTaskObjectResult(AbstractModel):
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -4906,6 +5873,9 @@ class AiRecognitionTaskObjectResult(AbstractModel):
 
     @property
     def Input(self):
+        """Object recognition task input.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskObjectResultInput`
+        """
         return self._Input
 
     @Input.setter
@@ -4914,6 +5884,9 @@ class AiRecognitionTaskObjectResult(AbstractModel):
 
     @property
     def Output(self):
+        """Object recognition task output.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskObjectResultOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -4955,6 +5928,9 @@ class AiRecognitionTaskObjectResultInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Object recognition template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -4991,6 +5967,9 @@ class AiRecognitionTaskObjectResultItem(AbstractModel):
 
     @property
     def Name(self):
+        """Name of a recognized object.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4999,6 +5978,9 @@ class AiRecognitionTaskObjectResultItem(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """List of segments that contain the object.
+        :rtype: list of AiRecognitionTaskObjectSeqmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -5038,6 +6020,9 @@ class AiRecognitionTaskObjectResultOutput(AbstractModel):
 
     @property
     def ResultSet(self):
+        """Intelligent object recognition result set.
+        :rtype: list of AiRecognitionTaskObjectResultItem
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -5085,6 +6070,9 @@ class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """Start time offset of a recognized segment, in seconds.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -5093,6 +6081,9 @@ class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """End time offset of a recognized segment, in seconds.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -5101,6 +6092,9 @@ class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """Confidence of a recognized segment. Value range: 0-100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -5109,6 +6103,9 @@ class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
 
     @property
     def AreaCoordSet(self):
+        """Zone coordinates of the recognition result. An array contains four elements: [x1, y1, x2, y2], representing the horizontal and vertical coordinates of the top-left and bottom-right corners, respectively.
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -5161,6 +6158,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5169,6 +6169,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -5177,6 +6180,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -5185,6 +6191,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -5193,6 +6202,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """Input information of a full text recognition task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResultInput`
+        """
         return self._Input
 
     @Input.setter
@@ -5201,6 +6213,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """Output information of a full text recognition task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrFullTextResultOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -5243,6 +6259,9 @@ class AiRecognitionTaskOcrFullTextResultInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Full text recognition template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -5276,6 +6295,9 @@ class AiRecognitionTaskOcrFullTextResultOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """Full text recognition result set.
+        :rtype: list of AiRecognitionTaskOcrFullTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -5320,6 +6342,9 @@ class AiRecognitionTaskOcrFullTextSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """Start time offset of a recognition segment in seconds.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -5328,6 +6353,9 @@ class AiRecognitionTaskOcrFullTextSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """End time offset of a recognition segment in seconds.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -5336,6 +6364,9 @@ class AiRecognitionTaskOcrFullTextSegmentItem(AbstractModel):
 
     @property
     def TextSet(self):
+        """Recognition segment result set.
+        :rtype: list of AiRecognitionTaskOcrFullTextSegmentTextItem
+        """
         return self._TextSet
 
     @TextSet.setter
@@ -5382,6 +6413,9 @@ class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """Confidence of a recognition segment. Value range: 0-100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -5390,6 +6424,9 @@ class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
 
     @property
     def AreaCoordSet(self):
+        """Zone coordinates of a recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -5398,6 +6435,9 @@ class AiRecognitionTaskOcrFullTextSegmentTextItem(AbstractModel):
 
     @property
     def Text(self):
+        """Recognized text.
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -5449,6 +6489,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5457,6 +6500,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -5465,6 +6511,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -5473,6 +6522,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -5481,6 +6533,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """Input information of a text keyword recognition task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResultInput`
+        """
         return self._Input
 
     @Input.setter
@@ -5489,6 +6544,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """Output information of a text keyword recognition task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskOcrWordsResultOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -5531,6 +6590,9 @@ class AiRecognitionTaskOcrWordsResultInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Text keyword recognition template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -5567,6 +6629,9 @@ class AiRecognitionTaskOcrWordsResultItem(AbstractModel):
 
     @property
     def Word(self):
+        """Text keyword.
+        :rtype: str
+        """
         return self._Word
 
     @Word.setter
@@ -5575,6 +6640,9 @@ class AiRecognitionTaskOcrWordsResultItem(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """List of segments that contain a text keyword.
+        :rtype: list of AiRecognitionTaskOcrWordsSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -5614,6 +6682,9 @@ class AiRecognitionTaskOcrWordsResultOutput(AbstractModel):
 
     @property
     def ResultSet(self):
+        """Text keyword recognition result set.
+        :rtype: list of AiRecognitionTaskOcrWordsResultItem
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -5661,6 +6732,9 @@ class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """Start time offset of a recognition segment in seconds.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -5669,6 +6743,9 @@ class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """End time offset of a recognition segment in seconds.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -5677,6 +6754,9 @@ class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """Confidence of a recognition segment. Value range: 0-100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -5685,6 +6765,9 @@ class AiRecognitionTaskOcrWordsSegmentItem(AbstractModel):
 
     @property
     def AreaCoordSet(self):
+        """Zone coordinates of a recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -5741,6 +6824,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """The task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -5749,6 +6835,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value indicates the task has failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -5757,6 +6846,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """The error code. `0` indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -5765,6 +6857,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """The error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -5773,6 +6868,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """The input of the translation task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResultInput`
+        """
         return self._Input
 
     @Input.setter
@@ -5781,6 +6879,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """The output of the translation task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskTransTextResultOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -5789,6 +6891,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Progress(self):
+        """Task progress.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -5832,6 +6938,9 @@ class AiRecognitionTaskTransTextResultInput(AbstractModel):
 
     @property
     def Definition(self):
+        """The translation template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -5868,6 +6977,9 @@ class AiRecognitionTaskTransTextResultOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """The translated segments.
+        :rtype: list of AiRecognitionTaskTransTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -5876,6 +6988,9 @@ class AiRecognitionTaskTransTextResultOutput(AbstractModel):
 
     @property
     def SubtitlePath(self):
+        """The subtitle URL.
+        :rtype: str
+        """
         return self._SubtitlePath
 
     @SubtitlePath.setter
@@ -5927,6 +7042,9 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """The confidence score for a segment. Value range: 0-100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -5935,6 +7053,9 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """The start time offset (seconds) of a segment.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -5943,6 +7064,9 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """The end time offset (seconds) of a segment.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -5951,6 +7075,9 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def Text(self):
+        """The text transcript.
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -5959,6 +7086,9 @@ class AiRecognitionTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def Trans(self):
+        """The translation.
+        :rtype: str
+        """
         return self._Trans
 
     @Trans.setter
@@ -5996,6 +7126,9 @@ class AiReviewPoliticalAsrTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """The template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -6038,6 +7171,9 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """The confidence score for the ASR-based detection of sensitive information. Value range: 0-100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -6046,6 +7182,12 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """The suggestion for handling the sensitive information detected based on ASR. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -6054,6 +7196,9 @@ class AiReviewPoliticalAsrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """The video segments that contain sensitive information detected based on ASR.
+        :rtype: list of MediaContentReviewAsrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -6094,6 +7239,9 @@ class AiReviewPoliticalOcrTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """The template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -6136,6 +7284,9 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """The confidence score for the OCR-based detection of sensitive information. Value range: 0-100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -6144,6 +7295,12 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """The suggestion for handling the sensitive information detected based on OCR. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -6152,6 +7309,9 @@ class AiReviewPoliticalOcrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """The video segments that contain sensitive information detected based on OCR.
+        :rtype: list of MediaContentReviewOcrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -6192,6 +7352,9 @@ class AiReviewPoliticalTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """The template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -6241,6 +7404,9 @@ Other values (politician/entertainment/sport/entrepreneur/scholar/celebrity/mili
 
     @property
     def Confidence(self):
+        """The confidence score for the detection of sensitive information. Value range: 0-100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -6249,6 +7415,12 @@ Other values (politician/entertainment/sport/entrepreneur/scholar/celebrity/mili
 
     @property
     def Suggestion(self):
+        """The suggestion for handling the sensitive information detected. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -6257,6 +7429,13 @@ Other values (politician/entertainment/sport/entrepreneur/scholar/celebrity/mili
 
     @property
     def Label(self):
+        """The labels for the detected sensitive content. The relationship between the values of this parameter and those of the `LabelSet` parameter in [PoliticalImgReviewTemplateInfo](https://intl.cloud.tencent.com/document/api/862/37615?from_cn_redirect=1#AiReviewPoliticalTaskOutput) is as follows:
+violation_photo:
+<li>violation_photo (banned icons)</li>
+Other values (politician/entertainment/sport/entrepreneur/scholar/celebrity/military):
+<li>politician</li>
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -6265,6 +7444,9 @@ Other values (politician/entertainment/sport/entrepreneur/scholar/celebrity/mili
 
     @property
     def SegmentSet(self):
+        """The video segments that contain sensitive information.
+        :rtype: list of MediaContentReviewPoliticalSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -6306,6 +7488,9 @@ class AiReviewPornAsrTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """ID of a porn information detection template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -6348,6 +7533,9 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """Score of the ASR-detected porn information in text from 0 to 100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -6356,6 +7544,12 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """Suggestion for the ASR-detected porn information in text. Valid values:
+<li>pass.</li>
+<li>review.</li>
+<li>block.</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -6364,6 +7558,9 @@ class AiReviewPornAsrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """List of video segments that contain the ASR-detected porn information in text.
+        :rtype: list of MediaContentReviewAsrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -6404,6 +7601,9 @@ class AiReviewPornOcrTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """ID of a porn information detection template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -6446,6 +7646,9 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """Score of the OCR-detected porn information in text from 0 to 100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -6454,6 +7657,12 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """Suggestion for the OCR-detected porn information in text. Valid values:
+<li>pass.</li>
+<li>review.</li>
+<li>block.</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -6462,6 +7671,9 @@ class AiReviewPornOcrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """List of video segments that contain the OCR-detected porn information in text.
+        :rtype: list of MediaContentReviewOcrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -6503,6 +7715,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Definition(self):
+        """The ID of a porn detection template.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -6552,6 +7768,9 @@ class AiReviewPornTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """Score of the detected porn information in video from 0 to 100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -6560,6 +7779,12 @@ class AiReviewPornTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """Suggestion for the detected porn information. Valid values:
+<li>pass.</li>
+<li>review.</li>
+<li>block.</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -6568,6 +7793,13 @@ class AiReviewPornTaskOutput(AbstractModel):
 
     @property
     def Label(self):
+        """Tag of the detected porn information in video. Valid values:
+<li>porn: Porn.</li>
+<li>sexy: Sexiness.</li>
+<li>vulgar: Vulgarity.</li>
+<li>intimacy: Intimacy.</li>
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -6576,6 +7808,9 @@ class AiReviewPornTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """List of video segments that contain the detected porn information.
+        :rtype: list of MediaContentReviewSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -6617,6 +7852,9 @@ class AiReviewProhibitedAsrTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Prohibited information detection template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -6659,6 +7897,9 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """Score of ASR-detected prohibited information in speech between 0 and 100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -6667,6 +7908,12 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """Suggestion for ASR-detected prohibited information in speech. Valid values:
+<li>pass.</li>
+<li>review.</li>
+<li>block.</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -6675,6 +7922,9 @@ class AiReviewProhibitedAsrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """List of video segments that contain the ASR-detected prohibited information in speech.
+        :rtype: list of MediaContentReviewAsrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -6715,6 +7965,9 @@ class AiReviewProhibitedOcrTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """Prohibited information detection template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -6757,6 +8010,9 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """Score of OCR-detected prohibited information in text between 0 and 100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -6765,6 +8021,12 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """Suggestion for OCR-detected prohibited information in text. Valid values:
+<li>pass.</li>
+<li>review.</li>
+<li>block.</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -6773,6 +8035,9 @@ class AiReviewProhibitedOcrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """List of video segments that contain the OCR-detected prohibited information in text.
+        :rtype: list of MediaContentReviewOcrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -6829,6 +8094,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -6837,6 +8105,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -6845,6 +8116,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -6853,6 +8127,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -6861,6 +8138,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Input(self):
+        """The input parameter for ASR-based detection of politically sensitive information.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -6869,6 +8149,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Output(self):
+        """The output of ASR-based detection of politically sensitive information.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalAsrTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -6928,6 +8212,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -6936,6 +8223,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -6944,6 +8234,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -6952,6 +8245,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Message(self):
+        """Error message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -6960,6 +8257,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Input(self):
+        """The input parameter for OCR-based detection of politically sensitive information.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -6968,6 +8268,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Output(self):
+        """The output of OCR-based detection of politically sensitive information.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalOcrTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7026,6 +8330,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7034,6 +8341,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -7042,6 +8352,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7050,6 +8363,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7058,6 +8374,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Input(self):
+        """The input parameter for sensitive information detection.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -7066,6 +8385,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Output(self):
+        """The output of sensitive information detection.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPoliticalTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7124,6 +8447,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7132,6 +8458,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -7140,6 +8469,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7148,6 +8480,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7156,6 +8491,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """Input for an ASR-based porn information detection in text task during content audit.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornAsrTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -7164,6 +8502,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """Output of an ASR-based porn information detection in text task during content audit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornAsrTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7222,6 +8564,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7230,6 +8575,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -7238,6 +8586,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7246,6 +8597,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7254,6 +8608,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """Input for an OCR-based porn information detection in text task during content audit.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornOcrTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -7262,6 +8619,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """Output of an OCR-based porn information detection in text task during content audit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornOcrTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7321,6 +8682,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7329,6 +8693,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -7337,6 +8704,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7345,6 +8715,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Error message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7353,6 +8727,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """Input for a porn information detection task during content audit.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -7361,6 +8738,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """Output of a porn information detection task during content audit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewPornTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7421,6 +8802,9 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7429,6 +8813,9 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -7437,6 +8824,12 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """Error code. 0: success; other values: failure.
+<li>40000: invalid input parameter. Please check it;</li>
+<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
+<li>70000: internal service error. Please try again.</li>
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7445,6 +8838,9 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7453,6 +8849,9 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
     @property
     def Input(self):
+        """Input of ASR-based prohibited information detection in speech task in content audit
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -7461,6 +8860,9 @@ class AiReviewTaskProhibitedAsrResult(AbstractModel):
 
     @property
     def Output(self):
+        """Output of ASR-based prohibited information detection in speech task in content audit
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedAsrTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7521,6 +8923,9 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7529,6 +8934,9 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -7537,6 +8945,12 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """Error code. 0: success; other values: failure.
+<li>40000: invalid input parameter. Please check it;</li>
+<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
+<li>70000: internal service error. Please try again.</li>
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7545,6 +8959,9 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7553,6 +8970,9 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
     @property
     def Input(self):
+        """Input of OCR-based prohibited information detection in text task in content audit
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -7561,6 +8981,9 @@ class AiReviewTaskProhibitedOcrResult(AbstractModel):
 
     @property
     def Output(self):
+        """Output of OCR-based prohibited information detection in text task in content audit
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewProhibitedOcrTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7622,6 +9045,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7630,6 +9056,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -7638,6 +9067,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ErrCode(self):
+        """Error code. 0: success; other values: failure.
+<li>40000: invalid input parameter. Please check it;</li>
+<li>60000: invalid source file (e.g., video data is corrupted). Please check whether the source file is normal;</li>
+<li>70000: internal service error. Please try again.</li>
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7646,6 +9081,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7654,6 +9092,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Input(self):
+        """The input parameter for OCR-based detection of terrorism content.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -7662,6 +9103,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Output(self):
+        """The output of OCR-based detection of terrorism content.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismOcrTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7720,6 +9165,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7728,6 +9176,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -7736,6 +9187,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -7744,6 +9198,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -7752,6 +9209,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Input(self):
+        """The input parameter for sensitive information detection.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -7760,6 +9220,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Output(self):
+        """The output of sensitive information detection.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiReviewTerrorismTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -7802,6 +9266,9 @@ class AiReviewTerrorismOcrTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """The template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -7844,6 +9311,9 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """The confidence score for the OCR-based detection of sensitive information. Value range: 1-100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -7852,6 +9322,12 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """The suggestion for handling the sensitive information detected based on OCR. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -7860,6 +9336,9 @@ class AiReviewTerrorismOcrTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """The video segments that contain sensitive information detected based on OCR.
+        :rtype: list of MediaContentReviewOcrTextSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -7900,6 +9379,9 @@ class AiReviewTerrorismTaskInput(AbstractModel):
 
     @property
     def Definition(self):
+        """The template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -7954,6 +9436,9 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 
     @property
     def Confidence(self):
+        """The confidence score for the detection of sensitive information. Value range: 0-100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -7962,6 +9447,12 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 
     @property
     def Suggestion(self):
+        """The suggestion for handling the sensitive information detected. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -7970,6 +9461,18 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 
     @property
     def Label(self):
+        """The labels for the detected sensitive content. Valid values:
+<li>guns</li>
+<li>crowd</li>
+<li>police</li>
+<li>bloody</li>
+<li>banners (sensitive flags)</li>
+<li>militant</li>
+<li>explosion</li>
+<li>terrorists</li>
+<li>scenario (sensitive scenes) </li>
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -7978,6 +9481,9 @@ class AiReviewTerrorismTaskOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """The video segments that contain sensitive information.
+        :rtype: list of MediaContentReviewSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -8022,6 +9528,9 @@ class AiSampleFaceInfo(AbstractModel):
 
     @property
     def FaceId(self):
+        """Face image ID.
+        :rtype: str
+        """
         return self._FaceId
 
     @FaceId.setter
@@ -8030,6 +9539,9 @@ class AiSampleFaceInfo(AbstractModel):
 
     @property
     def Url(self):
+        """Face image address.
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -8073,6 +9585,9 @@ Note: The image must be a relatively clear full-face photo of a figure in at lea
 
     @property
     def Type(self):
+        """Operation type. Valid values: add, delete, reset. The `reset` operation will clear the existing face data of a figure and add `FaceContents` as the specified face data.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -8081,6 +9596,9 @@ Note: The image must be a relatively clear full-face photo of a figure in at lea
 
     @property
     def FaceIds(self):
+        """Face ID set. This field is required when `Type` is `delete`.
+        :rtype: list of str
+        """
         return self._FaceIds
 
     @FaceIds.setter
@@ -8089,6 +9607,12 @@ Note: The image must be a relatively clear full-face photo of a figure in at lea
 
     @property
     def FaceContents(self):
+        """String set generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) the face image.
+<li>This field is required when `Type` is `add` or `reset`;</li>
+<li>Array length limit: 5 images.</li>
+Note: The image must be a relatively clear full-face photo of a figure in at least 200 * 200 px.
+        :rtype: list of str
+        """
         return self._FaceContents
 
     @FaceContents.setter
@@ -8132,6 +9656,9 @@ class AiSampleFailFaceInfo(AbstractModel):
 
     @property
     def Index(self):
+        """Corresponds to incorrect image subscripts in the `FaceContents` input parameter, starting from 0.
+        :rtype: int
+        """
         return self._Index
 
     @Index.setter
@@ -8140,6 +9667,11 @@ class AiSampleFailFaceInfo(AbstractModel):
 
     @property
     def ErrCode(self):
+        """Error code. Valid values:
+<li>0: Succeeded;</li>
+<li>Other values: Failed.</li>
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -8148,6 +9680,9 @@ class AiSampleFailFaceInfo(AbstractModel):
 
     @property
     def Message(self):
+        """Error description.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -8204,6 +9739,9 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def PersonId(self):
+        """Figure ID.
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -8212,6 +9750,9 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def Name(self):
+        """Name of a figure.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8220,6 +9761,9 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def Description(self):
+        """Figure description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -8228,6 +9772,9 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def FaceInfoSet(self):
+        """Face information.
+        :rtype: list of AiSampleFaceInfo
+        """
         return self._FaceInfoSet
 
     @FaceInfoSet.setter
@@ -8236,6 +9783,9 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def TagSet(self):
+        """Figure tag.
+        :rtype: list of str
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -8244,6 +9794,9 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def UsageSet(self):
+        """Use case.
+        :rtype: list of str
+        """
         return self._UsageSet
 
     @UsageSet.setter
@@ -8252,6 +9805,9 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8260,6 +9816,9 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """Last modified time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -8308,6 +9867,9 @@ class AiSampleTagOperation(AbstractModel):
 
     @property
     def Type(self):
+        """Operation type. Valid values: add, delete, reset.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -8316,6 +9878,9 @@ class AiSampleTagOperation(AbstractModel):
 
     @property
     def Tags(self):
+        """Tag. Length limit: 128 characters.
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -8362,6 +9927,9 @@ class AiSampleWord(AbstractModel):
 
     @property
     def Keyword(self):
+        """Keyword.
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -8370,6 +9938,9 @@ class AiSampleWord(AbstractModel):
 
     @property
     def TagSet(self):
+        """Keyword tag.
+        :rtype: list of str
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -8378,6 +9949,9 @@ class AiSampleWord(AbstractModel):
 
     @property
     def UsageSet(self):
+        """Keyword use case.
+        :rtype: list of str
+        """
         return self._UsageSet
 
     @UsageSet.setter
@@ -8386,6 +9960,9 @@ class AiSampleWord(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8394,6 +9971,9 @@ class AiSampleWord(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """Last modified time in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -8436,6 +10016,9 @@ class AiSampleWordInfo(AbstractModel):
 
     @property
     def Keyword(self):
+        """Keyword. Length limit: 20 characters.
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -8444,6 +10027,11 @@ class AiSampleWordInfo(AbstractModel):
 
     @property
     def Tags(self):
+        """Keyword tag
+<li>Array length limit: 20 tags;</li>
+<li>Tag length limit: 128 characters.</li>
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -8498,6 +10086,9 @@ If left empty, a relative path is used by default: `{inputName}_animatedGraphic_
 
     @property
     def Definition(self):
+        """Animated image generating template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -8506,6 +10097,9 @@ If left empty, a relative path is used by default: `{inputName}_animatedGraphic_
 
     @property
     def StartTimeOffset(self):
+        """Start time of an animated image in a video in seconds.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -8514,6 +10108,9 @@ If left empty, a relative path is used by default: `{inputName}_animatedGraphic_
 
     @property
     def EndTimeOffset(self):
+        """End time of an animated image in a video in seconds.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -8522,6 +10119,10 @@ If left empty, a relative path is used by default: `{inputName}_animatedGraphic_
 
     @property
     def OutputStorage(self):
+        """Target bucket of a generated animated image file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -8530,6 +10131,16 @@ If left empty, a relative path is used by default: `{inputName}_animatedGraphic_
 
     @property
     def OutputObjectPath(self):
+        """Output path of a file after animated image generating, which can be a relative or absolute path.
+If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).
+Relative path example:
+<li>Filename_{Variable name}.{format}.</li>
+<li>Filename.{format}.</li>
+Absolute path example:
+<li>/Custom path/Filename_{Variable name}.{format}.</li>
+If left empty, a relative path is used by default: `{inputName}_animatedGraphic_{definition}.{format}`.
+        :rtype: str
+        """
         return self._OutputObjectPath
 
     @OutputObjectPath.setter
@@ -8617,6 +10228,9 @@ Default value: open.
 
     @property
     def Definition(self):
+        """Unique ID of an animated image generating template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -8625,6 +10239,11 @@ Default value: open.
 
     @property
     def Type(self):
+        """Template type. Valid values:
+<li>Preset: Preset template;</li>
+<li>Custom: Custom template.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -8633,6 +10252,9 @@ Default value: open.
 
     @property
     def Name(self):
+        """Name of an animated image generating template.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8641,6 +10263,9 @@ Default value: open.
 
     @property
     def Comment(self):
+        """Description of an animated image generating template.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -8649,6 +10274,14 @@ Default value: open.
 
     @property
     def Width(self):
+        """Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].
+<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
+<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
+<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
+<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -8657,6 +10290,14 @@ Default value: open.
 
     @property
     def Height(self):
+        """Maximum value of the height (or short side) of an animated image in px. Value range: 0 and [128, 4,096].
+<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
+<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
+<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
+<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -8665,6 +10306,12 @@ Default value: open.
 
     @property
     def ResolutionAdaptive(self):
+        """Resolution adaption. Valid values:
+<li>open: Enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
+<li>close: Disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
+Default value: open.
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -8673,6 +10320,9 @@ Default value: open.
 
     @property
     def Format(self):
+        """Animated image format.
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -8681,6 +10331,9 @@ Default value: open.
 
     @property
     def Fps(self):
+        """Frame rate.
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -8689,6 +10342,9 @@ Default value: open.
 
     @property
     def Quality(self):
+        """Image quality.
+        :rtype: float
+        """
         return self._Quality
 
     @Quality.setter
@@ -8697,6 +10353,9 @@ Default value: open.
 
     @property
     def CreateTime(self):
+        """Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8705,6 +10364,9 @@ Default value: open.
 
     @property
     def UpdateTime(self):
+        """Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -8759,6 +10421,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -8767,6 +10435,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """The strength. Valid values:
+<li>weak</li>
+<li>strong</li>
+Default value: weak.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -8807,6 +10482,11 @@ class AsrFullTextConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of a full speech recognition task. Valid values:
+<li>ON: Enables an intelligent full speech recognition task;</li>
+<li>OFF: Disables an intelligent full speech recognition task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -8815,6 +10495,10 @@ class AsrFullTextConfigureInfo(AbstractModel):
 
     @property
     def SubtitleFormat(self):
+        """Format of the generated subtitles file. If this parameter is left empty or an empty string is entered, no subtitles files will be generated. Valid value:
+<li>vtt: Generates a WebVTT subtitles file.</li>
+        :rtype: str
+        """
         return self._SubtitleFormat
 
     @SubtitleFormat.setter
@@ -8855,6 +10539,11 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of a full speech recognition task. Valid values:
+<li>ON: Enables an intelligent full speech recognition task;</li>
+<li>OFF: Disables an intelligent full speech recognition task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -8863,6 +10552,10 @@ class AsrFullTextConfigureInfoForUpdate(AbstractModel):
 
     @property
     def SubtitleFormat(self):
+        """Format of the generated subtitles file. If an empty string is entered, no subtitles files will be generated. Valid value:
+<li>vtt: Generates a WebVTT subtitles file.</li>
+        :rtype: str
+        """
         return self._SubtitleFormat
 
     @SubtitleFormat.setter
@@ -8903,6 +10596,11 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def Switch(self):
+        """Switch of a speech keyword recognition task. Valid values:
+<li>ON: Enables a speech keyword recognition task;</li>
+<li>OFF: Disables a speech keyword recognition task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -8911,6 +10609,10 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def LabelSet(self):
+        """Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty, all results will be returned.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -8951,6 +10653,11 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def Switch(self):
+        """Switch of a speech keyword recognition task. Valid values:
+<li>ON: Enables a speech keyword recognition task;</li>
+<li>OFF: Disables a speech keyword recognition task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -8959,6 +10666,10 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def LabelSet(self):
+        """Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty, all results will be returned.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -9003,6 +10714,12 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Switch(self):
+        """Whether to enable the feature. Valid values:
+<li>`ON`</li>
+<li>`OFF` </li>
+Default value: `ON`.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -9011,6 +10728,13 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Types(self):
+        """The audio improvement options. You can specify multiple options. Valid values:
+<li>`declick`: Noise removal.</li>
+<li>`deesser`: De-essing.</li>
+Default: `declick`.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._Types
 
     @Types.setter
@@ -9048,6 +10772,12 @@ Default value: `ON`.
 
     @property
     def Switch(self):
+        """Whether to enable the feature. Valid values:
+<li>`ON`</li>
+<li>`OFF` </li>
+Default value: `ON`.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -9094,6 +10824,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Denoise(self):
+        """The audio noise reduction configuration.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioDenoiseConfig`
+        """
         return self._Denoise
 
     @Denoise.setter
@@ -9102,6 +10836,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Separate(self):
+        """The audio separation configuration.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioSeparateConfig`
+        """
         return self._Separate
 
     @Separate.setter
@@ -9110,6 +10848,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def VolumeBalance(self):
+        """The volume equalization configuration.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VolumeBalanceConfig`
+        """
         return self._VolumeBalance
 
     @VolumeBalance.setter
@@ -9118,6 +10860,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Beautify(self):
+        """The audio improvement configuration.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioBeautifyConfig`
+        """
         return self._Beautify
 
     @Beautify.setter
@@ -9179,6 +10925,12 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Switch(self):
+        """Whether to enable the feature. Valid values:
+<li>`ON`</li>
+<li>`OFF` </li>
+Default value: `ON`.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -9187,6 +10939,13 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Type(self):
+        """The scenario. Valid values:
+<li>`normal`: Separate voice and background audio.</li>
+<li>`music`: Separate vocals and instrumentals.</li>
+Default value: `normal`.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9195,6 +10954,13 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Track(self):
+        """The output audio track. Valid values:
+<li>`vocal`: Voice.</li>
+<li>`background`: Output background audio if the scenario is `normal`, and output instrumentals if the scenario is `music`.</li>
+Default value: `vocal`.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Track
 
     @Track.setter
@@ -9265,6 +11031,25 @@ Default value: 2.
 
     @property
     def Codec(self):
+        """Audio stream encoding format.
+When audio transcoding is not needed, the value is:
+<li>copy.</li>
+When the outer parameter Container is mp3, the value is:
+<li>mp3.</li>
+When the outer parameter Container is ogg or flac, the value is:
+<li>flac.</li>
+When the outer parameter Container is m4a, valid values are:
+<li>aac;</li>
+<li>ac3.</li>
+When the outer parameter Container is mp4 or flv, valid values are:
+<li>aac: more suitable for mp4;</li>
+<li>mp3: more suitable for flv;</li>
+<li>mp2.</li>
+When the outer parameter Container is hls, valid values are:
+<li>aac;</li>
+<li>mp3.</li>
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -9273,6 +11058,10 @@ Default value: 2.
 
     @property
     def Bitrate(self):
+        """Audio stream bitrate in Kbps. Value range: 0 and [26, 256].
+If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -9281,6 +11070,13 @@ Default value: 2.
 
     @property
     def SampleRate(self):
+        """Audio stream sample rate. Valid values:
+<li>32,000</li>
+<li>44,100</li>
+<li>48,000</li>
+In Hz.
+        :rtype: int
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -9289,6 +11085,14 @@ Default value: 2.
 
     @property
     def AudioChannel(self):
+        """Audio channel mode. Valid values:
+<li>1: single channel.</li>
+<li>2: dual channel.</li>
+<li>6: 5.1 surround sound.</li>
+When the media encapsulation format is audio (flac, ogg, mp3, and m4a), the number of channels cannot be set to 5.1 surround sound.
+Default value: 2.
+        :rtype: int
+        """
         return self._AudioChannel
 
     @AudioChannel.setter
@@ -9363,6 +11167,26 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Codec(self):
+        """Audio stream encoding format.
+When audio transcoding is not needed, the value is:
+<li>copy.</li>
+When the outer parameter Container is mp3, the value is:
+<li>mp3.</li>
+When the outer parameter Container is ogg or flac, the value is:
+<li>flac.</li>
+When the outer parameter Container is m4a, valid values are:
+<li>aac;</li>
+<li>ac3.</li>
+When the outer parameter Container is mp4 or flv, valid values are:
+<li>aac: more suitable for mp4;</li>
+<li>mp3: more suitable for flv;</li>
+<li>mp2.</li>
+When the outer parameter Container is hls, valid values are:
+<li>aac;</li>
+<li>mp3.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -9371,6 +11195,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Bitrate(self):
+        """Audio stream bitrate in Kbps. Value range: 0 and [26, 256]. If the value is 0, the bitrate of the audio stream will be the same as that of the original audio.
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -9379,6 +11206,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SampleRate(self):
+        """Audio stream sample rate. Valid values:
+<li>32,000</li>
+<li>44,100</li>
+<li>48,000</li>
+In Hz.
+        :rtype: int
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -9387,6 +11221,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AudioChannel(self):
+        """Audio channel mode. Valid values:
+<li>1: single channel.</li>
+<li>2: dual channel.</li>
+<li>6: 5.1 surround sound.</li>
+When the media encapsulation format is audio (flac, ogg, mp3, and m4a), the number of channels cannot be set to 5.1 surround sound.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._AudioChannel
 
     @AudioChannel.setter
@@ -9395,6 +11237,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StreamSelects(self):
+        """The audio tracks to retain. All audio tracks are retained by default.
+        :rtype: list of int
+        """
         return self._StreamSelects
 
     @StreamSelects.setter
@@ -9454,6 +11299,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def S3Bucket(self):
+        """The AWS S3 bucket bound to the scheme.
+        :rtype: str
+        """
         return self._S3Bucket
 
     @S3Bucket.setter
@@ -9462,6 +11310,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def S3Region(self):
+        """The region of the AWS S3 bucket.
+        :rtype: str
+        """
         return self._S3Region
 
     @S3Region.setter
@@ -9470,6 +11321,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Dir(self):
+        """The bucket directory bound. It must be an absolute path that starts and ends with `/`, such as `/movie/201907/`. If you do not specify this, the root directory will be bound.	
+        :rtype: str
+        """
         return self._Dir
 
     @Dir.setter
@@ -9478,6 +11332,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Formats(self):
+        """The file formats that will trigger the scheme, such as ["mp4", "flv", "mov"]. If you do not specify this, the upload of files in any format will trigger the scheme.	
+        :rtype: list of str
+        """
         return self._Formats
 
     @Formats.setter
@@ -9486,6 +11343,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def S3SecretId(self):
+        """The key ID of the AWS S3 bucket.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._S3SecretId
 
     @S3SecretId.setter
@@ -9494,6 +11355,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def S3SecretKey(self):
+        """The key of the AWS S3 bucket.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._S3SecretKey
 
     @S3SecretKey.setter
@@ -9502,6 +11367,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AwsSQS(self):
+        """The SQS queue of the AWS S3 bucket.
+Note: The queue must be in the same region as the bucket.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
+        """
         return self._AwsSQS
 
     @AwsSQS.setter
@@ -9556,6 +11426,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def SQSRegion(self):
+        """The region of the SQS queue.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SQSRegion
 
     @SQSRegion.setter
@@ -9564,6 +11438,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def SQSQueueName(self):
+        """The name of the SQS queue.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SQSQueueName
 
     @SQSQueueName.setter
@@ -9572,6 +11450,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def S3SecretId(self):
+        """The key ID required to read from/write to the SQS queue.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._S3SecretId
 
     @S3SecretId.setter
@@ -9580,6 +11462,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def S3SecretKey(self):
+        """The key required to read from/write to the SQS queue.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._S3SecretKey
 
     @S3SecretKey.setter
@@ -9618,6 +11504,11 @@ class ClassificationConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of intelligent categorization task. Valid values:
+<li>ON: enables intelligent categorization task;</li>
+<li>OFF: disables intelligent categorization task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -9653,6 +11544,11 @@ class ClassificationConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of intelligent categorization task. Valid values:
+<li>ON: enables intelligent categorization task;</li>
+<li>OFF: disables intelligent categorization task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -9697,6 +11593,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -9705,6 +11607,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """The strength. Valid values:
+<li>weak</li>
+<li>normal</li>
+<li>strong</li>
+Default value: weak.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9745,6 +11655,9 @@ class ComposeAudioItem(AbstractModel):
 
     @property
     def SourceMedia(self):
+        """The media information of the element.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeSourceMedia`
+        """
         return self._SourceMedia
 
     @SourceMedia.setter
@@ -9753,6 +11666,9 @@ class ComposeAudioItem(AbstractModel):
 
     @property
     def TrackTime(self):
+        """The time of the element in the timeline. If this is not specified, the element will follow the previous element.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
+        """
         return self._TrackTime
 
     @TrackTime.setter
@@ -9761,6 +11677,9 @@ class ComposeAudioItem(AbstractModel):
 
     @property
     def AudioOperations(self):
+        """The operations performed, such as muting.
+        :rtype: list of ComposeAudioOperation
+        """
         return self._AudioOperations
 
     @AudioOperations.setter
@@ -9813,6 +11732,10 @@ class ComposeAudioOperation(AbstractModel):
 
     @property
     def Type(self):
+        """The operation type. Valid values:
+<li>`Volume`: Volume adjustment. </li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9821,6 +11744,13 @@ class ComposeAudioOperation(AbstractModel):
 
     @property
     def Volume(self):
+        """ The volume level. This parameter is valid if `Type` is `Volume`. Value range: 0–5. 
+<li>If the parameter value is `0`, the video will be muted. </li>
+<li>If the parameter value is smaller than 1, the volume will be reduced. </li>
+<li>If the parameter value is `1`, the original volume will be kept. </li>
+<li>If the parameter value is greater than 1, the volume will be increased. </li>
+        :rtype: float
+        """
         return self._Volume
 
     @Volume.setter
@@ -9874,6 +11804,11 @@ If not set, the service will automatically adopt a suitable bitrate based on aud
 
     @property
     def Codec(self):
+        """The codec of the audio stream. Valid values:
+<li>`AAC`: AAC (default), which is used for the MP4 container. </li>
+<li>`MP3`: MP3 codec, which is used for the MP3 container. </li>
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -9882,6 +11817,13 @@ If not set, the service will automatically adopt a suitable bitrate based on aud
 
     @property
     def SampleRate(self):
+        """The sample rate (Hz) of the audio stream.
+<li>16000 (default)</li>
+<li>32000</li>
+<li>44100</li>
+<li>48000</li>
+        :rtype: int
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -9890,6 +11832,11 @@ If not set, the service will automatically adopt a suitable bitrate based on aud
 
     @property
     def AudioChannel(self):
+        """The number of sound channels. Valid values:
+u200c<li>`1`: Mono. </li>
+<li>`2`: Dual (default). </li>
+        :rtype: int
+        """
         return self._AudioChannel
 
     @AudioChannel.setter
@@ -9898,6 +11845,11 @@ If not set, the service will automatically adopt a suitable bitrate based on aud
 
     @property
     def Bitrate(self):
+        """Reference bitrate, in kbps. Value range: 26-10000.
+If set, the encoder will try to encode at this bitrate.
+If not set, the service will automatically adopt a suitable bitrate based on audio parameters.
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -9943,6 +11895,10 @@ The default value is `0`, which means that the canvas is as high as the first vi
 
     @property
     def Color(self):
+        """The RGB value of the background color. The format is #RRGGBB, such as `#F0F0F0`. 
+Default value: `#000000` (black).
+        :rtype: str
+        """
         return self._Color
 
     @Color.setter
@@ -9951,6 +11907,10 @@ The default value is `0`, which means that the canvas is as high as the first vi
 
     @property
     def Width(self):
+        """The canvas width (px), which is the width of the output video. Value range: 0–3840.  
+The default value is `0`, which means that the canvas is as wide as the first video.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -9959,6 +11919,10 @@ The default value is `0`, which means that the canvas is as high as the first vi
 
     @property
     def Height(self):
+        """The canvas height (px), which is the height of the output video. Value range: 0–3840.  
+The default value is `0`, which means that the canvas is as high as the first video.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -9995,6 +11959,10 @@ class ComposeEmptyItem(AbstractModel):
 
     @property
     def Duration(self):
+        """The element duration.
+<li>The value of this parameter ends with `s`, which means seconds. For example, `3.5s` indicates 3.5 seconds. </li>
+        :rtype: str
+        """
         return self._Duration
 
     @Duration.setter
@@ -10064,6 +12032,9 @@ If one or both parameters are empty or set to `0`:
 
     @property
     def SourceMedia(self):
+        """The media information of the element.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeSourceMedia`
+        """
         return self._SourceMedia
 
     @SourceMedia.setter
@@ -10072,6 +12043,9 @@ If one or both parameters are empty or set to `0`:
 
     @property
     def TrackTime(self):
+        """The time of the element in the timeline. If this is not specified, the element will follow the previous element.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
+        """
         return self._TrackTime
 
     @TrackTime.setter
@@ -10080,6 +12054,12 @@ If one or both parameters are empty or set to `0`:
 
     @property
     def XPos(self):
+        """The horizontal distance of the element's center from the canvas origin. Two formats are supported:
+<li>If the value ends with %, it specifies the distance as a percentage of the canvas width. For example, `10%` means that the distance is 10% of the canvas width. </li>
+u200c<li>If the value ends with px, it specifies the distance in pixels. For example, `100px` means that the distance is 100 pixels. </li>
+Default value: `50%`.
+        :rtype: str
+        """
         return self._XPos
 
     @XPos.setter
@@ -10088,6 +12068,12 @@ If one or both parameters are empty or set to `0`:
 
     @property
     def YPos(self):
+        """The vertical distance of the element's center from the canvas origin. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the distance as a percentage of the canvas height. For example, `10%` means that the distance is 10% of the canvas height. </li>
+u200c<li>If the value ends with px, it specifies the distance in pixels. For example, `100px` means that the distance is 100 pixels. </li>
+Default value: `50%`.
+        :rtype: str
+        """
         return self._YPos
 
     @YPos.setter
@@ -10096,6 +12082,15 @@ If one or both parameters are empty or set to `0`:
 
     @property
     def Width(self):
+        """The width of the video segment. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the width as a percentage of the canvas width. For example, `10%` means that the video width is 10% of the canvas width. </li>
+u200c<li>If the value ends with px, it specifies the width in pixels. For example, `100px` means that the video width is 100 pixels. </li>
+If one or both parameters are empty or set to `0`:
+<li>If both `Width` and `Height` are empty, the original width and height of the element will be kept. </li>
+<li>If `Width` is empty and `Height` is not, the width will be auto scaled. </li>
+<li>If `Width` is not empty and `Height` is, the height will be auto scaled. </li>
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -10104,6 +12099,15 @@ If one or both parameters are empty or set to `0`:
 
     @property
     def Height(self):
+        """The height of the element. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the height as a percentage of the canvas height. For example, `10%` means that the height is 10% of the canvas height. </li>
+u200c<li>If the value ends with px, it specifies the height in pixels. For example, `100px` means that the height is 100 pixels. </li>
+If one or both parameters are empty or set to `0`:
+<li>If both `Width` and `Height` are empty, the original width and height of the video will be kept. </li>
+<li>If `Width` is empty and `Height` is not, the width will be auto scaled. </li>
+<li>If `Width` is not empty and `Height` is, the height will be auto scaled. </li>
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -10112,6 +12116,9 @@ If one or both parameters are empty or set to `0`:
 
     @property
     def ImageOperations(self):
+        """The image operations, such as image rotation.
+        :rtype: list of ComposeImageOperation
+        """
         return self._ImageOperations
 
     @ImageOperations.setter
@@ -10170,6 +12177,11 @@ u200c<li>`Horizental`: Flip horizontally. </li>
 
     @property
     def Type(self):
+        """The type. Valid values:
+u200c<li>`Rotate`: Image rotation. </li>
+<li>`Flip`: Image flipping. </li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10178,6 +12190,9 @@ u200c<li>`Horizental`: Flip horizontally. </li>
 
     @property
     def RotateAngle(self):
+        """This is valid if `Type` is `Rotate`. The angle of rotation around the image center. Value range: 0–360.
+        :rtype: float
+        """
         return self._RotateAngle
 
     @RotateAngle.setter
@@ -10186,6 +12201,11 @@ u200c<li>`Horizental`: Flip horizontally. </li>
 
     @property
     def FlipType(self):
+        """This is valid if `Type` is `Flip`. How to flip the image. Valid values:xa0
+u200c<li>`Horizental`: Flip horizontally. </li>
+<li>`Vertical`: Flip vertically. </li>
+        :rtype: str
+        """
         return self._FlipType
 
     @FlipType.setter
@@ -10235,6 +12255,9 @@ class ComposeMediaConfig(AbstractModel):
 
     @property
     def TargetInfo(self):
+        """The information of the output video.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeTargetInfo`
+        """
         return self._TargetInfo
 
     @TargetInfo.setter
@@ -10243,6 +12266,9 @@ class ComposeMediaConfig(AbstractModel):
 
     @property
     def Canvas(self):
+        """The canvas information of the output video.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeCanvas`
+        """
         return self._Canvas
 
     @Canvas.setter
@@ -10251,6 +12277,9 @@ class ComposeMediaConfig(AbstractModel):
 
     @property
     def Styles(self):
+        """The global styles. This parameter is used together with `Tracks` to specify styles, such as the subtitle style.
+        :rtype: list of ComposeStyles
+        """
         return self._Styles
 
     @Styles.setter
@@ -10259,6 +12288,10 @@ class ComposeMediaConfig(AbstractModel):
 
     @property
     def Tracks(self):
+        """The information of media tracks (consisting of video, audio, image, and text elements) used to composite the video. About tracks and the timeline:
+<ul><li>The timeline of a track is the same as the timeline of the output video. </li><li>The elements of different tracks are overlaid at the same time point in the timeline.</li><ul><li>Video, image, and text elements are overlaid according to their track number, with the first track on top. </li><li>Audio elements are mixed. </li></ul></ul>Note: The different elements of the same track cannot be overlaid (except subtitles).
+        :rtype: list of ComposeMediaTrack
+        """
         return self._Tracks
 
     @Tracks.setter
@@ -10333,6 +12366,15 @@ class ComposeMediaItem(AbstractModel):
 
     @property
     def Type(self):
+        """The element type. Valid values:
+<li>`Video` </li>
+<li>`Audio` </li>
+<li>`Image` </li>
+<li>`Transition` </li>
+<li>`Subtitle` </li>
+<li>`Empty` </li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10341,6 +12383,9 @@ class ComposeMediaItem(AbstractModel):
 
     @property
     def Video(self):
+        """The information of the video element, which is valid if `Type` is `Video`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeVideoItem`
+        """
         return self._Video
 
     @Video.setter
@@ -10349,6 +12394,9 @@ class ComposeMediaItem(AbstractModel):
 
     @property
     def Audio(self):
+        """The information of the audio element, which is valid if `Type` is `Audio`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeAudioItem`
+        """
         return self._Audio
 
     @Audio.setter
@@ -10357,6 +12405,9 @@ class ComposeMediaItem(AbstractModel):
 
     @property
     def Image(self):
+        """The information of the image element, which is valid if `Type` is `Image`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeImageItem`
+        """
         return self._Image
 
     @Image.setter
@@ -10365,6 +12416,9 @@ class ComposeMediaItem(AbstractModel):
 
     @property
     def Transition(self):
+        """The information of the transition element, which is valid if `Type` is `Transition`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeTransitionItem`
+        """
         return self._Transition
 
     @Transition.setter
@@ -10373,6 +12427,9 @@ class ComposeMediaItem(AbstractModel):
 
     @property
     def Subtitle(self):
+        """The information of the subtitle element, which is valid if `Type` is `Subtitle`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeSubtitleItem`
+        """
         return self._Subtitle
 
     @Subtitle.setter
@@ -10381,6 +12438,9 @@ class ComposeMediaItem(AbstractModel):
 
     @property
     def Empty(self):
+        """The information of the empty element, which is valid if `Type` is `Empty`. An empty element is used as a placeholder in the timeline.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeEmptyItem`
+        """
         return self._Empty
 
     @Empty.setter
@@ -10435,6 +12495,9 @@ class ComposeMediaTrack(AbstractModel):
 
     @property
     def Type(self):
+        """The track type. Valid values:<ul><li>`Video`: Video track. A video track can consist of the following elements:</li><ul><li>Video</li><li>Image</li><li>Transition</li><li>Empty</li></ul><li>`Audio`: Audio track. An audio track can consist of the following elements:</li><ul><li>Audio</li><li>Transition</li><li>Empty</li></ul><li>`Title`: Text track. A text track can consist of the following elements: </li><ul><li>Subtitle</li></ul>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10443,6 +12506,9 @@ class ComposeMediaTrack(AbstractModel):
 
     @property
     def Items(self):
+        """The elements of a track.
+        :rtype: list of ComposeMediaItem
+        """
         return self._Items
 
     @Items.setter
@@ -10496,6 +12562,9 @@ Note: `EndTime` must be at least 0.02 seconds later than `StartTime`.
 
     @property
     def FileId(self):
+        """The material ID, which can be found in `FileInfos`.
+        :rtype: str
+        """
         return self._FileId
 
     @FileId.setter
@@ -10504,6 +12573,12 @@ Note: `EndTime` must be at least 0.02 seconds later than `StartTime`.
 
     @property
     def StartTime(self):
+        """The start time of the material. The following two formats are supported.
+<li>If the value of this parameter ends with `s`, it specifies the time in seconds. For example, `3.5s` indicates the time when 3.5 seconds of the material elapses.</li>
+u200c<li>If the value of this parameter ends with `%`, it specifies the time as a percentage of the material's duration. For example, `10%` indicates the time when 10% of the material's duration elapses. </li>
+Default value: `0s`.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10512,6 +12587,14 @@ Note: `EndTime` must be at least 0.02 seconds later than `StartTime`.
 
     @property
     def EndTime(self):
+        """The end time of the material. This parameter and `StartTime` determine which time segment of the material is used. The following two formats are supported:
+<li>If the value of this parameter ends with `s`, it specifies the time in seconds. For example, `3.5s` indicates the time when 3.5 seconds of the material elapses.</li>
+u200c<li>If the value of this parameter ends with `%`, it specifies the time as a percentage of the material's duration. For example, `10%` indicates the time when 10% of the material's duration elapses. </li>
+If the track duration is set, the default value is `StartTime` plus the track duration. If not, the default value is `StartTime` plus 1 second.
+Note: `EndTime` must be at least 0.02 seconds later than `StartTime`.
+
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10555,6 +12638,10 @@ Note: The style ID can be up to 32 characters long and can contain letters, digi
 
     @property
     def Id(self):
+        """The style ID, which identifies an element style.
+Note: The style ID can be up to 32 characters long and can contain letters, digits, and special characters -_
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -10563,6 +12650,10 @@ Note: The style ID can be up to 32 characters long and can contain letters, digi
 
     @property
     def Type(self):
+        """The type. Valid values:
+<li>`Subtitle`: The subtitle style. </li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10571,6 +12662,9 @@ Note: The style ID can be up to 32 characters long and can contain letters, digi
 
     @property
     def Subtitle(self):
+        """The subtitle style details. This parameter is valid if `Type` is `Subtitle`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeSubtitleStyle`
+        """
         return self._Subtitle
 
     @Subtitle.setter
@@ -10614,6 +12708,9 @@ class ComposeSubtitleItem(AbstractModel):
 
     @property
     def StyleId(self):
+        """The subtitle style ID, which corresponds to the `Id` field of `ComposeStyles`.
+        :rtype: str
+        """
         return self._StyleId
 
     @StyleId.setter
@@ -10622,6 +12719,9 @@ class ComposeSubtitleItem(AbstractModel):
 
     @property
     def Text(self):
+        """The subtitle text.
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -10630,6 +12730,9 @@ class ComposeSubtitleItem(AbstractModel):
 
     @property
     def TrackTime(self):
+        """The time of the element in the timeline. If this is not specified, the element will follow the previous element.	
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
+        """
         return self._TrackTime
 
     @TrackTime.setter
@@ -10730,6 +12833,12 @@ The default value is an empty string, which means the subtitles will not have a 
 
     @property
     def Height(self):
+        """The subtitle height. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the height as a percentage of the canvas height. For example, `10%` means that the height is 10% of the canvas height. </li>
+u200c<li>If the value ends with px, it specifies the height in pixels. For example, `100px` means that the height is 100 pixels. </li>
+The default value is the value of `FontSize`.
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -10738,6 +12847,12 @@ The default value is an empty string, which means the subtitles will not have a 
 
     @property
     def MarginBottom(self):
+        """The bottom margin. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the margin as a percentage of the canvas height. For example, `10%` means that the margin is 10% of the canvas height. </li>
+u200c<li>If the value ends with px, it specifies the margin in pixels. For example, `100px` means that the margin is 100 pixels. </li>
+Default value: `0px`.
+        :rtype: str
+        """
         return self._MarginBottom
 
     @MarginBottom.setter
@@ -10746,6 +12861,11 @@ The default value is an empty string, which means the subtitles will not have a 
 
     @property
     def FontType(self):
+        """The font type. Valid values:
+<li>`SimHei`(default): Chinese font Heiti. </li>
+<Li>`SimSun`: Chinese font Songti. </li>
+        :rtype: str
+        """
         return self._FontType
 
     @FontType.setter
@@ -10754,6 +12874,12 @@ The default value is an empty string, which means the subtitles will not have a 
 
     @property
     def FontSize(self):
+        """The font size. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the size as a percentage of the canvas height. For example, `10%` means that the size is 10% of the canvas height. </li>
+u200c<li>If the value ends with px, it specifies the size in pixels. For example, `100px` means that the size is 100 pixels. </li>
+Default value: `2%`.
+        :rtype: str
+        """
         return self._FontSize
 
     @FontSize.setter
@@ -10762,6 +12888,11 @@ The default value is an empty string, which means the subtitles will not have a 
 
     @property
     def FontBold(self):
+        """Whether to bold the text (some fonts may not support bold). Valid values:
+<li>`0` (default): No. </li>
+<li>`1`: Yes. </li>
+        :rtype: int
+        """
         return self._FontBold
 
     @FontBold.setter
@@ -10770,6 +12901,11 @@ The default value is an empty string, which means the subtitles will not have a 
 
     @property
     def FontItalic(self):
+        """Whether to italicize the text (some fonts may not support italics). Valid values:
+<li>`0` (default): No. </li>
+<li>`1`: Yes. </li>
+        :rtype: int
+        """
         return self._FontItalic
 
     @FontItalic.setter
@@ -10778,6 +12914,12 @@ The default value is an empty string, which means the subtitles will not have a 
 
     @property
     def FontColor(self):
+        """The font color (#RRGGBBAA).  
+Default value: `0x000000FF` (black).  
+Note: `AA` in the color notation defines the opacity of the color. It's optional.
+
+        :rtype: str
+        """
         return self._FontColor
 
     @FontColor.setter
@@ -10786,6 +12928,12 @@ The default value is an empty string, which means the subtitles will not have a 
 
     @property
     def FontAlign(self):
+        """The text alignment. Valid values:
+<li>`Center`(default) </li>
+<li>`Left` </li>
+<li>`Right` </li>
+        :rtype: str
+        """
         return self._FontAlign
 
     @FontAlign.setter
@@ -10794,6 +12942,14 @@ The default value is an empty string, which means the subtitles will not have a 
 
     @property
     def FontAlignMargin(self):
+        """The margin for left/right align.
+<li>If `FontAlign` is `Left`, this parameter specifies the left margin of the subtitles. </li>
+<li>If `FontAlign` is `Right`, this parameter specifies the right margin of the subtitles. </li>
+Two formats are supported:
+u200c<li>If the value ends with %, it specifies the margin as a percentage of the canvas width. For example, `10%` means that the margin is 10% of the canvas width. </li>
+u200c<li>If the value ends with px, it specifies the margin in pixels. For example, `100px` means that the margin is 100 pixels. </li>
+        :rtype: str
+        """
         return self._FontAlignMargin
 
     @FontAlignMargin.setter
@@ -10802,6 +12958,12 @@ The default value is an empty string, which means the subtitles will not have a 
 
     @property
     def BorderWidth(self):
+        """The subtitle border width. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the width as a percentage of the canvas height. For example, `10%` means that the width is 10% of the canvas height. </li>
+u200c<li>If the value ends with px, it specifies the width in pixels. For example, `100px` means that the width is 100 pixels. </li>
+The default value is `0`, which means the subtitles will have no borders.
+        :rtype: str
+        """
         return self._BorderWidth
 
     @BorderWidth.setter
@@ -10810,6 +12972,9 @@ The default value is an empty string, which means the subtitles will not have a 
 
     @property
     def BorderColor(self):
+        """The border color, whose format is the same as that for `FontColor`. This parameter is valid if `BorderWidth` is not `0`.
+        :rtype: str
+        """
         return self._BorderColor
 
     @BorderColor.setter
@@ -10818,6 +12983,10 @@ The default value is an empty string, which means the subtitles will not have a 
 
     @property
     def BottomColor(self):
+        """The text background color, whose format is the same as that for `FontColor`.  
+The default value is an empty string, which means the subtitles will not have a background color.
+        :rtype: str
+        """
         return self._BottomColor
 
     @BottomColor.setter
@@ -10880,6 +13049,11 @@ class ComposeTargetInfo(AbstractModel):
 
     @property
     def Container(self):
+        """The container. Valid values:
+<li>`mp4` (default), for video files. </li>
+<li>`mp3`, for audio files. </li>
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -10888,6 +13062,11 @@ class ComposeTargetInfo(AbstractModel):
 
     @property
     def RemoveVideo(self):
+        """Whether to remove video data. Valid values:
+<li>`0` (default): No. </li>
+<li>`1`: Yes. </li>
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -10896,6 +13075,11 @@ class ComposeTargetInfo(AbstractModel):
 
     @property
     def RemoveAudio(self):
+        """Whether to remove audio data. Valid values:
+<li>`0` (default): No. </li>
+<li>`1`: Yes. </li>
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -10904,6 +13088,9 @@ class ComposeTargetInfo(AbstractModel):
 
     @property
     def VideoStream(self):
+        """The information of the output video stream.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeVideoStream`
+        """
         return self._VideoStream
 
     @VideoStream.setter
@@ -10912,6 +13099,9 @@ class ComposeTargetInfo(AbstractModel):
 
     @property
     def AudioStream(self):
+        """The information of the output audio stream.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeAudioStream`
+        """
         return self._AudioStream
 
     @AudioStream.setter
@@ -10960,6 +13150,11 @@ The default value is the material duration, which is determined by `EndTime` and
 
     @property
     def Start(self):
+        """The time when the element starts on the track.
+<li>The value of this parameter ends with `s`, which means seconds. For example, `3.5s` indicates the time when 3.5 seconds of the video elapses.</li>
+Note: If this parameter is not specified, the start time will be the end time of the previous element. Therefore, you can also use the placeholder parameter `ComposeEmptyItem` to configure the start time.
+        :rtype: str
+        """
         return self._Start
 
     @Start.setter
@@ -10968,6 +13163,11 @@ The default value is the material duration, which is determined by `EndTime` and
 
     @property
     def Duration(self):
+        """The element duration.
+<li>The value of this parameter ends with `s`, which means seconds. For example, `3.5s` means 3.5 seconds.</li>
+The default value is the material duration, which is determined by `EndTime` and `StartTime` of `ComposeSourceMedia`. If `ComposeSourceMedia` is not specified, the duration will be 1 second.
+        :rtype: str
+        """
         return self._Duration
 
     @Duration.setter
@@ -11013,6 +13213,15 @@ Note: You can add at most one image transition and one audio transition.
 
     @property
     def Duration(self):
+        """The element duration. <li>The value of this parameter ends with `s`, which means seconds. For example, `3s` indicates 3 seconds. </li>
+Default value: `1s`.
+Note
+<li>The number before `s` must be an integer. Non-integers will be rounded down to the nearest integer. </li>
+<li>The transition element must be between two non-empty elements. </li>
+<li>The duration of the transition element must be shorter than that of the preceding element and the following element. </li>
+u200c<li>The start time of the following element on the track will be automatically changed to the end time of the preceding element minus the duration of the transition element. </li>
+        :rtype: str
+        """
         return self._Duration
 
     @Duration.setter
@@ -11021,6 +13230,11 @@ Note: You can add at most one image transition and one audio transition.
 
     @property
     def Transitions(self):
+        """The transition effects.
+The default transition effect is fade.
+Note: You can add at most one image transition and one audio transition.
+        :rtype: list of ComposeTransitionOperation
+        """
         return self._Transitions
 
     @Transitions.setter
@@ -11099,6 +13313,48 @@ The audio transition, which connects two audio segments.
 
     @property
     def Type(self):
+        """The transition type.
+
+The image transition, which connects two video segments.
+<li>`ImageFadeInFadeOut` </li>
+u200c<li>`BowTieHorizontal` </li>
+u200c<li>`BowTieVertical` </li>
+u200c<li>`ButterflyWaveScrawler` </li>
+<li>`Cannabisleaf` </li>
+<li>`Circle` </li>
+<li>`CircleCrop` </li>
+u200c<li>`Circleopen` </li>
+<li>`Crosswarp` </li>
+<li>`Cube` </li>
+<li>`DoomScreenTransition` </li>
+<li>`Doorway` </li>
+<li>`Dreamy` </li>
+<li>`DreamyZoom` </li>
+<li>`FilmBurn` </li>
+<li>`GlitchMemories` </li>
+<li>`Heart` </li>
+<li>`InvertedPageCurl` </li>
+<li>`Luma` </li>
+<li>`Mosaic` </li>
+<li>`Pinwheel` </li>
+<li>`PolarFunction` </li>
+<li>`PolkaDotsCurtain` </li>
+<li>`Radial` </li>
+<li>`RotateScaleFade` </li>
+<li>`Squeeze` </li>
+<li>`Swap` </li>
+<li>`Swirl` </li>
+<li>`UndulatingBurnOutSwirl` </li>
+<li>`Windowblinds` </li>
+<li>`WipeDown` </li>
+<li>`WipeLeft` </li>
+<li>`WipeRight` </li>
+<li>`WipeUp` </li>
+<li>`ZoomInCircles` </li> 
+The audio transition, which connects two audio segments.
+<li>`AudioFadeInFadeOut` </li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -11171,6 +13427,9 @@ If one or both parameters are empty or set to `0`:
 
     @property
     def SourceMedia(self):
+        """The media information of the element.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeSourceMedia`
+        """
         return self._SourceMedia
 
     @SourceMedia.setter
@@ -11179,6 +13438,9 @@ If one or both parameters are empty or set to `0`:
 
     @property
     def TrackTime(self):
+        """The time of the element in the timeline. If this is not specified, the element will follow the previous element.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeTrackTime`
+        """
         return self._TrackTime
 
     @TrackTime.setter
@@ -11187,6 +13449,12 @@ If one or both parameters are empty or set to `0`:
 
     @property
     def XPos(self):
+        """The horizontal distance of the element's center from the canvas origin. Two formats are supported:
+<li>If the value ends with %, it specifies the distance as a percentage of the canvas width. For example, `10%` means that the distance is 10% of the canvas width. </li>
+u200c<li>If the value ends with px, it specifies the distance in pixels. For example, `100px` means that the distance is 100 pixels. </li>
+Default value: `50%`.
+        :rtype: str
+        """
         return self._XPos
 
     @XPos.setter
@@ -11195,6 +13463,12 @@ If one or both parameters are empty or set to `0`:
 
     @property
     def YPos(self):
+        """The vertical distance of the element's center from the canvas origin. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the distance as a percentage of the canvas height. For example, `10%` means that the distance is 10% of the canvas height. </li>
+u200c<li>If the value ends with px, it specifies the distance in pixels. For example, `100px` means that the distance is 100 pixels. </li>
+Default value: `50%`.
+        :rtype: str
+        """
         return self._YPos
 
     @YPos.setter
@@ -11203,6 +13477,15 @@ If one or both parameters are empty or set to `0`:
 
     @property
     def Width(self):
+        """The width of the video segment. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the width as a percentage of the canvas width. For example, `10%` means that the video width is 10% of the canvas width. </li>
+u200c<li>If the value ends with px, it specifies the width in pixels. For example, `100px` means that the video width is 100 pixels. </li>
+If one or both parameters are empty or set to `0`:
+<li>If both `Width` and `Height` are empty, the original width and height of the element will be kept. </li>
+<li>If `Width` is empty and `Height` is not, the width will be auto scaled. </li>
+<li>If `Width` is not empty and `Height` is, the height will be auto scaled. </li>
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -11211,6 +13494,15 @@ If one or both parameters are empty or set to `0`:
 
     @property
     def Height(self):
+        """The height of the element. Two formats are supported:
+u200c<li>If the value ends with %, it specifies the height as a percentage of the canvas height. For example, `10%` means that the height is 10% of the canvas height. </li>
+u200c<li>If the value ends with px, it specifies the height in pixels. For example, `100px` means that the height is 100 pixels. </li>
+If one or both parameters are empty or set to `0`:
+<li>If both `Width` and `Height` are empty, the original width and height of the element will be kept. </li>
+<li>If `Width` is empty and `Height` is not, the width will be auto scaled. </li>
+<li>If `Width` is not empty and `Height` is, the height will be auto scaled. </li>
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -11219,6 +13511,9 @@ If one or both parameters are empty or set to `0`:
 
     @property
     def ImageOperations(self):
+        """The image operations, such as image rotation.
+        :rtype: list of ComposeImageOperation
+        """
         return self._ImageOperations
 
     @ImageOperations.setter
@@ -11227,6 +13522,9 @@ If one or both parameters are empty or set to `0`:
 
     @property
     def AudioOperations(self):
+        """The audio operations, such as muting.
+        :rtype: list of ComposeAudioOperation
+        """
         return self._AudioOperations
 
     @AudioOperations.setter
@@ -11291,6 +13589,10 @@ If not set, the service will automatically adopt a suitable bitrate based on the
 
     @property
     def Codec(self):
+        """The codec. Valid values:
+<li>`H.264` (default) </li>
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -11299,6 +13601,10 @@ If not set, the service will automatically adopt a suitable bitrate based on the
 
     @property
     def Fps(self):
+        """The video frame rate (Hz). Value range: 0–60.  
+The default value is `0`, which means that the frame rate will be the same as that of the first video.
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -11307,6 +13613,11 @@ If not set, the service will automatically adopt a suitable bitrate based on the
 
     @property
     def Bitrate(self):
+        """Reference bitrate, in kbps. Value range: 50-35000.
+If set, the encoder will try to encode at this bitrate.
+If not set, the service will automatically adopt a suitable bitrate based on the complexity of an image.
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -11420,6 +13731,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Category(self):
+        """Diagnosed exception category. Valid values:
+DecodeParamException: decoding parameter exception.
+TimeStampException: timestamp exception.
+FrameException: frame rate exception.
+StreamStatusException: stream status exception.
+StreamInfo: stream information exception.
+StreamAbnormalCharacteristics: stream characteristics exception.
+DecodeException: decoding exception.
+HLSRequirements: HLS format exception.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Category
 
     @Category.setter
@@ -11428,6 +13751,57 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """Diagnosed specific exception type. Valid values:
+
+VideoResolutionChanged: video resolution change.
+AudioSampleRateChanged: audio sample rate change.
+AudioChannelsChanged: audio channel quantity change.
+ParameterSetsChanged: stream parameter set information change.
+DarOrSarInvalid: video aspect ratio exception.
+TimestampFallback: DTS timestamp rollback.
+DtsJitter: DTS jitter too high.
+PtsJitter: PTS jitter too high.
+AACDurationDeviation: improper AAC frame timestamp interval.
+AudioDroppingFrames: audio frame dropping.
+VideoDroppingFrames: video frame dropping.
+AVTimestampInterleave: improper audio-video interleaving.
+PtsLessThanDts: PTS less than DTS for media streams.
+ReceiveFpsJitter: significant jitter in the network receive frame rate.
+ReceiveFpsTooSmall: network receive video frame rate too low.
+FpsJitter: significant jitter in the stream frame rate calculated via PTS.
+StreamOpenFailed: stream open failure.
+StreamEnd: stream end.
+StreamParseFailed: stream parsing failure.
+VideoFirstFrameNotIdr: first frame not an IDR frame.
+StreamNALUError: NALU start code error.
+TsStreamNoAud: no AUD NALU in the H26x stream of MPEG-TS.
+AudioStreamLack: no audio stream.
+VideoStreamLack: no video stream.
+LackAudioRecover: missing audio stream recovery.
+LackVideoRecover: missing video stream recovery.
+VideoBitrateOutofRange: video stream bitrate (kbps) out of range.
+AudioBitrateOutofRange: audio stream bitrate (kbps) out of range.
+VideoDecodeFailed: video decoding error.
+AudioDecodeFailed: audio decoding error.
+AudioOutOfPhase: opposite phase in dual-channel audio.
+VideoDuplicatedFrame: duplicate frames in video streams.
+AudioDuplicatedFrame: duplicate frames in audio streams.
+VideoRotation: video rotation.
+TsMultiPrograms: multiple programs in MPEG2-TS streams
+Mp4InvalidCodecFourcc: codec FourCC in MP4 not meeting Apple HLS requirements.
+HLSBadM3u8Format: invalid M3U8 file.
+HLSInvalidMasterM3u8: invalid main M3U8 file.
+HLSInvalidMediaM3u8: invalid media M3U8 file.
+HLSMasterM3u8Recommended: parameters recommended by standards missing in main M3U8.
+HLSMediaM3u8Recommended: parameters recommended by standards missing in media M3U8.
+HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY in media M3U8.
+HLSMediaSegmentsStreamNumChange: changed number of streams in segments.
+HLSMediaSegmentsPTSJitterDeviation: PTS jumps between segments without EXT-X-DISCONTINUITY.
+HLSMediaSegmentsDTSJitterDeviation: DTS jumps between segments without EXT-X-DISCONTINUITY.
+TimecodeTrackExist: TMCD track in MP4.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -11436,6 +13810,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SeverityLevel(self):
+        """Diagnosed exception level. Valid values:
+Fatal: affecting subsequent playback and parsing.
+Error: may affect playback.
+Warning: potential risk, which may not necessarily affect playback.
+Notice: important stream information.
+Info: general stream information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SeverityLevel
 
     @SeverityLevel.setter
@@ -11444,6 +13827,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DateTimeSet(self):
+        """Timestamp of warning, in the format of 2022-12-25T13:14:16Z.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._DateTimeSet
 
     @DateTimeSet.setter
@@ -11452,6 +13839,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimestampSet(self):
+        """Timestamp.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of float
+        """
         return self._TimestampSet
 
     @TimestampSet.setter
@@ -11529,6 +13921,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Definition(self):
+        """Unique ID of a content audit template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -11537,6 +13932,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Name(self):
+        """Name of a content audit template. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -11545,6 +13943,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Comment(self):
+        """Description of a content audit template. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -11553,6 +13954,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PornConfigure(self):
+        """Porn information detection control parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`
+        """
         return self._PornConfigure
 
     @PornConfigure.setter
@@ -11561,6 +13966,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TerrorismConfigure(self):
+        """The parameters for detecting sensitive information.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
+        """
         return self._TerrorismConfigure
 
     @TerrorismConfigure.setter
@@ -11569,6 +13978,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PoliticalConfigure(self):
+        """The parameters for detecting sensitive information.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
+        """
         return self._PoliticalConfigure
 
     @PoliticalConfigure.setter
@@ -11577,6 +13990,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProhibitedConfigure(self):
+        """Control parameter of prohibited information detection. Prohibited information includes:
+<li>Abusive;</li>
+<li>Drug-related.</li>
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfo`
+        """
         return self._ProhibitedConfigure
 
     @ProhibitedConfigure.setter
@@ -11585,6 +14004,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UserDefineConfigure(self):
+        """Custom content audit control parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfo`
+        """
         return self._UserDefineConfigure
 
     @UserDefineConfigure.setter
@@ -11593,6 +14016,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateTime(self):
+        """Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -11601,6 +14027,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UpdateTime(self):
+        """Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -11609,6 +14038,12 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Type(self):
+        """The template type. Valid values:
+* Preset
+* Custom
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -11671,6 +14106,9 @@ class CosFileUploadTrigger(AbstractModel):
 
     @property
     def Bucket(self):
+        """Name of the COS bucket bound to a workflow, such as `TopRankVideo-125xxx88`.
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -11679,6 +14117,9 @@ class CosFileUploadTrigger(AbstractModel):
 
     @property
     def Region(self):
+        """Region of the COS bucket bound to a workflow, such as `ap-chongiqng`.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -11687,6 +14128,9 @@ class CosFileUploadTrigger(AbstractModel):
 
     @property
     def Dir(self):
+        """Input path directory bound to a workflow, such as `/movie/201907/`. If this parameter is left empty, the `/` root directory will be used.
+        :rtype: str
+        """
         return self._Dir
 
     @Dir.setter
@@ -11695,6 +14139,9 @@ class CosFileUploadTrigger(AbstractModel):
 
     @property
     def Formats(self):
+        """Format list of files that can trigger a workflow, such as ["mp4", "flv", "mov"]. If this parameter is left empty, files in all formats can trigger the workflow.
+        :rtype: list of str
+        """
         return self._Formats
 
     @Formats.setter
@@ -11737,6 +14184,9 @@ class CosInputInfo(AbstractModel):
 
     @property
     def Bucket(self):
+        """The COS bucket of the object to process, such as `TopRankVideo-125xxx88`.
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -11745,6 +14195,9 @@ class CosInputInfo(AbstractModel):
 
     @property
     def Region(self):
+        """The region of the COS bucket, such as `ap-chongqing`.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -11753,6 +14206,9 @@ class CosInputInfo(AbstractModel):
 
     @property
     def Object(self):
+        """The path of the object to process, such as `/movie/201907/WildAnimal.mov`.
+        :rtype: str
+        """
         return self._Object
 
     @Object.setter
@@ -11791,6 +14247,9 @@ class CosOutputStorage(AbstractModel):
 
     @property
     def Bucket(self):
+        """The bucket to which the output file of media processing is saved, such as `TopRankVideo-125xxx88`. If this parameter is left empty, the value of the upper layer will be inherited.
+        :rtype: str
+        """
         return self._Bucket
 
     @Bucket.setter
@@ -11799,6 +14258,9 @@ class CosOutputStorage(AbstractModel):
 
     @property
     def Region(self):
+        """The region of the output bucket, such as `ap-chongqing`. If this parameter is left empty, the value of the upper layer will be inherited.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -11835,6 +14297,11 @@ class CoverConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of intelligent cover generating task. Valid values:
+<li>ON: enables intelligent cover generating task;</li>
+<li>OFF: disables intelligent cover generating task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -11870,6 +14337,11 @@ class CoverConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of intelligent cover generating task. Valid values:
+<li>ON: enables intelligent cover generating task;</li>
+<li>OFF: disables intelligent cover generating task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -11918,6 +14390,9 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Video content analysis template name. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -11926,6 +14401,9 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """Video content analysis template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -11934,6 +14412,9 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def ClassificationConfigure(self):
+        """Control parameter of intelligent categorization task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfo`
+        """
         return self._ClassificationConfigure
 
     @ClassificationConfigure.setter
@@ -11942,6 +14423,9 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def TagConfigure(self):
+        """Control parameter of intelligent tagging task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfo`
+        """
         return self._TagConfigure
 
     @TagConfigure.setter
@@ -11950,6 +14434,9 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def CoverConfigure(self):
+        """Control parameter of intelligent cover generating task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfo`
+        """
         return self._CoverConfigure
 
     @CoverConfigure.setter
@@ -11958,6 +14445,9 @@ class CreateAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def FrameTagConfigure(self):
+        """Control parameter of intelligent frame-specific tagging task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfo`
+        """
         return self._FrameTagConfigure
 
     @FrameTagConfigure.setter
@@ -12007,6 +14497,9 @@ class CreateAIAnalysisTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of video content analysis template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -12015,6 +14508,9 @@ class CreateAIAnalysisTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12059,6 +14555,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Name of a video content recognition template. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12067,6 +14566,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """Description of a video content recognition template. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -12075,6 +14577,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def FaceConfigure(self):
+        """Face recognition control parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FaceConfigureInfo`
+        """
         return self._FaceConfigure
 
     @FaceConfigure.setter
@@ -12083,6 +14588,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def OcrFullTextConfigure(self):
+        """Full text recognition control parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.OcrFullTextConfigureInfo`
+        """
         return self._OcrFullTextConfigure
 
     @OcrFullTextConfigure.setter
@@ -12091,6 +14599,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def OcrWordsConfigure(self):
+        """Text keyword recognition control parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.OcrWordsConfigureInfo`
+        """
         return self._OcrWordsConfigure
 
     @OcrWordsConfigure.setter
@@ -12099,6 +14610,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def AsrFullTextConfigure(self):
+        """Full speech recognition control parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrFullTextConfigureInfo`
+        """
         return self._AsrFullTextConfigure
 
     @AsrFullTextConfigure.setter
@@ -12107,6 +14621,9 @@ class CreateAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def AsrWordsConfigure(self):
+        """Speech keyword recognition control parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfo`
+        """
         return self._AsrWordsConfigure
 
     @AsrWordsConfigure.setter
@@ -12159,6 +14676,9 @@ class CreateAIRecognitionTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of a video content recognition template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -12167,6 +14687,9 @@ class CreateAIRecognitionTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12232,6 +14755,11 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def Format(self):
+        """Adaptive bitrate streaming format. Valid values:
+<li>HLS,</li>
+<li>MPEG-DASH.</li>
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -12240,6 +14768,10 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def StreamInfos(self):
+        """Parameter information of output substreams for transcoding to adaptive bitrate streaming. Up to 10 substreams can be output.
+Note: the frame rate of each substream must be consistent; otherwise, the frame rate of the first substream is used as the output frame rate.
+        :rtype: list of AdaptiveStreamTemplate
+        """
         return self._StreamInfos
 
     @StreamInfos.setter
@@ -12248,6 +14780,9 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def Name(self):
+        """Template name. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12256,6 +14791,12 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def DisableHigherVideoBitrate(self):
+        """Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._DisableHigherVideoBitrate
 
     @DisableHigherVideoBitrate.setter
@@ -12264,6 +14805,12 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def DisableHigherVideoResolution(self):
+        """Whether to prohibit transcoding from low resolution to high resolution. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._DisableHigherVideoResolution
 
     @DisableHigherVideoResolution.setter
@@ -12272,6 +14819,9 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def Comment(self):
+        """Template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -12280,6 +14830,17 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def PureAudio(self):
+        """Whether it is an audio-only template. 0: video template. 1: audio-only template.When the value is 1:
+1. StreamInfos.N.RemoveVideo=1
+2. StreamInfos.N.RemoveAudio=0
+3. StreamInfos.N.Video.Codec=copy
+
+When the value is 0:
+
+1. StreamInfos.N.Video.Codec cannot be copy.
+2. StreamInfos.N.Video.Fps cannot be null.
+        :rtype: int
+        """
         return self._PureAudio
 
     @PureAudio.setter
@@ -12288,6 +14849,10 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def SegmentType(self):
+        """HLS segment type. Valid values: <li>ts-segment: HLS+TS segment.</li> <li>ts-byterange: HLS+TS byte range.</li> <li>mp4-segment: HLS+MP4 segment.</li> <li>mp4-byterange: HLS+MP4 byte range.</li> <li>ts-packed-audio: TS+Packed audio.</li> <li>mp4-packed-audio: MP4+Packed audio.</li> Default value: ts-segment.
+Note: The HLS segment format for adaptive bitrate streaming is based on this field.
+        :rtype: str
+        """
         return self._SegmentType
 
     @SegmentType.setter
@@ -12336,6 +14901,9 @@ class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of an adaptive bitrate streaming template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -12344,6 +14912,9 @@ class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12404,6 +14975,9 @@ Default value: open.
 
     @property
     def Fps(self):
+        """Video frame rate in Hz. Value range: [1, 30].
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -12412,6 +14986,14 @@ Default value: open.
 
     @property
     def Width(self):
+        """Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].
+<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
+<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
+<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
+<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -12420,6 +15002,14 @@ Default value: open.
 
     @property
     def Height(self):
+        """Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
+<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
+<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
+<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
+<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -12428,6 +15018,12 @@ Default value: open.
 
     @property
     def ResolutionAdaptive(self):
+        """Resolution adaption. Valid values:
+<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
+<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
+Default value: open.
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -12436,6 +15032,9 @@ Default value: open.
 
     @property
     def Format(self):
+        """Animated image format. Valid values: gif; webp. Default value: gif.
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -12444,6 +15043,9 @@ Default value: open.
 
     @property
     def Quality(self):
+        """Image quality. Value range: [1, 100]. Default value: 75.
+        :rtype: float
+        """
         return self._Quality
 
     @Quality.setter
@@ -12452,6 +15054,9 @@ Default value: open.
 
     @property
     def Name(self):
+        """Name of an animated image generating template. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12460,6 +15065,9 @@ Default value: open.
 
     @property
     def Comment(self):
+        """Template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -12503,6 +15111,9 @@ class CreateAnimatedGraphicsTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of an animated image generating template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -12511,6 +15122,9 @@ class CreateAnimatedGraphicsTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12558,6 +15172,9 @@ Note: this parameter is not supported yet.
 
     @property
     def Name(self):
+        """The name of the content moderation template. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12566,6 +15183,9 @@ Note: this parameter is not supported yet.
 
     @property
     def Comment(self):
+        """The template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -12574,6 +15194,9 @@ Note: this parameter is not supported yet.
 
     @property
     def PornConfigure(self):
+        """Control parameter for porn information
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfo`
+        """
         return self._PornConfigure
 
     @PornConfigure.setter
@@ -12582,6 +15205,9 @@ Note: this parameter is not supported yet.
 
     @property
     def TerrorismConfigure(self):
+        """Control parameter for terrorism information
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfo`
+        """
         return self._TerrorismConfigure
 
     @TerrorismConfigure.setter
@@ -12590,6 +15216,9 @@ Note: this parameter is not supported yet.
 
     @property
     def PoliticalConfigure(self):
+        """Control parameter for politically sensitive information
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfo`
+        """
         return self._PoliticalConfigure
 
     @PoliticalConfigure.setter
@@ -12598,6 +15227,12 @@ Note: this parameter is not supported yet.
 
     @property
     def ProhibitedConfigure(self):
+        """Control parameter of prohibited information detection. Prohibited information includes:
+<li>Abusive;</li>
+<li>Drug-related.</li>
+Note: this parameter is not supported yet.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfo`
+        """
         return self._ProhibitedConfigure
 
     @ProhibitedConfigure.setter
@@ -12606,6 +15241,9 @@ Note: this parameter is not supported yet.
 
     @property
     def UserDefineConfigure(self):
+        """Custom content moderation parameters.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfo`
+        """
         return self._UserDefineConfigure
 
     @UserDefineConfigure.setter
@@ -12658,6 +15296,9 @@ class CreateContentReviewTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """The unique ID of the content moderation template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -12666,6 +15307,9 @@ class CreateContentReviewTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12732,6 +15376,11 @@ Default value: black.
 
     @property
     def SampleType(self):
+        """Sampling type. Valid values:
+<li>Percent: By percent.</li>
+<li>Time: By time interval.</li>
+        :rtype: str
+        """
         return self._SampleType
 
     @SampleType.setter
@@ -12740,6 +15389,11 @@ Default value: black.
 
     @property
     def SampleInterval(self):
+        """Sampling interval.
+<li>If `SampleType` is `Percent`, sampling will be performed at an interval of the specified percentage.</li>
+<li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>
+        :rtype: int
+        """
         return self._SampleInterval
 
     @SampleInterval.setter
@@ -12748,6 +15402,9 @@ Default value: black.
 
     @property
     def RowCount(self):
+        """Subimage row count of an image sprite.
+        :rtype: int
+        """
         return self._RowCount
 
     @RowCount.setter
@@ -12756,6 +15413,9 @@ Default value: black.
 
     @property
     def ColumnCount(self):
+        """Subimage column count of an image sprite.
+        :rtype: int
+        """
         return self._ColumnCount
 
     @ColumnCount.setter
@@ -12764,6 +15424,9 @@ Default value: black.
 
     @property
     def Name(self):
+        """Name of an image sprite generating template. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12772,6 +15435,9 @@ Default value: black.
 
     @property
     def Width(self):
+        """Subimage width of an image sprite in px. Value range: [128, 4,096].
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -12780,6 +15446,9 @@ Default value: black.
 
     @property
     def Height(self):
+        """Subimage height of an image sprite in px. Value range: [128, 4,096].
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -12788,6 +15457,12 @@ Default value: black.
 
     @property
     def ResolutionAdaptive(self):
+        """Resolution adaption. Valid values:
+<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
+<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
+Default value: open.
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -12796,6 +15471,12 @@ Default value: black.
 
     @property
     def FillType(self):
+        """Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
+<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
+Default value: black.
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -12804,6 +15485,9 @@ Default value: black.
 
     @property
     def Comment(self):
+        """Template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -12812,6 +15496,9 @@ Default value: black.
 
     @property
     def Format(self):
+        """The image format. Valid values: jpg (default), png, webp.
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -12858,6 +15545,9 @@ class CreateImageSpriteTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of an image sprite generating template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -12866,6 +15556,9 @@ class CreateImageSpriteTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12910,6 +15603,9 @@ Note: the image must be a relatively clear facial feature photo of one person wi
 
     @property
     def Name(self):
+        """Name of an image. Length limit: 20 characters
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -12918,6 +15614,12 @@ Note: the image must be a relatively clear facial feature photo of one person wi
 
     @property
     def Usages(self):
+        """Image usage. Valid values:
+1. Recognition: used for content recognition; equivalent to `Recognition.Face`
+2. Review: used for inappropriate information recognition; equivalent to `Review.Face`
+3. All: equivalent to 1+2
+        :rtype: list of str
+        """
         return self._Usages
 
     @Usages.setter
@@ -12926,6 +15628,9 @@ Note: the image must be a relatively clear facial feature photo of one person wi
 
     @property
     def Description(self):
+        """Image description. Length limit: 1,024 characters
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -12934,6 +15639,10 @@ Note: the image must be a relatively clear facial feature photo of one person wi
 
     @property
     def FaceContents(self):
+        """[Base64](https://tools.ietf.org/html/rfc4648) string converted from an image. Only JPEG and PNG images are supported. Array length limit: 5 images
+Note: the image must be a relatively clear facial feature photo of one person with a size of at least 200 x 200 pixels.
+        :rtype: list of str
+        """
         return self._FaceContents
 
     @FaceContents.setter
@@ -12942,6 +15651,11 @@ Note: the image must be a relatively clear facial feature photo of one person wi
 
     @property
     def Tags(self):
+        """Image tag
+<li>Array length limit: 20 tags</li>
+<li>Tag length limit: 128 characters</li>
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -12985,6 +15699,9 @@ class CreatePersonSampleResponse(AbstractModel):
 
     @property
     def Person(self):
+        """Image information
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiSamplePerson`
+        """
         return self._Person
 
     @Person.setter
@@ -12993,6 +15710,9 @@ class CreatePersonSampleResponse(AbstractModel):
 
     @property
     def FailFaceInfoSet(self):
+        """Information of images that failed the verification by facial feature positioning
+        :rtype: list of AiSampleFailFaceInfo
+        """
         return self._FailFaceInfoSet
 
     @FailFaceInfoSet.setter
@@ -13001,6 +15721,9 @@ class CreatePersonSampleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13041,6 +15764,9 @@ class CreateQualityControlTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Media quality inspection template name, with a length limit of 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13049,6 +15775,9 @@ class CreateQualityControlTemplateRequest(AbstractModel):
 
     @property
     def QualityControlItemSet(self):
+        """Media quality inspection control parameters.
+        :rtype: list of QualityControlItemConfig
+        """
         return self._QualityControlItemSet
 
     @QualityControlItemSet.setter
@@ -13057,6 +15786,9 @@ class CreateQualityControlTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """Media quality inspection template description, with a length limit of 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -13100,6 +15832,9 @@ class CreateQualityControlTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique identifier of a media quality inspection template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -13108,6 +15843,9 @@ class CreateQualityControlTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13170,6 +15908,11 @@ Default value: black.
 
     @property
     def SampleType(self):
+        """Sampled screencapturing type. Valid values:
+<li>Percent: By percent.</li>
+<li>Time: By time interval.</li>
+        :rtype: str
+        """
         return self._SampleType
 
     @SampleType.setter
@@ -13178,6 +15921,11 @@ Default value: black.
 
     @property
     def SampleInterval(self):
+        """Sampling interval.
+<li>If `SampleType` is `Percent`, sampling will be performed at an interval of the specified percentage.</li>
+<li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>
+        :rtype: int
+        """
         return self._SampleInterval
 
     @SampleInterval.setter
@@ -13186,6 +15934,9 @@ Default value: black.
 
     @property
     def Name(self):
+        """Name of a sampled screencapturing template. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13194,6 +15945,9 @@ Default value: black.
 
     @property
     def Width(self):
+        """Image width in px. Value range: [128, 4,096].
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -13202,6 +15956,9 @@ Default value: black.
 
     @property
     def Height(self):
+        """Image height in px. Value range: [128, 4,096].
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -13210,6 +15967,12 @@ Default value: black.
 
     @property
     def ResolutionAdaptive(self):
+        """Resolution adaption. Valid values:
+<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
+<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
+Default value: open.
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -13218,6 +15981,9 @@ Default value: black.
 
     @property
     def Format(self):
+        """The image format. Valid values: jpg (default), png, webp.
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -13226,6 +15992,9 @@ Default value: black.
 
     @property
     def Comment(self):
+        """Template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -13234,6 +16003,14 @@ Default value: black.
 
     @property
     def FillType(self):
+        """Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
+<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
+<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
+<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
+Default value: black.
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -13278,6 +16055,9 @@ class CreateSampleSnapshotTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of a sampled screencapturing template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -13286,6 +16066,9 @@ class CreateSampleSnapshotTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13331,6 +16114,9 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def ScheduleName(self):
+        """The scheme name (max 128 characters). This name should be unique across your account.
+        :rtype: str
+        """
         return self._ScheduleName
 
     @ScheduleName.setter
@@ -13339,6 +16125,9 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def Trigger(self):
+        """The trigger of the scheme. If a file is uploaded to the specified bucket, the scheme will be triggered.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -13347,6 +16136,9 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def Activities(self):
+        """The subtasks of the scheme.
+        :rtype: list of Activity
+        """
         return self._Activities
 
     @Activities.setter
@@ -13355,6 +16147,9 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def OutputStorage(self):
+        """The bucket to save the output file. If you do not specify this parameter, the bucket in `Trigger` will be used.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -13363,6 +16158,10 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def OutputDir(self):
+        """The directory to save the media processing output file, which must start and end with `/`, such as `/movie/201907/`.
+If you do not specify this, the file will be saved to the trigger directory.
+        :rtype: str
+        """
         return self._OutputDir
 
     @OutputDir.setter
@@ -13371,6 +16170,9 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def TaskNotifyConfig(self):
+        """The notification configuration. If you do not specify this parameter, notifications will not be sent.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -13379,6 +16181,9 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def ResourceId(self):
+        """Resource ID. Ensure the corresponding resource is in the enabled state. The default value is an account's primary resource ID.
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -13432,6 +16237,9 @@ class CreateScheduleResponse(AbstractModel):
 
     @property
     def ScheduleId(self):
+        """The scheme ID.
+        :rtype: int
+        """
         return self._ScheduleId
 
     @ScheduleId.setter
@@ -13440,6 +16248,9 @@ class CreateScheduleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13492,6 +16303,9 @@ Default value: black.
 
     @property
     def Name(self):
+        """Name of a time point screencapturing template. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13500,6 +16314,9 @@ Default value: black.
 
     @property
     def Width(self):
+        """Image width in px. Value range: [128, 4,096].
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -13508,6 +16325,9 @@ Default value: black.
 
     @property
     def Height(self):
+        """Image height in px. Value range: [128, 4,096].
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -13516,6 +16336,12 @@ Default value: black.
 
     @property
     def ResolutionAdaptive(self):
+        """Resolution adaption. Valid values:
+<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
+<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
+Default value: open.
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -13524,6 +16350,9 @@ Default value: black.
 
     @property
     def Format(self):
+        """The image format. Valid values: jpg (default), png, webp.
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -13532,6 +16361,9 @@ Default value: black.
 
     @property
     def Comment(self):
+        """Template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -13540,6 +16372,14 @@ Default value: black.
 
     @property
     def FillType(self):
+        """Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
+<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
+<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
+<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
+Default value: black.
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -13582,6 +16422,9 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of a time point screencapturing template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -13590,6 +16433,9 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13646,6 +16492,9 @@ Default value: 0.
 
     @property
     def Container(self):
+        """Container format. Valid values: mp4, flv, hls, ts, webm, mkv, mxf, mov, mp3, flac, ogg, and m4a. Among them, mp3, flac, ogg, and m4a are for audio-only files.
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -13654,6 +16503,9 @@ Default value: 0.
 
     @property
     def Name(self):
+        """Name of a transcoding template. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13662,6 +16514,9 @@ Default value: 0.
 
     @property
     def Comment(self):
+        """Template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -13670,6 +16525,12 @@ Default value: 0.
 
     @property
     def RemoveVideo(self):
+        """Whether to remove video data. Valid values:
+<li>0: Retain</li>
+<li>1: Remove</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -13678,6 +16539,12 @@ Default value: 0.
 
     @property
     def RemoveAudio(self):
+        """Whether to remove audio data. Valid values:
+<li>0: Retain</li>
+<li>1: Remove</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -13686,6 +16553,9 @@ Default value: 0.
 
     @property
     def VideoTemplate(self):
+        """Video stream configuration parameter. This field is required when `RemoveVideo` is 0.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
+        """
         return self._VideoTemplate
 
     @VideoTemplate.setter
@@ -13694,6 +16564,9 @@ Default value: 0.
 
     @property
     def AudioTemplate(self):
+        """Audio stream configuration parameter. This field is required when `RemoveAudio` is 0.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        """
         return self._AudioTemplate
 
     @AudioTemplate.setter
@@ -13702,6 +16575,9 @@ Default value: 0.
 
     @property
     def TEHDConfig(self):
+        """TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
+        """
         return self._TEHDConfig
 
     @TEHDConfig.setter
@@ -13710,6 +16586,9 @@ Default value: 0.
 
     @property
     def EnhanceConfig(self):
+        """Audio/Video enhancement configuration.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
+        """
         return self._EnhanceConfig
 
     @EnhanceConfig.setter
@@ -13762,6 +16641,9 @@ class CreateTranscodeTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of a transcoding template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -13770,6 +16652,9 @@ class CreateTranscodeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13834,6 +16719,12 @@ Default value: 0 px.
 
     @property
     def Type(self):
+        """Watermarking type. Valid values:
+<li>image: Image watermark;</li>
+<li>text: Text watermark;</li>
+<li>svg: SVG watermark.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -13842,6 +16733,9 @@ Default value: 0 px.
 
     @property
     def Name(self):
+        """Watermarking template name. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -13850,6 +16744,9 @@ Default value: 0 px.
 
     @property
     def Comment(self):
+        """Template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -13858,6 +16755,14 @@ Default value: 0 px.
 
     @property
     def CoordinateOrigin(self):
+        """Origin position. Valid values:
+<li>TopLeft: The origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text;</li>
+<li>TopRight: The origin of coordinates is in the top-right corner of the video, and the origin of the watermark is in the top-right corner of the image or text;</li>
+<li>BottomLeft: The origin of coordinates is in the bottom-left corner of the video, and the origin of the watermark is in the bottom-left corner of the image or text;</li>
+<li>BottomRight: The origin of coordinates is in the bottom-right corner of the video, and the origin of the watermark is in the bottom-right corner of the image or text.</li>
+Default value: TopLeft.
+        :rtype: str
+        """
         return self._CoordinateOrigin
 
     @CoordinateOrigin.setter
@@ -13866,6 +16771,12 @@ Default value: 0 px.
 
     @property
     def XPos(self):
+        """The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
+<li>If the string ends in %, the `XPos` of the watermark will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;</li>
+<li>If the string ends in px, the `XPos` of the watermark will be the specified px; for example, `100px` means that `XPos` is 100 px.</li>
+Default value: 0 px.
+        :rtype: str
+        """
         return self._XPos
 
     @XPos.setter
@@ -13874,6 +16785,12 @@ Default value: 0 px.
 
     @property
     def YPos(self):
+        """The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
+<li>If the string ends in %, the `YPos` of the watermark will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;</li>
+<li>If the string ends in px, the `YPos` of the watermark will be the specified px; for example, `100px` means that `YPos` is 100 px.</li>
+Default value: 0 px.
+        :rtype: str
+        """
         return self._YPos
 
     @YPos.setter
@@ -13882,6 +16799,9 @@ Default value: 0 px.
 
     @property
     def ImageTemplate(self):
+        """Image watermarking template. This field is required and valid only when `Type` is `image`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageWatermarkInput`
+        """
         return self._ImageTemplate
 
     @ImageTemplate.setter
@@ -13890,6 +16810,9 @@ Default value: 0 px.
 
     @property
     def TextTemplate(self):
+        """Text watermarking template. This field is required and valid only when `Type` is `text`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TextWatermarkTemplateInput`
+        """
         return self._TextTemplate
 
     @TextTemplate.setter
@@ -13898,6 +16821,9 @@ Default value: 0 px.
 
     @property
     def SvgTemplate(self):
+        """SVG watermarking template. This field is required and valid only when `Type` is `svg`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SvgWatermarkInput`
+        """
         return self._SvgTemplate
 
     @SvgTemplate.setter
@@ -13951,6 +16877,9 @@ class CreateWatermarkTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of a watermarking template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -13959,6 +16888,9 @@ class CreateWatermarkTemplateResponse(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """Watermark image address. This field is valid only when `Type` is `image`.
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -13967,6 +16899,9 @@ class CreateWatermarkTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14005,6 +16940,17 @@ class CreateWordSamplesRequest(AbstractModel):
 
     @property
     def Usages(self):
+        """<b>Keyword usage. Valid values:</b>
+1. Recognition.Ocr: OCR-based content recognition
+2. Recognition.Asr: ASR-based content recognition
+3. Review.Ocr: OCR-based inappropriate information recognition
+4. Review.Asr: ASR-based inappropriate information recognition
+<b>Valid values can also be:</b>
+5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2
+6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4
+7. All: ASR- and OCR-based content recognition and inappropriate information detection; equivalent to 1+2+3+4
+        :rtype: list of str
+        """
         return self._Usages
 
     @Usages.setter
@@ -14013,6 +16959,9 @@ class CreateWordSamplesRequest(AbstractModel):
 
     @property
     def Words(self):
+        """Keyword. Array length limit: 100.
+        :rtype: list of AiSampleWordInfo
+        """
         return self._Words
 
     @Words.setter
@@ -14052,6 +17001,9 @@ class CreateWordSamplesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14105,6 +17057,9 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def WorkflowName(self):
+        """Workflow name of up to 128 characters, which must be unique for the same user.
+        :rtype: str
+        """
         return self._WorkflowName
 
     @WorkflowName.setter
@@ -14113,6 +17068,9 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def Trigger(self):
+        """Triggering rule bound to a workflow. If an uploaded video hits the rule for the object, the workflow will be triggered.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -14121,6 +17079,9 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def OutputStorage(self):
+        """The location to save the output file of media processing. If this parameter is left empty, the storage location in `Trigger` will be inherited.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -14129,6 +17090,10 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def OutputDir(self):
+        """The directory to save the media processing output file, which must start and end with `/`, such as `/movie/201907/`.
+If you do not specify this, the file will be saved to the trigger directory.
+        :rtype: str
+        """
         return self._OutputDir
 
     @OutputDir.setter
@@ -14137,6 +17102,9 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def MediaProcessTask(self):
+        """The media processing parameters to use.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
+        """
         return self._MediaProcessTask
 
     @MediaProcessTask.setter
@@ -14145,6 +17113,9 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def AiContentReviewTask(self):
+        """Type parameter of a video content audit task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        """
         return self._AiContentReviewTask
 
     @AiContentReviewTask.setter
@@ -14153,6 +17124,9 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def AiAnalysisTask(self):
+        """Video content analysis task parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        """
         return self._AiAnalysisTask
 
     @AiAnalysisTask.setter
@@ -14161,6 +17135,9 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def AiRecognitionTask(self):
+        """Type parameter of a video content recognition task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        """
         return self._AiRecognitionTask
 
     @AiRecognitionTask.setter
@@ -14169,6 +17146,9 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def TaskNotifyConfig(self):
+        """Event notification configuration for a task. If this parameter is left empty, no event notifications will be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -14177,6 +17157,9 @@ If you do not specify this, the file will be saved to the trigger directory.
 
     @property
     def TaskPriority(self):
+        """Workflow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
+        :rtype: int
+        """
         return self._TaskPriority
 
     @TaskPriority.setter
@@ -14236,6 +17219,9 @@ class CreateWorkflowResponse(AbstractModel):
 
     @property
     def WorkflowId(self):
+        """Workflow ID.
+        :rtype: int
+        """
         return self._WorkflowId
 
     @WorkflowId.setter
@@ -14244,6 +17230,9 @@ class CreateWorkflowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14270,6 +17259,9 @@ class DeleteAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of video content analysis template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -14303,6 +17295,9 @@ class DeleteAIAnalysisTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14328,6 +17323,9 @@ class DeleteAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of a video content recognition template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -14361,6 +17359,9 @@ class DeleteAIRecognitionTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14386,6 +17387,9 @@ class DeleteAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of an adaptive bitrate streaming template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -14419,6 +17423,9 @@ class DeleteAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14444,6 +17451,9 @@ class DeleteAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of an animated image generating template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -14477,6 +17487,9 @@ class DeleteAnimatedGraphicsTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14502,6 +17515,9 @@ class DeleteContentReviewTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """The unique ID of the content moderation template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -14535,6 +17551,9 @@ class DeleteContentReviewTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14560,6 +17579,9 @@ class DeleteImageSpriteTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of an image sprite generating template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -14593,6 +17615,9 @@ class DeleteImageSpriteTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14618,6 +17643,9 @@ class DeletePersonSampleRequest(AbstractModel):
 
     @property
     def PersonId(self):
+        """Image ID
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -14651,6 +17679,9 @@ class DeletePersonSampleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14676,6 +17707,9 @@ class DeleteQualityControlTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique identifier of a media quality inspection template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -14709,6 +17743,9 @@ class DeleteQualityControlTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14734,6 +17771,9 @@ class DeleteSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of a sampled screencapturing template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -14767,6 +17807,9 @@ class DeleteSampleSnapshotTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14792,6 +17835,9 @@ class DeleteScheduleRequest(AbstractModel):
 
     @property
     def ScheduleId(self):
+        """The scheme ID.
+        :rtype: int
+        """
         return self._ScheduleId
 
     @ScheduleId.setter
@@ -14825,6 +17871,9 @@ class DeleteScheduleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14850,6 +17899,9 @@ class DeleteSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of a time point screencapturing template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -14883,6 +17935,9 @@ class DeleteSnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14908,6 +17963,9 @@ class DeleteTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of a transcoding template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -14941,6 +17999,9 @@ class DeleteTranscodeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14966,6 +18027,9 @@ class DeleteWatermarkTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of a watermarking template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -14999,6 +18063,9 @@ class DeleteWatermarkTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15024,6 +18091,9 @@ class DeleteWordSamplesRequest(AbstractModel):
 
     @property
     def Keywords(self):
+        """Keyword. Array length limit: 100 words.
+        :rtype: list of str
+        """
         return self._Keywords
 
     @Keywords.setter
@@ -15057,6 +18127,9 @@ class DeleteWordSamplesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15082,6 +18155,9 @@ class DeleteWorkflowRequest(AbstractModel):
 
     @property
     def WorkflowId(self):
+        """Workflow ID.
+        :rtype: int
+        """
         return self._WorkflowId
 
     @WorkflowId.setter
@@ -15115,6 +18191,9 @@ class DeleteWorkflowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15154,6 +18233,9 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """Unique ID filter of video content analysis templates. Array length limit: 10.
+        :rtype: list of int
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -15162,6 +18244,9 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Pagination offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15170,6 +18255,9 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned entries. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -15178,6 +18266,11 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """The filter for querying templates. If this parameter is left empty, both preset and custom templates are returned. Valid values:
+* Preset
+* Custom
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -15186,6 +18279,9 @@ class DescribeAIAnalysisTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Filter condition for video analysis template identifiers, with a length limit of 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15229,6 +18325,9 @@ class DescribeAIAnalysisTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible entries.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -15237,6 +18336,9 @@ class DescribeAIAnalysisTemplatesResponse(AbstractModel):
 
     @property
     def AIAnalysisTemplateSet(self):
+        """List of video content analysis template details.
+        :rtype: list of AIAnalysisTemplateItem
+        """
         return self._AIAnalysisTemplateSet
 
     @AIAnalysisTemplateSet.setter
@@ -15245,6 +18347,9 @@ class DescribeAIAnalysisTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15291,6 +18396,9 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """Unique ID filter of video content recognition templates. Array length limit: 10.
+        :rtype: list of int
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -15299,6 +18407,9 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Paging offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15307,6 +18418,9 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned entries. Default value: 10. Maximum value: 50.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -15315,6 +18429,11 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """The filter for querying templates. If this parameter is left empty, both preset and custom templates are returned. Valid values:
+* Preset
+* Custom
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -15323,6 +18442,9 @@ class DescribeAIRecognitionTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Filter condition for video recognition template identifiers, with a length limit of 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15366,6 +18488,9 @@ class DescribeAIRecognitionTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible entries.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -15374,6 +18499,9 @@ class DescribeAIRecognitionTemplatesResponse(AbstractModel):
 
     @property
     def AIRecognitionTemplateSet(self):
+        """List of video content recognition template details.
+        :rtype: list of AIRecognitionTemplateItem
+        """
         return self._AIRecognitionTemplateSet
 
     @AIRecognitionTemplateSet.setter
@@ -15382,6 +18510,9 @@ class DescribeAIRecognitionTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15431,6 +18562,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """Unique ID filter of adaptive bitrate streaming templates. Array length limit: 100.
+        :rtype: list of int non-negative
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -15439,6 +18573,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Pagination offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15447,6 +18584,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned entries. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -15455,6 +18595,11 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Template type filter. Valid values:
+<li>Preset: preset template;</li>
+<li>Custom: custom template.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -15463,6 +18608,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     @property
     def PureAudio(self):
+        """Whether it is an audio-only template. 0: video template. 1: audio-only template.
+        :rtype: int
+        """
         return self._PureAudio
 
     @PureAudio.setter
@@ -15471,6 +18619,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Filter condition for adaptive transcoding template identifiers, with a length limit of 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15515,6 +18666,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible entries.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -15523,6 +18677,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
 
     @property
     def AdaptiveDynamicStreamingTemplateSet(self):
+        """List of adaptive bitrate streaming template details.
+        :rtype: list of AdaptiveDynamicStreamingTemplate
+        """
         return self._AdaptiveDynamicStreamingTemplateSet
 
     @AdaptiveDynamicStreamingTemplateSet.setter
@@ -15531,6 +18688,9 @@ class DescribeAdaptiveDynamicStreamingTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15577,6 +18737,9 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """Unique ID filter of animated image generating templates. Array length limit: 100.
+        :rtype: list of int non-negative
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -15585,6 +18748,9 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Paging offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15593,6 +18759,9 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned entries. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -15601,6 +18770,11 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Template type filter. Valid values:
+<li>Preset: Preset template;</li>
+<li>Custom: Custom template.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -15609,6 +18783,9 @@ class DescribeAnimatedGraphicsTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Filter condition for animated image generating template identifiers, with a length limit of 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15652,6 +18829,9 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible entries.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -15660,6 +18840,9 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
 
     @property
     def AnimatedGraphicsTemplateSet(self):
+        """List of animated image generating template details.
+        :rtype: list of AnimatedGraphicsTemplate
+        """
         return self._AnimatedGraphicsTemplateSet
 
     @AnimatedGraphicsTemplateSet.setter
@@ -15668,6 +18851,9 @@ class DescribeAnimatedGraphicsTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15714,6 +18900,9 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """The IDs of the content moderation templates to query. Array length limit: 50.
+        :rtype: list of int
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -15722,6 +18911,9 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Paging offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15730,6 +18922,9 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned entries. Default value: 10. Maximum value: 50.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -15738,6 +18933,11 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """The filter for querying templates. If this parameter is left empty, both preset and custom templates are returned. Valid values:
+* Preset
+* Custom
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -15746,6 +18946,9 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Filter condition for intelligent auditing template identifiers, with a length limit of 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15789,6 +18992,9 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible entries.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -15797,6 +19003,9 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
 
     @property
     def ContentReviewTemplateSet(self):
+        """List of content audit template details.
+        :rtype: list of ContentReviewTemplateItem
+        """
         return self._ContentReviewTemplateSet
 
     @ContentReviewTemplateSet.setter
@@ -15805,6 +19014,9 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15851,6 +19063,9 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """Unique ID filter of image sprite generating templates. Array length limit: 100.
+        :rtype: list of int non-negative
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -15859,6 +19074,9 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Paging offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15867,6 +19085,9 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned entries. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -15875,6 +19096,11 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Template type filter. Valid values:
+<li>Preset: Preset template;</li>
+<li>Custom: Custom template.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -15883,6 +19109,9 @@ class DescribeImageSpriteTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Filter condition for sprite template identifiers, with a length limit of 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15926,6 +19155,9 @@ class DescribeImageSpriteTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible entries.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -15934,6 +19166,9 @@ class DescribeImageSpriteTemplatesResponse(AbstractModel):
 
     @property
     def ImageSpriteTemplateSet(self):
+        """List of image sprite generating template details.
+        :rtype: list of ImageSpriteTemplate
+        """
         return self._ImageSpriteTemplateSet
 
     @ImageSpriteTemplateSet.setter
@@ -15942,6 +19177,9 @@ class DescribeImageSpriteTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15974,6 +19212,9 @@ class DescribeMediaMetaDataRequest(AbstractModel):
 
     @property
     def InputInfo(self):
+        """Input information of file for metadata getting.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
         return self._InputInfo
 
     @InputInfo.setter
@@ -16012,6 +19253,9 @@ class DescribeMediaMetaDataResponse(AbstractModel):
 
     @property
     def MetaData(self):
+        """Media metadata.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
+        """
         return self._MetaData
 
     @MetaData.setter
@@ -16020,6 +19264,9 @@ class DescribeMediaMetaDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16068,6 +19315,14 @@ Note: you can pull the default image library only using the image name or a comb
 
     @property
     def Type(self):
+        """Type of images to pull. Valid values:
+<li>UserDefine: custom image library</li>
+<li>Default: default image library</li>
+
+Default value: UserDefine. Samples in the custom image library will be pulled.
+Note: you can pull the default image library only using the image name or a combination of the image name and ID, and only one face image is returned.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -16076,6 +19331,9 @@ Note: you can pull the default image library only using the image name or a comb
 
     @property
     def PersonIds(self):
+        """Image ID. Array length limit: 100
+        :rtype: list of str
+        """
         return self._PersonIds
 
     @PersonIds.setter
@@ -16084,6 +19342,9 @@ Note: you can pull the default image library only using the image name or a comb
 
     @property
     def Names(self):
+        """Image name. Array length limit: 20
+        :rtype: list of str
+        """
         return self._Names
 
     @Names.setter
@@ -16092,6 +19353,9 @@ Note: you can pull the default image library only using the image name or a comb
 
     @property
     def Tags(self):
+        """Image tag. Array length limit: 20
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -16100,6 +19364,9 @@ Note: you can pull the default image library only using the image name or a comb
 
     @property
     def Offset(self):
+        """Paging offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -16108,6 +19375,9 @@ Note: you can pull the default image library only using the image name or a comb
 
     @property
     def Limit(self):
+        """Number of returned entries. Default value: 100. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -16152,6 +19422,9 @@ class DescribePersonSamplesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible entries.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -16160,6 +19433,9 @@ class DescribePersonSamplesResponse(AbstractModel):
 
     @property
     def PersonSet(self):
+        """Image information
+        :rtype: list of AiSamplePerson
+        """
         return self._PersonSet
 
     @PersonSet.setter
@@ -16168,6 +19444,9 @@ class DescribePersonSamplesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16215,6 +19494,9 @@ class DescribeQualityControlTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """Filter condition for media quality inspection template unique identifiers, with an array length limit of 100.
+        :rtype: list of int
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -16223,6 +19505,9 @@ class DescribeQualityControlTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Paging offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -16231,6 +19516,12 @@ class DescribeQualityControlTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned entries.
+
+<li>Default value: 10.</li>
+<li>Maximum value: 100.</li>
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -16239,6 +19530,9 @@ class DescribeQualityControlTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """"Preset": preset template, "Custom": custom template
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -16247,6 +19541,9 @@ class DescribeQualityControlTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Filter condition for media quality inspection template identifiers, with a length limit of 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -16291,6 +19588,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Total number of records that meet filter conditions.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -16299,6 +19599,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QualityControlTemplateSet(self):
+        """Media quality inspection template details list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of QualityControlTemplate
+        """
         return self._QualityControlTemplateSet
 
     @QualityControlTemplateSet.setter
@@ -16307,6 +19611,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16353,6 +19660,9 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """Unique ID filter of sampled screencapturing templates. Array length limit: 100.
+        :rtype: list of int non-negative
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -16361,6 +19671,9 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Paging offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -16369,6 +19682,9 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned entries. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -16377,6 +19693,11 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Template type filter. Valid values:
+<li>Preset: Preset template;</li>
+<li>Custom: Custom template.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -16385,6 +19706,9 @@ class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Filter condition for sampled screenshot template identifiers, with a length limit of 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -16428,6 +19752,9 @@ class DescribeSampleSnapshotTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible entries.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -16436,6 +19763,9 @@ class DescribeSampleSnapshotTemplatesResponse(AbstractModel):
 
     @property
     def SampleSnapshotTemplateSet(self):
+        """List of sampled screencapturing template details.
+        :rtype: list of SampleSnapshotTemplate
+        """
         return self._SampleSnapshotTemplateSet
 
     @SampleSnapshotTemplateSet.setter
@@ -16444,6 +19774,9 @@ class DescribeSampleSnapshotTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16494,6 +19827,9 @@ If you do not specify this parameter, all schemes will be returned regardless of
 
     @property
     def ScheduleIds(self):
+        """The IDs of the schemes to query. Array length limit: 100.
+        :rtype: list of int
+        """
         return self._ScheduleIds
 
     @ScheduleIds.setter
@@ -16502,6 +19838,12 @@ If you do not specify this parameter, all schemes will be returned regardless of
 
     @property
     def TriggerType(self):
+        """The trigger type. Valid values:
+<li>`CosFileUpload`: The scheme is triggered when a file is uploaded to Tencent Cloud Object Storage (COS).</li>
+<li>`AwsS3FileUpload`: The scheme is triggered when a file is uploaded to AWS S3.</li>
+If you do not specify this parameter or leave it empty, all schemes will be returned regardless of the trigger type.
+        :rtype: str
+        """
         return self._TriggerType
 
     @TriggerType.setter
@@ -16510,6 +19852,12 @@ If you do not specify this parameter, all schemes will be returned regardless of
 
     @property
     def Status(self):
+        """The scheme status. Valid values:
+<li>`Enabled`</li>
+<li>`Disabled`</li>
+If you do not specify this parameter, all schemes will be returned regardless of the status.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -16518,6 +19866,9 @@ If you do not specify this parameter, all schemes will be returned regardless of
 
     @property
     def Offset(self):
+        """The pagination offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -16526,6 +19877,9 @@ If you do not specify this parameter, all schemes will be returned regardless of
 
     @property
     def Limit(self):
+        """The maximum number of records to return. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -16569,6 +19923,9 @@ class DescribeSchedulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The total number of records that meet the conditions.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -16577,6 +19934,9 @@ class DescribeSchedulesResponse(AbstractModel):
 
     @property
     def ScheduleInfoSet(self):
+        """The information of the schemes.
+        :rtype: list of SchedulesInfo
+        """
         return self._ScheduleInfoSet
 
     @ScheduleInfoSet.setter
@@ -16585,6 +19945,9 @@ class DescribeSchedulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16631,6 +19994,9 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """Unique ID filter of time point screencapturing templates. Array length limit: 100.
+        :rtype: list of int non-negative
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -16639,6 +20005,9 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Paging offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -16647,6 +20016,9 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned entries. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -16655,6 +20027,11 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Template type filter. Valid values:
+<li>Preset: Preset template;</li>
+<li>Custom: Custom template.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -16663,6 +20040,9 @@ class DescribeSnapshotByTimeOffsetTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Filter condition for time point screenshot template identifiers, with a length limit of 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -16706,6 +20086,9 @@ class DescribeSnapshotByTimeOffsetTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible entries.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -16714,6 +20097,9 @@ class DescribeSnapshotByTimeOffsetTemplatesResponse(AbstractModel):
 
     @property
     def SnapshotByTimeOffsetTemplateSet(self):
+        """List of time point screencapturing template details.
+        :rtype: list of SnapshotByTimeOffsetTemplate
+        """
         return self._SnapshotByTimeOffsetTemplateSet
 
     @SnapshotByTimeOffsetTemplateSet.setter
@@ -16722,6 +20108,9 @@ class DescribeSnapshotByTimeOffsetTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16754,6 +20143,9 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Video processing task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -16840,6 +20232,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def TaskType(self):
+        """Task type. Valid values:<li>WorkflowTask: video workflow processing task.</li><li>EditMediaTask: video editing task.</li><li>LiveStreamProcessTask: live stream processing task.</li><li>ScheduleTask: orchestration processing task.</li><li>EvaluationTask: evaluation task.</li>
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -16848,6 +20243,12 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Status(self):
+        """Task status. Valid values:
+<li>WAITING: Waiting;</li>
+<li>PROCESSING: Processing;</li>
+<li>FINISH: Completed.</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -16856,6 +20257,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def CreateTime(self):
+        """Creation time of a task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -16864,6 +20268,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def BeginProcessTime(self):
+        """Start time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._BeginProcessTime
 
     @BeginProcessTime.setter
@@ -16872,6 +20279,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def FinishTime(self):
+        """End time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -16880,6 +20290,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def EditMediaTask(self):
+        """Video editing task information. This field has a value only when `TaskType` is `EditMediaTask`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`
+        """
         return self._EditMediaTask
 
     @EditMediaTask.setter
@@ -16888,6 +20301,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def WorkflowTask(self):
+        """Information of a video processing task. This field has a value only when `TaskType` is `WorkflowTask`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
+        """
         return self._WorkflowTask
 
     @WorkflowTask.setter
@@ -16896,6 +20313,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def LiveStreamProcessTask(self):
+        """Information of a live stream processing task. This field has a value only when `TaskType` is `LiveStreamProcessTask`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessTask`
+        """
         return self._LiveStreamProcessTask
 
     @LiveStreamProcessTask.setter
@@ -16904,6 +20325,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def TaskNotifyConfig(self):
+        """Event notification information of a task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -16912,6 +20337,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def TasksPriority(self):
+        """Task flow priority. Value range: [-10, 10].
+        :rtype: int
+        """
         return self._TasksPriority
 
     @TasksPriority.setter
@@ -16920,6 +20348,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def SessionId(self):
+        """The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -16928,6 +20359,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def SessionContext(self):
+        """The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -16936,6 +20370,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def ExtInfo(self):
+        """Extended information field, used in specific scenarios.
+        :rtype: str
+        """
         return self._ExtInfo
 
     @ExtInfo.setter
@@ -16944,6 +20381,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def ScheduleTask(self):
+        """The information of a scheme. This parameter is valid only if `TaskType` is `ScheduleTask`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleTask`
+        """
         return self._ScheduleTask
 
     @ScheduleTask.setter
@@ -16952,6 +20393,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def LiveScheduleTask(self):
+        """The information of a live scheme. This parameter is valid only if `TaskType` is `LiveScheduleTask`.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveScheduleTask`
+        """
         return self._LiveScheduleTask
 
     @LiveScheduleTask.setter
@@ -16960,6 +20405,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17018,6 +20466,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Filter: Task status. Valid values: WAITING (waiting), PROCESSING (processing), FINISH (completed).
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -17026,6 +20477,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned entries. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -17034,6 +20488,9 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def ScrollToken(self):
+        """Scrolling identifier which is used for pulling in batches. If a single request cannot pull all the data entries, the API will return `ScrollToken`, and if the next request carries it, the next pull will start from the next entry.
+        :rtype: str
+        """
         return self._ScrollToken
 
     @ScrollToken.setter
@@ -17078,6 +20535,9 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TaskSet(self):
+        """Task overview list.
+        :rtype: list of TaskSimpleInfo
+        """
         return self._TaskSet
 
     @TaskSet.setter
@@ -17086,6 +20546,9 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def ScrollToken(self):
+        """Scrolling identifier. If a request does not return all the data entries, this field indicates the ID of the next entry. If this field is an empty string, there is no more data.
+        :rtype: str
+        """
         return self._ScrollToken
 
     @ScrollToken.setter
@@ -17094,6 +20557,9 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The total number of records that meet the conditions.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -17102,6 +20568,9 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17166,6 +20635,9 @@ This parameter is left empty by default, which indicates to return all types of 
 
     @property
     def Definitions(self):
+        """Unique ID filter of transcoding templates. Array length limit: 100.
+        :rtype: list of int
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -17174,6 +20646,11 @@ This parameter is left empty by default, which indicates to return all types of 
 
     @property
     def Type(self):
+        """Template type filter. Valid values:
+<li>Preset: Preset template;</li>
+<li>Custom: Custom template.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -17182,6 +20659,11 @@ This parameter is left empty by default, which indicates to return all types of 
 
     @property
     def ContainerType(self):
+        """Container format filter. Valid values:
+<li>Video: Video container format that can contain both video stream and audio stream;</li>
+<li>PureAudio: Audio container format that can contain only audio stream.</li>
+        :rtype: str
+        """
         return self._ContainerType
 
     @ContainerType.setter
@@ -17190,6 +20672,11 @@ This parameter is left empty by default, which indicates to return all types of 
 
     @property
     def TEHDType(self):
+        """TESHD filter, which is used to filter common transcoding or ultra-fast HD transcoding templates. Valid values:
+<li>Common: Common transcoding template;</li>
+<li>TEHD: TESHD template.</li>
+        :rtype: str
+        """
         return self._TEHDType
 
     @TEHDType.setter
@@ -17198,6 +20685,9 @@ This parameter is left empty by default, which indicates to return all types of 
 
     @property
     def Offset(self):
+        """Paging offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -17206,6 +20696,9 @@ This parameter is left empty by default, which indicates to return all types of 
 
     @property
     def Limit(self):
+        """Number of returned entries. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -17214,6 +20707,13 @@ This parameter is left empty by default, which indicates to return all types of 
 
     @property
     def TranscodeType(self):
+        """The template type (replacing `TEHDType`). Valid values:
+<li>Common: Common transcoding template</li>
+<li>TEHD: TESHD template</li>
+<li>Enhance: Audio/Video enhancement template.</li>
+This parameter is left empty by default, which indicates to return all types of templates.
+        :rtype: str
+        """
         return self._TranscodeType
 
     @TranscodeType.setter
@@ -17222,6 +20722,9 @@ This parameter is left empty by default, which indicates to return all types of 
 
     @property
     def Name(self):
+        """Filter condition for transcoding template identifiers, with a length limit of 64 characters.	
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17268,6 +20771,9 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible entries.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -17276,6 +20782,9 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
 
     @property
     def TranscodeTemplateSet(self):
+        """List of transcoding template details.
+        :rtype: list of TranscodeTemplate
+        """
         return self._TranscodeTemplateSet
 
     @TranscodeTemplateSet.setter
@@ -17284,6 +20793,9 @@ class DescribeTranscodeTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17332,6 +20844,9 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
+        """Unique ID filter of watermarking templates. Array length limit: 100.
+        :rtype: list of int
+        """
         return self._Definitions
 
     @Definitions.setter
@@ -17340,6 +20855,11 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Watermark type filter. Valid values:
+<li>image: Image watermark;</li>
+<li>text: Text watermark.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -17348,6 +20868,9 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Paging offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -17356,6 +20879,11 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned entries
+<li>Default value: 10;</li>
+<li>Maximum value: 100.</li>
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -17364,6 +20892,9 @@ class DescribeWatermarkTemplatesRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Filter condition for watermark template identifiers, with a length limit of 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -17407,6 +20938,9 @@ class DescribeWatermarkTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible entries.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -17415,6 +20949,9 @@ class DescribeWatermarkTemplatesResponse(AbstractModel):
 
     @property
     def WatermarkTemplateSet(self):
+        """List of watermarking template details.
+        :rtype: list of WatermarkTemplate
+        """
         return self._WatermarkTemplateSet
 
     @WatermarkTemplateSet.setter
@@ -17423,6 +20960,9 @@ class DescribeWatermarkTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17475,6 +21015,9 @@ You can select multiple elements, which are connected by OR logic. If a usage co
 
     @property
     def Keywords(self):
+        """Keyword filter. Array length limit: 100 words.
+        :rtype: list of str
+        """
         return self._Keywords
 
     @Keywords.setter
@@ -17483,6 +21026,17 @@ You can select multiple elements, which are connected by OR logic. If a usage co
 
     @property
     def Usages(self):
+        """<b>Keyword usage. Valid values:</b>
+1. Recognition.Ocr: OCR-based content recognition
+2. Recognition.Asr: ASR-based content recognition
+3. Review.Ocr: OCR-based inappropriate information recognition
+4. Review.Asr: ASR-based inappropriate information recognition
+<b>Valid values can also be:</b>
+5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2
+6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4
+You can select multiple elements, which are connected by OR logic. If a usage contains any element in this parameter, the keyword sample will be used.
+        :rtype: list of str
+        """
         return self._Usages
 
     @Usages.setter
@@ -17491,6 +21045,9 @@ You can select multiple elements, which are connected by OR logic. If a usage co
 
     @property
     def Tags(self):
+        """Tag filter. Array length limit: 20 words.
+        :rtype: list of str
+        """
         return self._Tags
 
     @Tags.setter
@@ -17499,6 +21056,9 @@ You can select multiple elements, which are connected by OR logic. If a usage co
 
     @property
     def Offset(self):
+        """Paging offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -17507,6 +21067,9 @@ You can select multiple elements, which are connected by OR logic. If a usage co
 
     @property
     def Limit(self):
+        """Number of returned entries. Default value: 100. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -17552,6 +21115,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Number of eligible entries.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -17560,6 +21127,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WordSet(self):
+        """Keyword information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of AiSampleWord
+        """
         return self._WordSet
 
     @WordSet.setter
@@ -17568,6 +21139,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17612,6 +21186,9 @@ If this parameter is left empty, the workflow status will not be distinguished.
 
     @property
     def WorkflowIds(self):
+        """Workflow ID filter. Array length limit: 100.
+        :rtype: list of int
+        """
         return self._WorkflowIds
 
     @WorkflowIds.setter
@@ -17620,6 +21197,12 @@ If this parameter is left empty, the workflow status will not be distinguished.
 
     @property
     def Status(self):
+        """Workflow status. Valid values:
+<li>Enabled: Enabled,</li>
+<li>Disabled: Disabled.</li>
+If this parameter is left empty, the workflow status will not be distinguished.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -17628,6 +21211,9 @@ If this parameter is left empty, the workflow status will not be distinguished.
 
     @property
     def Offset(self):
+        """Paging offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -17636,6 +21222,9 @@ If this parameter is left empty, the workflow status will not be distinguished.
 
     @property
     def Limit(self):
+        """Number of returned entries. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -17678,6 +21267,9 @@ class DescribeWorkflowsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible entries.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -17686,6 +21278,9 @@ class DescribeWorkflowsResponse(AbstractModel):
 
     @property
     def WorkflowInfoSet(self):
+        """Workflow information array.
+        :rtype: list of WorkflowInfo
+        """
         return self._WorkflowInfoSet
 
     @WorkflowInfoSet.setter
@@ -17694,6 +21289,9 @@ class DescribeWorkflowsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17797,6 +21395,18 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Category(self):
+        """Diagnosed exception category. Valid values:
+DecodeParamException: decoding parameter exception.
+TimeStampException: timestamp exception.
+FrameException: frame rate exception.
+StreamStatusException: stream status exception.
+StreamInfo: stream information exception.
+StreamAbnormalCharacteristics: stream characteristics exception.
+DecodeException: decoding exception.
+HLSRequirements: HLS format exception.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Category
 
     @Category.setter
@@ -17805,6 +21415,50 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """Diagnosed specific exception type. Valid values:
+
+VideoResolutionChanged: video resolution change.
+AudioSampleRateChanged: audio sample rate change.
+AudioChannelsChanged: audio channel quantity change.ParameterSetsChanged: stream parameter set information change.
+DarOrSarInvalid: video aspect ratio exception.
+TimestampFallback: DTS timestamp rollback.DtsJitter: DTS jitter too high.
+PtsJitter: PTS jitter too high.
+AACDurationDeviation: improper AAC frame timestamp interval.
+AudioDroppingFrames: audio frame dropping.
+VideoDroppingFrames: video frame dropping.
+AVTimestampInterleave: improper audio-video interleaving.
+PtsLessThanDts: PTS less than DTS for media streams.
+ReceiveFpsJitter: significant jitter in the network receive frame rate.ReceiveFpsTooSmall: network receive video frame rate too low.FpsJitter: significant jitter in the stream frame rate calculated via PTS.StreamOpenFailed: stream open failure.
+StreamEnd: stream end.
+StreamParseFailed: stream parsing failure.
+VideoFirstFrameNotIdr: first frame not an IDR frame.
+StreamNALUError: NALU start code error.
+TsStreamNoAud: no AUD NALU in the H26x stream of MPEG-TS.AudioStreamLack: no audio stream.
+VideoStreamLack: no video stream.
+LackAudioRecover: missing audio stream recovery.
+LackVideoRecover: missing video stream recovery.
+VideoBitrateOutofRange: video stream bitrate (kbps) out of range.
+AudioBitrateOutofRange: audio stream bitrate (kbps) out of range.
+VideoDecodeFailed: video decoding error.
+AudioDecodeFailed: audio decoding error.
+AudioOutOfPhase: opposite phase in dual-channel audio.
+VideoDuplicatedFrame: duplicate frames in video streams.
+AudioDuplicatedFrame: duplicate frames in audio streams.
+VideoRotation: video rotation.
+TsMultiPrograms: multiple programs in MPEG2-TS streams.Mp4InvalidCodecFourcc: codec FourCC in MP4 not meeting Apple HLS requirements.
+HLSBadM3u8Format: invalid M3U8 file.
+HLSInvalidMasterM3u8: invalid main M3U8 file.
+HLSInvalidMediaM3u8: invalid media M3U8 file.
+HLSMasterM3u8Recommended: parameters recommended by standards missing in main M3U8.
+HLSMediaM3u8Recommended: parameters recommended by standards missing in media M3U8.
+HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY in media M3U8.
+HLSMediaSegmentsStreamNumChange: changed number of streams in segments.
+HLSMediaSegmentsPTSJitterDeviation: PTS jumps between segments without EXT-X-DISCONTINUITY.
+HLSMediaSegmentsDTSJitterDeviation: DTS jumps between segments without EXT-X-DISCONTINUITY.
+TimecodeTrackExist: TMCD track in MP4.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -17813,6 +21467,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Timestamp(self):
+        """
+        :rtype: float
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -17821,6 +21478,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -17829,6 +21489,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DateTime(self):
+        """
+        :rtype: str
+        """
         return self._DateTime
 
     @DateTime.setter
@@ -17837,6 +21500,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SeverityLevel(self):
+        """Diagnosed exception level. Valid values:
+Fatal: affecting subsequent playback and parsing.
+Error: may affect playback.
+Warning: potential risk, which may not necessarily affect playback.
+Notice: important stream information.
+Info: general stream information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SeverityLevel
 
     @SeverityLevel.setter
@@ -17875,6 +21547,9 @@ class DisableScheduleRequest(AbstractModel):
 
     @property
     def ScheduleId(self):
+        """The scheme ID.
+        :rtype: int
+        """
         return self._ScheduleId
 
     @ScheduleId.setter
@@ -17908,6 +21583,9 @@ class DisableScheduleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17933,6 +21611,9 @@ class DisableWorkflowRequest(AbstractModel):
 
     @property
     def WorkflowId(self):
+        """Workflow ID.
+        :rtype: int
+        """
         return self._WorkflowId
 
     @WorkflowId.setter
@@ -17966,6 +21647,9 @@ class DisableWorkflowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17997,6 +21681,11 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Type(self):
+        """The encryption type.
+<li>`simpleaes`: AES-128 encryption.</li>
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -18005,6 +21694,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def SimpleAesDrm(self):
+        """The AES-128 encryption details.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SimpleAesDrm`
+        """
         return self._SimpleAesDrm
 
     @SimpleAesDrm.setter
@@ -18053,6 +21746,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def InputInfo(self):
+        """Video input information.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
         return self._InputInfo
 
     @InputInfo.setter
@@ -18061,6 +21757,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def StartTimeOffset(self):
+        """The start offset (seconds) for video clipping. This parameter is valid for video clipping tasks.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -18069,6 +21768,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def EndTimeOffset(self):
+        """The end offset (seconds) for video clipping. This parameter is valid for video clipping tasks.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -18077,6 +21779,12 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Id(self):
+        """The ID of the material associated with an element. This parameter is required for video compositing tasks.
+
+Note: The ID can be up to 32 characters long and can contain letters, digits, and special characters -_
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -18120,6 +21828,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Container(self):
+        """The container. Valid values: `mp4` (default), `hls`, `mov`, `flv`, `avi`.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -18128,6 +21840,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Type(self):
+        """The clip mode. Valid values: `normal` (default), `fast`.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -18191,6 +21907,9 @@ Note: If this parameter is not empty, the task is a video compositing task. Othe
 
     @property
     def FileInfos(self):
+        """Information of input video file.
+        :rtype: list of EditMediaFileInfo
+        """
         return self._FileInfos
 
     @FileInfos.setter
@@ -18199,6 +21918,9 @@ Note: If this parameter is not empty, the task is a video compositing task. Othe
 
     @property
     def OutputStorage(self):
+        """The storage location of the media processing output file.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -18207,6 +21929,12 @@ Note: If this parameter is not empty, the task is a video compositing task. Othe
 
     @property
     def OutputObjectPath(self):
+        """The path to save the media processing output file.
+
+Note: For complex compositing tasks, the filename can be up to 64 characters long and can only contain digits, letters, and special characters -_
+
+        :rtype: str
+        """
         return self._OutputObjectPath
 
     @OutputObjectPath.setter
@@ -18215,6 +21943,9 @@ Note: If this parameter is not empty, the task is a video compositing task. Othe
 
     @property
     def OutputConfig(self):
+        """The output settings for a video clipping task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EditMediaOutputConfig`
+        """
         return self._OutputConfig
 
     @OutputConfig.setter
@@ -18223,6 +21954,11 @@ Note: If this parameter is not empty, the task is a video compositing task. Othe
 
     @property
     def ComposeConfig(self):
+        """The settings for a video compositing task.
+
+Note: If this parameter is not empty, the task is a video compositing task. Otherwise, the task is a video clipping task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeMediaConfig`
+        """
         return self._ComposeConfig
 
     @ComposeConfig.setter
@@ -18231,6 +21967,9 @@ Note: If this parameter is not empty, the task is a video compositing task. Othe
 
     @property
     def TaskNotifyConfig(self):
+        """Event notification information of task. If this parameter is left empty, no event notifications will be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -18239,6 +21978,9 @@ Note: If this parameter is not empty, the task is a video compositing task. Othe
 
     @property
     def TasksPriority(self):
+        """Task priority. The higher the value, the higher the priority. Value range: -10–10. If this parameter is left empty, 0 will be used.
+        :rtype: int
+        """
         return self._TasksPriority
 
     @TasksPriority.setter
@@ -18247,6 +21989,9 @@ Note: If this parameter is not empty, the task is a video compositing task. Othe
 
     @property
     def SessionId(self):
+        """The ID used for deduplication. If there was a request with the same ID in the last three days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -18255,6 +22000,9 @@ Note: If this parameter is not empty, the task is a video compositing task. Othe
 
     @property
     def SessionContext(self):
+        """The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -18312,6 +22060,9 @@ class EditMediaResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """Video editing task ID, which can be used to query the status of an editing task.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -18320,6 +22071,9 @@ class EditMediaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18365,6 +22119,9 @@ class EditMediaTask(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -18373,6 +22130,11 @@ class EditMediaTask(AbstractModel):
 
     @property
     def Status(self):
+        """Task status. Valid values:
+<li>PROCESSING: processing;</li>
+<li>FINISH: completed.</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -18381,6 +22143,11 @@ class EditMediaTask(AbstractModel):
 
     @property
     def ErrCode(self):
+        """Error code
+<li>0: success;</li>
+<li>Other values: failure.</li>
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -18389,6 +22156,9 @@ class EditMediaTask(AbstractModel):
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -18397,6 +22167,9 @@ class EditMediaTask(AbstractModel):
 
     @property
     def Input(self):
+        """Input of video editing task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EditMediaTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -18405,6 +22178,9 @@ class EditMediaTask(AbstractModel):
 
     @property
     def Output(self):
+        """Output of video editing task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EditMediaTaskOutput`
+        """
         return self._Output
 
     @Output.setter
@@ -18447,6 +22223,9 @@ class EditMediaTaskInput(AbstractModel):
 
     @property
     def FileInfoSet(self):
+        """Information of input video file.
+        :rtype: list of EditMediaFileInfo
+        """
         return self._FileInfoSet
 
     @FileInfoSet.setter
@@ -18488,6 +22267,9 @@ class EditMediaTaskOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
+        """Target storage of edited file.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -18496,6 +22278,9 @@ class EditMediaTaskOutput(AbstractModel):
 
     @property
     def Path(self):
+        """Path of edited video file.
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -18532,6 +22317,9 @@ class EnableScheduleRequest(AbstractModel):
 
     @property
     def ScheduleId(self):
+        """The scheme ID.
+        :rtype: int
+        """
         return self._ScheduleId
 
     @ScheduleId.setter
@@ -18565,6 +22353,9 @@ class EnableScheduleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18590,6 +22381,9 @@ class EnableWorkflowRequest(AbstractModel):
 
     @property
     def WorkflowId(self):
+        """Workflow ID.
+        :rtype: int
+        """
         return self._WorkflowId
 
     @WorkflowId.setter
@@ -18623,6 +22417,9 @@ class EnableWorkflowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18653,6 +22450,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def VideoEnhance(self):
+        """Video enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoEnhanceConfig`
+        """
         return self._VideoEnhance
 
     @VideoEnhance.setter
@@ -18661,6 +22462,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def AudioEnhance(self):
+        """The audio enhancement configuration.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioEnhanceConfig`
+        """
         return self._AudioEnhance
 
     @AudioEnhance.setter
@@ -18702,6 +22507,9 @@ class ExecuteFunctionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Name of called backend API.
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -18710,6 +22518,9 @@ class ExecuteFunctionRequest(AbstractModel):
 
     @property
     def FunctionArg(self):
+        """API parameter. Parameter format will depend on the actual function definition.
+        :rtype: str
+        """
         return self._FunctionArg
 
     @FunctionArg.setter
@@ -18747,6 +22558,9 @@ class ExecuteFunctionResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Packed string, which will vary according to the custom API.
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -18755,6 +22569,9 @@ class ExecuteFunctionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18803,6 +22620,11 @@ Default value: All (both default and custom figure libraries will be used.)
 
     @property
     def Switch(self):
+        """Switch of a face recognition task. Valid values:
+<li>ON: Enables an intelligent face recognition task;</li>
+<li>OFF: Disables an intelligent face recognition task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -18811,6 +22633,9 @@ Default value: All (both default and custom figure libraries will be used.)
 
     @property
     def Score(self):
+        """Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0-100. Default value: 95.
+        :rtype: float
+        """
         return self._Score
 
     @Score.setter
@@ -18819,6 +22644,12 @@ Default value: All (both default and custom figure libraries will be used.)
 
     @property
     def DefaultLibraryLabelSet(self):
+        """The default face filter labels, which specify the types of faces to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:
+<li>entertainment (people in the entertainment industry)</li>
+<li>sport (sports celebrities)</li>
+<li>politician</li>
+        :rtype: list of str
+        """
         return self._DefaultLibraryLabelSet
 
     @DefaultLibraryLabelSet.setter
@@ -18827,6 +22658,10 @@ Default value: All (both default and custom figure libraries will be used.)
 
     @property
     def UserDefineLibraryLabelSet(self):
+        """Custom face tags for filter, which specify the face recognition results to return. If this parameter is not specified or left empty, the recognition results for all custom face tags are returned.
+Up to 100 tags are allowed, each containing no more than 16 characters.
+        :rtype: list of str
+        """
         return self._UserDefineLibraryLabelSet
 
     @UserDefineLibraryLabelSet.setter
@@ -18835,6 +22670,13 @@ Default value: All (both default and custom figure libraries will be used.)
 
     @property
     def FaceLibrary(self):
+        """Figure library. Valid values:
+<li>Default: Default figure library;</li>
+<li>UserDefine: Custom figure library.</li>
+<li>All: Both default and custom figure libraries will be used.</li>
+Default value: All (both default and custom figure libraries will be used.)
+        :rtype: str
+        """
         return self._FaceLibrary
 
     @FaceLibrary.setter
@@ -18893,6 +22735,11 @@ Up to 100 tags are allowed, each containing no more than 16 characters.
 
     @property
     def Switch(self):
+        """Switch of a face recognition task. Valid values:
+<li>ON: Enables an intelligent face recognition task;</li>
+<li>OFF: Disables an intelligent face recognition task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -18901,6 +22748,9 @@ Up to 100 tags are allowed, each containing no more than 16 characters.
 
     @property
     def Score(self):
+        """Face recognition filter score. If this score is reached or exceeded, a recognition result will be returned. Value range: 0-100.
+        :rtype: float
+        """
         return self._Score
 
     @Score.setter
@@ -18909,6 +22759,12 @@ Up to 100 tags are allowed, each containing no more than 16 characters.
 
     @property
     def DefaultLibraryLabelSet(self):
+        """The default face filter labels, which specify the types of faces to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:
+<li>entertainment (people in the entertainment industry)</li>
+<li>sport (sports celebrities)</li>
+<li>politician</li>
+        :rtype: list of str
+        """
         return self._DefaultLibraryLabelSet
 
     @DefaultLibraryLabelSet.setter
@@ -18917,6 +22773,10 @@ Up to 100 tags are allowed, each containing no more than 16 characters.
 
     @property
     def UserDefineLibraryLabelSet(self):
+        """Custom face tags for filter, which specify the face recognition results to return. If this parameter is not specified or left empty, the recognition results for all custom face tags are returned.
+Up to 100 tags are allowed, each containing no more than 16 characters.
+        :rtype: list of str
+        """
         return self._UserDefineLibraryLabelSet
 
     @UserDefineLibraryLabelSet.setter
@@ -18925,6 +22785,12 @@ Up to 100 tags are allowed, each containing no more than 16 characters.
 
     @property
     def FaceLibrary(self):
+        """Figure library. Valid values:
+<li>Default: Default figure library;</li>
+<li>UserDefine: Custom figure library.</li>
+<li>All: Both default and custom figure libraries will be used.</li>
+        :rtype: str
+        """
         return self._FaceLibrary
 
     @FaceLibrary.setter
@@ -18970,6 +22836,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -18978,6 +22850,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Intensity(self):
+        """The strength. Value range: 0.0-1.0
+Default value: 0.0.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Intensity
 
     @Intensity.setter
@@ -19021,6 +22898,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -19029,6 +22912,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Fps(self):
+        """The frame rate (Hz). Value range: [0, 100].
+Default value: 0.
+Note: For transcoding, this parameter will overwrite `Fps` of `VideoTemplate`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -19065,6 +22954,11 @@ class FrameTagConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of intelligent frame-specific tagging task. Valid values:
+<li>ON: enables intelligent frame-specific tagging task;</li>
+<li>OFF: disables intelligent frame-specific tagging task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -19100,6 +22994,11 @@ class FrameTagConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of intelligent frame-specific tagging task. Valid values:
+<li>ON: enables intelligent frame-specific tagging task;</li>
+<li>OFF: disables intelligent frame-specific tagging task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -19145,6 +23044,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -19153,6 +23058,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """Type. Valid values:
+<li>HDR10</li>
+<li>HLG</li>
+Default Value: HDR10.
+Note: The video encoding method should be H.265.
+Note: The video encoding bit depth is 10.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -19192,6 +23106,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def HeadSet(self):
+        """The opening segments.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: list of MediaInputInfo
+        """
         return self._HeadSet
 
     @HeadSet.setter
@@ -19200,6 +23118,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def TailSet(self):
+        """The closing segments.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: list of MediaInputInfo
+        """
         return self._TailSet
 
     @TailSet.setter
@@ -19254,6 +23176,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Confidence(self):
+        """The confidence score.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -19262,6 +23187,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTimeOffset(self):
+        """The start time offset of the segment.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -19270,6 +23198,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTimeOffset(self):
+        """The end time offset of the segment.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -19278,6 +23209,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SegmentTags(self):
+        """Segment tag.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._SegmentTags
 
     @SegmentTags.setter
@@ -19325,6 +23260,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -19333,6 +23274,14 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """The strength. Valid values:
+<li>weak</li>
+<li>normal</li>
+<li>strong</li>
+Default value: weak.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -19387,6 +23336,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Definition(self):
+        """ID of an image sprite generating template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -19395,6 +23347,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
+        """Target bucket of a generated image sprite. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -19403,6 +23359,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputObjectPath(self):
+        """Output path of a captured sprite image file, which can be a relative or absolute path.
+If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).Relative path example:
+<li>Filename_{Variable name}.{format}.</li>
+<li>Filename.{format}.</li>
+Absolute path example:
+<li>/Custom path/Filename_{Variable name}.{format}.</li>
+If left empty, a relative path is used by default: `{inputName}_imageSprite_{definition}_{number}.{format}`.
+        :rtype: str
+        """
         return self._OutputObjectPath
 
     @OutputObjectPath.setter
@@ -19411,6 +23376,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WebVttObjectName(self):
+        """Output path to the WebVTT file after an image sprite is generated, which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_imageSprite_{definition}.{format}`.
+        :rtype: str
+        """
         return self._WebVttObjectName
 
     @WebVttObjectName.setter
@@ -19419,6 +23387,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectNumberFormat(self):
+        """Rule of the `{number}` variable in the image sprite output path.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
+        """
         return self._ObjectNumberFormat
 
     @ObjectNumberFormat.setter
@@ -19510,6 +23482,9 @@ Default value: black.
 
     @property
     def Definition(self):
+        """Unique ID of an image sprite generating template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -19518,6 +23493,11 @@ Default value: black.
 
     @property
     def Type(self):
+        """Template type. Valid values:
+<li>Preset: Preset template;</li>
+<li>Custom: Custom template.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -19526,6 +23506,9 @@ Default value: black.
 
     @property
     def Name(self):
+        """Name of an image sprite generating template.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -19534,6 +23517,9 @@ Default value: black.
 
     @property
     def Width(self):
+        """Subimage width of an image sprite.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -19542,6 +23528,9 @@ Default value: black.
 
     @property
     def Height(self):
+        """Subimage height of an image sprite.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -19550,6 +23539,12 @@ Default value: black.
 
     @property
     def ResolutionAdaptive(self):
+        """Resolution adaption. Valid values:
+<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
+<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
+Default value: open.
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -19558,6 +23553,9 @@ Default value: black.
 
     @property
     def SampleType(self):
+        """Sampling type.
+        :rtype: str
+        """
         return self._SampleType
 
     @SampleType.setter
@@ -19566,6 +23564,9 @@ Default value: black.
 
     @property
     def SampleInterval(self):
+        """Sampling interval.
+        :rtype: int
+        """
         return self._SampleInterval
 
     @SampleInterval.setter
@@ -19574,6 +23575,9 @@ Default value: black.
 
     @property
     def RowCount(self):
+        """Subimage row count of an image sprite.
+        :rtype: int
+        """
         return self._RowCount
 
     @RowCount.setter
@@ -19582,6 +23586,9 @@ Default value: black.
 
     @property
     def ColumnCount(self):
+        """Subimage column count of an image sprite.
+        :rtype: int
+        """
         return self._ColumnCount
 
     @ColumnCount.setter
@@ -19590,6 +23597,9 @@ Default value: black.
 
     @property
     def CreateTime(self):
+        """Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -19598,6 +23608,9 @@ Default value: black.
 
     @property
     def UpdateTime(self):
+        """Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -19606,6 +23619,12 @@ Default value: black.
 
     @property
     def FillType(self):
+        """Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+<li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
+<li>black: Fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
+Default value: black.
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -19614,6 +23633,9 @@ Default value: black.
 
     @property
     def Comment(self):
+        """Template description.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -19622,6 +23644,9 @@ Default value: black.
 
     @property
     def Format(self):
+        """The image format.
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -19688,6 +23713,9 @@ Default value: 0px, which means that `Height` will be proportionally scaled acco
 
     @property
     def ImageContent(self):
+        """String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a watermark image. JPEG and PNG images are supported.
+        :rtype: str
+        """
         return self._ImageContent
 
     @ImageContent.setter
@@ -19696,6 +23724,13 @@ Default value: 0px, which means that `Height` will be proportionally scaled acco
 
     @property
     def Width(self):
+        """Width of a watermark, supporting two formats: % and px.
+<li>If a string ends with %, it indicates that the `Width` of a watermark is a percentage of a video's width. For example, `10%` means that `Width` is 10% of a video's width.</li>
+<li>If a string ends with px, the `Width` of a watermark will be in pixels. For example, `100px` means that `Width` is 100 pixels. Value range: [8, 4096].</li>
+
+When width and height are not specified or set to 0, the default value is 10%.
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -19704,6 +23739,12 @@ Default value: 0px, which means that `Height` will be proportionally scaled acco
 
     @property
     def Height(self):
+        """Watermark height. % and px formats are supported:
+<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height. For example, `10%` means that `Height` is 10% of the video height;</li>
+<li>If the string ends in px, the `Height` of the watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels. Value range: 0 or [8, 4096].</li>
+Default value: 0px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -19712,6 +23753,12 @@ Default value: 0px, which means that `Height` will be proportionally scaled acco
 
     @property
     def RepeatType(self):
+        """Repeat type of an animated watermark. Valid values:
+<li>once: no longer appears after watermark playback ends.</li>
+<li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>
+<li>repeat (default): repeats the playback until the video ends.</li>
+        :rtype: str
+        """
         return self._RepeatType
 
     @RepeatType.setter
@@ -19766,6 +23813,9 @@ class ImageWatermarkInputForUpdate(AbstractModel):
 
     @property
     def ImageContent(self):
+        """String generated by [Base64-encoding](https://tools.ietf.org/html/rfc4648) a watermark image. JPEG and PNG images are supported.
+        :rtype: str
+        """
         return self._ImageContent
 
     @ImageContent.setter
@@ -19774,6 +23824,11 @@ class ImageWatermarkInputForUpdate(AbstractModel):
 
     @property
     def Width(self):
+        """Watermark width. % and px formats are supported:
+<li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width. For example, `10%` means that `Width` is 10% of the video width;</li>
+<li>If the string ends in px, the `Width` of the watermark will be in pixels. For example, `100px` means that `Width` is 100 pixels. Value range: [8, 4096].</li>
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -19782,6 +23837,13 @@ class ImageWatermarkInputForUpdate(AbstractModel):
 
     @property
     def Height(self):
+        """Height of a watermark, supporting two formats: % and px.
+<li>If a string ends with %, it indicates that the `Height` of a watermark is a percentage of a video's height. For example, `10%` means that `Height` is 10% of a video's height.</li>
+<li>If a string ends with px, the `Height` of a watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels. Value range: 0 or [8, 4096].</li>
+
+
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -19790,6 +23852,12 @@ class ImageWatermarkInputForUpdate(AbstractModel):
 
     @property
     def RepeatType(self):
+        """Repeat type of an animated watermark. Valid values:
+<li>once: no longer appears after watermark playback ends.</li>
+<li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>
+<li>repeat (default): repeats the playback until the video ends.</li>
+        :rtype: str
+        """
         return self._RepeatType
 
     @RepeatType.setter
@@ -19843,6 +23911,9 @@ class ImageWatermarkTemplate(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """Watermark image address.
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -19851,6 +23922,11 @@ class ImageWatermarkTemplate(AbstractModel):
 
     @property
     def Width(self):
+        """Watermark width. % and px formats are supported:
+<li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width; for example, `10%` means that `Width` is 10% of the video width;</li>
+<li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px.</li>
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -19859,6 +23935,12 @@ class ImageWatermarkTemplate(AbstractModel):
 
     @property
     def Height(self):
+        """Watermark height. % and px formats are supported:
+<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height. For example, `10%` means that `Height` is 10% of the video height;</li>
+<li>If the string ends in px, the `Height` of the watermark will be in pixels. For example, `100px` means that `Height` is 100 pixels.</li>
+`0px` means that `Height` will be proportionally scaled according to the video width.
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -19867,6 +23949,12 @@ class ImageWatermarkTemplate(AbstractModel):
 
     @property
     def RepeatType(self):
+        """Repeat type of an animated watermark. Valid values:
+<li>once: no longer appears after watermark playback ends.</li>
+<li>repeat_last_frame: stays on the last frame after watermark playback ends.</li>
+<li>repeat (default): repeats the playback until the video ends.</li>
+        :rtype: str
+        """
         return self._RepeatType
 
     @RepeatType.setter
@@ -19908,6 +23996,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LiveRecordTask(self):
+        """The output of a live recording task.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveScheduleLiveRecordTaskResult`
+        """
         return self._LiveRecordTask
 
     @LiveRecordTask.setter
@@ -19916,6 +24008,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LiveQualityControlTask(self):
+        """Media quality inspection task output.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
+        """
         return self._LiveQualityControlTask
 
     @LiveQualityControlTask.setter
@@ -19961,6 +24057,12 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def ActivityType(self):
+        """Atomic task type.
+<li>LiveRecord: live recording.</li>
+<li>AiQualityControl: media quality inspection.</li>
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ActivityType
 
     @ActivityType.setter
@@ -19969,6 +24071,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def LiveActivityResItem(self):
+        """The task output.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveActivityResItem`
+        """
         return self._LiveActivityResItem
 
     @LiveActivityResItem.setter
@@ -20022,6 +24128,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Url(self):
+        """The URL of the recording file.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -20030,6 +24140,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Size(self):
+        """The size of the recording file.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -20038,6 +24152,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Duration(self):
+        """The duration of the recording file.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -20046,6 +24164,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def StartTime(self):
+        """The recording start time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -20054,6 +24176,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def EndTime(self):
+        """The recording end time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -20096,6 +24222,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def OutputStorage(self):
+        """The storage of the recording file.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -20104,6 +24234,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def FileList(self):
+        """The recording segments.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: list of LiveRecordFile
+        """
         return self._FileList
 
     @FileList.setter
@@ -20153,6 +24287,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Definition(self):
+        """The live recording template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -20161,6 +24298,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def OutputStorage(self):
+        """The storage of the recording file. If this parameter is left empty, the `OutputStorage` value of the parent folder will be inherited.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -20169,6 +24310,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def OutputObjectPath(self):
+        """The output path of the recording file.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OutputObjectPath
 
     @OutputObjectPath.setter
@@ -20234,6 +24379,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Status(self):
+        """The task status. Valid values: `PROCESSING`, `SUCCESS`, `FAIL`.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -20242,6 +24390,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value indicates the task has failed. For details, see [Error Codes](https://www.tencentcloud.com/document/product/1041/40249).
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -20250,6 +24402,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def ErrCode(self):
+        """The error code. `0` indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -20258,6 +24414,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Message(self):
+        """The error message.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -20266,6 +24426,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Input(self):
+        """The input of a live recording task.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveRecordTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -20274,6 +24438,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Output(self):
+        """The output of a live recording task.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveRecordResult`
+        """
         return self._Output
 
     @Output.setter
@@ -20282,6 +24450,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def BeginProcessTime(self):
+        """The time when the task was started, in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BeginProcessTime
 
     @BeginProcessTime.setter
@@ -20290,6 +24462,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def FinishTime(self):
+        """The time when the task was completed, in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -20357,6 +24533,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def TaskId(self):
+        """The ID of a live scheme subtask.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -20365,6 +24545,12 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Status(self):
+        """The task status. Valid values:
+<li>`PROCESSING`</li>
+<li>`FINISH` </li>
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -20373,6 +24559,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def ErrCode(self):
+        """If the value returned is not `0`, there was a source error. If `0` is returned, refer to the error codes of the corresponding task type.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -20381,6 +24571,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Message(self):
+        """If there was a source error, this parameter is the error message. For other errors, refer to the error messages of the corresponding task type.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -20389,6 +24583,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Url(self):
+        """The URL of the live stream.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -20397,6 +24595,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def LiveActivityResultSet(self):
+        """The task output.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: list of LiveActivityResult
+        """
         return self._LiveActivityResultSet
 
     @LiveActivityResultSet.setter
@@ -20440,6 +24642,9 @@ class LiveStreamAiAnalysisResultInfo(AbstractModel):
 
     @property
     def ResultSet(self):
+        """
+        :rtype: list of LiveStreamAiAnalysisResultItem
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -20481,6 +24686,9 @@ class LiveStreamAiAnalysisResultItem(AbstractModel):
 
     @property
     def Type(self):
+        """
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -20489,6 +24697,9 @@ class LiveStreamAiAnalysisResultItem(AbstractModel):
 
     @property
     def SegmentResultSet(self):
+        """
+        :rtype: list of SegmentRecognitionItem
+        """
         return self._SegmentResultSet
 
     @SegmentResultSet.setter
@@ -20542,6 +24753,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def QualityControlResults(self):
         warnings.warn("parameter `QualityControlResults` is deprecated", DeprecationWarning) 
 
+        """Content quality inspection result list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of QualityControlResult
+        """
         return self._QualityControlResults
 
     @QualityControlResults.setter
@@ -20554,6 +24769,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
     def DiagnoseResults(self):
         warnings.warn("parameter `DiagnoseResults` is deprecated", DeprecationWarning) 
 
+        """
+        :rtype: list of DiagnoseResult
+        """
         return self._DiagnoseResults
 
     @DiagnoseResults.setter
@@ -20564,6 +24782,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QualityControlResultSet(self):
+        """Content quality inspection result list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of QualityControlResult
+        """
         return self._QualityControlResultSet
 
     @QualityControlResultSet.setter
@@ -20572,6 +24794,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DiagnoseResultSet(self):
+        """Format diagnostic result list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DiagnoseResult
+        """
         return self._DiagnoseResultSet
 
     @DiagnoseResultSet.setter
@@ -20628,6 +24854,9 @@ class LiveStreamAiRecognitionResultInfo(AbstractModel):
 
     @property
     def ResultSet(self):
+        """Content recognition result list.
+        :rtype: list of LiveStreamAiRecognitionResultItem
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -20704,6 +24933,18 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 
     @property
     def Type(self):
+        """Result type. Valid values:
+<li>FaceRecognition: face recognition.</li>
+<li>AsrWordsRecognition: speech keyword recognition.</li>
+<li>OcrWordsRecognition: text keyword recognition.</li>
+<li>AsrFullTextRecognition: full speech recognition.</li>
+<li>OcrFullTextRecognition: full text recognition.</li>
+<li>TransTextRecognition: speech translation.</li>
+
+<li>ObjectRecognition: object recognition.</li>
+<li>TagRecognition: highlights marking.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -20712,6 +24953,10 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 
     @property
     def FaceRecognitionResultSet(self):
+        """Face recognition result, which is valid when `Type` is
+`FaceRecognition`.
+        :rtype: list of LiveStreamFaceRecognitionResult
+        """
         return self._FaceRecognitionResultSet
 
     @FaceRecognitionResultSet.setter
@@ -20720,6 +24965,10 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 
     @property
     def AsrWordsRecognitionResultSet(self):
+        """Speech keyword recognition result, which is valid when `Type` is
+`AsrWordsRecognition`.
+        :rtype: list of LiveStreamAsrWordsRecognitionResult
+        """
         return self._AsrWordsRecognitionResultSet
 
     @AsrWordsRecognitionResultSet.setter
@@ -20728,6 +24977,10 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 
     @property
     def OcrWordsRecognitionResultSet(self):
+        """Text keyword recognition result, which is valid when `Type` is
+`OcrWordsRecognition`.
+        :rtype: list of LiveStreamOcrWordsRecognitionResult
+        """
         return self._OcrWordsRecognitionResultSet
 
     @OcrWordsRecognitionResultSet.setter
@@ -20736,6 +24989,10 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 
     @property
     def AsrFullTextRecognitionResultSet(self):
+        """Full speech recognition result, which is valid when `Type` is
+`AsrFullTextRecognition`.
+        :rtype: list of LiveStreamAsrFullTextRecognitionResult
+        """
         return self._AsrFullTextRecognitionResultSet
 
     @AsrFullTextRecognitionResultSet.setter
@@ -20744,6 +25001,10 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 
     @property
     def OcrFullTextRecognitionResultSet(self):
+        """Full text recognition result, which is valid when `Type` is
+`OcrFullTextRecognition`.
+        :rtype: list of LiveStreamOcrFullTextRecognitionResult
+        """
         return self._OcrFullTextRecognitionResultSet
 
     @OcrFullTextRecognitionResultSet.setter
@@ -20752,6 +25013,9 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 
     @property
     def TransTextRecognitionResultSet(self):
+        """The translation result. This parameter is valid only if `Type` is `TransTextRecognition`.
+        :rtype: list of LiveStreamTransTextRecognitionResult
+        """
         return self._TransTextRecognitionResultSet
 
     @TransTextRecognitionResultSet.setter
@@ -20760,6 +25024,9 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 
     @property
     def ObjectRecognitionResultSet(self):
+        """Object recognition result, which is valid when Type is ObjectRecognition.
+        :rtype: list of LiveStreamObjectRecognitionResult
+        """
         return self._ObjectRecognitionResultSet
 
     @ObjectRecognitionResultSet.setter
@@ -20768,6 +25035,9 @@ class LiveStreamAiRecognitionResultItem(AbstractModel):
 
     @property
     def TagRecognitionResultSet(self):
+        """
+        :rtype: list of LiveStreamTagRecognitionResult
+        """
         return self._TagRecognitionResultSet
 
     @TagRecognitionResultSet.setter
@@ -20879,6 +25149,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def StartPtsTime(self):
+        """Start PTS time of a suspected segment in seconds.
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -20887,6 +25160,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def EndPtsTime(self):
+        """End PTS time of a suspected segment in seconds.
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -20895,6 +25171,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def Confidence(self):
+        """The confidence score for the detected sensitive segments.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -20903,6 +25182,12 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def Suggestion(self):
+        """Suggestion for porn information detection of a suspected segment. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -20911,6 +25196,11 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def Label(self):
+        """The labels for the detected sensitive information. Valid values:
+<li>politician</li>
+<li>violation_photo (banned icons)</li>
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -20919,6 +25209,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def Name(self):
+        """The name of a sensitive person or banned icon.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -20927,6 +25220,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def AreaCoordSet(self):
+        """The pixel coordinates of the detected sensitive people or banned icons. The format is [x1, y1, x2, y2], which indicates the coordinates of the top-left and bottom-right corners.
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -20935,6 +25231,10 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def Url(self):
+        """URL of a suspected image (which will not be permanently stored
+and will be deleted after `PicUrlExpireTime`).
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -20943,6 +25243,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def PicUrlExpireTime(self):
+        """Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._PicUrlExpireTime
 
     @PicUrlExpireTime.setter
@@ -21010,6 +25313,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def StartPtsTime(self):
+        """Start PTS time of a suspected segment in seconds.
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -21018,6 +25324,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def EndPtsTime(self):
+        """End PTS time of a suspected segment in seconds.
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -21026,6 +25335,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def Confidence(self):
+        """Score of a suspected porn segment.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -21034,6 +25346,12 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def Suggestion(self):
+        """Suggestion for porn information detection of a suspected segment. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -21042,6 +25360,13 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def Label(self):
+        """Tag of the detected porn information in video. Valid values:
+<li>porn: Porn.</li>
+<li>sexy: Sexiness.</li>
+<li>vulgar: Vulgarity.</li>
+<li>intimacy: Intimacy.</li>
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -21050,6 +25375,10 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def Url(self):
+        """URL of a suspected image (which will not be permanently stored
+and will be deleted after `PicUrlExpireTime`).
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -21058,6 +25387,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def PicUrlExpireTime(self):
+        """Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._PicUrlExpireTime
 
     @PicUrlExpireTime.setter
@@ -21127,6 +25459,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def StartPtsTime(self):
+        """Start PTS time of a suspected segment in seconds.
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -21135,6 +25470,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def EndPtsTime(self):
+        """End PTS time of a suspected segment in seconds.
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -21143,6 +25481,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def Confidence(self):
+        """The confidence score for the detected sensitive segments.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -21151,6 +25492,12 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def Suggestion(self):
+        """The suggestion for handling the sensitive segments. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -21159,6 +25506,17 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def Label(self):
+        """The labels for the detected sensitive content. Valid values:
+<li>guns</li>
+<li>crowd</li>
+<li>police</li>
+<li>bloody</li>
+<li>banners (sensitive flags)</li>
+<li>militant</li>
+<li>explosion</li>
+<li>terrorists</li>
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -21167,6 +25525,10 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def Url(self):
+        """URL of a suspected image (which will not be permanently stored
+and will be deleted after `PicUrlExpireTime`).
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -21175,6 +25537,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def PicUrlExpireTime(self):
+        """Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._PicUrlExpireTime
 
     @PicUrlExpireTime.setter
@@ -21214,6 +25579,9 @@ class LiveStreamAiReviewResultInfo(AbstractModel):
 
     @property
     def ResultSet(self):
+        """List of content audit results.
+        :rtype: list of LiveStreamAiReviewResultItem
+        """
         return self._ResultSet
 
     @ResultSet.setter
@@ -21268,6 +25636,13 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
     @property
     def Type(self):
+        """The type of moderation result. Valid values:
+<li>ImagePorn</li>
+<li>ImageTerrorism</li>
+<li>ImagePolitical</li>
+<li>VoicePorn</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -21276,6 +25651,9 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
     @property
     def ImagePornResultSet(self):
+        """Result of porn information detection in image, which is valid when `Type` is `ImagePorn`.
+        :rtype: list of LiveStreamAiReviewImagePornResult
+        """
         return self._ImagePornResultSet
 
     @ImagePornResultSet.setter
@@ -21284,6 +25662,9 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
     @property
     def ImageTerrorismResultSet(self):
+        """The result of detecting sensitive information in images, which is valid if `Type` is `ImageTerrorism`.
+        :rtype: list of LiveStreamAiReviewImageTerrorismResult
+        """
         return self._ImageTerrorismResultSet
 
     @ImageTerrorismResultSet.setter
@@ -21292,6 +25673,9 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
     @property
     def ImagePoliticalResultSet(self):
+        """The result of detecting sensitive information in images, which is valid if `Type` is `ImagePolitical`.
+        :rtype: list of LiveStreamAiReviewImagePoliticalResult
+        """
         return self._ImagePoliticalResultSet
 
     @ImagePoliticalResultSet.setter
@@ -21300,6 +25684,9 @@ class LiveStreamAiReviewResultItem(AbstractModel):
 
     @property
     def VoicePornResultSet(self):
+        """The result for moderation of pornographic content in audio. This parameter is valid if `Type` is `VoicePorn`.
+        :rtype: list of LiveStreamAiReviewVoicePornResult
+        """
         return self._VoicePornResultSet
 
     @VoicePornResultSet.setter
@@ -21373,6 +25760,9 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
+        """Start PTS time of a suspected segment in seconds.
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -21381,6 +25771,9 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
+        """End PTS time of a suspected segment in seconds.
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -21389,6 +25782,9 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """Score of a suspected porn segment.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -21397,6 +25793,12 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
 
     @property
     def Suggestion(self):
+        """Suggestion for porn information detection of a suspected segment. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -21405,6 +25807,10 @@ class LiveStreamAiReviewVoicePornResult(AbstractModel):
 
     @property
     def Label(self):
+        """Tag of the detected porn information in video. Valid values:
+<li>sexual_moan: Sexual moans.</li>
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -21451,6 +25857,9 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def Text(self):
+        """Recognized text.
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -21459,6 +25868,9 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
+        """Start PTS time of recognized segment in seconds.
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -21467,6 +25879,9 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
+        """End PTS time of recognized segment in seconds.
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -21475,6 +25890,9 @@ class LiveStreamAsrFullTextRecognitionResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """Confidence of recognized segment. Value range: 0–100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -21520,6 +25938,9 @@ class LiveStreamAsrWordsRecognitionResult(AbstractModel):
 
     @property
     def Word(self):
+        """Speech keyword.
+        :rtype: str
+        """
         return self._Word
 
     @Word.setter
@@ -21528,6 +25949,9 @@ class LiveStreamAsrWordsRecognitionResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
+        """Start PTS time of recognized segment in seconds.
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -21536,6 +25960,9 @@ class LiveStreamAsrWordsRecognitionResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
+        """End PTS time of recognized segment in seconds.
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -21544,6 +25971,9 @@ class LiveStreamAsrWordsRecognitionResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """Confidence of recognized segment. Value range: 0–100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -21599,6 +26029,9 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     @property
     def Id(self):
+        """Unique ID of figure.
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -21607,6 +26040,9 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     @property
     def Name(self):
+        """Figure name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -21615,6 +26051,10 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     @property
     def Type(self):
+        """Figure library type, indicating to which figure library the recognized figure belongs:
+<li>Default: default figure library</li><li>UserDefine: custom figure library</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -21623,6 +26063,9 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
+        """Start PTS time of recognized segment in seconds.
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -21631,6 +26074,9 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
+        """End PTS time of recognized segment in seconds.
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -21639,6 +26085,9 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """Confidence of recognized segment. Value range: 0–100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -21647,6 +26096,9 @@ class LiveStreamFaceRecognitionResult(AbstractModel):
 
     @property
     def AreaCoordSet(self):
+        """Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -21702,6 +26154,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
+        """Name of a recognized object.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -21710,6 +26165,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartPtsOffset(self):
+        """Start PTS time of a recognized segment, in seconds.
+        :rtype: float
+        """
         return self._StartPtsOffset
 
     @StartPtsOffset.setter
@@ -21718,6 +26176,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndPtsOffset(self):
+        """End PTS time of a recognized segment, in seconds.
+        :rtype: float
+        """
         return self._EndPtsOffset
 
     @EndPtsOffset.setter
@@ -21726,6 +26187,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Confidence(self):
+        """Confidence of a recognized segment. Value range: 0-100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -21734,6 +26198,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AreaCoordSet(self):
+        """Zone coordinates of the recognition result. An array contains four elements: [x1, y1, x2, y2], representing the horizontal and vertical coordinates of the top-left and bottom-right corners, respectively.
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -21742,6 +26209,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Url(self):
+        """Screenshot link.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -21792,6 +26263,9 @@ class LiveStreamOcrFullTextRecognitionResult(AbstractModel):
 
     @property
     def Text(self):
+        """Speech text.
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -21800,6 +26274,9 @@ class LiveStreamOcrFullTextRecognitionResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
+        """Start PTS time of recognized segment in seconds.
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -21808,6 +26285,9 @@ class LiveStreamOcrFullTextRecognitionResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
+        """End PTS time of recognized segment in seconds.
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -21816,6 +26296,9 @@ class LiveStreamOcrFullTextRecognitionResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """Confidence of recognized segment. Value range: 0–100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -21824,6 +26307,9 @@ class LiveStreamOcrFullTextRecognitionResult(AbstractModel):
 
     @property
     def AreaCoordSet(self):
+        """Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -21873,6 +26359,9 @@ class LiveStreamOcrWordsRecognitionResult(AbstractModel):
 
     @property
     def Word(self):
+        """Text keyword.
+        :rtype: str
+        """
         return self._Word
 
     @Word.setter
@@ -21881,6 +26370,9 @@ class LiveStreamOcrWordsRecognitionResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
+        """Start PTS time of recognized segment in seconds.
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -21889,6 +26381,9 @@ class LiveStreamOcrWordsRecognitionResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
+        """End PTS time of recognized segment in seconds.
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -21897,6 +26392,9 @@ class LiveStreamOcrWordsRecognitionResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """Confidence of recognized segment. Value range: 0–100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -21905,6 +26403,9 @@ class LiveStreamOcrWordsRecognitionResult(AbstractModel):
 
     @property
     def AreaCoords(self):
+        """Zone coordinates of recognition result. The array contains four elements: [x1,y1,x2,y2], i.e., the horizontal and vertical coordinates of the top-left and bottom-right corners.
+        :rtype: list of int
+        """
         return self._AreaCoords
 
     @AreaCoords.setter
@@ -21947,6 +26448,11 @@ class LiveStreamProcessErrorInfo(AbstractModel):
 
     @property
     def ErrCode(self):
+        """Error code:
+<li>0: No error;</li>
+<li>If this parameter is not 0, an error has occurred. Please see the error message (`Message`).</li>
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -21955,6 +26461,9 @@ class LiveStreamProcessErrorInfo(AbstractModel):
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -22003,6 +26512,9 @@ class LiveStreamProcessTask(AbstractModel):
 
     @property
     def TaskId(self):
+        """The media processing task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -22011,6 +26523,11 @@ class LiveStreamProcessTask(AbstractModel):
 
     @property
     def Status(self):
+        """Task flow status. Valid values:
+<li>PROCESSING: Processing;</li>
+<li>FINISH: Completed.</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -22019,6 +26536,9 @@ class LiveStreamProcessTask(AbstractModel):
 
     @property
     def ErrCode(self):
+        """Error code. 0: success; other values: failure.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -22027,6 +26547,9 @@ class LiveStreamProcessTask(AbstractModel):
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -22035,6 +26558,9 @@ class LiveStreamProcessTask(AbstractModel):
 
     @property
     def Url(self):
+        """Live stream URL.
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -22080,6 +26606,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordOver(self):
+        """Whether recording ends.
+0: Recording does not end, returning a single file.
+1: Recording ends, returning all recording files.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RecordOver
 
     @RecordOver.setter
@@ -22088,6 +26620,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileResults(self):
+        """File list.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of LiveRecordFile
+        """
         return self._FileResults
 
     @FileResults.setter
@@ -22136,6 +26673,9 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
     @property
     def Id(self):
+        """
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -22144,6 +26684,9 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
+        """
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -22152,6 +26695,9 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
+        """
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -22160,6 +26706,9 @@ class LiveStreamTagRecognitionResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -22217,6 +26766,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotifyType(self):
+        """The notification type, `CMQ` by default. If this parameter is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`.
+
+<font color="red">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>
+        :rtype: str
+        """
         return self._NotifyType
 
     @NotifyType.setter
@@ -22225,6 +26779,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CmqModel(self):
+        """CMQ model. There are two types: `Queue` and `Topic`. Currently, only `Queue` is supported.
+        :rtype: str
+        """
         return self._CmqModel
 
     @CmqModel.setter
@@ -22233,6 +26790,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CmqRegion(self):
+        """CMQ region, such as `sh` and `bj`.
+        :rtype: str
+        """
         return self._CmqRegion
 
     @CmqRegion.setter
@@ -22241,6 +26801,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueueName(self):
+        """This parameter is valid when the model is `Queue`, indicating the name of the CMQ queue for receiving event notifications.
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -22249,6 +26812,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicName(self):
+        """This parameter is valid when the model is `Topic`, indicating the name of the CMQ topic for receiving event notifications.
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -22257,6 +26823,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotifyUrl(self):
+        """HTTP callback URL, required if `NotifyType` is set to `URL`
+        :rtype: str
+        """
         return self._NotifyUrl
 
     @NotifyUrl.setter
@@ -22265,6 +26834,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotifyKey(self):
+        """Key used to generate a callback signature.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NotifyKey
 
     @NotifyKey.setter
@@ -22316,6 +26889,9 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def Text(self):
+        """The text transcript.
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -22324,6 +26900,9 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def StartPtsTime(self):
+        """The PTS (seconds) of the start of a segment.
+        :rtype: float
+        """
         return self._StartPtsTime
 
     @StartPtsTime.setter
@@ -22332,6 +26911,9 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def EndPtsTime(self):
+        """The PTS (seconds) of the end of a segment.
+        :rtype: float
+        """
         return self._EndPtsTime
 
     @EndPtsTime.setter
@@ -22340,6 +26922,9 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def Confidence(self):
+        """The confidence score for a segment. Value range: 0-100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -22348,6 +26933,9 @@ class LiveStreamTransTextRecognitionResult(AbstractModel):
 
     @property
     def Trans(self):
+        """The translation.
+        :rtype: str
+        """
         return self._Trans
 
     @Trans.setter
@@ -22394,6 +26982,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -22402,6 +26996,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """The strength. Valid values:
+<li>normal</li>
+Default value: normal.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -22444,6 +27044,14 @@ class ManageTaskRequest(AbstractModel):
 
     @property
     def OperationType(self):
+        """Operation type. Valid values:
+<ul>
+<li>Abort: task termination. Description:
+<ul><li>If the [task type](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is live stream processing (`LiveStreamProcessTask`), tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is `WAITING` or `PROCESSING` can be terminated.</li>
+<li>For other [task types](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0), only tasks whose [task status](https://intl.cloud.tencent.com/document/product/862/37614?from_cn_redirect=1#3.-.E8.BE.93.E5.87.BA.E5.8F.82.E6.95.B0) is `WAITING` can be terminated.</li></ul>
+</li></ul>
+        :rtype: str
+        """
         return self._OperationType
 
     @OperationType.setter
@@ -22452,6 +27060,9 @@ class ManageTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Video processing task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -22486,6 +27097,9 @@ class ManageTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22514,6 +27128,9 @@ class MediaAiAnalysisClassificationItem(AbstractModel):
 
     @property
     def Classification(self):
+        """Name of intelligently generated category.
+        :rtype: str
+        """
         return self._Classification
 
     @Classification.setter
@@ -22522,6 +27139,9 @@ class MediaAiAnalysisClassificationItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """Confidence of intelligently generated category between 0 and 100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -22559,6 +27179,9 @@ class MediaAiAnalysisCoverItem(AbstractModel):
 
     @property
     def CoverPath(self):
+        """Storage path of intelligently generated cover.
+        :rtype: str
+        """
         return self._CoverPath
 
     @CoverPath.setter
@@ -22567,6 +27190,9 @@ class MediaAiAnalysisCoverItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """Confidence of intelligently generated cover between 0 and 100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -22608,6 +27234,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """Intelligent description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -22616,6 +27245,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Confidence(self):
+        """Confidence of the intelligent description, with a value range from 0 to 100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -22624,6 +27256,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Paragraphs(self):
+        """Segmentation result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of AiParagraphInfo
+        """
         return self._Paragraphs
 
     @Paragraphs.setter
@@ -22670,6 +27306,9 @@ class MediaAiAnalysisFrameTagItem(AbstractModel):
 
     @property
     def Tag(self):
+        """Frame-specific tag name.
+        :rtype: str
+        """
         return self._Tag
 
     @Tag.setter
@@ -22678,6 +27317,9 @@ class MediaAiAnalysisFrameTagItem(AbstractModel):
 
     @property
     def CategorySet(self):
+        """
+        :rtype: list of str
+        """
         return self._CategorySet
 
     @CategorySet.setter
@@ -22686,6 +27328,9 @@ class MediaAiAnalysisFrameTagItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """Confidence of intelligently generated frame-specific tag between 0 and 100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -22727,6 +27372,9 @@ class MediaAiAnalysisFrameTagSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """Start time offset of frame-specific tag.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -22735,6 +27383,9 @@ class MediaAiAnalysisFrameTagSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """End time offset of frame-specific tag.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -22743,6 +27394,9 @@ class MediaAiAnalysisFrameTagSegmentItem(AbstractModel):
 
     @property
     def TagSet(self):
+        """List of tags in time period.
+        :rtype: list of MediaAiAnalysisFrameTagItem
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -22795,6 +27449,9 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
 
     @property
     def HighlightPath(self):
+        """The URL of the highlight segments.
+        :rtype: str
+        """
         return self._HighlightPath
 
     @HighlightPath.setter
@@ -22803,6 +27460,9 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
 
     @property
     def CovImgPath(self):
+        """The URL of the thumbnail.
+        :rtype: str
+        """
         return self._CovImgPath
 
     @CovImgPath.setter
@@ -22811,6 +27471,9 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """The confidence score. Value range: 0-100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -22819,6 +27482,9 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
 
     @property
     def Duration(self):
+        """The duration of the highlights.
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -22827,6 +27493,9 @@ class MediaAiAnalysisHighlightItem(AbstractModel):
 
     @property
     def SegmentSet(self):
+        """A list of the highlight segments.
+        :rtype: list of HighlightSegmentItem
+        """
         return self._SegmentSet
 
     @SegmentSet.setter
@@ -22872,6 +27541,9 @@ class MediaAiAnalysisTagItem(AbstractModel):
 
     @property
     def Tag(self):
+        """Tag name.
+        :rtype: str
+        """
         return self._Tag
 
     @Tag.setter
@@ -22880,6 +27552,9 @@ class MediaAiAnalysisTagItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """Confidence of tag between 0 and 100.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -22944,6 +27619,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Storage(self):
+        """Storage location of a generated animated image file.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._Storage
 
     @Storage.setter
@@ -22952,6 +27630,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Path(self):
+        """Path to a generated animated image file.
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -22960,6 +27641,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Definition(self):
+        """ID of an animated image generating template. For more information, please see [Animated Image Generating Parameter Template](https://intl.cloud.tencent.com/document/product/266/33481?from_cn_redirect=1#.E8.BD.AC.E5.8A.A8.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -22968,6 +27652,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Container(self):
+        """Animated image format, such as gif.
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -22976,6 +27663,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Height(self):
+        """Height of an animated image in px.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -22984,6 +27674,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Width(self):
+        """Width of an animated image in px.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -22992,6 +27685,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Bitrate(self):
+        """Bitrate of an animated image in bps.
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -23000,6 +27696,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Size(self):
+        """Size of an animated image in bytes.
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -23008,6 +27707,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def Md5(self):
+        """MD5 value of an animated image.
+        :rtype: str
+        """
         return self._Md5
 
     @Md5.setter
@@ -23016,6 +27718,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """Start time offset of an animated image in the video in seconds.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -23024,6 +27729,9 @@ class MediaAnimatedGraphicsItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """End time offset of an animated image in the video in seconds.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -23082,6 +27790,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Bitrate(self):
+        """Bitrate of an audio stream in bps.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -23090,6 +27802,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def SamplingRate(self):
+        """Sample rate of an audio stream in Hz.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SamplingRate
 
     @SamplingRate.setter
@@ -23098,6 +27814,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Codec(self):
+        """Audio stream codec, such as aac.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -23106,6 +27826,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Channel(self):
+        """Number of sound channels, e.g., 2
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: int
+        """
         return self._Channel
 
     @Channel.setter
@@ -23157,6 +27881,9 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """Start time offset of a suspected segment in seconds.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -23165,6 +27892,9 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """End time offset of a suspected segment in seconds.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -23173,6 +27903,9 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """Confidence of a suspected segment.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -23181,6 +27914,12 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
 
     @property
     def Suggestion(self):
+        """Suggestion for suspected segment audit. Valid values:
+<li>pass.</li>
+<li>review.</li>
+<li>block.</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -23189,6 +27928,9 @@ class MediaContentReviewAsrTextSegmentItem(AbstractModel):
 
     @property
     def KeywordSet(self):
+        """List of suspected keywords.
+        :rtype: list of str
+        """
         return self._KeywordSet
 
     @KeywordSet.setter
@@ -23251,6 +27993,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def StartTimeOffset(self):
+        """Start time offset of a suspected segment in seconds.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -23259,6 +28004,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def EndTimeOffset(self):
+        """End time offset of a suspected segment in seconds.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -23267,6 +28015,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def Confidence(self):
+        """Confidence of a suspected segment.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -23275,6 +28026,12 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def Suggestion(self):
+        """Suggestion for suspected segment audit. Valid values:
+<li>pass.</li>
+<li>review.</li>
+<li>block.</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -23283,6 +28040,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def KeywordSet(self):
+        """List of suspected keywords.
+        :rtype: list of str
+        """
         return self._KeywordSet
 
     @KeywordSet.setter
@@ -23291,6 +28051,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def AreaCoordSet(self):
+        """Zone coordinates (at the pixel level) of suspected text: [x1, y1, x2, y2], i.e., the coordinates of the top-left and bottom-right corners.
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -23299,6 +28062,10 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def Url(self):
+        """URL of a suspected image (which will not be permanently stored
+and will be deleted after `PicUrlExpireTime`).
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -23307,6 +28074,9 @@ and will be deleted after `PicUrlExpireTime`).
 
     @property
     def PicUrlExpireTime(self):
+        """Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._PicUrlExpireTime
 
     @PicUrlExpireTime.setter
@@ -23398,6 +28168,9 @@ military:
 
     @property
     def StartTimeOffset(self):
+        """Start time offset of a suspected segment in seconds.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -23406,6 +28179,9 @@ military:
 
     @property
     def EndTimeOffset(self):
+        """End time offset of a suspected segment in seconds.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -23414,6 +28190,9 @@ military:
 
     @property
     def Confidence(self):
+        """The confidence score for the detected sensitive segments.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -23422,6 +28201,12 @@ military:
 
     @property
     def Suggestion(self):
+        """The suggestion for handling the sensitive segments. Valid values:
+<li>pass</li>
+<li>review</li>
+<li>block</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -23430,6 +28215,9 @@ military:
 
     @property
     def Name(self):
+        """The name of a sensitive person or banned icon.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -23438,6 +28226,32 @@ military:
 
     @property
     def Label(self):
+        """The labels for the detected sensitive segments. The relationship between the values of this parameter and those of the `LabelSet` parameter in [PoliticalImgReviewTemplateInfo](https://intl.cloud.tencent.com/document/api/862/37615?from_cn_redirect=1#PoliticalImgReviewTemplateInfo) is as follows:
+violation_photo:
+<li>violation_photo (banned icons)</li>
+politician:
+<li>nation_politician (state leader)</li>
+<li>province_politician (provincial officials)</li>
+<li>bureau_politician (bureau-level officials)</li>
+<li>county_politician (county-level officials)</li>
+<li>rural_politician (township-level officials)</li>
+<li>sensitive_politician (sensitive people)</li>
+<li>foreign_politician (state leaders of other countries)</li>
+entertainment:
+<li>sensitive_entertainment (sensitive people in the entertainment industry</li>
+sport:
+<li>sensitive_sport (sensitive sports celebrities)</li>
+entrepreneur:
+<li>sensitive_entrepreneur</li>
+scholar:
+<li>sensitive_scholar</li>
+celebrity:
+<li>sensitive_celebrity</li>
+<li>historical_celebrity (sensitive historical figures)</li>
+military:
+<li>sensitive_military (sensitive people in military)</li>
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -23446,6 +28260,10 @@ military:
 
     @property
     def Url(self):
+        """URL of a suspected image (which will not be permanently stored
+ and will be deleted after `PicUrlExpireTime`).
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -23454,6 +28272,9 @@ military:
 
     @property
     def AreaCoordSet(self):
+        """The pixel coordinates of the detected sensitive people or banned icons. The format is [x1, y1, x2, y2], which indicates the coordinates of the top-left and bottom-right corners.
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -23462,6 +28283,9 @@ military:
 
     @property
     def PicUrlExpireTime(self):
+        """Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._PicUrlExpireTime
 
     @PicUrlExpireTime.setter
@@ -23525,6 +28349,9 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
+        """Start time offset of a suspected segment in seconds.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -23533,6 +28360,9 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
+        """End time offset of a suspected segment in seconds.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -23541,6 +28371,9 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
     @property
     def Confidence(self):
+        """Score of a suspected porn segment.
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -23549,6 +28382,9 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
     @property
     def Label(self):
+        """Tag of porn information detection result of a suspected segment.
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -23557,6 +28393,12 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
     @property
     def Suggestion(self):
+        """Suggestion for porn information detection of a suspected segment. Valid values:
+<li>pass.</li>
+<li>review.</li>
+<li>block.</li>
+        :rtype: str
+        """
         return self._Suggestion
 
     @Suggestion.setter
@@ -23565,6 +28407,10 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
     @property
     def Url(self):
+        """URL of a suspected image (which will not be permanently stored
+ and will be deleted after `PicUrlExpireTime`).
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -23573,6 +28419,9 @@ class MediaContentReviewSegmentItem(AbstractModel):
 
     @property
     def PicUrlExpireTime(self):
+        """Expiration time of a suspected image URL in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._PicUrlExpireTime
 
     @PicUrlExpireTime.setter
@@ -23630,6 +28479,9 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def Definition(self):
+        """Image sprite specification. For more information, please see [Image Sprite Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -23638,6 +28490,9 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def Height(self):
+        """Subimage height of an image sprite.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -23646,6 +28501,9 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def Width(self):
+        """Subimage width of an image sprite.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -23654,6 +28512,9 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of subimages in each image sprite.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -23662,6 +28523,9 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def ImagePathSet(self):
+        """Path to each image sprite.
+        :rtype: list of str
+        """
         return self._ImagePathSet
 
     @ImagePathSet.setter
@@ -23670,6 +28534,9 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def WebVttPath(self):
+        """Path to a WebVtt file for the position-time relationship among subimages in an image sprite. The WebVtt file indicates the corresponding time points of each subimage and their coordinates in the image sprite, which is typically used by the player for implementing preview.
+        :rtype: str
+        """
         return self._WebVttPath
 
     @WebVttPath.setter
@@ -23678,6 +28545,9 @@ class MediaImageSpriteItem(AbstractModel):
 
     @property
     def Storage(self):
+        """Storage location of an image sprite file.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._Storage
 
     @Storage.setter
@@ -23733,6 +28603,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Type(self):
+        """The input type. Valid values:
+<li>`COS`: A COS bucket address.</li>
+<li> `URL`: A URL.</li>
+<li> `AWS-S3`: An AWS S3 bucket address. Currently, this type is only supported for transcoding tasks.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -23741,6 +28617,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CosInputInfo(self):
+        """The information of the COS object to process. This parameter is valid and required when `Type` is `COS`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
+        """
         return self._CosInputInfo
 
     @CosInputInfo.setter
@@ -23749,6 +28628,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def UrlInputInfo(self):
+        """The URL of the object to process. This parameter is valid and required when `Type` is `URL`.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UrlInputInfo`
+        """
         return self._UrlInputInfo
 
     @UrlInputInfo.setter
@@ -23757,6 +28640,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def S3InputInfo(self):
+        """The information of the AWS S3 object processed. This parameter is required if `Type` is `AWS-S3`.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.S3InputInfo`
+        """
         return self._S3InputInfo
 
     @S3InputInfo.setter
@@ -23840,6 +28727,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Size(self):
+        """Size of an uploaded media file in bytes (which is the sum of size of m3u8 and ts files if the video is in HLS format).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -23848,6 +28739,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Container(self):
+        """Container, such as m4a and mp4.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -23856,6 +28751,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Bitrate(self):
+        """Sum of the average bitrate of a video stream and that of an audio stream in bps.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -23864,6 +28763,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Height(self):
+        """Maximum value of the height of a video stream in px.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -23872,6 +28775,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Width(self):
+        """Maximum value of the width of a video stream in px.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -23880,6 +28787,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Duration(self):
+        """Video duration in seconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -23888,6 +28799,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Rotate(self):
+        """Selected angle during video recording in degrees.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Rotate
 
     @Rotate.setter
@@ -23896,6 +28811,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoStreamSet(self):
+        """Video stream information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of MediaVideoStreamItem
+        """
         return self._VideoStreamSet
 
     @VideoStreamSet.setter
@@ -23904,6 +28823,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AudioStreamSet(self):
+        """Audio stream information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of MediaAudioStreamItem
+        """
         return self._AudioStreamSet
 
     @AudioStreamSet.setter
@@ -23912,6 +28835,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoDuration(self):
+        """Video duration in seconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._VideoDuration
 
     @VideoDuration.setter
@@ -23920,6 +28847,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AudioDuration(self):
+        """Audio duration in seconds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._AudioDuration
 
     @AudioDuration.setter
@@ -23989,6 +28920,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -23997,6 +28931,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -24005,6 +28942,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -24013,6 +28953,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -24021,6 +28964,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """Input of an adaptive bitrate streaming task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -24029,6 +28975,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """Output of an adaptive bitrate streaming task.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingInfoItem`
+        """
         return self._Output
 
     @Output.setter
@@ -24087,6 +29037,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -24095,6 +29048,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -24103,6 +29059,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -24111,6 +29070,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -24119,6 +29081,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """Input for an animated image generating task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AnimatedGraphicTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -24127,6 +29092,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """Output of an animated image generating task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaAnimatedGraphicsItem`
+        """
         return self._Output
 
     @Output.setter
@@ -24185,6 +29154,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -24193,6 +29165,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -24201,6 +29176,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -24209,6 +29187,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -24217,6 +29198,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """Input for an image sprite generating task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageSpriteTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -24225,6 +29209,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """Output of an image sprite generating task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaImageSpriteItem`
+        """
         return self._Output
 
     @Output.setter
@@ -24282,6 +29270,9 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def TranscodeTaskSet(self):
+        """List of transcoding tasks.
+        :rtype: list of TranscodeTaskInput
+        """
         return self._TranscodeTaskSet
 
     @TranscodeTaskSet.setter
@@ -24290,6 +29281,9 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def AnimatedGraphicTaskSet(self):
+        """List of animated image generating tasks.
+        :rtype: list of AnimatedGraphicTaskInput
+        """
         return self._AnimatedGraphicTaskSet
 
     @AnimatedGraphicTaskSet.setter
@@ -24298,6 +29292,9 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def SnapshotByTimeOffsetTaskSet(self):
+        """List of time point screencapturing tasks.
+        :rtype: list of SnapshotByTimeOffsetTaskInput
+        """
         return self._SnapshotByTimeOffsetTaskSet
 
     @SnapshotByTimeOffsetTaskSet.setter
@@ -24306,6 +29303,9 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def SampleSnapshotTaskSet(self):
+        """List of sampled screencapturing tasks.
+        :rtype: list of SampleSnapshotTaskInput
+        """
         return self._SampleSnapshotTaskSet
 
     @SampleSnapshotTaskSet.setter
@@ -24314,6 +29314,9 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def ImageSpriteTaskSet(self):
+        """List of image sprite generating tasks.
+        :rtype: list of ImageSpriteTaskInput
+        """
         return self._ImageSpriteTaskSet
 
     @ImageSpriteTaskSet.setter
@@ -24322,6 +29325,9 @@ class MediaProcessTaskInput(AbstractModel):
 
     @property
     def AdaptiveDynamicStreamingTaskSet(self):
+        """List of adaptive bitrate streaming tasks.
+        :rtype: list of AdaptiveDynamicStreamingTaskInput
+        """
         return self._AdaptiveDynamicStreamingTaskSet
 
     @AdaptiveDynamicStreamingTaskSet.setter
@@ -24421,6 +29427,16 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """Task type. Valid values:
+<li>Transcode: Transcoding</li>
+<li>AnimatedGraphics: Animated image generating</li>
+<li>SnapshotByTimeOffset: Time point screencapturing</li>
+<li>SampleSnapshot: Sampled screencapturing</li>
+<li>ImageSprites: Image sprite generating</li>
+<li>CoverBySnapshot: Screencapturing for cover image</li>
+<li>AdaptiveDynamicStreaming: Adaptive bitrate streaming</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -24429,6 +29445,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TranscodeTask(self):
+        """Query result of a transcoding task, which is valid when task type is `Transcode`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskTranscodeResult`
+        """
         return self._TranscodeTask
 
     @TranscodeTask.setter
@@ -24437,6 +29457,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AnimatedGraphicTask(self):
+        """Query result of an animated image generating task, which is valid when task type is `AnimatedGraphics`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAnimatedGraphicResult`
+        """
         return self._AnimatedGraphicTask
 
     @AnimatedGraphicTask.setter
@@ -24445,6 +29469,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SnapshotByTimeOffsetTask(self):
+        """Query result of a time point screencapturing task, which is valid when task type is `SnapshotByTimeOffset`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSnapshotByTimeOffsetResult`
+        """
         return self._SnapshotByTimeOffsetTask
 
     @SnapshotByTimeOffsetTask.setter
@@ -24453,6 +29481,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SampleSnapshotTask(self):
+        """Query result of a sampled screencapturing task, which is valid when task type is `SampleSnapshot`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
+        """
         return self._SampleSnapshotTask
 
     @SampleSnapshotTask.setter
@@ -24461,6 +29493,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageSpriteTask(self):
+        """Query result of an image sprite generating task, which is valid when task type is `ImageSprite`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`
+        """
         return self._ImageSpriteTask
 
     @ImageSpriteTask.setter
@@ -24469,6 +29505,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdaptiveDynamicStreamingTask(self):
+        """Query result of an adaptive bitrate streaming task, which is valid if the task type is `AdaptiveDynamicStreaming`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAdaptiveDynamicStreamingResult`
+        """
         return self._AdaptiveDynamicStreamingTask
 
     @AdaptiveDynamicStreamingTask.setter
@@ -24537,6 +29577,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -24545,6 +29588,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -24553,6 +29599,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -24561,6 +29610,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Error message.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -24569,6 +29622,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """Input for a sampled screencapturing task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -24577,6 +29633,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """Output of a sampled screencapturing task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaSampleSnapshotItem`
+        """
         return self._Output
 
     @Output.setter
@@ -24635,6 +29695,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -24643,6 +29706,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -24651,6 +29717,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -24659,6 +29728,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -24667,6 +29739,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """Input for a time point screencapturing task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -24675,6 +29750,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """Output of a time point screencapturing task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaSnapshotByTimeOffsetItem`
+        """
         return self._Output
 
     @Output.setter
@@ -24737,6 +29816,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Status(self):
+        """Task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -24745,6 +29827,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -24753,6 +29838,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def ErrCode(self):
+        """Error code. 0 indicates the task is successful; otherwise it is failed. This parameter is no longer recommended. Consider using the new error code parameter ErrCodeExt.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -24761,6 +29849,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Message(self):
+        """Error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -24769,6 +29860,9 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Input(self):
+        """Input for a transcoding task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TranscodeTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -24777,6 +29871,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Output(self):
+        """Output of a transcoding task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaTranscodeItem`
+        """
         return self._Output
 
     @Output.setter
@@ -24785,6 +29883,10 @@ Note: This field may return `null`, indicating that no valid value was found.
 
     @property
     def Progress(self):
+        """Transcoding progress. Value range: 0-100
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -24847,6 +29949,9 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def Definition(self):
+        """Sampled screenshot specification ID. For more information, please see [Sampled Screencapturing Parameter Template](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E9.87.87.E6.A0.B7.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -24855,6 +29960,11 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def SampleType(self):
+        """Sample type. Valid values:
+<li>Percent: Samples at the specified percentage interval.</li>
+<li>Time: Samples at the specified time interval.</li>
+        :rtype: str
+        """
         return self._SampleType
 
     @SampleType.setter
@@ -24863,6 +29973,11 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def Interval(self):
+        """Sampling interval
+<li>If `SampleType` is `Percent`, this value means taking a screenshot at an interval of the specified percentage.</li>
+<li>If `SampleType` is `Time`, this value means taking a screenshot at an interval of the specified time (in seconds). The first screenshot is always the first video frame.</li>
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -24871,6 +29986,9 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def Storage(self):
+        """Storage location of a generated screenshot file.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._Storage
 
     @Storage.setter
@@ -24879,6 +29997,9 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def ImagePathSet(self):
+        """List of paths to generated screenshots.
+        :rtype: list of str
+        """
         return self._ImagePathSet
 
     @ImagePathSet.setter
@@ -24887,6 +30008,9 @@ class MediaSampleSnapshotItem(AbstractModel):
 
     @property
     def WaterMarkDefinition(self):
+        """List of watermarking template IDs if the screenshots are watermarked.
+        :rtype: list of int
+        """
         return self._WaterMarkDefinition
 
     @WaterMarkDefinition.setter
@@ -24933,6 +30057,9 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
 
     @property
     def Definition(self):
+        """Specification of a time point screenshot. For more information, please see [Parameter Template for Time Point Screencapturing](https://intl.cloud.tencent.com/document/product/266/33480?from_cn_redirect=1#.E6.97.B6.E9.97.B4.E7.82.B9.E6.88.AA.E5.9B.BE.E6.A8.A1.E6.9D.BF).
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -24941,6 +30068,9 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
 
     @property
     def PicInfoSet(self):
+        """Information set of screenshots of the same specification. Each element represents a screenshot.
+        :rtype: list of MediaSnapshotByTimePicInfoItem
+        """
         return self._PicInfoSet
 
     @PicInfoSet.setter
@@ -24949,6 +30079,9 @@ class MediaSnapshotByTimeOffsetItem(AbstractModel):
 
     @property
     def Storage(self):
+        """Location of a time point screenshot file.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._Storage
 
     @Storage.setter
@@ -24997,6 +30130,9 @@ class MediaSnapshotByTimePicInfoItem(AbstractModel):
 
     @property
     def TimeOffset(self):
+        """The timestamp (seconds) of the screenshot.
+        :rtype: float
+        """
         return self._TimeOffset
 
     @TimeOffset.setter
@@ -25005,6 +30141,9 @@ class MediaSnapshotByTimePicInfoItem(AbstractModel):
 
     @property
     def Path(self):
+        """Path to the screenshot.
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -25013,6 +30152,9 @@ class MediaSnapshotByTimePicInfoItem(AbstractModel):
 
     @property
     def WaterMarkDefinition(self):
+        """List of watermarking template IDs if the screenshots are watermarked.
+        :rtype: list of int
+        """
         return self._WaterMarkDefinition
 
     @WaterMarkDefinition.setter
@@ -25083,6 +30225,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
+        """Target bucket of an output file.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -25091,6 +30236,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Path(self):
+        """Path to an output video file.
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -25099,6 +30247,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Definition(self):
+        """Transcoding specification ID. For more information, please see [Transcoding Parameter Template](https://intl.cloud.tencent.com/document/product/266/33478?from_cn_redirect=1#.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF).
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -25107,6 +30258,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Bitrate(self):
+        """Sum of the average bitrate of a video stream and that of an audio stream in bps.
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -25115,6 +30269,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Height(self):
+        """Maximum value of the height of a video stream in px.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -25123,6 +30280,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Width(self):
+        """Maximum value of the width of a video stream in px.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -25131,6 +30291,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Size(self):
+        """Total size of a media file in bytes (which is the sum of size of m3u8 and ts files if the video is in HLS format).
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -25139,6 +30302,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Duration(self):
+        """Video duration in seconds.
+        :rtype: float
+        """
         return self._Duration
 
     @Duration.setter
@@ -25147,6 +30313,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Container(self):
+        """Container, such as m4a and mp4.
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -25155,6 +30324,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Md5(self):
+        """MD5 value of a video.
+        :rtype: str
+        """
         return self._Md5
 
     @Md5.setter
@@ -25163,6 +30335,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AudioStreamSet(self):
+        """Audio stream information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of MediaAudioStreamItem
+        """
         return self._AudioStreamSet
 
     @AudioStreamSet.setter
@@ -25171,6 +30347,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoStreamSet(self):
+        """Video stream information.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of MediaVideoStreamItem
+        """
         return self._VideoStreamSet
 
     @VideoStreamSet.setter
@@ -25271,6 +30451,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Bitrate(self):
+        """Bitrate of a video stream in bps.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -25279,6 +30463,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Height(self):
+        """Height of a video stream in px.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -25287,6 +30475,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Width(self):
+        """Width of a video stream in px.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -25295,6 +30487,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Codec(self):
+        """Video stream codec, such as h264.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -25303,6 +30499,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Fps(self):
+        """Frame rate in Hz.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -25311,6 +30511,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ColorPrimaries(self):
+        """Color primaries
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._ColorPrimaries
 
     @ColorPrimaries.setter
@@ -25319,6 +30523,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ColorSpace(self):
+        """Color space
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._ColorSpace
 
     @ColorSpace.setter
@@ -25327,6 +30535,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ColorTransfer(self):
+        """Color transfer
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._ColorTransfer
 
     @ColorTransfer.setter
@@ -25335,6 +30547,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HdrType(self):
+        """HDR type
+Note: This field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._HdrType
 
     @HdrType.setter
@@ -25343,6 +30559,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Codecs(self):
+        """
+        :rtype: str
+        """
         return self._Codecs
 
     @Codecs.setter
@@ -25351,6 +30570,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FpsNumerator(self):
+        """Numerator of the frame rate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FpsNumerator
 
     @FpsNumerator.setter
@@ -25359,6 +30582,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FpsDenominator(self):
+        """Denominator of the frame rate.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FpsDenominator
 
     @FpsDenominator.setter
@@ -25421,6 +30648,9 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of video content analysis template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -25429,6 +30659,9 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Video content analysis template name. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -25437,6 +30670,9 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """Video content analysis template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -25445,6 +30681,9 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def ClassificationConfigure(self):
+        """Control parameter of intelligent categorization task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ClassificationConfigureInfoForUpdate`
+        """
         return self._ClassificationConfigure
 
     @ClassificationConfigure.setter
@@ -25453,6 +30692,9 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def TagConfigure(self):
+        """Control parameter of intelligent tagging task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TagConfigureInfoForUpdate`
+        """
         return self._TagConfigure
 
     @TagConfigure.setter
@@ -25461,6 +30703,9 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def CoverConfigure(self):
+        """Control parameter of intelligent cover generating task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CoverConfigureInfoForUpdate`
+        """
         return self._CoverConfigure
 
     @CoverConfigure.setter
@@ -25469,6 +30714,9 @@ class ModifyAIAnalysisTemplateRequest(AbstractModel):
 
     @property
     def FrameTagConfigure(self):
+        """Control parameter of intelligent frame-specific tagging task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FrameTagConfigureInfoForUpdate`
+        """
         return self._FrameTagConfigure
 
     @FrameTagConfigure.setter
@@ -25516,6 +30764,9 @@ class ModifyAIAnalysisTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25562,6 +30813,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of a video content recognition template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -25570,6 +30824,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Name of a video content recognition template. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -25578,6 +30835,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """Description of a video content recognition template. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -25586,6 +30846,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def FaceConfigure(self):
+        """Face recognition control parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FaceConfigureInfoForUpdate`
+        """
         return self._FaceConfigure
 
     @FaceConfigure.setter
@@ -25594,6 +30857,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def OcrFullTextConfigure(self):
+        """Full text recognition control parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.OcrFullTextConfigureInfoForUpdate`
+        """
         return self._OcrFullTextConfigure
 
     @OcrFullTextConfigure.setter
@@ -25602,6 +30868,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def OcrWordsConfigure(self):
+        """Text keyword recognition control parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.OcrWordsConfigureInfoForUpdate`
+        """
         return self._OcrWordsConfigure
 
     @OcrWordsConfigure.setter
@@ -25610,6 +30879,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def AsrFullTextConfigure(self):
+        """Full speech recognition control parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrFullTextConfigureInfoForUpdate`
+        """
         return self._AsrFullTextConfigure
 
     @AsrFullTextConfigure.setter
@@ -25618,6 +30890,9 @@ class ModifyAIRecognitionTemplateRequest(AbstractModel):
 
     @property
     def AsrWordsConfigure(self):
+        """Speech keyword recognition control parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AsrWordsConfigureInfoForUpdate`
+        """
         return self._AsrWordsConfigure
 
     @AsrWordsConfigure.setter
@@ -25668,6 +30943,9 @@ class ModifyAIRecognitionTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25733,6 +31011,9 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def Definition(self):
+        """Unique ID of an adaptive bitrate streaming template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -25741,6 +31022,9 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def Name(self):
+        """Template name. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -25749,6 +31033,11 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def Format(self):
+        """Adaptive bitrate streaming format. Valid values:
+<li>HLS,</li>
+<li>MPEG-DASH.</li>
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -25757,6 +31046,11 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def DisableHigherVideoBitrate(self):
+        """Whether to prohibit transcoding from low bitrate to high bitrate. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :rtype: int
+        """
         return self._DisableHigherVideoBitrate
 
     @DisableHigherVideoBitrate.setter
@@ -25765,6 +31059,11 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def DisableHigherVideoResolution(self):
+        """Whether to prohibit transcoding from low resolution to high resolution. Valid values:
+<li>0: no,</li>
+<li>1: yes.</li>
+        :rtype: int
+        """
         return self._DisableHigherVideoResolution
 
     @DisableHigherVideoResolution.setter
@@ -25773,6 +31072,10 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def StreamInfos(self):
+        """Parameter information of input streams for transcoding to adaptive bitrate streaming. Up to 10 streams can be input.
+Note: the frame rate of each stream must be consistent; otherwise, the frame rate of the first stream is used as the output frame rate.
+        :rtype: list of AdaptiveStreamTemplate
+        """
         return self._StreamInfos
 
     @StreamInfos.setter
@@ -25781,6 +31084,9 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def Comment(self):
+        """Template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -25789,6 +31095,17 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def PureAudio(self):
+        """Whether it is an audio-only template. 0: video template. 1: audio-only template.When the value is 1:
+1. StreamInfos.N.RemoveVideo=1
+2. StreamInfos.N.RemoveAudio=0
+3. StreamInfos.N.Video.Codec=copy
+
+When the value is 0:
+
+1. StreamInfos.N.Video.Codec cannot be copy.
+2. StreamInfos.N.Video.Fps cannot be null.
+        :rtype: int
+        """
         return self._PureAudio
 
     @PureAudio.setter
@@ -25797,6 +31114,10 @@ Note: The HLS segment format for adaptive bitrate streaming is based on this fie
 
     @property
     def SegmentType(self):
+        """HLS segment type. Valid values: <li>ts-segment: HLS+TS segment.</li> <li>ts-byterange: HLS+TS byte range.</li> <li>mp4-segment: HLS+MP4 segment.</li> <li>mp4-byterange: HLS+MP4 byte range.</li> <li>ts-packed-audio: TS+Packed audio.</li> <li>mp4-packed-audio: MP4+Packed audio.</li> Default value: ts-segment.
+Note: The HLS segment format for adaptive bitrate streaming is based on this field.
+        :rtype: str
+        """
         return self._SegmentType
 
     @SegmentType.setter
@@ -25843,6 +31164,9 @@ class ModifyAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25905,6 +31229,9 @@ Default value: open.
 
     @property
     def Definition(self):
+        """Unique ID of an animated image generating template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -25913,6 +31240,9 @@ Default value: open.
 
     @property
     def Name(self):
+        """Name of an animated image generating template. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -25921,6 +31251,14 @@ Default value: open.
 
     @property
     def Width(self):
+        """Maximum value of the width (or long side) of an animated image in px. Value range: 0 and [128, 4,096].
+<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
+<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
+<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
+<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -25929,6 +31267,14 @@ Default value: open.
 
     @property
     def Height(self):
+        """Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
+<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
+<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
+<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
+<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -25937,6 +31283,12 @@ Default value: open.
 
     @property
     def ResolutionAdaptive(self):
+        """Resolution adaption. Valid values:
+<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
+<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
+Default value: open.
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -25945,6 +31297,9 @@ Default value: open.
 
     @property
     def Format(self):
+        """Animated image format. Valid values: gif, webp.
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -25953,6 +31308,9 @@ Default value: open.
 
     @property
     def Fps(self):
+        """Video frame rate in Hz. Value range: [1, 30].
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -25961,6 +31319,9 @@ Default value: open.
 
     @property
     def Quality(self):
+        """Image quality. Value range: [1, 100]. Default value: 75.
+        :rtype: float
+        """
         return self._Quality
 
     @Quality.setter
@@ -25969,6 +31330,9 @@ Default value: open.
 
     @property
     def Comment(self):
+        """Template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -26010,6 +31374,9 @@ class ModifyAnimatedGraphicsTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26059,6 +31426,9 @@ Note: this parameter is not supported yet.
 
     @property
     def Definition(self):
+        """The unique ID of the content moderation template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -26067,6 +31437,9 @@ Note: this parameter is not supported yet.
 
     @property
     def Name(self):
+        """The name of the content moderation template. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -26075,6 +31448,9 @@ Note: this parameter is not supported yet.
 
     @property
     def Comment(self):
+        """The template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -26083,6 +31459,9 @@ Note: this parameter is not supported yet.
 
     @property
     def PornConfigure(self):
+        """Control parameter for porn information
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornConfigureInfoForUpdate`
+        """
         return self._PornConfigure
 
     @PornConfigure.setter
@@ -26091,6 +31470,9 @@ Note: this parameter is not supported yet.
 
     @property
     def TerrorismConfigure(self):
+        """Control parameter for terrorism information
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TerrorismConfigureInfoForUpdate`
+        """
         return self._TerrorismConfigure
 
     @TerrorismConfigure.setter
@@ -26099,6 +31481,9 @@ Note: this parameter is not supported yet.
 
     @property
     def PoliticalConfigure(self):
+        """Control parameter for politically sensitive information
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalConfigureInfoForUpdate`
+        """
         return self._PoliticalConfigure
 
     @PoliticalConfigure.setter
@@ -26107,6 +31492,12 @@ Note: this parameter is not supported yet.
 
     @property
     def ProhibitedConfigure(self):
+        """Control parameter of prohibited information detection. Prohibited information includes:
+<li>Abusive;</li>
+<li>Drug-related.</li>
+Note: this parameter is not supported yet.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProhibitedConfigureInfoForUpdate`
+        """
         return self._ProhibitedConfigure
 
     @ProhibitedConfigure.setter
@@ -26115,6 +31506,9 @@ Note: this parameter is not supported yet.
 
     @property
     def UserDefineConfigure(self):
+        """Custom content moderation parameters.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineConfigureInfoForUpdate`
+        """
         return self._UserDefineConfigure
 
     @UserDefineConfigure.setter
@@ -26165,6 +31559,9 @@ class ModifyContentReviewTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26233,6 +31630,9 @@ Default value: black.
 
     @property
     def Definition(self):
+        """Unique ID of an image sprite generating template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -26241,6 +31641,9 @@ Default value: black.
 
     @property
     def Name(self):
+        """Name of an image sprite generating template. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -26249,6 +31652,9 @@ Default value: black.
 
     @property
     def Width(self):
+        """Subimage width of an image sprite in px. Value range: [128, 4,096].
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -26257,6 +31663,9 @@ Default value: black.
 
     @property
     def Height(self):
+        """Subimage height of an image sprite in px. Value range: [128, 4,096].
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -26265,6 +31674,12 @@ Default value: black.
 
     @property
     def ResolutionAdaptive(self):
+        """Resolution adaption. Valid values:
+<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
+<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
+Default value: open.
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -26273,6 +31688,11 @@ Default value: black.
 
     @property
     def SampleType(self):
+        """Sampling type. Valid values:
+<li>Percent: By percent.</li>
+<li>Time: By time interval.</li>
+        :rtype: str
+        """
         return self._SampleType
 
     @SampleType.setter
@@ -26281,6 +31701,11 @@ Default value: black.
 
     @property
     def SampleInterval(self):
+        """Sampling interval.
+<li>If `SampleType` is `Percent`, sampling will be performed at an interval of the specified percentage.</li>
+<li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>
+        :rtype: int
+        """
         return self._SampleInterval
 
     @SampleInterval.setter
@@ -26289,6 +31714,9 @@ Default value: black.
 
     @property
     def RowCount(self):
+        """Subimage row count of an image sprite.
+        :rtype: int
+        """
         return self._RowCount
 
     @RowCount.setter
@@ -26297,6 +31725,9 @@ Default value: black.
 
     @property
     def ColumnCount(self):
+        """Subimage column count of an image sprite.
+        :rtype: int
+        """
         return self._ColumnCount
 
     @ColumnCount.setter
@@ -26305,6 +31736,12 @@ Default value: black.
 
     @property
     def FillType(self):
+        """Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
+<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
+Default value: black.
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -26313,6 +31750,9 @@ Default value: black.
 
     @property
     def Comment(self):
+        """Template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -26321,6 +31761,9 @@ Default value: black.
 
     @property
     def Format(self):
+        """The image format. Valid values: jpg, png, webp.
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -26365,6 +31808,9 @@ class ModifyImageSpriteTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26408,6 +31854,9 @@ class ModifyPersonSampleRequest(AbstractModel):
 
     @property
     def PersonId(self):
+        """Image ID
+        :rtype: str
+        """
         return self._PersonId
 
     @PersonId.setter
@@ -26416,6 +31865,9 @@ class ModifyPersonSampleRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Name. Length limit: 128 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -26424,6 +31876,9 @@ class ModifyPersonSampleRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Description. Length limit: 1,024 characters.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -26432,6 +31887,12 @@ class ModifyPersonSampleRequest(AbstractModel):
 
     @property
     def Usages(self):
+        """Image usage. Valid values:
+1. Recognition: used for content recognition; equivalent to `Recognition.Face`
+2. Review: used for inappropriate information recognition; equivalent to `Review.Face`
+3. All: used for content recognition and inappropriate information recognition; equivalent to 1+2
+        :rtype: list of str
+        """
         return self._Usages
 
     @Usages.setter
@@ -26440,6 +31901,9 @@ class ModifyPersonSampleRequest(AbstractModel):
 
     @property
     def FaceOperationInfo(self):
+        """Information of operations on facial features
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiSampleFaceOperation`
+        """
         return self._FaceOperationInfo
 
     @FaceOperationInfo.setter
@@ -26448,6 +31912,9 @@ class ModifyPersonSampleRequest(AbstractModel):
 
     @property
     def TagOperationInfo(self):
+        """Tag operation information.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiSampleTagOperation`
+        """
         return self._TagOperationInfo
 
     @TagOperationInfo.setter
@@ -26497,6 +31964,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Person(self):
+        """Image information
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiSamplePerson`
+        """
         return self._Person
 
     @Person.setter
@@ -26505,6 +31975,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FailFaceInfoSet(self):
+        """Information of images that failed the verification by facial feature positioning.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of AiSampleFailFaceInfo
+        """
         return self._FailFaceInfoSet
 
     @FailFaceInfoSet.setter
@@ -26513,6 +31987,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26556,6 +32033,9 @@ class ModifyQualityControlTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique identifier of a media quality inspection template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -26564,6 +32044,9 @@ class ModifyQualityControlTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Media quality inspection template name, with a length limit of 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -26572,6 +32055,9 @@ class ModifyQualityControlTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """Template description, with a length limit of 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -26580,6 +32066,9 @@ class ModifyQualityControlTemplateRequest(AbstractModel):
 
     @property
     def QualityControlItemSet(self):
+        """Media quality inspection configuration parameters.
+        :rtype: list of QualityControlItemConfig
+        """
         return self._QualityControlItemSet
 
     @QualityControlItemSet.setter
@@ -26621,6 +32110,9 @@ class ModifyQualityControlTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26685,6 +32177,9 @@ Default value: black.
 
     @property
     def Definition(self):
+        """Unique ID of a sampled screencapturing template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -26693,6 +32188,9 @@ Default value: black.
 
     @property
     def Name(self):
+        """Name of a sampled screencapturing template. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -26701,6 +32199,9 @@ Default value: black.
 
     @property
     def Width(self):
+        """Image width in px. Value range: [128, 4,096].
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -26709,6 +32210,9 @@ Default value: black.
 
     @property
     def Height(self):
+        """Image height in px. Value range: [128, 4,096].
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -26717,6 +32221,12 @@ Default value: black.
 
     @property
     def ResolutionAdaptive(self):
+        """Resolution adaption. Valid values:
+<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
+<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
+Default value: open.
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -26725,6 +32235,11 @@ Default value: black.
 
     @property
     def SampleType(self):
+        """Sampled screencapturing type. Valid values:
+<li>Percent: By percent.</li>
+<li>Time: By time interval.</li>
+        :rtype: str
+        """
         return self._SampleType
 
     @SampleType.setter
@@ -26733,6 +32248,11 @@ Default value: black.
 
     @property
     def SampleInterval(self):
+        """Sampling interval.
+<li>If `SampleType` is `Percent`, sampling will be performed at an interval of the specified percentage.</li>
+<li>If `SampleType` is `Time`, sampling will be performed at the specified time interval in seconds.</li>
+        :rtype: int
+        """
         return self._SampleInterval
 
     @SampleInterval.setter
@@ -26741,6 +32261,9 @@ Default value: black.
 
     @property
     def Format(self):
+        """The image format. Valid values: jpg, png, webp.
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -26749,6 +32272,9 @@ Default value: black.
 
     @property
     def Comment(self):
+        """Template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -26757,6 +32283,14 @@ Default value: black.
 
     @property
     def FillType(self):
+        """Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
+<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
+<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
+<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
+Default value: black.
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -26799,6 +32333,9 @@ class ModifySampleSnapshotTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26847,6 +32384,9 @@ Note: If this parameter is left empty, the current `OutputDir` value will be inv
 
     @property
     def ScheduleId(self):
+        """The scheme ID.
+        :rtype: int
+        """
         return self._ScheduleId
 
     @ScheduleId.setter
@@ -26855,6 +32395,9 @@ Note: If this parameter is left empty, the current `OutputDir` value will be inv
 
     @property
     def ScheduleName(self):
+        """The scheme name.
+        :rtype: str
+        """
         return self._ScheduleName
 
     @ScheduleName.setter
@@ -26863,6 +32406,9 @@ Note: If this parameter is left empty, the current `OutputDir` value will be inv
 
     @property
     def Trigger(self):
+        """The trigger of the scheme.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -26871,6 +32417,10 @@ Note: If this parameter is left empty, the current `OutputDir` value will be inv
 
     @property
     def Activities(self):
+        """The subtasks of the scheme.
+Note: You need to pass in the full list of subtasks even if you want to change only some of the subtasks.
+        :rtype: list of Activity
+        """
         return self._Activities
 
     @Activities.setter
@@ -26879,6 +32429,9 @@ Note: If this parameter is left empty, the current `OutputDir` value will be inv
 
     @property
     def OutputStorage(self):
+        """The bucket to save the output file.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -26887,6 +32440,10 @@ Note: If this parameter is left empty, the current `OutputDir` value will be inv
 
     @property
     def OutputDir(self):
+        """The directory to save the media processing output file, which must start and end with `/`.
+Note: If this parameter is left empty, the current `OutputDir` value will be invalidated.
+        :rtype: str
+        """
         return self._OutputDir
 
     @OutputDir.setter
@@ -26895,6 +32452,9 @@ Note: If this parameter is left empty, the current `OutputDir` value will be inv
 
     @property
     def TaskNotifyConfig(self):
+        """The notification configuration.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -26903,6 +32463,9 @@ Note: If this parameter is left empty, the current `OutputDir` value will be inv
 
     @property
     def ResourceId(self):
+        """Resource ID. Ensure the corresponding resource is in the enabled state.
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -26954,6 +32517,9 @@ class ModifyScheduleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27008,6 +32574,9 @@ Default value: black.
 
     @property
     def Definition(self):
+        """Unique ID of a time point screencapturing template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -27016,6 +32585,9 @@ Default value: black.
 
     @property
     def Name(self):
+        """Name of a time point screencapturing template. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -27024,6 +32596,9 @@ Default value: black.
 
     @property
     def Width(self):
+        """Image width in px. Value range: [128, 4,096].
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -27032,6 +32607,9 @@ Default value: black.
 
     @property
     def Height(self):
+        """Image height in px. Value range: [128, 4,096].
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -27040,6 +32618,12 @@ Default value: black.
 
     @property
     def ResolutionAdaptive(self):
+        """Resolution adaption. Valid values:
+<li>open: enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
+<li>close: disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
+Default value: open.
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -27048,6 +32632,9 @@ Default value: black.
 
     @property
     def Format(self):
+        """The image format. Valid values: jpg, png, webp.
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -27056,6 +32643,9 @@ Default value: black.
 
     @property
     def Comment(self):
+        """Template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -27064,6 +32654,14 @@ Default value: black.
 
     @property
     def FillType(self):
+        """Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+<li> stretch: stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
+<li>black: fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
+<li>white: fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
+<li>gauss: fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
+Default value: black.
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -27104,6 +32702,9 @@ class ModifySnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27160,6 +32761,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of a transcoding template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -27168,6 +32772,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Container(self):
+        """Container format. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -27176,6 +32783,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Name of a transcoding template. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -27184,6 +32794,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """Template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -27192,6 +32805,11 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def RemoveVideo(self):
+        """Whether to remove video data. Valid values:
+<li>0: Retain</li>
+<li>1: Remove</li>
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -27200,6 +32818,11 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def RemoveAudio(self):
+        """Whether to remove audio data. Valid values:
+<li>0: Retain</li>
+<li>1: Remove</li>
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -27208,6 +32831,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def VideoTemplate(self):
+        """Video stream configuration parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfoForUpdate`
+        """
         return self._VideoTemplate
 
     @VideoTemplate.setter
@@ -27216,6 +32842,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def AudioTemplate(self):
+        """Audio stream configuration parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
+        """
         return self._AudioTemplate
 
     @AudioTemplate.setter
@@ -27224,6 +32853,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def TEHDConfig(self):
+        """TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
+        """
         return self._TEHDConfig
 
     @TEHDConfig.setter
@@ -27232,6 +32864,9 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def EnhanceConfig(self):
+        """Audio/Video enhancement settings.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
+        """
         return self._EnhanceConfig
 
     @EnhanceConfig.setter
@@ -27282,6 +32917,9 @@ class ModifyTranscodeTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27339,6 +32977,9 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
+        """Unique ID of a watermarking template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -27347,6 +32988,9 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Watermarking template name. Length limit: 64 characters.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -27355,6 +32999,9 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
+        """Template description. Length limit: 256 characters.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -27363,6 +33010,13 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def CoordinateOrigin(self):
+        """Origin position. Valid values:
+<li>TopLeft: The origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text;</li>
+<li>TopRight: The origin of coordinates is in the top-right corner of the video, and the origin of the watermark is in the top-right corner of the image or text;</li>
+<li>BottomLeft: The origin of coordinates is in the bottom-left corner of the video, and the origin of the watermark is in the bottom-left corner of the image or text;</li>
+<li>BottomRight: The origin of coordinates is in the bottom-right corner of the video, and the origin of the watermark is in the bottom-right corner of the image or text.</li>
+        :rtype: str
+        """
         return self._CoordinateOrigin
 
     @CoordinateOrigin.setter
@@ -27371,6 +33025,11 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def XPos(self):
+        """The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
+<li>If the string ends in %, the `XPos` of the watermark will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;</li>
+<li>If the string ends in px, the `XPos` of the watermark will be the specified px; for example, `100px` means that `XPos` is 100 px.</li>
+        :rtype: str
+        """
         return self._XPos
 
     @XPos.setter
@@ -27379,6 +33038,11 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def YPos(self):
+        """The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
+<li>If the string ends in %, the `YPos` of the watermark will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;</li>
+<li>If the string ends in px, the `YPos` of the watermark will be the specified px; for example, `100px` means that `YPos` is 100 px.</li>
+        :rtype: str
+        """
         return self._YPos
 
     @YPos.setter
@@ -27387,6 +33051,9 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def ImageTemplate(self):
+        """Image watermarking template. This field is valid only for image watermarking templates.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageWatermarkInputForUpdate`
+        """
         return self._ImageTemplate
 
     @ImageTemplate.setter
@@ -27395,6 +33062,9 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def TextTemplate(self):
+        """Text watermarking template. This field is valid only for text watermarking templates.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TextWatermarkTemplateInputForUpdate`
+        """
         return self._TextTemplate
 
     @TextTemplate.setter
@@ -27403,6 +33073,9 @@ class ModifyWatermarkTemplateRequest(AbstractModel):
 
     @property
     def SvgTemplate(self):
+        """SVG watermarking template. This field is required when `Type` is `svg` and is invalid when `Type` is `image` or `text`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SvgWatermarkInputForUpdate`
+        """
         return self._SvgTemplate
 
     @SvgTemplate.setter
@@ -27453,6 +33126,9 @@ class ModifyWatermarkTemplateResponse(AbstractModel):
 
     @property
     def ImageUrl(self):
+        """Image watermark address. This field is valid only when `ImageTemplate.ImageContent` is non-empty.
+        :rtype: str
+        """
         return self._ImageUrl
 
     @ImageUrl.setter
@@ -27461,6 +33137,9 @@ class ModifyWatermarkTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27501,6 +33180,9 @@ class ModifyWordSampleRequest(AbstractModel):
 
     @property
     def Keyword(self):
+        """Keyword. Length limit: 128 characters.
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -27509,6 +33191,17 @@ class ModifyWordSampleRequest(AbstractModel):
 
     @property
     def Usages(self):
+        """<b>Keyword usage. Valid values:</b>
+1. Recognition.Ocr: OCR-based content recognition
+2. Recognition.Asr: ASR-based content recognition
+3. Review.Ocr: OCR-based inappropriate information recognition
+4. Review.Asr: ASR-based inappropriate information recognition
+<b>Valid values can also be:</b>
+5. Recognition: ASR- and OCR-based content recognition; equivalent to 1+2
+6. Review: ASR- and OCR-based inappropriate information recognition; equivalent to 3+4
+7. All: equivalent to 1+2+3+4
+        :rtype: list of str
+        """
         return self._Usages
 
     @Usages.setter
@@ -27517,6 +33210,9 @@ class ModifyWordSampleRequest(AbstractModel):
 
     @property
     def TagOperationInfo(self):
+        """Tag operation information.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiSampleTagOperation`
+        """
         return self._TagOperationInfo
 
     @TagOperationInfo.setter
@@ -27554,6 +33250,9 @@ class ModifyWordSampleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27617,6 +33316,11 @@ Default value: 10%.
 
     @property
     def CoordinateOrigin(self):
+        """Origin position, which currently can only be:
+<li>TopLeft: the origin of coordinates is in the top-left corner of the video, and the origin of the blur is in the top-left corner of the image or text.</li>
+Default value: TopLeft.
+        :rtype: str
+        """
         return self._CoordinateOrigin
 
     @CoordinateOrigin.setter
@@ -27625,6 +33329,12 @@ Default value: 10%.
 
     @property
     def XPos(self):
+        """The horizontal position of the origin of the blur relative to the origin of coordinates of the video. % and px formats are supported:
+<li>If the string ends in %, the `XPos` of the blur will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;</li>
+<li>If the string ends in px, the `XPos` of the blur will be the specified px; for example, `100px` means that `XPos` is 100 px.</li>
+Default value: 0 px.
+        :rtype: str
+        """
         return self._XPos
 
     @XPos.setter
@@ -27633,6 +33343,12 @@ Default value: 10%.
 
     @property
     def YPos(self):
+        """Vertical position of the origin of blur relative to the origin of coordinates of video. % and px formats are supported:
+<li>If the string ends in %, the `YPos` of the blur will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;</li>
+<li>If the string ends in px, the `YPos` of the blur will be the specified px; for example, `100px` means that `YPos` is 100 px.</li>
+Default value: 0 px.
+        :rtype: str
+        """
         return self._YPos
 
     @YPos.setter
@@ -27641,6 +33357,12 @@ Default value: 10%.
 
     @property
     def Width(self):
+        """Blur width. % and px formats are supported:
+<li>If the string ends in %, the `Width` of the blur will be the specified percentage of the video width; for example, `10%` means that `Width` is 10% of the video width;</li>
+<li>If the string ends in px, the `Width` of the blur will be in px; for example, `100px` means that `Width` is 100 px.</li>
+Default value: 10%.
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -27649,6 +33371,12 @@ Default value: 10%.
 
     @property
     def Height(self):
+        """Blur height. % and px formats are supported:
+<li>If the string ends in %, the `Height` of the blur will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>
+<li>If the string ends in px, the `Height` of the blur will be in px; for example, `100px` means that `Height` is 100 px.</li>
+Default value: 10%.
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -27657,6 +33385,12 @@ Default value: 10%.
 
     @property
     def StartTimeOffset(self):
+        """Start time offset of blur in seconds. If this parameter is left empty or 0 is entered, the blur will appear upon the first video frame.
+<li>If this parameter is left empty or 0 is entered, the blur will appear upon the first video frame;</li>
+<li>If this value is greater than 0 (e.g., n), the blur will appear at second n after the first video frame;</li>
+<li>If this value is smaller than 0 (e.g., -n), the blur will appear at second n before the last video frame.</li>
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -27665,6 +33399,12 @@ Default value: 10%.
 
     @property
     def EndTimeOffset(self):
+        """End time offset of blur in seconds.
+<li>If this parameter is left empty or 0 is entered, the blur will exist till the last video frame;</li>
+<li>If this value is greater than 0 (e.g., n), the blur will exist till second n;</li>
+<li>If this value is smaller than 0 (e.g., -n), the blur will exist till second n before the last video frame.</li>
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -27713,6 +33453,9 @@ class NumberFormat(AbstractModel):
 
     @property
     def InitialValue(self):
+        """Start value of the `{number}` variable. Default value: 0.
+        :rtype: int
+        """
         return self._InitialValue
 
     @InitialValue.setter
@@ -27721,6 +33464,9 @@ class NumberFormat(AbstractModel):
 
     @property
     def Increment(self):
+        """Increment of the `{number}` variable. Default value: 1.
+        :rtype: int
+        """
         return self._Increment
 
     @Increment.setter
@@ -27729,6 +33475,9 @@ class NumberFormat(AbstractModel):
 
     @property
     def MinLength(self):
+        """Minimum length of the `{number}` variable. A placeholder will be used if the variable length is below the minimum requirement. Default value: 1.
+        :rtype: int
+        """
         return self._MinLength
 
     @MinLength.setter
@@ -27737,6 +33486,9 @@ class NumberFormat(AbstractModel):
 
     @property
     def PlaceHolder(self):
+        """Placeholder used when the `{number}` variable length is below the minimum requirement. Default value: 0.
+        :rtype: str
+        """
         return self._PlaceHolder
 
     @PlaceHolder.setter
@@ -27775,6 +33527,11 @@ class OcrFullTextConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of a full text recognition task. Valid values:
+<li>ON: Enables an intelligent full text recognition task;</li>
+<li>OFF: Disables an intelligent full text recognition task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -27810,6 +33567,11 @@ class OcrFullTextConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of a full text recognition task. Valid values:
+<li>ON: Enables an intelligent full text recognition task;</li>
+<li>OFF: Disables an intelligent full text recognition task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -27849,6 +33611,11 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def Switch(self):
+        """Switch of a text keyword recognition task. Valid values:
+<li>ON: Enables a text keyword recognition task;</li>
+<li>OFF: Disables a text keyword recognition task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -27857,6 +33624,10 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def LabelSet(self):
+        """Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty, all results will be returned.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -27897,6 +33668,11 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def Switch(self):
+        """Switch of a text keyword recognition task. Valid values:
+<li>ON: Enables a text keyword recognition task;</li>
+<li>OFF: Disables a text keyword recognition task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -27905,6 +33681,10 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def LabelSet(self):
+        """Keyword filter tag, which specifies the keyword tag that needs to be returned. If this parameter is left empty, all results will be returned.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -27975,6 +33755,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Container(self):
+        """Container format. Valid values: mp4, flv, hls, mp3, flac, ogg, and m4a; mp3, flac, ogg, and m4a are formats of audio files.
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -27983,6 +33766,11 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def RemoveVideo(self):
+        """Whether to remove video data. Valid values:
+<li>0: retain</li>
+<li>1: remove</li>
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -27991,6 +33779,11 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def RemoveAudio(self):
+        """Whether to remove audio data. Valid values:
+<li>0: retain</li>
+<li>1: remove</li>
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -27999,6 +33792,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def VideoTemplate(self):
+        """Video stream configuration parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfoForUpdate`
+        """
         return self._VideoTemplate
 
     @VideoTemplate.setter
@@ -28007,6 +33803,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def AudioTemplate(self):
+        """Audio stream configuration parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
+        """
         return self._AudioTemplate
 
     @AudioTemplate.setter
@@ -28015,6 +33814,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def TEHDConfig(self):
+        """The TSC transcoding parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
+        """
         return self._TEHDConfig
 
     @TEHDConfig.setter
@@ -28023,6 +33826,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def SubtitleTemplate(self):
+        """The subtitle settings.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleTemplate`
+        """
         return self._SubtitleTemplate
 
     @SubtitleTemplate.setter
@@ -28031,6 +33838,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def AddonAudioStream(self):
+        """The information of the external audio track to add.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of MediaInputInfo
+        """
         return self._AddonAudioStream
 
     @AddonAudioStream.setter
@@ -28039,6 +33850,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def StdExtInfo(self):
+        """An extended field for transcoding.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StdExtInfo
 
     @StdExtInfo.setter
@@ -28047,6 +33862,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def AddOnSubtitles(self):
+        """The subtitle file to add.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: list of AddOnSubtitle
+        """
         return self._AddOnSubtitles
 
     @AddOnSubtitles.setter
@@ -28107,6 +33926,9 @@ class ParseLiveStreamProcessNotificationRequest(AbstractModel):
 
     @property
     def Content(self):
+        """Live stream event notification obtained from CMQ.
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -28177,6 +33999,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotificationType(self):
+        """Live stream processing result type, including:
+<li>AiReviewResult: content moderation result;</li>
+<li>AiRecognitionResult: content recognition result;</li>
+<li>LiveRecordResult: live recording result;</li>
+<li>ProcessEof: live stream processing result.</li>
+        :rtype: str
+        """
         return self._NotificationType
 
     @NotificationType.setter
@@ -28185,6 +34014,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
+        """Video processing task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -28193,6 +34025,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProcessEofInfo(self):
+        """Information of a live stream processing error, which is valid when `NotificationType` is `ProcessEof`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamProcessErrorInfo`
+        """
         return self._ProcessEofInfo
 
     @ProcessEofInfo.setter
@@ -28201,6 +34037,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiReviewResultInfo(self):
+        """Content audit result, which is valid when `NotificationType` is `AiReviewResult`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiReviewResultInfo`
+        """
         return self._AiReviewResultInfo
 
     @AiReviewResultInfo.setter
@@ -28209,6 +34049,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiRecognitionResultInfo(self):
+        """Content recognition result, which is valid if `NotificationType` is `AiRecognitionResult`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiRecognitionResultInfo`
+        """
         return self._AiRecognitionResultInfo
 
     @AiRecognitionResultInfo.setter
@@ -28217,6 +34060,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiAnalysisResultInfo(self):
+        """
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiAnalysisResultInfo`
+        """
         return self._AiAnalysisResultInfo
 
     @AiAnalysisResultInfo.setter
@@ -28225,6 +34071,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiQualityControlResultInfo(self):
+        """
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamAiQualityControlResultInfo`
+        """
         return self._AiQualityControlResultInfo
 
     @AiQualityControlResultInfo.setter
@@ -28233,6 +34082,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LiveRecordResultInfo(self):
+        """Live recording result is valid when NotificationType is LiveRecordResult.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamRecordResultInfo`
+        """
         return self._LiveRecordResultInfo
 
     @LiveRecordResultInfo.setter
@@ -28241,6 +34094,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SessionId(self):
+        """The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -28249,6 +34105,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SessionContext(self):
+        """The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -28257,6 +34116,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -28304,6 +34166,9 @@ class ParseNotificationRequest(AbstractModel):
 
     @property
     def Content(self):
+        """Event notification obtained from CMQ.
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -28370,6 +34235,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventType(self):
+        """The event type. Valid values:
+<li>WorkflowTask</li>
+<li>EditMediaTask</li>
+<li>ScheduleTask (scheme)</li>
+        :rtype: str
+        """
         return self._EventType
 
     @EventType.setter
@@ -28378,6 +34249,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WorkflowTaskEvent(self):
+        """The information of a video processing task. Information will be returned only if `EventType` is `WorkflowTask`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTask`
+        """
         return self._WorkflowTaskEvent
 
     @WorkflowTaskEvent.setter
@@ -28386,6 +34261,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EditMediaTaskEvent(self):
+        """The information of a video editing task. Information will be returned only if `EventType` is `EditMediaTask`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EditMediaTask`
+        """
         return self._EditMediaTaskEvent
 
     @EditMediaTaskEvent.setter
@@ -28394,6 +34273,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SessionId(self):
+        """The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -28402,6 +34284,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SessionContext(self):
+        """The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -28410,6 +34295,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ScheduleTaskEvent(self):
+        """The information of a scheme. Information will be returned only if `EventType` is `ScheduleTask`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleTask`
+        """
         return self._ScheduleTaskEvent
 
     @ScheduleTaskEvent.setter
@@ -28418,6 +34307,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Timestamp(self):
+        """- The expiration time (Unix timestamp) of the notification's signature.
+- By default, notifications sent by MPS expire after 10 minutes. If the expiration time specified has elapsed, a notification will be considered invalid. This can prevent replay attacks.
+- The format of this parameter is a decimal Unix timestamp, i.e., the number of seconds that have elapsed since 00:00 (UTC/GMT time) on January 1, 1970.
+
+        :rtype: int
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -28426,6 +34321,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sign(self):
+        """Event notification security signature. Sign = MD5 (Timestamp + NotifyKey). Note: Media Processing Service concatenates Timestamp and NotifyKey from TaskNotifyConfig as a string and calculates the Sign value through MD5. This value is included in the notification message. Your backend server can verify whether the Sign is correct using the same algorithm, to confirm whether the message is indeed from the Media Processing Service backend.
+        :rtype: str
+        """
         return self._Sign
 
     @Sign.setter
@@ -28434,6 +34332,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -28481,6 +34382,11 @@ class PoliticalAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """Whether to detect sensitive information based on ASR. Valid values:
+<li>ON</li>
+<li>OFF</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -28489,6 +34395,9 @@ class PoliticalAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -28497,6 +34406,9 @@ class PoliticalAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -28540,6 +34452,11 @@ class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """Whether to detect sensitive information based on ASR. Valid values:
+<li>ON</li>
+<li>OFF</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -28548,6 +34465,9 @@ class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -28556,6 +34476,9 @@ class PoliticalAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -28597,6 +34520,9 @@ class PoliticalConfigureInfo(AbstractModel):
 
     @property
     def ImgReviewInfo(self):
+        """The parameters for detecting sensitive information in images.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalImgReviewTemplateInfo`
+        """
         return self._ImgReviewInfo
 
     @ImgReviewInfo.setter
@@ -28605,6 +34531,9 @@ class PoliticalConfigureInfo(AbstractModel):
 
     @property
     def AsrReviewInfo(self):
+        """The parameters for detecting sensitive information based on ASR.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalAsrReviewTemplateInfo`
+        """
         return self._AsrReviewInfo
 
     @AsrReviewInfo.setter
@@ -28613,6 +34542,9 @@ class PoliticalConfigureInfo(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """The parameters for detecting sensitive information based on OCR.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalOcrReviewTemplateInfo`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -28660,6 +34592,9 @@ class PoliticalConfigureInfoForUpdate(AbstractModel):
 
     @property
     def ImgReviewInfo(self):
+        """The parameters for detecting sensitive information in images.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalImgReviewTemplateInfoForUpdate`
+        """
         return self._ImgReviewInfo
 
     @ImgReviewInfo.setter
@@ -28668,6 +34603,9 @@ class PoliticalConfigureInfoForUpdate(AbstractModel):
 
     @property
     def AsrReviewInfo(self):
+        """The parameters for detecting sensitive information based on ASR.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalAsrReviewTemplateInfoForUpdate`
+        """
         return self._AsrReviewInfo
 
     @AsrReviewInfo.setter
@@ -28676,6 +34614,9 @@ class PoliticalConfigureInfoForUpdate(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """The parameters for detecting sensitive information based on OCR.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PoliticalOcrReviewTemplateInfoForUpdate`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -28736,6 +34677,11 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """Whether to detect sensitive information in images. Valid values:
+<li>ON</li>
+<li>OFF</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -28744,6 +34690,17 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 
     @property
     def LabelSet(self):
+        """The filter labels for sensitive information detection in images, which specify the types of sensitive information to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:
+<li>violation_photo (banned icons)</li>
+<li>politician</li>
+<li>entertainment (people in the entertainment industry)</li>
+<li>sport (people in the sports industry)</li>
+<li>entrepreneur</li>
+<li>scholar</li>
+<li>celebrity</li>
+<li>military (people in military)</li>
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -28752,6 +34709,9 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -28760,6 +34720,9 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -28815,6 +34778,11 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """Whether to detect sensitive information in images. Valid values:
+<li>ON</li>
+<li>OFF</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -28823,6 +34791,17 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def LabelSet(self):
+        """The filter labels for sensitive information detection in images, which specify the types of sensitive information to return. If this parameter is left empty, the detection results for all labels are returned. Valid values:
+<li>violation_photo (banned icons)</li>
+<li>politician</li>
+<li>entertainment (people in the entertainment industry)</li>
+<li>sport (people in the sports industry)</li>
+<li>entrepreneur</li>
+<li>scholar</li>
+<li>celebrity</li>
+<li>military (people in military)</li>
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -28831,6 +34810,9 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -28839,6 +34821,9 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -28883,6 +34868,11 @@ class PoliticalOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """Whether to detect sensitive information based on OCR. Valid values:
+<li>ON</li>
+<li>OFF</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -28891,6 +34881,9 @@ class PoliticalOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -28899,6 +34892,9 @@ class PoliticalOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -28942,6 +34938,11 @@ class PoliticalOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """Whether to detect sensitive information based on OCR. Valid values:
+<li>ON</li>
+<li>OFF</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -28950,6 +34951,9 @@ class PoliticalOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -28958,6 +34962,9 @@ class PoliticalOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -29001,6 +35008,11 @@ class PornAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of a porn information detection in speech task. Valid values:
+<li>ON: Enables a porn information detection in speech task;</li>
+<li>OFF: Disables a porn information detection in speech task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -29009,6 +35021,9 @@ class PornAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -29017,6 +35032,9 @@ class PornAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -29060,6 +35078,11 @@ class PornAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of a porn information detection in speech task. Valid values:
+<li>ON: Enables a porn information detection in speech task;</li>
+<li>OFF: Disables a porn information detection in speech task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -29068,6 +35091,9 @@ class PornAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -29076,6 +35102,9 @@ class PornAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -29120,6 +35149,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImgReviewInfo(self):
+        """Control parameter of porn information detection in image.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornImgReviewTemplateInfo`
+        """
         return self._ImgReviewInfo
 
     @ImgReviewInfo.setter
@@ -29128,6 +35161,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AsrReviewInfo(self):
+        """Control parameter of porn information detection in speech.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornAsrReviewTemplateInfo`
+        """
         return self._AsrReviewInfo
 
     @AsrReviewInfo.setter
@@ -29136,6 +35173,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OcrReviewInfo(self):
+        """Control parameter of porn information detection in text.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornOcrReviewTemplateInfo`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -29183,6 +35224,9 @@ class PornConfigureInfoForUpdate(AbstractModel):
 
     @property
     def ImgReviewInfo(self):
+        """Control parameter of porn information detection in image.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornImgReviewTemplateInfoForUpdate`
+        """
         return self._ImgReviewInfo
 
     @ImgReviewInfo.setter
@@ -29191,6 +35235,9 @@ class PornConfigureInfoForUpdate(AbstractModel):
 
     @property
     def AsrReviewInfo(self):
+        """Control parameter of porn information detection in speech.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornAsrReviewTemplateInfoForUpdate`
+        """
         return self._AsrReviewInfo
 
     @AsrReviewInfo.setter
@@ -29199,6 +35246,9 @@ class PornConfigureInfoForUpdate(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """Control parameter of porn information detection in text.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PornOcrReviewTemplateInfoForUpdate`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -29255,6 +35305,11 @@ class PornImgReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of a porn information detection in image task. Valid values:
+<li>ON: Enables a porn information detection in image task;</li>
+<li>OFF: Disables a porn information detection in image task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -29263,6 +35318,13 @@ class PornImgReviewTemplateInfo(AbstractModel):
 
     @property
     def LabelSet(self):
+        """Filter tag for porn information detection in image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
+<li>porn: Porn;</li>
+<li>vulgar: Vulgarity;</li>
+<li>intimacy: Intimacy;</li>
+<li>sexy: Sexiness.</li>
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -29271,6 +35333,9 @@ class PornImgReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -29279,6 +35344,9 @@ class PornImgReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 0 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -29330,6 +35398,11 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of a porn information detection in image task. Valid values:
+<li>ON: Enables a porn information detection in image task;</li>
+<li>OFF: Disables a porn information detection in image task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -29338,6 +35411,13 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def LabelSet(self):
+        """Filter tag for porn information detection in image. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. Valid values:
+<li>porn: Porn;</li>
+<li>vulgar: Vulgarity;</li>
+<li>intimacy: Intimacy;</li>
+<li>sexy: Sexiness.</li>
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -29346,6 +35426,9 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -29354,6 +35437,9 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -29398,6 +35484,11 @@ class PornOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of a porn information detection in text task. Valid values:
+<li>ON: Enables a porn information detection in text task;</li>
+<li>OFF: Disables a porn information detection in text task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -29406,6 +35497,9 @@ class PornOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -29414,6 +35508,9 @@ class PornOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -29457,6 +35554,11 @@ class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of a porn information detection in text task. Valid values:
+<li>ON: Enables a porn information detection in text task;</li>
+<li>OFF: Disables a porn information detection in text task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -29465,6 +35567,9 @@ class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -29473,6 +35578,9 @@ class PornOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -29542,6 +35650,9 @@ Note 2: If `TaskNotifyConfig` is specified when `ProcessLiveStream` is called, t
 
     @property
     def Url(self):
+        """Live stream URL, which must be a live stream file address. RTMP, HLS, and FLV are supported.
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -29550,6 +35661,9 @@ Note 2: If `TaskNotifyConfig` is specified when `ProcessLiveStream` is called, t
 
     @property
     def TaskNotifyConfig(self):
+        """Event notification information of a task, which is used to specify the live stream processing result.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamTaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -29558,6 +35672,9 @@ Note 2: If `TaskNotifyConfig` is specified when `ProcessLiveStream` is called, t
 
     @property
     def OutputStorage(self):
+        """Target bucket of a live stream processing output file. This parameter is required if a file will be output.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -29566,6 +35683,9 @@ Note 2: If `TaskNotifyConfig` is specified when `ProcessLiveStream` is called, t
 
     @property
     def OutputDir(self):
+        """Target directory of a live stream processing output file, such as `/movie/201909/`. If this parameter is left empty, the `/` directory will be used.
+        :rtype: str
+        """
         return self._OutputDir
 
     @OutputDir.setter
@@ -29574,6 +35694,9 @@ Note 2: If `TaskNotifyConfig` is specified when `ProcessLiveStream` is called, t
 
     @property
     def AiContentReviewTask(self):
+        """Type parameter of a video content audit task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        """
         return self._AiContentReviewTask
 
     @AiContentReviewTask.setter
@@ -29582,6 +35705,9 @@ Note 2: If `TaskNotifyConfig` is specified when `ProcessLiveStream` is called, t
 
     @property
     def AiRecognitionTask(self):
+        """Type parameter of video content recognition task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        """
         return self._AiRecognitionTask
 
     @AiRecognitionTask.setter
@@ -29590,6 +35716,9 @@ Note 2: If `TaskNotifyConfig` is specified when `ProcessLiveStream` is called, t
 
     @property
     def AiAnalysisTask(self):
+        """
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        """
         return self._AiAnalysisTask
 
     @AiAnalysisTask.setter
@@ -29598,6 +35727,9 @@ Note 2: If `TaskNotifyConfig` is specified when `ProcessLiveStream` is called, t
 
     @property
     def AiQualityControlTask(self):
+        """Media quality inspection type task parameters.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
+        """
         return self._AiQualityControlTask
 
     @AiQualityControlTask.setter
@@ -29606,6 +35738,9 @@ Note 2: If `TaskNotifyConfig` is specified when `ProcessLiveStream` is called, t
 
     @property
     def SessionId(self):
+        """The ID used for deduplication. If there was a request with the same ID in the last seven days, the current request will return an error. The ID can contain up to 50 characters. If this parameter is left empty or an empty string is entered, no deduplication will be performed.
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -29614,6 +35749,9 @@ Note 2: If `TaskNotifyConfig` is specified when `ProcessLiveStream` is called, t
 
     @property
     def SessionContext(self):
+        """The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -29622,6 +35760,13 @@ Note 2: If `TaskNotifyConfig` is specified when `ProcessLiveStream` is called, t
 
     @property
     def ScheduleId(self):
+        """The live scheme ID.
+Note 1:
+<li>If an output storage (`OutputStorage`) and directory (`OutputDir`) are specified for a subtask of the scheme, those output settings will be applied. </li>
+u200c<li>If an output storage (`OutputStorage`) and directory (`OutputDir`) are not specified for a subtask of the scheme, the output parameters specified for `ProcessLiveStream` (if any) will be applied. </li>
+Note 2: If `TaskNotifyConfig` is specified when `ProcessLiveStream` is called, the specified settings will be applied instead of the default callback settings of the scheme.
+        :rtype: int
+        """
         return self._ScheduleId
 
     @ScheduleId.setter
@@ -29680,6 +35825,9 @@ class ProcessLiveStreamResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -29688,6 +35836,9 @@ class ProcessLiveStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -29765,6 +35916,9 @@ Note 3: The trigger configured for an orchestration is for automatically startin
 
     @property
     def InputInfo(self):
+        """The information of the file to process.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
         return self._InputInfo
 
     @InputInfo.setter
@@ -29773,6 +35927,11 @@ Note 3: The trigger configured for an orchestration is for automatically startin
 
     @property
     def OutputStorage(self):
+        """Target storage for Media Processing Service output files. If left blank, it inherits the storage location in InputInfo.
+
+Note: When InputInfo.Type is URL, this parameter is required.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -29781,6 +35940,10 @@ Note 3: The trigger configured for an orchestration is for automatically startin
 
     @property
     def OutputDir(self):
+        """The directory to save the media processing output file, which must start and end with `/`, such as `/movie/201907/`.
+If you do not specify this parameter, the file will be saved to the directory specified in `InputInfo`.
+        :rtype: str
+        """
         return self._OutputDir
 
     @OutputDir.setter
@@ -29789,6 +35952,16 @@ Note 3: The trigger configured for an orchestration is for automatically startin
 
     @property
     def ScheduleId(self):
+        """Orchestration ID.
+Note 1: For parameters OutputStorage and OutputDir:
+<li>When a sub-task node in service orchestration has OutputStorage and OutputDir configured, the output configured in this sub-task node is used as the output of the sub-task.</li>
+<li>When a sub-task node in service orchestration does not have OutputStorage and OutputDir configured, if the task creation API (ProcessMedia) has specified an output, it will override the default output of the original orchestration.</li>
+<li>The priority of output settings is: Orchestration sub-task node > Output specified by the task API > Corresponding configuration within an orchestration.</li>
+Note 2: For the TaskNotifyConfig parameter, if the task creation API (ProcessMedia) has set this parameter, it will override the default callback of the original orchestration.
+
+Note 3: The trigger configured for an orchestration is for automatically starting the orchestration. It stops working when you manually call this API to start an orchestration.
+        :rtype: int
+        """
         return self._ScheduleId
 
     @ScheduleId.setter
@@ -29797,6 +35970,9 @@ Note 3: The trigger configured for an orchestration is for automatically startin
 
     @property
     def MediaProcessTask(self):
+        """The media processing parameters to use.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
+        """
         return self._MediaProcessTask
 
     @MediaProcessTask.setter
@@ -29805,6 +35981,9 @@ Note 3: The trigger configured for an orchestration is for automatically startin
 
     @property
     def AiContentReviewTask(self):
+        """Type parameter of a video content audit task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        """
         return self._AiContentReviewTask
 
     @AiContentReviewTask.setter
@@ -29813,6 +35992,9 @@ Note 3: The trigger configured for an orchestration is for automatically startin
 
     @property
     def AiAnalysisTask(self):
+        """Video content analysis task parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        """
         return self._AiAnalysisTask
 
     @AiAnalysisTask.setter
@@ -29821,6 +36003,9 @@ Note 3: The trigger configured for an orchestration is for automatically startin
 
     @property
     def AiRecognitionTask(self):
+        """Type parameter of a video content recognition task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        """
         return self._AiRecognitionTask
 
     @AiRecognitionTask.setter
@@ -29829,6 +36014,9 @@ Note 3: The trigger configured for an orchestration is for automatically startin
 
     @property
     def AiQualityControlTask(self):
+        """Media quality inspection type task parameters.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
+        """
         return self._AiQualityControlTask
 
     @AiQualityControlTask.setter
@@ -29837,6 +36025,9 @@ Note 3: The trigger configured for an orchestration is for automatically startin
 
     @property
     def TaskNotifyConfig(self):
+        """Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -29845,6 +36036,9 @@ Note 3: The trigger configured for an orchestration is for automatically startin
 
     @property
     def TasksPriority(self):
+        """Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
+        :rtype: int
+        """
         return self._TasksPriority
 
     @TasksPriority.setter
@@ -29853,6 +36047,9 @@ Note 3: The trigger configured for an orchestration is for automatically startin
 
     @property
     def SessionId(self):
+        """Identification code for deduplication, up to 50 characters. If a request with the same identification code was made within the past 3 days, an error will be returned for the current request. If this parameter is not provided or is an empty string, deduplication will not be performed for this request.
+        :rtype: str
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -29861,6 +36058,9 @@ Note 3: The trigger configured for an orchestration is for automatically startin
 
     @property
     def SessionContext(self):
+        """The source context which is used to pass through the user request information. The task flow status change callback will return the value of this field. It can contain up to 1,000 characters.
+        :rtype: str
+        """
         return self._SessionContext
 
     @SessionContext.setter
@@ -29869,6 +36069,11 @@ Note 3: The trigger configured for an orchestration is for automatically startin
 
     @property
     def TaskType(self):
+        """The task type.
+<li> `Online` (default): A task that is executed immediately.</li>
+<li> `Offline`: A task that is executed when the system is idle (within three days by default).</li>
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -29934,6 +36139,9 @@ class ProcessMediaResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -29942,6 +36150,9 @@ class ProcessMediaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -29976,6 +36187,11 @@ class ProhibitedAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of prohibited information detection in speech task. Valid values:
+<li>ON: enables prohibited information detection in speech task;</li>
+<li>OFF: disables prohibited information detection in speech task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -29984,6 +36200,9 @@ class ProhibitedAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -29992,6 +36211,9 @@ class ProhibitedAsrReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -30035,6 +36257,11 @@ class ProhibitedAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of prohibited information detection in speech task. Valid values:
+<li>ON: enables prohibited information detection in speech task;</li>
+<li>OFF: disables prohibited information detection in speech task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -30043,6 +36270,9 @@ class ProhibitedAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -30051,6 +36281,9 @@ class ProhibitedAsrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -30089,6 +36322,9 @@ class ProhibitedConfigureInfo(AbstractModel):
 
     @property
     def AsrReviewInfo(self):
+        """Control parameter of prohibited information detection in speech.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProhibitedAsrReviewTemplateInfo`
+        """
         return self._AsrReviewInfo
 
     @AsrReviewInfo.setter
@@ -30097,6 +36333,9 @@ class ProhibitedConfigureInfo(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """Control parameter of prohibited information detection in text.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProhibitedOcrReviewTemplateInfo`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -30138,6 +36377,9 @@ class ProhibitedConfigureInfoForUpdate(AbstractModel):
 
     @property
     def AsrReviewInfo(self):
+        """Control parameter of prohibited information detection in speech.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProhibitedAsrReviewTemplateInfoForUpdate`
+        """
         return self._AsrReviewInfo
 
     @AsrReviewInfo.setter
@@ -30146,6 +36388,9 @@ class ProhibitedConfigureInfoForUpdate(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """Control parameter of prohibited information detection in text.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ProhibitedOcrReviewTemplateInfoForUpdate`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -30192,6 +36437,11 @@ class ProhibitedOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of prohibited information detection in text task. Valid values:
+<li>ON: enables prohibited information detection in text task;</li>
+<li>OFF: disables prohibited information detection in text task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -30200,6 +36450,9 @@ class ProhibitedOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -30208,6 +36461,9 @@ class ProhibitedOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -30251,6 +36507,11 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of prohibited information detection in text task. Valid values:
+<li>ON: enables prohibited information detection in text task;</li>
+<li>OFF: disables prohibited information detection in text task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -30259,6 +36520,9 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -30267,6 +36531,9 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -30319,6 +36586,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NoAudio(self):
+        """Whether there is an audio track. `true` indicates that there isn't.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._NoAudio
 
     @NoAudio.setter
@@ -30327,6 +36598,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NoVideo(self):
+        """Whether there is a video track. `true` indicates that there isn't.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._NoVideo
 
     @NoVideo.setter
@@ -30335,6 +36610,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QualityEvaluationScore(self):
+        """The no-reference video quality score. Value range: 0-100.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._QualityEvaluationScore
 
     @QualityEvaluationScore.setter
@@ -30343,6 +36622,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QualityControlResultSet(self):
+        """Exception items detected in content quality inspection.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of QualityControlResult
+        """
         return self._QualityControlResultSet
 
     @QualityControlResultSet.setter
@@ -30351,6 +36634,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ContainerDiagnoseResultSet(self):
+        """Exception items detected in format diagnosis.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ContainerDiagnoseResultItem
+        """
         return self._ContainerDiagnoseResultSet
 
     @ContainerDiagnoseResultSet.setter
@@ -30409,6 +36696,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Confidence(self):
+        """The confidence score. Value range: 0-100.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -30417,6 +36708,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTimeOffset(self):
+        """The start timestamp (second) of the segment.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -30425,6 +36719,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTimeOffset(self):
+        """The end timestamp (second) of the segment.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -30433,6 +36730,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AreaCoordSet(self):
+        """The coordinates (px) of the top left and bottom right corner.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of int
+        """
         return self._AreaCoordSet
 
     @AreaCoordSet.setter
@@ -30558,6 +36859,72 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """Quality inspection item name. Valid values:
+<li>LowEvaluation: no-reference scoring.</li>
+<li>Mosaic: mosaic detection.</li>
+<li>CrashScreen: screen glitch detection.</li>
+<li>VideoFreezedFrame: video freezing.</li>
+<li>Blur: blur detection.</li>
+<li>BlackWhiteEdge: black and white edges detection.</li>
+<li>SolidColorScreen: solid color screen detection.</li>
+<li>LowLighting: low light.</li>
+<li>HighLighting: overexposure.</li>
+<li>NoVoice: no voice detection.</li>
+<li>LowVoice: low voice detection.</li>
+<li>HighVoice: high voice detection.</li>
+<li>Jitter: jitter detection.</li>
+<li>Noise: noise detection.</li>
+<li>QRCode: QR code detection.</li>
+<li>BarCode: barcode detection.</li>
+<li>AppletCode: mini program code detection.</li>
+<li>VideoResolutionChanged: video resolution change.</li>
+<li>AudioSampleRateChanged: audio sample rate change.</li>
+<li>AudioChannelsChanged: audio channel quantity change.</li>
+<li>ParameterSetsChanged: stream parameter set information change.</li>
+<li>DarOrSarInvalid: video aspect ratio exception.</li>
+<li>TimestampFallback: DTS timestamp rollback.</li>
+<li>DtsJitter: DTS jitter too high.</li>
+<li>PtsJitter: PTS jitter too high.</li>
+<li>AACDurationDeviation: improper AAC frame timestamp interval.</li>
+<li>AudioDroppingFrames: audio frame dropping.</li>
+<li>VideoDroppingFrames: video frame dropping.</li>
+<li>AVTimestampInterleave: improper audio-video interleaving.</li>
+<li>PtsLessThanDts: PTS less than DTS for media streams.</li>
+<li>ReceiveFpsJitter: significant jitter in the network receive frame rate.</li>
+<li>ReceiveFpsTooSmall: network receive video frame rate too low.</li>
+<li>FpsJitter: significant jitter in the stream frame rate calculated via PTS.</li>
+<li>StreamOpenFailed: stream open failure.</li>
+<li>StreamEnd: stream end.</li>
+<li>StreamParseFailed: stream parsing failure.</li>
+<li>VideoFirstFrameNotIdr: first frame not an IDR frame.</li>
+<li>StreamNALUError: NALU start code error.</li>
+<li>TsStreamNoAud: no AUD NALU in the H26x stream of MPEG-TS.</li>
+<li>AudioStreamLack: no audio stream.</li>
+<li>VideoStreamLack: no video stream.</li>
+<li>LackAudioRecover: missing audio stream recovery.</li>
+<li>LackVideoRecover: missing video stream recovery.</li>
+<li>VideoBitrateOutofRange: video stream bitrate (kbps) out of range.</li>
+<li>AudioBitrateOutofRange: audio stream bitrate (kbps) out of range.</li>
+<li>VideoDecodeFailed: video decoding error.</li>
+<li>AudioDecodeFailed: audio decoding error.</li>
+<li>AudioOutOfPhase: opposite phase in dual-channel audio.</li>
+<li>VideoDuplicatedFrame: duplicate frames in video streams.</li>
+<li>AudioDuplicatedFrame: duplicate frames in audio streams.</li>
+<li>VideoRotation: video rotation.</li>
+<li>TsMultiPrograms: multiple programs in MPEG2-TS streams.</li>
+<li>Mp4InvalidCodecFourcc: codec FourCC in MP4 not meeting Apple HLS requirements.</li>
+<li>HLSBadM3u8Format: invalid M3U8 file.</li>
+<li>HLSInvalidMasterM3u8: invalid main M3U8 file.</li>
+<li>HLSInvalidMediaM3u8: invalid media M3U8 file.</li>
+<li>HLSMasterM3u8Recommended: parameters recommended by standards missing in main M3U8.</li>
+<li>HLSMediaM3u8Recommended: parameters recommended by standards missing in media M3U8.</li>
+<li>HLSMediaM3u8DiscontinuityExist: EXT-X-DISCONTINUITY in media M3U8.</li>
+<li>HLSMediaSegmentsStreamNumChange: changed number of streams in segments.</li>
+<li>HLSMediaSegmentsPTSJitterDeviation: PTS jumps between segments without EXT-X-DISCONTINUITY.</li>
+<li>HLSMediaSegmentsDTSJitterDeviation: DTS jumps between segments without EXT-X-DISCONTINUITY.</li>
+<li>TimecodeTrackExist: TMCD track in MP4.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -30566,6 +36933,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """Capability configuration switch. Valid values:
+<li>ON: enabled;</li>
+<li>OFF: disabled.</li>
+
+Default value: ON.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -30574,6 +36950,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Sampling(self):
+        """Sampling method, Valid value:
+- Time: sampling based on time interval.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Sampling
 
     @Sampling.setter
@@ -30582,6 +36963,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IntervalTime(self):
+        """Sampling interval time, in ms.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._IntervalTime
 
     @IntervalTime.setter
@@ -30590,6 +36975,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Duration(self):
+        """Duration of abnormality, in ms.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -30598,6 +36987,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Threshold(self):
+        """Threshold of a detection item. Different detection items have different thresholds.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Threshold
 
     @Threshold.setter
@@ -30655,6 +37048,25 @@ class QualityControlResult(AbstractModel):
 
     @property
     def Type(self):
+        """The issue type. Valid values:
+`Jitter`
+`Blur`
+`LowLighting`
+`HighLighting` (overexposure)
+`CrashScreen` (video corruption)
+`BlackWhiteEdge`
+`SolidColorScreen` (blank screen)
+`Noise`
+`Mosaic` (pixelation)
+`QRCode`
+`AppletCode` (Weixin Mini Program code)
+`BarCode`
+`LowVoice`
+`HighVoice`
+`NoVoice`
+`LowEvaluation` (low no-reference video quality score)
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -30663,6 +37075,9 @@ class QualityControlResult(AbstractModel):
 
     @property
     def QualityControlItems(self):
+        """The information of a checked segment in quality control.
+        :rtype: list of QualityControlItem
+        """
         return self._QualityControlItems
 
     @QualityControlItems.setter
@@ -30733,6 +37148,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Definition(self):
+        """Unique identifier of a media quality inspection template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -30741,6 +37159,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
+        """Media quality inspection template name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -30749,6 +37171,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Comment(self):
+        """Template description.
+
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -30757,6 +37185,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """Template type. Valid values:
+<li>Preset: system preset template;</li>
+<li>Custom: custom template.</li>
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -30765,6 +37200,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QualityControlItemSet(self):
+        """Media quality inspection configuration parameters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of QualityControlItemConfig
+        """
         return self._QualityControlItemSet
 
     @QualityControlItemSet.setter
@@ -30773,6 +37212,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -30781,6 +37225,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
+        """Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -30843,6 +37292,9 @@ Default value: 0 px, which means that `Height` will be proportionally scaled acc
 
     @property
     def ImageContent(self):
+        """Input content of watermark image. JPEG and PNG images are supported.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
         return self._ImageContent
 
     @ImageContent.setter
@@ -30851,6 +37303,12 @@ Default value: 0 px, which means that `Height` will be proportionally scaled acc
 
     @property
     def Width(self):
+        """Watermark width. % and px formats are supported:
+<li>If the string ends in %, the `Width` of the watermark will be the specified percentage of the video width; for example, `10%` means that `Width` is 10% of the video width;</li>
+<li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px.</li>
+Default value: 10%.
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -30859,6 +37317,12 @@ Default value: 0 px, which means that `Height` will be proportionally scaled acc
 
     @property
     def Height(self):
+        """Watermark height. % and px formats are supported:
+<li>If the string ends in %, the `Height` of the watermark will be the specified percentage of the video height; for example, `10%` means that `Height` is 10% of the video height;</li>
+<li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px.</li>
+Default value: 0 px, which means that `Height` will be proportionally scaled according to the aspect ratio of the original watermark image.
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -30867,6 +37331,12 @@ Default value: 0 px, which means that `Height` will be proportionally scaled acc
 
     @property
     def RepeatType(self):
+        """Repeat type of an animated watermark. Valid values:
+<li>`once`: no longer appears after watermark playback ends.</li>
+<li>`repeat_last_frame`: stays on the last frame after watermark playback ends.</li>
+<li>`repeat` (default): repeats the playback until the video ends.</li>
+        :rtype: str
+        """
         return self._RepeatType
 
     @RepeatType.setter
@@ -30926,6 +37396,9 @@ Default value: 0.
 
     @property
     def Container(self):
+        """Container. Valid values: mp4; flv; hls; mp3; flac; ogg; m4a. Among them, mp3, flac, ogg, and m4a are for audio files.
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -30934,6 +37407,12 @@ Default value: 0.
 
     @property
     def RemoveVideo(self):
+        """Whether to remove video data. Valid values:
+<li>0: retain;</li>
+<li>1: remove.</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -30942,6 +37421,12 @@ Default value: 0.
 
     @property
     def RemoveAudio(self):
+        """Whether to remove audio data. Valid values:
+<li>0: retain;</li>
+<li>1: remove.</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -30950,6 +37435,9 @@ Default value: 0.
 
     @property
     def VideoTemplate(self):
+        """Video stream configuration parameter. This field is required when `RemoveVideo` is 0.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
+        """
         return self._VideoTemplate
 
     @VideoTemplate.setter
@@ -30958,6 +37446,9 @@ Default value: 0.
 
     @property
     def AudioTemplate(self):
+        """Audio stream configuration parameter. This field is required when `RemoveAudio` is 0.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        """
         return self._AudioTemplate
 
     @AudioTemplate.setter
@@ -30966,6 +37457,9 @@ Default value: 0.
 
     @property
     def TEHDConfig(self):
+        """TESHD transcoding parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
+        """
         return self._TEHDConfig
 
     @TEHDConfig.setter
@@ -31031,6 +37525,10 @@ Default value: 0 px.
 
     @property
     def Type(self):
+        """Watermark type. Valid values:
+<li>image: image watermark.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -31039,6 +37537,11 @@ Default value: 0 px.
 
     @property
     def CoordinateOrigin(self):
+        """Origin position, which currently can only be:
+<li>TopLeft: the origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text.</li>
+Default value: TopLeft.
+        :rtype: str
+        """
         return self._CoordinateOrigin
 
     @CoordinateOrigin.setter
@@ -31047,6 +37550,12 @@ Default value: 0 px.
 
     @property
     def XPos(self):
+        """The horizontal position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
+<li>If the string ends in %, the `XPos` of the watermark will be the specified percentage of the video width; for example, `10%` means that `XPos` is 10% of the video width;</li>
+<li>If the string ends in px, the `XPos` of the watermark will be the specified px; for example, `100px` means that `XPos` is 100 px.</li>
+Default value: 0 px.
+        :rtype: str
+        """
         return self._XPos
 
     @XPos.setter
@@ -31055,6 +37564,12 @@ Default value: 0 px.
 
     @property
     def YPos(self):
+        """The vertical position of the origin of the watermark relative to the origin of coordinates of the video. % and px formats are supported:
+<li>If the string ends in %, the `YPos` of the watermark will be the specified percentage of the video height; for example, `10%` means that `YPos` is 10% of the video height;</li>
+<li>If the string ends in px, the `YPos` of the watermark will be the specified px; for example, `100px` means that `YPos` is 100 px.</li>
+Default value: 0 px.
+        :rtype: str
+        """
         return self._YPos
 
     @YPos.setter
@@ -31063,6 +37578,9 @@ Default value: 0 px.
 
     @property
     def ImageTemplate(self):
+        """Image watermark template. This field is required when `Type` is `image` and is invalid when `Type` is `text`.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.RawImageWatermarkInput`
+        """
         return self._ImageTemplate
 
     @ImageTemplate.setter
@@ -31133,6 +37651,9 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def WorkflowId(self):
+        """Workflow ID.
+        :rtype: int
+        """
         return self._WorkflowId
 
     @WorkflowId.setter
@@ -31141,6 +37662,9 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def WorkflowName(self):
+        """Workflow name of up to 128 characters, which must be unique for the same user.
+        :rtype: str
+        """
         return self._WorkflowName
 
     @WorkflowName.setter
@@ -31149,6 +37673,9 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def Trigger(self):
+        """Triggering rule bound to a workflow. If an uploaded video hits the rule for the object, the workflow will be triggered.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -31157,6 +37684,9 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def OutputStorage(self):
+        """Output configuration of a video processing output file. If this parameter is left empty, the storage location in `Trigger` will be inherited.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -31165,6 +37695,10 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def OutputDir(self):
+        """The target directory for the output files generated by video processing. It must start and end with a slash (/), such as `/movie/201907/`.
+If left empty, it is the same as the directory of the trigger file, that is, `{inputDir}`.
+        :rtype: str
+        """
         return self._OutputDir
 
     @OutputDir.setter
@@ -31173,6 +37707,9 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def MediaProcessTask(self):
+        """Parameter of a video processing task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
+        """
         return self._MediaProcessTask
 
     @MediaProcessTask.setter
@@ -31181,6 +37718,9 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def AiContentReviewTask(self):
+        """Type parameter of a video content audit task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        """
         return self._AiContentReviewTask
 
     @AiContentReviewTask.setter
@@ -31189,6 +37729,9 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def AiAnalysisTask(self):
+        """Video content analysis task parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        """
         return self._AiAnalysisTask
 
     @AiAnalysisTask.setter
@@ -31197,6 +37740,9 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def AiRecognitionTask(self):
+        """Type parameter of a video content recognition task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        """
         return self._AiRecognitionTask
 
     @AiRecognitionTask.setter
@@ -31205,6 +37751,9 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def TaskPriority(self):
+        """Workflow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
+        :rtype: int
+        """
         return self._TaskPriority
 
     @TaskPriority.setter
@@ -31213,6 +37762,9 @@ If left empty, it is the same as the directory of the trigger file, that is, `{i
 
     @property
     def TaskNotifyConfig(self):
+        """Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -31270,6 +37822,9 @@ class ResetWorkflowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31307,6 +37862,9 @@ class S3InputInfo(AbstractModel):
 
     @property
     def S3Bucket(self):
+        """The AWS S3 bucket.
+        :rtype: str
+        """
         return self._S3Bucket
 
     @S3Bucket.setter
@@ -31315,6 +37873,9 @@ class S3InputInfo(AbstractModel):
 
     @property
     def S3Region(self):
+        """The region of the AWS S3 bucket.
+        :rtype: str
+        """
         return self._S3Region
 
     @S3Region.setter
@@ -31323,6 +37884,9 @@ class S3InputInfo(AbstractModel):
 
     @property
     def S3Object(self):
+        """The path of the AWS S3 object.
+        :rtype: str
+        """
         return self._S3Object
 
     @S3Object.setter
@@ -31331,6 +37895,9 @@ class S3InputInfo(AbstractModel):
 
     @property
     def S3SecretId(self):
+        """The key ID required to access the AWS S3 object.
+        :rtype: str
+        """
         return self._S3SecretId
 
     @S3SecretId.setter
@@ -31339,6 +37906,9 @@ class S3InputInfo(AbstractModel):
 
     @property
     def S3SecretKey(self):
+        """The key required to access the AWS S3 object.
+        :rtype: str
+        """
         return self._S3SecretKey
 
     @S3SecretKey.setter
@@ -31385,6 +37955,9 @@ class S3OutputStorage(AbstractModel):
 
     @property
     def S3Bucket(self):
+        """The AWS S3 bucket.
+        :rtype: str
+        """
         return self._S3Bucket
 
     @S3Bucket.setter
@@ -31393,6 +37966,9 @@ class S3OutputStorage(AbstractModel):
 
     @property
     def S3Region(self):
+        """The region of the AWS S3 bucket.
+        :rtype: str
+        """
         return self._S3Region
 
     @S3Region.setter
@@ -31401,6 +37977,9 @@ class S3OutputStorage(AbstractModel):
 
     @property
     def S3SecretId(self):
+        """The key ID required to upload files to the AWS S3 object.
+        :rtype: str
+        """
         return self._S3SecretId
 
     @S3SecretId.setter
@@ -31409,6 +37988,9 @@ class S3OutputStorage(AbstractModel):
 
     @property
     def S3SecretKey(self):
+        """The key required to upload files to the AWS S3 object.
+        :rtype: str
+        """
         return self._S3SecretKey
 
     @S3SecretKey.setter
@@ -31466,6 +38048,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Definition(self):
+        """Sampled screencapturing template ID.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -31474,6 +38059,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WatermarkSet(self):
+        """List of up to 10 image or text watermarks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of WatermarkInput
+        """
         return self._WatermarkSet
 
     @WatermarkSet.setter
@@ -31482,6 +38071,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
+        """Target bucket of a sampled screenshot. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -31490,6 +38083,15 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputObjectPath(self):
+        """Output path of an image file after sampled screenshot taking, which can be a relative or absolute path.
+If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).Relative path example:
+<li>Filename_{Variable name}.{format}.</li>
+<li>Filename.{format}.</li>
+Absolute path example:
+<li>/Custom path/Filename_{Variable name}.{format}.</li>
+If left empty, a relative path is used by default: `{inputName}_sampleSnapshot_{definition}_{number}.{format}`.
+        :rtype: str
+        """
         return self._OutputObjectPath
 
     @OutputObjectPath.setter
@@ -31498,6 +38100,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectNumberFormat(self):
+        """Rule of the `{number}` variable in the sampled screenshot output path.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
+        """
         return self._ObjectNumberFormat
 
     @ObjectNumberFormat.setter
@@ -31600,6 +38206,9 @@ Default value: black.
 
     @property
     def Definition(self):
+        """Unique ID of a sampled screencapturing template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -31608,6 +38217,11 @@ Default value: black.
 
     @property
     def Type(self):
+        """Template type. Valid values:
+<li>Preset: Preset template;</li>
+<li>Custom: Custom template.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -31616,6 +38230,9 @@ Default value: black.
 
     @property
     def Name(self):
+        """Name of a sampled screencapturing template.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -31624,6 +38241,9 @@ Default value: black.
 
     @property
     def Comment(self):
+        """Template description.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -31632,6 +38252,14 @@ Default value: black.
 
     @property
     def Width(self):
+        """Maximum value of the width (or long side) of a screenshot in px. Value range: 0 and [128, 4,096].
+<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
+<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
+<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
+<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -31640,6 +38268,14 @@ Default value: black.
 
     @property
     def Height(self):
+        """Maximum value of the height (or short side) of a screenshot in px. Value range: 0 and [128, 4,096].
+<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
+<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
+<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
+<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -31648,6 +38284,12 @@ Default value: black.
 
     @property
     def ResolutionAdaptive(self):
+        """Resolution adaption. Valid values:
+<li>open: Enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
+<li>close: Disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
+Default value: open.
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -31656,6 +38298,9 @@ Default value: black.
 
     @property
     def Format(self):
+        """Image format.
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -31664,6 +38309,9 @@ Default value: black.
 
     @property
     def SampleType(self):
+        """Sampled screencapturing type.
+        :rtype: str
+        """
         return self._SampleType
 
     @SampleType.setter
@@ -31672,6 +38320,9 @@ Default value: black.
 
     @property
     def SampleInterval(self):
+        """Sampling interval.
+        :rtype: int
+        """
         return self._SampleInterval
 
     @SampleInterval.setter
@@ -31680,6 +38331,9 @@ Default value: black.
 
     @property
     def CreateTime(self):
+        """Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -31688,6 +38342,9 @@ Default value: black.
 
     @property
     def UpdateTime(self):
+        """Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -31696,6 +38353,14 @@ Default value: black.
 
     @property
     def FillType(self):
+        """Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+<li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
+<li>black: Fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
+<li>white: Fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
+<li>gauss: Fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
+Default value: black.
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -31757,6 +38422,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """The task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -31765,6 +38433,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task has failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -31773,6 +38444,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """The error code. 0 indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -31781,6 +38455,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """The error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -31789,6 +38466,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """The input of the content analysis task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -31797,6 +38477,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """The output of the content analysis task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of AiAnalysisResult
+        """
         return self._Output
 
     @Output.setter
@@ -31857,6 +38541,9 @@ class ScheduleQualityControlTaskResult(AbstractModel):
 
     @property
     def Status(self):
+        """The task status. Valid values: `PROCESSING`, `SUCCESS`, `FAIL`.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -31865,6 +38552,9 @@ class ScheduleQualityControlTaskResult(AbstractModel):
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value indicates the task has failed. For details, see [Error Codes](https://www.tencentcloud.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -31873,6 +38563,9 @@ class ScheduleQualityControlTaskResult(AbstractModel):
 
     @property
     def ErrCode(self):
+        """The error code. `0` indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -31881,6 +38574,9 @@ class ScheduleQualityControlTaskResult(AbstractModel):
 
     @property
     def Message(self):
+        """The error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -31889,6 +38585,9 @@ class ScheduleQualityControlTaskResult(AbstractModel):
 
     @property
     def Input(self):
+        """Media quality inspection task input.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -31897,6 +38596,9 @@ class ScheduleQualityControlTaskResult(AbstractModel):
 
     @property
     def Output(self):
+        """Media quality inspection task output.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.QualityControlData`
+        """
         return self._Output
 
     @Output.setter
@@ -31955,6 +38657,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """The task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -31963,6 +38668,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task has failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -31971,6 +38679,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """The error code. 0 indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -31979,6 +38690,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """The error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -31987,6 +38701,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """The input of the content recognition task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -31995,6 +38712,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """The output of the content recognition task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of AiRecognitionResult
+        """
         return self._Output
 
     @Output.setter
@@ -32056,6 +38777,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """The task status. Valid values: PROCESSING, SUCCESS, FAIL.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -32064,6 +38788,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCodeExt(self):
+        """The error code. An empty string indicates the task is successful; any other value returned indicates the task has failed. For details, see [Error Codes](https://intl.cloud.tencent.com/document/product/1041/40249).
+        :rtype: str
+        """
         return self._ErrCodeExt
 
     @ErrCodeExt.setter
@@ -32072,6 +38799,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """The error code. 0 indicates the task is successful; other values indicate the task has failed. This parameter is not recommended. Please use `ErrCodeExt` instead.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -32080,6 +38810,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """The error message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -32088,6 +38821,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Input(self):
+        """The input of the content moderation task.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        """
         return self._Input
 
     @Input.setter
@@ -32096,6 +38832,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Output(self):
+        """The output of the content moderation task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of AiContentReviewResult
+        """
         return self._Output
 
     @Output.setter
@@ -32164,6 +38904,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
+        """The scheme ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -32172,6 +38915,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """The scheme status. Valid values:
+<li>PROCESSING</li>
+<li>FINISH</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -32180,6 +38928,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """If the value returned is not 0, there was a source error. If 0 is returned, refer to the error codes of the corresponding task type.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -32188,6 +38939,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """If there was a source error, this parameter is the error message. For other errors, refer to the error messages of the corresponding task type.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -32196,6 +38950,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InputInfo(self):
+        """The information of the file processed.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
         return self._InputInfo
 
     @InputInfo.setter
@@ -32204,6 +38962,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetaData(self):
+        """The metadata of the source video.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
+        """
         return self._MetaData
 
     @MetaData.setter
@@ -32212,6 +38974,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActivityResultSet(self):
+        """The output of the scheme.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ActivityResult
+        """
         return self._ActivityResultSet
 
     @ActivityResultSet.setter
@@ -32308,6 +39074,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ScheduleId(self):
+        """The scheme ID.
+        :rtype: int
+        """
         return self._ScheduleId
 
     @ScheduleId.setter
@@ -32316,6 +39085,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ScheduleName(self):
+        """The scheme name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ScheduleName
 
     @ScheduleName.setter
@@ -32324,6 +39097,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """The scheme type. Valid values:
+ <li>`Preset`</li>
+<li>`Custom` </li>
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -32332,6 +39111,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """The scheme status. Valid values:
+`Enabled`
+`Disabled`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -32340,6 +39125,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Trigger(self):
+        """The trigger of the scheme.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -32348,6 +39137,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Activities(self):
+        """The subtasks of the scheme.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Activity
+        """
         return self._Activities
 
     @Activities.setter
@@ -32356,6 +39149,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
+        """The bucket to save the output file.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -32364,6 +39161,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputDir(self):
+        """The directory to save the output file.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OutputDir
 
     @OutputDir.setter
@@ -32372,6 +39173,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskNotifyConfig(self):
+        """The notification configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -32380,6 +39185,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """The creation time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -32388,6 +39197,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
+        """The last updated time in [ISO date format](https://intl.cloud.tencent.com/document/product/862/37710?from_cn_redirect=1#52).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -32396,6 +39209,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceId(self):
+        """Resource ID. For those without an associated resource ID, fill in with an account's primary resource ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -32459,6 +39276,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -32467,6 +39290,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Intensity(self):
+        """The strength. Value range: 0.0-1.0
+Default value: 0.0
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Intensity
 
     @Intensity.setter
@@ -32518,6 +39346,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Confidence(self):
+        """
+        :rtype: float
+        """
         return self._Confidence
 
     @Confidence.setter
@@ -32526,6 +39357,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTimeOffset(self):
+        """
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -32534,6 +39368,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTimeOffset(self):
+        """
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -32542,6 +39379,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SegmentUrl(self):
+        """
+        :rtype: str
+        """
         return self._SegmentUrl
 
     @SegmentUrl.setter
@@ -32550,6 +39390,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Title(self):
+        """Segment title.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Title
 
     @Title.setter
@@ -32558,6 +39402,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Summary(self):
+        """Segment summary.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Summary
 
     @Summary.setter
@@ -32608,6 +39456,13 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Switch(self):
+        """Switch for segment duration at startup. Optional values:
+on: Turn on the switch
+off: Turn off the switch
+Default value: off
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -32616,6 +39471,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def FragmentTime(self):
+        """Segment duration at startup. Unit: second
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._FragmentTime
 
     @FragmentTime.setter
@@ -32624,6 +39483,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def FragmentEndNum(self):
+        """Number of effective segments, indicating the first FragmentEndNum segments with FragmentTime. Value range: >=1
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._FragmentEndNum
 
     @FragmentEndNum.setter
@@ -32667,6 +39530,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -32675,6 +39544,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Intensity(self):
+        """The strength. Value range: 0.0-1.0
+Default value: 0.0
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._Intensity
 
     @Intensity.setter
@@ -32718,6 +39592,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Uri(self):
+        """The URI of decryption key.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Uri
 
     @Uri.setter
@@ -32726,6 +39604,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Key(self):
+        """The encryption key (a 32-byte string).
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -32734,6 +39616,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Vector(self):
+        """The initialization vector for encryption (a 32-byte string).
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Vector
 
     @Vector.setter
@@ -32799,6 +39685,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Definition(self):
+        """ID of a time point screencapturing template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -32807,6 +39696,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtTimeOffsetSet(self):
+        """List of screenshot time points in the format of `s` or `%`:
+<li>If the string ends in `s`, it means that the time point is in seconds; for example, `3.5s` means that the time point is the 3.5th second;</li>
+<li>If the string ends in `%`, it means that the time point is the specified percentage of the video duration; for example, `10%` means that the time point is 10% of the video duration.</li>
+        :rtype: list of str
+        """
         return self._ExtTimeOffsetSet
 
     @ExtTimeOffsetSet.setter
@@ -32815,6 +39709,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TimeOffsetSet(self):
+        """List of time points of screenshots in <font color=red>seconds</font>.
+        :rtype: list of float
+        """
         return self._TimeOffsetSet
 
     @TimeOffsetSet.setter
@@ -32823,6 +39720,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WatermarkSet(self):
+        """List of up to 10 image or text watermarks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of WatermarkInput
+        """
         return self._WatermarkSet
 
     @WatermarkSet.setter
@@ -32831,6 +39732,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
+        """Target bucket of a generated time point screenshot file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -32839,6 +39744,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputObjectPath(self):
+        """Output path for an image file of screenshots taken at specific time points, which can be a relative or absolute path.
+If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).
+Relative path example:
+<li>Filename_{Variable name}.{format}.</li>
+<li>Filename.{format}.</li>
+Absolute path example:
+<li>/Custom path/Filename_{Variable name}.{format}.</li>
+If left empty, a relative path is used by default: `{inputName}_snapshotByTimeOffset_{definition}_{number}.{format}`.
+        :rtype: str
+        """
         return self._OutputObjectPath
 
     @OutputObjectPath.setter
@@ -32847,6 +39762,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectNumberFormat(self):
+        """Rule of the `{number}` variable in the time point screenshot output path.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
+        """
         return self._ObjectNumberFormat
 
     @ObjectNumberFormat.setter
@@ -32945,6 +39864,9 @@ Default value: black.
 
     @property
     def Definition(self):
+        """Unique ID of a time point screencapturing template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -32953,6 +39875,11 @@ Default value: black.
 
     @property
     def Type(self):
+        """Template type. Valid values:
+<li>Preset: Preset template;</li>
+<li>Custom: Custom template.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -32961,6 +39888,9 @@ Default value: black.
 
     @property
     def Name(self):
+        """Name of a time point screencapturing template.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -32969,6 +39899,9 @@ Default value: black.
 
     @property
     def Comment(self):
+        """Template description.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -32977,6 +39910,14 @@ Default value: black.
 
     @property
     def Width(self):
+        """Maximum value of the width (or long side) of a screenshot in px. Value range: 0 and [128, 4,096].
+<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
+<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
+<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
+<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -32985,6 +39926,14 @@ Default value: black.
 
     @property
     def Height(self):
+        """Maximum value of the height (or short side) of a screenshot in px. Value range: 0 and [128, 4,096].
+<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
+<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
+<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
+<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -32993,6 +39942,12 @@ Default value: black.
 
     @property
     def ResolutionAdaptive(self):
+        """Resolution adaption. Valid values:
+<li>open: Enabled. In this case, `Width` represents the long side of a video, while `Height` the short side;</li>
+<li>close: Disabled. In this case, `Width` represents the width of a video, while `Height` the height.</li>
+Default value: open.
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -33001,6 +39956,9 @@ Default value: black.
 
     @property
     def Format(self):
+        """Image format.
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -33009,6 +39967,9 @@ Default value: black.
 
     @property
     def CreateTime(self):
+        """Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -33017,6 +39978,9 @@ Default value: black.
 
     @property
     def UpdateTime(self):
+        """Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -33025,6 +39989,14 @@ Default value: black.
 
     @property
     def FillType(self):
+        """Fill type. "Fill" refers to the way of processing a screenshot when its aspect ratio is different from that of the source video. The following fill types are supported:
+<li> stretch: Stretch. The screenshot will be stretched frame by frame to match the aspect ratio of the source video, which may make the screenshot "shorter" or "longer";</li>
+<li>black: Fill with black. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with black color blocks.</li>
+<li>white: Fill with white. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with white color blocks.</li>
+<li>gauss: Fill with Gaussian blur. This option retains the aspect ratio of the source video for the screenshot and fills the unmatched area with Gaussian blur.</li>
+Default value: black.
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -33097,6 +40069,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Path(self):
+        """The URL of the subtitles to add to the video.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -33105,6 +40081,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def StreamIndex(self):
+        """The subtitle track to add to the video. If both `Path` and `StreamIndex` are specified, `Path` will be used. You need to specify at least one of the two parameters.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StreamIndex
 
     @StreamIndex.setter
@@ -33113,6 +40093,15 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def FontType(self):
+        """The font. Valid values:
+<li>`hei.ttf`: Heiti.</li>
+<li>`song.ttf`: Songti.</li>
+<li>`simkai.ttf`: Kaiti.</li>
+<li>`arial.ttf`: Arial.</li>
+The default is `hei.ttf`.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FontType
 
     @FontType.setter
@@ -33121,6 +40110,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def FontSize(self):
+        """The font size (pixels). If this is not specified, the font size in the subtitle file will be used.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FontSize
 
     @FontSize.setter
@@ -33129,6 +40122,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def FontColor(self):
+        """The font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FontColor
 
     @FontColor.setter
@@ -33137,6 +40134,13 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def FontAlpha(self):
+        """The text transparency. Value range: 0-1.
+<li>`0`: Fully transparent.</li>
+<li>`1`: Fully opaque.</li>
+Default value: 1.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._FontAlpha
 
     @FontAlpha.setter
@@ -33191,6 +40195,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -33199,6 +40209,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """The strength. Valid values:
+<li>lq: For low-resolution videos with obvious noise</li>
+<li>hq: For high-resolution videos</li>
+Default value: lq.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -33207,6 +40224,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Size(self):
+        """The ratio of the target resolution to the original resolution. Valid values:
+<li>2</li>
+Default value: 2.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Size
 
     @Size.setter
@@ -33261,6 +40284,17 @@ Default value: 0 px.
 
     @property
     def Width(self):
+        """Watermark width, which supports six formats of px, %, W%, H%, S%, and L%:
+<li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px; if `0px` is entered
+ and `Height` is not `0px`, the watermark width will be proportionally scaled based on the source SVG image; if `0px` is entered for both `Width` and `Height`, the watermark width will be the width of the source SVG image;</li>
+<li>If the string ends in `W%`, the `Width` of the watermark will be the specified percentage of the video width; for example, `10W%` means that `Width` is 10% of the video width;</li>
+<li>If the string ends in `H%`, the `Width` of the watermark will be the specified percentage of the video height; for example, `10H%` means that `Width` is 10% of the video height;</li>
+<li>If the string ends in `S%`, the `Width` of the watermark will be the specified percentage of the short side of the video; for example, `10S%` means that `Width` is 10% of the short side of the video;</li>
+<li>If the string ends in `L%`, the `Width` of the watermark will be the specified percentage of the long side of the video; for example, `10L%` means that `Width` is 10% of the long side of the video;</li>
+<li>If the string ends in %, the meaning is the same as `W%`.</li>
+Default value: 10W%.
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -33269,6 +40303,17 @@ Default value: 0 px.
 
     @property
     def Height(self):
+        """Watermark height, which supports six formats of px, %, W%, H%, S%, and L%:
+<li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px; if `0px` is entered
+ and `Width` is not `0px`, the watermark height will be proportionally scaled based on the source SVG image; if `0px` is entered for both `Width` and `Height`, the watermark height will be the height of the source SVG image;</li>
+<li>If the string ends in `W%`, the `Height` of the watermark will be the specified percentage of the video width; for example, `10W%` means that `Height` is 10% of the video width;</li>
+<li>If the string ends in `H%`, the `Height` of the watermark will be the specified percentage of the video height; for example, `10H%` means that `Height` is 10% of the video height;</li>
+<li>If the string ends in `S%`, the `Height` of the watermark will be the specified percentage of the short side of the video; for example, `10S%` means that `Height` is 10% of the short side of the video;</li>
+<li>If the string ends in `L%`, the `Height` of the watermark will be the specified percentage of the long side of the video; for example, `10L%` means that `Height` is 10% of the long side of the video;</li>
+<li>If the string ends in %, the meaning is the same as `H%`.</li>
+Default value: 0 px.
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -33322,6 +40367,17 @@ Default value: 0 px.
 
     @property
     def Width(self):
+        """Watermark width, which supports six formats of px, %, W%, H%, S%, and L%:
+<li>If the string ends in px, the `Width` of the watermark will be in px; for example, `100px` means that `Width` is 100 px; if `0px` is entered
+ and `Height` is not `0px`, the watermark width will be proportionally scaled based on the source SVG image; if `0px` is entered for both `Width` and `Height`, the watermark width will be the width of the source SVG image;</li>
+<li>If the string ends in `W%`, the `Width` of the watermark will be the specified percentage of the video width; for example, `10W%` means that `Width` is 10% of the video width;</li>
+<li>If the string ends in `H%`, the `Width` of the watermark will be the specified percentage of the video height; for example, `10H%` means that `Width` is 10% of the video height;</li>
+<li>If the string ends in `S%`, the `Width` of the watermark will be the specified percentage of the short side of the video; for example, `10S%` means that `Width` is 10% of the short side of the video;</li>
+<li>If the string ends in `L%`, the `Width` of the watermark will be the specified percentage of the long side of the video; for example, `10L%` means that `Width` is 10% of the long side of the video;</li>
+<li>If the string ends in %, the meaning is the same as `W%`.</li>
+Default value: 10W%.
+        :rtype: str
+        """
         return self._Width
 
     @Width.setter
@@ -33330,6 +40386,17 @@ Default value: 0 px.
 
     @property
     def Height(self):
+        """Watermark height, which supports six formats of px, %, W%, H%, S%, and L%:
+<li>If the string ends in px, the `Height` of the watermark will be in px; for example, `100px` means that `Height` is 100 px; if `0px` is entered
+ and `Width` is not `0px`, the watermark height will be proportionally scaled based on the source SVG image; if `0px` is entered for both `Width` and `Height`, the watermark height will be the height of the source SVG image;</li>
+<li>If the string ends in `W%`, the `Height` of the watermark will be the specified percentage of the video width; for example, `10W%` means that `Height` is 10% of the video width;</li>
+<li>If the string ends in `H%`, the `Height` of the watermark will be the specified percentage of the video height; for example, `10H%` means that `Height` is 10% of the video height;</li>
+<li>If the string ends in `S%`, the `Height` of the watermark will be the specified percentage of the short side of the video; for example, `10S%` means that `Height` is 10% of the short side of the video;</li>
+<li>If the string ends in `L%`, the `Height` of the watermark will be the specified percentage of the long side of the video; for example, `10L%` means that `Height` is 10% of the long side of the video;</li>
+<li>If the string ends in %, the meaning is the same as `H%`.
+Default value: 0 px.
+        :rtype: str
+        """
         return self._Height
 
     @Height.setter
@@ -33370,6 +40437,11 @@ If this parameter is left empty or 0 is entered, there will be no upper limit fo
 
     @property
     def Type(self):
+        """TESHD type. Valid values:
+<li>TEHD-100: TESHD-100.</li>
+If this parameter is left empty, TESHD will not be enabled.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -33378,6 +40450,10 @@ If this parameter is left empty or 0 is entered, there will be no upper limit fo
 
     @property
     def MaxVideoBitrate(self):
+        """Maximum bitrate, which is valid when `Type` is `TESHD`.
+If this parameter is left empty or 0 is entered, there will be no upper limit for bitrate.
+        :rtype: int
+        """
         return self._MaxVideoBitrate
 
     @MaxVideoBitrate.setter
@@ -33420,6 +40496,13 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Type(self):
+        """The TSC type. Valid values:
+<li>`TEHD-100`: TSC-100 (video TSC). </li>
+<li>`TEHD-200`: TSC-200 (audio TSC). </li>
+If this parameter is left blank, no modification will be made.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -33428,6 +40511,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def MaxVideoBitrate(self):
+        """The maximum video bitrate. If this parameter is not specified, no modifications will be made.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxVideoBitrate
 
     @MaxVideoBitrate.setter
@@ -33464,6 +40551,11 @@ class TagConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of intelligent tagging task. Valid values:
+<li>ON: enables intelligent tagging task;</li>
+<li>OFF: disables intelligent tagging task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -33499,6 +40591,11 @@ class TagConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """Switch of intelligent tagging task. Valid values:
+<li>ON: enables intelligent tagging task;</li>
+<li>OFF: disables intelligent tagging task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -33565,6 +40662,15 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def NotifyType(self):
+        """The notification type. Valid values:
+<li>`CMQ`: This value is no longer used. Please use `TDMQ-CMQ` instead.</li>
+<li>`TDMQ-CMQ`: Message queue</li>
+<li>`URL`: If `NotifyType` is set to `URL`, HTTP callbacks are sent to the URL specified by `NotifyUrl`. HTTP and JSON are used for the callbacks. The packet contains the response parameters of the `ParseNotification` API.</li>
+<li>`SCF`: This notification type is not recommended. You need to configure it in the SCF console.</li>
+<li>`AWS-SQS`: AWS queue. This type is only supported for AWS tasks, and the queue must be in the same region as the AWS bucket.</li>
+<font color="red">Note: If you do not pass this parameter or pass in an empty string, `CMQ` will be used. To use a different notification type, specify this parameter accordingly.</font>
+        :rtype: str
+        """
         return self._NotifyType
 
     @NotifyType.setter
@@ -33573,6 +40679,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def NotifyMode(self):
+        """Workflow notification method. Valid values: Finish, Change. If this parameter is left empty, `Finish` will be used.
+        :rtype: str
+        """
         return self._NotifyMode
 
     @NotifyMode.setter
@@ -33581,6 +40690,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def NotifyUrl(self):
+        """HTTP callback URL, required if `NotifyType` is set to `URL`
+        :rtype: str
+        """
         return self._NotifyUrl
 
     @NotifyUrl.setter
@@ -33589,6 +40701,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def CmqModel(self):
+        """The CMQ or TDMQ-CMQ model. Valid values: Queue, Topic.
+        :rtype: str
+        """
         return self._CmqModel
 
     @CmqModel.setter
@@ -33597,6 +40712,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def CmqRegion(self):
+        """The CMQ or TDMQ-CMQ region, such as `sh` (Shanghai) or `bj` (Beijing).
+        :rtype: str
+        """
         return self._CmqRegion
 
     @CmqRegion.setter
@@ -33605,6 +40723,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def TopicName(self):
+        """The CMQ or TDMQ-CMQ topic to receive notifications. This parameter is valid when `CmqModel` is `Topic`.
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -33613,6 +40734,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def QueueName(self):
+        """The CMQ or TDMQ-CMQ queue to receive notifications. This parameter is valid when `CmqModel` is `Queue`.
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -33621,6 +40745,11 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def AwsSQS(self):
+        """The AWS SQS queue. This parameter is required if `NotifyType` is `AWS-SQS`.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AwsSQS`
+        """
         return self._AwsSQS
 
     @AwsSQS.setter
@@ -33629,6 +40758,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def NotifyKey(self):
+        """The key used to generate the callback signature.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NotifyKey
 
     @NotifyKey.setter
@@ -33682,6 +40815,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Type(self):
+        """The storage type for a media processing output file. Valid values:
+<li>`COS`: Tencent Cloud COS</li>
+<li>`>AWS-S3`: AWS S3. This type is only supported for AWS tasks, and the output bucket must be in the same region as the bucket of the source file.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -33690,6 +40828,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def CosOutputStorage(self):
+        """The location to save the output object in COS. This parameter is valid and required when `Type` is COS.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CosOutputStorage`
+        """
         return self._CosOutputStorage
 
     @CosOutputStorage.setter
@@ -33698,6 +40840,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def S3OutputStorage(self):
+        """The AWS S3 bucket to save the output file. This parameter is required if `Type` is `AWS-S3`.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.S3OutputStorage`
+        """
         return self._S3OutputStorage
 
     @S3OutputStorage.setter
@@ -33754,6 +40900,9 @@ class TaskSimpleInfo(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -33762,6 +40911,11 @@ class TaskSimpleInfo(AbstractModel):
 
     @property
     def TaskType(self):
+        """Task type. Valid values:
+<li> WorkflowTask: Workflow processing task;</li>
+<li> LiveProcessTask: Live stream processing task.</li>
+        :rtype: str
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -33770,6 +40924,9 @@ class TaskSimpleInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time of a task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -33778,6 +40935,9 @@ class TaskSimpleInfo(AbstractModel):
 
     @property
     def BeginProcessTime(self):
+        """Start time of task execution in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). If the task has not been started yet, this field will be `0000-00-00T00:00:00Z`.
+        :rtype: str
+        """
         return self._BeginProcessTime
 
     @BeginProcessTime.setter
@@ -33786,6 +40946,9 @@ class TaskSimpleInfo(AbstractModel):
 
     @property
     def FinishTime(self):
+        """End time of a task in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F). If the task has not been completed yet, this field will be `0000-00-00T00:00:00Z`.
+        :rtype: str
+        """
         return self._FinishTime
 
     @FinishTime.setter
@@ -33794,6 +40957,9 @@ class TaskSimpleInfo(AbstractModel):
 
     @property
     def SubTaskTypes(self):
+        """The subtask type.
+        :rtype: list of str
+        """
         return self._SubTaskTypes
 
     @SubTaskTypes.setter
@@ -33835,6 +41001,9 @@ class TerrorismConfigureInfo(AbstractModel):
 
     @property
     def ImgReviewInfo(self):
+        """The parameters for detecting sensitive information in images.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfo`
+        """
         return self._ImgReviewInfo
 
     @ImgReviewInfo.setter
@@ -33843,6 +41012,9 @@ class TerrorismConfigureInfo(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """The parameters for detecting sensitive information based on OCR.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfo`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -33884,6 +41056,9 @@ class TerrorismConfigureInfoForUpdate(AbstractModel):
 
     @property
     def ImgReviewInfo(self):
+        """The parameters for detecting sensitive information in images.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TerrorismImgReviewTemplateInfoForUpdate`
+        """
         return self._ImgReviewInfo
 
     @ImgReviewInfo.setter
@@ -33892,6 +41067,9 @@ class TerrorismConfigureInfoForUpdate(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """The parameters for detecting sensitive information based on OCR.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TerrorismOcrReviewTemplateInfoForUpdate`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -33949,6 +41127,11 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """Whether to detect sensitive information in images. Valid values:
+<li>ON</li>
+<li>OFF</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -33957,6 +41140,17 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 
     @property
     def LabelSet(self):
+        """Sensitive content filter tags. The auditing results including the selected tags are returned. If the filter tag is empty, all auditing results will be returned. Valid values:
+<li>guns: weapons and guns;</li>
+<li>crowd: crowd gathering;</li>
+<li>bloody: bloodiness;</li>
+<li>police: police force;</li>
+<li>banners: sensitive flags;</li>
+<li>militant: militants;</li>
+<li>explosion: explosions and fires;</li>
+<li>terrorists: sensitive persons.</li>
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -33965,6 +41159,9 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 90 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -33973,6 +41170,9 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 80 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -34028,6 +41228,11 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """Whether to detect sensitive information in images. Valid values:
+<li>ON</li>
+<li>OFF</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -34036,6 +41241,17 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def LabelSet(self):
+        """Sensitive content filter tags. The auditing results including the selected tags are returned. If the filter tag is empty, all auditing results will be returned. Valid values:
+<li>guns: weapons and guns;</li>
+<li>crowd: crowd gathering;</li>
+<li>bloody: bloodiness;</li>
+<li>police: police force;</li>
+<li>banners: sensitive flags;</li>
+<li>militant: militants;</li>
+<li>explosion: explosions and fires;</li>
+<li>terrorists: sensitive persons.</li>
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -34044,6 +41260,9 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -34052,6 +41271,9 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -34096,6 +41318,11 @@ class TerrorismOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
+        """Whether to detect sensitive information based on OCR. Valid values:
+<li>ON</li>
+<li>OFF</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -34104,6 +41331,9 @@ class TerrorismOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -34112,6 +41342,9 @@ class TerrorismOcrReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -34155,6 +41388,11 @@ class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
+        """Whether to detect sensitive information based on OCR. Valid values:
+<li>ON</li>
+<li>OFF</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -34163,6 +41401,9 @@ class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0–100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -34171,6 +41412,9 @@ class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0–100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -34224,6 +41468,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FontType(self):
+        """Font type. Currently, two types are supported:
+<li>simkai.ttf: Both Chinese and English are supported;</li>
+<li>arial.ttf: Only English is supported.</li>
+        :rtype: str
+        """
         return self._FontType
 
     @FontType.setter
@@ -34232,6 +41481,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FontSize(self):
+        """Font size, in the format of Npx. N is a numerical value with a value range of [0, 1] or [8, 4096].
+        :rtype: str
+        """
         return self._FontSize
 
     @FontSize.setter
@@ -34240,6 +41492,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FontColor(self):
+        """Font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).
+        :rtype: str
+        """
         return self._FontColor
 
     @FontColor.setter
@@ -34248,6 +41503,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FontAlpha(self):
+        """Text transparency. Value range: (0, 1]
+<li>0: Completely transparent</li>
+<li>1: Completely opaque</li>
+Default value: 1.
+        :rtype: float
+        """
         return self._FontAlpha
 
     @FontAlpha.setter
@@ -34256,6 +41517,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TextContent(self):
+        """Text content, up to 100 characters.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TextContent
 
     @TextContent.setter
@@ -34309,6 +41574,11 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
 
     @property
     def FontType(self):
+        """Font type. Currently, two types are supported:
+<li>simkai.ttf: Both Chinese and English are supported;</li>
+<li>arial.ttf: Only English is supported.</li>
+        :rtype: str
+        """
         return self._FontType
 
     @FontType.setter
@@ -34317,6 +41587,9 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
 
     @property
     def FontSize(self):
+        """Font size, in the format of Npx. N is a numerical value with a value range of [0, 1] or [8, 4096].
+        :rtype: str
+        """
         return self._FontSize
 
     @FontSize.setter
@@ -34325,6 +41598,9 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
 
     @property
     def FontColor(self):
+        """Font color in 0xRRGGBB format. Default value: 0xFFFFFF (white).
+        :rtype: str
+        """
         return self._FontColor
 
     @FontColor.setter
@@ -34333,6 +41609,11 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
 
     @property
     def FontAlpha(self):
+        """Text transparency. Value range: (0, 1]
+<li>0: Completely transparent</li>
+<li>1: Completely opaque</li>
+        :rtype: float
+        """
         return self._FontAlpha
 
     @FontAlpha.setter
@@ -34341,6 +41622,9 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
 
     @property
     def TextContent(self):
+        """Text content, up to 100 characters.
+        :rtype: str
+        """
         return self._TextContent
 
     @TextContent.setter
@@ -34431,6 +41715,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Definition(self):
+        """ID of a video transcoding template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -34439,6 +41726,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def RawParameter(self):
+        """Custom video transcoding parameter, which is valid if `Definition` is 0.
+This parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the transcoding parameter preferably.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.RawTranscodeParameter`
+        """
         return self._RawParameter
 
     @RawParameter.setter
@@ -34447,6 +41738,12 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def OverrideParameter(self):
+        """Video transcoding custom parameter, which is valid when `Definition` is not 0.
+When any parameters in this structure are entered, they will be used to override corresponding parameters in templates.
+This parameter is used in highly customized scenarios. We recommend you only use `Definition` to specify the transcoding parameter.
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.OverrideTranscodeParameter`
+        """
         return self._OverrideParameter
 
     @OverrideParameter.setter
@@ -34455,6 +41752,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def WatermarkSet(self):
+        """List of up to 10 image or text watermarks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of WatermarkInput
+        """
         return self._WatermarkSet
 
     @WatermarkSet.setter
@@ -34463,6 +41764,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def MosaicSet(self):
+        """List of blurs. Up to 10 ones can be supported.
+        :rtype: list of MosaicInput
+        """
         return self._MosaicSet
 
     @MosaicSet.setter
@@ -34471,6 +41775,12 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def StartTimeOffset(self):
+        """Start time offset of a transcoded video, in seconds.
+<li>If this parameter is left empty or set to 0, the transcoded video will start at the same time as the original video.</li>
+<li>If this parameter is set to a positive number (n for example), the transcoded video will start at the nth second of the original video.</li>
+<li>If this parameter is set to a negative number (-n for example), the transcoded video will start at the nth second before the end of the original video.</li>
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -34479,6 +41789,12 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def EndTimeOffset(self):
+        """End time offset of a transcoded video, in seconds.
+<li>If this parameter is left empty or set to 0, the transcoded video will end at the same time as the original video.</li>
+<li>If this parameter is set to a positive number (n for example), the transcoded video will end at the nth second of the original video.</li>
+<li>If this parameter is set to a negative number (-n for example), the transcoded video will end at the nth second before the end of the original video.</li>
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -34487,6 +41803,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def OutputStorage(self):
+        """Target bucket of an output file. If this parameter is left empty, the `OutputStorage` value of the upper folder will be inherited.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -34495,6 +41815,15 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def OutputObjectPath(self):
+        """Output path of the main file after transcoding, which can be a relative or absolute path.
+If you need to define an output path, the path must end with `.{format}`. For variable names, refer to [Filename Variable](https://intl.cloud.tencent.com/document/product/862/37039?from_cn_redirect=1).Relative path example:
+<li>Filename_{Variable name}.{format}.</li>
+<li>Filename.{format}.</li>
+Absolute path example:
+<li>/Custom path/Filename_{Variable name}.{format}.</li>
+If left empty, a relative path is used by default: `{inputName}_transcode_{definition}.{format}`.
+        :rtype: str
+        """
         return self._OutputObjectPath
 
     @OutputObjectPath.setter
@@ -34503,6 +41832,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def SegmentObjectName(self):
+        """Path to an output file part (the path to ts during transcoding to HLS), which can only be a relative path. If this parameter is left empty, the following relative path will be used by default: `{inputName}_transcode_{definition}_{number}.{format}`.
+        :rtype: str
+        """
         return self._SegmentObjectName
 
     @SegmentObjectName.setter
@@ -34511,6 +41843,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def ObjectNumberFormat(self):
+        """Rule of the `{number}` variable in the output path after transcoding.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.NumberFormat`
+        """
         return self._ObjectNumberFormat
 
     @ObjectNumberFormat.setter
@@ -34519,6 +41855,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def HeadTailParameter(self):
+        """Opening and closing credits parameters
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.HeadTailParameter`
+        """
         return self._HeadTailParameter
 
     @HeadTailParameter.setter
@@ -34636,6 +41976,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Definition(self):
+        """Unique ID of a transcoding template.
+        :rtype: str
+        """
         return self._Definition
 
     @Definition.setter
@@ -34644,6 +41987,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Container(self):
+        """Container format. Valid values: mp4, flv, hls, mp3, flac, ogg.
+        :rtype: str
+        """
         return self._Container
 
     @Container.setter
@@ -34652,6 +41998,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
+        """Name of a transcoding template.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -34660,6 +42010,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Comment(self):
+        """Template description.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -34668,6 +42022,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """Template type. Valid values:
+<li>Preset: Preset template;</li>
+<li>Custom: Custom template.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -34676,6 +42035,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RemoveVideo(self):
+        """Whether to remove video data. Valid values:
+<li>0: Retain;</li>
+<li>1: Remove.</li>
+        :rtype: int
+        """
         return self._RemoveVideo
 
     @RemoveVideo.setter
@@ -34684,6 +42048,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RemoveAudio(self):
+        """Whether to remove audio data. Valid values:
+<li>0: Retain;</li>
+<li>1: Remove.</li>
+        :rtype: int
+        """
         return self._RemoveAudio
 
     @RemoveAudio.setter
@@ -34692,6 +42061,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoTemplate(self):
+        """Video stream configuration parameter. This field is valid only when `RemoveVideo` is 0.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
+        """
         return self._VideoTemplate
 
     @VideoTemplate.setter
@@ -34700,6 +42073,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AudioTemplate(self):
+        """Audio stream configuration parameter. This field is valid only when `RemoveAudio` is 0.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
+        """
         return self._AudioTemplate
 
     @AudioTemplate.setter
@@ -34708,6 +42085,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TEHDConfig(self):
+        """TESHD transcoding parameter. To enable it, please contact your Tencent Cloud sales rep.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
+        """
         return self._TEHDConfig
 
     @TEHDConfig.setter
@@ -34716,6 +42097,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ContainerType(self):
+        """Container format filter. Valid values:
+<li>Video: Video container format that can contain both video stream and audio stream;</li>
+<li>PureAudio: Audio container format that can contain only audio stream.</li>
+        :rtype: str
+        """
         return self._ContainerType
 
     @ContainerType.setter
@@ -34724,6 +42110,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -34732,6 +42121,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
+        """Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -34740,6 +42132,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnhanceConfig(self):
+        """Audio/Video enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
+        """
         return self._EnhanceConfig
 
     @EnhanceConfig.setter
@@ -34808,6 +42204,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """Switch of a full speech recognition task. Valid values:
+<li>ON: Enables an intelligent full speech recognition task;</li>
+<li>OFF: Disables an intelligent full speech recognition task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -34816,6 +42217,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SourceLanguage(self):
+        """
+        :rtype: str
+        """
         return self._SourceLanguage
 
     @SourceLanguage.setter
@@ -34824,6 +42228,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DestinationLanguage(self):
+        """
+        :rtype: str
+        """
         return self._DestinationLanguage
 
     @DestinationLanguage.setter
@@ -34832,6 +42239,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubtitleFormat(self):
+        """Generated subtitle file format. Leaving it as an empty string means no subtitle file will be generated. Valid value:
+<li>vtt: Generate a WebVTT subtitle file.</li>
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SubtitleFormat
 
     @SubtitleFormat.setter
@@ -34868,6 +42281,9 @@ class UrlInputInfo(AbstractModel):
 
     @property
     def Url(self):
+        """URL of a video.
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -34913,6 +42329,11 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def Switch(self):
+        """Switch of a custom speech audit task. Valid values:
+<li>ON: Enables a custom speech audit task;</li>
+<li>OFF: Disables a custom speech audit task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -34921,6 +42342,10 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def LabelSet(self):
+        """Custom speech filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom speech keywords.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -34929,6 +42354,9 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -34937,6 +42365,9 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -34985,6 +42416,11 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def Switch(self):
+        """Switch of a custom speech audit task. Valid values:
+<li>ON: Enables a custom speech audit task;</li>
+<li>OFF: Disables a custom speech audit task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -34993,6 +42429,10 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def LabelSet(self):
+        """Custom speech filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom speech keywords.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -35001,6 +42441,9 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -35009,6 +42452,9 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -35054,6 +42500,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FaceReviewInfo(self):
+        """Control parameter of custom figure audit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineFaceReviewTemplateInfo`
+        """
         return self._FaceReviewInfo
 
     @FaceReviewInfo.setter
@@ -35062,6 +42512,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AsrReviewInfo(self):
+        """Control parameter of custom speech audit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineAsrTextReviewTemplateInfo`
+        """
         return self._AsrReviewInfo
 
     @AsrReviewInfo.setter
@@ -35070,6 +42524,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OcrReviewInfo(self):
+        """Control parameter of custom text audit.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineOcrTextReviewTemplateInfo`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -35117,6 +42575,9 @@ class UserDefineConfigureInfoForUpdate(AbstractModel):
 
     @property
     def FaceReviewInfo(self):
+        """Control parameter of custom figure audit.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineFaceReviewTemplateInfoForUpdate`
+        """
         return self._FaceReviewInfo
 
     @FaceReviewInfo.setter
@@ -35125,6 +42586,9 @@ class UserDefineConfigureInfoForUpdate(AbstractModel):
 
     @property
     def AsrReviewInfo(self):
+        """Control parameter of custom speech audit.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineAsrTextReviewTemplateInfoForUpdate`
+        """
         return self._AsrReviewInfo
 
     @AsrReviewInfo.setter
@@ -35133,6 +42597,9 @@ class UserDefineConfigureInfoForUpdate(AbstractModel):
 
     @property
     def OcrReviewInfo(self):
+        """Control parameter of custom text audit.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UserDefineOcrTextReviewTemplateInfoForUpdate`
+        """
         return self._OcrReviewInfo
 
     @OcrReviewInfo.setter
@@ -35186,6 +42653,11 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def Switch(self):
+        """Switch of a custom figure audit task. Valid values:
+<li>ON: Enables a custom figure audit task;</li>
+<li>OFF: Disables a custom figure audit task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -35194,6 +42666,10 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def LabelSet(self):
+        """Custom figure filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for the custom figure library.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -35202,6 +42678,9 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 97 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -35210,6 +42689,9 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 95 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -35258,6 +42740,11 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def Switch(self):
+        """Switch of a custom figure audit task. Valid values:
+<li>ON: Enables a custom figure audit task;</li>
+<li>OFF: Disables a custom figure audit task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -35266,6 +42753,10 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def LabelSet(self):
+        """Custom figure filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for the custom figure library.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -35274,6 +42765,9 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -35282,6 +42776,9 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -35330,6 +42827,11 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def Switch(self):
+        """Switch of a custom text audit task. Valid values:
+<li>ON: Enables a custom text audit task;</li>
+<li>OFF: Disables a custom text audit task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -35338,6 +42840,10 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def LabelSet(self):
+        """Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -35346,6 +42852,9 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. If this parameter is left empty, 100 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -35354,6 +42863,9 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. If this parameter is left empty, 75 will be used by default. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -35402,6 +42914,11 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def Switch(self):
+        """Switch of a custom text audit task. Valid values:
+<li>ON: Enables a custom text audit task;</li>
+<li>OFF: Disables a custom text audit task.</li>
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -35410,6 +42927,10 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def LabelSet(self):
+        """Custom text filter tag. If an audit result contains the selected tag, it will be returned; if the filter tag is empty, all audit results will be returned. To use the tag filtering feature, you need to add the corresponding tag when adding materials for custom text keywords.
+There can be up to 10 tags, each with a length limit of 16 characters.
+        :rtype: list of str
+        """
         return self._LabelSet
 
     @LabelSet.setter
@@ -35418,6 +42939,9 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def BlockConfidence(self):
+        """Threshold score for violation. If this score is reached or exceeded during intelligent audit, it will be deemed that a suspected violation has occurred. Value range: 0-100.
+        :rtype: int
+        """
         return self._BlockConfidence
 
     @BlockConfidence.setter
@@ -35426,6 +42950,9 @@ There can be up to 10 tags, each with a length limit of 16 characters.
 
     @property
     def ReviewConfidence(self):
+        """Threshold score for human audit. If this score is reached or exceeded during intelligent audit, human audit will be considered necessary. Value range: 0-100.
+        :rtype: int
+        """
         return self._ReviewConfidence
 
     @ReviewConfidence.setter
@@ -35472,6 +42999,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """Whether to enable the feature. Valid values:
+<li>ON</li>
+<li>OFF</li>
+Default value: ON.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -35480,6 +43013,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """The strength. Valid values:
+<li>weak</li>
+<li>strong</li>
+Default value: weak.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -35555,6 +43095,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FrameRate(self):
+        """Frame interpolation configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FrameRateConfig`
+        """
         return self._FrameRate
 
     @FrameRate.setter
@@ -35563,6 +43107,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SuperResolution(self):
+        """Super resolution configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SuperResolutionConfig`
+        """
         return self._SuperResolution
 
     @SuperResolution.setter
@@ -35571,6 +43119,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Hdr(self):
+        """HDR configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.HdrConfig`
+        """
         return self._Hdr
 
     @Hdr.setter
@@ -35579,6 +43131,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Denoise(self):
+        """Image noise removal configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoDenoiseConfig`
+        """
         return self._Denoise
 
     @Denoise.setter
@@ -35587,6 +43143,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageQualityEnhance(self):
+        """Overall enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageQualityEnhanceConfig`
+        """
         return self._ImageQualityEnhance
 
     @ImageQualityEnhance.setter
@@ -35595,6 +43155,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ColorEnhance(self):
+        """Color enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ColorEnhanceConfig`
+        """
         return self._ColorEnhance
 
     @ColorEnhance.setter
@@ -35603,6 +43167,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SharpEnhance(self):
+        """Detail enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SharpEnhanceConfig`
+        """
         return self._SharpEnhance
 
     @SharpEnhance.setter
@@ -35611,6 +43179,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FaceEnhance(self):
+        """Face enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FaceEnhanceConfig`
+        """
         return self._FaceEnhance
 
     @FaceEnhance.setter
@@ -35619,6 +43191,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LowLightEnhance(self):
+        """Low-light enhancement configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LowLightEnhanceConfig`
+        """
         return self._LowLightEnhance
 
     @LowLightEnhance.setter
@@ -35627,6 +43203,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ScratchRepair(self):
+        """Banding removal configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScratchRepairConfig`
+        """
         return self._ScratchRepair
 
     @ScratchRepair.setter
@@ -35635,6 +43215,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ArtifactRepair(self):
+        """Artifact removal (smoothing) configuration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ArtifactRepairConfig`
+        """
         return self._ArtifactRepair
 
     @ArtifactRepair.setter
@@ -35870,6 +43454,24 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Codec(self):
+        """Encoding format for video streams. Optional values:
+<li>h264: H.264 encoding</li>
+<li>h265: H.265 encoding</li>
+<li>h266: H.266 encoding</li>
+<li>av1: AOMedia Video 1 encoding</li>
+<li>vp8: VP8 encoding</li>
+<li>vp9: VP9 encoding</li>
+<li>mpeg2: MPEG2 encoding</li>
+<li>dnxhd: DNxHD encoding</li>
+<li>mv-hevc: MV-HEVC encoding</li>
+
+Note: AV1 encoding containers currently only support mp4, webm, and mkv.
+Note: H.266 encoding containers currently only support mp4, hls, ts, and mov.
+Note: VP8 and VP9 encoding containers currently only support webm and mkv.
+Note: MPEG2 and DNxHD encoding containers currently only support mxf.
+Note: MV-HEVC encoding containers only support mp4, hls, and mov. Among them, the hls format only supports mp4 segmentation format.
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -35878,6 +43480,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Fps(self):
+        """Video frame rate. Value range:
+When FpsDenominator is empty, the range is [0, 120], in Hz.
+When FpsDenominator is not empty, the Fps/FpsDenominator range is [0, 120].
+If the value is 0, the frame rate will be the same as that of the source video.
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -35886,6 +43494,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Bitrate(self):
+        """Bitrate of a video stream, in kbps. Value range: 0 and [128, 100000].If the value is 0, the bitrate of the video will be the same as that of the source video.
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -35894,6 +43505,13 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ResolutionAdaptive(self):
+        """Resolution adaption. Valid values:
+<li>open: Enabled. When resolution adaption is enabled, `Width` indicates the long side of a video, while `Height` indicates the short side.</li>
+<li>close: Disabled. When resolution adaption is disabled, `Width` indicates the width of a video, while `Height` indicates the height.</li>
+Default value: open.
+Note: When resolution adaption is enabled, `Width` cannot be smaller than `Height`.
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -35902,6 +43520,14 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Width(self):
+        """Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].
+<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
+<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
+<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
+<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -35910,6 +43536,14 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Height(self):
+        """Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
+<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
+<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
+<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
+<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
+Default value: 0.
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -35918,6 +43552,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Gop(self):
+        """Interval between I-frames (keyframes), which can be customized in frames or seconds. GOP value range: 0 and [1, 100000].
+If this parameter is 0 or left blank, the system will automatically set the GOP length.
+        :rtype: int
+        """
         return self._Gop
 
     @Gop.setter
@@ -35926,6 +43564,13 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def GopUnit(self):
+        """GOP value unit. Optional values:
+frame: indicates frame
+second: indicates second
+Default value: frame
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._GopUnit
 
     @GopUnit.setter
@@ -35934,6 +43579,17 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def FillType(self):
+        """Filling mode. When the configured aspect ratio parameter for video streams differs from the aspect ratio of the original video, the processing method for transcoding is "filling". Optional filling modes:
+<li>stretch: Each frame is stretched to fill the entire screen, which may cause the transcoded video to be "flattened" or "stretched".</li>
+<li>black: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with black.</li>
+<li>white: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with white.</li>
+<li>gauss: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with a Gaussian blur.</li>
+
+<li>smarttailor: Video images are smartly selected to ensure proportional image cropping.</li>
+Default value: black.
+Note: Only stretch and black are supported for adaptive bitrate streaming.
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -35942,6 +43598,16 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Vcrf(self):
+        """Control factor for constant video bitrate. Value range: [0, 51].
+If this parameter is specified, the bitrate control mode for the CRF will be used for transcoding (the video bitrate will no longer take effect).
+It is recommended not to specify this parameter if there are no special requirements.
+
+Note:
+If Mode is set to ABR, the Vcrf value does not need to be configured.
+If Mode is set to CBR, the Vcrf value does not need to be configured.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._Vcrf
 
     @Vcrf.setter
@@ -35950,6 +43616,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def HlsTime(self):
+        """Average segment duration. Value range: (0-10], unit: second
+Default value: 10
+Note: It can be used only in the container format of hls.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._HlsTime
 
     @HlsTime.setter
@@ -35958,6 +43630,16 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SegmentType(self):
+        """HLS segment type. Valid values:
+<li>0: HLS+TS segment.</li>
+<li>2: HLS+TS byte range.</li>
+<li>7: HLS+MP4 segment.</li>
+<li>5: HLS+MP4 byte range.</li>
+Default value: 0
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SegmentType
 
     @SegmentType.setter
@@ -35966,6 +43648,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def FpsDenominator(self):
+        """Denominator of the frame rate.
+Note: The value must be greater than 0.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FpsDenominator
 
     @FpsDenominator.setter
@@ -35974,6 +43661,13 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Stereo3dType(self):
+        """3D video splicing mode, which is only valid for MV-HEVC 3D videos. Valid values:
+<li>side_by_side: side-by-side view.</li>
+<li>top_bottom: top-bottom view.</li>
+Default value: side_by_side.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Stereo3dType
 
     @Stereo3dType.setter
@@ -35982,6 +43676,16 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def VideoProfile(self):
+        """Profile, suitable for different scenarios.
+baseline: It only supports I/P-frames and non-interlaced scenarios, and is suitable for scenarios such as video calls and mobile videos.
+main: It offers I-frames, P-frames, and B-frames, and supports both interlaced and non-interlaced modes. It is mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices.
+high: the highest encoding level, with 8x8 prediction added to the main profile and support for custom quantification. It is widely used in scenarios such as Blu-ray storage and HDTV.
+default: automatic filling along with the original video.    
+
+This configuration appears only when the encoding standard is set to H264. baseline/main/high is supported. Default value: default
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._VideoProfile
 
     @VideoProfile.setter
@@ -35990,6 +43694,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def VideoLevel(self):
+        """Encoder level. Default value: auto ("")
+If the encoding standard is set to H264, the following options are supported: "", 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1.
+If the encoding standard is set to H265, the following options are supported: "", 1, 2, 2.1, 3, 3.1, 4, 4.1, 5, 5.1, 5.2, 6, 6.1, 6.2, and 8.5.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._VideoLevel
 
     @VideoLevel.setter
@@ -35998,6 +43708,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Bframes(self):
+        """Number of B-frames between reference frames. The default is auto, and a range of 0 - 16 is supported.
+Note: Leaving it blank means using the auto option.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._Bframes
 
     @Bframes.setter
@@ -36006,6 +43721,15 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Mode(self):
+        """Bitrate control mode. Optional values:
+VBR: variable bitrate. The output bitrate is adjusted based on the complexity of the video image, ensuring higher image quality. This mode is suitable for storage scenarios as well as applications with high image quality requirements.
+ABR: average bitrate. The average bitrate of the output video is kept stable to the greatest extent, but short-term bitrate fluctuations are allowed. This mode is suitable for scenarios where it is necessary to minimize the overall bitrate while a certain quality is maintained.
+CBR: constant bitrate. The output bitrate remains constant during the video encoding process, regardless of changes in image complexity. This mode is suitable for scenarios with strict network bandwidth requirements, such as live streaming.
+VCRF: constant rate factor. The video quality is controlled by setting a quality factor, achieving constant quality encoding of videos. The bitrate is automatically adjusted based on the complexity of the content. This mode is suitable for scenarios where maintaining a certain quality is desired.
+VBR is selected by default.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -36014,6 +43738,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Sar(self):
+        """Display aspect ratio. Optional values: [1:1, 2:1, default]
+Default value: default
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Sar
 
     @Sar.setter
@@ -36022,6 +43751,14 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def NoScenecut(self):
+        """Adaptive I-frame decision. When it is enabled, Media Processing Service will automatically identify transition points between different scenarios in the video (usually they are visually distinct frames, such as those of switching from one shot to another) and adaptively insert keyframes (I-frames) at these points to improve the random accessibility and encoding efficiency of the video. Optional values:
+0: Disable the adaptive I-frame decision 
+1: Enable the adaptive I-frame decision
+Default value: 0
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._NoScenecut
 
     @NoScenecut.setter
@@ -36030,6 +43767,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def BitDepth(self):
+        """Bit: 8/10 is supported. Default value: 8
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._BitDepth
 
     @BitDepth.setter
@@ -36038,6 +43779,13 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RawPts(self):
+        """Preservation of original timestamp. Optional values:
+0: Disabled
+1: Enabled
+Default value: Disabled
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._RawPts
 
     @RawPts.setter
@@ -36046,6 +43794,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Compress(self):
+        """Proportional compression bitrate. When it is enabled, the bitrate of the output video will be adjusted according to the proportion. After the compression ratio is entered, the system will automatically calculate the target output bitrate based on the source video bitrate. Compression ratio range: 0-100
+Leaving this value blank means it is not enabled by default.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._Compress
 
     @Compress.setter
@@ -36054,6 +43807,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SegmentSpecificInfo(self):
+        """Special segment configuration
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
+        """
         return self._SegmentSpecificInfo
 
     @SegmentSpecificInfo.setter
@@ -36289,6 +44046,26 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Codec(self):
+        """Encoding format for video streams. Optional values:
+<li>h264: H.264 encoding</li>
+<li>h265: H.265 encoding</li>
+<li>h266: H.266 encoding</li>
+<li>av1: AOMedia Video 1 encoding</li>
+<li>vp8: VP8 encoding</li>
+<li>vp9: VP9 encoding</li>
+<li>mpeg2: MPEG2 encoding</li>
+<li>dnxhd: DNxHD encoding</li>
+<li>mv-hevc: MV-HEVC encoding</li>
+
+Note: AV1 encoding containers currently only support mp4, webm, and mkv.
+Note: H.266 encoding containers currently only support mp4, hls, ts, and mov.
+Note: VP8 and VP9 encoding containers currently only support webm and mkv.
+Note: MPEG2 and DNxHD encoding containers currently only support mxf.
+Note: MV-HEVC encoding containers only support mp4, hls, and mov. Among them, the hls format only supports mp4 segmentation format.
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Codec
 
     @Codec.setter
@@ -36297,6 +44074,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Fps(self):
+        """Video frame rate. Value range:
+When FpsDenominator is empty, the range is [0, 120], in Hz.
+When FpsDenominator is not empty, the Fps/FpsDenominator range is [0, 120].
+If the value is 0, the frame rate will be the same as that of the source video.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Fps
 
     @Fps.setter
@@ -36305,6 +44088,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Bitrate(self):
+        """Bitrate of a video stream, in kbps. Value range: 0 and [128, 100000].If the value is 0, the bitrate of the video will be the same as that of the source video.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Bitrate
 
     @Bitrate.setter
@@ -36313,6 +44099,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ResolutionAdaptive(self):
+        """Resolution adaption. Valid values:
+<li>open: Enabled. When resolution adaption is enabled, `Width` indicates the long side of a video, while `Height` indicates the short side.</li>
+<li>close: Disabled. When resolution adaption is disabled, `Width` indicates the width of a video, while `Height` indicates the height.</li>
+Note: When resolution adaption is enabled, `Width` cannot be smaller than `Height`.
+        :rtype: str
+        """
         return self._ResolutionAdaptive
 
     @ResolutionAdaptive.setter
@@ -36321,6 +44113,13 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Width(self):
+        """Maximum value of the width (or long side) of a video stream in px. Value range: 0 and [128, 4,096].
+<li>If both `Width` and `Height` are 0, the resolution will be the same as that of the source video;</li>
+<li>If `Width` is 0, but `Height` is not 0, `Width` will be proportionally scaled;</li>
+<li>If `Width` is not 0, but `Height` is 0, `Height` will be proportionally scaled;</li>
+<li>If both `Width` and `Height` are not 0, the custom resolution will be used.</li>
+        :rtype: int
+        """
         return self._Width
 
     @Width.setter
@@ -36329,6 +44128,9 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Height(self):
+        """Maximum value of the height (or short side) of a video stream in px. Value range: 0 and [128, 4,096].
+        :rtype: int
+        """
         return self._Height
 
     @Height.setter
@@ -36337,6 +44139,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Gop(self):
+        """Interval between I-frames (keyframes), which can be customized in frames or seconds. GOP value range: 0 and [1, 100000].
+If this parameter is 0, the system will automatically set the GOP length.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._Gop
 
     @Gop.setter
@@ -36345,6 +44152,13 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def GopUnit(self):
+        """GOP value unit. Optional values: 
+frame: indicates frame 
+second: indicates second
+Default value: frame
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._GopUnit
 
     @GopUnit.setter
@@ -36353,6 +44167,20 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def FillType(self):
+        """Filling mode. When the configured aspect ratio parameter for video streams differs from the aspect ratio of the original video, the processing method for transcoding is "filling". Optional filling modes:
+ <li>stretch: Each frame is stretched to fill the entire screen, which may cause the transcoded video to be "flattened" or "stretched".</li>
+<li>black: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with black.</li>
+<li>white: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with white.</li>
+<li>gauss: The aspect ratio of the video is kept unchanged, and the rest of the edges is filled with a Gaussian blur.</li>
+
+<li>smarttailor: Video images are smartly selected to ensure proportional image cropping.</li>
+Default value: black.
+
+Note: Only stretch and black are supported for adaptive bitrate streaming.
+
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._FillType
 
     @FillType.setter
@@ -36361,6 +44189,16 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Vcrf(self):
+        """Control factor for constant video bitrate. Value range: [0, 51] and 100.
+It is recommended not to specify this parameter if there are no special requirements.
+
+Note:
+When you need to set it to auto, fill in 100.
+If Mode is set to ABR, the Vcrf value does not need to be configured.
+If Mode is set to CBR, the Vcrf value does not need to be configured.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._Vcrf
 
     @Vcrf.setter
@@ -36369,6 +44207,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def ContentAdaptStream(self):
+        """Whether to enable adaptive encoding. Valid values:
+<li>0: Disable</li>
+<li>1: Enable</li>
+Default value: 0. If this parameter is set to `1`, multiple streams with different resolutions and bitrates will be generated automatically. The highest resolution, bitrate, and quality of the streams are determined by the values of `width` and `height`, `Bitrate`, and `Vcrf` in `VideoTemplate` respectively. If these parameters are not set in `VideoTemplate`, the highest resolution generated will be the same as that of the source video, and the highest video quality will be close to VMAF 95. To use this parameter or learn about the billing details of adaptive encoding, please contact your sales rep.
+        :rtype: int
+        """
         return self._ContentAdaptStream
 
     @ContentAdaptStream.setter
@@ -36377,6 +44221,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def HlsTime(self):
+        """Average segment duration. Value range: (0-10], unit: second
+Default value: 10
+Note: It is used only in the format of HLS.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._HlsTime
 
     @HlsTime.setter
@@ -36385,6 +44235,16 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SegmentType(self):
+        """HLS segment type. Valid values:
+<li>0: HLS+TS segment.</li>
+<li>2: HLS+TS byte range.</li>
+<li>7: HLS+MP4 segment.</li>
+<li>5: HLS+MP4 byte range.</li>
+Default value: 0
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SegmentType
 
     @SegmentType.setter
@@ -36393,6 +44253,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def FpsDenominator(self):
+        """Denominator of the frame rate.
+Note: The value must be greater than 0.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FpsDenominator
 
     @FpsDenominator.setter
@@ -36401,6 +44266,13 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Stereo3dType(self):
+        """3D video splicing mode, which is only valid for MV-HEVC 3D videos. Valid values:
+<li>side_by_side: side-by-side view.</li>
+<li>top_bottom: top-bottom view.</li>
+Default value: side_by_side.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Stereo3dType
 
     @Stereo3dType.setter
@@ -36409,6 +44281,16 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def VideoProfile(self):
+        """Profile, suitable for different scenarios. 
+baseline: It only supports I/P-frames and non-interlaced scenarios, and is suitable for scenarios such as video calls and mobile videos. 
+main: It offers I-frames, P-frames, and B-frames, and supports both interlaced and non-interlaced modes. It is mainly used in mainstream audio and video consumption products such as video players and streaming media transmission devices. 
+high: the highest encoding level, with 8x8 prediction added to the main profile and support for custom quantification. It is widely used in scenarios such as Blu-ray storage and HDTV.
+default: automatic filling along with the original video
+
+This configuration appears only when the encoding standard is set to H264. Default value: default
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._VideoProfile
 
     @VideoProfile.setter
@@ -36417,6 +44299,12 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def VideoLevel(self):
+        """Encoder level. Default value: auto ("")
+If the encoding standard is set to H264, the following options are supported: "", 1, 1.1, 1.2, 1.3, 2, 2.1, 2.2, 3, 3.1, 3.2, 4, 4.1, 4.2, 5, and 5.1. 
+If the encoding standard is set to H265, the following options are supported: "", 1, 2, 2.1, 3, 3.1, 4, 4.1, 5, 5.1, 5.2, 6, 6.1, 6.2, and 8.5.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._VideoLevel
 
     @VideoLevel.setter
@@ -36425,6 +44313,13 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Bframes(self):
+        """Maximum number of consecutive B-frames. The default is auto, and 0 - 16 and -1 are supported.
+Note:
+
+-1 indicates auto.	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._Bframes
 
     @Bframes.setter
@@ -36433,6 +44328,15 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Mode(self):
+        """Bitrate control mode. Optional values: 
+VBR: variable bitrate. The output bitrate is adjusted based on the complexity of the video image, ensuring higher image quality. This mode is suitable for storage scenarios as well as applications with high image quality requirements. 
+ABR: average bitrate. The average bitrate of the output video is kept stable to the greatest extent, but short-term bitrate fluctuations are allowed. This mode is suitable for scenarios where it is necessary to minimize the overall bitrate while a certain quality is maintained. 
+CBR: constant bitrate. The output bitrate remains constant during the video encoding process, regardless of changes in image complexity. This mode is suitable for scenarios with strict network bandwidth requirements, such as live streaming. 
+VCRF: constant rate factor. The video quality is controlled by setting a quality factor, achieving constant quality encoding of videos. The bitrate is automatically adjusted based on the complexity of the content. This mode is suitable for scenarios where maintaining a certain quality is desired. 
+VBR is selected by default.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -36441,6 +44345,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Sar(self):
+        """Display aspect ratio. Optional values: [1:1, 2:1, default]
+Default value: default
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._Sar
 
     @Sar.setter
@@ -36449,6 +44358,14 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def NoScenecut(self):
+        """Adaptive I-frame decision. When it is enabled, Media Processing Service will automatically identify transition points between different scenarios in the video (usually they are visually distinct frames, such as those of switching from one shot to another) and adaptively insert keyframes (I-frames) at these points to improve the random accessibility and encoding efficiency of the video. Optional values: 
+0: Disable the adaptive I-frame decision 
+1: Enable the adaptive I-frame decision 
+Default value: 0	
+	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._NoScenecut
 
     @NoScenecut.setter
@@ -36457,6 +44374,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def BitDepth(self):
+        """Bit: 8/10 is supported. Default value: 8	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._BitDepth
 
     @BitDepth.setter
@@ -36465,6 +44386,13 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def RawPts(self):
+        """Preservation of original timestamp. Optional values: 
+0: Disabled 
+1: Enabled 
+Default value: Disabled	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._RawPts
 
     @RawPts.setter
@@ -36473,6 +44401,11 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def Compress(self):
+        """Proportional compression bitrate. When it is enabled, the bitrate of the output video will be adjusted according to the proportion. After the compression ratio is entered, the system will automatically calculate the target output bitrate based on the source video bitrate. Compression ratio range: 0-100, optional values: [0-100] and -1 
+Note: -1 indicates auto.	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: int
+        """
         return self._Compress
 
     @Compress.setter
@@ -36481,6 +44414,10 @@ Note: This field may return null, indicating that no valid value can be obtained
 
     @property
     def SegmentSpecificInfo(self):
+        """Special segment configuration	
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SegmentSpecificInfo`
+        """
         return self._SegmentSpecificInfo
 
     @SegmentSpecificInfo.setter
@@ -36550,6 +44487,12 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Switch(self):
+        """Whether to enable the feature. Valid values:
+<li>`ON`</li>
+<li>`OFF` </li>
+Default value: `ON`.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -36558,6 +44501,13 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Type(self):
+        """The type. Valid values:
+<li>`loudNorm`: Loudness normalization.</li>
+<li>`gainControl`: Volume leveling.</li>
+Default value: `loudNorm`.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -36621,6 +44571,9 @@ Note: It is only used for video scenarios. Screenshots are not supported.
 
     @property
     def Definition(self):
+        """ID of a watermarking template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -36629,6 +44582,11 @@ Note: It is only used for video scenarios. Screenshots are not supported.
 
     @property
     def RawParameter(self):
+        """Custom watermark parameter, which is valid if `Definition` is 0.
+This parameter is used in highly customized scenarios. We recommend you use `Definition` to specify the watermark parameter preferably.
+Custom watermark parameter is not available for screenshot.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.RawWatermarkParameter`
+        """
         return self._RawParameter
 
     @RawParameter.setter
@@ -36637,6 +44595,10 @@ Note: It is only used for video scenarios. Screenshots are not supported.
 
     @property
     def TextContent(self):
+        """Text content of up to 100 characters. This field is required only when the watermark type is text.
+Text watermark is not available for screenshot.
+        :rtype: str
+        """
         return self._TextContent
 
     @TextContent.setter
@@ -36645,6 +44607,10 @@ Note: It is only used for video scenarios. Screenshots are not supported.
 
     @property
     def SvgContent(self):
+        """SVG content of up to 2,000,000 characters. This field is required only when the watermark type is `SVG`.
+SVG watermark is not available for screenshot.
+        :rtype: str
+        """
         return self._SvgContent
 
     @SvgContent.setter
@@ -36653,6 +44619,14 @@ Note: It is only used for video scenarios. Screenshots are not supported.
 
     @property
     def StartTimeOffset(self):
+        """Start time offset of a watermark, in seconds. If not set or set to 0, a watermark starts appearing when a video starts.
+<li>If not set or set to 0, a watermark starts appearing when a video starts.</li>
+<li>If the value is greater than 0 (for example, n), a watermark will appear at second n of a video.</li>
+<li>If the value is less than 0 (for example, -n), a watermark will appear n seconds before the end of a video.</li>
+
+Note: It is only used for video scenarios. Screenshots are not supported.
+        :rtype: float
+        """
         return self._StartTimeOffset
 
     @StartTimeOffset.setter
@@ -36661,6 +44635,14 @@ Note: It is only used for video scenarios. Screenshots are not supported.
 
     @property
     def EndTimeOffset(self):
+        """End time offset of a watermark, in seconds.
+<li>If not set or set to 0, a watermark will last until the end of a video.</li>
+<li>If the value is greater than 0 (for example, n), a watermark will disappear at second n.</li>
+<li>If the value is less than 0 (for example, -n), a watermark will disappear n seconds before the end of a video.</li>
+
+Note: It is only used for video scenarios. Screenshots are not supported.
+        :rtype: float
+        """
         return self._EndTimeOffset
 
     @EndTimeOffset.setter
@@ -36747,6 +44729,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Definition(self):
+        """Unique ID of a watermarking template.
+        :rtype: int
+        """
         return self._Definition
 
     @Definition.setter
@@ -36755,6 +44740,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """Watermark type. Valid values:
+<li>image: Image watermark;</li>
+<li>text: Text watermark.</li>
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -36763,6 +44753,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
+        """Name of a watermarking template.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -36771,6 +44764,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Comment(self):
+        """Template description.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -36779,6 +44775,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def XPos(self):
+        """Horizontal position of the origin of the watermark image relative to the origin of the video.
+<li>If the string ends in %, the `Left` edge of the watermark will be at the position of the specified percentage of the video width; for example, `10%` means that the `Left` edge is at 10% of the video width;</li>
+<li>If the string ends in px, the `Left` edge of the watermark will be at the position of the specified px of the video width; for example, `100px` means that the `Left` edge is at the position of 100 px.</li>
+        :rtype: str
+        """
         return self._XPos
 
     @XPos.setter
@@ -36787,6 +44788,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def YPos(self):
+        """Vertical position of the origin of the watermark image relative to the origin of the video.
+<li>If the string ends in %, the `Top` edge of the watermark will beat the position of the specified percentage of the video height; for example, `10%` means that the `Top` edge is at 10% of the video height;</li>
+<li>If the string ends in px, the `Top` edge of the watermark will be at the position of the specified px of the video height; for example, `100px` means that the `Top` edge is at the position of 100 px.</li>
+        :rtype: str
+        """
         return self._YPos
 
     @YPos.setter
@@ -36795,6 +44801,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ImageTemplate(self):
+        """Image watermarking template. This field is valid only when `Type` is `image`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageWatermarkTemplate`
+        """
         return self._ImageTemplate
 
     @ImageTemplate.setter
@@ -36803,6 +44813,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TextTemplate(self):
+        """Text watermarking template. This field is valid only when `Type` is `text`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TextWatermarkTemplateInput`
+        """
         return self._TextTemplate
 
     @TextTemplate.setter
@@ -36811,6 +44825,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SvgTemplate(self):
+        """SVG watermarking template. This field is valid when `Type` is `svg`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SvgWatermarkInput`
+        """
         return self._SvgTemplate
 
     @SvgTemplate.setter
@@ -36819,6 +44837,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Creation time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -36827,6 +44848,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
+        """Last modified time of a template in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -36835,6 +44859,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CoordinateOrigin(self):
+        """Origin position. Valid values:
+<li>topLeft: The origin of coordinates is in the top-left corner of the video, and the origin of the watermark is in the top-left corner of the image or text;</li>
+<li>topRight: The origin of coordinates is in the top-right corner of the video, and the origin of the watermark is in the top-right corner of the image or text;</li>
+<li>bottomLeft: The origin of coordinates is in the bottom-left corner of the video, and the origin of the watermark is in the bottom-left corner of the image or text;</li>
+<li>bottomRight: The origin of coordinates is in the bottom-right corner of the video, and the origin of the watermark is in the bottom-right corner of the image or text.</li>
+        :rtype: str
+        """
         return self._CoordinateOrigin
 
     @CoordinateOrigin.setter
@@ -36931,6 +44962,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WorkflowId(self):
+        """Workflow ID.
+        :rtype: int
+        """
         return self._WorkflowId
 
     @WorkflowId.setter
@@ -36939,6 +44973,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WorkflowName(self):
+        """Workflow name.
+        :rtype: str
+        """
         return self._WorkflowName
 
     @WorkflowName.setter
@@ -36947,6 +44984,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Workflow status. Valid values:
+<li>Enabled: Enabled,</li>
+<li>Disabled: Disabled.</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -36955,6 +44997,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Trigger(self):
+        """Input rule bound to a workflow. If an uploaded video hits the rule for the object, the workflow will be triggered.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
+        """
         return self._Trigger
 
     @Trigger.setter
@@ -36963,6 +45008,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputStorage(self):
+        """The location to save the media processing output file.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
         return self._OutputStorage
 
     @OutputStorage.setter
@@ -36971,6 +45020,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MediaProcessTask(self):
+        """The media processing parameters to use.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
+        """
         return self._MediaProcessTask
 
     @MediaProcessTask.setter
@@ -36979,6 +45032,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiContentReviewTask(self):
+        """Type parameter of a video content audit task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
+        """
         return self._AiContentReviewTask
 
     @AiContentReviewTask.setter
@@ -36987,6 +45044,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiAnalysisTask(self):
+        """Video content analysis task parameter.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
+        """
         return self._AiAnalysisTask
 
     @AiAnalysisTask.setter
@@ -36995,6 +45055,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiRecognitionTask(self):
+        """Type parameter of a video content recognition task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
+        """
         return self._AiRecognitionTask
 
     @AiRecognitionTask.setter
@@ -37003,6 +45067,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskNotifyConfig(self):
+        """Event notification information of a task. If this parameter is left empty, no event notifications will be obtained.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
+        """
         return self._TaskNotifyConfig
 
     @TaskNotifyConfig.setter
@@ -37011,6 +45079,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskPriority(self):
+        """Task flow priority. The higher the value, the higher the priority. Value range: [-10, 10]. If this parameter is left empty, 0 will be used.
+        :rtype: int
+        """
         return self._TaskPriority
 
     @TaskPriority.setter
@@ -37019,6 +45090,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OutputDir(self):
+        """The directory to save the media processing output file, such as `/movie/201907/`.
+        :rtype: str
+        """
         return self._OutputDir
 
     @OutputDir.setter
@@ -37027,6 +45101,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Creation time of a workflow in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -37035,6 +45112,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
+        """Last modified time of a workflow in [ISO date format](https://intl.cloud.tencent.com/document/product/266/11732?from_cn_redirect=1#iso-.E6.97.A5.E6.9C.9F.E6.A0.BC.E5.BC.8F).
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -37130,6 +45210,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskId(self):
+        """The media processing task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -37138,6 +45221,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task flow status. Valid values:
+<li>PROCESSING: Processing;</li>
+<li>FINISH: Completed.</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -37146,6 +45234,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrCode(self):
+        """If the value returned is not 0, there was a source error. If 0 is returned, refer to the error codes of the corresponding task type.
+        :rtype: int
+        """
         return self._ErrCode
 
     @ErrCode.setter
@@ -37154,6 +45245,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Except those for source errors, error messages vary with task type.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -37162,6 +45256,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InputInfo(self):
+        """The information of the file processed.
+Note: This field may return null, indicating that no valid value can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
         return self._InputInfo
 
     @InputInfo.setter
@@ -37170,6 +45268,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetaData(self):
+        """Metadata of a source video.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
+        """
         return self._MetaData
 
     @MetaData.setter
@@ -37178,6 +45280,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MediaProcessResultSet(self):
+        """The execution status and result of the media processing task.
+        :rtype: list of MediaProcessTaskResult
+        """
         return self._MediaProcessResultSet
 
     @MediaProcessResultSet.setter
@@ -37186,6 +45291,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiContentReviewResultSet(self):
+        """Execution status and result of a video content audit task.
+        :rtype: list of AiContentReviewResult
+        """
         return self._AiContentReviewResultSet
 
     @AiContentReviewResultSet.setter
@@ -37194,6 +45302,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiAnalysisResultSet(self):
+        """Execution status and result of video content analysis task.
+        :rtype: list of AiAnalysisResult
+        """
         return self._AiAnalysisResultSet
 
     @AiAnalysisResultSet.setter
@@ -37202,6 +45313,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiRecognitionResultSet(self):
+        """Execution status and result of a video content recognition task.
+        :rtype: list of AiRecognitionResult
+        """
         return self._AiRecognitionResultSet
 
     @AiRecognitionResultSet.setter
@@ -37210,6 +45324,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AiQualityControlTaskResult(self):
+        """Execution status and results of a media quality inspection task.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
+        """
         return self._AiQualityControlTaskResult
 
     @AiQualityControlTaskResult.setter
@@ -37293,6 +45411,13 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """The trigger type. Valid values:
+<li>`CosFileUpload`: Tencent Cloud COS trigger.</li>
+<li>`AwsS3FileUpload`: AWS S3 trigger. Currently, this type is only supported for transcoding tasks and schemes (not supported for workflows).</li>
+
+
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -37301,6 +45426,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosFileUploadTrigger(self):
+        """This parameter is required and valid when `Type` is `CosFileUpload`, indicating the COS trigger rule.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CosFileUploadTrigger`
+        """
         return self._CosFileUploadTrigger
 
     @CosFileUploadTrigger.setter
@@ -37309,6 +45438,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AwsS3FileUploadTrigger(self):
+        """The AWS S3 trigger. This parameter is valid and required if `Type` is `AwsS3FileUpload`.
+
+Note: Currently, the key for the AWS S3 bucket, the trigger SQS queue, and the callback SQS queue must be the same.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AwsS3FileUploadTrigger`
+        """
         return self._AwsS3FileUploadTrigger
 
     @AwsS3FileUploadTrigger.setter

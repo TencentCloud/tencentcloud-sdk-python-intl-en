@@ -35,6 +35,9 @@ class AddLabelRequest(AbstractModel):
 
     @property
     def LabelId(self):
+        """The label ID.
+        :rtype: int
+        """
         return self._LabelId
 
     @LabelId.setter
@@ -43,6 +46,9 @@ class AddLabelRequest(AbstractModel):
 
     @property
     def Did(self):
+        """
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -77,6 +83,9 @@ class AddLabelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -151,6 +160,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Id(self):
+        """The authority ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -159,6 +171,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DidId(self):
+        """The DID.
+        :rtype: int
+        """
         return self._DidId
 
     @DidId.setter
@@ -167,6 +182,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Did(self):
+        """The details of the DID.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -175,6 +193,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Name(self):
+        """The authority name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -183,6 +204,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Whether the authority is certified. `1`: Yes; `2`: No.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -191,6 +215,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DidServiceId(self):
+        """The DID service ID.
+        :rtype: int
+        """
         return self._DidServiceId
 
     @DidServiceId.setter
@@ -199,6 +226,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ContractAppId(self):
+        """The application ID.
+        :rtype: int
+        """
         return self._ContractAppId
 
     @ContractAppId.setter
@@ -207,6 +237,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Remark(self):
+        """Remarks
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -215,6 +248,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RegisterTime(self):
+        """The registration time.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RegisterTime
 
     @RegisterTime.setter
@@ -223,6 +260,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RecognizeTime(self):
+        """The recognition time.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RecognizeTime
 
     @RecognizeTime.setter
@@ -231,6 +272,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateTime(self):
+        """The creation time.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -239,6 +284,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UpdateTime(self):
+        """The last updated time.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -247,6 +296,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -255,6 +307,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -263,6 +318,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AppName(self):
+        """The application name.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -271,6 +329,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LabelName(self):
+        """The on-chain label.
+        :rtype: str
+        """
         return self._LabelName
 
     @LabelName.setter
@@ -361,6 +422,9 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def ChainId(self):
+        """The network ID.
+        :rtype: int
+        """
         return self._ChainId
 
     @ChainId.setter
@@ -369,6 +433,9 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def ChainName(self):
+        """The network name.
+        :rtype: str
+        """
         return self._ChainName
 
     @ChainName.setter
@@ -377,6 +444,9 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def AgencyCount(self):
+        """The number of organizations.
+        :rtype: int
+        """
         return self._AgencyCount
 
     @AgencyCount.setter
@@ -385,6 +455,9 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def ConsortiumId(self):
+        """The consortium ID.
+        :rtype: int
+        """
         return self._ConsortiumId
 
     @ConsortiumId.setter
@@ -393,6 +466,9 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def CreateTime(self):
+        """The creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -401,6 +477,9 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """The expiration time.
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -409,6 +488,9 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def ChainStatus(self):
+        """The network status.
+        :rtype: int
+        """
         return self._ChainStatus
 
     @ChainStatus.setter
@@ -417,6 +499,9 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def ResourceId(self):
+        """The resource ID.
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -425,6 +510,9 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The cluster ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -433,6 +521,9 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def ConsortiumName(self):
+        """The consortium name.
+        :rtype: str
+        """
         return self._ConsortiumName
 
     @ConsortiumName.setter
@@ -441,6 +532,9 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def AgencyId(self):
+        """The organization ID.
+        :rtype: int
+        """
         return self._AgencyId
 
     @AgencyId.setter
@@ -449,6 +543,9 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """The renewal status.
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -457,6 +554,9 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def TotalNetworkNode(self):
+        """The network mode.
+        :rtype: int
+        """
         return self._TotalNetworkNode
 
     @TotalNetworkNode.setter
@@ -465,6 +565,9 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def TotalCreateNode(self):
+        """The number of nodes created.
+        :rtype: int
+        """
         return self._TotalCreateNode
 
     @TotalCreateNode.setter
@@ -473,6 +576,9 @@ class BcosClusterItem(AbstractModel):
 
     @property
     def TotalGroups(self):
+        """The total number of groups.
+        :rtype: int
+        """
         return self._TotalGroups
 
     @TotalGroups.setter
@@ -520,6 +626,9 @@ class CancelAuthorityIssuerRequest(AbstractModel):
 
     @property
     def Did(self):
+        """The details of the DID.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -553,6 +662,9 @@ class CancelAuthorityIssuerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -584,6 +696,9 @@ class CheckChainRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -592,6 +707,9 @@ class CheckChainRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -600,6 +718,9 @@ class CheckChainRequest(AbstractModel):
 
     @property
     def AgencyName(self):
+        """The name of the DID organization.
+        :rtype: str
+        """
         return self._AgencyName
 
     @AgencyName.setter
@@ -644,6 +765,9 @@ class CheckChainResponse(AbstractModel):
 
     @property
     def RoleType(self):
+        """Whether you are the owner of the consortium. `1`: Yes; `0`: No.
+        :rtype: int
+        """
         return self._RoleType
 
     @RoleType.setter
@@ -652,6 +776,9 @@ class CheckChainResponse(AbstractModel):
 
     @property
     def ChainId(self):
+        """The chain ID.
+        :rtype: str
+        """
         return self._ChainId
 
     @ChainId.setter
@@ -660,6 +787,9 @@ class CheckChainResponse(AbstractModel):
 
     @property
     def AppName(self):
+        """The application name.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -668,6 +798,9 @@ class CheckChainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -696,6 +829,9 @@ class CheckDidDeployRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """The task ID.
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -732,6 +868,9 @@ class CheckDidDeployResponse(AbstractModel):
 
     @property
     def Task(self):
+        """The service information.
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.Task`
+        """
         return self._Task
 
     @Task.setter
@@ -740,6 +879,9 @@ class CheckDidDeployResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -771,6 +913,9 @@ class ConsortiumItem(AbstractModel):
 
     @property
     def Id(self):
+        """The consortium ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -779,6 +924,9 @@ class ConsortiumItem(AbstractModel):
 
     @property
     def Name(self):
+        """The consortium name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -834,6 +982,9 @@ class Contract(AbstractModel):
 
     @property
     def ApplyName(self):
+        """The application name.
+        :rtype: str
+        """
         return self._ApplyName
 
     @ApplyName.setter
@@ -842,6 +993,9 @@ class Contract(AbstractModel):
 
     @property
     def Enable(self):
+        """The contract status. `true`: Enabled; `false`: Not enabled.
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -850,6 +1004,9 @@ class Contract(AbstractModel):
 
     @property
     def Hash(self):
+        """The CNS address of the contract.
+        :rtype: str
+        """
         return self._Hash
 
     @Hash.setter
@@ -858,6 +1015,9 @@ class Contract(AbstractModel):
 
     @property
     def HashShow(self):
+        """The desensitized CNS address.
+        :rtype: str
+        """
         return self._HashShow
 
     @HashShow.setter
@@ -866,6 +1026,9 @@ class Contract(AbstractModel):
 
     @property
     def WeId(self):
+        """The DID of the organization that deployed the contract.
+        :rtype: str
+        """
         return self._WeId
 
     @WeId.setter
@@ -874,6 +1037,9 @@ class Contract(AbstractModel):
 
     @property
     def DeployName(self):
+        """The name of the organization that deployed the contract.
+        :rtype: str
+        """
         return self._DeployName
 
     @DeployName.setter
@@ -882,6 +1048,9 @@ class Contract(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group.
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -890,6 +1059,9 @@ class Contract(AbstractModel):
 
     @property
     def CreateTime(self):
+        """The deployment time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -942,6 +1114,9 @@ class CptIssueRank(AbstractModel):
 
     @property
     def CptName(self):
+        """The (claim protocol type) CPT name.
+        :rtype: str
+        """
         return self._CptName
 
     @CptName.setter
@@ -950,6 +1125,9 @@ class CptIssueRank(AbstractModel):
 
     @property
     def Rank(self):
+        """The ranking.
+        :rtype: int
+        """
         return self._Rank
 
     @Rank.setter
@@ -958,6 +1136,9 @@ class CptIssueRank(AbstractModel):
 
     @property
     def Count(self):
+        """The number of credentials issued.
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -966,6 +1147,9 @@ class CptIssueRank(AbstractModel):
 
     @property
     def ApplyName(self):
+        """The application name.
+        :rtype: str
+        """
         return self._ApplyName
 
     @ApplyName.setter
@@ -974,6 +1158,9 @@ class CptIssueRank(AbstractModel):
 
     @property
     def ApplyId(self):
+        """The application ID.
+        :rtype: int
+        """
         return self._ApplyId
 
     @ApplyId.setter
@@ -1050,6 +1237,9 @@ class CptListData(AbstractModel):
 
     @property
     def Id(self):
+        """The CPT ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -1058,6 +1248,9 @@ class CptListData(AbstractModel):
 
     @property
     def Name(self):
+        """The name of the claim protocol type (CPT).
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1066,6 +1259,9 @@ class CptListData(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1074,6 +1270,9 @@ class CptListData(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -1082,6 +1281,9 @@ class CptListData(AbstractModel):
 
     @property
     def ServiceId(self):
+        """The service ID.
+        :rtype: int
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -1090,6 +1292,9 @@ class CptListData(AbstractModel):
 
     @property
     def ContractAppId(self):
+        """The application ID of the contract.
+        :rtype: int
+        """
         return self._ContractAppId
 
     @ContractAppId.setter
@@ -1098,6 +1303,9 @@ class CptListData(AbstractModel):
 
     @property
     def CptId(self):
+        """The claim protocol type (CPT) ID.
+        :rtype: int
+        """
         return self._CptId
 
     @CptId.setter
@@ -1106,6 +1314,9 @@ class CptListData(AbstractModel):
 
     @property
     def CptType(self):
+        """The type. `1`: System CPTs; `2`: Authorization CPTs; `3`: General CPTs
+        :rtype: int
+        """
         return self._CptType
 
     @CptType.setter
@@ -1114,6 +1325,9 @@ class CptListData(AbstractModel):
 
     @property
     def Description(self):
+        """The description of the claim protocol type (CPT).
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1122,6 +1336,9 @@ class CptListData(AbstractModel):
 
     @property
     def CptJson(self):
+        """The JSON file of the claim protocol type (CPT).
+        :rtype: str
+        """
         return self._CptJson
 
     @CptJson.setter
@@ -1130,6 +1347,9 @@ class CptListData(AbstractModel):
 
     @property
     def CreateTime(self):
+        """The creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1138,6 +1358,9 @@ class CptListData(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """The last updated time.
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -1146,6 +1369,9 @@ class CptListData(AbstractModel):
 
     @property
     def CreatorDid(self):
+        """The DID of the creator.
+        :rtype: str
+        """
         return self._CreatorDid
 
     @CreatorDid.setter
@@ -1154,6 +1380,9 @@ class CptListData(AbstractModel):
 
     @property
     def AppName(self):
+        """The application name.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -1209,6 +1438,9 @@ class CreateCredentialRequest(AbstractModel):
 
     @property
     def FunctionArg(self):
+        """A parameter set. For details, see the example.
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.FunctionArg`
+        """
         return self._FunctionArg
 
     @FunctionArg.setter
@@ -1217,6 +1449,9 @@ class CreateCredentialRequest(AbstractModel):
 
     @property
     def TransactionArg(self):
+        """A parameter set. For details, see the example.
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.TransactionArg`
+        """
         return self._TransactionArg
 
     @TransactionArg.setter
@@ -1225,6 +1460,9 @@ class CreateCredentialRequest(AbstractModel):
 
     @property
     def VersionCredential(self):
+        """The version.
+        :rtype: str
+        """
         return self._VersionCredential
 
     @VersionCredential.setter
@@ -1233,6 +1471,9 @@ class CreateCredentialRequest(AbstractModel):
 
     @property
     def UnSigned(self):
+        """Whether the credential is unsigned.
+        :rtype: bool
+        """
         return self._UnSigned
 
     @UnSigned.setter
@@ -1276,6 +1517,9 @@ class CreateCredentialResponse(AbstractModel):
 
     @property
     def CredentialData(self):
+        """The information of the credential.
+        :rtype: str
+        """
         return self._CredentialData
 
     @CredentialData.setter
@@ -1284,6 +1528,9 @@ class CreateCredentialResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1328,6 +1575,9 @@ class CreateDidServiceRequest(AbstractModel):
 
     @property
     def ConsortiumName(self):
+        """The consortium name.
+        :rtype: str
+        """
         return self._ConsortiumName
 
     @ConsortiumName.setter
@@ -1336,6 +1586,9 @@ class CreateDidServiceRequest(AbstractModel):
 
     @property
     def ConsortiumId(self):
+        """The consortium ID.
+        :rtype: int
+        """
         return self._ConsortiumId
 
     @ConsortiumId.setter
@@ -1344,6 +1597,9 @@ class CreateDidServiceRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -1352,6 +1608,9 @@ class CreateDidServiceRequest(AbstractModel):
 
     @property
     def AgencyName(self):
+        """The organization name.
+        :rtype: str
+        """
         return self._AgencyName
 
     @AgencyName.setter
@@ -1360,6 +1619,9 @@ class CreateDidServiceRequest(AbstractModel):
 
     @property
     def AppName(self):
+        """The application name.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -1368,6 +1630,9 @@ class CreateDidServiceRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1376,6 +1641,9 @@ class CreateDidServiceRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """The group name.
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -1418,6 +1686,9 @@ class CreateDidServiceResponse(AbstractModel):
 
     @property
     def Task(self):
+        """The service information.
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.Task`
+        """
         return self._Task
 
     @Task.setter
@@ -1426,6 +1697,9 @@ class CreateDidServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1460,6 +1734,9 @@ class CreateLabelRequest(AbstractModel):
 
     @property
     def LabelName(self):
+        """The label name.
+        :rtype: str
+        """
         return self._LabelName
 
     @LabelName.setter
@@ -1468,6 +1745,9 @@ class CreateLabelRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1476,6 +1756,9 @@ class CreateLabelRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -1511,6 +1794,9 @@ class CreateLabelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1539,6 +1825,9 @@ class CreateSelectiveCredentialRequest(AbstractModel):
 
     @property
     def FunctionArg(self):
+        """A parameter set.
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.VerifyFunctionArg`
+        """
         return self._FunctionArg
 
     @FunctionArg.setter
@@ -1547,6 +1836,9 @@ class CreateSelectiveCredentialRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """The disclosure policy ID.
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -1586,6 +1878,9 @@ class CreateSelectiveCredentialResponse(AbstractModel):
 
     @property
     def CredentialData(self):
+        """The credential string.
+        :rtype: str
+        """
         return self._CredentialData
 
     @CredentialData.setter
@@ -1594,6 +1889,9 @@ class CreateSelectiveCredentialResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1626,6 +1924,9 @@ class CreateTDidByPrivateKeyRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1634,6 +1935,9 @@ class CreateTDidByPrivateKeyRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -1642,6 +1946,9 @@ class CreateTDidByPrivateKeyRequest(AbstractModel):
 
     @property
     def PrivateKey(self):
+        """The private key.
+        :rtype: str
+        """
         return self._PrivateKey
 
     @PrivateKey.setter
@@ -1680,6 +1987,9 @@ class CreateTDidByPrivateKeyResponse(AbstractModel):
 
     @property
     def Did(self):
+        """The DID.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -1688,6 +1998,9 @@ class CreateTDidByPrivateKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1723,6 +2036,9 @@ class CreateTDidByPublicKeyRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1731,6 +2047,9 @@ class CreateTDidByPublicKeyRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -1739,6 +2058,9 @@ class CreateTDidByPublicKeyRequest(AbstractModel):
 
     @property
     def PublicKey(self):
+        """The public key.
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -1747,6 +2069,9 @@ class CreateTDidByPublicKeyRequest(AbstractModel):
 
     @property
     def EncryptPubKey(self):
+        """The encrypted public key.
+        :rtype: str
+        """
         return self._EncryptPubKey
 
     @EncryptPubKey.setter
@@ -1786,6 +2111,9 @@ class CreateTDidByPublicKeyResponse(AbstractModel):
 
     @property
     def Did(self):
+        """The DID.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -1794,6 +2122,9 @@ class CreateTDidByPublicKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1826,6 +2157,9 @@ class CreateTDidRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -1834,6 +2168,9 @@ class CreateTDidRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -1842,6 +2179,9 @@ class CreateTDidRequest(AbstractModel):
 
     @property
     def Relegation(self):
+        """ 
+        :rtype: int
+        """
         return self._Relegation
 
     @Relegation.setter
@@ -1880,6 +2220,9 @@ class CreateTDidResponse(AbstractModel):
 
     @property
     def Did(self):
+        """The DID.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -1888,6 +2231,9 @@ class CreateTDidResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1932,6 +2278,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CredentialId(self):
+        """The credential ID.
+        :rtype: str
+        """
         return self._CredentialId
 
     @CredentialId.setter
@@ -1940,6 +2289,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """The credential status. `0`: Invalid; `1`: Valid.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1948,6 +2300,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Issuer(self):
+        """The DID of the issuer.
+        :rtype: str
+        """
         return self._Issuer
 
     @Issuer.setter
@@ -1956,6 +2311,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Digest(self):
+        """A summary of the credential.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Digest
 
     @Digest.setter
@@ -1964,6 +2323,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Signature(self):
+        """The credential signature.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Signature
 
     @Signature.setter
@@ -1972,6 +2335,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TimeStamp(self):
+        """The last updated timestamp.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TimeStamp
 
     @TimeStamp.setter
@@ -2016,6 +2383,9 @@ class DeployByNameRequest(AbstractModel):
 
     @property
     def ApplicationName(self):
+        """The application name.
+        :rtype: str
+        """
         return self._ApplicationName
 
     @ApplicationName.setter
@@ -2024,6 +2394,9 @@ class DeployByNameRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2032,6 +2405,9 @@ class DeployByNameRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -2070,6 +2446,9 @@ class DeployByNameResponse(AbstractModel):
 
     @property
     def Hash(self):
+        """The hash value.
+        :rtype: str
+        """
         return self._Hash
 
     @Hash.setter
@@ -2078,6 +2457,9 @@ class DeployByNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2149,6 +2531,9 @@ class DidCluster(AbstractModel):
 
     @property
     def ChainId(self):
+        """The chain ID.
+        :rtype: int
+        """
         return self._ChainId
 
     @ChainId.setter
@@ -2157,6 +2542,9 @@ class DidCluster(AbstractModel):
 
     @property
     def ChainName(self):
+        """The chain name.
+        :rtype: str
+        """
         return self._ChainName
 
     @ChainName.setter
@@ -2165,6 +2553,9 @@ class DidCluster(AbstractModel):
 
     @property
     def AgencyCount(self):
+        """The number of organizations.
+        :rtype: int
+        """
         return self._AgencyCount
 
     @AgencyCount.setter
@@ -2173,6 +2564,9 @@ class DidCluster(AbstractModel):
 
     @property
     def ConsortiumId(self):
+        """The consortium ID.
+        :rtype: int
+        """
         return self._ConsortiumId
 
     @ConsortiumId.setter
@@ -2181,6 +2575,9 @@ class DidCluster(AbstractModel):
 
     @property
     def CreateTime(self):
+        """The creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2189,6 +2586,9 @@ class DidCluster(AbstractModel):
 
     @property
     def ExpireTime(self):
+        """The expiration time.
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -2197,6 +2597,9 @@ class DidCluster(AbstractModel):
 
     @property
     def ChainStatus(self):
+        """The network status.
+        :rtype: int
+        """
         return self._ChainStatus
 
     @ChainStatus.setter
@@ -2205,6 +2608,9 @@ class DidCluster(AbstractModel):
 
     @property
     def ResourceId(self):
+        """The resource ID.
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -2213,6 +2619,9 @@ class DidCluster(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2221,6 +2630,9 @@ class DidCluster(AbstractModel):
 
     @property
     def ConsortiumName(self):
+        """The consortium name.
+        :rtype: str
+        """
         return self._ConsortiumName
 
     @ConsortiumName.setter
@@ -2229,6 +2641,9 @@ class DidCluster(AbstractModel):
 
     @property
     def AgencyId(self):
+        """The organization ID.
+        :rtype: int
+        """
         return self._AgencyId
 
     @AgencyId.setter
@@ -2237,6 +2652,9 @@ class DidCluster(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """Whether auto-renewal is enabled.
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -2245,6 +2663,9 @@ class DidCluster(AbstractModel):
 
     @property
     def TotalNetworkNode(self):
+        """The total number of network nodes.
+        :rtype: int
+        """
         return self._TotalNetworkNode
 
     @TotalNetworkNode.setter
@@ -2253,6 +2674,9 @@ class DidCluster(AbstractModel):
 
     @property
     def TotalCreateNode(self):
+        """The number of nodes of the current organization.
+        :rtype: int
+        """
         return self._TotalCreateNode
 
     @TotalCreateNode.setter
@@ -2261,6 +2685,9 @@ class DidCluster(AbstractModel):
 
     @property
     def TotalGroups(self):
+        """The total number of groups.
+        :rtype: int
+        """
         return self._TotalGroups
 
     @TotalGroups.setter
@@ -2269,6 +2696,9 @@ class DidCluster(AbstractModel):
 
     @property
     def DidCount(self):
+        """The total number of DIDs.
+        :rtype: int
+        """
         return self._DidCount
 
     @DidCount.setter
@@ -2347,6 +2777,9 @@ class DidData(AbstractModel):
 
     @property
     def ServiceId(self):
+        """The service ID.
+        :rtype: int
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -2355,6 +2788,9 @@ class DidData(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -2363,6 +2799,9 @@ class DidData(AbstractModel):
 
     @property
     def AppName(self):
+        """The application name.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -2371,6 +2810,9 @@ class DidData(AbstractModel):
 
     @property
     def Did(self):
+        """The DID.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -2379,6 +2821,9 @@ class DidData(AbstractModel):
 
     @property
     def Remark(self):
+        """Remarks
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -2387,6 +2832,9 @@ class DidData(AbstractModel):
 
     @property
     def AuthorityState(self):
+        """The status of the authority. `1`: Not registered; `2`: Not certified; `3`: Certified.
+        :rtype: int
+        """
         return self._AuthorityState
 
     @AuthorityState.setter
@@ -2395,6 +2843,9 @@ class DidData(AbstractModel):
 
     @property
     def LabelName(self):
+        """The label of the DID.
+        :rtype: str
+        """
         return self._LabelName
 
     @LabelName.setter
@@ -2403,6 +2854,9 @@ class DidData(AbstractModel):
 
     @property
     def CreatedAt(self):
+        """The DID creation time.
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -2411,6 +2865,9 @@ class DidData(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2419,6 +2876,9 @@ class DidData(AbstractModel):
 
     @property
     def AllianceName(self):
+        """The consortium name.
+        :rtype: str
+        """
         return self._AllianceName
 
     @AllianceName.setter
@@ -2427,6 +2887,9 @@ class DidData(AbstractModel):
 
     @property
     def LabelId(self):
+        """The label ID.
+        :rtype: int
+        """
         return self._LabelId
 
     @LabelId.setter
@@ -2512,6 +2975,9 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def Id(self):
+        """The DID service ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2520,6 +2986,9 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def Appid(self):
+        """The application ID.
+        :rtype: int
+        """
         return self._Appid
 
     @Appid.setter
@@ -2528,6 +2997,9 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def Uin(self):
+        """The account ID.
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -2536,6 +3008,9 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def ConsortiumId(self):
+        """The consortium ID.
+        :rtype: int
+        """
         return self._ConsortiumId
 
     @ConsortiumId.setter
@@ -2544,6 +3019,9 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def ConsortiumName(self):
+        """The consortium name.
+        :rtype: str
+        """
         return self._ConsortiumName
 
     @ConsortiumName.setter
@@ -2552,6 +3030,9 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2560,6 +3041,9 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -2568,6 +3052,9 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def ChainId(self):
+        """The chain ID.
+        :rtype: str
+        """
         return self._ChainId
 
     @ChainId.setter
@@ -2576,6 +3063,9 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def RoleType(self):
+        """Whether you are the owner of the consortium. `1`: Yes; `0`: No.
+        :rtype: int
+        """
         return self._RoleType
 
     @RoleType.setter
@@ -2584,6 +3074,9 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def AgencyDid(self):
+        """The organization DID.
+        :rtype: str
+        """
         return self._AgencyDid
 
     @AgencyDid.setter
@@ -2592,6 +3085,9 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def CreateOrg(self):
+        """The organization name.
+        :rtype: str
+        """
         return self._CreateOrg
 
     @CreateOrg.setter
@@ -2600,6 +3096,9 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def Endpoint(self):
+        """The endpoint.
+        :rtype: str
+        """
         return self._Endpoint
 
     @Endpoint.setter
@@ -2608,6 +3107,9 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """The creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2616,6 +3118,9 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """The last updated time.
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -2624,6 +3129,9 @@ class DidServiceInfo(AbstractModel):
 
     @property
     def GroupName(self):
+        """The group name.
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -2671,6 +3179,9 @@ class DownCptRequest(AbstractModel):
 
     @property
     def CptIndex(self):
+        """The claim protocol type (CPT) index.
+        :rtype: int
+        """
         return self._CptIndex
 
     @CptIndex.setter
@@ -2704,6 +3215,9 @@ class DownCptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2729,6 +3243,9 @@ class EnableHashRequest(AbstractModel):
 
     @property
     def Hash(self):
+        """The CNS address of the contract.
+        :rtype: str
+        """
         return self._Hash
 
     @Hash.setter
@@ -2762,6 +3279,9 @@ class EnableHashResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2796,6 +3316,9 @@ class FunctionArg(AbstractModel):
 
     @property
     def CptId(self):
+        """The claim protocol type (CPT) ID.
+        :rtype: int
+        """
         return self._CptId
 
     @CptId.setter
@@ -2804,6 +3327,9 @@ class FunctionArg(AbstractModel):
 
     @property
     def Issuer(self):
+        """The DID of the issuer.
+        :rtype: str
+        """
         return self._Issuer
 
     @Issuer.setter
@@ -2812,6 +3338,9 @@ class FunctionArg(AbstractModel):
 
     @property
     def ExpirationDate(self):
+        """The expiration time.
+        :rtype: str
+        """
         return self._ExpirationDate
 
     @ExpirationDate.setter
@@ -2820,6 +3349,9 @@ class FunctionArg(AbstractModel):
 
     @property
     def ClaimJson(self):
+        """The claim.
+        :rtype: str
+        """
         return self._ClaimJson
 
     @ClaimJson.setter
@@ -2856,6 +3388,9 @@ class GetAgencyTDidRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -2895,6 +3430,9 @@ class GetAgencyTDidResponse(AbstractModel):
 
     @property
     def Prefix(self):
+        """The prefix (fixed).
+        :rtype: str
+        """
         return self._Prefix
 
     @Prefix.setter
@@ -2903,6 +3441,9 @@ class GetAgencyTDidResponse(AbstractModel):
 
     @property
     def Identity(self):
+        """The details of the DID.
+        :rtype: list of Identity
+        """
         return self._Identity
 
     @Identity.setter
@@ -2911,6 +3452,9 @@ class GetAgencyTDidResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2952,6 +3496,9 @@ class GetAuthoritiesListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """The page number, beginning from 1.
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -2960,6 +3507,9 @@ class GetAuthoritiesListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """The number of records per page.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -2968,6 +3518,9 @@ class GetAuthoritiesListRequest(AbstractModel):
 
     @property
     def Did(self):
+        """The DID.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -2976,6 +3529,9 @@ class GetAuthoritiesListRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Whether to query certified or uncertified authorities. `1`: Certified; `2`: Uncertified.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3018,6 +3574,9 @@ class GetAuthoritiesListResponse(AbstractModel):
 
     @property
     def ResultList(self):
+        """A data set.
+        :rtype: list of Authority
+        """
         return self._ResultList
 
     @ResultList.setter
@@ -3026,6 +3585,9 @@ class GetAuthoritiesListResponse(AbstractModel):
 
     @property
     def AllCount(self):
+        """The total number of records.
+        :rtype: int
+        """
         return self._AllCount
 
     @AllCount.setter
@@ -3034,6 +3596,9 @@ class GetAuthoritiesListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3066,6 +3631,9 @@ class GetAuthorityIssuerRequest(AbstractModel):
 
     @property
     def Did(self):
+        """The DID.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -3120,6 +3688,9 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
     @property
     def Name(self):
+        """The authority name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3128,6 +3699,9 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The blockchain network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3136,6 +3710,9 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
     @property
     def GroupId(self):
+        """The blockchain group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -3144,6 +3721,9 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
     @property
     def Did(self):
+        """The DID of the authority.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -3152,6 +3732,9 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
     @property
     def Remark(self):
+        """Remarks.
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -3160,6 +3743,9 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
     @property
     def RegisterTime(self):
+        """The registration time.
+        :rtype: str
+        """
         return self._RegisterTime
 
     @RegisterTime.setter
@@ -3168,6 +3754,9 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
     @property
     def RecognizeTime(self):
+        """The recognition time.
+        :rtype: str
+        """
         return self._RecognizeTime
 
     @RecognizeTime.setter
@@ -3176,6 +3765,9 @@ class GetAuthorityIssuerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3208,6 +3800,9 @@ class GetConsortiumClusterListRequest(AbstractModel):
 
     @property
     def ConsortiumId(self):
+        """The consortium ID.
+        :rtype: int
+        """
         return self._ConsortiumId
 
     @ConsortiumId.setter
@@ -3244,6 +3839,9 @@ class GetConsortiumClusterListResponse(AbstractModel):
 
     @property
     def ClusterList(self):
+        """A list of networks.
+        :rtype: list of BcosClusterItem
+        """
         return self._ClusterList
 
     @ClusterList.setter
@@ -3252,6 +3850,9 @@ class GetConsortiumClusterListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3292,6 +3893,9 @@ class GetConsortiumListResponse(AbstractModel):
 
     @property
     def ConsortiumList(self):
+        """A list of the consortiums.
+        :rtype: list of ConsortiumItem
+        """
         return self._ConsortiumList
 
     @ConsortiumList.setter
@@ -3300,6 +3904,9 @@ class GetConsortiumListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3331,6 +3938,9 @@ class GetCptInfoRequest(AbstractModel):
 
     @property
     def CptIndex(self):
+        """The claim protocol type (CPT) index.
+        :rtype: int
+        """
         return self._CptIndex
 
     @CptIndex.setter
@@ -3367,6 +3977,9 @@ class GetCptInfoResponse(AbstractModel):
 
     @property
     def CptJsonData(self):
+        """The JSON data of the claim protocol type (CPT).
+        :rtype: str
+        """
         return self._CptJsonData
 
     @CptJsonData.setter
@@ -3375,6 +3988,9 @@ class GetCptInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3407,6 +4023,9 @@ class GetCptListRequest(AbstractModel):
 
     @property
     def DisplayStart(self):
+        """The start.
+        :rtype: int
+        """
         return self._DisplayStart
 
     @DisplayStart.setter
@@ -3415,6 +4034,9 @@ class GetCptListRequest(AbstractModel):
 
     @property
     def DisplayLength(self):
+        """The maximum number of records to return.
+        :rtype: int
+        """
         return self._DisplayLength
 
     @DisplayLength.setter
@@ -3423,6 +4045,9 @@ class GetCptListRequest(AbstractModel):
 
     @property
     def CptType(self):
+        """The type. `0`: All CPTs; `1`: System CPTs; `2`: Authorization CPTs; `3`: General CPTs
+        :rtype: int
+        """
         return self._CptType
 
     @CptType.setter
@@ -3464,6 +4089,9 @@ class GetCptListResponse(AbstractModel):
 
     @property
     def CptDataList(self):
+        """The information of claim protocol types (CPT).
+        :rtype: list of CptListData
+        """
         return self._CptDataList
 
     @CptDataList.setter
@@ -3472,6 +4100,9 @@ class GetCptListResponse(AbstractModel):
 
     @property
     def AllCount(self):
+        """The total number of claim protocol types (CPT).
+        :rtype: int
+        """
         return self._AllCount
 
     @AllCount.setter
@@ -3480,6 +4111,9 @@ class GetCptListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3518,6 +4152,9 @@ class GetCredentialCptRankRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The start date (as early as 2021-4-23).
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3526,6 +4163,9 @@ class GetCredentialCptRankRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end date (as early as 2021-4-23).
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3534,6 +4174,9 @@ class GetCredentialCptRankRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3572,6 +4215,9 @@ class GetCredentialCptRankResponse(AbstractModel):
 
     @property
     def RankIssueResult(self):
+        """The rankings.
+        :rtype: list of CptIssueRank
+        """
         return self._RankIssueResult
 
     @RankIssueResult.setter
@@ -3580,6 +4226,9 @@ class GetCredentialCptRankResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3617,6 +4266,9 @@ class GetCredentialIssueRankRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The start date (as early as 2021-4-23).
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3625,6 +4277,9 @@ class GetCredentialIssueRankRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end date (as early as 2021-4-23).
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3633,6 +4288,9 @@ class GetCredentialIssueRankRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3671,6 +4329,9 @@ class GetCredentialIssueRankResponse(AbstractModel):
 
     @property
     def RankIssueResult(self):
+        """The rankings.
+        :rtype: list of CptIssueRank
+        """
         return self._RankIssueResult
 
     @RankIssueResult.setter
@@ -3679,6 +4340,9 @@ class GetCredentialIssueRankResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3716,6 +4380,9 @@ class GetCredentialIssueTrendRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The start date (as early as 2021-4-23).
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3724,6 +4391,9 @@ class GetCredentialIssueTrendRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end date (as early as 2021-4-23).
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3732,6 +4402,9 @@ class GetCredentialIssueTrendRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3770,6 +4443,9 @@ class GetCredentialIssueTrendResponse(AbstractModel):
 
     @property
     def Trend(self):
+        """The trend information.
+        :rtype: list of Trend
+        """
         return self._Trend
 
     @Trend.setter
@@ -3778,6 +4454,9 @@ class GetCredentialIssueTrendResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3809,6 +4488,9 @@ class GetCredentialStatusRequest(AbstractModel):
 
     @property
     def CredentialId(self):
+        """The credential ID.
+        :rtype: str
+        """
         return self._CredentialId
 
     @CredentialId.setter
@@ -3845,6 +4527,9 @@ class GetCredentialStatusResponse(AbstractModel):
 
     @property
     def CredentialStatus(self):
+        """The credential status.
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.CredentialStatus`
+        """
         return self._CredentialStatus
 
     @CredentialStatus.setter
@@ -3853,6 +4538,9 @@ class GetCredentialStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3881,6 +4569,9 @@ class GetDataPanelRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -3950,6 +4641,9 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def BlockNetworkCount(self):
+        """The number of blockchain networks.
+        :rtype: int
+        """
         return self._BlockNetworkCount
 
     @BlockNetworkCount.setter
@@ -3958,6 +4652,9 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def BlockNetworkName(self):
+        """The blockchain network name.
+        :rtype: str
+        """
         return self._BlockNetworkName
 
     @BlockNetworkName.setter
@@ -3966,6 +4663,9 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def BlockHeight(self):
+        """The current block height.
+        :rtype: int
+        """
         return self._BlockHeight
 
     @BlockHeight.setter
@@ -3974,6 +4674,9 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def BlockNetworkType(self):
+        """The blockchain network type.
+        :rtype: int
+        """
         return self._BlockNetworkType
 
     @BlockNetworkType.setter
@@ -3982,6 +4685,9 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def DidCount(self):
+        """The number of DIDs.
+        :rtype: int
+        """
         return self._DidCount
 
     @DidCount.setter
@@ -3990,6 +4696,9 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def CptCount(self):
+        """The number of claim protocol types (CPT).
+        :rtype: int
+        """
         return self._CptCount
 
     @CptCount.setter
@@ -3998,6 +4707,9 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def CertificatedAuthCount(self):
+        """The number of certified authorities.
+        :rtype: int
+        """
         return self._CertificatedAuthCount
 
     @CertificatedAuthCount.setter
@@ -4006,6 +4718,9 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def IssueCptCount(self):
+        """The number of credentials issued.
+        :rtype: int
+        """
         return self._IssueCptCount
 
     @IssueCptCount.setter
@@ -4014,6 +4729,9 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def NewDidCount(self):
+        """The number of new DIDs in the current week.
+        :rtype: int
+        """
         return self._NewDidCount
 
     @NewDidCount.setter
@@ -4022,6 +4740,9 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def BcosCount(self):
+        """The number of BCOS networks.
+        :rtype: int
+        """
         return self._BcosCount
 
     @BcosCount.setter
@@ -4030,6 +4751,9 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def FabricCount(self):
+        """The number of Fabric networks.
+        :rtype: int
+        """
         return self._FabricCount
 
     @FabricCount.setter
@@ -4038,6 +4762,9 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def ChainMakerCount(self):
+        """The number of ChainMaker networks.
+        :rtype: int
+        """
         return self._ChainMakerCount
 
     @ChainMakerCount.setter
@@ -4046,6 +4773,9 @@ class GetDataPanelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4083,6 +4813,9 @@ class GetDeployInfoRequest(AbstractModel):
 
     @property
     def Hash(self):
+        """The CNS address of the contract.
+        :rtype: str
+        """
         return self._Hash
 
     @Hash.setter
@@ -4155,6 +4888,9 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def Hash(self):
+        """The CNS address of the contract.
+        :rtype: str
+        """
         return self._Hash
 
     @Hash.setter
@@ -4163,6 +4899,9 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def GroupId(self):
+        """The main group ID of the contract.
+        :rtype: str
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -4171,6 +4910,9 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def DeployDid(self):
+        """The DID of the organization that deployed the contract.
+        :rtype: str
+        """
         return self._DeployDid
 
     @DeployDid.setter
@@ -4179,6 +4921,9 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def SdkVersion(self):
+        """The TDID SDK version.
+        :rtype: str
+        """
         return self._SdkVersion
 
     @SdkVersion.setter
@@ -4187,6 +4932,9 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def ContractVersion(self):
+        """The TDID contract version.
+        :rtype: str
+        """
         return self._ContractVersion
 
     @ContractVersion.setter
@@ -4195,6 +4943,9 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def BlockVersion(self):
+        """The blockchain node version.
+        :rtype: str
+        """
         return self._BlockVersion
 
     @BlockVersion.setter
@@ -4203,6 +4954,9 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def BlockIp(self):
+        """The IP address of the blockchain node.
+        :rtype: str
+        """
         return self._BlockIp
 
     @BlockIp.setter
@@ -4211,6 +4965,9 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def DidAddress(self):
+        """The address of the DID contract.
+        :rtype: str
+        """
         return self._DidAddress
 
     @DidAddress.setter
@@ -4219,6 +4976,9 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def CptAddress(self):
+        """The address of the claim protocol type (CPT) contract.
+        :rtype: str
+        """
         return self._CptAddress
 
     @CptAddress.setter
@@ -4227,6 +4987,9 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def AuthorityAddress(self):
+        """The address of the authority.
+        :rtype: str
+        """
         return self._AuthorityAddress
 
     @AuthorityAddress.setter
@@ -4235,6 +4998,9 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def EvidenceAddress(self):
+        """The evidence contract address.
+        :rtype: str
+        """
         return self._EvidenceAddress
 
     @EvidenceAddress.setter
@@ -4243,6 +5009,9 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def SpecificAddress(self):
+        """The contract address of the specific issuer.
+        :rtype: str
+        """
         return self._SpecificAddress
 
     @SpecificAddress.setter
@@ -4251,6 +5020,9 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def ChainId(self):
+        """The chain ID.
+        :rtype: str
+        """
         return self._ChainId
 
     @ChainId.setter
@@ -4259,6 +5031,9 @@ class GetDeployInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4306,6 +5081,9 @@ class GetDeployListRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -4314,6 +5092,9 @@ class GetDeployListRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -4322,6 +5103,9 @@ class GetDeployListRequest(AbstractModel):
 
     @property
     def DisplayStart(self):
+        """The start.
+        :rtype: int
+        """
         return self._DisplayStart
 
     @DisplayStart.setter
@@ -4330,6 +5114,9 @@ class GetDeployListRequest(AbstractModel):
 
     @property
     def DisplayLength(self):
+        """The maximum number of records to return.
+        :rtype: int
+        """
         return self._DisplayLength
 
     @DisplayLength.setter
@@ -4372,6 +5159,9 @@ class GetDeployListResponse(AbstractModel):
 
     @property
     def AllCount(self):
+        """The total number of contracts.
+        :rtype: int
+        """
         return self._AllCount
 
     @AllCount.setter
@@ -4380,6 +5170,9 @@ class GetDeployListResponse(AbstractModel):
 
     @property
     def Result(self):
+        """A list of deployed contracts.
+        :rtype: list of Contract
+        """
         return self._Result
 
     @Result.setter
@@ -4388,6 +5181,9 @@ class GetDeployListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4420,6 +5216,9 @@ class GetDidClusterDetailRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The DID network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -4462,6 +5261,9 @@ class GetDidClusterDetailResponse(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -4470,6 +5272,9 @@ class GetDidClusterDetailResponse(AbstractModel):
 
     @property
     def ConsortiumName(self):
+        """The consortium name.
+        :rtype: str
+        """
         return self._ConsortiumName
 
     @ConsortiumName.setter
@@ -4478,6 +5283,9 @@ class GetDidClusterDetailResponse(AbstractModel):
 
     @property
     def ChainAgency(self):
+        """The name of the blockchain organization.
+        :rtype: str
+        """
         return self._ChainAgency
 
     @ChainAgency.setter
@@ -4486,6 +5294,9 @@ class GetDidClusterDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4523,6 +5334,9 @@ class GetDidClusterListResponse(AbstractModel):
 
     @property
     def DidClusterList(self):
+        """A list of the DID networks.
+        :rtype: list of DidCluster
+        """
         return self._DidClusterList
 
     @DidClusterList.setter
@@ -4531,6 +5345,9 @@ class GetDidClusterListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4562,6 +5379,9 @@ class GetDidDetailRequest(AbstractModel):
 
     @property
     def Did(self):
+        """The DID.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -4625,6 +5445,9 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def Did(self):
+        """The DID.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -4633,6 +5456,9 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def Remark(self):
+        """Remarks
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -4641,6 +5467,9 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def PublicKey(self):
+        """The public key.
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -4649,6 +5478,9 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def AuthorityState(self):
+        """Whether the DID is a certified authority.
+        :rtype: int
+        """
         return self._AuthorityState
 
     @AuthorityState.setter
@@ -4657,6 +5489,9 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def ConsortiumId(self):
+        """The consortium ID.
+        :rtype: int
+        """
         return self._ConsortiumId
 
     @ConsortiumId.setter
@@ -4665,6 +5500,9 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def ConsortiumName(self):
+        """The consortium name.
+        :rtype: str
+        """
         return self._ConsortiumName
 
     @ConsortiumName.setter
@@ -4673,6 +5511,9 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -4681,6 +5522,9 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -4689,6 +5533,9 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def ResChainId(self):
+        """The BCOS resource ID.
+        :rtype: str
+        """
         return self._ResChainId
 
     @ResChainId.setter
@@ -4697,6 +5544,9 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """The creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -4705,6 +5555,9 @@ class GetDidDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4740,6 +5593,9 @@ class GetDidDocumentRequest(AbstractModel):
 
     @property
     def Did(self):
+        """The DID.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -4779,6 +5635,9 @@ class GetDidDocumentResponse(AbstractModel):
 
     @property
     def Name(self):
+        """The name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -4787,6 +5646,9 @@ class GetDidDocumentResponse(AbstractModel):
 
     @property
     def Document(self):
+        """The DID document.
+        :rtype: str
+        """
         return self._Document
 
     @Document.setter
@@ -4795,6 +5657,9 @@ class GetDidDocumentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4834,6 +5699,9 @@ class GetDidListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """The number of records per page.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -4842,6 +5710,9 @@ class GetDidListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """The page number, beginning from 1.
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -4850,6 +5721,9 @@ class GetDidListRequest(AbstractModel):
 
     @property
     def Did(self):
+        """The DID.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -4858,6 +5732,9 @@ class GetDidListRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -4866,6 +5743,9 @@ class GetDidListRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -4909,6 +5789,9 @@ class GetDidListResponse(AbstractModel):
 
     @property
     def DataList(self):
+        """A list of DIDs.
+        :rtype: list of DidData
+        """
         return self._DataList
 
     @DataList.setter
@@ -4917,6 +5800,9 @@ class GetDidListResponse(AbstractModel):
 
     @property
     def AllCount(self):
+        """The total number of records.
+        :rtype: int
+        """
         return self._AllCount
 
     @AllCount.setter
@@ -4925,6 +5811,9 @@ class GetDidListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4963,6 +5852,9 @@ class GetDidRegisterTrendRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The start date (as early as 2021-4-23).
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4971,6 +5863,9 @@ class GetDidRegisterTrendRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The end date (as early as 2021-4-23).
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4979,6 +5874,9 @@ class GetDidRegisterTrendRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -5017,6 +5915,9 @@ class GetDidRegisterTrendResponse(AbstractModel):
 
     @property
     def Trend(self):
+        """The trend information.
+        :rtype: list of Trend
+        """
         return self._Trend
 
     @Trend.setter
@@ -5025,6 +5926,9 @@ class GetDidRegisterTrendResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5056,6 +5960,9 @@ class GetDidServiceDetailRequest(AbstractModel):
 
     @property
     def ServiceId(self):
+        """The DID service ID.
+        :rtype: int
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -5092,6 +5999,9 @@ class GetDidServiceDetailResponse(AbstractModel):
 
     @property
     def DidService(self):
+        """The DID service information.
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.DidServiceInfo`
+        """
         return self._DidService
 
     @DidService.setter
@@ -5100,6 +6010,9 @@ class GetDidServiceDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5128,6 +6041,9 @@ class GetDidServiceListRequest(AbstractModel):
 
     @property
     def Type(self):
+        """`1`: Return results at the network level; `0`: Return results at the service level.
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -5164,6 +6080,9 @@ class GetDidServiceListResponse(AbstractModel):
 
     @property
     def DidServiceList(self):
+        """A list of DID services.
+        :rtype: list of DidServiceInfo
+        """
         return self._DidServiceList
 
     @DidServiceList.setter
@@ -5172,6 +6091,9 @@ class GetDidServiceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5206,6 +6128,9 @@ class GetGroupListRequest(AbstractModel):
 
     @property
     def Status(self):
+        """`0`: Groups with no DID services; `1`: Groups with DID services.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -5214,6 +6139,9 @@ class GetGroupListRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -5251,6 +6179,9 @@ class GetGroupListResponse(AbstractModel):
 
     @property
     def Result(self):
+        """A list of groups.
+        :rtype: list of Group
+        """
         return self._Result
 
     @Result.setter
@@ -5259,6 +6190,9 @@ class GetGroupListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5299,6 +6233,9 @@ class GetLabelListRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """The number of records per page.
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -5307,6 +6244,9 @@ class GetLabelListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """The page number, beginning from 1.
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -5315,6 +6255,9 @@ class GetLabelListRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -5323,6 +6266,9 @@ class GetLabelListRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -5365,6 +6311,9 @@ class GetLabelListResponse(AbstractModel):
 
     @property
     def Result(self):
+        """A data set.
+        :rtype: list of Label
+        """
         return self._Result
 
     @Result.setter
@@ -5373,6 +6322,9 @@ class GetLabelListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The total number of records.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5381,6 +6333,9 @@ class GetLabelListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5416,6 +6371,9 @@ class GetPolicyListRequest(AbstractModel):
 
     @property
     def DisplayStart(self):
+        """The start.
+        :rtype: int
+        """
         return self._DisplayStart
 
     @DisplayStart.setter
@@ -5424,6 +6382,9 @@ class GetPolicyListRequest(AbstractModel):
 
     @property
     def DisplayLength(self):
+        """The maximum number of records to return.
+        :rtype: int
+        """
         return self._DisplayLength
 
     @DisplayLength.setter
@@ -5464,6 +6425,9 @@ class GetPolicyListResponse(AbstractModel):
 
     @property
     def PolicyDataList(self):
+        """A list of disclosure policies.
+        :rtype: list of Policy
+        """
         return self._PolicyDataList
 
     @PolicyDataList.setter
@@ -5472,6 +6436,9 @@ class GetPolicyListResponse(AbstractModel):
 
     @property
     def AllCount(self):
+        """The total number of records.
+        :rtype: int
+        """
         return self._AllCount
 
     @AllCount.setter
@@ -5480,6 +6447,9 @@ class GetPolicyListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5512,6 +6482,9 @@ class GetPublicKeyRequest(AbstractModel):
 
     @property
     def Did(self):
+        """The DID.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -5551,6 +6524,9 @@ class GetPublicKeyResponse(AbstractModel):
 
     @property
     def Did(self):
+        """The DID.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -5559,6 +6535,9 @@ class GetPublicKeyResponse(AbstractModel):
 
     @property
     def PublicKey(self):
+        """The public key.
+        :rtype: str
+        """
         return self._PublicKey
 
     @PublicKey.setter
@@ -5567,6 +6546,9 @@ class GetPublicKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5609,6 +6591,9 @@ class Group(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -5617,6 +6602,9 @@ class Group(AbstractModel):
 
     @property
     def NodeCount(self):
+        """The number of nodes.
+        :rtype: int
+        """
         return self._NodeCount
 
     @NodeCount.setter
@@ -5625,6 +6613,9 @@ class Group(AbstractModel):
 
     @property
     def NodeCountOfAgency(self):
+        """The number of nodes of the organization.
+        :rtype: int
+        """
         return self._NodeCountOfAgency
 
     @NodeCountOfAgency.setter
@@ -5633,6 +6624,9 @@ class Group(AbstractModel):
 
     @property
     def Description(self):
+        """The description of the group.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -5641,6 +6635,9 @@ class Group(AbstractModel):
 
     @property
     def RoleType(self):
+        """Whether you are the owner of the consortium or not.
+        :rtype: int
+        """
         return self._RoleType
 
     @RoleType.setter
@@ -5649,6 +6646,9 @@ class Group(AbstractModel):
 
     @property
     def ChainId(self):
+        """The chain ID.
+        :rtype: str
+        """
         return self._ChainId
 
     @ChainId.setter
@@ -5699,6 +6699,9 @@ class Identity(AbstractModel):
 
     @property
     def AccountIdentifier(self):
+        """The account identifier.
+        :rtype: str
+        """
         return self._AccountIdentifier
 
     @AccountIdentifier.setter
@@ -5707,6 +6710,9 @@ class Identity(AbstractModel):
 
     @property
     def ChainID(self):
+        """The chain ID.
+        :rtype: str
+        """
         return self._ChainID
 
     @ChainID.setter
@@ -5715,6 +6721,9 @@ class Identity(AbstractModel):
 
     @property
     def Did(self):
+        """The DID.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -5723,6 +6732,9 @@ class Identity(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -5731,6 +6743,9 @@ class Identity(AbstractModel):
 
     @property
     def GroupName(self):
+        """The group name.
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -5786,6 +6801,9 @@ class Label(AbstractModel):
 
     @property
     def LabelId(self):
+        """The label ID.
+        :rtype: int
+        """
         return self._LabelId
 
     @LabelId.setter
@@ -5794,6 +6812,9 @@ class Label(AbstractModel):
 
     @property
     def LabelName(self):
+        """The label name.
+        :rtype: str
+        """
         return self._LabelName
 
     @LabelName.setter
@@ -5802,6 +6823,9 @@ class Label(AbstractModel):
 
     @property
     def DidCount(self):
+        """The number of DIDs.
+        :rtype: int
+        """
         return self._DidCount
 
     @DidCount.setter
@@ -5810,6 +6834,9 @@ class Label(AbstractModel):
 
     @property
     def Did(self):
+        """The DID of the creator.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -5818,6 +6845,9 @@ class Label(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -5826,6 +6856,9 @@ class Label(AbstractModel):
 
     @property
     def CreateTime(self):
+        """The creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -5834,6 +6867,9 @@ class Label(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -5912,6 +6948,9 @@ class Policy(AbstractModel):
 
     @property
     def Id(self):
+        """The policy index.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -5920,6 +6959,9 @@ class Policy(AbstractModel):
 
     @property
     def Name(self):
+        """The policy name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -5928,6 +6970,9 @@ class Policy(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -5936,6 +6981,9 @@ class Policy(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -5944,6 +6992,9 @@ class Policy(AbstractModel):
 
     @property
     def ServiceId(self):
+        """The service ID.
+        :rtype: int
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -5952,6 +7003,9 @@ class Policy(AbstractModel):
 
     @property
     def ContractAppId(self):
+        """The application ID of the contract.
+        :rtype: int
+        """
         return self._ContractAppId
 
     @ContractAppId.setter
@@ -5960,6 +7014,9 @@ class Policy(AbstractModel):
 
     @property
     def PolicyId(self):
+        """The policy ID.
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -5968,6 +7025,9 @@ class Policy(AbstractModel):
 
     @property
     def CptId(self):
+        """The claim protocol type (CPT) ID.
+        :rtype: int
+        """
         return self._CptId
 
     @CptId.setter
@@ -5976,6 +7036,9 @@ class Policy(AbstractModel):
 
     @property
     def PolicyJson(self):
+        """The JSON data.
+        :rtype: str
+        """
         return self._PolicyJson
 
     @PolicyJson.setter
@@ -5984,6 +7047,9 @@ class Policy(AbstractModel):
 
     @property
     def CreateTime(self):
+        """The creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -5992,6 +7058,9 @@ class Policy(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """The last updated time.
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -6000,6 +7069,9 @@ class Policy(AbstractModel):
 
     @property
     def CreatorDid(self):
+        """The DID of the creator.
+        :rtype: str
+        """
         return self._CreatorDid
 
     @CreatorDid.setter
@@ -6008,6 +7080,9 @@ class Policy(AbstractModel):
 
     @property
     def AppName(self):
+        """The application name.
+        :rtype: str
+        """
         return self._AppName
 
     @AppName.setter
@@ -6016,6 +7091,9 @@ class Policy(AbstractModel):
 
     @property
     def CptIndex(self):
+        """The claim protocol type (CPT) index.
+        :rtype: int
+        """
         return self._CptIndex
 
     @CptIndex.setter
@@ -6074,6 +7152,9 @@ class Proof(AbstractModel):
 
     @property
     def Created(self):
+        """The creation time.
+        :rtype: int
+        """
         return self._Created
 
     @Created.setter
@@ -6082,6 +7163,9 @@ class Proof(AbstractModel):
 
     @property
     def Creator(self):
+        """The DID of the creator.
+        :rtype: str
+        """
         return self._Creator
 
     @Creator.setter
@@ -6090,6 +7174,9 @@ class Proof(AbstractModel):
 
     @property
     def SaltJson(self):
+        """The salt value.
+        :rtype: str
+        """
         return self._SaltJson
 
     @SaltJson.setter
@@ -6098,6 +7185,9 @@ class Proof(AbstractModel):
 
     @property
     def SignatureValue(self):
+        """The signature.
+        :rtype: str
+        """
         return self._SignatureValue
 
     @SignatureValue.setter
@@ -6106,6 +7196,9 @@ class Proof(AbstractModel):
 
     @property
     def Type(self):
+        """The type.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -6143,6 +7236,9 @@ class QueryPolicyRequest(AbstractModel):
 
     @property
     def PolicyIndex(self):
+        """The policy index.
+        :rtype: int
+        """
         return self._PolicyIndex
 
     @PolicyIndex.setter
@@ -6188,6 +7284,9 @@ class QueryPolicyResponse(AbstractModel):
 
     @property
     def Id(self):
+        """The policy index.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -6196,6 +7295,9 @@ class QueryPolicyResponse(AbstractModel):
 
     @property
     def PolicyId(self):
+        """The policy ID.
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -6204,6 +7306,9 @@ class QueryPolicyResponse(AbstractModel):
 
     @property
     def CptId(self):
+        """The claim protocol type (CPT) ID.
+        :rtype: int
+        """
         return self._CptId
 
     @CptId.setter
@@ -6212,6 +7317,9 @@ class QueryPolicyResponse(AbstractModel):
 
     @property
     def PolicyData(self):
+        """The content of the policy.
+        :rtype: str
+        """
         return self._PolicyData
 
     @PolicyData.setter
@@ -6220,6 +7328,9 @@ class QueryPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6249,6 +7360,9 @@ class RecognizeAuthorityIssuerRequest(AbstractModel):
 
     @property
     def Did(self):
+        """The DID.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -6282,6 +7396,9 @@ class RecognizeAuthorityIssuerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6310,6 +7427,9 @@ class RegisterClaimPolicyRequest(AbstractModel):
 
     @property
     def CptIndex(self):
+        """The claim protocol type (CPT) index.
+        :rtype: int
+        """
         return self._CptIndex
 
     @CptIndex.setter
@@ -6318,6 +7438,9 @@ class RegisterClaimPolicyRequest(AbstractModel):
 
     @property
     def Policy(self):
+        """The disclosure policy.
+        :rtype: str
+        """
         return self._Policy
 
     @Policy.setter
@@ -6358,6 +7481,9 @@ class RegisterClaimPolicyResponse(AbstractModel):
 
     @property
     def Id(self):
+        """The policy index.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -6366,6 +7492,9 @@ class RegisterClaimPolicyResponse(AbstractModel):
 
     @property
     def PolicyId(self):
+        """The policy ID.
+        :rtype: int
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -6374,6 +7503,9 @@ class RegisterClaimPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6410,6 +7542,9 @@ class RegisterCptRequest(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -6418,6 +7553,9 @@ class RegisterCptRequest(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -6426,6 +7564,9 @@ class RegisterCptRequest(AbstractModel):
 
     @property
     def CptJson(self):
+        """The JSON data of the credential claim type (CPT).
+        :rtype: str
+        """
         return self._CptJson
 
     @CptJson.setter
@@ -6434,6 +7575,9 @@ class RegisterCptRequest(AbstractModel):
 
     @property
     def CptId(self):
+        """If you do not specify this, the ID will auto increment.
+        :rtype: int
+        """
         return self._CptId
 
     @CptId.setter
@@ -6476,6 +7620,9 @@ class RegisterCptResponse(AbstractModel):
 
     @property
     def Id(self):
+        """The claim protocol type (CPT) index.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -6484,6 +7631,9 @@ class RegisterCptResponse(AbstractModel):
 
     @property
     def CptId(self):
+        """The claim protocol type (CPT) ID.
+        :rtype: int
+        """
         return self._CptId
 
     @CptId.setter
@@ -6492,6 +7642,9 @@ class RegisterCptResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6525,6 +7678,9 @@ class RegisterIssuerRequest(AbstractModel):
 
     @property
     def Did(self):
+        """The DID.
+        :rtype: str
+        """
         return self._Did
 
     @Did.setter
@@ -6533,6 +7689,9 @@ class RegisterIssuerRequest(AbstractModel):
 
     @property
     def Name(self):
+        """The issuing authority name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6541,6 +7700,9 @@ class RegisterIssuerRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Remarks
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -6576,6 +7738,9 @@ class RegisterIssuerResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6601,6 +7766,9 @@ class RemoveHashRequest(AbstractModel):
 
     @property
     def Hash(self):
+        """The CNS address of the contract.
+        :rtype: str
+        """
         return self._Hash
 
     @Hash.setter
@@ -6634,6 +7802,9 @@ class RemoveHashResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6659,6 +7830,9 @@ class SetCredentialStatusRequest(AbstractModel):
 
     @property
     def CredentialStatus(self):
+        """The credential status.
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.CredentialStatus`
+        """
         return self._CredentialStatus
 
     @CredentialStatus.setter
@@ -6694,6 +7868,9 @@ class SetCredentialStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6746,6 +7923,9 @@ class Task(AbstractModel):
 
     @property
     def Id(self):
+        """The task ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -6754,6 +7934,9 @@ class Task(AbstractModel):
 
     @property
     def AppId(self):
+        """The application ID.
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -6762,6 +7945,9 @@ class Task(AbstractModel):
 
     @property
     def ClusterId(self):
+        """The network ID.
+        :rtype: str
+        """
         return self._ClusterId
 
     @ClusterId.setter
@@ -6770,6 +7956,9 @@ class Task(AbstractModel):
 
     @property
     def GroupId(self):
+        """The group ID.
+        :rtype: int
+        """
         return self._GroupId
 
     @GroupId.setter
@@ -6778,6 +7967,9 @@ class Task(AbstractModel):
 
     @property
     def ServiceId(self):
+        """The service ID.
+        :rtype: int
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -6786,6 +7978,9 @@ class Task(AbstractModel):
 
     @property
     def Status(self):
+        """`0`: Under deployment; `1`: Deployed successfully; other values: Deployment failed.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -6794,6 +7989,9 @@ class Task(AbstractModel):
 
     @property
     def ErrorCode(self):
+        """The error code.
+        :rtype: str
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -6802,6 +8000,9 @@ class Task(AbstractModel):
 
     @property
     def ErrorMsg(self):
+        """The error message.
+        :rtype: str
+        """
         return self._ErrorMsg
 
     @ErrorMsg.setter
@@ -6810,6 +8011,9 @@ class Task(AbstractModel):
 
     @property
     def CreateTime(self):
+        """The creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -6818,6 +8022,9 @@ class Task(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """The last updated time.
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -6860,6 +8067,9 @@ class TransactionArg(AbstractModel):
 
     @property
     def InvokerTDid(self):
+        """The credential ID.
+        :rtype: str
+        """
         return self._InvokerTDid
 
     @InvokerTDid.setter
@@ -6896,6 +8106,9 @@ class Trend(AbstractModel):
 
     @property
     def Time(self):
+        """The time point.
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -6904,6 +8117,9 @@ class Trend(AbstractModel):
 
     @property
     def Count(self):
+        """The count.
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -6938,6 +8154,9 @@ class VerifyCredentialRequest(AbstractModel):
 
     @property
     def FunctionArg(self):
+        """A parameter set.
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.VerifyFunctionArg`
+        """
         return self._FunctionArg
 
     @FunctionArg.setter
@@ -6982,6 +8201,9 @@ class VerifyCredentialResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Whether the verification is successful.
+        :rtype: bool
+        """
         return self._Result
 
     @Result.setter
@@ -6990,6 +8212,9 @@ class VerifyCredentialResponse(AbstractModel):
 
     @property
     def VerifyCode(self):
+        """The verification code.
+        :rtype: int
+        """
         return self._VerifyCode
 
     @VerifyCode.setter
@@ -6998,6 +8223,9 @@ class VerifyCredentialResponse(AbstractModel):
 
     @property
     def VerifyMessage(self):
+        """The verification message.
+        :rtype: str
+        """
         return self._VerifyMessage
 
     @VerifyMessage.setter
@@ -7006,6 +8234,9 @@ class VerifyCredentialResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7058,6 +8289,9 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def CptId(self):
+        """The claim protocol type (CPT) ID.
+        :rtype: int
+        """
         return self._CptId
 
     @CptId.setter
@@ -7066,6 +8300,9 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def Issuer(self):
+        """The issuer DID.
+        :rtype: str
+        """
         return self._Issuer
 
     @Issuer.setter
@@ -7074,6 +8311,9 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def ExpirationDate(self):
+        """The expiration time.
+        :rtype: int
+        """
         return self._ExpirationDate
 
     @ExpirationDate.setter
@@ -7082,6 +8322,9 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def ClaimJson(self):
+        """The claim.
+        :rtype: str
+        """
         return self._ClaimJson
 
     @ClaimJson.setter
@@ -7090,6 +8333,9 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def IssuanceDate(self):
+        """The time when the credential was issued.
+        :rtype: int
+        """
         return self._IssuanceDate
 
     @IssuanceDate.setter
@@ -7098,6 +8344,9 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def Context(self):
+        """The context.
+        :rtype: str
+        """
         return self._Context
 
     @Context.setter
@@ -7106,6 +8355,9 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def Id(self):
+        """The ID.
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -7114,6 +8366,9 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def Proof(self):
+        """The signature.
+        :rtype: :class:`tencentcloud.tdid.v20210519.models.Proof`
+        """
         return self._Proof
 
     @Proof.setter
@@ -7122,6 +8377,9 @@ class VerifyFunctionArg(AbstractModel):
 
     @property
     def Type(self):
+        """The type.
+        :rtype: list of str
+        """
         return self._Type
 
     @Type.setter

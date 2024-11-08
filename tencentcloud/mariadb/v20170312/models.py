@@ -35,6 +35,9 @@ class Account(AbstractModel):
 
     @property
     def User(self):
+        """Account name
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -43,6 +46,9 @@ class Account(AbstractModel):
 
     @property
     def Host(self):
+        """Host address
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -83,6 +89,9 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Database engine name. Valid value: `mariadb`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -91,6 +100,9 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
+        """ID of the security group to be associated in the format of sg-efil73jd.
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -99,6 +111,9 @@ class AssociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """ID(s) of the instance(s) to be associated in the format of tdsql-lesecurk. You can specify multiple instances.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -134,6 +149,9 @@ class AssociateSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -159,6 +177,9 @@ class CancelDcnJobRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Disaster recovery instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -195,6 +216,9 @@ class CancelDcnJobResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """Task ID
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -203,6 +227,9 @@ class CancelDcnJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -244,6 +271,9 @@ class CloneAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -252,6 +282,9 @@ class CloneAccountRequest(AbstractModel):
 
     @property
     def SrcUser(self):
+        """Source user account name
+        :rtype: str
+        """
         return self._SrcUser
 
     @SrcUser.setter
@@ -260,6 +293,9 @@ class CloneAccountRequest(AbstractModel):
 
     @property
     def SrcHost(self):
+        """Source user host
+        :rtype: str
+        """
         return self._SrcHost
 
     @SrcHost.setter
@@ -268,6 +304,9 @@ class CloneAccountRequest(AbstractModel):
 
     @property
     def DstUser(self):
+        """Target user account name
+        :rtype: str
+        """
         return self._DstUser
 
     @DstUser.setter
@@ -276,6 +315,9 @@ class CloneAccountRequest(AbstractModel):
 
     @property
     def DstHost(self):
+        """Target user host
+        :rtype: str
+        """
         return self._DstHost
 
     @DstHost.setter
@@ -284,6 +326,9 @@ class CloneAccountRequest(AbstractModel):
 
     @property
     def DstDesc(self):
+        """Target account description
+        :rtype: str
+        """
         return self._DstDesc
 
     @DstDesc.setter
@@ -325,6 +370,9 @@ class CloneAccountResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """Async task flow ID.
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -333,6 +381,9 @@ class CloneAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -362,6 +413,9 @@ class CloseDBExtranetAccessRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of instance for which to disable public network access. The ID is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -370,6 +424,9 @@ class CloseDBExtranetAccessRequest(AbstractModel):
 
     @property
     def Ipv6Flag(self):
+        """Whether IPv6 is used. Default value: 0
+        :rtype: int
+        """
         return self._Ipv6Flag
 
     @Ipv6Flag.setter
@@ -407,6 +464,9 @@ class CloseDBExtranetAccessResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """Async task ID. The task status can be queried through the `DescribeFlow` API.
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -415,6 +475,9 @@ class CloseDBExtranetAccessResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -450,6 +513,9 @@ class ColumnPrivilege(AbstractModel):
 
     @property
     def Database(self):
+        """Database name
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -458,6 +524,9 @@ class ColumnPrivilege(AbstractModel):
 
     @property
     def Table(self):
+        """Table name
+        :rtype: str
+        """
         return self._Table
 
     @Table.setter
@@ -466,6 +535,9 @@ class ColumnPrivilege(AbstractModel):
 
     @property
     def Column(self):
+        """Column name
+        :rtype: str
+        """
         return self._Column
 
     @Column.setter
@@ -474,6 +546,9 @@ class ColumnPrivilege(AbstractModel):
 
     @property
     def Privileges(self):
+        """Permission information
+        :rtype: list of str
+        """
         return self._Privileges
 
     @Privileges.setter
@@ -513,6 +588,9 @@ class ConstraintRange(AbstractModel):
 
     @property
     def Min(self):
+        """Minimum value when the constraint type is `section`
+        :rtype: str
+        """
         return self._Min
 
     @Min.setter
@@ -521,6 +599,9 @@ class ConstraintRange(AbstractModel):
 
     @property
     def Max(self):
+        """Maximum value when the constraint type is `section`
+        :rtype: str
+        """
         return self._Max
 
     @Max.setter
@@ -573,6 +654,9 @@ class CopyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -581,6 +665,9 @@ class CopyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def SrcUserName(self):
+        """Source username
+        :rtype: str
+        """
         return self._SrcUserName
 
     @SrcUserName.setter
@@ -589,6 +676,9 @@ class CopyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def SrcHost(self):
+        """Access host allowed for source user
+        :rtype: str
+        """
         return self._SrcHost
 
     @SrcHost.setter
@@ -597,6 +687,9 @@ class CopyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def DstUserName(self):
+        """Target username
+        :rtype: str
+        """
         return self._DstUserName
 
     @DstUserName.setter
@@ -605,6 +698,9 @@ class CopyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def DstHost(self):
+        """Access host allowed for target user
+        :rtype: str
+        """
         return self._DstHost
 
     @DstHost.setter
@@ -613,6 +709,9 @@ class CopyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def SrcReadOnly(self):
+        """`ReadOnly` attribute of source account
+        :rtype: str
+        """
         return self._SrcReadOnly
 
     @SrcReadOnly.setter
@@ -621,6 +720,9 @@ class CopyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def DstReadOnly(self):
+        """`ReadOnly` attribute of target account
+        :rtype: str
+        """
         return self._DstReadOnly
 
     @DstReadOnly.setter
@@ -660,6 +762,9 @@ class CopyAccountPrivilegesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -709,6 +814,9 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -717,6 +825,9 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def UserName(self):
+        """Login username, which can contain 1-32 letters, digits, underscores, and hyphens.
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -725,6 +836,9 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def Host(self):
+        """Host that can be logged in to, which is in the same format as the host of the MySQL account and supports wildcards, such as %, 10.%, and 10.20.%.
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -733,6 +847,9 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def Password(self):
+        """Account password. It must contain 8-32 characters in all of the following four types: lowercase letters, uppercase letters, digits, and symbols (()~!@#$%^&*-+=_|{}[]:<>,.?/), and cannot start with a slash (/).
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -741,6 +858,9 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def ReadOnly(self):
+        """Whether to create a read-only account. 0: no; 1: for the account's SQL requests, the secondary will be used first, and if it is unavailable, the primary will be used; 2: the secondary will be used first, and if it is unavailable, the operation will fail.
+        :rtype: int
+        """
         return self._ReadOnly
 
     @ReadOnly.setter
@@ -749,6 +869,9 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Account remarks, which can contain 0-256 letters, digits, and common symbols.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -757,6 +880,9 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def DelayThresh(self):
+        """Determines whether the secondary is unavailable based on the passed-in time
+        :rtype: int
+        """
         return self._DelayThresh
 
     @DelayThresh.setter
@@ -765,6 +891,9 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def SlaveConst(self):
+        """Whether to specify a replica server for read-only account. Valid values: `0` (No replica server is specified, which means that the proxy will select another available replica server to keep connection with the client if the current replica server doesn’t meet the requirement). `1` (The replica server is specified, which means that the connection will be disconnected if the specified replica server doesn’t meet the requirement.)
+        :rtype: int
+        """
         return self._SlaveConst
 
     @SlaveConst.setter
@@ -773,6 +902,9 @@ class CreateAccountRequest(AbstractModel):
 
     @property
     def MaxUserConnections(self):
+        """Maximum number of connections. If left empty or `0` is passed in, the connections will be unlimited. This parameter configuration is not supported for kernel version 10.1.
+        :rtype: int
+        """
         return self._MaxUserConnections
 
     @MaxUserConnections.setter
@@ -826,6 +958,9 @@ class CreateAccountResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID, which is passed through from the input parameters.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -834,6 +969,9 @@ class CreateAccountResponse(AbstractModel):
 
     @property
     def UserName(self):
+        """Username, which is passed through from the input parameters.
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -842,6 +980,9 @@ class CreateAccountResponse(AbstractModel):
 
     @property
     def Host(self):
+        """Host allowed for access, which is passed through from the input parameters.
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -850,6 +991,9 @@ class CreateAccountResponse(AbstractModel):
 
     @property
     def ReadOnly(self):
+        """Passed through from the input parameters.
+        :rtype: int
+        """
         return self._ReadOnly
 
     @ReadOnly.setter
@@ -858,6 +1002,9 @@ class CreateAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -947,6 +1094,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Zones(self):
+        """AZs to deploy instance nodes. You can specify up to two AZs (one as primary AZ and another as replica AZ). When the shard specification is 1-primary-2-replica, the primary and one of the replicas are deployed in the primary AZ.
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -955,6 +1105,10 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def NodeCount(self):
+        """Number of nodes, which can be obtained 
+ by querying the instance specification through the `DescribeDBInstanceSpecs` API.
+        :rtype: int
+        """
         return self._NodeCount
 
     @NodeCount.setter
@@ -963,6 +1117,10 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Memory(self):
+        """Memory size in GB, which can be obtained 
+ by querying the instance specification through the `DescribeDBInstanceSpecs` API.
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -971,6 +1129,10 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Storage(self):
+        """Storage capacity in GB. The maximum and minimum storage space can be obtained 
+ by querying instance specification through the `DescribeDBInstanceSpecs` API.
+        :rtype: int
+        """
         return self._Storage
 
     @Storage.setter
@@ -979,6 +1141,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Period(self):
+        """Validity period in months
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -987,6 +1152,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Count(self):
+        """The number of instances to be purchased. Only one instance is queried for price by default.
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -995,6 +1163,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
+        """Whether to automatically use vouchers. This option is disabled by default.
+        :rtype: bool
+        """
         return self._AutoVoucher
 
     @AutoVoucher.setter
@@ -1003,6 +1174,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
+        """Voucher ID list. Currently, you can specify only one voucher.
+        :rtype: list of str
+        """
         return self._VoucherIds
 
     @VoucherIds.setter
@@ -1011,6 +1185,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID. If this parameter is not passed in, the instance will be created on the classic network.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1019,6 +1196,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """VPC subnet ID, which is required when `VpcId` is specified.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -1027,6 +1207,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID, which can be obtained through the `DescribeProjects` API. If this parameter is not passed in, the instance will be associated with the default project.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1035,6 +1218,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def DbVersionId(self):
+        """Database engine version. Valid values: `5.7`, `8.0`, `10.0`, `10.1`.
+        :rtype: str
+        """
         return self._DbVersionId
 
     @DbVersionId.setter
@@ -1043,6 +1229,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """Name of the instance, which can be customized.
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1051,6 +1240,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """List of security group IDs
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -1059,6 +1251,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """Auto-renewal flag. Valid values: `1` (auto-renewal), `2` (no renewal upon expiration).
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -1067,6 +1262,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def Ipv6Flag(self):
+        """Whether IPv6 is supported. Valid values: `0` (unsupported), `1` (supported).
+        :rtype: int
+        """
         return self._Ipv6Flag
 
     @Ipv6Flag.setter
@@ -1075,6 +1273,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
+        """Array of tag key-value pairs
+        :rtype: list of ResourceTag
+        """
         return self._ResourceTags
 
     @ResourceTags.setter
@@ -1083,6 +1284,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def InitParams(self):
+        """List of parameters. Valid values: `character_set_server` (character set; required); `lower_case_table_names` (table name case sensitivity; required; `0`: case-sensitive; `1`: case-insensitive); `innodb_page_size` (InnoDB data page size; default size: 16 KB); `sync_mode` (sync mode; `0`: async; `1`: strong sync; `2`: downgradable strong sync; default value: `2`).
+        :rtype: list of DBParamValue
+        """
         return self._InitParams
 
     @InitParams.setter
@@ -1091,6 +1295,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def DcnRegion(self):
+        """DCN source region
+        :rtype: str
+        """
         return self._DcnRegion
 
     @DcnRegion.setter
@@ -1099,6 +1306,9 @@ class CreateDBInstanceRequest(AbstractModel):
 
     @property
     def DcnInstanceId(self):
+        """DCN source instance ID
+        :rtype: str
+        """
         return self._DcnInstanceId
 
     @DcnInstanceId.setter
@@ -1169,6 +1379,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DealName(self):
+        """Order ID, which is used for calling the `DescribeOrders` API.
+ The parameter can be used to either query order details or call the user account APIs to make another payment when this payment fails.
+        :rtype: str
+        """
         return self._DealName
 
     @DealName.setter
@@ -1177,6 +1391,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceIds(self):
+        """IDs of the instances you have purchased in this order. If no instance IDs are returned, you can query them with the `DescribeOrders` API. You can also use the `DescribeDBInstances` API to check whether an instance has been created successfully.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -1185,6 +1403,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1265,6 +1486,9 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def Zones(self):
+        """AZs to deploy instance nodes. You can specify up to two AZs.
+        :rtype: list of str
+        """
         return self._Zones
 
     @Zones.setter
@@ -1273,6 +1497,9 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def NodeCount(self):
+        """Number of nodes.
+        :rtype: int
+        """
         return self._NodeCount
 
     @NodeCount.setter
@@ -1281,6 +1508,9 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def Memory(self):
+        """Memory size in GB.
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -1289,6 +1519,9 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def Storage(self):
+        """Storage size in GB.
+        :rtype: int
+        """
         return self._Storage
 
     @Storage.setter
@@ -1297,6 +1530,9 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def Count(self):
+        """Number of instances to purchase.
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -1305,6 +1541,9 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID. If this parameter is not passed in, the default project will be used.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1313,6 +1552,9 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """Unique ID of the network. If this parameter is not passed in, the classic network will be used.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1321,6 +1563,9 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Unique ID of the subnet. If `VpcId` is specified, this parameter is required.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -1329,6 +1574,9 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def DbVersionId(self):
+        """Database engine version. Valid values: `5.7`, `8.0`, `10.0`, `10.1`.
+        :rtype: str
+        """
         return self._DbVersionId
 
     @DbVersionId.setter
@@ -1337,6 +1585,9 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """Custom name of the instance.
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1345,6 +1596,9 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """Security group ID. If this parameter is not passed in, no security groups will be associated when the instance is created.
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -1353,6 +1607,9 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def Ipv6Flag(self):
+        """Whether IPv6 is supported. Valid values: `0` (unsupported), `1` (supported).
+        :rtype: int
+        """
         return self._Ipv6Flag
 
     @Ipv6Flag.setter
@@ -1361,6 +1618,9 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def ResourceTags(self):
+        """Array of tag key-value pairs.
+        :rtype: list of ResourceTag
+        """
         return self._ResourceTags
 
     @ResourceTags.setter
@@ -1369,6 +1629,9 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def DcnRegion(self):
+        """If you create a disaster recovery instance, you need to use this parameter to specify the region of the associated primary instance so that the disaster recovery instance can sync data with the primary instance over the Data Communication Network (DCN).
+        :rtype: str
+        """
         return self._DcnRegion
 
     @DcnRegion.setter
@@ -1377,6 +1640,9 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def DcnInstanceId(self):
+        """If you create a disaster recovery instance, you need to use this parameter to specify the ID of the associated primary instance so that the disaster recovery instance can sync data with the primary instance over the Data Communication Network (DCN).
+        :rtype: str
+        """
         return self._DcnInstanceId
 
     @DcnInstanceId.setter
@@ -1385,6 +1651,11 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def InitParams(self):
+        """List of parameters. Valid values: 
+`character_set_server` (character set; required); `lower_case_table_names` (table name case sensitivity; required; 0: case-sensitive; 1: case-insensitive);
+`innodb_page_size` (innoDB data page size; default size: 16 KB); `sync_mode` (sync mode; 0: async; 1: strong sync; 2: downgradable strong sync; default value: 2).
+        :rtype: list of DBParamValue
+        """
         return self._InitParams
 
     @InitParams.setter
@@ -1393,6 +1664,9 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def RollbackInstanceId(self):
+        """ID of the instance to be rolled back, such as “2021-11-22 00:00:00”.
+        :rtype: str
+        """
         return self._RollbackInstanceId
 
     @RollbackInstanceId.setter
@@ -1401,6 +1675,9 @@ class CreateHourDBInstanceRequest(AbstractModel):
 
     @property
     def RollbackTime(self):
+        """Rollback time.
+        :rtype: str
+        """
         return self._RollbackTime
 
     @RollbackTime.setter
@@ -1473,6 +1750,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DealName(self):
+        """Order ID, which is used for calling the `DescribeOrders` API.
+ The parameter can be used to either query order details or call the user account APIs to make another payment when this payment fails.
+        :rtype: str
+        """
         return self._DealName
 
     @DealName.setter
@@ -1481,6 +1762,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceIds(self):
+        """IDs of the instances you have purchased in this order. If no instance IDs are returned, you can query them with the `DescribeOrders` API. You can also use the `DescribeDBInstances` API to check whether an instance has been created successfully.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -1489,6 +1774,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FlowId(self):
+        """Async task ID, which can be used in the [DescribeFlow](https://www.tencentcloud.com/document/product/237/16177) API to query the async task result.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -1497,6 +1786,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1550,6 +1842,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UserName(self):
+        """Username
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -1558,6 +1853,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Host(self):
+        """Host from which a user can log in (corresponding to the `host` field for a MySQL user; a user is uniquely identified by username and host; this parameter is in IP format and ends with % for IP range; % can be entered; if this parameter is left empty, % will be used by default).
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -1566,6 +1864,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """User remarks
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1574,6 +1875,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1582,6 +1886,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
+        """Last updated time
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -1590,6 +1897,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReadOnly(self):
+        """Read-only flag. 0: no; 1: for the account's SQL requests, the replica will be used first, and if it is unavailable, the primary will be used; 2: the replica will be used first, and if it is unavailable, the operation will fail.
+        :rtype: int
+        """
         return self._ReadOnly
 
     @ReadOnly.setter
@@ -1598,6 +1908,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DelayThresh(self):
+        """This field is meaningful for read-only accounts, indicating that a replica should be selected if its delay from the primary is less than this value.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DelayThresh
 
     @DelayThresh.setter
@@ -1606,6 +1920,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SlaveConst(self):
+        """Whether to specify a replica server for read-only account. Valid values: `0` (No replica server is specified, which means that the proxy will select another available replica server to keep connection with the client if the current replica server doesn’t meet the requirement). `1` (The replica server is specified, which means that the connection will be disconnected if the specified replica server doesn’t meet the requirement.)
+        :rtype: int
+        """
         return self._SlaveConst
 
     @SlaveConst.setter
@@ -1614,6 +1931,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxUserConnections(self):
+        """Maximum number of connections. `0` indicates no limit.
+        :rtype: int
+        """
         return self._MaxUserConnections
 
     @MaxUserConnections.setter
@@ -1824,6 +2144,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """Instance ID, which uniquely identifies a TDSQL instance
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1832,6 +2155,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
+        """Customizable instance name
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -1840,6 +2166,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AppId(self):
+        """Application ID of instance
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -1848,6 +2177,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
+        """Project ID of instance
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1856,6 +2188,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
+        """Instance region name, such as ap-shanghai
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1864,6 +2199,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Zone(self):
+        """Instance AZ name, such as ap-guangzhou-1
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -1872,6 +2210,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
+        """VPC ID, which is 0 if the basic network is used
+        :rtype: int
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1880,6 +2221,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
+        """Subnet ID, which is 0 if the basic network is used
+        :rtype: int
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -1888,6 +2232,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Instance status. Valid values: `0` (creating), `1` (running task), `2` (running), `3` (uninitialized), `-1` (isolated), `4` (initializing), `5` (eliminating), `6` (restarting), `7` (migrating data)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1896,6 +2243,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vip(self):
+        """Private IP address
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -1904,6 +2254,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vport(self):
+        """Private network port
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -1912,6 +2265,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WanDomain(self):
+        """Domain name for public network access, which can be resolved by the public network
+        :rtype: str
+        """
         return self._WanDomain
 
     @WanDomain.setter
@@ -1920,6 +2276,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WanVip(self):
+        """Public IP address, which can be accessed over the public network
+        :rtype: str
+        """
         return self._WanVip
 
     @WanVip.setter
@@ -1928,6 +2287,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WanPort(self):
+        """Public network port
+        :rtype: int
+        """
         return self._WanPort
 
     @WanPort.setter
@@ -1936,6 +2298,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Instance creation time in the format of `2006-01-02 15:04:05`
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1944,6 +2309,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
+        """Last updated time of instance in the format of `2006-01-02 15:04:05`
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -1952,6 +2320,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRenewFlag(self):
+        """Auto-renewal flag. 0: no, 1: yes
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -1960,6 +2331,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PeriodEndTime(self):
+        """Instance expiration time in the format of `2006-01-02 15:04:05`
+        :rtype: str
+        """
         return self._PeriodEndTime
 
     @PeriodEndTime.setter
@@ -1968,6 +2342,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Uin(self):
+        """Instance account
+        :rtype: str
+        """
         return self._Uin
 
     @Uin.setter
@@ -1976,6 +2353,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TdsqlVersion(self):
+        """TDSQL version information
+        :rtype: str
+        """
         return self._TdsqlVersion
 
     @TdsqlVersion.setter
@@ -1984,6 +2364,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Memory(self):
+        """Instance memory size in GB
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -1992,6 +2375,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Storage(self):
+        """Instance storage capacity in GB
+        :rtype: int
+        """
         return self._Storage
 
     @Storage.setter
@@ -2000,6 +2386,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqueVpcId(self):
+        """VPC ID in string type
+        :rtype: str
+        """
         return self._UniqueVpcId
 
     @UniqueVpcId.setter
@@ -2008,6 +2397,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqueSubnetId(self):
+        """VPC subnet ID in string type
+        :rtype: str
+        """
         return self._UniqueSubnetId
 
     @UniqueSubnetId.setter
@@ -2016,6 +2408,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OriginSerialId(self):
+        """Original ID of instance (this field is obsolete and should not be depended on)
+        :rtype: str
+        """
         return self._OriginSerialId
 
     @OriginSerialId.setter
@@ -2024,6 +2419,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NodeCount(self):
+        """Number of nodes. 2: one master and one slave, 3: one master and two slaves
+        :rtype: int
+        """
         return self._NodeCount
 
     @NodeCount.setter
@@ -2032,6 +2430,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsTmp(self):
+        """Whether it is a temp instance. 0: no, non-zero value: yes
+        :rtype: int
+        """
         return self._IsTmp
 
     @IsTmp.setter
@@ -2040,6 +2441,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExclusterId(self):
+        """Dedicated cluster ID. If this parameter is empty, the instance is a general instance
+        :rtype: str
+        """
         return self._ExclusterId
 
     @ExclusterId.setter
@@ -2048,6 +2452,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
+        """Numeric ID of instance (this field is obsolete and should not be depended on)
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2056,6 +2463,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pid(self):
+        """Product type ID
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -2064,6 +2474,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Qps(self):
+        """Maximum QPS value
+        :rtype: int
+        """
         return self._Qps
 
     @Qps.setter
@@ -2072,6 +2485,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Paymode(self):
+        """Billing mode
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Paymode
 
     @Paymode.setter
@@ -2080,6 +2497,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Locker(self):
+        """Async task flow ID when an async task is in progress on an instance
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Locker
 
     @Locker.setter
@@ -2088,6 +2509,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusDesc(self):
+        """Current instance running status description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -2096,6 +2521,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WanStatus(self):
+        """Public network access status. 0: not enabled, 1: enabled, 2: disabled, 3: enabling
+        :rtype: int
+        """
         return self._WanStatus
 
     @WanStatus.setter
@@ -2104,6 +2532,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsAuditSupported(self):
+        """Whether the instance supports audit. 1: yes, 0: no
+        :rtype: int
+        """
         return self._IsAuditSupported
 
     @IsAuditSupported.setter
@@ -2112,6 +2543,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Machine(self):
+        """Model
+        :rtype: str
+        """
         return self._Machine
 
     @Machine.setter
@@ -2120,6 +2554,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsEncryptSupported(self):
+        """Whether data encryption is supported. 1: yes, 0: no
+        :rtype: int
+        """
         return self._IsEncryptSupported
 
     @IsEncryptSupported.setter
@@ -2128,6 +2565,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cpu(self):
+        """Number of CPU cores of instance
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -2136,6 +2576,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ipv6Flag(self):
+        """Indicates whether the instance uses IPv6
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Ipv6Flag
 
     @Ipv6Flag.setter
@@ -2144,6 +2588,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vipv6(self):
+        """Private network IPv6 address
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Vipv6
 
     @Vipv6.setter
@@ -2152,6 +2600,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WanVipv6(self):
+        """Public network IPv6 address
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._WanVipv6
 
     @WanVipv6.setter
@@ -2160,6 +2612,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WanPortIpv6(self):
+        """Public network IPv6 port
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._WanPortIpv6
 
     @WanPortIpv6.setter
@@ -2168,6 +2624,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WanStatusIpv6(self):
+        """Public network IPv6 status
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._WanStatusIpv6
 
     @WanStatusIpv6.setter
@@ -2176,6 +2636,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbEngine(self):
+        """Database engine
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DbEngine
 
     @DbEngine.setter
@@ -2184,6 +2648,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbVersion(self):
+        """Database version
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DbVersion
 
     @DbVersion.setter
@@ -2192,6 +2660,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DcnFlag(self):
+        """DCN type. Valid values: 0 (null), 1 (primary instance), 2 (disaster recovery instance)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DcnFlag
 
     @DcnFlag.setter
@@ -2200,6 +2672,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DcnStatus(self):
+        """DCN status. Valid values: 0 (null), 1 (creating), 2 (syncing), 3 (disconnected)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DcnStatus
 
     @DcnStatus.setter
@@ -2208,6 +2684,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DcnDstNum(self):
+        """The number of DCN disaster recovery instances
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DcnDstNum
 
     @DcnDstNum.setter
@@ -2216,6 +2696,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
+        """Instance type. Valid values: `1` (dedicated primary instance), `2` (primary instance), `3` (disaster recovery instance), and `4` (dedicated disaster recovery instance).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -2224,6 +2708,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceTags(self):
+        """Instance tag information
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of ResourceTag
+        """
         return self._ResourceTags
 
     @ResourceTags.setter
@@ -2232,6 +2720,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbVersionId(self):
+        """Database version
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DbVersionId
 
     @DbVersionId.setter
@@ -2324,6 +2816,9 @@ class DBParamValue(AbstractModel):
 
     @property
     def Param(self):
+        """Parameter name
+        :rtype: str
+        """
         return self._Param
 
     @Param.setter
@@ -2332,6 +2827,9 @@ class DBParamValue(AbstractModel):
 
     @property
     def Value(self):
+        """Parameter value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -2379,6 +2877,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoReplicationMode(self):
+        """DCN running status. Valid values: `START` (running), `STOP` (pause)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RoReplicationMode
 
     @RoReplicationMode.setter
@@ -2387,6 +2889,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DelayReplicationType(self):
+        """Delayed replication type. Valid values: `DEFAULT` (no delay), `DUE_TIME` (specified replication time)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DelayReplicationType
 
     @DelayReplicationType.setter
@@ -2395,6 +2901,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DueTime(self):
+        """Specified time for delayed replication
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DueTime
 
     @DueTime.setter
@@ -2403,6 +2913,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReplicationDelay(self):
+        """The number of seconds to delay the replication
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ReplicationDelay
 
     @ReplicationDelay.setter
@@ -2443,6 +2957,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """DCN running status. Valid values: `START` (running), `STOP` (pause).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2451,6 +2969,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Delay(self):
+        """The current delay, which takes the delay value of the replica instance.
+        :rtype: int
+        """
         return self._Delay
 
     @Delay.setter
@@ -2485,6 +3006,9 @@ class Database(AbstractModel):
 
     @property
     def DbName(self):
+        """Database name
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -2518,6 +3042,9 @@ class DatabaseFunction(AbstractModel):
 
     @property
     def Func(self):
+        """Function name
+        :rtype: str
+        """
         return self._Func
 
     @Func.setter
@@ -2554,6 +3081,9 @@ class DatabasePrivilege(AbstractModel):
 
     @property
     def Privileges(self):
+        """Permission information
+        :rtype: list of str
+        """
         return self._Privileges
 
     @Privileges.setter
@@ -2562,6 +3092,9 @@ class DatabasePrivilege(AbstractModel):
 
     @property
     def Database(self):
+        """Database name
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -2596,6 +3129,9 @@ class DatabaseProcedure(AbstractModel):
 
     @property
     def Proc(self):
+        """Stored procedure name
+        :rtype: str
+        """
         return self._Proc
 
     @Proc.setter
@@ -2629,6 +3165,9 @@ class DatabaseTable(AbstractModel):
 
     @property
     def Table(self):
+        """Table name
+        :rtype: str
+        """
         return self._Table
 
     @Table.setter
@@ -2662,6 +3201,9 @@ class DatabaseView(AbstractModel):
 
     @property
     def View(self):
+        """View name
+        :rtype: str
+        """
         return self._View
 
     @View.setter
@@ -2757,6 +3299,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2765,6 +3310,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
+        """Instance name
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -2773,6 +3321,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
+        """Region where the instance resides
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2781,6 +3332,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Zone(self):
+        """Availability zone where the instance resides
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -2789,6 +3343,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vip(self):
+        """Instance IP address
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -2797,6 +3354,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vipv6(self):
+        """Instance IPv6 address
+        :rtype: str
+        """
         return self._Vipv6
 
     @Vipv6.setter
@@ -2805,6 +3365,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vport(self):
+        """Instance port
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -2813,6 +3376,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Instance status
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2821,6 +3387,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusDesc(self):
+        """Instance status description
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -2829,6 +3398,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DcnFlag(self):
+        """DCN flag. Valid values: `1` (primary), `2` (disaster recovery)
+        :rtype: int
+        """
         return self._DcnFlag
 
     @DcnFlag.setter
@@ -2837,6 +3409,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DcnStatus(self):
+        """DCN status. Valid values: `0` (none), `1` (creating), `2` (syncing), `3` (disconnected)
+        :rtype: int
+        """
         return self._DcnStatus
 
     @DcnStatus.setter
@@ -2845,6 +3420,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cpu(self):
+        """Number of CPU cores of the instance
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -2853,6 +3431,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Memory(self):
+        """Instance memory capacity in GB
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -2861,6 +3442,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Storage(self):
+        """Instance storage capacity in GB
+        :rtype: int
+        """
         return self._Storage
 
     @Storage.setter
@@ -2869,6 +3453,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayMode(self):
+        """Billing mode
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -2877,6 +3464,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Creation time of the instance in the format of 2006-01-02 15:04:05
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2885,6 +3475,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PeriodEndTime(self):
+        """Expiration time of the instance in the format of 2006-01-02 15:04:05
+        :rtype: str
+        """
         return self._PeriodEndTime
 
     @PeriodEndTime.setter
@@ -2893,6 +3486,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
+        """Instance type. Valid values: `1` (dedicated primary instance), `2` (non-dedicated primary instance), `3` (non-dedicated disaster recovery instance), `4` (dedicated disaster recovery instance)
+        :rtype: int
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -2901,6 +3497,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReplicaConfig(self):
+        """Configuration information of DCN replication. This field is null for a primary instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DCNReplicaConfig`
+        """
         return self._ReplicaConfig
 
     @ReplicaConfig.setter
@@ -2909,6 +3509,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReplicaStatus(self):
+        """DCN replication status. This field is null for the primary instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DCNReplicaStatus`
+        """
         return self._ReplicaStatus
 
     @ReplicaStatus.setter
@@ -2917,6 +3521,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EncryptStatus(self):
+        """Whether KMS is enabled.
+        :rtype: int
+        """
         return self._EncryptStatus
 
     @EncryptStatus.setter
@@ -2990,6 +3597,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DealName(self):
+        """Order number
+        :rtype: str
+        """
         return self._DealName
 
     @DealName.setter
@@ -2998,6 +3608,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OwnerUin(self):
+        """Account
+        :rtype: str
+        """
         return self._OwnerUin
 
     @OwnerUin.setter
@@ -3006,6 +3619,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Count(self):
+        """Number of items
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -3014,6 +3630,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FlowId(self):
+        """ID of the associated process, which can be used to query the process execution status.
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -3022,6 +3641,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceIds(self):
+        """The ID of the created instance, which is required only for the order that creates an instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -3030,6 +3653,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayMode(self):
+        """Payment mode. Valid values: 0 (postpaid), 1 (prepaid)
+        :rtype: int
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -3074,6 +3700,9 @@ class DeleteAccountRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3082,6 +3711,9 @@ class DeleteAccountRequest(AbstractModel):
 
     @property
     def UserName(self):
+        """Username
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -3090,6 +3722,9 @@ class DeleteAccountRequest(AbstractModel):
 
     @property
     def Host(self):
+        """Access host allowed for user
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -3125,6 +3760,9 @@ class DeleteAccountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3168,6 +3806,9 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the form of `tdsql-ow728lmc`, which can be obtained by querying the instance details through `DescribeDBInstances`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3176,6 +3817,9 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def UserName(self):
+        """Login username.
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -3184,6 +3828,9 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def Host(self):
+        """Access host allowed for a user. An account is uniquely identified by username and host.
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -3192,6 +3839,9 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def DbName(self):
+        """Database name. `\*` indicates that global permissions will be queried (i.e., `\*.\*`), in which case the `Type` and `Object ` parameters will be ignored.
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -3200,6 +3850,9 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Type. Valid values: table, view, proc, func, \*. If `DbName` is a specific database name and `Type` is `\*`, the permissions of the database will be queried (i.e., `db.\*`), in which case the `Object` parameter will be ignored.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3208,6 +3861,9 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def Object(self):
+        """Type name. For example, if `Type` is `table`, `Object` indicates a specific table name; if both `DbName` and `Type` are specific names, it indicates a specific object name and cannot be `\*` or empty.
+        :rtype: str
+        """
         return self._Object
 
     @Object.setter
@@ -3216,6 +3872,9 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def ColName(self):
+        """If `Type` is `table` and `ColName` is `\*`, the permissions of the table will be queried; if `ColName` is a specific field name, the permissions of the corresponding field will be queried.
+        :rtype: str
+        """
         return self._ColName
 
     @ColName.setter
@@ -3267,6 +3926,9 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3275,6 +3937,9 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
 
     @property
     def Privileges(self):
+        """Permission list.
+        :rtype: list of str
+        """
         return self._Privileges
 
     @Privileges.setter
@@ -3283,6 +3948,9 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
 
     @property
     def UserName(self):
+        """Database account username
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -3291,6 +3959,9 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
 
     @property
     def Host(self):
+        """Database account host
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -3299,6 +3970,9 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3328,6 +4002,9 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the form of `tdsql-ow728lmc`, which can be obtained by querying the instance details through `DescribeDBInstances`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3367,6 +4044,9 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID, which is passed through from the input parameters.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3375,6 +4055,9 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def Users(self):
+        """Instance user list.
+        :rtype: list of DBAccount
+        """
         return self._Users
 
     @Users.setter
@@ -3383,6 +4066,9 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3436,6 +4122,9 @@ class DescribeBackupFilesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Query by instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3444,6 +4133,9 @@ class DescribeBackupFilesRequest(AbstractModel):
 
     @property
     def BackupType(self):
+        """Backup type. Valid values: `Data` (data backup), `Binlog` (Binlog backup), `Errlog` (error log), `Slowlog` (slow log).
+        :rtype: str
+        """
         return self._BackupType
 
     @BackupType.setter
@@ -3452,6 +4144,9 @@ class DescribeBackupFilesRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Query by start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3460,6 +4155,9 @@ class DescribeBackupFilesRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Query by end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3468,6 +4166,9 @@ class DescribeBackupFilesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Pagination parameter
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3476,6 +4177,9 @@ class DescribeBackupFilesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Pagination parameter
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3484,6 +4188,9 @@ class DescribeBackupFilesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """Sorting dimension. Valid values: `Time`, `Size`.
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -3492,6 +4199,9 @@ class DescribeBackupFilesRequest(AbstractModel):
 
     @property
     def OrderType(self):
+        """Sorting order. Valid values: `DESC`, `ASC`.
+        :rtype: str
+        """
         return self._OrderType
 
     @OrderType.setter
@@ -3538,6 +4248,9 @@ class DescribeBackupFilesResponse(AbstractModel):
 
     @property
     def Files(self):
+        """List of backup files
+        :rtype: list of InstanceBackupFileItem
+        """
         return self._Files
 
     @Files.setter
@@ -3546,6 +4259,9 @@ class DescribeBackupFilesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3554,6 +4270,9 @@ class DescribeBackupFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3586,6 +4305,9 @@ class DescribeDBEncryptAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `tdsql-ow728lmc`
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3628,6 +4350,9 @@ class DescribeDBEncryptAttributesResponse(AbstractModel):
 
     @property
     def EncryptStatus(self):
+        """Whether encryption is enabled. Valid values: `1` (enabled), `2` (disabled).
+        :rtype: int
+        """
         return self._EncryptStatus
 
     @EncryptStatus.setter
@@ -3636,6 +4361,9 @@ class DescribeDBEncryptAttributesResponse(AbstractModel):
 
     @property
     def CipherText(self):
+        """DEK key
+        :rtype: str
+        """
         return self._CipherText
 
     @CipherText.setter
@@ -3644,6 +4372,9 @@ class DescribeDBEncryptAttributesResponse(AbstractModel):
 
     @property
     def ExpireDate(self):
+        """DEK key expiration date
+        :rtype: str
+        """
         return self._ExpireDate
 
     @ExpireDate.setter
@@ -3652,6 +4383,9 @@ class DescribeDBEncryptAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3680,6 +4414,9 @@ class DescribeDBInstanceDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `tdsql-ow728lmc`
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3903,6 +4640,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3911,6 +4651,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
+        """Instance name
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -3919,6 +4662,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Instance status
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -3927,6 +4673,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StatusDesc(self):
+        """Current status of the instance
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -3935,6 +4684,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vip(self):
+        """Private IP address
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -3943,6 +4695,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vport(self):
+        """Private port
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -3951,6 +4706,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsTmp(self):
+        """Whether it is a temp instance. Valid values: `0` (no), non-zero value (yes).
+        :rtype: int
+        """
         return self._IsTmp
 
     @IsTmp.setter
@@ -3959,6 +4717,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NodeCount(self):
+        """Number of nodes. Valid values: `2` (1 primary-1 replica), `3` (1 primary-2 replicas).
+        :rtype: int
+        """
         return self._NodeCount
 
     @NodeCount.setter
@@ -3967,6 +4728,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
+        """Instance region name, such as ap-shanghai.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -3975,6 +4739,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Zone(self):
+        """Instance AZ name, such as ap-guangzhou-1.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -3983,6 +4750,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
+        """VPC ID in string type
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -3991,6 +4761,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
+        """VPC subnet ID in string type
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -3999,6 +4772,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WanStatus(self):
+        """Public network status. Valid values: `0` (not enabled), `1` (enabled), `2` (disabled), `3`: (enabling), `4` (disabling).
+        :rtype: int
+        """
         return self._WanStatus
 
     @WanStatus.setter
@@ -4007,6 +4783,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WanDomain(self):
+        """Domain name for public network access, which can be resolved by the public network.
+        :rtype: str
+        """
         return self._WanDomain
 
     @WanDomain.setter
@@ -4015,6 +4794,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WanVip(self):
+        """Public IP address, which can be accessed over the public network.
+        :rtype: str
+        """
         return self._WanVip
 
     @WanVip.setter
@@ -4023,6 +4805,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WanPort(self):
+        """Public network port
+        :rtype: int
+        """
         return self._WanPort
 
     @WanPort.setter
@@ -4031,6 +4816,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
+        """Project ID of the instance
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -4039,6 +4827,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TdsqlVersion(self):
+        """TDSQL version information
+        :rtype: str
+        """
         return self._TdsqlVersion
 
     @TdsqlVersion.setter
@@ -4047,6 +4838,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Memory(self):
+        """Instance memory capacity in GB
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -4055,6 +4849,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Storage(self):
+        """Instance storage capacity in GB
+        :rtype: int
+        """
         return self._Storage
 
     @Storage.setter
@@ -4063,6 +4860,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MasterZone(self):
+        """Primary AZ, such as ap-shanghai-1.
+        :rtype: str
+        """
         return self._MasterZone
 
     @MasterZone.setter
@@ -4071,6 +4871,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SlaveZones(self):
+        """List of replica AZs, such as ap-shanghai-2.
+        :rtype: list of str
+        """
         return self._SlaveZones
 
     @SlaveZones.setter
@@ -4079,6 +4882,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRenewFlag(self):
+        """Auto-renewal flag. Valid values: `0` (no), `1` (yes).
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -4087,6 +4893,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExclusterId(self):
+        """Dedicated cluster ID, which is empty for a non-dedicated cluster instance.
+        :rtype: str
+        """
         return self._ExclusterId
 
     @ExclusterId.setter
@@ -4095,6 +4904,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayMode(self):
+        """Billing mode. Valid values: `prepaid` (monthly subscription), `postpaid` (pay-as-you-go).
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -4103,6 +4915,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Creation time of the instance in the format of 2006-01-02 15:04:05
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -4111,6 +4926,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsAuditSupported(self):
+        """Whether the instance supports audit
+        :rtype: bool
+        """
         return self._IsAuditSupported
 
     @IsAuditSupported.setter
@@ -4119,6 +4937,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PeriodEndTime(self):
+        """Expiration time of the instance in the format of 2006-01-02 15:04:05
+        :rtype: str
+        """
         return self._PeriodEndTime
 
     @PeriodEndTime.setter
@@ -4127,6 +4948,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Machine(self):
+        """Model information
+        :rtype: str
+        """
         return self._Machine
 
     @Machine.setter
@@ -4135,6 +4959,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StorageUsage(self):
+        """Storage space utilization
+        :rtype: str
+        """
         return self._StorageUsage
 
     @StorageUsage.setter
@@ -4143,6 +4970,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LogStorage(self):
+        """Size of log storage space in GB
+        :rtype: int
+        """
         return self._LogStorage
 
     @LogStorage.setter
@@ -4151,6 +4981,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsEncryptSupported(self):
+        """Whether data encryption is supported. Valid values: `1` (yes), `0`: (no).
+        :rtype: int
+        """
         return self._IsEncryptSupported
 
     @IsEncryptSupported.setter
@@ -4159,6 +4992,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vip6(self):
+        """Private network IPv6 address
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Vip6
 
     @Vip6.setter
@@ -4167,6 +5004,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cpu(self):
+        """Number of CPU cores of an instance.
+        :rtype: int
+        """
         return self._Cpu
 
     @Cpu.setter
@@ -4175,6 +5015,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pid(self):
+        """Product type ID
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -4183,6 +5026,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Qps(self):
+        """Max QPS
+        :rtype: int
+        """
         return self._Qps
 
     @Qps.setter
@@ -4191,6 +5037,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ipv6Flag(self):
+        """Whether IPv6 is supported.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Ipv6Flag
 
     @Ipv6Flag.setter
@@ -4199,6 +5049,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WanVipv6(self):
+        """Public IPv6 address, which can be accessed over the public network
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._WanVipv6
 
     @WanVipv6.setter
@@ -4207,6 +5061,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WanStatusIpv6(self):
+        """Public network status. Valid values: `0` (not enabled), `1` (enabled), `2` (disabled), `3`: (enabling), `4` (disabling).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._WanStatusIpv6
 
     @WanStatusIpv6.setter
@@ -4215,6 +5073,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def WanPortIpv6(self):
+        """Public network IPv6 port
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._WanPortIpv6
 
     @WanPortIpv6.setter
@@ -4223,6 +5085,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbEngine(self):
+        """Database engine
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DbEngine
 
     @DbEngine.setter
@@ -4231,6 +5097,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbVersion(self):
+        """Database version
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DbVersion
 
     @DbVersion.setter
@@ -4239,6 +5109,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceTags(self):
+        """Tag information
+        :rtype: list of ResourceTag
+        """
         return self._ResourceTags
 
     @ResourceTags.setter
@@ -4247,6 +5120,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DcnFlag(self):
+        """DCN type. Valid values: `0` (N/A), `1` (primary instance), `2` (disaster recovery read-only instance)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DcnFlag
 
     @DcnFlag.setter
@@ -4255,6 +5132,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DcnStatus(self):
+        """DCN status. Valid values: `0` (N/A), `1` (creating), `2` (syncing), `3` (disconnected)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DcnStatus
 
     @DcnStatus.setter
@@ -4263,6 +5144,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DcnDstNum(self):
+        """Number of disaster recovery read-only instances
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DcnDstNum
 
     @DcnDstNum.setter
@@ -4271,6 +5156,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceType(self):
+        """Instance type. Valid values: `1` (dedicated primary instance), `2` (non-dedicated primary instance), `3` (non-dedicated disaster recovery read-only instance), `4` (dedicated disaster recovery read-only instance)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -4279,6 +5168,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NodesInfo(self):
+        """Instance node information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of NodeInfo
+        """
         return self._NodesInfo
 
     @NodesInfo.setter
@@ -4287,6 +5180,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsMaxUserConnectionsSupported(self):
+        """Whether the instance supports setting the connection limit, which is not supported for kernel version 10.1.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsMaxUserConnectionsSupported
 
     @IsMaxUserConnectionsSupported.setter
@@ -4295,6 +5192,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbVersionId(self):
+        """The displayed database version
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DbVersionId
 
     @DbVersionId.setter
@@ -4303,6 +5204,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EncryptStatus(self):
+        """Encryption status. Valid values: `0` (disabled), `1` (enabled).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._EncryptStatus
 
     @EncryptStatus.setter
@@ -4311,6 +5216,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReplicaConfig(self):
+        """Configuration information of DCN
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DCNReplicaConfig`
+        """
         return self._ReplicaConfig
 
     @ReplicaConfig.setter
@@ -4319,6 +5228,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReplicaStatus(self):
+        """Running status of DCN
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.DCNReplicaStatus`
+        """
         return self._ReplicaStatus
 
     @ReplicaStatus.setter
@@ -4327,6 +5240,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExclusterType(self):
+        """Type of dedicated cluster. Valid values: `0` (public cloud), `1` (finance cage), `2` (CDC cluster).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ExclusterType
 
     @ExclusterType.setter
@@ -4335,6 +5252,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RsAccessStrategy(self):
+        """Nearby VPC access
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RsAccessStrategy
 
     @RsAccessStrategy.setter
@@ -4343,6 +5264,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReservedNetResources(self):
+        """Unclaimed network resource
+        :rtype: list of ReservedNetResource
+        """
         return self._ReservedNetResources
 
     @ReservedNetResources.setter
@@ -4351,6 +5275,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsPhysicalReplicationSupported(self):
+        """Whether physical replication is supported.
+        :rtype: bool
+        """
         return self._IsPhysicalReplicationSupported
 
     @IsPhysicalReplicationSupported.setter
@@ -4359,6 +5286,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4514,6 +5444,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Queries by instance ID or IDs. Instance ID is in the format of `tdsql-ow728lmc`. Up to 100 instances can be queried in one request.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -4522,6 +5455,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def SearchName(self):
+        """Search field name. Valid values: instancename (search by instance name), vip (search by private IP), all (search by instance ID, instance name, and private IP).
+        :rtype: str
+        """
         return self._SearchName
 
     @SearchName.setter
@@ -4530,6 +5466,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def SearchKey(self):
+        """Search keyword. Fuzzy search is supported. Multiple keywords should be separated by line breaks (`\n`).
+        :rtype: str
+        """
         return self._SearchKey
 
     @SearchKey.setter
@@ -4538,6 +5477,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def ProjectIds(self):
+        """Queries by project ID
+        :rtype: list of int
+        """
         return self._ProjectIds
 
     @ProjectIds.setter
@@ -4546,6 +5488,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def IsFilterVpc(self):
+        """Whether to search by VPC
+        :rtype: bool
+        """
         return self._IsFilterVpc
 
     @IsFilterVpc.setter
@@ -4554,6 +5499,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID, which is valid when `IsFilterVpc` is 1
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -4562,6 +5510,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """VPC subnet ID, which is valid when `IsFilterVpc` is 1
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -4570,6 +5521,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """Sort by field. Valid values: projectId, createtime, instancename
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -4578,6 +5532,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def OrderByType(self):
+        """Sorting order. Valid values: desc, asc
+        :rtype: str
+        """
         return self._OrderByType
 
     @OrderByType.setter
@@ -4586,6 +5543,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4594,6 +5554,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4602,6 +5565,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def OriginSerialIds(self):
+        """Queries by `OriginSerialId`
+        :rtype: list of str
+        """
         return self._OriginSerialIds
 
     @OriginSerialIds.setter
@@ -4610,6 +5576,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def IsFilterExcluster(self):
+        """Identifies whether to use the `ExclusterType` field. false: no, true: yes
+        :rtype: bool
+        """
         return self._IsFilterExcluster
 
     @IsFilterExcluster.setter
@@ -4618,6 +5587,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def ExclusterType(self):
+        """Instance cluster type. 1: non-dedicated cluster, 2: dedicated cluster, 0: all
+        :rtype: int
+        """
         return self._ExclusterType
 
     @ExclusterType.setter
@@ -4626,6 +5598,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def ExclusterIds(self):
+        """Filters instances by dedicated cluster ID in the format of `dbdc-4ih6uct9`
+        :rtype: list of str
+        """
         return self._ExclusterIds
 
     @ExclusterIds.setter
@@ -4634,6 +5609,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def TagKeys(self):
+        """Tag key used in queries
+        :rtype: list of str
+        """
         return self._TagKeys
 
     @TagKeys.setter
@@ -4642,6 +5620,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def FilterInstanceType(self):
+        """Instance types used in filtering. Valid values: 1 (dedicated instance), 2 (primary instance), 3 (disaster recovery instance). Multiple values should be separated by commas.
+        :rtype: str
+        """
         return self._FilterInstanceType
 
     @FilterInstanceType.setter
@@ -4650,6 +5631,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Use this filter to include instances in specific statuses
+        :rtype: list of int
+        """
         return self._Status
 
     @Status.setter
@@ -4658,6 +5642,9 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def ExcludeStatus(self):
+        """Use this filter to exclude instances in specific statuses
+        :rtype: list of int
+        """
         return self._ExcludeStatus
 
     @ExcludeStatus.setter
@@ -4715,6 +5702,9 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible instances
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4723,6 +5713,9 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def Instances(self):
+        """Instance details list
+        :rtype: list of DBInstance
+        """
         return self._Instances
 
     @Instances.setter
@@ -4731,6 +5724,9 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4766,6 +5762,9 @@ class DescribeDBLogFilesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `tdsql-ow728lmc`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4774,6 +5773,9 @@ class DescribeDBLogFilesRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Requested log type. Valid values: 1 (binlog), 2 (cold backup), 3 (errlog), 4 (slowlog).
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -4826,6 +5828,9 @@ class DescribeDBLogFilesResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `tdsql-ow728lmc`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4834,6 +5839,9 @@ class DescribeDBLogFilesResponse(AbstractModel):
 
     @property
     def Type(self):
+        """Requested log type. Valid values: 1 (binlog), 2 (cold backup), 3 (errlog), 4 (slowlog).
+        :rtype: int
+        """
         return self._Type
 
     @Type.setter
@@ -4842,6 +5850,9 @@ class DescribeDBLogFilesResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Total number of requested logs
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -4850,6 +5861,9 @@ class DescribeDBLogFilesResponse(AbstractModel):
 
     @property
     def Files(self):
+        """Information such as `uri`, `length`, and `mtime` (modification time)
+        :rtype: list of LogFileInfo
+        """
         return self._Files
 
     @Files.setter
@@ -4858,6 +5872,9 @@ class DescribeDBLogFilesResponse(AbstractModel):
 
     @property
     def VpcPrefix(self):
+        """For an instance in a VPC, this prefix plus URI can be used as the download address
+        :rtype: str
+        """
         return self._VpcPrefix
 
     @VpcPrefix.setter
@@ -4866,6 +5883,9 @@ class DescribeDBLogFilesResponse(AbstractModel):
 
     @property
     def NormalPrefix(self):
+        """For an instance in a common network, this prefix plus URI can be used as the download address
+        :rtype: str
+        """
         return self._NormalPrefix
 
     @NormalPrefix.setter
@@ -4874,6 +5894,9 @@ class DescribeDBLogFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4910,6 +5933,9 @@ class DescribeDBParametersRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `tdsql-ow728lmc`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4949,6 +5975,9 @@ class DescribeDBParametersResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `tdsql-ow728lmc`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4957,6 +5986,9 @@ class DescribeDBParametersResponse(AbstractModel):
 
     @property
     def Params(self):
+        """Requests the current parameter values of the database
+        :rtype: list of ParamDesc
+        """
         return self._Params
 
     @Params.setter
@@ -4965,6 +5997,9 @@ class DescribeDBParametersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5000,6 +6035,9 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Database engine name. Valid value: `mariadb`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -5008,6 +6046,9 @@ class DescribeDBSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5053,6 +6094,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Groups(self):
+        """Security group details
+        :rtype: list of SecurityGroup
+        """
         return self._Groups
 
     @Groups.setter
@@ -5061,6 +6105,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VIP(self):
+        """Instance VIP
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VIP
 
     @VIP.setter
@@ -5069,6 +6117,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VPort(self):
+        """Instance port
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._VPort
 
     @VPort.setter
@@ -5077,6 +6129,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5134,6 +6189,9 @@ class DescribeDBSlowLogsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `tdsql-ow728lmc`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5142,6 +6200,9 @@ class DescribeDBSlowLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Data entry number starting from which to return results
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5150,6 +6211,9 @@ class DescribeDBSlowLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5158,6 +6222,9 @@ class DescribeDBSlowLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Query start time in the format of 2016-07-23 14:55:20
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -5166,6 +6233,9 @@ class DescribeDBSlowLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Query end time in the format of 2016-08-22 14:55:20
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5174,6 +6244,9 @@ class DescribeDBSlowLogsRequest(AbstractModel):
 
     @property
     def Db(self):
+        """Specific name of the database to be queried
+        :rtype: str
+        """
         return self._Db
 
     @Db.setter
@@ -5182,6 +6255,9 @@ class DescribeDBSlowLogsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """Sorting metric. Valid values: query_time_sum, query_count
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -5190,6 +6266,9 @@ class DescribeDBSlowLogsRequest(AbstractModel):
 
     @property
     def OrderByType(self):
+        """Sorting order. Valid values: desc, asc
+        :rtype: str
+        """
         return self._OrderByType
 
     @OrderByType.setter
@@ -5198,6 +6277,9 @@ class DescribeDBSlowLogsRequest(AbstractModel):
 
     @property
     def Slave(self):
+        """Query slow queries from either the primary or the replica. Valid values: 0 (primary), 1 (replica)
+        :rtype: int
+        """
         return self._Slave
 
     @Slave.setter
@@ -5254,6 +6336,9 @@ class DescribeDBSlowLogsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Slow query log data
+        :rtype: list of SlowLogData
+        """
         return self._Data
 
     @Data.setter
@@ -5262,6 +6347,9 @@ class DescribeDBSlowLogsResponse(AbstractModel):
 
     @property
     def LockTimeSum(self):
+        """Total statement lock time
+        :rtype: float
+        """
         return self._LockTimeSum
 
     @LockTimeSum.setter
@@ -5270,6 +6358,9 @@ class DescribeDBSlowLogsResponse(AbstractModel):
 
     @property
     def QueryCount(self):
+        """Total number of statement queries
+        :rtype: int
+        """
         return self._QueryCount
 
     @QueryCount.setter
@@ -5278,6 +6369,9 @@ class DescribeDBSlowLogsResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Total number of results
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5286,6 +6380,9 @@ class DescribeDBSlowLogsResponse(AbstractModel):
 
     @property
     def QueryTimeSum(self):
+        """Total statement query time
+        :rtype: float
+        """
         return self._QueryTimeSum
 
     @QueryTimeSum.setter
@@ -5294,6 +6391,9 @@ class DescribeDBSlowLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5329,6 +6429,9 @@ class DescribeDBTmpInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5365,6 +6468,9 @@ class DescribeDBTmpInstancesResponse(AbstractModel):
 
     @property
     def TmpInstances(self):
+        """Temp instance
+        :rtype: list of TmpInstance
+        """
         return self._TmpInstances
 
     @TmpInstances.setter
@@ -5373,6 +6479,9 @@ class DescribeDBTmpInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5407,6 +6516,9 @@ class DescribeDatabaseObjectsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `dcdbt-ow7t8lmc`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5415,6 +6527,9 @@ class DescribeDatabaseObjectsRequest(AbstractModel):
 
     @property
     def DbName(self):
+        """Database name, which can be obtained through the `DescribeDatabases` API.
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -5467,6 +6582,9 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Passed through from input parameters.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5475,6 +6593,9 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
     @property
     def DbName(self):
+        """Database name.
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -5483,6 +6604,9 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
     @property
     def Tables(self):
+        """Table list.
+        :rtype: list of DatabaseTable
+        """
         return self._Tables
 
     @Tables.setter
@@ -5491,6 +6615,9 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
     @property
     def Views(self):
+        """View list.
+        :rtype: list of DatabaseView
+        """
         return self._Views
 
     @Views.setter
@@ -5499,6 +6626,9 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
     @property
     def Procs(self):
+        """Stored procedure list.
+        :rtype: list of DatabaseProcedure
+        """
         return self._Procs
 
     @Procs.setter
@@ -5507,6 +6637,9 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
     @property
     def Funcs(self):
+        """Function list.
+        :rtype: list of DatabaseFunction
+        """
         return self._Funcs
 
     @Funcs.setter
@@ -5515,6 +6648,9 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5572,6 +6708,9 @@ class DescribeDatabaseTableRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `dcdbt-ow7t8lmc`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5580,6 +6719,9 @@ class DescribeDatabaseTableRequest(AbstractModel):
 
     @property
     def DbName(self):
+        """Database name, which can be obtained through the `DescribeDatabases` API.
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -5588,6 +6730,9 @@ class DescribeDatabaseTableRequest(AbstractModel):
 
     @property
     def Table(self):
+        """Table name, which can be obtained through the `DescribeDatabaseObjects` API.
+        :rtype: str
+        """
         return self._Table
 
     @Table.setter
@@ -5635,6 +6780,9 @@ class DescribeDatabaseTableResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance name.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5643,6 +6791,9 @@ class DescribeDatabaseTableResponse(AbstractModel):
 
     @property
     def DbName(self):
+        """Database name.
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -5651,6 +6802,9 @@ class DescribeDatabaseTableResponse(AbstractModel):
 
     @property
     def Table(self):
+        """Table name.
+        :rtype: str
+        """
         return self._Table
 
     @Table.setter
@@ -5659,6 +6813,9 @@ class DescribeDatabaseTableResponse(AbstractModel):
 
     @property
     def Cols(self):
+        """Column information.
+        :rtype: list of TableColumn
+        """
         return self._Cols
 
     @Cols.setter
@@ -5667,6 +6824,9 @@ class DescribeDatabaseTableResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5701,6 +6861,9 @@ class DescribeDatabasesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `dcdbt-ow7t8lmc`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5740,6 +6903,9 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def Databases(self):
+        """The database list of this instance.
+        :rtype: list of Database
+        """
         return self._Databases
 
     @Databases.setter
@@ -5748,6 +6914,9 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Passed through from input parameters.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5756,6 +6925,9 @@ class DescribeDatabasesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5788,6 +6960,9 @@ class DescribeDcnDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5824,6 +6999,9 @@ class DescribeDcnDetailResponse(AbstractModel):
 
     @property
     def DcnDetails(self):
+        """DCN synchronization details
+        :rtype: list of DcnDetailItem
+        """
         return self._DcnDetails
 
     @DcnDetails.setter
@@ -5832,6 +7010,9 @@ class DescribeDcnDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5866,6 +7047,9 @@ class DescribeFileDownloadUrlRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5874,6 +7058,9 @@ class DescribeFileDownloadUrlRequest(AbstractModel):
 
     @property
     def FilePath(self):
+        """Unsigned file path
+        :rtype: str
+        """
         return self._FilePath
 
     @FilePath.setter
@@ -5911,6 +7098,9 @@ class DescribeFileDownloadUrlResponse(AbstractModel):
 
     @property
     def PreSignedUrl(self):
+        """Signed download URL
+        :rtype: str
+        """
         return self._PreSignedUrl
 
     @PreSignedUrl.setter
@@ -5919,6 +7109,9 @@ class DescribeFileDownloadUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5951,6 +7144,9 @@ class DescribeInstanceNodeInfoRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID, such as tdsql-6ltok4u9
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5959,6 +7155,9 @@ class DescribeInstanceNodeInfoRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The maximum number of results returned at a time. By default, there is no upper limit to this value, that is, all results can be returned.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5967,6 +7166,9 @@ class DescribeInstanceNodeInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset of the returned results. Default value: `0`.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6008,6 +7210,9 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of nodes
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6016,6 +7221,9 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
 
     @property
     def NodesInfo(self):
+        """Node information
+        :rtype: list of NodeInfo
+        """
         return self._NodesInfo
 
     @NodesInfo.setter
@@ -6024,6 +7232,9 @@ class DescribeInstanceNodeInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6056,6 +7267,9 @@ class DescribeLogFileRetentionPeriodRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `tdsql-ow728lmc`
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6095,6 +7309,9 @@ class DescribeLogFileRetentionPeriodResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `tdsql-ow728lmc`
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6103,6 +7320,9 @@ class DescribeLogFileRetentionPeriodResponse(AbstractModel):
 
     @property
     def Days(self):
+        """Backup log retention days
+        :rtype: int
+        """
         return self._Days
 
     @Days.setter
@@ -6111,6 +7331,9 @@ class DescribeLogFileRetentionPeriodResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6138,6 +7361,9 @@ class DescribeOrdersRequest(AbstractModel):
 
     @property
     def DealNames(self):
+        """List of long order numbers to be queried, which are returned for the APIs for creating, renewing, or scaling instances.
+        :rtype: list of str
+        """
         return self._DealNames
 
     @DealNames.setter
@@ -6177,6 +7403,9 @@ class DescribeOrdersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Returned number of orders.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6185,6 +7414,9 @@ class DescribeOrdersResponse(AbstractModel):
 
     @property
     def Deals(self):
+        """Order information list.
+        :rtype: list of Deal
+        """
         return self._Deals
 
     @Deals.setter
@@ -6193,6 +7425,9 @@ class DescribeOrdersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6251,6 +7486,9 @@ class DescribePriceRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """AZ ID of the purchased instance.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -6259,6 +7497,10 @@ class DescribePriceRequest(AbstractModel):
 
     @property
     def NodeCount(self):
+        """Number of instance nodes, which can be obtained 
+ by querying the instance specification through the `DescribeDBInstanceSpecs` API.
+        :rtype: int
+        """
         return self._NodeCount
 
     @NodeCount.setter
@@ -6267,6 +7509,10 @@ class DescribePriceRequest(AbstractModel):
 
     @property
     def Memory(self):
+        """Memory size in GB, which can be obtained 
+ by querying the instance specification through the `DescribeDBInstanceSpecs` API.
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -6275,6 +7521,10 @@ class DescribePriceRequest(AbstractModel):
 
     @property
     def Storage(self):
+        """Storage capacity in GB. The maximum and minimum storage space can be obtained 
+ by querying instance specification through the `DescribeDBInstanceSpecs` API.
+        :rtype: int
+        """
         return self._Storage
 
     @Storage.setter
@@ -6283,6 +7533,9 @@ class DescribePriceRequest(AbstractModel):
 
     @property
     def Period(self):
+        """Purchase period in months
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -6291,6 +7544,9 @@ class DescribePriceRequest(AbstractModel):
 
     @property
     def Count(self):
+        """The number of instances to be purchased. Only one instance is queried for price by default.
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -6299,6 +7555,9 @@ class DescribePriceRequest(AbstractModel):
 
     @property
     def Paymode(self):
+        """Billing type. Valid values: `postpaid` (pay-as-you-go), `prepaid` (monthly subscription).
+        :rtype: str
+        """
         return self._Paymode
 
     @Paymode.setter
@@ -6307,6 +7566,11 @@ class DescribePriceRequest(AbstractModel):
 
     @property
     def AmountUnit(self):
+        """Price unit. Valid values:   
+`* pent` (cent), 
+`* microPent` (microcent).
+        :rtype: str
+        """
         return self._AmountUnit
 
     @AmountUnit.setter
@@ -6357,6 +7621,11 @@ class DescribePriceResponse(AbstractModel):
 
     @property
     def OriginalPrice(self):
+        """Original price  
+* Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description.
+* Currency: CNY (Chinese site), USD (international site)
+        :rtype: int
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -6365,6 +7634,11 @@ class DescribePriceResponse(AbstractModel):
 
     @property
     def Price(self):
+        """The actual price may be different from the original price due to discounts. 
+* Unit: Cent (default). If the request parameter contains `AmountUnit`, see `AmountUnit` description.
+* Currency: CNY (Chinese site), USD (international site)
+        :rtype: int
+        """
         return self._Price
 
     @Price.setter
@@ -6373,6 +7647,9 @@ class DescribePriceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6403,6 +7680,9 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Database engine name. Valid value: `mariadb`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -6411,6 +7691,9 @@ class DescribeProjectSecurityGroupsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -6451,6 +7734,9 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
 
     @property
     def Groups(self):
+        """Security group details
+        :rtype: list of SecurityGroup
+        """
         return self._Groups
 
     @Groups.setter
@@ -6459,6 +7745,9 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Total number of security groups.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6467,6 +7756,9 @@ class DescribeProjectSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6499,6 +7791,9 @@ class DestroyDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of “tdsqlshard-c1nl9rpv”. It is the same as the instance ID displayed in the TencentDB for MariaDB console.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6538,6 +7833,9 @@ class DestroyDBInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID, which is the same as the request parameter `InstanceId`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6546,6 +7844,9 @@ class DestroyDBInstanceResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """Async task ID, which can be used in the [DescribeFlow](https://intl.cloud.tencent.com/document/product/557/56485?from_cn_redirect=1) API to query the async task result.
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -6554,6 +7855,9 @@ class DestroyDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6581,6 +7885,9 @@ class DestroyHourDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of tdsql-avw0207d. It is the same as the instance ID displayed in the TencentDB console.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6620,6 +7927,9 @@ class DestroyHourDBInstanceResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """Async task ID, which can be used in the [DescribeFlow](https://intl.cloud.tencent.com/document/product/237/16177?from_cn_redirect=1) API to query the async task result.
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -6628,6 +7938,9 @@ class DestroyHourDBInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID, which is the same as the request parameter `InstanceId`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6636,6 +7949,9 @@ class DestroyHourDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6669,6 +7985,9 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Database engine name. Valid value: `mariadb`.
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -6677,6 +7996,9 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
+        """Security group ID
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -6685,6 +8007,9 @@ class DisassociateSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID list, which is an array of one or more instance IDs.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -6720,6 +8045,9 @@ class DisassociateSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6751,6 +8079,9 @@ class FunctionPrivilege(AbstractModel):
 
     @property
     def Database(self):
+        """Database name
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -6759,6 +8090,9 @@ class FunctionPrivilege(AbstractModel):
 
     @property
     def FunctionName(self):
+        """Function name
+        :rtype: str
+        """
         return self._FunctionName
 
     @FunctionName.setter
@@ -6767,6 +8101,9 @@ class FunctionPrivilege(AbstractModel):
 
     @property
     def Privileges(self):
+        """Permission information
+        :rtype: list of str
+        """
         return self._Privileges
 
     @Privileges.setter
@@ -6827,6 +8164,9 @@ Field permission. Valid values: `INSERT`, `REFERENCES`, `SELECT`, `UPDATE`.
 
     @property
     def InstanceId(self):
+        """Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6835,6 +8175,9 @@ Field permission. Valid values: `INSERT`, `REFERENCES`, `SELECT`, `UPDATE`.
 
     @property
     def UserName(self):
+        """Login username.
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -6843,6 +8186,9 @@ Field permission. Valid values: `INSERT`, `REFERENCES`, `SELECT`, `UPDATE`.
 
     @property
     def Host(self):
+        """Access host allowed for user. An account is uniquely identified by username and host.
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -6851,6 +8197,9 @@ Field permission. Valid values: `INSERT`, `REFERENCES`, `SELECT`, `UPDATE`.
 
     @property
     def DbName(self):
+        """Database name. `\*` indicates that global permissions will be set (i.e., `\*.\*`), in which case the `Type` and `Object ` parameters will be ignored. If `DbName` is not `\*`, the input parameter `Type` is required.
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -6859,6 +8208,13 @@ Field permission. Valid values: `INSERT`, `REFERENCES`, `SELECT`, `UPDATE`.
 
     @property
     def Privileges(self):
+        """Global permission. Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE TEMPORARY TABLES`, `LOCK TABLES`, `EXECUTE`, `CREATE VIEW`, `SHOW VIEW`, `CREATE ROUTINE`, `ALTER ROUTINE`, `EVENT`, `TRIGGER`, `SHOW DATABASES`, `REPLICATION CLIENT`, `REPLICATION SLAVE`. 
+Database permission. Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE TEMPORARY TABLES`, `LOCK TABLES`, `EXECUTE`, `CREATE VIEW`, `SHOW VIEW`, `CREATE ROUTINE`, `ALTER ROUTINE`, `EVENT`, `TRIGGER`. 
+Table/View permission. Valid values: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE VIEW`, `SHOW VIEW`, `TRIGGER`. 
+Stored procedure/function permission. Valid values: `ALTER ROUTINE`, `EXECUTE`. 
+Field permission. Valid values: `INSERT`, `REFERENCES`, `SELECT`, `UPDATE`.
+        :rtype: list of str
+        """
         return self._Privileges
 
     @Privileges.setter
@@ -6867,6 +8223,9 @@ Field permission. Valid values: `INSERT`, `REFERENCES`, `SELECT`, `UPDATE`.
 
     @property
     def Type(self):
+        """Type. Valid values: table, view, proc, func, \*. If `DbName` is a specific database name and `Type` is `\*`, the permissions of the database will be set (i.e., `db.\*`), in which case the `Object` parameter will be ignored
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -6875,6 +8234,9 @@ Field permission. Valid values: `INSERT`, `REFERENCES`, `SELECT`, `UPDATE`.
 
     @property
     def Object(self):
+        """Type name. For example, if `Type` is `table`, `Object` indicates a specific table name; if both `DbName` and `Type` are specific names, it indicates a specific object name and cannot be `\*` or empty
+        :rtype: str
+        """
         return self._Object
 
     @Object.setter
@@ -6883,6 +8245,9 @@ Field permission. Valid values: `INSERT`, `REFERENCES`, `SELECT`, `UPDATE`.
 
     @property
     def ColName(self):
+        """If `Type` is `table` and `ColName` is `\*`, the permissions will be granted to the table; if `ColName` is a specific field name, the permissions will be granted to the field
+        :rtype: str
+        """
         return self._ColName
 
     @ColName.setter
@@ -6923,6 +8288,9 @@ class GrantAccountPrivilegesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6979,6 +8347,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6987,6 +8358,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceName(self):
+        """Instance name
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -6995,6 +8369,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceStatus(self):
+        """Instance status
+        :rtype: int
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -7003,6 +8380,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ShardId(self):
+        """Shard ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ShardId
 
     @ShardId.setter
@@ -7011,6 +8392,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilePath(self):
+        """File path
+        :rtype: str
+        """
         return self._FilePath
 
     @FilePath.setter
@@ -7019,6 +8403,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileName(self):
+        """File name
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -7027,6 +8414,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileSize(self):
+        """File size
+        :rtype: int
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -7035,6 +8425,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BackupType(self):
+        """Backup type. Valid values: `Data` (data backup), `Binlog` (Binlog backup), `Errlog` (error log), `Slowlog` (slow log).
+        :rtype: str
+        """
         return self._BackupType
 
     @BackupType.setter
@@ -7043,6 +8436,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ManualBackup(self):
+        """Manual backup. Valid values: `0` (no), `1` (yes).
+        :rtype: int
+        """
         return self._ManualBackup
 
     @ManualBackup.setter
@@ -7051,6 +8447,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """Backup start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7059,6 +8458,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """Backup end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7102,6 +8504,9 @@ class IsolateDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Instance ID in the format of `tdsql-dasjkhd`. It is the same as the instance ID displayed on the TencentDB console. You can use the `DescribeDBInstances` API to query the ID, which is the value of the `InstanceId` output parameter.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -7141,6 +8546,9 @@ class IsolateDBInstanceResponse(AbstractModel):
 
     @property
     def SuccessInstanceIds(self):
+        """IDs of isolated instances
+        :rtype: list of str
+        """
         return self._SuccessInstanceIds
 
     @SuccessInstanceIds.setter
@@ -7149,6 +8557,9 @@ class IsolateDBInstanceResponse(AbstractModel):
 
     @property
     def FailedInstanceIds(self):
+        """IDs of instances failed to be isolated
+        :rtype: list of str
+        """
         return self._FailedInstanceIds
 
     @FailedInstanceIds.setter
@@ -7157,6 +8568,9 @@ class IsolateDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7184,6 +8598,9 @@ class IsolateDedicatedDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `tdsql-ow728lmc`
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7217,6 +8634,9 @@ class IsolateDedicatedDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7245,6 +8665,9 @@ class KillSessionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7253,6 +8676,9 @@ class KillSessionRequest(AbstractModel):
 
     @property
     def SessionId(self):
+        """List of session IDs
+        :rtype: list of int
+        """
         return self._SessionId
 
     @SessionId.setter
@@ -7290,6 +8716,9 @@ class KillSessionResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -7298,6 +8727,9 @@ class KillSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7333,6 +8765,9 @@ class LogFileInfo(AbstractModel):
 
     @property
     def Mtime(self):
+        """Last modified time of log
+        :rtype: int
+        """
         return self._Mtime
 
     @Mtime.setter
@@ -7341,6 +8776,9 @@ class LogFileInfo(AbstractModel):
 
     @property
     def Length(self):
+        """File length
+        :rtype: int
+        """
         return self._Length
 
     @Length.setter
@@ -7349,6 +8787,9 @@ class LogFileInfo(AbstractModel):
 
     @property
     def Uri(self):
+        """Uniform resource identifier (URI) used during log download
+        :rtype: str
+        """
         return self._Uri
 
     @Uri.setter
@@ -7357,6 +8798,9 @@ class LogFileInfo(AbstractModel):
 
     @property
     def FileName(self):
+        """Filename
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -7402,6 +8846,9 @@ class ModifyAccountDescriptionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7410,6 +8857,9 @@ class ModifyAccountDescriptionRequest(AbstractModel):
 
     @property
     def UserName(self):
+        """Login username.
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -7418,6 +8868,9 @@ class ModifyAccountDescriptionRequest(AbstractModel):
 
     @property
     def Host(self):
+        """Access host allowed for user. An account is uniquely identified by username and host.
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -7426,6 +8879,9 @@ class ModifyAccountDescriptionRequest(AbstractModel):
 
     @property
     def Description(self):
+        """New account remarks, which can contain 0-256 characters.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -7462,6 +8918,9 @@ class ModifyAccountDescriptionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7518,6 +8977,9 @@ Note: if the parameter is not passed in, no change will be made to the granted s
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of tdsql-c1nl9rpv. It is the same as the instance ID displayed in the TencentDB console.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7526,6 +8988,9 @@ Note: if the parameter is not passed in, no change will be made to the granted s
 
     @property
     def Accounts(self):
+        """Database account, including username and host address.
+        :rtype: list of Account
+        """
         return self._Accounts
 
     @Accounts.setter
@@ -7534,6 +8999,10 @@ Note: if the parameter is not passed in, no change will be made to the granted s
 
     @property
     def GlobalPrivileges(self):
+        """Global permission. Valid values of `GlobalPrivileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"DELETE"`, `"CREATE"`, `"PROCESS"`, `"DROP"`, `"REFERENCES"`, `"INDEX"`, `"ALTER"`, `"SHOW DATABASES"`, `"CREATE TEMPORARY TABLES"`, `"LOCK TABLES"`, `"EXECUTE"`, `"CREATE VIEW"`, `"SHOW VIEW"`, `"CREATE ROUTINE"`, `"ALTER ROUTINE"`, `"EVENT"`, `"TRIGGER"`.
+Note: if the parameter is left empty, no change will be made to the granted global permissions. To clear the granted global permissions, set the parameter to an empty array.
+        :rtype: list of str
+        """
         return self._GlobalPrivileges
 
     @GlobalPrivileges.setter
@@ -7542,6 +9011,10 @@ Note: if the parameter is not passed in, no change will be made to the granted s
 
     @property
     def DatabasePrivileges(self):
+        """Database permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"DELETE"`, `"CREATE"`, `"DROP"`, `"REFERENCES"`, `"INDEX"`, `"ALTER"`, `"CREATE TEMPORARY TABLES"`, `"LOCK TABLES"`, `"EXECUTE"`, `"CREATE VIEW"`, `"SHOW VIEW"`, `"CREATE ROUTINE"`, `"ALTER ROUTINE"`, `"EVENT"`, `"TRIGGER"`.
+Note: if the parameter is left empty, no change will be made to the granted database permissions. To clear the granted database permissions, set `Privileges` to an empty array.
+        :rtype: list of DatabasePrivilege
+        """
         return self._DatabasePrivileges
 
     @DatabasePrivileges.setter
@@ -7550,6 +9023,10 @@ Note: if the parameter is not passed in, no change will be made to the granted s
 
     @property
     def TablePrivileges(self):
+        """Database table permission. Valid values of `Privileges`: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE VIEW`, `SHOW VIEW`, `TRIGGER`.
+Note: if the parameter is not passed in, no change will be made to the granted table permissions. To clear the granted table permissions, set `Privileges` to an empty array.
+        :rtype: list of TablePrivilege
+        """
         return self._TablePrivileges
 
     @TablePrivileges.setter
@@ -7558,6 +9035,10 @@ Note: if the parameter is not passed in, no change will be made to the granted s
 
     @property
     def ColumnPrivileges(self):
+        """Column permission. Valid values of `Privileges`: `"SELECT"`, `"INSERT"`, `"UPDATE"`, `"REFERENCES"`.
+Note: if the parameter is left empty, no change will be made to the granted column permissions. To clear the granted column permissions, set `Privileges` to an empty array.
+        :rtype: list of ColumnPrivilege
+        """
         return self._ColumnPrivileges
 
     @ColumnPrivileges.setter
@@ -7566,6 +9047,10 @@ Note: if the parameter is not passed in, no change will be made to the granted s
 
     @property
     def ViewPrivileges(self):
+        """Database view permission. Valid values of `Privileges`: `SELECT`, `INSERT`, `UPDATE`, `DELETE`, `CREATE`, `DROP`, `REFERENCES`, `INDEX`, `ALTER`, `CREATE VIEW`, `SHOW VIEW`, `TRIGGER`.
+Note: if the parameter is not passed in, no change will be made to the granted view permissions. To clear the granted view permissions, set `Privileges` to an empty array.
+        :rtype: list of ViewPrivileges
+        """
         return self._ViewPrivileges
 
     @ViewPrivileges.setter
@@ -7574,6 +9059,10 @@ Note: if the parameter is not passed in, no change will be made to the granted s
 
     @property
     def FunctionPrivileges(self):
+        """Database function permissions. Valid values of `Privileges`: `ALTER ROUTINE`, `EXECUTE`.
+Note: if the parameter is not passed in, no change will be made to the granted function permissions. To clear the granted function permissions, set `Privileges` to an empty array.
+        :rtype: list of FunctionPrivilege
+        """
         return self._FunctionPrivileges
 
     @FunctionPrivileges.setter
@@ -7582,6 +9071,10 @@ Note: if the parameter is not passed in, no change will be made to the granted s
 
     @property
     def ProcedurePrivileges(self):
+        """Database stored procedure permission. Valid values of `Privileges`: `ALTER ROUTINE`, `EXECUTE`.
+Note: if the parameter is not passed in, no change will be made to the granted stored procedure permissions. To clear the granted stored procedure permissions, set `Privileges` to an empty array.
+        :rtype: list of ProcedurePrivilege
+        """
         return self._ProcedurePrivileges
 
     @ProcedurePrivileges.setter
@@ -7661,6 +9154,9 @@ class ModifyAccountPrivilegesResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """Async task ID, which can be used in the [DescribeFlow](https://intl.cloud.tencent.com/document/product/237/16177?from_cn_redirect=1) API to query the async task result.
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -7669,6 +9165,9 @@ class ModifyAccountPrivilegesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7698,6 +9197,9 @@ class ModifyDBEncryptAttributesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `tdsql-ow728lmc`
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7706,6 +9208,9 @@ class ModifyDBEncryptAttributesRequest(AbstractModel):
 
     @property
     def EncryptEnabled(self):
+        """Whether to enable the data encryption (Once enabled, it can’t be disabled). Valid values: `1` (Yes), `0` (No. Default）
+        :rtype: int
+        """
         return self._EncryptEnabled
 
     @EncryptEnabled.setter
@@ -7740,6 +9245,9 @@ class ModifyDBEncryptAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7768,6 +9276,9 @@ class ModifyDBInstancesProjectRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """List of IDs of instances to be modified. The ID is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -7776,6 +9287,9 @@ class ModifyDBInstancesProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """ID of the project to be assigned, which can be obtained through the `DescribeProjects` API.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -7810,6 +9324,9 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7838,6 +9355,9 @@ class ModifyDBParametersRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `tdsql-ow728lmc`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7846,6 +9366,9 @@ class ModifyDBParametersRequest(AbstractModel):
 
     @property
     def Params(self):
+        """Parameter list. Each element is a combination of `Param` and `Value`.
+        :rtype: list of DBParamValue
+        """
         return self._Params
 
     @Params.setter
@@ -7891,6 +9414,9 @@ class ModifyDBParametersResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `tdsql-ow728lmc`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7899,6 +9425,9 @@ class ModifyDBParametersResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Parameter modification result
+        :rtype: list of ParamModifyResult
+        """
         return self._Result
 
     @Result.setter
@@ -7907,6 +9436,9 @@ class ModifyDBParametersResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7942,6 +9474,9 @@ class ModifyDBSyncModeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the instance for which to modify the sync mode. The ID is in the format of `tdsql-ow728lmc`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7950,6 +9485,9 @@ class ModifyDBSyncModeRequest(AbstractModel):
 
     @property
     def SyncMode(self):
+        """Sync mode. Valid values: `0` (async), `1` (strong sync), `2` (downgradable strong sync).
+        :rtype: int
+        """
         return self._SyncMode
 
     @SyncMode.setter
@@ -7987,6 +9525,9 @@ class ModifyDBSyncModeResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """Async task ID. The task status can be queried through the `DescribeFlow` API.
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -7995,6 +9536,9 @@ class ModifyDBSyncModeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8036,6 +9580,9 @@ class ModifyInstanceNetworkRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8044,6 +9591,9 @@ class ModifyInstanceNetworkRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VpcId, ID of the desired VPC network.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -8052,6 +9602,9 @@ class ModifyInstanceNetworkRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """SubnetId, subnet ID of the desired VPC network.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -8060,6 +9613,9 @@ class ModifyInstanceNetworkRequest(AbstractModel):
 
     @property
     def Vip(self):
+        """The field is required to specify VIP.
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -8068,6 +9624,9 @@ class ModifyInstanceNetworkRequest(AbstractModel):
 
     @property
     def Vipv6(self):
+        """The field is required to specify VIPv6.
+        :rtype: str
+        """
         return self._Vipv6
 
     @Vipv6.setter
@@ -8076,6 +9635,9 @@ class ModifyInstanceNetworkRequest(AbstractModel):
 
     @property
     def VipReleaseDelay(self):
+        """VIP retention period in hours. Value range: 0-168. Default value: `24`. `0` indicates that the VIP will be released immediately, but there will be 1-minute delay.
+        :rtype: int
+        """
         return self._VipReleaseDelay
 
     @VipReleaseDelay.setter
@@ -8117,6 +9679,9 @@ class ModifyInstanceNetworkResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """Async task ID, which can be used to query the task status through `DescribeFlow` API.
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -8125,6 +9690,9 @@ class ModifyInstanceNetworkResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8160,6 +9728,9 @@ class ModifyInstanceVipRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8168,6 +9739,9 @@ class ModifyInstanceVipRequest(AbstractModel):
 
     @property
     def Vip(self):
+        """Instance VIP
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -8176,6 +9750,9 @@ class ModifyInstanceVipRequest(AbstractModel):
 
     @property
     def Ipv6Flag(self):
+        """IPv6 flag
+        :rtype: int
+        """
         return self._Ipv6Flag
 
     @Ipv6Flag.setter
@@ -8184,6 +9761,9 @@ class ModifyInstanceVipRequest(AbstractModel):
 
     @property
     def VipReleaseDelay(self):
+        """VIP retention period in hours. Value range: 0-168. Default value: `24`. `0` indicates that the VIP will be released immediately, but there will be 1-minute delay.
+        :rtype: int
+        """
         return self._VipReleaseDelay
 
     @VipReleaseDelay.setter
@@ -8223,6 +9803,9 @@ class ModifyInstanceVipResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """Async task flow ID
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -8231,6 +9814,9 @@ class ModifyInstanceVipResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8260,6 +9846,9 @@ class ModifyInstanceVportRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8268,6 +9857,9 @@ class ModifyInstanceVportRequest(AbstractModel):
 
     @property
     def Vport(self):
+        """Instance Vport
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -8302,6 +9894,9 @@ class ModifyInstanceVportResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8330,6 +9925,9 @@ class ModifySyncTaskAttributeRequest(AbstractModel):
 
     @property
     def TaskIds(self):
+        """IDs of tasks for which to modify the attributes. The IDs can be obtained by the return value of the `DescribeSyncTasks` API. Up to 100 tasks can be operated at a time.
+        :rtype: list of str
+        """
         return self._TaskIds
 
     @TaskIds.setter
@@ -8338,6 +9936,9 @@ class ModifySyncTaskAttributeRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """Task name. You can specify any name you like, but its length cannot exceed 100 characters.
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -8372,6 +9973,9 @@ class ModifySyncTaskAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8400,6 +10004,9 @@ class NodeInfo(AbstractModel):
 
     @property
     def NodeId(self):
+        """Node ID
+        :rtype: str
+        """
         return self._NodeId
 
     @NodeId.setter
@@ -8408,6 +10015,9 @@ class NodeInfo(AbstractModel):
 
     @property
     def Role(self):
+        """Node role. Valid values: `master`, `slave`
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -8452,6 +10062,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """Constraint type, such as `enum` and `section`.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -8460,6 +10073,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Enum(self):
+        """List of valid values when constraint type is `enum`
+        :rtype: str
+        """
         return self._Enum
 
     @Enum.setter
@@ -8468,6 +10084,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Range(self):
+        """Range when constraint type is `section`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ConstraintRange`
+        """
         return self._Range
 
     @Range.setter
@@ -8476,6 +10096,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def String(self):
+        """List of valid values when constraint type is `string`
+        :rtype: str
+        """
         return self._String
 
     @String.setter
@@ -8534,6 +10157,9 @@ true: yes.
 
     @property
     def Param(self):
+        """Parameter name
+        :rtype: str
+        """
         return self._Param
 
     @Param.setter
@@ -8542,6 +10168,9 @@ true: yes.
 
     @property
     def Value(self):
+        """Current parameter value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -8550,6 +10179,10 @@ true: yes.
 
     @property
     def SetValue(self):
+        """Previously set value, which is the same as `value` after the parameter takes effect.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SetValue
 
     @SetValue.setter
@@ -8558,6 +10191,9 @@ true: yes.
 
     @property
     def Default(self):
+        """Default value
+        :rtype: str
+        """
         return self._Default
 
     @Default.setter
@@ -8566,6 +10202,9 @@ true: yes.
 
     @property
     def Constraint(self):
+        """Parameter constraint
+        :rtype: :class:`tencentcloud.mariadb.v20170312.models.ParamConstraint`
+        """
         return self._Constraint
 
     @Constraint.setter
@@ -8574,6 +10213,9 @@ true: yes.
 
     @property
     def HaveSetValue(self):
+        """Whether a value has been set. false: no, true: yes
+        :rtype: bool
+        """
         return self._HaveSetValue
 
     @HaveSetValue.setter
@@ -8582,6 +10224,10 @@ true: yes.
 
     @property
     def NeedRestart(self):
+        """Whether restart is required. false: no;
+true: yes.
+        :rtype: bool
+        """
         return self._NeedRestart
 
     @NeedRestart.setter
@@ -8626,6 +10272,9 @@ class ParamModifyResult(AbstractModel):
 
     @property
     def Param(self):
+        """Renames parameter
+        :rtype: str
+        """
         return self._Param
 
     @Param.setter
@@ -8634,6 +10283,9 @@ class ParamModifyResult(AbstractModel):
 
     @property
     def Code(self):
+        """Result of parameter modification. 0: success; -1: failure; -2: invalid parameter value.
+        :rtype: int
+        """
         return self._Code
 
     @Code.setter
@@ -8674,6 +10326,9 @@ class ProcedurePrivilege(AbstractModel):
 
     @property
     def Database(self):
+        """Database name
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -8682,6 +10337,9 @@ class ProcedurePrivilege(AbstractModel):
 
     @property
     def Procedure(self):
+        """Stored procedure name
+        :rtype: str
+        """
         return self._Procedure
 
     @Procedure.setter
@@ -8690,6 +10348,9 @@ class ProcedurePrivilege(AbstractModel):
 
     @property
     def Privileges(self):
+        """Permission information
+        :rtype: list of str
+        """
         return self._Privileges
 
     @Privileges.setter
@@ -8737,6 +10398,9 @@ class ReservedNetResource(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -8745,6 +10409,9 @@ class ReservedNetResource(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Subnet
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -8753,6 +10420,9 @@ class ReservedNetResource(AbstractModel):
 
     @property
     def Vip(self):
+        """Reserved private network IP under `VpcId` and `SubnetId`
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -8761,6 +10431,9 @@ class ReservedNetResource(AbstractModel):
 
     @property
     def Vports(self):
+        """Port under `Vip`
+        :rtype: list of int
+        """
         return self._Vports
 
     @Vports.setter
@@ -8769,6 +10442,9 @@ class ReservedNetResource(AbstractModel):
 
     @property
     def RecycleTime(self):
+        """Valid hours of VIP
+        :rtype: str
+        """
         return self._RecycleTime
 
     @RecycleTime.setter
@@ -8815,6 +10491,9 @@ class ResetAccountPasswordRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID, which is in the format of `tdsql-ow728lmc` and can be obtained through the `DescribeDBInstances` API.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -8823,6 +10502,9 @@ class ResetAccountPasswordRequest(AbstractModel):
 
     @property
     def UserName(self):
+        """Login username.
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -8831,6 +10513,9 @@ class ResetAccountPasswordRequest(AbstractModel):
 
     @property
     def Host(self):
+        """Access host allowed for user. An account is uniquely identified by username and host.
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -8839,6 +10524,9 @@ class ResetAccountPasswordRequest(AbstractModel):
 
     @property
     def Password(self):
+        """New password, which can contain 6-32 letters, digits, and common symbols but not semicolons, single quotation marks, and double quotation marks.
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -8875,6 +10563,9 @@ class ResetAccountPasswordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8903,6 +10594,9 @@ class ResourceTag(AbstractModel):
 
     @property
     def TagKey(self):
+        """Tag key
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -8911,6 +10605,9 @@ class ResourceTag(AbstractModel):
 
     @property
     def TagValue(self):
+        """Tag value
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -8963,6 +10660,9 @@ class SecurityGroup(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -8971,6 +10671,9 @@ class SecurityGroup(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time in the format of yyyy-mm-dd hh:mm:ss
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8979,6 +10682,9 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupId(self):
+        """Security group ID
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -8987,6 +10693,9 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupName(self):
+        """Security group name
+        :rtype: str
+        """
         return self._SecurityGroupName
 
     @SecurityGroupName.setter
@@ -8995,6 +10704,9 @@ class SecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupRemark(self):
+        """Security group remarks
+        :rtype: str
+        """
         return self._SecurityGroupRemark
 
     @SecurityGroupRemark.setter
@@ -9003,6 +10715,9 @@ class SecurityGroup(AbstractModel):
 
     @property
     def Inbound(self):
+        """Inbound rule
+        :rtype: list of SecurityGroupBound
+        """
         return self._Inbound
 
     @Inbound.setter
@@ -9011,6 +10726,9 @@ class SecurityGroup(AbstractModel):
 
     @property
     def Outbound(self):
+        """Outbound rule
+        :rtype: list of SecurityGroupBound
+        """
         return self._Outbound
 
     @Outbound.setter
@@ -9069,6 +10787,9 @@ class SecurityGroupBound(AbstractModel):
 
     @property
     def Action(self):
+        """Policy, which can be `ACCEPT` or `DROP`
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -9077,6 +10798,9 @@ class SecurityGroupBound(AbstractModel):
 
     @property
     def CidrIp(self):
+        """Source IP or source IP range, such as 192.168.0.0/16
+        :rtype: str
+        """
         return self._CidrIp
 
     @CidrIp.setter
@@ -9085,6 +10809,9 @@ class SecurityGroupBound(AbstractModel):
 
     @property
     def PortRange(self):
+        """Port
+        :rtype: str
+        """
         return self._PortRange
 
     @PortRange.setter
@@ -9093,6 +10820,9 @@ class SecurityGroupBound(AbstractModel):
 
     @property
     def IpProtocol(self):
+        """Network protocol. UDP and TCP are supported.
+        :rtype: str
+        """
         return self._IpProtocol
 
     @IpProtocol.setter
@@ -9184,6 +10914,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CheckSum(self):
+        """Statement checksum for querying details
+        :rtype: str
+        """
         return self._CheckSum
 
     @CheckSum.setter
@@ -9192,6 +10925,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Db(self):
+        """Database name
+        :rtype: str
+        """
         return self._Db
 
     @Db.setter
@@ -9200,6 +10936,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FingerPrint(self):
+        """Abstracted SQL statement
+        :rtype: str
+        """
         return self._FingerPrint
 
     @FingerPrint.setter
@@ -9208,6 +10947,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LockTimeAvg(self):
+        """Average lock time
+        :rtype: str
+        """
         return self._LockTimeAvg
 
     @LockTimeAvg.setter
@@ -9216,6 +10958,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LockTimeMax(self):
+        """Maximum lock time
+        :rtype: str
+        """
         return self._LockTimeMax
 
     @LockTimeMax.setter
@@ -9224,6 +10969,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LockTimeMin(self):
+        """Minimum lock time
+        :rtype: str
+        """
         return self._LockTimeMin
 
     @LockTimeMin.setter
@@ -9232,6 +10980,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LockTimeSum(self):
+        """Total lock time
+        :rtype: str
+        """
         return self._LockTimeSum
 
     @LockTimeSum.setter
@@ -9240,6 +10991,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueryCount(self):
+        """Number of queries
+        :rtype: str
+        """
         return self._QueryCount
 
     @QueryCount.setter
@@ -9248,6 +11002,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueryTimeAvg(self):
+        """Average query time
+        :rtype: str
+        """
         return self._QueryTimeAvg
 
     @QueryTimeAvg.setter
@@ -9256,6 +11013,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueryTimeMax(self):
+        """Maximum query time
+        :rtype: str
+        """
         return self._QueryTimeMax
 
     @QueryTimeMax.setter
@@ -9264,6 +11024,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueryTimeMin(self):
+        """Minimum query time
+        :rtype: str
+        """
         return self._QueryTimeMin
 
     @QueryTimeMin.setter
@@ -9272,6 +11035,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueryTimeSum(self):
+        """Total query time
+        :rtype: str
+        """
         return self._QueryTimeSum
 
     @QueryTimeSum.setter
@@ -9280,6 +11046,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RowsExaminedSum(self):
+        """Number of scanned rows
+        :rtype: str
+        """
         return self._RowsExaminedSum
 
     @RowsExaminedSum.setter
@@ -9288,6 +11057,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RowsSentSum(self):
+        """Number of sent rows
+        :rtype: str
+        """
         return self._RowsSentSum
 
     @RowsSentSum.setter
@@ -9296,6 +11068,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TsMax(self):
+        """Last execution time
+        :rtype: str
+        """
         return self._TsMax
 
     @TsMax.setter
@@ -9304,6 +11079,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TsMin(self):
+        """First execution time
+        :rtype: str
+        """
         return self._TsMin
 
     @TsMin.setter
@@ -9312,6 +11090,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def User(self):
+        """Account
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -9320,6 +11101,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExampleSql(self):
+        """Sample SQL
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExampleSql
 
     @ExampleSql.setter
@@ -9328,6 +11113,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Host(self):
+        """Host address of account
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -9382,6 +11170,9 @@ class TableColumn(AbstractModel):
 
     @property
     def Col(self):
+        """Column name
+        :rtype: str
+        """
         return self._Col
 
     @Col.setter
@@ -9390,6 +11181,9 @@ class TableColumn(AbstractModel):
 
     @property
     def Type(self):
+        """Column type
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9430,6 +11224,9 @@ class TablePrivilege(AbstractModel):
 
     @property
     def Database(self):
+        """Database name
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -9438,6 +11235,9 @@ class TablePrivilege(AbstractModel):
 
     @property
     def Table(self):
+        """Table name
+        :rtype: str
+        """
         return self._Table
 
     @Table.setter
@@ -9446,6 +11246,9 @@ class TablePrivilege(AbstractModel):
 
     @property
     def Privileges(self):
+        """Permission information
+        :rtype: list of str
+        """
         return self._Privileges
 
     @Privileges.setter
@@ -9481,6 +11284,9 @@ class TerminateDedicatedDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `tdsql-ow728lmc`
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9517,6 +11323,9 @@ class TerminateDedicatedDBInstanceResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """Async task ID
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -9525,6 +11334,9 @@ class TerminateDedicatedDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9608,6 +11420,10 @@ Note: u200dThis field may returnu200d·nullu200d, indicating that no valid value
 
     @property
     def AppId(self):
+        """Application ID
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -9616,6 +11432,10 @@ Note: u200dThis field may returnu200d·nullu200d, indicating that no valid value
 
     @property
     def CreateTime(self):
+        """Creation time
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -9624,6 +11444,10 @@ Note: u200dThis field may returnu200d·nullu200d, indicating that no valid value
 
     @property
     def InstanceRemark(self):
+        """Instance remarks
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceRemark
 
     @InstanceRemark.setter
@@ -9632,6 +11456,10 @@ Note: u200dThis field may returnu200d·nullu200d, indicating that no valid value
 
     @property
     def TempType(self):
+        """Whether it is a temp instance. Valid values: `0` (non-temp instance), `1` (invalid temp instance), `2` (valid temp rollback instance).
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TempType
 
     @TempType.setter
@@ -9640,6 +11468,10 @@ Note: u200dThis field may returnu200d·nullu200d, indicating that no valid value
 
     @property
     def Status(self):
+        """Instance status. Valid values: `0` (to be initialized), `1` (in process), `2` (running), `-1` (isolated), `-2` (eliminated).
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -9648,6 +11480,10 @@ Note: u200dThis field may returnu200d·nullu200d, indicating that no valid value
 
     @property
     def InstanceId(self):
+        """Instance ID in the format of `tdsql-ow728lmc`
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9656,6 +11492,10 @@ Note: u200dThis field may returnu200d·nullu200d, indicating that no valid value
 
     @property
     def Vip(self):
+        """Virtual instance IP
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -9664,6 +11504,10 @@ Note: u200dThis field may returnu200d·nullu200d, indicating that no valid value
 
     @property
     def Vport(self):
+        """Virtual instance port
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -9672,6 +11516,10 @@ Note: u200dThis field may returnu200d·nullu200d, indicating that no valid value
 
     @property
     def PeriodEndTime(self):
+        """Validity end time
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PeriodEndTime
 
     @PeriodEndTime.setter
@@ -9680,6 +11528,10 @@ Note: u200dThis field may returnu200d·nullu200d, indicating that no valid value
 
     @property
     def SrcInstanceId(self):
+        """Source instance ID in the format of `tdsql-ow728lmc`
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SrcInstanceId
 
     @SrcInstanceId.setter
@@ -9688,6 +11540,10 @@ Note: u200dThis field may returnu200d·nullu200d, indicating that no valid value
 
     @property
     def StatusDesc(self):
+        """Instance status description
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StatusDesc
 
     @StatusDesc.setter
@@ -9696,6 +11552,10 @@ Note: u200dThis field may returnu200d·nullu200d, indicating that no valid value
 
     @property
     def Region(self):
+        """Instance region
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -9704,6 +11564,10 @@ Note: u200dThis field may returnu200d·nullu200d, indicating that no valid value
 
     @property
     def Zone(self):
+        """AZ of the instance
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -9712,6 +11576,10 @@ Note: u200dThis field may returnu200d·nullu200d, indicating that no valid value
 
     @property
     def Vipv6(self):
+        """Virtual IPv6 of the instance
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Vipv6
 
     @Vipv6.setter
@@ -9720,6 +11588,10 @@ Note: u200dThis field may returnu200d·nullu200d, indicating that no valid value
 
     @property
     def Ipv6Flag(self):
+        """Instance IPv6 flag
+Note: u200dThis field may returnu200d·nullu200d, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Ipv6Flag
 
     @Ipv6Flag.setter
@@ -9782,6 +11654,9 @@ class UpgradeDedicatedDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the instance to be upgraded.  It is in the form of  `tdsql-ow728lmc`, which can be obtained by querying the instance details through the `DescribeDBInstances` API.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9790,6 +11665,9 @@ class UpgradeDedicatedDBInstanceRequest(AbstractModel):
 
     @property
     def Memory(self):
+        """Memory size in GB,  which can be obtained through the `DescribeFenceDBInstanceSpecs` API.
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -9798,6 +11676,9 @@ class UpgradeDedicatedDBInstanceRequest(AbstractModel):
 
     @property
     def Storage(self):
+        """Storage space size in GB.  You can obtain the disk space limits by querying instance specification through the `DescribeDBInstanceSpecs` API.
+        :rtype: int
+        """
         return self._Storage
 
     @Storage.setter
@@ -9806,6 +11687,9 @@ class UpgradeDedicatedDBInstanceRequest(AbstractModel):
 
     @property
     def SwitchAutoRetry(self):
+        """Whether to retry again when missing the switch time window. Valid values: `0` (no), `1` (yes).
+        :rtype: int
+        """
         return self._SwitchAutoRetry
 
     @SwitchAutoRetry.setter
@@ -9814,6 +11698,9 @@ class UpgradeDedicatedDBInstanceRequest(AbstractModel):
 
     @property
     def SwitchStartTime(self):
+        """Switch start time
+        :rtype: str
+        """
         return self._SwitchStartTime
 
     @SwitchStartTime.setter
@@ -9822,6 +11709,9 @@ class UpgradeDedicatedDBInstanceRequest(AbstractModel):
 
     @property
     def SwitchEndTime(self):
+        """Switch end time
+        :rtype: str
+        """
         return self._SwitchEndTime
 
     @SwitchEndTime.setter
@@ -9863,6 +11753,9 @@ class UpgradeDedicatedDBInstanceResponse(AbstractModel):
 
     @property
     def FlowId(self):
+        """Async task ID
+        :rtype: int
+        """
         return self._FlowId
 
     @FlowId.setter
@@ -9871,6 +11764,9 @@ class UpgradeDedicatedDBInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9903,6 +11799,9 @@ class ViewPrivileges(AbstractModel):
 
     @property
     def Database(self):
+        """Database name
+        :rtype: str
+        """
         return self._Database
 
     @Database.setter
@@ -9911,6 +11810,9 @@ class ViewPrivileges(AbstractModel):
 
     @property
     def View(self):
+        """View name
+        :rtype: str
+        """
         return self._View
 
     @View.setter
@@ -9919,6 +11821,9 @@ class ViewPrivileges(AbstractModel):
 
     @property
     def Privileges(self):
+        """Permission information
+        :rtype: list of str
+        """
         return self._Privileges
 
     @Privileges.setter

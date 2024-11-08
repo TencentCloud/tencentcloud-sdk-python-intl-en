@@ -45,6 +45,16 @@ outpkg: outbound packet rate;)
 
     @property
     def MetricName(self):
+        """Metric name (connum: number of active TCP connections;
+new_conn: number of new TCP connections;
+inactive_conn: number of inactive connections;
+intraffic: inbound traffic;
+outtraffic: outbound traffic;
+alltraffic: sum of inbound and outbound traffic;
+inpkg: inbound packet rate;
+outpkg: outbound packet rate;)
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -53,6 +63,9 @@ outpkg: outbound packet rate;)
 
     @property
     def Data(self):
+        """Value array
+        :rtype: list of float
+        """
         return self._Data
 
     @Data.setter
@@ -61,6 +74,9 @@ outpkg: outbound packet rate;)
 
     @property
     def Count(self):
+        """Value array size
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -105,6 +121,9 @@ class BoundIpInfo(AbstractModel):
 
     @property
     def Ip(self):
+        """IP address
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -113,6 +132,9 @@ class BoundIpInfo(AbstractModel):
 
     @property
     def BizType(self):
+        """Category of product that can be bound. Valid values: public (CVM and CLB), bm (BM), eni (ENI), vpngw (VPN gateway), natgw (NAT gateway), waf (WAF), fpc (financial products), gaap (GAAP), and other (Hosted IP).
+        :rtype: str
+        """
         return self._BizType
 
     @BizType.setter
@@ -121,6 +143,9 @@ class BoundIpInfo(AbstractModel):
 
     @property
     def DeviceType(self):
+        """Subtype under product type. Valid values: [cvm (CVM), lb (CLB), eni (ENI), vpngw (VPN), natgw (NAT), waf (WAF), fpc (finance), gaap (GAAP), other (hosted IP), eip (BM EIP)]
+        :rtype: str
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -129,6 +154,9 @@ class BoundIpInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Resource instance ID of IP. This field is required when binding a new IP. For example, if it is an ENI IP, enter `ID(eni-*)` of the ENI for `InstanceId`; if it is a hosted IP without corresponding resource instance ID, enter "none";
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -165,6 +193,9 @@ class CCAlarmThreshold(AbstractModel):
 
     @property
     def AlarmThreshold(self):
+        """CC alarm threshold
+        :rtype: int
+        """
         return self._AlarmThreshold
 
     @AlarmThreshold.setter
@@ -235,6 +266,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -243,6 +277,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -251,6 +288,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vip(self):
+        """Resource IP
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -259,6 +299,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """Attack start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -267,6 +310,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """Attack end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -275,6 +321,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReqQps(self):
+        """Total requests peak (QPS)
+        :rtype: int
+        """
         return self._ReqQps
 
     @ReqQps.setter
@@ -283,6 +332,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DropQps(self):
+        """Attack peak (QPS)
+        :rtype: int
+        """
         return self._DropQps
 
     @DropQps.setter
@@ -291,6 +343,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackStatus(self):
+        """Attack status. Valid values: [0 (ongoing), 1 (ended)]
+        :rtype: int
+        """
         return self._AttackStatus
 
     @AttackStatus.setter
@@ -299,6 +354,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceName(self):
+        """Resource name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -307,6 +366,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainList(self):
+        """Domain name list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DomainList
 
     @DomainList.setter
@@ -315,6 +378,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UriList(self):
+        """URI list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UriList
 
     @UriList.setter
@@ -323,6 +390,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackipList(self):
+        """Attack source list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AttackipList
 
     @AttackipList.setter
@@ -391,6 +462,9 @@ class CCFrequencyRule(AbstractModel):
 
     @property
     def CCFrequencyRuleId(self):
+        """ID of the access frequency control rule for CC protection
+        :rtype: str
+        """
         return self._CCFrequencyRuleId
 
     @CCFrequencyRuleId.setter
@@ -399,6 +473,9 @@ class CCFrequencyRule(AbstractModel):
 
     @property
     def Uri(self):
+        """URI string, which must start with `/`, such as `/abc/a.php`. Length limit: 31. If URI is `/`, only prefix match can be selected as the matching mode;
+        :rtype: str
+        """
         return self._Uri
 
     @Uri.setter
@@ -407,6 +484,9 @@ class CCFrequencyRule(AbstractModel):
 
     @property
     def UserAgent(self):
+        """`User-Agent` string. Length limit: 80
+        :rtype: str
+        """
         return self._UserAgent
 
     @UserAgent.setter
@@ -415,6 +495,9 @@ class CCFrequencyRule(AbstractModel):
 
     @property
     def Cookie(self):
+        """Cookie string. Length limit: 40
+        :rtype: str
+        """
         return self._Cookie
 
     @Cookie.setter
@@ -423,6 +506,9 @@ class CCFrequencyRule(AbstractModel):
 
     @property
     def Mode(self):
+        """Matching rule. Valid values: ["include" (prefix match), "equal" (exact match)]
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -431,6 +517,9 @@ class CCFrequencyRule(AbstractModel):
 
     @property
     def Period(self):
+        """Reference period in seconds. Valid values: [10, 30, 60]
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -439,6 +528,9 @@ class CCFrequencyRule(AbstractModel):
 
     @property
     def ReqNumber(self):
+        """Number of access requests. Value range: [1-10000]
+        :rtype: int
+        """
         return self._ReqNumber
 
     @ReqNumber.setter
@@ -447,6 +539,9 @@ class CCFrequencyRule(AbstractModel):
 
     @property
     def Act(self):
+        """Action take. Valid values: ["alg" (CAPTCHA), "drop" (blocking)]
+        :rtype: str
+        """
         return self._Act
 
     @Act.setter
@@ -455,6 +550,9 @@ class CCFrequencyRule(AbstractModel):
 
     @property
     def ExeDuration(self):
+        """Execution duration in seconds. Valid range: [1-900]
+        :rtype: int
+        """
         return self._ExeDuration
 
     @ExeDuration.setter
@@ -529,6 +627,9 @@ class CCPolicy(AbstractModel):
 
     @property
     def Name(self):
+        """Policy name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -537,6 +638,9 @@ class CCPolicy(AbstractModel):
 
     @property
     def Smode(self):
+        """Matching mode. Valid values: [matching (matching mode), speedlimit (speed limiting mode)]
+        :rtype: str
+        """
         return self._Smode
 
     @Smode.setter
@@ -545,6 +649,9 @@ class CCPolicy(AbstractModel):
 
     @property
     def SetId(self):
+        """Policy ID
+        :rtype: str
+        """
         return self._SetId
 
     @SetId.setter
@@ -553,6 +660,9 @@ class CCPolicy(AbstractModel):
 
     @property
     def Frequency(self):
+        """Number of requests allowed per minute
+        :rtype: int
+        """
         return self._Frequency
 
     @Frequency.setter
@@ -561,6 +671,9 @@ class CCPolicy(AbstractModel):
 
     @property
     def ExeMode(self):
+        """Executed policy mode. Valid values: [alg (verification code), drop (blocking)]
+        :rtype: str
+        """
         return self._ExeMode
 
     @ExeMode.setter
@@ -569,6 +682,9 @@ class CCPolicy(AbstractModel):
 
     @property
     def Switch(self):
+        """Specifies whether the policy is activated
+        :rtype: int
+        """
         return self._Switch
 
     @Switch.setter
@@ -577,6 +693,9 @@ class CCPolicy(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -585,6 +704,9 @@ class CCPolicy(AbstractModel):
 
     @property
     def RuleList(self):
+        """Rule list
+        :rtype: list of CCRule
+        """
         return self._RuleList
 
     @RuleList.setter
@@ -593,6 +715,9 @@ class CCPolicy(AbstractModel):
 
     @property
     def IpList(self):
+        """IP list. If this field is to be left empty, please pass in an empty instead of null;
+        :rtype: list of str
+        """
         return self._IpList
 
     @IpList.setter
@@ -601,6 +726,9 @@ class CCPolicy(AbstractModel):
 
     @property
     def Protocol(self):
+        """CC protection type. Valid values: [http, https]
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -609,6 +737,9 @@ class CCPolicy(AbstractModel):
 
     @property
     def RuleId(self):
+        """ID of the forwarding rule corresponding to the HTTPS CC protection domain name
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -617,6 +748,9 @@ class CCPolicy(AbstractModel):
 
     @property
     def Domain(self):
+        """HTTPS CC protection domain name
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -672,6 +806,9 @@ class CCRule(AbstractModel):
 
     @property
     def Skey(self):
+        """Key of the policy. Valid values: `host`, `cgi`, `ua`, `referer`
+        :rtype: str
+        """
         return self._Skey
 
     @Skey.setter
@@ -680,6 +817,9 @@ class CCRule(AbstractModel):
 
     @property
     def Operator(self):
+        """Rule condition. Valid values: `include`, `not_include`, `equal`
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -688,6 +828,9 @@ class CCRule(AbstractModel):
 
     @property
     def Value(self):
+        """Value of the policy. Length limit: 31 bytes
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -732,6 +875,9 @@ class CCRuleConfig(AbstractModel):
 
     @property
     def Period(self):
+        """Reference period in seconds. Valid values: [10, 30, 60]
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -740,6 +886,9 @@ class CCRuleConfig(AbstractModel):
 
     @property
     def ReqNumber(self):
+        """Number of access requests. Value range: [1-10000]
+        :rtype: int
+        """
         return self._ReqNumber
 
     @ReqNumber.setter
@@ -748,6 +897,9 @@ class CCRuleConfig(AbstractModel):
 
     @property
     def Action(self):
+        """Action take. Valid values: ["alg" (CAPTCHA), "drop" (blocking)]
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -756,6 +908,9 @@ class CCRuleConfig(AbstractModel):
 
     @property
     def ExeDuration(self):
+        """Execution duration in seconds. Valid range: [1-900]
+        :rtype: int
+        """
         return self._ExeDuration
 
     @ExeDuration.setter
@@ -801,6 +956,9 @@ class CreateBasicDDoSAlarmThresholdRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`basic`: Anti-DDoS Basic)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -809,6 +967,9 @@ class CreateBasicDDoSAlarmThresholdRequest(AbstractModel):
 
     @property
     def Method(self):
+        """`get`: read alarm threshold, `set`: set alarm threshold
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -817,6 +978,9 @@ class CreateBasicDDoSAlarmThresholdRequest(AbstractModel):
 
     @property
     def AlarmType(self):
+        """Alarm threshold type. 1: inbound traffic, 2: cleansed traffic. This field is required if `Method` is `set`;
+        :rtype: int
+        """
         return self._AlarmType
 
     @AlarmType.setter
@@ -825,6 +989,9 @@ class CreateBasicDDoSAlarmThresholdRequest(AbstractModel):
 
     @property
     def AlarmThreshold(self):
+        """Alarm threshold. It is required if `Method` is `set`. If it is set to 0, it means to clear the alarm threshold configuration;
+        :rtype: int
+        """
         return self._AlarmThreshold
 
     @AlarmThreshold.setter
@@ -867,6 +1034,9 @@ class CreateBasicDDoSAlarmThresholdResponse(AbstractModel):
 
     @property
     def AlarmThreshold(self):
+        """If there is an alarm threshold configuration, the returned alarm threshold will be greater than 0; otherwise, the returned alarm threshold will be 0;
+        :rtype: int
+        """
         return self._AlarmThreshold
 
     @AlarmThreshold.setter
@@ -875,6 +1045,9 @@ class CreateBasicDDoSAlarmThresholdResponse(AbstractModel):
 
     @property
     def AlarmType(self):
+        """Alarm threshold type. 1: inbound traffic, 2: cleansed traffic. This field is valid if `AlarmThreshold` is above 0;
+        :rtype: int
+        """
         return self._AlarmType
 
     @AlarmType.setter
@@ -883,6 +1056,9 @@ class CreateBasicDDoSAlarmThresholdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -922,6 +1098,9 @@ class CreateBoundIPRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -930,6 +1109,9 @@ class CreateBoundIPRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -938,6 +1120,9 @@ class CreateBoundIPRequest(AbstractModel):
 
     @property
     def BoundDevList(self):
+        """Array of IPs to be bound to the Anti-DDoS instance. For Anti-DDoS Pro Single IP instance, this array can contain only one IP. If there are no IPs to bind, it can be empty; however, either `BoundDevList` or `UnBoundDevList` must not be empty;
+        :rtype: list of BoundIpInfo
+        """
         return self._BoundDevList
 
     @BoundDevList.setter
@@ -946,6 +1131,9 @@ class CreateBoundIPRequest(AbstractModel):
 
     @property
     def UnBoundDevList(self):
+        """Array of IPs to be unbound from Anti-DDoS instance. For Anti-DDoS Pro Single IP instance, this array can contain only one IP; if there are no IPs to unbind, it can be empty; however, either `BoundDevList` or `UnBoundDevList` must not be empty;
+        :rtype: list of BoundIpInfo
+        """
         return self._UnBoundDevList
 
     @UnBoundDevList.setter
@@ -954,6 +1142,9 @@ class CreateBoundIPRequest(AbstractModel):
 
     @property
     def CopyPolicy(self):
+        """[Disused]
+        :rtype: str
+        """
         return self._CopyPolicy
 
     @CopyPolicy.setter
@@ -1004,6 +1195,9 @@ class CreateBoundIPResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -1012,6 +1206,9 @@ class CreateBoundIPResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1070,6 +1267,9 @@ class CreateCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -1078,6 +1278,9 @@ class CreateCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -1086,6 +1289,9 @@ class CreateCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Layer-7 forwarding rule ID, which can be obtained through the `DescribleL7Rules` API
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -1094,6 +1300,9 @@ class CreateCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def Mode(self):
+        """Matching rule. Valid values: ["include" (prefix match), "equal" (exact match)]
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -1102,6 +1311,9 @@ class CreateCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def Period(self):
+        """Reference period in seconds. Valid values: [10, 30, 60]
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -1110,6 +1322,9 @@ class CreateCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def ReqNumber(self):
+        """Number of access requests. Value range: [1-10000]
+        :rtype: int
+        """
         return self._ReqNumber
 
     @ReqNumber.setter
@@ -1118,6 +1333,9 @@ class CreateCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def Act(self):
+        """Action take. Valid values: ["alg" (CAPTCHA), "drop" (blocking)]
+        :rtype: str
+        """
         return self._Act
 
     @Act.setter
@@ -1126,6 +1344,9 @@ class CreateCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def ExeDuration(self):
+        """Execution duration in seconds. Valid range: [1-900]
+        :rtype: int
+        """
         return self._ExeDuration
 
     @ExeDuration.setter
@@ -1134,6 +1355,9 @@ class CreateCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def Uri(self):
+        """URI string, which must start with `/`, such as `/abc/a.php`. Length limit: 31. If URI is `/`, only prefix match can be selected as the matching mode;
+        :rtype: str
+        """
         return self._Uri
 
     @Uri.setter
@@ -1142,6 +1366,9 @@ class CreateCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def UserAgent(self):
+        """`User-Agent` string. Length limit: 80
+        :rtype: str
+        """
         return self._UserAgent
 
     @UserAgent.setter
@@ -1150,6 +1377,9 @@ class CreateCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def Cookie(self):
+        """Cookie string. Length limit: 40
+        :rtype: str
+        """
         return self._Cookie
 
     @Cookie.setter
@@ -1196,6 +1426,9 @@ class CreateCCFrequencyRulesResponse(AbstractModel):
 
     @property
     def CCFrequencyRuleId(self):
+        """Access frequency control rule ID for CC protection
+        :rtype: str
+        """
         return self._CCFrequencyRuleId
 
     @CCFrequencyRuleId.setter
@@ -1204,6 +1437,9 @@ class CreateCCFrequencyRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1236,6 +1472,9 @@ class CreateCCSelfDefinePolicyRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -1244,6 +1483,9 @@ class CreateCCSelfDefinePolicyRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -1252,6 +1494,9 @@ class CreateCCSelfDefinePolicyRequest(AbstractModel):
 
     @property
     def Policy(self):
+        """Details of the CC protection policy
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.CCPolicy`
+        """
         return self._Policy
 
     @Policy.setter
@@ -1292,6 +1537,9 @@ class CreateCCSelfDefinePolicyResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -1300,6 +1548,9 @@ class CreateCCSelfDefinePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1397,6 +1648,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -1405,6 +1659,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def CaseName(self):
+        """Policy scenario name string. Length limit: 64
+        :rtype: str
+        """
         return self._CaseName
 
     @CaseName.setter
@@ -1413,6 +1670,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def PlatformTypes(self):
+        """Development platform. Valid values: [PC (PC client), MOBILE (mobile device), TV (TV), SERVER (server)]
+        :rtype: list of str
+        """
         return self._PlatformTypes
 
     @PlatformTypes.setter
@@ -1421,6 +1681,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def AppType(self):
+        """Category. Valid values: [WEB (website), GAME (game), APP (application), OTHER (other)]
+        :rtype: str
+        """
         return self._AppType
 
     @AppType.setter
@@ -1429,6 +1692,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def AppProtocols(self):
+        """Application protocol. Valid values: [tcp (TCP protocol), udp (UDP protocol), icmp (ICMP protocol), all (other protocols)]
+        :rtype: list of str
+        """
         return self._AppProtocols
 
     @AppProtocols.setter
@@ -1437,6 +1703,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def TcpSportStart(self):
+        """TCP start port. Value range: (0, 65535]
+        :rtype: str
+        """
         return self._TcpSportStart
 
     @TcpSportStart.setter
@@ -1445,6 +1714,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def TcpSportEnd(self):
+        """TCP end port. Value range: (0, 65535). It must be greater than or equal to the TCP start port.
+        :rtype: str
+        """
         return self._TcpSportEnd
 
     @TcpSportEnd.setter
@@ -1453,6 +1725,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def UdpSportStart(self):
+        """UDP start port. Value range: (0, 65535]
+        :rtype: str
+        """
         return self._UdpSportStart
 
     @UdpSportStart.setter
@@ -1461,6 +1736,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def UdpSportEnd(self):
+        """UDP end port. Value range: (0, 65535). It must be greater than or equal to the UDP start port.
+        :rtype: str
+        """
         return self._UdpSportEnd
 
     @UdpSportEnd.setter
@@ -1469,6 +1747,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def HasAbroad(self):
+        """Whether there are customers outside China. Valid values: [no, yes]
+        :rtype: str
+        """
         return self._HasAbroad
 
     @HasAbroad.setter
@@ -1477,6 +1758,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def HasInitiateTcp(self):
+        """Whether to actively initiate outbound TCP requests. Valid values: [no, yes]
+        :rtype: str
+        """
         return self._HasInitiateTcp
 
     @HasInitiateTcp.setter
@@ -1485,6 +1769,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def HasInitiateUdp(self):
+        """Whether to actively initiate outbound UDP requests. Valid values: [no, yes]
+        :rtype: str
+        """
         return self._HasInitiateUdp
 
     @HasInitiateUdp.setter
@@ -1493,6 +1780,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def PeerTcpPort(self):
+        """Port that actively initiates TCP requests. Value range: (0, 65535]
+        :rtype: str
+        """
         return self._PeerTcpPort
 
     @PeerTcpPort.setter
@@ -1501,6 +1791,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def PeerUdpPort(self):
+        """Port that actively initiates UDP requests. Value range: (0, 65535]
+        :rtype: str
+        """
         return self._PeerUdpPort
 
     @PeerUdpPort.setter
@@ -1509,6 +1802,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def TcpFootprint(self):
+        """Fixed feature code of TCP payload. Max string length: 512
+        :rtype: str
+        """
         return self._TcpFootprint
 
     @TcpFootprint.setter
@@ -1517,6 +1813,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def UdpFootprint(self):
+        """Fixed feature code of UDP payload. Max string length: 512
+        :rtype: str
+        """
         return self._UdpFootprint
 
     @UdpFootprint.setter
@@ -1525,6 +1824,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def WebApiUrl(self):
+        """Web application API URL
+        :rtype: list of str
+        """
         return self._WebApiUrl
 
     @WebApiUrl.setter
@@ -1533,6 +1835,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def MinTcpPackageLen(self):
+        """Minimum length of TCP packet. Value range: (0, 1500)
+        :rtype: str
+        """
         return self._MinTcpPackageLen
 
     @MinTcpPackageLen.setter
@@ -1541,6 +1846,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def MaxTcpPackageLen(self):
+        """Maximum length of TCP packet. Value range: (0, 1500). It must be greater than or equal to the minimum length of TCP packet
+        :rtype: str
+        """
         return self._MaxTcpPackageLen
 
     @MaxTcpPackageLen.setter
@@ -1549,6 +1857,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def MinUdpPackageLen(self):
+        """Minimum length of UDP packet. Value range: (0, 1500)
+        :rtype: str
+        """
         return self._MinUdpPackageLen
 
     @MinUdpPackageLen.setter
@@ -1557,6 +1868,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def MaxUdpPackageLen(self):
+        """Maximum length of UDP packet. Value range: (0, 1500). It must be greater than or equal to the minimum length of UDP packet
+        :rtype: str
+        """
         return self._MaxUdpPackageLen
 
     @MaxUdpPackageLen.setter
@@ -1565,6 +1879,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def HasVPN(self):
+        """Whether there are applications using VPN. Valid values: [no, yes]
+        :rtype: str
+        """
         return self._HasVPN
 
     @HasVPN.setter
@@ -1573,6 +1890,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def TcpPortList(self):
+        """TCP port list. You can enter a single port, or a port range. Format: 80,443,700-800,53,1000-3000.
+        :rtype: str
+        """
         return self._TcpPortList
 
     @TcpPortList.setter
@@ -1581,6 +1901,9 @@ class CreateDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def UdpPortList(self):
+        """UDP port list. You can enter a single port, or a port range. Format: 80,443,700-800,53,1000-3000.
+        :rtype: str
+        """
         return self._UdpPortList
 
     @UdpPortList.setter
@@ -1640,6 +1963,9 @@ class CreateDDoSPolicyCaseResponse(AbstractModel):
 
     @property
     def SceneId(self):
+        """Policy scenario ID
+        :rtype: str
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -1648,6 +1974,9 @@ class CreateDDoSPolicyCaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1692,6 +2021,9 @@ class CreateDDoSPolicyRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -1700,6 +2032,9 @@ class CreateDDoSPolicyRequest(AbstractModel):
 
     @property
     def DropOptions(self):
+        """Protocol disablement, which must be entered, and the array length must be 1
+        :rtype: list of DDoSPolicyDropOption
+        """
         return self._DropOptions
 
     @DropOptions.setter
@@ -1708,6 +2043,9 @@ class CreateDDoSPolicyRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Policy name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1716,6 +2054,9 @@ class CreateDDoSPolicyRequest(AbstractModel):
 
     @property
     def PortLimits(self):
+        """Ports to be closed. If no ports are to be closed, enter an empty array
+        :rtype: list of DDoSPolicyPortLimit
+        """
         return self._PortLimits
 
     @PortLimits.setter
@@ -1724,6 +2065,9 @@ class CreateDDoSPolicyRequest(AbstractModel):
 
     @property
     def IpAllowDenys(self):
+        """Request source IP blocklist/allowlist, which should be an empty array if there are no blocked or allowed IPs.
+        :rtype: list of IpBlackWhite
+        """
         return self._IpAllowDenys
 
     @IpAllowDenys.setter
@@ -1732,6 +2076,9 @@ class CreateDDoSPolicyRequest(AbstractModel):
 
     @property
     def PacketFilters(self):
+        """Packet filter. Enter an empty array if there are no packets to filter
+        :rtype: list of DDoSPolicyPacketFilter
+        """
         return self._PacketFilters
 
     @PacketFilters.setter
@@ -1740,6 +2087,9 @@ class CreateDDoSPolicyRequest(AbstractModel):
 
     @property
     def WaterPrint(self):
+        """Watermarking policy parameters. Enter an empty array if the watermarking feature is not enabled. Only one watermarking policy can be passed in (that is, the size of the array cannot exceed 1)
+        :rtype: list of WaterPrintPolicy
+        """
         return self._WaterPrint
 
     @WaterPrint.setter
@@ -1807,6 +2157,9 @@ class CreateDDoSPolicyResponse(AbstractModel):
 
     @property
     def PolicyId(self):
+        """Policy ID
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -1815,6 +2168,9 @@ class CreateDDoSPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1847,6 +2203,9 @@ class CreateInstanceNameRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -1855,6 +2214,9 @@ class CreateInstanceNameRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -1863,6 +2225,9 @@ class CreateInstanceNameRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Instance name. Length limit: 32 characters
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1901,6 +2266,9 @@ class CreateInstanceNameResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -1909,6 +2277,9 @@ class CreateInstanceNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1943,6 +2314,9 @@ class CreateL4HealthConfigRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -1951,6 +2325,9 @@ class CreateL4HealthConfigRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -1959,6 +2336,9 @@ class CreateL4HealthConfigRequest(AbstractModel):
 
     @property
     def HealthConfig(self):
+        """Layer-4 health check configuration array
+        :rtype: list of L4HealthConfig
+        """
         return self._HealthConfig
 
     @HealthConfig.setter
@@ -2002,6 +2382,9 @@ class CreateL4HealthConfigResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -2010,6 +2393,9 @@ class CreateL4HealthConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2044,6 +2430,9 @@ class CreateL4RulesRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -2052,6 +2441,9 @@ class CreateL4RulesRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2060,6 +2452,9 @@ class CreateL4RulesRequest(AbstractModel):
 
     @property
     def Rules(self):
+        """Rule list
+        :rtype: list of L4RuleEntry
+        """
         return self._Rules
 
     @Rules.setter
@@ -2103,6 +2498,9 @@ class CreateL4RulesResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -2111,6 +2509,9 @@ class CreateL4RulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2151,6 +2552,9 @@ class CreateL7CCRuleRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -2159,6 +2563,9 @@ class CreateL7CCRuleRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2167,6 +2574,9 @@ class CreateL7CCRuleRequest(AbstractModel):
 
     @property
     def Method(self):
+        """Operation. Valid values: [query (query), add (add), del (delete)]
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -2175,6 +2585,9 @@ class CreateL7CCRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Layer-7 forwarding rule ID, such as rule-0000001
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -2183,6 +2596,9 @@ class CreateL7CCRuleRequest(AbstractModel):
 
     @property
     def RuleConfig(self):
+        """Custom layer-7 CC protection rule. If the `Method` is `query`, this field can be left empty; if the `Method` is `add` or `del`, it is required, and the array length can only be 1;
+        :rtype: list of CCRuleConfig
+        """
         return self._RuleConfig
 
     @RuleConfig.setter
@@ -2228,6 +2644,9 @@ class CreateL7CCRuleResponse(AbstractModel):
 
     @property
     def RuleConfig(self):
+        """Custom layer-7 CC protection rule parameters. If custom CC protection rule is not enabled, an empty array will be returned.
+        :rtype: list of CCRuleConfig
+        """
         return self._RuleConfig
 
     @RuleConfig.setter
@@ -2236,6 +2655,9 @@ class CreateL7CCRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2273,6 +2695,9 @@ class CreateL7HealthConfigRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -2281,6 +2706,9 @@ class CreateL7HealthConfigRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2289,6 +2717,9 @@ class CreateL7HealthConfigRequest(AbstractModel):
 
     @property
     def HealthConfig(self):
+        """Layer-7 health check configuration array
+        :rtype: list of L7HealthConfig
+        """
         return self._HealthConfig
 
     @HealthConfig.setter
@@ -2332,6 +2763,9 @@ class CreateL7HealthConfigResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -2340,6 +2774,9 @@ class CreateL7HealthConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2386,6 +2823,9 @@ class CreateL7RuleCertRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -2394,6 +2834,9 @@ class CreateL7RuleCertRequest(AbstractModel):
 
     @property
     def Id(self):
+        """The resource instance ID, such as the ID of an Anti-DDoS Advanced instance or the ID of an Anti-DDoS Ultimate instance.
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2402,6 +2845,9 @@ class CreateL7RuleCertRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -2410,6 +2856,9 @@ class CreateL7RuleCertRequest(AbstractModel):
 
     @property
     def CertType(self):
+        """Certificate type, which is required if the protocol is HTTPS. Valid value: [2 (Tencent Cloud-hosted certificate)]
+        :rtype: int
+        """
         return self._CertType
 
     @CertType.setter
@@ -2418,6 +2867,9 @@ class CreateL7RuleCertRequest(AbstractModel):
 
     @property
     def SSLId(self):
+        """If the certificate is a Tencent Cloud-hosted certificate, this field must be entered with the hosted certificate ID.
+        :rtype: str
+        """
         return self._SSLId
 
     @SSLId.setter
@@ -2426,6 +2878,9 @@ class CreateL7RuleCertRequest(AbstractModel):
 
     @property
     def Cert(self):
+        """[Disused] If the certificate is an external certificate, this field must be entered with the certificate content. 
+        :rtype: str
+        """
         return self._Cert
 
     @Cert.setter
@@ -2434,6 +2889,9 @@ class CreateL7RuleCertRequest(AbstractModel):
 
     @property
     def PrivateKey(self):
+        """[Disused] If the certificate is an external certificate, this field must be entered with the certificate key. 
+        :rtype: str
+        """
         return self._PrivateKey
 
     @PrivateKey.setter
@@ -2476,6 +2934,9 @@ class CreateL7RuleCertResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -2484,6 +2945,9 @@ class CreateL7RuleCertResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2518,6 +2982,9 @@ class CreateL7RulesRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -2526,6 +2993,9 @@ class CreateL7RulesRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2534,6 +3004,9 @@ class CreateL7RulesRequest(AbstractModel):
 
     @property
     def Rules(self):
+        """Rule list
+        :rtype: list of L7RuleEntry
+        """
         return self._Rules
 
     @Rules.setter
@@ -2577,6 +3050,9 @@ class CreateL7RulesResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -2585,6 +3061,9 @@ class CreateL7RulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2619,6 +3098,9 @@ class CreateL7RulesUploadRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -2627,6 +3109,9 @@ class CreateL7RulesUploadRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2635,6 +3120,9 @@ class CreateL7RulesUploadRequest(AbstractModel):
 
     @property
     def Rules(self):
+        """Rule list
+        :rtype: list of L7RuleEntry
+        """
         return self._Rules
 
     @Rules.setter
@@ -2678,6 +3166,9 @@ class CreateL7RulesUploadResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -2686,6 +3177,9 @@ class CreateL7RulesUploadResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2717,6 +3211,9 @@ class CreateNetReturnRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -2725,6 +3222,9 @@ class CreateNetReturnRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -2759,6 +3259,9 @@ class CreateNetReturnResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2793,6 +3296,9 @@ class CreateNewL7RulesUploadRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced).
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -2801,6 +3307,9 @@ class CreateNewL7RulesUploadRequest(AbstractModel):
 
     @property
     def IdList(self):
+        """Resource ID list.
+        :rtype: list of str
+        """
         return self._IdList
 
     @IdList.setter
@@ -2809,6 +3318,9 @@ class CreateNewL7RulesUploadRequest(AbstractModel):
 
     @property
     def VipList(self):
+        """Resource IP address list.
+        :rtype: list of str
+        """
         return self._VipList
 
     @VipList.setter
@@ -2817,6 +3329,9 @@ class CreateNewL7RulesUploadRequest(AbstractModel):
 
     @property
     def Rules(self):
+        """Rule list.
+        :rtype: list of L7RuleEntry
+        """
         return self._Rules
 
     @Rules.setter
@@ -2861,6 +3376,9 @@ class CreateNewL7RulesUploadResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code.
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -2869,6 +3387,9 @@ class CreateNewL7RulesUploadResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2900,6 +3421,9 @@ class CreateUnblockIpRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -2908,6 +3432,9 @@ class CreateUnblockIpRequest(AbstractModel):
 
     @property
     def ActionType(self):
+        """Type of the unblocking action (`user`: self-service unblocking, `auto`: automatic unblocking, `update`: unblocking by service upgrading, `bind`: unblocking by binding Anti-DDoS Pro instance)
+        :rtype: str
+        """
         return self._ActionType
 
     @ActionType.setter
@@ -2951,6 +3478,9 @@ class CreateUnblockIpResponse(AbstractModel):
 
     @property
     def Ip(self):
+        """IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -2959,6 +3489,9 @@ class CreateUnblockIpResponse(AbstractModel):
 
     @property
     def ActionType(self):
+        """Type of the unblocking action (`user`: self-service unblocking, `auto`: automatic unblocking, `update`: unblocking by service upgrading, `bind`: unblocking by binding Anti-DDoS Pro instance)
+        :rtype: str
+        """
         return self._ActionType
 
     @ActionType.setter
@@ -2967,6 +3500,9 @@ class CreateUnblockIpResponse(AbstractModel):
 
     @property
     def UnblockTime(self):
+        """Unblocked time (estimated)
+        :rtype: str
+        """
         return self._UnblockTime
 
     @UnblockTime.setter
@@ -2975,6 +3511,9 @@ class CreateUnblockIpResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3006,6 +3545,9 @@ class DDoSAlarmThreshold(AbstractModel):
 
     @property
     def AlarmType(self):
+        """Alarm threshold type. 1: inbound traffic, 2: cleansed traffic
+        :rtype: int
+        """
         return self._AlarmType
 
     @AlarmType.setter
@@ -3014,6 +3556,9 @@ class DDoSAlarmThreshold(AbstractModel):
 
     @property
     def AlarmThreshold(self):
+        """Alarm threshold, which should be greater than 0 (currently scheduled value)
+        :rtype: int
+        """
         return self._AlarmThreshold
 
     @AlarmThreshold.setter
@@ -3060,6 +3605,9 @@ class DDoSAttackSourceRecord(AbstractModel):
 
     @property
     def SrcIp(self):
+        """Attack source IP
+        :rtype: str
+        """
         return self._SrcIp
 
     @SrcIp.setter
@@ -3068,6 +3616,9 @@ class DDoSAttackSourceRecord(AbstractModel):
 
     @property
     def Province(self):
+        """Province (valid for Mainland China)
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -3076,6 +3627,9 @@ class DDoSAttackSourceRecord(AbstractModel):
 
     @property
     def Nation(self):
+        """Country/region
+        :rtype: str
+        """
         return self._Nation
 
     @Nation.setter
@@ -3084,6 +3638,9 @@ class DDoSAttackSourceRecord(AbstractModel):
 
     @property
     def PacketSum(self):
+        """Total number of attack packets
+        :rtype: int
+        """
         return self._PacketSum
 
     @PacketSum.setter
@@ -3092,6 +3649,9 @@ class DDoSAttackSourceRecord(AbstractModel):
 
     @property
     def PacketLen(self):
+        """Total attack traffic
+        :rtype: int
+        """
         return self._PacketLen
 
     @PacketLen.setter
@@ -3167,6 +3727,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -3175,6 +3738,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -3183,6 +3749,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Vip(self):
+        """Resource IP
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -3191,6 +3760,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """Attack start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3199,6 +3771,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """Attack end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3207,6 +3782,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Mbps(self):
+        """Maximum attack bandwidth
+        :rtype: int
+        """
         return self._Mbps
 
     @Mbps.setter
@@ -3215,6 +3793,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pps(self):
+        """Maximum attack packet rate
+        :rtype: int
+        """
         return self._Pps
 
     @Pps.setter
@@ -3223,6 +3804,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackType(self):
+        """Attack type
+        :rtype: str
+        """
         return self._AttackType
 
     @AttackType.setter
@@ -3231,6 +3815,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BlockFlag(self):
+        """Whether the IP is blocked. Valid values: [1 (yes), 0 (no), 2 (invalid value)]
+        :rtype: int
+        """
         return self._BlockFlag
 
     @BlockFlag.setter
@@ -3239,6 +3826,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OverLoad(self):
+        """Whether the elastic protection bandwidth is exceeded. Valid values: [yes (yes), no (no), empty string (unknown value)]
+        :rtype: str
+        """
         return self._OverLoad
 
     @OverLoad.setter
@@ -3247,6 +3837,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AttackStatus(self):
+        """Attack status. Valid values: [0 (ongoing), 1 (ended)]
+        :rtype: int
+        """
         return self._AttackStatus
 
     @AttackStatus.setter
@@ -3255,6 +3848,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceName(self):
+        """Resource name
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -3263,6 +3860,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventId(self):
+        """Attack event ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -3362,6 +3963,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def DropTcp(self):
+        """Blocks all TCP traffic. Valid values: [0,1]
+        :rtype: int
+        """
         return self._DropTcp
 
     @DropTcp.setter
@@ -3370,6 +3974,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def DropUdp(self):
+        """Blocks all UDP traffic. Valid values: [0,1]
+        :rtype: int
+        """
         return self._DropUdp
 
     @DropUdp.setter
@@ -3378,6 +3985,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def DropIcmp(self):
+        """Blocks all ICMP traffic. Valid values: [0,1]
+        :rtype: int
+        """
         return self._DropIcmp
 
     @DropIcmp.setter
@@ -3386,6 +3996,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def DropOther(self):
+        """Blocks traffic of other protocols. Valid values: [0,1]
+        :rtype: int
+        """
         return self._DropOther
 
     @DropOther.setter
@@ -3394,6 +4007,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def DropAbroad(self):
+        """Rejects traffic from outside Mainland China. Valid values: [0,1]
+        :rtype: int
+        """
         return self._DropAbroad
 
     @DropAbroad.setter
@@ -3402,6 +4018,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def CheckSyncConn(self):
+        """Null session protection. Valid values: [0,1]
+        :rtype: int
+        """
         return self._CheckSyncConn
 
     @CheckSyncConn.setter
@@ -3410,6 +4029,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def SdNewLimit(self):
+        """New connection suppression based on source IP and destination IP. Value range: [0,4294967295]
+        :rtype: int
+        """
         return self._SdNewLimit
 
     @SdNewLimit.setter
@@ -3418,6 +4040,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def DstNewLimit(self):
+        """New connection suppression based on destination IP. Value range: [0,4294967295]
+        :rtype: int
+        """
         return self._DstNewLimit
 
     @DstNewLimit.setter
@@ -3426,6 +4051,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def SdConnLimit(self):
+        """Concurrent connection suppression based on source IP and destination IP. Value range: [0,4294967295]
+        :rtype: int
+        """
         return self._SdConnLimit
 
     @SdConnLimit.setter
@@ -3434,6 +4062,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def DstConnLimit(self):
+        """Concurrent connection suppression based on destination IP. Value range: [0,4294967295]
+        :rtype: int
+        """
         return self._DstConnLimit
 
     @DstConnLimit.setter
@@ -3442,6 +4073,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def BadConnThreshold(self):
+        """Threshold for triggering connection suppression. Value range: [0,4294967295]
+        :rtype: int
+        """
         return self._BadConnThreshold
 
     @BadConnThreshold.setter
@@ -3450,6 +4084,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def NullConnEnable(self):
+        """Exceptional connection detection condition: null session protection status. Valid values: [0,1]
+        :rtype: int
+        """
         return self._NullConnEnable
 
     @NullConnEnable.setter
@@ -3458,6 +4095,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def ConnTimeout(self):
+        """Exceptional connection detection condition: connection timeout. Valid values: [0,65535]
+        :rtype: int
+        """
         return self._ConnTimeout
 
     @ConnTimeout.setter
@@ -3466,6 +4106,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def SynRate(self):
+        """Exceptional connection detection condition: percentage of SYN out of ACK. Valid values: [0,100]
+        :rtype: int
+        """
         return self._SynRate
 
     @SynRate.setter
@@ -3474,6 +4117,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def SynLimit(self):
+        """Exceptional connection detection condition: SYN threshold. Valid values: [0,100]
+        :rtype: int
+        """
         return self._SynLimit
 
     @SynLimit.setter
@@ -3482,6 +4128,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def DTcpMbpsLimit(self):
+        """TCP speed limit. Value range: [0,4294967295]
+        :rtype: int
+        """
         return self._DTcpMbpsLimit
 
     @DTcpMbpsLimit.setter
@@ -3490,6 +4139,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def DUdpMbpsLimit(self):
+        """UDP speed limit. Value range: [0,4294967295]
+        :rtype: int
+        """
         return self._DUdpMbpsLimit
 
     @DUdpMbpsLimit.setter
@@ -3498,6 +4150,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def DIcmpMbpsLimit(self):
+        """ICMP speed limit. Value range: [0,4294967295]
+        :rtype: int
+        """
         return self._DIcmpMbpsLimit
 
     @DIcmpMbpsLimit.setter
@@ -3506,6 +4161,9 @@ class DDoSPolicyDropOption(AbstractModel):
 
     @property
     def DOtherMbpsLimit(self):
+        """Other protocol speed limit. Value range: [0,4294967295]
+        :rtype: int
+        """
         return self._DOtherMbpsLimit
 
     @DOtherMbpsLimit.setter
@@ -3601,6 +4259,9 @@ no_match (no check)
 
     @property
     def Protocol(self):
+        """Protocol. Valid values: [tcp, udp, icmp, all]
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -3609,6 +4270,9 @@ no_match (no check)
 
     @property
     def SportStart(self):
+        """Start source port. Value range: [0,65535]
+        :rtype: int
+        """
         return self._SportStart
 
     @SportStart.setter
@@ -3617,6 +4281,9 @@ no_match (no check)
 
     @property
     def SportEnd(self):
+        """End source port. Value range: [0,65535]
+        :rtype: int
+        """
         return self._SportEnd
 
     @SportEnd.setter
@@ -3625,6 +4292,9 @@ no_match (no check)
 
     @property
     def DportStart(self):
+        """Start destination port. Value range: [0,65535]
+        :rtype: int
+        """
         return self._DportStart
 
     @DportStart.setter
@@ -3633,6 +4303,9 @@ no_match (no check)
 
     @property
     def DportEnd(self):
+        """End destination port. Value range: [0,65535]
+        :rtype: int
+        """
         return self._DportEnd
 
     @DportEnd.setter
@@ -3641,6 +4314,9 @@ no_match (no check)
 
     @property
     def PktlenMin(self):
+        """Minimum packet length. Value range: [0,1500]
+        :rtype: int
+        """
         return self._PktlenMin
 
     @PktlenMin.setter
@@ -3649,6 +4325,9 @@ no_match (no check)
 
     @property
     def PktlenMax(self):
+        """Maximum packet length. Value range: [0,1500]
+        :rtype: int
+        """
         return self._PktlenMax
 
     @PktlenMax.setter
@@ -3657,6 +4336,14 @@ no_match (no check)
 
     @property
     def MatchBegin(self):
+        """Whether to detect the payload. Valid values: [
+begin_l3 (IP header)
+begin_l4 (TCP header)
+begin_l5 (payload)
+no_match (no check)
+]
+        :rtype: str
+        """
         return self._MatchBegin
 
     @MatchBegin.setter
@@ -3665,6 +4352,9 @@ no_match (no check)
 
     @property
     def MatchType(self):
+        """Whether it is a regular expression. Valid values: [sunday (keyword), pcre (regular expression)]
+        :rtype: str
+        """
         return self._MatchType
 
     @MatchType.setter
@@ -3673,6 +4363,9 @@ no_match (no check)
 
     @property
     def Str(self):
+        """Keyword or regular expression
+        :rtype: str
+        """
         return self._Str
 
     @Str.setter
@@ -3681,6 +4374,9 @@ no_match (no check)
 
     @property
     def Depth(self):
+        """Detection depth. Value range: [0,1500]
+        :rtype: int
+        """
         return self._Depth
 
     @Depth.setter
@@ -3689,6 +4385,9 @@ no_match (no check)
 
     @property
     def Offset(self):
+        """Detection offset. Value range: [0,1500]
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3697,6 +4396,9 @@ no_match (no check)
 
     @property
     def IsNot(self):
+        """Whether to include. Valid values: [0 (no), 1 (yes)]
+        :rtype: int
+        """
         return self._IsNot
 
     @IsNot.setter
@@ -3705,6 +4407,9 @@ no_match (no check)
 
     @property
     def Action(self):
+        """Policy action. Valid values: [drop, drop_black, drop_rst, drop_black_rst, transmit]
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -3773,6 +4478,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
+        """Protocol. Valid values: [tcp, udp, all]
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -3781,6 +4489,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DPortStart(self):
+        """Start destination port. Value range: [0,65535]
+        :rtype: int
+        """
         return self._DPortStart
 
     @DPortStart.setter
@@ -3789,6 +4500,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DPortEnd(self):
+        """End destination port, which must be greater than or equal to the start destination port. Value range: [0,65535]
+        :rtype: int
+        """
         return self._DPortEnd
 
     @DPortEnd.setter
@@ -3797,6 +4511,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SPortStart(self):
+        """Start source port. Value range: [0,65535]
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SPortStart
 
     @SPortStart.setter
@@ -3805,6 +4523,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SPortEnd(self):
+        """End source port, which must be greater than or equal to the start source port. Value range: [0,65535]
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SPortEnd
 
     @SPortEnd.setter
@@ -3813,6 +4535,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Action(self):
+        """Action to be executed. Valid values: [drop (discard) , transmit (forward)]
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -3821,6 +4547,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Kind(self):
+        """Type of port to be disabled. Valid values: [0 (destination port range), 1 (source port range), 2 (destination port range and source port range)]
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Kind
 
     @Kind.setter
@@ -3895,6 +4625,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Resources(self):
+        """Resource bound to policy
+        :rtype: list of ResourceIp
+        """
         return self._Resources
 
     @Resources.setter
@@ -3903,6 +4636,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DropOptions(self):
+        """Disabled protocol
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DDoSPolicyDropOption`
+        """
         return self._DropOptions
 
     @DropOptions.setter
@@ -3911,6 +4647,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PortLimits(self):
+        """Disabled port
+        :rtype: list of DDoSPolicyPortLimit
+        """
         return self._PortLimits
 
     @PortLimits.setter
@@ -3919,6 +4658,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PacketFilters(self):
+        """Packet filter
+        :rtype: list of DDoSPolicyPacketFilter
+        """
         return self._PacketFilters
 
     @PacketFilters.setter
@@ -3927,6 +4669,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IpBlackWhiteLists(self):
+        """IP blocklist/allowlist
+        :rtype: list of IpBlackWhite
+        """
         return self._IpBlackWhiteLists
 
     @IpBlackWhiteLists.setter
@@ -3935,6 +4680,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyId(self):
+        """Policy ID
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -3943,6 +4691,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PolicyName(self):
+        """Policy name
+        :rtype: str
+        """
         return self._PolicyName
 
     @PolicyName.setter
@@ -3951,6 +4702,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Policy creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3959,6 +4713,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def WaterPrint(self):
+        """Watermarking policy parameter. There can be only one policy. If there are no policies, the array is empty
+        :rtype: list of WaterPrintPolicy
+        """
         return self._WaterPrint
 
     @WaterPrint.setter
@@ -3967,6 +4724,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def WaterKey(self):
+        """Watermark key. There can be up to two keys. If there are no policies, the array is empty
+        :rtype: list of WaterPrintKey
+        """
         return self._WaterKey
 
     @WaterKey.setter
@@ -3975,6 +4735,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BoundResources(self):
+        """Resource instance bound to policy
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._BoundResources
 
     @BoundResources.setter
@@ -3983,6 +4747,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SceneId(self):
+        """Policy scenario
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -4062,6 +4830,9 @@ class DeleteCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -4070,6 +4841,9 @@ class DeleteCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def CCFrequencyRuleId(self):
+        """Access frequency control rule ID for CC protection
+        :rtype: str
+        """
         return self._CCFrequencyRuleId
 
     @CCFrequencyRuleId.setter
@@ -4107,6 +4881,9 @@ class DeleteCCFrequencyRulesResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -4115,6 +4892,9 @@ class DeleteCCFrequencyRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4149,6 +4929,9 @@ class DeleteCCSelfDefinePolicyRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -4157,6 +4940,9 @@ class DeleteCCSelfDefinePolicyRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -4165,6 +4951,9 @@ class DeleteCCSelfDefinePolicyRequest(AbstractModel):
 
     @property
     def SetId(self):
+        """Policy ID
+        :rtype: str
+        """
         return self._SetId
 
     @SetId.setter
@@ -4203,6 +4992,9 @@ class DeleteCCSelfDefinePolicyResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -4211,6 +5003,9 @@ class DeleteCCSelfDefinePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4242,6 +5037,9 @@ class DeleteDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -4250,6 +5048,9 @@ class DeleteDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def SceneId(self):
+        """Policy scenario ID
+        :rtype: str
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -4287,6 +5088,9 @@ class DeleteDDoSPolicyCaseResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -4295,6 +5099,9 @@ class DeleteDDoSPolicyCaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4326,6 +5133,9 @@ class DeleteDDoSPolicyRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -4334,6 +5144,9 @@ class DeleteDDoSPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """Policy ID
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -4371,6 +5184,9 @@ class DeleteDDoSPolicyResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -4379,6 +5195,9 @@ class DeleteDDoSPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4413,6 +5232,9 @@ class DeleteL4RulesRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -4421,6 +5243,9 @@ class DeleteL4RulesRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -4429,6 +5254,9 @@ class DeleteL4RulesRequest(AbstractModel):
 
     @property
     def RuleIdList(self):
+        """Rule ID list
+        :rtype: list of str
+        """
         return self._RuleIdList
 
     @RuleIdList.setter
@@ -4467,6 +5295,9 @@ class DeleteL4RulesResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -4475,6 +5306,9 @@ class DeleteL4RulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4509,6 +5343,9 @@ class DeleteL7RulesRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -4517,6 +5354,9 @@ class DeleteL7RulesRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -4525,6 +5365,9 @@ class DeleteL7RulesRequest(AbstractModel):
 
     @property
     def RuleIdList(self):
+        """Rule ID list
+        :rtype: list of str
+        """
         return self._RuleIdList
 
     @RuleIdList.setter
@@ -4563,6 +5406,9 @@ class DeleteL7RulesResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -4571,6 +5417,9 @@ class DeleteL7RulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4614,6 +5463,9 @@ class DescribeActionLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4622,6 +5474,9 @@ class DescribeActionLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4630,6 +5485,9 @@ class DescribeActionLogRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -4638,6 +5496,9 @@ class DescribeActionLogRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """Search value, which can only be resource ID or user `UIN`
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -4646,6 +5507,9 @@ class DescribeActionLogRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of entries per page. A value of 0 means no pagination
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4654,6 +5518,9 @@ class DescribeActionLogRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Page start offset, whose value is (page number - 1) * number of entries per page
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4698,6 +5565,9 @@ class DescribeActionLogResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4706,6 +5576,9 @@ class DescribeActionLogResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Record array
+        :rtype: list of KeyValueRecord
+        """
         return self._Data
 
     @Data.setter
@@ -4714,6 +5587,9 @@ class DescribeActionLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4749,6 +5625,9 @@ class DescribeBGPIPL7RuleMaxCntRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -4757,6 +5636,9 @@ class DescribeBGPIPL7RuleMaxCntRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -4794,6 +5676,9 @@ class DescribeBGPIPL7RuleMaxCntResponse(AbstractModel):
 
     @property
     def Count(self):
+        """Maximum number of layer-7 rules that can be added for Anti-DDoS Advanced
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -4802,6 +5687,9 @@ class DescribeBGPIPL7RuleMaxCntResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4863,6 +5751,9 @@ avg: average;
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -4871,6 +5762,9 @@ avg: average;
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -4879,6 +5773,17 @@ avg: average;
 
     @property
     def MetricName(self):
+        """Metric name. Valid values:
+connum: number of active TCP connections;
+new_conn: number of new TCP connections;
+inactive_conn: number of inactive connections;
+intraffic: inbound traffic;
+outtraffic: outbound traffic;
+alltraffic: sum of inbound and outbound traffic;
+inpkg: inbound packet rate;
+outpkg: outbound packet rate;
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -4887,6 +5792,9 @@ avg: average;
 
     @property
     def Period(self):
+        """Statistical time granularity in seconds (300: 5-minute, 3600: hourly, 86400: daily)
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -4895,6 +5803,9 @@ avg: average;
 
     @property
     def StartTime(self):
+        """Statistics start time. The second part is kept at 0, and the minute part is a multiple of 5
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4903,6 +5814,9 @@ avg: average;
 
     @property
     def EndTime(self):
+        """Statistics end time. The second part is kept at 0, and the minute part is a multiple of 5
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4911,6 +5825,12 @@ avg: average;
 
     @property
     def Statistics(self):
+        """Statistical method. Valid values:
+max: maximum value;
+min: minimum value;
+avg: average;
+        :rtype: str
+        """
         return self._Statistics
 
     @Statistics.setter
@@ -4919,6 +5839,9 @@ avg: average;
 
     @property
     def ProtocolPort(self):
+        """Protocol port array
+        :rtype: list of ProtocolPort
+        """
         return self._ProtocolPort
 
     @ProtocolPort.setter
@@ -4927,6 +5850,9 @@ avg: average;
 
     @property
     def Ip(self):
+        """Resource instance IP, which is required only if `Business` is `net` (Anti-DDoS Ultimate), because an Anti-DDoS Ultimate instance has multiple IPs;
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -4976,6 +5902,9 @@ class DescribeBaradDataResponse(AbstractModel):
 
     @property
     def DataList(self):
+        """Returned metric value
+        :rtype: list of BaradData
+        """
         return self._DataList
 
     @DataList.setter
@@ -4984,6 +5913,9 @@ class DescribeBaradDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5030,6 +5962,9 @@ class DescribeBasicCCThresholdRequest(AbstractModel):
 
     @property
     def BasicIp(self):
+        """Queried IP address, such as 1.1.1.1
+        :rtype: str
+        """
         return self._BasicIp
 
     @BasicIp.setter
@@ -5038,6 +5973,9 @@ class DescribeBasicCCThresholdRequest(AbstractModel):
 
     @property
     def BasicRegion(self):
+        """IP region. Valid values: region abbreviations such as gz, bj, sh, and hk
+        :rtype: str
+        """
         return self._BasicRegion
 
     @BasicRegion.setter
@@ -5046,6 +5984,9 @@ class DescribeBasicCCThresholdRequest(AbstractModel):
 
     @property
     def BasicBizType(self):
+        """Zone type. Valid values: public (public cloud zone), bm (BM zone), nat (NAT server zone), channel (internet channel).
+        :rtype: str
+        """
         return self._BasicBizType
 
     @BasicBizType.setter
@@ -5054,6 +5995,9 @@ class DescribeBasicCCThresholdRequest(AbstractModel):
 
     @property
     def BasicDeviceType(self):
+        """Device type. Valid values: cvm (CVM), clb (public CLB), lb (BM CLB), nat (NAT server), channel (internet channel).
+        :rtype: str
+        """
         return self._BasicDeviceType
 
     @BasicDeviceType.setter
@@ -5062,6 +6006,9 @@ class DescribeBasicCCThresholdRequest(AbstractModel):
 
     @property
     def BasicIpInstance(self):
+        """IPInstance Nat gateway, which is optional. (If the device type to be queried is a NAT server, this parameter is required, which can be obtained through the NAT resource query API)
+        :rtype: str
+        """
         return self._BasicIpInstance
 
     @BasicIpInstance.setter
@@ -5070,6 +6017,9 @@ class DescribeBasicCCThresholdRequest(AbstractModel):
 
     @property
     def BasicIspCode(self):
+        """ISP line, which is optional. (If the device type to be queried is a NAT server, this parameter should be 5)
+        :rtype: int
+        """
         return self._BasicIspCode
 
     @BasicIspCode.setter
@@ -5114,6 +6064,9 @@ class DescribeBasicCCThresholdResponse(AbstractModel):
 
     @property
     def CCEnable(self):
+        """CC status (0: disabled, 1: enabled)
+        :rtype: int
+        """
         return self._CCEnable
 
     @CCEnable.setter
@@ -5122,6 +6075,9 @@ class DescribeBasicCCThresholdResponse(AbstractModel):
 
     @property
     def CCThreshold(self):
+        """CC protection threshold
+        :rtype: int
+        """
         return self._CCThreshold
 
     @CCThreshold.setter
@@ -5130,6 +6086,9 @@ class DescribeBasicCCThresholdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5175,6 +6134,9 @@ class DescribeBasicDeviceThresholdRequest(AbstractModel):
 
     @property
     def BasicIp(self):
+        """Queried IP address, such as 1.1.1.1
+        :rtype: str
+        """
         return self._BasicIp
 
     @BasicIp.setter
@@ -5183,6 +6145,9 @@ class DescribeBasicDeviceThresholdRequest(AbstractModel):
 
     @property
     def BasicRegion(self):
+        """IP region. Valid values: region abbreviations such as gz, bj, sh, and hk
+        :rtype: str
+        """
         return self._BasicRegion
 
     @BasicRegion.setter
@@ -5191,6 +6156,9 @@ class DescribeBasicDeviceThresholdRequest(AbstractModel):
 
     @property
     def BasicBizType(self):
+        """Zone type. Valid values: public (public cloud zone), bm (BM zone), nat (NAT server zone), channel (internet channel).
+        :rtype: str
+        """
         return self._BasicBizType
 
     @BasicBizType.setter
@@ -5199,6 +6167,9 @@ class DescribeBasicDeviceThresholdRequest(AbstractModel):
 
     @property
     def BasicDeviceType(self):
+        """Device type. Valid values: cvm (CVM), clb (public CLB), lb (BM CLB), nat (NAT server), channel (internet channel).
+        :rtype: str
+        """
         return self._BasicDeviceType
 
     @BasicDeviceType.setter
@@ -5207,6 +6178,9 @@ class DescribeBasicDeviceThresholdRequest(AbstractModel):
 
     @property
     def BasicCheckFlag(self):
+        """Validity check. Valid value: 1
+        :rtype: int
+        """
         return self._BasicCheckFlag
 
     @BasicCheckFlag.setter
@@ -5215,6 +6189,9 @@ class DescribeBasicDeviceThresholdRequest(AbstractModel):
 
     @property
     def BasicIpInstance(self):
+        """IPInstance Nat gateway, which is optional. (If the device type to be queried is a NAT server, this parameter is required, which can be obtained through the NAT resource query API)
+        :rtype: str
+        """
         return self._BasicIpInstance
 
     @BasicIpInstance.setter
@@ -5223,6 +6200,9 @@ class DescribeBasicDeviceThresholdRequest(AbstractModel):
 
     @property
     def BasicIspCode(self):
+        """ISP line, which is optional. (If the device type to be queried is a NAT server, this parameter should be 5)
+        :rtype: int
+        """
         return self._BasicIspCode
 
     @BasicIspCode.setter
@@ -5265,6 +6245,9 @@ class DescribeBasicDeviceThresholdResponse(AbstractModel):
 
     @property
     def Threshold(self):
+        """Blackhole blocking value
+        :rtype: int
+        """
         return self._Threshold
 
     @Threshold.setter
@@ -5273,6 +6256,9 @@ class DescribeBasicDeviceThresholdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5320,6 +6306,9 @@ class DescribeBizHttpStatusRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -5328,6 +6317,9 @@ class DescribeBizHttpStatusRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Resource ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -5336,6 +6328,9 @@ class DescribeBizHttpStatusRequest(AbstractModel):
 
     @property
     def Period(self):
+        """Statistical period in seconds. Valid values: 300, 1800, 3600, 21600, and 86400.
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -5344,6 +6339,9 @@ class DescribeBizHttpStatusRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Statistics start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -5352,6 +6350,9 @@ class DescribeBizHttpStatusRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Statistics end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5360,6 +6361,9 @@ class DescribeBizHttpStatusRequest(AbstractModel):
 
     @property
     def Statistics(self):
+        """Statistical mode, which only supports sum.
+        :rtype: str
+        """
         return self._Statistics
 
     @Statistics.setter
@@ -5368,6 +6372,9 @@ class DescribeBizHttpStatusRequest(AbstractModel):
 
     @property
     def ProtoInfo(self):
+        """Protocol and port list, which is valid when the statistical dimension is the number of connections. Valid protocols: TCP, UDP, HTTP, and HTTPS.
+        :rtype: list of ProtocolPort
+        """
         return self._ProtoInfo
 
     @ProtoInfo.setter
@@ -5376,6 +6383,9 @@ class DescribeBizHttpStatusRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """Specific domain name query
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -5424,6 +6434,9 @@ class DescribeBizHttpStatusResponse(AbstractModel):
 
     @property
     def HttpStatusMap(self):
+        """Statistics on the HTTP status codes of business traffic
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.HttpStatusMap`
+        """
         return self._HttpStatusMap
 
     @HttpStatusMap.setter
@@ -5432,6 +6445,9 @@ class DescribeBizHttpStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5463,6 +6479,9 @@ class DescribeCCAlarmThresholdRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`shield`: Chess Shield, `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -5471,6 +6490,9 @@ class DescribeCCAlarmThresholdRequest(AbstractModel):
 
     @property
     def RsId(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._RsId
 
     @RsId.setter
@@ -5508,6 +6530,9 @@ class DescribeCCAlarmThresholdResponse(AbstractModel):
 
     @property
     def CCAlarmThreshold(self):
+        """CC alarm threshold
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.CCAlarmThreshold`
+        """
         return self._CCAlarmThreshold
 
     @CCAlarmThreshold.setter
@@ -5516,6 +6541,9 @@ class DescribeCCAlarmThresholdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5562,6 +6590,9 @@ class DescribeCCEvListRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -5570,6 +6601,9 @@ class DescribeCCEvListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -5578,6 +6612,9 @@ class DescribeCCEvListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5586,6 +6623,9 @@ class DescribeCCEvListRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -5594,6 +6634,9 @@ class DescribeCCEvListRequest(AbstractModel):
 
     @property
     def IpList(self):
+        """Resource instance IP. When `business` is not `basic`, if `IpList` is not empty, `Id` must not be empty;
+        :rtype: list of str
+        """
         return self._IpList
 
     @IpList.setter
@@ -5602,6 +6645,9 @@ class DescribeCCEvListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of entries per page. A value of 0 means no pagination
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5610,6 +6656,9 @@ class DescribeCCEvListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Page start offset, whose value is (page number - 1) * number of entries per page
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5671,6 +6720,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `shield`: Chess Shield; `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -5679,6 +6731,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -5687,6 +6742,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IpList(self):
+        """Instance IP list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._IpList
 
     @IpList.setter
@@ -5695,6 +6754,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -5703,6 +6765,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5711,6 +6776,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
+        """CC attack event list
+        :rtype: list of CCEventRecord
+        """
         return self._Data
 
     @Data.setter
@@ -5719,6 +6787,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
+        """Total number of records
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5727,6 +6798,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5770,6 +6844,9 @@ class DescribeCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -5778,6 +6855,9 @@ class DescribeCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -5786,6 +6866,9 @@ class DescribeCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Layer-7 forwarding rule ID (which can be obtained from the layer-7 forwarding rule API). If a value is entered, it means to get the access frequency control rule of the forwarding rule;
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -5827,6 +6910,9 @@ class DescribeCCFrequencyRulesResponse(AbstractModel):
 
     @property
     def CCFrequencyRuleList(self):
+        """Access frequency control rule list
+        :rtype: list of CCFrequencyRule
+        """
         return self._CCFrequencyRuleList
 
     @CCFrequencyRuleList.setter
@@ -5835,6 +6921,9 @@ class DescribeCCFrequencyRulesResponse(AbstractModel):
 
     @property
     def CCFrequencyRuleStatus(self):
+        """Access frequency control rule status. Valid values: [on, off];
+        :rtype: str
+        """
         return self._CCFrequencyRuleStatus
 
     @CCFrequencyRuleStatus.setter
@@ -5843,6 +6932,9 @@ class DescribeCCFrequencyRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5891,6 +6983,9 @@ Note: this array can only have one value. It cannot get the blocklist and allowl
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -5899,6 +6994,9 @@ Note: this array can only have one value. It cannot get the blocklist and allowl
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -5907,6 +7005,10 @@ Note: this array can only have one value. It cannot get the blocklist and allowl
 
     @property
     def Type(self):
+        """Blocklist or allowlist. Valid values: [white (allowlist), black (blocklist)]
+Note: this array can only have one value. It cannot get the blocklist and allowlist at the same time
+        :rtype: list of str
+        """
         return self._Type
 
     @Type.setter
@@ -5915,6 +7017,9 @@ Note: this array can only have one value. It cannot get the blocklist and allowl
 
     @property
     def Limit(self):
+        """Pagination parameter
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5923,6 +7028,9 @@ Note: this array can only have one value. It cannot get the blocklist and allowl
 
     @property
     def Offset(self):
+        """Pagination parameter
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5931,6 +7039,9 @@ Note: this array can only have one value. It cannot get the blocklist and allowl
 
     @property
     def Protocol(self):
+        """HTTP or HTTPS CC protection, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)];
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -5982,6 +7093,9 @@ If "Key":"protocol", "Value": CC protection protocol (HTTP or HTTPS);
 
     @property
     def Data(self):
+        """This field has been replaced by `RecordList` and should not be used
+        :rtype: list of KeyValue
+        """
         return self._Data
 
     @Data.setter
@@ -5990,6 +7104,9 @@ If "Key":"protocol", "Value": CC protection protocol (HTTP or HTTPS);
 
     @property
     def Total(self):
+        """Number of records
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -5998,6 +7115,13 @@ If "Key":"protocol", "Value": CC protection protocol (HTTP or HTTPS);
 
     @property
     def RecordList(self):
+        """Returned Blocklist/allowlist record,
+If "Key":"ip", "Value": IP;
+If "Key":"domain", "Value": domain name.
+If "Key":"type", "Value" can be `white` (allowlist) or `black` (blocklist).
+If "Key":"protocol", "Value": CC protection protocol (HTTP or HTTPS);
+        :rtype: list of KeyValueRecord
+        """
         return self._RecordList
 
     @RecordList.setter
@@ -6006,6 +7130,9 @@ If "Key":"protocol", "Value": CC protection protocol (HTTP or HTTPS);
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6053,6 +7180,9 @@ class DescribeCCSelfDefinePolicyRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgp`: Anti-DDoS Pro, `bgp-multip`: Anti-DDoS Pro (multi-IP)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -6061,6 +7191,9 @@ class DescribeCCSelfDefinePolicyRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -6069,6 +7202,9 @@ class DescribeCCSelfDefinePolicyRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of entries pulled
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6077,6 +7213,9 @@ class DescribeCCSelfDefinePolicyRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6119,6 +7258,9 @@ class DescribeCCSelfDefinePolicyResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Total number of custom rules
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6127,6 +7269,9 @@ class DescribeCCSelfDefinePolicyResponse(AbstractModel):
 
     @property
     def Policys(self):
+        """Policy list
+        :rtype: list of CCPolicy
+        """
         return self._Policys
 
     @Policys.setter
@@ -6135,6 +7280,9 @@ class DescribeCCSelfDefinePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6188,6 +7336,9 @@ class DescribeCCTrendRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -6196,6 +7347,9 @@ class DescribeCCTrendRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """Resource IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -6204,6 +7358,9 @@ class DescribeCCTrendRequest(AbstractModel):
 
     @property
     def MetricName(self):
+        """Metric. Valid values: [inqps (total requests peak), dropqps (attack requests peak)]
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -6212,6 +7369,9 @@ class DescribeCCTrendRequest(AbstractModel):
 
     @property
     def Period(self):
+        """Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -6220,6 +7380,9 @@ class DescribeCCTrendRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Statistics start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6228,6 +7391,9 @@ class DescribeCCTrendRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Statistics end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6236,6 +7402,9 @@ class DescribeCCTrendRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Resource instance ID. If `Business` is `basic`, this field is not required (because Anti-DDoS Basic has no resource instance)
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -6244,6 +7413,9 @@ class DescribeCCTrendRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """(Optional) Domain name
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -6312,6 +7484,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -6320,6 +7495,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -6328,6 +7507,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ip(self):
+        """Resource IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -6336,6 +7518,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetricName(self):
+        """Metric. Valid values: [inqps (total requests peak), dropqps (attack requests peak)]
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -6344,6 +7529,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Period(self):
+        """Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -6352,6 +7540,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """Statistics start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6360,6 +7551,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """Statistics end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6368,6 +7562,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
+        """Value array
+        :rtype: list of int non-negative
+        """
         return self._Data
 
     @Data.setter
@@ -6376,6 +7573,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Count(self):
+        """Number of values
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -6384,6 +7584,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6434,6 +7637,9 @@ Note: this array can only have one value which can only be `white`
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -6442,6 +7648,9 @@ Note: this array can only have one value which can only be `white`
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -6450,6 +7659,10 @@ Note: this array can only have one value which can only be `white`
 
     @property
     def Type(self):
+        """Blocklist or allowlist. Valid value: [white (allowlist)]. Currently, only allowlist is supported.
+Note: this array can only have one value which can only be `white`
+        :rtype: list of str
+        """
         return self._Type
 
     @Type.setter
@@ -6458,6 +7671,9 @@ Note: this array can only have one value which can only be `white`
 
     @property
     def Limit(self):
+        """Pagination parameter
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6466,6 +7682,9 @@ Note: this array can only have one value which can only be `white`
 
     @property
     def Offset(self):
+        """Pagination parameter
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6474,6 +7693,9 @@ Note: this array can only have one value which can only be `white`
 
     @property
     def Protocol(self):
+        """HTTP or HTTPS CC protection, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)];
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -6525,6 +7747,9 @@ If "Key":"protocol", "Value": CC protection type (HTTP protection or HTTPS domai
 
     @property
     def Data(self):
+        """This field has been replaced by `RecordList` and should not be used
+        :rtype: list of KeyValue
+        """
         return self._Data
 
     @Data.setter
@@ -6533,6 +7758,9 @@ If "Key":"protocol", "Value": CC protection type (HTTP protection or HTTPS domai
 
     @property
     def Total(self):
+        """Total number of records
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6541,6 +7769,13 @@ If "Key":"protocol", "Value": CC protection type (HTTP protection or HTTPS domai
 
     @property
     def RecordList(self):
+        """Returned Blocklist/allowlist record,
+If "Key":"url", "Value": URL;
+If "Key":"domain", "Value": domain name.
+If "Key":"type", "Value" can be `white` (allowlist) or `black` (blocklist).
+If "Key":"protocol", "Value": CC protection type (HTTP protection or HTTPS domain name protection);
+        :rtype: list of KeyValueRecord
+        """
         return self._RecordList
 
     @RecordList.setter
@@ -6549,6 +7784,9 @@ If "Key":"protocol", "Value": CC protection type (HTTP protection or HTTPS domai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6590,6 +7828,9 @@ class DescribeDDoSAlarmThresholdRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`shield`: Chess Shield, `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -6598,6 +7839,9 @@ class DescribeDDoSAlarmThresholdRequest(AbstractModel):
 
     @property
     def RsId(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._RsId
 
     @RsId.setter
@@ -6635,6 +7879,9 @@ class DescribeDDoSAlarmThresholdResponse(AbstractModel):
 
     @property
     def DDoSAlarmThreshold(self):
+        """DDoS alarm threshold
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.DDoSAlarmThreshold`
+        """
         return self._DDoSAlarmThreshold
 
     @DDoSAlarmThreshold.setter
@@ -6643,6 +7890,9 @@ class DescribeDDoSAlarmThresholdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6683,6 +7933,9 @@ class DescribeDDoSAttackIPRegionMapRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`shield`: Chess Shield, `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -6691,6 +7944,9 @@ class DescribeDDoSAttackIPRegionMapRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -6699,6 +7955,9 @@ class DescribeDDoSAttackIPRegionMapRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Statistics start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6707,6 +7966,9 @@ class DescribeDDoSAttackIPRegionMapRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Statistics end time. Maximum statistics time range: half a year;
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6715,6 +7977,9 @@ class DescribeDDoSAttackIPRegionMapRequest(AbstractModel):
 
     @property
     def IpList(self):
+        """IP attack source of specified resource, which is optional
+        :rtype: list of str
+        """
         return self._IpList
 
     @IpList.setter
@@ -6758,6 +8023,9 @@ class DescribeDDoSAttackIPRegionMapResponse(AbstractModel):
 
     @property
     def NationCount(self):
+        """Global region distribution data
+        :rtype: list of KeyValueRecord
+        """
         return self._NationCount
 
     @NationCount.setter
@@ -6766,6 +8034,9 @@ class DescribeDDoSAttackIPRegionMapResponse(AbstractModel):
 
     @property
     def ProvinceCount(self):
+        """Chinese province distribution data
+        :rtype: list of KeyValueRecord
+        """
         return self._ProvinceCount
 
     @ProvinceCount.setter
@@ -6774,6 +8045,9 @@ class DescribeDDoSAttackIPRegionMapResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6829,6 +8103,9 @@ class DescribeDDoSAttackSourceRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -6837,6 +8114,9 @@ class DescribeDDoSAttackSourceRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -6845,6 +8125,9 @@ class DescribeDDoSAttackSourceRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6853,6 +8136,9 @@ class DescribeDDoSAttackSourceRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6861,6 +8147,9 @@ class DescribeDDoSAttackSourceRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of entries per page. A value of 0 means no pagination
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6869,6 +8158,9 @@ class DescribeDDoSAttackSourceRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Page start offset, whose value is (page number - 1) * number of entries per page
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6877,6 +8169,9 @@ class DescribeDDoSAttackSourceRequest(AbstractModel):
 
     @property
     def IpList(self):
+        """IP attack source of specified resource, which is optional
+        :rtype: list of str
+        """
         return self._IpList
 
     @IpList.setter
@@ -6922,6 +8217,9 @@ class DescribeDDoSAttackSourceResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Total number of attack sources
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -6930,6 +8228,9 @@ class DescribeDDoSAttackSourceResponse(AbstractModel):
 
     @property
     def AttackSourceList(self):
+        """Attack source list
+        :rtype: list of DDoSAttackSourceRecord
+        """
         return self._AttackSourceList
 
     @AttackSourceList.setter
@@ -6938,6 +8239,9 @@ class DescribeDDoSAttackSourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6985,6 +8289,9 @@ class DescribeDDoSCountRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -6993,6 +8300,9 @@ class DescribeDDoSCountRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -7001,6 +8311,9 @@ class DescribeDDoSCountRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """Resource IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -7009,6 +8322,9 @@ class DescribeDDoSCountRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Statistics start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7017,6 +8333,9 @@ class DescribeDDoSCountRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Statistics end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7025,6 +8344,9 @@ class DescribeDDoSCountRequest(AbstractModel):
 
     @property
     def MetricName(self):
+        """Metric. Valid values: [traffic (attack protocol traffic in KB), pkg (number of attack protocol packets), classnum (number of attack events)]
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -7098,6 +8420,9 @@ The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFL
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -7106,6 +8431,9 @@ The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFL
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -7114,6 +8442,9 @@ The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFL
 
     @property
     def Ip(self):
+        """Resource IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -7122,6 +8453,9 @@ The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFL
 
     @property
     def StartTime(self):
+        """Statistics start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7130,6 +8464,9 @@ The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFL
 
     @property
     def EndTime(self):
+        """Statistics end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7138,6 +8475,9 @@ The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFL
 
     @property
     def MetricName(self):
+        """Metric. Valid values: [traffic (attack protocol traffic in KB), pkg (number of attack protocol packets), classnum (number of attack events)]
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -7146,6 +8486,23 @@ The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFL
 
     @property
     def Data(self):
+        """`Key-Value` array. Valid values of `Key`:
+If `MetricName` is `traffic`:
+If `key` is `TcpKBSum`, it indicates the traffic of TCP packets in KB.
+If `key` is `UdpKBSum`, it indicates the traffic of UDP packets in KB.
+If `key` is `IcmpKBSum`, it indicates the traffic of ICMP packets in KB.
+If `key` is `OtherKBSum`, it indicates the traffic of other packets in KB.
+
+If `MetricName` is `pkg`:
+If `key` is `TcpPacketSum`, it indicates the number of TCP packets.
+If `key` is `UdpPacketSum`, it indicates the number of UDP packets.
+If `key` is `IcmpPacketSum`, it indicates the number of ICMP packets.
+If `key` is `OtherPacketSum`, it indicates the number of other packets.
+
+If `MetricName` is `classnum`:
+The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFLOOD`, it indicates  unknown attack events.
+        :rtype: list of KeyValue
+        """
         return self._Data
 
     @Data.setter
@@ -7154,6 +8511,9 @@ The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFL
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7231,6 +8591,9 @@ class DescribeDDoSDefendStatusRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `basic`: Anti-DDoS Basic, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS (multi-IP), `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -7239,6 +8602,9 @@ class DescribeDDoSDefendStatusRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Instance ID, which is required only if `Business` is not `basic`.
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -7247,6 +8613,9 @@ class DescribeDDoSDefendStatusRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """Anti-DDoS Basic IP, which is required only if `Business` is Anti-DDoS Basic;
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -7255,6 +8624,9 @@ class DescribeDDoSDefendStatusRequest(AbstractModel):
 
     @property
     def BizType(self):
+        """Type of products bound to the anti-DDoS instance, which is required only if `Business` is Anti-DDoS Basic. Valid values: [public (CVM), bm (Bare metal products), eni (elastic network interface), vpngw (VPN Gateway), natgw (NAT Gateway), waf (Web Application Firewall), fpc (Finance products), gaap (GAAP), other (hosted IP)]
+        :rtype: str
+        """
         return self._BizType
 
     @BizType.setter
@@ -7263,6 +8635,9 @@ class DescribeDDoSDefendStatusRequest(AbstractModel):
 
     @property
     def DeviceType(self):
+        """Product subtype of IP, which is required only if `Business` is Anti-DDoS Basic. Valid values: [cvm (CVM), lb (CLB), eni (ENI), vpngw (VPN), natgw (NAT), waf (WAF), fpc (finance), gaap (GAAP), other (hosted IP), eip (BM EIP)]
+        :rtype: str
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -7271,6 +8646,9 @@ class DescribeDDoSDefendStatusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Resource instance ID of IP, which is required only if `Business` is Anti-DDoS Basic. This field is required when binding a new IP. For example, if it is an ENI IP, enter `ID(eni-*)` of the ENI for `InstanceId`;
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -7279,6 +8657,31 @@ class DescribeDDoSDefendStatusRequest(AbstractModel):
 
     @property
     def IPRegion(self):
+        """This field is required only if `Business` is Anti-DDoS Basic, indicating the IP region. Valid values:
+"bj":     North China (Beijing)
+"cd":     Southwest China (Chengdu)
+"cq":     Southwest China (Chongqing)
+"gz":     South China (Guangzhou)
+"gzopen": South China (Guangzhou Open)
+"hk":     Hong Kong (China)
+"kr":     Southeast Asia (Seoul)
+"sh":     East China (Shanghai)
+"shjr":   East China (Shanghai Finance)
+"szjr":   South China (Shenzhen Finance)
+"sg":     Southeast Asia (Singapore)
+"th":     Southeast Asia (Thailand)
+"de":     Europe (Germany)
+"usw":    West US (Silicon Valley)
+"ca":     North America (Toronto)
+"jp":     Japan
+"hzec":   Hangzhou
+"in":     India
+"use":    East US (Virginia)
+"ru":     Russia
+"tpe":    Taiwan (China)
+"nj":     Nanjing
+        :rtype: str
+        """
         return self._IPRegion
 
     @IPRegion.setter
@@ -7330,6 +8733,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefendStatus(self):
+        """Protection status. 0: disabled, 1: enabled
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DefendStatus
 
     @DefendStatus.setter
@@ -7338,6 +8745,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def UndefendExpire(self):
+        """Expiration time of temporary protection disablement. This field is empty if the protection is in enabled status;
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UndefendExpire
 
     @UndefendExpire.setter
@@ -7346,6 +8757,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ShowFlag(self):
+        """Console feature display field. 1: displays console features, 0: hides console features
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ShowFlag
 
     @ShowFlag.setter
@@ -7354,6 +8769,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7394,6 +8812,9 @@ class DescribeDDoSEvInfoRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -7402,6 +8823,9 @@ class DescribeDDoSEvInfoRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -7410,6 +8834,9 @@ class DescribeDDoSEvInfoRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """Resource IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -7418,6 +8845,9 @@ class DescribeDDoSEvInfoRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Attack start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7426,6 +8856,9 @@ class DescribeDDoSEvInfoRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Attack end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7514,6 +8947,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -7522,6 +8958,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -7530,6 +8969,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def Ip(self):
+        """Resource IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -7538,6 +8980,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def StartTime(self):
+        """Attack start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7546,6 +8991,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """Attack end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7554,6 +9002,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def TcpPacketSum(self):
+        """Number of TCP attack packets
+        :rtype: int
+        """
         return self._TcpPacketSum
 
     @TcpPacketSum.setter
@@ -7562,6 +9013,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def TcpKBSum(self):
+        """Traffic of TCP attacks in KB
+        :rtype: int
+        """
         return self._TcpKBSum
 
     @TcpKBSum.setter
@@ -7570,6 +9024,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def UdpPacketSum(self):
+        """Number of UDP attack packets
+        :rtype: int
+        """
         return self._UdpPacketSum
 
     @UdpPacketSum.setter
@@ -7578,6 +9035,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def UdpKBSum(self):
+        """Traffic of UDP attacks in KB
+        :rtype: int
+        """
         return self._UdpKBSum
 
     @UdpKBSum.setter
@@ -7586,6 +9046,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def IcmpPacketSum(self):
+        """Number of ICMP attack packets
+        :rtype: int
+        """
         return self._IcmpPacketSum
 
     @IcmpPacketSum.setter
@@ -7594,6 +9057,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def IcmpKBSum(self):
+        """Traffic of ICMP attacks in KB
+        :rtype: int
+        """
         return self._IcmpKBSum
 
     @IcmpKBSum.setter
@@ -7602,6 +9068,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def OtherPacketSum(self):
+        """Number of other attack packets
+        :rtype: int
+        """
         return self._OtherPacketSum
 
     @OtherPacketSum.setter
@@ -7610,6 +9079,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def OtherKBSum(self):
+        """Traffic of other attacks in KB
+        :rtype: int
+        """
         return self._OtherKBSum
 
     @OtherKBSum.setter
@@ -7618,6 +9090,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def TotalTraffic(self):
+        """Total attack traffic in KB
+        :rtype: int
+        """
         return self._TotalTraffic
 
     @TotalTraffic.setter
@@ -7626,6 +9101,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def Mbps(self):
+        """Attack traffic bandwidth peak
+        :rtype: int
+        """
         return self._Mbps
 
     @Mbps.setter
@@ -7634,6 +9112,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def Pps(self):
+        """Attack packet rate peak
+        :rtype: int
+        """
         return self._Pps
 
     @Pps.setter
@@ -7642,6 +9123,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def PcapUrl(self):
+        """PCAP file download link
+        :rtype: list of str
+        """
         return self._PcapUrl
 
     @PcapUrl.setter
@@ -7650,6 +9134,9 @@ class DescribeDDoSEvInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7713,6 +9200,9 @@ class DescribeDDoSEvListRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -7721,6 +9211,9 @@ class DescribeDDoSEvListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7729,6 +9222,9 @@ class DescribeDDoSEvListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7737,6 +9233,9 @@ class DescribeDDoSEvListRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Resource instance ID. If `Business` is `basic`, this field is not required (because Anti-DDoS Basic has no resource instance)
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -7745,6 +9244,9 @@ class DescribeDDoSEvListRequest(AbstractModel):
 
     @property
     def IpList(self):
+        """Resource IP
+        :rtype: list of str
+        """
         return self._IpList
 
     @IpList.setter
@@ -7753,6 +9255,9 @@ class DescribeDDoSEvListRequest(AbstractModel):
 
     @property
     def OverLoad(self):
+        """Whether the elastic protection bandwidth is exceeded. Valid values: [yes, no]. If an empty string is entered, it means no filtering
+        :rtype: str
+        """
         return self._OverLoad
 
     @OverLoad.setter
@@ -7761,6 +9266,9 @@ class DescribeDDoSEvListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of entries per page. A value of 0 means no pagination
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7769,6 +9277,9 @@ class DescribeDDoSEvListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Page start offset, whose value is (page number - 1) * number of entries per page
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7831,6 +9342,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -7839,6 +9353,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -7847,6 +9364,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IpList(self):
+        """Resource IP
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._IpList
 
     @IpList.setter
@@ -7855,6 +9376,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7863,6 +9387,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7871,6 +9398,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
+        """DDoS attack event list
+        :rtype: list of DDoSEventRecord
+        """
         return self._Data
 
     @Data.setter
@@ -7879,6 +9409,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
+        """Total number of records
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -7887,6 +9420,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7936,6 +9472,9 @@ class DescribeDDoSIpLogRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -7944,6 +9483,9 @@ class DescribeDDoSIpLogRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -7952,6 +9494,9 @@ class DescribeDDoSIpLogRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """Resource IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -7960,6 +9505,9 @@ class DescribeDDoSIpLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Attack start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7968,6 +9516,9 @@ class DescribeDDoSIpLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Attack end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8025,6 +9576,9 @@ If `Key` is `LogMessage`, `Value` indicates the IP log content
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -8033,6 +9587,9 @@ If `Key` is `LogMessage`, `Value` indicates the IP log content
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8041,6 +9598,9 @@ If `Key` is `LogMessage`, `Value` indicates the IP log content
 
     @property
     def Ip(self):
+        """Resource IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -8049,6 +9609,9 @@ If `Key` is `LogMessage`, `Value` indicates the IP log content
 
     @property
     def StartTime(self):
+        """Attack start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8057,6 +9620,9 @@ If `Key` is `LogMessage`, `Value` indicates the IP log content
 
     @property
     def EndTime(self):
+        """Attack end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8065,6 +9631,11 @@ If `Key` is `LogMessage`, `Value` indicates the IP log content
 
     @property
     def Data(self):
+        """IP attack log, which is a `KeyValue` array. Valid values of `Key-Value`:
+If `Key` is `LogTime`, `Value` indicates the IP log time
+If `Key` is `LogMessage`, `Value` indicates the IP log content
+        :rtype: list of KeyValueRecord
+        """
         return self._Data
 
     @Data.setter
@@ -8073,6 +9644,9 @@ If `Key` is `LogMessage`, `Value` indicates the IP log content
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8121,6 +9695,9 @@ class DescribeDDoSNetCountRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -8129,6 +9706,9 @@ class DescribeDDoSNetCountRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8137,6 +9717,9 @@ class DescribeDDoSNetCountRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Statistics start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8145,6 +9728,9 @@ class DescribeDDoSNetCountRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Statistics end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8153,6 +9739,9 @@ class DescribeDDoSNetCountRequest(AbstractModel):
 
     @property
     def MetricName(self):
+        """Metric. Valid values: [traffic (attack protocol traffic in KB), pkg (number of attack protocol packets), classnum (number of attack events)]
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -8222,6 +9811,9 @@ The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFL
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -8230,6 +9822,9 @@ The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFL
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8238,6 +9833,9 @@ The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFL
 
     @property
     def StartTime(self):
+        """Statistics start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8246,6 +9844,9 @@ The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFL
 
     @property
     def EndTime(self):
+        """Statistics end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8254,6 +9855,9 @@ The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFL
 
     @property
     def MetricName(self):
+        """Metric. Valid values: [traffic (attack protocol traffic in KB), pkg (number of attack protocol packets), classnum (number of attack events)]
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -8262,6 +9866,23 @@ The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFL
 
     @property
     def Data(self):
+        """`Key-Value` array. Valid values of `Key`:
+If `MetricName` is `traffic`:
+If `key` is `TcpKBSum`, it indicates the traffic of TCP packets in KB.
+If `key` is `UdpKBSum`, it indicates the traffic of UDP packets in KB.
+If `key` is `IcmpKBSum`, it indicates the traffic of ICMP packets in KB.
+If `key` is `OtherKBSum`, it indicates the traffic of other packets in KB.
+
+If `MetricName` is `pkg`:
+If `key` is `TcpPacketSum`, it indicates the number of TCP packets.
+If `key` is `UdpPacketSum`, it indicates the number of UDP packets.
+If `key` is `IcmpPacketSum`, it indicates the number of ICMP packets.
+If `key` is `OtherPacketSum`, it indicates the number of other packets.
+
+If `MetricName` is `classnum`:
+The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFLOOD`, it indicates  unknown attack events.
+        :rtype: list of KeyValue
+        """
         return self._Data
 
     @Data.setter
@@ -8270,6 +9891,9 @@ The value of `key` indicates the attack event type. When the `key` is `UNKNOWNFL
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8315,6 +9939,9 @@ class DescribeDDoSNetEvInfoRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -8323,6 +9950,9 @@ class DescribeDDoSNetEvInfoRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8331,6 +9961,9 @@ class DescribeDDoSNetEvInfoRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Attack start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8339,6 +9972,9 @@ class DescribeDDoSNetEvInfoRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Attack end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8423,6 +10059,9 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -8431,6 +10070,9 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8439,6 +10081,9 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     @property
     def StartTime(self):
+        """Attack start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8447,6 +10092,9 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """Attack end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8455,6 +10103,9 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     @property
     def TcpPacketSum(self):
+        """Number of TCP attack packets
+        :rtype: int
+        """
         return self._TcpPacketSum
 
     @TcpPacketSum.setter
@@ -8463,6 +10114,9 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     @property
     def TcpKBSum(self):
+        """Traffic of TCP attacks in KB
+        :rtype: int
+        """
         return self._TcpKBSum
 
     @TcpKBSum.setter
@@ -8471,6 +10125,9 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     @property
     def UdpPacketSum(self):
+        """Number of UDP attack packets
+        :rtype: int
+        """
         return self._UdpPacketSum
 
     @UdpPacketSum.setter
@@ -8479,6 +10136,9 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     @property
     def UdpKBSum(self):
+        """Traffic of UDP attacks in KB
+        :rtype: int
+        """
         return self._UdpKBSum
 
     @UdpKBSum.setter
@@ -8487,6 +10147,9 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     @property
     def IcmpPacketSum(self):
+        """Number of ICMP attack packets
+        :rtype: int
+        """
         return self._IcmpPacketSum
 
     @IcmpPacketSum.setter
@@ -8495,6 +10158,9 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     @property
     def IcmpKBSum(self):
+        """Traffic of ICMP attacks in KB
+        :rtype: int
+        """
         return self._IcmpKBSum
 
     @IcmpKBSum.setter
@@ -8503,6 +10169,9 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     @property
     def OtherPacketSum(self):
+        """Number of other attack packets
+        :rtype: int
+        """
         return self._OtherPacketSum
 
     @OtherPacketSum.setter
@@ -8511,6 +10180,9 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     @property
     def OtherKBSum(self):
+        """Traffic of other attacks in KB
+        :rtype: int
+        """
         return self._OtherKBSum
 
     @OtherKBSum.setter
@@ -8519,6 +10191,9 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     @property
     def TotalTraffic(self):
+        """Total attack traffic in KB
+        :rtype: int
+        """
         return self._TotalTraffic
 
     @TotalTraffic.setter
@@ -8527,6 +10202,9 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     @property
     def Mbps(self):
+        """Attack traffic bandwidth peak
+        :rtype: int
+        """
         return self._Mbps
 
     @Mbps.setter
@@ -8535,6 +10213,9 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     @property
     def Pps(self):
+        """Attack packet rate peak
+        :rtype: int
+        """
         return self._Pps
 
     @Pps.setter
@@ -8543,6 +10224,9 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     @property
     def PcapUrl(self):
+        """PCAP file download link
+        :rtype: list of str
+        """
         return self._PcapUrl
 
     @PcapUrl.setter
@@ -8551,6 +10235,9 @@ class DescribeDDoSNetEvInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8607,6 +10294,9 @@ class DescribeDDoSNetEvListRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -8615,6 +10305,9 @@ class DescribeDDoSNetEvListRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8623,6 +10316,9 @@ class DescribeDDoSNetEvListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8631,6 +10327,9 @@ class DescribeDDoSNetEvListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8639,6 +10338,9 @@ class DescribeDDoSNetEvListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of entries per page. A value of 0 means no pagination
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8647,6 +10349,9 @@ class DescribeDDoSNetEvListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Page start offset, whose value is (page number - 1) * number of entries per page
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8703,6 +10408,9 @@ class DescribeDDoSNetEvListResponse(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -8711,6 +10419,9 @@ class DescribeDDoSNetEvListResponse(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8719,6 +10430,9 @@ class DescribeDDoSNetEvListResponse(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8727,6 +10441,9 @@ class DescribeDDoSNetEvListResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8735,6 +10452,9 @@ class DescribeDDoSNetEvListResponse(AbstractModel):
 
     @property
     def Data(self):
+        """DDoS attack event list
+        :rtype: list of DDoSEventRecord
+        """
         return self._Data
 
     @Data.setter
@@ -8743,6 +10463,9 @@ class DescribeDDoSNetEvListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Total number of records
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -8751,6 +10474,9 @@ class DescribeDDoSNetEvListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8796,6 +10522,9 @@ class DescribeDDoSNetIpLogRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -8804,6 +10533,9 @@ class DescribeDDoSNetIpLogRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8812,6 +10544,9 @@ class DescribeDDoSNetIpLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Attack start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8820,6 +10555,9 @@ class DescribeDDoSNetIpLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Attack end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8873,6 +10611,9 @@ If `Key` is `LogMessage`, `Value` indicates the IP log content
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -8881,6 +10622,9 @@ If `Key` is `LogMessage`, `Value` indicates the IP log content
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8889,6 +10633,9 @@ If `Key` is `LogMessage`, `Value` indicates the IP log content
 
     @property
     def StartTime(self):
+        """Attack start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8897,6 +10644,9 @@ If `Key` is `LogMessage`, `Value` indicates the IP log content
 
     @property
     def EndTime(self):
+        """Attack end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8905,6 +10655,11 @@ If `Key` is `LogMessage`, `Value` indicates the IP log content
 
     @property
     def Data(self):
+        """IP attack log, which is a `KeyValue` array. Valid values of `Key-Value`:
+If `Key` is `LogTime`, `Value` indicates the IP log time
+If `Key` is `LogMessage`, `Value` indicates the IP log content
+        :rtype: list of KeyValueRecord
+        """
         return self._Data
 
     @Data.setter
@@ -8913,6 +10668,9 @@ If `Key` is `LogMessage`, `Value` indicates the IP log content
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8963,6 +10721,9 @@ class DescribeDDoSNetTrendRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -8971,6 +10732,9 @@ class DescribeDDoSNetTrendRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -8979,6 +10743,9 @@ class DescribeDDoSNetTrendRequest(AbstractModel):
 
     @property
     def MetricName(self):
+        """Metric. Valid values: [bps (attack traffic bandwidth), pps (attack packet rate)]
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -8987,6 +10754,9 @@ class DescribeDDoSNetTrendRequest(AbstractModel):
 
     @property
     def Period(self):
+        """Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -8995,6 +10765,9 @@ class DescribeDDoSNetTrendRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Statistics start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9003,6 +10776,9 @@ class DescribeDDoSNetTrendRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Statistics end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9065,6 +10841,9 @@ class DescribeDDoSNetTrendResponse(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -9073,6 +10852,9 @@ class DescribeDDoSNetTrendResponse(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -9081,6 +10863,9 @@ class DescribeDDoSNetTrendResponse(AbstractModel):
 
     @property
     def MetricName(self):
+        """Metric. Valid values: [bps (attack traffic bandwidth), pps (attack packet rate)]
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -9089,6 +10874,9 @@ class DescribeDDoSNetTrendResponse(AbstractModel):
 
     @property
     def Period(self):
+        """Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -9097,6 +10885,9 @@ class DescribeDDoSNetTrendResponse(AbstractModel):
 
     @property
     def StartTime(self):
+        """Statistics start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9105,6 +10896,9 @@ class DescribeDDoSNetTrendResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """Statistics end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9113,6 +10907,9 @@ class DescribeDDoSNetTrendResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Value array
+        :rtype: list of int non-negative
+        """
         return self._Data
 
     @Data.setter
@@ -9121,6 +10918,9 @@ class DescribeDDoSNetTrendResponse(AbstractModel):
 
     @property
     def Count(self):
+        """Number of values
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -9129,6 +10929,9 @@ class DescribeDDoSNetTrendResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9165,6 +10968,9 @@ class DescribeDDoSPolicyRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -9173,6 +10979,9 @@ class DescribeDDoSPolicyRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Resource ID, which is optional. If a value is entered, it indicates the advanced DDoS policy bound to the resource
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -9210,6 +11019,9 @@ class DescribeDDoSPolicyResponse(AbstractModel):
 
     @property
     def DDosPolicyList(self):
+        """Advanced DDoS policy list
+        :rtype: list of DDosPolicy
+        """
         return self._DDosPolicyList
 
     @DDosPolicyList.setter
@@ -9218,6 +11030,9 @@ class DescribeDDoSPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9267,6 +11082,9 @@ class DescribeDDoSTrendRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -9275,6 +11093,9 @@ class DescribeDDoSTrendRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """Anti-DDoS instance IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -9283,6 +11104,9 @@ class DescribeDDoSTrendRequest(AbstractModel):
 
     @property
     def MetricName(self):
+        """Metric. Valid values: [bps (attack traffic bandwidth), pps (attack packet rate)]
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -9291,6 +11115,9 @@ class DescribeDDoSTrendRequest(AbstractModel):
 
     @property
     def Period(self):
+        """Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -9299,6 +11126,9 @@ class DescribeDDoSTrendRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Statistics start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9307,6 +11137,9 @@ class DescribeDDoSTrendRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Statistics end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9315,6 +11148,9 @@ class DescribeDDoSTrendRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Resource instance ID. If `Business` is `basic`, this field is not required (because Anti-DDoS Basic has no resource instance)
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -9382,6 +11218,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP); `net`: Anti-DDoS Ultimate; `basic`: Anti-DDoS Basic
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -9390,6 +11229,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -9398,6 +11241,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ip(self):
+        """Resource IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -9406,6 +11252,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MetricName(self):
+        """Metric. Valid values: [bps (attack traffic bandwidth), pps (attack packet rate)]
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -9414,6 +11263,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Period(self):
+        """Statistical granularity. Valid values: [300 (5-minute), 3600 (hourly), 86400 (daily)]
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -9422,6 +11274,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """Statistics start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9430,6 +11285,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """Statistics end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9438,6 +11296,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Data(self):
+        """Value array. The unit for attack traffic bandwidth is Mbps, and that for the packet rate is pps.
+        :rtype: list of int non-negative
+        """
         return self._Data
 
     @Data.setter
@@ -9446,6 +11307,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Count(self):
+        """Number of values
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -9454,6 +11318,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9488,6 +11355,9 @@ class DescribeDDoSUsedStatisRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -9526,6 +11396,11 @@ Attacks: number of DDoS attacks
 
     @property
     def Data(self):
+        """Field value as follows:
+Days: number of days of Anti-DDoS resource use
+Attacks: number of DDoS attacks
+        :rtype: list of KeyValue
+        """
         return self._Data
 
     @Data.setter
@@ -9534,6 +11409,9 @@ Attacks: number of DDoS attacks
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9568,6 +11446,9 @@ class DescribeIPProductInfoRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgp`: Anti-DDoS Pro (Single IP); `bgp-multip`: Anti-DDoS Pro (Multi-IP)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -9576,6 +11457,9 @@ class DescribeIPProductInfoRequest(AbstractModel):
 
     @property
     def IpList(self):
+        """IP list
+        :rtype: list of str
+        """
         return self._IpList
 
     @IpList.setter
@@ -9617,6 +11501,13 @@ If `Key` is `IP`, `value` indicates the IP of a Tencent Cloud product instance;
 
     @property
     def Data(self):
+        """Tencent Cloud product information list. If nothing is found, an empty array will be returned. Valid values:
+If `Key` is ProductName, `value` indicates the name of a Tencent Cloud product instance;
+If `Key` is `ProductInstanceId`, `value` indicates the ID of a Tencent Cloud product instance;
+If `Key` is `ProductType`, `value` indicates the Tencent Cloud product type (cvm: CVM, clb: CLB);
+If `Key` is `IP`, `value` indicates the IP of a Tencent Cloud product instance;
+        :rtype: list of KeyValueRecord
+        """
         return self._Data
 
     @Data.setter
@@ -9625,6 +11516,9 @@ If `Key` is `IP`, `value` indicates the IP of a Tencent Cloud product instance;
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9656,6 +11550,9 @@ class DescribeInsurePacksRequest(AbstractModel):
 
     @property
     def IdList(self):
+        """Guarantee package ID, which is optional. If you need to get the guarantee package with a specified ID (such as insure-000000xe), please use this field
+        :rtype: list of str
+        """
         return self._IdList
 
     @IdList.setter
@@ -9692,6 +11589,9 @@ class DescribeInsurePacksResponse(AbstractModel):
 
     @property
     def InsurePacks(self):
+        """Guarantee package list
+        :rtype: list of KeyValueRecord
+        """
         return self._InsurePacks
 
     @InsurePacks.setter
@@ -9700,6 +11600,9 @@ class DescribeInsurePacksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9740,6 +11643,9 @@ class DescribeIpBlockListResponse(AbstractModel):
 
     @property
     def List(self):
+        """Blocked IP list
+        :rtype: list of IpBlockData
+        """
         return self._List
 
     @List.setter
@@ -9748,6 +11654,9 @@ class DescribeIpBlockListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9794,6 +11703,9 @@ class DescribeIpUnBlockListRequest(AbstractModel):
 
     @property
     def BeginTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -9802,6 +11714,9 @@ class DescribeIpUnBlockListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9810,6 +11725,9 @@ class DescribeIpUnBlockListRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """IP (if this field is not empty, IP filtering will be performed)
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -9818,6 +11736,9 @@ class DescribeIpUnBlockListRequest(AbstractModel):
 
     @property
     def Paging(self):
+        """Pagination parameter (paginated query will be performed if this field is not empty). This field will be disused in the future. Please use the `Limit` and `Offset` fields instead;
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.Paging`
+        """
         return self._Paging
 
     @Paging.setter
@@ -9826,6 +11747,9 @@ class DescribeIpUnBlockListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of entries per page. A value of 0 means no pagination
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -9834,6 +11758,9 @@ class DescribeIpUnBlockListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Page start offset, whose value is (page number - 1) * number of entries per page
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -9886,6 +11813,9 @@ class DescribeIpUnBlockListResponse(AbstractModel):
 
     @property
     def BeginTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -9894,6 +11824,9 @@ class DescribeIpUnBlockListResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9902,6 +11835,9 @@ class DescribeIpUnBlockListResponse(AbstractModel):
 
     @property
     def List(self):
+        """IP unblocking record
+        :rtype: list of IpUnBlockData
+        """
         return self._List
 
     @List.setter
@@ -9910,6 +11846,9 @@ class DescribeIpUnBlockListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Total number of records
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -9918,6 +11857,9 @@ class DescribeIpUnBlockListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9958,6 +11900,9 @@ class DescribeL4HealthConfigRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -9966,6 +11911,9 @@ class DescribeL4HealthConfigRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -9974,6 +11922,9 @@ class DescribeL4HealthConfigRequest(AbstractModel):
 
     @property
     def RuleIdList(self):
+        """Rule ID array. To export the health check configurations of all rules, leave this field empty or enter an empty array;
+        :rtype: list of str
+        """
         return self._RuleIdList
 
     @RuleIdList.setter
@@ -10012,6 +11963,9 @@ class DescribeL4HealthConfigResponse(AbstractModel):
 
     @property
     def HealthConfig(self):
+        """Layer-4 health check configuration array
+        :rtype: list of L4HealthConfig
+        """
         return self._HealthConfig
 
     @HealthConfig.setter
@@ -10020,6 +11974,9 @@ class DescribeL4HealthConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10054,6 +12011,9 @@ class DescribeL4RulesErrHealthRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -10062,6 +12022,9 @@ class DescribeL4RulesErrHealthRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -10111,6 +12074,9 @@ SourceIp: real server IP, SourcePort: real server port, AbnormalStatTime: except
 
     @property
     def Total(self):
+        """Total number of exceptional rules
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -10119,6 +12085,9 @@ SourceIp: real server IP, SourcePort: real server port, AbnormalStatTime: except
 
     @property
     def ErrHealths(self):
+        """Exceptional rule list. Returned value description: `Key` is the rule ID, while `Value` is the exceptional IP. Multiple IPs are separated by ","
+        :rtype: list of KeyValue
+        """
         return self._ErrHealths
 
     @ErrHealths.setter
@@ -10127,6 +12096,15 @@ SourceIp: real server IP, SourcePort: real server port, AbnormalStatTime: except
 
     @property
     def ExtErrHealths(self):
+        """Exceptional rule list (which provides more error-related information). Returned value description:
+If `key` is `RuleId`, `Value` indicates the rule ID;
+If `key` is `Protocol`, `Value` indicates the forwarding protocol of a rule;
+If `key` is `VirtualPort`, `Value` indicates the forwarding port of a rule;
+If `Key` is `ErrMessage`, `Value` indicates the exception message for health check;
+Exception message for health check in the format of `"SourceIp:1.1.1.1|SourcePort:1234|AbnormalStatTime:1570689065|AbnormalReason:connection time out|Interval:20|CheckNum:6|FailNum:6"`. Multiple error messages for the source IP should be separated by `,`,
+SourceIp: real server IP, SourcePort: real server port, AbnormalStatTime: exception time, AbnormalReason: cause of exception, Interval: check frequency, CheckNum: number of checks, FailNum: number of failures;
+        :rtype: list of KeyValueRecord
+        """
         return self._ExtErrHealths
 
     @ExtErrHealths.setter
@@ -10135,6 +12113,9 @@ SourceIp: real server IP, SourcePort: real server port, AbnormalStatTime: except
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10179,6 +12160,9 @@ class DescribeL7HealthConfigRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -10187,6 +12171,9 @@ class DescribeL7HealthConfigRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -10195,6 +12182,9 @@ class DescribeL7HealthConfigRequest(AbstractModel):
 
     @property
     def RuleIdList(self):
+        """Rule ID array. To export the health check configurations of all rules, leave this field empty or enter an empty array;
+        :rtype: list of str
+        """
         return self._RuleIdList
 
     @RuleIdList.setter
@@ -10233,6 +12223,9 @@ class DescribeL7HealthConfigResponse(AbstractModel):
 
     @property
     def HealthConfig(self):
+        """Layer-7 health check configuration array
+        :rtype: list of L7HealthConfig
+        """
         return self._HealthConfig
 
     @HealthConfig.setter
@@ -10241,6 +12234,9 @@ class DescribeL7HealthConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10272,6 +12268,9 @@ class DescribePackIndexRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -10314,6 +12313,15 @@ IsolatePackCount: number of isolated resources
 
     @property
     def Data(self):
+        """Field value as follows:
+TotalPackCount: number of resources
+AttackPackCount: number of resources being cleansed
+BlockPackCount: number of blocked resources
+ExpiredPackCount: number of expired resources
+ExpireingPackCount: number of expiring resources
+IsolatePackCount: number of isolated resources
+        :rtype: list of KeyValue
+        """
         return self._Data
 
     @Data.setter
@@ -10322,6 +12330,9 @@ IsolatePackCount: number of isolated resources
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10365,6 +12376,9 @@ class DescribePcapRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -10373,6 +12387,9 @@ class DescribePcapRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -10381,6 +12398,9 @@ class DescribePcapRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Attack event start time in the format of "2018-08-28 07:00:00"
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10389,6 +12409,9 @@ class DescribePcapRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Attack event end time in the format of "2018-08-28 07:02:00"
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10397,6 +12420,9 @@ class DescribePcapRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """Resource IP, which is required only if `Business` is `net`;
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -10437,6 +12463,9 @@ class DescribePcapResponse(AbstractModel):
 
     @property
     def PcapUrlList(self):
+        """PCAP packet download link list, which is an empty array if there are no PCAP packets;
+        :rtype: list of str
+        """
         return self._PcapUrlList
 
     @PcapUrlList.setter
@@ -10445,6 +12474,9 @@ class DescribePcapResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10474,6 +12506,9 @@ class DescribePolicyCaseRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -10482,6 +12517,9 @@ class DescribePolicyCaseRequest(AbstractModel):
 
     @property
     def SceneId(self):
+        """Policy scenario ID
+        :rtype: str
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -10519,6 +12557,9 @@ class DescribePolicyCaseResponse(AbstractModel):
 
     @property
     def CaseList(self):
+        """Policy scenario list
+        :rtype: list of KeyValueRecord
+        """
         return self._CaseList
 
     @CaseList.setter
@@ -10527,6 +12568,9 @@ class DescribePolicyCaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10561,6 +12605,9 @@ class DescribeResIpListRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -10569,6 +12616,9 @@ class DescribeResIpListRequest(AbstractModel):
 
     @property
     def IdList(self):
+        """Resource ID. If this field is left empty, it means to get all resources IP of the current user
+        :rtype: list of str
+        """
         return self._IdList
 
     @IdList.setter
@@ -10606,6 +12656,9 @@ class DescribeResIpListResponse(AbstractModel):
 
     @property
     def Resource(self):
+        """Resource IP list
+        :rtype: list of ResourceIp
+        """
         return self._Resource
 
     @Resource.setter
@@ -10614,6 +12667,9 @@ class DescribeResIpListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10681,6 +12737,9 @@ class DescribeResourceListRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -10689,6 +12748,9 @@ class DescribeResourceListRequest(AbstractModel):
 
     @property
     def RegionList(self):
+        """Region code search, which is optional. If no regions are to be specified, enter an empty array. If a region is to be specified, enter a region code, such as ["gz", "sh"]
+        :rtype: list of str
+        """
         return self._RegionList
 
     @RegionList.setter
@@ -10697,6 +12759,9 @@ class DescribeResourceListRequest(AbstractModel):
 
     @property
     def Line(self):
+        """Line search. This field can be optionally entered only when getting the list of Anti-DDoS Advanced resources. Valid values: [1 (BGP line), 2 (Nanjing Telecom), 3 (Nanjing Unicom), 99 (third-party partner line)]. Please enter an empty array when getting other products;
+        :rtype: list of int non-negative
+        """
         return self._Line
 
     @Line.setter
@@ -10705,6 +12770,9 @@ class DescribeResourceListRequest(AbstractModel):
 
     @property
     def IdList(self):
+        """Resource ID search, which is optional. If this field is not an empty array, it means to get the resource list of a specified resource;
+        :rtype: list of str
+        """
         return self._IdList
 
     @IdList.setter
@@ -10713,6 +12781,9 @@ class DescribeResourceListRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Resource name search, which is optional. If this field is not an empty string, it means to search for resources by name;
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10721,6 +12792,9 @@ class DescribeResourceListRequest(AbstractModel):
 
     @property
     def IpList(self):
+        """IP query list, which is optional. Resources will be queried by IP if the list is not empty.
+        :rtype: list of str
+        """
         return self._IpList
 
     @IpList.setter
@@ -10729,6 +12803,9 @@ class DescribeResourceListRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Resource status search list, which is optional. Valid values: [0 (running), 1 (cleansing), 2 (blocking)]. No status search will be performed if an empty array is entered;
+        :rtype: list of int non-negative
+        """
         return self._Status
 
     @Status.setter
@@ -10737,6 +12814,9 @@ class DescribeResourceListRequest(AbstractModel):
 
     @property
     def Expire(self):
+        """Expiring resource search, which is optional. Valid values: [0 (no search), 1 (search for expiring resources)]
+        :rtype: int
+        """
         return self._Expire
 
     @Expire.setter
@@ -10745,6 +12825,9 @@ class DescribeResourceListRequest(AbstractModel):
 
     @property
     def OderBy(self):
+        """Sort by field, which is optional
+        :rtype: list of OrderBy
+        """
         return self._OderBy
 
     @OderBy.setter
@@ -10753,6 +12836,9 @@ class DescribeResourceListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of entries per page. A value of 0 means no pagination
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -10761,6 +12847,9 @@ class DescribeResourceListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Page start offset, whose value is (page number - 1) * number of entries per page
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -10769,6 +12858,9 @@ class DescribeResourceListRequest(AbstractModel):
 
     @property
     def CName(self):
+        """CNAME of Anti-DDoS Ultimate resource, which is optional and only valid for the Anti-DDoS Ultimate resource list;
+        :rtype: str
+        """
         return self._CName
 
     @CName.setter
@@ -10777,6 +12869,9 @@ class DescribeResourceListRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """Domain name of Anti-DDoS Ultimate resource, which is optional and only valid for the Anti-DDoS Ultimate resource list;
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -10866,6 +12961,9 @@ class DescribeResourceListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Total number of records
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -10874,6 +12972,39 @@ class DescribeResourceListResponse(AbstractModel):
 
     @property
     def ServicePacks(self):
+        """Resource record list. The description of key values is as follows:
+"Key": "CreateTime" (Instance purchase time)
+"Key": "Region" (Instance region)
+"Key": "BoundIP" (IP bound to the single-IP instance)
+"Key": "Id" (Instance ID)
+"Key": "CCEnabled" (CC protection switch status of the instance)
+"Key": "DDoSThreshold" (Anti-DDoS cleansing threshold of the instance)	
+"Key": "BoundStatus" (IP binding status of the single-IP/multi-IP instance; binding or bound)
+"Key": "Type" (Disused field)
+"Key": "ElasticLimit" (Elastic protection value of the instance)
+"Key": "DDoSAI" (Anti-DDoS AI protection switch of the instance)
+"Key": "OverloadCount" (The number of attacks exceeding the elastic protection value to the instance)
+"Key": "Status" (Instance status; idle: running; attacking: under attacks; blocking: being blocked; isolate: being isolated)
+"Key": "Lbid" (Disused field)
+"Key": "ShowFlag" (Disused field)
+"Key": "Expire" (Instance expiry time)
+"Key": "CCThreshold" (CC protection trigger value of the instance)
+"Key": "AutoRenewFlag" (Whether the instance is on auto-renewal)
+"Key": "IspCode" (Line of the single-IP/multi-IP instance; 0: China Telecom; 1: China Unicom; 2: China Mobile; 5: BGP)
+"Key": "PackType" (Package type)
+"Key": "PackId" (Package ID)
+"Key": "Name" (Instance name)
+"Key": "Locked" (Disused field)
+"Key": "IpDDoSLevel" (Protection level of the instance; low: loose; middle: normal; high: strict)
+"Key": "DefendStatus" (DDoS protection status of the instance; enabled or temporarily disabled)
+"Key": "UndefendExpire" (End time of the temporary disabling on DDoS protection for the instance)
+"Key": "Tgw" (Whether it is a new instance)
+"Key": "Bandwidth" (Base protection value of the Anti-DDoS Pro/Advanced instance)
+"Key": "DdosMax" (Base protection value of the Anti-DDoS Ultimate instance)
+"Key": "GFBandwidth" (Base business application bandwidth of the Anti-DDoS Advanced instance)
+"Key": "ServiceBandwidth" (Base business application bandwidth of the Anti-DDoS Ultimate instance)
+        :rtype: list of KeyValueRecord
+        """
         return self._ServicePacks
 
     @ServicePacks.setter
@@ -10882,6 +13013,9 @@ class DescribeResourceListResponse(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -10890,6 +13024,9 @@ class DescribeResourceListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10926,6 +13063,9 @@ class DescribeRuleSetsRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -10934,6 +13074,9 @@ class DescribeRuleSetsRequest(AbstractModel):
 
     @property
     def IdList(self):
+        """Resource ID list
+        :rtype: list of str
+        """
         return self._IdList
 
     @IdList.setter
@@ -10982,6 +13125,13 @@ If `Key` is "RuleNum", `Value` indicates the number of resource rules
 
     @property
     def L4RuleSets(self):
+        """Rule record array. Valid values:
+If `Key` is "Id", `Value` indicates the resource ID
+If `Key` is "RuleIdList", `Value` indicates the resource rule ID. Multiple rule IDs are separated by ","
+If `Key` is "RuleNameList", `Value` indicates the resource rule name. Multiple rule names are separated by ","
+If `Key` is "RuleNum", `Value` indicates the number of resource rules
+        :rtype: list of KeyValueRecord
+        """
         return self._L4RuleSets
 
     @L4RuleSets.setter
@@ -10990,6 +13140,13 @@ If `Key` is "RuleNum", `Value` indicates the number of resource rules
 
     @property
     def L7RuleSets(self):
+        """Rule record array. Valid values:
+If `Key` is "Id", `Value` indicates the resource ID
+If `Key` is "RuleIdList", `Value` indicates the resource rule ID. Multiple rule IDs are separated by ","
+If `Key` is "RuleNameList", `Value` indicates the resource rule name. Multiple rule names are separated by ","
+If `Key` is "RuleNum", `Value` indicates the number of resource rules
+        :rtype: list of KeyValueRecord
+        """
         return self._L7RuleSets
 
     @L7RuleSets.setter
@@ -10998,6 +13155,9 @@ If `Key` is "RuleNum", `Value` indicates the number of resource rules
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11041,6 +13201,9 @@ class DescribeSchedulingDomainListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of items in a page. Returned results are not paged if you enter '0'.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11049,6 +13212,9 @@ class DescribeSchedulingDomainListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Starting offset of the page. Value: (number of pages - 1) * items per page
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11057,6 +13223,9 @@ class DescribeSchedulingDomainListRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """(Optional) Filter by specific domain name
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -11098,6 +13267,9 @@ class DescribeSchedulingDomainListResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Total number of scheduling domain names
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -11106,6 +13278,9 @@ class DescribeSchedulingDomainListResponse(AbstractModel):
 
     @property
     def DomainList(self):
+        """List of scheduling domain names
+        :rtype: list of SchedulingDomain
+        """
         return self._DomainList
 
     @DomainList.setter
@@ -11114,6 +13289,9 @@ class DescribeSchedulingDomainListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11166,6 +13344,14 @@ IpNum: IP statistics
 
     @property
     def Data(self):
+        """Field value as follows:
+AttackIpCount: number of attacked IPs
+AttackCount: number of attacks
+BlockCount: number of blockings
+MaxMbps: attack bandwidth peak in Mbps
+IpNum: IP statistics
+        :rtype: list of KeyValue
+        """
         return self._Data
 
     @Data.setter
@@ -11174,6 +13360,9 @@ IpNum: IP statistics
 
     @property
     def BeginDate(self):
+        """Start time of the current month
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -11182,6 +13371,9 @@ IpNum: IP statistics
 
     @property
     def EndDate(self):
+        """End time of the current month
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -11190,6 +13382,9 @@ IpNum: IP statistics
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11226,6 +13421,9 @@ class DescribeSourceIpSegmentRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -11234,6 +13432,9 @@ class DescribeSourceIpSegmentRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -11271,6 +13472,9 @@ class DescribeSourceIpSegmentResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Intermediate IP range. Multiple values are separated by ";"
+        :rtype: str
+        """
         return self._Data
 
     @Data.setter
@@ -11279,6 +13483,9 @@ class DescribeSourceIpSegmentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11325,6 +13532,9 @@ pkg: packet rate;
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -11333,6 +13543,9 @@ pkg: packet rate;
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -11341,6 +13554,11 @@ pkg: packet rate;
 
     @property
     def MetricName(self):
+        """Metric name. Valid values:
+traffic: traffic bandwidth;
+pkg: packet rate;
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -11349,6 +13567,9 @@ pkg: packet rate;
 
     @property
     def Period(self):
+        """Statistical time granularity (300: 5-minute, 3600: hourly, 86400: daily)
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -11357,6 +13578,9 @@ pkg: packet rate;
 
     @property
     def StartTime(self):
+        """Statistics start time. The second part is kept at 0, and the minute part is a multiple of 5
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -11365,6 +13589,9 @@ pkg: packet rate;
 
     @property
     def EndTime(self):
+        """Statistics end time. The second part is kept at 0, and the minute part is a multiple of 5
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -11373,6 +13600,9 @@ pkg: packet rate;
 
     @property
     def IpList(self):
+        """Resource IP, which is required and only supports one IP if `Business` is `bgp-multip`. If this field is left empty, all IPs of a resource instance will be counted by default. If the resource instance has multiple IPs (such as Anti-DDoS Ultimate), the statistical method is summation;
+        :rtype: list of str
+        """
         return self._IpList
 
     @IpList.setter
@@ -11425,6 +13655,10 @@ pkg: packet rate;
 
     @property
     def InDataList(self):
+        """If `MetricName` is `traffic`, this field indicates the inbound traffic bandwidth in bps;
+If `MetricName` is `pkg`, this field indicates the inbound packet rate in pps;
+        :rtype: list of float
+        """
         return self._InDataList
 
     @InDataList.setter
@@ -11433,6 +13667,10 @@ pkg: packet rate;
 
     @property
     def OutDataList(self):
+        """If `MetricName` is `traffic`, this field indicates the outbound traffic bandwidth in bps;
+If `MetricName` is `pkg`, this field indicates the outbound packet rate in pps;
+        :rtype: list of float
+        """
         return self._OutDataList
 
     @OutDataList.setter
@@ -11441,6 +13679,11 @@ pkg: packet rate;
 
     @property
     def MetricName(self):
+        """Metric name:
+traffic: traffic bandwidth;
+pkg: packet rate;
+        :rtype: str
+        """
         return self._MetricName
 
     @MetricName.setter
@@ -11449,6 +13692,9 @@ pkg: packet rate;
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11495,6 +13741,9 @@ class DescribeUnBlockStatisResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Total number of unblocking chances
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -11503,6 +13752,9 @@ class DescribeUnBlockStatisResponse(AbstractModel):
 
     @property
     def Used(self):
+        """Number of used chances
+        :rtype: int
+        """
         return self._Used
 
     @Used.setter
@@ -11511,6 +13763,9 @@ class DescribeUnBlockStatisResponse(AbstractModel):
 
     @property
     def BeginTime(self):
+        """Statistics start time
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -11519,6 +13774,9 @@ class DescribeUnBlockStatisResponse(AbstractModel):
 
     @property
     def EndTime(self):
+        """Statistics end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -11527,6 +13785,9 @@ class DescribeUnBlockStatisResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11568,6 +13829,9 @@ class DescribleL4RulesRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -11576,6 +13840,9 @@ class DescribleL4RulesRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -11584,6 +13851,9 @@ class DescribleL4RulesRequest(AbstractModel):
 
     @property
     def RuleIdList(self):
+        """Rule ID, which is optional. If this field is entered, the specified rule will be obtained
+        :rtype: list of str
+        """
         return self._RuleIdList
 
     @RuleIdList.setter
@@ -11592,6 +13862,9 @@ class DescribleL4RulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of entries per page. A value of 0 means no pagination
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11600,6 +13873,9 @@ class DescribleL4RulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Page start offset, whose value is (page number - 1) * number of entries per page
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11646,6 +13922,9 @@ class DescribleL4RulesResponse(AbstractModel):
 
     @property
     def Rules(self):
+        """Forwarding rule list
+        :rtype: list of L4RuleEntry
+        """
         return self._Rules
 
     @Rules.setter
@@ -11654,6 +13933,9 @@ class DescribleL4RulesResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Total number of rules
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -11662,6 +13944,9 @@ class DescribleL4RulesResponse(AbstractModel):
 
     @property
     def Healths(self):
+        """Health check configuration list
+        :rtype: list of L4RuleHealth
+        """
         return self._Healths
 
     @Healths.setter
@@ -11670,6 +13955,9 @@ class DescribleL4RulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11729,6 +14017,9 @@ class DescribleL7RulesRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -11737,6 +14028,9 @@ class DescribleL7RulesRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -11745,6 +14039,9 @@ class DescribleL7RulesRequest(AbstractModel):
 
     @property
     def RuleIdList(self):
+        """Rule ID, which is optional. If this field is entered, the specified rule will be obtained
+        :rtype: list of str
+        """
         return self._RuleIdList
 
     @RuleIdList.setter
@@ -11753,6 +14050,9 @@ class DescribleL7RulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of entries per page. A value of 0 means no pagination
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -11761,6 +14061,9 @@ class DescribleL7RulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Page start offset, whose value is (page number - 1) * number of entries per page
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -11769,6 +14072,9 @@ class DescribleL7RulesRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """Domain name search, which is optional. Enter it if you need to search for domain names
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -11777,6 +14083,9 @@ class DescribleL7RulesRequest(AbstractModel):
 
     @property
     def ProtocolList(self):
+        """Forwarding protocol search, which is optional. Valid values: [http, https, http/https]
+        :rtype: list of str
+        """
         return self._ProtocolList
 
     @ProtocolList.setter
@@ -11785,6 +14094,9 @@ class DescribleL7RulesRequest(AbstractModel):
 
     @property
     def StatusList(self):
+        """Status search, which is optional. Valid values: [0 (successfully configured rule), 1 (rule configuration taking effect), 2 (rule configuration failed), 3 (rule deletion taking effect), 5 (rule deletion failed), 6 (rule waiting for configuration), 7 (rule waiting for deletion), 8 (rule waiting for certificate configuration)]
+        :rtype: list of int non-negative
+        """
         return self._StatusList
 
     @StatusList.setter
@@ -11834,6 +14146,9 @@ class DescribleL7RulesResponse(AbstractModel):
 
     @property
     def Rules(self):
+        """Forwarding rule list
+        :rtype: list of L7RuleEntry
+        """
         return self._Rules
 
     @Rules.setter
@@ -11842,6 +14157,9 @@ class DescribleL7RulesResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Total number of rules
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -11850,6 +14168,9 @@ class DescribleL7RulesResponse(AbstractModel):
 
     @property
     def Healths(self):
+        """Health check configuration list
+        :rtype: list of L7RuleHealth
+        """
         return self._Healths
 
     @Healths.setter
@@ -11858,6 +14179,9 @@ class DescribleL7RulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11899,6 +14223,9 @@ class DescribleRegionCountRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -11907,6 +14234,9 @@ class DescribleRegionCountRequest(AbstractModel):
 
     @property
     def LineList(self):
+        """Line search. Valid values: [1 (BGP line), 2 (Nanjing Telecom), 3 (Nanjing Unicom), 99 (third-party partner line)]. This field is valid only for Anti-DDoS Advanced and should be ignored for other product
+        :rtype: list of int non-negative
+        """
         return self._LineList
 
     @LineList.setter
@@ -11944,6 +14274,9 @@ class DescribleRegionCountResponse(AbstractModel):
 
     @property
     def RegionList(self):
+        """Number of resource instances in region
+        :rtype: list of RegionInstanceCount
+        """
         return self._RegionList
 
     @RegionList.setter
@@ -11952,6 +14285,9 @@ class DescribleRegionCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12010,6 +14346,9 @@ class HttpStatusMap(AbstractModel):
 
     @property
     def Http2xx(self):
+        """HTTP 2xx Status code
+        :rtype: list of float
+        """
         return self._Http2xx
 
     @Http2xx.setter
@@ -12018,6 +14357,9 @@ class HttpStatusMap(AbstractModel):
 
     @property
     def Http3xx(self):
+        """HTTP 3xx Status code
+        :rtype: list of float
+        """
         return self._Http3xx
 
     @Http3xx.setter
@@ -12026,6 +14368,9 @@ class HttpStatusMap(AbstractModel):
 
     @property
     def Http404(self):
+        """HTTP 404 Status code
+        :rtype: list of float
+        """
         return self._Http404
 
     @Http404.setter
@@ -12034,6 +14379,9 @@ class HttpStatusMap(AbstractModel):
 
     @property
     def Http4xx(self):
+        """HTTP 4xx Status code
+        :rtype: list of float
+        """
         return self._Http4xx
 
     @Http4xx.setter
@@ -12042,6 +14390,9 @@ class HttpStatusMap(AbstractModel):
 
     @property
     def Http5xx(self):
+        """HTTP 5xx Status code
+        :rtype: list of float
+        """
         return self._Http5xx
 
     @Http5xx.setter
@@ -12050,6 +14401,9 @@ class HttpStatusMap(AbstractModel):
 
     @property
     def SourceHttp2xx(self):
+        """HTTP 2xx Forwarding status code
+        :rtype: list of float
+        """
         return self._SourceHttp2xx
 
     @SourceHttp2xx.setter
@@ -12058,6 +14412,9 @@ class HttpStatusMap(AbstractModel):
 
     @property
     def SourceHttp3xx(self):
+        """HTTP 3xx Forwarding status code
+        :rtype: list of float
+        """
         return self._SourceHttp3xx
 
     @SourceHttp3xx.setter
@@ -12066,6 +14423,9 @@ class HttpStatusMap(AbstractModel):
 
     @property
     def SourceHttp404(self):
+        """HTTP 404 Forwarding status code
+        :rtype: list of float
+        """
         return self._SourceHttp404
 
     @SourceHttp404.setter
@@ -12074,6 +14434,9 @@ class HttpStatusMap(AbstractModel):
 
     @property
     def SourceHttp4xx(self):
+        """HTTP 4xx Forwarding status code
+        :rtype: list of float
+        """
         return self._SourceHttp4xx
 
     @SourceHttp4xx.setter
@@ -12082,6 +14445,9 @@ class HttpStatusMap(AbstractModel):
 
     @property
     def SourceHttp5xx(self):
+        """HTTP 5xx Forwarding status code
+        :rtype: list of float
+        """
         return self._SourceHttp5xx
 
     @SourceHttp5xx.setter
@@ -12127,6 +14493,9 @@ class IpBlackWhite(AbstractModel):
 
     @property
     def Ip(self):
+        """IP address
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -12135,6 +14504,9 @@ class IpBlackWhite(AbstractModel):
 
     @property
     def Type(self):
+        """Blocklist/allowlist type. Valid values: [black, white]
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -12181,6 +14553,9 @@ class IpBlockData(AbstractModel):
 
     @property
     def Ip(self):
+        """IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -12189,6 +14564,9 @@ class IpBlockData(AbstractModel):
 
     @property
     def Status(self):
+        """Status (Blocked: blocked, UnBlocking: unblocking, UnBlockFailed: unblocking failed)
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -12197,6 +14575,9 @@ class IpBlockData(AbstractModel):
 
     @property
     def BlockTime(self):
+        """Blocked time
+        :rtype: str
+        """
         return self._BlockTime
 
     @BlockTime.setter
@@ -12205,6 +14586,9 @@ class IpBlockData(AbstractModel):
 
     @property
     def UnBlockTime(self):
+        """Unblocked time (estimated)
+        :rtype: str
+        """
         return self._UnBlockTime
 
     @UnBlockTime.setter
@@ -12213,6 +14597,9 @@ class IpBlockData(AbstractModel):
 
     @property
     def ActionType(self):
+        """Type of the unblocking action (`user`: self-service unblocking, `auto`: automatic unblocking, `update`: unblocking by service upgrading, `bind`: unblocking by binding Anti-DDoS Pro instance)
+        :rtype: str
+        """
         return self._ActionType
 
     @ActionType.setter
@@ -12259,6 +14646,9 @@ class IpUnBlockData(AbstractModel):
 
     @property
     def Ip(self):
+        """IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -12267,6 +14657,9 @@ class IpUnBlockData(AbstractModel):
 
     @property
     def BlockTime(self):
+        """Blocked time
+        :rtype: str
+        """
         return self._BlockTime
 
     @BlockTime.setter
@@ -12275,6 +14668,9 @@ class IpUnBlockData(AbstractModel):
 
     @property
     def UnBlockTime(self):
+        """Unblocked time (actual)
+        :rtype: str
+        """
         return self._UnBlockTime
 
     @UnBlockTime.setter
@@ -12283,6 +14679,9 @@ class IpUnBlockData(AbstractModel):
 
     @property
     def ActionType(self):
+        """Type of the unblocking action (`user`: self-service unblocking, `auto`: automatic unblocking, `update`: unblocking by service upgrading, `bind`: unblocking by binding Anti-DDoS Pro instance)
+        :rtype: str
+        """
         return self._ActionType
 
     @ActionType.setter
@@ -12322,6 +14721,9 @@ class KeyValue(AbstractModel):
 
     @property
     def Key(self):
+        """Field name
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -12330,6 +14732,9 @@ class KeyValue(AbstractModel):
 
     @property
     def Value(self):
+        """Field value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -12364,6 +14769,9 @@ class KeyValueRecord(AbstractModel):
 
     @property
     def Record(self):
+        """Key-Value array of a record
+        :rtype: list of KeyValue
+        """
         return self._Record
 
     @Record.setter
@@ -12423,6 +14831,9 @@ class L4HealthConfig(AbstractModel):
 
     @property
     def Protocol(self):
+        """Forwarding protocol. Valid values: [TCP, UDP]
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -12431,6 +14842,9 @@ class L4HealthConfig(AbstractModel):
 
     @property
     def VirtualPort(self):
+        """Forwarding port
+        :rtype: int
+        """
         return self._VirtualPort
 
     @VirtualPort.setter
@@ -12439,6 +14853,9 @@ class L4HealthConfig(AbstractModel):
 
     @property
     def Enable(self):
+        """1: enabled, 0: disabled
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -12447,6 +14864,9 @@ class L4HealthConfig(AbstractModel):
 
     @property
     def TimeOut(self):
+        """Response timeout period in seconds
+        :rtype: int
+        """
         return self._TimeOut
 
     @TimeOut.setter
@@ -12455,6 +14875,9 @@ class L4HealthConfig(AbstractModel):
 
     @property
     def Interval(self):
+        """Detection interval in seconds
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -12463,6 +14886,9 @@ class L4HealthConfig(AbstractModel):
 
     @property
     def KickNum(self):
+        """Unhealthy threshold in times.
+        :rtype: int
+        """
         return self._KickNum
 
     @KickNum.setter
@@ -12471,6 +14897,9 @@ class L4HealthConfig(AbstractModel):
 
     @property
     def AliveNum(self):
+        """Healthy threshold in times.
+        :rtype: int
+        """
         return self._AliveNum
 
     @AliveNum.setter
@@ -12479,6 +14908,9 @@ class L4HealthConfig(AbstractModel):
 
     @property
     def KeepTime(self):
+        """Session persistence duration in seconds
+        :rtype: int
+        """
         return self._KeepTime
 
     @KeepTime.setter
@@ -12549,6 +14981,9 @@ class L4RuleEntry(AbstractModel):
 
     @property
     def Protocol(self):
+        """Forwarding protocol. Valid values: [TCP, UDP]
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -12557,6 +14992,9 @@ class L4RuleEntry(AbstractModel):
 
     @property
     def VirtualPort(self):
+        """Forwarding port
+        :rtype: int
+        """
         return self._VirtualPort
 
     @VirtualPort.setter
@@ -12565,6 +15003,9 @@ class L4RuleEntry(AbstractModel):
 
     @property
     def SourcePort(self):
+        """Real server port
+        :rtype: int
+        """
         return self._SourcePort
 
     @SourcePort.setter
@@ -12573,6 +15014,9 @@ class L4RuleEntry(AbstractModel):
 
     @property
     def SourceType(self):
+        """Forwarding method. Valid values: [1 (forwarding via domain name), 2 (forwarding via IP)]
+        :rtype: int
+        """
         return self._SourceType
 
     @SourceType.setter
@@ -12581,6 +15025,9 @@ class L4RuleEntry(AbstractModel):
 
     @property
     def KeepTime(self):
+        """Session persistence duration in seconds
+        :rtype: int
+        """
         return self._KeepTime
 
     @KeepTime.setter
@@ -12589,6 +15036,9 @@ class L4RuleEntry(AbstractModel):
 
     @property
     def SourceList(self):
+        """Forward list
+        :rtype: list of L4RuleSource
+        """
         return self._SourceList
 
     @SourceList.setter
@@ -12597,6 +15047,9 @@ class L4RuleEntry(AbstractModel):
 
     @property
     def LbType(self):
+        """Load balancing method. Valid values: [1 (weighted round robin), 2 (source IP hash)]
+        :rtype: int
+        """
         return self._LbType
 
     @LbType.setter
@@ -12605,6 +15058,9 @@ class L4RuleEntry(AbstractModel):
 
     @property
     def KeepEnable(self):
+        """Session persistence status. Valid values: [0 (disabled), 1 (enabled)];
+        :rtype: int
+        """
         return self._KeepEnable
 
     @KeepEnable.setter
@@ -12613,6 +15069,9 @@ class L4RuleEntry(AbstractModel):
 
     @property
     def RuleId(self):
+        """Rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -12621,6 +15080,9 @@ class L4RuleEntry(AbstractModel):
 
     @property
     def RuleName(self):
+        """Rule description
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -12629,6 +15091,9 @@ class L4RuleEntry(AbstractModel):
 
     @property
     def RemoveSwitch(self):
+        """Watermark removal status. Valid values: [0 (disabled), 1 (enabled)]
+        :rtype: int
+        """
         return self._RemoveSwitch
 
     @RemoveSwitch.setter
@@ -12692,6 +15157,9 @@ class L4RuleHealth(AbstractModel):
 
     @property
     def RuleId(self):
+        """Rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -12700,6 +15168,9 @@ class L4RuleHealth(AbstractModel):
 
     @property
     def Enable(self):
+        """1: enabled, 0: disabled
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -12708,6 +15179,9 @@ class L4RuleHealth(AbstractModel):
 
     @property
     def TimeOut(self):
+        """Response timeout period in seconds
+        :rtype: int
+        """
         return self._TimeOut
 
     @TimeOut.setter
@@ -12716,6 +15190,9 @@ class L4RuleHealth(AbstractModel):
 
     @property
     def Interval(self):
+        """Detection interval in seconds, which must be greater than the response timeout period
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -12724,6 +15201,9 @@ class L4RuleHealth(AbstractModel):
 
     @property
     def KickNum(self):
+        """Unhealthy threshold in times
+        :rtype: int
+        """
         return self._KickNum
 
     @KickNum.setter
@@ -12732,6 +15212,9 @@ class L4RuleHealth(AbstractModel):
 
     @property
     def AliveNum(self):
+        """Healthy threshold in times.
+        :rtype: int
+        """
         return self._AliveNum
 
     @AliveNum.setter
@@ -12773,6 +15256,9 @@ class L4RuleSource(AbstractModel):
 
     @property
     def Source(self):
+        """Intermediate IP or domain name
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -12781,6 +15267,9 @@ class L4RuleSource(AbstractModel):
 
     @property
     def Weight(self):
+        """Weight value. Value range: [0,100]
+        :rtype: int
+        """
         return self._Weight
 
     @Weight.setter
@@ -12839,6 +15328,9 @@ class L7HealthConfig(AbstractModel):
 
     @property
     def Protocol(self):
+        """Forwarding protocol. Valid values: [http, https, http/https]
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -12847,6 +15339,9 @@ class L7HealthConfig(AbstractModel):
 
     @property
     def Domain(self):
+        """Forwarding domain name
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -12855,6 +15350,9 @@ class L7HealthConfig(AbstractModel):
 
     @property
     def Enable(self):
+        """1: enabled, 0: disabled
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -12863,6 +15361,9 @@ class L7HealthConfig(AbstractModel):
 
     @property
     def Interval(self):
+        """Detection interval in seconds
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -12871,6 +15372,9 @@ class L7HealthConfig(AbstractModel):
 
     @property
     def KickNum(self):
+        """Number of exceptions in times
+        :rtype: int
+        """
         return self._KickNum
 
     @KickNum.setter
@@ -12879,6 +15383,9 @@ class L7HealthConfig(AbstractModel):
 
     @property
     def AliveNum(self):
+        """Number of health checks in times
+        :rtype: int
+        """
         return self._AliveNum
 
     @AliveNum.setter
@@ -12887,6 +15394,9 @@ class L7HealthConfig(AbstractModel):
 
     @property
     def Method(self):
+        """Health check detection method. Valid values: HEAD, GET. Default VALUE: HEAD
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -12895,6 +15405,9 @@ class L7HealthConfig(AbstractModel):
 
     @property
     def StatusCode(self):
+        """Healthy status code during health check. xx = 1, 2xx = 2, 3xx = 4, 4xx = 8, 5xx = 16. Multiple status code values are added up
+        :rtype: int
+        """
         return self._StatusCode
 
     @StatusCode.setter
@@ -12903,6 +15416,9 @@ class L7HealthConfig(AbstractModel):
 
     @property
     def Url(self):
+        """URL of checked directory. Default value: /
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -13002,6 +15518,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
+        """Forwarding protocol. Valid values: [http, https]
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -13010,6 +15529,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
+        """Forwarding domain name
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -13018,6 +15540,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SourceType(self):
+        """Forwarding method. Valid values: [1 (forwarding via domain name), 2 (forwarding via IP)]
+        :rtype: int
+        """
         return self._SourceType
 
     @SourceType.setter
@@ -13026,6 +15551,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeepTime(self):
+        """Session persistence duration in seconds
+        :rtype: int
+        """
         return self._KeepTime
 
     @KeepTime.setter
@@ -13034,6 +15562,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SourceList(self):
+        """Forward list
+        :rtype: list of L4RuleSource
+        """
         return self._SourceList
 
     @SourceList.setter
@@ -13042,6 +15573,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LbType(self):
+        """Load balancing method. Valid value: [1 (weighted round robin)]
+        :rtype: int
+        """
         return self._LbType
 
     @LbType.setter
@@ -13050,6 +15584,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeepEnable(self):
+        """Session persistence status. Valid values: [0 (disabled), 1 (enabled)]
+        :rtype: int
+        """
         return self._KeepEnable
 
     @KeepEnable.setter
@@ -13058,6 +15595,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleId(self):
+        """Rule ID, which is optional when adding a new rule but required when modifying or deleting a rule;
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -13066,6 +15606,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertType(self):
+        """Certificate source, which is required if the forwarding protocol is HTTPS. Valid value: [2 (Tencent Cloud-hosted certificate)]. If the forwarding protocol is HTTP, 0 can be entered for this field
+        :rtype: int
+        """
         return self._CertType
 
     @CertType.setter
@@ -13074,6 +15617,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SSLId(self):
+        """If the certificate is a Tencent Cloud-hosted certificate, this field must be entered with the hosted certificate ID
+        :rtype: str
+        """
         return self._SSLId
 
     @SSLId.setter
@@ -13082,6 +15628,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cert(self):
+        """If the certificate is an external certificate, this field must be entered with the certificate content. (As external certificates are no longer supported, this field has been disused and does not need to be entered)
+        :rtype: str
+        """
         return self._Cert
 
     @Cert.setter
@@ -13090,6 +15639,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PrivateKey(self):
+        """If the certificate is an external certificate, this field must be entered with the certificate key. (As external certificates are no longer supported, this field has been disused and does not need to be entered)
+        :rtype: str
+        """
         return self._PrivateKey
 
     @PrivateKey.setter
@@ -13098,6 +15650,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleName(self):
+        """Rule description
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -13106,6 +15661,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Rule status. Valid values: [0 (successfully configured rule), 1 (rule configuration taking effect), 2 (rule configuration failed), 3 (rule deletion taking effect), 5 (rule deletion failed), 6 (rule waiting for configuration), 7 (rule waiting for deletion), 8 (rule waiting for certificate configuration)]
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -13114,6 +15672,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CCStatus(self):
+        """CC protection status. Valid values: [0 (disabled), 1 (enabled)]
+        :rtype: int
+        """
         return self._CCStatus
 
     @CCStatus.setter
@@ -13122,6 +15683,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CCEnable(self):
+        """HTTPS CC protection status. Valid values: [0 (disabled), 1 (enabled)]
+        :rtype: int
+        """
         return self._CCEnable
 
     @CCEnable.setter
@@ -13130,6 +15694,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CCThreshold(self):
+        """HTTPS CC protection threshold
+        :rtype: int
+        """
         return self._CCThreshold
 
     @CCThreshold.setter
@@ -13138,6 +15705,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CCLevel(self):
+        """HTTPS CC protection level
+        :rtype: str
+        """
         return self._CCLevel
 
     @CCLevel.setter
@@ -13146,6 +15716,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def HttpsToHttpEnable(self):
+        """Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disabled) and `1` (enabled). The default value is disabled.
+        :rtype: int
+        """
         return self._HttpsToHttpEnable
 
     @HttpsToHttpEnable.setter
@@ -13154,6 +15727,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VirtualPort(self):
+        """Access port number.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._VirtualPort
 
     @VirtualPort.setter
@@ -13235,6 +15812,9 @@ class L7RuleHealth(AbstractModel):
 
     @property
     def RuleId(self):
+        """Rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -13243,6 +15823,9 @@ class L7RuleHealth(AbstractModel):
 
     @property
     def Enable(self):
+        """1: enabled, 0: disabled
+        :rtype: int
+        """
         return self._Enable
 
     @Enable.setter
@@ -13251,6 +15834,9 @@ class L7RuleHealth(AbstractModel):
 
     @property
     def Interval(self):
+        """Detection interval in seconds
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -13259,6 +15845,9 @@ class L7RuleHealth(AbstractModel):
 
     @property
     def KickNum(self):
+        """Unhealthy threshold in times.
+        :rtype: int
+        """
         return self._KickNum
 
     @KickNum.setter
@@ -13267,6 +15856,9 @@ class L7RuleHealth(AbstractModel):
 
     @property
     def AliveNum(self):
+        """Healthy threshold in times.
+        :rtype: int
+        """
         return self._AliveNum
 
     @AliveNum.setter
@@ -13275,6 +15867,9 @@ class L7RuleHealth(AbstractModel):
 
     @property
     def Method(self):
+        """HTTP request method. Valid values: [HEAD, GET]
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -13283,6 +15878,9 @@ class L7RuleHealth(AbstractModel):
 
     @property
     def StatusCode(self):
+        """Healthy status code during health check. xx = 1, 2xx = 2, 3xx = 4, 4xx = 8, 5xx = 16. Multiple status code values are added up
+        :rtype: int
+        """
         return self._StatusCode
 
     @StatusCode.setter
@@ -13291,6 +15889,9 @@ class L7RuleHealth(AbstractModel):
 
     @property
     def Url(self):
+        """URL of checked directory. Default value: /
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -13299,6 +15900,9 @@ class L7RuleHealth(AbstractModel):
 
     @property
     def Status(self):
+        """Configuration status. 0: normal, 1: configuring, 2: configuration failed
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -13349,6 +15953,9 @@ class ModifyCCAlarmThresholdRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`shield`: Chess Shield, `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -13357,6 +15964,9 @@ class ModifyCCAlarmThresholdRequest(AbstractModel):
 
     @property
     def RsId(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._RsId
 
     @RsId.setter
@@ -13365,6 +15975,9 @@ class ModifyCCAlarmThresholdRequest(AbstractModel):
 
     @property
     def AlarmThreshold(self):
+        """Alarm threshold, which should be greater than 0 (currently scheduled value). It is set to 1000 on the backend by default
+        :rtype: int
+        """
         return self._AlarmThreshold
 
     @AlarmThreshold.setter
@@ -13373,6 +15986,9 @@ class ModifyCCAlarmThresholdRequest(AbstractModel):
 
     @property
     def IpList(self):
+        """List of IPs associated with resource. If no Anti-DDoS Pro instance is bound, pass in an empty array. For Anti-DDoS Ultimate, pass in multiple IPs
+        :rtype: list of str
+        """
         return self._IpList
 
     @IpList.setter
@@ -13412,6 +16028,9 @@ class ModifyCCAlarmThresholdResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -13420,6 +16039,9 @@ class ModifyCCAlarmThresholdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13475,6 +16097,9 @@ class ModifyCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -13483,6 +16108,9 @@ class ModifyCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def CCFrequencyRuleId(self):
+        """CC access frequency control rule ID
+        :rtype: str
+        """
         return self._CCFrequencyRuleId
 
     @CCFrequencyRuleId.setter
@@ -13491,6 +16119,9 @@ class ModifyCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def Mode(self):
+        """Matching rule. Valid values: ["include" (prefix match), "equal" (exact match)]
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -13499,6 +16130,9 @@ class ModifyCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def Period(self):
+        """Reference period in seconds. Valid values: [10, 30, 60]
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -13507,6 +16141,9 @@ class ModifyCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def ReqNumber(self):
+        """Number of access requests. Value range: [1-10000]
+        :rtype: int
+        """
         return self._ReqNumber
 
     @ReqNumber.setter
@@ -13515,6 +16152,9 @@ class ModifyCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def Act(self):
+        """Action take. Valid values: ["alg" (CAPTCHA), "drop" (blocking)]
+        :rtype: str
+        """
         return self._Act
 
     @Act.setter
@@ -13523,6 +16163,9 @@ class ModifyCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def ExeDuration(self):
+        """Execution duration in seconds. Valid range: [1-900]
+        :rtype: int
+        """
         return self._ExeDuration
 
     @ExeDuration.setter
@@ -13531,6 +16174,9 @@ class ModifyCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def Uri(self):
+        """URI string, which must start with `/`, such as `/abc/a.php`. Length limit: 31. If URI is `/`, only prefix match can be selected as the matching mode;
+        :rtype: str
+        """
         return self._Uri
 
     @Uri.setter
@@ -13539,6 +16185,9 @@ class ModifyCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def UserAgent(self):
+        """`User-Agent` string. Length limit: 80
+        :rtype: str
+        """
         return self._UserAgent
 
     @UserAgent.setter
@@ -13547,6 +16196,9 @@ class ModifyCCFrequencyRulesRequest(AbstractModel):
 
     @property
     def Cookie(self):
+        """Cookie string. Length limit: 40
+        :rtype: str
+        """
         return self._Cookie
 
     @Cookie.setter
@@ -13592,6 +16244,9 @@ class ModifyCCFrequencyRulesResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -13600,6 +16255,9 @@ class ModifyCCFrequencyRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13637,6 +16295,9 @@ class ModifyCCFrequencyRulesStatusRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -13645,6 +16306,9 @@ class ModifyCCFrequencyRulesStatusRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -13653,6 +16317,9 @@ class ModifyCCFrequencyRulesStatusRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Layer-7 forwarding rule ID, which can be obtained through the `DescribleL7Rules` API
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -13661,6 +16328,9 @@ class ModifyCCFrequencyRulesStatusRequest(AbstractModel):
 
     @property
     def Method(self):
+        """Enables or disable. Valid values: ["on", "off"]
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -13700,6 +16370,9 @@ class ModifyCCFrequencyRulesStatusResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -13708,6 +16381,9 @@ class ModifyCCFrequencyRulesStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13745,6 +16421,9 @@ class ModifyCCHostProtectionRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -13753,6 +16432,9 @@ class ModifyCCHostProtectionRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -13761,6 +16443,9 @@ class ModifyCCHostProtectionRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -13769,6 +16454,9 @@ class ModifyCCHostProtectionRequest(AbstractModel):
 
     @property
     def Method(self):
+        """Enables/disables CC domain name protection. Valid values: [open (enable), close (disable)]
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -13808,6 +16496,9 @@ class ModifyCCHostProtectionResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -13816,6 +16507,9 @@ class ModifyCCHostProtectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13866,6 +16560,9 @@ If `Method` is `delete`, this field can be left empty;
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -13874,6 +16571,9 @@ If `Method` is `delete`, this field can be left empty;
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -13882,6 +16582,9 @@ If `Method` is `delete`, this field can be left empty;
 
     @property
     def Method(self):
+        """add: add, delete: delete
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -13890,6 +16593,9 @@ If `Method` is `delete`, this field can be left empty;
 
     @property
     def Type(self):
+        """Blocklist/allowlist type. Valid values: [white (allowlist), black (blocklist)]
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -13898,6 +16604,9 @@ If `Method` is `delete`, this field can be left empty;
 
     @property
     def IpList(self):
+        """Blocklisted/whitelisted IP array
+        :rtype: list of str
+        """
         return self._IpList
 
     @IpList.setter
@@ -13906,6 +16615,9 @@ If `Method` is `delete`, this field can be left empty;
 
     @property
     def Protocol(self):
+        """CC protection type, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)]; if this field is left empty, HTTPS CC protection will be used by default; if `https` is entered, the `Domain` and `RuleId` fields are required;
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -13914,6 +16626,9 @@ If `Method` is `delete`, this field can be left empty;
 
     @property
     def Domain(self):
+        """HTTPS layer-7 forwarding rule domain name (which is optional and can be obtained from the layer-7 forwarding rule API). This field is required only if `Protocol` is `https`;
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -13922,6 +16637,10 @@ If `Method` is `delete`, this field can be left empty;
 
     @property
     def RuleId(self):
+        """HTTPS layer-7 forwarding rule ID (which is optional and can be obtained from the layer-7 forwarding rule API),
+If `Method` is `delete`, this field can be left empty;
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -13965,6 +16684,9 @@ class ModifyCCIpAllowDenyResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -13973,6 +16695,9 @@ class ModifyCCIpAllowDenyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14013,6 +16738,9 @@ class ModifyCCLevelRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -14021,6 +16749,9 @@ class ModifyCCLevelRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -14029,6 +16760,9 @@ class ModifyCCLevelRequest(AbstractModel):
 
     @property
     def Level(self):
+        """CC protection level. Valid values: [default (normal), loose (loose), strict (strict)];
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -14037,6 +16771,9 @@ class ModifyCCLevelRequest(AbstractModel):
 
     @property
     def Protocol(self):
+        """CC protection type, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)]; if this field is left empty, HTTPS CC protection will be used by default; if `https` is entered, the `RuleId` field is required;
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -14045,6 +16782,9 @@ class ModifyCCLevelRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Layer-7 forwarding rule ID (which can be obtained from the layer-7 forwarding rule API);
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -14085,6 +16825,9 @@ class ModifyCCLevelResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -14093,6 +16836,9 @@ class ModifyCCLevelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14130,6 +16876,9 @@ class ModifyCCPolicySwitchRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -14138,6 +16887,9 @@ class ModifyCCPolicySwitchRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -14146,6 +16898,9 @@ class ModifyCCPolicySwitchRequest(AbstractModel):
 
     @property
     def SetId(self):
+        """Policy ID
+        :rtype: str
+        """
         return self._SetId
 
     @SetId.setter
@@ -14154,6 +16909,9 @@ class ModifyCCPolicySwitchRequest(AbstractModel):
 
     @property
     def Switch(self):
+        """Status
+        :rtype: int
+        """
         return self._Switch
 
     @Switch.setter
@@ -14193,6 +16951,9 @@ class ModifyCCPolicySwitchResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -14201,6 +16962,9 @@ class ModifyCCPolicySwitchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14238,6 +17002,9 @@ class ModifyCCSelfDefinePolicyRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -14246,6 +17013,9 @@ class ModifyCCSelfDefinePolicyRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -14254,6 +17024,9 @@ class ModifyCCSelfDefinePolicyRequest(AbstractModel):
 
     @property
     def SetId(self):
+        """Policy ID
+        :rtype: str
+        """
         return self._SetId
 
     @SetId.setter
@@ -14262,6 +17035,9 @@ class ModifyCCSelfDefinePolicyRequest(AbstractModel):
 
     @property
     def Policy(self):
+        """Details of the CC protection policy
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.CCPolicy`
+        """
         return self._Policy
 
     @Policy.setter
@@ -14303,6 +17079,9 @@ class ModifyCCSelfDefinePolicyResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -14311,6 +17090,9 @@ class ModifyCCSelfDefinePolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14383,6 +17165,9 @@ Required if `Protocol` is `https`;
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate, `basic`: Anti-DDoS Basic
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -14391,6 +17176,19 @@ Required if `Protocol` is `https`;
 
     @property
     def Threshold(self):
+        """CC protection threshold. Valid values: (0 100 150 240 350 480 550 700 850 1000 1500 2000 3000 5000 10000 20000);
+If `Business` is Anti-DDoS Advanced or Anti-DDoS Ultimate, its maximum CC protection threshold is subject to the base protection bandwidth in the following way:
+  Base bandwidth: maximum CC protection threshold
+  10:  20000,
+  20:  40000,
+  30:  70000,
+  40:  100000,
+  50:  150000,
+  60:  200000,
+  80:  250000,
+  100: 300000,
+        :rtype: int
+        """
         return self._Threshold
 
     @Threshold.setter
@@ -14399,6 +17197,9 @@ Required if `Protocol` is `https`;
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -14407,6 +17208,9 @@ Required if `Protocol` is `https`;
 
     @property
     def Protocol(self):
+        """CC protection type, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)]; if this field is left empty, HTTPS CC protection will be used by default; if `https` is entered, the `RuleId` field is required;
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -14415,6 +17219,10 @@ Required if `Protocol` is `https`;
 
     @property
     def RuleId(self):
+        """HTTPS layer-7 forwarding rule ID (which is optional and can be obtained from the layer-7 forwarding rule API);
+Required if `Protocol` is `https`;
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -14423,6 +17231,9 @@ Required if `Protocol` is `https`;
 
     @property
     def BasicIp(self):
+        """Queried IP address (only provided by Anti-DDoS Basic), such as 1.1.1.1
+        :rtype: str
+        """
         return self._BasicIp
 
     @BasicIp.setter
@@ -14431,6 +17242,9 @@ Required if `Protocol` is `https`;
 
     @property
     def BasicRegion(self):
+        """IP region (only provided for Anti-DDoS Basic). Valid values: region abbreviations such as gz, bj, sh, and hk
+        :rtype: str
+        """
         return self._BasicRegion
 
     @BasicRegion.setter
@@ -14439,6 +17253,9 @@ Required if `Protocol` is `https`;
 
     @property
     def BasicBizType(self):
+        """Zone type (only provided for Anti-DDoS Basic). Valid values: public (public cloud zone), bm (BM zone), nat (NAT server zone), channel (internet channel).
+        :rtype: str
+        """
         return self._BasicBizType
 
     @BasicBizType.setter
@@ -14447,6 +17264,9 @@ Required if `Protocol` is `https`;
 
     @property
     def BasicDeviceType(self):
+        """Device type (only provided for Anti-DDoS Basic). Valid values: cvm (CVM), clb (public CLB), lb (BM CLB), nat (NAT server), channel (internet channel).
+        :rtype: str
+        """
         return self._BasicDeviceType
 
     @BasicDeviceType.setter
@@ -14455,6 +17275,9 @@ Required if `Protocol` is `https`;
 
     @property
     def BasicIpInstance(self):
+        """IPInstance Nat gateway (only provided for Anti-DDoS Basic), which is optional. (If the device type to be queried is a NAT server, this parameter is required, which can be obtained through the NAT resource query API)
+        :rtype: str
+        """
         return self._BasicIpInstance
 
     @BasicIpInstance.setter
@@ -14463,6 +17286,9 @@ Required if `Protocol` is `https`;
 
     @property
     def BasicIspCode(self):
+        """ISP line (only provided for Anti-DDoS Basic), which is optional. (If the device type to be queried is a NAT server, this parameter should be 5)
+        :rtype: int
+        """
         return self._BasicIspCode
 
     @BasicIspCode.setter
@@ -14471,6 +17297,9 @@ Required if `Protocol` is `https`;
 
     @property
     def Domain(self):
+        """This optional field must be specified when HTTPS protocol is used.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -14518,6 +17347,9 @@ class ModifyCCThresholdResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -14526,6 +17358,9 @@ class ModifyCCThresholdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14578,6 +17413,9 @@ If `Method` is `delete`, this field can be left empty;
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -14586,6 +17424,9 @@ If `Method` is `delete`, this field can be left empty;
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -14594,6 +17435,9 @@ If `Method` is `delete`, this field can be left empty;
 
     @property
     def Method(self):
+        """add: add, delete: delete
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -14602,6 +17446,9 @@ If `Method` is `delete`, this field can be left empty;
 
     @property
     def Type(self):
+        """Blocklist/allowlist type. Valid value: [white (allowlist)]
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -14610,6 +17457,11 @@ If `Method` is `delete`, this field can be left empty;
 
     @property
     def UrlList(self):
+        """URL array. URL format:
+http://domain name/cgi
+https://domain name/cgi
+        :rtype: list of str
+        """
         return self._UrlList
 
     @UrlList.setter
@@ -14618,6 +17470,9 @@ If `Method` is `delete`, this field can be left empty;
 
     @property
     def Protocol(self):
+        """CC protection type, which is optional. Valid values: [http (HTTP CC protection), https (HTTPS CC protection)]; if this field is left empty, HTTPS CC protection will be used by default; if `https` is entered, the `Domain` and `RuleId` fields are required;
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -14626,6 +17481,9 @@ If `Method` is `delete`, this field can be left empty;
 
     @property
     def Domain(self):
+        """HTTPS layer-7 forwarding rule domain name (which is optional and can be obtained from the layer-7 forwarding rule API). This field is required only if `Protocol` is `https`;
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -14634,6 +17492,10 @@ If `Method` is `delete`, this field can be left empty;
 
     @property
     def RuleId(self):
+        """HTTPS layer-7 forwarding rule ID (which is optional and can be obtained from the layer-7 forwarding rule API). This field is required only when adding a rule and `Protocol` is `https`;
+If `Method` is `delete`, this field can be left empty;
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -14677,6 +17539,9 @@ class ModifyCCUrlAllowResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -14685,6 +17550,9 @@ class ModifyCCUrlAllowResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14722,6 +17590,9 @@ class ModifyDDoSAIStatusRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -14730,6 +17601,9 @@ class ModifyDDoSAIStatusRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -14738,6 +17612,9 @@ class ModifyDDoSAIStatusRequest(AbstractModel):
 
     @property
     def Method(self):
+        """get (read AI protection status), set (modify AI protection status);
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -14746,6 +17623,9 @@ class ModifyDDoSAIStatusRequest(AbstractModel):
 
     @property
     def DDoSAI(self):
+        """AI protection status, which is required if `Method` is `set`. Valid values: [on, off].
+        :rtype: str
+        """
         return self._DDoSAI
 
     @DDoSAI.setter
@@ -14788,6 +17668,9 @@ class ModifyDDoSAIStatusResponse(AbstractModel):
 
     @property
     def DDoSAI(self):
+        """AI protection status. Valid values: [on, off]
+        :rtype: str
+        """
         return self._DDoSAI
 
     @DDoSAI.setter
@@ -14796,6 +17679,9 @@ class ModifyDDoSAIStatusResponse(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -14804,6 +17690,9 @@ class ModifyDDoSAIStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14843,6 +17732,9 @@ class ModifyDDoSAlarmThresholdRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`shield`: Chess Shield, `bgpip`: Anti-DDoS Advanced, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -14851,6 +17743,9 @@ class ModifyDDoSAlarmThresholdRequest(AbstractModel):
 
     @property
     def RsId(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._RsId
 
     @RsId.setter
@@ -14859,6 +17754,9 @@ class ModifyDDoSAlarmThresholdRequest(AbstractModel):
 
     @property
     def AlarmType(self):
+        """Alarm threshold type. 0: not set, 1: inbound traffic, 2: cleansed traffic
+        :rtype: int
+        """
         return self._AlarmType
 
     @AlarmType.setter
@@ -14867,6 +17765,9 @@ class ModifyDDoSAlarmThresholdRequest(AbstractModel):
 
     @property
     def AlarmThreshold(self):
+        """Alarm threshold, which should be greater than 0 (currently scheduled value)
+        :rtype: int
+        """
         return self._AlarmThreshold
 
     @AlarmThreshold.setter
@@ -14875,6 +17776,9 @@ class ModifyDDoSAlarmThresholdRequest(AbstractModel):
 
     @property
     def IpList(self):
+        """List of IPs associated with resource. If no Anti-DDoS Pro instance is bound, pass in an empty array. For Anti-DDoS Ultimate, pass in multiple IPs
+        :rtype: list of str
+        """
         return self._IpList
 
     @IpList.setter
@@ -14915,6 +17819,9 @@ class ModifyDDoSAlarmThresholdResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -14923,6 +17830,9 @@ class ModifyDDoSAlarmThresholdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14997,6 +17907,9 @@ class ModifyDDoSDefendStatusRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate, `basic`: Anti-DDoS Basic
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -15005,6 +17918,9 @@ class ModifyDDoSDefendStatusRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Protection status. Valid values: [0 (disabled), 1 (enabled)]
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -15013,6 +17929,9 @@ class ModifyDDoSDefendStatusRequest(AbstractModel):
 
     @property
     def Hour(self):
+        """Disablement duration in hours. Valid values: [0, 1, 2, 3, 4, 5, 6]. If `Status` is `0` (indicating to disable), `Hour` must be greater than 0;
+        :rtype: int
+        """
         return self._Hour
 
     @Hour.setter
@@ -15021,6 +17940,9 @@ class ModifyDDoSDefendStatusRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Resource ID, which is required if `Business` is not Anti-DDoS Basic;
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -15029,6 +17951,9 @@ class ModifyDDoSDefendStatusRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """Anti-DDoS Basic IP, which is required only if `Business` is Anti-DDoS Basic;
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -15037,6 +17962,9 @@ class ModifyDDoSDefendStatusRequest(AbstractModel):
 
     @property
     def BizType(self):
+        """Product type of IP, which is required only if `Business` is Anti-DDoS Basic. Valid values: [public (CVM), bm (BM), eni (ENI), vpngw (VPN Gateway), natgw (NAT Gateway), waf (WAF), fpc (finance product), gaap (GAAP), other (hosted IP)]
+        :rtype: str
+        """
         return self._BizType
 
     @BizType.setter
@@ -15045,6 +17973,9 @@ class ModifyDDoSDefendStatusRequest(AbstractModel):
 
     @property
     def DeviceType(self):
+        """Product subtype of IP, which is required only if `Business` is Anti-DDoS Basic. Valid values: [cvm (CVM), lb (CLB), eni (ENI), vpngw (VPN), natgw (NAT), waf (WAF), fpc (finance), gaap (GAAP), other (hosted IP), eip (BM EIP)]
+        :rtype: str
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -15053,6 +17984,9 @@ class ModifyDDoSDefendStatusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Resource instance ID of IP, which is required only if `Business` is Anti-DDoS Basic. This field is required when binding a new IP. For example, if it is an ENI IP, enter `ID(eni-*)` of the ENI for `InstanceId`;
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -15061,6 +17995,31 @@ class ModifyDDoSDefendStatusRequest(AbstractModel):
 
     @property
     def IPRegion(self):
+        """This field is required only if `Business` is Anti-DDoS Basic, indicating the IP region. Valid values:
+"bj":     North China (Beijing)
+"cd":     Southwest China (Chengdu)
+"cq":     Southwest China (Chongqing)
+"gz":     South China (Guangzhou)
+"gzopen": South China (Guangzhou Open)
+"hk":     Hong Kong (China)
+"kr":     Southeast Asia (Seoul)
+"sh":     East China (Shanghai)
+"shjr":   East China (Shanghai Finance)
+"szjr":   South China (Shenzhen Finance)
+"sg":     Southeast Asia (Singapore)
+"th":     Southeast Asia (Thailand)
+"de":     Europe (Germany)
+"usw":    West US (Silicon Valley)
+"ca":     North America (Toronto)
+"jp":     Japan
+"hzec":   Hangzhou
+"in":     India
+"use":    East US (Virginia)
+"ru":     Russia
+"tpe":    Taiwan (China)
+"nj":     Nanjing
+        :rtype: str
+        """
         return self._IPRegion
 
     @IPRegion.setter
@@ -15105,6 +18064,9 @@ class ModifyDDoSDefendStatusResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -15113,6 +18075,9 @@ class ModifyDDoSDefendStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15150,6 +18115,9 @@ class ModifyDDoSLevelRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -15158,6 +18126,9 @@ class ModifyDDoSLevelRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -15166,6 +18137,9 @@ class ModifyDDoSLevelRequest(AbstractModel):
 
     @property
     def Method(self):
+        """get (read protection level), set (modify protection level);
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -15174,6 +18148,9 @@ class ModifyDDoSLevelRequest(AbstractModel):
 
     @property
     def DDoSLevel(self):
+        """Protection level, which is required if `Method` is `set`. Valid values: [low,middle,high]
+        :rtype: str
+        """
         return self._DDoSLevel
 
     @DDoSLevel.setter
@@ -15216,6 +18193,9 @@ class ModifyDDoSLevelResponse(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -15224,6 +18204,9 @@ class ModifyDDoSLevelResponse(AbstractModel):
 
     @property
     def DDoSLevel(self):
+        """Protection level. Valid values: [low,middle,high]
+        :rtype: str
+        """
         return self._DDoSLevel
 
     @DDoSLevel.setter
@@ -15232,6 +18215,9 @@ class ModifyDDoSLevelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15328,6 +18314,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -15336,6 +18325,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def SceneId(self):
+        """Policy scenario ID
+        :rtype: str
+        """
         return self._SceneId
 
     @SceneId.setter
@@ -15344,6 +18336,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def PlatformTypes(self):
+        """Development platform. Valid values: [PC (PC client), MOBILE (mobile device), TV (TV), SERVER (server)]
+        :rtype: list of str
+        """
         return self._PlatformTypes
 
     @PlatformTypes.setter
@@ -15352,6 +18347,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def AppType(self):
+        """Category. Valid values: [WEB (website), GAME (game), APP (application), OTHER (other)]
+        :rtype: str
+        """
         return self._AppType
 
     @AppType.setter
@@ -15360,6 +18358,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def AppProtocols(self):
+        """Application protocol. Valid values: [tcp (TCP protocol), udp (UDP protocol), icmp (ICMP protocol), all (other protocols)]
+        :rtype: list of str
+        """
         return self._AppProtocols
 
     @AppProtocols.setter
@@ -15368,6 +18369,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def TcpSportStart(self):
+        """TCP start port. Value range: (0, 65535]
+        :rtype: str
+        """
         return self._TcpSportStart
 
     @TcpSportStart.setter
@@ -15376,6 +18380,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def TcpSportEnd(self):
+        """TCP end port. Value range: (0, 65535). It must be greater than or equal to the TCP start port
+        :rtype: str
+        """
         return self._TcpSportEnd
 
     @TcpSportEnd.setter
@@ -15384,6 +18391,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def UdpSportStart(self):
+        """UDP start port. Value range: (0, 65535]
+        :rtype: str
+        """
         return self._UdpSportStart
 
     @UdpSportStart.setter
@@ -15392,6 +18402,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def UdpSportEnd(self):
+        """End UDP business port. Value range: (0, 65535). It must be greater than or equal to the start UDP business port
+        :rtype: str
+        """
         return self._UdpSportEnd
 
     @UdpSportEnd.setter
@@ -15400,6 +18413,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def HasAbroad(self):
+        """Whether there are customers outside Mainland China. Valid values: [no, yes]
+        :rtype: str
+        """
         return self._HasAbroad
 
     @HasAbroad.setter
@@ -15408,6 +18424,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def HasInitiateTcp(self):
+        """Whether to actively initiate outbound TCP requests. Valid values: [no, yes]
+        :rtype: str
+        """
         return self._HasInitiateTcp
 
     @HasInitiateTcp.setter
@@ -15416,6 +18435,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def HasInitiateUdp(self):
+        """Whether to actively initiate outbound UDP requests. Valid values: [no, yes]
+        :rtype: str
+        """
         return self._HasInitiateUdp
 
     @HasInitiateUdp.setter
@@ -15424,6 +18446,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def PeerTcpPort(self):
+        """Port that actively initiates TCP requests. Value range: (0, 65535]
+        :rtype: str
+        """
         return self._PeerTcpPort
 
     @PeerTcpPort.setter
@@ -15432,6 +18457,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def PeerUdpPort(self):
+        """Port that actively initiates UDP requests. Value range: (0, 65535]
+        :rtype: str
+        """
         return self._PeerUdpPort
 
     @PeerUdpPort.setter
@@ -15440,6 +18468,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def TcpFootprint(self):
+        """Fixed feature code of TCP payload. String length limit: 512
+        :rtype: str
+        """
         return self._TcpFootprint
 
     @TcpFootprint.setter
@@ -15448,6 +18479,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def UdpFootprint(self):
+        """Fixed feature code of UDP payload. String length limit: 512
+        :rtype: str
+        """
         return self._UdpFootprint
 
     @UdpFootprint.setter
@@ -15456,6 +18490,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def WebApiUrl(self):
+        """Web business API URL
+        :rtype: list of str
+        """
         return self._WebApiUrl
 
     @WebApiUrl.setter
@@ -15464,6 +18501,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def MinTcpPackageLen(self):
+        """Minimum length of TCP business packet. Value range: (0, 1500)
+        :rtype: str
+        """
         return self._MinTcpPackageLen
 
     @MinTcpPackageLen.setter
@@ -15472,6 +18512,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def MaxTcpPackageLen(self):
+        """Maximum length of TCP business packet. Value range: (0, 1500). It must be greater than or equal to the minimum length of TCP business packet
+        :rtype: str
+        """
         return self._MaxTcpPackageLen
 
     @MaxTcpPackageLen.setter
@@ -15480,6 +18523,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def MinUdpPackageLen(self):
+        """Minimum length of UDP business packet. Value range: (0, 1500)
+        :rtype: str
+        """
         return self._MinUdpPackageLen
 
     @MinUdpPackageLen.setter
@@ -15488,6 +18534,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def MaxUdpPackageLen(self):
+        """Maximum length of UDP business packet. Value range: (0, 1500). It must be greater than or equal to the minimum length of UDP business packet
+        :rtype: str
+        """
         return self._MaxUdpPackageLen
 
     @MaxUdpPackageLen.setter
@@ -15496,6 +18545,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def HasVPN(self):
+        """Whether there are VPN businesses. Valid values: [no, yes]
+        :rtype: str
+        """
         return self._HasVPN
 
     @HasVPN.setter
@@ -15504,6 +18556,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def TcpPortList(self):
+        """TCP business port list. Individual ports and port ranges are supported, which should be in string type, such as 80,443,700-800,53,1000-3000
+        :rtype: str
+        """
         return self._TcpPortList
 
     @TcpPortList.setter
@@ -15512,6 +18567,9 @@ class ModifyDDoSPolicyCaseRequest(AbstractModel):
 
     @property
     def UdpPortList(self):
+        """UDP business port list. Individual ports and port ranges are supported, which should be in string type, such as 80,443,700-800,53,1000-3000
+        :rtype: str
+        """
         return self._UdpPortList
 
     @UdpPortList.setter
@@ -15571,6 +18629,9 @@ class ModifyDDoSPolicyCaseResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -15579,6 +18640,9 @@ class ModifyDDoSPolicyCaseResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15613,6 +18677,9 @@ class ModifyDDoSPolicyNameRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -15621,6 +18688,9 @@ class ModifyDDoSPolicyNameRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """Policy ID
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -15629,6 +18699,9 @@ class ModifyDDoSPolicyNameRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Policy name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -15667,6 +18740,9 @@ class ModifyDDoSPolicyNameResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -15675,6 +18751,9 @@ class ModifyDDoSPolicyNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15721,6 +18800,9 @@ class ModifyDDoSPolicyRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -15729,6 +18811,9 @@ class ModifyDDoSPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """Policy ID
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -15737,6 +18822,9 @@ class ModifyDDoSPolicyRequest(AbstractModel):
 
     @property
     def DropOptions(self):
+        """Protocol disablement, which must be entered, and the array length must be 1
+        :rtype: list of DDoSPolicyDropOption
+        """
         return self._DropOptions
 
     @DropOptions.setter
@@ -15745,6 +18833,9 @@ class ModifyDDoSPolicyRequest(AbstractModel):
 
     @property
     def PortLimits(self):
+        """Port disablement. If no ports are to be disabled, enter an empty array
+        :rtype: list of DDoSPolicyPortLimit
+        """
         return self._PortLimits
 
     @PortLimits.setter
@@ -15753,6 +18844,9 @@ class ModifyDDoSPolicyRequest(AbstractModel):
 
     @property
     def IpAllowDenys(self):
+        """IP blocklist/allowlist. Enter an empty array if there is no IP blocklist/allowlist
+        :rtype: list of IpBlackWhite
+        """
         return self._IpAllowDenys
 
     @IpAllowDenys.setter
@@ -15761,6 +18855,9 @@ class ModifyDDoSPolicyRequest(AbstractModel):
 
     @property
     def PacketFilters(self):
+        """Packet filter. Enter an empty array if there are no packets to filter
+        :rtype: list of DDoSPolicyPacketFilter
+        """
         return self._PacketFilters
 
     @PacketFilters.setter
@@ -15769,6 +18866,9 @@ class ModifyDDoSPolicyRequest(AbstractModel):
 
     @property
     def WaterPrint(self):
+        """Watermarking policy parameter. Enter an empty array if the watermarking feature is not enabled. At most one watermarking policy can be passed in (that is, the size of the array cannot exceed 1)
+        :rtype: list of WaterPrintPolicy
+        """
         return self._WaterPrint
 
     @WaterPrint.setter
@@ -15836,6 +18936,9 @@ class ModifyDDoSPolicyResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -15844,6 +18947,9 @@ class ModifyDDoSPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15915,6 +19021,9 @@ class ModifyDDoSSwitchRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `basic`: Anti-DDoS Basic
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -15923,6 +19032,9 @@ class ModifyDDoSSwitchRequest(AbstractModel):
 
     @property
     def Method(self):
+        """`get`: read DDoS protection status, `set`: modify DDoS protection status
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -15931,6 +19043,9 @@ class ModifyDDoSSwitchRequest(AbstractModel):
 
     @property
     def Ip(self):
+        """Anti-DDoS Basic IP, which is required only if `Business` is Anti-DDoS Basic;
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -15939,6 +19054,9 @@ class ModifyDDoSSwitchRequest(AbstractModel):
 
     @property
     def BizType(self):
+        """Product type of IP, which is required only if `Business` is Anti-DDoS Basic. Valid values: [public (CVM), bm (BM), eni (ENI), vpngw (VPN Gateway), natgw (NAT Gateway), waf (WAF), fpc (finance product), gaap (GAAP), other (hosted IP)]
+        :rtype: str
+        """
         return self._BizType
 
     @BizType.setter
@@ -15947,6 +19065,9 @@ class ModifyDDoSSwitchRequest(AbstractModel):
 
     @property
     def DeviceType(self):
+        """Product subtype of IP, which is required only if `Business` is Anti-DDoS Basic. Valid values: [cvm (CVM), lb (CLB), eni (ENI), vpngw (VPN), natgw (NAT), waf (WAF), fpc (finance), gaap (GAAP), other (hosted IP), eip (BM EIP)]
+        :rtype: str
+        """
         return self._DeviceType
 
     @DeviceType.setter
@@ -15955,6 +19076,9 @@ class ModifyDDoSSwitchRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Resource instance ID of IP, which is required only if `Business` is Anti-DDoS Basic. This field is required when binding a new IP. For example, if it is an ENI IP, enter `ID(eni-*)` of the ENI for `InstanceId`;
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -15963,6 +19087,31 @@ class ModifyDDoSSwitchRequest(AbstractModel):
 
     @property
     def IPRegion(self):
+        """This field is required only if `Business` is Anti-DDoS Basic, indicating the IP region. Valid values:
+"bj":     North China (Beijing)
+"cd":     Southwest China (Chengdu)
+"cq":     Southwest China (Chongqing)
+"gz":     South China (Guangzhou)
+"gzopen": South China (Guangzhou Open)
+"hk":     Hong Kong (China)
+"kr":     Southeast Asia (Seoul)
+"sh":     East China (Shanghai)
+"shjr":   East China (Shanghai Finance)
+"szjr":   South China (Shenzhen Finance)
+"sg":     Southeast Asia (Singapore)
+"th":     Southeast Asia (Thailand)
+"de":     Europe (Germany)
+"usw":    West US (Silicon Valley)
+"ca":     North America (Toronto)
+"jp":     Japan
+"hzec":   Hangzhou
+"in":     India
+"use":    East US (Virginia)
+"ru":     Russia
+"tpe":    Taiwan (China)
+"nj":     Nanjing
+        :rtype: str
+        """
         return self._IPRegion
 
     @IPRegion.setter
@@ -15971,6 +19120,9 @@ class ModifyDDoSSwitchRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Protection status value, which is optional. Valid values: [0 (disabled), 1 (enabled)]. If `Method` is `get`, this field can be left empty;
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -16014,6 +19166,9 @@ class ModifyDDoSSwitchResponse(AbstractModel):
 
     @property
     def Status(self):
+        """Current protection status value. Valid values: [0 (disabled), 1 (enabled)]
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -16022,6 +19177,9 @@ class ModifyDDoSSwitchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16055,6 +19213,9 @@ If the value is set to 0, the default value will be used;
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -16063,6 +19224,9 @@ If the value is set to 0, the default value will be used;
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -16071,6 +19235,10 @@ If the value is set to 0, the default value will be used;
 
     @property
     def Threshold(self):
+        """DDoS cleansing threshold. Valid values: [0, 60, 80, 100, 150, 200, 250, 300, 400, 500, 700, 1000];
+If the value is set to 0, the default value will be used;
+        :rtype: int
+        """
         return self._Threshold
 
     @Threshold.setter
@@ -16109,6 +19277,9 @@ class ModifyDDoSThresholdResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -16117,6 +19288,9 @@ class ModifyDDoSThresholdResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16154,6 +19328,9 @@ class ModifyDDoSWaterKeyRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -16162,6 +19339,9 @@ class ModifyDDoSWaterKeyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """Policy ID
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -16170,6 +19350,9 @@ class ModifyDDoSWaterKeyRequest(AbstractModel):
 
     @property
     def Method(self):
+        """Key operation. Valid values: [add (add), delete (delete), open (open), close (close), get (get key)]
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -16178,6 +19361,9 @@ class ModifyDDoSWaterKeyRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Key ID, which can be left empty or 0 when adding a key but is required for other operations
+        :rtype: int
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -16217,6 +19403,9 @@ class ModifyDDoSWaterKeyResponse(AbstractModel):
 
     @property
     def KeyList(self):
+        """Watermark key list
+        :rtype: list of WaterPrintKey
+        """
         return self._KeyList
 
     @KeyList.setter
@@ -16225,6 +19414,9 @@ class ModifyDDoSWaterKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16262,6 +19454,9 @@ class ModifyElasticLimitRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -16270,6 +19465,9 @@ class ModifyElasticLimitRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -16278,6 +19476,9 @@ class ModifyElasticLimitRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Elastic protection threshold. Valid values: [0 10000 20000 30000 40000 50000 60000 70000 80000 90000 100000 120000 150000 200000 250000 300000 400000 600000 800000 220000 310000 110000 270000 610000]
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -16316,6 +19517,9 @@ class ModifyElasticLimitResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -16324,6 +19528,9 @@ class ModifyElasticLimitResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16358,6 +19565,9 @@ class ModifyL4HealthRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -16366,6 +19576,9 @@ class ModifyL4HealthRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -16374,6 +19587,9 @@ class ModifyL4HealthRequest(AbstractModel):
 
     @property
     def Healths(self):
+        """Health check parameter array
+        :rtype: list of L4RuleHealth
+        """
         return self._Healths
 
     @Healths.setter
@@ -16417,6 +19633,9 @@ class ModifyL4HealthResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -16425,6 +19644,9 @@ class ModifyL4HealthResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16465,6 +19687,9 @@ class ModifyL4KeepTimeRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -16473,6 +19698,9 @@ class ModifyL4KeepTimeRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -16481,6 +19709,9 @@ class ModifyL4KeepTimeRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -16489,6 +19720,9 @@ class ModifyL4KeepTimeRequest(AbstractModel):
 
     @property
     def KeepEnable(self):
+        """Session persistence status. Valid values: [0 (disabled), 1 (enabled)]
+        :rtype: int
+        """
         return self._KeepEnable
 
     @KeepEnable.setter
@@ -16497,6 +19731,9 @@ class ModifyL4KeepTimeRequest(AbstractModel):
 
     @property
     def KeepTime(self):
+        """Session persistence duration in seconds
+        :rtype: int
+        """
         return self._KeepTime
 
     @KeepTime.setter
@@ -16537,6 +19774,9 @@ class ModifyL4KeepTimeResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -16545,6 +19785,9 @@ class ModifyL4KeepTimeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16579,6 +19822,9 @@ class ModifyL4RulesRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -16587,6 +19833,9 @@ class ModifyL4RulesRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -16595,6 +19844,9 @@ class ModifyL4RulesRequest(AbstractModel):
 
     @property
     def Rule(self):
+        """Rule
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.L4RuleEntry`
+        """
         return self._Rule
 
     @Rule.setter
@@ -16635,6 +19887,9 @@ class ModifyL4RulesResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -16643,6 +19898,9 @@ class ModifyL4RulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16677,6 +19935,9 @@ class ModifyL7RulesRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -16685,6 +19946,9 @@ class ModifyL7RulesRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -16693,6 +19957,9 @@ class ModifyL7RulesRequest(AbstractModel):
 
     @property
     def Rule(self):
+        """Rule
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.L7RuleEntry`
+        """
         return self._Rule
 
     @Rule.setter
@@ -16733,6 +20000,9 @@ class ModifyL7RulesResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -16741,6 +20011,9 @@ class ModifyL7RulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16778,6 +20051,9 @@ class ModifyNetReturnSwitchRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`net`: Anti-DDoS Ultimate)
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -16786,6 +20062,9 @@ class ModifyNetReturnSwitchRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -16794,6 +20073,9 @@ class ModifyNetReturnSwitchRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Switch status. 0: disabled, 1: enabled
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -16802,6 +20084,9 @@ class ModifyNetReturnSwitchRequest(AbstractModel):
 
     @property
     def Hour(self):
+        """Switch duration in hours. Valid values: [0,1,2,3,4,5,6;]. If `status` is 1, this field is required and must be greater than 0
+        :rtype: int
+        """
         return self._Hour
 
     @Hour.setter
@@ -16838,6 +20123,9 @@ class ModifyNetReturnSwitchResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16869,6 +20157,9 @@ class ModifyNewDomainRulesRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced).
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -16877,6 +20168,9 @@ class ModifyNewDomainRulesRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID.
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -16885,6 +20179,9 @@ class ModifyNewDomainRulesRequest(AbstractModel):
 
     @property
     def Rule(self):
+        """Domain name forwarding rule.
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.NewL7RuleEntry`
+        """
         return self._Rule
 
     @Rule.setter
@@ -16925,6 +20222,9 @@ class ModifyNewDomainRulesResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code.
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -16933,6 +20233,9 @@ class ModifyNewDomainRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16967,6 +20270,9 @@ class ModifyNewL4RuleRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type (`bgpip`: Anti-DDoS Advanced).
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -16975,6 +20281,9 @@ class ModifyNewL4RuleRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID.
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -16983,6 +20292,9 @@ class ModifyNewL4RuleRequest(AbstractModel):
 
     @property
     def Rule(self):
+        """Forwarding rule.
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.L4RuleEntry`
+        """
         return self._Rule
 
     @Rule.setter
@@ -17023,6 +20335,9 @@ class ModifyNewL4RuleResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code.
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -17031,6 +20346,9 @@ class ModifyNewL4RuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17068,6 +20386,9 @@ class ModifyResBindDDoSPolicyRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced; `bgp`: Anti-DDoS Pro (single IP); `bgp-multip`: Anti-DDoS Pro (multi-IP), `net`: Anti-DDoS Ultimate
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -17076,6 +20397,9 @@ class ModifyResBindDDoSPolicyRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -17084,6 +20408,9 @@ class ModifyResBindDDoSPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
+        """Policy ID
+        :rtype: str
+        """
         return self._PolicyId
 
     @PolicyId.setter
@@ -17092,6 +20419,9 @@ class ModifyResBindDDoSPolicyRequest(AbstractModel):
 
     @property
     def Method(self):
+        """bind: bind policy; unbind: unbind policy
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -17131,6 +20461,9 @@ class ModifyResBindDDoSPolicyResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -17139,6 +20472,9 @@ class ModifyResBindDDoSPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17173,6 +20509,9 @@ class ModifyResourceRenewFlagRequest(AbstractModel):
 
     @property
     def Business(self):
+        """Anti-DDoS service type. `bgpip`: Anti-DDoS Advanced, `net`: Anti-DDoS Ultimate, `shield`: Chess Shield, `bgp`: Anti-DDoS Pro (single IP), `bgp-multip`: Anti-DDoS Pro (multi-IP), `insurance`: guarantee package, `staticpack`: non-BGP package
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -17181,6 +20520,9 @@ class ModifyResourceRenewFlagRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Resource ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -17189,6 +20531,9 @@ class ModifyResourceRenewFlagRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """Auto-renewal flag (0: manual renewal, 1: auto-renewal, 2: no renewal upon expiration)
+        :rtype: int
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -17227,6 +20572,9 @@ class ModifyResourceRenewFlagResponse(AbstractModel):
 
     @property
     def Success(self):
+        """Success code
+        :rtype: :class:`tencentcloud.dayu.v20180709.models.SuccessCode`
+        """
         return self._Success
 
     @Success.setter
@@ -17235,6 +20583,9 @@ class ModifyResourceRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17333,6 +20684,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
+        """Forwarding protocol. Valid values: `http` and `https`.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -17341,6 +20695,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Domain(self):
+        """Forwarding domain name.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -17349,6 +20706,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SourceType(self):
+        """Forwarding method. Valid values: `1` (by domain name); `2` (by IP).
+        :rtype: int
+        """
         return self._SourceType
 
     @SourceType.setter
@@ -17357,6 +20717,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeepTime(self):
+        """Session persistence duration, in seconds.
+        :rtype: int
+        """
         return self._KeepTime
 
     @KeepTime.setter
@@ -17365,6 +20728,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SourceList(self):
+        """List of sources
+        :rtype: list of L4RuleSource
+        """
         return self._SourceList
 
     @SourceList.setter
@@ -17373,6 +20739,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LbType(self):
+        """Load balancing method. Valid value: `1` (weighed polling).
+        :rtype: int
+        """
         return self._LbType
 
     @LbType.setter
@@ -17381,6 +20750,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def KeepEnable(self):
+        """Whether session persistence is enabled. Valid values: `0` (disabled) and `1` (enabled).
+        :rtype: int
+        """
         return self._KeepEnable
 
     @KeepEnable.setter
@@ -17389,6 +20761,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleId(self):
+        """Rule ID. This field is not required for adding a rule, but is required for modifying or deleting a rule.
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -17397,6 +20772,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertType(self):
+        """Certificate source. When the forwarding protocol is HTTPS, this field must be set to `2` (Tencent Cloud managed certificate), and for HTTP protocol, it can be set to `0`.
+        :rtype: int
+        """
         return self._CertType
 
     @CertType.setter
@@ -17405,6 +20783,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SSLId(self):
+        """When the certificate source is Tencent Cloud managed certificate, this field must be set to the ID of the managed certificate.
+        :rtype: str
+        """
         return self._SSLId
 
     @SSLId.setter
@@ -17413,6 +20794,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Cert(self):
+        """[Disused] When the certificate is an external certificate, the certificate content should be provided here. 
+        :rtype: str
+        """
         return self._Cert
 
     @Cert.setter
@@ -17421,6 +20805,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PrivateKey(self):
+        """[Disused] When the certificate is an external certificate, the certificate key should be provided here. 
+        :rtype: str
+        """
         return self._PrivateKey
 
     @PrivateKey.setter
@@ -17429,6 +20816,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleName(self):
+        """Rule description.
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -17437,6 +20827,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Rule status. Valid values: `0` (the rule was successfully configured), `1` (configuring the rule), `2` (rule configuration failed), `3` (deleting the rule), `5` (failed to delete rule), `6` (rule awaiting configuration), `7` (rule awaiting deletion), and `8` (rule awaiting certificate configuration).
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -17445,6 +20838,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CCStatus(self):
+        """CC protection status. Valid values: `0` (disabled) and `1` (enabled).
+        :rtype: int
+        """
         return self._CCStatus
 
     @CCStatus.setter
@@ -17453,6 +20849,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CCEnable(self):
+        """CC protection status based on HTTPS. Valid values: `0` (disabled) and `1` (enabled).
+        :rtype: int
+        """
         return self._CCEnable
 
     @CCEnable.setter
@@ -17461,6 +20860,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CCThreshold(self):
+        """CC protection threshold based on HTTPS.
+        :rtype: int
+        """
         return self._CCThreshold
 
     @CCThreshold.setter
@@ -17469,6 +20871,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CCLevel(self):
+        """CC protection level based on HTTPS.
+        :rtype: str
+        """
         return self._CCLevel
 
     @CCLevel.setter
@@ -17477,6 +20882,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
+        """Region code.
+        :rtype: int
+        """
         return self._Region
 
     @Region.setter
@@ -17485,6 +20893,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID.
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -17493,6 +20904,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ip(self):
+        """Anti-DDoS instance IP address.
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -17501,6 +20915,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModifyTime(self):
+        """Modification time.
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -17509,6 +20926,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def HttpsToHttpEnable(self):
+        """Whether to enable **Forward HTTPS requests via HTTP**. Valid values: `0` (disabled) and `1` (enabled). The default value is disabled.
+        :rtype: int
+        """
         return self._HttpsToHttpEnable
 
     @HttpsToHttpEnable.setter
@@ -17517,6 +20937,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VirtualPort(self):
+        """Access port number.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._VirtualPort
 
     @VirtualPort.setter
@@ -17584,6 +21008,12 @@ overloadCount (number of times of exceeding peak value)
 
     @property
     def Field(self):
+        """Sort by field name. Valid values: [
+bandwidth (bandwidth),
+overloadCount (number of times of exceeding peak value)
+]
+        :rtype: str
+        """
         return self._Field
 
     @Field.setter
@@ -17592,6 +21022,9 @@ overloadCount (number of times of exceeding peak value)
 
     @property
     def Order(self):
+        """Sorting order. Valid values: [asc (ascending), desc (descending)]
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -17629,6 +21062,9 @@ class Paging(AbstractModel):
 
     @property
     def Offset(self):
+        """Starting position
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -17637,6 +21073,9 @@ class Paging(AbstractModel):
 
     @property
     def Limit(self):
+        """Quantity
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -17674,6 +21113,9 @@ class ProtocolPort(AbstractModel):
 
     @property
     def Protocol(self):
+        """Protocol (TCP, UDP)
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -17682,6 +21124,9 @@ class ProtocolPort(AbstractModel):
 
     @property
     def Port(self):
+        """Port
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -17722,6 +21167,9 @@ class RegionInstanceCount(AbstractModel):
 
     @property
     def Region(self):
+        """Region code
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -17730,6 +21178,9 @@ class RegionInstanceCount(AbstractModel):
 
     @property
     def RegionV3(self):
+        """Region code (new specification)
+        :rtype: str
+        """
         return self._RegionV3
 
     @RegionV3.setter
@@ -17738,6 +21189,9 @@ class RegionInstanceCount(AbstractModel):
 
     @property
     def Count(self):
+        """Number of resource instances
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -17776,6 +21230,9 @@ class ResourceIp(AbstractModel):
 
     @property
     def Id(self):
+        """Anti-DDoS instance ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -17784,6 +21241,9 @@ class ResourceIp(AbstractModel):
 
     @property
     def IpList(self):
+        """Resource IP array
+        :rtype: list of str
+        """
         return self._IpList
 
     @IpList.setter
@@ -17848,6 +21308,9 @@ class SchedulingDomain(AbstractModel):
 
     @property
     def Domain(self):
+        """Scheduling domain name
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -17856,6 +21319,9 @@ class SchedulingDomain(AbstractModel):
 
     @property
     def BGPIpList(self):
+        """List of BGP IPs
+        :rtype: list of str
+        """
         return self._BGPIpList
 
     @BGPIpList.setter
@@ -17864,6 +21330,9 @@ class SchedulingDomain(AbstractModel):
 
     @property
     def CTCCIpList(self):
+        """List of CTCC IPs
+        :rtype: list of str
+        """
         return self._CTCCIpList
 
     @CTCCIpList.setter
@@ -17872,6 +21341,9 @@ class SchedulingDomain(AbstractModel):
 
     @property
     def CUCCIpList(self):
+        """List of CUCC IPs
+        :rtype: list of str
+        """
         return self._CUCCIpList
 
     @CUCCIpList.setter
@@ -17880,6 +21352,9 @@ class SchedulingDomain(AbstractModel):
 
     @property
     def CMCCIpList(self):
+        """List of CMCC IPs
+        :rtype: list of str
+        """
         return self._CMCCIpList
 
     @CMCCIpList.setter
@@ -17888,6 +21363,9 @@ class SchedulingDomain(AbstractModel):
 
     @property
     def OverseaIpList(self):
+        """List of IPs outside Mainland China
+        :rtype: list of str
+        """
         return self._OverseaIpList
 
     @OverseaIpList.setter
@@ -17896,6 +21374,9 @@ class SchedulingDomain(AbstractModel):
 
     @property
     def Method(self):
+        """Scheduling method. It only supports `priority` now.
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -17904,6 +21385,9 @@ class SchedulingDomain(AbstractModel):
 
     @property
     def CreateTime(self):
+        """The creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -17912,6 +21396,9 @@ class SchedulingDomain(AbstractModel):
 
     @property
     def TTL(self):
+        """
+        :rtype: int
+        """
         return self._TTL
 
     @TTL.setter
@@ -17920,6 +21407,9 @@ class SchedulingDomain(AbstractModel):
 
     @property
     def Status(self):
+        """Status
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -17928,6 +21418,9 @@ class SchedulingDomain(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """Modification time
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -17974,6 +21467,9 @@ class SuccessCode(AbstractModel):
 
     @property
     def Code(self):
+        """Success/error code
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -17982,6 +21478,9 @@ class SuccessCode(AbstractModel):
 
     @property
     def Message(self):
+        """Description
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -18028,6 +21527,9 @@ class WaterPrintKey(AbstractModel):
 
     @property
     def KeyId(self):
+        """Watermark key ID
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -18036,6 +21538,9 @@ class WaterPrintKey(AbstractModel):
 
     @property
     def KeyContent(self):
+        """Watermark key value
+        :rtype: str
+        """
         return self._KeyContent
 
     @KeyContent.setter
@@ -18044,6 +21549,9 @@ class WaterPrintKey(AbstractModel):
 
     @property
     def KeyVersion(self):
+        """Watermark key version number
+        :rtype: str
+        """
         return self._KeyVersion
 
     @KeyVersion.setter
@@ -18052,6 +21560,9 @@ class WaterPrintKey(AbstractModel):
 
     @property
     def OpenStatus(self):
+        """Whether it is enabled. Valid values: [0 (no), 1 (yes)]
+        :rtype: int
+        """
         return self._OpenStatus
 
     @OpenStatus.setter
@@ -18060,6 +21571,9 @@ class WaterPrintKey(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Key generation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -18109,6 +21623,9 @@ class WaterPrintPolicy(AbstractModel):
 
     @property
     def TcpPortList(self):
+        """TCP port range, such as ["2000-3000","3500-4000"]
+        :rtype: list of str
+        """
         return self._TcpPortList
 
     @TcpPortList.setter
@@ -18117,6 +21634,9 @@ class WaterPrintPolicy(AbstractModel):
 
     @property
     def UdpPortList(self):
+        """UDP port range, such as ["2000-3000","3500-4000"]
+        :rtype: list of str
+        """
         return self._UdpPortList
 
     @UdpPortList.setter
@@ -18125,6 +21645,9 @@ class WaterPrintPolicy(AbstractModel):
 
     @property
     def Offset(self):
+        """Watermark offset. Value range: [0, 100)
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -18133,6 +21656,9 @@ class WaterPrintPolicy(AbstractModel):
 
     @property
     def RemoveSwitch(self):
+        """Whether to automatically remove. Valid values: [0 (no), 1 (yes)]
+        :rtype: int
+        """
         return self._RemoveSwitch
 
     @RemoveSwitch.setter
@@ -18141,6 +21667,9 @@ class WaterPrintPolicy(AbstractModel):
 
     @property
     def OpenStatus(self):
+        """Whether it is enabled. Valid values: [0 (no), 1 (yes)]
+        :rtype: int
+        """
         return self._OpenStatus
 
     @OpenStatus.setter

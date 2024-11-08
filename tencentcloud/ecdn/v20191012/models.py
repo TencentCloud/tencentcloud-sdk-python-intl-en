@@ -68,6 +68,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """Domain name.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -76,6 +79,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def Origin(self):
+        """Origin server configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Origin`
+        """
         return self._Origin
 
     @Origin.setter
@@ -84,6 +90,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def Area(self):
+        """Domain name acceleration region. Valid values: mainland (acceleration in Mainland China), overseas (acceleration outside Mainland China), global (global acceleration).
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -92,6 +101,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID. Default value: 0.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -100,6 +112,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def IpFilter(self):
+        """IP block/allowlist configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`
+        """
         return self._IpFilter
 
     @IpFilter.setter
@@ -108,6 +123,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def IpFreqLimit(self):
+        """IP access limit configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.IpFreqLimit`
+        """
         return self._IpFreqLimit
 
     @IpFreqLimit.setter
@@ -116,6 +134,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def ResponseHeader(self):
+        """Origin server response header configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ResponseHeader`
+        """
         return self._ResponseHeader
 
     @ResponseHeader.setter
@@ -124,6 +145,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def CacheKey(self):
+        """Node caching configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.CacheKey`
+        """
         return self._CacheKey
 
     @CacheKey.setter
@@ -132,6 +156,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def Cache(self):
+        """Caching rule configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Cache`
+        """
         return self._Cache
 
     @Cache.setter
@@ -140,6 +167,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def Https(self):
+        """HTTPS configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Https`
+        """
         return self._Https
 
     @Https.setter
@@ -148,6 +178,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def ForceRedirect(self):
+        """Forced access protocol redirection configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
+        """
         return self._ForceRedirect
 
     @ForceRedirect.setter
@@ -156,6 +189,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def Tag(self):
+        """Tag bound to a domain name.
+        :rtype: list of Tag
+        """
         return self._Tag
 
     @Tag.setter
@@ -164,6 +200,9 @@ class AddEcdnDomainRequest(AbstractModel):
 
     @property
     def WebSocket(self):
+        """WebSocket configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
+        """
         return self._WebSocket
 
     @WebSocket.setter
@@ -232,6 +271,9 @@ class AddEcdnDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -281,6 +323,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CustomTlsStatus(self):
+        """Custom TLS data switch
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CustomTlsStatus
 
     @CustomTlsStatus.setter
@@ -289,6 +335,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TlsVersion(self):
+        """TLS version settings. Valid values: `TLSv1`, `TLSV1.1`, `TLSV1.2`, and `TLSv1.3`. Only consecutive versions can be enabled at the same time.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._TlsVersion
 
     @TlsVersion.setter
@@ -297,6 +347,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Cipher(self):
+        """Custom encryption suite
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Cipher
 
     @Cipher.setter
@@ -305,6 +359,13 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VerifyOriginType(self):
+        """Origin-pull verification status
+`off`: Disables origin-pull verification
+`oneWay`: Only verify the origin
+`twoWay`: Enables two-way origin-pull verification
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VerifyOriginType
 
     @VerifyOriginType.setter
@@ -313,6 +374,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CertInfo(self):
+        """Configuration information of the origin-pull certificate
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ServerCert`
+        """
         return self._CertInfo
 
     @CertInfo.setter
@@ -321,6 +386,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OriginCertInfo(self):
+        """Configuration information of the origin server certificate
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ClientCert`
+        """
         return self._OriginCertInfo
 
     @OriginCertInfo.setter
@@ -370,6 +439,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CacheRules(self):
+        """Caching configuration rule array.
+        :rtype: list of CacheRule
+        """
         return self._CacheRules
 
     @CacheRules.setter
@@ -378,6 +450,13 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FollowOrigin(self):
+        """Whether to follow the `Cache-Control: max-age` configuration on the origin server (this feature is only available to users on the allowlist).
+on: enable
+off: disable
+If it is enabled, resources that do not match `CacheRules` will be cached on node according to the `max-age` value returned by the origin server, while resources that match `CacheRules` will be cached on node according to the cache expiration time set in `CacheRules`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FollowOrigin
 
     @FollowOrigin.setter
@@ -417,6 +496,9 @@ class CacheKey(AbstractModel):
 
     @property
     def FullUrlCache(self):
+        """Whether to enable full path cache. Valid values: on, off.
+        :rtype: str
+        """
         return self._FullUrlCache
 
     @FullUrlCache.setter
@@ -456,6 +538,9 @@ class CacheRule(AbstractModel):
 
     @property
     def CacheType(self):
+        """Cache type. Valid values: all (all files), file (extension type), directory (directory), path (full path), index (homepage).
+        :rtype: str
+        """
         return self._CacheType
 
     @CacheType.setter
@@ -464,6 +549,9 @@ class CacheRule(AbstractModel):
 
     @property
     def CacheContents(self):
+        """Cached content list.
+        :rtype: list of str
+        """
         return self._CacheContents
 
     @CacheContents.setter
@@ -472,6 +560,9 @@ class CacheRule(AbstractModel):
 
     @property
     def CacheTime(self):
+        """Cache time in seconds.
+        :rtype: int
+        """
         return self._CacheTime
 
     @CacheTime.setter
@@ -520,6 +611,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Certificate(self):
+        """Client certificate in PEM format.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Certificate
 
     @Certificate.setter
@@ -528,6 +623,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertName(self):
+        """Client certificate name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertName
 
     @CertName.setter
@@ -536,6 +635,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
+        """Certificate expiration time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -544,6 +647,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeployTime(self):
+        """Certificate issuance time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DeployTime
 
     @DeployTime.setter
@@ -580,6 +687,9 @@ class DeleteEcdnDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """Domain name to be deleted.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -613,6 +723,9 @@ class DeleteEcdnDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -647,6 +760,9 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Pagination offset address. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -655,6 +771,9 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of domain names per page. Default value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -663,6 +782,9 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Query filter.
+        :rtype: list of DomainFilter
+        """
         return self._Filters
 
     @Filters.setter
@@ -671,6 +793,9 @@ class DescribeDomainsConfigRequest(AbstractModel):
 
     @property
     def Sort(self):
+        """Query result sorting rule.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Sort`
+        """
         return self._Sort
 
     @Sort.setter
@@ -720,6 +845,9 @@ class DescribeDomainsConfigResponse(AbstractModel):
 
     @property
     def Domains(self):
+        """Domain name list.
+        :rtype: list of DomainDetailInfo
+        """
         return self._Domains
 
     @Domains.setter
@@ -728,6 +856,9 @@ class DescribeDomainsConfigResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of matched domain names. This is used for paginated query.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -736,6 +867,9 @@ class DescribeDomainsConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -774,6 +908,9 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Pagination offset address. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -782,6 +919,9 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of domain names per page. Default value: 100. Maximum value: 1000.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -790,6 +930,9 @@ class DescribeDomainsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Query filter.
+        :rtype: list of DomainFilter
+        """
         return self._Filters
 
     @Filters.setter
@@ -836,6 +979,9 @@ class DescribeDomainsResponse(AbstractModel):
 
     @property
     def Domains(self):
+        """Domain name information list.
+        :rtype: list of DomainBriefInfo
+        """
         return self._Domains
 
     @Domains.setter
@@ -844,6 +990,9 @@ class DescribeDomainsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of domain names.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -852,6 +1001,9 @@ class DescribeDomainsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -896,6 +1048,9 @@ class DescribeEcdnDomainLogsRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """Domain name to be queried.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -904,6 +1059,9 @@ class DescribeEcdnDomainLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Log start time, such as 2019-10-01 00:00:00
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -912,6 +1070,9 @@ class DescribeEcdnDomainLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Log end time, such as 2019-10-02 00:00:00. Only logs for the last 30 days can be queried.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -920,6 +1081,9 @@ class DescribeEcdnDomainLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Pagination offset for log link list. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -928,6 +1092,9 @@ class DescribeEcdnDomainLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of log links per page. Default value: 100. Maximum value: 1000.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -972,6 +1139,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainLogs(self):
+        """Log link list.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DomainLogs
+        """
         return self._DomainLogs
 
     @DomainLogs.setter
@@ -980,6 +1151,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Total number of log links.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -988,6 +1162,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1051,6 +1228,10 @@ Default value: global
 
     @property
     def StartTime(self):
+        """Query start time, such as 2019-12-13 00:00:00.
+The time span cannot exceed 90 days.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1059,6 +1240,10 @@ Default value: global
 
     @property
     def EndTime(self):
+        """Query end time, such as 2019-12-13 23:59:59.
+The time span cannot exceed 90 days.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1067,6 +1252,12 @@ Default value: global
 
     @property
     def Metrics(self):
+        """Statistical metric names:
+flux: traffic (in bytes)
+bandwidth: bandwidth (in bps)
+request: number of requests
+        :rtype: list of str
+        """
         return self._Metrics
 
     @Metrics.setter
@@ -1075,6 +1266,9 @@ Default value: global
 
     @property
     def Domains(self):
+        """Specifies the list of domain names to be queried
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -1083,6 +1277,10 @@ Default value: global
 
     @property
     def Projects(self):
+        """Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
+If no domain name is entered, the specified project will be queried; otherwise, the domain name will prevail
+        :rtype: list of int
+        """
         return self._Projects
 
     @Projects.setter
@@ -1091,6 +1289,9 @@ Default value: global
 
     @property
     def Offset(self):
+        """Pagination offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1099,6 +1300,9 @@ Default value: global
 
     @property
     def Limit(self):
+        """Number of entries per page. Default value: 1000. Maximum value: 3,000.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1107,6 +1311,13 @@ Default value: global
 
     @property
     def Area(self):
+        """Statistical areas:
+mainland: Chinese mainland
+oversea: outside the Chinese mainland
+global: global
+Default value: global
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -1153,6 +1364,9 @@ class DescribeEcdnDomainStatisticsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Domain name data
+        :rtype: list of DomainData
+        """
         return self._Data
 
     @Data.setter
@@ -1161,6 +1375,9 @@ class DescribeEcdnDomainStatisticsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Quantity
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1169,6 +1386,9 @@ class DescribeEcdnDomainStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1237,6 +1457,9 @@ Default value: global
 
     @property
     def StartTime(self):
+        """Query start time, such as 2019-12-13 00:00:00
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1245,6 +1468,9 @@ Default value: global
 
     @property
     def EndTime(self):
+        """Query end time, such as 2019-12-13 23:59:59
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1253,6 +1479,16 @@ Default value: global
 
     @property
     def Metrics(self):
+        """Specifies the query metric, which can be:
+flux: traffic (in bytes)
+bandwidth: bandwidth (in bps)
+request: number of requests
+2xx: returns the number of 2xx status codes or details of status codes starting with 2
+3xx: returns the number of 3xx status codes or details of status codes starting with 3
+4xx: returns the number of 4xx status codes or details of status codes starting with 4
+5xx: returns the number of 5xx status codes or details of status codes starting with 5
+        :rtype: list of str
+        """
         return self._Metrics
 
     @Metrics.setter
@@ -1261,6 +1497,13 @@ Default value: global
 
     @property
     def Interval(self):
+        """Sampling interval in minutes. The available options vary for different query period. See below: 
+1 day: `1`, `5`, `15`, `30`, `60`, `120`, `240`, `1440` 
+2 to 3 days: `15`, `30`, `60`, `120`, `240`, `1440`
+4 to 7 days: `30`, `60`, `120`, `240`, `1440`
+8 to 31 days: `60`, `120`, `240`, `1440`
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -1269,6 +1512,11 @@ Default value: global
 
     @property
     def Domains(self):
+        """Specifies the list of domain names to be queried
+
+Up to 30 acceleration domain names can be queried at a time.
+        :rtype: list of str
+        """
         return self._Domains
 
     @Domains.setter
@@ -1277,6 +1525,10 @@ Default value: global
 
     @property
     def Projects(self):
+        """Specifies the project ID to be queried, which can be viewed [here](https://console.cloud.tencent.com/project)
+If no domain name is entered, the specified project will be queried; otherwise, the domain name will prevail
+        :rtype: list of int
+        """
         return self._Projects
 
     @Projects.setter
@@ -1285,6 +1537,13 @@ Default value: global
 
     @property
     def Area(self):
+        """Statistical areas:
+mainland: Chinese mainland
+oversea: outside the Chinese mainland
+global: global
+Default value: global
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -1327,6 +1586,9 @@ class DescribeEcdnStatisticsResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Returned data details of the specified conditional query
+        :rtype: list of ResourceData
+        """
         return self._Data
 
     @Data.setter
@@ -1335,6 +1597,9 @@ class DescribeEcdnStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1372,6 +1637,9 @@ global: global nodes
 
     @property
     def Domain(self):
+        """Acceleration domain name
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -1380,6 +1648,12 @@ global: global nodes
 
     @property
     def Area(self):
+        """Target region of the query:
+mainland: nodes in Mainland China
+overseas: nodes outside Mainland China
+global: global nodes
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -1420,6 +1694,9 @@ class DescribeIpStatusResponse(AbstractModel):
 
     @property
     def Ips(self):
+        """Node list
+        :rtype: list of IpStatus
+        """
         return self._Ips
 
     @Ips.setter
@@ -1428,6 +1705,9 @@ class DescribeIpStatusResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of nodes
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1436,6 +1716,9 @@ class DescribeIpStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1480,6 +1763,9 @@ class DescribePurgeQuotaResponse(AbstractModel):
 
     @property
     def UrlPurge(self):
+        """URL purge usage and quota.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Quota`
+        """
         return self._UrlPurge
 
     @UrlPurge.setter
@@ -1488,6 +1774,9 @@ class DescribePurgeQuotaResponse(AbstractModel):
 
     @property
     def PathPurge(self):
+        """Directory purge usage and quota.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Quota`
+        """
         return self._PathPurge
 
     @PathPurge.setter
@@ -1496,6 +1785,9 @@ class DescribePurgeQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1548,6 +1840,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def PurgeType(self):
+        """Purge type to be queried. url: query URL purge records; path: query directory purge records.
+        :rtype: str
+        """
         return self._PurgeType
 
     @PurgeType.setter
@@ -1556,6 +1851,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time, such as 2018-08-08 00:00:00
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1564,6 +1862,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time, such as 2018-08-08 23:59:59
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1572,6 +1873,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Task ID returned during submission. Either `TaskId` or start time must be specified for a query.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1580,6 +1884,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Pagination offset. Default value: 0 (starting from entry 0).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1588,6 +1895,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Pagination limit. Default value: 20.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1596,6 +1906,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Keyword(self):
+        """Query keyword. Please enter a domain name or full URL beginning with `http(s)://`.
+        :rtype: str
+        """
         return self._Keyword
 
     @Keyword.setter
@@ -1604,6 +1917,9 @@ class DescribePurgeTasksRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Specified task status to be queried. fail: failed, done: succeeded, process: purging.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1650,6 +1966,9 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     @property
     def PurgeLogs(self):
+        """Purge history.
+        :rtype: list of PurgeTask
+        """
         return self._PurgeLogs
 
     @PurgeLogs.setter
@@ -1658,6 +1977,9 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of tasks, which is used for pagination.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1666,6 +1988,9 @@ class DescribePurgeTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1701,6 +2026,9 @@ class DetailData(AbstractModel):
 
     @property
     def Name(self):
+        """Data type name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1709,6 +2037,9 @@ class DetailData(AbstractModel):
 
     @property
     def Value(self):
+        """Data value
+        :rtype: float
+        """
         return self._Value
 
     @Value.setter
@@ -1780,6 +2111,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ResourceId(self):
+        """Domain name ID.
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -1788,6 +2122,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def AppId(self):
+        """Tencent Cloud account ID.
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -1796,6 +2133,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Domain(self):
+        """CDN acceleration domain name.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -1804,6 +2144,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Cname(self):
+        """Domain name CNAME.
+        :rtype: str
+        """
         return self._Cname
 
     @Cname.setter
@@ -1812,6 +2155,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Status(self):
+        """Domain name status. Valid values: pending (reviewing), rejected (rejected), processing (deploying after approval), online (enabled), offline (disabled), deleted (deleted).
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1820,6 +2166,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ProjectId(self):
+        """Project ID.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1828,6 +2177,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def CreateTime(self):
+        """Domain name creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1836,6 +2188,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def UpdateTime(self):
+        """Domain name update time.
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -1844,6 +2199,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Origin(self):
+        """Origin server configuration details.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Origin`
+        """
         return self._Origin
 
     @Origin.setter
@@ -1852,6 +2210,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Disable(self):
+        """Domain name blockage status. Valid values: normal (normal), overdue (service is suspended due to arrears), quota (trial traffic package is used up), malicious (malicious user), ddos (DDoS attack), idle (no traffic), unlicensed (no ICP filing), capping (bandwidth cap reached), readonly (read-only)
+        :rtype: str
+        """
         return self._Disable
 
     @Disable.setter
@@ -1860,6 +2221,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Area(self):
+        """Acceleration region. Valid values: mainland, oversea, global.
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -1868,6 +2232,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Readonly(self):
+        """Domain name lock status. normal: not locked; global: globally locked
+        :rtype: str
+        """
         return self._Readonly
 
     @Readonly.setter
@@ -1876,6 +2243,10 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Tag(self):
+        """Domain name tag
+Note: This field may return `null`, indicating that no valid value can be found.
+        :rtype: list of Tag
+        """
         return self._Tag
 
     @Tag.setter
@@ -1931,6 +2302,9 @@ class DomainData(AbstractModel):
 
     @property
     def Resource(self):
+        """Domain name
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -1939,6 +2313,9 @@ class DomainData(AbstractModel):
 
     @property
     def DetailData(self):
+        """Result details.
+        :rtype: list of DetailData
+        """
         return self._DetailData
 
     @DetailData.setter
@@ -2051,6 +2428,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ResourceId(self):
+        """Domain name ID.
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -2059,6 +2439,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AppId(self):
+        """Tencent Cloud account ID.
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -2067,6 +2450,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Domain(self):
+        """Acceleration domain name.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -2075,6 +2461,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Cname(self):
+        """Domain name CNAME.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Cname
 
     @Cname.setter
@@ -2083,6 +2473,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Domain name status. Valid values: pending (reviewing), rejected (rejected), processing (deploying after approval), online (enabled), offline (disabled), deleted (deleted).
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2091,6 +2484,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProjectId(self):
+        """Project ID.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2099,6 +2495,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateTime(self):
+        """Domain name creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2107,6 +2506,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UpdateTime(self):
+        """Domain name update time.
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -2115,6 +2517,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Origin(self):
+        """Origin server configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Origin`
+        """
         return self._Origin
 
     @Origin.setter
@@ -2123,6 +2528,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IpFilter(self):
+        """IP blocklist/allowlist configuration.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`
+        """
         return self._IpFilter
 
     @IpFilter.setter
@@ -2131,6 +2540,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IpFreqLimit(self):
+        """IP access limit configuration.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.IpFreqLimit`
+        """
         return self._IpFreqLimit
 
     @IpFreqLimit.setter
@@ -2139,6 +2552,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ResponseHeader(self):
+        """Origin server response header configuration.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ResponseHeader`
+        """
         return self._ResponseHeader
 
     @ResponseHeader.setter
@@ -2147,6 +2564,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CacheKey(self):
+        """Node caching configuration.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.CacheKey`
+        """
         return self._CacheKey
 
     @CacheKey.setter
@@ -2155,6 +2576,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Cache(self):
+        """Caching rule configuration.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Cache`
+        """
         return self._Cache
 
     @Cache.setter
@@ -2163,6 +2588,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Https(self):
+        """HTTPS configuration.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Https`
+        """
         return self._Https
 
     @Https.setter
@@ -2171,6 +2600,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Disable(self):
+        """Domain name blockage status. Valid values: normal (normal), overdue (service is suspended due to arrears), quota (trial traffic package is used up), malicious (malicious user), ddos (DDoS attack), idle (no traffic), unlicensed (no ICP filing), capping (bandwidth cap reached), readonly (read-only).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Disable
 
     @Disable.setter
@@ -2179,6 +2612,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ForceRedirect(self):
+        """Forced access protocol redirection configuration.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
+        """
         return self._ForceRedirect
 
     @ForceRedirect.setter
@@ -2187,6 +2624,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Area(self):
+        """Acceleration region. Valid values: mainland, overseas, global.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -2195,6 +2636,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Readonly(self):
+        """Domain name lock status. normal: not locked; global: globally locked.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Readonly
 
     @Readonly.setter
@@ -2203,6 +2648,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Tag(self):
+        """Domain name tag
+Note: This field may return `null`, indicating that no valid value can be obtained.
+        :rtype: list of Tag
+        """
         return self._Tag
 
     @Tag.setter
@@ -2211,6 +2660,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def WebSocket(self):
+        """WebSocket configuration.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
+        """
         return self._WebSocket
 
     @WebSocket.setter
@@ -2304,6 +2757,20 @@ class DomainFilter(AbstractModel):
 
     @property
     def Name(self):
+        """Filters by the field name, which includes:
+- `origin`: Primary origin server.
+- `domain`: Domain name.
+- `resourceId`: Domain name ID.
+- `status`: Domain name status. Valid values: `online`, `offline`, and `processing`.
+- `disable`: Whether the domain name is blocked. Valid values: `normal`, `unlicensed`.
+- `projectId`: Project ID.
+- `fullUrlCache`: Whether to enable full-path cache, which can be `on` or `off`.
+- `https`: Whether to configure HTTPS, which can be `on`, `off` or `processing`.
+- `originPullProtocol`: Origin-pull protocol type, which can be `http`, `follow`, or `https`.
+- `area`: Acceleration region, which can be `mainland`，`overseas` or `global`.
+- `tagKey`: Tag key.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2312,6 +2779,9 @@ class DomainFilter(AbstractModel):
 
     @property
     def Value(self):
+        """Filter field value.
+        :rtype: list of str
+        """
         return self._Value
 
     @Value.setter
@@ -2320,6 +2790,9 @@ class DomainFilter(AbstractModel):
 
     @property
     def Fuzzy(self):
+        """Whether to enable fuzzy query, which is supported only for filter fields `origin` and `domain`.
+        :rtype: bool
+        """
         return self._Fuzzy
 
     @Fuzzy.setter
@@ -2361,6 +2834,9 @@ class DomainLogs(AbstractModel):
 
     @property
     def StartTime(self):
+        """Log start time.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2369,6 +2845,9 @@ class DomainLogs(AbstractModel):
 
     @property
     def EndTime(self):
+        """Log end time.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2377,6 +2856,9 @@ class DomainLogs(AbstractModel):
 
     @property
     def LogPath(self):
+        """Log download path.
+        :rtype: str
+        """
         return self._LogPath
 
     @LogPath.setter
@@ -2415,6 +2897,9 @@ class EcdnData(AbstractModel):
 
     @property
     def Metrics(self):
+        """Queries the specified metric. Valid values: Bandwidth, Flux, Request, Delay, status code, LogBandwidth, LogFlux, LogRequest
+        :rtype: list of str
+        """
         return self._Metrics
 
     @Metrics.setter
@@ -2423,6 +2908,9 @@ class EcdnData(AbstractModel):
 
     @property
     def DetailData(self):
+        """Detailed data collection
+        :rtype: list of TimestampData
+        """
         return self._DetailData
 
     @DetailData.setter
@@ -2471,6 +2959,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """Forced access protocol redirection configuration switch. Valid values: on, off.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -2479,6 +2971,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RedirectType(self):
+        """Access protocol type for forced redirection. Valid values: http (forced redirection to HTTP protocol), https (forced redirection to HTTPS protocol).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RedirectType
 
     @RedirectType.setter
@@ -2487,6 +2983,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RedirectStatusCode(self):
+        """HTTP status code returned when forced redirection is enabled. Valid values: 301, 302.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RedirectStatusCode
 
     @RedirectStatusCode.setter
@@ -2530,6 +3030,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """Whether to enable. Valid values: on, off.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -2538,6 +3041,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxAge(self):
+        """`MaxAge` value.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxAge
 
     @MaxAge.setter
@@ -2546,6 +3053,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IncludeSubDomains(self):
+        """Whether to include subdomain names. Valid values: on, off.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IncludeSubDomains
 
     @IncludeSubDomains.setter
@@ -2599,6 +3110,11 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def HeaderMode(self):
+        """HTTP header setting method. Valid values: add (add header), set (set header), del (delete header).
+Request header currently does not support `set`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._HeaderMode
 
     @HeaderMode.setter
@@ -2607,6 +3123,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def HeaderName(self):
+        """HTTP header name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._HeaderName
 
     @HeaderName.setter
@@ -2615,6 +3135,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def HeaderValue(self):
+        """HTTP header value, which is optional when it is `del`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._HeaderValue
 
     @HeaderValue.setter
@@ -2623,6 +3147,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleType(self):
+        """Type of effective URL path rule. Valid values: all (all paths), file (file extension), directory (directory), path (absolute path).
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RuleType
 
     @RuleType.setter
@@ -2631,6 +3159,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RulePaths(self):
+        """URL path or file type list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._RulePaths
 
     @RulePaths.setter
@@ -2701,6 +3233,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """HTTPS configuration switch. Valid values: on, off. If the domain name with HTTPS configuration enabled is being deployed, this switch will be `off`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -2709,6 +3245,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Http2(self):
+        """Whether to enable HTTP2. Valid values: on, off.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Http2
 
     @Http2.setter
@@ -2717,6 +3257,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def OcspStapling(self):
+        """Whether to enable the OCSP feature. Valid values: on, off.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OcspStapling
 
     @OcspStapling.setter
@@ -2725,6 +3269,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VerifyClient(self):
+        """Whether to enable the client certificate verification feature. Valid values: on, off. The client certificate information must be uploaded if this feature is enabled.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VerifyClient
 
     @VerifyClient.setter
@@ -2733,6 +3281,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertInfo(self):
+        """Server certificate configuration information.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ServerCert`
+        """
         return self._CertInfo
 
     @CertInfo.setter
@@ -2741,6 +3293,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ClientCertInfo(self):
+        """Client certificate configuration information.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ClientCert`
+        """
         return self._ClientCertInfo
 
     @ClientCertInfo.setter
@@ -2749,6 +3305,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Spdy(self):
+        """Whether to enable SPDY. Valid values: on, off.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Spdy
 
     @Spdy.setter
@@ -2757,6 +3317,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SslStatus(self):
+        """HTTPS certificate deployment status. Valid values: closed (disabled), deploying (deploying), deployed (deployment succeeded), failed (deployment failed). This parameter cannot be used as an input parameter.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SslStatus
 
     @SslStatus.setter
@@ -2765,6 +3329,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Hsts(self):
+        """HSTS configuration
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Hsts`
+        """
         return self._Hsts
 
     @Hsts.setter
@@ -2820,6 +3388,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """IP blocklist/allowlist switch. Valid values: on, off.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -2828,6 +3399,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilterType(self):
+        """IP blocklist/allowlist type. Valid values: whitelist, blacklist.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FilterType
 
     @FilterType.setter
@@ -2836,6 +3411,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Filters(self):
+        """IP blocklist/allowlist list.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._Filters
 
     @Filters.setter
@@ -2875,6 +3454,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """IP access limit switch. Valid values: on, off.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -2883,6 +3465,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Qps(self):
+        """Number of requests per second.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Qps
 
     @Qps.setter
@@ -2934,6 +3520,9 @@ offline: the node is offline
 
     @property
     def Ip(self):
+        """Node IP
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -2942,6 +3531,9 @@ offline: the node is offline
 
     @property
     def District(self):
+        """Node region
+        :rtype: str
+        """
         return self._District
 
     @District.setter
@@ -2950,6 +3542,9 @@ offline: the node is offline
 
     @property
     def Isp(self):
+        """Node ISP
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -2958,6 +3553,9 @@ offline: the node is offline
 
     @property
     def City(self):
+        """Node city
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -2966,6 +3564,11 @@ offline: the node is offline
 
     @property
     def Status(self):
+        """Node status
+online: the node is online and scheduling normally
+offline: the node is offline
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2974,6 +3577,9 @@ offline: the node is offline
 
     @property
     def CreateTime(self):
+        """Node IP creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3038,6 +3644,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Origins(self):
+        """Primary origin server list. IP and the domain name of the origin server cannot be entered at the same time. Configure origin server port in the format of ["origin1:port1", "origin2:port2"]. Configure origin-pull weight in the format of ["origin1::weight1", "origin2::weight2"]. Configure both port and weight in the format of ["origin1:port1:weight1", "origin2:port2:weight2"]. Valid range of weight value: 0 - 100.
+        :rtype: list of str
+        """
         return self._Origins
 
     @Origins.setter
@@ -3046,6 +3655,11 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OriginType(self):
+        """Primary origin server type. Valid values: domain (domain name origin server), ip (IP origin server).
+This is required when setting `Origins`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OriginType
 
     @OriginType.setter
@@ -3054,6 +3668,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ServerName(self):
+        """Host header value during origin-pull.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ServerName
 
     @ServerName.setter
@@ -3062,6 +3680,11 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OriginPullProtocol(self):
+        """Origin-pull protocol type. Valid values: http (forced HTTP origin-pull), follow (protocol follow), https (HTTPS origin-pull).
+If this parameter is left empty, HTTP origin-pull will be used by default.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: str
+        """
         return self._OriginPullProtocol
 
     @OriginPullProtocol.setter
@@ -3070,6 +3693,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BackupOrigins(self):
+        """Secondary origin server list.
+        :rtype: list of str
+        """
         return self._BackupOrigins
 
     @BackupOrigins.setter
@@ -3078,6 +3704,11 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BackupOriginType(self):
+        """Secondary origin server type, which is the same as `OriginType`.
+This is required when setting `BackupOrigins`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BackupOriginType
 
     @BackupOriginType.setter
@@ -3086,6 +3717,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AdvanceHttps(self):
+        """HTTPS advanced origin-pull configuration
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.AdvanceHttps`
+        """
         return self._AdvanceHttps
 
     @AdvanceHttps.setter
@@ -3130,6 +3765,9 @@ class PurgePathCacheRequest(AbstractModel):
 
     @property
     def Paths(self):
+        """List of directories to be purged. The protocol header must be included.
+        :rtype: list of str
+        """
         return self._Paths
 
     @Paths.setter
@@ -3138,6 +3776,9 @@ class PurgePathCacheRequest(AbstractModel):
 
     @property
     def FlushType(self):
+        """Purge type. flush: purges updated resources, delete: purges all resources.
+        :rtype: str
+        """
         return self._FlushType
 
     @FlushType.setter
@@ -3175,6 +3816,9 @@ class PurgePathCacheResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """Purge task ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3183,6 +3827,9 @@ class PurgePathCacheResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3224,6 +3871,9 @@ class PurgeTask(AbstractModel):
 
     @property
     def TaskId(self):
+        """Purge task ID.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3232,6 +3882,9 @@ class PurgeTask(AbstractModel):
 
     @property
     def Url(self):
+        """Purged URL.
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -3240,6 +3893,9 @@ class PurgeTask(AbstractModel):
 
     @property
     def Status(self):
+        """Purge task status. fail: failed, done: succeeded, process: purging.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3248,6 +3904,9 @@ class PurgeTask(AbstractModel):
 
     @property
     def PurgeType(self):
+        """Purge type. url: URL purge; path: directory purge.
+        :rtype: str
+        """
         return self._PurgeType
 
     @PurgeType.setter
@@ -3256,6 +3915,9 @@ class PurgeTask(AbstractModel):
 
     @property
     def FlushType(self):
+        """Resource purge method. flush: purges updated resources, delete: purges all resources.
+        :rtype: str
+        """
         return self._FlushType
 
     @FlushType.setter
@@ -3264,6 +3926,9 @@ class PurgeTask(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Purge task submission time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3302,6 +3967,9 @@ class PurgeUrlsCacheRequest(AbstractModel):
 
     @property
     def Urls(self):
+        """List of URLs to be purged. The protocol header must be included.
+        :rtype: list of str
+        """
         return self._Urls
 
     @Urls.setter
@@ -3338,6 +4006,9 @@ class PurgeUrlsCacheResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """Purge task ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -3346,6 +4017,9 @@ class PurgeUrlsCacheResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3378,6 +4052,9 @@ class Quota(AbstractModel):
 
     @property
     def Batch(self):
+        """Quota limit for one batch submission request.
+        :rtype: int
+        """
         return self._Batch
 
     @Batch.setter
@@ -3386,6 +4063,9 @@ class Quota(AbstractModel):
 
     @property
     def Total(self):
+        """Daily submission quota limit.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -3394,6 +4074,9 @@ class Quota(AbstractModel):
 
     @property
     def Available(self):
+        """Remaining daily submission quota.
+        :rtype: int
+        """
         return self._Available
 
     @Available.setter
@@ -3436,6 +4119,13 @@ all: details at the account level
 
     @property
     def Resource(self):
+        """Resource name, which is categorized as follows based on different query conditions:
+Specific domain name: indicates the details of the specific domain name
+multiDomains: indicates aggregated details of multiple domain names
+Project ID: displays the ID of the specified project to be queried
+all: details at the account level
+        :rtype: str
+        """
         return self._Resource
 
     @Resource.setter
@@ -3444,6 +4134,9 @@ all: details at the account level
 
     @property
     def EcdnData(self):
+        """Data details of resource
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.EcdnData`
+        """
         return self._EcdnData
 
     @EcdnData.setter
@@ -3484,6 +4177,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Switch(self):
+        """Custom response header switch. Valid values: on, off.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -3492,6 +4188,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def HeaderRules(self):
+        """Custom response header rule array.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of HttpHeaderPathRule
+        """
         return self._HeaderRules
 
     @HeaderRules.setter
@@ -3556,6 +4256,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertId(self):
+        """Server certificate ID, which is required if the certificate is a Tencent Cloud-hosted certificate.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertId
 
     @CertId.setter
@@ -3564,6 +4268,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CertName(self):
+        """Server certificate name, which is required if the certificate is a Tencent Cloud-hosted certificate.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CertName
 
     @CertName.setter
@@ -3572,6 +4280,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Certificate(self):
+        """Server certificate information, which is required when uploading your own certificate and must contain complete certificate chain information.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Certificate
 
     @Certificate.setter
@@ -3580,6 +4292,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PrivateKey(self):
+        """Server key information, which is required when uploading your own certificate.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PrivateKey
 
     @PrivateKey.setter
@@ -3588,6 +4304,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
+        """Certificate expiration time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -3596,6 +4316,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeployTime(self):
+        """Certificate issuance time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DeployTime
 
     @DeployTime.setter
@@ -3604,6 +4328,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Certificate remarks.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -3648,6 +4376,11 @@ certExpireTime: certificate expiration time
 
     @property
     def Key(self):
+        """Sort by field. Valid values:
+createTime: domain name creation time
+certExpireTime: certificate expiration time
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -3656,6 +4389,9 @@ certExpireTime: certificate expiration time
 
     @property
     def Sequence(self):
+        """asc/desc. Default value: desc.
+        :rtype: str
+        """
         return self._Sequence
 
     @Sequence.setter
@@ -3690,6 +4426,9 @@ class StartEcdnDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """Domain name to be enabled.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -3723,6 +4462,9 @@ class StartEcdnDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3748,6 +4490,9 @@ class StopEcdnDomainRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """Domain name to be disabled.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -3781,6 +4526,9 @@ class StopEcdnDomainResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3811,6 +4559,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def TagKey(self):
+        """Tag key.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -3819,6 +4571,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def TagValue(self):
+        """Tag value.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -3857,6 +4613,10 @@ Taking the 5-minute granularity as an example, 13:35:00 indicates that the stati
 
     @property
     def Time(self):
+        """Statistical time point in forward rounding mode
+Taking the 5-minute granularity as an example, 13:35:00 indicates that the statistical interval is between 13:35:00 and 13:39:59
+        :rtype: str
+        """
         return self._Time
 
     @Time.setter
@@ -3865,6 +4625,9 @@ Taking the 5-minute granularity as an example, 13:35:00 indicates that the stati
 
     @property
     def Value(self):
+        """Data value
+        :rtype: list of float
+        """
         return self._Value
 
     @Value.setter
@@ -3932,6 +4695,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """Domain name.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -3940,6 +4706,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def Origin(self):
+        """Origin server configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Origin`
+        """
         return self._Origin
 
     @Origin.setter
@@ -3948,6 +4717,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID.
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -3956,6 +4728,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def IpFilter(self):
+        """IP blocklist/allowlist configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.IpFilter`
+        """
         return self._IpFilter
 
     @IpFilter.setter
@@ -3964,6 +4739,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def IpFreqLimit(self):
+        """IP access limit configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.IpFreqLimit`
+        """
         return self._IpFreqLimit
 
     @IpFreqLimit.setter
@@ -3972,6 +4750,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def ResponseHeader(self):
+        """Origin server response header configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ResponseHeader`
+        """
         return self._ResponseHeader
 
     @ResponseHeader.setter
@@ -3980,6 +4761,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def CacheKey(self):
+        """Node caching configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.CacheKey`
+        """
         return self._CacheKey
 
     @CacheKey.setter
@@ -3988,6 +4772,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def Cache(self):
+        """Caching rule configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Cache`
+        """
         return self._Cache
 
     @Cache.setter
@@ -3996,6 +4783,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def Https(self):
+        """HTTPS configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.Https`
+        """
         return self._Https
 
     @Https.setter
@@ -4004,6 +4794,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def ForceRedirect(self):
+        """Forced access protocol redirection configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.ForceRedirect`
+        """
         return self._ForceRedirect
 
     @ForceRedirect.setter
@@ -4012,6 +4805,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def Area(self):
+        """Domain name acceleration region. Valid values: mainland (acceleration in Mainland China), overseas (acceleration outside Mainland China), global (global acceleration).
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -4020,6 +4816,9 @@ class UpdateDomainConfigRequest(AbstractModel):
 
     @property
     def WebSocket(self):
+        """WebSocket configuration.
+        :rtype: :class:`tencentcloud.ecdn.v20191012.models.WebSocket`
+        """
         return self._WebSocket
 
     @WebSocket.setter
@@ -4082,6 +4881,9 @@ class UpdateDomainConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4113,6 +4915,11 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Switch(self):
+        """Whether to enable custom WebSocket timeout setting. When it’s `off`: WebSocket connection is supported, and the default timeout period is 15 seconds. To change the timeout period, please set it to `on`.
+
+* WebSocket is now only available for beta users. To use it, please submit a ticket.
+        :rtype: str
+        """
         return self._Switch
 
     @Switch.setter
@@ -4121,6 +4928,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Timeout(self):
+        """Sets timeout period in seconds. Maximum value: 65
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter

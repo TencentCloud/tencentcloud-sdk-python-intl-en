@@ -57,6 +57,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepNo(self):
+        """Step number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StepNo
 
     @StepNo.setter
@@ -65,6 +69,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepId(self):
+        """Step ID such as `ConnectDBCheck`, `VersionCheck`, and `SrcPrivilegeCheck`. The specific check items are subject to source and target instances.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StepId
 
     @StepId.setter
@@ -73,6 +81,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepName(self):
+        """Step name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StepName
 
     @StepName.setter
@@ -81,6 +93,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepStatus(self):
+        """Result of this check step. Valid values: `pass`, `failed`, `notStarted`, `blocked`, `warning`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StepStatus
 
     @StepStatus.setter
@@ -89,6 +105,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepMessage(self):
+        """Error message in this check step
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StepMessage
 
     @StepMessage.setter
@@ -97,6 +117,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DetailCheckItems(self):
+        """Specific check item in this check step
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DetailCheckItem
+        """
         return self._DetailCheckItems
 
     @DetailCheckItems.setter
@@ -105,6 +129,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HasSkipped(self):
+        """Whether this step was skipped
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._HasSkipped
 
     @HasSkipped.setter
@@ -158,6 +186,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartAt(self):
+        """Task start time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StartAt
 
     @StartAt.setter
@@ -166,6 +198,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndAt(self):
+        """Task end time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EndAt
 
     @EndAt.setter
@@ -174,6 +210,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Progress(self):
+        """Task step information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
+        """
         return self._Progress
 
     @Progress.setter
@@ -215,6 +255,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ColumnName(self):
+        """Column nameNote: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ColumnName
 
     @ColumnName.setter
@@ -223,6 +266,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewColumnName(self):
+        """New column name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NewColumnName
 
     @NewColumnName.setter
@@ -310,6 +357,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Options(self):
+        """Configuration parameters of the check task
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
+        """
         return self._Options
 
     @Options.setter
@@ -318,6 +369,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Objects(self):
+        """Consistency check objects
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareObject`
+        """
         return self._Objects
 
     @Objects.setter
@@ -326,6 +381,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Conclusion(self):
+        """Comparison conclusion. Valid values: `same`, `different`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Conclusion
 
     @Conclusion.setter
@@ -334,6 +393,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status. Valid values: `success`, `failed`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -342,6 +405,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalTables(self):
+        """Total number of tables
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalTables
 
     @TotalTables.setter
@@ -350,6 +417,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CheckedTables(self):
+        """Number of checked tables
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CheckedTables
 
     @CheckedTables.setter
@@ -358,6 +429,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DifferentTables(self):
+        """Number of inconsistent tables
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DifferentTables
 
     @DifferentTables.setter
@@ -366,6 +441,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SkippedTables(self):
+        """Number of skipped tables
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SkippedTables
 
     @SkippedTables.setter
@@ -374,6 +453,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NearlyTableCount(self):
+        """The estimated number of tables
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._NearlyTableCount
 
     @NearlyTableCount.setter
@@ -382,6 +465,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DifferentRows(self):
+        """Number of inconsistent data rows
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DifferentRows
 
     @DifferentRows.setter
@@ -390,6 +477,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcSampleRows(self):
+        """Source database row count, which takes effect only when the comparison type is **Row count comparison**.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SrcSampleRows
 
     @SrcSampleRows.setter
@@ -398,6 +489,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstSampleRows(self):
+        """Target database row count, which takes effect only when the comparison type is **Row count comparison**.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DstSampleRows
 
     @DstSampleRows.setter
@@ -406,6 +501,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartedAt(self):
+        """Start time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StartedAt
 
     @StartedAt.setter
@@ -414,6 +513,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FinishedAt(self):
+        """End time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FinishedAt
 
     @FinishedAt.setter
@@ -469,6 +572,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Difference(self):
+        """Details of inconsistent tables
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DifferenceDetail`
+        """
         return self._Difference
 
     @Difference.setter
@@ -477,6 +584,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Skipped(self):
+        """Details of skipped tables
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.SkippedDetail`
+        """
         return self._Skipped
 
     @Skipped.setter
@@ -524,6 +635,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectMode(self):
+        """Data comparison object mode (`all`: Entire instance; `partial`: Some objects)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ObjectMode
 
     @ObjectMode.setter
@@ -532,6 +647,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectItems(self):
+        """Object list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of CompareObjectItem
+        """
         return self._ObjectItems
 
     @ObjectItems.setter
@@ -540,6 +659,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdvancedObjects(self):
+        """Advanced object type (`account`: Account; `index`: Index; `shardkey`: Shard key, which may be adjusted later; `schema`: Database/table structure)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._AdvancedObjects
 
     @AdvancedObjects.setter
@@ -605,6 +728,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbName(self):
+        """Database name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -613,6 +740,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbMode(self):
+        """Database selection mode. Valid values: `all`, `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DbMode
 
     @DbMode.setter
@@ -621,6 +752,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SchemaName(self):
+        """Schema name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SchemaName
 
     @SchemaName.setter
@@ -629,6 +764,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableMode(self):
+        """Schema selection mode. Valid values: `all`, `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TableMode
 
     @TableMode.setter
@@ -637,6 +776,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tables(self):
+        """Table configuration for data consistency check, which is required if `TableMode` is `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of CompareTableItem
+        """
         return self._Tables
 
     @Tables.setter
@@ -645,6 +788,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ViewMode(self):
+        """View selection mode. Valid values: `all`, `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ViewMode
 
     @ViewMode.setter
@@ -653,6 +800,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Views(self):
+        """View configuration for data consistency check, which is required if `ViewMode` is `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of CompareViewItem
+        """
         return self._Views
 
     @Views.setter
@@ -711,6 +862,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Method(self):
+        """Comparison type: (`dataCheck`: Full data comparison; `sampleDataCheck`: Sampling data comparison; `rowsCount`: Row count comparison)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -719,6 +874,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SampleRate(self):
+        """Sampling rate. Value range: 0-100%.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SampleRate
 
     @SampleRate.setter
@@ -727,6 +886,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ThreadCount(self):
+        """The number of threads, which defaults to 1. Value range: 1-5.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ThreadCount
 
     @ThreadCount.setter
@@ -763,6 +926,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableName(self):
+        """Table name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -801,6 +968,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareTaskId(self):
+        """Data consistency check task ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CompareTaskId
 
     @CompareTaskId.setter
@@ -809,6 +980,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Data consistency check result. Valid values: `unstart` (the task is not started); `running` (the task is running); `canceled` (the task is stopped); `failed` (the task failed); `inconsistent` (the data is inconsistent); `consistent` (the data is consistent); `notexist` (the task does not exist).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -896,6 +1071,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobId(self):
+        """Task ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -904,6 +1083,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareTaskId(self):
+        """Data consistency check task ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CompareTaskId
 
     @CompareTaskId.setter
@@ -912,6 +1095,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TaskName(self):
+        """Data consistency check task name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -920,6 +1107,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Data consistency check task status. Valid values: `created`, `readyRun`, `running`, `success`, `stopping`, `failed`, `canceled`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -928,6 +1119,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Config(self):
+        """Data consistency check task configuration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareObject`
+        """
         return self._Config
 
     @Config.setter
@@ -936,6 +1131,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CheckProcess(self):
+        """Check details of the data consistency check task
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
+        """
         return self._CheckProcess
 
     @CheckProcess.setter
@@ -944,6 +1143,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareProcess(self):
+        """Running details of the data consistency check task
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
+        """
         return self._CompareProcess
 
     @CompareProcess.setter
@@ -952,6 +1155,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Conclusion(self):
+        """Comparison result. Valid values: `same`, `different`, `skipAll`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Conclusion
 
     @Conclusion.setter
@@ -960,6 +1167,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedAt(self):
+        """Task creation time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreatedAt
 
     @CreatedAt.setter
@@ -968,6 +1179,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartedAt(self):
+        """Task start time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StartedAt
 
     @StartedAt.setter
@@ -976,6 +1191,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FinishedAt(self):
+        """Comparison end time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FinishedAt
 
     @FinishedAt.setter
@@ -984,6 +1203,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Method(self):
+        """Comparison type: (`dataCheck`: Full data comparison; `sampleDataCheck`: Sampling data comparison; `rowsCount`: Row count comparison)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -992,6 +1215,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Options(self):
+        """Configuration information of the comparison task
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
+        """
         return self._Options
 
     @Options.setter
@@ -1000,6 +1227,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Consistency check prompt message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -1055,6 +1286,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ViewName(self):
+        """View name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ViewName
 
     @ViewName.setter
@@ -1091,6 +1326,9 @@ class CompleteMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -1099,6 +1337,9 @@ class CompleteMigrateJobRequest(AbstractModel):
 
     @property
     def CompleteMode(self):
+        """The way to complete the task, which is supported only for legacy MySQL migration tasks. Valid values: `waitForSync` (wait for the source-replica lag to become 0 before stopping); `immediately` (complete immediately without waiting for source-replica sync). Default value: `waitForSync`.
+        :rtype: str
+        """
         return self._CompleteMode
 
     @CompleteMode.setter
@@ -1133,6 +1374,9 @@ class CompleteMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1203,6 +1447,9 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Sync task instance ID in the format of `sync-werwfs23`, which is used to identify a sync task.
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -1211,6 +1458,9 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def SrcAccessType(self):
+        """Source database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet). Note that the valid values are subject to the current link.
+        :rtype: str
+        """
         return self._SrcAccessType
 
     @SrcAccessType.setter
@@ -1219,6 +1469,9 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def DstAccessType(self):
+        """Target database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet); `ckafka` (CKafka instance). Note that the valid values are subject to the current link.
+        :rtype: str
+        """
         return self._DstAccessType
 
     @DstAccessType.setter
@@ -1227,6 +1480,9 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def Objects(self):
+        """Information of synced database/table objects
+        :rtype: :class:`tencentcloud.dts.v20211206.models.Objects`
+        """
         return self._Objects
 
     @Objects.setter
@@ -1235,6 +1491,9 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def JobName(self):
+        """Sync task name
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -1243,6 +1502,9 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def JobMode(self):
+        """Enumerated values: `liteMode`: Lite mode; `fullMode`: Standard mode
+        :rtype: str
+        """
         return self._JobMode
 
     @JobMode.setter
@@ -1251,6 +1513,9 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def RunMode(self):
+        """Running mode. Valid values: `Immediate`, `Timed`. Default value: `Immediate`.
+        :rtype: str
+        """
         return self._RunMode
 
     @RunMode.setter
@@ -1259,6 +1524,9 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def ExpectRunTime(self):
+        """Expected start time in the format of "2006-01-02 15:04:05", which is required if `RunMode` is `Timed`.
+        :rtype: str
+        """
         return self._ExpectRunTime
 
     @ExpectRunTime.setter
@@ -1267,6 +1535,9 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def SrcInfo(self):
+        """Source database information. This parameter only applies to single-node databases, and `SrcNodeType` must be `single`.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        """
         return self._SrcInfo
 
     @SrcInfo.setter
@@ -1275,6 +1546,9 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def SrcInfos(self):
+        """Source database information. This parameter is valid for multi-node databases, and the value of `SrcNodeType` must be `cluster`.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
+        """
         return self._SrcInfos
 
     @SrcInfos.setter
@@ -1283,6 +1557,9 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def SrcNodeType(self):
+        """Enumerated values: `single` (for single-node source database), `cluster` (for multi-node source database).
+        :rtype: str
+        """
         return self._SrcNodeType
 
     @SrcNodeType.setter
@@ -1291,6 +1568,9 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def DstInfo(self):
+        """Target database information. This parameter is used by single-node databases.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        """
         return self._DstInfo
 
     @DstInfo.setter
@@ -1299,6 +1579,9 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def DstInfos(self):
+        """Target database information. This parameter is valid for multi-node databases, and the value of `DstNodeType` must be `cluster`.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
+        """
         return self._DstInfos
 
     @DstInfos.setter
@@ -1307,6 +1590,9 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def DstNodeType(self):
+        """Enumerated values: `single` (for single-node target database), `cluster` (for multi-node target database).
+        :rtype: str
+        """
         return self._DstNodeType
 
     @DstNodeType.setter
@@ -1315,6 +1601,9 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def Options(self):
+        """Sync task options. The `RateLimitOption` option cannot take effect currently. To modify the speed limit settings, use the `ModifySyncRateLimit` API.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.Options`
+        """
         return self._Options
 
     @Options.setter
@@ -1323,6 +1612,9 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def AutoRetryTimeRangeMinutes(self):
+        """Automatic retry time, which can be set to 5-720 minutes. 0 indicates that retry is disabled.
+        :rtype: int
+        """
         return self._AutoRetryTimeRangeMinutes
 
     @AutoRetryTimeRangeMinutes.setter
@@ -1383,6 +1675,9 @@ class ConfigureSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1417,6 +1712,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConditionColumn(self):
+        """Conditionally overwritten column
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ConditionColumn
 
     @ConditionColumn.setter
@@ -1425,6 +1724,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConditionOperator(self):
+        """Conditional overwrite operation
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ConditionOperator
 
     @ConditionOperator.setter
@@ -1433,6 +1736,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConditionOrderInSrcAndDst(self):
+        """Conditional overwrite priority configuration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ConditionOrderInSrcAndDst
 
     @ConditionOrderInSrcAndDst.setter
@@ -1469,6 +1776,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Mode(self):
+        """Data consistency check type. Valid values: `full`, `noCheck`, `notConfigured`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -1502,6 +1813,9 @@ class ContinueMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -1535,6 +1849,9 @@ class ContinueMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1560,6 +1877,9 @@ class ContinueSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Sync task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -1593,6 +1913,9 @@ class ContinueSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1618,6 +1941,9 @@ class CreateCheckSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Sync task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -1651,6 +1977,9 @@ class CreateCheckSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1688,6 +2017,9 @@ class CreateCompareTaskRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -1696,6 +2028,9 @@ class CreateCompareTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """Data consistency check task name. If this parameter is left empty, the value of `CompareTaskId` will be assigned to it.
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -1704,6 +2039,9 @@ class CreateCompareTaskRequest(AbstractModel):
 
     @property
     def ObjectMode(self):
+        """Data comparison object mode. Valid values: `sameAsMigrate` (all migration objects); `custom` (custom mode). Default value: `sameAsMigrate`.
+        :rtype: str
+        """
         return self._ObjectMode
 
     @ObjectMode.setter
@@ -1712,6 +2050,9 @@ class CreateCompareTaskRequest(AbstractModel):
 
     @property
     def Objects(self):
+        """Configuration of the data consistency check object
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareObject`
+        """
         return self._Objects
 
     @Objects.setter
@@ -1720,6 +2061,9 @@ class CreateCompareTaskRequest(AbstractModel):
 
     @property
     def Options(self):
+        """Consistency check options
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
+        """
         return self._Options
 
     @Options.setter
@@ -1765,6 +2109,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareTaskId(self):
+        """Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CompareTaskId
 
     @CompareTaskId.setter
@@ -1773,6 +2121,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1799,6 +2150,9 @@ class CreateMigrateCheckJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -1832,6 +2186,9 @@ class CreateMigrateCheckJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1878,6 +2235,9 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def SrcDatabaseType(self):
+        """Source database type. Valid values: `mysql`, `redis`, `percona`, `mongodb`, `postgresql`, `sqlserver`, `mariadb`, and `cynosdbmysql`.
+        :rtype: str
+        """
         return self._SrcDatabaseType
 
     @SrcDatabaseType.setter
@@ -1886,6 +2246,9 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def DstDatabaseType(self):
+        """Target database type. Valid values: `mysql`, `redis`, `percona`, `mongodb` ,`postgresql`, `sqlserver`, `mariadb`, and `cynosdbmysql`.
+        :rtype: str
+        """
         return self._DstDatabaseType
 
     @DstDatabaseType.setter
@@ -1894,6 +2257,9 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def SrcRegion(self):
+        """Source instance region, such as `ap-guangzhou`.
+        :rtype: str
+        """
         return self._SrcRegion
 
     @SrcRegion.setter
@@ -1902,6 +2268,9 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def DstRegion(self):
+        """Target instance region, such as `ap-guangzhou`. Note that it must be the same as the API request region.
+        :rtype: str
+        """
         return self._DstRegion
 
     @DstRegion.setter
@@ -1910,6 +2279,9 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def InstanceClass(self):
+        """Instance specification. Valid values: `small`, `medium`, `large`, `xlarge`, `2xlarge`.
+        :rtype: str
+        """
         return self._InstanceClass
 
     @InstanceClass.setter
@@ -1918,6 +2290,9 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def Count(self):
+        """Quantity. Value range: [1,15]. Default value: `1`.
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -1926,6 +2301,9 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def JobName(self):
+        """Migration task name, which can contain up to 128 characters.
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -1934,6 +2312,9 @@ class CreateMigrationServiceRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Tag information
+        :rtype: list of TagItem
+        """
         return self._Tags
 
     @Tags.setter
@@ -1983,6 +2364,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobIds(self):
+        """The list of migration task IDs randomly generated in the format of `dts-c1f6rs21` after a successful order placement
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._JobIds
 
     @JobIds.setter
@@ -1991,6 +2376,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2017,6 +2405,9 @@ class CreateModifyCheckSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Sync task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -2050,6 +2441,9 @@ class CreateModifyCheckSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2108,6 +2502,9 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """Billing mode. Valid values: `PrePay` (monthly subscription); `PostPay` (pay-as-you-go). Currently, DTS at Tencent Cloud International is free of charge.
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -2116,6 +2513,9 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def SrcDatabaseType(self):
+        """Source database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, and `tdsqlmysql`.
+        :rtype: str
+        """
         return self._SrcDatabaseType
 
     @SrcDatabaseType.setter
@@ -2124,6 +2524,9 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def SrcRegion(self):
+        """Source database region, such as `ap-guangzhou`.
+        :rtype: str
+        """
         return self._SrcRegion
 
     @SrcRegion.setter
@@ -2132,6 +2535,9 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def DstDatabaseType(self):
+        """Target database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, `tdsqlmysql`, and `kafka`.
+        :rtype: str
+        """
         return self._DstDatabaseType
 
     @DstDatabaseType.setter
@@ -2140,6 +2546,9 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def DstRegion(self):
+        """Target database region, such as `ap-guangzhou`.
+        :rtype: str
+        """
         return self._DstRegion
 
     @DstRegion.setter
@@ -2148,6 +2557,9 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def Specification(self):
+        """Sync task specification, such as `Standard`.
+        :rtype: str
+        """
         return self._Specification
 
     @Specification.setter
@@ -2156,6 +2568,9 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Tag information
+        :rtype: list of TagItem
+        """
         return self._Tags
 
     @Tags.setter
@@ -2164,6 +2579,9 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def Count(self):
+        """The number of sync tasks purchased at a time. Value range: [1, 10]. Default value: `1`.
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -2172,6 +2590,9 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def AutoRenew(self):
+        """Auto-renewal flag, which takes effect if `PayMode` is `PrePay`. Valid values: `1` (auto-renewal enabled); `0` (auto-renewal disabled). Default value: `0`.
+        :rtype: int
+        """
         return self._AutoRenew
 
     @AutoRenew.setter
@@ -2180,6 +2601,9 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def InstanceClass(self):
+        """Sync link specification, such as `micro`, `small`, `medium`, and `large`. Default value: `medium`.
+        :rtype: str
+        """
         return self._InstanceClass
 
     @InstanceClass.setter
@@ -2188,6 +2612,9 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def JobName(self):
+        """Sync task name
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -2196,6 +2623,9 @@ class CreateSyncJobRequest(AbstractModel):
 
     @property
     def ExistedJobId(self):
+        """ID of the existing task used to create a similar task
+        :rtype: str
+        """
         return self._ExistedJobId
 
     @ExistedJobId.setter
@@ -2248,6 +2678,9 @@ class CreateSyncJobResponse(AbstractModel):
 
     @property
     def JobIds(self):
+        """Sync task IDs
+        :rtype: list of str
+        """
         return self._JobIds
 
     @JobIds.setter
@@ -2256,6 +2689,9 @@ class CreateSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2314,6 +2750,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
+        """Instance region
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2322,6 +2762,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessType(self):
+        """Instances network access type. Valid values: `extranet` (public network); `ipv6` (public IPv6); `cvm` (self-build on CVM); `dcg` (Direct Connect); `vpncloud` (VPN access); `cdb` (database); `ccn` (CCN); `intranet` (intranet); `vpc` (VPC). Note that the valid values are subject to the current link.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AccessType
 
     @AccessType.setter
@@ -2330,6 +2774,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DatabaseType(self):
+        """Database type, such as `mysql`, `redis`, `mongodb`, `postgresql`, `mariadb`, and `percona`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DatabaseType
 
     @DatabaseType.setter
@@ -2338,6 +2786,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NodeType(self):
+        """Node type, empty or simple indicates a general node, cluster indicates a cluster node; for mongo services, valid values: replicaset (mongodb replica set), standalone (mongodb single node), cluster (mongodb cluster); for redis instances, valid values: empty or simple (single node), cluster (cluster), cluster-cache (cache cluster), cluster-proxy (proxy cluster).Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NodeType
 
     @NodeType.setter
@@ -2346,6 +2797,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Info(self):
+        """Database information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DBInfo
+        """
         return self._Info
 
     @Info.setter
@@ -2354,6 +2809,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Supplier(self):
+        """Instance service provider, such as "aliyun" and "others".
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Supplier
 
     @Supplier.setter
@@ -2362,6 +2821,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtraAttr(self):
+        """For MongoDB, you can define the following parameters: 	['AuthDatabase':'admin', 
+'AuthFlag': "1",	'AuthMechanism':"SCRAM-SHA-1"]
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of KeyValuePairOption
+        """
         return self._ExtraAttr
 
     @ExtraAttr.setter
@@ -2370,6 +2834,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DatabaseNetEnv(self):
+        """Network environment of the database. This parameter is required when `AccessType` is `ccn`. Valid values: `UserIDC` (user IDC), `TencentVPC` (Tencent Cloud VPC).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DatabaseNetEnv
 
     @DatabaseNetEnv.setter
@@ -2378,6 +2846,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConnectType(self):
+        """
+        :rtype: str
+        """
         return self._ConnectType
 
     @ConnectType.setter
@@ -2503,6 +2974,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Role(self):
+        """Node role in a distributed database, such as the mongos node in MongoDB.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -2511,6 +2986,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbKernel(self):
+        """Kernel version, such as the different kernel versions of MariaDB.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DbKernel
 
     @DbKernel.setter
@@ -2519,6 +2998,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Host(self):
+        """Instance IP address, which is required for the following access types: public network, Direct Connect, VPN, CCN, intranet, and VPC.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Host
 
     @Host.setter
@@ -2527,6 +3010,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Port(self):
+        """Instance port, which is required for the following access types: public network, self-build on CVM, Direct Connect, VPN, CCN, intranet, and VPC.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -2535,6 +3022,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def User(self):
+        """Instance username
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -2543,6 +3034,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Password(self):
+        """Instance password
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -2551,6 +3046,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CvmInstanceId(self):
+        """Short CVM instance ID in the format of `ins-olgl39y8`, which is required if the access type is `cvm`. It is the same as the instance ID displayed in the CVM console.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CvmInstanceId
 
     @CvmInstanceId.setter
@@ -2559,6 +3058,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqVpnGwId(self):
+        """VPN gateway ID in the format of `vpngw-9ghexg7q`, which is required if the access type is `vpncloud`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UniqVpnGwId
 
     @UniqVpnGwId.setter
@@ -2567,6 +3070,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqDcgId(self):
+        """Direct Connect gateway ID in the format of `dcg-0rxtqqxb`, which is required if the access type is `dcg`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UniqDcgId
 
     @UniqDcgId.setter
@@ -2575,6 +3082,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """Database instance ID in the format of `cdb-powiqx8q`, which is required if the access type is `cdb`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2583,6 +3094,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CcnGwId(self):
+        """CCN instance ID such as `ccn-afp6kltc`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CcnGwId
 
     @CcnGwId.setter
@@ -2591,6 +3106,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
+        """VPC ID in the format of `vpc-92jblxto`, which is required if the access type is `vpc`, `vpncloud`, `ccn`, or `dcg`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -2599,6 +3118,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
+        """ID of the subnet in the VPC in the format of `subnet-3paxmkdz`, which is required if the access type is `vpc`, `vpncloud`, `ccn`, or `dcg`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -2607,6 +3130,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EngineVersion(self):
+        """Database version in the format of `5.6` or `5.7`, which takes effect only if the instance is an RDS instance. Default value: `5.6`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EngineVersion
 
     @EngineVersion.setter
@@ -2615,6 +3142,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Account(self):
+        """Instance account
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Account
 
     @Account.setter
@@ -2623,6 +3154,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountRole(self):
+        """The role used for cross-account migration, which can contain [a-zA-Z0-9\-\_]+.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AccountRole
 
     @AccountRole.setter
@@ -2631,6 +3166,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccountMode(self):
+        """The account to which the resource belongs. Valid values: empty or `self` (the current account); `other` (another account).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AccountMode
 
     @AccountMode.setter
@@ -2639,6 +3178,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TmpSecretId(self):
+        """Temporary SecretId, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1).Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TmpSecretId
 
     @TmpSecretId.setter
@@ -2647,6 +3189,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TmpSecretKey(self):
+        """Temporary SecretKey, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1).Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TmpSecretKey
 
     @TmpSecretKey.setter
@@ -2655,6 +3200,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TmpToken(self):
+        """Temporary token, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1).Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TmpToken
 
     @TmpToken.setter
@@ -2784,6 +3332,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbName(self):
+        """Name of the database to be migrated or synced, which is required if `ObjectMode` is `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -2792,6 +3344,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewDbName(self):
+        """Name of the database after migration or sync, which is the same as the source database name by default.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NewDbName
 
     @NewDbName.setter
@@ -2800,6 +3356,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SchemaName(self):
+        """The schema to be migrated or synced
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SchemaName
 
     @SchemaName.setter
@@ -2808,6 +3368,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewSchemaName(self):
+        """Name of the schema after migration or sync
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NewSchemaName
 
     @NewSchemaName.setter
@@ -2816,6 +3380,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DBMode(self):
+        """Database selection mode, which is required if `ObjectMode` is `partial`. Valid values: `all`, `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DBMode
 
     @DBMode.setter
@@ -2824,6 +3392,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SchemaMode(self):
+        """Schema selection mode. Valid values: `all`, `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SchemaMode
 
     @SchemaMode.setter
@@ -2832,6 +3404,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableMode(self):
+        """Table selection mode, which is required if `DBMode` is `partial`. Valid values: `all`, `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TableMode
 
     @TableMode.setter
@@ -2840,6 +3416,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tables(self):
+        """The set of table objects, which is required if `TableMode` is `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TableItem
+        """
         return self._Tables
 
     @Tables.setter
@@ -2848,6 +3428,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ViewMode(self):
+        """View selection mode. Valid values: `all`, `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ViewMode
 
     @ViewMode.setter
@@ -2856,6 +3440,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Views(self):
+        """The set of view objects, which is required if `ViewMode` is `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ViewItem
+        """
         return self._Views
 
     @Views.setter
@@ -2864,6 +3452,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoleMode(self):
+        """Role selection mode, which is exclusive to PostgreSQL. Valid values: `all`, `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RoleMode
 
     @RoleMode.setter
@@ -2872,6 +3464,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Roles(self):
+        """Role, which is exclusive to PostgreSQL and required if `RoleMode` is `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of RoleItem
+        """
         return self._Roles
 
     @Roles.setter
@@ -2880,6 +3476,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FunctionMode(self):
+        """Sync mode. Valid values: `partial`, `all`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FunctionMode
 
     @FunctionMode.setter
@@ -2888,6 +3488,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TriggerMode(self):
+        """Sync mode. Valid values: `partial`, `all`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TriggerMode
 
     @TriggerMode.setter
@@ -2896,6 +3500,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventMode(self):
+        """Sync mode. Valid values: `partial`, `all`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EventMode
 
     @EventMode.setter
@@ -2904,6 +3512,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProcedureMode(self):
+        """Sync mode. Valid values: `partial`, `all`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProcedureMode
 
     @ProcedureMode.setter
@@ -2912,6 +3524,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Functions(self):
+        """This parameter is required if `FunctionMode` is `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._Functions
 
     @Functions.setter
@@ -2920,6 +3536,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Procedures(self):
+        """This parameter is required if `ProcedureMode` is `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._Procedures
 
     @Procedures.setter
@@ -2928,6 +3548,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Events(self):
+        """This parameter is required if `EventMode` is `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._Events
 
     @Events.setter
@@ -2936,6 +3560,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Triggers(self):
+        """This parameter is required if `TriggerMode` is `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._Triggers
 
     @Triggers.setter
@@ -3068,6 +3696,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbName(self):
+        """Name of the database to be migrated or synced, which is required if `ObjectMode` is `Partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -3076,6 +3708,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewDbName(self):
+        """Name of the database after migration or sync, which is the same as the source database name by default.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NewDbName
 
     @NewDbName.setter
@@ -3084,6 +3720,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DbMode(self):
+        """Database selection mode, which is required if `Mode` is `Partial`. Valid values: `All`, `Partial`. Note that the sync of advanced objects does not depend on this parameter. To sync an entire database, set this parameter to `All`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DbMode
 
     @DbMode.setter
@@ -3092,6 +3732,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SchemaName(self):
+        """The schema to be migrated or synced
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SchemaName
 
     @SchemaName.setter
@@ -3100,6 +3744,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewSchemaName(self):
+        """Name of the schema after migration or sync
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NewSchemaName
 
     @NewSchemaName.setter
@@ -3108,6 +3756,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableMode(self):
+        """Table selection mode, which is required if `DBMode` is `Partial`. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TableMode
 
     @TableMode.setter
@@ -3116,6 +3768,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tables(self):
+        """The set of table objects, which is required if `TableMode` is `Partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Table
+        """
         return self._Tables
 
     @Tables.setter
@@ -3124,6 +3780,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ViewMode(self):
+        """View selection mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ViewMode
 
     @ViewMode.setter
@@ -3132,6 +3792,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Views(self):
+        """The set of view objects, which is required if `ViewMode` is `Partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of View
+        """
         return self._Views
 
     @Views.setter
@@ -3140,6 +3804,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FunctionMode(self):
+        """Sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FunctionMode
 
     @FunctionMode.setter
@@ -3148,6 +3816,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Functions(self):
+        """This parameter is required if `FunctionMode` is `Partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._Functions
 
     @Functions.setter
@@ -3156,6 +3828,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProcedureMode(self):
+        """Sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProcedureMode
 
     @ProcedureMode.setter
@@ -3164,6 +3840,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Procedures(self):
+        """This parameter is required if `ProcedureMode` is `Partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._Procedures
 
     @Procedures.setter
@@ -3172,6 +3852,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TriggerMode(self):
+        """Trigger sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object “trigger” is not supported for data sync.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TriggerMode
 
     @TriggerMode.setter
@@ -3180,6 +3864,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Triggers(self):
+        """This parameter is used to specify the names of the triggers to be migrated when the value of `TriggerMode` is `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._Triggers
 
     @Triggers.setter
@@ -3188,6 +3876,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventMode(self):
+        """Event sync mode. Valid values: `All`, `Partial`. To sync an entire database, set this parameter to `All`. Currently, the advanced object “event” is not supported for data sync.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EventMode
 
     @EventMode.setter
@@ -3196,6 +3888,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Events(self):
+        """This parameter is used to specify the names of the events to be migrated when the value of `EventMode` is `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._Events
 
     @Events.setter
@@ -3263,6 +3959,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectMode(self):
+        """Migration object type. Valid values: `all`, `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ObjectMode
 
     @ObjectMode.setter
@@ -3271,6 +3971,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Databases(self):
+        """Migration object, which is required if `ObjectMode` is `partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DBItem
+        """
         return self._Databases
 
     @Databases.setter
@@ -3279,6 +3983,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdvancedObjects(self):
+        """Advanced object types, such as trigger, function, procedure, event. Note: If you want to migrate and synchronize advanced objects, the corresponding advanced object type should be included in this configuration.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._AdvancedObjects
 
     @AdvancedObjects.setter
@@ -3324,6 +4031,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DdlObject(self):
+        """DDL type, such as database, table, view, and index.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DdlObject
 
     @DdlObject.setter
@@ -3332,6 +4043,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DdlValue(self):
+        """DDL value. Valid values: [Create,Drop,Alter] for database <br>[Create,Drop,Alter,Truncate,Rename] for table <br/>[Create,Drop] for view <br/>[Create,Drop] for index
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._DdlValue
 
     @DdlValue.setter
@@ -3369,6 +4084,9 @@ class DeleteCompareTaskRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3377,6 +4095,9 @@ class DeleteCompareTaskRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
+        """Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`
+        :rtype: str
+        """
         return self._CompareTaskId
 
     @CompareTaskId.setter
@@ -3411,6 +4132,9 @@ class DeleteCompareTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3436,6 +4160,9 @@ class DescribeCheckSyncJobResultRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Sync task instance ID in the format of `sync-werwfs23`, which is used to identify a sync task. This parameter is required.
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3489,6 +4216,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Execution status of the check task. Valid values: `notStarted`, `running`, `failed`, `success`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3497,6 +4228,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepCount(self):
+        """Total number of steps
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StepCount
 
     @StepCount.setter
@@ -3505,6 +4240,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepCur(self):
+        """The current step
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StepCur
 
     @StepCur.setter
@@ -3513,6 +4252,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Progress(self):
+        """Overall progress. Value range: 0-100.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -3521,6 +4264,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepInfos(self):
+        """Step information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of StepInfo
+        """
         return self._StepInfos
 
     @StepInfos.setter
@@ -3529,6 +4276,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3591,6 +4341,9 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3599,6 +4352,9 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
+        """Check task ID
+        :rtype: str
+        """
         return self._CompareTaskId
 
     @CompareTaskId.setter
@@ -3607,6 +4363,9 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def DifferenceLimit(self):
+        """Number of inconsistent objects to be returned
+        :rtype: int
+        """
         return self._DifferenceLimit
 
     @DifferenceLimit.setter
@@ -3615,6 +4374,9 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def DifferenceOffset(self):
+        """Offset of inconsistent objects
+        :rtype: int
+        """
         return self._DifferenceOffset
 
     @DifferenceOffset.setter
@@ -3623,6 +4385,9 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def DifferenceDB(self):
+        """Search criterion: Inconsistent database name
+        :rtype: str
+        """
         return self._DifferenceDB
 
     @DifferenceDB.setter
@@ -3631,6 +4396,9 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def DifferenceTable(self):
+        """Search criterion: Inconsistent table name
+        :rtype: str
+        """
         return self._DifferenceTable
 
     @DifferenceTable.setter
@@ -3639,6 +4407,9 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def SkippedLimit(self):
+        """Number of unchecked objects to be returned
+        :rtype: int
+        """
         return self._SkippedLimit
 
     @SkippedLimit.setter
@@ -3647,6 +4418,9 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def SkippedOffset(self):
+        """Offset of unchecked objects
+        :rtype: int
+        """
         return self._SkippedOffset
 
     @SkippedOffset.setter
@@ -3655,6 +4429,9 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def SkippedDB(self):
+        """Search criterion: Unchecked database name
+        :rtype: str
+        """
         return self._SkippedDB
 
     @SkippedDB.setter
@@ -3663,6 +4440,9 @@ class DescribeCompareReportRequest(AbstractModel):
 
     @property
     def SkippedTable(self):
+        """Search criterion: Unchecked table name
+        :rtype: str
+        """
         return self._SkippedTable
 
     @SkippedTable.setter
@@ -3713,6 +4493,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Abstract(self):
+        """Summary information of data consistency check
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareAbstractInfo`
+        """
         return self._Abstract
 
     @Abstract.setter
@@ -3721,6 +4505,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Detail(self):
+        """Data consistency check details
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareDetailInfo`
+        """
         return self._Detail
 
     @Detail.setter
@@ -3729,6 +4517,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3772,6 +4563,9 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3780,6 +4574,9 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of tasks to be displayed per page. Default value: `20`.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3788,6 +4585,9 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Pagination offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3796,6 +4596,9 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
+        """Check task ID
+        :rtype: str
+        """
         return self._CompareTaskId
 
     @CompareTaskId.setter
@@ -3804,6 +4607,9 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Data consistency check task status. Valid values: `created`, `readyRun`, `running`, `success`, `stopping`, `failed`, `canceled`.
+        :rtype: list of str
+        """
         return self._Status
 
     @Status.setter
@@ -3849,6 +4655,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Quantity
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3857,6 +4667,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Items(self):
+        """List of data consistency check tasks
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of CompareTaskItem
+        """
         return self._Items
 
     @Items.setter
@@ -3865,6 +4679,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3924,6 +4741,9 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def DatabaseType(self):
+        """Database type, such as `mysql`.
+        :rtype: str
+        """
         return self._DatabaseType
 
     @DatabaseType.setter
@@ -3932,6 +4752,9 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def MigrateRole(self):
+        """Specifies whether the instance is the migration source or target. Valid values: `src` (source); `dts` (target).
+        :rtype: str
+        """
         return self._MigrateRole
 
     @MigrateRole.setter
@@ -3940,6 +4763,9 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Database instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3948,6 +4774,9 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """Database instance name
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -3956,6 +4785,9 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3964,6 +4796,9 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3972,6 +4807,9 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def AccountMode(self):
+        """The account to which the resource belongs. Valid values: empty or `self` (the current account); `other` (another account).
+        :rtype: str
+        """
         return self._AccountMode
 
     @AccountMode.setter
@@ -3980,6 +4818,9 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def TmpSecretId(self):
+        """ID of the temporary key, which is required if the operation is performed across accounts.
+        :rtype: str
+        """
         return self._TmpSecretId
 
     @TmpSecretId.setter
@@ -3988,6 +4829,9 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def TmpSecretKey(self):
+        """Key of the temporary key, which is required if the operation is performed across accounts.
+        :rtype: str
+        """
         return self._TmpSecretKey
 
     @TmpSecretKey.setter
@@ -3996,6 +4840,9 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def TmpToken(self):
+        """Temporary token, which is required if the operation is performed across accounts.
+        :rtype: str
+        """
         return self._TmpToken
 
     @TmpToken.setter
@@ -4046,6 +4893,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Number of eligible items
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4054,6 +4905,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Instances(self):
+        """Instance list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of MigrateDBItem
+        """
         return self._Instances
 
     @Instances.setter
@@ -4062,6 +4917,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4094,6 +4952,9 @@ class DescribeMigrationCheckJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -4142,6 +5003,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Check task execution status. Valid values: `notStarted`, `running`, `failed`, `success`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -4150,6 +5015,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BriefMsg(self):
+        """Check task result message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BriefMsg
 
     @BriefMsg.setter
@@ -4158,6 +5027,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepInfo(self):
+        """Check step
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of CheckStep
+        """
         return self._StepInfo
 
     @StepInfo.setter
@@ -4166,6 +5039,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CheckFlag(self):
+        """Check result. Valid values: `checkPass`, `checkNotPass`.
+        :rtype: str
+        """
         return self._CheckFlag
 
     @CheckFlag.setter
@@ -4174,6 +5050,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4208,6 +5087,9 @@ class DescribeMigrationDetailRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -4327,6 +5209,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobId(self):
+        """Data migration task ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -4335,6 +5221,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobName(self):
+        """Data migration task name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -4343,6 +5233,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Task creation (submission) time in the format of `yyyy-mm-dd hh:mm:ss`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -4351,6 +5245,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
+        """Task update time in the format of `yyyy-mm-dd hh:mm:ss`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -4359,6 +5257,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """Task start time in the format of `yyyy-mm-dd hh:mm:ss`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4367,6 +5269,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """Task end time in the format of `yyyy-mm-dd hh:mm:ss`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4375,6 +5281,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BriefMsg(self):
+        """Migration task error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BriefMsg
 
     @BriefMsg.setter
@@ -4383,6 +5293,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status. Valid values: `created`(Created), `checking` (Checking), `checkPass` (Check passed), `checkNotPass` (Check not passed), `readyRun` (Ready for running), `running` (Running), `readyComplete` (Preparation completed), `success` (Successful), `failed` (Failed), `stopping` (Stopping), `completing` (Completing), `pausing` (Pausing), `manualPaused` (Paused). Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -4391,6 +5304,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Action(self):
+        """Task operation information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateAction`
+        """
         return self._Action
 
     @Action.setter
@@ -4399,6 +5316,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepInfo(self):
+        """Information of the migration task execution process. The check and migration step information will be displayed in the check and migration stages respectively.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateDetailInfo`
+        """
         return self._StepInfo
 
     @StepInfo.setter
@@ -4407,6 +5328,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcInfo(self):
+        """Source instance information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
+        """
         return self._SrcInfo
 
     @SrcInfo.setter
@@ -4415,6 +5340,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstInfo(self):
+        """Target database information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
+        """
         return self._DstInfo
 
     @DstInfo.setter
@@ -4423,6 +5352,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareTask(self):
+        """Data consistency check result
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareTaskInfo`
+        """
         return self._CompareTask
 
     @CompareTask.setter
@@ -4431,6 +5364,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """Tag information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TagItem
+        """
         return self._Tags
 
     @Tags.setter
@@ -4439,6 +5376,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RunMode(self):
+        """Running mode. Valid values: `immediate`, `timed`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RunMode
 
     @RunMode.setter
@@ -4447,6 +5388,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpectRunTime(self):
+        """Expected start time in the format of "2006-01-02 15:04:05", which is required if `RunMode` is `timed`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExpectRunTime
 
     @ExpectRunTime.setter
@@ -4455,6 +5400,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MigrateOption(self):
+        """Migration options, which describe how the task performs migration.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateOption`
+        """
         return self._MigrateOption
 
     @MigrateOption.setter
@@ -4463,6 +5412,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CheckStepInfo(self):
+        """Check task running details
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CheckStepInfo`
+        """
         return self._CheckStepInfo
 
     @CheckStepInfo.setter
@@ -4471,6 +5424,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TradeInfo(self):
+        """Billing information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.TradeInfo`
+        """
         return self._TradeInfo
 
     @TradeInfo.setter
@@ -4479,6 +5436,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorInfo(self):
+        """Task error information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ErrorInfoItem
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -4487,6 +5448,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DumperResumeCtrl(self):
+        """Whether the task can be reentered in the full export stage. Valid values: `yes`, `no`. `yes`: The current task can be reentered. `no`: The current task is in the full export stage which cannot be reentered. If the value of this parameter is `no`, the checkpoint restart is not supported when the task is restarted in the export stage.
+        :rtype: str
+        """
         return self._DumperResumeCtrl
 
     @DumperResumeCtrl.setter
@@ -4495,6 +5459,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RateLimitOption(self):
+        """Task throttling information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.RateLimitOption`
+        """
         return self._RateLimitOption
 
     @RateLimitOption.setter
@@ -4503,6 +5471,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4623,6 +5594,9 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID such as `dts-amm1jw5q`
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -4631,6 +5605,9 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def JobName(self):
+        """Data migration task name
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -4639,6 +5616,9 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Data migration task status. Valid values: `created`, `checking`, `checkPass`, `checkNotPass`, `readyRun`, `running`, `readyComplete`, `success`, `failed`, `stopping`, `completing`.
+        :rtype: list of str
+        """
         return self._Status
 
     @Status.setter
@@ -4647,6 +5627,9 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def SrcInstanceId(self):
+        """Source instance ID in the format of `cdb-c1nl9rpv`
+        :rtype: str
+        """
         return self._SrcInstanceId
 
     @SrcInstanceId.setter
@@ -4655,6 +5638,9 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def SrcRegion(self):
+        """Source instance region, such as `ap-guangzhou`.
+        :rtype: str
+        """
         return self._SrcRegion
 
     @SrcRegion.setter
@@ -4663,6 +5649,9 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def SrcDatabaseType(self):
+        """Source database type, such as `sqlserver`, `mysql`, `mongodb`, `redis`, `tendis`, `keewidb`, `clickhouse`, `cynosdbmysql`, `percona`, `tdsqlpercona`, `mariadb`, `tdsqlmysql`, `postgresql.
+        :rtype: list of str
+        """
         return self._SrcDatabaseType
 
     @SrcDatabaseType.setter
@@ -4671,6 +5660,9 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def SrcAccessType(self):
+        """Source instance access type. Valid values: `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `cdb` (Database); `cvm` (self-build on CVM).
+        :rtype: list of str
+        """
         return self._SrcAccessType
 
     @SrcAccessType.setter
@@ -4679,6 +5671,9 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def DstInstanceId(self):
+        """Target instance ID in the format of `cdb-c1nl9rpv`
+        :rtype: str
+        """
         return self._DstInstanceId
 
     @DstInstanceId.setter
@@ -4687,6 +5682,9 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def DstRegion(self):
+        """Target instance region, such as `ap-guangzhou`.
+        :rtype: str
+        """
         return self._DstRegion
 
     @DstRegion.setter
@@ -4695,6 +5693,9 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def DstDatabaseType(self):
+        """Target database type, such as `sqlserver`, `mysql`, `mongodb`, `redis`, `tendis`, `keewidb`, `clickhouse`, `cynosdbmysql`, `percona`, `tdsqlpercona`, `mariadb`, `tdsqlmysql`, `postgresql.
+        :rtype: list of str
+        """
         return self._DstDatabaseType
 
     @DstDatabaseType.setter
@@ -4703,6 +5704,9 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def DstAccessType(self):
+        """Target instance access type. Valid values: `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `cdb` (Database); `cvm` (self-build on CVM).
+        :rtype: list of str
+        """
         return self._DstAccessType
 
     @DstAccessType.setter
@@ -4711,6 +5715,9 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def RunMode(self):
+        """Task running mode. Valid values: `immediate`, `timed`.
+        :rtype: str
+        """
         return self._RunMode
 
     @RunMode.setter
@@ -4719,6 +5726,9 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def OrderSeq(self):
+        """Sorting order. Valid values: `asc`, `desc`. Default value: `desc` by creation time.
+        :rtype: str
+        """
         return self._OrderSeq
 
     @OrderSeq.setter
@@ -4727,6 +5737,9 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of instances to be returned. Value range: [1,100]. Default value: `20`.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4735,6 +5748,9 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: `0`.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4743,6 +5759,9 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
+        """Tag filter
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -4804,6 +5823,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Number of migration tasks
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4812,6 +5835,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobList(self):
+        """Migration task list
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of JobItem
+        """
         return self._JobList
 
     @JobList.setter
@@ -4820,6 +5847,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4852,6 +5882,9 @@ class DescribeModifyCheckSyncJobResultRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Sync task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -4900,6 +5933,9 @@ class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
 
     @property
     def Status(self):
+        """Execution status of the check task Valid values: `notStarted` (Not started), `running` (Running), `failed` (Failed), `success` (Successful).
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -4908,6 +5944,9 @@ class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
 
     @property
     def StepCount(self):
+        """Number of check steps Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StepCount
 
     @StepCount.setter
@@ -4916,6 +5955,9 @@ class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
 
     @property
     def StepCur(self):
+        """Current step Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StepCur
 
     @StepCur.setter
@@ -4924,6 +5966,9 @@ class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
 
     @property
     def Progress(self):
+        """Overall progress. Value range: 0-100. Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -4932,6 +5977,9 @@ class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
 
     @property
     def StepInfos(self):
+        """Step details Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of StepInfo
+        """
         return self._StepInfos
 
     @StepInfos.setter
@@ -4940,6 +5988,9 @@ class DescribeModifyCheckSyncJobResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5005,6 +6056,9 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Sync task ID, such as `sync-werwfs23`.
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -5013,6 +6067,9 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def JobName(self):
+        """Sync task name
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -5021,6 +6078,9 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """Sort by field, such as `CreateTime`.
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -5029,6 +6089,9 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def OrderSeq(self):
+        """Sorting order. Valid values: `ASC`, `DESC`. Default value: `DESC` by `CreateTime`.
+        :rtype: str
+        """
         return self._OrderSeq
 
     @OrderSeq.setter
@@ -5037,6 +6100,9 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: `0`.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5045,6 +6111,9 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of sync task instances to be returned. Value range: [1,100]. Default value: `20`.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5053,6 +6122,9 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def Status(self):
+        """The set of status values, such as `Initialized,CheckPass,Running,ResumableErr,Stopped`.
+        :rtype: list of str
+        """
         return self._Status
 
     @Status.setter
@@ -5061,6 +6133,9 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def RunMode(self):
+        """Running mode. Valid values: `Immediate`, `Timed`.
+        :rtype: str
+        """
         return self._RunMode
 
     @RunMode.setter
@@ -5069,6 +6144,9 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def JobType(self):
+        """Task type, such as `mysql2mysql` (sync from MySQL to MySQL).
+        :rtype: str
+        """
         return self._JobType
 
     @JobType.setter
@@ -5077,6 +6155,9 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def PayMode(self):
+        """Billing mode. Valid values: `PrePay` (prepaid); `PostPay` (postpaid).
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -5085,6 +6166,9 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
+        """tag
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -5141,6 +6225,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Number of tasks
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5149,6 +6237,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobList(self):
+        """Array of task details
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of SyncJobInfo
+        """
         return self._JobList
 
     @JobList.setter
@@ -5157,6 +6249,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5189,6 +6284,9 @@ class DestroyMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -5222,6 +6320,9 @@ class DestroyMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5247,6 +6348,9 @@ class DestroySyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Sync task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -5280,6 +6384,9 @@ class DestroySyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5334,6 +6441,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CheckItemName(self):
+        """Check item name, such as source database permission check.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CheckItemName
 
     @CheckItemName.setter
@@ -5342,6 +6453,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """Check item details
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -5350,6 +6465,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CheckResult(self):
+        """Check item result. Valid values: `pass` (pass); `failed` (failure); `warning` (pass with warning).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CheckResult
 
     @CheckResult.setter
@@ -5358,6 +6477,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FailureReason(self):
+        """The cause of the check item failure
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FailureReason
 
     @FailureReason.setter
@@ -5366,6 +6489,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Solution(self):
+        """Solution
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Solution
 
     @Solution.setter
@@ -5374,6 +6501,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorLog(self):
+        """Execution error log
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._ErrorLog
 
     @ErrorLog.setter
@@ -5382,6 +6513,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HelpDoc(self):
+        """URL of the detailed help document
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._HelpDoc
 
     @HelpDoc.setter
@@ -5390,6 +6525,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SkipInfo(self):
+        """Prompt text for ignoring a risk
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SkipInfo
 
     @SkipInfo.setter
@@ -5435,6 +6574,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Number of inconsistent tables
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5443,6 +6586,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Items(self):
+        """Details of inconsistent tables
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DifferenceItem
+        """
         return self._Items
 
     @Items.setter
@@ -5519,6 +6666,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Db(self):
+        """Database name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Db
 
     @Db.setter
@@ -5527,6 +6678,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Table(self):
+        """Table name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Table
 
     @Table.setter
@@ -5535,6 +6690,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Chunk(self):
+        """Chunk ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Chunk
 
     @Chunk.setter
@@ -5543,6 +6702,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcItem(self):
+        """Source database value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SrcItem
 
     @SrcItem.setter
@@ -5551,6 +6714,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstItem(self):
+        """Target database value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DstItem
 
     @DstItem.setter
@@ -5559,6 +6726,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IndexName(self):
+        """Index name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IndexName
 
     @IndexName.setter
@@ -5567,6 +6738,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LowerBoundary(self):
+        """First index key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LowerBoundary
 
     @LowerBoundary.setter
@@ -5575,6 +6750,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpperBoundary(self):
+        """Last index key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UpperBoundary
 
     @UpperBoundary.setter
@@ -5583,6 +6762,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CostTime(self):
+        """Comparison time in ms
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: float
+        """
         return self._CostTime
 
     @CostTime.setter
@@ -5591,6 +6774,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FinishedAt(self):
+        """Completion time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FinishedAt
 
     @FinishedAt.setter
@@ -5642,6 +6829,9 @@ class DynamicOptions(AbstractModel):
 
     @property
     def OpTypes(self):
+        """DML and DDL options to be synced. Valid values: `Insert` (INSERT), `Update` (UPDATE), `Delete` (DELETE), `DDL` (structure sync), `PartialDDL` (custom option, which is used together with `DdlOptions`). This parameter is required, and its value will overwrite the previous value. Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._OpTypes
 
     @OpTypes.setter
@@ -5650,6 +6840,9 @@ class DynamicOptions(AbstractModel):
 
     @property
     def DdlOptions(self):
+        """DDL options to be synced. This parameter is required when `OpTypes` is `PartialDDL`, and its value will overwrite the previous value. Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DdlOption
+        """
         return self._DdlOptions
 
     @DdlOptions.setter
@@ -5658,6 +6851,9 @@ class DynamicOptions(AbstractModel):
 
     @property
     def ConflictHandleType(self):
+        """Conflict resolution method. Valid values: `ReportError` (Report error), `Ignore` (Ignore), `Cover` (Overwrite), `ConditionCover` (Conditionally overwrite). Currently, this parameter cannot be modified if the target of the link is Kafka. Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ConflictHandleType
 
     @ConflictHandleType.setter
@@ -5666,6 +6862,9 @@ class DynamicOptions(AbstractModel):
 
     @property
     def ConflictHandleOption(self):
+        """Detailed options of the conflict resolution method, such as the conditionally overwritten rows and condition operations for the “conditionally overwrite” method. The internal field of this parameter cannot be modified separately. If this parameter needs to be updated, update it fully. Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ConflictHandleOption`
+        """
         return self._ConflictHandleOption
 
     @ConflictHandleOption.setter
@@ -5820,6 +7019,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Region(self):
+        """Region name, such as `ap-guangzhou`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -5828,6 +7031,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Role(self):
+        """Node type of TDSQL for MySQL. Enumerated values: `proxy`, `set`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -5836,6 +7043,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DbKernel(self):
+        """Database kernel type, which is used to distinguish between different kernels in TDSQL. Valid values: `percona`, `mariadb`, `mysql`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DbKernel
 
     @DbKernel.setter
@@ -5844,6 +7055,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceId(self):
+        """Database instance ID in the format of `cdb-powiqx8q`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -5852,6 +7067,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Ip(self):
+        """Instance IP address, which is required if the access type is not `cdb`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -5860,6 +7079,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Port(self):
+        """Instance port, which is required if the access type is not `cdb`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -5868,6 +7091,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def User(self):
+        """Username, which is required for an instance authenticated by username and password.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -5876,6 +7103,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Password(self):
+        """Password, which is required for an instance authenticated by username and password.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -5884,6 +7115,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DbName(self):
+        """Database name, which is required if the database type is `cdwpg`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -5892,6 +7127,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VpcId(self):
+        """VPC ID in the format of `vpc-92jblxto`, which is required if the access type is `vpc`, `dcg`, or `vpncloud`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -5900,6 +7139,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubnetId(self):
+        """ID of the subnet in the VPC in the format of `subnet-3paxmkdz`, which is required if the access type is `vpc`, `dcg`, or `vpncloud`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -5908,6 +7151,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CvmInstanceId(self):
+        """Short CVM instance ID in the format of `ins-olgl39y8`, which is required if the access type is `cvm`. It is the same as the instance ID displayed in the CVM console.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CvmInstanceId
 
     @CvmInstanceId.setter
@@ -5916,6 +7163,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UniqDcgId(self):
+        """Direct Connect gateway ID in the format of `dcg-0rxtqqxb`, which is required if the access type is `dcg`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UniqDcgId
 
     @UniqDcgId.setter
@@ -5924,6 +7175,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UniqVpnGwId(self):
+        """VPN gateway ID in the format of `vpngw-9ghexg7q`, which is required if the access type is `vpncloud`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UniqVpnGwId
 
     @UniqVpnGwId.setter
@@ -5932,6 +7187,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CcnId(self):
+        """CCN instance ID in the format of `ccn-afp6kltc`, which is required if the access type is `ccn`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -5940,6 +7199,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Supplier(self):
+        """Cloud vendor type. For Alibaba Cloud ApsaraDB for RDS instances, enter `aliyun`; otherwise, enter `others`. Default value: `others`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Supplier
 
     @Supplier.setter
@@ -5948,6 +7211,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EngineVersion(self):
+        """Database version in the format of `5.6` or `5.7`, which takes effect only if the instance is an RDS instance. Default value: `5.6`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EngineVersion
 
     @EngineVersion.setter
@@ -5956,6 +7223,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Account(self):
+        """Instance account, which is required if the operation is performed across accounts.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Account
 
     @Account.setter
@@ -5964,6 +7235,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AccountMode(self):
+        """The account to which the resource belongs. Valid values: empty or `self` (the current account); `other` (another account).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AccountMode
 
     @AccountMode.setter
@@ -5972,6 +7247,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AccountRole(self):
+        """The role used for cross-account sync, which can contain [a-zA-Z0-9\-\_]+ and is required if the operation is performed across accounts.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AccountRole
 
     @AccountRole.setter
@@ -5980,6 +7259,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RoleExternalId(self):
+        """External role ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RoleExternalId
 
     @RoleExternalId.setter
@@ -5988,6 +7271,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TmpSecretId(self):
+        """Temporary SecretId, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1). This field is required if it is a cross-account instance.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TmpSecretId
 
     @TmpSecretId.setter
@@ -5996,6 +7282,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TmpSecretKey(self):
+        """Temporary SecretKey, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1). This field is required if it is a cross-account instance.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TmpSecretKey
 
     @TmpSecretKey.setter
@@ -6004,6 +7293,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TmpToken(self):
+        """Temporary token, you can obtain the temporary key by [GetFederationToken](https://intl.cloud.tencent.com/document/product/1312/48195?from_cn_redirect=1). This field is required if it is a cross-account instance. Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TmpToken
 
     @TmpToken.setter
@@ -6012,6 +7304,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EncryptConn(self):
+        """Whether to enable encrypted transfer (`UnEncrypted`: No; `Encrypted`: Yes). Default value: `UnEncrypted`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EncryptConn
 
     @EncryptConn.setter
@@ -6020,6 +7316,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DatabaseNetEnv(self):
+        """Network environment of the database. This parameter is required when `AccessType` is `ccn`. Valid values: `UserIDC` (user IDC), `TencentVPC` (Tencent Cloud VPC).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DatabaseNetEnv
 
     @DatabaseNetEnv.setter
@@ -6028,6 +7328,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CcnOwnerUin(self):
+        """The root account of CCN in the scenario where the database is connected to CCN under another Tencent Cloud account
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CcnOwnerUin
 
     @CcnOwnerUin.setter
@@ -6036,6 +7340,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ChildInstanceId(self):
+        """
+        :rtype: str
+        """
         return self._ChildInstanceId
 
     @ChildInstanceId.setter
@@ -6044,6 +7351,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ChildInstanceType(self):
+        """
+        :rtype: str
+        """
         return self._ChildInstanceType
 
     @ChildInstanceType.setter
@@ -6052,6 +7362,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SetId(self):
+        """
+        :rtype: str
+        """
         return self._SetId
 
     @SetId.setter
@@ -6122,6 +7435,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Reason(self):
+        """Cause of the error
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -6130,6 +7446,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -6138,6 +7458,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Solution(self):
+        """Solution
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Solution
 
     @Solution.setter
@@ -6186,6 +7510,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Code(self):
+        """Error code
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -6194,6 +7522,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Solution(self):
+        """Solution
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Solution
 
     @Solution.setter
@@ -6202,6 +7534,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrorLog(self):
+        """Error log
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ErrorLog
 
     @ErrorLog.setter
@@ -6210,6 +7546,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HelpDoc(self):
+        """Help document
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._HelpDoc
 
     @HelpDoc.setter
@@ -6246,6 +7586,9 @@ class IsolateMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -6279,6 +7622,9 @@ class IsolateMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6304,6 +7650,9 @@ class IsolateSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Sync task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -6337,6 +7686,9 @@ class IsolateSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6434,6 +7786,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobId(self):
+        """Data migration task ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -6442,6 +7798,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobName(self):
+        """Data migration task name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -6450,6 +7810,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Task creation (submission) time in the format of `yyyy-mm-dd hh:mm:ss`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -6458,6 +7822,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpdateTime(self):
+        """Task update time in the format of `yyyy-mm-dd hh:mm:ss`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -6466,6 +7834,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """Task start time in the format of `yyyy-mm-dd hh:mm:ss`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6474,6 +7846,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """Task end time in the format of `yyyy-mm-dd hh:mm:ss`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6482,6 +7858,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BriefMsg(self):
+        """Migration task error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BriefMsg
 
     @BriefMsg.setter
@@ -6490,6 +7870,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status. Valid values: `creating` (Creating), `created`(Created), `checking` (Checking), `checkPass` (Check passed), `checkNotPass` (Check not passed), `readyRun` (Ready for running), `running` (Running), `readyComplete` (Preparation completed), `success` (Successful), `failed` (Failed), `stopping` (Stopping), `completing` (Completing), `pausing` (Pausing), `manualPaused` (Paused). Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -6498,6 +7881,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RunMode(self):
+        """Task running mode. Valid values: `immediate`, `timed`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RunMode
 
     @RunMode.setter
@@ -6506,6 +7893,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpectRunTime(self):
+        """Expected start time in the format of "2022-07-11 16:20:49", which is required if `RunMode` is `timed`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExpectRunTime
 
     @ExpectRunTime.setter
@@ -6514,6 +7905,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Action(self):
+        """Task operation information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateAction`
+        """
         return self._Action
 
     @Action.setter
@@ -6522,6 +7917,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepInfo(self):
+        """Information of the migration task execution process
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateDetailInfo`
+        """
         return self._StepInfo
 
     @StepInfo.setter
@@ -6530,6 +7929,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcInfo(self):
+        """Source instance information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
+        """
         return self._SrcInfo
 
     @SrcInfo.setter
@@ -6538,6 +7941,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstInfo(self):
+        """Target database information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
+        """
         return self._DstInfo
 
     @DstInfo.setter
@@ -6546,6 +7953,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CompareTask(self):
+        """Data consistency check result
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareTaskInfo`
+        """
         return self._CompareTask
 
     @CompareTask.setter
@@ -6554,6 +7965,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TradeInfo(self):
+        """Billing status information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.TradeInfo`
+        """
         return self._TradeInfo
 
     @TradeInfo.setter
@@ -6562,6 +7977,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """Tag information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TagItem
+        """
         return self._Tags
 
     @Tags.setter
@@ -6570,6 +7989,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRetryTimeRangeMinutes(self):
+        """Information of automatic retry time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._AutoRetryTimeRangeMinutes
 
     @AutoRetryTimeRangeMinutes.setter
@@ -6578,6 +8001,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DumperResumeCtrl(self):
+        """Whether the task can be reentered in the full export stage. Valid values: `yes`, `no`. `yes`: The current task can be reentered. `no`: The current task is in the full export stage which cannot be reentered. If the value of this parameter is `no`, the checkpoint restart is not supported when the task is restarted in the export stage.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DumperResumeCtrl
 
     @DumperResumeCtrl.setter
@@ -6655,6 +8082,9 @@ class KafkaOption(AbstractModel):
 
     @property
     def DataType(self):
+        """Data type delivered to Kafka, such as Avro, Json, canal-pb, canal-json
+        :rtype: str
+        """
         return self._DataType
 
     @DataType.setter
@@ -6663,6 +8093,9 @@ class KafkaOption(AbstractModel):
 
     @property
     def TopicType(self):
+        """Topic sync policy, such as `Single` (deliver all data to a single topic), `Multi` (deliver data to multiple custom topics).
+        :rtype: str
+        """
         return self._TopicType
 
     @TopicType.setter
@@ -6671,6 +8104,9 @@ class KafkaOption(AbstractModel):
 
     @property
     def DDLTopicName(self):
+        """Topic for DDL storage
+        :rtype: str
+        """
         return self._DDLTopicName
 
     @DDLTopicName.setter
@@ -6679,6 +8115,9 @@ class KafkaOption(AbstractModel):
 
     @property
     def TopicRules(self):
+        """Topic description
+        :rtype: list of TopicRule
+        """
         return self._TopicRules
 
     @TopicRules.setter
@@ -6725,6 +8164,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Key(self):
+        """Option key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -6733,6 +8176,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
+        """Option value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -6772,6 +8219,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AllAction(self):
+        """List of all operations in the task
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._AllAction
 
     @AllAction.setter
@@ -6780,6 +8231,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AllowedAction(self):
+        """List of allowed operations in the task under the current status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._AllowedAction
 
     @AllowedAction.setter
@@ -6829,6 +8284,9 @@ class MigrateDBItem(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -6837,6 +8295,9 @@ class MigrateDBItem(AbstractModel):
 
     @property
     def InstanceName(self):
+        """Instance name
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -6845,6 +8306,9 @@ class MigrateDBItem(AbstractModel):
 
     @property
     def Vip(self):
+        """Instance VIP
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -6853,6 +8317,9 @@ class MigrateDBItem(AbstractModel):
 
     @property
     def Vport(self):
+        """Instance Vport
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -6861,6 +8328,9 @@ class MigrateDBItem(AbstractModel):
 
     @property
     def Usable(self):
+        """Whether the instance can be migrated. Valid values: `1 (yes); `0` (no).
+        :rtype: int
+        """
         return self._Usable
 
     @Usable.setter
@@ -6869,6 +8339,9 @@ class MigrateDBItem(AbstractModel):
 
     @property
     def Hint(self):
+        """The cause why the instance cannot be migrated
+        :rtype: str
+        """
         return self._Hint
 
     @Hint.setter
@@ -6924,6 +8397,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepAll(self):
+        """Total number of steps
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StepAll
 
     @StepAll.setter
@@ -6932,6 +8409,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepNow(self):
+        """Current step
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StepNow
 
     @StepNow.setter
@@ -6940,6 +8421,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MasterSlaveDistance(self):
+        """Source-replica lag in MB. This parameter takes effect only when the task is normal and is in the last step of migration or sync (binlog sync). If it is invalid, `-1` will be returned.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MasterSlaveDistance
 
     @MasterSlaveDistance.setter
@@ -6948,6 +8433,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecondsBehindMaster(self):
+        """Source-replica lag in seconds. This parameter takes effect only when the task is normal and is in the last step of migration or sync (binlog sync). If it is invalid, `-1` will be returned.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SecondsBehindMaster
 
     @SecondsBehindMaster.setter
@@ -6956,6 +8445,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepInfo(self):
+        """Step information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of StepDetailInfo
+        """
         return self._StepInfo
 
     @StepInfo.setter
@@ -7027,6 +8520,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DatabaseTable(self):
+        """Migration object options, which tell DTS which database/table objects should be migrated.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DatabaseTableObject`
+        """
         return self._DatabaseTable
 
     @DatabaseTable.setter
@@ -7035,6 +8532,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MigrateType(self):
+        """Migration type. Valid values: `full`, `structure`, `fullAndIncrement`. Default value: `fullAndIncrement`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._MigrateType
 
     @MigrateType.setter
@@ -7043,6 +8544,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Consistency(self):
+        """Data consistency check option. Data consistency check is disabled by default.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ConsistencyOption`
+        """
         return self._Consistency
 
     @Consistency.setter
@@ -7051,6 +8556,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsMigrateAccount(self):
+        """Whether to migrate accounts. Valid values: `yes`, `no`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsMigrateAccount
 
     @IsMigrateAccount.setter
@@ -7059,6 +8568,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsOverrideRoot(self):
+        """Whether to use the `Root` account in the source database to overwrite that in the target database. Valid values: `false`, `true`. For database/table or structural migration, you should specify `false`. Note that this parameter takes effect only for OldDTS.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsOverrideRoot
 
     @IsOverrideRoot.setter
@@ -7067,6 +8580,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDstReadOnly(self):
+        """Whether to set the target database to read-only during migration, which takes effect only for MySQL databases. Valid values: `true`, `false`. Default value: `false`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsDstReadOnly
 
     @IsDstReadOnly.setter
@@ -7075,6 +8592,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtraAttr(self):
+        """Additional information. You can set additional parameters for certain database types. For Redis, you can define the following parameters: 
+["DstWriteMode": `normal`. 	Target database write mode. Valid values: `clearData` (Clear the target instance data), overwrite` (Execute the task in overwriting mode), `normal` (Follow the normal steps) 	"IsDstReadOnly": `true`. 	Whether to set the target database to read-only for a migration task. Valid values: `true` (Yes), `false` (No) 	"ClientOutputBufferHardLimit": 512. 	Hard limit of the replica buffer zone capacity in MB. 	"ClientOutputBufferSoftLimit": 512. 	Soft limit of the replica buffer zone capacity in MB. 	"ClientOutputBufferPersistTime": 60. Soft limit duration of the replica buffer zone in seconds. 	"ReplBacklogSize": 512, 	Limit of the circular buffer zone capacity in MB. 	"ReplTimeout":120,		Replication timeout period in seconds]
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of KeyValuePairOption
+        """
         return self._ExtraAttr
 
     @ExtraAttr.setter
@@ -7083,6 +8605,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MigrateWay(self):
+        """
+        :rtype: str
+        """
         return self._MigrateWay
 
     @MigrateWay.setter
@@ -7138,6 +8663,9 @@ class ModifyCompareTaskNameRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -7146,6 +8674,9 @@ class ModifyCompareTaskNameRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
+        """Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`
+        :rtype: str
+        """
         return self._CompareTaskId
 
     @CompareTaskId.setter
@@ -7154,6 +8685,9 @@ class ModifyCompareTaskNameRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """Data consistency check task name
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -7189,6 +8723,9 @@ class ModifyCompareTaskNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7229,6 +8766,9 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -7237,6 +8777,9 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
+        """Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`
+        :rtype: str
+        """
         return self._CompareTaskId
 
     @CompareTaskId.setter
@@ -7245,6 +8788,9 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
+        """Task name
+        :rtype: str
+        """
         return self._TaskName
 
     @TaskName.setter
@@ -7253,6 +8799,9 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     @property
     def ObjectMode(self):
+        """Data comparison object mode. Valid values: `sameAsMigrate` (All migration objects), `custom` (Custom mode. The custom comparison objects must be a subset of the migration objects). Default value: `sameAsMigrate`.
+        :rtype: str
+        """
         return self._ObjectMode
 
     @ObjectMode.setter
@@ -7261,6 +8810,9 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     @property
     def Objects(self):
+        """Compared object, which is required if `CompareObjectMode` is `custom`.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareObject`
+        """
         return self._Objects
 
     @Objects.setter
@@ -7269,6 +8821,9 @@ class ModifyCompareTaskRequest(AbstractModel):
 
     @property
     def Options(self):
+        """Consistency check options
+        :rtype: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
+        """
         return self._Options
 
     @Options.setter
@@ -7311,6 +8866,9 @@ class ModifyCompareTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7339,6 +8897,9 @@ class ModifyMigrateJobSpecRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -7347,6 +8908,9 @@ class ModifyMigrateJobSpecRequest(AbstractModel):
 
     @property
     def NewInstanceClass(self):
+        """New instance specification. Valid values: `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`.
+        :rtype: str
+        """
         return self._NewInstanceClass
 
     @NewInstanceClass.setter
@@ -7381,6 +8945,9 @@ class ModifyMigrateJobSpecResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7409,6 +8976,9 @@ class ModifyMigrateNameRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -7417,6 +8987,9 @@ class ModifyMigrateNameRequest(AbstractModel):
 
     @property
     def JobName(self):
+        """New migration task name
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -7451,6 +9024,9 @@ class ModifyMigrateNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7500,6 +9076,9 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -7508,6 +9087,9 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def RunMode(self):
+        """Running mode. Valid values: `immediate`, `timed`.
+        :rtype: str
+        """
         return self._RunMode
 
     @RunMode.setter
@@ -7516,6 +9098,9 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def MigrateOption(self):
+        """Migration task configuration options, which describe how the task performs migration. The `RateLimitOption` option cannot be configured. To modify the speed limit settings of the task, use the `ModifyMigrateRateLimit` API after the task starts running.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateOption`
+        """
         return self._MigrateOption
 
     @MigrateOption.setter
@@ -7524,6 +9109,9 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def SrcInfo(self):
+        """Source instance information
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
+        """
         return self._SrcInfo
 
     @SrcInfo.setter
@@ -7532,6 +9120,9 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def DstInfo(self):
+        """Target instance information
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
+        """
         return self._DstInfo
 
     @DstInfo.setter
@@ -7540,6 +9131,9 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def JobName(self):
+        """Migration task name, which can contain up to 128 characters.
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -7548,6 +9142,9 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def ExpectRunTime(self):
+        """Expected start time in the format of "2006-01-02 15:04:05", which is required if `RunMode` is `timed`.
+        :rtype: str
+        """
         return self._ExpectRunTime
 
     @ExpectRunTime.setter
@@ -7556,6 +9153,9 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Tag information
+        :rtype: list of TagItem
+        """
         return self._Tags
 
     @Tags.setter
@@ -7564,6 +9164,9 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def AutoRetryTimeRangeMinutes(self):
+        """Automatic retry time, which can be set to 5-720 minutes. 0 indicates that retry is disabled.
+        :rtype: int
+        """
         return self._AutoRetryTimeRangeMinutes
 
     @AutoRetryTimeRangeMinutes.setter
@@ -7616,6 +9219,9 @@ class ModifyMigrationJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7647,6 +9253,9 @@ class ModifySyncJobConfigRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Sync task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -7655,6 +9264,9 @@ class ModifySyncJobConfigRequest(AbstractModel):
 
     @property
     def DynamicObjects(self):
+        """The modified sync objects
+        :rtype: :class:`tencentcloud.dts.v20211206.models.Objects`
+        """
         return self._DynamicObjects
 
     @DynamicObjects.setter
@@ -7663,6 +9275,9 @@ class ModifySyncJobConfigRequest(AbstractModel):
 
     @property
     def DynamicOptions(self):
+        """The modified sync task options
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DynamicOptions`
+        """
         return self._DynamicOptions
 
     @DynamicOptions.setter
@@ -7702,6 +9317,9 @@ class ModifySyncJobConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7738,6 +9356,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Mode(self):
+        """Sync object type. Valid value: `Partial` (Partial objects). Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -7746,6 +9367,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Databases(self):
+        """Sync object, which is required if `Mode` is `Partial`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Database
+        """
         return self._Databases
 
     @Databases.setter
@@ -7754,6 +9379,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AdvancedObjects(self):
+        """Advanced object types, such as function and procedure. Note: If you want to migrate and synchronize advanced objects, the corresponding advanced object type should be included in this configuration. When advanced objects need to be synchronized, the initialization type must include the structure initialization type, that is, the Options.InitType value of the task is Structure or Full.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._AdvancedObjects
 
     @AdvancedObjects.setter
@@ -7762,6 +9390,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OnlineDDL(self):
+        """A redundant field that specifies the online DDL type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
+        """
         return self._OnlineDDL
 
     @OnlineDDL.setter
@@ -7806,6 +9438,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7882,6 +9518,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InitType(self):
+        """Sync initialization option. Valid values: `data` (full data initialization); `Structure` (structure initialization); `Full` (full data and structure initialization); `None` (incremental data only). Default value: `Full`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InitType
 
     @InitType.setter
@@ -7890,6 +9530,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DealOfExistSameTable(self):
+        """Processing method for duplicate tables. Valid values: `ReportErrorAfterCheck`, `InitializeAfterDelete`, `ExecuteAfterIgnore`. Default value: `ReportErrorAfterCheck`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DealOfExistSameTable
 
     @DealOfExistSameTable.setter
@@ -7898,6 +9542,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConflictHandleType(self):
+        """Conflict processing option. Valid values: `ReportError` (report an error); `Ignore` (ignore); `Cover` (overwrite); `ConditionCover` (conditionally overwrite). Default value: `ReportError`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ConflictHandleType
 
     @ConflictHandleType.setter
@@ -7906,6 +9554,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddAdditionalColumn(self):
+        """Whether to add the additional column
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._AddAdditionalColumn
 
     @AddAdditionalColumn.setter
@@ -7914,6 +9566,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OpTypes(self):
+        """DML and DDL options to be synced. Valid values: `Insert` (INSERT operations); `Update` (UPDATE operations); `Delete` (DELETE operations); `DDL` (structure sync); `PartialDDL` (custom option, which is used together with `DdlOptions`). You can also leave this parameter empty.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._OpTypes
 
     @OpTypes.setter
@@ -7922,6 +9578,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConflictHandleOption(self):
+        """Detailed option for conflict processing, such as condition rows and operations in conditional overwrite.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ConflictHandleOption`
+        """
         return self._ConflictHandleOption
 
     @ConflictHandleOption.setter
@@ -7930,6 +9590,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DdlOptions(self):
+        """DDL statements to be synced
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DdlOption
+        """
         return self._DdlOptions
 
     @DdlOptions.setter
@@ -7938,6 +9602,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def KafkaOption(self):
+        """Kafka sync options
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.KafkaOption`
+        """
         return self._KafkaOption
 
     @KafkaOption.setter
@@ -7946,6 +9614,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RateLimitOption(self):
+        """Task speed limit information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.RateLimitOption`
+        """
         return self._RateLimitOption
 
     @RateLimitOption.setter
@@ -7954,6 +9626,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRetryTimeRangeMinutes(self):
+        """Settings of the automatic retry time range
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._AutoRetryTimeRangeMinutes
 
     @AutoRetryTimeRangeMinutes.setter
@@ -7962,6 +9638,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilterBeginCommit(self):
+        """
+        :rtype: bool
+        """
         return self._FilterBeginCommit
 
     @FilterBeginCommit.setter
@@ -7970,6 +9649,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilterCheckpoint(self):
+        """
+        :rtype: bool
+        """
         return self._FilterCheckpoint
 
     @FilterCheckpoint.setter
@@ -8025,6 +9707,9 @@ class PauseMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -8058,6 +9743,9 @@ class PauseMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8083,6 +9771,9 @@ class PauseSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Sync task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -8116,6 +9807,9 @@ class PauseSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8162,6 +9856,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Step status. Valid values: `notStarted`, `running`, `success`, `failed`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -8170,6 +9868,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Percent(self):
+        """Progress information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Percent
 
     @Percent.setter
@@ -8178,6 +9880,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepAll(self):
+        """Total number of steps
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StepAll
 
     @StepAll.setter
@@ -8186,6 +9892,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepNow(self):
+        """Current step
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StepNow
 
     @StepNow.setter
@@ -8194,6 +9904,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """The prompt output in the current step
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -8202,6 +9916,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Steps(self):
+        """Step information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of StepDetailInfo
+        """
         return self._Steps
 
     @Steps.setter
@@ -8254,6 +9972,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Prompt message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -8262,6 +9984,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Solution(self):
+        """Solution
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Solution
 
     @Solution.setter
@@ -8270,6 +9996,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HelpDoc(self):
+        """Help document
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._HelpDoc
 
     @HelpDoc.setter
@@ -8336,6 +10066,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentDumpThread(self):
+        """The number of full export threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 16.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CurrentDumpThread
 
     @CurrentDumpThread.setter
@@ -8344,6 +10077,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultDumpThread(self):
+        """The default number of full export threads. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DefaultDumpThread
 
     @DefaultDumpThread.setter
@@ -8352,6 +10088,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentDumpRps(self):
+        """The full export Rps currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 50,000,000.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CurrentDumpRps
 
     @CurrentDumpRps.setter
@@ -8360,6 +10099,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultDumpRps(self):
+        """The default full export Rps. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DefaultDumpRps
 
     @DefaultDumpRps.setter
@@ -8368,6 +10110,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentLoadThread(self):
+        """The number of full import threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 16.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CurrentLoadThread
 
     @CurrentLoadThread.setter
@@ -8376,6 +10121,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultLoadThread(self):
+        """The default number of full import threads. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DefaultLoadThread
 
     @DefaultLoadThread.setter
@@ -8384,6 +10132,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentLoadRps(self):
+        """The full import Rps currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 50,000,000.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CurrentLoadRps
 
     @CurrentLoadRps.setter
@@ -8392,6 +10143,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultLoadRps(self):
+        """The default full import Rps. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DefaultLoadRps
 
     @DefaultLoadRps.setter
@@ -8400,6 +10154,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentSinkerThread(self):
+        """The number of incremental import threads currently in effect. The value of this field can be adjusted when configuring the task. Note: If it is not set or set to 0, it means the current value is maintained. The maximum value is 128.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CurrentSinkerThread
 
     @CurrentSinkerThread.setter
@@ -8408,6 +10165,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DefaultSinkerThread(self):
+        """The default number of incremental import threads. This field is only meaningful in the output parameter.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DefaultSinkerThread
 
     @DefaultSinkerThread.setter
@@ -8416,6 +10177,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HasUserSetRateLimit(self):
+        """enum:"no"/"yes", no: the user has not set a speed limit; yes: a speed limit has been set. This field is only meaningful in the output parameter.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._HasUserSetRateLimit
 
     @HasUserSetRateLimit.setter
@@ -8459,6 +10223,9 @@ class RecoverMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -8492,6 +10259,9 @@ class RecoverMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8517,6 +10287,9 @@ class RecoverSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Sync task instance ID in the format of `sync-werwfs23`, which is used to identify a sync task.
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -8550,6 +10323,9 @@ class RecoverSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8578,6 +10354,9 @@ class ResizeSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Sync task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -8586,6 +10365,9 @@ class ResizeSyncJobRequest(AbstractModel):
 
     @property
     def NewInstanceClass(self):
+        """Task specification
+        :rtype: str
+        """
         return self._NewInstanceClass
 
     @NewInstanceClass.setter
@@ -8620,6 +10402,9 @@ class ResizeSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8648,6 +10433,9 @@ class ResumeMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -8656,6 +10444,9 @@ class ResumeMigrateJobRequest(AbstractModel):
 
     @property
     def ResumeOption(self):
+        """Task resumption mode. Valid values: `clearData` (Clearing the target instance data); `overwrite` (Executing the task in overwrite mode); `normal` (Following the normal process without additional operations). `clearData` and `overwrite` are only valid for Redis links and `normal` for non-Redis links.
+        :rtype: str
+        """
         return self._ResumeOption
 
     @ResumeOption.setter
@@ -8690,6 +10481,9 @@ class ResumeMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8715,6 +10509,9 @@ class ResumeSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Sync task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -8748,6 +10545,9 @@ class ResumeSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8778,6 +10578,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RoleName(self):
+        """Role name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RoleName
 
     @RoleName.setter
@@ -8786,6 +10590,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewRoleName(self):
+        """Role name after migration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NewRoleName
 
     @NewRoleName.setter
@@ -8826,6 +10634,9 @@ class SkipCheckItemRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -8834,6 +10645,9 @@ class SkipCheckItemRequest(AbstractModel):
 
     @property
     def StepIds(self):
+        """ID of the check step to be skipped, which is obtained in the `StepInfo[i].StepId` field returned by the `DescribeMigrationCheckJob` API, such as "OptimizeCheck".
+        :rtype: list of str
+        """
         return self._StepIds
 
     @StepIds.setter
@@ -8842,6 +10656,9 @@ class SkipCheckItemRequest(AbstractModel):
 
     @property
     def ForeignKeyFlag(self):
+        """When the check fails due to foreign key dependency, you can use this field to specify whether to migrate the foreign key dependency. The foreign key dependency won’t be migrated when `StepIds` contains `ConstraintCheck` and the value of this field is `shield`, and will be migrated when `StepIds` contains `ConstraintCheck` and the value of this field is `migrate`.
+        :rtype: str
+        """
         return self._ForeignKeyFlag
 
     @ForeignKeyFlag.setter
@@ -8881,6 +10698,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Message prompted for skipping the check item
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -8889,6 +10710,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8918,6 +10742,9 @@ class SkipSyncCheckItemRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Task ID, such as "sync-4ddgid2".
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -8926,6 +10753,9 @@ class SkipSyncCheckItemRequest(AbstractModel):
 
     @property
     def StepIds(self):
+        """ID of the check step to be skipped, which is obtained in the `StepInfos[i].StepId` field returned by the `DescribeCheckSyncJobResult` API, such as "OptimizeCheck".
+        :rtype: list of str
+        """
         return self._StepIds
 
     @StepIds.setter
@@ -8960,6 +10790,9 @@ class SkipSyncCheckItemResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8990,6 +10823,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Number of skipped tables
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8998,6 +10835,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Items(self):
+        """Details of skipped tables
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of SkippedItem
+        """
         return self._Items
 
     @Items.setter
@@ -9046,6 +10887,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Db(self):
+        """Database name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Db
 
     @Db.setter
@@ -9054,6 +10899,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Table(self):
+        """Table name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Table
 
     @Table.setter
@@ -9062,6 +10911,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Reason(self):
+        """The cause why check is not initiated
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Reason
 
     @Reason.setter
@@ -9100,6 +10953,9 @@ class StartCompareRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -9108,6 +10964,9 @@ class StartCompareRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
+        """Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`
+        :rtype: str
+        """
         return self._CompareTaskId
 
     @CompareTaskId.setter
@@ -9142,6 +11001,9 @@ class StartCompareResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9167,6 +11029,9 @@ class StartMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -9200,6 +11065,9 @@ class StartMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9225,6 +11093,9 @@ class StartModifySyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Sync task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -9258,6 +11129,9 @@ class StartModifySyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9283,6 +11157,9 @@ class StartSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Sync task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -9316,6 +11193,9 @@ class StartSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9374,6 +11254,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepNo(self):
+        """Step number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StepNo
 
     @StepNo.setter
@@ -9382,6 +11266,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepName(self):
+        """Step name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StepName
 
     @StepName.setter
@@ -9390,6 +11278,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepId(self):
+        """Step ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StepId
 
     @StepId.setter
@@ -9398,6 +11290,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Step status. Valid values: `success`, `failed`, `running`, `notStarted`. Default value: `notStarted`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -9406,6 +11302,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """Start time of the current step in the format of "yyyy-mm-dd hh:mm:ss". If this field does not exist or is empty, it is meaningless.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9414,6 +11314,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepMessage(self):
+        """Step error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StepMessage
 
     @StepMessage.setter
@@ -9422,6 +11326,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Percent(self):
+        """Execution progress
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Percent
 
     @Percent.setter
@@ -9430,6 +11338,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Errors(self):
+        """Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ProcessStepTip
+        """
         return self._Errors
 
     @Errors.setter
@@ -9438,6 +11350,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Warnings(self):
+        """Warning
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ProcessStepTip
+        """
         return self._Warnings
 
     @Warnings.setter
@@ -9517,6 +11433,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepNo(self):
+        """Step number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StepNo
 
     @StepNo.setter
@@ -9525,6 +11445,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepName(self):
+        """Step name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StepName
 
     @StepName.setter
@@ -9533,6 +11457,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepId(self):
+        """Step ID
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StepId
 
     @StepId.setter
@@ -9541,6 +11469,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Status of the current step. Valid values: `notStarted`, `running`, `failed`, `finished, `skipped`, `paused`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -9549,6 +11481,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """Step start time, which may be null.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9557,6 +11493,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Errors(self):
+        """Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of StepTip
+        """
         return self._Errors
 
     @Errors.setter
@@ -9565,6 +11505,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Warnings(self):
+        """Warning message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of StepTip
+        """
         return self._Warnings
 
     @Warnings.setter
@@ -9573,6 +11517,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Progress(self):
+        """Current step progress. Value range: 0-100. The value `-1` indicates that the progress of the current step is unavailable. Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -9640,6 +11587,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Code(self):
+        """Error code
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Code
 
     @Code.setter
@@ -9648,6 +11599,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Error message
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -9656,6 +11611,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Solution(self):
+        """Solution
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Solution
 
     @Solution.setter
@@ -9664,6 +11623,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HelpDoc(self):
+        """Help document
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._HelpDoc
 
     @HelpDoc.setter
@@ -9672,6 +11635,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SkipInfo(self):
+        """Whether the current step is skipped
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SkipInfo
 
     @SkipInfo.setter
@@ -9712,6 +11679,9 @@ class StopCompareRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -9720,6 +11690,9 @@ class StopCompareRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
+        """Data consistency check task ID in the format of `dts-8yv4w2i1-cmp-37skmii9`
+        :rtype: str
+        """
         return self._CompareTaskId
 
     @CompareTaskId.setter
@@ -9754,6 +11727,9 @@ class StopCompareResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9779,6 +11755,9 @@ class StopMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -9812,6 +11791,9 @@ class StopMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9837,6 +11819,9 @@ class StopSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Sync task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -9870,6 +11855,9 @@ class StopSyncJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9907,6 +11895,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
+        """Region of the database
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -9915,6 +11907,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessType(self):
+        """Instance network access type. Valid values: `extranet` (public network); `ipv6` (public IPv6); `cvm` (self-build on CVM); `dcg` (Direct Connect); `vpncloud` (VPN access); `cdb` (database); `ccn` (CCN); `intranet` (intranet); `vpc` (VPC). Note that the valid values are subject to the current link.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AccessType
 
     @AccessType.setter
@@ -9923,6 +11919,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DatabaseType(self):
+        """Database type, such as `mysql`, `redis`, `mongodb`, `postgresql`, `mariadb`, and `percona`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DatabaseType
 
     @DatabaseType.setter
@@ -9931,6 +11931,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Info(self):
+        """Database information. Note: If the data type is tdsqlmysql, the order of this Endpoint array should correspond to the set order, and the first shard (shardkey range starting from 0) must be entered first.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Endpoint
+        """
         return self._Info
 
     @Info.setter
@@ -10009,6 +12012,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepAll(self):
+        """Total number of steps
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StepAll
 
     @StepAll.setter
@@ -10017,6 +12024,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepNow(self):
+        """Current step
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StepNow
 
     @StepNow.setter
@@ -10025,6 +12036,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Progress(self):
+        """Overall progress
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Progress
 
     @Progress.setter
@@ -10033,6 +12048,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CurrentStepProgress(self):
+        """Progress of the current step. Value range: 0-100. The value of `-1` indicates that you can't check the progress of the current step.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CurrentStepProgress
 
     @CurrentStepProgress.setter
@@ -10041,6 +12060,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MasterSlaveDistance(self):
+        """Data volume difference between the sync source and target
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MasterSlaveDistance
 
     @MasterSlaveDistance.setter
@@ -10049,6 +12072,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecondsBehindMaster(self):
+        """Time difference between the sync source and target
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SecondsBehindMaster
 
     @SecondsBehindMaster.setter
@@ -10057,6 +12084,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Message(self):
+        """Overall description
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -10065,6 +12096,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepInfos(self):
+        """Step details
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of StepInfo
+        """
         return self._StepInfos
 
     @StepInfos.setter
@@ -10073,6 +12108,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CauseOfCompareDisable(self):
+        """Cause of the failure of initiating data consistency check
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CauseOfCompareDisable
 
     @CauseOfCompareDisable.setter
@@ -10081,6 +12120,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ErrInfo(self):
+        """Task error and the corresponding solution
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.ErrInfo`
+        """
         return self._ErrInfo
 
     @ErrInfo.setter
@@ -10267,6 +12310,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobId(self):
+        """Sync task ID, such as `sync-btso140`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -10275,6 +12322,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def JobName(self):
+        """Sync task name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -10283,6 +12334,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayMode(self):
+        """Billing mode. Valid values: `PostPay` (pay-as-you-go); `PrePay` (monthly subscription).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -10291,6 +12346,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RunMode(self):
+        """Running mode. Valid values: `Immediate`, `Timed`. Default value: `Immediate`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RunMode
 
     @RunMode.setter
@@ -10299,6 +12358,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpectRunTime(self):
+        """Expected execution time in the format of `yyyy-mm-dd hh:mm:ss`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExpectRunTime
 
     @ExpectRunTime.setter
@@ -10307,6 +12370,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AllActions(self):
+        """All supported operations
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._AllActions
 
     @AllActions.setter
@@ -10315,6 +12382,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Actions(self):
+        """Operations that can be performed under the current status
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._Actions
 
     @Actions.setter
@@ -10323,6 +12394,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Options(self):
+        """Sync options
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.Options`
+        """
         return self._Options
 
     @Options.setter
@@ -10331,6 +12406,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Objects(self):
+        """Sync database/table objects
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.Objects`
+        """
         return self._Objects
 
     @Objects.setter
@@ -10339,6 +12418,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Specification(self):
+        """Task specification
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Specification
 
     @Specification.setter
@@ -10347,6 +12430,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
+        """Expiration time in the format of `yyyy-mm-dd hh:mm:ss`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -10355,6 +12442,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcRegion(self):
+        """Source database region, such as `ap-guangzhou`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SrcRegion
 
     @SrcRegion.setter
@@ -10363,6 +12454,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcDatabaseType(self):
+        """Source database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, and `tdsqlmysql`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SrcDatabaseType
 
     @SrcDatabaseType.setter
@@ -10371,6 +12466,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcAccessType(self):
+        """Source database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SrcAccessType
 
     @SrcAccessType.setter
@@ -10379,6 +12478,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcInfo(self):
+        """Source database information. This parameter is used by single-node databases.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        """
         return self._SrcInfo
 
     @SrcInfo.setter
@@ -10387,6 +12490,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcNodeType(self):
+        """Valid values: `cluster`, `single`. `single`: For single-node source databases; `cluster`: For multi-node source databases.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SrcNodeType
 
     @SrcNodeType.setter
@@ -10395,6 +12502,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SrcInfos(self):
+        """Source database information. This parameter is used for multi-node databases.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
+        """
         return self._SrcInfos
 
     @SrcInfos.setter
@@ -10403,6 +12514,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstRegion(self):
+        """Target database region, such as `ap-guangzhou`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DstRegion
 
     @DstRegion.setter
@@ -10411,6 +12526,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstDatabaseType(self):
+        """Target database type, such as `mysql`, `cynosdbmysql`, `tdapg`, `tdpg`, and `tdsqlmysql`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DstDatabaseType
 
     @DstDatabaseType.setter
@@ -10419,6 +12538,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstAccessType(self):
+        """Target database access type. Valid values: `cdb` (database); `cvm` (self-build on CVM); `vpc` (VPC); `extranet` (public network); `vpncloud` (VPN access); `dcg` (Direct Connect); `ccn` (CCN); `intranet` (intranet).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DstAccessType
 
     @DstAccessType.setter
@@ -10427,6 +12550,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstInfo(self):
+        """Target database information. This parameter is used by single-node databases.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.Endpoint`
+        """
         return self._DstInfo
 
     @DstInfo.setter
@@ -10435,6 +12562,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstNodeType(self):
+        """Valid values: `cluster`, `single`. `single`: For single-node target databases; `cluster`: For multi-node target databases.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DstNodeType
 
     @DstNodeType.setter
@@ -10443,6 +12574,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DstInfos(self):
+        """Target database information. This parameter is used for multi-node databases.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
+        """
         return self._DstInfos
 
     @DstInfos.setter
@@ -10451,6 +12586,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Creation time in the format of `yyyy-mm-dd hh:mm:ss`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10459,6 +12598,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """Start time in the format of `yyyy-mm-dd hh:mm:ss`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -10467,6 +12610,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Task status. Valid values: `UnInitialized`, `Initialized`, `Checking`, `CheckPass`, `CheckNotPass`, `ReadyRunning`, `Running`, `Pausing`, `Paused`, `Stopping`, `Stopped`, `ResumableErr`, `Resuming`, `Failed`, `Released`, `Resetting`, `Unknown`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -10475,6 +12622,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EndTime(self):
+        """End time in the format of `yyyy-mm-dd hh:mm:ss`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -10483,6 +12634,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """Tag information
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TagItem
+        """
         return self._Tags
 
     @Tags.setter
@@ -10491,6 +12646,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Detail(self):
+        """Step information of the sync task
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dts.v20211206.models.SyncDetailInfo`
+        """
         return self._Detail
 
     @Detail.setter
@@ -10499,6 +12658,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TradeStatus(self):
+        """Billing status. Valid values: `Normal`, `Resizing`, `Renewing`, `Isolating`, `Isolated`, `Offlining`, `Offlined`, `NotBilled`, `Recovering`, `PostPay2Prepaying`, `PrePay2Postpaying`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TradeStatus
 
     @TradeStatus.setter
@@ -10507,6 +12670,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceClass(self):
+        """Sync link specification, such as `micro`, `small`, `medium`, and `large`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceClass
 
     @InstanceClass.setter
@@ -10515,6 +12682,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRenew(self):
+        """Auto-renewal flag, which takes effect if `PayMode` is `PrePay`. Valid values: `1` (auto-renewal enabled); `0` (auto-renewal disabled).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._AutoRenew
 
     @AutoRenew.setter
@@ -10523,6 +12694,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OfflineTime(self):
+        """Deletion time in the format of `yyyy-mm-dd hh:mm:ss`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OfflineTime
 
     @OfflineTime.setter
@@ -10531,6 +12706,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AutoRetryTimeRangeMinutes(self):
+        """Settings of automatic retry time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._AutoRetryTimeRangeMinutes
 
     @AutoRetryTimeRangeMinutes.setter
@@ -10539,6 +12718,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DumperResumeCtrl(self):
+        """Whether the task can be reentered in the full export stage. Valid values: `yes`, `no`. `yes`: The current task can be reentered. `no`: The current task is in the full export stage which cannot be reentered. If the value of this parameter is `no`, the checkpoint restart is not supported when the task is restarted in the export stage.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DumperResumeCtrl
 
     @DumperResumeCtrl.setter
@@ -10648,6 +12831,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableName(self):
+        """Table name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -10656,6 +12843,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewTableName(self):
+        """New table name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NewTableName
 
     @NewTableName.setter
@@ -10664,6 +12855,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilterCondition(self):
+        """Filter condition
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FilterCondition
 
     @FilterCondition.setter
@@ -10672,6 +12867,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ColumnMode(self):
+        """Whether to synchronize all columns in the table. All: all columns under the current table; Partial (the corresponding field ColumnMode in ModifySyncJobConfig interface does not support Partial at the moment): some columns under the current table, detailed table information is provided by filling the Columns field.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ColumnMode
 
     @ColumnMode.setter
@@ -10680,6 +12878,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Columns(self):
+        """Column information in data sync. This field is required when ColumnMode is set to Partial.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Column
+        """
         return self._Columns
 
     @Columns.setter
@@ -10688,6 +12889,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TmpTables(self):
+        """The temp tables to be synced. This parameter is mutually exclusive with `NewTableName`. It is valid only when the configured sync objects are table-level ones and `TableEditMode` is `pt`. To sync temp tables generated when pt-osc or other tools are used during the sync process, you must configure this parameter first. For example, if you want to perform the pt-osc operation on a table named "t1", configure this parameter as ["\_t1\_new","\_t1\_old"]; to perform the gh-ost operation on t1, configure it as ["\_t1\_ghc","\_t1\_gho","\_t1\_del"]. Temp tables generated by pt-osc and gh-ost operations can be configured at the same time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._TmpTables
 
     @TmpTables.setter
@@ -10696,6 +12901,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableEditMode(self):
+        """Table editing type. Valid values: `rename` (table mapping); `pt` (additional table sync).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TableEditMode
 
     @TableEditMode.setter
@@ -10753,6 +12962,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableName(self):
+        """Name of the migrated table, which is case-sensitive
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -10761,6 +12974,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewTableName(self):
+        """New name of the migrated table. This parameter is required when `TableEditMode` is `rename`. It is mutually exclusive with `TmpTables`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NewTableName
 
     @NewTableName.setter
@@ -10769,6 +12986,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TmpTables(self):
+        """The temp tables to be migrated. This parameter is mutually exclusive with `NewTableName`. It is valid only when the configured migration objects are table-level ones and `TableEditMode` is `pt`. To migrate temp tables generated when pt-osc or other tools are used during the migration process, you must configure this parameter first. For example, if you want to perform the pt-osc operation on a table named "t1", configure this parameter as ["_t1_new","_t1_old"]; to perform the gh-ost operation on t1, configure it as ["_t1_ghc","_t1_gho","_t1_del"]. Temp tables generated by pt-osc and gh-ost operations can be configured at the same time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._TmpTables
 
     @TmpTables.setter
@@ -10777,6 +12998,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableEditMode(self):
+        """Table editing type. Valid values: `rename` (table mapping); `pt` (additional table sync).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TableEditMode
 
     @TableEditMode.setter
@@ -10816,6 +13041,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagKey(self):
+        """Tag key
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -10824,6 +13052,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagValue(self):
+        """Tag value
+        :rtype: list of str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -10863,6 +13094,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagKey(self):
+        """Tag key
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -10871,6 +13106,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagValue(self):
+        """Tag value
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -10920,6 +13159,9 @@ class TopicRule(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -10928,6 +13170,9 @@ class TopicRule(AbstractModel):
 
     @property
     def PartitionType(self):
+        """Topic partitioning policy. If the topic sync policy is delivering data to multiple custom topics (`TopicType` = `Multi`), the value of this parameter is `Random` (deliver to a random partition). If the topic sync policy is delivering all data to a single topic (`TopicType` = `Single`), this parameter has three valid values: `AllInPartitionZero` (deliver all data to partition0), `PartitionByTable` (partition by table name), `PartitionByTableAndKey` (partition by table name and primary key).
+        :rtype: str
+        """
         return self._PartitionType
 
     @PartitionType.setter
@@ -10936,6 +13181,9 @@ class TopicRule(AbstractModel):
 
     @property
     def DbMatchMode(self):
+        """Database name matching rule. This parameter takes effect only when `TopicType` is `Multi`. Valid values: `Regular` (match by regex), `Default` (default rule for the remaining databases that cannot be matched by regex). The default rule must be included in the array of matching rules.
+        :rtype: str
+        """
         return self._DbMatchMode
 
     @DbMatchMode.setter
@@ -10944,6 +13192,9 @@ class TopicRule(AbstractModel):
 
     @property
     def DbName(self):
+        """Database name, which can only be matched by regex when `TopicType` is `Multi` and `DbMatchMode` is `Regular`.
+        :rtype: str
+        """
         return self._DbName
 
     @DbName.setter
@@ -10952,6 +13203,9 @@ class TopicRule(AbstractModel):
 
     @property
     def TableMatchMode(self):
+        """Table name matching rule. This parameter takes effect only when `TopicType` is `Multi`. Valid values: `Regular` (match by regex), `Default` (default rule for the remaining databases that cannot be matched by regex). The default rule must be included in the array of matching rules.
+        :rtype: str
+        """
         return self._TableMatchMode
 
     @TableMatchMode.setter
@@ -10960,6 +13214,9 @@ class TopicRule(AbstractModel):
 
     @property
     def TableName(self):
+        """Table name, which can only be matched by regex when `TopicType` is `Multi` and `DbMatchMode` is `Regular`.
+        :rtype: str
+        """
         return self._TableName
 
     @TableName.setter
@@ -11039,6 +13296,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DealName(self):
+        """Order number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DealName
 
     @DealName.setter
@@ -11047,6 +13308,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastDealName(self):
+        """Last order number
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LastDealName
 
     @LastDealName.setter
@@ -11055,6 +13320,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceClass(self):
+        """Instance specification. Valid values: `micro`, `small`, `medium`, `large`, `xlarge`, `2xlarge`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceClass
 
     @InstanceClass.setter
@@ -11063,6 +13332,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TradeStatus(self):
+        """Task billing status. Valid values: `normal` (billed or to be billed); `resizing` (adjusting configuration); `reversing` (topping up, which is a short status); `isolating` (isolating, which is a short status); `isolated` (isolated); `offlining` (deleting); `offlined` (deleted); `notBilled` (not billed).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TradeStatus
 
     @TradeStatus.setter
@@ -11071,6 +13344,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpireTime(self):
+        """Expiration time in the format of "yyyy-mm-dd hh:mm:ss"
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -11079,6 +13356,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OfflineTime(self):
+        """Deletion time in the format of "yyyy-mm-dd hh:mm:ss"
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OfflineTime
 
     @OfflineTime.setter
@@ -11087,6 +13368,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsolateTime(self):
+        """Isolation time in the format of "yyyy-mm-dd hh:mm:ss"
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IsolateTime
 
     @IsolateTime.setter
@@ -11095,6 +13380,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def OfflineReason(self):
+        """The cause of deletion
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._OfflineReason
 
     @OfflineReason.setter
@@ -11103,6 +13392,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsolateReason(self):
+        """The cause of isolation
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IsolateReason
 
     @IsolateReason.setter
@@ -11111,6 +13404,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PayType(self):
+        """Billing mode. Valid values: `postpay` (postpaid); `prepay` (prepaid).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PayType
 
     @PayType.setter
@@ -11119,6 +13416,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BillingType(self):
+        """Task billing type. Valid values: `billing` (billed); `notBilling` (free); `promotions` (in promotion).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._BillingType
 
     @BillingType.setter
@@ -11166,6 +13467,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ViewName(self):
+        """View name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ViewName
 
     @ViewName.setter
@@ -11174,6 +13479,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewViewName(self):
+        """Reserved field. Currently, a view cannot be renamed. Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NewViewName
 
     @NewViewName.setter
@@ -11213,6 +13521,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ViewName(self):
+        """View name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ViewName
 
     @ViewName.setter
@@ -11221,6 +13533,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NewViewName(self):
+        """View name after migration
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NewViewName
 
     @NewViewName.setter

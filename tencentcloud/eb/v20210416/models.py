@@ -35,6 +35,9 @@ class APIGWParams(AbstractModel):
 
     @property
     def Protocol(self):
+        """HTTPS
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -43,6 +46,9 @@ class APIGWParams(AbstractModel):
 
     @property
     def Method(self):
+        """POST
+        :rtype: str
+        """
         return self._Method
 
     @Method.setter
@@ -83,6 +89,9 @@ class CheckRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -111,6 +120,9 @@ class CheckTransformationRequest(AbstractModel):
 
     @property
     def Input(self):
+        """JSON string to be processed
+        :rtype: str
+        """
         return self._Input
 
     @Input.setter
@@ -119,6 +131,9 @@ class CheckTransformationRequest(AbstractModel):
 
     @property
     def Transformations(self):
+        """Transformation rule list
+        :rtype: list of Transformation
+        """
         return self._Transformations
 
     @Transformations.setter
@@ -161,6 +176,9 @@ class CheckTransformationResponse(AbstractModel):
 
     @property
     def Output(self):
+        """Data processed by `Transformations`
+        :rtype: str
+        """
         return self._Output
 
     @Output.setter
@@ -169,6 +187,9 @@ class CheckTransformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -198,6 +219,9 @@ class CkafkaDeliveryParams(AbstractModel):
 
     @property
     def TopicName(self):
+        """ckafka topic name
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -206,6 +230,9 @@ class CkafkaDeliveryParams(AbstractModel):
 
     @property
     def ResourceDescription(self):
+        """Six-Segment QCS description of CKafka resource
+        :rtype: str
+        """
         return self._ResourceDescription
 
     @ResourceDescription.setter
@@ -243,6 +270,9 @@ class CkafkaParams(AbstractModel):
 
     @property
     def Offset(self):
+        """kafka offset
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -251,6 +281,9 @@ class CkafkaParams(AbstractModel):
 
     @property
     def TopicName(self):
+        """ckafka  topic
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -288,6 +321,9 @@ class CkafkaTargetParams(AbstractModel):
 
     @property
     def TopicName(self):
+        """CKafka topic to be delivered to
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -296,6 +332,9 @@ class CkafkaTargetParams(AbstractModel):
 
     @property
     def RetryPolicy(self):
+        """Retry policy
+        :rtype: :class:`tencentcloud.eb.v20210416.models.RetryPolicy`
+        """
         return self._RetryPolicy
 
     @RetryPolicy.setter
@@ -359,6 +398,9 @@ class Connection(AbstractModel):
 
     @property
     def Status(self):
+        """Status
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -367,6 +409,9 @@ class Connection(AbstractModel):
 
     @property
     def ModTime(self):
+        """Update time
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -375,6 +420,9 @@ class Connection(AbstractModel):
 
     @property
     def Enable(self):
+        """Switch
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -383,6 +431,9 @@ class Connection(AbstractModel):
 
     @property
     def Description(self):
+        """Description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -391,6 +442,9 @@ class Connection(AbstractModel):
 
     @property
     def AddTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -399,6 +453,9 @@ class Connection(AbstractModel):
 
     @property
     def ConnectionId(self):
+        """Connector ID
+        :rtype: str
+        """
         return self._ConnectionId
 
     @ConnectionId.setter
@@ -407,6 +464,9 @@ class Connection(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -415,6 +475,9 @@ class Connection(AbstractModel):
 
     @property
     def ConnectionDescription(self):
+        """Connector description
+        :rtype: :class:`tencentcloud.eb.v20210416.models.ConnectionDescription`
+        """
         return self._ConnectionDescription
 
     @ConnectionDescription.setter
@@ -423,6 +486,9 @@ class Connection(AbstractModel):
 
     @property
     def ConnectionName(self):
+        """Connector name
+        :rtype: str
+        """
         return self._ConnectionName
 
     @ConnectionName.setter
@@ -431,6 +497,9 @@ class Connection(AbstractModel):
 
     @property
     def Type(self):
+        """Type
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -480,6 +549,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Type(self):
+        """Connector type
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -488,6 +561,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Connector status
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -534,6 +611,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ResourceDescription(self):
+        """Six-Segment QCS resource description. For more information, see [Resource Description Method](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)
+        :rtype: str
+        """
         return self._ResourceDescription
 
     @ResourceDescription.setter
@@ -542,6 +622,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def APIGWParams(self):
+        """API Gateway parameters
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.eb.v20210416.models.APIGWParams`
+        """
         return self._APIGWParams
 
     @APIGWParams.setter
@@ -550,6 +634,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CkafkaParams(self):
+        """CKafka parameters
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.eb.v20210416.models.CkafkaParams`
+        """
         return self._CkafkaParams
 
     @CkafkaParams.setter
@@ -558,6 +646,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DTSParams(self):
+        """Data Transfer Service (DTS) connector information
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.eb.v20210416.models.DTSParams`
+        """
         return self._DTSParams
 
     @DTSParams.setter
@@ -615,6 +707,9 @@ class CreateConnectionRequest(AbstractModel):
 
     @property
     def ConnectionDescription(self):
+        """Connector description
+        :rtype: :class:`tencentcloud.eb.v20210416.models.ConnectionDescription`
+        """
         return self._ConnectionDescription
 
     @ConnectionDescription.setter
@@ -623,6 +718,9 @@ class CreateConnectionRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -631,6 +729,9 @@ class CreateConnectionRequest(AbstractModel):
 
     @property
     def ConnectionName(self):
+        """Connector name
+        :rtype: str
+        """
         return self._ConnectionName
 
     @ConnectionName.setter
@@ -639,6 +740,9 @@ class CreateConnectionRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -647,6 +751,9 @@ class CreateConnectionRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """Whether to enable
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -655,6 +762,9 @@ class CreateConnectionRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Type of the connector
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -698,6 +808,9 @@ class CreateConnectionResponse(AbstractModel):
 
     @property
     def ConnectionId(self):
+        """Connector ID
+        :rtype: str
+        """
         return self._ConnectionId
 
     @ConnectionId.setter
@@ -706,6 +819,9 @@ class CreateConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -741,6 +857,9 @@ class CreateEventBusRequest(AbstractModel):
 
     @property
     def EventBusName(self):
+        """Event bus name: it can contain 2-60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter.
+        :rtype: str
+        """
         return self._EventBusName
 
     @EventBusName.setter
@@ -749,6 +868,9 @@ class CreateEventBusRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Event bus description, which can contain up to 200 characters of any type.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -757,6 +879,9 @@ class CreateEventBusRequest(AbstractModel):
 
     @property
     def SaveDays(self):
+        """Log retention period
+        :rtype: int
+        """
         return self._SaveDays
 
     @SaveDays.setter
@@ -765,6 +890,9 @@ class CreateEventBusRequest(AbstractModel):
 
     @property
     def EnableStore(self):
+        """Whether to enable log storage
+        :rtype: bool
+        """
         return self._EnableStore
 
     @EnableStore.setter
@@ -804,6 +932,9 @@ class CreateEventBusResponse(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -812,6 +943,9 @@ class CreateEventBusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -850,6 +984,9 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def EventPattern(self):
+        """See [Event Pattern](https://intl.cloud.tencent.com/document/product/1359/56084?from_cn_redirect=1)
+        :rtype: str
+        """
         return self._EventPattern
 
     @EventPattern.setter
@@ -858,6 +995,9 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID.
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -866,6 +1006,9 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -874,6 +1017,9 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """Switch.
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -882,6 +1028,9 @@ class CreateRuleRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Event bus description, which can contain up to 200 characters of any type
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -922,6 +1071,9 @@ class CreateRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
+        """Event rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -930,6 +1082,9 @@ class CreateRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -965,6 +1120,9 @@ class CreateTargetRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -973,6 +1131,9 @@ class CreateTargetRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Target type
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -981,6 +1142,9 @@ class CreateTargetRequest(AbstractModel):
 
     @property
     def TargetDescription(self):
+        """Target description
+        :rtype: :class:`tencentcloud.eb.v20210416.models.TargetDescription`
+        """
         return self._TargetDescription
 
     @TargetDescription.setter
@@ -989,6 +1153,9 @@ class CreateTargetRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Event rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -1030,6 +1197,9 @@ class CreateTargetResponse(AbstractModel):
 
     @property
     def TargetId(self):
+        """Target ID
+        :rtype: str
+        """
         return self._TargetId
 
     @TargetId.setter
@@ -1038,6 +1208,9 @@ class CreateTargetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1070,6 +1243,9 @@ class CreateTransformationRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -1078,6 +1254,9 @@ class CreateTransformationRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -1086,6 +1265,9 @@ class CreateTransformationRequest(AbstractModel):
 
     @property
     def Transformations(self):
+        """Transformation rule list (currently, only one is supported)
+        :rtype: list of Transformation
+        """
         return self._Transformations
 
     @Transformations.setter
@@ -1129,6 +1311,9 @@ class CreateTransformationResponse(AbstractModel):
 
     @property
     def TransformationId(self):
+        """Generated transformer ID
+        :rtype: str
+        """
         return self._TransformationId
 
     @TransformationId.setter
@@ -1137,6 +1322,9 @@ class CreateTransformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1173,6 +1361,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisposeMethod(self):
+        """Three modes are supported: DLQ, drop, and ignore error, which correspond to `DLQ`, `DROP`, and `IGNORE_ERROR` respectively
+        :rtype: str
+        """
         return self._DisposeMethod
 
     @DisposeMethod.setter
@@ -1181,6 +1372,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CkafkaDeliveryParams(self):
+        """If the DLQ mode is set, this option is required. Error messages will be delivered to the corresponding Kafka topic
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.eb.v20210416.models.CkafkaDeliveryParams`
+        """
         return self._CkafkaDeliveryParams
 
     @CkafkaDeliveryParams.setter
@@ -1220,6 +1415,9 @@ class DeleteConnectionRequest(AbstractModel):
 
     @property
     def ConnectionId(self):
+        """Connector ID
+        :rtype: str
+        """
         return self._ConnectionId
 
     @ConnectionId.setter
@@ -1228,6 +1426,9 @@ class DeleteConnectionRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -1262,6 +1463,9 @@ class DeleteConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1287,6 +1491,9 @@ class DeleteEventBusRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -1320,6 +1527,9 @@ class DeleteEventBusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1348,6 +1558,9 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -1356,6 +1569,9 @@ class DeleteRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Event rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -1390,6 +1606,9 @@ class DeleteRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1421,6 +1640,9 @@ class DeleteTargetRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -1429,6 +1651,9 @@ class DeleteTargetRequest(AbstractModel):
 
     @property
     def TargetId(self):
+        """Delivery target ID
+        :rtype: str
+        """
         return self._TargetId
 
     @TargetId.setter
@@ -1437,6 +1662,9 @@ class DeleteTargetRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Event rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -1472,6 +1700,9 @@ class DeleteTargetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1503,6 +1734,9 @@ class DeleteTransformationRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -1511,6 +1745,9 @@ class DeleteTransformationRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -1519,6 +1756,9 @@ class DeleteTransformationRequest(AbstractModel):
 
     @property
     def TransformationId(self):
+        """Transformer ID
+        :rtype: str
+        """
         return self._TransformationId
 
     @TransformationId.setter
@@ -1554,6 +1794,9 @@ class DeleteTransformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1597,6 +1840,9 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """The query start time.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1605,6 +1851,9 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """The query end time.
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1613,6 +1862,9 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -1621,6 +1873,9 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def GroupField(self):
+        """Aggregation field
+        :rtype: str
+        """
         return self._GroupField
 
     @GroupField.setter
@@ -1629,6 +1884,9 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def Page(self):
+        """Number of pages.
+        :rtype: int
+        """
         return self._Page
 
     @Page.setter
@@ -1637,6 +1895,9 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Logs returned per page
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1645,6 +1906,9 @@ class DescribeLogTagValueRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """Filter conditions
+        :rtype: list of LogFilter
+        """
         return self._Filter
 
     @Filter.setter
@@ -1693,6 +1957,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Results(self):
+        """Query searching metric value. 
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._Results
 
     @Results.setter
@@ -1701,6 +1969,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1742,6 +2013,9 @@ class ESTargetParams(AbstractModel):
 
     @property
     def NetMode(self):
+        """Network connection type
+        :rtype: str
+        """
         return self._NetMode
 
     @NetMode.setter
@@ -1750,6 +2024,9 @@ class ESTargetParams(AbstractModel):
 
     @property
     def IndexPrefix(self):
+        """Index prefix
+        :rtype: str
+        """
         return self._IndexPrefix
 
     @IndexPrefix.setter
@@ -1758,6 +2035,9 @@ class ESTargetParams(AbstractModel):
 
     @property
     def RotationInterval(self):
+        """ES log rotation interval
+        :rtype: str
+        """
         return self._RotationInterval
 
     @RotationInterval.setter
@@ -1766,6 +2046,9 @@ class ESTargetParams(AbstractModel):
 
     @property
     def OutputMode(self):
+        """DTS event configuration
+        :rtype: str
+        """
         return self._OutputMode
 
     @OutputMode.setter
@@ -1774,6 +2057,9 @@ class ESTargetParams(AbstractModel):
 
     @property
     def IndexSuffixMode(self):
+        """DTS indexing configuration
+        :rtype: str
+        """
         return self._IndexSuffixMode
 
     @IndexSuffixMode.setter
@@ -1782,6 +2068,9 @@ class ESTargetParams(AbstractModel):
 
     @property
     def IndexTemplateType(self):
+        """ES template type
+        :rtype: str
+        """
         return self._IndexTemplateType
 
     @IndexTemplateType.setter
@@ -1820,6 +2109,9 @@ class EtlFilter(AbstractModel):
 
     @property
     def Filter(self):
+        """The syntax is the same as that of `Rule`
+        :rtype: str
+        """
         return self._Filter
 
     @Filter.setter
@@ -1880,6 +2172,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ModTime(self):
+        """Update time
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -1888,6 +2183,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Description(self):
+        """Event bus description, which can contain up to 200 characters of any type
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -1896,6 +2194,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AddTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -1904,6 +2205,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EventBusName(self):
+        """Event bus name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter
+        :rtype: str
+        """
         return self._EventBusName
 
     @EventBusName.setter
@@ -1912,6 +2216,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -1920,6 +2227,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Type(self):
+        """Event bus type
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1928,6 +2238,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PayMode(self):
+        """Billing Mode
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -1936,6 +2250,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ConnectionBriefs(self):
+        """Connector basic information
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of ConnectionBrief
+        """
         return self._ConnectionBriefs
 
     @ConnectionBriefs.setter
@@ -1944,6 +2262,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TargetBriefs(self):
+        """Target information
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of TargetBrief
+        """
         return self._TargetBriefs
 
     @TargetBriefs.setter
@@ -2002,6 +2324,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExtractionInputPath(self):
+        """JsonPath, which will be `$.` by default if not specified
+        :rtype: str
+        """
         return self._ExtractionInputPath
 
     @ExtractionInputPath.setter
@@ -2010,6 +2335,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Format(self):
+        """Valid values: TEXT/JSON
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -2018,6 +2346,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TextParams(self):
+        """Only required for `Text`
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.eb.v20210416.models.TextParams`
+        """
         return self._TextParams
 
     @TextParams.setter
@@ -2060,6 +2392,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """One or more filter values.
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -2068,6 +2403,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """Filter name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2102,6 +2440,9 @@ class GetEventBusRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -2178,6 +2519,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ModTime(self):
+        """Update time
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -2186,6 +2530,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Description(self):
+        """Event bus description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2194,6 +2541,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ClsTopicId(self):
+        """Log topic ID
+        :rtype: str
+        """
         return self._ClsTopicId
 
     @ClsTopicId.setter
@@ -2202,6 +2552,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AddTime(self):
+        """Creation time.
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -2210,6 +2563,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ClsLogsetId(self):
+        """Logset ID
+        :rtype: str
+        """
         return self._ClsLogsetId
 
     @ClsLogsetId.setter
@@ -2218,6 +2574,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EventBusName(self):
+        """Event bus name
+        :rtype: str
+        """
         return self._EventBusName
 
     @EventBusName.setter
@@ -2226,6 +2585,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -2234,6 +2596,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Type(self):
+        """(Disused) Event bus type
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2242,6 +2607,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PayMode(self):
+        """Billing mode
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -2250,6 +2618,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SaveDays(self):
+        """EventBridge log storage period
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SaveDays
 
     @SaveDays.setter
@@ -2258,6 +2630,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LogTopicId(self):
+        """EventBridge log topic ID
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LogTopicId
 
     @LogTopicId.setter
@@ -2266,6 +2642,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EnableStore(self):
+        """Whether to enable log storage
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._EnableStore
 
     @EnableStore.setter
@@ -2274,6 +2654,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LinkMode(self):
+        """Whether to sort the message
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._LinkMode
 
     @LinkMode.setter
@@ -2282,6 +2666,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2323,6 +2710,9 @@ class GetRuleRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -2331,6 +2721,9 @@ class GetRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Event rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -2392,6 +2785,9 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -2400,6 +2796,9 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def RuleId(self):
+        """Event rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -2408,6 +2807,9 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def RuleName(self):
+        """Event rule name
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -2416,6 +2818,9 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def Status(self):
+        """Event rule status
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2424,6 +2829,9 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def Enable(self):
+        """Switch
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -2432,6 +2840,9 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def Description(self):
+        """Event rule description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2440,6 +2851,9 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def EventPattern(self):
+        """Event pattern
+        :rtype: str
+        """
         return self._EventPattern
 
     @EventPattern.setter
@@ -2448,6 +2862,9 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def AddTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -2456,6 +2873,9 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def ModTime(self):
+        """Update time
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -2464,6 +2884,9 @@ class GetRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2504,6 +2927,9 @@ class GetTransformationRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -2512,6 +2938,9 @@ class GetTransformationRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -2520,6 +2949,9 @@ class GetTransformationRequest(AbstractModel):
 
     @property
     def TransformationId(self):
+        """Transformer ID
+        :rtype: str
+        """
         return self._TransformationId
 
     @TransformationId.setter
@@ -2558,6 +2990,9 @@ class GetTransformationResponse(AbstractModel):
 
     @property
     def Transformations(self):
+        """Transformation rule list
+        :rtype: list of Transformation
+        """
         return self._Transformations
 
     @Transformations.setter
@@ -2566,6 +3001,9 @@ class GetTransformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2609,6 +3047,9 @@ class ListConnectionsRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -2617,6 +3058,9 @@ class ListConnectionsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """Indicates by which field to sort the returned results. Valid values: AddTime, ModTime
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -2625,6 +3069,9 @@ class ListConnectionsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2633,6 +3080,9 @@ class ListConnectionsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC, DESC
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -2641,6 +3091,9 @@ class ListConnectionsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2684,6 +3137,9 @@ class ListConnectionsResponse(AbstractModel):
 
     @property
     def Connections(self):
+        """Connector information
+        :rtype: list of Connection
+        """
         return self._Connections
 
     @Connections.setter
@@ -2692,6 +3148,9 @@ class ListConnectionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of connectors
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2700,6 +3159,9 @@ class ListConnectionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2744,6 +3206,9 @@ class ListEventBusesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """Indicates by which field to sort the returned results. Valid values: AddTime (creation time), ModTime (modification time)
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -2752,6 +3217,9 @@ class ListEventBusesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2760,6 +3228,9 @@ class ListEventBusesRequest(AbstractModel):
 
     @property
     def Order(self):
+        """Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC (ascending order), DESC (descending order)
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -2768,6 +3239,9 @@ class ListEventBusesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter. For more information, see the Instance Filter Table below. Each request can contain up to 10 `Filters` and 5 `Filter.Values`.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2776,6 +3250,9 @@ class ListEventBusesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Pagination offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2824,6 +3301,9 @@ class ListEventBusesResponse(AbstractModel):
 
     @property
     def EventBuses(self):
+        """Event bus information
+        :rtype: list of EventBus
+        """
         return self._EventBuses
 
     @EventBuses.setter
@@ -2832,6 +3312,9 @@ class ListEventBusesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of event buses
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2840,6 +3323,9 @@ class ListEventBusesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2884,6 +3370,9 @@ class ListRulesRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -2892,6 +3381,9 @@ class ListRulesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """Indicates by which field to sort the returned results. Valid values: AddTime (creation time), ModTime (modification time)
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -2900,6 +3392,9 @@ class ListRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2908,6 +3403,9 @@ class ListRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Pagination offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2916,6 +3414,9 @@ class ListRulesRequest(AbstractModel):
 
     @property
     def Order(self):
+        """Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC (ascending order), DESC (descending order)
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -2959,6 +3460,9 @@ class ListRulesResponse(AbstractModel):
 
     @property
     def Rules(self):
+        """Event rule information
+        :rtype: list of Rule
+        """
         return self._Rules
 
     @Rules.setter
@@ -2967,6 +3471,9 @@ class ListRulesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of event rules
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2975,6 +3482,9 @@ class ListRulesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3022,6 +3532,9 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Event rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -3030,6 +3543,9 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -3038,6 +3554,9 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """Indicates by which field to sort the returned results. Valid values: AddTime (creation time), ModTime (modification time)
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -3046,6 +3565,9 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3054,6 +3576,9 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Pagination offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3062,6 +3587,9 @@ class ListTargetsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """Indicates whether the returned results are sorted in ascending or descending order. Valid values: ASC (ascending order), DESC (descending order)
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -3106,6 +3634,9 @@ class ListTargetsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of targets
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3114,6 +3645,9 @@ class ListTargetsResponse(AbstractModel):
 
     @property
     def Targets(self):
+        """Target information
+        :rtype: list of Target
+        """
         return self._Targets
 
     @Targets.setter
@@ -3122,6 +3656,9 @@ class ListTargetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3167,6 +3704,9 @@ class LogFilter(AbstractModel):
 
     @property
     def Key(self):
+        """Field name
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -3175,6 +3715,9 @@ class LogFilter(AbstractModel):
 
     @property
     def Operator(self):
+        """Operator. Values: `eq` (Equal to), `neq` (Not equal to), `like`, `not like`, `lt` (Smaller than), `lte` (Smaller than and equal to), `gt` (Greater than), `gte` (Greater than and equal to), `range` (Within the range) and `norange` (Not in the range).
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -3183,6 +3726,10 @@ class LogFilter(AbstractModel):
 
     @property
     def Value(self):
+        """Filter value. Two values should be entered for range operation, separated by a comma (,).
+
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -3191,6 +3738,9 @@ class LogFilter(AbstractModel):
 
     @property
     def Type(self):
+        """The logical relationship between conditions. Values: `AND` and `OR`.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3199,6 +3749,9 @@ class LogFilter(AbstractModel):
 
     @property
     def Filters(self):
+        """LogFilters array
+        :rtype: list of LogFilters
+        """
         return self._Filters
 
     @Filters.setter
@@ -3248,6 +3801,9 @@ class LogFilters(AbstractModel):
 
     @property
     def Key(self):
+        """Field name
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -3256,6 +3812,9 @@ class LogFilters(AbstractModel):
 
     @property
     def Operator(self):
+        """Operator. Values: `eq` (Equal to), `neq` (Not equal to), `like`, `not like`, `lt` (Smaller than), `lte` (Smaller than and equal to), `gt` (Greater than), `gte` (Greater than and equal to), `range` (Within the range) and `norange` (Not in the range).
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -3264,6 +3823,10 @@ class LogFilters(AbstractModel):
 
     @property
     def Value(self):
+        """Filter value. Two values should be entered for range operation, separated by a comma (,)
+
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -3305,6 +3868,9 @@ class OutputStructParam(AbstractModel):
 
     @property
     def Key(self):
+        """Key in the corresponding JSON output
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -3313,6 +3879,9 @@ class OutputStructParam(AbstractModel):
 
     @property
     def Value(self):
+        """You can enter a JsonPath, constant, or built-in date type
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -3321,6 +3890,9 @@ class OutputStructParam(AbstractModel):
 
     @property
     def ValueType(self):
+        """Data type of `Value`. Valid values: STRING, NUMBER, BOOLEAN, NULL, SYS_VARIABLE, JSONPATH
+        :rtype: str
+        """
         return self._ValueType
 
     @ValueType.setter
@@ -3359,6 +3931,9 @@ class RetryPolicy(AbstractModel):
 
     @property
     def RetryInterval(self):
+        """Retry interval in seconds
+        :rtype: int
+        """
         return self._RetryInterval
 
     @RetryInterval.setter
@@ -3367,6 +3942,9 @@ class RetryPolicy(AbstractModel):
 
     @property
     def MaxRetryAttempts(self):
+        """Maximum number of retries
+        :rtype: int
+        """
         return self._MaxRetryAttempts
 
     @MaxRetryAttempts.setter
@@ -3430,6 +4008,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Status
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3438,6 +4019,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ModTime(self):
+        """Modification time
+        :rtype: str
+        """
         return self._ModTime
 
     @ModTime.setter
@@ -3446,6 +4030,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Enable(self):
+        """Switch
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -3454,6 +4041,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """Description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3462,6 +4052,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleId(self):
+        """Rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -3470,6 +4063,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def AddTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._AddTime
 
     @AddTime.setter
@@ -3478,6 +4074,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -3486,6 +4085,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleName(self):
+        """Rule name
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -3494,6 +4096,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Targets(self):
+        """Target overview
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of TargetBrief
+        """
         return self._Targets
 
     @Targets.setter
@@ -3502,6 +4108,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeadLetterConfig(self):
+        """DLQ rule set by the rule, which may be null
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.eb.v20210416.models.DeadLetterConfig`
+        """
         return self._DeadLetterConfig
 
     @DeadLetterConfig.setter
@@ -3557,6 +4167,9 @@ class SCFParams(AbstractModel):
 
     @property
     def BatchTimeout(self):
+        """Maximum waiting time for batch delivery
+        :rtype: int
+        """
         return self._BatchTimeout
 
     @BatchTimeout.setter
@@ -3565,6 +4178,9 @@ class SCFParams(AbstractModel):
 
     @property
     def BatchEventCount(self):
+        """Maximum number of events in batch delivery
+        :rtype: int
+        """
         return self._BatchEventCount
 
     @BatchEventCount.setter
@@ -3573,6 +4189,9 @@ class SCFParams(AbstractModel):
 
     @property
     def EnableBatchDelivery(self):
+        """Enables batch delivery
+        :rtype: bool
+        """
         return self._EnableBatchDelivery
 
     @EnableBatchDelivery.setter
@@ -3629,6 +4248,9 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Query start time (UNIX in ms)
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3637,6 +4259,9 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Query end time (UNIX in ms)
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3645,6 +4270,9 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -3653,6 +4281,9 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Page(self):
+        """Page number
+        :rtype: int
+        """
         return self._Page
 
     @Page.setter
@@ -3661,6 +4292,9 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Logs returned per page
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3669,6 +4303,9 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Filter(self):
+        """Filter conditions
+        :rtype: list of LogFilter
+        """
         return self._Filter
 
     @Filter.setter
@@ -3677,6 +4314,9 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def OrderFields(self):
+        """Sorting array
+        :rtype: list of str
+        """
         return self._OrderFields
 
     @OrderFields.setter
@@ -3685,6 +4325,9 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """Sorting order. Values: `asc` (earliest first); `desc` (latest first)
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -3746,6 +4389,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Total(self):
+        """Total number of logs
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -3754,6 +4401,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Limit(self):
+        """Number of entries per page.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3762,6 +4413,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Page(self):
+        """Page number
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Page
 
     @Page.setter
@@ -3770,6 +4425,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Results(self):
+        """Log searching results
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: list of SearchLogResult
+        """
         return self._Results
 
     @Results.setter
@@ -3778,6 +4437,9 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3841,6 +4503,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Timestamp(self):
+        """Log reported time
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Timestamp
 
     @Timestamp.setter
@@ -3849,6 +4515,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Message(self):
+        """Log details
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -3857,6 +4527,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Source(self):
+        """Event source
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Source
 
     @Source.setter
@@ -3865,6 +4539,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Type(self):
+        """The event type.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3873,6 +4551,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def RuleIds(self):
+        """Event matching rule
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RuleIds
 
     @RuleIds.setter
@@ -3881,6 +4563,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Subject(self):
+        """The instance ID.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Subject
 
     @Subject.setter
@@ -3889,6 +4575,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Region(self):
+        """The region.
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -3897,6 +4587,10 @@ Note: This field may return·null, indicating that no valid values can be obtain
 
     @property
     def Status(self):
+        """Event status
+Note: This field may return·null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3961,6 +4655,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """Target type
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3969,6 +4666,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -3977,6 +4677,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TargetId(self):
+        """Target ID
+        :rtype: str
+        """
         return self._TargetId
 
     @TargetId.setter
@@ -3985,6 +4688,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TargetDescription(self):
+        """Target description
+        :rtype: :class:`tencentcloud.eb.v20210416.models.TargetDescription`
+        """
         return self._TargetDescription
 
     @TargetDescription.setter
@@ -3993,6 +4699,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RuleId(self):
+        """Event rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -4001,6 +4710,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableBatchDelivery(self):
+        """Enables batch delivery
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._EnableBatchDelivery
 
     @EnableBatchDelivery.setter
@@ -4009,6 +4722,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BatchTimeout(self):
+        """Maximum waiting time for batch delivery
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._BatchTimeout
 
     @BatchTimeout.setter
@@ -4017,6 +4734,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BatchEventCount(self):
+        """Maximum number of events in batch delivery
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._BatchEventCount
 
     @BatchEventCount.setter
@@ -4062,6 +4783,9 @@ class TargetBrief(AbstractModel):
 
     @property
     def TargetId(self):
+        """Target ID
+        :rtype: str
+        """
         return self._TargetId
 
     @TargetId.setter
@@ -4070,6 +4794,9 @@ class TargetBrief(AbstractModel):
 
     @property
     def Type(self):
+        """Target type
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -4113,6 +4840,9 @@ class TargetDescription(AbstractModel):
 
     @property
     def ResourceDescription(self):
+        """Six-Segment QCS resource description. For more information, see [Resource Description Method](https://intl.cloud.tencent.com/document/product/598/10606?from_cn_redirect=1)
+        :rtype: str
+        """
         return self._ResourceDescription
 
     @ResourceDescription.setter
@@ -4121,6 +4851,9 @@ class TargetDescription(AbstractModel):
 
     @property
     def SCFParams(self):
+        """SCF parameter
+        :rtype: :class:`tencentcloud.eb.v20210416.models.SCFParams`
+        """
         return self._SCFParams
 
     @SCFParams.setter
@@ -4129,6 +4862,9 @@ class TargetDescription(AbstractModel):
 
     @property
     def CkafkaTargetParams(self):
+        """CKafka parameters
+        :rtype: :class:`tencentcloud.eb.v20210416.models.CkafkaTargetParams`
+        """
         return self._CkafkaTargetParams
 
     @CkafkaTargetParams.setter
@@ -4137,6 +4873,9 @@ class TargetDescription(AbstractModel):
 
     @property
     def ESTargetParams(self):
+        """ElasticSearch parameters
+        :rtype: :class:`tencentcloud.eb.v20210416.models.ESTargetParams`
+        """
         return self._ESTargetParams
 
     @ESTargetParams.setter
@@ -4184,6 +4923,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Separator(self):
+        """Comma, | , tab, space, line break, %, or #, which can contain only 1 character.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Separator
 
     @Separator.setter
@@ -4192,6 +4935,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Regex(self):
+        """Entered regex (128 characters)
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Regex
 
     @Regex.setter
@@ -4226,6 +4973,9 @@ class Transform(AbstractModel):
 
     @property
     def OutputStructs(self):
+        """Describes how to transform data
+        :rtype: list of OutputStructParam
+        """
         return self._OutputStructs
 
     @OutputStructs.setter
@@ -4273,6 +5023,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Extraction(self):
+        """Describes how to extract data
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.eb.v20210416.models.Extraction`
+        """
         return self._Extraction
 
     @Extraction.setter
@@ -4281,6 +5035,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def EtlFilter(self):
+        """Describes how to filter data
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.eb.v20210416.models.EtlFilter`
+        """
         return self._EtlFilter
 
     @EtlFilter.setter
@@ -4289,6 +5047,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Transform(self):
+        """Describes how to transform data
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.eb.v20210416.models.Transform`
+        """
         return self._Transform
 
     @Transform.setter
@@ -4342,6 +5104,9 @@ class UpdateConnectionRequest(AbstractModel):
 
     @property
     def ConnectionId(self):
+        """Connector ID
+        :rtype: str
+        """
         return self._ConnectionId
 
     @ConnectionId.setter
@@ -4350,6 +5115,9 @@ class UpdateConnectionRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -4358,6 +5126,9 @@ class UpdateConnectionRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """Switch
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -4366,6 +5137,9 @@ class UpdateConnectionRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4374,6 +5148,9 @@ class UpdateConnectionRequest(AbstractModel):
 
     @property
     def ConnectionName(self):
+        """Connector name
+        :rtype: str
+        """
         return self._ConnectionName
 
     @ConnectionName.setter
@@ -4411,6 +5188,9 @@ class UpdateConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4451,6 +5231,9 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -4459,6 +5242,9 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Event bus description, which can contain up to 200 characters of any type.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4467,6 +5253,9 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def EventBusName(self):
+        """Event bus name: it can contain 2-60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter.
+        :rtype: str
+        """
         return self._EventBusName
 
     @EventBusName.setter
@@ -4475,6 +5264,9 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def SaveDays(self):
+        """Log retention period
+        :rtype: int
+        """
         return self._SaveDays
 
     @SaveDays.setter
@@ -4483,6 +5275,9 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def LogTopicId(self):
+        """EventBridge log topic ID
+        :rtype: str
+        """
         return self._LogTopicId
 
     @LogTopicId.setter
@@ -4491,6 +5286,9 @@ class UpdateEventBusRequest(AbstractModel):
 
     @property
     def EnableStore(self):
+        """Whether to enable log retention
+        :rtype: bool
+        """
         return self._EnableStore
 
     @EnableStore.setter
@@ -4529,6 +5327,9 @@ class UpdateEventBusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4569,6 +5370,9 @@ class UpdateRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Event rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -4577,6 +5381,9 @@ class UpdateRuleRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -4585,6 +5392,9 @@ class UpdateRuleRequest(AbstractModel):
 
     @property
     def Enable(self):
+        """Switch.
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -4593,6 +5403,9 @@ class UpdateRuleRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Rule description, which can contain up to 200 characters of any type.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -4601,6 +5414,9 @@ class UpdateRuleRequest(AbstractModel):
 
     @property
     def EventPattern(self):
+        """See [CKafka Target](https://intl.cloud.tencent.com/document/product/1359/56084?from_cn_redirect=1)
+        :rtype: str
+        """
         return self._EventPattern
 
     @EventPattern.setter
@@ -4609,6 +5425,9 @@ class UpdateRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
+        """Event rule name, which can contain 2–60 letters, digits, underscores, and hyphens and must start with a letter and end with a digit or letter
+        :rtype: str
+        """
         return self._RuleName
 
     @RuleName.setter
@@ -4647,6 +5466,9 @@ class UpdateRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4687,6 +5509,9 @@ class UpdateTargetRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -4695,6 +5520,9 @@ class UpdateTargetRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Event rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -4703,6 +5531,9 @@ class UpdateTargetRequest(AbstractModel):
 
     @property
     def TargetId(self):
+        """Delivery target ID
+        :rtype: str
+        """
         return self._TargetId
 
     @TargetId.setter
@@ -4711,6 +5542,9 @@ class UpdateTargetRequest(AbstractModel):
 
     @property
     def EnableBatchDelivery(self):
+        """Enables batch delivery
+        :rtype: bool
+        """
         return self._EnableBatchDelivery
 
     @EnableBatchDelivery.setter
@@ -4719,6 +5553,9 @@ class UpdateTargetRequest(AbstractModel):
 
     @property
     def BatchTimeout(self):
+        """Maximum waiting time for batch delivery
+        :rtype: int
+        """
         return self._BatchTimeout
 
     @BatchTimeout.setter
@@ -4727,6 +5564,9 @@ class UpdateTargetRequest(AbstractModel):
 
     @property
     def BatchEventCount(self):
+        """Maximum number of events in batch delivery
+        :rtype: int
+        """
         return self._BatchEventCount
 
     @BatchEventCount.setter
@@ -4765,6 +5605,9 @@ class UpdateTargetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4799,6 +5642,9 @@ class UpdateTransformationRequest(AbstractModel):
 
     @property
     def EventBusId(self):
+        """Event bus ID
+        :rtype: str
+        """
         return self._EventBusId
 
     @EventBusId.setter
@@ -4807,6 +5653,9 @@ class UpdateTransformationRequest(AbstractModel):
 
     @property
     def RuleId(self):
+        """Rule ID
+        :rtype: str
+        """
         return self._RuleId
 
     @RuleId.setter
@@ -4815,6 +5664,9 @@ class UpdateTransformationRequest(AbstractModel):
 
     @property
     def TransformationId(self):
+        """Transformer ID
+        :rtype: str
+        """
         return self._TransformationId
 
     @TransformationId.setter
@@ -4823,6 +5675,9 @@ class UpdateTransformationRequest(AbstractModel):
 
     @property
     def Transformations(self):
+        """Transformation rule list (currently, only one is supported)
+        :rtype: list of Transformation
+        """
         return self._Transformations
 
     @Transformations.setter
@@ -4864,6 +5719,9 @@ class UpdateTransformationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

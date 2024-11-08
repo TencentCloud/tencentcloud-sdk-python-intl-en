@@ -58,6 +58,9 @@ class Account(AbstractModel):
 
     @property
     def Id(self):
+        """Unique ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -66,6 +69,9 @@ class Account(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -74,6 +80,9 @@ class Account(AbstractModel):
 
     @property
     def MachineIp(self):
+        """Private IP of server.
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -82,6 +91,9 @@ class Account(AbstractModel):
 
     @property
     def MachineName(self):
+        """Server name.
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -90,6 +102,9 @@ class Account(AbstractModel):
 
     @property
     def Username(self):
+        """Account name.
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -98,6 +113,9 @@ class Account(AbstractModel):
 
     @property
     def Groups(self):
+        """Account group.
+        :rtype: str
+        """
         return self._Groups
 
     @Groups.setter
@@ -106,6 +124,11 @@ class Account(AbstractModel):
 
     @property
     def Privilege(self):
+        """Account type.
+<li>ORDINARY: ordinary account</li>
+<li>SUPPER: super admin account</li>
+        :rtype: str
+        """
         return self._Privilege
 
     @Privilege.setter
@@ -114,6 +137,9 @@ class Account(AbstractModel):
 
     @property
     def AccountCreateTime(self):
+        """Account creation time.
+        :rtype: str
+        """
         return self._AccountCreateTime
 
     @AccountCreateTime.setter
@@ -122,6 +148,9 @@ class Account(AbstractModel):
 
     @property
     def LastLoginTime(self):
+        """Account last login time.
+        :rtype: str
+        """
         return self._LastLoginTime
 
     @LastLoginTime.setter
@@ -166,6 +195,9 @@ class AccountStatistics(AbstractModel):
 
     @property
     def Username(self):
+        """Username.
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -174,6 +206,9 @@ class AccountStatistics(AbstractModel):
 
     @property
     def MachineNum(self):
+        """Number of servers.
+        :rtype: int
+        """
         return self._MachineNum
 
     @MachineNum.setter
@@ -208,6 +243,9 @@ class AddLoginWhiteListRequest(AbstractModel):
 
     @property
     def Rules(self):
+        """Whitelist rule
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.LoginWhiteListsRule`
+        """
         return self._Rules
 
     @Rules.setter
@@ -243,6 +281,9 @@ class AddLoginWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -277,6 +318,9 @@ class AddMachineTagRequest(AbstractModel):
 
     @property
     def Quuid(self):
+        """Server ID
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -285,6 +329,9 @@ class AddMachineTagRequest(AbstractModel):
 
     @property
     def TagId(self):
+        """Tag ID
+        :rtype: int
+        """
         return self._TagId
 
     @TagId.setter
@@ -293,6 +340,9 @@ class AddMachineTagRequest(AbstractModel):
 
     @property
     def MRegion(self):
+        """Server region
+        :rtype: str
+        """
         return self._MRegion
 
     @MRegion.setter
@@ -301,6 +351,9 @@ class AddMachineTagRequest(AbstractModel):
 
     @property
     def MArea(self):
+        """Server type (`CVM` or `BM`)
+        :rtype: str
+        """
         return self._MArea
 
     @MArea.setter
@@ -337,6 +390,9 @@ class AddMachineTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -389,6 +445,9 @@ class AgentVul(AbstractModel):
 
     @property
     def Id(self):
+        """Vulnerability ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -397,6 +456,9 @@ class AgentVul(AbstractModel):
 
     @property
     def MachineIp(self):
+        """Server IP.
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -405,6 +467,9 @@ class AgentVul(AbstractModel):
 
     @property
     def VulName(self):
+        """Vulnerability name.
+        :rtype: str
+        """
         return self._VulName
 
     @VulName.setter
@@ -413,6 +478,13 @@ class AgentVul(AbstractModel):
 
     @property
     def VulLevel(self):
+        """Vulnerability severity level.
+<li>HIGH: high</li>
+<li>MIDDLE: medium</li>
+<li>LOW: low</li>
+<li>NOTICE: notice</li>
+        :rtype: str
+        """
         return self._VulLevel
 
     @VulLevel.setter
@@ -421,6 +493,9 @@ class AgentVul(AbstractModel):
 
     @property
     def LastScanTime(self):
+        """Last scanned time.
+        :rtype: str
+        """
         return self._LastScanTime
 
     @LastScanTime.setter
@@ -429,6 +504,9 @@ class AgentVul(AbstractModel):
 
     @property
     def Description(self):
+        """Vulnerability description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -437,6 +515,9 @@ class AgentVul(AbstractModel):
 
     @property
     def VulId(self):
+        """Vulnerability category ID.
+        :rtype: int
+        """
         return self._VulId
 
     @VulId.setter
@@ -445,6 +526,11 @@ class AgentVul(AbstractModel):
 
     @property
     def VulStatus(self):
+        """Vulnerability status.
+<li>UN_OPERATED: to be processed</li>
+<li>FIXED: fixed</li>
+        :rtype: str
+        """
         return self._VulStatus
 
     @VulStatus.setter
@@ -530,6 +616,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def Id(self):
+        """Event ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -538,6 +627,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def MachineIp(self):
+        """Server IP.
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -546,6 +638,12 @@ class BruteAttack(AbstractModel):
 
     @property
     def Status(self):
+        """Brute force attack event status
+<li>BRUTEATTACK_FAIL_ACCOUNT: brute force attack event - failure (the account exists)</li>
+<li>BRUTEATTACK_FAIL_NOACCOUNT: brute force attack event - failure (the account does not exist)</li>
+<li>BRUTEATTACK_SUCCESS: brute force attack event - success </li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -554,6 +652,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def UserName(self):
+        """Username.
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -562,6 +663,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def City(self):
+        """City ID.
+        :rtype: int
+        """
         return self._City
 
     @City.setter
@@ -570,6 +674,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def Country(self):
+        """Country/Region ID.
+        :rtype: int
+        """
         return self._Country
 
     @Country.setter
@@ -578,6 +685,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def Province(self):
+        """Province/State ID.
+        :rtype: int
+        """
         return self._Province
 
     @Province.setter
@@ -586,6 +696,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def SrcIp(self):
+        """Source IP.
+        :rtype: str
+        """
         return self._SrcIp
 
     @SrcIp.setter
@@ -594,6 +707,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def Count(self):
+        """Number of attempts.
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -602,6 +718,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Occurrence time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -610,6 +729,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def MachineName(self):
+        """Server name.
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -618,6 +740,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `UUID`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -626,6 +751,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def IsProVersion(self):
+        """Whether the server enables CWP Pro.
+        :rtype: bool
+        """
         return self._IsProVersion
 
     @IsProVersion.setter
@@ -634,6 +762,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def BanStatus(self):
+        """Whether the server is banned.
+        :rtype: str
+        """
         return self._BanStatus
 
     @BanStatus.setter
@@ -642,6 +773,9 @@ class BruteAttack(AbstractModel):
 
     @property
     def Quuid(self):
+        """Server `UUID`
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -690,6 +824,10 @@ class CloseProVersionRequest(AbstractModel):
 
     @property
     def Quuid(self):
+        """Server `Uuid`.
+`InstanceId` for BM or `Uuid` for CVM
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -723,6 +861,9 @@ class CloseProVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -771,6 +912,9 @@ class Component(AbstractModel):
 
     @property
     def Id(self):
+        """Unique ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -779,6 +923,9 @@ class Component(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -787,6 +934,9 @@ class Component(AbstractModel):
 
     @property
     def MachineIp(self):
+        """Private IP of server.
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -795,6 +945,9 @@ class Component(AbstractModel):
 
     @property
     def MachineName(self):
+        """Server name.
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -803,6 +956,9 @@ class Component(AbstractModel):
 
     @property
     def ComponentVersion(self):
+        """Component version number.
+        :rtype: str
+        """
         return self._ComponentVersion
 
     @ComponentVersion.setter
@@ -811,6 +967,11 @@ class Component(AbstractModel):
 
     @property
     def ComponentType(self):
+        """Component type.
+<li>SYSTEM: system component</li>
+<li>WEB: web component</li>
+        :rtype: str
+        """
         return self._ComponentType
 
     @ComponentType.setter
@@ -819,6 +980,9 @@ class Component(AbstractModel):
 
     @property
     def ComponentName(self):
+        """Component name.
+        :rtype: str
+        """
         return self._ComponentName
 
     @ComponentName.setter
@@ -827,6 +991,9 @@ class Component(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """Component detection update time.
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -881,6 +1048,9 @@ class ComponentStatistics(AbstractModel):
 
     @property
     def Id(self):
+        """Component ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -889,6 +1059,9 @@ class ComponentStatistics(AbstractModel):
 
     @property
     def MachineNum(self):
+        """Number of servers.
+        :rtype: int
+        """
         return self._MachineNum
 
     @MachineNum.setter
@@ -897,6 +1070,9 @@ class ComponentStatistics(AbstractModel):
 
     @property
     def ComponentName(self):
+        """Component name.
+        :rtype: str
+        """
         return self._ComponentName
 
     @ComponentName.setter
@@ -905,6 +1081,11 @@ class ComponentStatistics(AbstractModel):
 
     @property
     def ComponentType(self):
+        """Component type.
+<li>WEB: web component</li>
+<li>SYSTEM: system component</li>
+        :rtype: str
+        """
         return self._ComponentType
 
     @ComponentType.setter
@@ -913,6 +1094,9 @@ class ComponentStatistics(AbstractModel):
 
     @property
     def Description(self):
+        """Component description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -950,6 +1134,9 @@ class CreateOpenPortTaskRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -983,6 +1170,9 @@ class CreateOpenPortTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1008,6 +1198,9 @@ class CreateProcessTaskRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -1041,6 +1234,9 @@ class CreateProcessTaskResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1069,6 +1265,9 @@ class CreateUsualLoginPlacesRequest(AbstractModel):
 
     @property
     def Uuids(self):
+        """CWP agent `UUID` array.
+        :rtype: list of str
+        """
         return self._Uuids
 
     @Uuids.setter
@@ -1077,6 +1276,9 @@ class CreateUsualLoginPlacesRequest(AbstractModel):
 
     @property
     def Places(self):
+        """Login region information array.
+        :rtype: list of Place
+        """
         return self._Places
 
     @Places.setter
@@ -1116,6 +1318,9 @@ class CreateUsualLoginPlacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1141,6 +1346,9 @@ class DeleteBruteAttacksRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """Brute force attack event ID array.
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -1174,6 +1382,9 @@ class DeleteBruteAttacksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1199,6 +1410,9 @@ class DeleteLoginWhiteListRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """Whitelist ID
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -1232,6 +1446,9 @@ class DeleteLoginWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1257,6 +1474,9 @@ class DeleteMachineRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -1290,6 +1510,9 @@ class DeleteMachineResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1315,6 +1538,9 @@ class DeleteMachineTagRequest(AbstractModel):
 
     @property
     def Rid(self):
+        """Associated tag ID
+        :rtype: int
+        """
         return self._Rid
 
     @Rid.setter
@@ -1348,6 +1574,9 @@ class DeleteMachineTagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1373,6 +1602,9 @@ class DeleteMaliciousRequestsRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """Malicious request record ID array. Maximum value: 100 entries.
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -1406,6 +1638,9 @@ class DeleteMaliciousRequestsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1431,6 +1666,9 @@ class DeleteMalwaresRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """Trojan record ID array
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -1464,6 +1702,9 @@ class DeleteMalwaresResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1489,6 +1730,9 @@ class DeleteNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """Unusual login location event ID array.
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -1522,6 +1766,9 @@ class DeleteNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1550,6 +1797,9 @@ class DeleteUsualLoginPlacesRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -1558,6 +1808,9 @@ class DeleteUsualLoginPlacesRequest(AbstractModel):
 
     @property
     def CityIds(self):
+        """Added usual login city ID array
+        :rtype: list of int non-negative
+        """
         return self._CityIds
 
     @CityIds.setter
@@ -1592,6 +1845,9 @@ class DeleteUsualLoginPlacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1624,6 +1880,9 @@ class DescribeAccountStatisticsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1632,6 +1891,9 @@ class DescribeAccountStatisticsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1640,6 +1902,10 @@ class DescribeAccountStatisticsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+<li>Username - String - Required: No - Account username</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1686,6 +1952,9 @@ class DescribeAccountStatisticsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records in account statistics list.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1694,6 +1963,9 @@ class DescribeAccountStatisticsResponse(AbstractModel):
 
     @property
     def AccountStatistics(self):
+        """Account statistics list.
+        :rtype: list of AccountStatistics
+        """
         return self._AccountStatistics
 
     @AccountStatistics.setter
@@ -1702,6 +1974,9 @@ class DescribeAccountStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1749,6 +2024,9 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`. Either `Username` or `Uuid` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -1757,6 +2035,9 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Username(self):
+        """CWP agent `Uuid`. Either `Username` or `Uuid` must be specified. If `Username` is specified, it indicates to query the information list under the specified username.
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -1765,6 +2046,9 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1773,6 +2057,9 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1781,6 +2068,12 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+<li>Username - String - Required: No - Account name</li>
+<li>Privilege - String - Required: No - Account name (ORDINARY: ordinary account, SUPPER: super admin account)</li>
+<li>MachineIp - String - Required: No - Private IP of server</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1829,6 +2122,9 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records in account list.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1837,6 +2133,9 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def Accounts(self):
+        """Account data list.
+        :rtype: list of Account
+        """
         return self._Accounts
 
     @Accounts.setter
@@ -1845,6 +2144,9 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1893,6 +2195,12 @@ class DescribeAgentVulsRequest(AbstractModel):
 
     @property
     def VulType(self):
+        """Vulnerability type.
+<li>WEB: web application vulnerability</li>
+<li>SYSTEM: system component vulnerability</li>
+<li>BASELINE: security baseline</li>
+        :rtype: str
+        """
         return self._VulType
 
     @VulType.setter
@@ -1901,6 +2209,9 @@ class DescribeAgentVulsRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """Agent `UUID`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -1909,6 +2220,9 @@ class DescribeAgentVulsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1917,6 +2231,9 @@ class DescribeAgentVulsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1925,6 +2242,10 @@ class DescribeAgentVulsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+<li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, FIXED: fixed)
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1973,6 +2294,9 @@ class DescribeAgentVulsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1981,6 +2305,9 @@ class DescribeAgentVulsResponse(AbstractModel):
 
     @property
     def AgentVuls(self):
+        """Server vulnerability information
+        :rtype: list of AgentVul
+        """
         return self._AgentVuls
 
     @AgentVuls.setter
@@ -1989,6 +2316,9 @@ class DescribeAgentVulsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2047,6 +2377,11 @@ class DescribeAlarmAttributeResponse(AbstractModel):
 
     @property
     def Offline(self):
+        """CWP deactivation alarm status:
+<li>OPEN: alarm enabled</li>
+<li>CLOSE: alarm disabled</li>
+        :rtype: str
+        """
         return self._Offline
 
     @Offline.setter
@@ -2055,6 +2390,11 @@ class DescribeAlarmAttributeResponse(AbstractModel):
 
     @property
     def Malware(self):
+        """Trojan discovery alarm status:
+<li>OPEN: alarm enabled</li>
+<li>CLOSE: alarm disabled</li>
+        :rtype: str
+        """
         return self._Malware
 
     @Malware.setter
@@ -2063,6 +2403,11 @@ class DescribeAlarmAttributeResponse(AbstractModel):
 
     @property
     def NonlocalLogin(self):
+        """Unusual login location discovery alarm status:
+<li>OPEN: alarm enabled</li>
+<li>CLOSE: alarm disabled</li>
+        :rtype: str
+        """
         return self._NonlocalLogin
 
     @NonlocalLogin.setter
@@ -2071,6 +2416,11 @@ class DescribeAlarmAttributeResponse(AbstractModel):
 
     @property
     def CrackSuccess(self):
+        """Brute force attack success alarm status:
+<li>OPEN: alarm enabled</li>
+<li>CLOSE: alarm disabled</li>
+        :rtype: str
+        """
         return self._CrackSuccess
 
     @CrackSuccess.setter
@@ -2079,6 +2429,9 @@ class DescribeAlarmAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2119,6 +2472,9 @@ class DescribeBruteAttacksRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """Agent `Uuid`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -2127,6 +2483,9 @@ class DescribeBruteAttacksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2135,6 +2494,11 @@ class DescribeBruteAttacksRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+<li>Keywords - String - Required: No - Query keywords</li>
+<li>Status - String - Required: No - Query status (FAILED: brute force attack failed, SUCCESS: brute force attack succeeded)</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2143,6 +2507,9 @@ class DescribeBruteAttacksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2190,6 +2557,9 @@ class DescribeBruteAttacksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of events
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2198,6 +2568,9 @@ class DescribeBruteAttacksResponse(AbstractModel):
 
     @property
     def BruteAttacks(self):
+        """Brute force attack event list
+        :rtype: list of BruteAttack
+        """
         return self._BruteAttacks
 
     @BruteAttacks.setter
@@ -2206,6 +2579,9 @@ class DescribeBruteAttacksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2238,6 +2614,9 @@ class DescribeComponentInfoRequest(AbstractModel):
 
     @property
     def ComponentId(self):
+        """Component ID.
+        :rtype: int
+        """
         return self._ComponentId
 
     @ComponentId.setter
@@ -2288,6 +2667,9 @@ class DescribeComponentInfoResponse(AbstractModel):
 
     @property
     def Id(self):
+        """Component ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -2296,6 +2678,9 @@ class DescribeComponentInfoResponse(AbstractModel):
 
     @property
     def ComponentName(self):
+        """Component name.
+        :rtype: str
+        """
         return self._ComponentName
 
     @ComponentName.setter
@@ -2304,6 +2689,11 @@ class DescribeComponentInfoResponse(AbstractModel):
 
     @property
     def ComponentType(self):
+        """Component type.
+<li>WEB: web component</li>
+<li>SYSTEM: system component</li>
+        :rtype: str
+        """
         return self._ComponentType
 
     @ComponentType.setter
@@ -2312,6 +2702,9 @@ class DescribeComponentInfoResponse(AbstractModel):
 
     @property
     def Homepage(self):
+        """Component's official website.
+        :rtype: str
+        """
         return self._Homepage
 
     @Homepage.setter
@@ -2320,6 +2713,9 @@ class DescribeComponentInfoResponse(AbstractModel):
 
     @property
     def Description(self):
+        """Component description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -2328,6 +2724,9 @@ class DescribeComponentInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2365,6 +2764,9 @@ ComponentName - String - Required: No - Component name
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2373,6 +2775,9 @@ ComponentName - String - Required: No - Component name
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2381,6 +2786,10 @@ ComponentName - String - Required: No - Component name
 
     @property
     def Filters(self):
+        """Filter.
+ComponentName - String - Required: No - Component name
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2427,6 +2836,9 @@ class DescribeComponentStatisticsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records in component statistics list.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2435,6 +2847,9 @@ class DescribeComponentStatisticsResponse(AbstractModel):
 
     @property
     def ComponentStatistics(self):
+        """Component statistics list data array.
+        :rtype: list of ComponentStatistics
+        """
         return self._ComponentStatistics
 
     @ComponentStatistics.setter
@@ -2443,6 +2858,9 @@ class DescribeComponentStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2489,6 +2907,9 @@ class DescribeComponentsRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`. Either `Uuid` or `ComponentId` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -2497,6 +2918,9 @@ class DescribeComponentsRequest(AbstractModel):
 
     @property
     def ComponentId(self):
+        """Component ID. Either `Uuid` or `ComponentId` must be specified. If `ComponentId` is specified, it indicates to query the information list under the specified component.
+        :rtype: int
+        """
         return self._ComponentId
 
     @ComponentId.setter
@@ -2505,6 +2929,9 @@ class DescribeComponentsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2513,6 +2940,9 @@ class DescribeComponentsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2521,6 +2951,11 @@ class DescribeComponentsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+<li>ComponentVersion - String - Required: No - Component version number</li>
+<li>MachineIp - String - Required: No - Private IP of server</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2569,6 +3004,9 @@ class DescribeComponentsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records in component list.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2577,6 +3015,9 @@ class DescribeComponentsResponse(AbstractModel):
 
     @property
     def Components(self):
+        """Component list data.
+        :rtype: list of Component
+        """
         return self._Components
 
     @Components.setter
@@ -2585,6 +3026,9 @@ class DescribeComponentsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2627,6 +3071,9 @@ class DescribeHistoryAccountsRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -2635,6 +3082,9 @@ class DescribeHistoryAccountsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2643,6 +3093,9 @@ class DescribeHistoryAccountsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2651,6 +3104,10 @@ class DescribeHistoryAccountsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+<li>Username - String - Required: No - Account name</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2698,6 +3155,9 @@ class DescribeHistoryAccountsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records in account change history list.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2706,6 +3166,9 @@ class DescribeHistoryAccountsResponse(AbstractModel):
 
     @property
     def HistoryAccounts(self):
+        """Account change history data array.
+        :rtype: list of HistoryAccount
+        """
         return self._HistoryAccounts
 
     @HistoryAccounts.setter
@@ -2714,6 +3177,9 @@ class DescribeHistoryAccountsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2756,6 +3222,9 @@ class DescribeImpactedHostsRequest(AbstractModel):
 
     @property
     def VulId(self):
+        """Vulnerability category ID.
+        :rtype: int
+        """
         return self._VulId
 
     @VulId.setter
@@ -2764,6 +3233,9 @@ class DescribeImpactedHostsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2772,6 +3244,9 @@ class DescribeImpactedHostsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2780,6 +3255,10 @@ class DescribeImpactedHostsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+<li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, FIXED: fixed)</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2827,6 +3306,9 @@ class DescribeImpactedHostsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2835,6 +3317,9 @@ class DescribeImpactedHostsResponse(AbstractModel):
 
     @property
     def ImpactedHosts(self):
+        """Affected server list array
+        :rtype: list of ImpactedHost
+        """
         return self._ImpactedHosts
 
     @ImpactedHosts.setter
@@ -2843,6 +3328,9 @@ class DescribeImpactedHostsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2882,6 +3370,9 @@ class DescribeLoginWhiteListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2890,6 +3381,9 @@ class DescribeLoginWhiteListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2898,6 +3392,10 @@ class DescribeLoginWhiteListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+<li>Keywords - String - Required: No - Query keywords</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2944,6 +3442,9 @@ class DescribeLoginWhiteListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2952,6 +3453,9 @@ class DescribeLoginWhiteListResponse(AbstractModel):
 
     @property
     def LoginWhiteLists(self):
+        """Login allowlist array
+        :rtype: list of LoginWhiteLists
+        """
         return self._LoginWhiteLists
 
     @LoginWhiteLists.setter
@@ -2960,6 +3464,9 @@ class DescribeLoginWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2992,6 +3499,9 @@ class DescribeMachineInfoRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -3080,6 +3590,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def MachineIp(self):
+        """Server IP.
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -3088,6 +3601,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def ProtectDays(self):
+        """Days under protection by CWP
+        :rtype: int
+        """
         return self._ProtectDays
 
     @ProtectDays.setter
@@ -3096,6 +3612,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def MachineOs(self):
+        """OS.
+        :rtype: str
+        """
         return self._MachineOs
 
     @MachineOs.setter
@@ -3104,6 +3623,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def MachineName(self):
+        """Server name.
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -3112,6 +3634,11 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def MachineStatus(self):
+        """Status.
+<li>ONLINE: online</li>
+<li>OFFLINE: offline</li>
+        :rtype: str
+        """
         return self._MachineStatus
 
     @MachineStatus.setter
@@ -3120,6 +3647,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Unique ID of CVM or BM instance.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3128,6 +3658,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def MachineWanIp(self):
+        """Public IP of server.
+        :rtype: str
+        """
         return self._MachineWanIp
 
     @MachineWanIp.setter
@@ -3136,6 +3669,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def Quuid(self):
+        """CVM or BM instance `Uuid`.
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -3144,6 +3680,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -3152,6 +3691,11 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def IsProVersion(self):
+        """Whether CWP Pro is activated.
+<li>true: yes</li>
+<li>false: no</li>
+        :rtype: bool
+        """
         return self._IsProVersion
 
     @IsProVersion.setter
@@ -3160,6 +3704,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def ProVersionOpenDate(self):
+        """CWP Pro activation time.
+        :rtype: str
+        """
         return self._ProVersionOpenDate
 
     @ProVersionOpenDate.setter
@@ -3168,6 +3715,11 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def MachineType(self):
+        """Server type.
+<li>CVM: CVM</li>
+<li>BM: BM</li>
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -3176,6 +3728,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def MachineRegion(self):
+        """Server region, such as ap-guangzhou or ap-shanghai
+        :rtype: str
+        """
         return self._MachineRegion
 
     @MachineRegion.setter
@@ -3184,6 +3739,10 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def PayMode(self):
+        """Server status.
+<li>POSTPAY: post-paid, i.e., pay-as-you-go </li>
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -3192,6 +3751,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def FreeMalwaresLeft(self):
+        """Number of trojans left for free scan.
+        :rtype: int
+        """
         return self._FreeMalwaresLeft
 
     @FreeMalwaresLeft.setter
@@ -3200,6 +3762,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def FreeVulsLeft(self):
+        """Number of vulnerability left for free scan.
+        :rtype: int
+        """
         return self._FreeVulsLeft
 
     @FreeVulsLeft.setter
@@ -3208,6 +3773,9 @@ class DescribeMachineInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3267,6 +3835,11 @@ Each filter can have only one value but does not support "OR" queries with multi
 
     @property
     def MachineType(self):
+        """Server type.
+<li>CVM: CVM</li>
+<li>BM: BM</li>
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -3275,6 +3848,9 @@ Each filter can have only one value but does not support "OR" queries with multi
 
     @property
     def MachineRegion(self):
+        """Server region, such as ap-guangzhou or ap-shanghai
+        :rtype: str
+        """
         return self._MachineRegion
 
     @MachineRegion.setter
@@ -3283,6 +3859,9 @@ Each filter can have only one value but does not support "OR" queries with multi
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3291,6 +3870,9 @@ Each filter can have only one value but does not support "OR" queries with multi
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3299,6 +3881,13 @@ Each filter can have only one value but does not support "OR" queries with multi
 
     @property
     def Filters(self):
+        """Filter.
+<li>Keywords - String - Required: no - Query keywords </li>
+<li>Status - String - Required: no - CWP client status (valid values: OFFLINE, ONLINE, UNINSTALLED)</li>
+<li>Version - String - Required: no - Current CWP version (valid values: PRO_VERSION, BASIC_VERSION)</li>
+Each filter can have only one value but does not support "OR" queries with multiple values
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3347,6 +3936,9 @@ class DescribeMachinesResponse(AbstractModel):
 
     @property
     def Machines(self):
+        """Server list
+        :rtype: list of Machine
+        """
         return self._Machines
 
     @Machines.setter
@@ -3355,6 +3947,9 @@ class DescribeMachinesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of servers
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3363,6 +3958,9 @@ class DescribeMachinesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3407,6 +4005,9 @@ class DescribeMaliciousRequestsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3415,6 +4016,9 @@ class DescribeMaliciousRequestsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3423,6 +4027,12 @@ class DescribeMaliciousRequestsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+<li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, TRUSTED: trusted, UN_TRUSTED: untrusted)</li>
+<li>Domain - String - Required: No - Malicious request domain name</li>
+<li>MachineIp - String - Required: No - Private IP of server</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3431,6 +4041,9 @@ class DescribeMaliciousRequestsRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `UUID`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -3478,6 +4091,9 @@ class DescribeMaliciousRequestsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3486,6 +4102,9 @@ class DescribeMaliciousRequestsResponse(AbstractModel):
 
     @property
     def MaliciousRequests(self):
+        """Malicious request record array.
+        :rtype: list of MaliciousRequest
+        """
         return self._MaliciousRequests
 
     @MaliciousRequests.setter
@@ -3494,6 +4113,9 @@ class DescribeMaliciousRequestsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3538,6 +4160,9 @@ Each filter supports only one value. Query with multiple values in "OR" relation
 
     @property
     def Uuid(self):
+        """Agent `Uuid`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -3546,6 +4171,9 @@ Each filter supports only one value. Query with multiple values in "OR" relation
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3554,6 +4182,9 @@ Each filter supports only one value. Query with multiple values in "OR" relation
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3562,6 +4193,12 @@ Each filter supports only one value. Query with multiple values in "OR" relation
 
     @property
     def Filters(self):
+        """Filter.
+<li>Keywords - String - Required: No - Query keywords</li>
+<li>Status - String - Required: No - Trojan status (UN_OPERATED: not processed, SEGREGATED: isolated, TRUSTED: trusted)</li>
+Each filter supports only one value. Query with multiple values in "OR" relationship is not supported for the time being.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3609,6 +4246,9 @@ class DescribeMalwaresResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of trojans.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3617,6 +4257,9 @@ class DescribeMalwaresResponse(AbstractModel):
 
     @property
     def Malwares(self):
+        """Malware array.
+        :rtype: list of Malware
+        """
         return self._Malwares
 
     @Malwares.setter
@@ -3625,6 +4268,9 @@ class DescribeMalwaresResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3668,6 +4314,9 @@ class DescribeNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """Agent `Uuid`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -3676,6 +4325,9 @@ class DescribeNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3684,6 +4336,9 @@ class DescribeNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3692,6 +4347,11 @@ class DescribeNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+<li>Keywords - String - Required: No - Query keywords</li>
+<li>Status - String - Required: No - Login status (NON_LOCAL_LOGIN: unusual login location, NORMAL_LOGIN: intended login)</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3739,6 +4399,9 @@ class DescribeNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3747,6 +4410,9 @@ class DescribeNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def NonLocalLoginPlaces(self):
+        """Unusual login location information array.
+        :rtype: list of NonLocalLoginPlace
+        """
         return self._NonLocalLoginPlaces
 
     @NonLocalLoginPlaces.setter
@@ -3755,6 +4421,9 @@ class DescribeNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3794,6 +4463,9 @@ class DescribeOpenPortStatisticsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -3802,6 +4474,9 @@ class DescribeOpenPortStatisticsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -3810,6 +4485,10 @@ class DescribeOpenPortStatisticsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+<li>Port - Uint64 - Required: No - Port number</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -3856,6 +4535,9 @@ class DescribeOpenPortStatisticsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records in port statistics list
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -3864,6 +4546,9 @@ class DescribeOpenPortStatisticsResponse(AbstractModel):
 
     @property
     def OpenPortStatistics(self):
+        """Port statistics list
+        :rtype: list of OpenPortStatistics
+        """
         return self._OpenPortStatistics
 
     @OpenPortStatistics.setter
@@ -3872,6 +4557,9 @@ class DescribeOpenPortStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3904,6 +4592,9 @@ class DescribeOpenPortTaskStatusRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -3944,6 +4635,13 @@ class DescribeOpenPortTaskStatusResponse(AbstractModel):
 
     @property
     def Status(self):
+        """Task status.
+<li>COMPLETE: completed (at this point, you can call the `DescribeOpenPorts` API to get the list of real-time processes) </li>
+<li>AGENT_OFFLINE: CWP agent is offline</li>
+<li>COLLECTING: getting port</li>
+<li>FAILED: failed to get processes</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3952,6 +4650,9 @@ class DescribeOpenPortTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3993,6 +4694,9 @@ class DescribeOpenPortsRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`. Either `Port` or `Uuid` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -4001,6 +4705,9 @@ class DescribeOpenPortsRequest(AbstractModel):
 
     @property
     def Port(self):
+        """Open port number. Either `Port` or `Uuid` must be specified. If `Port` is specified, it indicates to query the information list under the specified port.
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -4009,6 +4716,9 @@ class DescribeOpenPortsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4017,6 +4727,9 @@ class DescribeOpenPortsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4025,6 +4738,12 @@ class DescribeOpenPortsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+<li>Port - Uint64 - Required: No - Port number</li>
+<li>ProcessName - String - Required: No - Process name</li>
+<li>MachineIp - String - Required: No - Private IP of server</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4073,6 +4792,9 @@ class DescribeOpenPortsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records in port list.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4081,6 +4803,9 @@ class DescribeOpenPortsResponse(AbstractModel):
 
     @property
     def OpenPorts(self):
+        """Port list.
+        :rtype: list of OpenPort
+        """
         return self._OpenPorts
 
     @OpenPorts.setter
@@ -4089,6 +4814,9 @@ class DescribeOpenPortsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4148,6 +4876,9 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
 
     @property
     def OnlineMachineNum(self):
+        """Number of online servers.
+        :rtype: int
+        """
         return self._OnlineMachineNum
 
     @OnlineMachineNum.setter
@@ -4156,6 +4887,9 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
 
     @property
     def ProVersionMachineNum(self):
+        """Number of servers activated CWP Pro.
+        :rtype: int
+        """
         return self._ProVersionMachineNum
 
     @ProVersionMachineNum.setter
@@ -4164,6 +4898,9 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
 
     @property
     def MalwareNum(self):
+        """Number of trojan files.
+        :rtype: int
+        """
         return self._MalwareNum
 
     @MalwareNum.setter
@@ -4172,6 +4909,9 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
 
     @property
     def NonlocalLoginNum(self):
+        """Number of unusual login locations.
+        :rtype: int
+        """
         return self._NonlocalLoginNum
 
     @NonlocalLoginNum.setter
@@ -4180,6 +4920,9 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
 
     @property
     def BruteAttackSuccessNum(self):
+        """Number of successful brute force attacks.
+        :rtype: int
+        """
         return self._BruteAttackSuccessNum
 
     @BruteAttackSuccessNum.setter
@@ -4188,6 +4931,9 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
 
     @property
     def VulNum(self):
+        """Number of vulnerabilities.
+        :rtype: int
+        """
         return self._VulNum
 
     @VulNum.setter
@@ -4196,6 +4942,9 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
 
     @property
     def BaseLineNum(self):
+        """Security baseline number
+        :rtype: int
+        """
         return self._BaseLineNum
 
     @BaseLineNum.setter
@@ -4204,6 +4953,9 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4251,6 +5003,9 @@ class DescribeProVersionInfoResponse(AbstractModel):
 
     @property
     def PostPayCost(self):
+        """Fee on yesterday (pay-as-you-go)
+        :rtype: int
+        """
         return self._PostPayCost
 
     @PostPayCost.setter
@@ -4259,6 +5014,9 @@ class DescribeProVersionInfoResponse(AbstractModel):
 
     @property
     def IsAutoOpenProVersion(self):
+        """Whether CWP Pro is activated for new servers
+        :rtype: bool
+        """
         return self._IsAutoOpenProVersion
 
     @IsAutoOpenProVersion.setter
@@ -4267,6 +5025,9 @@ class DescribeProVersionInfoResponse(AbstractModel):
 
     @property
     def ProVersionNum(self):
+        """Number of servers on CWP Pro
+        :rtype: int
+        """
         return self._ProVersionNum
 
     @ProVersionNum.setter
@@ -4275,6 +5036,9 @@ class DescribeProVersionInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4310,6 +5074,9 @@ class DescribeProcessStatisticsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4318,6 +5085,9 @@ class DescribeProcessStatisticsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4326,6 +5096,10 @@ class DescribeProcessStatisticsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+<li>ProcessName - String - Required: No - Process name</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4372,6 +5146,9 @@ class DescribeProcessStatisticsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records in process statistics list.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4380,6 +5157,9 @@ class DescribeProcessStatisticsResponse(AbstractModel):
 
     @property
     def ProcessStatistics(self):
+        """Process statistics list array.
+        :rtype: list of ProcessStatistics
+        """
         return self._ProcessStatistics
 
     @ProcessStatistics.setter
@@ -4388,6 +5168,9 @@ class DescribeProcessStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4420,6 +5203,9 @@ class DescribeProcessTaskStatusRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -4460,6 +5246,13 @@ class DescribeProcessTaskStatusResponse(AbstractModel):
 
     @property
     def Status(self):
+        """Task status.
+<li>COMPLETE: completed (at this point, you can call the `DescribeProcesses` API to get the list of real-time processes)</li>
+<li>AGENT_OFFLINE: CWP agent is offline</li>
+<li>COLLECTING: getting process</li>
+<li>FAILED: failed to get processes</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -4468,6 +5261,9 @@ class DescribeProcessTaskStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4508,6 +5304,9 @@ class DescribeProcessesRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`. Either `Uuid` or `ProcessName` must be specified. If `Uuid` is specified, it indicates to query the information list under the specified server.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -4516,6 +5315,9 @@ class DescribeProcessesRequest(AbstractModel):
 
     @property
     def ProcessName(self):
+        """Process name. Either `Uuid` or `ProcessName` must be specified. If `ProcessName` is specified, it indicates to query the information list under the specified process.
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -4524,6 +5326,9 @@ class DescribeProcessesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4532,6 +5337,9 @@ class DescribeProcessesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4540,6 +5348,11 @@ class DescribeProcessesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+<li>ProcessName - String - Required: No - Process name</li>
+<li>MachineIp - String - Required: No - Private IP of server</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -4588,6 +5401,9 @@ class DescribeProcessesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records in process list.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4596,6 +5412,9 @@ class DescribeProcessesResponse(AbstractModel):
 
     @property
     def Processes(self):
+        """Process list data array.
+        :rtype: list of Process
+        """
         return self._Processes
 
     @Processes.setter
@@ -4604,6 +5423,9 @@ class DescribeProcessesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4639,6 +5461,9 @@ class DescribeSecurityDynamicsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -4647,6 +5472,9 @@ class DescribeSecurityDynamicsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -4687,6 +5515,9 @@ class DescribeSecurityDynamicsResponse(AbstractModel):
 
     @property
     def SecurityDynamics(self):
+        """Security event message array.
+        :rtype: list of SecurityDynamic
+        """
         return self._SecurityDynamics
 
     @SecurityDynamics.setter
@@ -4695,6 +5526,9 @@ class DescribeSecurityDynamicsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -4703,6 +5537,9 @@ class DescribeSecurityDynamicsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4738,6 +5575,9 @@ class DescribeSecurityTrendsRequest(AbstractModel):
 
     @property
     def BeginDate(self):
+        """Start time.
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -4746,6 +5586,9 @@ class DescribeSecurityTrendsRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """End time.
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -4810,6 +5653,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def Malwares(self):
+        """Trojan event statistics array.
+        :rtype: list of SecurityTrend
+        """
         return self._Malwares
 
     @Malwares.setter
@@ -4818,6 +5664,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def NonLocalLoginPlaces(self):
+        """Unusual login location event statistics array.
+        :rtype: list of SecurityTrend
+        """
         return self._NonLocalLoginPlaces
 
     @NonLocalLoginPlaces.setter
@@ -4826,6 +5675,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def BruteAttacks(self):
+        """Brute force attack event statistics array.
+        :rtype: list of SecurityTrend
+        """
         return self._BruteAttacks
 
     @BruteAttacks.setter
@@ -4834,6 +5686,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def Vuls(self):
+        """Vulnerability statistics array.
+        :rtype: list of SecurityTrend
+        """
         return self._Vuls
 
     @Vuls.setter
@@ -4842,6 +5697,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def BaseLines(self):
+        """Baseline statistics array.
+        :rtype: list of SecurityTrend
+        """
         return self._BaseLines
 
     @BaseLines.setter
@@ -4850,6 +5708,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def MaliciousRequests(self):
+        """Statistics array of malicious requests.
+        :rtype: list of SecurityTrend
+        """
         return self._MaliciousRequests
 
     @MaliciousRequests.setter
@@ -4858,6 +5719,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def HighRiskBashs(self):
+        """Statistics array of high-risk commands.
+        :rtype: list of SecurityTrend
+        """
         return self._HighRiskBashs
 
     @HighRiskBashs.setter
@@ -4866,6 +5730,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def ReverseShells(self):
+        """Statistics array of reverse shells.
+        :rtype: list of SecurityTrend
+        """
         return self._ReverseShells
 
     @ReverseShells.setter
@@ -4874,6 +5741,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def PrivilegeEscalations(self):
+        """Statistics array of local privilege escalations.
+        :rtype: list of SecurityTrend
+        """
         return self._PrivilegeEscalations
 
     @PrivilegeEscalations.setter
@@ -4882,6 +5752,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def CyberAttacks(self):
+        """Statistics array of network attacks.
+        :rtype: list of SecurityTrend
+        """
         return self._CyberAttacks
 
     @CyberAttacks.setter
@@ -4890,6 +5763,9 @@ class DescribeSecurityTrendsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4975,6 +5851,9 @@ class DescribeTagMachinesRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Tag ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -5011,6 +5890,9 @@ class DescribeTagMachinesResponse(AbstractModel):
 
     @property
     def List(self):
+        """List data
+        :rtype: list of TagMachine
+        """
         return self._List
 
     @List.setter
@@ -5019,6 +5901,9 @@ class DescribeTagMachinesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5055,6 +5940,11 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def MachineType(self):
+        """CVM instance type.
+<li>CVM: CVM</li>
+<li>BM: CPM</li>
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -5063,6 +5953,9 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def MachineRegion(self):
+        """Server region, such as `ap-guangzhou` and `ap-shanghai`
+        :rtype: str
+        """
         return self._MachineRegion
 
     @MachineRegion.setter
@@ -5100,6 +5993,9 @@ class DescribeTagsResponse(AbstractModel):
 
     @property
     def List(self):
+        """List information
+        :rtype: list of Tag
+        """
         return self._List
 
     @List.setter
@@ -5108,6 +6004,9 @@ class DescribeTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5139,6 +6038,9 @@ class DescribeUsualLoginPlacesRequest(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `UUID`
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -5175,6 +6077,9 @@ class DescribeUsualLoginPlacesResponse(AbstractModel):
 
     @property
     def UsualLoginPlaces(self):
+        """Usual login location array
+        :rtype: list of UsualPlace
+        """
         return self._UsualLoginPlaces
 
     @UsualLoginPlaces.setter
@@ -5183,6 +6088,9 @@ class DescribeUsualLoginPlacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5214,6 +6122,9 @@ class DescribeVulInfoRequest(AbstractModel):
 
     @property
     def VulId(self):
+        """Vulnerability category ID.
+        :rtype: int
+        """
         return self._VulId
 
     @VulId.setter
@@ -5271,6 +6182,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def VulId(self):
+        """Vulnerability category ID.
+        :rtype: int
+        """
         return self._VulId
 
     @VulId.setter
@@ -5279,6 +6193,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def VulName(self):
+        """Vulnerability name.
+        :rtype: str
+        """
         return self._VulName
 
     @VulName.setter
@@ -5287,6 +6204,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def VulLevel(self):
+        """Vulnerability level.
+        :rtype: str
+        """
         return self._VulLevel
 
     @VulLevel.setter
@@ -5295,6 +6215,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def VulType(self):
+        """Vulnerability type.
+        :rtype: str
+        """
         return self._VulType
 
     @VulType.setter
@@ -5303,6 +6226,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def Description(self):
+        """Vulnerability description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -5311,6 +6237,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def RepairPlan(self):
+        """Repair plan.
+        :rtype: str
+        """
         return self._RepairPlan
 
     @RepairPlan.setter
@@ -5319,6 +6248,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def CveId(self):
+        """Vulnerability CVE.
+        :rtype: str
+        """
         return self._CveId
 
     @CveId.setter
@@ -5327,6 +6259,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def Reference(self):
+        """Reference link.
+        :rtype: str
+        """
         return self._Reference
 
     @Reference.setter
@@ -5335,6 +6270,9 @@ class DescribeVulInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5389,6 +6327,9 @@ class DescribeVulScanResultResponse(AbstractModel):
 
     @property
     def VulNum(self):
+        """Number of vulnerabilities.
+        :rtype: int
+        """
         return self._VulNum
 
     @VulNum.setter
@@ -5397,6 +6338,9 @@ class DescribeVulScanResultResponse(AbstractModel):
 
     @property
     def ProVersionNum(self):
+        """Number of servers activated CWP Pro
+        :rtype: int
+        """
         return self._ProVersionNum
 
     @ProVersionNum.setter
@@ -5405,6 +6349,9 @@ class DescribeVulScanResultResponse(AbstractModel):
 
     @property
     def ImpactedHostNum(self):
+        """Number of affected activated CWP Pro.
+        :rtype: int
+        """
         return self._ImpactedHostNum
 
     @ImpactedHostNum.setter
@@ -5413,6 +6360,9 @@ class DescribeVulScanResultResponse(AbstractModel):
 
     @property
     def HostNum(self):
+        """Total number of servers.
+        :rtype: int
+        """
         return self._HostNum
 
     @HostNum.setter
@@ -5421,6 +6371,9 @@ class DescribeVulScanResultResponse(AbstractModel):
 
     @property
     def BasicVersionNum(self):
+        """Number of servers on CWP Basic.
+        :rtype: int
+        """
         return self._BasicVersionNum
 
     @BasicVersionNum.setter
@@ -5429,6 +6382,9 @@ class DescribeVulScanResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5474,6 +6430,12 @@ Only one value is allowed for the `Status` filter, and "OR" logic is not support
 
     @property
     def VulType(self):
+        """Vulnerability type.
+<li>WEB: web application vulnerability</li>
+<li>SYSTEM: system component vulnerability</li>
+<li>BASELINE: security baseline</li>
+        :rtype: str
+        """
         return self._VulType
 
     @VulType.setter
@@ -5482,6 +6444,9 @@ Only one value is allowed for the `Status` filter, and "OR" logic is not support
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5490,6 +6455,9 @@ Only one value is allowed for the `Status` filter, and "OR" logic is not support
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5498,6 +6466,12 @@ Only one value is allowed for the `Status` filter, and "OR" logic is not support
 
     @property
     def Filters(self):
+        """Filter.
+<li>Status - String - Required: No - Filter by status (UN_OPERATED: to be processed, FIXED: fixed)
+
+Only one value is allowed for the `Status` filter, and "OR" logic is not supported.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -5545,6 +6519,9 @@ class DescribeVulsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of vulnerabilities.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5553,6 +6530,9 @@ class DescribeVulsResponse(AbstractModel):
 
     @property
     def Vuls(self):
+        """Vulnerability list array.
+        :rtype: list of Vul
+        """
         return self._Vuls
 
     @Vuls.setter
@@ -5561,6 +6541,9 @@ class DescribeVulsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5599,6 +6582,9 @@ class DescribeWeeklyReportBruteAttacksRequest(AbstractModel):
 
     @property
     def BeginDate(self):
+        """Weekly CWP Pro report start time.
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -5607,6 +6593,9 @@ class DescribeWeeklyReportBruteAttacksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5615,6 +6604,9 @@ class DescribeWeeklyReportBruteAttacksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5656,6 +6648,9 @@ class DescribeWeeklyReportBruteAttacksResponse(AbstractModel):
 
     @property
     def WeeklyReportBruteAttacks(self):
+        """Brute force attack array in weekly CWP Pro report.
+        :rtype: list of WeeklyReportBruteAttack
+        """
         return self._WeeklyReportBruteAttacks
 
     @WeeklyReportBruteAttacks.setter
@@ -5664,6 +6659,9 @@ class DescribeWeeklyReportBruteAttacksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -5672,6 +6670,9 @@ class DescribeWeeklyReportBruteAttacksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5704,6 +6705,9 @@ class DescribeWeeklyReportInfoRequest(AbstractModel):
 
     @property
     def BeginDate(self):
+        """Weekly CWP Pro report start time.
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -5779,6 +6783,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def CompanyName(self):
+        """Account owner name.
+        :rtype: str
+        """
         return self._CompanyName
 
     @CompanyName.setter
@@ -5787,6 +6794,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def MachineNum(self):
+        """Total number of servers.
+        :rtype: int
+        """
         return self._MachineNum
 
     @MachineNum.setter
@@ -5795,6 +6805,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def OnlineMachineNum(self):
+        """Number of online CWP agents
+        :rtype: int
+        """
         return self._OnlineMachineNum
 
     @OnlineMachineNum.setter
@@ -5803,6 +6816,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def OfflineMachineNum(self):
+        """Number of offline CWP agents.
+        :rtype: int
+        """
         return self._OfflineMachineNum
 
     @OfflineMachineNum.setter
@@ -5811,6 +6827,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def ProVersionMachineNum(self):
+        """Number of servers on CWP Pro.
+        :rtype: int
+        """
         return self._ProVersionMachineNum
 
     @ProVersionMachineNum.setter
@@ -5819,6 +6838,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def BeginDate(self):
+        """Weekly report start time
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -5827,6 +6849,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def EndDate(self):
+        """Weekly report end time
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -5835,6 +6860,12 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def Level(self):
+        """Security level
+<li>HIGH: high</li>
+<li>MIDDLE: medium</li>
+<li>LOW: low</li>
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -5843,6 +6874,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def MalwareNum(self):
+        """Number of trojan records.
+        :rtype: int
+        """
         return self._MalwareNum
 
     @MalwareNum.setter
@@ -5851,6 +6885,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def NonlocalLoginNum(self):
+        """Number of unusual login locations.
+        :rtype: int
+        """
         return self._NonlocalLoginNum
 
     @NonlocalLoginNum.setter
@@ -5859,6 +6896,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def BruteAttackSuccessNum(self):
+        """Number of successful brute force attacks.
+        :rtype: int
+        """
         return self._BruteAttackSuccessNum
 
     @BruteAttackSuccessNum.setter
@@ -5867,6 +6907,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def VulNum(self):
+        """Number of vulnerabilities.
+        :rtype: int
+        """
         return self._VulNum
 
     @VulNum.setter
@@ -5875,6 +6918,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
+        """Download address for exported file.
+        :rtype: str
+        """
         return self._DownloadUrl
 
     @DownloadUrl.setter
@@ -5883,6 +6929,9 @@ class DescribeWeeklyReportInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5927,6 +6976,9 @@ class DescribeWeeklyReportMalwaresRequest(AbstractModel):
 
     @property
     def BeginDate(self):
+        """Weekly CWP Pro report start time.
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -5935,6 +6987,9 @@ class DescribeWeeklyReportMalwaresRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -5943,6 +6998,9 @@ class DescribeWeeklyReportMalwaresRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -5984,6 +7042,9 @@ class DescribeWeeklyReportMalwaresResponse(AbstractModel):
 
     @property
     def WeeklyReportMalwares(self):
+        """Trojan data in weekly CWP Pro report.
+        :rtype: list of WeeklyReportMalware
+        """
         return self._WeeklyReportMalwares
 
     @WeeklyReportMalwares.setter
@@ -5992,6 +7053,9 @@ class DescribeWeeklyReportMalwaresResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6000,6 +7064,9 @@ class DescribeWeeklyReportMalwaresResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6038,6 +7105,9 @@ class DescribeWeeklyReportNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def BeginDate(self):
+        """Weekly CWP Pro report start time.
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -6046,6 +7116,9 @@ class DescribeWeeklyReportNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6054,6 +7127,9 @@ class DescribeWeeklyReportNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6095,6 +7171,9 @@ class DescribeWeeklyReportNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def WeeklyReportNonlocalLoginPlaces(self):
+        """Unusual login location data in weekly CWP Pro report
+        :rtype: list of WeeklyReportNonlocalLoginPlace
+        """
         return self._WeeklyReportNonlocalLoginPlaces
 
     @WeeklyReportNonlocalLoginPlaces.setter
@@ -6103,6 +7182,9 @@ class DescribeWeeklyReportNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6111,6 +7193,9 @@ class DescribeWeeklyReportNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6149,6 +7234,9 @@ class DescribeWeeklyReportVulsRequest(AbstractModel):
 
     @property
     def BeginDate(self):
+        """Weekly CWP Pro report start time.
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -6157,6 +7245,9 @@ class DescribeWeeklyReportVulsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6165,6 +7256,9 @@ class DescribeWeeklyReportVulsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6206,6 +7300,9 @@ class DescribeWeeklyReportVulsResponse(AbstractModel):
 
     @property
     def WeeklyReportVuls(self):
+        """Vulnerability data array in weekly CWP Pro report.
+        :rtype: list of WeeklyReportVul
+        """
         return self._WeeklyReportVuls
 
     @WeeklyReportVuls.setter
@@ -6214,6 +7311,9 @@ class DescribeWeeklyReportVulsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6222,6 +7322,9 @@ class DescribeWeeklyReportVulsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6257,6 +7360,9 @@ class DescribeWeeklyReportsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 10. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -6265,6 +7371,9 @@ class DescribeWeeklyReportsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -6305,6 +7414,9 @@ class DescribeWeeklyReportsResponse(AbstractModel):
 
     @property
     def WeeklyReports(self):
+        """Weekly CWP Pro report list array.
+        :rtype: list of WeeklyReport
+        """
         return self._WeeklyReports
 
     @WeeklyReports.setter
@@ -6313,6 +7425,9 @@ class DescribeWeeklyReportsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of records.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6321,6 +7436,9 @@ class DescribeWeeklyReportsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6359,6 +7477,9 @@ class EditTagsRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Tag name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6367,6 +7488,9 @@ class EditTagsRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Tag ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -6375,6 +7499,9 @@ class EditTagsRequest(AbstractModel):
 
     @property
     def Quuids(self):
+        """CVM instance ID
+        :rtype: list of str
+        """
         return self._Quuids
 
     @Quuids.setter
@@ -6410,6 +7537,9 @@ class EditTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6444,6 +7574,9 @@ class ExportBruteAttacksResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
+        """Download address for exported file.
+        :rtype: str
+        """
         return self._DownloadUrl
 
     @DownloadUrl.setter
@@ -6452,6 +7585,9 @@ class ExportBruteAttacksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6487,6 +7623,9 @@ class ExportMaliciousRequestsResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
+        """Download address for exported file.
+        :rtype: str
+        """
         return self._DownloadUrl
 
     @DownloadUrl.setter
@@ -6495,6 +7634,9 @@ class ExportMaliciousRequestsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6530,6 +7672,9 @@ class ExportMalwaresResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
+        """Download address for exported file.
+        :rtype: str
+        """
         return self._DownloadUrl
 
     @DownloadUrl.setter
@@ -6538,6 +7683,9 @@ class ExportMalwaresResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6576,6 +7724,9 @@ class ExportNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
+        """Download address for exported file.
+        :rtype: str
+        """
         return self._DownloadUrl
 
     @DownloadUrl.setter
@@ -6584,6 +7735,9 @@ class ExportNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """Export task ID
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -6592,6 +7746,9 @@ class ExportNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6628,6 +7785,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """Filter key name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -6636,6 +7796,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """One or more filter values.
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -6691,6 +7854,9 @@ class HistoryAccount(AbstractModel):
 
     @property
     def Id(self):
+        """Unique ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -6699,6 +7865,9 @@ class HistoryAccount(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -6707,6 +7876,9 @@ class HistoryAccount(AbstractModel):
 
     @property
     def MachineIp(self):
+        """Private IP of server.
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -6715,6 +7887,9 @@ class HistoryAccount(AbstractModel):
 
     @property
     def MachineName(self):
+        """Server name.
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -6723,6 +7898,9 @@ class HistoryAccount(AbstractModel):
 
     @property
     def Username(self):
+        """Account name.
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -6731,6 +7909,12 @@ class HistoryAccount(AbstractModel):
 
     @property
     def ModifyType(self):
+        """Account change type.
+<li>CREATE: creates account</li>
+<li>MODIFY: modifies account</li>
+<li>DELETE: deletes account</li>
+        :rtype: str
+        """
         return self._ModifyType
 
     @ModifyType.setter
@@ -6739,6 +7923,9 @@ class HistoryAccount(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """Change time.
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -6778,6 +7965,9 @@ class IgnoreImpactedHostsRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """Vulnerability ID array.
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -6811,6 +8001,9 @@ class IgnoreImpactedHostsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6863,6 +8056,9 @@ class ImpactedHost(AbstractModel):
 
     @property
     def Id(self):
+        """Vulnerability ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -6871,6 +8067,9 @@ class ImpactedHost(AbstractModel):
 
     @property
     def MachineIp(self):
+        """Server IP.
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -6879,6 +8078,9 @@ class ImpactedHost(AbstractModel):
 
     @property
     def MachineName(self):
+        """Server name.
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -6887,6 +8089,9 @@ class ImpactedHost(AbstractModel):
 
     @property
     def LastScanTime(self):
+        """Last detection time.
+        :rtype: str
+        """
         return self._LastScanTime
 
     @LastScanTime.setter
@@ -6895,6 +8100,12 @@ class ImpactedHost(AbstractModel):
 
     @property
     def VulStatus(self):
+        """Vulnerability status.
+<li>UN_OPERATED: to be processed</li>
+<li>SCANING: scanning</li>
+<li>FIXED: fixed</li>
+        :rtype: str
+        """
         return self._VulStatus
 
     @VulStatus.setter
@@ -6903,6 +8114,9 @@ class ImpactedHost(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `UUID`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -6911,6 +8125,9 @@ class ImpactedHost(AbstractModel):
 
     @property
     def Description(self):
+        """Vulnerability description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -6919,6 +8136,9 @@ class ImpactedHost(AbstractModel):
 
     @property
     def VulId(self):
+        """Vulnerability category ID.
+        :rtype: int
+        """
         return self._VulId
 
     @VulId.setter
@@ -6927,6 +8147,9 @@ class ImpactedHost(AbstractModel):
 
     @property
     def IsProVersion(self):
+        """Whether it is the CWP Pro.
+        :rtype: bool
+        """
         return self._IsProVersion
 
     @IsProVersion.setter
@@ -7001,6 +8224,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def Id(self):
+        """Record ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -7009,6 +8235,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent ID
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -7017,6 +8246,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def Places(self):
+        """Whitelisted location
+        :rtype: list of Place
+        """
         return self._Places
 
     @Places.setter
@@ -7025,6 +8257,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def UserName(self):
+        """Whitelisted users (separated by commas)
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -7033,6 +8268,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def SrcIp(self):
+        """Whitelisted IPs (separated by commas)
+        :rtype: str
+        """
         return self._SrcIp
 
     @SrcIp.setter
@@ -7041,6 +8279,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def IsGlobal(self):
+        """Whether this rule is applied to all servers under the current account
+        :rtype: bool
+        """
         return self._IsGlobal
 
     @IsGlobal.setter
@@ -7049,6 +8290,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Whitelist creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -7057,6 +8301,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """Whitelist modification time
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -7065,6 +8312,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def MachineName(self):
+        """Server name
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -7073,6 +8323,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def HostIp(self):
+        """Server IP
+        :rtype: str
+        """
         return self._HostIp
 
     @HostIp.setter
@@ -7081,6 +8334,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7089,6 +8345,9 @@ class LoginWhiteLists(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7159,6 +8418,9 @@ class LoginWhiteListsRule(AbstractModel):
 
     @property
     def Places(self):
+        """Whitelisted location
+        :rtype: list of Place
+        """
         return self._Places
 
     @Places.setter
@@ -7167,6 +8429,9 @@ class LoginWhiteListsRule(AbstractModel):
 
     @property
     def SrcIp(self):
+        """Whitelisted IPs (separated by commas). This parameter can be an IP range.
+        :rtype: str
+        """
         return self._SrcIp
 
     @SrcIp.setter
@@ -7175,6 +8440,9 @@ class LoginWhiteListsRule(AbstractModel):
 
     @property
     def UserName(self):
+        """Whitelisted usernames (separated by commas)
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -7183,6 +8451,9 @@ class LoginWhiteListsRule(AbstractModel):
 
     @property
     def IsGlobal(self):
+        """Whether this rule is applied to all servers under the current account
+        :rtype: bool
+        """
         return self._IsGlobal
 
     @IsGlobal.setter
@@ -7191,6 +8462,9 @@ class LoginWhiteListsRule(AbstractModel):
 
     @property
     def HostIp(self):
+        """Server for which the allowlist takes effect
+        :rtype: str
+        """
         return self._HostIp
 
     @HostIp.setter
@@ -7199,6 +8473,9 @@ class LoginWhiteListsRule(AbstractModel):
 
     @property
     def Id(self):
+        """Rule ID, used for rule updating
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -7207,6 +8484,9 @@ class LoginWhiteListsRule(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7215,6 +8495,9 @@ class LoginWhiteListsRule(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7317,6 +8600,9 @@ class Machine(AbstractModel):
 
     @property
     def MachineName(self):
+        """Server name.
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -7325,6 +8611,9 @@ class Machine(AbstractModel):
 
     @property
     def MachineOs(self):
+        """Server OS.
+        :rtype: str
+        """
         return self._MachineOs
 
     @MachineOs.setter
@@ -7333,6 +8622,12 @@ class Machine(AbstractModel):
 
     @property
     def MachineStatus(self):
+        """Server status.
+<li>OFFLINE: offline</li>
+<li>ONLINE: online</li>
+<li>MACHINE_STOPPED: shut down</li>
+        :rtype: str
+        """
         return self._MachineStatus
 
     @MachineStatus.setter
@@ -7341,6 +8636,9 @@ class Machine(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`. If the agent is offline for a long time, a null character will be returned.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -7349,6 +8647,9 @@ class Machine(AbstractModel):
 
     @property
     def Quuid(self):
+        """CVM or BM instance `Uuid`.
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -7357,6 +8658,9 @@ class Machine(AbstractModel):
 
     @property
     def VulNum(self):
+        """Number of vulnerabilities.
+        :rtype: int
+        """
         return self._VulNum
 
     @VulNum.setter
@@ -7365,6 +8669,9 @@ class Machine(AbstractModel):
 
     @property
     def MachineIp(self):
+        """Server IP.
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -7373,6 +8680,11 @@ class Machine(AbstractModel):
 
     @property
     def IsProVersion(self):
+        """Whether the server has enabled CWP Pro.
+<li>true: yes</li>
+<li>false: no</li>
+        :rtype: bool
+        """
         return self._IsProVersion
 
     @IsProVersion.setter
@@ -7381,6 +8693,9 @@ class Machine(AbstractModel):
 
     @property
     def MachineWanIp(self):
+        """Public IP of server.
+        :rtype: str
+        """
         return self._MachineWanIp
 
     @MachineWanIp.setter
@@ -7389,6 +8704,10 @@ class Machine(AbstractModel):
 
     @property
     def PayMode(self):
+        """Server status.
+<li>POSTPAY: post-paid, i.e., pay-as-you-go </li>
+        :rtype: str
+        """
         return self._PayMode
 
     @PayMode.setter
@@ -7397,6 +8716,9 @@ class Machine(AbstractModel):
 
     @property
     def MalwareNum(self):
+        """Number of trojans.
+        :rtype: int
+        """
         return self._MalwareNum
 
     @MalwareNum.setter
@@ -7405,6 +8727,9 @@ class Machine(AbstractModel):
 
     @property
     def Tag(self):
+        """Tag information
+        :rtype: list of MachineTag
+        """
         return self._Tag
 
     @Tag.setter
@@ -7413,6 +8738,9 @@ class Machine(AbstractModel):
 
     @property
     def BaselineNum(self):
+        """Number of baseline risks.
+        :rtype: int
+        """
         return self._BaselineNum
 
     @BaselineNum.setter
@@ -7421,6 +8749,9 @@ class Machine(AbstractModel):
 
     @property
     def CyberAttackNum(self):
+        """Number of network risks.
+        :rtype: int
+        """
         return self._CyberAttackNum
 
     @CyberAttackNum.setter
@@ -7429,6 +8760,12 @@ class Machine(AbstractModel):
 
     @property
     def SecurityStatus(self):
+        """Risk status.
+<li>SAFE: safe</li>
+<li>RISK: at risk</li>
+<li>UNKNOWN: unknown</li>
+        :rtype: str
+        """
         return self._SecurityStatus
 
     @SecurityStatus.setter
@@ -7437,6 +8774,9 @@ class Machine(AbstractModel):
 
     @property
     def InvasionNum(self):
+        """Number of intrusions
+        :rtype: int
+        """
         return self._InvasionNum
 
     @InvasionNum.setter
@@ -7445,6 +8785,9 @@ class Machine(AbstractModel):
 
     @property
     def RegionInfo(self):
+        """Region information
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.RegionInfo`
+        """
         return self._RegionInfo
 
     @RegionInfo.setter
@@ -7507,6 +8850,9 @@ class MachineTag(AbstractModel):
 
     @property
     def Rid(self):
+        """Associated tag ID
+        :rtype: int
+        """
         return self._Rid
 
     @Rid.setter
@@ -7515,6 +8861,9 @@ class MachineTag(AbstractModel):
 
     @property
     def Name(self):
+        """Tag name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -7523,6 +8872,9 @@ class MachineTag(AbstractModel):
 
     @property
     def TagId(self):
+        """Tag ID
+        :rtype: int
+        """
         return self._TagId
 
     @TagId.setter
@@ -7604,6 +8956,9 @@ Value.
 
     @property
     def Id(self):
+        """Record ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -7612,6 +8967,9 @@ Value.
 
     @property
     def Uuid(self):
+        """CWP agent `UUID`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -7620,6 +8978,9 @@ Value.
 
     @property
     def MachineIp(self):
+        """Private IP of server.
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -7628,6 +8989,9 @@ Value.
 
     @property
     def MachineName(self):
+        """Server name.
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -7636,6 +9000,9 @@ Value.
 
     @property
     def Domain(self):
+        """Malicious request domain name.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -7644,6 +9011,9 @@ Value.
 
     @property
     def Count(self):
+        """Number of malicious requests.
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -7652,6 +9022,9 @@ Value.
 
     @property
     def ProcessName(self):
+        """Process name.
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -7660,6 +9033,12 @@ Value.
 
     @property
     def Status(self):
+        """Record status.
+<li>UN_OPERATED: to be processed</li>
+<li>TRUSTED: trusted</li>
+<li>UN_TRUSTED: untrusted</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7668,6 +9047,9 @@ Value.
 
     @property
     def Description(self):
+        """Malicious request domain name description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -7676,6 +9058,9 @@ Value.
 
     @property
     def Reference(self):
+        """Reference address.
+        :rtype: str
+        """
         return self._Reference
 
     @Reference.setter
@@ -7684,6 +9069,9 @@ Value.
 
     @property
     def CreateTime(self):
+        """Discovery time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -7692,6 +9080,9 @@ Value.
 
     @property
     def MergeTime(self):
+        """Record merge time.
+        :rtype: str
+        """
         return self._MergeTime
 
     @MergeTime.setter
@@ -7700,6 +9091,10 @@ Value.
 
     @property
     def ProcessMd5(self):
+        """Process MD5
+Value.
+        :rtype: str
+        """
         return self._ProcessMd5
 
     @ProcessMd5.setter
@@ -7708,6 +9103,9 @@ Value.
 
     @property
     def CmdLine(self):
+        """Executed command line.
+        :rtype: str
+        """
         return self._CmdLine
 
     @CmdLine.setter
@@ -7716,6 +9114,9 @@ Value.
 
     @property
     def Pid(self):
+        """Process `PID`.
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -7789,6 +9190,9 @@ class Malware(AbstractModel):
 
     @property
     def Id(self):
+        """Event ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -7797,6 +9201,9 @@ class Malware(AbstractModel):
 
     @property
     def MachineIp(self):
+        """Server IP.
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -7805,6 +9212,11 @@ class Malware(AbstractModel):
 
     @property
     def Status(self):
+        """Current trojan status.
+<li>UN_OPERATED: not processed</li><li>SEGREGATED: isolated</li><li>TRUSTED: trusted</li>
+<li>SEPARATING: isolating</li><li>RECOVERING: recovering</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -7813,6 +9225,9 @@ class Malware(AbstractModel):
 
     @property
     def FilePath(self):
+        """Trojan path.
+        :rtype: str
+        """
         return self._FilePath
 
     @FilePath.setter
@@ -7821,6 +9236,9 @@ class Malware(AbstractModel):
 
     @property
     def Description(self):
+        """Trojan description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -7829,6 +9247,9 @@ class Malware(AbstractModel):
 
     @property
     def MachineName(self):
+        """Server name.
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -7837,6 +9258,9 @@ class Malware(AbstractModel):
 
     @property
     def FileCreateTime(self):
+        """Trojan file creation time.
+        :rtype: str
+        """
         return self._FileCreateTime
 
     @FileCreateTime.setter
@@ -7845,6 +9269,9 @@ class Malware(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """Trojan file modification time.
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -7853,6 +9280,9 @@ class Malware(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `UUID`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -7894,6 +9324,9 @@ class MisAlarmNonlocalLoginPlacesRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """Unusual login location event ID array.
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -7927,6 +9360,9 @@ class MisAlarmNonlocalLoginPlacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7961,6 +9397,13 @@ class ModifyAlarmAttributeRequest(AbstractModel):
 
     @property
     def Attribute(self):
+        """Alarm item.
+<li>Offline: CWP is offline</li>
+<li>Malware: trojan event</li>
+<li>NonlocalLogin: unusual login location discovered</li>
+<li>CrackSuccess: brute force attack succeeded</li>
+        :rtype: str
+        """
         return self._Attribute
 
     @Attribute.setter
@@ -7969,6 +9412,11 @@ class ModifyAlarmAttributeRequest(AbstractModel):
 
     @property
     def Value(self):
+        """Alarm item attributes.
+<li>CLOSE: disabled</li>
+<li>OPEN: enabled</li>
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -8003,6 +9451,9 @@ class ModifyAlarmAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8030,6 +9481,11 @@ class ModifyAutoOpenProVersionConfigRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Auto-Activation status.
+<li>CLOSE: disabled</li>
+<li>OPEN: enabled</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -8063,6 +9519,9 @@ class ModifyAutoOpenProVersionConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8088,6 +9547,9 @@ class ModifyLoginWhiteListRequest(AbstractModel):
 
     @property
     def Rules(self):
+        """Whitelist rule
+        :rtype: :class:`tencentcloud.yunjing.v20180228.models.LoginWhiteListsRule`
+        """
         return self._Rules
 
     @Rules.setter
@@ -8123,6 +9585,9 @@ class ModifyLoginWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8154,6 +9619,12 @@ class ModifyProVersionRenewFlagRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """Auto-renewal flag. Valid values:
+<li>NOTIFY_AND_AUTO_RENEW: notifies of expiration and auto-renews</li>
+<li>NOTIFY_AND_MANUAL_RENEW: notifies of expiration but does not auto-renew</li>
+<li>DISABLE_NOTIFY_AND_MANUAL_RENEW: does not notify of expiration or auto-renew</li>
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -8162,6 +9633,9 @@ class ModifyProVersionRenewFlagRequest(AbstractModel):
 
     @property
     def Quuid(self):
+        """Unique server ID, corresponding to `uuid` for CVM or `instanceId` for BM.
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -8196,6 +9670,9 @@ class ModifyProVersionRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8253,6 +9730,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def Id(self):
+        """Event ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -8261,6 +9741,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def MachineIp(self):
+        """Server IP.
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -8269,6 +9752,11 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def Status(self):
+        """Login status
+<li>NON_LOCAL_LOGIN: unusual login location</li>
+<li>NORMAL_LOGIN: intended login</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -8277,6 +9765,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def UserName(self):
+        """Username.
+        :rtype: str
+        """
         return self._UserName
 
     @UserName.setter
@@ -8285,6 +9776,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def City(self):
+        """City ID.
+        :rtype: int
+        """
         return self._City
 
     @City.setter
@@ -8293,6 +9787,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def Country(self):
+        """Country/Region ID.
+        :rtype: int
+        """
         return self._Country
 
     @Country.setter
@@ -8301,6 +9798,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def Province(self):
+        """Province/State ID.
+        :rtype: int
+        """
         return self._Province
 
     @Province.setter
@@ -8309,6 +9809,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def SrcIp(self):
+        """Login IP.
+        :rtype: str
+        """
         return self._SrcIp
 
     @SrcIp.setter
@@ -8317,6 +9820,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def MachineName(self):
+        """Server name.
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -8325,6 +9831,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def LoginTime(self):
+        """Login time.
+        :rtype: str
+        """
         return self._LoginTime
 
     @LoginTime.setter
@@ -8333,6 +9842,9 @@ class NonLocalLoginPlace(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `Uuid`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -8400,6 +9912,9 @@ class OpenPort(AbstractModel):
 
     @property
     def Id(self):
+        """Unique ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -8408,6 +9923,9 @@ class OpenPort(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `UUID`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -8416,6 +9934,9 @@ class OpenPort(AbstractModel):
 
     @property
     def Port(self):
+        """Open port number.
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -8424,6 +9945,9 @@ class OpenPort(AbstractModel):
 
     @property
     def MachineIp(self):
+        """Server IP.
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -8432,6 +9956,9 @@ class OpenPort(AbstractModel):
 
     @property
     def MachineName(self):
+        """Server name.
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -8440,6 +9967,9 @@ class OpenPort(AbstractModel):
 
     @property
     def ProcessName(self):
+        """Process name corresponding to port.
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -8448,6 +9978,9 @@ class OpenPort(AbstractModel):
 
     @property
     def Pid(self):
+        """Process `Pid` corresponding to port.
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -8456,6 +9989,9 @@ class OpenPort(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Record creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8464,6 +10000,9 @@ class OpenPort(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """Record update time.
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -8508,6 +10047,9 @@ class OpenPortStatistics(AbstractModel):
 
     @property
     def Port(self):
+        """Port number
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -8516,6 +10058,9 @@ class OpenPortStatistics(AbstractModel):
 
     @property
     def MachineNum(self):
+        """Number of servers
+        :rtype: int
+        """
         return self._MachineNum
 
     @MachineNum.setter
@@ -8563,6 +10108,11 @@ Examples: ap-guangzhou, ap-shanghai
 
     @property
     def MachineType(self):
+        """Server type.
+<li>CVM: CVM</li>
+<li>BM: BM</li>
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -8571,6 +10121,10 @@ Examples: ap-guangzhou, ap-shanghai
 
     @property
     def MachineRegion(self):
+        """Server region
+Examples: ap-guangzhou, ap-shanghai
+        :rtype: str
+        """
         return self._MachineRegion
 
     @MachineRegion.setter
@@ -8579,6 +10133,10 @@ Examples: ap-guangzhou, ap-shanghai
 
     @property
     def Quuids(self):
+        """Server `Uuid` array.
+`InstanceId` for BM or `Uuid` for CVM
+        :rtype: list of str
+        """
         return self._Quuids
 
     @Quuids.setter
@@ -8587,6 +10145,9 @@ Examples: ap-guangzhou, ap-shanghai
 
     @property
     def ActivityId(self):
+        """Event ID.
+        :rtype: int
+        """
         return self._ActivityId
 
     @ActivityId.setter
@@ -8623,6 +10184,9 @@ class OpenProVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8654,6 +10218,9 @@ class Place(AbstractModel):
 
     @property
     def CityId(self):
+        """City ID.
+        :rtype: int
+        """
         return self._CityId
 
     @CityId.setter
@@ -8662,6 +10229,9 @@ class Place(AbstractModel):
 
     @property
     def ProvinceId(self):
+        """Province/State ID.
+        :rtype: int
+        """
         return self._ProvinceId
 
     @ProvinceId.setter
@@ -8670,6 +10240,9 @@ class Place(AbstractModel):
 
     @property
     def CountryId(self):
+        """Country/Region ID. Currently, only `1` (Mainland China) is supported.
+        :rtype: int
+        """
         return self._CountryId
 
     @CountryId.setter
@@ -8739,6 +10312,9 @@ class Process(AbstractModel):
 
     @property
     def Id(self):
+        """Unique ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -8747,6 +10323,9 @@ class Process(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `UUID`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -8755,6 +10334,9 @@ class Process(AbstractModel):
 
     @property
     def MachineIp(self):
+        """Private IP of server.
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -8763,6 +10345,9 @@ class Process(AbstractModel):
 
     @property
     def MachineName(self):
+        """Server name.
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -8771,6 +10356,9 @@ class Process(AbstractModel):
 
     @property
     def Pid(self):
+        """Process `Pid`.
+        :rtype: int
+        """
         return self._Pid
 
     @Pid.setter
@@ -8779,6 +10367,9 @@ class Process(AbstractModel):
 
     @property
     def Ppid(self):
+        """Process `Ppid`.
+        :rtype: int
+        """
         return self._Ppid
 
     @Ppid.setter
@@ -8787,6 +10378,9 @@ class Process(AbstractModel):
 
     @property
     def ProcessName(self):
+        """Process name.
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -8795,6 +10389,9 @@ class Process(AbstractModel):
 
     @property
     def Username(self):
+        """Process username.
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -8803,6 +10400,13 @@ class Process(AbstractModel):
 
     @property
     def Platform(self):
+        """OS.
+<li>WIN32: Windows 32-bit</li>
+<li>WIN64: Windows 64-bit</li>
+<li>LINUX32: Linux 32-bit</li>
+<li>LINUX64: Linux 64-bit</li>
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -8811,6 +10415,9 @@ class Process(AbstractModel):
 
     @property
     def FullPath(self):
+        """Process path.
+        :rtype: str
+        """
         return self._FullPath
 
     @FullPath.setter
@@ -8819,6 +10426,9 @@ class Process(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -8865,6 +10475,9 @@ class ProcessStatistics(AbstractModel):
 
     @property
     def ProcessName(self):
+        """Process name.
+        :rtype: str
+        """
         return self._ProcessName
 
     @ProcessName.setter
@@ -8873,6 +10486,9 @@ class ProcessStatistics(AbstractModel):
 
     @property
     def MachineNum(self):
+        """Number of servers.
+        :rtype: int
+        """
         return self._MachineNum
 
     @MachineNum.setter
@@ -8907,6 +10523,9 @@ class RecoverMalwaresRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """Trojan ID array. Up to 200 IDs can be deleted at a time
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -8946,6 +10565,9 @@ class RecoverMalwaresResponse(AbstractModel):
 
     @property
     def SuccessIds(self):
+        """Array of IDs of successfully recovered trojans.
+        :rtype: list of int non-negative
+        """
         return self._SuccessIds
 
     @SuccessIds.setter
@@ -8954,6 +10576,9 @@ class RecoverMalwaresResponse(AbstractModel):
 
     @property
     def FailedIds(self):
+        """Array of IDs of trojans failed to be recovered.
+        :rtype: list of int non-negative
+        """
         return self._FailedIds
 
     @FailedIds.setter
@@ -8962,6 +10587,9 @@ class RecoverMalwaresResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8998,6 +10626,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def Region(self):
+        """Region, such as `ap-guangzhou`, `ap-shanghai` and `ap-beijing`
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -9006,6 +10637,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionName(self):
+        """Region name, such as `South China (Guangzhou)`, `East China (Shanghai)`, and `North China (Beijing)`
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -9014,6 +10648,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionId(self):
+        """Region ID
+        :rtype: int
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -9022,6 +10659,9 @@ class RegionInfo(AbstractModel):
 
     @property
     def RegionCode(self):
+        """Region code, such as `gz`, `sh`, and `bj`
+        :rtype: str
+        """
         return self._RegionCode
 
     @RegionCode.setter
@@ -9058,6 +10698,9 @@ class RescanImpactedHostRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Vulnerability ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -9091,6 +10734,9 @@ class RescanImpactedHostResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9137,6 +10783,9 @@ class SecurityDynamic(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `UUID`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -9145,6 +10794,9 @@ class SecurityDynamic(AbstractModel):
 
     @property
     def EventTime(self):
+        """Security event occurrence time.
+        :rtype: str
+        """
         return self._EventTime
 
     @EventTime.setter
@@ -9153,6 +10805,14 @@ class SecurityDynamic(AbstractModel):
 
     @property
     def EventType(self):
+        """Security event type.
+<li>MALWARE: trojan event</li>
+<li>NON_LOCAL_LOGIN: unusual login location</li>
+<li>BRUTEATTACK_SUCCESS: brute force attack succeeded</li>
+<li>VUL: vulnerability</li>
+<li>BASELINE: security baseline</li>
+        :rtype: str
+        """
         return self._EventType
 
     @EventType.setter
@@ -9161,6 +10821,9 @@ class SecurityDynamic(AbstractModel):
 
     @property
     def Message(self):
+        """Security event message.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -9169,6 +10832,13 @@ class SecurityDynamic(AbstractModel):
 
     @property
     def SecurityLevel(self):
+        """Security event level.
+<li>RISK: severe</li>
+<li>HIGH: high</li>
+<li>NORMAL: medium</li>
+<li>LOW: low</li>
+        :rtype: str
+        """
         return self._SecurityLevel
 
     @SecurityLevel.setter
@@ -9209,6 +10879,9 @@ class SecurityTrend(AbstractModel):
 
     @property
     def Date(self):
+        """Event time.
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -9217,6 +10890,9 @@ class SecurityTrend(AbstractModel):
 
     @property
     def EventNum(self):
+        """Number of events.
+        :rtype: int
+        """
         return self._EventNum
 
     @EventNum.setter
@@ -9251,6 +10927,9 @@ class SeparateMalwaresRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """Trojan event ID array.
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -9290,6 +10969,9 @@ class SeparateMalwaresResponse(AbstractModel):
 
     @property
     def SuccessIds(self):
+        """Array of IDs of successfully isolated trojans.
+        :rtype: list of int non-negative
+        """
         return self._SuccessIds
 
     @SuccessIds.setter
@@ -9298,6 +10980,9 @@ class SeparateMalwaresResponse(AbstractModel):
 
     @property
     def FailedIds(self):
+        """Array of IDs of trojans failed to be isolated.
+        :rtype: list of int non-negative
+        """
         return self._FailedIds
 
     @FailedIds.setter
@@ -9306,6 +10991,9 @@ class SeparateMalwaresResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9339,6 +11027,9 @@ class Tag(AbstractModel):
 
     @property
     def Id(self):
+        """Tag ID
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -9347,6 +11038,9 @@ class Tag(AbstractModel):
 
     @property
     def Name(self):
+        """Tag name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9355,6 +11049,9 @@ class Tag(AbstractModel):
 
     @property
     def Count(self):
+        """Number of servers
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -9408,6 +11105,9 @@ class TagMachine(AbstractModel):
 
     @property
     def Id(self):
+        """ID
+        :rtype: str
+        """
         return self._Id
 
     @Id.setter
@@ -9416,6 +11116,9 @@ class TagMachine(AbstractModel):
 
     @property
     def Quuid(self):
+        """Server ID
+        :rtype: str
+        """
         return self._Quuid
 
     @Quuid.setter
@@ -9424,6 +11127,9 @@ class TagMachine(AbstractModel):
 
     @property
     def MachineName(self):
+        """Server name
+        :rtype: str
+        """
         return self._MachineName
 
     @MachineName.setter
@@ -9432,6 +11138,9 @@ class TagMachine(AbstractModel):
 
     @property
     def MachineIp(self):
+        """Private IP of server
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -9440,6 +11149,9 @@ class TagMachine(AbstractModel):
 
     @property
     def MachineWanIp(self):
+        """Public IP of server
+        :rtype: str
+        """
         return self._MachineWanIp
 
     @MachineWanIp.setter
@@ -9448,6 +11160,9 @@ class TagMachine(AbstractModel):
 
     @property
     def MachineRegion(self):
+        """Server region
+        :rtype: str
+        """
         return self._MachineRegion
 
     @MachineRegion.setter
@@ -9456,6 +11171,9 @@ class TagMachine(AbstractModel):
 
     @property
     def MachineType(self):
+        """Server region type
+        :rtype: str
+        """
         return self._MachineType
 
     @MachineType.setter
@@ -9495,6 +11213,9 @@ class TrustMaliciousRequestRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Malicious request record ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -9528,6 +11249,9 @@ class TrustMaliciousRequestResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9553,6 +11277,9 @@ class TrustMalwaresRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """Trojan ID array.
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -9586,6 +11313,9 @@ class TrustMalwaresResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9611,6 +11341,9 @@ class UntrustMaliciousRequestRequest(AbstractModel):
 
     @property
     def Id(self):
+        """Trusted record ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -9644,6 +11377,9 @@ class UntrustMaliciousRequestResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9669,6 +11405,9 @@ class UntrustMalwaresRequest(AbstractModel):
 
     @property
     def Ids(self):
+        """Trojan event ID array. Up to 200 IDs can be processed at a time.
+        :rtype: list of int non-negative
+        """
         return self._Ids
 
     @Ids.setter
@@ -9702,6 +11441,9 @@ class UntrustMalwaresResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9739,6 +11481,9 @@ class UsualPlace(AbstractModel):
 
     @property
     def Id(self):
+        """ID.
+        :rtype: int
+        """
         return self._Id
 
     @Id.setter
@@ -9747,6 +11492,9 @@ class UsualPlace(AbstractModel):
 
     @property
     def Uuid(self):
+        """CWP agent `UUID`.
+        :rtype: str
+        """
         return self._Uuid
 
     @Uuid.setter
@@ -9755,6 +11503,9 @@ class UsualPlace(AbstractModel):
 
     @property
     def CountryId(self):
+        """Country/Region ID.
+        :rtype: int
+        """
         return self._CountryId
 
     @CountryId.setter
@@ -9763,6 +11514,9 @@ class UsualPlace(AbstractModel):
 
     @property
     def ProvinceId(self):
+        """Province/State ID.
+        :rtype: int
+        """
         return self._ProvinceId
 
     @ProvinceId.setter
@@ -9771,6 +11525,9 @@ class UsualPlace(AbstractModel):
 
     @property
     def CityId(self):
+        """City ID.
+        :rtype: int
+        """
         return self._CityId
 
     @CityId.setter
@@ -9829,6 +11586,9 @@ NOTICE: notice
 
     @property
     def VulId(self):
+        """Vulnerability category ID
+        :rtype: int
+        """
         return self._VulId
 
     @VulId.setter
@@ -9837,6 +11597,9 @@ NOTICE: notice
 
     @property
     def VulName(self):
+        """Vulnerability name
+        :rtype: str
+        """
         return self._VulName
 
     @VulName.setter
@@ -9845,6 +11608,13 @@ NOTICE: notice
 
     @property
     def VulLevel(self):
+        """Vulnerability severity level:
+HIGH: high
+MIDDLE: medium
+LOW: low
+NOTICE: notice
+        :rtype: str
+        """
         return self._VulLevel
 
     @VulLevel.setter
@@ -9853,6 +11623,9 @@ NOTICE: notice
 
     @property
     def LastScanTime(self):
+        """Last scanned time
+        :rtype: str
+        """
         return self._LastScanTime
 
     @LastScanTime.setter
@@ -9861,6 +11634,9 @@ NOTICE: notice
 
     @property
     def ImpactedHostNum(self):
+        """Number of affected servers
+        :rtype: int
+        """
         return self._ImpactedHostNum
 
     @ImpactedHostNum.setter
@@ -9869,6 +11645,11 @@ NOTICE: notice
 
     @property
     def VulStatus(self):
+        """Vulnerability status
+* UN_OPERATED: to be processed
+* FIXED: fixed
+        :rtype: str
+        """
         return self._VulStatus
 
     @VulStatus.setter
@@ -9910,6 +11691,9 @@ class WeeklyReport(AbstractModel):
 
     @property
     def BeginDate(self):
+        """Weekly report start time.
+        :rtype: str
+        """
         return self._BeginDate
 
     @BeginDate.setter
@@ -9918,6 +11702,9 @@ class WeeklyReport(AbstractModel):
 
     @property
     def EndDate(self):
+        """Weekly report end time.
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -9964,6 +11751,9 @@ class WeeklyReportBruteAttack(AbstractModel):
 
     @property
     def MachineIp(self):
+        """Server IP.
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -9972,6 +11762,9 @@ class WeeklyReportBruteAttack(AbstractModel):
 
     @property
     def Username(self):
+        """Hacked username.
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -9980,6 +11773,9 @@ class WeeklyReportBruteAttack(AbstractModel):
 
     @property
     def SrcIp(self):
+        """Source IP.
+        :rtype: str
+        """
         return self._SrcIp
 
     @SrcIp.setter
@@ -9988,6 +11784,9 @@ class WeeklyReportBruteAttack(AbstractModel):
 
     @property
     def Count(self):
+        """Number of attempts.
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -9996,6 +11795,9 @@ class WeeklyReportBruteAttack(AbstractModel):
 
     @property
     def AttackTime(self):
+        """Attack time.
+        :rtype: str
+        """
         return self._AttackTime
 
     @AttackTime.setter
@@ -10050,6 +11852,9 @@ class WeeklyReportMalware(AbstractModel):
 
     @property
     def MachineIp(self):
+        """Server IP.
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -10058,6 +11863,9 @@ class WeeklyReportMalware(AbstractModel):
 
     @property
     def FilePath(self):
+        """Trojan file path.
+        :rtype: str
+        """
         return self._FilePath
 
     @FilePath.setter
@@ -10066,6 +11874,9 @@ class WeeklyReportMalware(AbstractModel):
 
     @property
     def Md5(self):
+        """Trojan file MD5 value.
+        :rtype: str
+        """
         return self._Md5
 
     @Md5.setter
@@ -10074,6 +11885,9 @@ class WeeklyReportMalware(AbstractModel):
 
     @property
     def FindTime(self):
+        """Trojan discovery time.
+        :rtype: str
+        """
         return self._FindTime
 
     @FindTime.setter
@@ -10082,6 +11896,14 @@ class WeeklyReportMalware(AbstractModel):
 
     @property
     def Status(self):
+        """Current trojan status.
+<li>UN_OPERATED: not processed</li>
+<li>SEGREGATED: isolated</li>
+<li>TRUSTED: trusted</li>
+<li>SEPARATING: isolating</li>
+<li>RECOVERING: recovering</li>
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -10137,6 +11959,9 @@ class WeeklyReportNonlocalLoginPlace(AbstractModel):
 
     @property
     def MachineIp(self):
+        """Server IP.
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -10145,6 +11970,9 @@ class WeeklyReportNonlocalLoginPlace(AbstractModel):
 
     @property
     def Username(self):
+        """Username.
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -10153,6 +11981,9 @@ class WeeklyReportNonlocalLoginPlace(AbstractModel):
 
     @property
     def SrcIp(self):
+        """Source IP.
+        :rtype: str
+        """
         return self._SrcIp
 
     @SrcIp.setter
@@ -10161,6 +11992,9 @@ class WeeklyReportNonlocalLoginPlace(AbstractModel):
 
     @property
     def Country(self):
+        """Country/Region ID.
+        :rtype: int
+        """
         return self._Country
 
     @Country.setter
@@ -10169,6 +12003,9 @@ class WeeklyReportNonlocalLoginPlace(AbstractModel):
 
     @property
     def Province(self):
+        """Province/State ID.
+        :rtype: int
+        """
         return self._Province
 
     @Province.setter
@@ -10177,6 +12014,9 @@ class WeeklyReportNonlocalLoginPlace(AbstractModel):
 
     @property
     def City(self):
+        """City ID.
+        :rtype: int
+        """
         return self._City
 
     @City.setter
@@ -10185,6 +12025,9 @@ class WeeklyReportNonlocalLoginPlace(AbstractModel):
 
     @property
     def LoginTime(self):
+        """Login time.
+        :rtype: str
+        """
         return self._LoginTime
 
     @LoginTime.setter
@@ -10245,6 +12088,9 @@ class WeeklyReportVul(AbstractModel):
 
     @property
     def MachineIp(self):
+        """Private IP of server.
+        :rtype: str
+        """
         return self._MachineIp
 
     @MachineIp.setter
@@ -10253,6 +12099,9 @@ class WeeklyReportVul(AbstractModel):
 
     @property
     def VulName(self):
+        """Vulnerability name.
+        :rtype: str
+        """
         return self._VulName
 
     @VulName.setter
@@ -10261,6 +12110,12 @@ class WeeklyReportVul(AbstractModel):
 
     @property
     def VulType(self):
+        """Vulnerability type.
+<li> WEB: web vulnerability</li>
+<li> SYSTEM: system component vulnerability</li>
+<li> BASELINE: security baseline</li>
+        :rtype: str
+        """
         return self._VulType
 
     @VulType.setter
@@ -10269,6 +12124,9 @@ class WeeklyReportVul(AbstractModel):
 
     @property
     def Description(self):
+        """Vulnerability description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -10277,6 +12135,12 @@ class WeeklyReportVul(AbstractModel):
 
     @property
     def VulStatus(self):
+        """Vulnerability status.
+<li> UN_OPERATED: to be processed</li>
+<li> SCANING: scanning</li>
+<li> FIXED: fixed</li>
+        :rtype: str
+        """
         return self._VulStatus
 
     @VulStatus.setter
@@ -10285,6 +12149,9 @@ class WeeklyReportVul(AbstractModel):
 
     @property
     def LastScanTime(self):
+        """Last scanned time.
+        :rtype: str
+        """
         return self._LastScanTime
 
     @LastScanTime.setter

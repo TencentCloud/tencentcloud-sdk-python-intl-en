@@ -35,6 +35,9 @@ class AcceptAttachCcnInstancesRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """The CCN instance ID, such as `ccn-f49l6u0z`.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -43,6 +46,9 @@ class AcceptAttachCcnInstancesRequest(AbstractModel):
 
     @property
     def Instances(self):
+        """List of associated instances.
+        :rtype: list of CcnInstance
+        """
         return self._Instances
 
     @Instances.setter
@@ -82,6 +88,9 @@ class AcceptAttachCcnInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -110,6 +119,9 @@ class AccountAttribute(AbstractModel):
 
     @property
     def AttributeName(self):
+        """Attribute name
+        :rtype: str
+        """
         return self._AttributeName
 
     @AttributeName.setter
@@ -118,6 +130,9 @@ class AccountAttribute(AbstractModel):
 
     @property
     def AttributeValues(self):
+        """Attribute values
+        :rtype: list of str
+        """
         return self._AttributeValues
 
     @AttributeValues.setter
@@ -164,6 +179,9 @@ class AddBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
+        """The unique ID of the source, such as 'eip-xxxx' and 'lb-xxxx'. EIP and LB resources are currently supported.
+        :rtype: list of str
+        """
         return self._ResourceIds
 
     @ResourceIds.setter
@@ -172,6 +190,9 @@ class AddBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
+        """The unique ID of the bandwidth package, such as 'bwp-xxxx'.
+        :rtype: str
+        """
         return self._BandwidthPackageId
 
     @BandwidthPackageId.setter
@@ -180,6 +201,9 @@ class AddBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def NetworkType(self):
+        """The network type of the bandwidth package. Valid value: `BGP`, indicating that the internal resource is a BGP IP.
+        :rtype: str
+        """
         return self._NetworkType
 
     @NetworkType.setter
@@ -188,6 +212,9 @@ class AddBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """The resource type, including `Address` and `LoadBalance`.
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -196,6 +223,9 @@ class AddBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def Protocol(self):
+        """The protocol type of the bandwidth package. Valid values: `ipv4` and `ipv6`.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -233,6 +263,9 @@ class AddBandwidthPackageResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -345,6 +378,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def AddressId(self):
+        """`EIP` `ID`, the unique ID of the `EIP`.
+        :rtype: str
+        """
         return self._AddressId
 
     @AddressId.setter
@@ -353,6 +389,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def AddressName(self):
+        """The `EIP` name.
+        :rtype: str
+        """
         return self._AddressName
 
     @AddressName.setter
@@ -361,6 +400,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def AddressStatus(self):
+        """Possible `EIP` states are 'CREATING', 'BINDING', 'BIND', 'UNBINDING', 'UNBIND', 'OFFLINING', and 'BIND_ENI'.
+        :rtype: str
+        """
         return self._AddressStatus
 
     @AddressStatus.setter
@@ -369,6 +411,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def AddressIp(self):
+        """The public IP address
+        :rtype: str
+        """
         return self._AddressIp
 
     @AddressIp.setter
@@ -377,6 +422,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def InstanceId(self):
+        """The ID of the bound resource instance. This can be a `CVM` or `NAT`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -385,6 +433,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def CreatedTime(self):
+        """The creation time, which follows the `ISO8601` standard and uses `UTC` time in the format of `YYYY-MM-DDThh:mm:ssZ`.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -393,6 +444,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def NetworkInterfaceId(self):
+        """The ID of the bound ENI
+        :rtype: str
+        """
         return self._NetworkInterfaceId
 
     @NetworkInterfaceId.setter
@@ -401,6 +455,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def PrivateAddressIp(self):
+        """The private IP of the bound resources
+        :rtype: str
+        """
         return self._PrivateAddressIp
 
     @PrivateAddressIp.setter
@@ -409,6 +466,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def IsArrears(self):
+        """The isolation status of the resource. `True` indicates the EIP is isolated. `False` indicates that the resource is not isolated.
+        :rtype: bool
+        """
         return self._IsArrears
 
     @IsArrears.setter
@@ -417,6 +477,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def IsBlocked(self):
+        """The block status of the resource. `True` indicates the EIP is blocked. `False` indicates that the EIP is not blocked.
+        :rtype: bool
+        """
         return self._IsBlocked
 
     @IsBlocked.setter
@@ -425,6 +488,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def IsEipDirectConnection(self):
+        """Whether the EIP supports direct connection mode. `True` indicates the EIP supports direct connection. `False` indicates that the resource does not support direct connection.
+        :rtype: bool
+        """
         return self._IsEipDirectConnection
 
     @IsEipDirectConnection.setter
@@ -433,6 +499,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def AddressType(self):
+        """IP type. Valid values: `CalcIP` (device IP), `WanIP` (public network IP), `EIP` (general elastic IP), `AnycastEIP` (accelerated EIP), and `AntiDDoSEIP` (Anti DDoS EIP).
+        :rtype: str
+        """
         return self._AddressType
 
     @AddressType.setter
@@ -441,6 +510,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def CascadeRelease(self):
+        """Whether the EIP is automatically released after being unbound. `True` indicates the EIP will be automatically released after being unbound. `False` indicates the EIP will not be automatically released after being unbound.
+        :rtype: bool
+        """
         return self._CascadeRelease
 
     @CascadeRelease.setter
@@ -449,6 +521,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def EipAlgType(self):
+        """Type of the protocol used in EIP ALG
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AlgType`
+        """
         return self._EipAlgType
 
     @EipAlgType.setter
@@ -457,6 +532,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def InternetServiceProvider(self):
+        """The ISP of an EIP/Elastic IP, with possible return values currently including "CMCC", "CTCC", "CUCC" and "BGP"
+        :rtype: str
+        """
         return self._InternetServiceProvider
 
     @InternetServiceProvider.setter
@@ -465,6 +543,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def LocalBgp(self):
+        """Whether the EIP is in a local BGP.
+        :rtype: bool
+        """
         return self._LocalBgp
 
     @LocalBgp.setter
@@ -473,6 +554,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Bandwidth(self):
+        """Bandwidth value of EIP. The EIP for the bill-by-CVM account will return `null`.
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -481,6 +566,20 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def InternetChargeType(self):
+        """Network billing mode of EIP. The EIP for the bill-by-CVM account will return `null`.
+Note: this field may return `null`, indicating that no valid value was found.
+Including:
+<li><strong>BANDWIDTH_PREPAID_BY_MONTH</strong></li>
+<p style="padding-left: 30px;">Prepaid by monthly-subscribed bandwidth.</p>
+<li><strong>TRAFFIC_POSTPAID_BY_HOUR</strong></li>
+<p style="padding-left: 30px;">Pay-as-you-go billing by hourly traffic.</p>
+<li><strong>BANDWIDTH_POSTPAID_BY_HOUR</strong></li>
+<p style="padding-left: 30px;">Pay-as-you-go billing by hourly bandwidth.</p>
+<li><strong>BANDWIDTH_PACKAGE</strong></li>
+<p style="padding-left: 30px;">Bandwidth package.</p>
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._InternetChargeType
 
     @InternetChargeType.setter
@@ -489,6 +588,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def TagSet(self):
+        """List of tags associated with the EIP
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -497,6 +600,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def DeadlineDate(self):
+        """The expiration time.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DeadlineDate
 
     @DeadlineDate.setter
@@ -505,6 +612,10 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def InstanceType(self):
+        """The type of instance bound with the EIP
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -513,6 +624,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def Egress(self):
+        """
+        :rtype: str
+        """
         return self._Egress
 
     @Egress.setter
@@ -521,6 +635,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def AntiDDoSPackageId(self):
+        """ID of the Anti-DDoS service package. It is returned if the EIP is an Anti-DDoS EIP. 
+        :rtype: str
+        """
         return self._AntiDDoSPackageId
 
     @AntiDDoSPackageId.setter
@@ -529,6 +646,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def RenewFlag(self):
+        """
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -537,6 +657,9 @@ Note: this field may return `null`, indicating that no valid value was found.
 
     @property
     def BandwidthPackageId(self):
+        """
+        :rtype: str
+        """
         return self._BandwidthPackageId
 
     @BandwidthPackageId.setter
@@ -604,6 +727,9 @@ class AddressChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
+        """Purchased usage period, in month. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -612,6 +738,9 @@ class AddressChargePrepaid(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
+        """Setting of renewal. Valid values: 0: manual renewal; 1: auto-renewal; 2: no renewal after expiration. Default value: 0
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -650,6 +779,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Address(self):
+        """IP address
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -658,6 +790,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Description(self):
+        """Remarks
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -704,6 +840,9 @@ class AddressTemplate(AbstractModel):
 
     @property
     def AddressTemplateName(self):
+        """IP address template name.
+        :rtype: str
+        """
         return self._AddressTemplateName
 
     @AddressTemplateName.setter
@@ -712,6 +851,9 @@ class AddressTemplate(AbstractModel):
 
     @property
     def AddressTemplateId(self):
+        """The unique ID of the IP address template instance.
+        :rtype: str
+        """
         return self._AddressTemplateId
 
     @AddressTemplateId.setter
@@ -720,6 +862,9 @@ class AddressTemplate(AbstractModel):
 
     @property
     def AddressSet(self):
+        """IP address information.
+        :rtype: list of str
+        """
         return self._AddressSet
 
     @AddressSet.setter
@@ -728,6 +873,9 @@ class AddressTemplate(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """Creation Time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -736,6 +884,9 @@ class AddressTemplate(AbstractModel):
 
     @property
     def AddressExtraSet(self):
+        """IP address information with remarks
+        :rtype: list of AddressInfo
+        """
         return self._AddressExtraSet
 
     @AddressExtraSet.setter
@@ -790,6 +941,9 @@ class AddressTemplateGroup(AbstractModel):
 
     @property
     def AddressTemplateGroupName(self):
+        """IP address template group name.
+        :rtype: str
+        """
         return self._AddressTemplateGroupName
 
     @AddressTemplateGroupName.setter
@@ -798,6 +952,9 @@ class AddressTemplateGroup(AbstractModel):
 
     @property
     def AddressTemplateGroupId(self):
+        """IP address template group instance ID, such as `ipmg-dih8xdbq`.
+        :rtype: str
+        """
         return self._AddressTemplateGroupId
 
     @AddressTemplateGroupId.setter
@@ -806,6 +963,9 @@ class AddressTemplateGroup(AbstractModel):
 
     @property
     def AddressTemplateIdSet(self):
+        """IP address template ID.
+        :rtype: list of str
+        """
         return self._AddressTemplateIdSet
 
     @AddressTemplateIdSet.setter
@@ -814,6 +974,9 @@ class AddressTemplateGroup(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """Creation Time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -822,6 +985,9 @@ class AddressTemplateGroup(AbstractModel):
 
     @property
     def AddressTemplateSet(self):
+        """IP address template instance
+        :rtype: list of AddressTemplateItem
+        """
         return self._AddressTemplateSet
 
     @AddressTemplateSet.setter
@@ -873,6 +1039,9 @@ class AddressTemplateItem(AbstractModel):
 
     @property
     def AddressTemplateId(self):
+        """ipm-xxxxxxxx
+        :rtype: str
+        """
         return self._AddressTemplateId
 
     @AddressTemplateId.setter
@@ -881,6 +1050,9 @@ class AddressTemplateItem(AbstractModel):
 
     @property
     def AddressTemplateName(self):
+        """IP template name
+        :rtype: str
+        """
         return self._AddressTemplateName
 
     @AddressTemplateName.setter
@@ -889,6 +1061,9 @@ class AddressTemplateItem(AbstractModel):
 
     @property
     def From(self):
+        """Disused
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -897,6 +1072,9 @@ class AddressTemplateItem(AbstractModel):
 
     @property
     def To(self):
+        """Disused
+        :rtype: str
+        """
         return self._To
 
     @To.setter
@@ -936,6 +1114,9 @@ class AddressTemplateSpecification(AbstractModel):
 
     @property
     def AddressId(self):
+        """The ID of the IP address, such as `ipm-2uw6ujo6`.
+        :rtype: str
+        """
         return self._AddressId
 
     @AddressId.setter
@@ -944,6 +1125,9 @@ class AddressTemplateSpecification(AbstractModel):
 
     @property
     def AddressGroupId(self):
+        """The ID of the IP address group, such as `ipmg-2uw6ujo6`.
+        :rtype: str
+        """
         return self._AddressGroupId
 
     @AddressGroupId.setter
@@ -981,6 +1165,9 @@ class AdjustPublicAddressRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """The unique ID of the CVM instance, such as `ins-11112222`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -989,6 +1176,9 @@ class AdjustPublicAddressRequest(AbstractModel):
 
     @property
     def AddressId(self):
+        """The unique ID of the EIP, such as `eip-11112222`.
+        :rtype: str
+        """
         return self._AddressId
 
     @AddressId.setter
@@ -1026,6 +1216,9 @@ class AdjustPublicAddressResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """The async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1034,6 +1227,9 @@ class AdjustPublicAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1063,6 +1259,9 @@ class AlgType(AbstractModel):
 
     @property
     def Ftp(self):
+        """Whether FTP ALG is enabled
+        :rtype: bool
+        """
         return self._Ftp
 
     @Ftp.setter
@@ -1071,6 +1270,9 @@ class AlgType(AbstractModel):
 
     @property
     def Sip(self):
+        """Whether SIP ALG is enabled
+        :rtype: bool
+        """
         return self._Sip
 
     @Sip.setter
@@ -1165,6 +1367,9 @@ Whether the Anycast EIP can be bound to CLB instances.
 
     @property
     def AddressCount(self):
+        """The number of EIPs. Default: 1.
+        :rtype: int
+        """
         return self._AddressCount
 
     @AddressCount.setter
@@ -1173,6 +1378,12 @@ Whether the Anycast EIP can be bound to CLB instances.
 
     @property
     def InternetServiceProvider(self):
+        """The EIP line type. Default: BGP.
+<ul style="margin:0"><li>For a user who has activated the static single-line IP allowlist, possible values are:<ul><li>CMCC: China Mobile</li>
+<li>CTCC: China Telecom</li>
+<li>CUCC: China Unicom</li></ul>Note: Only certain regions support static single-line IP addresses.</li></ul>
+        :rtype: str
+        """
         return self._InternetServiceProvider
 
     @InternetServiceProvider.setter
@@ -1181,6 +1392,14 @@ Whether the Anycast EIP can be bound to CLB instances.
 
     @property
     def InternetChargeType(self):
+        """The EIP billing method.
+<ul style="margin:0"><li>For bill-by-IP account beta users, valid values: <ul><li>BANDWIDTH_PACKAGE: paid by the [bandwidth package](https://intl.cloud.tencent.com/document/product/684/15255?from_cn_redirect=1)(who must also be bandwidth package beta users)</li>
+<li>BANDWIDTH_POSTPAID_BY_HOUR: billed by hourly bandwidth on a pay-as-you-go basis</li>
+<li>BANDWIDTH_PREPAID_BY_MONTH: monthly bandwidth subscription</li>
+<li>TRAFFIC_POSTPAID_BY_HOUR: billed by hourly traffic on a pay-as-you-go basis</li></ul>Default value: TRAFFIC_POSTPAID_BY_HOUR</li>
+<li>If you are not a bill-by-IP account beta user, the EIP billing is the same as that for the instance bound to the EIP. Therefore, you do not need to pass in this parameter.</li></ul>
+        :rtype: str
+        """
         return self._InternetChargeType
 
     @InternetChargeType.setter
@@ -1189,6 +1408,14 @@ Whether the Anycast EIP can be bound to CLB instances.
 
     @property
     def InternetMaxBandwidthOut(self):
+        """The EIP outbound bandwidth cap, in Mbps.
+<ul style="margin:0"><li>For bill-by-IP account beta users, the bandwidth cap range is determined by the EIP billing mode. <ul><li>`BANDWIDTH_PACKAGE`: 1 Mbps to 2000 Mbps</li>
+<li>`BANDWIDTH_POSTPAID_BY_HOUR`: 1 Mbps to 100 Mbps</li>
+<li>`BANDWIDTH_PREPAID_BY_MONTH`: 1 Mbps to 200 Mbps</li>
+<li>`TRAFFIC_POSTPAID_BY_HOUR`: 1 Mbps to 100 Mbps</li></ul>Default value: 1 Mbps </li>
+<li>If you are not a bill-by-IP account beta user, the EIP outbound bandwidth cap is subject to the bandwidth cap of the instance bound to the EIP. Therefore, you do not need to pass in this parameter. </li></ul>
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -1197,6 +1424,9 @@ Whether the Anycast EIP can be bound to CLB instances.
 
     @property
     def AddressChargePrepaid(self):
+        """A required billing parameter for an EIP billed by monthly bandwidth subscription. For EIPs using other billing modes, it can be ignored.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
+        """
         return self._AddressChargePrepaid
 
     @AddressChargePrepaid.setter
@@ -1205,6 +1435,13 @@ Whether the Anycast EIP can be bound to CLB instances.
 
     @property
     def AddressType(self):
+        """EIP type. Default value: EIP.
+<ul style="margin:0"><li>For beta users of AIA, the value can be:</li></ul>`AnycastEIP`: an AIA IP address. For more information, see [Anycast Internet Acceleration](https://intl.cloud.tencent.com/document/product/644?from_cn_redirect=1).</li></ul>Note: Anycast EIPs are supported only in partial regions. </li></ul>
+<ul style="margin:0"><li>For beta users of dedicated IP, the value can be: <ul><li>`HighQualityEIP`: Dedicated IP</li></ul>Note that dedicated IPs are only available in partial regions. </li></ul>
+</ul>
+<ul style="margin:0"><li>For beta users of Anti-DDoS IP, the value can be: <ul><li>`AntiDDoSEIP`: Anti-DDoS EIP</li></ul>Note that Anti-DDoS IPs are only available in partial regions. </li></ul>
+        :rtype: str
+        """
         return self._AddressType
 
     @AddressType.setter
@@ -1213,6 +1450,10 @@ Whether the Anycast EIP can be bound to CLB instances.
 
     @property
     def AnycastZone(self):
+        """Anycast publishing region
+<ul style="margin:0"><li>Valid for users who have activated AIA. Values:<ul><li>ANYCAST_ZONE_GLOBAL: global publishing region </li><li>ANYCAST_ZONE_OVERSEAS: overseas publishing region</li><li><b>**[Disused]**</b> ANYCAST_ZONE_A: publishing region A (updated to ANYCAST_ZONE_GLOBAL)</li><li><b>**[Disused]**</b> ANYCAST_ZONE_B: publishing region B (updated to ANYCAST_ZONE_GLOBAL)</li></ul>Default: ANYCAST_ZONE_OVERSEAS.</li></ul>
+        :rtype: str
+        """
         return self._AnycastZone
 
     @AnycastZone.setter
@@ -1221,6 +1462,12 @@ Whether the Anycast EIP can be bound to CLB instances.
 
     @property
     def ApplicableForCLB(self):
+        """<b>**[Disused]**</b>
+Whether the Anycast EIP can be bound to CLB instances.
+<ul style="margin:0"><li>Valid for users who have activated the AIA. Values:<ul><li>TRUE: the Anycast EIP can be bound to CLB instances.</li>
+<li>FALSE: the Anycast EIP can be bound to CVMs, NAT gateways, and HAVIPs.</li></ul>Default: FALSE.</li></ul>
+        :rtype: bool
+        """
         return self._ApplicableForCLB
 
     @ApplicableForCLB.setter
@@ -1229,6 +1476,9 @@ Whether the Anycast EIP can be bound to CLB instances.
 
     @property
     def Tags(self):
+        """List of tags to be bound.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -1237,6 +1487,9 @@ Whether the Anycast EIP can be bound to CLB instances.
 
     @property
     def BandwidthPackageId(self):
+        """The unique ID of a BGP bandwidth package. If you configure this parameter and set InternetChargeType as BANDWIDTH_PACKAGE, the new EIP is added to this package and billed by the bandwidth package mode.
+        :rtype: str
+        """
         return self._BandwidthPackageId
 
     @BandwidthPackageId.setter
@@ -1245,6 +1498,9 @@ Whether the Anycast EIP can be bound to CLB instances.
 
     @property
     def AddressName(self):
+        """EIP name, which is the custom EIP name given by the user when applying for the EIP. Default: not named
+        :rtype: str
+        """
         return self._AddressName
 
     @AddressName.setter
@@ -1253,6 +1509,9 @@ Whether the Anycast EIP can be bound to CLB instances.
 
     @property
     def Egress(self):
+        """Network egress. It defaults to `center_egress1`.
+        :rtype: str
+        """
         return self._Egress
 
     @Egress.setter
@@ -1261,6 +1520,9 @@ Whether the Anycast EIP can be bound to CLB instances.
 
     @property
     def AntiDDoSPackageId(self):
+        """Anti-DDoS service package ID. This is required when you want to request an Anti-DDoS IP.
+        :rtype: str
+        """
         return self._AntiDDoSPackageId
 
     @AntiDDoSPackageId.setter
@@ -1269,6 +1531,9 @@ Whether the Anycast EIP can be bound to CLB instances.
 
     @property
     def ClientToken(self):
+        """A string used to ensure the idempotency of the request. Generate a value based on your client. This can ensure that the value is unique for different requests. It only supports ASCII characters and can contain up to 64 characters. 
+        :rtype: str
+        """
         return self._ClientToken
 
     @ClientToken.setter
@@ -1328,6 +1593,9 @@ class AllocateAddressesResponse(AbstractModel):
 
     @property
     def AddressSet(self):
+        """List of the unique IDs of the requested EIPs.
+        :rtype: list of str
+        """
         return self._AddressSet
 
     @AddressSet.setter
@@ -1336,6 +1604,9 @@ class AllocateAddressesResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """The Async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1344,6 +1615,9 @@ class AllocateAddressesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1377,6 +1651,9 @@ class AssignIpv6AddressesRequest(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
+        """The `ID` of the ENI instance, such as `eni-m6dyj72l`.
+        :rtype: str
+        """
         return self._NetworkInterfaceId
 
     @NetworkInterfaceId.setter
@@ -1385,6 +1662,9 @@ class AssignIpv6AddressesRequest(AbstractModel):
 
     @property
     def Ipv6Addresses(self):
+        """A list of `IPv6` addresses. You can specify a maximum of 10 at one time. The quota is calculated together with that of `Ipv6AddressCount`, a required input parameter alternative to this one.
+        :rtype: list of Ipv6Address
+        """
         return self._Ipv6Addresses
 
     @Ipv6Addresses.setter
@@ -1393,6 +1673,9 @@ class AssignIpv6AddressesRequest(AbstractModel):
 
     @property
     def Ipv6AddressCount(self):
+        """The number of automatically assigned `IPv6` addresses. The total number of private IP addresses cannot exceed the quota. The quota is calculated together with that of `Ipv6Addresses`, a required input parameter alternative to this one.
+        :rtype: int
+        """
         return self._Ipv6AddressCount
 
     @Ipv6AddressCount.setter
@@ -1436,6 +1719,9 @@ class AssignIpv6AddressesResponse(AbstractModel):
 
     @property
     def Ipv6AddressSet(self):
+        """The list of `IPv6` addresses assigned to ENIs.
+        :rtype: list of Ipv6Address
+        """
         return self._Ipv6AddressSet
 
     @Ipv6AddressSet.setter
@@ -1444,6 +1730,9 @@ class AssignIpv6AddressesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1475,6 +1764,9 @@ class AssignIpv6CidrBlockRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The `ID` of the `VPC`, such as `vpc-f49l6u0z`.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1511,6 +1803,9 @@ class AssignIpv6CidrBlockResponse(AbstractModel):
 
     @property
     def Ipv6CidrBlock(self):
+        """The assigned `IPv6` IP range, such as `3402:4e00:20:1000::/56`
+        :rtype: str
+        """
         return self._Ipv6CidrBlock
 
     @Ipv6CidrBlock.setter
@@ -1519,6 +1814,9 @@ class AssignIpv6CidrBlockResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1548,6 +1846,9 @@ class AssignIpv6SubnetCidrBlockRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The `ID` of the VPC where the subnet is located, such as `vpc-f49l6u0z`.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1556,6 +1857,9 @@ class AssignIpv6SubnetCidrBlockRequest(AbstractModel):
 
     @property
     def Ipv6SubnetCidrBlocks(self):
+        """The assigned `IPv6` subnet IP range list.
+        :rtype: list of Ipv6SubnetCidrBlock
+        """
         return self._Ipv6SubnetCidrBlocks
 
     @Ipv6SubnetCidrBlocks.setter
@@ -1598,6 +1902,9 @@ class AssignIpv6SubnetCidrBlockResponse(AbstractModel):
 
     @property
     def Ipv6SubnetCidrBlockSet(self):
+        """The assigned `IPv6` subnet IP range list.
+        :rtype: list of Ipv6SubnetCidrBlock
+        """
         return self._Ipv6SubnetCidrBlockSet
 
     @Ipv6SubnetCidrBlockSet.setter
@@ -1606,6 +1913,9 @@ class AssignIpv6SubnetCidrBlockResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1646,6 +1956,9 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
+        """The ID of the ENI instance, such as `eni-m6dyj72l`.
+        :rtype: str
+        """
         return self._NetworkInterfaceId
 
     @NetworkInterfaceId.setter
@@ -1654,6 +1967,9 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
+        """The information on private IP addresses, of which you can specify a maximum of 10 at a time. You should provide either this parameter or SecondaryPrivateIpAddressCount, or both.
+        :rtype: list of PrivateIpAddressSpecification
+        """
         return self._PrivateIpAddresses
 
     @PrivateIpAddresses.setter
@@ -1662,6 +1978,9 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
 
     @property
     def SecondaryPrivateIpAddressCount(self):
+        """The number of newly-applied private IP addresses. You should provide either this parameter or PrivateIpAddresses, or both. The total number of private IP addresses cannot exceed the quota. For more information, see<a href="/document/product/576/18527">ENI Use Limits</a>.
+        :rtype: int
+        """
         return self._SecondaryPrivateIpAddressCount
 
     @SecondaryPrivateIpAddressCount.setter
@@ -1670,6 +1989,9 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
 
     @property
     def QosLevel(self):
+        """IP u200dservice level. It is used together with `SecondaryPrivateIpAddressCount`. Values: PT` u200d(Gold), `AU` u200d(Silver), `AG `(Bronze) and DEFAULT (Default).
+        :rtype: str
+        """
         return self._QosLevel
 
     @QosLevel.setter
@@ -1714,6 +2036,9 @@ class AssignPrivateIpAddressesResponse(AbstractModel):
 
     @property
     def PrivateIpAddressSet(self):
+        """The detailed information of the Private IP.
+        :rtype: list of PrivateIpAddressSpecification
+        """
         return self._PrivateIpAddressSet
 
     @PrivateIpAddressSet.setter
@@ -1722,6 +2047,9 @@ class AssignPrivateIpAddressesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1763,6 +2091,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
+        """The `ID` of a `VPC` instance, such as `vpc-6v2ht8q5`.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1771,6 +2102,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CidrBlock(self):
+        """The secondary CIDR, such as `172.16.0.0/16`.
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -1779,6 +2113,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AssistantType(self):
+        """The secondary CIDR block type. 0: common secondary CIDR block. 1: container secondary CIDR block. Default: 0.
+        :rtype: int
+        """
         return self._AssistantType
 
     @AssistantType.setter
@@ -1787,6 +2124,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetSet(self):
+        """Subnets divided by the secondary CIDR.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Subnet
+        """
         return self._SubnetSet
 
     @SubnetSet.setter
@@ -1840,6 +2181,9 @@ class AssociateAddressRequest(AbstractModel):
 
     @property
     def AddressId(self):
+        """The unique ID of the EIP, such as `eip-11112222`.
+        :rtype: str
+        """
         return self._AddressId
 
     @AddressId.setter
@@ -1848,6 +2192,9 @@ class AssociateAddressRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """The ID of the instance to be bound, such as `ins-11112222`, `lb-11112222`. You can query the instance ID by logging into the [Console](https://console.cloud.tencent.com/cvm). You can also obtain the parameter value from the `InstanceId` field in the returned result of [DescribeInstances](https://intl.cloud.tencent.com/document/api/213/15728?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1856,6 +2203,9 @@ class AssociateAddressRequest(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
+        """The ID of the ENI to be bonud, such as `eni-11112222`. `NetworkInterfaceId` and `InstanceId` cannot be specified at the same time. You can query the ENI ID by logging into the [Console](https://console.cloud.tencent.com/vpc/eni). You can also obtain the parameter value from the `networkInterfaceId` field in the returned result of [DescribeNetworkInterfaces](https://intl.cloud.tencent.com/document/api/215/15817?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._NetworkInterfaceId
 
     @NetworkInterfaceId.setter
@@ -1864,6 +2214,9 @@ class AssociateAddressRequest(AbstractModel):
 
     @property
     def PrivateIpAddress(self):
+        """The private IP to be bound. If you specify `NetworkInterfaceId`, then you must also specify `PrivateIpAddress`, indicating the EIP is bound to the specified private IP of the specified ENI. At the same time, you must ensure the specified `PrivateIpAddress` is a private IP on the `NetworkInterfaceId`. You can query the private IP of the specified ENI by logging into the [Console](https://console.cloud.tencent.com/vpc/eni). You can also obtain the parameter value from the `privateIpAddress` field in the returned result of [DescribeNetworkInterfaces](https://intl.cloud.tencent.com/document/api/215/15817?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._PrivateIpAddress
 
     @PrivateIpAddress.setter
@@ -1872,6 +2225,9 @@ class AssociateAddressRequest(AbstractModel):
 
     @property
     def EipDirectConnection(self):
+        """Specify whether to configure direct access when binding EIPs. For details, see [EIP Direct Access](https://intl.cloud.tencent.com/document/product/213/12540). Valid values: `True` and `False` (default). This parameter can be set to `True` when binding EIPs to a CVM instance or EKS cluster. It is in a beta test. To try it out, please [submit a ticket](https://console.cloud.tencent.com/workorder/category?level1_id=6&level2_id=163&source=0&data_title=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%20CLB&level3_id=1071&queue=96&scene_code=34639&step=2).
+        :rtype: bool
+        """
         return self._EipDirectConnection
 
     @EipDirectConnection.setter
@@ -1912,6 +2268,9 @@ class AssociateAddressResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """The async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -1920,6 +2279,9 @@ class AssociateAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1952,6 +2314,9 @@ class AssociateDirectConnectGatewayNatGatewayRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID. VPC instance ID, which can be obtained from the `VpcId` field in the response of the `DescribeVpcs` API.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -1960,6 +2325,9 @@ class AssociateDirectConnectGatewayNatGatewayRequest(AbstractModel):
 
     @property
     def NatGatewayId(self):
+        """The NAT Gateway ID.
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -1968,6 +2336,9 @@ class AssociateDirectConnectGatewayNatGatewayRequest(AbstractModel):
 
     @property
     def DirectConnectGatewayId(self):
+        """The direct connect gateway ID.
+        :rtype: str
+        """
         return self._DirectConnectGatewayId
 
     @DirectConnectGatewayId.setter
@@ -2003,6 +2374,9 @@ class AssociateDirectConnectGatewayNatGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2046,6 +2420,9 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
 
     @property
     def NatGatewayId(self):
+        """The ID of the NAT gateway, such as `nat-df45454`.
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -2054,6 +2431,9 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
 
     @property
     def AddressCount(self):
+        """The number of EIPs you want to apply for. Either `AddressCount` or `PublicAddresses` must be passed in.
+        :rtype: int
+        """
         return self._AddressCount
 
     @AddressCount.setter
@@ -2062,6 +2442,9 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
 
     @property
     def PublicIpAddresses(self):
+        """Array of the EIPs bound to the NAT gateway. Either `AddressCount` or `PublicAddresses` must be passed in.
+        :rtype: list of str
+        """
         return self._PublicIpAddresses
 
     @PublicIpAddresses.setter
@@ -2070,6 +2453,9 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """The availability zone of the EIP, which is passed in when the EIP is automatically assigned.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -2078,6 +2464,9 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
 
     @property
     def StockPublicIpAddressesBandwidthOut(self):
+        """The bandwidth size (in Mbps) of the EIP bound to the NAT gateway, which defaults to the maximum value applicable for the current user type.
+        :rtype: int
+        """
         return self._StockPublicIpAddressesBandwidthOut
 
     @StockPublicIpAddressesBandwidthOut.setter
@@ -2086,6 +2475,9 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
 
     @property
     def PublicIpAddressesBandwidthOut(self):
+        """The size of the public network IP bandwidth to be applied for (in Mbps), which defaults to the maximum value applicable for the current user type.
+        :rtype: int
+        """
         return self._PublicIpAddressesBandwidthOut
 
     @PublicIpAddressesBandwidthOut.setter
@@ -2094,6 +2486,9 @@ class AssociateNatGatewayAddressRequest(AbstractModel):
 
     @property
     def PublicIpFromSameZone(self):
+        """Whether the public IP and the NAT gateway must be in the same availability zone. Valid values: `true` and `false`. This parameter is valid only when `Zone` is specified.
+        :rtype: bool
+        """
         return self._PublicIpFromSameZone
 
     @PublicIpFromSameZone.setter
@@ -2133,6 +2528,9 @@ class AssociateNatGatewayAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2161,6 +2559,9 @@ class AssociateNetworkAclSubnetsRequest(AbstractModel):
 
     @property
     def NetworkAclId(self):
+        """Network ACL instance ID, such as `acl-12345678`.
+        :rtype: str
+        """
         return self._NetworkAclId
 
     @NetworkAclId.setter
@@ -2169,6 +2570,9 @@ class AssociateNetworkAclSubnetsRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
+        """Array of subnet instance IDs, such as [subnet-12345678]
+        :rtype: list of str
+        """
         return self._SubnetIds
 
     @SubnetIds.setter
@@ -2203,6 +2607,9 @@ class AssociateNetworkAclSubnetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2231,6 +2638,9 @@ class AssociateNetworkInterfaceSecurityGroupsRequest(AbstractModel):
 
     @property
     def NetworkInterfaceIds(self):
+        """ENI instance ID, e.g. eni-pxir56ns. You can enter up to 100 instances for each request.
+        :rtype: list of str
+        """
         return self._NetworkInterfaceIds
 
     @NetworkInterfaceIds.setter
@@ -2239,6 +2649,9 @@ class AssociateNetworkInterfaceSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """The security group instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups. You can enter up to 100 instances for each request.
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -2273,6 +2686,9 @@ class AssociateNetworkInterfaceSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2304,6 +2720,9 @@ class AttachCcnInstancesRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """The CCN instance ID, such as `ccn-f49l6u0z`.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -2312,6 +2731,9 @@ class AttachCcnInstancesRequest(AbstractModel):
 
     @property
     def Instances(self):
+        """List of associated network instances
+        :rtype: list of CcnInstance
+        """
         return self._Instances
 
     @Instances.setter
@@ -2320,6 +2742,9 @@ class AttachCcnInstancesRequest(AbstractModel):
 
     @property
     def CcnUin(self):
+        """The UIN (root account) of the CCN. By default, the current account belongs to the UIN
+        :rtype: str
+        """
         return self._CcnUin
 
     @CcnUin.setter
@@ -2360,6 +2785,9 @@ class AttachCcnInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2388,6 +2816,9 @@ class AttachClassicLinkVpcRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -2396,6 +2827,9 @@ class AttachClassicLinkVpcRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """CVM Instance ID
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -2430,6 +2864,9 @@ class AttachClassicLinkVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2461,6 +2898,9 @@ class AttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
+        """The ID of the ENI instance, such as `eni-m6dyj72l`.
+        :rtype: str
+        """
         return self._NetworkInterfaceId
 
     @NetworkInterfaceId.setter
@@ -2469,6 +2909,9 @@ class AttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """The ID of the CVM instance, such as `ins-r8hr2upy`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2477,6 +2920,9 @@ class AttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def AttachType(self):
+        """ENI mounting type. Valid values: `0` (standard); `1` (extension); default value: `0`
+        :rtype: int
+        """
         return self._AttachType
 
     @AttachType.setter
@@ -2512,6 +2958,9 @@ class AttachNetworkInterfaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2540,6 +2989,9 @@ class AttachSnapshotInstancesRequest(AbstractModel):
 
     @property
     def SnapshotPolicyId(self):
+        """Snapshot policy IDs
+        :rtype: str
+        """
         return self._SnapshotPolicyId
 
     @SnapshotPolicyId.setter
@@ -2548,6 +3000,9 @@ class AttachSnapshotInstancesRequest(AbstractModel):
 
     @property
     def Instances(self):
+        """Information of associated instances
+        :rtype: list of SnapshotInstance
+        """
         return self._Instances
 
     @Instances.setter
@@ -2587,6 +3042,9 @@ class AttachSnapshotInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2618,6 +3076,9 @@ class AuditCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def ServiceProvider(self):
+        """Service provider. Valid values: `UNICOM`.
+        :rtype: str
+        """
         return self._ServiceProvider
 
     @ServiceProvider.setter
@@ -2626,6 +3087,9 @@ class AuditCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """Unique ID of compliance review request.
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -2634,6 +3098,9 @@ class AuditCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def AuditBehavior(self):
+        """Audit behavior. Valid values: `APPROVED` and `DENY`.
+        :rtype: str
+        """
         return self._AuditBehavior
 
     @AuditBehavior.setter
@@ -2669,6 +3136,9 @@ class AuditCrossBorderComplianceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2697,6 +3167,9 @@ class BackupPolicy(AbstractModel):
 
     @property
     def BackupDay(self):
+        """Scheduled backup day. Values: `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
+        :rtype: str
+        """
         return self._BackupDay
 
     @BackupDay.setter
@@ -2705,6 +3178,9 @@ class BackupPolicy(AbstractModel):
 
     @property
     def BackupTime(self):
+        """Backup point in time. Format: HH:mm:ss.
+        :rtype: str
+        """
         return self._BackupTime
 
     @BackupTime.setter
@@ -2760,6 +3236,9 @@ class BandwidthPackage(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
+        """The unique ID of the bandwidth package.
+        :rtype: str
+        """
         return self._BandwidthPackageId
 
     @BandwidthPackageId.setter
@@ -2768,6 +3247,9 @@ class BandwidthPackage(AbstractModel):
 
     @property
     def NetworkType(self):
+        """Bandwidth package type. Values: `BGP`, `SINGLEISP`, `ANYCAST`, `SINGLEISP_CMCC`, `SINGLEISP_CTCC`, `SINGLEISP_CUCC`
+        :rtype: str
+        """
         return self._NetworkType
 
     @NetworkType.setter
@@ -2776,6 +3258,9 @@ class BandwidthPackage(AbstractModel):
 
     @property
     def ChargeType(self):
+        """The bandwidth package billing mode. Valid values: 'TOP5_POSTPAID_BY_MONTH' and 'PERCENT95_POSTPAID_BY_MONTH'
+        :rtype: str
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -2784,6 +3269,9 @@ class BandwidthPackage(AbstractModel):
 
     @property
     def BandwidthPackageName(self):
+        """The name of the bandwidth package.
+        :rtype: str
+        """
         return self._BandwidthPackageName
 
     @BandwidthPackageName.setter
@@ -2792,6 +3280,9 @@ class BandwidthPackage(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """The creation time of the bandwidth package, which follows the `ISO8601` standard and uses `UTC` time in the format of `YYYY-MM-DDThh:mm:ssZ`.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -2800,6 +3291,9 @@ class BandwidthPackage(AbstractModel):
 
     @property
     def Status(self):
+        """The status of the bandwidth package. Valid values: 'CREATING', 'CREATED', 'DELETING', and 'DELETED'.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2808,6 +3302,9 @@ class BandwidthPackage(AbstractModel):
 
     @property
     def ResourceSet(self):
+        """The resource information of the bandwidth package.
+        :rtype: list of Resource
+        """
         return self._ResourceSet
 
     @ResourceSet.setter
@@ -2816,6 +3313,9 @@ class BandwidthPackage(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """The limit of the bandwidth package in Mbps. The value '-1' indicates there is no limit.
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -2861,6 +3361,9 @@ class BandwidthPackageBillBandwidth(AbstractModel):
 
     @property
     def BandwidthUsage(self):
+        """Current billable usage, in Mbps
+        :rtype: int
+        """
         return self._BandwidthUsage
 
     @BandwidthUsage.setter
@@ -2903,6 +3406,9 @@ class BatchModifySnapshotPolicy(AbstractModel):
 
     @property
     def SnapshotPolicyId(self):
+        """Snapshot policy IDs
+        :rtype: str
+        """
         return self._SnapshotPolicyId
 
     @SnapshotPolicyId.setter
@@ -2911,6 +3417,9 @@ class BatchModifySnapshotPolicy(AbstractModel):
 
     @property
     def SnapshotPolicyName(self):
+        """Snapshot policy name
+        :rtype: str
+        """
         return self._SnapshotPolicyName
 
     @SnapshotPolicyName.setter
@@ -2919,6 +3428,9 @@ class BatchModifySnapshotPolicy(AbstractModel):
 
     @property
     def BackupPolicies(self):
+        """Backup policy
+        :rtype: list of BackupPolicy
+        """
         return self._BackupPolicies
 
     @BackupPolicies.setter
@@ -2927,6 +3439,9 @@ class BatchModifySnapshotPolicy(AbstractModel):
 
     @property
     def KeepTime(self):
+        """Snapshot retention period. Range: 1 to 365 days
+        :rtype: int
+        """
         return self._KeepTime
 
     @KeepTime.setter
@@ -3015,6 +3530,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CcnId(self):
+        """The unique ID of the CCN
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -3023,6 +3541,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CcnName(self):
+        """The name of the CCN
+        :rtype: str
+        """
         return self._CcnName
 
     @CcnName.setter
@@ -3031,6 +3552,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CcnDescription(self):
+        """The detailed information of the CCN
+        :rtype: str
+        """
         return self._CcnDescription
 
     @CcnDescription.setter
@@ -3039,6 +3563,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceCount(self):
+        """The number of associated instances
+        :rtype: int
+        """
         return self._InstanceCount
 
     @InstanceCount.setter
@@ -3047,6 +3574,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateTime(self):
+        """The creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3055,6 +3585,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def State(self):
+        """The instance status. 'ISOLATED': Being isolated (instance is in arrears and service is suspended). 'AVAILABLE': Operating.
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -3063,6 +3596,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def QosLevel(self):
+        """The instance service quality. ’PT’: Platinum , 'AU': Gold, 'AG': Silver.
+        :rtype: str
+        """
         return self._QosLevel
 
     @QosLevel.setter
@@ -3071,6 +3607,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceChargeType(self):
+        """The billing method. POSTPAID indicates postpaid.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -3079,6 +3619,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BandwidthLimitType(self):
+        """The limit type. INTER_REGION_LIMIT is the limit between regions. OUTER_REGION_LIMIT is a region egress limit.
+Note: This field may return null, indicating no valid value.
+        :rtype: str
+        """
         return self._BandwidthLimitType
 
     @BandwidthLimitType.setter
@@ -3087,6 +3631,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagSet(self):
+        """Tag key-value pairs.
+        :rtype: list of Tag
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -3095,6 +3642,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RoutePriorityFlag(self):
+        """Whether the CCN route priority feature is supported. Valid values: False: do not support; True: support.
+        :rtype: bool
+        """
         return self._RoutePriorityFlag
 
     @RoutePriorityFlag.setter
@@ -3103,6 +3653,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouteTableCount(self):
+        """Number of route tables associated with the instance.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RouteTableCount
 
     @RouteTableCount.setter
@@ -3111,6 +3665,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouteTableFlag(self):
+        """Whether the multiple route tables feature is enabled for the CCN instance. Valid values: `False`: no; `True`: yes. Default value: `False`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._RouteTableFlag
 
     @RouteTableFlag.setter
@@ -3119,6 +3677,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsSecurityLock(self):
+        """
+        :rtype: bool
+        """
         return self._IsSecurityLock
 
     @IsSecurityLock.setter
@@ -3127,6 +3688,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouteBroadcastPolicyFlag(self):
+        """Status of CCN route broadcasting policy. Values: `False` (Disabled), `True` (Enabled)
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._RouteBroadcastPolicyFlag
 
     @RouteBroadcastPolicyFlag.setter
@@ -3232,6 +3797,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CcnId(self):
+        """The ID of a CCN instance.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -3240,6 +3808,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceType(self):
+        """The type of associated instances:
+<li>`VPC`: VPC</li>
+<li>`DIRECTCONNECT`: Direct Connect</li>
+<li>`BMVPC`: BM VPC</li>
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -3248,6 +3822,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceId(self):
+        """The ID of the associated instance.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3256,6 +3833,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceName(self):
+        """The name of the associated instance.
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -3264,6 +3844,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceRegion(self):
+        """The region to which the associated instance belongs, such as `ap-guangzhou`.
+        :rtype: str
+        """
         return self._InstanceRegion
 
     @InstanceRegion.setter
@@ -3272,6 +3855,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceUin(self):
+        """The UIN (root account) to which the associated instance belongs.
+        :rtype: str
+        """
         return self._InstanceUin
 
     @InstanceUin.setter
@@ -3280,6 +3866,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CidrBlock(self):
+        """The CIDR of the associated instance.
+        :rtype: list of str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -3288,6 +3877,18 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def State(self):
+        """The status of the associated instance:
+<li>`PENDING`: In application</li>
+<li>`ACTIVE`: Connected</li>
+<li>`EXPIRED`: Expired</li>
+<li>`REJECTED`: Rejected</li>
+<li>`DELETED`: Deleted</li>
+<li>`FAILED`: Failed (it will be asynchronously unbound after 2 hours)</li>
+<li>`ATTACHING`: binding</li>
+<li>`DETACHING`: Unbinding</li>
+<li>`DETACHFAILED`: The unbinding failed (it will be asynchronously unbound after 2 hours)</li>
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -3296,6 +3897,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AttachedTime(self):
+        """Association Time.
+        :rtype: str
+        """
         return self._AttachedTime
 
     @AttachedTime.setter
@@ -3304,6 +3908,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CcnUin(self):
+        """The UIN (root account) to which the CCN belongs.
+        :rtype: str
+        """
         return self._CcnUin
 
     @CcnUin.setter
@@ -3312,6 +3919,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceArea(self):
+        """General location of the associated instance, such as CHINA_MAINLAND.
+        :rtype: str
+        """
         return self._InstanceArea
 
     @InstanceArea.setter
@@ -3320,6 +3930,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Description(self):
+        """Description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3328,6 +3941,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouteTableId(self):
+        """Route table ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RouteTableId
 
     @RouteTableId.setter
@@ -3336,6 +3953,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouteTableName(self):
+        """Route table name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RouteTableName
 
     @RouteTableName.setter
@@ -3411,6 +4032,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CcnId(self):
+        """The CCN ID that the bandwidth belongs to.
+Note: this field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -3419,6 +4044,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTime(self):
+        """The creation time of the instance.
+Note: this field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -3427,6 +4056,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ExpiredTime(self):
+        """The expiration time of the instance.
+Note: this field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -3435,6 +4068,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RegionFlowControlId(self):
+        """The unique ID of the bandwidth instance.
+Note: this field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._RegionFlowControlId
 
     @RegionFlowControlId.setter
@@ -3443,6 +4080,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RenewFlag(self):
+        """The billing flag.
+Note: this field may return null, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -3451,6 +4092,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CcnRegionBandwidthLimit(self):
+        """The information of the bandwidth regions and bandwidth caps. The parameter is only returned for the cross-region limit mode, but not for egress limit.
+Note: this field may return null, indicating that no valid value was found.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CcnRegionBandwidthLimit`
+        """
         return self._CcnRegionBandwidthLimit
 
     @CcnRegionBandwidthLimit.setter
@@ -3459,6 +4104,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MarketId(self):
+        """Cloud marketplace instance ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._MarketId
 
     @MarketId.setter
@@ -3467,6 +4116,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagSet(self):
+        """The list of tags to be bound.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -3530,6 +4183,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceId(self):
+        """The ID of the associated instance.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3538,6 +4194,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceRegion(self):
+        """The region to which the associated instance ID belongs, such as `ap-guangzhou`.
+        :rtype: str
+        """
         return self._InstanceRegion
 
     @InstanceRegion.setter
@@ -3546,6 +4205,12 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceType(self):
+        """The type of the associated instance. Available values are:
+<li>`VPC`: VPC</li>
+<li>`DIRECTCONNECT`: Direct Connect</li>
+<li>`BMVPC`: BM VPC</li>
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -3554,6 +4219,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Description(self):
+        """Description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3562,6 +4230,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouteTableId(self):
+        """The ID of the route table associated with the instance
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RouteTableId
 
     @RouteTableId.setter
@@ -3612,6 +4284,9 @@ Note: This field may return null, indicating no valid value.
 
     @property
     def Region(self):
+        """Region, such as `ap-guangzhou`
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -3620,6 +4295,9 @@ Note: This field may return null, indicating no valid value.
 
     @property
     def BandwidthLimit(self):
+        """The outbound bandwidth cap. Units: Mbps
+        :rtype: int
+        """
         return self._BandwidthLimit
 
     @BandwidthLimit.setter
@@ -3628,6 +4306,9 @@ Note: This field may return null, indicating no valid value.
 
     @property
     def IsBm(self):
+        """Whether it is a BM region. The default is `false`.
+        :rtype: bool
+        """
         return self._IsBm
 
     @IsBm.setter
@@ -3636,6 +4317,10 @@ Note: This field may return null, indicating no valid value.
 
     @property
     def DstRegion(self):
+        """The target region, such as `ap-shanghai`
+Note: This field may return null, indicating no valid value.
+        :rtype: str
+        """
         return self._DstRegion
 
     @DstRegion.setter
@@ -3644,6 +4329,9 @@ Note: This field may return null, indicating no valid value.
 
     @property
     def DstIsBm(self):
+        """Whether the target region is a BM region. The default is `false`.
+        :rtype: bool
+        """
         return self._DstIsBm
 
     @DstIsBm.setter
@@ -3717,6 +4405,9 @@ class CcnRoute(AbstractModel):
 
     @property
     def RouteId(self):
+        """The ID of the routing policy
+        :rtype: str
+        """
         return self._RouteId
 
     @RouteId.setter
@@ -3725,6 +4416,9 @@ class CcnRoute(AbstractModel):
 
     @property
     def DestinationCidrBlock(self):
+        """Destination
+        :rtype: str
+        """
         return self._DestinationCidrBlock
 
     @DestinationCidrBlock.setter
@@ -3733,6 +4427,9 @@ class CcnRoute(AbstractModel):
 
     @property
     def InstanceType(self):
+        """The type of the next hop (associated instance type). Available types: VPC, DIRECTCONNECT
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -3741,6 +4438,9 @@ class CcnRoute(AbstractModel):
 
     @property
     def InstanceId(self):
+        """The next hop (associated instance)
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3749,6 +4449,9 @@ class CcnRoute(AbstractModel):
 
     @property
     def InstanceName(self):
+        """The name of the next hop (associated instance name)
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -3757,6 +4460,9 @@ class CcnRoute(AbstractModel):
 
     @property
     def InstanceRegion(self):
+        """The region of the next hop (the region of the associated instance)
+        :rtype: str
+        """
         return self._InstanceRegion
 
     @InstanceRegion.setter
@@ -3765,6 +4471,9 @@ class CcnRoute(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """Update Time
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -3773,6 +4482,9 @@ class CcnRoute(AbstractModel):
 
     @property
     def Enabled(self):
+        """Whether the route is enabled
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -3781,6 +4493,9 @@ class CcnRoute(AbstractModel):
 
     @property
     def InstanceUin(self):
+        """The UIN (root account) to which the associated instance belongs
+        :rtype: str
+        """
         return self._InstanceUin
 
     @InstanceUin.setter
@@ -3789,6 +4504,9 @@ class CcnRoute(AbstractModel):
 
     @property
     def ExtraState(self):
+        """Additional status of the route
+        :rtype: str
+        """
         return self._ExtraState
 
     @ExtraState.setter
@@ -3797,6 +4515,9 @@ class CcnRoute(AbstractModel):
 
     @property
     def IsBgp(self):
+        """Whether it is a dynamic route
+        :rtype: bool
+        """
         return self._IsBgp
 
     @IsBgp.setter
@@ -3805,6 +4526,9 @@ class CcnRoute(AbstractModel):
 
     @property
     def RoutePriority(self):
+        """Route priority
+        :rtype: int
+        """
         return self._RoutePriority
 
     @RoutePriority.setter
@@ -3813,6 +4537,9 @@ class CcnRoute(AbstractModel):
 
     @property
     def InstanceExtraName(self):
+        """Next hop port name (associated instance’s port name)
+        :rtype: str
+        """
         return self._InstanceExtraName
 
     @InstanceExtraName.setter
@@ -3864,6 +4591,9 @@ class CheckAssistantCidrRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """`VPC` instance `ID`, e.g. `vpc-6v2ht8q5`.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -3872,6 +4602,9 @@ class CheckAssistantCidrRequest(AbstractModel):
 
     @property
     def NewCidrBlocks(self):
+        """Load CIDR blocks to add. CIDR block set; format: e.g. ["10.0.0.0/16", "172.16.0.0/16"]
+        :rtype: list of str
+        """
         return self._NewCidrBlocks
 
     @NewCidrBlocks.setter
@@ -3880,6 +4613,9 @@ class CheckAssistantCidrRequest(AbstractModel):
 
     @property
     def OldCidrBlocks(self):
+        """Load CIDR blocks to delete. CIDR block set; Format: e.g. ["10.0.0.0/16", "172.16.0.0/16"]
+        :rtype: list of str
+        """
         return self._OldCidrBlocks
 
     @OldCidrBlocks.setter
@@ -3918,6 +4654,9 @@ class CheckAssistantCidrResponse(AbstractModel):
 
     @property
     def ConflictSourceSet(self):
+        """Array of conflict resources.
+        :rtype: list of ConflictSource
+        """
         return self._ConflictSourceSet
 
     @ConflictSourceSet.setter
@@ -3926,6 +4665,9 @@ class CheckAssistantCidrResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3985,6 +4727,9 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def DetectDestinationIp(self):
+        """The array of detection destination IPv4 addresses, which contains at most two IP addresses.
+        :rtype: list of str
+        """
         return self._DetectDestinationIp
 
     @DetectDestinationIp.setter
@@ -3993,6 +4738,14 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def NextHopType(self):
+        """The type of the next hop. Currently supported types are:
+VPN: VPN gateway;
+DIRECTCONNECT: direct connect gateway;
+PEERCONNECTION: peering connection;
+NAT: NAT gateway;
+NORMAL_CVM: normal CVM.
+        :rtype: str
+        """
         return self._NextHopType
 
     @NextHopType.setter
@@ -4001,6 +4754,14 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def NextHopDestination(self):
+        """The next-hop destination gateway. The value is related to NextHopType.
+If NextHopType is set to VPN, the value of this parameter is the VPN gateway ID, such as vpngw-12345678.
+If NextHopType is set to DIRECTCONNECT, the value of this parameter is the direct connect gateway ID, such as dcg-12345678.
+If NextHopType is set to PEERCONNECTION, the value of this parameter is the peering connection ID, such as pcx-12345678.
+If NextHopType is set to NAT, the value of this parameter is the NAT gateway ID, such as nat-12345678.
+If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 address of the CVM, such as 10.0.0.12.
+        :rtype: str
+        """
         return self._NextHopDestination
 
     @NextHopDestination.setter
@@ -4009,6 +4770,9 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def NetDetectId(self):
+        """ID of a network inspector instance, e.g. netd-12345678. Enter at least one of this parameter, VpcId, SubnetId, and NetDetectName. Use NetDetectId if it is present.
+        :rtype: str
+        """
         return self._NetDetectId
 
     @NetDetectId.setter
@@ -4017,6 +4781,9 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def VpcId(self):
+        """ID of a `VPC` instance, e.g. `vpc-12345678`, which is used together with SubnetId and NetDetectName. You should enter either this parameter or NetDetectId, or both. Use NetDetectId if it is present.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -4025,6 +4792,9 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def SubnetId(self):
+        """ID of a subnet instance, e.g. `subnet-12345678`, which is used together with VpcId and NetDetectName. You should enter either this parameter or NetDetectId, or both. Use NetDetectId if it is present.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -4033,6 +4803,9 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def NetDetectName(self):
+        """The name of a network inspector, up to 60 bytes in length. It is used together with VpcId and NetDetectName. You should enter either this parameter or NetDetectId, or both. Use NetDetectId if it is present.
+        :rtype: str
+        """
         return self._NetDetectName
 
     @NetDetectName.setter
@@ -4075,6 +4848,9 @@ class CheckNetDetectStateResponse(AbstractModel):
 
     @property
     def NetDetectIpStateSet(self):
+        """The array of network detection verification results.
+        :rtype: list of NetDetectIpState
+        """
         return self._NetDetectIpStateSet
 
     @NetDetectIpStateSet.setter
@@ -4083,6 +4859,9 @@ class CheckNetDetectStateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4119,6 +4898,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Cidr(self):
+        """Local CIDR block, including subnet CIDR block and secondary CIDR block
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Cidr
 
     @Cidr.setter
@@ -4127,6 +4910,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PublishedToVbc(self):
+        """Whether the routing policy of the VPC subnet is published to CCN.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._PublishedToVbc
 
     @PublishedToVbc.setter
@@ -4164,6 +4951,9 @@ class ClassicLinkInstance(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -4172,6 +4962,9 @@ class ClassicLinkInstance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """The unique ID of the CVM instance
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4218,6 +5011,9 @@ class CloneSecurityGroupRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
+        """Security group instance ID, such as `esg-33ocnj9n`, which can be obtained through the <a href="https://intl.cloud.tencent.com/document/product/215/15808?from_cn_redirect=1">DescribeSecurityGroups</a> API.
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -4226,6 +5022,9 @@ class CloneSecurityGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """The name of security group clone. You can enter any name within 60 characters. If this parameter is left empty, the security group clone will use the name of the source security group.
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -4234,6 +5033,9 @@ class CloneSecurityGroupRequest(AbstractModel):
 
     @property
     def GroupDescription(self):
+        """Description of the security group clone. You can enter up to 100 characters. If this parameter is left empty, the security group clone will use the description of the source security group.
+        :rtype: str
+        """
         return self._GroupDescription
 
     @GroupDescription.setter
@@ -4242,6 +5044,9 @@ class CloneSecurityGroupRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID. Default value: 0. You can query it on the <a href="https://console.cloud.tencent.com/project">project management page</a> of the Tencent Cloud console.
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -4250,6 +5055,9 @@ class CloneSecurityGroupRequest(AbstractModel):
 
     @property
     def RemoteRegion(self):
+        """The region of the source security group for a cross-region clone. For example, to clone the security group in Guangzhou to Shanghai, set it to `ap-guangzhou`.
+        :rtype: str
+        """
         return self._RemoteRegion
 
     @RemoteRegion.setter
@@ -4291,6 +5099,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SecurityGroup(self):
+        """Security group object
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroup`
+        """
         return self._SecurityGroup
 
     @SecurityGroup.setter
@@ -4299,6 +5111,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4330,6 +5145,9 @@ class ConflictItem(AbstractModel):
 
     @property
     def ConfilctId(self):
+        """Conflict resource ID
+        :rtype: str
+        """
         return self._ConfilctId
 
     @ConfilctId.setter
@@ -4338,6 +5156,9 @@ class ConflictItem(AbstractModel):
 
     @property
     def DestinationItem(self):
+        """Conflict destination resource
+        :rtype: str
+        """
         return self._DestinationItem
 
     @DestinationItem.setter
@@ -4378,6 +5199,9 @@ class ConflictSource(AbstractModel):
 
     @property
     def ConflictSourceId(self):
+        """Conflict resource ID
+        :rtype: str
+        """
         return self._ConflictSourceId
 
     @ConflictSourceId.setter
@@ -4386,6 +5210,9 @@ class ConflictSource(AbstractModel):
 
     @property
     def SourceItem(self):
+        """Conflict resource
+        :rtype: str
+        """
         return self._SourceItem
 
     @SourceItem.setter
@@ -4394,6 +5221,9 @@ class ConflictSource(AbstractModel):
 
     @property
     def ConflictItemSet(self):
+        """Conflict resource items
+        :rtype: list of ConflictItem
+        """
         return self._ConflictItemSet
 
     @ConflictItemSet.setter
@@ -4437,6 +5267,9 @@ class CreateAddressTemplateGroupRequest(AbstractModel):
 
     @property
     def AddressTemplateGroupName(self):
+        """Name of the IP address template group
+        :rtype: str
+        """
         return self._AddressTemplateGroupName
 
     @AddressTemplateGroupName.setter
@@ -4445,6 +5278,9 @@ class CreateAddressTemplateGroupRequest(AbstractModel):
 
     @property
     def AddressTemplateIds(self):
+        """IP address template instance ID, such as `ipm-mdunqeb6`.
+        :rtype: list of str
+        """
         return self._AddressTemplateIds
 
     @AddressTemplateIds.setter
@@ -4482,6 +5318,9 @@ class CreateAddressTemplateGroupResponse(AbstractModel):
 
     @property
     def AddressTemplateGroup(self):
+        """Group object of the IP address template.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AddressTemplateGroup`
+        """
         return self._AddressTemplateGroup
 
     @AddressTemplateGroup.setter
@@ -4490,6 +5329,9 @@ class CreateAddressTemplateGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4524,6 +5366,9 @@ class CreateAddressTemplateRequest(AbstractModel):
 
     @property
     def AddressTemplateName(self):
+        """IP address template name.
+        :rtype: str
+        """
         return self._AddressTemplateName
 
     @AddressTemplateName.setter
@@ -4532,6 +5377,9 @@ class CreateAddressTemplateRequest(AbstractModel):
 
     @property
     def Addresses(self):
+        """The address information can be presented by the IP, CIDR block or IP address range. Either Addresses or AddressesExtra is required.
+        :rtype: list of str
+        """
         return self._Addresses
 
     @Addresses.setter
@@ -4540,6 +5388,9 @@ class CreateAddressTemplateRequest(AbstractModel):
 
     @property
     def AddressesExtra(self):
+        """The address information can contain remarks and be presented by the IP, CIDR block or IP address range. Either Addresses or AddressesExtra is required.
+        :rtype: list of AddressInfo
+        """
         return self._AddressesExtra
 
     @AddressesExtra.setter
@@ -4583,6 +5434,9 @@ class CreateAddressTemplateResponse(AbstractModel):
 
     @property
     def AddressTemplate(self):
+        """The template object of the IP address.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AddressTemplate`
+        """
         return self._AddressTemplate
 
     @AddressTemplate.setter
@@ -4591,6 +5445,9 @@ class CreateAddressTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4649,6 +5506,9 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The ID of the VPC instance. You can obtain the parameter value from the `VpcId` field in the returned result of the `DescribeVpcs` API.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -4657,6 +5517,9 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def NetworkInterfaceName(self):
+        """The name of the ENI. The maximum length is 60 bytes.
+        :rtype: str
+        """
         return self._NetworkInterfaceName
 
     @NetworkInterfaceName.setter
@@ -4665,6 +5528,9 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """The subnet instance ID of the ENI, such as 'subnet-0ap8nwca'.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -4673,6 +5539,9 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """CVM instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -4681,6 +5550,9 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
+        """The information of the specified private IPs. You can specify a maximum of 10 IPs each time.
+        :rtype: list of PrivateIpAddressSpecification
+        """
         return self._PrivateIpAddresses
 
     @PrivateIpAddresses.setter
@@ -4689,6 +5561,9 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def SecondaryPrivateIpAddressCount(self):
+        """The number of private IP addresses you apply for. The total number of private IP addresses cannot exceed the quota.
+        :rtype: int
+        """
         return self._SecondaryPrivateIpAddressCount
 
     @SecondaryPrivateIpAddressCount.setter
@@ -4697,6 +5572,9 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def QosLevel(self):
+        """IP u200dservice level. It is used together with `SecondaryPrivateIpAddressCount`. Values: `PT` u200d(Gold), `AU` u200d(Silver), `AG` (Bronze) and `DEFAULT` (Default).
+        :rtype: str
+        """
         return self._QosLevel
 
     @QosLevel.setter
@@ -4705,6 +5583,9 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """The security group to be bound with, such as ['sg-1dd51d'].
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -4713,6 +5594,9 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def NetworkInterfaceDescription(self):
+        """The ENI description. You can enter any information within 60 characters.
+        :rtype: str
+        """
         return self._NetworkInterfaceDescription
 
     @NetworkInterfaceDescription.setter
@@ -4721,6 +5605,9 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -4729,6 +5616,9 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def AttachType(self):
+        """ENI mounting type. Valid values: `0` (standard); `1` (extension); default value: `0`
+        :rtype: int
+        """
         return self._AttachType
 
     @AttachType.setter
@@ -4785,6 +5675,9 @@ class CreateAndAttachNetworkInterfaceResponse(AbstractModel):
 
     @property
     def NetworkInterface(self):
+        """The ENI instance.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.NetworkInterface`
+        """
         return self._NetworkInterface
 
     @NetworkInterface.setter
@@ -4793,6 +5686,9 @@ class CreateAndAttachNetworkInterfaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4824,6 +5720,9 @@ class CreateAssistantCidrRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """`VPC` instance `ID`, such as `vpc-6v2ht8q5`.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -4832,6 +5731,9 @@ class CreateAssistantCidrRequest(AbstractModel):
 
     @property
     def CidrBlocks(self):
+        """Array of CIDR blocks, such as ["10.0.0.0/16", "172.16.0.0/16"]
+        :rtype: list of str
+        """
         return self._CidrBlocks
 
     @CidrBlocks.setter
@@ -4870,6 +5772,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AssistantCidrSet(self):
+        """Array of secondary CIDR blocks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of AssistantCidr
+        """
         return self._AssistantCidrSet
 
     @AssistantCidrSet.setter
@@ -4878,6 +5784,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4932,6 +5841,11 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     @property
     def NetworkType(self):
+        """The network type of the bandwidth package. Default value: `BGP`. Valid values:
+`BGP` 
+`HIGH_QUALITY_BGP`
+        :rtype: str
+        """
         return self._NetworkType
 
     @NetworkType.setter
@@ -4940,6 +5854,12 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     @property
     def ChargeType(self):
+        """The billing mode of the bandwidth package. Default value: `TOP5_POSTPAID_BY_MONTH`. Valid values:
+<li>`TOP5_POSTPAID_BY_MONTH`: monthly top 5 </li>
+<li>`PERCENT95_POSTPAID_BY_MONTH`: monthly 95th percentile</li>
+<li>`FIXED_PREPAID_BY_MONTH`: monthly subscription</li>
+        :rtype: str
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -4948,6 +5868,9 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     @property
     def BandwidthPackageName(self):
+        """The name of the bandwidth package.
+        :rtype: str
+        """
         return self._BandwidthPackageName
 
     @BandwidthPackageName.setter
@@ -4956,6 +5879,9 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     @property
     def BandwidthPackageCount(self):
+        """The number of bandwidth packages to create. Valid range: 1-20. It can only be “1” for bill-by-CVM accounts.
+        :rtype: int
+        """
         return self._BandwidthPackageCount
 
     @BandwidthPackageCount.setter
@@ -4964,6 +5890,9 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidth(self):
+        """The limit of the bandwidth package in Mbps. The value '-1' indicates there is no limit. This feature is currently in beta.
+        :rtype: int
+        """
         return self._InternetMaxBandwidth
 
     @InternetMaxBandwidth.setter
@@ -4972,6 +5901,9 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """The list of tags to be bound.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -4980,6 +5912,9 @@ class CreateBandwidthPackageRequest(AbstractModel):
 
     @property
     def Protocol(self):
+        """The protocol type of the bandwidth package. Valid values: 'ipv4' and 'ipv6'. Default value: 'ipv4'.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -5030,6 +5965,9 @@ class CreateBandwidthPackageResponse(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
+        """The unique ID of the bandwidth package.
+        :rtype: str
+        """
         return self._BandwidthPackageId
 
     @BandwidthPackageId.setter
@@ -5038,6 +5976,9 @@ class CreateBandwidthPackageResponse(AbstractModel):
 
     @property
     def BandwidthPackageIds(self):
+        """The unique ID list of the bandwidth package (effective only when you apply for more than 1 bandwidth packages).
+        :rtype: list of str
+        """
         return self._BandwidthPackageIds
 
     @BandwidthPackageIds.setter
@@ -5046,6 +5987,9 @@ class CreateBandwidthPackageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5088,6 +6032,9 @@ class CreateCcnRequest(AbstractModel):
 
     @property
     def CcnName(self):
+        """The name of the CCN. The maximum length is 60 characters.
+        :rtype: str
+        """
         return self._CcnName
 
     @CcnName.setter
@@ -5096,6 +6043,9 @@ class CreateCcnRequest(AbstractModel):
 
     @property
     def CcnDescription(self):
+        """The description of the CCN. The maximum length is 100 characters.
+        :rtype: str
+        """
         return self._CcnDescription
 
     @CcnDescription.setter
@@ -5104,6 +6054,9 @@ class CreateCcnRequest(AbstractModel):
 
     @property
     def QosLevel(self):
+        """CCN service quality, 'PT': Platinum, 'AU': Gold, 'AG': Silver. The default is 'AU'.
+        :rtype: str
+        """
         return self._QosLevel
 
     @QosLevel.setter
@@ -5112,6 +6065,9 @@ class CreateCcnRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """The billing method. POSTPAID: postpaid by traffic. Default: POSTPAID.
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -5120,6 +6076,9 @@ class CreateCcnRequest(AbstractModel):
 
     @property
     def BandwidthLimitType(self):
+        """The bandwidth limit type. Valid values: OUTER_REGION_LIMIT: region outbound bandwidth limit; INTER_REGION_LIMIT: inter-region bandwidth limit. Default value: OUTER_REGION_LIMIT. Monthly-subscribed CCN instances only support inter-region bandwidth limit, while pay-as-you-go CCN instances support the both bandwidth limit types.
+        :rtype: str
+        """
         return self._BandwidthLimitType
 
     @BandwidthLimitType.setter
@@ -5128,6 +6087,9 @@ class CreateCcnRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -5174,6 +6136,9 @@ class CreateCcnResponse(AbstractModel):
 
     @property
     def Ccn(self):
+        """The CCN object.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CCN`
+        """
         return self._Ccn
 
     @Ccn.setter
@@ -5182,6 +6147,9 @@ class CreateCcnResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5216,6 +6184,9 @@ class CreateCustomerGatewayRequest(AbstractModel):
 
     @property
     def CustomerGatewayName(self):
+        """Customer gateway can be named freely, but the maximum length is 60 characters.
+        :rtype: str
+        """
         return self._CustomerGatewayName
 
     @CustomerGatewayName.setter
@@ -5224,6 +6195,9 @@ class CreateCustomerGatewayRequest(AbstractModel):
 
     @property
     def IpAddress(self):
+        """Customer gateway public IP.
+        :rtype: str
+        """
         return self._IpAddress
 
     @IpAddress.setter
@@ -5232,6 +6206,9 @@ class CreateCustomerGatewayRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -5275,6 +6252,9 @@ class CreateCustomerGatewayResponse(AbstractModel):
 
     @property
     def CustomerGateway(self):
+        """Customer gateway object
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CustomerGateway`
+        """
         return self._CustomerGateway
 
     @CustomerGateway.setter
@@ -5283,6 +6263,9 @@ class CreateCustomerGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5314,6 +6297,9 @@ class CreateDefaultVpcRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """The ID of the availability zone in which the subnet resides. This parameter can be obtained through the [`DescribeZones`](https://intl.cloud.tencent.com/document/product/213/15707?from_cn_redirect=1) API, such as `ap-guangzhou-1`. If it’s not specified, a random availability zone will be used.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -5322,6 +6308,9 @@ class CreateDefaultVpcRequest(AbstractModel):
 
     @property
     def Force(self):
+        """Whether to forcibly return a default VPC
+        :rtype: bool
+        """
         return self._Force
 
     @Force.setter
@@ -5359,6 +6348,9 @@ class CreateDefaultVpcResponse(AbstractModel):
 
     @property
     def Vpc(self):
+        """Default VPC and subnet IDs
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DefaultVpcSubnet`
+        """
         return self._Vpc
 
     @Vpc.setter
@@ -5367,6 +6359,9 @@ class CreateDefaultVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5398,6 +6393,9 @@ class CreateDirectConnectGatewayCcnRoutesRequest(AbstractModel):
 
     @property
     def DirectConnectGatewayId(self):
+        """The ID of the Direct Connect gateway, such as `dcg-prpqlmg1`
+        :rtype: str
+        """
         return self._DirectConnectGatewayId
 
     @DirectConnectGatewayId.setter
@@ -5406,6 +6404,9 @@ class CreateDirectConnectGatewayCcnRoutesRequest(AbstractModel):
 
     @property
     def Routes(self):
+        """The list of IDC IP range that must be connected
+        :rtype: list of DirectConnectGatewayCcnRoute
+        """
         return self._Routes
 
     @Routes.setter
@@ -5445,6 +6446,9 @@ class CreateDirectConnectGatewayCcnRoutesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5493,6 +6497,9 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
 
     @property
     def DirectConnectGatewayName(self):
+        """The name of the direct connect gateway.
+        :rtype: str
+        """
         return self._DirectConnectGatewayName
 
     @DirectConnectGatewayName.setter
@@ -5501,6 +6508,11 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
 
     @property
     def NetworkType(self):
+        """The type of the associated network. Valid values:
+<li>VPC</li>
+<li>CCN</li>
+        :rtype: str
+        """
         return self._NetworkType
 
     @NetworkType.setter
@@ -5509,6 +6521,10 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
 
     @property
     def NetworkInstanceId(self):
+        """<li>When the NetworkType is VPC, this value is the VPC instance ID</li>
+<li>When the NetworkType is CCN, this value is the CCN instance ID</li>
+        :rtype: str
+        """
         return self._NetworkInstanceId
 
     @NetworkInstanceId.setter
@@ -5517,6 +6533,11 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
 
     @property
     def GatewayType(self):
+        """The type of the gateway. Valid values:
+<li>NORMAL - (Default) Standard type. Note: CCN only supports the standard type</li>
+<li>NAT - NAT type</li>NAT gateway supports network address translation. The specified type cannot be modified. A VPC can create one NAT direct connect gateway and one non-NAT direct connect gateway
+        :rtype: str
+        """
         return self._GatewayType
 
     @GatewayType.setter
@@ -5525,6 +6546,9 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
 
     @property
     def ModeType(self):
+        """CCN route publishing method. Valid values: `standard` and `exquisite`. This parameter is only valid for the CCN direct connect gateway.
+        :rtype: str
+        """
         return self._ModeType
 
     @ModeType.setter
@@ -5533,6 +6557,9 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """Availability zone where the direct connect gateway resides.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -5541,6 +6568,9 @@ class CreateDirectConnectGatewayRequest(AbstractModel):
 
     @property
     def HaZoneGroupId(self):
+        """ID of DC highly available placement group
+        :rtype: str
+        """
         return self._HaZoneGroupId
 
     @HaZoneGroupId.setter
@@ -5583,6 +6613,9 @@ class CreateDirectConnectGatewayResponse(AbstractModel):
 
     @property
     def DirectConnectGateway(self):
+        """The object of the direct connect gateway.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DirectConnectGateway`
+        """
         return self._DirectConnectGateway
 
     @DirectConnectGateway.setter
@@ -5591,6 +6624,9 @@ class CreateDirectConnectGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5649,6 +6685,9 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def FlowLogName(self):
+        """The name of the flow log instance.
+        :rtype: str
+        """
         return self._FlowLogName
 
     @FlowLogName.setter
@@ -5657,6 +6696,9 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """The type of resource associated with the flow log. Valid values: `VPC`, `SUBNET`, `NETWORKINTERFACE`, `CCN`, `NAT`, and `DCG`.
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -5665,6 +6707,9 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """The unique ID of the resource.
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -5673,6 +6718,9 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def TrafficType(self):
+        """Type of the flow logs to be collected. Valid values: `ACCEPT`, `REJECT` and `ALL`.
+        :rtype: str
+        """
         return self._TrafficType
 
     @TrafficType.setter
@@ -5681,6 +6729,9 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The VPC ID or unique ID of the resource. We recommend using the unique ID. This parameter is required unless the `ResourceType` is set to `CCN`.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -5689,6 +6740,9 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def FlowLogDescription(self):
+        """The description of the flow log.
+        :rtype: str
+        """
         return self._FlowLogDescription
 
     @FlowLogDescription.setter
@@ -5697,6 +6751,9 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def CloudLogId(self):
+        """The storage ID of the flow log.
+        :rtype: str
+        """
         return self._CloudLogId
 
     @CloudLogId.setter
@@ -5705,6 +6762,9 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -5713,6 +6773,9 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def StorageType(self):
+        """Consumer types: `cls` and `ckafka`
+        :rtype: str
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -5721,6 +6784,9 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def FlowLogStorage(self):
+        """Information of the flow log consumer, which is required when the consumer type is `ckafka`.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.FlowLogStorage`
+        """
         return self._FlowLogStorage
 
     @FlowLogStorage.setter
@@ -5729,6 +6795,9 @@ class CreateFlowLogRequest(AbstractModel):
 
     @property
     def CloudLogRegion(self):
+        """The region corresponding to the flow log storage ID. If not passed in, this field defaults to the current region.
+        :rtype: str
+        """
         return self._CloudLogRegion
 
     @CloudLogRegion.setter
@@ -5782,6 +6851,9 @@ class CreateFlowLogResponse(AbstractModel):
 
     @property
     def FlowLog(self):
+        """The information of the flow log created.
+        :rtype: list of FlowLog
+        """
         return self._FlowLog
 
     @FlowLog.setter
@@ -5790,6 +6862,9 @@ class CreateFlowLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5833,6 +6908,9 @@ class CreateHaVipRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The `ID` of the VPC to which the `HAVIP` belongs.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -5841,6 +6919,9 @@ class CreateHaVipRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """The `ID` of the subnet to which the `HAVIP` belongs.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -5849,6 +6930,9 @@ class CreateHaVipRequest(AbstractModel):
 
     @property
     def HaVipName(self):
+        """The name of the `HAVIP`.
+        :rtype: str
+        """
         return self._HaVipName
 
     @HaVipName.setter
@@ -5857,6 +6941,9 @@ class CreateHaVipRequest(AbstractModel):
 
     @property
     def Vip(self):
+        """The specified virtual IP address, which must be within the IP range of the `VPC` and not in use. It will be automatically assigned if not specified.
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -5865,6 +6952,9 @@ class CreateHaVipRequest(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
+        """The ID of the ENI associated with the HAVIP.
+        :rtype: str
+        """
         return self._NetworkInterfaceId
 
     @NetworkInterfaceId.setter
@@ -5905,6 +6995,9 @@ class CreateHaVipResponse(AbstractModel):
 
     @property
     def HaVip(self):
+        """`HAVIP` object.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.HaVip`
+        """
         return self._HaVip
 
     @HaVip.setter
@@ -5913,6 +7006,9 @@ class CreateHaVipResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5947,6 +7043,9 @@ class CreateLocalGatewayRequest(AbstractModel):
 
     @property
     def LocalGatewayName(self):
+        """Local gateway name
+        :rtype: str
+        """
         return self._LocalGatewayName
 
     @LocalGatewayName.setter
@@ -5955,6 +7054,9 @@ class CreateLocalGatewayRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -5963,6 +7065,9 @@ class CreateLocalGatewayRequest(AbstractModel):
 
     @property
     def CdcId(self):
+        """CDC instance ID
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -6001,6 +7106,9 @@ class CreateLocalGatewayResponse(AbstractModel):
 
     @property
     def LocalGateway(self):
+        """Local gateway information
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.LocalGateway`
+        """
         return self._LocalGateway
 
     @LocalGateway.setter
@@ -6009,6 +7117,9 @@ class CreateLocalGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6040,6 +7151,9 @@ class CreateNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
 
     @property
     def NatGatewayId(self):
+        """The ID of the NAT gateway, such as `nat-df45454`.
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -6048,6 +7162,9 @@ class CreateNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
 
     @property
     def DestinationIpPortTranslationNatRules(self):
+        """The port forwarding rules of the NAT gateway.
+        :rtype: list of DestinationIpPortTranslationNatRule
+        """
         return self._DestinationIpPortTranslationNatRules
 
     @DestinationIpPortTranslationNatRules.setter
@@ -6087,6 +7204,9 @@ class CreateNatGatewayDestinationIpPortTranslationNatRuleResponse(AbstractModel)
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6148,6 +7268,9 @@ class CreateNatGatewayRequest(AbstractModel):
 
     @property
     def NatGatewayName(self):
+        """NAT gateway name
+        :rtype: str
+        """
         return self._NatGatewayName
 
     @NatGatewayName.setter
@@ -6156,6 +7279,9 @@ class CreateNatGatewayRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The ID of the VPC instance, which can be obtained from the `VpcId` field in response of the `DescribeVpcs` API.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -6164,6 +7290,9 @@ class CreateNatGatewayRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """The maximum outbound bandwidth of the NAT gateway (unit: Mbps). Supported parameter values: `20, 50, 100, 200, 500, 1000, 2000, 5000`. Default: `100`.
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -6172,6 +7301,9 @@ class CreateNatGatewayRequest(AbstractModel):
 
     @property
     def MaxConcurrentConnection(self):
+        """The concurrent connection cap of the NAT gateway. Values: `1000000, 3000000, 10000000`. The default value is `1000000`.
+        :rtype: int
+        """
         return self._MaxConcurrentConnection
 
     @MaxConcurrentConnection.setter
@@ -6180,6 +7312,9 @@ class CreateNatGatewayRequest(AbstractModel):
 
     @property
     def AddressCount(self):
+        """The number of EIPs that you want to apply for. Either `AddressCount` or `PublicIpAddresses` must be passed in.
+        :rtype: int
+        """
         return self._AddressCount
 
     @AddressCount.setter
@@ -6188,6 +7323,9 @@ class CreateNatGatewayRequest(AbstractModel):
 
     @property
     def PublicIpAddresses(self):
+        """The EIP array bound to the NAT gateway. Either AddressCount or PublicIpAddresses must be passed in.
+        :rtype: list of str
+        """
         return self._PublicIpAddresses
 
     @PublicIpAddresses.setter
@@ -6196,6 +7334,9 @@ class CreateNatGatewayRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """The availability zone, such as `ap-guangzhou-1`.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -6204,6 +7345,9 @@ class CreateNatGatewayRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Bound tags, such as [{"Key": "city", "Value": "shanghai"}]
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -6212,6 +7356,9 @@ class CreateNatGatewayRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Subnet of the NAT gateway
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -6220,6 +7367,9 @@ class CreateNatGatewayRequest(AbstractModel):
 
     @property
     def StockPublicIpAddressesBandwidthOut(self):
+        """The bandwidth size (in Mbps) of the EIP bound to the NAT gateway, which defaults to the maximum value applicable for the current user type.
+        :rtype: int
+        """
         return self._StockPublicIpAddressesBandwidthOut
 
     @StockPublicIpAddressesBandwidthOut.setter
@@ -6228,6 +7378,9 @@ class CreateNatGatewayRequest(AbstractModel):
 
     @property
     def PublicIpAddressesBandwidthOut(self):
+        """The size of the public network IP bandwidth to be applied for (in Mbps), which defaults to the maximum value applicable for the current user type.
+        :rtype: int
+        """
         return self._PublicIpAddressesBandwidthOut
 
     @PublicIpAddressesBandwidthOut.setter
@@ -6236,6 +7389,9 @@ class CreateNatGatewayRequest(AbstractModel):
 
     @property
     def PublicIpFromSameZone(self):
+        """Whether the public IP and the NAT gateway must be in the same availability zone. Valid values: `true` and `false`. This parameter is valid only when `Zone` is specified.
+        :rtype: bool
+        """
         return self._PublicIpFromSameZone
 
     @PublicIpFromSameZone.setter
@@ -6244,6 +7400,9 @@ class CreateNatGatewayRequest(AbstractModel):
 
     @property
     def NatProductVersion(self):
+        """
+        :rtype: int
+        """
         return self._NatProductVersion
 
     @NatProductVersion.setter
@@ -6300,6 +7459,9 @@ class CreateNatGatewayResponse(AbstractModel):
 
     @property
     def NatGatewaySet(self):
+        """NAT gateway object array.
+        :rtype: list of NatGateway
+        """
         return self._NatGatewaySet
 
     @NatGatewaySet.setter
@@ -6308,6 +7470,9 @@ class CreateNatGatewayResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of eligible NAT gateway objects.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -6316,6 +7481,9 @@ class CreateNatGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6351,6 +7519,9 @@ class CreateNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
 
     @property
     def NatGatewayId(self):
+        """The ID of the NAT Gateway, such as `nat-df45454`
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -6359,6 +7530,9 @@ class CreateNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
 
     @property
     def SourceIpTranslationNatRules(self):
+        """The SNAT forwarding rule of the NAT Gateway
+        :rtype: list of SourceIpTranslationNatRule
+        """
         return self._SourceIpTranslationNatRules
 
     @SourceIpTranslationNatRules.setter
@@ -6398,6 +7572,9 @@ class CreateNatGatewaySourceIpTranslationNatRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6455,6 +7632,9 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def VpcId(self):
+        """The ID of a VPC instance, such as `vpc-12345678`.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -6463,6 +7643,9 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def SubnetId(self):
+        """The ID of a subnet instance, such as subnet-12345678.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -6471,6 +7654,9 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def NetDetectName(self):
+        """The name of a network detection instance. The maximum length is 60 characters.
+        :rtype: str
+        """
         return self._NetDetectName
 
     @NetDetectName.setter
@@ -6479,6 +7665,9 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def DetectDestinationIp(self):
+        """The array of detection destination IPv4 addresses, which contains at most two IP addresses.
+        :rtype: list of str
+        """
         return self._DetectDestinationIp
 
     @DetectDestinationIp.setter
@@ -6487,6 +7676,16 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def NextHopType(self):
+        """Type of the next hop. Valid values:
+`VPN`: VPN gateway;
+`DIRECTCONNECT`: Direct connect gateway;
+`PEERCONNECTION`: Peering connection;
+`NAT`: NAT gateway;
+`NORMAL_CVM`: CVM instance;
+`CCN`: CCN instance;
+`NONEXTHOP`: No next hop.
+        :rtype: str
+        """
         return self._NextHopType
 
     @NextHopType.setter
@@ -6495,6 +7694,16 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def NextHopDestination(self):
+        """ID of the next-hop gateway.
+If NextHopType is set to VPN, the value of this parameter is the VPN gateway ID, such as vpngw-12345678.
+`NextHopType` = `DIRECTCONNECT`: Direct connect gateway ID, such as `dcg-12345678`.
+`NextHopType` = `PEERCONNECTION`: Peering connection ID, such as `pcx-12345678`.
+`NextHopType` = `NAT`: NAT gateway ID, such as `nat-12345678`.
+If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 address of the CVM, such as 10.0.0.12.
+`NextHopType` = `CCN`: CCN instance ID, such as `ccn-12345678`.
+`NextHopType` = `NONEXTHOP`: No next hop.
+        :rtype: str
+        """
         return self._NextHopDestination
 
     @NextHopDestination.setter
@@ -6503,6 +7712,9 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def NetDetectDescription(self):
+        """Network detection description.
+        :rtype: str
+        """
         return self._NetDetectDescription
 
     @NetDetectDescription.setter
@@ -6545,6 +7757,9 @@ class CreateNetDetectResponse(AbstractModel):
 
     @property
     def NetDetect(self):
+        """The network detection (NetDetect) object.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.NetDetect`
+        """
         return self._NetDetect
 
     @NetDetect.setter
@@ -6553,6 +7768,9 @@ class CreateNetDetectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6584,6 +7802,9 @@ class CreateNetworkAclQuintupleEntriesRequest(AbstractModel):
 
     @property
     def NetworkAclId(self):
+        """Network ACL instance ID, such as `acl-12345678`.
+        :rtype: str
+        """
         return self._NetworkAclId
 
     @NetworkAclId.setter
@@ -6592,6 +7813,9 @@ class CreateNetworkAclQuintupleEntriesRequest(AbstractModel):
 
     @property
     def NetworkAclQuintupleSet(self):
+        """Network ACL quintuple rule set.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.NetworkAclQuintupleEntries`
+        """
         return self._NetworkAclQuintupleSet
 
     @NetworkAclQuintupleSet.setter
@@ -6628,6 +7852,9 @@ class CreateNetworkAclQuintupleEntriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6662,6 +7889,9 @@ class CreateNetworkAclRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID, which can be obtained from the `VpcId` field in the response of the [`DescribeVpcs`](https://intl.cloud.tencent.com/document/product/215/15778?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -6670,6 +7900,9 @@ class CreateNetworkAclRequest(AbstractModel):
 
     @property
     def NetworkAclName(self):
+        """Network ACL name, which can contain up to 60 bytes.
+        :rtype: str
+        """
         return self._NetworkAclName
 
     @NetworkAclName.setter
@@ -6678,6 +7911,9 @@ class CreateNetworkAclRequest(AbstractModel):
 
     @property
     def NetworkAclType(self):
+        """Network ACL type. Valid values: `TRIPLE` and `QUINTUPLE`.
+        :rtype: str
+        """
         return self._NetworkAclType
 
     @NetworkAclType.setter
@@ -6686,6 +7922,9 @@ class CreateNetworkAclRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -6730,6 +7969,9 @@ class CreateNetworkAclResponse(AbstractModel):
 
     @property
     def NetworkAcl(self):
+        """Network ACL instance
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.NetworkAcl`
+        """
         return self._NetworkAcl
 
     @NetworkAcl.setter
@@ -6738,6 +7980,9 @@ class CreateNetworkAclResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6793,6 +8038,9 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of DescribeVpcs API.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -6801,6 +8049,9 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def NetworkInterfaceName(self):
+        """The name of the ENI. The maximum length is 60 characters.
+        :rtype: str
+        """
         return self._NetworkInterfaceName
 
     @NetworkInterfaceName.setter
@@ -6809,6 +8060,9 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """The subnet instance ID of the ENI, such as `subnet-0ap8nwca`.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -6817,6 +8071,9 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def NetworkInterfaceDescription(self):
+        """ENI description can be named freely, but the maximum length is 60 characters.
+        :rtype: str
+        """
         return self._NetworkInterfaceDescription
 
     @NetworkInterfaceDescription.setter
@@ -6825,6 +8082,9 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def SecondaryPrivateIpAddressCount(self):
+        """The number of private IP addresses you apply for. The total number of private IP addresses cannot exceed the quota.
+        :rtype: int
+        """
         return self._SecondaryPrivateIpAddressCount
 
     @SecondaryPrivateIpAddressCount.setter
@@ -6833,6 +8093,9 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def QosLevel(self):
+        """IP u200dservice level. It is used together with `SecondaryPrivateIpAddressCount`. Values: `PT` u200d(Gold), `AU` u200d(Silver), `AG` (Bronze) and `DEFAULT` (Default).
+        :rtype: str
+        """
         return self._QosLevel
 
     @QosLevel.setter
@@ -6841,6 +8104,9 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """Specifies the security group to be bound with, such as ['sg-1dd51d'].
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -6849,6 +8115,9 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
+        """The information of the specified private IPs. You can specify a maximum of 10 each time.
+        :rtype: list of PrivateIpAddressSpecification
+        """
         return self._PrivateIpAddresses
 
     @PrivateIpAddresses.setter
@@ -6857,6 +8126,9 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -6865,6 +8137,9 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def TrunkingFlag(self):
+        """Configuration of the ENI trunking mode. Valid values: `Enable` and `Disable`. Default value: `Disable`.
+        :rtype: str
+        """
         return self._TrunkingFlag
 
     @TrunkingFlag.setter
@@ -6920,6 +8195,9 @@ class CreateNetworkInterfaceResponse(AbstractModel):
 
     @property
     def NetworkInterface(self):
+        """ENI instance.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.NetworkInterface`
+        """
         return self._NetworkInterface
 
     @NetworkInterface.setter
@@ -6928,6 +8206,9 @@ class CreateNetworkInterfaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6962,6 +8243,9 @@ class CreateRouteTableRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The ID of the VPC instance to be operated on. You can obtain the parameter value from the VpcId field in the returned result of DescribeVpcs API.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -6970,6 +8254,9 @@ class CreateRouteTableRequest(AbstractModel):
 
     @property
     def RouteTableName(self):
+        """The route table name. The maximum length is 60 characters.
+        :rtype: str
+        """
         return self._RouteTableName
 
     @RouteTableName.setter
@@ -6978,6 +8265,9 @@ class CreateRouteTableRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -7021,6 +8311,9 @@ class CreateRouteTableResponse(AbstractModel):
 
     @property
     def RouteTable(self):
+        """Route table object.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.RouteTable`
+        """
         return self._RouteTable
 
     @RouteTable.setter
@@ -7029,6 +8322,9 @@ class CreateRouteTableResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7060,6 +8356,9 @@ class CreateRoutesRequest(AbstractModel):
 
     @property
     def RouteTableId(self):
+        """Route table instance ID.
+        :rtype: str
+        """
         return self._RouteTableId
 
     @RouteTableId.setter
@@ -7068,6 +8367,9 @@ class CreateRoutesRequest(AbstractModel):
 
     @property
     def Routes(self):
+        """Routing policy object.
+        :rtype: list of Route
+        """
         return self._Routes
 
     @Routes.setter
@@ -7113,6 +8415,9 @@ class CreateRoutesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of newly added instances.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7121,6 +8426,9 @@ class CreateRoutesResponse(AbstractModel):
 
     @property
     def RouteTableSet(self):
+        """Route table object.
+        :rtype: list of RouteTable
+        """
         return self._RouteTableSet
 
     @RouteTableSet.setter
@@ -7129,6 +8437,9 @@ class CreateRoutesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7164,6 +8475,9 @@ class CreateSecurityGroupPoliciesRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
+        """The security group instance ID, such as `sg-33ocnj9n`. This can be obtained through DescribeSecurityGroups.
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -7172,6 +8486,9 @@ class CreateSecurityGroupPoliciesRequest(AbstractModel):
 
     @property
     def SecurityGroupPolicySet(self):
+        """Security group policy set.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        """
         return self._SecurityGroupPolicySet
 
     @SecurityGroupPolicySet.setter
@@ -7208,6 +8525,9 @@ class CreateSecurityGroupPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7242,6 +8562,9 @@ class CreateSecurityGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """Security group can be named freely, but cannot exceed 60 characters.
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -7250,6 +8573,9 @@ class CreateSecurityGroupRequest(AbstractModel):
 
     @property
     def GroupDescription(self):
+        """The remarks for the security group. The maximum length is 100 characters.
+        :rtype: str
+        """
         return self._GroupDescription
 
     @GroupDescription.setter
@@ -7258,6 +8584,9 @@ class CreateSecurityGroupRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID. The default is 0. You can query it on the project management page of the Qcloud console.
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -7266,6 +8595,9 @@ class CreateSecurityGroupRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -7310,6 +8642,9 @@ class CreateSecurityGroupResponse(AbstractModel):
 
     @property
     def SecurityGroup(self):
+        """Security group object.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroup`
+        """
         return self._SecurityGroup
 
     @SecurityGroup.setter
@@ -7318,6 +8653,9 @@ class CreateSecurityGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7355,6 +8693,9 @@ class CreateSecurityGroupWithPoliciesRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """Security group can be named freely, but cannot exceed 60 characters.
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -7363,6 +8704,9 @@ class CreateSecurityGroupWithPoliciesRequest(AbstractModel):
 
     @property
     def GroupDescription(self):
+        """The remarks for the security group. The maximum length is 100 characters.
+        :rtype: str
+        """
         return self._GroupDescription
 
     @GroupDescription.setter
@@ -7371,6 +8715,9 @@ class CreateSecurityGroupWithPoliciesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID. Default value: 0. You can query it on the <a href="https://console.cloud.tencent.com/project">project management page</a> of the Tencent Cloud console.
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -7379,6 +8726,9 @@ class CreateSecurityGroupWithPoliciesRequest(AbstractModel):
 
     @property
     def SecurityGroupPolicySet(self):
+        """Security group policy set.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        """
         return self._SecurityGroupPolicySet
 
     @SecurityGroupPolicySet.setter
@@ -7420,6 +8770,9 @@ class CreateSecurityGroupWithPoliciesResponse(AbstractModel):
 
     @property
     def SecurityGroup(self):
+        """Security group object.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroup`
+        """
         return self._SecurityGroup
 
     @SecurityGroup.setter
@@ -7428,6 +8781,9 @@ class CreateSecurityGroupWithPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7459,6 +8815,9 @@ class CreateServiceTemplateGroupRequest(AbstractModel):
 
     @property
     def ServiceTemplateGroupName(self):
+        """Group name of the protocol port template.
+        :rtype: str
+        """
         return self._ServiceTemplateGroupName
 
     @ServiceTemplateGroupName.setter
@@ -7467,6 +8826,9 @@ class CreateServiceTemplateGroupRequest(AbstractModel):
 
     @property
     def ServiceTemplateIds(self):
+        """Instance ID of the protocol port template, such as `ppm-4dw6agho`.
+        :rtype: list of str
+        """
         return self._ServiceTemplateIds
 
     @ServiceTemplateIds.setter
@@ -7504,6 +8866,9 @@ class CreateServiceTemplateGroupResponse(AbstractModel):
 
     @property
     def ServiceTemplateGroup(self):
+        """Group object of the protocol port template.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ServiceTemplateGroup`
+        """
         return self._ServiceTemplateGroup
 
     @ServiceTemplateGroup.setter
@@ -7512,6 +8877,9 @@ class CreateServiceTemplateGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7546,6 +8914,9 @@ class CreateServiceTemplateRequest(AbstractModel):
 
     @property
     def ServiceTemplateName(self):
+        """Template name of the protocol port
+        :rtype: str
+        """
         return self._ServiceTemplateName
 
     @ServiceTemplateName.setter
@@ -7554,6 +8925,9 @@ class CreateServiceTemplateRequest(AbstractModel):
 
     @property
     def Services(self):
+        """Supported ports inlcude single port, multiple ports, consecutive ports and all ports. Supported protocols include TCP, UDP, ICMP and GRE. Either Services or ServicesExtra is required.
+        :rtype: list of str
+        """
         return self._Services
 
     @Services.setter
@@ -7562,6 +8936,9 @@ class CreateServiceTemplateRequest(AbstractModel):
 
     @property
     def ServicesExtra(self):
+        """You can add remarks. Supported ports include single port, multiple ports, consecutive ports and all ports. Supported protocols include TCP, UDP, ICMP and GRE. Either Services or ServicesExtra is required.
+        :rtype: list of ServicesInfo
+        """
         return self._ServicesExtra
 
     @ServicesExtra.setter
@@ -7605,6 +8982,9 @@ class CreateServiceTemplateResponse(AbstractModel):
 
     @property
     def ServiceTemplate(self):
+        """Protocol port template object.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ServiceTemplate`
+        """
         return self._ServiceTemplate
 
     @ServiceTemplate.setter
@@ -7613,6 +8993,9 @@ class CreateServiceTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7641,6 +9024,9 @@ class CreateSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def SnapshotPolicies(self):
+        """Details of a snapshot policy
+        :rtype: list of SnapshotPolicy
+        """
         return self._SnapshotPolicies
 
     @SnapshotPolicies.setter
@@ -7682,6 +9068,9 @@ class CreateSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def SnapshotPolicies(self):
+        """Snapshot policies
+        :rtype: list of SnapshotPolicy
+        """
         return self._SnapshotPolicies
 
     @SnapshotPolicies.setter
@@ -7690,6 +9079,9 @@ class CreateSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7736,6 +9128,9 @@ class CreateSubnetRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The ID of the VPC instance to be operated on. You can obtain the parameter value from the VpcId field in the returned result of DescribeVpcs API.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -7744,6 +9139,9 @@ class CreateSubnetRequest(AbstractModel):
 
     @property
     def SubnetName(self):
+        """The subnet name. The maximum length is 60 bytes.
+        :rtype: str
+        """
         return self._SubnetName
 
     @SubnetName.setter
@@ -7752,6 +9150,9 @@ class CreateSubnetRequest(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """The subnet IP address range. It must be within the VPC IP address range. Subnet IP address ranges cannot overlap with each other within the same VPC.
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -7760,6 +9161,9 @@ class CreateSubnetRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """The ID of the availability zone in which the subnet resides. You can set up disaster recovery across availability zones by choosing different availability zones for different subnets.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -7768,6 +9172,9 @@ class CreateSubnetRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -7776,6 +9183,9 @@ class CreateSubnetRequest(AbstractModel):
 
     @property
     def CdcId(self):
+        """CDC instance ID
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -7822,6 +9232,9 @@ class CreateSubnetResponse(AbstractModel):
 
     @property
     def Subnet(self):
+        """Subnet object.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.Subnet`
+        """
         return self._Subnet
 
     @Subnet.setter
@@ -7830,6 +9243,9 @@ class CreateSubnetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7867,6 +9283,9 @@ class CreateSubnetsRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The `ID` of the `VPC` instance, such as `vpc-6v2ht8q5`.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -7875,6 +9294,9 @@ class CreateSubnetsRequest(AbstractModel):
 
     @property
     def Subnets(self):
+        """The subnet object list.
+        :rtype: list of SubnetInput
+        """
         return self._Subnets
 
     @Subnets.setter
@@ -7883,6 +9305,9 @@ class CreateSubnetsRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Bound tags. Note that the collection of tags here is shared by all subnet objects in the list. You cannot specify tags for each subnet. Example: [{"Key": "city", "Value": "shanghai"}].
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -7891,6 +9316,9 @@ class CreateSubnetsRequest(AbstractModel):
 
     @property
     def CdcId(self):
+        """ID of the CDC instance to which the subnets will be created
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -7940,6 +9368,9 @@ class CreateSubnetsResponse(AbstractModel):
 
     @property
     def SubnetSet(self):
+        """The list of newly created subnets.
+        :rtype: list of Subnet
+        """
         return self._SubnetSet
 
     @SubnetSet.setter
@@ -7948,6 +9379,9 @@ class CreateSubnetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7994,6 +9428,9 @@ class CreateVpcEndPointRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -8002,6 +9439,9 @@ class CreateVpcEndPointRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Subnet instance ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -8010,6 +9450,9 @@ class CreateVpcEndPointRequest(AbstractModel):
 
     @property
     def EndPointName(self):
+        """Endpoint name
+        :rtype: str
+        """
         return self._EndPointName
 
     @EndPointName.setter
@@ -8018,6 +9461,9 @@ class CreateVpcEndPointRequest(AbstractModel):
 
     @property
     def EndPointServiceId(self):
+        """Endpoint service ID
+        :rtype: str
+        """
         return self._EndPointServiceId
 
     @EndPointServiceId.setter
@@ -8026,6 +9472,9 @@ class CreateVpcEndPointRequest(AbstractModel):
 
     @property
     def EndPointVip(self):
+        """Endpoint VIP. You can apply for a specified IP.
+        :rtype: str
+        """
         return self._EndPointVip
 
     @EndPointVip.setter
@@ -8034,6 +9483,9 @@ class CreateVpcEndPointRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
+        """Security group ID
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -8075,6 +9527,9 @@ class CreateVpcEndPointResponse(AbstractModel):
 
     @property
     def EndPoint(self):
+        """Endpoint details
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.EndPoint`
+        """
         return self._EndPoint
 
     @EndPoint.setter
@@ -8083,6 +9538,9 @@ class CreateVpcEndPointResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8126,6 +9584,9 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -8134,6 +9595,9 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
 
     @property
     def EndPointServiceName(self):
+        """Endpoint service name
+        :rtype: str
+        """
         return self._EndPointServiceName
 
     @EndPointServiceName.setter
@@ -8142,6 +9606,9 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
 
     @property
     def AutoAcceptFlag(self):
+        """Whether to automatically accept
+        :rtype: bool
+        """
         return self._AutoAcceptFlag
 
     @AutoAcceptFlag.setter
@@ -8150,6 +9617,9 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
 
     @property
     def ServiceInstanceId(self):
+        """Real server ID, such as `lb-xxx`.
+        :rtype: str
+        """
         return self._ServiceInstanceId
 
     @ServiceInstanceId.setter
@@ -8158,6 +9628,9 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
 
     @property
     def IsPassService(self):
+        """(Disused) Whether it’s a PaaS service
+        :rtype: bool
+        """
         return self._IsPassService
 
     @IsPassService.setter
@@ -8166,6 +9639,9 @@ class CreateVpcEndPointServiceRequest(AbstractModel):
 
     @property
     def ServiceType(self):
+        """Mounted PaaS service type. Values: `CLB` (default), `CDB`, `CRS`
+        :rtype: str
+        """
         return self._ServiceType
 
     @ServiceType.setter
@@ -8207,6 +9683,9 @@ class CreateVpcEndPointServiceResponse(AbstractModel):
 
     @property
     def EndPointService(self):
+        """Endpoint service details
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.EndPointService`
+        """
         return self._EndPointService
 
     @EndPointService.setter
@@ -8215,6 +9694,9 @@ class CreateVpcEndPointServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8249,6 +9731,9 @@ class CreateVpcEndPointServiceWhiteListRequest(AbstractModel):
 
     @property
     def UserUin(self):
+        """UIN
+        :rtype: str
+        """
         return self._UserUin
 
     @UserUin.setter
@@ -8257,6 +9742,9 @@ class CreateVpcEndPointServiceWhiteListRequest(AbstractModel):
 
     @property
     def EndPointServiceId(self):
+        """Endpoint service ID
+        :rtype: str
+        """
         return self._EndPointServiceId
 
     @EndPointServiceId.setter
@@ -8265,6 +9753,9 @@ class CreateVpcEndPointServiceWhiteListRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Allowlist description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -8300,6 +9791,9 @@ class CreateVpcEndPointServiceWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8340,6 +9834,9 @@ class CreateVpcRequest(AbstractModel):
 
     @property
     def VpcName(self):
+        """The VPC name. The maximum length is 60 bytes.
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -8348,6 +9845,9 @@ class CreateVpcRequest(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """VPC CIDR block, which must fall within the following three private network IP ranges: 10.0.0.0/12, 172.16.0.0/12, and 192.168.0.0/16.
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -8356,6 +9856,9 @@ class CreateVpcRequest(AbstractModel):
 
     @property
     def EnableMulticast(self):
+        """Whether multicast is enabled. `true`: Enabled. `false`: Not enabled.
+        :rtype: str
+        """
         return self._EnableMulticast
 
     @EnableMulticast.setter
@@ -8364,6 +9867,9 @@ class CreateVpcRequest(AbstractModel):
 
     @property
     def DnsServers(self):
+        """DNS address. A maximum of 4 addresses is supported.
+        :rtype: list of str
+        """
         return self._DnsServers
 
     @DnsServers.setter
@@ -8372,6 +9878,9 @@ class CreateVpcRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Domain name of DHCP
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -8380,6 +9889,9 @@ class CreateVpcRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Bound tags, such as [{"Key": "city", "Value": "shanghai"}]
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -8426,6 +9938,9 @@ class CreateVpcResponse(AbstractModel):
 
     @property
     def Vpc(self):
+        """The VPC object.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.Vpc`
+        """
         return self._Vpc
 
     @Vpc.setter
@@ -8434,6 +9949,9 @@ class CreateVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8511,6 +10029,9 @@ This parameter is optional for a CCN-based VPN tunnel.
 
     @property
     def VpnGatewayId(self):
+        """The ID of the VPN gateway instance.
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -8519,6 +10040,9 @@ This parameter is optional for a CCN-based VPN tunnel.
 
     @property
     def CustomerGatewayId(self):
+        """The ID of the customer gateway, such as `cgw-2wqq41m9`. You can query the customer gateway by using the [DescribeCustomerGateways](https://intl.cloud.tencent.com/document/product/215/17516?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._CustomerGatewayId
 
     @CustomerGatewayId.setter
@@ -8527,6 +10051,9 @@ This parameter is optional for a CCN-based VPN tunnel.
 
     @property
     def VpnConnectionName(self):
+        """Gateway can be named freely, but the maximum length is 60 characters.
+        :rtype: str
+        """
         return self._VpnConnectionName
 
     @VpnConnectionName.setter
@@ -8535,6 +10062,9 @@ This parameter is optional for a CCN-based VPN tunnel.
 
     @property
     def PreShareKey(self):
+        """The pre-shared key.
+        :rtype: str
+        """
         return self._PreShareKey
 
     @PreShareKey.setter
@@ -8543,6 +10073,10 @@ This parameter is optional for a CCN-based VPN tunnel.
 
     @property
     def VpcId(self):
+        """VPC instance ID, which can be obtained from the `VpcId` field in the response of the [`DescribeVpcs`](https://intl.cloud.tencent.com/document/product/215/15778?from_cn_redirect=1) API.
+This parameter is optional for a CCN-based VPN tunnel.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -8551,6 +10085,9 @@ This parameter is optional for a CCN-based VPN tunnel.
 
     @property
     def SecurityPolicyDatabases(self):
+        """The SPD policy group, for example: {"10.0.0.5/24":["172.123.10.5/16"]}. 10.0.0.5/24 is the VPC internal IP range, and 172.123.10.5/16 is the IDC IP range. The user specifies the IP range in the VPC that can communicate with the IP range in the IDC.
+        :rtype: list of SecurityPolicyDatabase
+        """
         return self._SecurityPolicyDatabases
 
     @SecurityPolicyDatabases.setter
@@ -8559,6 +10096,9 @@ This parameter is optional for a CCN-based VPN tunnel.
 
     @property
     def IKEOptionsSpecification(self):
+        """Internet Key Exchange (IKE) configuration. IKE has a self-protection mechanism. The network security protocol is configured by the user.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
+        """
         return self._IKEOptionsSpecification
 
     @IKEOptionsSpecification.setter
@@ -8567,6 +10107,9 @@ This parameter is optional for a CCN-based VPN tunnel.
 
     @property
     def IPSECOptionsSpecification(self):
+        """IPSec configuration. The IPSec secure session configuration is provided by Tencent Cloud.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
+        """
         return self._IPSECOptionsSpecification
 
     @IPSECOptionsSpecification.setter
@@ -8575,6 +10118,9 @@ This parameter is optional for a CCN-based VPN tunnel.
 
     @property
     def Tags(self):
+        """Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -8583,6 +10129,9 @@ This parameter is optional for a CCN-based VPN tunnel.
 
     @property
     def EnableHealthCheck(self):
+        """Whether the tunnel health check is supported. The default value is `False`.
+        :rtype: bool
+        """
         return self._EnableHealthCheck
 
     @EnableHealthCheck.setter
@@ -8591,6 +10140,9 @@ This parameter is optional for a CCN-based VPN tunnel.
 
     @property
     def HealthCheckLocalIp(self):
+        """Local IP of health check. It defaults to a random IP within 169.254.128.0/17.
+        :rtype: str
+        """
         return self._HealthCheckLocalIp
 
     @HealthCheckLocalIp.setter
@@ -8599,6 +10151,9 @@ This parameter is optional for a CCN-based VPN tunnel.
 
     @property
     def HealthCheckRemoteIp(self):
+        """Peer IP of health check. It defaults to a random IP within 169.254.128.0/17.
+        :rtype: str
+        """
         return self._HealthCheckRemoteIp
 
     @HealthCheckRemoteIp.setter
@@ -8607,6 +10162,9 @@ This parameter is optional for a CCN-based VPN tunnel.
 
     @property
     def RouteType(self):
+        """Tunnel type. Valid values: `STATIC`, `StaticRoute`, and `Policy`.
+        :rtype: str
+        """
         return self._RouteType
 
     @RouteType.setter
@@ -8615,6 +10173,9 @@ This parameter is optional for a CCN-based VPN tunnel.
 
     @property
     def NegotiationType(self):
+        """Negotiation type. Valid values: `active` (default value), `passive` and `flowTrigger`.
+        :rtype: str
+        """
         return self._NegotiationType
 
     @NegotiationType.setter
@@ -8623,6 +10184,9 @@ This parameter is optional for a CCN-based VPN tunnel.
 
     @property
     def DpdEnable(self):
+        """Specifies whether to enable DPD. Valid values: `0` (disable) and `1` (enable)
+        :rtype: int
+        """
         return self._DpdEnable
 
     @DpdEnable.setter
@@ -8631,6 +10195,9 @@ This parameter is optional for a CCN-based VPN tunnel.
 
     @property
     def DpdTimeout(self):
+        """DPD timeout period. Default: 30; unit: second. If the request is not responded within this period, the peer end is considered not exists. This parameter is valid when the value of `DpdEnable` is 1. 
+        :rtype: str
+        """
         return self._DpdTimeout
 
     @DpdTimeout.setter
@@ -8639,6 +10206,9 @@ This parameter is optional for a CCN-based VPN tunnel.
 
     @property
     def DpdAction(self):
+        """The action after DPD timeout. Valid values: `clear` (disconnect) and `restart` (try again). It’s valid when `DpdEnable` is `1`. 
+        :rtype: str
+        """
         return self._DpdAction
 
     @DpdAction.setter
@@ -8705,6 +10275,9 @@ class CreateVpnConnectionResponse(AbstractModel):
 
     @property
     def VpnConnection(self):
+        """Tunnel instance object.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.VpnConnection`
+        """
         return self._VpnConnection
 
     @VpnConnection.setter
@@ -8713,6 +10286,9 @@ class CreateVpnConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8768,6 +10344,9 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID, which can be obtained from the `VpcId` field in the response of the [`DescribeVpcs`](https://intl.cloud.tencent.com/document/product/215/15778?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -8776,6 +10355,9 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def VpnGatewayName(self):
+        """The VPN gateway name. The maximum length is 60 bytes.
+        :rtype: str
+        """
         return self._VpnGatewayName
 
     @VpnGatewayName.setter
@@ -8784,6 +10366,9 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """The public network bandwidth configuration. Available bandwidth specifications: 5, 10, 20, 50, and 100. Unit: Mbps
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -8792,6 +10377,9 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """The VPN gateway billing mode. PREPAID: prepaid means monthly subscription. POSTPAID_BY_HOUR: postpaid means pay-as-you-go. Default: POSTPAID_BY_HOUR. If prepaid mode is specified, the `InstanceChargePrepaid` parameter must be entered.
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -8800,6 +10388,9 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
+        """Parameter settings for prepaid billing mode, also known as monthly subscription. This parameter can specify the purchase period and other attributes such as auto-renewal. This parameter is mandatory for prepaid instances.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -8808,6 +10399,9 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def Zone(self):
+        """The availability zone, such as `ap-guangzhou-2`.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -8816,6 +10410,9 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def Type(self):
+        """VPN gateway type. Values: `CCN` (CCN VPN gateway), `SSL` (SSL VPN gateway)
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -8824,6 +10421,9 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Bound tags, such as [{"Key": "city", "Value": "shanghai"}].
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -8832,6 +10432,9 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def CdcId(self):
+        """CDC instance ID
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -8840,6 +10443,9 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def MaxConnection(self):
+        """Maximum number of connected clients allowed for the SSL VPN gateway. Valid values: [5, 10, 20, 50, 100]. This parameter is only required for SSL VPN gateways.
+        :rtype: int
+        """
         return self._MaxConnection
 
     @MaxConnection.setter
@@ -8892,6 +10498,9 @@ class CreateVpnGatewayResponse(AbstractModel):
 
     @property
     def VpnGateway(self):
+        """VPN gateway object.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.VpnGateway`
+        """
         return self._VpnGateway
 
     @VpnGateway.setter
@@ -8900,6 +10509,9 @@ class CreateVpnGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8931,6 +10543,9 @@ class CreateVpnGatewayRoutesRequest(AbstractModel):
 
     @property
     def VpnGatewayId(self):
+        """VPN gateway ID
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -8939,6 +10554,9 @@ class CreateVpnGatewayRoutesRequest(AbstractModel):
 
     @property
     def Routes(self):
+        """Destination route list of a VPN gateway
+        :rtype: list of VpnGatewayRoute
+        """
         return self._Routes
 
     @Routes.setter
@@ -8981,6 +10599,9 @@ class CreateVpnGatewayRoutesResponse(AbstractModel):
 
     @property
     def Routes(self):
+        """Destination routes of a VPN gateway
+        :rtype: list of VpnGatewayRoute
+        """
         return self._Routes
 
     @Routes.setter
@@ -8989,6 +10610,9 @@ class CreateVpnGatewayRoutesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9083,6 +10707,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def ServiceProvider(self):
+        """Service provider. Valid values: `UNICOM`.
+        :rtype: str
+        """
         return self._ServiceProvider
 
     @ServiceProvider.setter
@@ -9091,6 +10718,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """ID of compliance review request.
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -9099,6 +10729,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def Company(self):
+        """Full company name.
+        :rtype: str
+        """
         return self._Company
 
     @Company.setter
@@ -9107,6 +10740,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def UniformSocialCreditCode(self):
+        """Unified Social Credit Code.
+        :rtype: str
+        """
         return self._UniformSocialCreditCode
 
     @UniformSocialCreditCode.setter
@@ -9115,6 +10751,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def LegalPerson(self):
+        """Legal person.
+        :rtype: str
+        """
         return self._LegalPerson
 
     @LegalPerson.setter
@@ -9123,6 +10762,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def IssuingAuthority(self):
+        """Issuing authority.
+        :rtype: str
+        """
         return self._IssuingAuthority
 
     @IssuingAuthority.setter
@@ -9131,6 +10773,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def BusinessLicense(self):
+        """Business license.
+        :rtype: str
+        """
         return self._BusinessLicense
 
     @BusinessLicense.setter
@@ -9139,6 +10784,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def BusinessAddress(self):
+        """Business address.
+        :rtype: str
+        """
         return self._BusinessAddress
 
     @BusinessAddress.setter
@@ -9147,6 +10795,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def PostCode(self):
+        """Zip code.
+        :rtype: int
+        """
         return self._PostCode
 
     @PostCode.setter
@@ -9155,6 +10806,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def Manager(self):
+        """Operator.
+        :rtype: str
+        """
         return self._Manager
 
     @Manager.setter
@@ -9163,6 +10817,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def ManagerId(self):
+        """Operator ID card number.
+        :rtype: str
+        """
         return self._ManagerId
 
     @ManagerId.setter
@@ -9171,6 +10828,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def ManagerIdCard(self):
+        """Operator ID card.
+        :rtype: str
+        """
         return self._ManagerIdCard
 
     @ManagerIdCard.setter
@@ -9179,6 +10839,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def ManagerAddress(self):
+        """Operator address.
+        :rtype: str
+        """
         return self._ManagerAddress
 
     @ManagerAddress.setter
@@ -9187,6 +10850,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def ManagerTelephone(self):
+        """Operator phone number.
+        :rtype: str
+        """
         return self._ManagerTelephone
 
     @ManagerTelephone.setter
@@ -9195,6 +10861,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def Email(self):
+        """Email.
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -9203,6 +10872,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def ServiceHandlingForm(self):
+        """Service handling form.
+        :rtype: str
+        """
         return self._ServiceHandlingForm
 
     @ServiceHandlingForm.setter
@@ -9211,6 +10883,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def AuthorizationLetter(self):
+        """Authorization letter.
+        :rtype: str
+        """
         return self._AuthorizationLetter
 
     @AuthorizationLetter.setter
@@ -9219,6 +10894,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def SafetyCommitment(self):
+        """Information security commitment.
+        :rtype: str
+        """
         return self._SafetyCommitment
 
     @SafetyCommitment.setter
@@ -9227,6 +10905,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def ServiceStartDate(self):
+        """Service start date.
+        :rtype: str
+        """
         return self._ServiceStartDate
 
     @ServiceStartDate.setter
@@ -9235,6 +10916,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def ServiceEndDate(self):
+        """Service end date.
+        :rtype: str
+        """
         return self._ServiceEndDate
 
     @ServiceEndDate.setter
@@ -9243,6 +10927,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def State(self):
+        """Status. Valid values: `PENDING`, `APPROVED`, and `DENY`.
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -9251,6 +10938,9 @@ class CrossBorderCompliance(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """Creation time of the review form.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -9314,6 +11004,9 @@ class CustomerGateway(AbstractModel):
 
     @property
     def CustomerGatewayId(self):
+        """The unique ID of the customer gateway
+        :rtype: str
+        """
         return self._CustomerGatewayId
 
     @CustomerGatewayId.setter
@@ -9322,6 +11015,9 @@ class CustomerGateway(AbstractModel):
 
     @property
     def CustomerGatewayName(self):
+        """Gateway Name
+        :rtype: str
+        """
         return self._CustomerGatewayName
 
     @CustomerGatewayName.setter
@@ -9330,6 +11026,9 @@ class CustomerGateway(AbstractModel):
 
     @property
     def IpAddress(self):
+        """Public network address
+        :rtype: str
+        """
         return self._IpAddress
 
     @IpAddress.setter
@@ -9338,6 +11037,9 @@ class CustomerGateway(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """The creation time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -9380,6 +11082,9 @@ class CustomerGatewayVendor(AbstractModel):
 
     @property
     def Platform(self):
+        """Platform.
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -9388,6 +11093,9 @@ class CustomerGatewayVendor(AbstractModel):
 
     @property
     def SoftwareVersion(self):
+        """Software version.
+        :rtype: str
+        """
         return self._SoftwareVersion
 
     @SoftwareVersion.setter
@@ -9396,6 +11104,9 @@ class CustomerGatewayVendor(AbstractModel):
 
     @property
     def VendorName(self):
+        """Vendor name.
+        :rtype: str
+        """
         return self._VendorName
 
     @VendorName.setter
@@ -9464,6 +11175,9 @@ class CvmInstance(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -9472,6 +11186,9 @@ class CvmInstance(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Subnet instance ID.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -9480,6 +11197,9 @@ class CvmInstance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """CVM instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9488,6 +11208,9 @@ class CvmInstance(AbstractModel):
 
     @property
     def InstanceName(self):
+        """CVM Name
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -9496,6 +11219,9 @@ class CvmInstance(AbstractModel):
 
     @property
     def InstanceState(self):
+        """CVM status.
+        :rtype: str
+        """
         return self._InstanceState
 
     @InstanceState.setter
@@ -9504,6 +11230,9 @@ class CvmInstance(AbstractModel):
 
     @property
     def CPU(self):
+        """Number of CPU cores in an instance (in core).
+        :rtype: int
+        """
         return self._CPU
 
     @CPU.setter
@@ -9512,6 +11241,9 @@ class CvmInstance(AbstractModel):
 
     @property
     def Memory(self):
+        """Instance’s memory capacity. Unit: GB.
+        :rtype: int
+        """
         return self._Memory
 
     @Memory.setter
@@ -9520,6 +11252,9 @@ class CvmInstance(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """The creation time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -9528,6 +11263,9 @@ class CvmInstance(AbstractModel):
 
     @property
     def InstanceType(self):
+        """Instance type.
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -9536,6 +11274,9 @@ class CvmInstance(AbstractModel):
 
     @property
     def EniLimit(self):
+        """Instance ENI quota (including primary ENIs).
+        :rtype: int
+        """
         return self._EniLimit
 
     @EniLimit.setter
@@ -9544,6 +11285,9 @@ class CvmInstance(AbstractModel):
 
     @property
     def EniIpLimit(self):
+        """Private IP quoata for instance ENIs (including primary ENIs).
+        :rtype: int
+        """
         return self._EniIpLimit
 
     @EniIpLimit.setter
@@ -9552,6 +11296,9 @@ class CvmInstance(AbstractModel):
 
     @property
     def InstanceEniCount(self):
+        """The number of ENIs (including primary ENIs) bound to a instance.
+        :rtype: int
+        """
         return self._InstanceEniCount
 
     @InstanceEniCount.setter
@@ -9608,6 +11355,9 @@ class DefaultVpcSubnet(AbstractModel):
 
     @property
     def VpcId(self):
+        """Default VPC ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -9616,6 +11366,9 @@ class DefaultVpcSubnet(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Default subnet ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -9624,6 +11377,9 @@ class DefaultVpcSubnet(AbstractModel):
 
     @property
     def VpcName(self):
+        """Default VPC name
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -9632,6 +11388,9 @@ class DefaultVpcSubnet(AbstractModel):
 
     @property
     def SubnetName(self):
+        """Default subnet name
+        :rtype: str
+        """
         return self._SubnetName
 
     @SubnetName.setter
@@ -9640,6 +11399,9 @@ class DefaultVpcSubnet(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """Default subnet IP range
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -9677,6 +11439,9 @@ class DeleteAddressTemplateGroupRequest(AbstractModel):
 
     @property
     def AddressTemplateGroupId(self):
+        """The IP address template group instance ID, such as `ipmg-90cex8mq`.
+        :rtype: str
+        """
         return self._AddressTemplateGroupId
 
     @AddressTemplateGroupId.setter
@@ -9710,6 +11475,9 @@ class DeleteAddressTemplateGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9735,6 +11503,9 @@ class DeleteAddressTemplateRequest(AbstractModel):
 
     @property
     def AddressTemplateId(self):
+        """The IP address template instance ID, such as `ipm-09o5m8kc`.
+        :rtype: str
+        """
         return self._AddressTemplateId
 
     @AddressTemplateId.setter
@@ -9768,6 +11539,9 @@ class DeleteAddressTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9796,6 +11570,9 @@ class DeleteAssistantCidrRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """`VPC` instance `ID`, such as `vpc-6v2ht8q5`.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -9804,6 +11581,9 @@ class DeleteAssistantCidrRequest(AbstractModel):
 
     @property
     def CidrBlocks(self):
+        """Array of CIDR blocks, such as ["10.0.0.0/16", "172.16.0.0/16"]
+        :rtype: list of str
+        """
         return self._CidrBlocks
 
     @CidrBlocks.setter
@@ -9838,6 +11618,9 @@ class DeleteAssistantCidrResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9863,6 +11646,9 @@ class DeleteBandwidthPackageRequest(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
+        """The unique ID of the bandwidth package to be deleted.
+        :rtype: str
+        """
         return self._BandwidthPackageId
 
     @BandwidthPackageId.setter
@@ -9896,6 +11682,9 @@ class DeleteBandwidthPackageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9921,6 +11710,9 @@ class DeleteCcnRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """The CCN instance ID, such as `ccn-f49l6u0z`.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -9954,6 +11746,9 @@ class DeleteCcnResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9979,6 +11774,9 @@ class DeleteCustomerGatewayRequest(AbstractModel):
 
     @property
     def CustomerGatewayId(self):
+        """The ID of the customer gateway, such as `cgw-2wqq41m9`. You can query the customer gateway by using the [DescribeCustomerGateways](https://intl.cloud.tencent.com/document/api/215/17516?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._CustomerGatewayId
 
     @CustomerGatewayId.setter
@@ -10012,6 +11810,9 @@ class DeleteCustomerGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10040,6 +11841,9 @@ class DeleteDirectConnectGatewayCcnRoutesRequest(AbstractModel):
 
     @property
     def DirectConnectGatewayId(self):
+        """The ID of the Direct Connect gateway, such as `dcg-prpqlmg1`
+        :rtype: str
+        """
         return self._DirectConnectGatewayId
 
     @DirectConnectGatewayId.setter
@@ -10048,6 +11852,9 @@ class DeleteDirectConnectGatewayCcnRoutesRequest(AbstractModel):
 
     @property
     def RouteIds(self):
+        """The route ID, such as `ccnr-f49l6u0z`.
+        :rtype: list of str
+        """
         return self._RouteIds
 
     @RouteIds.setter
@@ -10082,6 +11889,9 @@ class DeleteDirectConnectGatewayCcnRoutesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10107,6 +11917,9 @@ class DeleteDirectConnectGatewayRequest(AbstractModel):
 
     @property
     def DirectConnectGatewayId(self):
+        """The unique `ID` of the direct connect gateway, such as `dcg-9o233uri`.
+        :rtype: str
+        """
         return self._DirectConnectGatewayId
 
     @DirectConnectGatewayId.setter
@@ -10140,6 +11953,9 @@ class DeleteDirectConnectGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10168,6 +11984,9 @@ class DeleteFlowLogRequest(AbstractModel):
 
     @property
     def FlowLogId(self):
+        """The unique ID of the flow log.
+        :rtype: str
+        """
         return self._FlowLogId
 
     @FlowLogId.setter
@@ -10176,6 +11995,9 @@ class DeleteFlowLogRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The VPC ID or unique ID of the resource. We recommend using the unique ID. This parameter is required unless a CCN flow log is deleted.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -10210,6 +12032,9 @@ class DeleteFlowLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10235,6 +12060,9 @@ class DeleteHaVipRequest(AbstractModel):
 
     @property
     def HaVipId(self):
+        """The unique `ID` of the `HAVIP`, such as `havip-9o233uri`.
+        :rtype: str
+        """
         return self._HaVipId
 
     @HaVipId.setter
@@ -10268,6 +12096,9 @@ class DeleteHaVipResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10299,6 +12130,9 @@ class DeleteLocalGatewayRequest(AbstractModel):
 
     @property
     def LocalGatewayId(self):
+        """Local gateway instance ID
+        :rtype: str
+        """
         return self._LocalGatewayId
 
     @LocalGatewayId.setter
@@ -10307,6 +12141,9 @@ class DeleteLocalGatewayRequest(AbstractModel):
 
     @property
     def CdcId(self):
+        """CDC instance ID
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -10315,6 +12152,9 @@ class DeleteLocalGatewayRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -10350,6 +12190,9 @@ class DeleteLocalGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10378,6 +12221,9 @@ class DeleteNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
 
     @property
     def NatGatewayId(self):
+        """The ID of the NAT gateway, such as `nat-df45454`.
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -10386,6 +12232,9 @@ class DeleteNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
 
     @property
     def DestinationIpPortTranslationNatRules(self):
+        """The port forwarding rules of the NAT gateway.
+        :rtype: list of DestinationIpPortTranslationNatRule
+        """
         return self._DestinationIpPortTranslationNatRules
 
     @DestinationIpPortTranslationNatRules.setter
@@ -10425,6 +12274,9 @@ class DeleteNatGatewayDestinationIpPortTranslationNatRuleResponse(AbstractModel)
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10450,6 +12302,9 @@ class DeleteNatGatewayRequest(AbstractModel):
 
     @property
     def NatGatewayId(self):
+        """The ID of the NAT gateway, such as `nat-df45454`.
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -10483,6 +12338,9 @@ class DeleteNatGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10511,6 +12369,9 @@ class DeleteNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
 
     @property
     def NatGatewayId(self):
+        """The ID of the NAT Gateway, such as `nat-df45454`
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -10519,6 +12380,9 @@ class DeleteNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
 
     @property
     def NatGatewaySnatIds(self):
+        """The list of SNAT rule IDs of a NAT Gateway, such as `snat-df43254`
+        :rtype: list of str
+        """
         return self._NatGatewaySnatIds
 
     @NatGatewaySnatIds.setter
@@ -10553,6 +12417,9 @@ class DeleteNatGatewaySourceIpTranslationNatRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10578,6 +12445,9 @@ class DeleteNetDetectRequest(AbstractModel):
 
     @property
     def NetDetectId(self):
+        """ID of a network probe, such as `netd-12345678`.
+        :rtype: str
+        """
         return self._NetDetectId
 
     @NetDetectId.setter
@@ -10611,6 +12481,9 @@ class DeleteNetDetectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10639,6 +12512,9 @@ class DeleteNetworkAclQuintupleEntriesRequest(AbstractModel):
 
     @property
     def NetworkAclId(self):
+        """Network ACL instance ID, such as `acl-12345678`.
+        :rtype: str
+        """
         return self._NetworkAclId
 
     @NetworkAclId.setter
@@ -10647,6 +12523,9 @@ class DeleteNetworkAclQuintupleEntriesRequest(AbstractModel):
 
     @property
     def NetworkAclQuintupleSet(self):
+        """Network ACL quintuple rule set.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.NetworkAclQuintupleEntries`
+        """
         return self._NetworkAclQuintupleSet
 
     @NetworkAclQuintupleSet.setter
@@ -10683,6 +12562,9 @@ class DeleteNetworkAclQuintupleEntriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10708,6 +12590,9 @@ class DeleteNetworkAclRequest(AbstractModel):
 
     @property
     def NetworkAclId(self):
+        """Network ACL instance ID, such as `acl-12345678`.
+        :rtype: str
+        """
         return self._NetworkAclId
 
     @NetworkAclId.setter
@@ -10741,6 +12626,9 @@ class DeleteNetworkAclResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10766,6 +12654,9 @@ class DeleteNetworkInterfaceRequest(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
+        """The ID of the ENI instance, such as `eni-m6dyj72l`.
+        :rtype: str
+        """
         return self._NetworkInterfaceId
 
     @NetworkInterfaceId.setter
@@ -10799,6 +12690,9 @@ class DeleteNetworkInterfaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10824,6 +12718,9 @@ class DeleteRouteTableRequest(AbstractModel):
 
     @property
     def RouteTableId(self):
+        """The route table instance ID, such as `rtb-azd4dt1c`.
+        :rtype: str
+        """
         return self._RouteTableId
 
     @RouteTableId.setter
@@ -10857,6 +12754,9 @@ class DeleteRouteTableResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10885,6 +12785,9 @@ class DeleteRoutesRequest(AbstractModel):
 
     @property
     def RouteTableId(self):
+        """Route table instance ID.
+        :rtype: str
+        """
         return self._RouteTableId
 
     @RouteTableId.setter
@@ -10893,6 +12796,9 @@ class DeleteRoutesRequest(AbstractModel):
 
     @property
     def Routes(self):
+        """Routing policy object. Only the `RouteId` field is required when deleting a routing policy.
+        :rtype: list of Route
+        """
         return self._Routes
 
     @Routes.setter
@@ -10935,6 +12841,9 @@ class DeleteRoutesResponse(AbstractModel):
 
     @property
     def RouteSet(self):
+        """Details of the routing policy that has been deleted.
+        :rtype: list of Route
+        """
         return self._RouteSet
 
     @RouteSet.setter
@@ -10943,6 +12852,9 @@ class DeleteRoutesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10977,6 +12889,9 @@ class DeleteSecurityGroupPoliciesRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
+        """The security group instance ID, such as `sg-33ocnj9n`. This can be obtained through DescribeSecurityGroups.
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -10985,6 +12900,9 @@ class DeleteSecurityGroupPoliciesRequest(AbstractModel):
 
     @property
     def SecurityGroupPolicySet(self):
+        """The policy set of the security group. One request can only delete one or more policies in one direction. Both PolicyIndex-matching deletion and security group policy-matching deletion methods are supported. Each request can use only one matching method.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        """
         return self._SecurityGroupPolicySet
 
     @SecurityGroupPolicySet.setter
@@ -11021,6 +12939,9 @@ class DeleteSecurityGroupPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11046,6 +12967,9 @@ class DeleteSecurityGroupRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
+        """The security group instance ID, such as `sg-33ocnj9n`. This can be obtained through DescribeSecurityGroups.
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -11079,6 +13003,9 @@ class DeleteSecurityGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11104,6 +13031,9 @@ class DeleteServiceTemplateGroupRequest(AbstractModel):
 
     @property
     def ServiceTemplateGroupId(self):
+        """The protocol port template group instance ID, such as `ppmg-n17uxvve`.
+        :rtype: str
+        """
         return self._ServiceTemplateGroupId
 
     @ServiceTemplateGroupId.setter
@@ -11137,6 +13067,9 @@ class DeleteServiceTemplateGroupResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11162,6 +13095,9 @@ class DeleteServiceTemplateRequest(AbstractModel):
 
     @property
     def ServiceTemplateId(self):
+        """Protocol port template instance ID, such as `ppm-e6dy460g`.
+        :rtype: str
+        """
         return self._ServiceTemplateId
 
     @ServiceTemplateId.setter
@@ -11195,6 +13131,9 @@ class DeleteServiceTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11220,6 +13159,9 @@ class DeleteSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def SnapshotPolicyIds(self):
+        """Snapshot policy IDs
+        :rtype: list of str
+        """
         return self._SnapshotPolicyIds
 
     @SnapshotPolicyIds.setter
@@ -11253,6 +13195,9 @@ class DeleteSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11278,6 +13223,9 @@ class DeleteSubnetRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """The ID of the subnet instance. You can obtain the parameter value from the SubnetId field in the returned result of DescribeSubnets API.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -11311,6 +13259,9 @@ class DeleteSubnetResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11336,6 +13287,9 @@ class DeleteTrafficPackagesRequest(AbstractModel):
 
     @property
     def TrafficPackageIds(self):
+        """The unique ID array of traffic packages to delete
+        :rtype: list of str
+        """
         return self._TrafficPackageIds
 
     @TrafficPackageIds.setter
@@ -11369,6 +13323,9 @@ class DeleteTrafficPackagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11394,6 +13351,9 @@ class DeleteVpcEndPointRequest(AbstractModel):
 
     @property
     def EndPointId(self):
+        """Endpoint ID
+        :rtype: str
+        """
         return self._EndPointId
 
     @EndPointId.setter
@@ -11427,6 +13387,9 @@ class DeleteVpcEndPointResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11452,6 +13415,9 @@ class DeleteVpcEndPointServiceRequest(AbstractModel):
 
     @property
     def EndPointServiceId(self):
+        """Endpoint ID
+        :rtype: str
+        """
         return self._EndPointServiceId
 
     @EndPointServiceId.setter
@@ -11485,6 +13451,9 @@ class DeleteVpcEndPointServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11513,6 +13482,9 @@ class DeleteVpcEndPointServiceWhiteListRequest(AbstractModel):
 
     @property
     def UserUin(self):
+        """Array of user UINs
+        :rtype: list of str
+        """
         return self._UserUin
 
     @UserUin.setter
@@ -11521,6 +13493,9 @@ class DeleteVpcEndPointServiceWhiteListRequest(AbstractModel):
 
     @property
     def EndPointServiceId(self):
+        """Endpoint service ID
+        :rtype: str
+        """
         return self._EndPointServiceId
 
     @EndPointServiceId.setter
@@ -11555,6 +13530,9 @@ class DeleteVpcEndPointServiceWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11580,6 +13558,9 @@ class DeleteVpcRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of DescribeVpcs API.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -11613,6 +13594,9 @@ class DeleteVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11641,6 +13625,9 @@ class DeleteVpnConnectionRequest(AbstractModel):
 
     @property
     def VpnGatewayId(self):
+        """The ID of the VPN gateway instance.
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -11649,6 +13636,9 @@ class DeleteVpnConnectionRequest(AbstractModel):
 
     @property
     def VpnConnectionId(self):
+        """The ID of the VPN tunnel instance, such as `vpnx-f49l6u0z`.
+        :rtype: str
+        """
         return self._VpnConnectionId
 
     @VpnConnectionId.setter
@@ -11683,6 +13673,9 @@ class DeleteVpnConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11708,6 +13701,9 @@ class DeleteVpnGatewayRequest(AbstractModel):
 
     @property
     def VpnGatewayId(self):
+        """The ID of the VPN gateway instance.
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -11741,6 +13737,9 @@ class DeleteVpnGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11769,6 +13768,9 @@ class DeleteVpnGatewayRoutesRequest(AbstractModel):
 
     @property
     def VpnGatewayId(self):
+        """Instance ID of the VPN gateway
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -11777,6 +13779,9 @@ class DeleteVpnGatewayRoutesRequest(AbstractModel):
 
     @property
     def RouteIds(self):
+        """List of route IDs
+        :rtype: list of str
+        """
         return self._RouteIds
 
     @RouteIds.setter
@@ -11811,6 +13816,9 @@ class DeleteVpnGatewayRoutesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11845,6 +13853,9 @@ class DescribeAccountAttributesResponse(AbstractModel):
 
     @property
     def AccountAttributeSet(self):
+        """User account attribute object
+        :rtype: list of AccountAttribute
+        """
         return self._AccountAttributeSet
 
     @AccountAttributeSet.setter
@@ -11853,6 +13864,9 @@ class DescribeAccountAttributesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11893,6 +13907,9 @@ class DescribeAddressQuotaResponse(AbstractModel):
 
     @property
     def QuotaSet(self):
+        """The quota information of EIPs in an account.
+        :rtype: list of Quota
+        """
         return self._QuotaSet
 
     @QuotaSet.setter
@@ -11901,6 +13918,9 @@ class DescribeAddressQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -11940,6 +13960,11 @@ class DescribeAddressTemplateGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions.
+<li>address-template-group-name - String - (Filter condition) IP address template group name.</li>
+<li>address-template-group-id - String - (Filter condition) IP address template group instance ID, such as `ipmg-mdunqeb6`.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -11948,6 +13973,9 @@ class DescribeAddressTemplateGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. The default value is 0.
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -11956,6 +13984,9 @@ class DescribeAddressTemplateGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of values to be returned. The default value is 20. Maximum is 100.
+        :rtype: str
+        """
         return self._Limit
 
     @Limit.setter
@@ -12002,6 +14033,9 @@ class DescribeAddressTemplateGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of instances meeting the filter condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -12010,6 +14044,9 @@ class DescribeAddressTemplateGroupsResponse(AbstractModel):
 
     @property
     def AddressTemplateGroupSet(self):
+        """IP address template.
+        :rtype: list of AddressTemplateGroup
+        """
         return self._AddressTemplateGroupSet
 
     @AddressTemplateGroupSet.setter
@@ -12018,6 +14055,9 @@ class DescribeAddressTemplateGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12059,6 +14099,12 @@ class DescribeAddressTemplatesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filters
+<li>address-template-name - IP address template name.</li>
+<li>address-template-id - IP address template ID, such as `ipm-mdunqeb6`.</li>
+<li>address-ip - IP address.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -12067,6 +14113,9 @@ class DescribeAddressTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. The default value is 0.
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -12075,6 +14124,9 @@ class DescribeAddressTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of values to be returned. The default value is 20. Maximum is 100.
+        :rtype: str
+        """
         return self._Limit
 
     @Limit.setter
@@ -12121,6 +14173,9 @@ class DescribeAddressTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of instances meeting the filter condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -12129,6 +14184,9 @@ class DescribeAddressTemplatesResponse(AbstractModel):
 
     @property
     def AddressTemplateSet(self):
+        """IP address template.
+        :rtype: list of AddressTemplate
+        """
         return self._AddressTemplateSet
 
     @AddressTemplateSet.setter
@@ -12137,6 +14195,9 @@ class DescribeAddressTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12192,6 +14253,9 @@ class DescribeAddressesRequest(AbstractModel):
 
     @property
     def AddressIds(self):
+        """The list of unique IDs of EIPs in the format of `eip-11112222`. `AddressIds` and `Filters.address-id` cannot be specified at the same time.
+        :rtype: list of str
+        """
         return self._AddressIds
 
     @AddressIds.setter
@@ -12200,6 +14264,23 @@ class DescribeAddressesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Each request can have up to 10 `Filters` and 100 `Filter.Values`. Detailed filter conditions:
+<li> address-id - String - Optional - Filter by unique EIP ID, such as `eip-11112222`.</li>
+<li> address-name - String - Optional - Filter by EIP name. Fuzzy filtering is not supported.</li>
+<li> address-ip - String - Optional - Filter by EIP address.</li>
+<li> address-status - String - Optional - Filter by EIP status. Valid values: `CREATING`, `BINDING`, `BIND`, `UNBINDING`, `UNBIND`, `OFFLINING`, and `BIND_ENI`.</li>
+<li> instance-id - String - Optional - Filter by the ID of the instance bound to the EIP, such as `ins-11112222`.</li>
+<li> private-ip-address - String - Optional - Filter by the private IP address bound to the EIP.</li>
+<li> network-interface-id - String - Optional - Filter by ID of the ENI bound to the EIP, such as `eni-11112222`.</li>
+<li> is-arrears - String - Optional - Filter by the fact whether the EIP is overdue (TRUE: the EIP is overdue | FALSE: the billing status of the EIP is normal).</li>
+<li> address-type - String - Optional - Filter by IP type. Valid values: `WanIP`, `EIP`, `AnycastEIP`, and `HighQualityEIP`. Default value: `EIP`.</li>
+<li> address-isp - String - Optional - Filter by ISP type. Valid values: `BGP`, `CMCC`, `CUCC`, and `CTCC`.</li>
+<li> dedicated-cluster-id - String - Optional - Filter by unique CDC ID, such as `cluster-11112222`.</li>
+<li> tag-key - String - Optional - Filter by tag key.</li>
+<li> tag-value - String - Optional - Filter by tag value.</li>
+<li> tag:tag-key - String - Optional - Filter by tag key-value pair. Use a specific tag key to replace `tag-key`.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -12208,6 +14289,9 @@ class DescribeAddressesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """The Offset. The default value is 0. For more information about `Offset`, see the relevant section in the API documentation.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12216,6 +14300,9 @@ class DescribeAddressesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant section in the API documentation.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12263,6 +14350,9 @@ class DescribeAddressesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of EIPs meeting the condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -12271,6 +14361,9 @@ class DescribeAddressesResponse(AbstractModel):
 
     @property
     def AddressSet(self):
+        """List of EIPs details.
+        :rtype: list of Address
+        """
         return self._AddressSet
 
     @AddressSet.setter
@@ -12279,6 +14372,9 @@ class DescribeAddressesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12321,6 +14417,9 @@ class DescribeAssistantCidrRequest(AbstractModel):
 
     @property
     def VpcIds(self):
+        """The ID of a VPC instance set, such as `vpc-6v2ht8q5`.
+        :rtype: list of str
+        """
         return self._VpcIds
 
     @VpcIds.setter
@@ -12329,6 +14428,10 @@ class DescribeAssistantCidrRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter condition. `VpcIds` and `Filters` cannot be specified at the same time.
+<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -12337,6 +14440,9 @@ class DescribeAssistantCidrRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12345,6 +14451,9 @@ class DescribeAssistantCidrRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12393,6 +14502,10 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def AssistantCidrSet(self):
+        """A set of eligible secondary CIDR blocks
+Note: This field may return null, indicating that no valid value was found.
+        :rtype: list of AssistantCidr
+        """
         return self._AssistantCidrSet
 
     @AssistantCidrSet.setter
@@ -12401,6 +14514,9 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def TotalCount(self):
+        """Number of eligible instances.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -12409,6 +14525,9 @@ Note: This field may return null, indicating that no valid value was found.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12441,6 +14560,9 @@ class DescribeBandwidthPackageBillUsageRequest(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
+        """Unique ID of the pay-as-you-go bandwidth package.
+        :rtype: str
+        """
         return self._BandwidthPackageId
 
     @BandwidthPackageId.setter
@@ -12477,6 +14599,9 @@ class DescribeBandwidthPackageBillUsageResponse(AbstractModel):
 
     @property
     def BandwidthPackageBillBandwidthSet(self):
+        """Current billable usage.
+        :rtype: list of BandwidthPackageBillBandwidth
+        """
         return self._BandwidthPackageBillBandwidthSet
 
     @BandwidthPackageBillBandwidthSet.setter
@@ -12485,6 +14610,9 @@ class DescribeBandwidthPackageBillUsageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12525,6 +14653,9 @@ class DescribeBandwidthPackageQuotaResponse(AbstractModel):
 
     @property
     def QuotaSet(self):
+        """The quota of the bandwidth package.
+        :rtype: list of Quota
+        """
         return self._QuotaSet
 
     @QuotaSet.setter
@@ -12533,6 +14664,9 @@ class DescribeBandwidthPackageQuotaResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12575,6 +14709,9 @@ class DescribeBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
+        """Unique ID of the bandwidth package in the form of `bwp-11112222`.
+        :rtype: str
+        """
         return self._BandwidthPackageId
 
     @BandwidthPackageId.setter
@@ -12583,6 +14720,11 @@ class DescribeBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Each request can have up to 10 `Filters` and 5 `Filter.Values`. `AddressIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:
+<li>resource-id - String - Required: no -  (Filter condition) Filters by the unique ID of resources in a bandwidth package, such as `eip-11112222`.</li>
+<li>resource-type - String - Required: no - (Filter condition) Filters by the type of resources in a bandwidth package. It now supports only EIP (`Address`) and load balancer (`LoadBalance`).</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -12591,6 +14733,9 @@ class DescribeBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12599,6 +14744,9 @@ class DescribeBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12646,6 +14794,9 @@ class DescribeBandwidthPackageResourcesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of eligible resources in the bandwidth package.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -12654,6 +14805,9 @@ class DescribeBandwidthPackageResourcesResponse(AbstractModel):
 
     @property
     def ResourceSet(self):
+        """The list of resources in the bandwidth package.
+        :rtype: list of Resource
+        """
         return self._ResourceSet
 
     @ResourceSet.setter
@@ -12662,6 +14816,9 @@ class DescribeBandwidthPackageResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12713,6 +14870,9 @@ class DescribeBandwidthPackagesRequest(AbstractModel):
 
     @property
     def BandwidthPackageIds(self):
+        """The unique ID list of bandwidth packages.
+        :rtype: list of str
+        """
         return self._BandwidthPackageIds
 
     @BandwidthPackageIds.setter
@@ -12721,6 +14881,19 @@ class DescribeBandwidthPackagesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Each request can have up to 10 `Filters`. `BandwidthPackageIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:
+<li> bandwidth-package_id - String - Required: No - (Filter condition) Filter by the unique ID of the bandwidth package.</li>
+<li> bandwidth-package-name - String - Required: No - (Filter condition) Filter by the bandwidth package name. Fuzzy filtering is not supported.</li>
+<li> network-type - String - Required: No - (Filter condition) Filter by the bandwidth package type. Valid values: `HIGH_QUALITY_BGP`, `BGP`, `SINGLEISP`, and `ANYCAST`.</li>
+<li> charge-type - String - Required: No - (Filter condition) Filter by the bandwidth package billing mode. Valid values: `TOP5_POSTPAID_BY_MONTH` and `PERCENT95_POSTPAID_BY_MONTH`.</li>
+<li> resource.resource-type - String - Required: No - (Filter condition) Filter by the bandwidth package resource type. Valid values: `Address` and `LoadBalance`.</li>
+<li> resource.resource-id - String - Required: No - (Filter condition) Filter by the bandwidth package resource ID, such as `eip-xxxx` and `lb-xxxx`.</li>
+<li> resource.address-ip - String - Required: No - (Filter condition) Filter by the bandwidth package resource IP.</li>
+<li> tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>
+<li> tag-value - String - Required: No - (Filter condition) Filter by tag value.</li>
+<li> tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. Use a specific tag key to replace `tag-key`.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -12729,6 +14902,9 @@ class DescribeBandwidthPackagesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. This value defaults to 0. For more information, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12737,6 +14913,9 @@ class DescribeBandwidthPackagesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of bandwidth packages returned. This value defaults to 20. The maximum is 100. For more information, see the relevant sections in API [Overview](https://intl.cloud.tencent.com/document/api/213/15688?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12784,6 +14963,9 @@ class DescribeBandwidthPackagesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of eligible bandwidth packages.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -12792,6 +14974,9 @@ class DescribeBandwidthPackagesResponse(AbstractModel):
 
     @property
     def BandwidthPackageSet(self):
+        """Detail information of the bandwidth package.
+        :rtype: list of BandwidthPackage
+        """
         return self._BandwidthPackageSet
 
     @BandwidthPackageSet.setter
@@ -12800,6 +14985,9 @@ class DescribeBandwidthPackagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12851,6 +15039,9 @@ class DescribeCcnAttachedInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -12859,6 +15050,9 @@ class DescribeCcnAttachedInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The returned quantity
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -12867,6 +15061,13 @@ class DescribeCcnAttachedInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions:
+<li>`ccn-id` - String - The CCN instance ID. </li>
+<li>`instance-type` - String - The associated instance type. </li>
+<li>`instance-region` - String - The associated instance region. </li>
+<li>`instance-id` - String - The instance ID of the associated instance. </li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -12875,6 +15076,9 @@ class DescribeCcnAttachedInstancesRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """The ID of the CCN instance
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -12883,6 +15087,9 @@ class DescribeCcnAttachedInstancesRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """The order field supports `CcnId`, `InstanceType`, `InstanceId`, `InstanceName`, `InstanceRegion`, `AttachedTime`, and `State`.
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -12891,6 +15098,9 @@ class DescribeCcnAttachedInstancesRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
+        """Order methods. Ascending: `ASC`, Descending: `DESC`.
+        :rtype: str
+        """
         return self._OrderDirection
 
     @OrderDirection.setter
@@ -12940,6 +15150,9 @@ class DescribeCcnAttachedInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of objects meeting the condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -12948,6 +15161,9 @@ class DescribeCcnAttachedInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
+        """The list of associated instances.
+        :rtype: list of CcnAttachedInstance
+        """
         return self._InstanceSet
 
     @InstanceSet.setter
@@ -12956,6 +15172,9 @@ class DescribeCcnAttachedInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -12988,6 +15207,9 @@ class DescribeCcnRegionBandwidthLimitsRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """The CCN instance ID in the format of `ccn-f49l6u0z`.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -13024,6 +15246,9 @@ class DescribeCcnRegionBandwidthLimitsResponse(AbstractModel):
 
     @property
     def CcnRegionBandwidthLimitSet(self):
+        """The outbound bandwidth caps of all regions connected with the specified CCN instance
+        :rtype: list of CcnRegionBandwidthLimit
+        """
         return self._CcnRegionBandwidthLimitSet
 
     @CcnRegionBandwidthLimitSet.setter
@@ -13032,6 +15257,9 @@ class DescribeCcnRegionBandwidthLimitsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13081,6 +15309,9 @@ class DescribeCcnRoutesRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """The CCN instance ID, such as `ccn-gree226l`.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -13089,6 +15320,9 @@ class DescribeCcnRoutesRequest(AbstractModel):
 
     @property
     def RouteIds(self):
+        """The unique ID of the CCN routing policy, such as `ccnr-f49l6u0z`.
+        :rtype: list of str
+        """
         return self._RouteIds
 
     @RouteIds.setter
@@ -13097,6 +15331,15 @@ class DescribeCcnRoutesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter condition. `RouteIds` and `Filters` cannot be specified at the same time.
+<li>route-id - String - (Filter condition) Routing policy ID.</li>
+<li>cidr-block - String - (Filter condition) Destination.</li>
+<li>instance-type - String - (Filter condition) The next hop type.</li>
+<li>instance-region - String - (Filter condition) The next hop region.</li>
+<li>instance-id - String - (Filter condition) The instance ID of the next hop.</li>
+<li>route-table-id - String - (Filter condition) The list of route table IDs in the format of `ccntr-1234edfr`. Filters by the route table ID.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -13105,6 +15348,9 @@ class DescribeCcnRoutesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -13113,6 +15359,9 @@ class DescribeCcnRoutesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The returned quantity
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -13161,6 +15410,9 @@ class DescribeCcnRoutesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of objects meeting the condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -13169,6 +15421,9 @@ class DescribeCcnRoutesResponse(AbstractModel):
 
     @property
     def RouteSet(self):
+        """The CCN routing policy object.
+        :rtype: list of CcnRoute
+        """
         return self._RouteSet
 
     @RouteSet.setter
@@ -13177,6 +15432,9 @@ class DescribeCcnRoutesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13230,6 +15488,9 @@ class DescribeCcnsRequest(AbstractModel):
 
     @property
     def CcnIds(self):
+        """The CCN instance ID, such as `ccn-f49l6u0z`. Each request can have a maximum of 100 instances. `CcnIds` and `Filters` cannot be specified at the same time
+        :rtype: list of str
+        """
         return self._CcnIds
 
     @CcnIds.setter
@@ -13238,6 +15499,15 @@ class DescribeCcnsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions. `CcnIds` and `Filters` cannot be specified at the same time.
+<li>ccn-id - String - (Filter condition) The unique ID of the CCN, such as `vpc-f49l6u0z`.</li>
+<li>ccn-name - String - (Filter condition) The CCN name.</li>
+<li>ccn-description - String - (Filter condition) CCN description.</li>
+<li>state - String - (Filter condition) The instance status. 'ISOLATED': Isolated (the account is in arrears and the service is suspended.) 'AVAILABLE': Running.</li>
+<li>tag-key - String - Required: no - (Filter condition) Filters by tag key.</li>
+<li>`tag:tag-key` - String - Required: no - (Filter condition) Filters by tag key pair. For this parameter, `tag-key` will be replaced with a specific tag key. For more information, see this example: **Querying the list of CCNs bound to tags**.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -13246,6 +15516,9 @@ class DescribeCcnsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -13254,6 +15527,9 @@ class DescribeCcnsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The returned quantity
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -13262,6 +15538,9 @@ class DescribeCcnsRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """Order fields support `CcnId`, `CcnName`, `CreateTime`, `State`, and `QosLevel`
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -13270,6 +15549,9 @@ class DescribeCcnsRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
+        """Order methods. Ascending: `ASC`, Descending: `DESC`.
+        :rtype: str
+        """
         return self._OrderDirection
 
     @OrderDirection.setter
@@ -13319,6 +15601,9 @@ class DescribeCcnsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of objects meeting the condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -13327,6 +15612,9 @@ class DescribeCcnsResponse(AbstractModel):
 
     @property
     def CcnSet(self):
+        """CCN object.
+        :rtype: list of CCN
+        """
         return self._CcnSet
 
     @CcnSet.setter
@@ -13335,6 +15623,9 @@ class DescribeCcnsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13375,6 +15666,11 @@ class DescribeClassicLinkInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions.
+<li>vpc-id - String - (Filter condition) The VPC instance ID.</li>
+<li>vm-ip - String - (Filter condition) The IP address of the CVM on the basic network.</li>
+        :rtype: list of FilterObject
+        """
         return self._Filters
 
     @Filters.setter
@@ -13383,6 +15679,9 @@ class DescribeClassicLinkInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -13391,6 +15690,9 @@ class DescribeClassicLinkInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The returned quantity
+        :rtype: str
+        """
         return self._Limit
 
     @Limit.setter
@@ -13437,6 +15739,9 @@ class DescribeClassicLinkInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of instances meeting the filter condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -13445,6 +15750,9 @@ class DescribeClassicLinkInstancesResponse(AbstractModel):
 
     @property
     def ClassicLinkInstanceSet(self):
+        """Classiclink instance.
+        :rtype: list of ClassicLinkInstance
+        """
         return self._ClassicLinkInstanceSet
 
     @ClassicLinkInstanceSet.setter
@@ -13453,6 +15761,9 @@ class DescribeClassicLinkInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13536,6 +15847,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def ServiceProvider(self):
+        """(Exact match) Service provider. Valid values: `UNICOM`.
+        :rtype: str
+        """
         return self._ServiceProvider
 
     @ServiceProvider.setter
@@ -13544,6 +15858,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def ComplianceId(self):
+        """(Exact match) ID of compliance review request.
+        :rtype: int
+        """
         return self._ComplianceId
 
     @ComplianceId.setter
@@ -13552,6 +15869,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def Company(self):
+        """(Fuzzy match) Company name.
+        :rtype: str
+        """
         return self._Company
 
     @Company.setter
@@ -13560,6 +15880,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def UniformSocialCreditCode(self):
+        """(Fuzzy match) Unified Social Credit Code.
+        :rtype: str
+        """
         return self._UniformSocialCreditCode
 
     @UniformSocialCreditCode.setter
@@ -13568,6 +15891,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def LegalPerson(self):
+        """(Fuzzy match) Legal person.
+        :rtype: str
+        """
         return self._LegalPerson
 
     @LegalPerson.setter
@@ -13576,6 +15902,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def IssuingAuthority(self):
+        """(Fuzzy match) Issuing authority.
+        :rtype: str
+        """
         return self._IssuingAuthority
 
     @IssuingAuthority.setter
@@ -13584,6 +15913,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def BusinessAddress(self):
+        """(Fuzzy match) Business address.
+        :rtype: str
+        """
         return self._BusinessAddress
 
     @BusinessAddress.setter
@@ -13592,6 +15924,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def PostCode(self):
+        """(Exact match) Zip code.
+        :rtype: int
+        """
         return self._PostCode
 
     @PostCode.setter
@@ -13600,6 +15935,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def Manager(self):
+        """(Fuzzy match) Operator.
+        :rtype: str
+        """
         return self._Manager
 
     @Manager.setter
@@ -13608,6 +15946,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def ManagerId(self):
+        """(Exact match) Operator ID card number.
+        :rtype: str
+        """
         return self._ManagerId
 
     @ManagerId.setter
@@ -13616,6 +15957,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def ManagerAddress(self):
+        """(Fuzzy match) Operator address.
+        :rtype: str
+        """
         return self._ManagerAddress
 
     @ManagerAddress.setter
@@ -13624,6 +15968,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def ManagerTelephone(self):
+        """(Exact match) Operator phone number.
+        :rtype: str
+        """
         return self._ManagerTelephone
 
     @ManagerTelephone.setter
@@ -13632,6 +15979,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def Email(self):
+        """(Exact match) Email.
+        :rtype: str
+        """
         return self._Email
 
     @Email.setter
@@ -13640,6 +15990,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def ServiceStartDate(self):
+        """(Exact match) Service start date, such as `2020-07-28`.
+        :rtype: str
+        """
         return self._ServiceStartDate
 
     @ServiceStartDate.setter
@@ -13648,6 +16001,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def ServiceEndDate(self):
+        """(Exact match) Service end date, such as `2020-07-28`.
+        :rtype: str
+        """
         return self._ServiceEndDate
 
     @ServiceEndDate.setter
@@ -13656,6 +16012,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def State(self):
+        """(Exact match) Status. Valid values: `PENDING`, `APPROVED`, and `DENY`.
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -13664,6 +16023,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """The offset value
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -13672,6 +16034,9 @@ class DescribeCrossBorderComplianceRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Quantity of returned items
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -13728,6 +16093,9 @@ class DescribeCrossBorderComplianceResponse(AbstractModel):
 
     @property
     def CrossBorderComplianceSet(self):
+        """List of compliance review requests.
+        :rtype: list of CrossBorderCompliance
+        """
         return self._CrossBorderComplianceSet
 
     @CrossBorderComplianceSet.setter
@@ -13736,6 +16104,9 @@ class DescribeCrossBorderComplianceResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of compliance review requests.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -13744,6 +16115,9 @@ class DescribeCrossBorderComplianceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13785,6 +16159,9 @@ class DescribeCustomerGatewayVendorsResponse(AbstractModel):
 
     @property
     def CustomerGatewayVendorSet(self):
+        """Customer gateway vendor information object.
+        :rtype: list of CustomerGatewayVendor
+        """
         return self._CustomerGatewayVendorSet
 
     @CustomerGatewayVendorSet.setter
@@ -13793,6 +16170,9 @@ class DescribeCustomerGatewayVendorsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13836,6 +16216,9 @@ class DescribeCustomerGatewaysRequest(AbstractModel):
 
     @property
     def CustomerGatewayIds(self):
+        """Customer gateway ID, such as `cgw-2wqq41m9`. Each request can have a maximum of 100 instances. `CustomerGatewayIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of str
+        """
         return self._CustomerGatewayIds
 
     @CustomerGatewayIds.setter
@@ -13844,6 +16227,12 @@ class DescribeCustomerGatewaysRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """The filter condition. For details, see the Instance Filter Conditions Table. The upper limit for `Filters` in each request is 10 and 5 for `Filter.Values`. `CustomerGatewayIds` and `Filters` cannot be specified at the same time.
+<li>customer-gateway-id - String - (Filter condition) The unique ID of the user gateway, such as `cgw-mgp33pll`.</li>
+<li>customer-gateway-name - String - (Filter condition) The name of the user gateway, such as `test-cgw`.</li>
+<li>ip-address - String - (Filter condition) The public IP address, such as `58.211.1.12`.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -13852,6 +16241,9 @@ class DescribeCustomerGatewaysRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0. For more information on Offset, see the relevant section in the API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -13860,6 +16252,9 @@ class DescribeCustomerGatewaysRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -13907,6 +16302,9 @@ class DescribeCustomerGatewaysResponse(AbstractModel):
 
     @property
     def CustomerGatewaySet(self):
+        """Customer gateway object list
+        :rtype: list of CustomerGateway
+        """
         return self._CustomerGatewaySet
 
     @CustomerGatewaySet.setter
@@ -13915,6 +16313,9 @@ class DescribeCustomerGatewaysResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible instances
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -13923,6 +16324,9 @@ class DescribeCustomerGatewaysResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -13966,6 +16370,9 @@ class DescribeDirectConnectGatewayCcnRoutesRequest(AbstractModel):
 
     @property
     def DirectConnectGatewayId(self):
+        """The ID of the Direct Connect gateway, such as `dcg-prpqlmg1`.
+        :rtype: str
+        """
         return self._DirectConnectGatewayId
 
     @DirectConnectGatewayId.setter
@@ -13974,6 +16381,11 @@ class DescribeDirectConnectGatewayCcnRoutesRequest(AbstractModel):
 
     @property
     def CcnRouteType(self):
+        """The route learning type of the CCN. Available values:
+<li>`BGP` - Automatic learning.</li>
+<li>`STATIC` - Static means user-configured. This is the default value.</li>
+        :rtype: str
+        """
         return self._CcnRouteType
 
     @CcnRouteType.setter
@@ -13982,6 +16394,9 @@ class DescribeDirectConnectGatewayCcnRoutesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -13990,6 +16405,9 @@ class DescribeDirectConnectGatewayCcnRoutesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The returned quantity.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -14032,6 +16450,9 @@ class DescribeDirectConnectGatewayCcnRoutesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of objects meeting the condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -14040,6 +16461,9 @@ class DescribeDirectConnectGatewayCcnRoutesResponse(AbstractModel):
 
     @property
     def RouteSet(self):
+        """The CCN route (IDC IP range) list.
+        :rtype: list of DirectConnectGatewayCcnRoute
+        """
         return self._RouteSet
 
     @RouteSet.setter
@@ -14048,6 +16472,9 @@ class DescribeDirectConnectGatewayCcnRoutesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14096,6 +16523,9 @@ class DescribeDirectConnectGatewaysRequest(AbstractModel):
 
     @property
     def DirectConnectGatewayIds(self):
+        """The unique ID of the direct connect gateway, such as `dcg-9o233uri`.
+        :rtype: list of str
+        """
         return self._DirectConnectGatewayIds
 
     @DirectConnectGatewayIds.setter
@@ -14104,6 +16534,16 @@ class DescribeDirectConnectGatewaysRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter condition. `DirectConnectGatewayIds` and `Filters` cannot be specified at the same time.
+<li>direct-connect-gateway-id - String - The unique ID of the direct connect gateway, such as `dcg-9o233uri`.</li>
+<li>direct-connect-gateway-name - String - The name of the direct connect gateway. The default is fuzzy query.</li>
+<li>direct-connect-gateway-ip - String - The IP of the direct connect gateway.</li>
+<li>gateway-type - String - The gateway type. Valid values: `NORMAL` (Standard type), `NAT` (NAT type).</li>
+<li>network-type- String - The network type. Valid values: `VPC` (VPC type), `CCN` (CCN type).</li>
+<li>ccn-id - String - The ID of the CCN where the direct connect gateway resides.</li>
+<li>vpc-id - String - The ID of the VPC where the direct connect gateway resides.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -14112,6 +16552,9 @@ class DescribeDirectConnectGatewaysRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """The offset.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -14120,6 +16563,9 @@ class DescribeDirectConnectGatewaysRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Max number of results returned
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -14167,6 +16613,9 @@ class DescribeDirectConnectGatewaysResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of eligible objects.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -14175,6 +16624,9 @@ class DescribeDirectConnectGatewaysResponse(AbstractModel):
 
     @property
     def DirectConnectGatewaySet(self):
+        """The object array of the direct connect gateway.
+        :rtype: list of DirectConnectGateway
+        """
         return self._DirectConnectGatewaySet
 
     @DirectConnectGatewaySet.setter
@@ -14183,6 +16635,9 @@ class DescribeDirectConnectGatewaysResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14218,6 +16673,9 @@ class DescribeFlowLogRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """ID of the VPC instance.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -14226,6 +16684,9 @@ class DescribeFlowLogRequest(AbstractModel):
 
     @property
     def FlowLogId(self):
+        """The unique ID of the flow log.
+        :rtype: str
+        """
         return self._FlowLogId
 
     @FlowLogId.setter
@@ -14263,6 +16724,9 @@ class DescribeFlowLogResponse(AbstractModel):
 
     @property
     def FlowLog(self):
+        """The flow log information.
+        :rtype: list of FlowLog
+        """
         return self._FlowLog
 
     @FlowLog.setter
@@ -14271,6 +16735,9 @@ class DescribeFlowLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14343,6 +16810,9 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """ID of the VPC instance
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -14351,6 +16821,9 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def FlowLogId(self):
+        """The unique ID of the flow log.
+        :rtype: str
+        """
         return self._FlowLogId
 
     @FlowLogId.setter
@@ -14359,6 +16832,9 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def FlowLogName(self):
+        """The name of the flow log instance.
+        :rtype: str
+        """
         return self._FlowLogName
 
     @FlowLogName.setter
@@ -14367,6 +16843,9 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """The resource type of the flow log. Valid values: 'VPC', 'SUBNET', and 'NETWORKINTERFACE'.
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -14375,6 +16854,9 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def ResourceId(self):
+        """The unique ID of the resource.
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -14383,6 +16865,9 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def TrafficType(self):
+        """Type of flow logs to be collected. Valid values: 'ACCEPT', 'REJECT' and 'ALL'.
+        :rtype: str
+        """
         return self._TrafficType
 
     @TrafficType.setter
@@ -14391,6 +16876,9 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def CloudLogId(self):
+        """The storage ID of the flow log.
+        :rtype: str
+        """
         return self._CloudLogId
 
     @CloudLogId.setter
@@ -14399,6 +16887,9 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def CloudLogState(self):
+        """The storage ID status of the flow log.
+        :rtype: str
+        """
         return self._CloudLogState
 
     @CloudLogState.setter
@@ -14407,6 +16898,9 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """Order by field. Valid values: 'flowLogName' and 'createTime'. Default value: 'createTime'.
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -14415,6 +16909,9 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
+        """In ascending (`asc`) or descending (`desc`) order. Default value: 'desc'.
+        :rtype: str
+        """
         return self._OrderDirection
 
     @OrderDirection.setter
@@ -14423,6 +16920,9 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """The offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -14431,6 +16931,9 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of rows per page. Default value: 10.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -14439,6 +16942,11 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter condition. `FlowLogId` and `Filters` cannot be specified at the same time.
+<li> `tag-key` - String - Optional - Filter by the tag key.</li>
+<li> `tag:tag-key` - String - Optional - Filter by the tag key-value pair. The tag-key should be replaced with a specified tag key.</li>
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.Filter`
+        """
         return self._Filters
 
     @Filters.setter
@@ -14447,6 +16955,9 @@ class DescribeFlowLogsRequest(AbstractModel):
 
     @property
     def CloudLogRegion(self):
+        """The region corresponding to the flow log storage ID.
+        :rtype: str
+        """
         return self._CloudLogRegion
 
     @CloudLogRegion.setter
@@ -14501,6 +17012,9 @@ class DescribeFlowLogsResponse(AbstractModel):
 
     @property
     def FlowLog(self):
+        """The instance set of flow logs.
+        :rtype: list of FlowLog
+        """
         return self._FlowLog
 
     @FlowLog.setter
@@ -14509,6 +17023,9 @@ class DescribeFlowLogsResponse(AbstractModel):
 
     @property
     def TotalNum(self):
+        """The total number of flow logs.
+        :rtype: int
+        """
         return self._TotalNum
 
     @TotalNum.setter
@@ -14517,6 +17034,9 @@ class DescribeFlowLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14573,6 +17093,9 @@ class DescribeGatewayFlowMonitorDetailRequest(AbstractModel):
 
     @property
     def TimePoint(self):
+        """The point in time. This indicates details of this minute will be queried. For example, in `2019-02-28 18:15:20`, details at `18:15` will be queried.
+        :rtype: str
+        """
         return self._TimePoint
 
     @TimePoint.setter
@@ -14581,6 +17104,9 @@ class DescribeGatewayFlowMonitorDetailRequest(AbstractModel):
 
     @property
     def VpnId(self):
+        """The instance ID of the VPN gateway, such as `vpn-ltjahce6`.
+        :rtype: str
+        """
         return self._VpnId
 
     @VpnId.setter
@@ -14589,6 +17115,9 @@ class DescribeGatewayFlowMonitorDetailRequest(AbstractModel):
 
     @property
     def DirectConnectGatewayId(self):
+        """The instance ID of the Direct Connect gateway, such as `dcg-ltjahce6`.
+        :rtype: str
+        """
         return self._DirectConnectGatewayId
 
     @DirectConnectGatewayId.setter
@@ -14597,6 +17126,9 @@ class DescribeGatewayFlowMonitorDetailRequest(AbstractModel):
 
     @property
     def PeeringConnectionId(self):
+        """The instance ID of the peering connection, such as `pcx-ltjahce6`.
+        :rtype: str
+        """
         return self._PeeringConnectionId
 
     @PeeringConnectionId.setter
@@ -14605,6 +17137,9 @@ class DescribeGatewayFlowMonitorDetailRequest(AbstractModel):
 
     @property
     def NatId(self):
+        """The instance ID of the NAT gateway, such as `nat-ltjahce6`.
+        :rtype: str
+        """
         return self._NatId
 
     @NatId.setter
@@ -14613,6 +17148,9 @@ class DescribeGatewayFlowMonitorDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -14621,6 +17159,9 @@ class DescribeGatewayFlowMonitorDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The returned quantity.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -14629,6 +17170,9 @@ class DescribeGatewayFlowMonitorDetailRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """The order field supports `InPkg`, `OutPkg`, `InTraffic`, and `OutTraffic`.
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -14637,6 +17181,9 @@ class DescribeGatewayFlowMonitorDetailRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
+        """Order methods. Ascending: `ASC`, Descending: `DESC`.
+        :rtype: str
+        """
         return self._OrderDirection
 
     @OrderDirection.setter
@@ -14684,6 +17231,9 @@ class DescribeGatewayFlowMonitorDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of objects meeting the condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -14692,6 +17242,9 @@ class DescribeGatewayFlowMonitorDetailResponse(AbstractModel):
 
     @property
     def GatewayFlowMonitorDetailSet(self):
+        """The gateway traffic monitoring details.
+        :rtype: list of GatewayFlowMonitorDetail
+        """
         return self._GatewayFlowMonitorDetailSet
 
     @GatewayFlowMonitorDetailSet.setter
@@ -14700,6 +17253,9 @@ class DescribeGatewayFlowMonitorDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14744,6 +17300,12 @@ VPN gateway instance, such as `vpn-ltjahce6`.
 
     @property
     def GatewayId(self):
+        """Gateway instance ID. Supported types:
+Direct connect gateway instance, such as `dcg-ltjahce6`;
+NAT gateway instance, such as `nat-ltjahce6`;
+VPN gateway instance, such as `vpn-ltjahce6`.
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -14752,6 +17314,9 @@ VPN gateway instance, such as `vpn-ltjahce6`.
 
     @property
     def IpAddresses(self):
+        """CVM private IP addresses with limited bandwidth.
+        :rtype: list of str
+        """
         return self._IpAddresses
 
     @IpAddresses.setter
@@ -14760,6 +17325,9 @@ VPN gateway instance, such as `vpn-ltjahce6`.
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -14768,6 +17336,9 @@ VPN gateway instance, such as `vpn-ltjahce6`.
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -14810,6 +17381,9 @@ class DescribeGatewayFlowQosResponse(AbstractModel):
 
     @property
     def GatewayQosSet(self):
+        """List of instance details
+        :rtype: list of GatewayQos
+        """
         return self._GatewayQosSet
 
     @GatewayQosSet.setter
@@ -14818,6 +17392,9 @@ class DescribeGatewayFlowQosResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible instances.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -14826,6 +17403,9 @@ class DescribeGatewayFlowQosResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14873,6 +17453,9 @@ li>havip-id - String - The unique ID of the HAVIP, such as `havip-9o233uri`.</li
 
     @property
     def HaVipIds(self):
+        """The unique `ID` of the `HAVIP`, such as `havip-9o233uri`.
+        :rtype: list of str
+        """
         return self._HaVipIds
 
     @HaVipIds.setter
@@ -14881,6 +17464,15 @@ li>havip-id - String - The unique ID of the HAVIP, such as `havip-9o233uri`.</li
 
     @property
     def Filters(self):
+        """Filter condition. `HaVipIds` and `Filters` cannot be specified at the same time.
+li>havip-id - String - The unique ID of the HAVIP, such as `havip-9o233uri`.</li>
+<li>havip-name - String - HAVIP name.</li>
+<li>vpc-id - String - VPC ID of the HAVIP.</li>
+<li>subnet-id - String - Subnet ID of the HAVIP.</li>
+<li>vip - String - Virtual IP address of the HAVIP.</li>
+<li>address-ip - String - Bound EIP.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -14889,6 +17481,9 @@ li>havip-id - String - The unique ID of the HAVIP, such as `havip-9o233uri`.</li
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -14897,6 +17492,9 @@ li>havip-id - String - The unique ID of the HAVIP, such as `havip-9o233uri`.</li
 
     @property
     def Limit(self):
+        """The returned quantity
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -14944,6 +17542,9 @@ class DescribeHaVipsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of objects meeting the condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -14952,6 +17553,9 @@ class DescribeHaVipsResponse(AbstractModel):
 
     @property
     def HaVipSet(self):
+        """`HAVIP` object array.
+        :rtype: list of HaVip
+        """
         return self._HaVipSet
 
     @HaVipSet.setter
@@ -14960,6 +17564,9 @@ class DescribeHaVipsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -14992,6 +17599,9 @@ class DescribeIpGeolocationDatabaseUrlRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Protocol type for an IP location database. Valid value: `ipv4`.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -15022,7 +17632,7 @@ class DescribeIpGeolocationDatabaseUrlResponse(AbstractModel):
         :type DownLoadUrl: str
         :param _ExpiredAt: Link expiration time in UTC format following the ISO8601 standard.
         :type ExpiredAt: str
-        :param _RequestId: The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :param _RequestId: The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
         :type RequestId: str
         """
         self._DownLoadUrl = None
@@ -15031,6 +17641,9 @@ class DescribeIpGeolocationDatabaseUrlResponse(AbstractModel):
 
     @property
     def DownLoadUrl(self):
+        """Download link of an IP location database
+        :rtype: str
+        """
         return self._DownLoadUrl
 
     @DownLoadUrl.setter
@@ -15039,6 +17652,9 @@ class DescribeIpGeolocationDatabaseUrlResponse(AbstractModel):
 
     @property
     def ExpiredAt(self):
+        """Link expiration time in UTC format following the ISO8601 standard.
+        :rtype: str
+        """
         return self._ExpiredAt
 
     @ExpiredAt.setter
@@ -15047,6 +17663,9 @@ class DescribeIpGeolocationDatabaseUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15077,6 +17696,9 @@ class DescribeIpGeolocationInfosRequest(AbstractModel):
 
     @property
     def AddressIps(self):
+        """The list of IP addresses (only IPv4 addresses are available currently) to be queried; upper limit: 100
+        :rtype: list of str
+        """
         return self._AddressIps
 
     @AddressIps.setter
@@ -15085,6 +17707,9 @@ class DescribeIpGeolocationInfosRequest(AbstractModel):
 
     @property
     def Fields(self):
+        """Fields of the IP addresses to be queried.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.IpField`
+        """
         return self._Fields
 
     @Fields.setter
@@ -15127,6 +17752,9 @@ class DescribeIpGeolocationInfosResponse(AbstractModel):
 
     @property
     def AddressInfo(self):
+        """IP address details
+        :rtype: list of IpGeolocationInfo
+        """
         return self._AddressInfo
 
     @AddressInfo.setter
@@ -15135,6 +17763,9 @@ class DescribeIpGeolocationInfosResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Number of IP addresses
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -15143,6 +17774,9 @@ class DescribeIpGeolocationInfosResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15182,6 +17816,10 @@ vpc-id: filter by VPC ID; local-gateway-name: filter by local gateway name (fuzz
 
     @property
     def Filters(self):
+        """Query criteria:
+vpc-id: filter by VPC ID; local-gateway-name: filter by local gateway name (fuzzy search is supported); local-gateway-id: filter by local gateway instance ID; cdc-id: filter by CDC instance ID.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -15190,6 +17828,9 @@ vpc-id: filter by VPC ID; local-gateway-name: filter by local gateway name (fuzz
 
     @property
     def Offset(self):
+        """The offset. Default value: 0. For more information on `Offset`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15198,6 +17839,9 @@ vpc-id: filter by VPC ID; local-gateway-name: filter by local gateway name (fuzz
 
     @property
     def Limit(self):
+        """The number of returned results. Default value: 20. Maximum value: 100. For more information on `Limit`, see the relevant sections in API [Introduction](https://intl.cloud.tencent.com/document/api/213/11646?from_cn_redirect=1).
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -15244,6 +17888,9 @@ class DescribeLocalGatewayResponse(AbstractModel):
 
     @property
     def LocalGatewaySet(self):
+        """Information set of local gateways
+        :rtype: list of LocalGateway
+        """
         return self._LocalGatewaySet
 
     @LocalGatewaySet.setter
@@ -15252,6 +17899,9 @@ class DescribeLocalGatewayResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of local gateways
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -15260,6 +17910,9 @@ class DescribeLocalGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15309,6 +17962,9 @@ class DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest(AbstractMode
 
     @property
     def NatGatewayIds(self):
+        """NAT gateway ID.
+        :rtype: list of str
+        """
         return self._NatGatewayIds
 
     @NatGatewayIds.setter
@@ -15317,6 +17973,17 @@ class DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest(AbstractMode
 
     @property
     def Filters(self):
+        """Filters:
+`NatGatewayIds` and `Filters` cannot be specified at the same time.
+<li> `nat-gateway-id`: The NAT gateway ID, such as `nat-0yi4hekt`.</li>
+<li> `vpc-id`: The VPC ID, such as `vpc-0yi4hekt`.</li>
+<li> `public-ip-address`: The EIP, such as `139.199.232.238`.</li>
+<li>`public-port`: The public network port.</li>
+<li>`private-ip-address`: The private IP, such as `10.0.0.1`.</li>
+<li>`private-port`. The private network port.</li>
+<li>`description`. The rule description.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -15325,6 +17992,9 @@ class DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest(AbstractMode
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15333,6 +18003,9 @@ class DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest(AbstractMode
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -15380,6 +18053,9 @@ class DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse(AbstractMod
 
     @property
     def NatGatewayDestinationIpPortTranslationNatRuleSet(self):
+        """The object array of port forwarding rules for the NAT gateway.
+        :rtype: list of NatGatewayDestinationIpPortTranslationNatRule
+        """
         return self._NatGatewayDestinationIpPortTranslationNatRuleSet
 
     @NatGatewayDestinationIpPortTranslationNatRuleSet.setter
@@ -15388,6 +18064,9 @@ class DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse(AbstractMod
 
     @property
     def TotalCount(self):
+        """The number of eligible object arrays of NAT port forwarding rules.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -15396,6 +18075,9 @@ class DescribeNatGatewayDestinationIpPortTranslationNatRulesResponse(AbstractMod
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15437,6 +18119,9 @@ class DescribeNatGatewayDirectConnectGatewayRouteRequest(AbstractModel):
 
     @property
     def NatGatewayId(self):
+        """Unique ID of the NAT gateway
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -15445,6 +18130,9 @@ class DescribeNatGatewayDirectConnectGatewayRouteRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """Unique ID of VPC
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -15453,6 +18141,9 @@ class DescribeNatGatewayDirectConnectGatewayRouteRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Valid range: 0-200
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -15461,6 +18152,9 @@ class DescribeNatGatewayDirectConnectGatewayRouteRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Greater than 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15503,6 +18197,9 @@ class DescribeNatGatewayDirectConnectGatewayRouteResponse(AbstractModel):
 
     @property
     def NatDirectConnectGatewayRouteSet(self):
+        """Route data
+        :rtype: list of NatDirectConnectGatewayRoute
+        """
         return self._NatDirectConnectGatewayRouteSet
 
     @NatDirectConnectGatewayRouteSet.setter
@@ -15511,6 +18208,9 @@ class DescribeNatGatewayDirectConnectGatewayRouteResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Total number of routes
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -15519,6 +18219,9 @@ class DescribeNatGatewayDirectConnectGatewayRouteResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15563,6 +18266,9 @@ class DescribeNatGatewaySourceIpTranslationNatRulesRequest(AbstractModel):
 
     @property
     def NatGatewayId(self):
+        """The unique ID of the NAT Gateway, such as `nat-123xx454`.
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -15571,6 +18277,12 @@ class DescribeNatGatewaySourceIpTranslationNatRulesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter:
+<li>`resource-id`: The subnet ID (such as `subnet-0yi4hekt`) or CVM ID</li>
+<li>`public-ip-address`: The EIP, such as `139.199.232.238`</li>
+<li>`description` The rule description</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -15579,6 +18291,9 @@ class DescribeNatGatewaySourceIpTranslationNatRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15587,6 +18302,9 @@ class DescribeNatGatewaySourceIpTranslationNatRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -15635,6 +18353,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SourceIpTranslationNatRuleSet(self):
+        """Array of objects of a NAT gateway's SNAT rules.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of SourceIpTranslationNatRule
+        """
         return self._SourceIpTranslationNatRuleSet
 
     @SourceIpTranslationNatRuleSet.setter
@@ -15643,6 +18365,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TotalCount(self):
+        """The number of eligible object arrays of a NAT gateway's forwarding rules.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -15651,6 +18376,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15696,6 +18424,9 @@ class DescribeNatGatewaysRequest(AbstractModel):
 
     @property
     def NatGatewayIds(self):
+        """The unified ID of the NAT gateways, such as `nat-123xx454`.
+        :rtype: list of str
+        """
         return self._NatGatewayIds
 
     @NatGatewayIds.setter
@@ -15704,6 +18435,13 @@ class DescribeNatGatewaysRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filters. `NatGatewayIds` and `Filters` cannot be specified at the same time.
+<li>nat-gateway-id - String - (Filter) The ID of the protocol port template instance, such as `nat-123xx454`.</li>
+<li>vpc-id - String - (Filter) The unique ID of the VPC, such as `vpc-123xx454`.</li>
+<li>nat-gateway-name - String - (Filter) The ID of the protocol port template instance, such as `test_nat`.</li>
+<li>tag-key - String - (Filter) The tag key, such as `test-key`.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -15712,6 +18450,9 @@ class DescribeNatGatewaysRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15720,6 +18461,9 @@ class DescribeNatGatewaysRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -15767,6 +18511,9 @@ class DescribeNatGatewaysResponse(AbstractModel):
 
     @property
     def NatGatewaySet(self):
+        """NAT gateway object array.
+        :rtype: list of NatGateway
+        """
         return self._NatGatewaySet
 
     @NatGatewaySet.setter
@@ -15775,6 +18522,9 @@ class DescribeNatGatewaysResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of eligible NAT gateway objects.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -15783,6 +18533,9 @@ class DescribeNatGatewaysResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15825,6 +18578,9 @@ class DescribeNetDetectStatesRequest(AbstractModel):
 
     @property
     def NetDetectIds(self):
+        """The array of network probe IDs, such as [`netd-12345678`].
+        :rtype: list of str
+        """
         return self._NetDetectIds
 
     @NetDetectIds.setter
@@ -15833,6 +18589,10 @@ class DescribeNetDetectStatesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions. `NetDetectIds` and `Filters` cannot be specified at the same time.
+<li>`net-detect-id` - String - The network probe ID, such as `netd-12345678`.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -15841,6 +18601,9 @@ class DescribeNetDetectStatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """The offset. Default: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15849,6 +18612,9 @@ class DescribeNetDetectStatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of returned values. Default: 20. Maximum: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -15898,6 +18664,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NetDetectStateSet(self):
+        """The array of network detection verification results that meet requirements.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of NetDetectState
+        """
         return self._NetDetectStateSet
 
     @NetDetectStateSet.setter
@@ -15906,6 +18676,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """The number of network detection verification results that meet requirements.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -15914,6 +18688,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -15959,6 +18736,9 @@ class DescribeNetDetectsRequest(AbstractModel):
 
     @property
     def NetDetectIds(self):
+        """The array of network probe IDs, such as [`netd-12345678`].
+        :rtype: list of str
+        """
         return self._NetDetectIds
 
     @NetDetectIds.setter
@@ -15967,6 +18747,13 @@ class DescribeNetDetectsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions. `NetDetectIds` and `Filters` cannot be specified at the same time.
+<li>vpc-id - String - (Filter condition) The VPC instance ID, such as vpc-12345678.</li>
+<li>net-detect-id - String - (Filter condition) The network detection instance ID, such as netd-12345678.</li>
+<li>subnet-id - String - (Filter condition) The subnet instance ID, such as subnet-12345678.</li>
+<li>net-detect-name - String - (Filter condition) The network detection name.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -15975,6 +18762,9 @@ class DescribeNetDetectsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """The offset. Default: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -15983,6 +18773,9 @@ class DescribeNetDetectsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of returned values. Default: 20. Maximum: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -16032,6 +18825,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NetDetectSet(self):
+        """The array of network detection objects that meet requirements.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of NetDetect
+        """
         return self._NetDetectSet
 
     @NetDetectSet.setter
@@ -16040,6 +18837,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """The number of network detection objects that meet requirements.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -16048,6 +18849,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16096,6 +18900,9 @@ class DescribeNetworkAclQuintupleEntriesRequest(AbstractModel):
 
     @property
     def NetworkAclId(self):
+        """Network ACL instance ID, such as `acl-12345678`.
+        :rtype: str
+        """
         return self._NetworkAclId
 
     @NetworkAclId.setter
@@ -16104,6 +18911,9 @@ class DescribeNetworkAclQuintupleEntriesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -16112,6 +18922,9 @@ class DescribeNetworkAclQuintupleEntriesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Returned quantity. Default: 20. Value range: 1-100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -16120,6 +18933,16 @@ class DescribeNetworkAclQuintupleEntriesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter condition. `HaVipIds` and `Filters` cannot be specified at the same time.
+<li>`protocol` - String - Such as `TCP`</li>
+<li>`description` - String - Description</li>
+<li>`destination-cidr` - String - Destination CIDR block, such as `192.168.0.0/24`</li>
+<li>`source-cidr` - String - Source CIDR block, such as `192.168.0.0/24`</li>
+<li>`action` - String - ·Values: `ACCEPT`, `DROP`</li>
+<li>`network-acl-quintuple-entry-id` - String - Unique ID of the quintuple, such as `acli45-ahnu4rv5`</li>
+<li>`network-acl-direction` - String - Direction of the policy. Values: `INGRESS` or `EGRESS`.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -16167,6 +18990,9 @@ class DescribeNetworkAclQuintupleEntriesResponse(AbstractModel):
 
     @property
     def NetworkAclQuintupleSet(self):
+        """The list of the network ACL quintuple entries
+        :rtype: list of NetworkAclQuintupleEntry
+        """
         return self._NetworkAclQuintupleSet
 
     @NetworkAclQuintupleSet.setter
@@ -16175,6 +19001,9 @@ class DescribeNetworkAclQuintupleEntriesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible instances.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -16183,6 +19012,9 @@ class DescribeNetworkAclQuintupleEntriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16227,6 +19059,9 @@ class DescribeNetworkAclsRequest(AbstractModel):
 
     @property
     def NetworkAclIds(self):
+        """Array of network ACL instance IDs, such as [acl-12345678]. Up to 100 instances are allowed for each request. This parameter does not support specifying `NetworkAclIds` and `Filters` at the same time.
+        :rtype: list of str
+        """
         return self._NetworkAclIds
 
     @NetworkAclIds.setter
@@ -16235,6 +19070,12 @@ class DescribeNetworkAclsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter condition. `NetworkAclIds` and `Filters` cannot be specified at the same time.
+<li>vpc-id - String - (Filter condition) VPC instance ID, such as vpc-12345678.</li>
+<li>network-acl-id - String - (Filter condition) Network ACL instance ID, such as acl-12345678.</li>
+<li>network-acl-name - String - (Filter condition) Network ACL instance name.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -16243,6 +19084,9 @@ class DescribeNetworkAclsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -16251,6 +19095,9 @@ class DescribeNetworkAclsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Returned quantity. Default: 20. Value range: 1-100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -16298,6 +19145,9 @@ class DescribeNetworkAclsResponse(AbstractModel):
 
     @property
     def NetworkAclSet(self):
+        """List of instance details.
+        :rtype: list of NetworkAcl
+        """
         return self._NetworkAclSet
 
     @NetworkAclSet.setter
@@ -16306,6 +19156,9 @@ class DescribeNetworkAclsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible instances.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -16314,6 +19167,9 @@ class DescribeNetworkAclsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16346,6 +19202,9 @@ class DescribeNetworkInterfaceLimitRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of a CVM instance or ENI to query
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -16401,6 +19260,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EniQuantity(self):
+        """Quota of ENIs mounted to a CVM instance in a standard way
+        :rtype: int
+        """
         return self._EniQuantity
 
     @EniQuantity.setter
@@ -16409,6 +19271,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EniPrivateIpAddressQuantity(self):
+        """Quota of IP addresses that can be allocated to each standard-mounted ENI
+        :rtype: int
+        """
         return self._EniPrivateIpAddressQuantity
 
     @EniPrivateIpAddressQuantity.setter
@@ -16417,6 +19282,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ExtendEniQuantity(self):
+        """Quota of ENIs mounted to a CVM instance as an extension
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ExtendEniQuantity
 
     @ExtendEniQuantity.setter
@@ -16425,6 +19294,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ExtendEniPrivateIpAddressQuantity(self):
+        """Quota of IP addresses that can be allocated to each extension-mounted ENI.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ExtendEniPrivateIpAddressQuantity
 
     @ExtendEniPrivateIpAddressQuantity.setter
@@ -16433,6 +19306,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubEniQuantity(self):
+        """The quota of relayed ENIs
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SubEniQuantity
 
     @SubEniQuantity.setter
@@ -16441,6 +19318,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubEniPrivateIpAddressQuantity(self):
+        """The quota of IPs that can be assigned to each relayed ENI.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SubEniPrivateIpAddressQuantity
 
     @SubEniPrivateIpAddressQuantity.setter
@@ -16449,6 +19330,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16505,6 +19389,9 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 
     @property
     def NetworkInterfaceIds(self):
+        """Queries the ID of the ENI instance, such as `eni-pxir56ns`. Each request can have a maximum of 100 instances. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of str
+        """
         return self._NetworkInterfaceIds
 
     @NetworkInterfaceIds.setter
@@ -16513,6 +19400,25 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter. `NetworkInterfaceIds` and `Filters` cannot be specified at the same time.
+<li>`vpc-id` - String - VPC ID, such as `vpc-f49l6u0z`. </li>
+<li>`subnet-id` - String - Subnet ID, such as `subnet-f49l6u0z`. </li>
+<li>`network-interface-id` - String - ENI ID, such as `eni-5k56k7k7`. </li>
+<li>`attachment.instance-id` - String - ID of the bound CVM instance, such as `ins-3nqpdn3i`. </li>
+<li>`groups.security-group-id` - String - ID of the bound security group, such as `sg-f9ekbxeq`. </li>
+<li>`network-interface-name` - String - ENI instance name. </li>
+<li>`network-interface-description` - String - ENI instance description. </li>
+<li>`address-ip` - String - Private IPv4 address. A single IP will be fuzzily matched with the suffix, while multiple IPs will be exactly matched. It can be used with `ip-exact-match` to query and exactly match a single IP. </li>
+<li>`ip-exact-match` - Boolean - Exact match by private IPv4 address. The first value will be returned if multiple values are found. </li>
+<li>`tag-key` - String - u200dOptional - u200dTag key. See Example 2 to learn more details. </li>
+<li>`tag:tag-key` - String - Optional - Tag key-value pair. The `tag-key` should be replaced with a specific tag key. See Example 2 to learn more details. </li>
+<li>`is-primary` - Boolean - Optional - Filter based on whether it is a primary ENI. Values: `true`, `false`. If this parameter is not specified, filter the both. </li>
+<li>`eni-type` - String - Optional - Filter by ENI type. Values: `0` (Secondary ENI), `1` (Primary ENI), `2` (Relayed ENI) </li>
+<li>`eni-qos` - String - Optional - Filter by ENI service level. Values: `AG` (Bronze), `AU` (Silver) </li>
+<li>`address-ipv6` - String - Optional - Filter by private IPv6 address. Multiple IPv6 addresses can be used for query. If this field is used together with `address-ip`, their intersection will be used. </li>
+<li>`public-address-ip` - String - Public IPv4 address. It supports exact matching. </li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -16521,6 +19427,9 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -16529,6 +19438,9 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -16576,6 +19488,9 @@ class DescribeNetworkInterfacesResponse(AbstractModel):
 
     @property
     def NetworkInterfaceSet(self):
+        """List of instance details.
+        :rtype: list of NetworkInterface
+        """
         return self._NetworkInterfaceSet
 
     @NetworkInterfaceSet.setter
@@ -16584,6 +19499,9 @@ class DescribeNetworkInterfacesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible instances.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -16592,6 +19510,9 @@ class DescribeNetworkInterfacesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16639,6 +19560,15 @@ class DescribeRouteTablesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter condition. `RouteTableIds` and `Filters` cannot be specified at the same time.
+<li>route-table-id - String - (Filter condition) Route table instance ID.</li>
+<li>route-table-name - String - (Filter condition) Route table name.</li>
+<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>
+<li>association.main - String - (Filter condition) Whether it is the main route table.</li>
+<li>tag-key - String - Required: no - (Filter condition) Filter by tag key.</li>
+<li>tag:tag-key - String - Required: no - (Filter condition) Filter by tag key-value pair. Use a specific tag key to replace `tag-key`. See Example 2 for the detailed usage.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -16647,6 +19577,9 @@ class DescribeRouteTablesRequest(AbstractModel):
 
     @property
     def RouteTableIds(self):
+        """The route table instance ID, such as `rtb-azd4dt1c`.
+        :rtype: list of str
+        """
         return self._RouteTableIds
 
     @RouteTableIds.setter
@@ -16655,6 +19588,9 @@ class DescribeRouteTablesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset.
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -16663,6 +19599,9 @@ class DescribeRouteTablesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of request objects.
+        :rtype: str
+        """
         return self._Limit
 
     @Limit.setter
@@ -16710,6 +19649,9 @@ class DescribeRouteTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible instances.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -16718,6 +19660,9 @@ class DescribeRouteTablesResponse(AbstractModel):
 
     @property
     def RouteTableSet(self):
+        """Route table object.
+        :rtype: list of RouteTable
+        """
         return self._RouteTableSet
 
     @RouteTableSet.setter
@@ -16726,6 +19671,9 @@ class DescribeRouteTablesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16758,6 +19706,9 @@ class DescribeSecurityGroupAssociationStatisticsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """The Security instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups.
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -16794,6 +19745,9 @@ class DescribeSecurityGroupAssociationStatisticsResponse(AbstractModel):
 
     @property
     def SecurityGroupAssociationStatisticsSet(self):
+        """Statistics on the instances associated with a security group.
+        :rtype: list of SecurityGroupAssociationStatistics
+        """
         return self._SecurityGroupAssociationStatisticsSet
 
     @SecurityGroupAssociationStatisticsSet.setter
@@ -16802,6 +19756,9 @@ class DescribeSecurityGroupAssociationStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16845,6 +19802,9 @@ class DescribeSecurityGroupPoliciesRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
+        """The security group instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups.
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -16853,6 +19813,18 @@ class DescribeSecurityGroupPoliciesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filters
+<li>`security-group-id` - String - Security group ID in the rule.</li>
+<li>`ip` - String - IP. IPV4 and IPV6 fuzzy matching is supported.</li>
+<li>`address-module` - String - IP address or address group template ID.</li>
+<li>`service-module` - String - Protocol port or port group template ID.</li>
+<li>`protocol-type` - String - Protocol supported by the security group policy. Valid values: `TCP`, `UDP`, `ICMP`, `ICMPV6`, `GRE`, `ALL`.</li>
+<li>`port` - String - Optional - Port. Fuzzy matching is supported. Query all ports when the protocol value is `ALL`.</li>
+<li>`poly` - String - Policy type. Valid values: `ALL`, `ACCEPT` and `DROP`.</li>
+<li>`direction` - String - Direction of the rule. Valid values: `ALL`, `INBOUND` and `OUTBOUND`.</li>
+<li>`description` - String - Policy description. Fuzzy matching is supported.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -16895,6 +19867,9 @@ class DescribeSecurityGroupPoliciesResponse(AbstractModel):
 
     @property
     def SecurityGroupPolicySet(self):
+        """Security group policy set.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        """
         return self._SecurityGroupPolicySet
 
     @SecurityGroupPolicySet.setter
@@ -16903,6 +19878,9 @@ class DescribeSecurityGroupPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -16931,6 +19909,9 @@ class DescribeSecurityGroupReferencesRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """A set of security group instance IDs, e.g. ['sg-12345678']
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -16967,6 +19948,9 @@ class DescribeSecurityGroupReferencesResponse(AbstractModel):
 
     @property
     def ReferredSecurityGroupSet(self):
+        """Referred security groups.
+        :rtype: list of ReferredSecurityGroup
+        """
         return self._ReferredSecurityGroupSet
 
     @ReferredSecurityGroupSet.setter
@@ -16975,6 +19959,9 @@ class DescribeSecurityGroupReferencesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17026,6 +20013,9 @@ class DescribeSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """Security group ID, such as `sg-33ocnj9n`. Each request can contain up to 100 instances at a time. `SecurityGroupIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -17034,6 +20024,14 @@ class DescribeSecurityGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions. `SecurityGroupIds` and `Filters` cannot be specified at the same time.
+<li>security-group-id - String - (Filter condition) The security group ID.</li>
+<li>project-id - Integer - (Filter condition) The project ID.</li>
+<li>security-group-name - String - (Filter condition) The security group name.</li>
+<li>tag-key - String - Required: no - (Filter condition) Filters by tag key. For more information, see Example 2.</li>
+<li> `tag:tag-key` - String - Required: no - (Filter condition) Filters by tag key pair. For this parameter, `tag-key` will be replaced with a specific tag key. For more information, see Example 3.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -17042,6 +20040,9 @@ class DescribeSecurityGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -17050,6 +20051,9 @@ class DescribeSecurityGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: str
+        """
         return self._Limit
 
     @Limit.setter
@@ -17058,6 +20062,9 @@ class DescribeSecurityGroupsRequest(AbstractModel):
 
     @property
     def OrderField(self):
+        """Sorting field. Values: `CreatedTime`, `UpdateTime` Note: This field does not have default value.
+        :rtype: str
+        """
         return self._OrderField
 
     @OrderField.setter
@@ -17066,6 +20073,9 @@ class DescribeSecurityGroupsRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
+        """Sorting method Order methods. Ascending: `ASC`, Descending: `DESC`. Default: `ASC`
+        :rtype: str
+        """
         return self._OrderDirection
 
     @OrderDirection.setter
@@ -17116,6 +20126,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SecurityGroupSet(self):
+        """Security group object.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of SecurityGroup
+        """
         return self._SecurityGroupSet
 
     @SecurityGroupSet.setter
@@ -17124,6 +20138,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TotalCount(self):
+        """The number of instances meeting the filter condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -17132,6 +20149,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17172,6 +20192,11 @@ class DescribeServiceTemplateGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions.
+<li>service-template-group-name - String - (Filter condition) Protocol port template group name.</li>
+<li>service-template-group-id - String - (Filter condition) Protocol port template group instance ID, such as `ppmg-e6dy460g`.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -17180,6 +20205,9 @@ class DescribeServiceTemplateGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. The default value is 0.
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -17188,6 +20216,9 @@ class DescribeServiceTemplateGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of values to be returned. The default value is 20. Maximum is 100.
+        :rtype: str
+        """
         return self._Limit
 
     @Limit.setter
@@ -17234,6 +20265,9 @@ class DescribeServiceTemplateGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of instances meeting the filter condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -17242,6 +20276,9 @@ class DescribeServiceTemplateGroupsResponse(AbstractModel):
 
     @property
     def ServiceTemplateGroupSet(self):
+        """Protocol port template group.
+        :rtype: list of ServiceTemplateGroup
+        """
         return self._ServiceTemplateGroupSet
 
     @ServiceTemplateGroupSet.setter
@@ -17250,6 +20287,9 @@ class DescribeServiceTemplateGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17291,6 +20331,12 @@ class DescribeServiceTemplatesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filters
+<li>service-template-name - Protocol port template name.</li>
+<li>service-template-id - Protocol port template ID, such as `ppm-e6dy460g`.</li>
+<li>service-port-Protocol port.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -17299,6 +20345,9 @@ class DescribeServiceTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. The default value is 0.
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -17307,6 +20356,9 @@ class DescribeServiceTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of values to be returned. The default value is 20. Maximum is 100.
+        :rtype: str
+        """
         return self._Limit
 
     @Limit.setter
@@ -17353,6 +20405,9 @@ class DescribeServiceTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of instances meeting the filter condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -17361,6 +20416,9 @@ class DescribeServiceTemplatesResponse(AbstractModel):
 
     @property
     def ServiceTemplateSet(self):
+        """Protocol port template object.
+        :rtype: list of ServiceTemplate
+        """
         return self._ServiceTemplateSet
 
     @ServiceTemplateSet.setter
@@ -17369,6 +20427,9 @@ class DescribeServiceTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17407,6 +20468,9 @@ class DescribeSgSnapshotFileContentRequest(AbstractModel):
 
     @property
     def SnapshotPolicyId(self):
+        """Snapshot policy IDs
+        :rtype: str
+        """
         return self._SnapshotPolicyId
 
     @SnapshotPolicyId.setter
@@ -17415,6 +20479,9 @@ class DescribeSgSnapshotFileContentRequest(AbstractModel):
 
     @property
     def SnapshotFileId(self):
+        """Snapshot file ID
+        :rtype: str
+        """
         return self._SnapshotFileId
 
     @SnapshotFileId.setter
@@ -17423,6 +20490,9 @@ class DescribeSgSnapshotFileContentRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
+        """Security group ID
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -17479,6 +20549,9 @@ class DescribeSgSnapshotFileContentResponse(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Security group ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -17487,6 +20560,9 @@ class DescribeSgSnapshotFileContentResponse(AbstractModel):
 
     @property
     def SnapshotPolicyId(self):
+        """Snapshot policy IDs
+        :rtype: str
+        """
         return self._SnapshotPolicyId
 
     @SnapshotPolicyId.setter
@@ -17495,6 +20571,9 @@ class DescribeSgSnapshotFileContentResponse(AbstractModel):
 
     @property
     def SnapshotFileId(self):
+        """Snapshot file ID
+        :rtype: str
+        """
         return self._SnapshotFileId
 
     @SnapshotFileId.setter
@@ -17503,6 +20582,9 @@ class DescribeSgSnapshotFileContentResponse(AbstractModel):
 
     @property
     def BackupTime(self):
+        """Backup time
+        :rtype: str
+        """
         return self._BackupTime
 
     @BackupTime.setter
@@ -17511,6 +20593,9 @@ class DescribeSgSnapshotFileContentResponse(AbstractModel):
 
     @property
     def Operator(self):
+        """Operator
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -17519,6 +20604,9 @@ class DescribeSgSnapshotFileContentResponse(AbstractModel):
 
     @property
     def OriginalData(self):
+        """Original data
+        :rtype: list of SecurityGroupPolicy
+        """
         return self._OriginalData
 
     @OriginalData.setter
@@ -17527,6 +20615,9 @@ class DescribeSgSnapshotFileContentResponse(AbstractModel):
 
     @property
     def BackupData(self):
+        """Backup data
+        :rtype: list of SecurityGroupPolicy
+        """
         return self._BackupData
 
     @BackupData.setter
@@ -17535,6 +20626,9 @@ class DescribeSgSnapshotFileContentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17589,6 +20683,9 @@ Values:
 
     @property
     def SnapshotPolicyId(self):
+        """Snapshot policy IDs
+        :rtype: str
+        """
         return self._SnapshotPolicyId
 
     @SnapshotPolicyId.setter
@@ -17597,6 +20694,12 @@ Values:
 
     @property
     def Filters(self):
+        """Filters
+Values:
+<li>`instance-id`: Instance ID</li>
+<li>`instance-region`: Instance region</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -17605,6 +20708,9 @@ Values:
 
     @property
     def Offset(self):
+        """Offset. Default value: `0`.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -17613,6 +20719,9 @@ Values:
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 200.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -17660,6 +20769,9 @@ class DescribeSnapshotAttachedInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
+        """List of instances
+        :rtype: list of SnapshotInstance
+        """
         return self._InstanceSet
 
     @InstanceSet.setter
@@ -17668,6 +20780,9 @@ class DescribeSnapshotAttachedInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of eligible objects.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -17676,6 +20791,9 @@ class DescribeSnapshotAttachedInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17723,6 +20841,9 @@ class DescribeSnapshotFilesRequest(AbstractModel):
 
     @property
     def BusinessType(self):
+        """Type of associated resource. Values: `securitygroup`
+        :rtype: str
+        """
         return self._BusinessType
 
     @BusinessType.setter
@@ -17731,6 +20852,9 @@ class DescribeSnapshotFilesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Service instance ID. It's corresponding to the `BusinessType`. 
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -17739,6 +20863,9 @@ class DescribeSnapshotFilesRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """Start time. Format: %Y-%m-%d %H:%M:%S
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -17747,6 +20874,9 @@ class DescribeSnapshotFilesRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """End time. Format: %Y-%m-%d %H:%M:%S
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -17755,6 +20885,9 @@ class DescribeSnapshotFilesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: `0`.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -17763,6 +20896,9 @@ class DescribeSnapshotFilesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -17807,6 +20943,9 @@ class DescribeSnapshotFilesResponse(AbstractModel):
 
     @property
     def SnapshotFileSet(self):
+        """Snapshot files
+        :rtype: list of SnapshotFileInfo
+        """
         return self._SnapshotFileSet
 
     @SnapshotFileSet.setter
@@ -17815,6 +20954,9 @@ class DescribeSnapshotFilesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of eligible objects.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -17823,6 +20965,9 @@ class DescribeSnapshotFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17866,6 +21011,9 @@ class DescribeSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def SnapshotPolicyIds(self):
+        """Snapshot policy IDs
+        :rtype: list of str
+        """
         return self._SnapshotPolicyIds
 
     @SnapshotPolicyIds.setter
@@ -17874,6 +21022,11 @@ class DescribeSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions. `SnapshotPolicyIds` and `Filters` cannot be both specified.
+<li>`snapshot-policy-id` - String - Snapshot policy ID</li>
+<li>`snapshot-policy-name` - String - Snapshot policy name</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -17882,6 +21035,9 @@ class DescribeSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: `0`.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -17890,6 +21046,9 @@ class DescribeSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 200.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -17937,6 +21096,9 @@ class DescribeSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def SnapshotPolicySet(self):
+        """Snapshot policies
+        :rtype: list of SnapshotPolicy
+        """
         return self._SnapshotPolicySet
 
     @SnapshotPolicySet.setter
@@ -17945,6 +21107,9 @@ class DescribeSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of eligible objects.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -17953,6 +21118,9 @@ class DescribeSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -17985,6 +21153,9 @@ class DescribeSubnetResourceDashboardRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
+        """Subnet instance ID, such as `subnet-f1xjkw1b`.
+        :rtype: list of str
+        """
         return self._SubnetIds
 
     @SubnetIds.setter
@@ -18021,6 +21192,9 @@ class DescribeSubnetResourceDashboardResponse(AbstractModel):
 
     @property
     def ResourceStatisticsSet(self):
+        """Information of resources returned
+        :rtype: list of ResourceStatistics
+        """
         return self._ResourceStatisticsSet
 
     @ResourceStatisticsSet.setter
@@ -18029,6 +21203,9 @@ class DescribeSubnetResourceDashboardResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18080,6 +21257,9 @@ class DescribeSubnetsRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
+        """Queries the ID of the subnet instance, such as `subnet-pxir56ns`. Each request can have a maximum of 100 instances. `SubnetIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of str
+        """
         return self._SubnetIds
 
     @SubnetIds.setter
@@ -18088,6 +21268,20 @@ class DescribeSubnetsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter condition. `SubnetIds` and `Filters` cannot be specified at the same time.
+<li>subnet-id - String - (Filter condition) Subnet instance name.</li>
+<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>
+<li>cidr-block - String - (Filter condition) Subnet IP range, such as `192.168.1.0`.</li>
+<li>is-default - Boolean - (Filter condition) Whether it is the default subnet.</li>
+<li>is-remote-vpc-snat - Boolean - (Filter condition) Whether it is a VPC SNAT address pool subnet.</li>
+<li>subnet-name - String - (Filter condition) Subnet name.</li>
+<li>zone - String - (Filter condition) Availability zone.</li>
+<li> tag-key - String - Required: No - (Filter condition) Filter by tag key.</li>
+<li>tag:tag-key - String - Required: No - (Filter condition) Filter by tag key-value pair. Use a specific tag key to replace `tag-key`. For its usage, see example 2.</li>
+<li>cdc-id - String - Required: No - (Filter condition) Filter by CDC ID to obtain subnets in the specified CDC.</li>
+<li>is-cdc-subnet - String - Required: No - (Filter condition) Whether it is a CDC subnet. Valid values: `0` (no); `1` (yes).</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -18096,6 +21290,9 @@ class DescribeSubnetsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -18104,6 +21301,9 @@ class DescribeSubnetsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: str
+        """
         return self._Limit
 
     @Limit.setter
@@ -18151,6 +21351,9 @@ class DescribeSubnetsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of instances meeting the filter condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -18159,6 +21362,9 @@ class DescribeSubnetsResponse(AbstractModel):
 
     @property
     def SubnetSet(self):
+        """Subnet object.
+        :rtype: list of Subnet
+        """
         return self._SubnetSet
 
     @SubnetSet.setter
@@ -18167,6 +21373,9 @@ class DescribeSubnetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18202,6 +21411,9 @@ class DescribeTaskResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """Async task ID. Either TaskId or DealName must be entered.
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -18210,6 +21422,9 @@ class DescribeTaskResultRequest(AbstractModel):
 
     @property
     def DealName(self):
+        """Billing order No. Either TaskId or DealName must be entered.
+        :rtype: str
+        """
         return self._DealName
 
     @DealName.setter
@@ -18250,6 +21465,9 @@ class DescribeTaskResultResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """Job ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -18258,6 +21476,9 @@ class DescribeTaskResultResponse(AbstractModel):
 
     @property
     def Result(self):
+        """The execution results, including `SUCCESS`, `FAILED`, and `RUNNING`
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -18266,6 +21487,9 @@ class DescribeTaskResultResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18305,6 +21529,9 @@ class DescribeTrafficPackagesRequest(AbstractModel):
 
     @property
     def TrafficPackageIds(self):
+        """Traffic package IDs. Multiple values can be used.
+        :rtype: list of str
+        """
         return self._TrafficPackageIds
 
     @TrafficPackageIds.setter
@@ -18313,6 +21540,12 @@ class DescribeTrafficPackagesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Each request can have up to 10 `Filters`. `TrafficPackageIds` and `Filters` cannot be specified at the same time. The specific filter conditions are as follows:
+<li> `traffic-package_id` - String - Optional - Filter by the traffic package ID.</li>
+<li> `traffic-package-name` - String - Optional - Filter by the traffic package name. Fuzzy match is not supported.</li>
+<li> `status` - String - Optional - Filter by the traffic package status. Values: [AVAILABLE|EXPIRED|EXHAUSTED].</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -18321,6 +21554,9 @@ class DescribeTrafficPackagesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Pagination parameter
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -18329,6 +21565,9 @@ class DescribeTrafficPackagesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Pagination parameter
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -18376,6 +21615,9 @@ class DescribeTrafficPackagesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible traffic packages
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -18384,6 +21626,9 @@ class DescribeTrafficPackagesResponse(AbstractModel):
 
     @property
     def TrafficPackageSet(self):
+        """Traffic package information
+        :rtype: list of TrafficPackage
+        """
         return self._TrafficPackageSet
 
     @TrafficPackageSet.setter
@@ -18392,6 +21637,9 @@ class DescribeTrafficPackagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18436,6 +21684,9 @@ class DescribeUsedIpAddressRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -18444,6 +21695,9 @@ class DescribeUsedIpAddressRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Subnet instance ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -18452,6 +21706,9 @@ class DescribeUsedIpAddressRequest(AbstractModel):
 
     @property
     def IpAddresses(self):
+        """List of IPs to be queried. The IPs must be within the VPC or subnet. Up to 100 IPs can be queried at a time.
+        :rtype: list of str
+        """
         return self._IpAddresses
 
     @IpAddresses.setter
@@ -18460,6 +21717,9 @@ class DescribeUsedIpAddressRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """The offset. Default value: 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -18468,6 +21728,9 @@ class DescribeUsedIpAddressRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -18513,6 +21776,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def IpAddressStates(self):
+        """Information of resources bound with the queried IPs 
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: list of IpAddressStates
+        """
         return self._IpAddressStates
 
     @IpAddressStates.setter
@@ -18521,6 +21788,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def TotalCount(self):
+        """Number of taken IPs 
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -18529,6 +21800,9 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18574,6 +21848,13 @@ class DescribeVpcEndPointRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter condition
+<li> end-point-service-id - String - (Filter condition) Endpoint service ID.</li>
+<li>end-point-name - String - (Filter condition) Endpoint instance name.</li>
+<li> end-point-id - String - (Filter condition) Endpoint instance ID.</li>
+<li> vpc-id - String - (Filter condition) VPC instance ID.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -18582,6 +21863,9 @@ class DescribeVpcEndPointRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -18590,6 +21874,9 @@ class DescribeVpcEndPointRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results per page; default value: 20; maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -18598,6 +21885,9 @@ class DescribeVpcEndPointRequest(AbstractModel):
 
     @property
     def EndPointId(self):
+        """Endpoint ID list
+        :rtype: list of str
+        """
         return self._EndPointId
 
     @EndPointId.setter
@@ -18645,6 +21935,9 @@ class DescribeVpcEndPointResponse(AbstractModel):
 
     @property
     def EndPointSet(self):
+        """Endpoint
+        :rtype: list of EndPoint
+        """
         return self._EndPointSet
 
     @EndPointSet.setter
@@ -18653,6 +21946,9 @@ class DescribeVpcEndPointResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of matched endpoints
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -18661,6 +21957,9 @@ class DescribeVpcEndPointResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18709,6 +22008,13 @@ class DescribeVpcEndPointServiceRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filters. `EndPointServiceIds` and `Filters` cannot be both passed in. 
+<li>`service-id` - String - Unique endpoint service ID. </li>
+<li>`service-name` - String - Endpoint service instance name. </li>
+<li>`service-instance-id` - String - Unique backend service ID in the format of `lb-xxx`. </li>
+<li>`service-type` - String - Backend PaaS service type. It can be `CLB`, `CDB` or `CRS`. It defaults to `CLB` if not specified. </li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -18717,6 +22023,9 @@ class DescribeVpcEndPointServiceRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -18725,6 +22034,9 @@ class DescribeVpcEndPointServiceRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results per page; default value: 20; maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -18733,6 +22045,9 @@ class DescribeVpcEndPointServiceRequest(AbstractModel):
 
     @property
     def EndPointServiceIds(self):
+        """Endpoint service ID `EndPointServiceIds` and `Filters` cannot be both passed in. 
+        :rtype: list of str
+        """
         return self._EndPointServiceIds
 
     @EndPointServiceIds.setter
@@ -18741,6 +22056,9 @@ class DescribeVpcEndPointServiceRequest(AbstractModel):
 
     @property
     def IsListAuthorizedEndPointService(self):
+        """
+        :rtype: bool
+        """
         return self._IsListAuthorizedEndPointService
 
     @IsListAuthorizedEndPointService.setter
@@ -18789,6 +22107,9 @@ class DescribeVpcEndPointServiceResponse(AbstractModel):
 
     @property
     def EndPointServiceSet(self):
+        """Array of endpoint services
+        :rtype: list of EndPointService
+        """
         return self._EndPointServiceSet
 
     @EndPointServiceSet.setter
@@ -18797,6 +22118,9 @@ class DescribeVpcEndPointServiceResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of matched results
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -18805,6 +22129,9 @@ class DescribeVpcEndPointServiceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18845,6 +22172,9 @@ class DescribeVpcEndPointServiceWhiteListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -18853,6 +22183,9 @@ class DescribeVpcEndPointServiceWhiteListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results per page; default value: 20; maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -18861,6 +22194,11 @@ class DescribeVpcEndPointServiceWhiteListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter condition
+<li> user-uin - String - (Filter condition) UIN.</li>
+<li> end-point-service-id - String - (Filter condition) Endpoint service ID.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -18907,6 +22245,9 @@ class DescribeVpcEndPointServiceWhiteListResponse(AbstractModel):
 
     @property
     def VpcEndpointServiceUserSet(self):
+        """Array of allowed endpoint services
+        :rtype: list of VpcEndPointServiceUser
+        """
         return self._VpcEndpointServiceUserSet
 
     @VpcEndpointServiceUserSet.setter
@@ -18915,6 +22256,9 @@ class DescribeVpcEndPointServiceWhiteListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of matched allowlists
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -18923,6 +22267,9 @@ class DescribeVpcEndPointServiceWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -18964,6 +22311,12 @@ class DescribeVpcInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter condition. `RouteTableIds` and `Filters` cannot be specified at the same time.
+<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>
+<li>instance-type - String - (Filter condition) CVM instance ID.</li>
+<li>instance-name - String - (Filter condition) CVM name.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -18972,6 +22325,9 @@ class DescribeVpcInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -18980,6 +22336,9 @@ class DescribeVpcInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of requested objects.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -19026,6 +22385,9 @@ class DescribeVpcInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
+        """List of CVM instances.
+        :rtype: list of CvmInstance
+        """
         return self._InstanceSet
 
     @InstanceSet.setter
@@ -19034,6 +22396,9 @@ class DescribeVpcInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of eligible CVM instances.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -19042,6 +22407,9 @@ class DescribeVpcInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19083,6 +22451,9 @@ class DescribeVpcIpv6AddressesRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The `ID` of the `VPC`, such as `vpc-f49l6u0z`.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -19091,6 +22462,9 @@ class DescribeVpcIpv6AddressesRequest(AbstractModel):
 
     @property
     def Ipv6Addresses(self):
+        """The `IP` address list. Each request supports a maximum of `10` batch querying.
+        :rtype: list of str
+        """
         return self._Ipv6Addresses
 
     @Ipv6Addresses.setter
@@ -19099,6 +22473,9 @@ class DescribeVpcIpv6AddressesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -19107,6 +22484,9 @@ class DescribeVpcIpv6AddressesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The returned quantity.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -19149,6 +22529,9 @@ class DescribeVpcIpv6AddressesResponse(AbstractModel):
 
     @property
     def Ipv6AddressSet(self):
+        """The `IPv6` address list.
+        :rtype: list of VpcIpv6Address
+        """
         return self._Ipv6AddressSet
 
     @Ipv6AddressSet.setter
@@ -19157,6 +22540,9 @@ class DescribeVpcIpv6AddressesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The total number of `IPv6` addresses.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -19165,6 +22551,9 @@ class DescribeVpcIpv6AddressesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19200,6 +22589,9 @@ class DescribeVpcPrivateIpAddressesRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The `ID` of the `VPC`, such as `vpc-f49l6u0z`.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -19208,6 +22600,9 @@ class DescribeVpcPrivateIpAddressesRequest(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
+        """The private `IP` address list. Each request supports a maximum of `10` batch querying.
+        :rtype: list of str
+        """
         return self._PrivateIpAddresses
 
     @PrivateIpAddresses.setter
@@ -19245,6 +22640,9 @@ class DescribeVpcPrivateIpAddressesResponse(AbstractModel):
 
     @property
     def VpcPrivateIpAddressSet(self):
+        """The list of private `IP` address information.
+        :rtype: list of VpcPrivateIpAddress
+        """
         return self._VpcPrivateIpAddressSet
 
     @VpcPrivateIpAddressSet.setter
@@ -19253,6 +22651,9 @@ class DescribeVpcPrivateIpAddressesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19284,6 +22685,9 @@ class DescribeVpcResourceDashboardRequest(AbstractModel):
 
     @property
     def VpcIds(self):
+        """Vpc instance ID, e.g. vpc-f1xjkw1b.
+        :rtype: list of str
+        """
         return self._VpcIds
 
     @VpcIds.setter
@@ -19320,6 +22724,9 @@ class DescribeVpcResourceDashboardResponse(AbstractModel):
 
     @property
     def ResourceDashboardSet(self):
+        """List of resource objects.
+        :rtype: list of ResourceDashboard
+        """
         return self._ResourceDashboardSet
 
     @ResourceDashboardSet.setter
@@ -19328,6 +22735,9 @@ class DescribeVpcResourceDashboardResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19359,6 +22769,9 @@ class DescribeVpcTaskResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
+        """`RequestId` returned by an async task
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -19402,6 +22815,9 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Status(self):
+        """The execution results of an async task. Valid values: `SUCCESS`(task executed successfully), `FAILED` (task execution failed), and `RUNNING` (task in progress). 
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -19410,6 +22826,9 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Output(self):
+        """Output of the async task execution result
+        :rtype: str
+        """
         return self._Output
 
     @Output.setter
@@ -19418,6 +22837,10 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def Result(self):
+        """Detailed result of an async task, such as the result of batch deleting ENIs.
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :rtype: list of VpcTaskResultDetailInfo
+        """
         return self._Result
 
     @Result.setter
@@ -19426,6 +22849,9 @@ Note: this field may return `null`, indicating that no valid value can be obtain
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19476,6 +22902,9 @@ Valid filters include:
 
     @property
     def VpcIds(self):
+        """The VPC instance ID, such as `vpc-f49l6u0z`. Each request supports a maximum of 100 instances. `VpcIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of str
+        """
         return self._VpcIds
 
     @VpcIds.setter
@@ -19484,6 +22913,17 @@ Valid filters include:
 
     @property
     def Filters(self):
+        """Filter condition. `VpcIds` and `Filters` cannot be specified at the same time.
+Valid filters include:
+<li>`vpc-name`: VPC instance name, which supports fuzzy search.</li>
+<li>`is-default`: Indicates whether it is the default VPC</li>
+<li>`vpc-id`: VPC instance ID, such as `vpc-f49l6u0z`</li>
+<li>`cidr-block`: VPC CIDR block</li>
+<li>`tag-key`: (Optional) tag key</li>
+<li>`tag:tag-key`: (Optional) tag key-value pair. Replace the `tag-key` with a specified tag value. For its usage, refer to Example 2.</li>
+  **Note:** If one filter has multiple values, the logical relationship between these values is `OR`. The logical relationship between filters is `AND`.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -19492,6 +22932,9 @@ Valid filters include:
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: str
+        """
         return self._Offset
 
     @Offset.setter
@@ -19500,6 +22943,9 @@ Valid filters include:
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: str
+        """
         return self._Limit
 
     @Limit.setter
@@ -19547,6 +22993,9 @@ class DescribeVpcsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of objects meeting the condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -19555,6 +23004,9 @@ class DescribeVpcsResponse(AbstractModel):
 
     @property
     def VpcSet(self):
+        """The VPC object.
+        :rtype: list of Vpc
+        """
         return self._VpcSet
 
     @VpcSet.setter
@@ -19563,6 +23015,9 @@ class DescribeVpcsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19609,6 +23064,9 @@ class DescribeVpnConnectionsRequest(AbstractModel):
 
     @property
     def VpnConnectionIds(self):
+        """The instance ID of the VPN tunnel, such as `vpnx-f49l6u0z`. Each request can have a maximum of 100 instances. `VpnConnectionIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of str
+        """
         return self._VpnConnectionIds
 
     @VpnConnectionIds.setter
@@ -19617,6 +23075,14 @@ class DescribeVpnConnectionsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter condition. In each request, the upper limit for `Filters` is 10 and 5 for `Filter.Values`. `VpnConnectionIds` and `Filters` cannot be specified at the same time.
+<li>vpc-id - String - VPC instance ID, such as `vpc-0a36uwkr`.</li>
+<li>vpn-gateway-id - String - VPN gateway instance ID, such as `vpngw-p4lmqawn`.</li>
+<li>customer-gateway-id - String - Customer gateway instance ID, such as `cgw-l4rblw63`.</li>
+<li>vpn-connection-name - String - Connection name, such as `test-vpn`.</li>
+<li>vpn-connection-id - String - Connection instance ID, such as `vpnx-5p7vkch8"`.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -19625,6 +23091,9 @@ class DescribeVpnConnectionsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """The Offset. The default value is 0. For more information about Offset, see the relevant section in the API Introduction.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -19633,6 +23102,9 @@ class DescribeVpnConnectionsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of values to be returned. The default value is 20. Maximum is 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -19680,6 +23152,9 @@ class DescribeVpnConnectionsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of instances meeting the filter condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -19688,6 +23163,9 @@ class DescribeVpnConnectionsResponse(AbstractModel):
 
     @property
     def VpnConnectionSet(self):
+        """VPN tunnel instance.
+        :rtype: list of VpnConnection
+        """
         return self._VpnConnectionSet
 
     @VpnConnectionSet.setter
@@ -19696,6 +23174,9 @@ class DescribeVpnConnectionsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19734,6 +23215,9 @@ class DescribeVpnGatewayCcnRoutesRequest(AbstractModel):
 
     @property
     def VpnGatewayId(self):
+        """Instance ID of the VPN gateway
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -19742,6 +23226,9 @@ class DescribeVpnGatewayCcnRoutesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -19750,6 +23237,9 @@ class DescribeVpnGatewayCcnRoutesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The returned quantity
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -19791,6 +23281,9 @@ class DescribeVpnGatewayCcnRoutesResponse(AbstractModel):
 
     @property
     def RouteSet(self):
+        """The CCN route (IDC IP range) list.
+        :rtype: list of VpngwCcnRoutes
+        """
         return self._RouteSet
 
     @RouteSet.setter
@@ -19799,6 +23292,9 @@ class DescribeVpnGatewayCcnRoutesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of objects that meet the condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -19807,6 +23303,9 @@ class DescribeVpnGatewayCcnRoutesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19848,6 +23347,9 @@ class DescribeVpnGatewayRoutesRequest(AbstractModel):
 
     @property
     def VpnGatewayId(self):
+        """Instance ID of the VPN gateway
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -19856,6 +23358,9 @@ class DescribeVpnGatewayRoutesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter condition. Valid values: `DestinationCidr`, `InstanceId`, and `InstanceType`.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -19864,6 +23369,9 @@ class DescribeVpnGatewayRoutesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -19872,6 +23380,9 @@ class DescribeVpnGatewayRoutesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results per page. Default value: 20; maximum value: 100
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -19920,6 +23431,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Routes(self):
+        """Destination routes of the VPN gateway
+        :rtype: list of VpnGatewayRoute
+        """
         return self._Routes
 
     @Routes.setter
@@ -19928,6 +23442,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -19936,6 +23454,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -19984,6 +23505,9 @@ class DescribeVpnGatewaysRequest(AbstractModel):
 
     @property
     def VpnGatewayIds(self):
+        """The VPN gateway instance ID, such as `vpngw-f49l6u0z`. Each request can have a maximum of 100 instances. `VpnGatewayIds` and `Filters` cannot be specified at the same time.
+        :rtype: list of str
+        """
         return self._VpnGatewayIds
 
     @VpnGatewayIds.setter
@@ -19992,6 +23516,16 @@ class DescribeVpnGatewaysRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter condition. `VpnGatewayIds` and `Filters` cannot be specified at the same time.
+<li>vpc-id - String - (Filter condition) VPC instance ID, such as `vpc-f49l6u0z`.</li>
+<li>vpn-gateway-id - String - (Filter condition) VPN instance ID, such as `vpngw-5aluhh9t`.</li>
+<li>vpn-gateway-name - String - (Filter condition) VPN instance name.</li>
+<li>type - String - (Filter condition) VPN gateway type: 'IPSEC', 'SSL'.</li>
+<li>public-ip-address- String - (Filter condition) Public IP.</li>
+<li>renew-flag - String - (Filter condition) Gateway renewal type. Manual renewal: `NOTIFY_AND_MANUAL_RENEW`, Automatic renewal: `NOTIFY_AND_AUTO_RENEW`.</li>
+<li>zone - String - (Filter condition) The availability zone where the VPN is located, such as `ap-guangzhou-2`.</li>
+        :rtype: list of FilterObject
+        """
         return self._Filters
 
     @Filters.setter
@@ -20000,6 +23534,9 @@ class DescribeVpnGatewaysRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -20008,6 +23545,9 @@ class DescribeVpnGatewaysRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of request objects.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -20055,6 +23595,9 @@ class DescribeVpnGatewaysResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """The number of instances meeting the filter condition.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -20063,6 +23606,9 @@ class DescribeVpnGatewaysResponse(AbstractModel):
 
     @property
     def VpnGatewaySet(self):
+        """The list of details of VPN gateway instances.
+        :rtype: list of VpnGateway
+        """
         return self._VpnGatewaySet
 
     @VpnGatewaySet.setter
@@ -20071,6 +23617,9 @@ class DescribeVpnGatewaysResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20118,6 +23667,9 @@ class DestinationIpPortTranslationNatRule(AbstractModel):
 
     @property
     def IpProtocol(self):
+        """Network protocol. Valid values: `TCP`, `UDP`.
+        :rtype: str
+        """
         return self._IpProtocol
 
     @IpProtocol.setter
@@ -20126,6 +23678,9 @@ class DestinationIpPortTranslationNatRule(AbstractModel):
 
     @property
     def PublicIpAddress(self):
+        """EIP.
+        :rtype: str
+        """
         return self._PublicIpAddress
 
     @PublicIpAddress.setter
@@ -20134,6 +23689,9 @@ class DestinationIpPortTranslationNatRule(AbstractModel):
 
     @property
     def PublicPort(self):
+        """Public network port.
+        :rtype: int
+        """
         return self._PublicPort
 
     @PublicPort.setter
@@ -20142,6 +23700,9 @@ class DestinationIpPortTranslationNatRule(AbstractModel):
 
     @property
     def PrivateIpAddress(self):
+        """Private network address.
+        :rtype: str
+        """
         return self._PrivateIpAddress
 
     @PrivateIpAddress.setter
@@ -20150,6 +23711,9 @@ class DestinationIpPortTranslationNatRule(AbstractModel):
 
     @property
     def PrivatePort(self):
+        """Private network port.
+        :rtype: int
+        """
         return self._PrivatePort
 
     @PrivatePort.setter
@@ -20158,6 +23722,9 @@ class DestinationIpPortTranslationNatRule(AbstractModel):
 
     @property
     def Description(self):
+        """Description of NAT gateway forwarding rules.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -20199,6 +23766,9 @@ class DetachCcnInstancesRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """The CCN instance ID, such as `ccn-f49l6u0z`.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -20207,6 +23777,9 @@ class DetachCcnInstancesRequest(AbstractModel):
 
     @property
     def Instances(self):
+        """The list of network instances to be unbound
+        :rtype: list of CcnInstance
+        """
         return self._Instances
 
     @Instances.setter
@@ -20246,6 +23819,9 @@ class DetachCcnInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20274,6 +23850,9 @@ class DetachClassicLinkVpcRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The ID of the VPC instance. You can obtain the parameter value from the VpcId field in the returned result of DescribeVpcs API.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -20282,6 +23861,9 @@ class DetachClassicLinkVpcRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
+        """Queries the ID of the CVM instance, such as `ins-r8hr2upy`.
+        :rtype: list of str
+        """
         return self._InstanceIds
 
     @InstanceIds.setter
@@ -20316,6 +23898,9 @@ class DetachClassicLinkVpcResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20344,6 +23929,9 @@ class DetachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
+        """The ID of the ENI instance, such as `eni-m6dyj72l`.
+        :rtype: str
+        """
         return self._NetworkInterfaceId
 
     @NetworkInterfaceId.setter
@@ -20352,6 +23940,9 @@ class DetachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """The ID of the CVM instance, such as `ins-r8hr2upy`.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -20386,6 +23977,9 @@ class DetachNetworkInterfaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20414,6 +24008,9 @@ class DetachSnapshotInstancesRequest(AbstractModel):
 
     @property
     def SnapshotPolicyId(self):
+        """Snapshot policy IDs
+        :rtype: str
+        """
         return self._SnapshotPolicyId
 
     @SnapshotPolicyId.setter
@@ -20422,6 +24019,9 @@ class DetachSnapshotInstancesRequest(AbstractModel):
 
     @property
     def Instances(self):
+        """Information of instances
+        :rtype: list of SnapshotInstance
+        """
         return self._Instances
 
     @Instances.setter
@@ -20461,6 +24061,9 @@ class DetachSnapshotInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20575,6 +24178,9 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def DirectConnectGatewayId(self):
+        """Direct Connect `ID`.
+        :rtype: str
+        """
         return self._DirectConnectGatewayId
 
     @DirectConnectGatewayId.setter
@@ -20583,6 +24189,9 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def DirectConnectGatewayName(self):
+        """Direct Connect gateway name.
+        :rtype: str
+        """
         return self._DirectConnectGatewayName
 
     @DirectConnectGatewayName.setter
@@ -20591,6 +24200,9 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def VpcId(self):
+        """The `ID` of the `VPC` instance associated with the Direct Connect gateway.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -20599,6 +24211,11 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def NetworkType(self):
+        """The associated network type:
+<li>`VPC` - VPC</li>
+<li>`CCN` - CCN</li>
+        :rtype: str
+        """
         return self._NetworkType
 
     @NetworkType.setter
@@ -20607,6 +24224,11 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def NetworkInstanceId(self):
+        """The `ID` of the associated network instance:
+<li>When the NetworkType is `VPC`, this value is the VPC instance `ID`</li>
+<li>When the NetworkType is `CCN`, this value is the CCN instance `ID`</li>
+        :rtype: str
+        """
         return self._NetworkInstanceId
 
     @NetworkInstanceId.setter
@@ -20615,6 +24237,12 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def GatewayType(self):
+        """Gateway type:
+<li>NORMAL - Standard type. Note: CCN only supports the standard type</li>
+<li>NAT - NAT type</li>
+NAT type supports network address switch configuration. After the type is confirmed, it cannot be modified. A VPC can create one NAT-type Direct Connect gateway and one non-NAT-type Direct Connect gateway
+        :rtype: str
+        """
         return self._GatewayType
 
     @GatewayType.setter
@@ -20623,6 +24251,9 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def CreateTime(self):
+        """Creation Time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -20631,6 +24262,9 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def DirectConnectGatewayIp(self):
+        """Direct Connect gateway IP.
+        :rtype: str
+        """
         return self._DirectConnectGatewayIp
 
     @DirectConnectGatewayIp.setter
@@ -20639,6 +24273,9 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def CcnId(self):
+        """The `ID` of the `CCN` instance associated with the Direct Connect gateway.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -20647,6 +24284,11 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def CcnRouteType(self):
+        """The route-learning type of the CCN:
+<li>`BGP` - Automatic learning.</li>
+<li>`STATIC` - Static, that is, user-configured.</li>
+        :rtype: str
+        """
         return self._CcnRouteType
 
     @CcnRouteType.setter
@@ -20655,6 +24297,9 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def EnableBGP(self):
+        """Whether BGP is enabled.
+        :rtype: bool
+        """
         return self._EnableBGP
 
     @EnableBGP.setter
@@ -20663,6 +24308,9 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def EnableBGPCommunity(self):
+        """Whether to enable BGP's `community` attribute. Valid values: enable, disable
+        :rtype: bool
+        """
         return self._EnableBGPCommunity
 
     @EnableBGPCommunity.setter
@@ -20671,6 +24319,10 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def NatGatewayId(self):
+        """ID of the NAT gateway bound.
+Note: this field may return `null`, indicating that no valid value was found.
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -20679,6 +24331,10 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def VXLANSupport(self):
+        """Whether the direct connect gateway supports the VXLAN architecture.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of bool
+        """
         return self._VXLANSupport
 
     @VXLANSupport.setter
@@ -20687,6 +24343,10 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def ModeType(self):
+        """CCN route publishing mode. Valid values: `standard` and `exquisite`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ModeType
 
     @ModeType.setter
@@ -20695,6 +24355,10 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def LocalZone(self):
+        """Whether the direct connect gateway is for an edge zone.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._LocalZone
 
     @LocalZone.setter
@@ -20703,6 +24367,10 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def Zone(self):
+        """Availability zone where the direct connect gateway resides.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -20711,6 +24379,12 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def EnableFlowDetails(self):
+        """The status of gateway traffic monitoring
+0: disable
+1: enable
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._EnableFlowDetails
 
     @EnableFlowDetails.setter
@@ -20719,6 +24393,10 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def FlowDetailsUpdateTime(self):
+        """The last time when the gateway traffic monitoring is enabled/disabled
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FlowDetailsUpdateTime
 
     @FlowDetailsUpdateTime.setter
@@ -20727,6 +24405,12 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def NewAfc(self):
+        """Whether gateway traffic monitoring is supported
+0: No
+1: Yes
+Note: this field may return `null`, indicating that no valid values can be found.
+        :rtype: int
+        """
         return self._NewAfc
 
     @NewAfc.setter
@@ -20735,6 +24419,13 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def AccessNetworkType(self):
+        """Direct connect gateway access network types:
+<li>`VXLAN` - VXLAN type.</li>
+<li>`MPLS` - MPLS type.</li>
+<li>`Hybrid` - Hybrid type.</li>
+Note: this field may return `null`, indicating that no valid values can be found.
+        :rtype: str
+        """
         return self._AccessNetworkType
 
     @AccessNetworkType.setter
@@ -20743,6 +24434,10 @@ Note: this field may return `null`, indicating that no valid values can be found
 
     @property
     def HaZoneList(self):
+        """AZ list of direct connect gateway with cross-AZ placement groups
+Note: this field may return `null`, indicating that no valid values can be found.
+        :rtype: list of str
+        """
         return self._HaZoneList
 
     @HaZoneList.setter
@@ -20809,6 +24504,9 @@ class DirectConnectGatewayCcnRoute(AbstractModel):
 
     @property
     def RouteId(self):
+        """Route ID.
+        :rtype: str
+        """
         return self._RouteId
 
     @RouteId.setter
@@ -20817,6 +24515,9 @@ class DirectConnectGatewayCcnRoute(AbstractModel):
 
     @property
     def DestinationCidrBlock(self):
+        """IDC IP range.
+        :rtype: str
+        """
         return self._DestinationCidrBlock
 
     @DestinationCidrBlock.setter
@@ -20825,6 +24526,9 @@ class DirectConnectGatewayCcnRoute(AbstractModel):
 
     @property
     def ASPath(self):
+        """The `AS-Path` attribute of `BGP`.
+        :rtype: list of str
+        """
         return self._ASPath
 
     @ASPath.setter
@@ -20833,6 +24537,9 @@ class DirectConnectGatewayCcnRoute(AbstractModel):
 
     @property
     def Description(self):
+        """Remarks
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -20841,6 +24548,9 @@ class DirectConnectGatewayCcnRoute(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """Last updated time
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -20881,6 +24591,9 @@ class DirectConnectSubnet(AbstractModel):
 
     @property
     def DirectConnectGatewayId(self):
+        """The direct connect gateway ID.
+        :rtype: str
+        """
         return self._DirectConnectGatewayId
 
     @DirectConnectGatewayId.setter
@@ -20889,6 +24602,9 @@ class DirectConnectSubnet(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """IDC subnet IP range
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -20926,6 +24642,9 @@ class DisableCcnRoutesRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """The CCN instance ID, such as `ccn-f49l6u0z`.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -20934,6 +24653,9 @@ class DisableCcnRoutesRequest(AbstractModel):
 
     @property
     def RouteIds(self):
+        """The unique ID of the CCN routing policy, such as `ccnr-f49l6u0z`.
+        :rtype: list of str
+        """
         return self._RouteIds
 
     @RouteIds.setter
@@ -20968,6 +24690,9 @@ class DisableCcnRoutesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -20993,6 +24718,9 @@ class DisableFlowLogsRequest(AbstractModel):
 
     @property
     def FlowLogIds(self):
+        """Flow log ID.
+        :rtype: list of str
+        """
         return self._FlowLogIds
 
     @FlowLogIds.setter
@@ -21026,6 +24754,9 @@ class DisableFlowLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21054,6 +24785,12 @@ VPN gateway instance, such as `vpn-ltjahce6`.
 
     @property
     def GatewayId(self):
+        """Gateway instance ID. Supported types:
+Direct connect gateway instance, such as `dcg-ltjahce6`;
+NAT gateway instance, such as `nat-ltjahce6`;
+VPN gateway instance, such as `vpn-ltjahce6`.
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -21087,6 +24824,9 @@ class DisableGatewayFlowMonitorResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21112,6 +24852,9 @@ class DisableSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def SnapshotPolicyIds(self):
+        """Snapshot policy IDs
+        :rtype: list of str
+        """
         return self._SnapshotPolicyIds
 
     @SnapshotPolicyIds.setter
@@ -21145,6 +24888,9 @@ class DisableSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21173,6 +24919,9 @@ class DisassociateAddressRequest(AbstractModel):
 
     @property
     def AddressId(self):
+        """The unique ID of the EIP, such as `eip-11112222`.
+        :rtype: str
+        """
         return self._AddressId
 
     @AddressId.setter
@@ -21181,6 +24930,9 @@ class DisassociateAddressRequest(AbstractModel):
 
     @property
     def ReallocateNormalPublicIp(self):
+        """Whether a common public IP is assigned after the EIP is unbound. Value range:<br><li>TRUE: Indicates that after the EIP is unbound, a common public IP is assigned.<br><li>FALSE: Indicates that after the EIP is unbound, a common public IP is not assigned.<br>Default value: FALSE.<br><br>The parameter can be specified only under the following conditions:<br><li>It can only be specified when you unbind an EIP from the primary private IP of the primary ENI.<br><li>After an EIP is unbound, you can assign public IPs to an account up to 10 times per day. For more information, use the [DescribeAddressQuota] (https://intl.cloud.tencent.com/document/api/213/1378?from_cn_redirect=1) API.
+        :rtype: bool
+        """
         return self._ReallocateNormalPublicIp
 
     @ReallocateNormalPublicIp.setter
@@ -21218,6 +24970,9 @@ class DisassociateAddressResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """The async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -21226,6 +24981,9 @@ class DisassociateAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21258,6 +25016,9 @@ class DisassociateDirectConnectGatewayNatGatewayRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The direct connect gateway ID.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -21266,6 +25027,9 @@ class DisassociateDirectConnectGatewayNatGatewayRequest(AbstractModel):
 
     @property
     def NatGatewayId(self):
+        """The NAT Gateway ID.
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -21274,6 +25038,9 @@ class DisassociateDirectConnectGatewayNatGatewayRequest(AbstractModel):
 
     @property
     def DirectConnectGatewayId(self):
+        """The ID of the VPC instance, which can be obtained from the `VpcId` field in response of the `DescribeVpcs` API.
+        :rtype: str
+        """
         return self._DirectConnectGatewayId
 
     @DirectConnectGatewayId.setter
@@ -21309,6 +25076,9 @@ class DisassociateDirectConnectGatewayNatGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21337,6 +25107,9 @@ class DisassociateNatGatewayAddressRequest(AbstractModel):
 
     @property
     def NatGatewayId(self):
+        """The ID of the NAT gateway, such as `nat-df45454`.
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -21345,6 +25118,9 @@ class DisassociateNatGatewayAddressRequest(AbstractModel):
 
     @property
     def PublicIpAddresses(self):
+        """Array of the EIPs to be unbound from the NAT gateway.
+        :rtype: list of str
+        """
         return self._PublicIpAddresses
 
     @PublicIpAddresses.setter
@@ -21379,6 +25155,9 @@ class DisassociateNatGatewayAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21407,6 +25186,9 @@ class DisassociateNetworkAclSubnetsRequest(AbstractModel):
 
     @property
     def NetworkAclId(self):
+        """Network ACL instance ID, such as `acl-12345678`.
+        :rtype: str
+        """
         return self._NetworkAclId
 
     @NetworkAclId.setter
@@ -21415,6 +25197,9 @@ class DisassociateNetworkAclSubnetsRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
+        """Array of subnet instance IDs, such as [subnet-12345678].
+        :rtype: list of str
+        """
         return self._SubnetIds
 
     @SubnetIds.setter
@@ -21449,6 +25234,9 @@ class DisassociateNetworkAclSubnetsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21477,6 +25265,9 @@ class DisassociateNetworkInterfaceSecurityGroupsRequest(AbstractModel):
 
     @property
     def NetworkInterfaceIds(self):
+        """ENI instance ID, e.g. eni-pxir56ns. You can enter up to 100 instances for each request.
+        :rtype: list of str
+        """
         return self._NetworkInterfaceIds
 
     @NetworkInterfaceIds.setter
@@ -21485,6 +25276,9 @@ class DisassociateNetworkInterfaceSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """The security group instance ID, such as `sg-33ocnj9n`. It can be obtained through DescribeSecurityGroups. You can enter up to 100 instances for each request.
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -21519,6 +25313,9 @@ class DisassociateNetworkInterfaceSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21547,6 +25344,9 @@ class DisassociateVpcEndPointSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """Array of security group IDs
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -21555,6 +25355,9 @@ class DisassociateVpcEndPointSecurityGroupsRequest(AbstractModel):
 
     @property
     def EndPointId(self):
+        """Endpoint ID
+        :rtype: str
+        """
         return self._EndPointId
 
     @EndPointId.setter
@@ -21589,6 +25392,9 @@ class DisassociateVpcEndPointSecurityGroupsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21623,6 +25429,9 @@ class DownloadCustomerGatewayConfigurationRequest(AbstractModel):
 
     @property
     def VpnGatewayId(self):
+        """The ID of the VPN gateway instance.
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -21631,6 +25440,9 @@ class DownloadCustomerGatewayConfigurationRequest(AbstractModel):
 
     @property
     def VpnConnectionId(self):
+        """The ID of the VPN tunnel instance, such as `vpnx-f49l6u0z`.
+        :rtype: str
+        """
         return self._VpnConnectionId
 
     @VpnConnectionId.setter
@@ -21639,6 +25451,9 @@ class DownloadCustomerGatewayConfigurationRequest(AbstractModel):
 
     @property
     def CustomerGatewayVendor(self):
+        """Customer gateway vendor information object, which can be obtained through DescribeCustomerGatewayVendors.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CustomerGatewayVendor`
+        """
         return self._CustomerGatewayVendor
 
     @CustomerGatewayVendor.setter
@@ -21647,6 +25462,9 @@ class DownloadCustomerGatewayConfigurationRequest(AbstractModel):
 
     @property
     def InterfaceName(self):
+        """Name of the physical API for tunnel access device.
+        :rtype: str
+        """
         return self._InterfaceName
 
     @InterfaceName.setter
@@ -21688,6 +25506,9 @@ class DownloadCustomerGatewayConfigurationResponse(AbstractModel):
 
     @property
     def CustomerGatewayConfiguration(self):
+        """Configuration information in XML format.
+        :rtype: str
+        """
         return self._CustomerGatewayConfiguration
 
     @CustomerGatewayConfiguration.setter
@@ -21696,6 +25517,9 @@ class DownloadCustomerGatewayConfigurationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21725,6 +25549,9 @@ class EnableCcnRoutesRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """The CCN instance ID, such as `ccn-f49l6u0z`.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -21733,6 +25560,9 @@ class EnableCcnRoutesRequest(AbstractModel):
 
     @property
     def RouteIds(self):
+        """The unique ID of the CCN routing policy, such as `ccnr-f49l6u0z`.
+        :rtype: list of str
+        """
         return self._RouteIds
 
     @RouteIds.setter
@@ -21767,6 +25597,9 @@ class EnableCcnRoutesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21792,6 +25625,9 @@ class EnableFlowLogsRequest(AbstractModel):
 
     @property
     def FlowLogIds(self):
+        """Flow log ID.
+        :rtype: list of str
+        """
         return self._FlowLogIds
 
     @FlowLogIds.setter
@@ -21825,6 +25661,9 @@ class EnableFlowLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21853,6 +25692,12 @@ VPN gateway instance, such as `vpn-ltjahce6`.
 
     @property
     def GatewayId(self):
+        """Gateway instance ID. Supported types:
+Direct connect gateway instance, such as `dcg-ltjahce6`;
+NAT gateway instance, such as `nat-ltjahce6`;
+VPN gateway instance, such as `vpn-ltjahce6`.
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -21886,6 +25731,9 @@ class EnableGatewayFlowMonitorResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21911,6 +25759,9 @@ class EnableSnapshotPoliciesRequest(AbstractModel):
 
     @property
     def SnapshotPolicyIds(self):
+        """Snapshot policy IDs
+        :rtype: list of str
+        """
         return self._SnapshotPolicyIds
 
     @SnapshotPolicyIds.setter
@@ -21944,6 +25795,9 @@ class EnableSnapshotPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -21976,6 +25830,9 @@ class EnableVpcEndPointConnectRequest(AbstractModel):
 
     @property
     def EndPointServiceId(self):
+        """Endpoint service ID
+        :rtype: str
+        """
         return self._EndPointServiceId
 
     @EndPointServiceId.setter
@@ -21984,6 +25841,9 @@ class EnableVpcEndPointConnectRequest(AbstractModel):
 
     @property
     def EndPointId(self):
+        """Endpoint ID
+        :rtype: list of str
+        """
         return self._EndPointId
 
     @EndPointId.setter
@@ -21992,6 +25852,10 @@ class EnableVpcEndPointConnectRequest(AbstractModel):
 
     @property
     def AcceptFlag(self):
+        """Whether to accept the request of connecting with an endpoint
+
+        :rtype: bool
+        """
         return self._AcceptFlag
 
     @AcceptFlag.setter
@@ -22027,6 +25891,9 @@ class EnableVpcEndPointConnectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22089,6 +25956,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EndPointId(self):
+        """Endpoint ID
+        :rtype: str
+        """
         return self._EndPointId
 
     @EndPointId.setter
@@ -22097,6 +25967,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VpcId(self):
+        """VPC ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -22105,6 +25978,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubnetId(self):
+        """Subnet ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -22113,6 +25989,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EndPointOwner(self):
+        """APP ID
+        :rtype: str
+        """
         return self._EndPointOwner
 
     @EndPointOwner.setter
@@ -22121,6 +26000,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EndPointName(self):
+        """Endpoint name
+        :rtype: str
+        """
         return self._EndPointName
 
     @EndPointName.setter
@@ -22129,6 +26011,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ServiceVpcId(self):
+        """Endpoint service VPC ID
+        :rtype: str
+        """
         return self._ServiceVpcId
 
     @ServiceVpcId.setter
@@ -22137,6 +26022,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ServiceVip(self):
+        """Endpoint service VIP
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -22145,6 +26033,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EndPointServiceId(self):
+        """Endpoint service ID
+        :rtype: str
+        """
         return self._EndPointServiceId
 
     @EndPointServiceId.setter
@@ -22153,6 +26044,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EndPointVip(self):
+        """Endpoint VIP
+        :rtype: str
+        """
         return self._EndPointVip
 
     @EndPointVip.setter
@@ -22161,6 +26055,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def State(self):
+        """Endpoint status. Valid values: `ACTIVE` (available), `PENDING` (to be accepted), `ACCEPTING` (being accepted), `REJECTED` (rejected), and `FAILED` (failed).
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -22169,6 +26066,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -22177,6 +26077,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def GroupSet(self):
+        """ID list of security group instances bound with endpoints
+        :rtype: list of str
+        """
         return self._GroupSet
 
     @GroupSet.setter
@@ -22185,6 +26088,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ServiceName(self):
+        """Endpoint service name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ServiceName
 
     @ServiceName.setter
@@ -22262,6 +26169,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EndPointServiceId(self):
+        """Endpoint service ID
+        :rtype: str
+        """
         return self._EndPointServiceId
 
     @EndPointServiceId.setter
@@ -22270,6 +26180,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VpcId(self):
+        """VPC ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -22278,6 +26191,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ServiceOwner(self):
+        """APP ID
+        :rtype: str
+        """
         return self._ServiceOwner
 
     @ServiceOwner.setter
@@ -22286,6 +26202,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ServiceName(self):
+        """Endpoint service name
+        :rtype: str
+        """
         return self._ServiceName
 
     @ServiceName.setter
@@ -22294,6 +26213,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ServiceVip(self):
+        """Real server VIP
+        :rtype: str
+        """
         return self._ServiceVip
 
     @ServiceVip.setter
@@ -22302,6 +26224,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ServiceInstanceId(self):
+        """Real server ID in the format of `lb-xxx`.
+        :rtype: str
+        """
         return self._ServiceInstanceId
 
     @ServiceInstanceId.setter
@@ -22310,6 +26235,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AutoAcceptFlag(self):
+        """Whether to automatically accept
+        :rtype: bool
+        """
         return self._AutoAcceptFlag
 
     @AutoAcceptFlag.setter
@@ -22318,6 +26246,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EndPointCount(self):
+        """Number of associated endpoints
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._EndPointCount
 
     @EndPointCount.setter
@@ -22326,6 +26258,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EndPointSet(self):
+        """Array of endpoints
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of EndPoint
+        """
         return self._EndPointSet
 
     @EndPointSet.setter
@@ -22334,6 +26270,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -22342,6 +26281,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ServiceType(self):
+        """Mounted PaaS service type. Values: `CLB`, `CDB`, `CRS`
+        :rtype: str
+        """
         return self._ServiceType
 
     @ServiceType.setter
@@ -22393,6 +26335,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """The attribute name. If more than one Filter exists, the logical relation between these Filters is `AND`.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -22401,6 +26346,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """Attribute value. If multiple values exist in one filter, the logical relationship between these values is `OR`. For a `bool` parameter, the valid values include `TRUE` and `FALSE`.
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -22438,6 +26386,9 @@ class FilterObject(AbstractModel):
 
     @property
     def Name(self):
+        """The attribute name. If more than one Filter exists, the logical relation between these Filters is `AND`.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -22446,6 +26397,9 @@ class FilterObject(AbstractModel):
 
     @property
     def Values(self):
+        """The attribute value. If there are multiple Values for one Filter, the logical relation between these Values under the same Filter is `OR`.
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -22525,6 +26479,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VpcId(self):
+        """ID of the VPC instance.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -22533,6 +26490,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FlowLogId(self):
+        """The unique ID of the flow log.
+        :rtype: str
+        """
         return self._FlowLogId
 
     @FlowLogId.setter
@@ -22541,6 +26501,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FlowLogName(self):
+        """The name of the flow log instance.
+        :rtype: str
+        """
         return self._FlowLogName
 
     @FlowLogName.setter
@@ -22549,6 +26512,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ResourceType(self):
+        """The type of resource associated with the flow log. Valid values: `VPC`, `SUBNET`, `NETWORKINTERFACE`, `CCN`, `NAT`, and `DCG`.
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -22557,6 +26523,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ResourceId(self):
+        """The unique ID of the resource
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -22565,6 +26534,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TrafficType(self):
+        """Type of flow logs to be collected. Valid values: `ACCEPT`, `REJECT` and `ALL`.
+        :rtype: str
+        """
         return self._TrafficType
 
     @TrafficType.setter
@@ -22573,6 +26545,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CloudLogId(self):
+        """The storage ID of the flow log
+        :rtype: str
+        """
         return self._CloudLogId
 
     @CloudLogId.setter
@@ -22581,6 +26556,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CloudLogState(self):
+        """Flow log storage ID status.
+        :rtype: str
+        """
         return self._CloudLogState
 
     @CloudLogState.setter
@@ -22589,6 +26567,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FlowLogDescription(self):
+        """The flow log description.
+        :rtype: str
+        """
         return self._FlowLogDescription
 
     @FlowLogDescription.setter
@@ -22597,6 +26578,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTime(self):
+        """The creation time of the flow log.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -22605,6 +26589,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagSet(self):
+        """Tag list, such as [{"Key": "city", "Value": "shanghai"}].
+        :rtype: list of Tag
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -22613,6 +26600,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Enable(self):
+        """Whether to enable. `true`: yes; `false`: no.
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -22621,6 +26611,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def StorageType(self):
+        """Consumer end types: cls and ckafka
+Note: this field may return `null`, indicating that no valid value can be found.
+        :rtype: str
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -22629,6 +26623,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FlowLogStorage(self):
+        """Information of the consumer, which is returned when the consumer type is `ckafka`.
+Note: this field may return `null`, indicating that no valid value can be found.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.FlowLogStorage`
+        """
         return self._FlowLogStorage
 
     @FlowLogStorage.setter
@@ -22637,6 +26635,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CloudLogRegion(self):
+        """The region corresponding to the flow log storage ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CloudLogRegion
 
     @CloudLogRegion.setter
@@ -22695,6 +26697,9 @@ Note: this field may return `null`, indicating that no valid value can be found.
 
     @property
     def StorageId(self):
+        """Storage instance ID, which is required when `StorageType` is `ckafka`.
+        :rtype: str
+        """
         return self._StorageId
 
     @StorageId.setter
@@ -22703,6 +26708,10 @@ Note: this field may return `null`, indicating that no valid value can be found.
 
     @property
     def StorageTopic(self):
+        """Topic ID, which is required when `StorageType` is `ckafka`.
+Note: this field may return `null`, indicating that no valid value can be found.
+        :rtype: str
+        """
         return self._StorageTopic
 
     @StorageTopic.setter
@@ -22749,6 +26758,9 @@ class GatewayFlowMonitorDetail(AbstractModel):
 
     @property
     def PrivateIpAddress(self):
+        """Origin `IP`.
+        :rtype: str
+        """
         return self._PrivateIpAddress
 
     @PrivateIpAddress.setter
@@ -22757,6 +26769,9 @@ class GatewayFlowMonitorDetail(AbstractModel):
 
     @property
     def InPkg(self):
+        """Inbound packets.
+        :rtype: int
+        """
         return self._InPkg
 
     @InPkg.setter
@@ -22765,6 +26780,9 @@ class GatewayFlowMonitorDetail(AbstractModel):
 
     @property
     def OutPkg(self):
+        """Outbound packets.
+        :rtype: int
+        """
         return self._OutPkg
 
     @OutPkg.setter
@@ -22773,6 +26791,9 @@ class GatewayFlowMonitorDetail(AbstractModel):
 
     @property
     def InTraffic(self):
+        """Inbound traffic, in Byte.
+        :rtype: int
+        """
         return self._InTraffic
 
     @InTraffic.setter
@@ -22781,6 +26802,9 @@ class GatewayFlowMonitorDetail(AbstractModel):
 
     @property
     def OutTraffic(self):
+        """Outbound traffic, in Byte.
+        :rtype: int
+        """
         return self._OutTraffic
 
     @OutTraffic.setter
@@ -22827,6 +26851,9 @@ class GatewayQos(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -22835,6 +26862,9 @@ class GatewayQos(AbstractModel):
 
     @property
     def IpAddress(self):
+        """CVM Private IP.
+        :rtype: str
+        """
         return self._IpAddress
 
     @IpAddress.setter
@@ -22843,6 +26873,9 @@ class GatewayQos(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """Bandwidth limit value.
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -22851,6 +26884,9 @@ class GatewayQos(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -22887,6 +26923,9 @@ class GenerateVpnConnectionDefaultHealthCheckIpRequest(AbstractModel):
 
     @property
     def VpnGatewayId(self):
+        """VPN gateway ID, such as `vpngw-1w9tue3d`
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -22926,6 +26965,9 @@ class GenerateVpnConnectionDefaultHealthCheckIpResponse(AbstractModel):
 
     @property
     def HealthCheckLocalIp(self):
+        """Local IP used for VPN tunnel health check
+        :rtype: str
+        """
         return self._HealthCheckLocalIp
 
     @HealthCheckLocalIp.setter
@@ -22934,6 +26976,9 @@ class GenerateVpnConnectionDefaultHealthCheckIpResponse(AbstractModel):
 
     @property
     def HealthCheckRemoteIp(self):
+        """Remote IP used for VPN tunnel health check
+        :rtype: str
+        """
         return self._HealthCheckRemoteIp
 
     @HealthCheckRemoteIp.setter
@@ -22942,6 +26987,9 @@ class GenerateVpnConnectionDefaultHealthCheckIpResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -22986,6 +27034,9 @@ class GetCcnRegionBandwidthLimitsRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """The CCN instance ID, such as `ccn-f49l6u0z`.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -22994,6 +27045,11 @@ class GetCcnRegionBandwidthLimitsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """The filter condition.
+<li>sregion - String - (Filter condition) Filter by the source region, such as 'ap-guangzhou'.</li>
+<li>dregion - String - (Filter condition) Filter by the destination region, such as 'ap-shanghai-bm'.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -23002,6 +27058,9 @@ class GetCcnRegionBandwidthLimitsRequest(AbstractModel):
 
     @property
     def SortedBy(self):
+        """The sorting condition. Valid values: `BandwidthLimit` and `ExpireTime`.
+        :rtype: str
+        """
         return self._SortedBy
 
     @SortedBy.setter
@@ -23010,6 +27069,9 @@ class GetCcnRegionBandwidthLimitsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -23018,6 +27080,9 @@ class GetCcnRegionBandwidthLimitsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Quantity of returned items
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -23026,6 +27091,9 @@ class GetCcnRegionBandwidthLimitsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """In ascending or descending order. Valid values: 'ASC' and 'DESC'.
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -23077,6 +27145,10 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def CcnBandwidthSet(self):
+        """The outbound bandwidth limits of regions in a CCN instance.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of CcnBandwidthInfo
+        """
         return self._CcnBandwidthSet
 
     @CcnBandwidthSet.setter
@@ -23085,6 +27157,10 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def TotalCount(self):
+        """The number of eligible objects.
+Note: this field may return null, indicating that no valid value was found.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -23093,6 +27169,9 @@ Note: this field may return null, indicating that no valid value was found.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23157,6 +27236,9 @@ class HaVip(AbstractModel):
 
     @property
     def HaVipId(self):
+        """The `ID` of the `HAVIP`. This is the unique identifier of the `HAVIP`.
+        :rtype: str
+        """
         return self._HaVipId
 
     @HaVipId.setter
@@ -23165,6 +27247,9 @@ class HaVip(AbstractModel):
 
     @property
     def HaVipName(self):
+        """The name of the `HAVIP`.
+        :rtype: str
+        """
         return self._HaVipName
 
     @HaVipName.setter
@@ -23173,6 +27258,9 @@ class HaVip(AbstractModel):
 
     @property
     def Vip(self):
+        """The virtual IP address.
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -23181,6 +27269,9 @@ class HaVip(AbstractModel):
 
     @property
     def VpcId(self):
+        """The `ID` of the VPC to which the `HAVIP` belongs.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -23189,6 +27280,9 @@ class HaVip(AbstractModel):
 
     @property
     def SubnetId(self):
+        """The `ID` of the subnet to which the `HAVIP` belongs.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -23197,6 +27291,9 @@ class HaVip(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
+        """The `ID` of the ENI associated with the `HAVIP`.
+        :rtype: str
+        """
         return self._NetworkInterfaceId
 
     @NetworkInterfaceId.setter
@@ -23205,6 +27302,9 @@ class HaVip(AbstractModel):
 
     @property
     def InstanceId(self):
+        """The `ID` of the bound instance.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -23213,6 +27313,9 @@ class HaVip(AbstractModel):
 
     @property
     def AddressIp(self):
+        """Bound `EIP`.
+        :rtype: str
+        """
         return self._AddressIp
 
     @AddressIp.setter
@@ -23221,6 +27324,11 @@ class HaVip(AbstractModel):
 
     @property
     def State(self):
+        """Status:
+<li>`AVAILABLE`: Operating</li>
+<li>`UNBIND`: Not bound</li>
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -23229,6 +27337,9 @@ class HaVip(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """Creation Time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -23237,6 +27348,9 @@ class HaVip(AbstractModel):
 
     @property
     def Business(self):
+        """Identifier for businesses that use HAVIP.
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -23283,6 +27397,9 @@ class HaVipAssociateAddressIpRequest(AbstractModel):
 
     @property
     def HaVipId(self):
+        """The unique `ID` of the `HAVIP`, such as `havip-9o233uri`. This must be a `HAVIP` that has not been bound to an `EIP`
+        :rtype: str
+        """
         return self._HaVipId
 
     @HaVipId.setter
@@ -23291,6 +27408,9 @@ class HaVipAssociateAddressIpRequest(AbstractModel):
 
     @property
     def AddressIp(self):
+        """The Elastic `IP`. This must be an `EIP` that has not been bound to a `HAVIP`
+        :rtype: str
+        """
         return self._AddressIp
 
     @AddressIp.setter
@@ -23325,6 +27445,9 @@ class HaVipAssociateAddressIpResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23350,6 +27473,9 @@ class HaVipDisassociateAddressIpRequest(AbstractModel):
 
     @property
     def HaVipId(self):
+        """The unique `ID` of the `HAVIP`, such as `havip-9o233uri`. This must be an `HAVIP` that has been bound to an `EIP`.
+        :rtype: str
+        """
         return self._HaVipId
 
     @HaVipId.setter
@@ -23383,6 +27509,9 @@ class HaVipDisassociateAddressIpResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23441,6 +27570,9 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def PropoEncryAlgorithm(self):
+        """Encryption algorithm. Valid values: `3DES-CBC`, `AES-CBC-128`, `AES-CBS-192`, `AES-CBC-256`, `DES-CBC`, and `SM4`; default value: `3DES-CBC`.
+        :rtype: str
+        """
         return self._PropoEncryAlgorithm
 
     @PropoEncryAlgorithm.setter
@@ -23449,6 +27581,9 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def PropoAuthenAlgorithm(self):
+        """Authentication algorithm. Valid values: `MD5`, `SHA1` and `SHA-256`; default value: `MD5`.
+        :rtype: str
+        """
         return self._PropoAuthenAlgorithm
 
     @PropoAuthenAlgorithm.setter
@@ -23457,6 +27592,9 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def ExchangeMode(self):
+        """Negotiation mode. Available values: 'AGGRESSIVE' and 'MAIN'. Default is MAIN.
+        :rtype: str
+        """
         return self._ExchangeMode
 
     @ExchangeMode.setter
@@ -23465,6 +27603,9 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def LocalIdentity(self):
+        """Type of local identity. Available values: 'ADDRESS' and 'FQDN'. Default is ADDRESS.
+        :rtype: str
+        """
         return self._LocalIdentity
 
     @LocalIdentity.setter
@@ -23473,6 +27614,9 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def RemoteIdentity(self):
+        """Type of remote identity. Available values: 'ADDRESS' and 'FQDN'. Default is ADDRESS.
+        :rtype: str
+        """
         return self._RemoteIdentity
 
     @RemoteIdentity.setter
@@ -23481,6 +27625,9 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def LocalAddress(self):
+        """Local identity. When ADDRESS is selected for LocalIdentity, LocalAddress is required. The default LocalAddress is the public IP of the VPN gateway.
+        :rtype: str
+        """
         return self._LocalAddress
 
     @LocalAddress.setter
@@ -23489,6 +27636,9 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def RemoteAddress(self):
+        """Remote identity. When ADDRESS is selected for RemoteIdentity, RemoteAddress is required.
+        :rtype: str
+        """
         return self._RemoteAddress
 
     @RemoteAddress.setter
@@ -23497,6 +27647,9 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def LocalFqdnName(self):
+        """Local identity. When FQDN is selected for LocalIdentity, LocalFqdnName is required.
+        :rtype: str
+        """
         return self._LocalFqdnName
 
     @LocalFqdnName.setter
@@ -23505,6 +27658,9 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def RemoteFqdnName(self):
+        """Remote identity. When FQDN is selected for RemoteIdentity, RemoteFqdnName is required.
+        :rtype: str
+        """
         return self._RemoteFqdnName
 
     @RemoteFqdnName.setter
@@ -23513,6 +27669,9 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def DhGroupName(self):
+        """DH group. Specify the DH group used for exchanging the key via IKE. Available values: 'GROUP1', 'GROUP2', 'GROUP5', 'GROUP14', and 'GROUP24'.
+        :rtype: str
+        """
         return self._DhGroupName
 
     @DhGroupName.setter
@@ -23521,6 +27680,9 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def IKESaLifetimeSeconds(self):
+        """IKE SA lifetime (in sec). Value range: 60-604800
+        :rtype: int
+        """
         return self._IKESaLifetimeSeconds
 
     @IKESaLifetimeSeconds.setter
@@ -23529,6 +27691,9 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def IKEVersion(self):
+        """IKE version
+        :rtype: str
+        """
         return self._IKEVersion
 
     @IKEVersion.setter
@@ -23585,6 +27750,9 @@ class IPSECOptionsSpecification(AbstractModel):
 
     @property
     def EncryptAlgorithm(self):
+        """Encryption algorithm. Valid values: `3DES-CBC`, `AES-CBC-128`, `AES-CBC-192`, `AES-CBC-256`, `DES-CBC`, `SM4`, and `NULL`; default value: `AES-CBC-128`.
+        :rtype: str
+        """
         return self._EncryptAlgorithm
 
     @EncryptAlgorithm.setter
@@ -23593,6 +27761,9 @@ class IPSECOptionsSpecification(AbstractModel):
 
     @property
     def IntegrityAlgorith(self):
+        """Authentication algorithm. Valid values: `MD5`, `SHA1` and `SHA-256`; default value: `SHA1`.
+        :rtype: str
+        """
         return self._IntegrityAlgorith
 
     @IntegrityAlgorith.setter
@@ -23601,6 +27772,9 @@ class IPSECOptionsSpecification(AbstractModel):
 
     @property
     def IPSECSaLifetimeSeconds(self):
+        """IPsec SA lifetime (in sec). Value range: 180-604800
+        :rtype: int
+        """
         return self._IPSECSaLifetimeSeconds
 
     @IPSECSaLifetimeSeconds.setter
@@ -23609,6 +27783,9 @@ class IPSECOptionsSpecification(AbstractModel):
 
     @property
     def PfsDhGroup(self):
+        """PFS. Available value: 'NULL', 'DH-GROUP1', 'DH-GROUP2', 'DH-GROUP5', 'DH-GROUP14', and 'DH-GROUP24'. Default is NULL.
+        :rtype: str
+        """
         return self._PfsDhGroup
 
     @PfsDhGroup.setter
@@ -23617,6 +27794,9 @@ class IPSECOptionsSpecification(AbstractModel):
 
     @property
     def IPSECSaLifetimeTraffic(self):
+        """IPsec SA lifetime (in KB). Value range: 2560-604800
+        :rtype: int
+        """
         return self._IPSECSaLifetimeTraffic
 
     @IPSECSaLifetimeTraffic.setter
@@ -23668,6 +27848,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TotalCost(self):
+        """Standard access fee for a direct connect gateway
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCost
 
     @TotalCost.setter
@@ -23676,6 +27860,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RealTotalCost(self):
+        """Actual access fee for a direct connect gateway
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RealTotalCost
 
     @RealTotalCost.setter
@@ -23684,6 +27872,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23714,6 +27905,9 @@ class InquiryPriceRenewVpnGatewayRequest(AbstractModel):
 
     @property
     def VpnGatewayId(self):
+        """The ID of the VPN gateway instance.
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -23722,6 +27916,9 @@ class InquiryPriceRenewVpnGatewayRequest(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
+        """Specifies the purchased validity period, whether to enable auto-renewal. This parameter is required for monthly-subscription instances.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -23761,6 +27958,9 @@ class InquiryPriceRenewVpnGatewayResponse(AbstractModel):
 
     @property
     def Price(self):
+        """Product price.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.Price`
+        """
         return self._Price
 
     @Price.setter
@@ -23769,6 +27969,9 @@ class InquiryPriceRenewVpnGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23800,6 +28003,9 @@ class InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest(AbstractModel):
 
     @property
     def VpnGatewayId(self):
+        """The ID of the VPN gateway instance.
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -23808,6 +28014,9 @@ class InquiryPriceResetVpnGatewayInternetMaxBandwidthRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """The public network bandwidth configuration. Available bandwidth specifications: 5, 10, 20, 50, and 100. Unit: Mbps.
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -23845,6 +28054,9 @@ class InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse(AbstractModel):
 
     @property
     def Price(self):
+        """Product price.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.Price`
+        """
         return self._Price
 
     @Price.setter
@@ -23853,6 +28065,9 @@ class InquiryPriceResetVpnGatewayInternetMaxBandwidthResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -23884,6 +28099,9 @@ class InstanceChargePrepaid(AbstractModel):
 
     @property
     def Period(self):
+        """Purchased usage period (in month). Value range: [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36].
+        :rtype: int
+        """
         return self._Period
 
     @Period.setter
@@ -23892,6 +28110,9 @@ class InstanceChargePrepaid(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """Auto-renewal ID. Value range: NOTIFY_AND_AUTO_RENEW: notify expiry and renew automatically, NOTIFY_AND_MANUAL_RENEW: notify expiry but do not renew automatically. The default is NOTIFY_AND_MANUAL_RENEW
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -23929,6 +28150,9 @@ class InstanceStatistic(AbstractModel):
 
     @property
     def InstanceType(self):
+        """Type of instance
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -23937,6 +28161,9 @@ class InstanceStatistic(AbstractModel):
 
     @property
     def InstanceCount(self):
+        """Number of instances
+        :rtype: int
+        """
         return self._InstanceCount
 
     @InstanceCount.setter
@@ -23983,6 +28210,9 @@ class IpAddressStates(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -23991,6 +28221,9 @@ class IpAddressStates(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Subnet instance ID
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -23999,6 +28232,9 @@ class IpAddressStates(AbstractModel):
 
     @property
     def IpAddress(self):
+        """IP address
+        :rtype: str
+        """
         return self._IpAddress
 
     @IpAddress.setter
@@ -24007,6 +28243,9 @@ class IpAddressStates(AbstractModel):
 
     @property
     def ResourceType(self):
+        """Resource type
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -24015,6 +28254,9 @@ class IpAddressStates(AbstractModel):
 
     @property
     def ResourceId(self):
+        """Resource ID
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -24073,6 +28315,9 @@ class IpField(AbstractModel):
 
     @property
     def Country(self):
+        """Country/region of the IP
+        :rtype: bool
+        """
         return self._Country
 
     @Country.setter
@@ -24081,6 +28326,9 @@ class IpField(AbstractModel):
 
     @property
     def Province(self):
+        """Province/municipality/state of the IP
+        :rtype: bool
+        """
         return self._Province
 
     @Province.setter
@@ -24089,6 +28337,9 @@ class IpField(AbstractModel):
 
     @property
     def City(self):
+        """City of the IP
+        :rtype: bool
+        """
         return self._City
 
     @City.setter
@@ -24097,6 +28348,9 @@ class IpField(AbstractModel):
 
     @property
     def Region(self):
+        """City district of the IP
+        :rtype: bool
+        """
         return self._Region
 
     @Region.setter
@@ -24105,6 +28359,9 @@ class IpField(AbstractModel):
 
     @property
     def Isp(self):
+        """Access ISP field
+        :rtype: bool
+        """
         return self._Isp
 
     @Isp.setter
@@ -24113,6 +28370,9 @@ class IpField(AbstractModel):
 
     @property
     def AsName(self):
+        """ISP backbone network’s AS field
+        :rtype: bool
+        """
         return self._AsName
 
     @AsName.setter
@@ -24121,6 +28381,9 @@ class IpField(AbstractModel):
 
     @property
     def AsId(self):
+        """Backbone AS ID
+        :rtype: bool
+        """
         return self._AsId
 
     @AsId.setter
@@ -24129,6 +28392,9 @@ class IpField(AbstractModel):
 
     @property
     def Comment(self):
+        """Comment
+        :rtype: bool
+        """
         return self._Comment
 
     @Comment.setter
@@ -24202,6 +28468,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Country(self):
+        """Country/region
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Country
 
     @Country.setter
@@ -24210,6 +28480,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Province(self):
+        """Province- or municipality-level administrative region
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Province
 
     @Province.setter
@@ -24218,6 +28492,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def City(self):
+        """Municipal administrative region
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -24226,6 +28504,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Region(self):
+        """Urban area
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -24234,6 +28516,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Isp(self):
+        """Access ISP
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -24242,6 +28528,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AsName(self):
+        """ISP backbone network’s AS name
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AsName
 
     @AsName.setter
@@ -24250,6 +28540,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AsId(self):
+        """ISP backbone network’s AS ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AsId
 
     @AsId.setter
@@ -24258,6 +28552,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Comment(self):
+        """Comment. The APN value of mobile users is entered currently. If there is no APN attribute, this is `null`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Comment
 
     @Comment.setter
@@ -24266,6 +28564,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AddressIp(self):
+        """IP address
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AddressIp
 
     @AddressIp.setter
@@ -24326,6 +28628,9 @@ class Ipv6Address(AbstractModel):
 
     @property
     def Address(self):
+        """`IPv6` address, such as `3402:4e00:20:100:0:8cd9:2a67:71f3`
+        :rtype: str
+        """
         return self._Address
 
     @Address.setter
@@ -24334,6 +28639,9 @@ class Ipv6Address(AbstractModel):
 
     @property
     def Primary(self):
+        """Whether it is a primary `IP`.
+        :rtype: bool
+        """
         return self._Primary
 
     @Primary.setter
@@ -24342,6 +28650,9 @@ class Ipv6Address(AbstractModel):
 
     @property
     def AddressId(self):
+        """The `ID` of the `EIP` instance, such as `eip-hxlqja90`.
+        :rtype: str
+        """
         return self._AddressId
 
     @AddressId.setter
@@ -24350,6 +28661,9 @@ class Ipv6Address(AbstractModel):
 
     @property
     def Description(self):
+        """Message description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -24358,6 +28672,9 @@ class Ipv6Address(AbstractModel):
 
     @property
     def IsWanIpBlocked(self):
+        """Whether the public IP is blocked.
+        :rtype: bool
+        """
         return self._IsWanIpBlocked
 
     @IsWanIpBlocked.setter
@@ -24366,6 +28683,13 @@ class Ipv6Address(AbstractModel):
 
     @property
     def State(self):
+        """`IPv6` address status:
+<li>`PENDING`: Creating</li>
+<li>`MIGRATING`: Migrating</li>
+<li>`DELETING`: Deleting</li>
+<li>`AVAILABLE`: Available</li>
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -24407,6 +28731,9 @@ class Ipv6SubnetCidrBlock(AbstractModel):
 
     @property
     def SubnetId(self):
+        """The `ID` of the subnet instance, such as `subnet-pxir56ns`.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -24415,6 +28742,9 @@ class Ipv6SubnetCidrBlock(AbstractModel):
 
     @property
     def Ipv6CidrBlock(self):
+        """The `IPv6` subnet IP range, such as `3402:4e00:20:1001::/64`
+        :rtype: str
+        """
         return self._Ipv6CidrBlock
 
     @Ipv6CidrBlock.setter
@@ -24458,6 +28788,9 @@ class ItemPrice(AbstractModel):
 
     @property
     def UnitPrice(self):
+        """The pay-as-you-go billing method. Unit: CNY.
+        :rtype: float
+        """
         return self._UnitPrice
 
     @UnitPrice.setter
@@ -24466,6 +28799,9 @@ class ItemPrice(AbstractModel):
 
     @property
     def ChargeUnit(self):
+        """Pay-as-you-go billing method. Value Range: HOUR: Indicates billing by the hour. Scenarios using this hourly billing unit include: Instances postpaid on an hourly basis (POSTPAID_BY_HOUR), and bandwidth postpaid on an hourly basis (BANDWIDTH_POSTPAID_BY_HOUR). GB: Indicates billing on a per-GB basis. Scenarios using this billing unit include: Traffic postpaid on an hourly basis (TRAFFIC_POSTPAID_BY_HOUR).
+        :rtype: str
+        """
         return self._ChargeUnit
 
     @ChargeUnit.setter
@@ -24474,6 +28810,9 @@ class ItemPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
+        """Original price of the prepaid product. Unit: CNY.
+        :rtype: float
+        """
         return self._OriginalPrice
 
     @OriginalPrice.setter
@@ -24482,6 +28821,9 @@ class ItemPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
+        """Discount price of the prepaid product. Unit: CNY.
+        :rtype: float
+        """
         return self._DiscountPrice
 
     @DiscountPrice.setter
@@ -24533,6 +28875,9 @@ class LocalGateway(AbstractModel):
 
     @property
     def CdcId(self):
+        """CDC instance ID
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -24541,6 +28886,9 @@ class LocalGateway(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -24549,6 +28897,9 @@ class LocalGateway(AbstractModel):
 
     @property
     def UniqLocalGwId(self):
+        """Local gateway instance ID
+        :rtype: str
+        """
         return self._UniqLocalGwId
 
     @UniqLocalGwId.setter
@@ -24557,6 +28908,9 @@ class LocalGateway(AbstractModel):
 
     @property
     def LocalGatewayName(self):
+        """Local gateway name
+        :rtype: str
+        """
         return self._LocalGatewayName
 
     @LocalGatewayName.setter
@@ -24565,6 +28919,9 @@ class LocalGateway(AbstractModel):
 
     @property
     def LocalGwIp(self):
+        """Local gateway IP
+        :rtype: str
+        """
         return self._LocalGwIp
 
     @LocalGwIp.setter
@@ -24573,6 +28930,9 @@ class LocalGateway(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time of the local gateway
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -24620,6 +28980,9 @@ class MigrateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
+        """The ID of the ENI instance, such as `eni-m6dyj72l`.
+        :rtype: str
+        """
         return self._NetworkInterfaceId
 
     @NetworkInterfaceId.setter
@@ -24628,6 +28991,9 @@ class MigrateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def SourceInstanceId(self):
+        """The ID of the CVM bound to the ENI, such as `ins-r8hr2upy`.
+        :rtype: str
+        """
         return self._SourceInstanceId
 
     @SourceInstanceId.setter
@@ -24636,6 +29002,9 @@ class MigrateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def DestinationInstanceId(self):
+        """ID of the destination CVM instance to be migrated.
+        :rtype: str
+        """
         return self._DestinationInstanceId
 
     @DestinationInstanceId.setter
@@ -24644,6 +29013,9 @@ class MigrateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def AttachType(self):
+        """ENI mount method. Valid values: 0: standard; 1: extension; default value: 0
+        :rtype: int
+        """
         return self._AttachType
 
     @AttachType.setter
@@ -24680,6 +29052,9 @@ class MigrateNetworkInterfaceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -24711,6 +29086,9 @@ class MigratePrivateIpAddressRequest(AbstractModel):
 
     @property
     def SourceNetworkInterfaceId(self):
+        """ID of the ENI instance bound with the private IP, such as `eni-m6dyj72l`.
+        :rtype: str
+        """
         return self._SourceNetworkInterfaceId
 
     @SourceNetworkInterfaceId.setter
@@ -24719,6 +29097,9 @@ class MigratePrivateIpAddressRequest(AbstractModel):
 
     @property
     def DestinationNetworkInterfaceId(self):
+        """ID of the destination ENI instance to be migrated.
+        :rtype: str
+        """
         return self._DestinationNetworkInterfaceId
 
     @DestinationNetworkInterfaceId.setter
@@ -24727,6 +29108,9 @@ class MigratePrivateIpAddressRequest(AbstractModel):
 
     @property
     def PrivateIpAddress(self):
+        """The private IP to be migrated, such as 10.0.0.6.
+        :rtype: str
+        """
         return self._PrivateIpAddress
 
     @PrivateIpAddress.setter
@@ -24762,6 +29146,9 @@ class MigratePrivateIpAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -24793,6 +29180,9 @@ class ModifyAddressAttributeRequest(AbstractModel):
 
     @property
     def AddressId(self):
+        """The unique ID of the EIP, such as `eip-11112222`.
+        :rtype: str
+        """
         return self._AddressId
 
     @AddressId.setter
@@ -24801,6 +29191,9 @@ class ModifyAddressAttributeRequest(AbstractModel):
 
     @property
     def AddressName(self):
+        """The EIP name after modification. The maximum length is 20 characters.
+        :rtype: str
+        """
         return self._AddressName
 
     @AddressName.setter
@@ -24809,6 +29202,9 @@ class ModifyAddressAttributeRequest(AbstractModel):
 
     @property
     def EipDirectConnection(self):
+        """Whether the set EIP is a direct connection EIP. TRUE: yes. FALSE: no. Note that this parameter is available only to users who have activated the EIP direct connection function.
+        :rtype: str
+        """
         return self._EipDirectConnection
 
     @EipDirectConnection.setter
@@ -24844,6 +29240,9 @@ class ModifyAddressAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -24878,6 +29277,9 @@ class ModifyAddressInternetChargeTypeRequest(AbstractModel):
 
     @property
     def AddressId(self):
+        """Unique EIP ID, such as "eip-xxxx"
+        :rtype: str
+        """
         return self._AddressId
 
     @AddressId.setter
@@ -24886,6 +29288,9 @@ class ModifyAddressInternetChargeTypeRequest(AbstractModel):
 
     @property
     def InternetChargeType(self):
+        """The target billing method. It can be `BANDWIDTH_PREPAID_BY_MONTH` or `TRAFFIC_POSTPAID_BY_HOUR`
+        :rtype: str
+        """
         return self._InternetChargeType
 
     @InternetChargeType.setter
@@ -24894,6 +29299,9 @@ class ModifyAddressInternetChargeTypeRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """The target bandwidth value
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -24902,6 +29310,9 @@ class ModifyAddressInternetChargeTypeRequest(AbstractModel):
 
     @property
     def AddressChargePrepaid(self):
+        """Billing details of monthly-subscribed network bandwidth. This parameter is required if the target billing method is `BANDWIDTH_PREPAID_BY_MONTH`.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AddressChargePrepaid`
+        """
         return self._AddressChargePrepaid
 
     @AddressChargePrepaid.setter
@@ -24940,6 +29351,9 @@ class ModifyAddressInternetChargeTypeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -24974,6 +29388,9 @@ class ModifyAddressTemplateAttributeRequest(AbstractModel):
 
     @property
     def AddressTemplateId(self):
+        """IP address template instance ID, such as `ipm-mdunqeb6`.
+        :rtype: str
+        """
         return self._AddressTemplateId
 
     @AddressTemplateId.setter
@@ -24982,6 +29399,9 @@ class ModifyAddressTemplateAttributeRequest(AbstractModel):
 
     @property
     def AddressTemplateName(self):
+        """IP address template name.
+        :rtype: str
+        """
         return self._AddressTemplateName
 
     @AddressTemplateName.setter
@@ -24990,6 +29410,9 @@ class ModifyAddressTemplateAttributeRequest(AbstractModel):
 
     @property
     def Addresses(self):
+        """Address information, including IP, CIDR and IP address range.
+        :rtype: list of str
+        """
         return self._Addresses
 
     @Addresses.setter
@@ -24998,6 +29421,9 @@ class ModifyAddressTemplateAttributeRequest(AbstractModel):
 
     @property
     def AddressesExtra(self):
+        """Address information with remarks, including the IP, CIDR block or IP address range.
+        :rtype: list of AddressInfo
+        """
         return self._AddressesExtra
 
     @AddressesExtra.setter
@@ -25039,6 +29465,9 @@ class ModifyAddressTemplateAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25070,6 +29499,9 @@ class ModifyAddressTemplateGroupAttributeRequest(AbstractModel):
 
     @property
     def AddressTemplateGroupId(self):
+        """IP address template group instance ID, such as `ipmg-2uw6ujo6`.
+        :rtype: str
+        """
         return self._AddressTemplateGroupId
 
     @AddressTemplateGroupId.setter
@@ -25078,6 +29510,9 @@ class ModifyAddressTemplateGroupAttributeRequest(AbstractModel):
 
     @property
     def AddressTemplateGroupName(self):
+        """IP address template group name.
+        :rtype: str
+        """
         return self._AddressTemplateGroupName
 
     @AddressTemplateGroupName.setter
@@ -25086,6 +29521,9 @@ class ModifyAddressTemplateGroupAttributeRequest(AbstractModel):
 
     @property
     def AddressTemplateIds(self):
+        """IP address template instance ID, such as `ipm-mdunqeb6`.
+        :rtype: list of str
+        """
         return self._AddressTemplateIds
 
     @AddressTemplateIds.setter
@@ -25121,6 +29559,9 @@ class ModifyAddressTemplateGroupAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25155,6 +29596,9 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
 
     @property
     def AddressIds(self):
+        """List of EIP IDs, such as “eip-xxxx”.
+        :rtype: list of str
+        """
         return self._AddressIds
 
     @AddressIds.setter
@@ -25163,6 +29607,9 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """Target bandwidth value adjustment
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -25171,6 +29618,9 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """(Disused) The start time of the monthly bandwidth subscription
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -25179,6 +29629,9 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """(Disused) The end time of the monthly bandwidth subscription
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -25218,6 +29671,9 @@ class ModifyAddressesBandwidthResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """The async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -25226,6 +29682,9 @@ class ModifyAddressesBandwidthResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25261,6 +29720,9 @@ If this parameter is set to NOTIFY_AND_AUTO_RENEW and the account balance is suf
 
     @property
     def AddressIds(self):
+        """List of unique EIP IDs, for example, eip-xxxx.
+        :rtype: list of str
+        """
         return self._AddressIds
 
     @AddressIds.setter
@@ -25269,6 +29731,15 @@ If this parameter is set to NOTIFY_AND_AUTO_RENEW and the account balance is suf
 
     @property
     def RenewFlag(self):
+        """Auto-renewal flag.
+<ul style="margin:0">
+<li>NOTIFY_AND_AUTO_RENEW: Notify upon expiration and automatically renew.</li>
+<li>NOTIFY_AND_MANUAL_RENEW: Notify upon expiration but do not automatically renew.</li>
+<li>DISABLE_NOTIFY_AND_MANUAL_RENEW: Do not notify upon expiration and do not automatically renew.</li>
+</ul>
+If this parameter is set to NOTIFY_AND_AUTO_RENEW and the account balance is sufficient, the instance will be automatically renewed on a monthly basis after expiration.
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -25303,6 +29774,9 @@ class ModifyAddressesRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25334,6 +29808,9 @@ class ModifyAssistantCidrRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """`VPC` instance `ID`, such as `vpc-6v2ht8q5`.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -25342,6 +29819,9 @@ class ModifyAssistantCidrRequest(AbstractModel):
 
     @property
     def NewCidrBlocks(self):
+        """Array of the secondary CIDR blocks to be added, such as ["10.0.0.0/16", "172.16.0.0/16"]. At least one of `NewCidrBlocks` and `OldCidrBlocks` must be specified.
+        :rtype: list of str
+        """
         return self._NewCidrBlocks
 
     @NewCidrBlocks.setter
@@ -25350,6 +29830,9 @@ class ModifyAssistantCidrRequest(AbstractModel):
 
     @property
     def OldCidrBlocks(self):
+        """Array of the secondary CIDR blocks to be deleted, such as ["10.0.0.0/16", "172.16.0.0/16"]. At least one of `NewCidrBlocks` or `OldCidrBlocks` must be specified.
+        :rtype: list of str
+        """
         return self._OldCidrBlocks
 
     @OldCidrBlocks.setter
@@ -25389,6 +29872,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AssistantCidrSet(self):
+        """Array of secondary CIDR blocks.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of AssistantCidr
+        """
         return self._AssistantCidrSet
 
     @AssistantCidrSet.setter
@@ -25397,6 +29884,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25435,6 +29925,9 @@ class ModifyBandwidthPackageAttributeRequest(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
+        """The unique ID of the bandwidth package.
+        :rtype: str
+        """
         return self._BandwidthPackageId
 
     @BandwidthPackageId.setter
@@ -25443,6 +29936,9 @@ class ModifyBandwidthPackageAttributeRequest(AbstractModel):
 
     @property
     def BandwidthPackageName(self):
+        """The name of the bandwidth package.
+        :rtype: str
+        """
         return self._BandwidthPackageName
 
     @BandwidthPackageName.setter
@@ -25451,6 +29947,10 @@ class ModifyBandwidthPackageAttributeRequest(AbstractModel):
 
     @property
     def ChargeType(self):
+        """The billing mode of the bandwidth package. Values: 
+`TOP5_POSTPAID_BY_MONTH`: Bill by the top 5 bandwidth value of the current month in a postpaid manner
+        :rtype: str
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -25486,6 +29986,9 @@ class ModifyBandwidthPackageAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25514,6 +30017,9 @@ class ModifyCcnAttachedInstancesAttributeRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """CCN instance ID in the format of `ccn-f49l6u0z`
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -25522,6 +30028,9 @@ class ModifyCcnAttachedInstancesAttributeRequest(AbstractModel):
 
     @property
     def Instances(self):
+        """List of associated network instances
+        :rtype: list of CcnInstance
+        """
         return self._Instances
 
     @Instances.setter
@@ -25561,6 +30070,9 @@ class ModifyCcnAttachedInstancesAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25592,6 +30104,9 @@ class ModifyCcnAttributeRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """The CCN instance ID, such as `ccn-f49l6u0z`.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -25600,6 +30115,9 @@ class ModifyCcnAttributeRequest(AbstractModel):
 
     @property
     def CcnName(self):
+        """The name of CCN instance. Up to 60 characters allowed. It can contain up to 60 bytes. Either `CcnName` or `CcnDescription` must be specified.
+        :rtype: str
+        """
         return self._CcnName
 
     @CcnName.setter
@@ -25608,6 +30126,9 @@ class ModifyCcnAttributeRequest(AbstractModel):
 
     @property
     def CcnDescription(self):
+        """The description of CCN instance. Up to 100 characters allowed. It can contain up to 60 bytes. Either `CcnName` or `CcnDescription` must be specified.
+        :rtype: str
+        """
         return self._CcnDescription
 
     @CcnDescription.setter
@@ -25643,6 +30164,9 @@ class ModifyCcnAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25671,6 +30195,9 @@ class ModifyCcnRegionBandwidthLimitsTypeRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """CCN instance ID.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -25679,6 +30206,9 @@ class ModifyCcnRegionBandwidthLimitsTypeRequest(AbstractModel):
 
     @property
     def BandwidthLimitType(self):
+        """CCN bandwidth limit type. INTER_REGION_LIMIT: limit between regions. OUTER_REGION_LIMIT: region egress limit.
+        :rtype: str
+        """
         return self._BandwidthLimitType
 
     @BandwidthLimitType.setter
@@ -25713,6 +30243,9 @@ class ModifyCcnRegionBandwidthLimitsTypeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25741,6 +30274,9 @@ class ModifyCustomerGatewayAttributeRequest(AbstractModel):
 
     @property
     def CustomerGatewayId(self):
+        """The ID of the customer gateway, such as `cgw-2wqq41m9`. You can query the customer gateway by using the [DescribeCustomerGateways](https://intl.cloud.tencent.com/document/api/215/17516?from_cn_redirect=1) API.
+        :rtype: str
+        """
         return self._CustomerGatewayId
 
     @CustomerGatewayId.setter
@@ -25749,6 +30285,9 @@ class ModifyCustomerGatewayAttributeRequest(AbstractModel):
 
     @property
     def CustomerGatewayName(self):
+        """Customer gateway can be named freely, but the maximum length is 60 characters.
+        :rtype: str
+        """
         return self._CustomerGatewayName
 
     @CustomerGatewayName.setter
@@ -25783,6 +30322,9 @@ class ModifyCustomerGatewayAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25817,6 +30359,9 @@ class ModifyDirectConnectGatewayAttributeRequest(AbstractModel):
 
     @property
     def DirectConnectGatewayId(self):
+        """The unique ID of the direct connect gateway, such as `dcg-9o233uri`.
+        :rtype: str
+        """
         return self._DirectConnectGatewayId
 
     @DirectConnectGatewayId.setter
@@ -25825,6 +30370,9 @@ class ModifyDirectConnectGatewayAttributeRequest(AbstractModel):
 
     @property
     def DirectConnectGatewayName(self):
+        """The direct connect gateway name. You can enter any name within 60 characters.
+        :rtype: str
+        """
         return self._DirectConnectGatewayName
 
     @DirectConnectGatewayName.setter
@@ -25833,6 +30381,9 @@ class ModifyDirectConnectGatewayAttributeRequest(AbstractModel):
 
     @property
     def CcnRouteType(self):
+        """The CCN route-learning type. Valid values: `BGP` (Automatic learning), `STATIC` (Static, that is, user-configured). You can only modify `CcnRouteType` for a CCN direct connect gateway with BGP enabled.
+        :rtype: str
+        """
         return self._CcnRouteType
 
     @CcnRouteType.setter
@@ -25841,6 +30392,9 @@ class ModifyDirectConnectGatewayAttributeRequest(AbstractModel):
 
     @property
     def ModeType(self):
+        """CCN route publishing method. Valid values: `standard` and `exquisite`. You can only modify `ModeType` for a CCN direct connect gateway.
+        :rtype: str
+        """
         return self._ModeType
 
     @ModeType.setter
@@ -25877,6 +30431,9 @@ class ModifyDirectConnectGatewayAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -25911,6 +30468,9 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
 
     @property
     def FlowLogId(self):
+        """The unique ID of the flow log.
+        :rtype: str
+        """
         return self._FlowLogId
 
     @FlowLogId.setter
@@ -25919,6 +30479,9 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The VPC ID or unique ID of the resource. We recommend using the unique ID. This parameter is required unless the attributes of a CCN flow log is modified.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -25927,6 +30490,9 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
 
     @property
     def FlowLogName(self):
+        """The name of the flow log instance.
+        :rtype: str
+        """
         return self._FlowLogName
 
     @FlowLogName.setter
@@ -25935,6 +30501,9 @@ class ModifyFlowLogAttributeRequest(AbstractModel):
 
     @property
     def FlowLogDescription(self):
+        """The description of the flow log.
+        :rtype: str
+        """
         return self._FlowLogDescription
 
     @FlowLogDescription.setter
@@ -25971,6 +30540,9 @@ class ModifyFlowLogAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26005,6 +30577,12 @@ VPN gateway instance, such as `vpn-ltjahce6`.
 
     @property
     def GatewayId(self):
+        """Gateway instance ID. Supported types:
+Direct connect gateway instance, such as `dcg-ltjahce6`;
+NAT gateway instance, such as `nat-ltjahce6`;
+VPN gateway instance, such as `vpn-ltjahce6`.
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -26013,6 +30591,9 @@ VPN gateway instance, such as `vpn-ltjahce6`.
 
     @property
     def Bandwidth(self):
+        """Bandwidth limit value in Mbps. Valid values: >0: Set the limit to the specified value. 0: Block all traffic. -1: No bandwidth limit.
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -26021,6 +30602,9 @@ VPN gateway instance, such as `vpn-ltjahce6`.
 
     @property
     def IpAddresses(self):
+        """CVM private IP addresses with limited bandwidth.
+        :rtype: list of str
+        """
         return self._IpAddresses
 
     @IpAddresses.setter
@@ -26056,6 +30640,9 @@ class ModifyGatewayFlowQosResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26084,6 +30671,9 @@ class ModifyHaVipAttributeRequest(AbstractModel):
 
     @property
     def HaVipId(self):
+        """The unique `ID` of the `HAVIP`, such as `havip-9o233uri`.
+        :rtype: str
+        """
         return self._HaVipId
 
     @HaVipId.setter
@@ -26092,6 +30682,9 @@ class ModifyHaVipAttributeRequest(AbstractModel):
 
     @property
     def HaVipName(self):
+        """`HAVIP` can be named freely, but the maximum length is 60 characters.
+        :rtype: str
+        """
         return self._HaVipName
 
     @HaVipName.setter
@@ -26126,6 +30719,9 @@ class ModifyHaVipAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26154,6 +30750,9 @@ class ModifyIpv6AddressesAttributeRequest(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
+        """The `ID` of the ENI instance, such as `eni-m6dyj72l`.
+        :rtype: str
+        """
         return self._NetworkInterfaceId
 
     @NetworkInterfaceId.setter
@@ -26162,6 +30761,9 @@ class ModifyIpv6AddressesAttributeRequest(AbstractModel):
 
     @property
     def Ipv6Addresses(self):
+        """The information of the specified private `IPv6` addresses.
+        :rtype: list of Ipv6Address
+        """
         return self._Ipv6Addresses
 
     @Ipv6Addresses.setter
@@ -26201,6 +30803,9 @@ class ModifyIpv6AddressesAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26235,6 +30840,9 @@ class ModifyLocalGatewayRequest(AbstractModel):
 
     @property
     def LocalGatewayName(self):
+        """Local gateway name
+        :rtype: str
+        """
         return self._LocalGatewayName
 
     @LocalGatewayName.setter
@@ -26243,6 +30851,9 @@ class ModifyLocalGatewayRequest(AbstractModel):
 
     @property
     def CdcId(self):
+        """CDC instance ID
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -26251,6 +30862,9 @@ class ModifyLocalGatewayRequest(AbstractModel):
 
     @property
     def LocalGatewayId(self):
+        """Local gateway instance ID
+        :rtype: str
+        """
         return self._LocalGatewayId
 
     @LocalGatewayId.setter
@@ -26259,6 +30873,9 @@ class ModifyLocalGatewayRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -26295,6 +30912,9 @@ class ModifyLocalGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26332,6 +30952,9 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
 
     @property
     def NatGatewayId(self):
+        """The ID of the NAT gateway, such as `nat-df45454`.
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -26340,6 +30963,9 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
 
     @property
     def NatGatewayName(self):
+        """The NAT gateway name, such as `test_nat`.
+        :rtype: str
+        """
         return self._NatGatewayName
 
     @NatGatewayName.setter
@@ -26348,6 +30974,9 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """The maximum outbound bandwidth of the NAT gateway. Unit: Mbps.
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -26356,6 +30985,9 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
 
     @property
     def ModifySecurityGroup(self):
+        """Whether to modify the security group bound to the NAT gateway
+        :rtype: bool
+        """
         return self._ModifySecurityGroup
 
     @ModifySecurityGroup.setter
@@ -26364,6 +30996,9 @@ class ModifyNatGatewayAttributeRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """The final security groups bound to the NAT Gateway, such as `['sg-1n232323', 'sg-o4242424']`. An empty list indicates that all the security groups have been deleted.
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -26401,6 +31036,9 @@ class ModifyNatGatewayAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26432,6 +31070,9 @@ class ModifyNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
 
     @property
     def NatGatewayId(self):
+        """The ID of the NAT gateway, such as `nat-df45454`.
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -26440,6 +31081,9 @@ class ModifyNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
 
     @property
     def SourceNatRule(self):
+        """The port forwarding rule of the source NAT gateway.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DestinationIpPortTranslationNatRule`
+        """
         return self._SourceNatRule
 
     @SourceNatRule.setter
@@ -26448,6 +31092,9 @@ class ModifyNatGatewayDestinationIpPortTranslationNatRuleRequest(AbstractModel):
 
     @property
     def DestinationNatRule(self):
+        """The port forwarding rule of the destination NAT gateway.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DestinationIpPortTranslationNatRule`
+        """
         return self._DestinationNatRule
 
     @DestinationNatRule.setter
@@ -26487,6 +31134,9 @@ class ModifyNatGatewayDestinationIpPortTranslationNatRuleResponse(AbstractModel)
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26515,6 +31165,9 @@ class ModifyNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
 
     @property
     def NatGatewayId(self):
+        """The ID of the NAT Gateway, such as `nat-df453454`
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -26523,6 +31176,9 @@ class ModifyNatGatewaySourceIpTranslationNatRuleRequest(AbstractModel):
 
     @property
     def SourceIpTranslationNatRule(self):
+        """The SNAT forwarding rule of the NAT Gateway
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.SourceIpTranslationNatRule`
+        """
         return self._SourceIpTranslationNatRule
 
     @SourceIpTranslationNatRule.setter
@@ -26559,6 +31215,9 @@ class ModifyNatGatewaySourceIpTranslationNatRuleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26613,6 +31272,9 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def NetDetectId(self):
+        """The ID of a network detection instance, such as `netd-12345678`.
+        :rtype: str
+        """
         return self._NetDetectId
 
     @NetDetectId.setter
@@ -26621,6 +31283,9 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def NetDetectName(self):
+        """The name of a network detection instance. The maximum length is 60 characters.
+        :rtype: str
+        """
         return self._NetDetectName
 
     @NetDetectName.setter
@@ -26629,6 +31294,9 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def DetectDestinationIp(self):
+        """The array of detection destination IPv4 addresses, which contains at most two IP addresses.
+        :rtype: list of str
+        """
         return self._DetectDestinationIp
 
     @DetectDestinationIp.setter
@@ -26637,6 +31305,16 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def NextHopType(self):
+        """Type of the next hop. Valid values:
+`VPN`: VPN gateway;
+`DIRECTCONNECT`: Direct connect gateway;
+`PEERCONNECTION`: Peering connection;
+`NAT`: NAT gateway;
+`NORMAL_CVM`: CVM instance;
+`CCN`: CCN instance;
+`NONEXTHOP`: No next hop.
+        :rtype: str
+        """
         return self._NextHopType
 
     @NextHopType.setter
@@ -26645,6 +31323,16 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def NextHopDestination(self):
+        """ID of the next-hop gateway.
+If NextHopType is set to VPN, the value of this parameter is the VPN gateway ID, such as vpngw-12345678.
+`NextHopType` = `DIRECTCONNECT`: Direct connect gateway ID, such as `dcg-12345678`.
+`NextHopType` = `PEERCONNECTION`: Peering connection ID, such as `pcx-12345678`.
+`NextHopType` = `NAT`: NAT gateway ID, such as `nat-12345678`.
+If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 address of the CVM, such as 10.0.0.12.
+`NextHopType` = `CCN`: CCN instance ID, such as `ccn-12345678`.
+`NextHopType` = `NONEXTHOP`: No next hop.
+        :rtype: str
+        """
         return self._NextHopDestination
 
     @NextHopDestination.setter
@@ -26653,6 +31341,9 @@ If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 add
 
     @property
     def NetDetectDescription(self):
+        """Network detection description.
+        :rtype: str
+        """
         return self._NetDetectDescription
 
     @NetDetectDescription.setter
@@ -26691,6 +31382,9 @@ class ModifyNetDetectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26719,6 +31413,9 @@ class ModifyNetworkAclAttributeRequest(AbstractModel):
 
     @property
     def NetworkAclId(self):
+        """Network ACL instance ID, such as `acl-12345678`.
+        :rtype: str
+        """
         return self._NetworkAclId
 
     @NetworkAclId.setter
@@ -26727,6 +31424,9 @@ class ModifyNetworkAclAttributeRequest(AbstractModel):
 
     @property
     def NetworkAclName(self):
+        """Network ACL name, which can contain up to 60 bytes.
+        :rtype: str
+        """
         return self._NetworkAclName
 
     @NetworkAclName.setter
@@ -26761,6 +31461,9 @@ class ModifyNetworkAclAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26792,6 +31495,9 @@ class ModifyNetworkAclEntriesRequest(AbstractModel):
 
     @property
     def NetworkAclId(self):
+        """Network ACL instance ID, such as `acl-12345678`.
+        :rtype: str
+        """
         return self._NetworkAclId
 
     @NetworkAclId.setter
@@ -26800,6 +31506,9 @@ class ModifyNetworkAclEntriesRequest(AbstractModel):
 
     @property
     def NetworkAclEntrySet(self):
+        """Network ACL rule set. `NetworkAclEntrySet` and `NetworkAclQuintupleSet` cannot be entered at the same time.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.NetworkAclEntrySet`
+        """
         return self._NetworkAclEntrySet
 
     @NetworkAclEntrySet.setter
@@ -26808,6 +31517,9 @@ class ModifyNetworkAclEntriesRequest(AbstractModel):
 
     @property
     def NetworkAclQuintupleSet(self):
+        """Network ACL quintuple rule set. `NetworkAclEntrySet` and `NetworkAclQuintupleSet` cannot be entered at the same time.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.NetworkAclQuintupleEntries`
+        """
         return self._NetworkAclQuintupleSet
 
     @NetworkAclQuintupleSet.setter
@@ -26847,6 +31559,9 @@ class ModifyNetworkAclEntriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26875,6 +31590,9 @@ class ModifyNetworkAclQuintupleEntriesRequest(AbstractModel):
 
     @property
     def NetworkAclId(self):
+        """Network ACL instance ID, such as `acl-12345678`.
+        :rtype: str
+        """
         return self._NetworkAclId
 
     @NetworkAclId.setter
@@ -26883,6 +31601,9 @@ class ModifyNetworkAclQuintupleEntriesRequest(AbstractModel):
 
     @property
     def NetworkAclQuintupleSet(self):
+        """Network ACL quintuple rule set.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.NetworkAclQuintupleEntries`
+        """
         return self._NetworkAclQuintupleSet
 
     @NetworkAclQuintupleSet.setter
@@ -26919,6 +31640,9 @@ class ModifyNetworkAclQuintupleEntriesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -26956,6 +31680,9 @@ class ModifyNetworkInterfaceAttributeRequest(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
+        """The ID of the ENI instance, such as `eni-pxir56ns`.
+        :rtype: str
+        """
         return self._NetworkInterfaceId
 
     @NetworkInterfaceId.setter
@@ -26964,6 +31691,9 @@ class ModifyNetworkInterfaceAttributeRequest(AbstractModel):
 
     @property
     def NetworkInterfaceName(self):
+        """The name of the ENI. The maximum length is 60 characters.
+        :rtype: str
+        """
         return self._NetworkInterfaceName
 
     @NetworkInterfaceName.setter
@@ -26972,6 +31702,9 @@ class ModifyNetworkInterfaceAttributeRequest(AbstractModel):
 
     @property
     def NetworkInterfaceDescription(self):
+        """ENI description can be named freely, but the maximum length is 60 characters.
+        :rtype: str
+        """
         return self._NetworkInterfaceDescription
 
     @NetworkInterfaceDescription.setter
@@ -26980,6 +31713,9 @@ class ModifyNetworkInterfaceAttributeRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """The specified security groups to be bound with, such as ['sg-1dd51d'].
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -26988,6 +31724,9 @@ class ModifyNetworkInterfaceAttributeRequest(AbstractModel):
 
     @property
     def TrunkingFlag(self):
+        """Configuration of the ENI trunking mode. Valid values: `Enable` and `Disable`. Default value: `Disable`.
+        :rtype: str
+        """
         return self._TrunkingFlag
 
     @TrunkingFlag.setter
@@ -27025,6 +31764,9 @@ class ModifyNetworkInterfaceAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27053,6 +31795,9 @@ class ModifyPrivateIpAddressesAttributeRequest(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
+        """The ID of the ENI instance, such as `eni-m6dyj72l`.
+        :rtype: str
+        """
         return self._NetworkInterfaceId
 
     @NetworkInterfaceId.setter
@@ -27061,6 +31806,9 @@ class ModifyPrivateIpAddressesAttributeRequest(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
+        """The specified private IP information.
+        :rtype: list of PrivateIpAddressSpecification
+        """
         return self._PrivateIpAddresses
 
     @PrivateIpAddresses.setter
@@ -27100,6 +31848,9 @@ class ModifyPrivateIpAddressesAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27128,6 +31879,9 @@ class ModifyRouteTableAttributeRequest(AbstractModel):
 
     @property
     def RouteTableId(self):
+        """The route table instance ID, such as `rtb-azd4dt1c`.
+        :rtype: str
+        """
         return self._RouteTableId
 
     @RouteTableId.setter
@@ -27136,6 +31890,9 @@ class ModifyRouteTableAttributeRequest(AbstractModel):
 
     @property
     def RouteTableName(self):
+        """Route table name.
+        :rtype: str
+        """
         return self._RouteTableName
 
     @RouteTableName.setter
@@ -27170,6 +31927,9 @@ class ModifyRouteTableAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27201,6 +31961,9 @@ class ModifySecurityGroupAttributeRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
+        """The security group instance ID, such as `sg-33ocnj9n`. This can be obtained through DescribeSecurityGroups.
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -27209,6 +31972,9 @@ class ModifySecurityGroupAttributeRequest(AbstractModel):
 
     @property
     def GroupName(self):
+        """Security group can be named freely, but cannot exceed 60 characters.
+        :rtype: str
+        """
         return self._GroupName
 
     @GroupName.setter
@@ -27217,6 +31983,9 @@ class ModifySecurityGroupAttributeRequest(AbstractModel):
 
     @property
     def GroupDescription(self):
+        """The remarks for the security group. The maximum length is 100 characters.
+        :rtype: str
+        """
         return self._GroupDescription
 
     @GroupDescription.setter
@@ -27252,6 +32021,9 @@ class ModifySecurityGroupAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27283,6 +32055,9 @@ class ModifySecurityGroupPoliciesRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
+        """The security group instance ID, such as `sg-33ocnj9n`. This can be obtained through DescribeSecurityGroups.
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -27291,6 +32066,9 @@ class ModifySecurityGroupPoliciesRequest(AbstractModel):
 
     @property
     def SecurityGroupPolicySet(self):
+        """The security group policy set. SecurityGroupPolicySet object must specify new egress and ingress policies at the same time. SecurityGroupPolicy object does not support custom index (PolicyIndex).
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        """
         return self._SecurityGroupPolicySet
 
     @SecurityGroupPolicySet.setter
@@ -27299,6 +32077,9 @@ class ModifySecurityGroupPoliciesRequest(AbstractModel):
 
     @property
     def SortPolicys(self):
+        """Whether the security group rule is sorted. Default value: False. If it is set to `True`, security group rules will be strictly sorted according to the sequence specified in the `SecurityGroupPolicySet` parameter. Manual entry may cause omission, so we recommend sorting security group rules in the console.
+        :rtype: bool
+        """
         return self._SortPolicys
 
     @SortPolicys.setter
@@ -27336,6 +32117,9 @@ class ModifySecurityGroupPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27370,6 +32154,9 @@ class ModifyServiceTemplateAttributeRequest(AbstractModel):
 
     @property
     def ServiceTemplateId(self):
+        """Protocol port template instance ID, such as `ppm-529nwwj8`.
+        :rtype: str
+        """
         return self._ServiceTemplateId
 
     @ServiceTemplateId.setter
@@ -27378,6 +32165,9 @@ class ModifyServiceTemplateAttributeRequest(AbstractModel):
 
     @property
     def ServiceTemplateName(self):
+        """Protocol port template name.
+        :rtype: str
+        """
         return self._ServiceTemplateName
 
     @ServiceTemplateName.setter
@@ -27386,6 +32176,9 @@ class ModifyServiceTemplateAttributeRequest(AbstractModel):
 
     @property
     def Services(self):
+        """It supports single port, multiple ports, consecutive ports and all ports. Supported protocols include TCP, UDP, ICMP, and GRE.
+        :rtype: list of str
+        """
         return self._Services
 
     @Services.setter
@@ -27394,6 +32187,9 @@ class ModifyServiceTemplateAttributeRequest(AbstractModel):
 
     @property
     def ServicesExtra(self):
+        """Protocol port information with remarks. Supported ports include single port, multiple ports, consecutive ports and other ports. Supported protocols include TCP, UDP, ICMP, and GRE.
+        :rtype: list of ServicesInfo
+        """
         return self._ServicesExtra
 
     @ServicesExtra.setter
@@ -27435,6 +32231,9 @@ class ModifyServiceTemplateAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27466,6 +32265,9 @@ class ModifyServiceTemplateGroupAttributeRequest(AbstractModel):
 
     @property
     def ServiceTemplateGroupId(self):
+        """The protocol port template group instance ID, such as `ppmg-ei8hfd9a`.
+        :rtype: str
+        """
         return self._ServiceTemplateGroupId
 
     @ServiceTemplateGroupId.setter
@@ -27474,6 +32276,9 @@ class ModifyServiceTemplateGroupAttributeRequest(AbstractModel):
 
     @property
     def ServiceTemplateGroupName(self):
+        """Protocol port template group name.
+        :rtype: str
+        """
         return self._ServiceTemplateGroupName
 
     @ServiceTemplateGroupName.setter
@@ -27482,6 +32287,9 @@ class ModifyServiceTemplateGroupAttributeRequest(AbstractModel):
 
     @property
     def ServiceTemplateIds(self):
+        """Instance ID of the protocol port template, such as `ppm-4dw6agho`.
+        :rtype: list of str
+        """
         return self._ServiceTemplateIds
 
     @ServiceTemplateIds.setter
@@ -27517,6 +32325,9 @@ class ModifyServiceTemplateGroupAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27542,6 +32353,9 @@ class ModifySnapshotPoliciesRequest(AbstractModel):
 
     @property
     def SnapshotPoliciesInfo(self):
+        """Modify snapshot policies
+        :rtype: list of BatchModifySnapshotPolicy
+        """
         return self._SnapshotPoliciesInfo
 
     @SnapshotPoliciesInfo.setter
@@ -27580,6 +32394,9 @@ class ModifySnapshotPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27611,6 +32428,9 @@ class ModifySubnetAttributeRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Subnet instance ID, such as `subnet-pxir56ns`.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -27619,6 +32439,9 @@ class ModifySubnetAttributeRequest(AbstractModel):
 
     @property
     def SubnetName(self):
+        """The subnet name. The maximum length is 60 bytes.
+        :rtype: str
+        """
         return self._SubnetName
 
     @SubnetName.setter
@@ -27627,6 +32450,9 @@ class ModifySubnetAttributeRequest(AbstractModel):
 
     @property
     def EnableBroadcast(self):
+        """Whether the subnet has broadcast enabled.
+        :rtype: str
+        """
         return self._EnableBroadcast
 
     @EnableBroadcast.setter
@@ -27662,6 +32488,9 @@ class ModifySubnetAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27702,6 +32531,9 @@ class ModifyVpcAttributeRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """Security group can be named freely, but cannot exceed 60 characters.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -27710,6 +32542,9 @@ class ModifyVpcAttributeRequest(AbstractModel):
 
     @property
     def VpcName(self):
+        """VPC can be named freely, but the maximum length is 60 characters.
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -27718,6 +32553,9 @@ class ModifyVpcAttributeRequest(AbstractModel):
 
     @property
     def EnableMulticast(self):
+        """Whether multicast is enabled. `true`: Enabled. `false`: Off.
+        :rtype: str
+        """
         return self._EnableMulticast
 
     @EnableMulticast.setter
@@ -27726,6 +32564,9 @@ class ModifyVpcAttributeRequest(AbstractModel):
 
     @property
     def DnsServers(self):
+        """DNS address. A maximum of 4 addresses is supported. The first one is primary server by default, and the rest are secondary servers.
+        :rtype: list of str
+        """
         return self._DnsServers
 
     @DnsServers.setter
@@ -27734,6 +32575,9 @@ class ModifyVpcAttributeRequest(AbstractModel):
 
     @property
     def DomainName(self):
+        """Domain name
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -27742,6 +32586,9 @@ class ModifyVpcAttributeRequest(AbstractModel):
 
     @property
     def EnableCdcPublish(self):
+        """Whether to publish the CDC subnet to CCN. `true`: Publish; `false`: u200dDo not publish
+        :rtype: bool
+        """
         return self._EnableCdcPublish
 
     @EnableCdcPublish.setter
@@ -27780,6 +32627,9 @@ class ModifyVpcAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27811,6 +32661,9 @@ class ModifyVpcEndPointAttributeRequest(AbstractModel):
 
     @property
     def EndPointId(self):
+        """Endpoint ID
+        :rtype: str
+        """
         return self._EndPointId
 
     @EndPointId.setter
@@ -27819,6 +32672,9 @@ class ModifyVpcEndPointAttributeRequest(AbstractModel):
 
     @property
     def EndPointName(self):
+        """Endpoint name
+        :rtype: str
+        """
         return self._EndPointName
 
     @EndPointName.setter
@@ -27827,6 +32683,9 @@ class ModifyVpcEndPointAttributeRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
+        """List of security group IDs
+        :rtype: list of str
+        """
         return self._SecurityGroupIds
 
     @SecurityGroupIds.setter
@@ -27862,6 +32721,9 @@ class ModifyVpcEndPointAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27899,6 +32761,9 @@ class ModifyVpcEndPointServiceAttributeRequest(AbstractModel):
 
     @property
     def EndPointServiceId(self):
+        """Endpoint service ID
+        :rtype: str
+        """
         return self._EndPointServiceId
 
     @EndPointServiceId.setter
@@ -27907,6 +32772,9 @@ class ModifyVpcEndPointServiceAttributeRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -27915,6 +32783,9 @@ class ModifyVpcEndPointServiceAttributeRequest(AbstractModel):
 
     @property
     def EndPointServiceName(self):
+        """Endpoint service name
+        :rtype: str
+        """
         return self._EndPointServiceName
 
     @EndPointServiceName.setter
@@ -27923,6 +32794,9 @@ class ModifyVpcEndPointServiceAttributeRequest(AbstractModel):
 
     @property
     def AutoAcceptFlag(self):
+        """Whether to automatically accept VPC endpoint connection requests. Valid values: <ui><li>`true`: yes<li>`false`: no</ul>
+        :rtype: bool
+        """
         return self._AutoAcceptFlag
 
     @AutoAcceptFlag.setter
@@ -27931,6 +32805,9 @@ class ModifyVpcEndPointServiceAttributeRequest(AbstractModel):
 
     @property
     def ServiceInstanceId(self):
+        """Real server ID in the format of `lb-xxx`.
+        :rtype: str
+        """
         return self._ServiceInstanceId
 
     @ServiceInstanceId.setter
@@ -27968,6 +32845,9 @@ class ModifyVpcEndPointServiceAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -27999,6 +32879,9 @@ class ModifyVpcEndPointServiceWhiteListRequest(AbstractModel):
 
     @property
     def UserUin(self):
+        """User UIN
+        :rtype: str
+        """
         return self._UserUin
 
     @UserUin.setter
@@ -28007,6 +32890,9 @@ class ModifyVpcEndPointServiceWhiteListRequest(AbstractModel):
 
     @property
     def EndPointServiceId(self):
+        """Endpoint service ID
+        :rtype: str
+        """
         return self._EndPointServiceId
 
     @EndPointServiceId.setter
@@ -28015,6 +32901,9 @@ class ModifyVpcEndPointServiceWhiteListRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Allowlist description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -28050,6 +32939,9 @@ class ModifyVpcEndPointServiceWhiteListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -28114,6 +33006,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def VpnConnectionId(self):
+        """The ID of the VPN tunnel instance, such as `vpnx-f49l6u0z`.
+        :rtype: str
+        """
         return self._VpnConnectionId
 
     @VpnConnectionId.setter
@@ -28122,6 +33017,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def VpnConnectionName(self):
+        """VPN tunnel can be named freely, but the maximum length is 60 characters.
+        :rtype: str
+        """
         return self._VpnConnectionName
 
     @VpnConnectionName.setter
@@ -28130,6 +33028,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def PreShareKey(self):
+        """The pre-shared key.
+        :rtype: str
+        """
         return self._PreShareKey
 
     @PreShareKey.setter
@@ -28138,6 +33039,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def SecurityPolicyDatabases(self):
+        """SPD policy group. Taking {"10.0.0.5/24":["172.123.10.5/16"]} as an example, 10.0.0.5/24 is the VPC private IP range, and 172.123.10.5/16 is the IDC IP range. The user specifies the IP range in the VPC that can communicate with the IP range in the IDC.
+        :rtype: list of SecurityPolicyDatabase
+        """
         return self._SecurityPolicyDatabases
 
     @SecurityPolicyDatabases.setter
@@ -28146,6 +33050,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def IKEOptionsSpecification(self):
+        """IKE (Internet Key Exchange) configuration. IKE comes with a self-protection mechanism. The network security protocol is configured by the user.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
+        """
         return self._IKEOptionsSpecification
 
     @IKEOptionsSpecification.setter
@@ -28154,6 +33061,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def IPSECOptionsSpecification(self):
+        """IPSec configuration. The IPSec secure session configuration is provided by Tencent Cloud.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
+        """
         return self._IPSECOptionsSpecification
 
     @IPSECOptionsSpecification.setter
@@ -28162,6 +33072,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def EnableHealthCheck(self):
+        """Whether to enable the tunnel health check. The default value is `False`.
+        :rtype: bool
+        """
         return self._EnableHealthCheck
 
     @EnableHealthCheck.setter
@@ -28170,6 +33083,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def HealthCheckLocalIp(self):
+        """Local IP address for the tunnel health check
+        :rtype: str
+        """
         return self._HealthCheckLocalIp
 
     @HealthCheckLocalIp.setter
@@ -28178,6 +33094,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def HealthCheckRemoteIp(self):
+        """Peer IP address for the tunnel health check
+        :rtype: str
+        """
         return self._HealthCheckRemoteIp
 
     @HealthCheckRemoteIp.setter
@@ -28186,6 +33105,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def NegotiationType(self):
+        """Negotiation type. Valid values: `active` (default value), `passive` and `flowTrigger`.
+        :rtype: str
+        """
         return self._NegotiationType
 
     @NegotiationType.setter
@@ -28194,6 +33116,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def DpdEnable(self):
+        """Specifies whether to enable DPD. Valid values: `0` (disable) and `1` (enable)
+        :rtype: int
+        """
         return self._DpdEnable
 
     @DpdEnable.setter
@@ -28202,6 +33127,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def DpdTimeout(self):
+        """DPD timeout period. Default: 30; unit: second. If the request is not responded within this period, the peer end is considered not exists. This parameter is valid when the value of `DpdEnable` is 1. 
+        :rtype: str
+        """
         return self._DpdTimeout
 
     @DpdTimeout.setter
@@ -28210,6 +33138,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def DpdAction(self):
+        """The action after DPD timeout. Valid values: `clear` (disconnect) and `restart` (try again). It’s valid when `DpdEnable` is `1`. 
+        :rtype: str
+        """
         return self._DpdAction
 
     @DpdAction.setter
@@ -28218,6 +33149,9 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def CustomerGatewayId(self):
+        """Peer gateway ID. You can update tunnels of V4.0 and later gateways.
+        :rtype: str
+        """
         return self._CustomerGatewayId
 
     @CustomerGatewayId.setter
@@ -28273,6 +33207,9 @@ class ModifyVpnConnectionAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -28304,6 +33241,9 @@ class ModifyVpnGatewayAttributeRequest(AbstractModel):
 
     @property
     def VpnGatewayId(self):
+        """The ID of the VPN gateway instance.
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -28312,6 +33252,9 @@ class ModifyVpnGatewayAttributeRequest(AbstractModel):
 
     @property
     def VpnGatewayName(self):
+        """The VPN gateway name. The maximum length is 60 bytes.
+        :rtype: str
+        """
         return self._VpnGatewayName
 
     @VpnGatewayName.setter
@@ -28320,6 +33263,9 @@ class ModifyVpnGatewayAttributeRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """VPN gateway billing mode. Currently, only the conversion of prepaid (monthly subscription) to postpaid (that is, pay-as-you-go) is supported. That is, the parameters only supports POSTPAID_BY_HOUR.
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -28355,6 +33301,9 @@ class ModifyVpnGatewayAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -28383,6 +33332,9 @@ class ModifyVpnGatewayCcnRoutesRequest(AbstractModel):
 
     @property
     def VpnGatewayId(self):
+        """Instance ID of the VPN gateway
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -28391,6 +33343,9 @@ class ModifyVpnGatewayCcnRoutesRequest(AbstractModel):
 
     @property
     def Routes(self):
+        """The CCN route (IDC IP range) list.
+        :rtype: list of VpngwCcnRoutes
+        """
         return self._Routes
 
     @Routes.setter
@@ -28430,6 +33385,9 @@ class ModifyVpnGatewayCcnRoutesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -28458,6 +33416,9 @@ class ModifyVpnGatewayRoutesRequest(AbstractModel):
 
     @property
     def VpnGatewayId(self):
+        """Instance ID of the VPN gateway
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -28466,6 +33427,9 @@ class ModifyVpnGatewayRoutesRequest(AbstractModel):
 
     @property
     def Routes(self):
+        """Route parameters to modify
+        :rtype: list of VpnGatewayRouteModify
+        """
         return self._Routes
 
     @Routes.setter
@@ -28509,6 +33473,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def Routes(self):
+        """Route information of the VPN gateway
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: list of VpnGatewayRoute
+        """
         return self._Routes
 
     @Routes.setter
@@ -28517,6 +33485,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -28561,6 +33532,9 @@ class NatDirectConnectGatewayRoute(AbstractModel):
 
     @property
     def DestinationCidrBlock(self):
+        """The `IPv4` `CIDR` of the subnet.
+        :rtype: str
+        """
         return self._DestinationCidrBlock
 
     @DestinationCidrBlock.setter
@@ -28569,6 +33543,10 @@ class NatDirectConnectGatewayRoute(AbstractModel):
 
     @property
     def GatewayType(self):
+        """The type of the next-hop gateway. Supported types:
+`DIRECTCONNECT`: Direct connect gateway
+        :rtype: str
+        """
         return self._GatewayType
 
     @GatewayType.setter
@@ -28577,6 +33555,9 @@ class NatDirectConnectGatewayRoute(AbstractModel):
 
     @property
     def GatewayId(self):
+        """ID of the next-hop gateway
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -28585,6 +33566,9 @@ class NatDirectConnectGatewayRoute(AbstractModel):
 
     @property
     def CreateTime(self):
+        """The creation time of the route
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -28593,6 +33577,9 @@ class NatDirectConnectGatewayRoute(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """The update time of the route
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -28697,6 +33684,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NatGatewayId(self):
+        """NAT gateway ID.
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -28705,6 +33695,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NatGatewayName(self):
+        """NAT gateway name.
+        :rtype: str
+        """
         return self._NatGatewayName
 
     @NatGatewayName.setter
@@ -28713,6 +33706,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
+        """NAT gateway creation time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -28721,6 +33717,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def State(self):
+        """The status of the NAT gateway.
+ `PENDING`: Being created, `DELETING`: Being deleted, `AVAILABLE`: Running, `UPDATING`: Being upgraded,
+`FAILED`: Failed.
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -28729,6 +33730,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InternetMaxBandwidthOut(self):
+        """The maximum outbound bandwidth of the gateway. Unit: Mbps.
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -28737,6 +33741,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxConcurrentConnection(self):
+        """The concurrent connections cap of the gateway.
+        :rtype: int
+        """
         return self._MaxConcurrentConnection
 
     @MaxConcurrentConnection.setter
@@ -28745,6 +33752,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PublicIpAddressSet(self):
+        """The public IP object array of the bound NAT gateway.
+        :rtype: list of NatGatewayAddress
+        """
         return self._PublicIpAddressSet
 
     @PublicIpAddressSet.setter
@@ -28753,6 +33763,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NetworkState(self):
+        """The NAT gateway status. `AVAILABLE`: Operating, `UNAVAILABLE`: Unavailable, `INSUFFICIENT`: Service suspended due to account overdue.
+        :rtype: str
+        """
         return self._NetworkState
 
     @NetworkState.setter
@@ -28761,6 +33774,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DestinationIpPortTranslationNatRuleSet(self):
+        """The port forwarding rules of the NAT gateway.
+        :rtype: list of DestinationIpPortTranslationNatRule
+        """
         return self._DestinationIpPortTranslationNatRuleSet
 
     @DestinationIpPortTranslationNatRuleSet.setter
@@ -28769,6 +33785,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
+        """VPC instance ID.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -28777,6 +33796,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Zone(self):
+        """The availability zone in which the NAT gateway is located.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -28785,6 +33807,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DirectConnectGatewayIds(self):
+        """ID of the direct connect gateway bound.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._DirectConnectGatewayIds
 
     @DirectConnectGatewayIds.setter
@@ -28793,6 +33819,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
+        """Subnet ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -28801,6 +33831,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagSet(self):
+        """Tag key-value pairs.
+        :rtype: list of Tag
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -28809,6 +33842,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecurityGroupSet(self):
+        """The list of the security groups bound to the NAT Gateway
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._SecurityGroupSet
 
     @SecurityGroupSet.setter
@@ -28817,6 +33854,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SourceIpTranslationNatRuleSet(self):
+        """SNAT forwarding rule of the NAT gateway.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of SourceIpTranslationNatRule
+        """
         return self._SourceIpTranslationNatRuleSet
 
     @SourceIpTranslationNatRuleSet.setter
@@ -28825,6 +33866,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsExclusive(self):
+        """Whether the NAT gateway is dedicated.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsExclusive
 
     @IsExclusive.setter
@@ -28833,6 +33878,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExclusiveGatewayBandwidth(self):
+        """Bandwidth of the gateway cluster where the dedicated NAT Gateway resides. Unit: Mbps. This field does not exist when the `IsExclusive` field is set to `false`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ExclusiveGatewayBandwidth
 
     @ExclusiveGatewayBandwidth.setter
@@ -28841,6 +33890,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RestrictState(self):
+        """Whether the NAT gateway is blocked. Values: `NORMAL`, `RESTRICTED`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RestrictState
 
     @RestrictState.setter
@@ -28849,6 +33902,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NatProductVersion(self):
+        """NAT gateway major version. `1`: Classic, `2`: Standard
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._NatProductVersion
 
     @NatProductVersion.setter
@@ -28927,6 +33984,9 @@ class NatGatewayAddress(AbstractModel):
 
     @property
     def AddressId(self):
+        """The unique ID of the Elastic IP (EIP), such as `eip-11112222`.
+        :rtype: str
+        """
         return self._AddressId
 
     @AddressId.setter
@@ -28935,6 +33995,9 @@ class NatGatewayAddress(AbstractModel):
 
     @property
     def PublicIpAddress(self):
+        """The public IP address, such as `123.121.34.33`.
+        :rtype: str
+        """
         return self._PublicIpAddress
 
     @PublicIpAddress.setter
@@ -28943,6 +34006,9 @@ class NatGatewayAddress(AbstractModel):
 
     @property
     def IsBlocked(self):
+        """The block status of the resource. `true` indicates the EIP is blocked. `false` indicates that the EIP is not blocked.
+        :rtype: bool
+        """
         return self._IsBlocked
 
     @IsBlocked.setter
@@ -29005,6 +34071,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IpProtocol(self):
+        """Network protocol. Available choices: `TCP`, `UDP`.
+        :rtype: str
+        """
         return self._IpProtocol
 
     @IpProtocol.setter
@@ -29013,6 +34082,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PublicIpAddress(self):
+        """EIP.
+        :rtype: str
+        """
         return self._PublicIpAddress
 
     @PublicIpAddress.setter
@@ -29021,6 +34093,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PublicPort(self):
+        """Public port.
+        :rtype: int
+        """
         return self._PublicPort
 
     @PublicPort.setter
@@ -29029,6 +34104,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PrivateIpAddress(self):
+        """Private IP.
+        :rtype: str
+        """
         return self._PrivateIpAddress
 
     @PrivateIpAddress.setter
@@ -29037,6 +34115,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PrivatePort(self):
+        """Private port.
+        :rtype: int
+        """
         return self._PrivatePort
 
     @PrivatePort.setter
@@ -29045,6 +34126,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Description(self):
+        """NAT gateway forwarding rule description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -29053,6 +34137,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NatGatewayId(self):
+        """NAT gateway ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -29061,6 +34149,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VpcId(self):
+        """VPC ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -29069,6 +34161,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTime(self):
+        """The creation time of the NAT gateway forwarding rule.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -29163,6 +34259,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
+        """The ID of a VPC instance, such as `vpc-12345678`.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -29171,6 +34270,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcName(self):
+        """The name of a VPC instance.
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -29179,6 +34281,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
+        """The ID of a subnet instance, such as subnet-12345678.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -29187,6 +34292,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetName(self):
+        """The name of a subnet instance.
+        :rtype: str
+        """
         return self._SubnetName
 
     @SubnetName.setter
@@ -29195,6 +34303,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NetDetectId(self):
+        """The ID of a network detection instance, such as netd-12345678.
+        :rtype: str
+        """
         return self._NetDetectId
 
     @NetDetectId.setter
@@ -29203,6 +34314,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NetDetectName(self):
+        """The name of a network detection instance. The maximum length is 60 characters.
+        :rtype: str
+        """
         return self._NetDetectName
 
     @NetDetectName.setter
@@ -29211,6 +34325,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DetectDestinationIp(self):
+        """The array of detection destination IPv4 addresses, which contains at most two IP addresses.
+        :rtype: list of str
+        """
         return self._DetectDestinationIp
 
     @DetectDestinationIp.setter
@@ -29219,6 +34336,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DetectSourceIp(self):
+        """The array of detection source IPv4 addresses automatically allocated by the system. The length is 2.
+        :rtype: list of str
+        """
         return self._DetectSourceIp
 
     @DetectSourceIp.setter
@@ -29227,6 +34347,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NextHopType(self):
+        """Type of the next hop. Currently supported types are:
+VPN: VPN gateway;
+`DIRECTCONNECT`: Direct connect gateway;
+`PEERCONNECTION`: Peering connection;
+`NAT`: NAT gateway;
+`NORMAL_CVM`: CVM instance;
+`CCN`: CCN instance;
+`NONEXTHOP`: No next hop.
+        :rtype: str
+        """
         return self._NextHopType
 
     @NextHopType.setter
@@ -29235,6 +34365,16 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NextHopDestination(self):
+        """ID of the next-hop gateway.
+If NextHopType is set to VPN, the value of this parameter is the VPN gateway ID, such as vpngw-12345678.
+`NextHopType` = `DIRECTCONNECT`: Direct connect gateway ID, such as `dcg-12345678`.
+`NextHopType` = `PEERCONNECTION`: Peering connection ID, such as `pcx-12345678`.
+`NextHopType` = `NAT`: NAT gateway ID, such as `nat-12345678`.
+If NextHopType is set to NORMAL_CVM, the value of this parameter is the IPv4 address of the CVM, such as 10.0.0.12.
+`NextHopType` = `CCN`: CCN instance ID, such as `ccn-12345678`.
+`NextHopType` = `NONEXTHOP`: No next hop.
+        :rtype: str
+        """
         return self._NextHopDestination
 
     @NextHopDestination.setter
@@ -29243,6 +34383,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NextHopName(self):
+        """The name of the next-hop gateway.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NextHopName
 
     @NextHopName.setter
@@ -29251,6 +34395,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NetDetectDescription(self):
+        """Network detection description.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NetDetectDescription
 
     @NetDetectDescription.setter
@@ -29259,6 +34407,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """The creation time.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -29318,6 +34470,9 @@ class NetDetectIpState(AbstractModel):
 
     @property
     def DetectDestinationIp(self):
+        """The destination IPv4 address of network detection.
+        :rtype: str
+        """
         return self._DetectDestinationIp
 
     @DetectDestinationIp.setter
@@ -29326,6 +34481,14 @@ class NetDetectIpState(AbstractModel):
 
     @property
     def State(self):
+        """The detection result.
+0: successful;
+-1: no packet loss occurred during routing;
+-2: packet loss occurred when outbound traffic is blocked by the ACL;
+-3: packet loss occurred when inbound traffic is blocked by the ACL;
+-4: other errors.
+        :rtype: int
+        """
         return self._State
 
     @State.setter
@@ -29334,6 +34497,9 @@ class NetDetectIpState(AbstractModel):
 
     @property
     def Delay(self):
+        """The latency. Unit: ms.
+        :rtype: int
+        """
         return self._Delay
 
     @Delay.setter
@@ -29342,6 +34508,9 @@ class NetDetectIpState(AbstractModel):
 
     @property
     def PacketLossRate(self):
+        """The packet loss rate.
+        :rtype: int
+        """
         return self._PacketLossRate
 
     @PacketLossRate.setter
@@ -29381,6 +34550,9 @@ class NetDetectState(AbstractModel):
 
     @property
     def NetDetectId(self):
+        """The ID of a network detection instance, such as netd-12345678.
+        :rtype: str
+        """
         return self._NetDetectId
 
     @NetDetectId.setter
@@ -29389,6 +34561,9 @@ class NetDetectState(AbstractModel):
 
     @property
     def NetDetectIpStateSet(self):
+        """The array of network detection destination IP verification results.
+        :rtype: list of NetDetectIpState
+        """
         return self._NetDetectIpStateSet
 
     @NetDetectIpStateSet.setter
@@ -29452,6 +34627,9 @@ class NetworkAcl(AbstractModel):
 
     @property
     def VpcId(self):
+        """`ID` of the `VPC` instance.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -29460,6 +34638,9 @@ class NetworkAcl(AbstractModel):
 
     @property
     def NetworkAclId(self):
+        """`ID` of the network ACL instance.
+        :rtype: str
+        """
         return self._NetworkAclId
 
     @NetworkAclId.setter
@@ -29468,6 +34649,9 @@ class NetworkAcl(AbstractModel):
 
     @property
     def NetworkAclName(self):
+        """Name of the network ACL. The maximum length is 60 bytes.
+        :rtype: str
+        """
         return self._NetworkAclName
 
     @NetworkAclName.setter
@@ -29476,6 +34660,9 @@ class NetworkAcl(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """Creation time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -29484,6 +34671,9 @@ class NetworkAcl(AbstractModel):
 
     @property
     def SubnetSet(self):
+        """Array of subnets associated with the network ACL.
+        :rtype: list of Subnet
+        """
         return self._SubnetSet
 
     @SubnetSet.setter
@@ -29492,6 +34682,9 @@ class NetworkAcl(AbstractModel):
 
     @property
     def IngressEntries(self):
+        """Inbound rules of the network ACL.
+        :rtype: list of NetworkAclEntry
+        """
         return self._IngressEntries
 
     @IngressEntries.setter
@@ -29500,6 +34693,9 @@ class NetworkAcl(AbstractModel):
 
     @property
     def EgressEntries(self):
+        """Outbound rules of the network ACL.
+        :rtype: list of NetworkAclEntry
+        """
         return self._EgressEntries
 
     @EgressEntries.setter
@@ -29508,6 +34704,9 @@ class NetworkAcl(AbstractModel):
 
     @property
     def NetworkAclType(self):
+        """Network ACL type. Valid values: `TRIPLE` and `QUINTUPLE`.
+        :rtype: str
+        """
         return self._NetworkAclType
 
     @NetworkAclType.setter
@@ -29516,6 +34715,9 @@ class NetworkAcl(AbstractModel):
 
     @property
     def TagSet(self):
+        """Tag key-value pairs
+        :rtype: list of Tag
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -29595,6 +34797,9 @@ class NetworkAclEntry(AbstractModel):
 
     @property
     def ModifyTime(self):
+        """Modification time.
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -29603,6 +34808,9 @@ class NetworkAclEntry(AbstractModel):
 
     @property
     def Protocol(self):
+        """Protocol. Valid values: TCP, UDP, ICMP, ALL.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -29611,6 +34819,9 @@ class NetworkAclEntry(AbstractModel):
 
     @property
     def Port(self):
+        """Port. Valid values: all, single port, range. When Protocol takes the value `ALL` or `ICMP`, Port cannot be specified.
+        :rtype: str
+        """
         return self._Port
 
     @Port.setter
@@ -29619,6 +34830,9 @@ class NetworkAclEntry(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """IP range or IP address (mutually exclusive).
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -29627,6 +34841,9 @@ class NetworkAclEntry(AbstractModel):
 
     @property
     def Ipv6CidrBlock(self):
+        """CIDR block or IPv6 address (mutually exclusive).
+        :rtype: str
+        """
         return self._Ipv6CidrBlock
 
     @Ipv6CidrBlock.setter
@@ -29635,6 +34852,9 @@ class NetworkAclEntry(AbstractModel):
 
     @property
     def Action(self):
+        """ACCEPT or DROP.
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -29643,6 +34863,9 @@ class NetworkAclEntry(AbstractModel):
 
     @property
     def Description(self):
+        """Rule description, which is up to 100 bytes.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -29685,6 +34908,9 @@ class NetworkAclEntrySet(AbstractModel):
 
     @property
     def Ingress(self):
+        """Inbound rules.
+        :rtype: list of NetworkAclEntry
+        """
         return self._Ingress
 
     @Ingress.setter
@@ -29693,6 +34919,9 @@ class NetworkAclEntrySet(AbstractModel):
 
     @property
     def Egress(self):
+        """Outbound rules.
+        :rtype: list of NetworkAclEntry
+        """
         return self._Egress
 
     @Egress.setter
@@ -29740,6 +34969,9 @@ class NetworkAclQuintupleEntries(AbstractModel):
 
     @property
     def Ingress(self):
+        """Network ACL quintuple inbound rule.
+        :rtype: list of NetworkAclQuintupleEntry
+        """
         return self._Ingress
 
     @Ingress.setter
@@ -29748,6 +34980,9 @@ class NetworkAclQuintupleEntries(AbstractModel):
 
     @property
     def Egress(self):
+        """Network ACL quintuple outbound rule.
+        :rtype: list of NetworkAclQuintupleEntry
+        """
         return self._Egress
 
     @Egress.setter
@@ -29822,6 +35057,9 @@ class NetworkAclQuintupleEntry(AbstractModel):
 
     @property
     def Protocol(self):
+        """Protocol. Valid values: `TCP`, `UDP`, `ICMP`, `ALL`.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -29830,6 +35068,9 @@ class NetworkAclQuintupleEntry(AbstractModel):
 
     @property
     def Description(self):
+        """Description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -29838,6 +35079,9 @@ class NetworkAclQuintupleEntry(AbstractModel):
 
     @property
     def SourcePort(self):
+        """Source port. Valid values: all, single port, range. When `Protocol` is `ALL` or `ICMP`, `Port` cannot be specified.
+        :rtype: str
+        """
         return self._SourcePort
 
     @SourcePort.setter
@@ -29846,6 +35090,9 @@ class NetworkAclQuintupleEntry(AbstractModel):
 
     @property
     def SourceCidr(self):
+        """Source CIDR block.
+        :rtype: str
+        """
         return self._SourceCidr
 
     @SourceCidr.setter
@@ -29854,6 +35101,9 @@ class NetworkAclQuintupleEntry(AbstractModel):
 
     @property
     def DestinationPort(self):
+        """Destination port. Valid values: all, single port, range. When `Protocol` is `ALL` or `ICMP`, `Port` cannot be specified.
+        :rtype: str
+        """
         return self._DestinationPort
 
     @DestinationPort.setter
@@ -29862,6 +35112,9 @@ class NetworkAclQuintupleEntry(AbstractModel):
 
     @property
     def DestinationCidr(self):
+        """Destination CIDR block.
+        :rtype: str
+        """
         return self._DestinationCidr
 
     @DestinationCidr.setter
@@ -29870,6 +35123,9 @@ class NetworkAclQuintupleEntry(AbstractModel):
 
     @property
     def Action(self):
+        """Action. Valid values: `ACCEPT` and `DROP`.
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -29878,6 +35134,9 @@ class NetworkAclQuintupleEntry(AbstractModel):
 
     @property
     def NetworkAclQuintupleEntryId(self):
+        """Unique ID of a network ACL entry.
+        :rtype: str
+        """
         return self._NetworkAclQuintupleEntryId
 
     @NetworkAclQuintupleEntryId.setter
@@ -29886,6 +35145,9 @@ class NetworkAclQuintupleEntry(AbstractModel):
 
     @property
     def Priority(self):
+        """Priority. `1` refers to the highest priority.
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -29894,6 +35156,9 @@ class NetworkAclQuintupleEntry(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time. It’s returned by `DescribeNetworkAclQuintupleEntries`.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -29902,6 +35167,9 @@ class NetworkAclQuintupleEntry(AbstractModel):
 
     @property
     def NetworkAclDirection(self):
+        """Direction of the rule. It’s returned by `DescribeNetworkAclQuintupleEntries`. Valid values: `INGRESS` and `EGRESS`.
+        :rtype: str
+        """
         return self._NetworkAclDirection
 
     @NetworkAclDirection.setter
@@ -30020,6 +35288,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NetworkInterfaceId(self):
+        """The ID of the ENI instance, such as `eni-f1xjkw1b`.
+        :rtype: str
+        """
         return self._NetworkInterfaceId
 
     @NetworkInterfaceId.setter
@@ -30028,6 +35299,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NetworkInterfaceName(self):
+        """ENI Name
+        :rtype: str
+        """
         return self._NetworkInterfaceName
 
     @NetworkInterfaceName.setter
@@ -30036,6 +35310,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NetworkInterfaceDescription(self):
+        """ENI description.
+        :rtype: str
+        """
         return self._NetworkInterfaceDescription
 
     @NetworkInterfaceDescription.setter
@@ -30044,6 +35321,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubnetId(self):
+        """Subnet instance ID.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -30052,6 +35332,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VpcId(self):
+        """VPC instance ID.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -30060,6 +35343,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def GroupSet(self):
+        """Bound security group.
+        :rtype: list of str
+        """
         return self._GroupSet
 
     @GroupSet.setter
@@ -30068,6 +35354,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Primary(self):
+        """Whether it is the primary ENI.
+        :rtype: bool
+        """
         return self._Primary
 
     @Primary.setter
@@ -30076,6 +35365,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MacAddress(self):
+        """MAC address
+        :rtype: str
+        """
         return self._MacAddress
 
     @MacAddress.setter
@@ -30084,6 +35376,14 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def State(self):
+        """ENI status:
+<li>`PENDING`: Creating</li>
+<li>`AVAILABLE`: Available</li>
+<li>`ATTACHING`: Binding</li>
+<li>`DETACHING`: Unbinding</li>
+<li>`DELETING`: Deleting</li>
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -30092,6 +35392,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PrivateIpAddressSet(self):
+        """Private IP information.
+        :rtype: list of PrivateIpAddressSpecification
+        """
         return self._PrivateIpAddressSet
 
     @PrivateIpAddressSet.setter
@@ -30100,6 +35403,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Attachment(self):
+        """Bound CVM object.
+Note: This field may return null, indicating no valid value.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.NetworkInterfaceAttachment`
+        """
         return self._Attachment
 
     @Attachment.setter
@@ -30108,6 +35415,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Zone(self):
+        """Availability Zone.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -30116,6 +35426,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTime(self):
+        """Creation Time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -30124,6 +35437,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Ipv6AddressSet(self):
+        """The `IPv6` address list.
+        :rtype: list of Ipv6Address
+        """
         return self._Ipv6AddressSet
 
     @Ipv6AddressSet.setter
@@ -30132,6 +35448,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagSet(self):
+        """Tag key-value pair.
+        :rtype: list of Tag
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -30140,6 +35459,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EniType(self):
+        """The ENI type. 0: ENI. 1: EVM ENI.
+        :rtype: int
+        """
         return self._EniType
 
     @EniType.setter
@@ -30148,6 +35470,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Business(self):
+        """Type of the resource bound with an ENI. Valid values: cvm, eks.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Business
 
     @Business.setter
@@ -30156,6 +35482,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CdcId(self):
+        """ID of the CDC instance associated with the ENI
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -30164,6 +35494,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AttachType(self):
+        """ENI type. Valid values: `0` (standard); `1` (extension). Default value: `0`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._AttachType
 
     @AttachType.setter
@@ -30172,6 +35506,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ResourceId(self):
+        """The ID of resource to retain the ENI primary IP. It’s used as the request parameters for deleting an ENI.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -30180,6 +35518,14 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def QosLevel(self):
+        """Service level
+<li>`DEFAULT`: Default level</lil>
+<li>`PT`: Gold</li>
+<li>`AU`: Silver</li>
+<li>`AG`: Bronze</li>
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._QosLevel
 
     @QosLevel.setter
@@ -30259,6 +35605,9 @@ class NetworkInterfaceAttachment(AbstractModel):
 
     @property
     def InstanceId(self):
+        """CVM instance ID.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -30267,6 +35616,9 @@ class NetworkInterfaceAttachment(AbstractModel):
 
     @property
     def DeviceIndex(self):
+        """The serial number of ENI in the CVM instance.
+        :rtype: int
+        """
         return self._DeviceIndex
 
     @DeviceIndex.setter
@@ -30275,6 +35627,9 @@ class NetworkInterfaceAttachment(AbstractModel):
 
     @property
     def InstanceAccountId(self):
+        """The account information of the CVM owner.
+        :rtype: str
+        """
         return self._InstanceAccountId
 
     @InstanceAccountId.setter
@@ -30283,6 +35638,9 @@ class NetworkInterfaceAttachment(AbstractModel):
 
     @property
     def AttachTime(self):
+        """Binding time
+        :rtype: str
+        """
         return self._AttachTime
 
     @AttachTime.setter
@@ -30322,6 +35680,9 @@ class NotifyRoutesRequest(AbstractModel):
 
     @property
     def RouteTableId(self):
+        """The unique ID of the route table
+        :rtype: str
+        """
         return self._RouteTableId
 
     @RouteTableId.setter
@@ -30330,6 +35691,9 @@ class NotifyRoutesRequest(AbstractModel):
 
     @property
     def RouteItemIds(self):
+        """The unique ID of the route
+        :rtype: list of str
+        """
         return self._RouteItemIds
 
     @RouteItemIds.setter
@@ -30364,6 +35728,9 @@ class NotifyRoutesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -30392,6 +35759,9 @@ class Price(AbstractModel):
 
     @property
     def InstancePrice(self):
+        """Instance price.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ItemPrice`
+        """
         return self._InstancePrice
 
     @InstancePrice.setter
@@ -30400,6 +35770,9 @@ class Price(AbstractModel):
 
     @property
     def BandwidthPrice(self):
+        """Bandwidth price
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ItemPrice`
+        """
         return self._BandwidthPrice
 
     @BandwidthPrice.setter
@@ -30463,6 +35836,9 @@ AVAILABLE: Available
 
     @property
     def PrivateIpAddress(self):
+        """Private IP address.
+        :rtype: str
+        """
         return self._PrivateIpAddress
 
     @PrivateIpAddress.setter
@@ -30471,6 +35847,9 @@ AVAILABLE: Available
 
     @property
     def Primary(self):
+        """Whether it is a primary IP.
+        :rtype: bool
+        """
         return self._Primary
 
     @Primary.setter
@@ -30479,6 +35858,9 @@ AVAILABLE: Available
 
     @property
     def PublicIpAddress(self):
+        """Public IP address.
+        :rtype: str
+        """
         return self._PublicIpAddress
 
     @PublicIpAddress.setter
@@ -30487,6 +35869,9 @@ AVAILABLE: Available
 
     @property
     def AddressId(self):
+        """EIP instance ID, such as `eip-11112222`.
+        :rtype: str
+        """
         return self._AddressId
 
     @AddressId.setter
@@ -30495,6 +35880,9 @@ AVAILABLE: Available
 
     @property
     def Description(self):
+        """Private IP description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -30503,6 +35891,9 @@ AVAILABLE: Available
 
     @property
     def IsWanIpBlocked(self):
+        """Whether the public IP is blocked.
+        :rtype: bool
+        """
         return self._IsWanIpBlocked
 
     @IsWanIpBlocked.setter
@@ -30511,6 +35902,13 @@ AVAILABLE: Available
 
     @property
     def State(self):
+        """IP status:
+PENDING: Creating
+MIGRATING: Migrating
+DELETING: Deleting
+AVAILABLE: Available
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -30519,6 +35917,9 @@ AVAILABLE: Available
 
     @property
     def QosLevel(self):
+        """IP u200dservice level. Values: PT` u200d(Gold), `AU` u200d(Silver), `AG `(Bronze) and DEFAULT` (Default).
+        :rtype: str
+        """
         return self._QosLevel
 
     @QosLevel.setter
@@ -30565,6 +35966,9 @@ class Quota(AbstractModel):
 
     @property
     def QuotaId(self):
+        """Quota name. Value range:<br><li>`TOTAL_EIP_QUOTA`:EIP quota under the user's current region<br><li>`DAILY_EIP_APPLY`: Number of EIP applications submitted daily under the user's current region<br><li>`DAILY_PUBLIC_IP_ASSIGN`: Number of public IP reassignments under the user's current region.
+        :rtype: str
+        """
         return self._QuotaId
 
     @QuotaId.setter
@@ -30573,6 +35977,9 @@ class Quota(AbstractModel):
 
     @property
     def QuotaCurrent(self):
+        """Current count
+        :rtype: int
+        """
         return self._QuotaCurrent
 
     @QuotaCurrent.setter
@@ -30581,6 +35988,9 @@ class Quota(AbstractModel):
 
     @property
     def QuotaLimit(self):
+        """Quota
+        :rtype: int
+        """
         return self._QuotaLimit
 
     @QuotaLimit.setter
@@ -30619,6 +36029,9 @@ class ReferredSecurityGroup(AbstractModel):
 
     @property
     def SecurityGroupId(self):
+        """Security group instance ID.
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -30627,6 +36040,9 @@ class ReferredSecurityGroup(AbstractModel):
 
     @property
     def ReferredSecurityGroupIds(self):
+        """IDs of all referred security group instances.
+        :rtype: list of str
+        """
         return self._ReferredSecurityGroupIds
 
     @ReferredSecurityGroupIds.setter
@@ -30667,6 +36083,9 @@ class RefreshDirectConnectGatewayRouteToNatGatewayRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC ID
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -30675,6 +36094,9 @@ class RefreshDirectConnectGatewayRouteToNatGatewayRequest(AbstractModel):
 
     @property
     def NatGatewayId(self):
+        """The NAT gateway ID.
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -30683,6 +36105,9 @@ class RefreshDirectConnectGatewayRouteToNatGatewayRequest(AbstractModel):
 
     @property
     def DryRun(self):
+        """Whether it is pre-refresh. Valid values: `True` (yes) and `False` (no)
+        :rtype: bool
+        """
         return self._DryRun
 
     @DryRun.setter
@@ -30721,6 +36146,9 @@ class RefreshDirectConnectGatewayRouteToNatGatewayResponse(AbstractModel):
 
     @property
     def DirectConnectSubnetSet(self):
+        """IDC subnet information
+        :rtype: list of DirectConnectSubnet
+        """
         return self._DirectConnectSubnetSet
 
     @DirectConnectSubnetSet.setter
@@ -30729,6 +36157,9 @@ class RefreshDirectConnectGatewayRouteToNatGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -30763,6 +36194,9 @@ class RejectAttachCcnInstancesRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """The CCN instance ID, such as `ccn-f49l6u0z`.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -30771,6 +36205,9 @@ class RejectAttachCcnInstancesRequest(AbstractModel):
 
     @property
     def Instances(self):
+        """The list of instances whose association is rejected.
+        :rtype: list of CcnInstance
+        """
         return self._Instances
 
     @Instances.setter
@@ -30810,6 +36247,9 @@ class RejectAttachCcnInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -30835,6 +36275,9 @@ class ReleaseAddressesRequest(AbstractModel):
 
     @property
     def AddressIds(self):
+        """The unique ID list of the EIP. The unique ID of an EIP is as follows: `eip-11112222`.
+        :rtype: list of str
+        """
         return self._AddressIds
 
     @AddressIds.setter
@@ -30871,6 +36314,9 @@ class ReleaseAddressesResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """The async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
+        :rtype: str
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -30879,6 +36325,9 @@ class ReleaseAddressesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -30911,6 +36360,9 @@ class RemoveBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
+        """The unique ID of the bandwidth package, such as `bwp-xxxx`.
+        :rtype: str
+        """
         return self._BandwidthPackageId
 
     @BandwidthPackageId.setter
@@ -30919,6 +36371,9 @@ class RemoveBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """The resource type. Valid values: `Address` and `LoadBalance`.
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -30927,6 +36382,9 @@ class RemoveBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
+        """The resource IP, such as `eip-xxxx` and `lb-xxxx`.
+        :rtype: list of str
+        """
         return self._ResourceIds
 
     @ResourceIds.setter
@@ -30962,6 +36420,9 @@ class RemoveBandwidthPackageResourcesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -30990,6 +36451,9 @@ class RenewVpnGatewayRequest(AbstractModel):
 
     @property
     def VpnGatewayId(self):
+        """The ID of the VPN gateway instance.
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -30998,6 +36462,9 @@ class RenewVpnGatewayRequest(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
+        """Billing Methods
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
+        """
         return self._InstanceChargePrepaid
 
     @InstanceChargePrepaid.setter
@@ -31034,6 +36501,9 @@ class RenewVpnGatewayResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31062,6 +36532,9 @@ class ReplaceDirectConnectGatewayCcnRoutesRequest(AbstractModel):
 
     @property
     def DirectConnectGatewayId(self):
+        """The ID of the Direct Connect gateway, such as `dcg-prpqlmg1`
+        :rtype: str
+        """
         return self._DirectConnectGatewayId
 
     @DirectConnectGatewayId.setter
@@ -31070,6 +36543,9 @@ class ReplaceDirectConnectGatewayCcnRoutesRequest(AbstractModel):
 
     @property
     def Routes(self):
+        """The list of IDC IP range that must be connected
+        :rtype: list of DirectConnectGatewayCcnRoute
+        """
         return self._Routes
 
     @Routes.setter
@@ -31109,6 +36585,9 @@ class ReplaceDirectConnectGatewayCcnRoutesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31137,6 +36616,9 @@ class ReplaceRouteTableAssociationRequest(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Subnet instance ID, such as `subnet-3x5lf5q0`. This can be queried using the DescribeSubnets API.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -31145,6 +36627,9 @@ class ReplaceRouteTableAssociationRequest(AbstractModel):
 
     @property
     def RouteTableId(self):
+        """The route table instance ID, such as `rtb-azd4dt1c`.
+        :rtype: str
+        """
         return self._RouteTableId
 
     @RouteTableId.setter
@@ -31179,6 +36664,9 @@ class ReplaceRouteTableAssociationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31207,6 +36695,9 @@ class ReplaceRoutesRequest(AbstractModel):
 
     @property
     def RouteTableId(self):
+        """The route table instance ID, such as `rtb-azd4dt1c`.
+        :rtype: str
+        """
         return self._RouteTableId
 
     @RouteTableId.setter
@@ -31215,6 +36706,9 @@ class ReplaceRoutesRequest(AbstractModel):
 
     @property
     def Routes(self):
+        """Routing policy object. The routing policy ID (RouteId) must be specified.
+        :rtype: list of Route
+        """
         return self._Routes
 
     @Routes.setter
@@ -31260,6 +36754,9 @@ class ReplaceRoutesResponse(AbstractModel):
 
     @property
     def OldRouteSet(self):
+        """Old routing policy
+        :rtype: list of Route
+        """
         return self._OldRouteSet
 
     @OldRouteSet.setter
@@ -31268,6 +36765,9 @@ class ReplaceRoutesResponse(AbstractModel):
 
     @property
     def NewRouteSet(self):
+        """New routing policy
+        :rtype: list of Route
+        """
         return self._NewRouteSet
 
     @NewRouteSet.setter
@@ -31276,6 +36776,9 @@ class ReplaceRoutesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31319,6 +36822,9 @@ class ReplaceSecurityGroupPoliciesRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
+        """The security group instance ID, such as `sg-33ocnj9n`. This can be obtained through the `DescribeSecurityGroups` API.
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -31327,6 +36833,9 @@ class ReplaceSecurityGroupPoliciesRequest(AbstractModel):
 
     @property
     def SecurityGroupPolicySet(self):
+        """Security group policy set object.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        """
         return self._SecurityGroupPolicySet
 
     @SecurityGroupPolicySet.setter
@@ -31335,6 +36844,9 @@ class ReplaceSecurityGroupPoliciesRequest(AbstractModel):
 
     @property
     def OriginalSecurityGroupPolicySet(self):
+        """(Optional) The old policy set of the security group, which is used for log records.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        """
         return self._OriginalSecurityGroupPolicySet
 
     @OriginalSecurityGroupPolicySet.setter
@@ -31374,6 +36886,9 @@ class ReplaceSecurityGroupPoliciesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31405,6 +36920,9 @@ class ReplaceSecurityGroupPolicyRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
+        """The security group instance ID, such as `sg-33ocnj9n`. This can be obtained through DescribeSecurityGroups.
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -31413,6 +36931,9 @@ class ReplaceSecurityGroupPolicyRequest(AbstractModel):
 
     @property
     def SecurityGroupPolicySet(self):
+        """Security group policy set object.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        """
         return self._SecurityGroupPolicySet
 
     @SecurityGroupPolicySet.setter
@@ -31421,6 +36942,9 @@ class ReplaceSecurityGroupPolicyRequest(AbstractModel):
 
     @property
     def OriginalSecurityGroupPolicySet(self):
+        """(Optional) The old policy set of the security group, which is used for log records.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.SecurityGroupPolicySet`
+        """
         return self._OriginalSecurityGroupPolicySet
 
     @OriginalSecurityGroupPolicySet.setter
@@ -31460,6 +36984,9 @@ class ReplaceSecurityGroupPolicyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31491,6 +37018,9 @@ class ResetAttachCcnInstancesRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """The CCN instance ID, such as `ccn-f49l6u0z`.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -31499,6 +37029,9 @@ class ResetAttachCcnInstancesRequest(AbstractModel):
 
     @property
     def CcnUin(self):
+        """The UIN (root account) to which the CCN belongs.
+        :rtype: str
+        """
         return self._CcnUin
 
     @CcnUin.setter
@@ -31507,6 +37040,9 @@ class ResetAttachCcnInstancesRequest(AbstractModel):
 
     @property
     def Instances(self):
+        """The list of network instances that re-apply for association.
+        :rtype: list of CcnInstance
+        """
         return self._Instances
 
     @Instances.setter
@@ -31547,6 +37083,9 @@ class ResetAttachCcnInstancesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31575,6 +37114,9 @@ class ResetNatGatewayConnectionRequest(AbstractModel):
 
     @property
     def NatGatewayId(self):
+        """The NAT gateway ID.
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -31583,6 +37125,9 @@ class ResetNatGatewayConnectionRequest(AbstractModel):
 
     @property
     def MaxConcurrentConnection(self):
+        """Concurrent connections cap of the NAT gateway, such as 1000000, 3000000, 10000000.
+        :rtype: int
+        """
         return self._MaxConcurrentConnection
 
     @MaxConcurrentConnection.setter
@@ -31617,6 +37162,9 @@ class ResetNatGatewayConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31648,6 +37196,9 @@ class ResetRoutesRequest(AbstractModel):
 
     @property
     def RouteTableId(self):
+        """The route table instance ID, such as `rtb-azd4dt1c`.
+        :rtype: str
+        """
         return self._RouteTableId
 
     @RouteTableId.setter
@@ -31656,6 +37207,9 @@ class ResetRoutesRequest(AbstractModel):
 
     @property
     def RouteTableName(self):
+        """The route table name. The maximum length is 60 characters.
+        :rtype: str
+        """
         return self._RouteTableName
 
     @RouteTableName.setter
@@ -31664,6 +37218,9 @@ class ResetRoutesRequest(AbstractModel):
 
     @property
     def Routes(self):
+        """Routing policy.
+        :rtype: list of Route
+        """
         return self._Routes
 
     @Routes.setter
@@ -31704,6 +37261,9 @@ class ResetRoutesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31732,6 +37292,9 @@ class ResetVpnConnectionRequest(AbstractModel):
 
     @property
     def VpnGatewayId(self):
+        """The ID of the VPN gateway instance.
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -31740,6 +37303,9 @@ class ResetVpnConnectionRequest(AbstractModel):
 
     @property
     def VpnConnectionId(self):
+        """The ID of the VPN tunnel instance, such as `vpnx-f49l6u0z`.
+        :rtype: str
+        """
         return self._VpnConnectionId
 
     @VpnConnectionId.setter
@@ -31774,6 +37340,9 @@ class ResetVpnConnectionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31802,6 +37371,9 @@ class ResetVpnGatewayInternetMaxBandwidthRequest(AbstractModel):
 
     @property
     def VpnGatewayId(self):
+        """The ID of the VPN gateway instance.
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -31810,6 +37382,9 @@ class ResetVpnGatewayInternetMaxBandwidthRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """The new bandwidth cap in Mbps. Values: `5`, `10`, `20`, `50`, `100`, `200`, `500` and `1000`. The adjustment of the VPN gateway bandwidth is limited to [5,100] Mbps and [200,1000] Mbps.
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -31844,6 +37419,9 @@ class ResetVpnGatewayInternetMaxBandwidthResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -31875,6 +37453,9 @@ class Resource(AbstractModel):
 
     @property
     def ResourceType(self):
+        """The bandwidth package resource type, including `Address`, and `LoadBalance`
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -31883,6 +37464,9 @@ class Resource(AbstractModel):
 
     @property
     def ResourceId(self):
+        """The bandwidth package ID, such as `eip-xxxx` and `lb-xxxx`.
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -31891,6 +37475,9 @@ class Resource(AbstractModel):
 
     @property
     def AddressIp(self):
+        """The bandwidth package resource IP.
+        :rtype: str
+        """
         return self._AddressIp
 
     @AddressIp.setter
@@ -32049,6 +37636,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID, such as `vpc-bq4bzxpj`.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -32057,6 +37647,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Subnet instance ID, such as subnet-bthucmmy.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -32065,6 +37658,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Classiclink(self):
+        """Classiclink.
+        :rtype: int
+        """
         return self._Classiclink
 
     @Classiclink.setter
@@ -32073,6 +37669,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Dcg(self):
+        """Direct Connect gateway.
+        :rtype: int
+        """
         return self._Dcg
 
     @Dcg.setter
@@ -32081,6 +37680,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Pcx(self):
+        """Peering connection.
+        :rtype: int
+        """
         return self._Pcx
 
     @Pcx.setter
@@ -32089,6 +37691,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Ip(self):
+        """Total number of used IPs except for CVM IP, EIP and network probe IP. The three IP types will be independently counted.
+        :rtype: int
+        """
         return self._Ip
 
     @Ip.setter
@@ -32097,6 +37702,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Nat(self):
+        """NAT gateway.
+        :rtype: int
+        """
         return self._Nat
 
     @Nat.setter
@@ -32105,6 +37713,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Vpngw(self):
+        """VPN gateway.
+        :rtype: int
+        """
         return self._Vpngw
 
     @Vpngw.setter
@@ -32113,6 +37724,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def FlowLog(self):
+        """Flow log.
+        :rtype: int
+        """
         return self._FlowLog
 
     @FlowLog.setter
@@ -32121,6 +37735,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def NetworkDetect(self):
+        """Network probing.
+        :rtype: int
+        """
         return self._NetworkDetect
 
     @NetworkDetect.setter
@@ -32129,6 +37746,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def NetworkACL(self):
+        """Network ACL.
+        :rtype: int
+        """
         return self._NetworkACL
 
     @NetworkACL.setter
@@ -32137,6 +37757,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def CVM(self):
+        """Cloud Virtual Machine.
+        :rtype: int
+        """
         return self._CVM
 
     @CVM.setter
@@ -32145,6 +37768,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def LB(self):
+        """Load balancer.
+        :rtype: int
+        """
         return self._LB
 
     @LB.setter
@@ -32153,6 +37779,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def CDB(self):
+        """Relational database.
+        :rtype: int
+        """
         return self._CDB
 
     @CDB.setter
@@ -32161,6 +37790,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Cmem(self):
+        """TencentDB for Memcached.
+        :rtype: int
+        """
         return self._Cmem
 
     @Cmem.setter
@@ -32169,6 +37801,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def CTSDB(self):
+        """Cloud time series database.
+        :rtype: int
+        """
         return self._CTSDB
 
     @CTSDB.setter
@@ -32177,6 +37812,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def MariaDB(self):
+        """TencentDB for MariaDB (TDSQL).
+        :rtype: int
+        """
         return self._MariaDB
 
     @MariaDB.setter
@@ -32185,6 +37823,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def SQLServer(self):
+        """TencentDB for SQL Server.
+        :rtype: int
+        """
         return self._SQLServer
 
     @SQLServer.setter
@@ -32193,6 +37834,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Postgres(self):
+        """TencentDB for PostgreSQL.
+        :rtype: int
+        """
         return self._Postgres
 
     @Postgres.setter
@@ -32201,6 +37845,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def NAS(self):
+        """Network attached storage.
+        :rtype: int
+        """
         return self._NAS
 
     @NAS.setter
@@ -32209,6 +37856,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Greenplumn(self):
+        """Snova data warehouse.
+        :rtype: int
+        """
         return self._Greenplumn
 
     @Greenplumn.setter
@@ -32217,6 +37867,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Ckafka(self):
+        """Cloud Kafka (CKafka).
+        :rtype: int
+        """
         return self._Ckafka
 
     @Ckafka.setter
@@ -32225,6 +37878,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Grocery(self):
+        """Grocery.
+        :rtype: int
+        """
         return self._Grocery
 
     @Grocery.setter
@@ -32233,6 +37889,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def HSM(self):
+        """Data encryption service.
+        :rtype: int
+        """
         return self._HSM
 
     @HSM.setter
@@ -32241,6 +37900,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Tcaplus(self):
+        """Game storage - Tcaplus.
+        :rtype: int
+        """
         return self._Tcaplus
 
     @Tcaplus.setter
@@ -32249,6 +37911,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Cnas(self):
+        """Cnas.
+        :rtype: int
+        """
         return self._Cnas
 
     @Cnas.setter
@@ -32257,6 +37922,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def TiDB(self):
+        """HTAP database - TiDB.
+        :rtype: int
+        """
         return self._TiDB
 
     @TiDB.setter
@@ -32265,6 +37933,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Emr(self):
+        """EMR cluster.
+        :rtype: int
+        """
         return self._Emr
 
     @Emr.setter
@@ -32273,6 +37944,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def SEAL(self):
+        """SEAL.
+        :rtype: int
+        """
         return self._SEAL
 
     @SEAL.setter
@@ -32281,6 +37955,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def CFS(self):
+        """Cloud file storage - CFS.
+        :rtype: int
+        """
         return self._CFS
 
     @CFS.setter
@@ -32289,6 +37966,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Oracle(self):
+        """Oracle.
+        :rtype: int
+        """
         return self._Oracle
 
     @Oracle.setter
@@ -32297,6 +37977,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def ElasticSearch(self):
+        """ElasticSearch Service.
+        :rtype: int
+        """
         return self._ElasticSearch
 
     @ElasticSearch.setter
@@ -32305,6 +37988,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def TBaaS(self):
+        """Blockchain service.
+        :rtype: int
+        """
         return self._TBaaS
 
     @TBaaS.setter
@@ -32313,6 +37999,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Itop(self):
+        """Itop.
+        :rtype: int
+        """
         return self._Itop
 
     @Itop.setter
@@ -32321,6 +38010,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def DBAudit(self):
+        """Cloud database audit.
+        :rtype: int
+        """
         return self._DBAudit
 
     @DBAudit.setter
@@ -32329,6 +38021,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def CynosDBPostgres(self):
+        """Enterprise TencentDB - CynosDB for Postgres.
+        :rtype: int
+        """
         return self._CynosDBPostgres
 
     @CynosDBPostgres.setter
@@ -32337,6 +38032,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Redis(self):
+        """TencentDB for Redis.
+        :rtype: int
+        """
         return self._Redis
 
     @Redis.setter
@@ -32345,6 +38043,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def MongoDB(self):
+        """TencentDB for MongoDB.
+        :rtype: int
+        """
         return self._MongoDB
 
     @MongoDB.setter
@@ -32353,6 +38054,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def DCDB(self):
+        """A distributed cloud database - TencentDB for TDSQL.
+        :rtype: int
+        """
         return self._DCDB
 
     @DCDB.setter
@@ -32361,6 +38065,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def CynosDBMySQL(self):
+        """An enterprise-grade TencentDB - CynosDB for MySQL.
+        :rtype: int
+        """
         return self._CynosDBMySQL
 
     @CynosDBMySQL.setter
@@ -32369,6 +38076,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def Subnet(self):
+        """Subnets.
+        :rtype: int
+        """
         return self._Subnet
 
     @Subnet.setter
@@ -32377,6 +38087,9 @@ class ResourceDashboard(AbstractModel):
 
     @property
     def RouteTable(self):
+        """Route table.
+        :rtype: int
+        """
         return self._RouteTable
 
     @RouteTable.setter
@@ -32460,6 +38173,9 @@ class ResourceStatistics(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID, such as vpc-f1xjkw1b.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -32468,6 +38184,9 @@ class ResourceStatistics(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Subnet instance ID, such as `subnet-bthucmmy`.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -32476,6 +38195,9 @@ class ResourceStatistics(AbstractModel):
 
     @property
     def Ip(self):
+        """The total number of used IP addresses.
+        :rtype: int
+        """
         return self._Ip
 
     @Ip.setter
@@ -32484,6 +38206,9 @@ class ResourceStatistics(AbstractModel):
 
     @property
     def ResourceStatisticsItemSet(self):
+        """Information of associated resources
+        :rtype: list of ResourceStatisticsItem
+        """
         return self._ResourceStatisticsItemSet
 
     @ResourceStatisticsItemSet.setter
@@ -32531,6 +38256,9 @@ class ResourceStatisticsItem(AbstractModel):
 
     @property
     def ResourceType(self):
+        """Resource type, such as CVM, ENI
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -32539,6 +38267,9 @@ class ResourceStatisticsItem(AbstractModel):
 
     @property
     def ResourceName(self):
+        """Resource name.
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -32547,6 +38278,9 @@ class ResourceStatisticsItem(AbstractModel):
 
     @property
     def ResourceCount(self):
+        """Number of resources
+        :rtype: int
+        """
         return self._ResourceCount
 
     @ResourceCount.setter
@@ -32588,6 +38322,9 @@ class ResumeSnapshotInstanceRequest(AbstractModel):
 
     @property
     def SnapshotPolicyId(self):
+        """Snapshot policy IDs
+        :rtype: str
+        """
         return self._SnapshotPolicyId
 
     @SnapshotPolicyId.setter
@@ -32596,6 +38333,9 @@ class ResumeSnapshotInstanceRequest(AbstractModel):
 
     @property
     def SnapshotFileId(self):
+        """Snapshot file ID
+        :rtype: str
+        """
         return self._SnapshotFileId
 
     @SnapshotFileId.setter
@@ -32604,6 +38344,9 @@ class ResumeSnapshotInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the instance.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -32639,6 +38382,9 @@ class ResumeSnapshotInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -32664,6 +38410,9 @@ class ReturnNormalAddressesRequest(AbstractModel):
 
     @property
     def AddressIps(self):
+        """EIP addresses. Example: 101.35.139.183
+        :rtype: list of str
+        """
         return self._AddressIps
 
     @AddressIps.setter
@@ -32697,6 +38446,9 @@ class ReturnNormalAddressesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -32771,6 +38523,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DestinationCidrBlock(self):
+        """Destination IP range, such as 112.20.51.0/24. Values cannot be in the VPC IP range.
+        :rtype: str
+        """
         return self._DestinationCidrBlock
 
     @DestinationCidrBlock.setter
@@ -32779,6 +38534,18 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def GatewayType(self):
+        """Type of the next hop. Valid values:
+`CVM`: public gateway CVM;
+`VPN`: VPN gateway;
+`DIRECTCONNECT`: direct connect gateway;
+`PEERCONNECTION`: peering connection;
+`HAVIP`: HAVIP;
+`NAT`: NAT Gateway; 
+`NORMAL_CVM`: normal CVM;
+`EIP`: public IP address of the CVM;
+`LOCAL_GATEWAY`: local gateway.
+        :rtype: str
+        """
         return self._GatewayType
 
     @GatewayType.setter
@@ -32787,6 +38554,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def GatewayId(self):
+        """Next hop address. You simply need to specify the gateway ID of a different next hop type, and the system will automatically match the next hop address. 
+Note: If `GatewayType` is set to `NORMAL_CVM`, `GatewayId` should be the private IP of the instance.
+        :rtype: str
+        """
         return self._GatewayId
 
     @GatewayId.setter
@@ -32795,6 +38566,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouteId(self):
+        """Routing policy ID. The IPv4 routing policy will have a meaningful value, while the IPv6 routing policy is always 0. We recommend using the unique ID `RouteItemId` for the routing policy.
+This field is required when you want to delete a routing policy.
+        :rtype: int
+        """
         return self._RouteId
 
     @RouteId.setter
@@ -32803,6 +38578,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouteDescription(self):
+        """The description of the routing policy.
+        :rtype: str
+        """
         return self._RouteDescription
 
     @RouteDescription.setter
@@ -32811,6 +38589,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Enabled(self):
+        """Whether it is enabled
+        :rtype: bool
+        """
         return self._Enabled
 
     @Enabled.setter
@@ -32819,6 +38600,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouteType(self):
+        """The route type. Currently, the following types are supported:
+USER: User route;
+NETD: Network probe route. When creating a network probe route, the system delivers by default. It cannot be edited or deleted;
+CCN: CCN route. The system delivers by default. It cannot be edited or deleted.
+Users can only add and operate USER-type routes.
+        :rtype: str
+        """
         return self._RouteType
 
     @RouteType.setter
@@ -32827,6 +38615,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouteTableId(self):
+        """Route table instance ID, such as rtb-azd4dt1c.
+        :rtype: str
+        """
         return self._RouteTableId
 
     @RouteTableId.setter
@@ -32835,6 +38626,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DestinationIpv6CidrBlock(self):
+        """Destination IPv6 IP range, which cannot be included in VPC IP range, such as 2402:4e00:1000:810b::/64.
+        :rtype: str
+        """
         return self._DestinationIpv6CidrBlock
 
     @DestinationIpv6CidrBlock.setter
@@ -32843,6 +38637,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouteItemId(self):
+        """Unique routing policy ID.
+        :rtype: str
+        """
         return self._RouteItemId
 
     @RouteItemId.setter
@@ -32851,6 +38648,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PublishedToVbc(self):
+        """Whether the routing policy is published to CCN.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._PublishedToVbc
 
     @PublishedToVbc.setter
@@ -32859,6 +38660,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTime(self):
+        """Creation time of the routing policy
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -32928,6 +38732,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VpcId(self):
+        """VPC instance ID.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -32936,6 +38743,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouteTableId(self):
+        """The route table instance ID, such as `rtb-azd4dt1c`.
+        :rtype: str
+        """
         return self._RouteTableId
 
     @RouteTableId.setter
@@ -32944,6 +38754,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouteTableName(self):
+        """Route table name.
+        :rtype: str
+        """
         return self._RouteTableName
 
     @RouteTableName.setter
@@ -32952,6 +38765,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AssociationSet(self):
+        """The association relationships of the route table.
+        :rtype: list of RouteTableAssociation
+        """
         return self._AssociationSet
 
     @AssociationSet.setter
@@ -32960,6 +38776,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouteSet(self):
+        """IPv4 routing policy set.
+        :rtype: list of Route
+        """
         return self._RouteSet
 
     @RouteSet.setter
@@ -32968,6 +38787,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Main(self):
+        """Whether it is the default route table.
+        :rtype: bool
+        """
         return self._Main
 
     @Main.setter
@@ -32976,6 +38798,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTime(self):
+        """Creation Time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -32984,6 +38809,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagSet(self):
+        """Tag key-value pairs.
+        :rtype: list of Tag
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -32992,6 +38820,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LocalCidrForCcn(self):
+        """Whether the local route is published to CCN.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of CidrForCcn
+        """
         return self._LocalCidrForCcn
 
     @LocalCidrForCcn.setter
@@ -33056,6 +38888,9 @@ class RouteTableAssociation(AbstractModel):
 
     @property
     def SubnetId(self):
+        """Subnet instance ID.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -33064,6 +38899,9 @@ class RouteTableAssociation(AbstractModel):
 
     @property
     def RouteTableId(self):
+        """Route table instance ID.
+        :rtype: str
+        """
         return self._RouteTableId
 
     @RouteTableId.setter
@@ -33120,6 +38958,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SecurityGroupId(self):
+        """The security group instance ID, such as `sg-ohuuioma`.
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -33128,6 +38969,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SecurityGroupName(self):
+        """Security group can be named freely, but cannot exceed 60 characters.
+        :rtype: str
+        """
         return self._SecurityGroupName
 
     @SecurityGroupName.setter
@@ -33136,6 +38980,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SecurityGroupDesc(self):
+        """The remarks for the security group. The maximum length is 100 characters.
+        :rtype: str
+        """
         return self._SecurityGroupDesc
 
     @SecurityGroupDesc.setter
@@ -33144,6 +38991,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ProjectId(self):
+        """The project id is 0 by default. You can query this in the project management page of the Qcloud console.
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -33152,6 +39002,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsDefault(self):
+        """Whether it is the default security group (which cannot be deleted).
+        :rtype: bool
+        """
         return self._IsDefault
 
     @IsDefault.setter
@@ -33160,6 +39013,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTime(self):
+        """Security group creation time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -33168,6 +39024,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagSet(self):
+        """Tag key-value pairs.
+        :rtype: list of Tag
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -33176,6 +39035,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UpdateTime(self):
+        """Security group update time.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -33242,6 +39105,9 @@ class SecurityGroupAssociationStatistics(AbstractModel):
 
     @property
     def SecurityGroupId(self):
+        """Security group instance ID.
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -33250,6 +39116,9 @@ class SecurityGroupAssociationStatistics(AbstractModel):
 
     @property
     def CVM(self):
+        """Number of CVM instances.
+        :rtype: int
+        """
         return self._CVM
 
     @CVM.setter
@@ -33258,6 +39127,9 @@ class SecurityGroupAssociationStatistics(AbstractModel):
 
     @property
     def CDB(self):
+        """Number of TencentDB for MySQL instances
+        :rtype: int
+        """
         return self._CDB
 
     @CDB.setter
@@ -33266,6 +39138,9 @@ class SecurityGroupAssociationStatistics(AbstractModel):
 
     @property
     def ENI(self):
+        """Number of ENI instances.
+        :rtype: int
+        """
         return self._ENI
 
     @ENI.setter
@@ -33274,6 +39149,9 @@ class SecurityGroupAssociationStatistics(AbstractModel):
 
     @property
     def SG(self):
+        """Number of times a security group is referenced by other security groups
+        :rtype: int
+        """
         return self._SG
 
     @SG.setter
@@ -33282,6 +39160,9 @@ class SecurityGroupAssociationStatistics(AbstractModel):
 
     @property
     def CLB(self):
+        """Number of load balancer instances.
+        :rtype: int
+        """
         return self._CLB
 
     @CLB.setter
@@ -33290,6 +39171,9 @@ class SecurityGroupAssociationStatistics(AbstractModel):
 
     @property
     def InstanceStatistics(self):
+        """The binding statistics for all instances.
+        :rtype: list of InstanceStatistic
+        """
         return self._InstanceStatistics
 
     @InstanceStatistics.setter
@@ -33298,6 +39182,9 @@ class SecurityGroupAssociationStatistics(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total count of all resources (excluding resources referenced by security groups).
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -33374,6 +39261,9 @@ Note: If the `Protocol` value is set to `ALL`, the `Port` value also needs to be
 
     @property
     def PolicyIndex(self):
+        """The index number of security group rules, which dynamically changes with the rules. This parameter can be obtained via the `DescribeSecurityGroupPolicies` API and used with the `Version` field in the returned value of the API.
+        :rtype: int
+        """
         return self._PolicyIndex
 
     @PolicyIndex.setter
@@ -33382,6 +39272,9 @@ Note: If the `Protocol` value is set to `ALL`, the `Port` value also needs to be
 
     @property
     def Protocol(self):
+        """Protocol. Valid values: TCP, UDP, ICMP, ICMPv6, ALL.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -33390,6 +39283,10 @@ Note: If the `Protocol` value is set to `ALL`, the `Port` value also needs to be
 
     @property
     def Port(self):
+        """Port (`all`, a single port, or a port range).
+Note: If the `Protocol` value is set to `ALL`, the `Port` value also needs to be set to `all`.
+        :rtype: str
+        """
         return self._Port
 
     @Port.setter
@@ -33398,6 +39295,9 @@ Note: If the `Protocol` value is set to `ALL`, the `Port` value also needs to be
 
     @property
     def ServiceTemplate(self):
+        """Protocol port ID or protocol port group ID. ServiceTemplate and Protocol+Port are mutually exclusive.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ServiceTemplateSpecification`
+        """
         return self._ServiceTemplate
 
     @ServiceTemplate.setter
@@ -33406,6 +39306,9 @@ Note: If the `Protocol` value is set to `ALL`, the `Port` value also needs to be
 
     @property
     def CidrBlock(self):
+        """Either `CidrBlock` or `Ipv6CidrBlock can be specified. Note that if `0.0.0.0/n` is entered, it is mapped to 0.0.0.0/0.
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -33414,6 +39317,9 @@ Note: If the `Protocol` value is set to `ALL`, the `Port` value also needs to be
 
     @property
     def Ipv6CidrBlock(self):
+        """The CIDR block or IPv6 (mutually exclusive).
+        :rtype: str
+        """
         return self._Ipv6CidrBlock
 
     @Ipv6CidrBlock.setter
@@ -33422,6 +39328,9 @@ Note: If the `Protocol` value is set to `ALL`, the `Port` value also needs to be
 
     @property
     def SecurityGroupId(self):
+        """The security group instance ID, such as `sg-ohuuioma`.
+        :rtype: str
+        """
         return self._SecurityGroupId
 
     @SecurityGroupId.setter
@@ -33430,6 +39339,9 @@ Note: If the `Protocol` value is set to `ALL`, the `Port` value also needs to be
 
     @property
     def AddressTemplate(self):
+        """IP address ID or IP address group ID.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.AddressTemplateSpecification`
+        """
         return self._AddressTemplate
 
     @AddressTemplate.setter
@@ -33438,6 +39350,9 @@ Note: If the `Protocol` value is set to `ALL`, the `Port` value also needs to be
 
     @property
     def Action(self):
+        """ACCEPT or DROP.
+        :rtype: str
+        """
         return self._Action
 
     @Action.setter
@@ -33446,6 +39361,9 @@ Note: If the `Protocol` value is set to `ALL`, the `Port` value also needs to be
 
     @property
     def PolicyDescription(self):
+        """Security group policy description.
+        :rtype: str
+        """
         return self._PolicyDescription
 
     @PolicyDescription.setter
@@ -33454,6 +39372,9 @@ Note: If the `Protocol` value is set to `ALL`, the `Port` value also needs to be
 
     @property
     def ModifyTime(self):
+        """The last modification time of the security group.
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -33510,6 +39431,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Version(self):
+        """The version number of the security group policy, which will automatically increase by one each time you update the security group policy, so as to prevent expiration of the updated routing policies. If it is left empty, any conflicts will be ignored. 
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -33518,6 +39443,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Egress(self):
+        """Outbound rule. 
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: list of SecurityGroupPolicy
+        """
         return self._Egress
 
     @Egress.setter
@@ -33526,6 +39455,10 @@ Note: This parameter may return null, indicating that no valid values can be obt
 
     @property
     def Ingress(self):
+        """Inbound rule. 
+Note: This parameter may return null, indicating that no valid values can be obtained.
+        :rtype: list of SecurityGroupPolicy
+        """
         return self._Ingress
 
     @Ingress.setter
@@ -33574,6 +39507,9 @@ class SecurityPolicyDatabase(AbstractModel):
 
     @property
     def LocalCidrBlock(self):
+        """Local IP range
+        :rtype: str
+        """
         return self._LocalCidrBlock
 
     @LocalCidrBlock.setter
@@ -33582,6 +39518,9 @@ class SecurityPolicyDatabase(AbstractModel):
 
     @property
     def RemoteCidrBlock(self):
+        """Opposite IP range
+        :rtype: list of str
+        """
         return self._RemoteCidrBlock
 
     @RemoteCidrBlock.setter
@@ -33628,6 +39567,9 @@ class ServiceTemplate(AbstractModel):
 
     @property
     def ServiceTemplateId(self):
+        """Protocol port instance ID, such as `ppm-f5n1f8da`.
+        :rtype: str
+        """
         return self._ServiceTemplateId
 
     @ServiceTemplateId.setter
@@ -33636,6 +39578,9 @@ class ServiceTemplate(AbstractModel):
 
     @property
     def ServiceTemplateName(self):
+        """Template name.
+        :rtype: str
+        """
         return self._ServiceTemplateName
 
     @ServiceTemplateName.setter
@@ -33644,6 +39589,9 @@ class ServiceTemplate(AbstractModel):
 
     @property
     def ServiceSet(self):
+        """Protocol port information.
+        :rtype: list of str
+        """
         return self._ServiceSet
 
     @ServiceSet.setter
@@ -33652,6 +39600,9 @@ class ServiceTemplate(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """Creation Time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -33660,6 +39611,9 @@ class ServiceTemplate(AbstractModel):
 
     @property
     def ServiceExtraSet(self):
+        """Protocol port template information with remarks
+        :rtype: list of ServicesInfo
+        """
         return self._ServiceExtraSet
 
     @ServiceExtraSet.setter
@@ -33714,6 +39668,9 @@ class ServiceTemplateGroup(AbstractModel):
 
     @property
     def ServiceTemplateGroupId(self):
+        """Protocol port template group instance ID, such as `ppmg-2klmrefu`.
+        :rtype: str
+        """
         return self._ServiceTemplateGroupId
 
     @ServiceTemplateGroupId.setter
@@ -33722,6 +39679,9 @@ class ServiceTemplateGroup(AbstractModel):
 
     @property
     def ServiceTemplateGroupName(self):
+        """Protocol port template group name.
+        :rtype: str
+        """
         return self._ServiceTemplateGroupName
 
     @ServiceTemplateGroupName.setter
@@ -33730,6 +39690,9 @@ class ServiceTemplateGroup(AbstractModel):
 
     @property
     def ServiceTemplateIdSet(self):
+        """Protocol port template instance ID.
+        :rtype: list of str
+        """
         return self._ServiceTemplateIdSet
 
     @ServiceTemplateIdSet.setter
@@ -33738,6 +39701,9 @@ class ServiceTemplateGroup(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """Creation Time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -33746,6 +39712,9 @@ class ServiceTemplateGroup(AbstractModel):
 
     @property
     def ServiceTemplateSet(self):
+        """Protocol port template instance information.
+        :rtype: list of ServiceTemplate
+        """
         return self._ServiceTemplateSet
 
     @ServiceTemplateSet.setter
@@ -33791,6 +39760,9 @@ class ServiceTemplateSpecification(AbstractModel):
 
     @property
     def ServiceId(self):
+        """Protocol port ID, such as `ppm-f5n1f8da`.
+        :rtype: str
+        """
         return self._ServiceId
 
     @ServiceId.setter
@@ -33799,6 +39771,9 @@ class ServiceTemplateSpecification(AbstractModel):
 
     @property
     def ServiceGroupId(self):
+        """Protocol port group ID, such as `ppmg-f5n1f8da`.
+        :rtype: str
+        """
         return self._ServiceGroupId
 
     @ServiceGroupId.setter
@@ -33837,6 +39812,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Service(self):
+        """Protocol port
+        :rtype: str
+        """
         return self._Service
 
     @Service.setter
@@ -33845,6 +39823,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Description(self):
+        """Remarks
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -33885,6 +39867,9 @@ class SetCcnRegionBandwidthLimitsRequest(AbstractModel):
 
     @property
     def CcnId(self):
+        """The CCN instance ID, such as `ccn-f49l6u0z`.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -33893,6 +39878,9 @@ class SetCcnRegionBandwidthLimitsRequest(AbstractModel):
 
     @property
     def CcnRegionBandwidthLimits(self):
+        """The outbound bandwidth cap of each CCN region.
+        :rtype: list of CcnRegionBandwidthLimit
+        """
         return self._CcnRegionBandwidthLimits
 
     @CcnRegionBandwidthLimits.setter
@@ -33901,6 +39889,9 @@ class SetCcnRegionBandwidthLimitsRequest(AbstractModel):
 
     @property
     def SetDefaultLimitFlag(self):
+        """Whether to restore the region outbound bandwidth limit or inter-region bandwidth limit to default 1 Gbps. Valid values: `false` (no); `true` (yes). Default value: `false`. When the parameter is set to `true`, the CCN instance created will not be displayed in the console.
+        :rtype: bool
+        """
         return self._SetDefaultLimitFlag
 
     @SetDefaultLimitFlag.setter
@@ -33941,6 +39932,9 @@ class SetCcnRegionBandwidthLimitsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -33973,6 +39967,9 @@ Values: `0` (Follow original), `1` (Enable auto-renewal), `2` (Disable auto-rene
 
     @property
     def VpnGatewayIds(self):
+        """VPN gateway IDs
+        :rtype: list of str
+        """
         return self._VpnGatewayIds
 
     @VpnGatewayIds.setter
@@ -33981,6 +39978,10 @@ Values: `0` (Follow original), `1` (Enable auto-renewal), `2` (Disable auto-rene
 
     @property
     def AutoRenewFlag(self):
+        """Status of auto-renewal
+Values: `0` (Follow original), `1` (Enable auto-renewal), `2` (Disable auto-renewal) 
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -33989,6 +39990,9 @@ Values: `0` (Follow original), `1` (Enable auto-renewal), `2` (Disable auto-rene
 
     @property
     def Type(self):
+        """VPNGW type: `IPSEC`, `SSL`
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -34024,6 +40028,9 @@ class SetVpnGatewaysRenewFlagResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -34061,6 +40068,9 @@ class SnapshotFileInfo(AbstractModel):
 
     @property
     def SnapshotPolicyId(self):
+        """Snapshot policy ID
+        :rtype: str
+        """
         return self._SnapshotPolicyId
 
     @SnapshotPolicyId.setter
@@ -34069,6 +40079,9 @@ class SnapshotFileInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the instance.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -34077,6 +40090,9 @@ class SnapshotFileInfo(AbstractModel):
 
     @property
     def SnapshotFileId(self):
+        """Snapshot file ID
+        :rtype: str
+        """
         return self._SnapshotFileId
 
     @SnapshotFileId.setter
@@ -34085,6 +40101,9 @@ class SnapshotFileInfo(AbstractModel):
 
     @property
     def BackupTime(self):
+        """Backup time
+        :rtype: str
+        """
         return self._BackupTime
 
     @BackupTime.setter
@@ -34093,6 +40112,9 @@ class SnapshotFileInfo(AbstractModel):
 
     @property
     def Operator(self):
+        """Operator UIN
+        :rtype: str
+        """
         return self._Operator
 
     @Operator.setter
@@ -34142,6 +40164,9 @@ class SnapshotInstance(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the instance.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -34150,6 +40175,9 @@ class SnapshotInstance(AbstractModel):
 
     @property
     def InstanceType(self):
+        """Type of associated resource. Values: `securitygroup`
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -34158,6 +40186,9 @@ class SnapshotInstance(AbstractModel):
 
     @property
     def InstanceRegion(self):
+        """Instance region
+        :rtype: str
+        """
         return self._InstanceRegion
 
     @InstanceRegion.setter
@@ -34166,6 +40197,9 @@ class SnapshotInstance(AbstractModel):
 
     @property
     def SnapshotPolicyId(self):
+        """Snapshot policy IDs
+        :rtype: str
+        """
         return self._SnapshotPolicyId
 
     @SnapshotPolicyId.setter
@@ -34174,6 +40208,9 @@ class SnapshotInstance(AbstractModel):
 
     @property
     def InstanceName(self):
+        """The instance name.
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -34241,6 +40278,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SnapshotPolicyName(self):
+        """Snapshot policy name
+        :rtype: str
+        """
         return self._SnapshotPolicyName
 
     @SnapshotPolicyName.setter
@@ -34249,6 +40289,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BackupType(self):
+        """Backup policy type. Values: `operate` (Manual backup); `time` (Scheduled backup)
+        :rtype: str
+        """
         return self._BackupType
 
     @BackupType.setter
@@ -34257,6 +40300,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def KeepTime(self):
+        """Snapshot retention period in days. Range: 1 to 365.
+        :rtype: int
+        """
         return self._KeepTime
 
     @KeepTime.setter
@@ -34265,6 +40311,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateNewCos(self):
+        """Whether to create a new COS bucket. It defaults to `False`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._CreateNewCos
 
     @CreateNewCos.setter
@@ -34273,6 +40323,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CosRegion(self):
+        """Region of the COS bucket
+        :rtype: str
+        """
         return self._CosRegion
 
     @CosRegion.setter
@@ -34281,6 +40334,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CosBucket(self):
+        """COS bucket
+        :rtype: str
+        """
         return self._CosBucket
 
     @CosBucket.setter
@@ -34289,6 +40345,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SnapshotPolicyId(self):
+        """Snapshot policy ID
+        :rtype: str
+        """
         return self._SnapshotPolicyId
 
     @SnapshotPolicyId.setter
@@ -34297,6 +40356,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BackupPolicies(self):
+        """Scheduled backup policies
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of BackupPolicy
+        """
         return self._BackupPolicies
 
     @BackupPolicies.setter
@@ -34305,6 +40368,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Enable(self):
+        """Whether to enable the policy. Values: `True` (default), `False`
+        :rtype: bool
+        """
         return self._Enable
 
     @Enable.setter
@@ -34313,6 +40379,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateTime(self):
+        """Creation time
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -34388,6 +40458,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ResourceId(self):
+        """Resource ID. It can be left empty if `ResourceType` is `USERDEFINED`.
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -34396,6 +40469,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ResourceType(self):
+        """Resource type. Valid values: `SUBNET`, `NETWORKINTERFACE`, `USERDEFINED`
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -34404,6 +40481,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PrivateIpAddress(self):
+        """Source IP/IP range
+        :rtype: str
+        """
         return self._PrivateIpAddress
 
     @PrivateIpAddress.setter
@@ -34412,6 +40492,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PublicIpAddresses(self):
+        """Elastic IP address pool
+        :rtype: list of str
+        """
         return self._PublicIpAddresses
 
     @PublicIpAddresses.setter
@@ -34420,6 +40503,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Description(self):
+        """Description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -34428,6 +40514,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NatGatewaySnatId(self):
+        """SNAT rule ID
+        :rtype: str
+        """
         return self._NatGatewaySnatId
 
     @NatGatewaySnatId.setter
@@ -34436,6 +40525,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NatGatewayId(self):
+        """NAT gateway ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NatGatewayId
 
     @NatGatewayId.setter
@@ -34444,6 +40537,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VpcId(self):
+        """VPC ID.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -34452,6 +40549,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTime(self):
+        """The creation time of a NAT gateway's SNAT rule.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -34543,6 +40644,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VpcId(self):
+        """The `ID` of the `VPC` instance.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -34551,6 +40655,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubnetId(self):
+        """Subnet instance `ID`, such as `subnet-bthucmmy`.
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -34559,6 +40666,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubnetName(self):
+        """Subnet name.
+        :rtype: str
+        """
         return self._SubnetName
 
     @SubnetName.setter
@@ -34567,6 +40677,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CidrBlock(self):
+        """The `IPv4` `CIDR` of the subnet.
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -34575,6 +40688,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsDefault(self):
+        """Whether it is the default subnet.
+        :rtype: bool
+        """
         return self._IsDefault
 
     @IsDefault.setter
@@ -34583,6 +40699,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EnableBroadcast(self):
+        """Whether to enable broadcast.
+        :rtype: bool
+        """
         return self._EnableBroadcast
 
     @EnableBroadcast.setter
@@ -34591,6 +40710,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Zone(self):
+        """Availability Zone.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -34599,6 +40721,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouteTableId(self):
+        """The route table instance ID, such as `rtb-l2h8d7c2`.
+        :rtype: str
+        """
         return self._RouteTableId
 
     @RouteTableId.setter
@@ -34607,6 +40732,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTime(self):
+        """Creation Time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -34615,6 +40743,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AvailableIpAddressCount(self):
+        """The number of available IPv4 addresses
+        :rtype: int
+        """
         return self._AvailableIpAddressCount
 
     @AvailableIpAddressCount.setter
@@ -34623,6 +40754,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Ipv6CidrBlock(self):
+        """The `IPv6` `CIDR` of the subnet.
+        :rtype: str
+        """
         return self._Ipv6CidrBlock
 
     @Ipv6CidrBlock.setter
@@ -34631,6 +40765,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NetworkAclId(self):
+        """The associated `ACL`ID
+        :rtype: str
+        """
         return self._NetworkAclId
 
     @NetworkAclId.setter
@@ -34639,6 +40776,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsRemoteVpcSnat(self):
+        """Whether it is a `SNAT` address pool subnet.
+        :rtype: bool
+        """
         return self._IsRemoteVpcSnat
 
     @IsRemoteVpcSnat.setter
@@ -34647,6 +40787,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TotalIpAddressCount(self):
+        """The total number of IPv4 addresses in the subnet.
+        :rtype: int
+        """
         return self._TotalIpAddressCount
 
     @TotalIpAddressCount.setter
@@ -34655,6 +40798,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagSet(self):
+        """Tag key-value pairs
+        :rtype: list of Tag
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -34663,6 +40809,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CdcId(self):
+        """CDC instance ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -34671,6 +40821,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsCdcSubnet(self):
+        """Whether it is a CDC subnet. Valid values: 0: no; 1: yes
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._IsCdcSubnet
 
     @IsCdcSubnet.setter
@@ -34734,6 +40888,9 @@ class SubnetInput(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """The `CIDR` of the subnet.
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -34742,6 +40899,9 @@ class SubnetInput(AbstractModel):
 
     @property
     def SubnetName(self):
+        """Subnet name.
+        :rtype: str
+        """
         return self._SubnetName
 
     @SubnetName.setter
@@ -34750,6 +40910,9 @@ class SubnetInput(AbstractModel):
 
     @property
     def Zone(self):
+        """The availability zone, such as `ap-guangzhou-2`.
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -34758,6 +40921,9 @@ class SubnetInput(AbstractModel):
 
     @property
     def RouteTableId(self):
+        """The specified associated route table, such as `rtb-3ryrwzuu`.
+        :rtype: str
+        """
         return self._RouteTableId
 
     @RouteTableId.setter
@@ -34799,6 +40965,10 @@ Note: This field may return null, indicating no valid value.
 
     @property
     def Key(self):
+        """Tag key
+Note: This field may return null, indicating no valid value.
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -34807,6 +40977,10 @@ Note: This field may return null, indicating no valid value.
 
     @property
     def Value(self):
+        """Tag value
+Note: This field may return null, indicating no valid value.
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -34870,6 +41044,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TrafficPackageId(self):
+        """Unique traffic package ID
+        :rtype: str
+        """
         return self._TrafficPackageId
 
     @TrafficPackageId.setter
@@ -34878,6 +41055,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TrafficPackageName(self):
+        """Traffic package name
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TrafficPackageName
 
     @TrafficPackageName.setter
@@ -34886,6 +41067,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalAmount(self):
+        """Traffic package size in GB
+        :rtype: float
+        """
         return self._TotalAmount
 
     @TotalAmount.setter
@@ -34894,6 +41078,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RemainingAmount(self):
+        """Traffic package balance in GB
+        :rtype: float
+        """
         return self._RemainingAmount
 
     @RemainingAmount.setter
@@ -34902,6 +41089,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Traffic package status. Valid values: `AVAILABLE`, `EXPIRED`, `EXHAUSTED`, `REFUNDED`, `DELETED`
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -34910,6 +41100,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
+        """Traffic package creation time
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -34918,6 +41111,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Deadline(self):
+        """Traffic package expiration time
+        :rtype: str
+        """
         return self._Deadline
 
     @Deadline.setter
@@ -34926,6 +41122,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UsedAmount(self):
+        """Used traffic in GB
+        :rtype: float
+        """
         return self._UsedAmount
 
     @UsedAmount.setter
@@ -34934,6 +41133,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagSet(self):
+        """Traffic package tag
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -34942,6 +41145,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeductType(self):
+        """Traffic package type (idle-time or full-time)
+        :rtype: str
+        """
         return self._DeductType
 
     @DeductType.setter
@@ -34989,6 +41195,9 @@ class TransformAddressRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """The ID of the instance with a common public IP to be operated on, such as `ins-11112222`. You can query the instance ID by logging into the [CVM console](https://console.cloud.tencent.com/cvm). You can also obtain the parameter value from the `InstanceId` field in the returned result of the API [DescribeInstances](https://intl.cloud.tencent.com/document/product/213/33256).
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -35028,6 +41237,9 @@ class TransformAddressResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """The async task ID. You can use the [DescribeTaskResult](https://intl.cloud.tencent.com/document/api/215/36271?from_cn_redirect=1) API to query the task status.
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -35036,6 +41248,9 @@ class TransformAddressResponse(AbstractModel):
 
     @property
     def AddressId(self):
+        """The unique ID after converting to EIP
+        :rtype: str
+        """
         return self._AddressId
 
     @AddressId.setter
@@ -35044,6 +41259,9 @@ class TransformAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -35074,6 +41292,9 @@ class UnassignIpv6AddressesRequest(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
+        """The `ID` of the ENI instance, such as `eni-m6dyj72l`.
+        :rtype: str
+        """
         return self._NetworkInterfaceId
 
     @NetworkInterfaceId.setter
@@ -35082,6 +41303,9 @@ class UnassignIpv6AddressesRequest(AbstractModel):
 
     @property
     def Ipv6Addresses(self):
+        """The list of specified `IPv6` addresses. A maximum of 10 can be specified each time.
+        :rtype: list of Ipv6Address
+        """
         return self._Ipv6Addresses
 
     @Ipv6Addresses.setter
@@ -35121,6 +41345,9 @@ class UnassignIpv6AddressesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -35149,6 +41376,9 @@ class UnassignIpv6CidrBlockRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The `ID` of the `VPC`, such as `vpc-f49l6u0z`.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -35157,6 +41387,9 @@ class UnassignIpv6CidrBlockRequest(AbstractModel):
 
     @property
     def Ipv6CidrBlock(self):
+        """The `IPv6` IP range, such as `3402:4e00:20:1000::/56`
+        :rtype: str
+        """
         return self._Ipv6CidrBlock
 
     @Ipv6CidrBlock.setter
@@ -35191,6 +41424,9 @@ class UnassignIpv6CidrBlockResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -35219,6 +41455,9 @@ class UnassignIpv6SubnetCidrBlockRequest(AbstractModel):
 
     @property
     def VpcId(self):
+        """The `ID` of the VPC where the subnet is located, such as `vpc-f49l6u0z`.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -35227,6 +41466,9 @@ class UnassignIpv6SubnetCidrBlockRequest(AbstractModel):
 
     @property
     def Ipv6SubnetCidrBlocks(self):
+        """The `IPv6` subnet IP range list.
+        :rtype: list of Ipv6SubnetCidrBlock
+        """
         return self._Ipv6SubnetCidrBlocks
 
     @Ipv6SubnetCidrBlocks.setter
@@ -35266,6 +41508,9 @@ class UnassignIpv6SubnetCidrBlockResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -35297,6 +41542,9 @@ class UnassignPrivateIpAddressesRequest(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
+        """The ID of the ENI instance, such as `eni-m6dyj72l`.
+        :rtype: str
+        """
         return self._NetworkInterfaceId
 
     @NetworkInterfaceId.setter
@@ -35305,6 +41553,9 @@ class UnassignPrivateIpAddressesRequest(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
+        """The information of the specified private IPs. You can specify a maximum of 10 each time.
+        :rtype: list of PrivateIpAddressSpecification
+        """
         return self._PrivateIpAddresses
 
     @PrivateIpAddresses.setter
@@ -35313,6 +41564,9 @@ class UnassignPrivateIpAddressesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID of the server bound with this IP. This parameter is only applicable when you need to return an IP and unbind the related servers.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -35353,6 +41607,9 @@ class UnassignPrivateIpAddressesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -35415,6 +41672,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcName(self):
+        """`VPC` name.
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -35423,6 +41683,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
+        """`VPC` instance `ID`, such as `vpc-azd4dt1c`.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -35431,6 +41694,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CidrBlock(self):
+        """The `IPv4` `CIDR` of the `VPC`.
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -35439,6 +41705,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDefault(self):
+        """Whether it is the default `VPC`.
+        :rtype: bool
+        """
         return self._IsDefault
 
     @IsDefault.setter
@@ -35447,6 +41716,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableMulticast(self):
+        """Whether multicast is enabled.
+        :rtype: bool
+        """
         return self._EnableMulticast
 
     @EnableMulticast.setter
@@ -35455,6 +41727,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
+        """Creation Time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -35463,6 +41738,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DnsServerSet(self):
+        """`DNS` list.
+        :rtype: list of str
+        """
         return self._DnsServerSet
 
     @DnsServerSet.setter
@@ -35471,6 +41749,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DomainName(self):
+        """DHCP domain name option value.
+        :rtype: str
+        """
         return self._DomainName
 
     @DomainName.setter
@@ -35479,6 +41760,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DhcpOptionsId(self):
+        """`DHCP` option set `ID`.
+        :rtype: str
+        """
         return self._DhcpOptionsId
 
     @DhcpOptionsId.setter
@@ -35487,6 +41771,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableDhcp(self):
+        """Whether `DHCP` is enabled.
+        :rtype: bool
+        """
         return self._EnableDhcp
 
     @EnableDhcp.setter
@@ -35495,6 +41782,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ipv6CidrBlock(self):
+        """The `IPv6` `CIDR` of the `VPC`.
+        :rtype: str
+        """
         return self._Ipv6CidrBlock
 
     @Ipv6CidrBlock.setter
@@ -35503,6 +41793,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagSet(self):
+        """Tag key-value pair
+        :rtype: list of Tag
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -35511,6 +41804,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AssistantCidrSet(self):
+        """The secondary CIDR block.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of AssistantCidr
+        """
         return self._AssistantCidrSet
 
     @AssistantCidrSet.setter
@@ -35578,6 +41875,9 @@ class VpcEndPointServiceUser(AbstractModel):
 
     @property
     def Owner(self):
+        """APP ID
+        :rtype: int
+        """
         return self._Owner
 
     @Owner.setter
@@ -35586,6 +41886,9 @@ class VpcEndPointServiceUser(AbstractModel):
 
     @property
     def UserUin(self):
+        """User UIN
+        :rtype: str
+        """
         return self._UserUin
 
     @UserUin.setter
@@ -35594,6 +41897,9 @@ class VpcEndPointServiceUser(AbstractModel):
 
     @property
     def Description(self):
+        """Description
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -35602,6 +41908,9 @@ class VpcEndPointServiceUser(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -35610,6 +41919,9 @@ class VpcEndPointServiceUser(AbstractModel):
 
     @property
     def EndPointServiceId(self):
+        """Endpoint service ID
+        :rtype: str
+        """
         return self._EndPointServiceId
 
     @EndPointServiceId.setter
@@ -35656,6 +41968,9 @@ class VpcIpv6Address(AbstractModel):
 
     @property
     def Ipv6Address(self):
+        """`VPC` private `IPv6` address
+        :rtype: str
+        """
         return self._Ipv6Address
 
     @Ipv6Address.setter
@@ -35664,6 +41979,9 @@ class VpcIpv6Address(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """The `IPv6` `CIDR` belonging to the subnet.
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -35672,6 +41990,9 @@ class VpcIpv6Address(AbstractModel):
 
     @property
     def Ipv6AddressType(self):
+        """`IPv6` type.
+        :rtype: str
+        """
         return self._Ipv6AddressType
 
     @Ipv6AddressType.setter
@@ -35680,6 +42001,9 @@ class VpcIpv6Address(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """`IPv6` application time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -35725,6 +42049,9 @@ class VpcPrivateIpAddress(AbstractModel):
 
     @property
     def PrivateIpAddress(self):
+        """`VPC` private `IP`.
+        :rtype: str
+        """
         return self._PrivateIpAddress
 
     @PrivateIpAddress.setter
@@ -35733,6 +42060,9 @@ class VpcPrivateIpAddress(AbstractModel):
 
     @property
     def CidrBlock(self):
+        """The `CIDR` belonging to the subnet.
+        :rtype: str
+        """
         return self._CidrBlock
 
     @CidrBlock.setter
@@ -35741,6 +42071,9 @@ class VpcPrivateIpAddress(AbstractModel):
 
     @property
     def PrivateIpAddressType(self):
+        """Private `IP` type.
+        :rtype: str
+        """
         return self._PrivateIpAddressType
 
     @PrivateIpAddressType.setter
@@ -35749,6 +42082,9 @@ class VpcPrivateIpAddress(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """`IP` application time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -35790,6 +42126,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ResourceId(self):
+        """Resource ID 
+Note: this field may return `null`, indicating that no valid value can be obtained.
+        :rtype: str
+        """
         return self._ResourceId
 
     @ResourceId.setter
@@ -35798,6 +42138,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Status
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -35905,6 +42249,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpnConnectionId(self):
+        """Tunnel instance ID.
+        :rtype: str
+        """
         return self._VpnConnectionId
 
     @VpnConnectionId.setter
@@ -35913,6 +42260,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpnConnectionName(self):
+        """Tunnel name.
+        :rtype: str
+        """
         return self._VpnConnectionName
 
     @VpnConnectionName.setter
@@ -35921,6 +42271,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
+        """VPC instance ID.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -35929,6 +42282,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpnGatewayId(self):
+        """The ID of the VPN gateway instance.
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -35937,6 +42293,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CustomerGatewayId(self):
+        """Customer gateway instance ID.
+        :rtype: str
+        """
         return self._CustomerGatewayId
 
     @CustomerGatewayId.setter
@@ -35945,6 +42304,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PreShareKey(self):
+        """The pre-shared key.
+        :rtype: str
+        """
         return self._PreShareKey
 
     @PreShareKey.setter
@@ -35953,6 +42315,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpnProto(self):
+        """Tunnel transmission protocol.
+        :rtype: str
+        """
         return self._VpnProto
 
     @VpnProto.setter
@@ -35961,6 +42326,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EncryptProto(self):
+        """Tunnel encryption protocol.
+        :rtype: str
+        """
         return self._EncryptProto
 
     @EncryptProto.setter
@@ -35969,6 +42337,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RouteType(self):
+        """Route Type.
+        :rtype: str
+        """
         return self._RouteType
 
     @RouteType.setter
@@ -35977,6 +42348,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreatedTime(self):
+        """Creation Time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -35985,6 +42359,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def State(self):
+        """Production status of the tunnel. PENDING: Creating; AVAILABLE: Running; DELETING: Deleting.
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -35993,6 +42370,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NetStatus(self):
+        """Connection status of the tunnel. AVAILABLE: Connected.
+        :rtype: str
+        """
         return self._NetStatus
 
     @NetStatus.setter
@@ -36001,6 +42381,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SecurityPolicyDatabaseSet(self):
+        """SPD.
+        :rtype: list of SecurityPolicyDatabase
+        """
         return self._SecurityPolicyDatabaseSet
 
     @SecurityPolicyDatabaseSet.setter
@@ -36009,6 +42392,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IKEOptionsSpecification(self):
+        """IKE options.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
+        """
         return self._IKEOptionsSpecification
 
     @IKEOptionsSpecification.setter
@@ -36017,6 +42403,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IPSECOptionsSpecification(self):
+        """IPSEC options.
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
+        """
         return self._IPSECOptionsSpecification
 
     @IPSECOptionsSpecification.setter
@@ -36025,6 +42414,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EnableHealthCheck(self):
+        """Whether the health check is supported.
+        :rtype: bool
+        """
         return self._EnableHealthCheck
 
     @EnableHealthCheck.setter
@@ -36033,6 +42425,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HealthCheckLocalIp(self):
+        """Local IP address for the health check
+        :rtype: str
+        """
         return self._HealthCheckLocalIp
 
     @HealthCheckLocalIp.setter
@@ -36041,6 +42436,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HealthCheckRemoteIp(self):
+        """Peer IP address for the health check
+        :rtype: str
+        """
         return self._HealthCheckRemoteIp
 
     @HealthCheckRemoteIp.setter
@@ -36049,6 +42447,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def HealthCheckStatus(self):
+        """Tunnel health check status. Valid values: AVAILABLE: healthy; UNAVAILABLE: unhealthy. This parameter will be returned only after health check is enabled.
+        :rtype: str
+        """
         return self._HealthCheckStatus
 
     @HealthCheckStatus.setter
@@ -36057,6 +42458,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DpdEnable(self):
+        """Whether to enable DPD. Values: `0` (Disable) and `1` (Enable)
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DpdEnable
 
     @DpdEnable.setter
@@ -36065,6 +42470,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DpdTimeout(self):
+        """DPD timeout period. 
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DpdTimeout
 
     @DpdTimeout.setter
@@ -36073,6 +42482,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DpdAction(self):
+        """The action to take in case of DPD timeout. Values: `clear` (Disconnect) and `restart` (retry). This parameter only takes effect when `DpdEnable` is set to `1`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DpdAction
 
     @DpdAction.setter
@@ -36081,6 +42494,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagSet(self):
+        """Array of tag key-value pairs
+        :rtype: list of Tag
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -36089,6 +42505,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NegotiationType(self):
+        """Negotiation type
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NegotiationType
 
     @NegotiationType.setter
@@ -36216,6 +42636,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def VpnGatewayId(self):
+        """Gateway instance ID.
+        :rtype: str
+        """
         return self._VpnGatewayId
 
     @VpnGatewayId.setter
@@ -36224,6 +42647,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def VpcId(self):
+        """VPC instance ID.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -36232,6 +42658,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def VpnGatewayName(self):
+        """Gateway instance name.
+        :rtype: str
+        """
         return self._VpnGatewayName
 
     @VpnGatewayName.setter
@@ -36240,6 +42669,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def Type(self):
+        """Gateway instance type. Valid values: 'IPSEC', 'SSL', and 'CCN'.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -36248,6 +42680,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def State(self):
+        """Gateway instance status. 'PENDING': Creating; 'DELETING': Deleting; 'AVAILABLE': Running.
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -36256,6 +42691,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def PublicIpAddress(self):
+        """Gateway public IP.
+        :rtype: str
+        """
         return self._PublicIpAddress
 
     @PublicIpAddress.setter
@@ -36264,6 +42702,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def RenewFlag(self):
+        """Gateway renewal type: 'NOTIFY_AND_MANUAL_RENEW': Manual renewal. 'NOTIFY_AND_AUTO_RENEW': Automatic renewal. 'NOT_NOTIFY_AND_NOT_RENEW': No renewal after expiration.
+        :rtype: str
+        """
         return self._RenewFlag
 
     @RenewFlag.setter
@@ -36272,6 +42713,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def InstanceChargeType(self):
+        """Gateway billing type: POSTPAID_BY_HOUR: Postpaid by hour; PREPAID: Prepaid.
+        :rtype: str
+        """
         return self._InstanceChargeType
 
     @InstanceChargeType.setter
@@ -36280,6 +42724,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
+        """Outbound bandwidth of gateway.
+        :rtype: int
+        """
         return self._InternetMaxBandwidthOut
 
     @InternetMaxBandwidthOut.setter
@@ -36288,6 +42735,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def CreatedTime(self):
+        """Creation Time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -36296,6 +42746,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def ExpiredTime(self):
+        """Expiration time of the prepaid gateway.
+        :rtype: str
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -36304,6 +42757,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def IsAddressBlocked(self):
+        """Whether the public IP is blocked.
+        :rtype: bool
+        """
         return self._IsAddressBlocked
 
     @IsAddressBlocked.setter
@@ -36312,6 +42768,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def NewPurchasePlan(self):
+        """Change of billing method. PREPAID_TO_POSTPAID: Monthly subscription prepaid to postpaid by hour.
+        :rtype: str
+        """
         return self._NewPurchasePlan
 
     @NewPurchasePlan.setter
@@ -36320,6 +42779,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def RestrictState(self):
+        """Gateway billing status. PROTECTIVELY_ISOLATED: Instance is isolated; NORMAL: Normal.
+        :rtype: str
+        """
         return self._RestrictState
 
     @RestrictState.setter
@@ -36328,6 +42790,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def Zone(self):
+        """The availability zone, such as `ap-guangzhou-2`
+        :rtype: str
+        """
         return self._Zone
 
     @Zone.setter
@@ -36336,6 +42801,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def VpnGatewayQuotaSet(self):
+        """Gateway bandwidth quota information.
+        :rtype: list of VpnGatewayQuota
+        """
         return self._VpnGatewayQuotaSet
 
     @VpnGatewayQuotaSet.setter
@@ -36344,6 +42812,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def Version(self):
+        """Gateway instance version.
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -36352,6 +42823,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def NetworkInstanceId(self):
+        """CCN instance ID when the value of Type is CCN.
+        :rtype: str
+        """
         return self._NetworkInstanceId
 
     @NetworkInstanceId.setter
@@ -36360,6 +42834,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def CdcId(self):
+        """CDC instance ID
+        :rtype: str
+        """
         return self._CdcId
 
     @CdcId.setter
@@ -36368,6 +42845,9 @@ class VpnGateway(AbstractModel):
 
     @property
     def MaxConnection(self):
+        """Maximum number of connected clients allowed for the SSL VPN gateway.
+        :rtype: int
+        """
         return self._MaxConnection
 
     @MaxConnection.setter
@@ -36431,6 +42911,9 @@ class VpnGatewayQuota(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """The bandwidth quota.
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -36439,6 +42922,9 @@ class VpnGatewayQuota(AbstractModel):
 
     @property
     def Cname(self):
+        """The bandwidth quota name in Chinese.
+        :rtype: str
+        """
         return self._Cname
 
     @Cname.setter
@@ -36447,6 +42933,9 @@ class VpnGatewayQuota(AbstractModel):
 
     @property
     def Name(self):
+        """The bandwidth quota name in English.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -36506,6 +42995,9 @@ class VpnGatewayRoute(AbstractModel):
 
     @property
     def DestinationCidrBlock(self):
+        """Destination IDC IP range
+        :rtype: str
+        """
         return self._DestinationCidrBlock
 
     @DestinationCidrBlock.setter
@@ -36514,6 +43006,9 @@ class VpnGatewayRoute(AbstractModel):
 
     @property
     def InstanceType(self):
+        """Next hop type (type of the associated instance). Valid values: `VPNCONN` (VPN tunnel) and `CCN` (CCN instance)
+        :rtype: str
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -36522,6 +43017,9 @@ class VpnGatewayRoute(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Instance ID of the next hop
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -36530,6 +43028,9 @@ class VpnGatewayRoute(AbstractModel):
 
     @property
     def Priority(self):
+        """Priority. Valid values: `0` and `100`
+        :rtype: int
+        """
         return self._Priority
 
     @Priority.setter
@@ -36538,6 +43039,9 @@ class VpnGatewayRoute(AbstractModel):
 
     @property
     def Status(self):
+        """Status. Valid values: `ENABLE` and `DISABLE`
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -36546,6 +43050,9 @@ class VpnGatewayRoute(AbstractModel):
 
     @property
     def RouteId(self):
+        """Route ID
+        :rtype: str
+        """
         return self._RouteId
 
     @RouteId.setter
@@ -36554,6 +43061,9 @@ class VpnGatewayRoute(AbstractModel):
 
     @property
     def Type(self):
+        """Route type. Valid values: `VPC`, `CCN` (CCN-propagated route), `Static`, and `BGP`.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -36562,6 +43072,9 @@ class VpnGatewayRoute(AbstractModel):
 
     @property
     def CreateTime(self):
+        """The creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -36570,6 +43083,9 @@ class VpnGatewayRoute(AbstractModel):
 
     @property
     def UpdateTime(self):
+        """The update time.
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -36614,6 +43130,9 @@ class VpnGatewayRouteModify(AbstractModel):
 
     @property
     def RouteId(self):
+        """Route ID of the VPN gateway
+        :rtype: str
+        """
         return self._RouteId
 
     @RouteId.setter
@@ -36622,6 +43141,9 @@ class VpnGatewayRouteModify(AbstractModel):
 
     @property
     def Status(self):
+        """Route status of the VPN gateway. Valid values: `ENABLE`, and `DISABLE`.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -36664,6 +43186,9 @@ DISABLE: do not enable the route
 
     @property
     def RouteId(self):
+        """Route ID
+        :rtype: str
+        """
         return self._RouteId
 
     @RouteId.setter
@@ -36672,6 +43197,11 @@ DISABLE: do not enable the route
 
     @property
     def Status(self):
+        """Enable the route or not
+ENABLE: enable the route
+DISABLE: do not enable the route
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -36680,6 +43210,9 @@ DISABLE: do not enable the route
 
     @property
     def DestinationCidrBlock(self):
+        """Route CIDR block
+        :rtype: str
+        """
         return self._DestinationCidrBlock
 
     @DestinationCidrBlock.setter
@@ -36718,6 +43251,9 @@ class WithdrawNotifyRoutesRequest(AbstractModel):
 
     @property
     def RouteTableId(self):
+        """The unique ID of the route table
+        :rtype: str
+        """
         return self._RouteTableId
 
     @RouteTableId.setter
@@ -36726,6 +43262,9 @@ class WithdrawNotifyRoutesRequest(AbstractModel):
 
     @property
     def RouteItemIds(self):
+        """The unique ID of the routing policy
+        :rtype: list of str
+        """
         return self._RouteItemIds
 
     @RouteItemIds.setter
@@ -36760,6 +43299,9 @@ class WithdrawNotifyRoutesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

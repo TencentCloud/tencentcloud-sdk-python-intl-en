@@ -44,6 +44,9 @@ class AttributeKeyDetail(AbstractModel):
 
     @property
     def LabelType(self):
+        """Input box type
+        :rtype: str
+        """
         return self._LabelType
 
     @LabelType.setter
@@ -52,6 +55,9 @@ class AttributeKeyDetail(AbstractModel):
 
     @property
     def Starter(self):
+        """Initial display
+        :rtype: str
+        """
         return self._Starter
 
     @Starter.setter
@@ -60,6 +66,9 @@ class AttributeKeyDetail(AbstractModel):
 
     @property
     def Order(self):
+        """Display sort order
+        :rtype: int
+        """
         return self._Order
 
     @Order.setter
@@ -68,6 +77,9 @@ class AttributeKeyDetail(AbstractModel):
 
     @property
     def Value(self):
+        """`AttributeKey` value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -76,6 +88,9 @@ class AttributeKeyDetail(AbstractModel):
 
     @property
     def Label(self):
+        """Tag
+        :rtype: str
+        """
         return self._Label
 
     @Label.setter
@@ -122,6 +137,9 @@ class AuditSummary(AbstractModel):
 
     @property
     def AuditStatus(self):
+        """Tracking set status. 1: enabled, 0: disabled
+        :rtype: int
+        """
         return self._AuditStatus
 
     @AuditStatus.setter
@@ -130,6 +148,9 @@ class AuditSummary(AbstractModel):
 
     @property
     def CosBucketName(self):
+        """COS bucket name
+        :rtype: str
+        """
         return self._CosBucketName
 
     @CosBucketName.setter
@@ -138,6 +159,9 @@ class AuditSummary(AbstractModel):
 
     @property
     def AuditName(self):
+        """Tracking set name
+        :rtype: str
+        """
         return self._AuditName
 
     @AuditName.setter
@@ -146,6 +170,9 @@ class AuditSummary(AbstractModel):
 
     @property
     def LogFilePrefix(self):
+        """Log prefix
+        :rtype: str
+        """
         return self._LogFilePrefix
 
     @LogFilePrefix.setter
@@ -185,6 +212,9 @@ class CmqRegionInfo(AbstractModel):
 
     @property
     def CmqRegionName(self):
+        """Region description
+        :rtype: str
+        """
         return self._CmqRegionName
 
     @CmqRegionName.setter
@@ -193,6 +223,9 @@ class CmqRegionInfo(AbstractModel):
 
     @property
     def CmqRegion(self):
+        """CMQ region
+        :rtype: str
+        """
         return self._CmqRegion
 
     @CmqRegion.setter
@@ -230,6 +263,9 @@ class CosRegionInfo(AbstractModel):
 
     @property
     def CosRegion(self):
+        """COS region
+        :rtype: str
+        """
         return self._CosRegion
 
     @CosRegion.setter
@@ -238,6 +274,9 @@ class CosRegionInfo(AbstractModel):
 
     @property
     def CosRegionName(self):
+        """Region description
+        :rtype: str
+        """
         return self._CosRegionName
 
     @CosRegionName.setter
@@ -308,6 +347,9 @@ class CreateAuditRequest(AbstractModel):
 
     @property
     def IsEnableCmqNotify(self):
+        """Whether to enable CMQ message notification. 1: Yes; 0: No. Only CMQ queue service is currently supported. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.
+        :rtype: int
+        """
         return self._IsEnableCmqNotify
 
     @IsEnableCmqNotify.setter
@@ -316,6 +358,9 @@ class CreateAuditRequest(AbstractModel):
 
     @property
     def ReadWriteAttribute(self):
+        """Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write).
+        :rtype: int
+        """
         return self._ReadWriteAttribute
 
     @ReadWriteAttribute.setter
@@ -324,6 +369,9 @@ class CreateAuditRequest(AbstractModel):
 
     @property
     def AuditName(self):
+        """Tracking set name, which can contain 3–128 ASCII letters (a–z; A–Z), digits (0–9), and underscores (_).
+        :rtype: str
+        """
         return self._AuditName
 
     @AuditName.setter
@@ -332,6 +380,9 @@ class CreateAuditRequest(AbstractModel):
 
     @property
     def CosRegion(self):
+        """COS region. Supported regions can be queried through the `ListCosEnableRegion` API.
+        :rtype: str
+        """
         return self._CosRegion
 
     @CosRegion.setter
@@ -340,6 +391,9 @@ class CreateAuditRequest(AbstractModel):
 
     @property
     def IsCreateNewBucket(self):
+        """Whether to create a COS bucket. 1: Yes; 0: No.
+        :rtype: int
+        """
         return self._IsCreateNewBucket
 
     @IsCreateNewBucket.setter
@@ -348,6 +402,9 @@ class CreateAuditRequest(AbstractModel):
 
     @property
     def CosBucketName(self):
+        """User-defined COS bucket name, which can only contain 1–40 lowercase letters (a–z), digits (0–9), and dashes (-) and cannot begin or end with "-". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.
+        :rtype: str
+        """
         return self._CosBucketName
 
     @CosBucketName.setter
@@ -356,6 +413,9 @@ class CreateAuditRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique ID of the CMK. This value is required if it is not a newly created KMS element. It can be obtained through `ListKeyAliasByRegion`. CloudAudit will not verify the validity of the `KeyId`. Enter it carefully to avoid data loss.
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -364,6 +424,9 @@ class CreateAuditRequest(AbstractModel):
 
     @property
     def CmqQueueName(self):
+        """Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of `IsEnableCmqNotify` is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.
+        :rtype: str
+        """
         return self._CmqQueueName
 
     @CmqQueueName.setter
@@ -372,6 +435,9 @@ class CreateAuditRequest(AbstractModel):
 
     @property
     def KmsRegion(self):
+        """KMS region. Currently supported regions can be obtained through `ListKmsEnableRegion`. This must be the same as the COS region.
+        :rtype: str
+        """
         return self._KmsRegion
 
     @KmsRegion.setter
@@ -380,6 +446,9 @@ class CreateAuditRequest(AbstractModel):
 
     @property
     def IsEnableKmsEncry(self):
+        """Whether to enable KMS encryption. 1: Yes, 0: No. If KMS encryption is enabled, the data will be encrypted when delivered to COS.
+        :rtype: int
+        """
         return self._IsEnableKmsEncry
 
     @IsEnableKmsEncry.setter
@@ -388,6 +457,9 @@ class CreateAuditRequest(AbstractModel):
 
     @property
     def CmqRegion(self):
+        """Region where the queue is located. Supported CMQ regions can be queried through the `ListCmqEnableRegion` API. This field is required if the value of `IsEnableCmqNotify` is 1.
+        :rtype: str
+        """
         return self._CmqRegion
 
     @CmqRegion.setter
@@ -396,6 +468,9 @@ class CreateAuditRequest(AbstractModel):
 
     @property
     def LogFilePrefix(self):
+        """Log file prefix, which can only contain 3–40 ASCII letters (a–z; A–Z) and digits (0–9). It can be left empty and is the account ID by default.
+        :rtype: str
+        """
         return self._LogFilePrefix
 
     @LogFilePrefix.setter
@@ -404,6 +479,9 @@ class CreateAuditRequest(AbstractModel):
 
     @property
     def IsCreateNewQueue(self):
+        """Whether to create a queue. 1: Yes; 0: No. This field is required if the value of `IsEnableCmqNotify` is 1.
+        :rtype: int
+        """
         return self._IsCreateNewQueue
 
     @IsCreateNewQueue.setter
@@ -452,6 +530,9 @@ class CreateAuditResponse(AbstractModel):
 
     @property
     def IsSuccess(self):
+        """Whether creation succeeded.
+        :rtype: int
+        """
         return self._IsSuccess
 
     @IsSuccess.setter
@@ -460,6 +541,9 @@ class CreateAuditResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -504,6 +588,9 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Tracking set name, which can only contain 3-48 letters, digits, hyphens, and underscores.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -512,6 +599,9 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def ActionType(self):
+        """Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)
+        :rtype: str
+        """
         return self._ActionType
 
     @ActionType.setter
@@ -520,6 +610,9 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """The product to which the tracking set event belongs. The value can be a single product such as `cos`, or `*` that indicates all products.
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -528,6 +621,9 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Tracking set status (0: Not enabled; 1: Enabled)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -536,6 +632,9 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def EventNames(self):
+        """The list of API names of tracking set events. When `ResourceType` is `*`, the value of `EventNames` must be `*`. When `ResourceType` is a specified product, the value of `EventNames` can be `*`. When `ResourceType` is `cos` or `cls`, up to 10 APIs are supported.
+        :rtype: list of str
+        """
         return self._EventNames
 
     @EventNames.setter
@@ -544,6 +643,9 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def Storage(self):
+        """Storage type of shipped data. Valid values: `cos`, `cls`.
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
+        """
         return self._Storage
 
     @Storage.setter
@@ -552,6 +654,9 @@ class CreateAuditTrackRequest(AbstractModel):
 
     @property
     def TrackForAllMembers(self):
+        """Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)
+        :rtype: int
+        """
         return self._TrackForAllMembers
 
     @TrackForAllMembers.setter
@@ -596,6 +701,9 @@ class CreateAuditTrackResponse(AbstractModel):
 
     @property
     def TrackId(self):
+        """Tracking set ID
+        :rtype: int
+        """
         return self._TrackId
 
     @TrackId.setter
@@ -604,6 +712,9 @@ class CreateAuditTrackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -630,6 +741,9 @@ class DeleteAuditRequest(AbstractModel):
 
     @property
     def AuditName(self):
+        """Tracking set name
+        :rtype: str
+        """
         return self._AuditName
 
     @AuditName.setter
@@ -666,6 +780,9 @@ class DeleteAuditResponse(AbstractModel):
 
     @property
     def IsSuccess(self):
+        """Whether deletion succeeded
+        :rtype: int
+        """
         return self._IsSuccess
 
     @IsSuccess.setter
@@ -674,6 +791,9 @@ class DeleteAuditResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -700,6 +820,9 @@ class DeleteAuditTrackRequest(AbstractModel):
 
     @property
     def TrackId(self):
+        """Tracking set ID
+        :rtype: int
+        """
         return self._TrackId
 
     @TrackId.setter
@@ -733,6 +856,9 @@ class DeleteAuditTrackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -758,6 +884,9 @@ class DescribeAuditRequest(AbstractModel):
 
     @property
     def AuditName(self):
+        """Tracking set name
+        :rtype: str
+        """
         return self._AuditName
 
     @AuditName.setter
@@ -830,6 +959,9 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def IsEnableCmqNotify(self):
+        """Whether to enable CMQ message notification. 1: Yes; 0: No.
+        :rtype: int
+        """
         return self._IsEnableCmqNotify
 
     @IsEnableCmqNotify.setter
@@ -838,6 +970,9 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def ReadWriteAttribute(self):
+        """Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write)
+        :rtype: int
+        """
         return self._ReadWriteAttribute
 
     @ReadWriteAttribute.setter
@@ -846,6 +981,9 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique CMK ID.
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -854,6 +992,9 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def AuditStatus(self):
+        """Tracking set status. 1: enabled, 0: disabled.
+        :rtype: int
+        """
         return self._AuditStatus
 
     @AuditStatus.setter
@@ -862,6 +1003,9 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def AuditName(self):
+        """Tracking set name.
+        :rtype: str
+        """
         return self._AuditName
 
     @AuditName.setter
@@ -870,6 +1014,9 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def CosRegion(self):
+        """COS bucket region.
+        :rtype: str
+        """
         return self._CosRegion
 
     @CosRegion.setter
@@ -878,6 +1025,9 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def CmqQueueName(self):
+        """Queue name.
+        :rtype: str
+        """
         return self._CmqQueueName
 
     @CmqQueueName.setter
@@ -886,6 +1036,9 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def KmsAlias(self):
+        """CMK alias.
+        :rtype: str
+        """
         return self._KmsAlias
 
     @KmsAlias.setter
@@ -894,6 +1047,9 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def KmsRegion(self):
+        """KMS region.
+        :rtype: str
+        """
         return self._KmsRegion
 
     @KmsRegion.setter
@@ -902,6 +1058,9 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def IsEnableKmsEncry(self):
+        """Whether to enable KMS encryption. 1: Yes, 0: No. If KMS encryption is enabled, the data will be encrypted when it is delivered to COS.
+        :rtype: int
+        """
         return self._IsEnableKmsEncry
 
     @IsEnableKmsEncry.setter
@@ -910,6 +1069,9 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def CosBucketName(self):
+        """COS bucket name.
+        :rtype: str
+        """
         return self._CosBucketName
 
     @CosBucketName.setter
@@ -918,6 +1080,9 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def CmqRegion(self):
+        """Queue region.
+        :rtype: str
+        """
         return self._CmqRegion
 
     @CmqRegion.setter
@@ -926,6 +1091,9 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def LogFilePrefix(self):
+        """Log prefix.
+        :rtype: str
+        """
         return self._LogFilePrefix
 
     @LogFilePrefix.setter
@@ -934,6 +1102,9 @@ class DescribeAuditResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -972,6 +1143,9 @@ class DescribeAuditTrackRequest(AbstractModel):
 
     @property
     def TrackId(self):
+        """Tracking set ID
+        :rtype: int
+        """
         return self._TrackId
 
     @TrackId.setter
@@ -1030,6 +1204,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
+        """Tracking set name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1038,6 +1215,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActionType(self):
+        """Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)
+        :rtype: str
+        """
         return self._ActionType
 
     @ActionType.setter
@@ -1046,6 +1226,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ResourceType(self):
+        """The product to which the tracking set event belongs, such as `cos`, or `*` that indicates all products
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -1054,6 +1237,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Tracking set status (0: Not enabled; 1: Enabled)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -1062,6 +1248,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EventNames(self):
+        """The list of API names of tracking set events (`*`: All)
+        :rtype: list of str
+        """
         return self._EventNames
 
     @EventNames.setter
@@ -1070,6 +1259,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Storage(self):
+        """Storage type of shipped data. Valid values: `cos`, `cls`.
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
+        """
         return self._Storage
 
     @Storage.setter
@@ -1078,6 +1270,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Creation time of the tracking set
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1086,6 +1281,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TrackForAllMembers(self):
+        """Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TrackForAllMembers
 
     @TrackForAllMembers.setter
@@ -1094,6 +1293,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1132,6 +1334,9 @@ class DescribeAuditTracksRequest(AbstractModel):
 
     @property
     def PageNumber(self):
+        """Page number
+        :rtype: int
+        """
         return self._PageNumber
 
     @PageNumber.setter
@@ -1140,6 +1345,9 @@ class DescribeAuditTracksRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """The number of tracking sets per page
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -1180,6 +1388,9 @@ class DescribeAuditTracksResponse(AbstractModel):
 
     @property
     def Tracks(self):
+        """Tracking set list
+        :rtype: list of Tracks
+        """
         return self._Tracks
 
     @Tracks.setter
@@ -1188,6 +1399,9 @@ class DescribeAuditTracksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of tracking sets
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1196,6 +1410,9 @@ class DescribeAuditTracksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1243,6 +1460,9 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start timestamp in seconds (cannot be 90 days after the current time).
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1251,6 +1471,9 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End timestamp in seconds (the time range for query is less than 30 days).
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1259,6 +1482,9 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def NextToken(self):
+        """Credential for viewing more logs.
+        :rtype: int
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -1267,6 +1493,9 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def MaxResults(self):
+        """Max number of returned logs (up to 50).
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -1275,6 +1504,9 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def LookupAttributes(self):
+        """Search condition. Valid values: `RequestId`, `EventName`, `ActionType` (write/read), `PrincipalId` (sub-account), `ResourceType`, `ResourceName`, `AccessKeyId`, `SensitiveAction`, `ApiErrorCode`, `CamErrorCode`, and `Tags` (Format of AttributeValue: [{"key":"*","value":"*"}])
+        :rtype: list of LookupAttribute
+        """
         return self._LookupAttributes
 
     @LookupAttributes.setter
@@ -1283,6 +1515,9 @@ class DescribeEventsRequest(AbstractModel):
 
     @property
     def IsReturnLocation(self):
+        """Whether to return the IP location. `1`: yes, `0`: no.
+        :rtype: int
+        """
         return self._IsReturnLocation
 
     @IsReturnLocation.setter
@@ -1340,6 +1575,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ListOver(self):
+        """Whether the log list has come to an end. `true`: Yes. Pagination is not required.
+        :rtype: bool
+        """
         return self._ListOver
 
     @ListOver.setter
@@ -1348,6 +1586,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NextToken(self):
+        """Credential for viewing more logs.
+        :rtype: int
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -1356,6 +1597,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Events(self):
+        """Logset.
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: list of Event
+        """
         return self._Events
 
     @Events.setter
@@ -1364,6 +1609,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """This parameter has been deprecated. Please use `ListOver` and `NextToken` for pagination, and read data of the next page when the value of `ListOver` is `false`.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1372,6 +1621,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1456,6 +1708,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def EventId(self):
+        """Log ID
+        :rtype: str
+        """
         return self._EventId
 
     @EventId.setter
@@ -1464,6 +1719,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Username(self):
+        """Username
+        :rtype: str
+        """
         return self._Username
 
     @Username.setter
@@ -1472,6 +1730,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def EventTime(self):
+        """Event Time
+        :rtype: str
+        """
         return self._EventTime
 
     @EventTime.setter
@@ -1480,6 +1741,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def CloudAuditEvent(self):
+        """Log details
+        :rtype: str
+        """
         return self._CloudAuditEvent
 
     @CloudAuditEvent.setter
@@ -1488,6 +1752,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ResourceTypeCn(self):
+        """Description of resource type in Chinese (please use this field as required; if you are using other languages, ignore this field)
+        :rtype: str
+        """
         return self._ResourceTypeCn
 
     @ResourceTypeCn.setter
@@ -1496,6 +1763,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ErrorCode(self):
+        """Authentication error code
+        :rtype: int
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -1504,6 +1774,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def EventName(self):
+        """Event name
+        :rtype: str
+        """
         return self._EventName
 
     @EventName.setter
@@ -1512,6 +1785,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def SecretId(self):
+        """Certificate ID
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SecretId
 
     @SecretId.setter
@@ -1520,6 +1797,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def EventSource(self):
+        """Request source
+        :rtype: str
+        """
         return self._EventSource
 
     @EventSource.setter
@@ -1528,6 +1808,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def RequestID(self):
+        """Request ID
+        :rtype: str
+        """
         return self._RequestID
 
     @RequestID.setter
@@ -1536,6 +1819,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ResourceRegion(self):
+        """Resource region
+        :rtype: str
+        """
         return self._ResourceRegion
 
     @ResourceRegion.setter
@@ -1544,6 +1830,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def AccountID(self):
+        """Root account ID
+        :rtype: int
+        """
         return self._AccountID
 
     @AccountID.setter
@@ -1552,6 +1841,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def SourceIPAddress(self):
+        """Source IP
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SourceIPAddress
 
     @SourceIPAddress.setter
@@ -1560,6 +1853,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def EventNameCn(self):
+        """Description of event name in Chinese (please use this field as required; if you are using other languages, ignore this field)
+        :rtype: str
+        """
         return self._EventNameCn
 
     @EventNameCn.setter
@@ -1568,6 +1864,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Resources(self):
+        """Resource pair
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Resource`
+        """
         return self._Resources
 
     @Resources.setter
@@ -1576,6 +1875,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def EventRegion(self):
+        """Event region
+        :rtype: str
+        """
         return self._EventRegion
 
     @EventRegion.setter
@@ -1584,6 +1886,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def Location(self):
+        """IP location
+        :rtype: str
+        """
         return self._Location
 
     @Location.setter
@@ -1635,6 +1940,9 @@ class GetAttributeKeyRequest(AbstractModel):
 
     @property
     def WebsiteType(self):
+        """Website type. Valid values: zh, en. If this parameter is left empty, `zh` will be used by default
+        :rtype: str
+        """
         return self._WebsiteType
 
     @WebsiteType.setter
@@ -1671,6 +1979,9 @@ class GetAttributeKeyResponse(AbstractModel):
 
     @property
     def AttributeKeyDetails(self):
+        """Valid values of `AttributeKey`
+        :rtype: list of AttributeKeyDetail
+        """
         return self._AttributeKeyDetails
 
     @AttributeKeyDetails.setter
@@ -1679,6 +1990,9 @@ class GetAttributeKeyResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1719,6 +2033,9 @@ class InquireAuditCreditResponse(AbstractModel):
 
     @property
     def AuditAmount(self):
+        """Number of tracking sets that can be created
+        :rtype: int
+        """
         return self._AuditAmount
 
     @AuditAmount.setter
@@ -1727,6 +2044,9 @@ class InquireAuditCreditResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1763,6 +2083,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AuditSummarys(self):
+        """Set of queried tracking set summaries
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of AuditSummary
+        """
         return self._AuditSummarys
 
     @AuditSummarys.setter
@@ -1771,6 +2095,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1802,6 +2129,9 @@ class ListCmqEnableRegionRequest(AbstractModel):
 
     @property
     def WebsiteType(self):
+        """Website type. zh: Chinese mainland (default); en: outside Chinese mainland.
+        :rtype: str
+        """
         return self._WebsiteType
 
     @WebsiteType.setter
@@ -1838,6 +2168,9 @@ class ListCmqEnableRegionResponse(AbstractModel):
 
     @property
     def EnableRegions(self):
+        """CloudAudit-enabled CMQ AZs
+        :rtype: list of CmqRegionInfo
+        """
         return self._EnableRegions
 
     @EnableRegions.setter
@@ -1846,6 +2179,9 @@ class ListCmqEnableRegionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1877,6 +2213,9 @@ class ListCosEnableRegionRequest(AbstractModel):
 
     @property
     def WebsiteType(self):
+        """Website type. zh: Chinese mainland (default); en: outside Chinese mainland.
+        :rtype: str
+        """
         return self._WebsiteType
 
     @WebsiteType.setter
@@ -1913,6 +2252,9 @@ class ListCosEnableRegionResponse(AbstractModel):
 
     @property
     def EnableRegions(self):
+        """CloudAudit-enabled COS AZs
+        :rtype: list of CosRegionInfo
+        """
         return self._EnableRegions
 
     @EnableRegions.setter
@@ -1921,6 +2263,9 @@ class ListCosEnableRegionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1967,6 +2312,9 @@ class LookUpEventsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1975,6 +2323,9 @@ class LookUpEventsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1983,6 +2334,9 @@ class LookUpEventsRequest(AbstractModel):
 
     @property
     def LookupAttributes(self):
+        """Search criteria
+        :rtype: list of LookupAttribute
+        """
         return self._LookupAttributes
 
     @LookupAttributes.setter
@@ -1991,6 +2345,9 @@ class LookUpEventsRequest(AbstractModel):
 
     @property
     def NextToken(self):
+        """Credential for viewing more logs
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -1999,6 +2356,9 @@ class LookUpEventsRequest(AbstractModel):
 
     @property
     def MaxResults(self):
+        """Maximum number of logs to be returned
+        :rtype: int
+        """
         return self._MaxResults
 
     @MaxResults.setter
@@ -2007,6 +2367,9 @@ class LookUpEventsRequest(AbstractModel):
 
     @property
     def Mode(self):
+        """CloudAudit mode. Valid values: standard, quick. Default value: standard
+        :rtype: str
+        """
         return self._Mode
 
     @Mode.setter
@@ -2062,6 +2425,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def NextToken(self):
+        """Credential for viewing more logs
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NextToken
 
     @NextToken.setter
@@ -2070,6 +2437,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Events(self):
+        """Logset
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Event
+        """
         return self._Events
 
     @Events.setter
@@ -2078,6 +2449,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ListOver(self):
+        """Whether the logset ends
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._ListOver
 
     @ListOver.setter
@@ -2086,6 +2461,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2124,6 +2502,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def AttributeKey(self):
+        """Valid values: RequestId, EventName, ReadOnly, Username, ResourceType, ResourceName, AccessKeyId, and EventId
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AttributeKey
 
     @AttributeKey.setter
@@ -2132,6 +2514,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def AttributeValue(self):
+        """Value of `AttributeValue`
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AttributeValue
 
     @AttributeValue.setter
@@ -2187,6 +2573,9 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def TrackId(self):
+        """Tracking set ID
+        :rtype: int
+        """
         return self._TrackId
 
     @TrackId.setter
@@ -2195,6 +2584,9 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Tracking set name, which can only contain 3-48 letters, digits, hyphens, and underscores.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2203,6 +2595,9 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def ActionType(self):
+        """Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)
+        :rtype: str
+        """
         return self._ActionType
 
     @ActionType.setter
@@ -2211,6 +2606,9 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def ResourceType(self):
+        """The product to which the tracking set event belongs. The value can be a single product such as `cos`, or `*` that indicates all products.
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -2219,6 +2617,9 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Tracking set status (0: Not enabled; 1: Enabled)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2227,6 +2628,9 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def EventNames(self):
+        """The list of API names of tracking set events. When `ResourceType` is `*`, the value of `EventNames` must be `*`. When `ResourceType` is a specified product, the value of `EventNames` can be `*`. When `ResourceType` is `cos` or `cls`, up to 10 APIs are supported.
+        :rtype: list of str
+        """
         return self._EventNames
 
     @EventNames.setter
@@ -2235,6 +2639,9 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def Storage(self):
+        """Storage type of shipped data. Valid values: `cos`, `cls`.
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
+        """
         return self._Storage
 
     @Storage.setter
@@ -2243,6 +2650,9 @@ class ModifyAuditTrackRequest(AbstractModel):
 
     @property
     def TrackForAllMembers(self):
+        """Whether to enable the feature of shipping organization members’ operation logs to the organization admin account or the trusted service admin account (0: Not enabled; 1: Enabled. This feature can only be enabled by the organization admin account or the trusted service admin account)
+        :rtype: int
+        """
         return self._TrackForAllMembers
 
     @TrackForAllMembers.setter
@@ -2285,6 +2695,9 @@ class ModifyAuditTrackResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2314,6 +2727,9 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ResourceType(self):
+        """Resource type
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -2322,6 +2738,10 @@ Note: `null` may be returned for this field, indicating that no valid values can
 
     @property
     def ResourceName(self):
+        """Resource name
+Note: `null` may be returned for this field, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ResourceName
 
     @ResourceName.setter
@@ -2356,6 +2776,9 @@ class StartLoggingRequest(AbstractModel):
 
     @property
     def AuditName(self):
+        """Tracking set name
+        :rtype: str
+        """
         return self._AuditName
 
     @AuditName.setter
@@ -2392,6 +2815,9 @@ class StartLoggingResponse(AbstractModel):
 
     @property
     def IsSuccess(self):
+        """Whether enablement succeeded
+        :rtype: int
+        """
         return self._IsSuccess
 
     @IsSuccess.setter
@@ -2400,6 +2826,9 @@ class StartLoggingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2426,6 +2855,9 @@ class StopLoggingRequest(AbstractModel):
 
     @property
     def AuditName(self):
+        """Tracking set name
+        :rtype: str
+        """
         return self._AuditName
 
     @AuditName.setter
@@ -2462,6 +2894,9 @@ class StopLoggingResponse(AbstractModel):
 
     @property
     def IsSuccess(self):
+        """Whether disablement succeeded
+        :rtype: int
+        """
         return self._IsSuccess
 
     @IsSuccess.setter
@@ -2470,6 +2905,9 @@ class StopLoggingResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2505,6 +2943,9 @@ class Storage(AbstractModel):
 
     @property
     def StorageType(self):
+        """Storage type (Valid values: cos, cls)
+        :rtype: str
+        """
         return self._StorageType
 
     @StorageType.setter
@@ -2513,6 +2954,9 @@ class Storage(AbstractModel):
 
     @property
     def StorageRegion(self):
+        """Storage region
+        :rtype: str
+        """
         return self._StorageRegion
 
     @StorageRegion.setter
@@ -2521,6 +2965,9 @@ class Storage(AbstractModel):
 
     @property
     def StorageName(self):
+        """Storage name. For COS, the storage name is the custom bucket name, which can contain up to 50 lowercase letters, digits, and hyphens. It cannot contain "-APPID" and cannot start or end with a hyphen. For CLS, the storage name is the log topic ID, which can contain 1-50 characters.
+        :rtype: str
+        """
         return self._StorageName
 
     @StorageName.setter
@@ -2529,6 +2976,9 @@ class Storage(AbstractModel):
 
     @property
     def StoragePrefix(self):
+        """Storage directory prefix. The COS log file prefix can only contain 3-40 letters and digits.
+        :rtype: str
+        """
         return self._StoragePrefix
 
     @StoragePrefix.setter
@@ -2586,6 +3036,9 @@ class Tracks(AbstractModel):
 
     @property
     def Name(self):
+        """Tracking set name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2594,6 +3047,9 @@ class Tracks(AbstractModel):
 
     @property
     def ActionType(self):
+        """Tracking set event type (`Read`: Read; `Write`: Write; `*`: All)
+        :rtype: str
+        """
         return self._ActionType
 
     @ActionType.setter
@@ -2602,6 +3058,9 @@ class Tracks(AbstractModel):
 
     @property
     def ResourceType(self):
+        """The product to which the tracking set event belongs, such as `cos`, or `*` that indicates all products
+        :rtype: str
+        """
         return self._ResourceType
 
     @ResourceType.setter
@@ -2610,6 +3069,9 @@ class Tracks(AbstractModel):
 
     @property
     def Status(self):
+        """Tracking set status (0: Not enabled; 1: Enabled)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2618,6 +3080,9 @@ class Tracks(AbstractModel):
 
     @property
     def EventNames(self):
+        """The list of API names of tracking set events (`*`: All)
+        :rtype: list of str
+        """
         return self._EventNames
 
     @EventNames.setter
@@ -2626,6 +3091,9 @@ class Tracks(AbstractModel):
 
     @property
     def Storage(self):
+        """Storage type of shipped data. Valid values: `cos`, `cls`.
+        :rtype: :class:`tencentcloud.cloudaudit.v20190319.models.Storage`
+        """
         return self._Storage
 
     @Storage.setter
@@ -2634,6 +3102,9 @@ class Tracks(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time of the tracking set
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2642,6 +3113,9 @@ class Tracks(AbstractModel):
 
     @property
     def TrackId(self):
+        """Tracking set ID
+        :rtype: int
+        """
         return self._TrackId
 
     @TrackId.setter
@@ -2720,6 +3194,9 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def AuditName(self):
+        """Tracking set name
+        :rtype: str
+        """
         return self._AuditName
 
     @AuditName.setter
@@ -2728,6 +3205,9 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def IsEnableCmqNotify(self):
+        """Whether to enable CMQ message notification. 1: Yes; 0: No. Only CMQ queue service is currently supported. If CMQ message notification is enabled, CloudAudit will deliver your log contents to the designated queue in the specified region in real time.
+        :rtype: int
+        """
         return self._IsEnableCmqNotify
 
     @IsEnableCmqNotify.setter
@@ -2736,6 +3216,9 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def ReadWriteAttribute(self):
+        """Manages the read/write attribute of event. Valid values: 1 (read-only), 2 (write-only), 3 (read/write).
+        :rtype: int
+        """
         return self._ReadWriteAttribute
 
     @ReadWriteAttribute.setter
@@ -2744,6 +3227,9 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def KeyId(self):
+        """Globally unique ID of the CMK. This value is required if it is not a newly created KMS element. It can be obtained through `ListKeyAliasByRegion`. CloudAudit will not verify the validity of the `KeyId`. Enter it carefully to avoid data loss.
+        :rtype: str
+        """
         return self._KeyId
 
     @KeyId.setter
@@ -2752,6 +3238,9 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def CosRegion(self):
+        """COS region. Supported regions can be queried through the `ListCosEnableRegion` API.
+        :rtype: str
+        """
         return self._CosRegion
 
     @CosRegion.setter
@@ -2760,6 +3249,9 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def CmqQueueName(self):
+        """Queue name, which must begin with a letter and can contain up to 64 letters, digits, and dashes (-). This field is required if the value of `IsEnableCmqNotify` is 1. If a queue is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.
+        :rtype: str
+        """
         return self._CmqQueueName
 
     @CmqQueueName.setter
@@ -2768,6 +3260,9 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def IsCreateNewBucket(self):
+        """Whether to create a COS bucket. 1: Yes; 0: No.
+        :rtype: int
+        """
         return self._IsCreateNewBucket
 
     @IsCreateNewBucket.setter
@@ -2776,6 +3271,9 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def KmsRegion(self):
+        """KMS region. Currently supported regions can be obtained through `ListKmsEnableRegion`. This must be the same as the COS region.
+        :rtype: str
+        """
         return self._KmsRegion
 
     @KmsRegion.setter
@@ -2784,6 +3282,9 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def IsEnableKmsEncry(self):
+        """Whether to enable KMS encryption. 1: Yes, 0: No. If KMS encryption is enabled, the data will be encrypted when delivered to COS.
+        :rtype: int
+        """
         return self._IsEnableKmsEncry
 
     @IsEnableKmsEncry.setter
@@ -2792,6 +3293,9 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def CosBucketName(self):
+        """User-defined COS bucket name, which can only contain 1–40 lowercase letters (a–z), digits (0–9), and dashes (-) and cannot begin or end with "-". If a bucket is not newly created, CloudAudit will not verify whether it actually exists. Enter the name with caution to avoid log delivery failure and consequent data loss.
+        :rtype: str
+        """
         return self._CosBucketName
 
     @CosBucketName.setter
@@ -2800,6 +3304,9 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def CmqRegion(self):
+        """Region where the queue is located. Supported CMQ regions can be queried through the `ListCmqEnableRegion` API. This field is required if the value of `IsEnableCmqNotify` is 1.
+        :rtype: str
+        """
         return self._CmqRegion
 
     @CmqRegion.setter
@@ -2808,6 +3315,9 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def LogFilePrefix(self):
+        """Log file prefix, which can only contain 3–40 ASCII letters (a–z; A–Z) and digits (0–9).
+        :rtype: str
+        """
         return self._LogFilePrefix
 
     @LogFilePrefix.setter
@@ -2816,6 +3326,9 @@ class UpdateAuditRequest(AbstractModel):
 
     @property
     def IsCreateNewQueue(self):
+        """Whether to create a queue. 1: Yes; 0: No. This field is required if the value of `IsEnableCmqNotify` is 1.
+        :rtype: int
+        """
         return self._IsCreateNewQueue
 
     @IsCreateNewQueue.setter
@@ -2864,6 +3377,9 @@ class UpdateAuditResponse(AbstractModel):
 
     @property
     def IsSuccess(self):
+        """Whether update succeeded
+        :rtype: int
+        """
         return self._IsSuccess
 
     @IsSuccess.setter
@@ -2872,6 +3388,9 @@ class UpdateAuditResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

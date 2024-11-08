@@ -50,6 +50,9 @@ class CreateLogExportRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -58,6 +61,9 @@ class CreateLogExportRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Log export start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -66,6 +72,9 @@ class CreateLogExportRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Log export end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -74,6 +83,9 @@ class CreateLogExportRequest(AbstractModel):
 
     @property
     def Query(self):
+        """Log export search statement
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -82,6 +94,9 @@ class CreateLogExportRequest(AbstractModel):
 
     @property
     def Count(self):
+        """Number of logs to be exported. Maximum value: 10 million
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -90,6 +105,9 @@ class CreateLogExportRequest(AbstractModel):
 
     @property
     def Order(self):
+        """Exported log sorting order by time. Valid values: asc: ascending; desc: descending. Default value: desc
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -98,6 +116,9 @@ class CreateLogExportRequest(AbstractModel):
 
     @property
     def Format(self):
+        """Exported log data format. Valid values: json, csv. Default value: json
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -140,6 +161,9 @@ class CreateLogExportResponse(AbstractModel):
 
     @property
     def ExportID(self):
+        """Log export ID
+        :rtype: str
+        """
         return self._ExportID
 
     @ExportID.setter
@@ -148,6 +172,9 @@ class CreateLogExportResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -177,6 +204,9 @@ class CreateOfflineLogConfigRequest(AbstractModel):
 
     @property
     def ProjectKey(self):
+        """Unique project key for reporting
+        :rtype: str
+        """
         return self._ProjectKey
 
     @ProjectKey.setter
@@ -185,6 +215,9 @@ class CreateOfflineLogConfigRequest(AbstractModel):
 
     @property
     def UniqueID(self):
+        """Unique identifier of the user to be listened on (`aid` or `uin`)
+        :rtype: str
+        """
         return self._UniqueID
 
     @UniqueID.setter
@@ -222,6 +255,9 @@ class CreateOfflineLogConfigResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """API response information
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -230,6 +266,9 @@ class CreateOfflineLogConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -277,6 +316,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Name of the created project (required and up to 200 characters)
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -285,6 +327,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def InstanceID(self):
+        """Business system ID
+        :rtype: str
+        """
         return self._InstanceID
 
     @InstanceID.setter
@@ -293,6 +338,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Rate(self):
+        """Project sampling rate (greater than or equal to 0)
+        :rtype: str
+        """
         return self._Rate
 
     @Rate.setter
@@ -301,6 +349,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def EnableURLGroup(self):
+        """Whether to enable aggregation
+        :rtype: int
+        """
         return self._EnableURLGroup
 
     @EnableURLGroup.setter
@@ -309,6 +360,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Project type (valid values: "web", "mp", "android", "ios", "node", "hippy", "weex", "viola", "rn")
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -317,6 +371,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Repo(self):
+        """Repository address of the project (optional and up to 256 characters)
+        :rtype: str
+        """
         return self._Repo
 
     @Repo.setter
@@ -325,6 +382,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def URL(self):
+        """Webpage address of the project (optional and up to 256 characters)
+        :rtype: str
+        """
         return self._URL
 
     @URL.setter
@@ -333,6 +393,9 @@ class CreateProjectRequest(AbstractModel):
 
     @property
     def Desc(self):
+        """Description of the created project (optional and up to 1,000 characters)
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -379,6 +442,9 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -387,6 +453,9 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def Key(self):
+        """Unique project key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -395,6 +464,9 @@ class CreateProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -425,6 +497,9 @@ class CreateReleaseFileRequest(AbstractModel):
 
     @property
     def ProjectID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectID
 
     @ProjectID.setter
@@ -433,6 +508,9 @@ class CreateReleaseFileRequest(AbstractModel):
 
     @property
     def Files(self):
+        """File information list
+        :rtype: list of ReleaseFile
+        """
         return self._Files
 
     @Files.setter
@@ -475,6 +553,9 @@ class CreateReleaseFileResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """Call result
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -483,6 +564,9 @@ class CreateReleaseFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -512,6 +596,9 @@ class CreateStarProjectRequest(AbstractModel):
 
     @property
     def InstanceID(self):
+        """Instance ID, such as taw-123
+        :rtype: str
+        """
         return self._InstanceID
 
     @InstanceID.setter
@@ -520,6 +607,9 @@ class CreateStarProjectRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -557,6 +647,9 @@ class CreateStarProjectResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """API response information
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -565,6 +658,9 @@ class CreateStarProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -624,6 +720,9 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def AreaId(self):
+        """Region ID (at least greater than 0)
+        :rtype: int
+        """
         return self._AreaId
 
     @AreaId.setter
@@ -632,6 +731,9 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def ChargeType(self):
+        """Billing type (1: Pay-as-you-go).
+        :rtype: int
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -640,6 +742,9 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def DataRetentionDays(self):
+        """Data retention period (at least greater than 0)
+        :rtype: int
+        """
         return self._DataRetentionDays
 
     @DataRetentionDays.setter
@@ -648,6 +753,9 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """Instance name (up to 255 bytes)
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -656,6 +764,9 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Tag list
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -664,6 +775,9 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def InstanceDesc(self):
+        """Instance description (up to 1,024 bytes)
+        :rtype: str
+        """
         return self._InstanceDesc
 
     @InstanceDesc.setter
@@ -672,6 +786,9 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def CountNum(self):
+        """Number of data entries reported per day
+        :rtype: str
+        """
         return self._CountNum
 
     @CountNum.setter
@@ -680,6 +797,9 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def PeriodRetain(self):
+        """Billing for data storage
+        :rtype: str
+        """
         return self._PeriodRetain
 
     @PeriodRetain.setter
@@ -688,6 +808,9 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def BuyingChannel(self):
+        """Instance purchase channel. Valid value: `cdn`.
+        :rtype: str
+        """
         return self._BuyingChannel
 
     @BuyingChannel.setter
@@ -696,6 +819,9 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def ResourcePackageType(self):
+        """Type of prepaid resource pack (only required for prepaid mode)
+        :rtype: int
+        """
         return self._ResourcePackageType
 
     @ResourcePackageType.setter
@@ -704,6 +830,9 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def ResourcePackageNum(self):
+        """The number of prepaid resource packs (only required for prepaid mode)
+        :rtype: int
+        """
         return self._ResourcePackageNum
 
     @ResourcePackageNum.setter
@@ -712,6 +841,9 @@ class CreateTawInstanceRequest(AbstractModel):
 
     @property
     def InstanceType(self):
+        """Instance type. `1`: Web; `2`: Application
+        :rtype: int
+        """
         return self._InstanceType
 
     @InstanceType.setter
@@ -768,6 +900,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -776,6 +911,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DealName(self):
+        """ID of prepaid order
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DealName
 
     @DealName.setter
@@ -784,6 +923,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -820,6 +962,9 @@ class CreateWhitelistRequest(AbstractModel):
 
     @property
     def InstanceID(self):
+        """Instance ID, such as taw-123
+        :rtype: str
+        """
         return self._InstanceID
 
     @InstanceID.setter
@@ -828,6 +973,9 @@ class CreateWhitelistRequest(AbstractModel):
 
     @property
     def Remark(self):
+        """Remarks
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -836,6 +984,9 @@ class CreateWhitelistRequest(AbstractModel):
 
     @property
     def WhitelistUin(self):
+        """uin: business identifier
+        :rtype: str
+        """
         return self._WhitelistUin
 
     @WhitelistUin.setter
@@ -844,6 +995,9 @@ class CreateWhitelistRequest(AbstractModel):
 
     @property
     def Aid(self):
+        """Business identifier
+        :rtype: str
+        """
         return self._Aid
 
     @Aid.setter
@@ -886,6 +1040,9 @@ class CreateWhitelistResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """Message
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -894,6 +1051,9 @@ class CreateWhitelistResponse(AbstractModel):
 
     @property
     def ID(self):
+        """Allowlist ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -902,6 +1062,9 @@ class CreateWhitelistResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -929,6 +1092,9 @@ class DeleteInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the instance to be deleted
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -962,6 +1128,9 @@ class DeleteInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -990,6 +1159,9 @@ class DeleteLogExportRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -998,6 +1170,9 @@ class DeleteLogExportRequest(AbstractModel):
 
     @property
     def ExportID(self):
+        """Log export ID
+        :rtype: str
+        """
         return self._ExportID
 
     @ExportID.setter
@@ -1036,6 +1211,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Msg(self):
+        """Whether it is successful. If so, `success` will be returned; otherwise, `Error` rather than this parameter will be returned
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -1044,6 +1223,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1073,6 +1255,9 @@ class DeleteOfflineLogConfigRequest(AbstractModel):
 
     @property
     def ProjectKey(self):
+        """Unique project key for reporting
+        :rtype: str
+        """
         return self._ProjectKey
 
     @ProjectKey.setter
@@ -1081,6 +1266,9 @@ class DeleteOfflineLogConfigRequest(AbstractModel):
 
     @property
     def UniqueID(self):
+        """Unique user identifier (uin or aid)
+        :rtype: str
+        """
         return self._UniqueID
 
     @UniqueID.setter
@@ -1118,6 +1306,9 @@ class DeleteOfflineLogConfigResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """API call information
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -1126,6 +1317,9 @@ class DeleteOfflineLogConfigResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1155,6 +1349,9 @@ class DeleteOfflineLogRecordRequest(AbstractModel):
 
     @property
     def ProjectKey(self):
+        """Unique project key for reporting
+        :rtype: str
+        """
         return self._ProjectKey
 
     @ProjectKey.setter
@@ -1163,6 +1360,9 @@ class DeleteOfflineLogRecordRequest(AbstractModel):
 
     @property
     def FileID(self):
+        """Offline log file ID
+        :rtype: str
+        """
         return self._FileID
 
     @FileID.setter
@@ -1200,6 +1400,9 @@ class DeleteOfflineLogRecordResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """API call information
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -1208,6 +1411,9 @@ class DeleteOfflineLogRecordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1234,6 +1440,9 @@ class DeleteProjectRequest(AbstractModel):
 
     @property
     def ID(self):
+        """ID of the project to be deleted
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -1270,6 +1479,9 @@ class DeleteProjectResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """Operation information
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -1278,6 +1490,9 @@ class DeleteProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1304,6 +1519,9 @@ class DeleteReleaseFileRequest(AbstractModel):
 
     @property
     def ID(self):
+        """File ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -1340,6 +1558,9 @@ class DeleteReleaseFileResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """Response string of the API request
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -1348,6 +1569,9 @@ class DeleteReleaseFileResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1377,6 +1601,9 @@ class DeleteStarProjectRequest(AbstractModel):
 
     @property
     def InstanceID(self):
+        """Instance ID, such as taw-123
+        :rtype: str
+        """
         return self._InstanceID
 
     @InstanceID.setter
@@ -1385,6 +1612,9 @@ class DeleteStarProjectRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -1423,6 +1653,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Msg(self):
+        """Response message
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -1431,6 +1665,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1460,6 +1697,9 @@ class DeleteWhitelistRequest(AbstractModel):
 
     @property
     def InstanceID(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceID
 
     @InstanceID.setter
@@ -1468,6 +1708,9 @@ class DeleteWhitelistRequest(AbstractModel):
 
     @property
     def ID(self):
+        """List ID
+        :rtype: str
+        """
         return self._ID
 
     @ID.setter
@@ -1505,6 +1748,9 @@ class DeleteWhitelistResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """Success message
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -1513,6 +1759,9 @@ class DeleteWhitelistResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1605,6 +1854,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1613,6 +1865,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Type(self):
+        """`top`: top resources view; `allcount`: performance view; `day`: 14-day data; `condition`: condition list; `pagepv`: PV view; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1621,6 +1876,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1629,6 +1887,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -1637,6 +1898,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
+        """Custom 2
+        :rtype: str
+        """
         return self._ExtSecond
 
     @ExtSecond.setter
@@ -1645,6 +1909,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Engine(self):
+        """Browser engine
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -1653,6 +1920,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Isp(self):
+        """ISP
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -1661,6 +1931,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def From(self):
+        """Source page
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -1669,6 +1942,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Level(self):
+        """Log level
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -1677,6 +1953,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Brand(self):
+        """Brand
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -1685,6 +1964,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Area(self):
+        """Region
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -1693,6 +1975,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def VersionNum(self):
+        """Version
+        :rtype: str
+        """
         return self._VersionNum
 
     @VersionNum.setter
@@ -1701,6 +1986,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """Platform
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -1709,6 +1997,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def ExtThird(self):
+        """Custom 3
+        :rtype: str
+        """
         return self._ExtThird
 
     @ExtThird.setter
@@ -1717,6 +2008,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
+        """Custom 1
+        :rtype: str
+        """
         return self._ExtFirst
 
     @ExtFirst.setter
@@ -1725,6 +2019,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def NetType(self):
+        """Network type
+        :rtype: str
+        """
         return self._NetType
 
     @NetType.setter
@@ -1733,6 +2030,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Device(self):
+        """Model
+        :rtype: str
+        """
         return self._Device
 
     @Device.setter
@@ -1741,6 +2041,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
+        """Whether it is outside the Chinese mainland
+        :rtype: str
+        """
         return self._IsAbroad
 
     @IsAbroad.setter
@@ -1749,6 +2052,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Os(self):
+        """OS
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -1757,6 +2063,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Browser(self):
+        """Browser
+        :rtype: str
+        """
         return self._Browser
 
     @Browser.setter
@@ -1765,6 +2074,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def CostType(self):
+        """Duration calculation method
+        :rtype: str
+        """
         return self._CostType
 
     @CostType.setter
@@ -1773,6 +2085,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Url(self):
+        """Key value of the custom speed test
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -1781,6 +2096,9 @@ class DescribeDataCustomUrlRequest(AbstractModel):
 
     @property
     def Env(self):
+        """Environment
+        :rtype: str
+        """
         return self._Env
 
     @Env.setter
@@ -1839,6 +2157,9 @@ class DescribeDataCustomUrlResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned value
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -1847,6 +2168,9 @@ class DescribeDataCustomUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1936,6 +2260,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -1944,6 +2271,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Type(self):
+        """`allcount`: performance view; `day`: 14-day data; `condition`: condition list; `ckuv`: UV trend; `ckpv`: PV trend; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -1952,6 +2282,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -1960,6 +2293,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -1968,6 +2304,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
+        """Custom 2
+        :rtype: str
+        """
         return self._ExtSecond
 
     @ExtSecond.setter
@@ -1976,6 +2315,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Engine(self):
+        """Browser engine
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -1984,6 +2326,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Isp(self):
+        """ISP
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -1992,6 +2337,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def From(self):
+        """Source page
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -2000,6 +2348,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Level(self):
+        """Log level
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -2008,6 +2359,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Brand(self):
+        """Brand
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -2016,6 +2370,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Area(self):
+        """Region
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -2024,6 +2381,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def VersionNum(self):
+        """Version
+        :rtype: str
+        """
         return self._VersionNum
 
     @VersionNum.setter
@@ -2032,6 +2392,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """Platform
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -2040,6 +2403,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def ExtThird(self):
+        """Custom 3
+        :rtype: str
+        """
         return self._ExtThird
 
     @ExtThird.setter
@@ -2048,6 +2414,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
+        """Custom 1
+        :rtype: str
+        """
         return self._ExtFirst
 
     @ExtFirst.setter
@@ -2056,6 +2425,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def NetType(self):
+        """Network type
+        :rtype: str
+        """
         return self._NetType
 
     @NetType.setter
@@ -2064,6 +2436,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Device(self):
+        """Model
+        :rtype: str
+        """
         return self._Device
 
     @Device.setter
@@ -2072,6 +2447,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
+        """Whether it is outside the Chinese mainland
+        :rtype: str
+        """
         return self._IsAbroad
 
     @IsAbroad.setter
@@ -2080,6 +2458,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Os(self):
+        """OS
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -2088,6 +2469,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Browser(self):
+        """Browser
+        :rtype: str
+        """
         return self._Browser
 
     @Browser.setter
@@ -2096,6 +2480,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Filter
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2104,6 +2491,9 @@ class DescribeDataEventUrlRequest(AbstractModel):
 
     @property
     def Env(self):
+        """Environment
+        :rtype: str
+        """
         return self._Env
 
     @Env.setter
@@ -2161,6 +2551,9 @@ class DescribeDataEventUrlResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned value
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -2169,6 +2562,9 @@ class DescribeDataEventUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2267,6 +2663,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2275,6 +2674,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Type(self):
+        """`allcount`: performance view; `day`: 14-day data; `condition`: condition list; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2283,6 +2685,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2291,6 +2696,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -2299,6 +2707,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
+        """Custom 2
+        :rtype: str
+        """
         return self._ExtSecond
 
     @ExtSecond.setter
@@ -2307,6 +2718,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Engine(self):
+        """Browser engine
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -2315,6 +2729,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Isp(self):
+        """ISP
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -2323,6 +2740,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def From(self):
+        """Source page
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -2331,6 +2751,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Level(self):
+        """Log level
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -2339,6 +2762,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Brand(self):
+        """Brand
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -2347,6 +2773,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Area(self):
+        """Region
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -2355,6 +2784,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def VersionNum(self):
+        """Version
+        :rtype: str
+        """
         return self._VersionNum
 
     @VersionNum.setter
@@ -2363,6 +2795,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """Platform
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -2371,6 +2806,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def ExtThird(self):
+        """Custom 3
+        :rtype: str
+        """
         return self._ExtThird
 
     @ExtThird.setter
@@ -2379,6 +2817,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
+        """Custom 1
+        :rtype: str
+        """
         return self._ExtFirst
 
     @ExtFirst.setter
@@ -2387,6 +2828,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def NetType(self):
+        """Network type
+        :rtype: str
+        """
         return self._NetType
 
     @NetType.setter
@@ -2395,6 +2839,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Device(self):
+        """Model
+        :rtype: str
+        """
         return self._Device
 
     @Device.setter
@@ -2403,6 +2850,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
+        """Whether it is outside the Chinese mainland
+        :rtype: str
+        """
         return self._IsAbroad
 
     @IsAbroad.setter
@@ -2411,6 +2861,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Os(self):
+        """OS
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -2419,6 +2872,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Browser(self):
+        """Browser
+        :rtype: str
+        """
         return self._Browser
 
     @Browser.setter
@@ -2427,6 +2883,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def CostType(self):
+        """Duration calculation method
+        :rtype: str
+        """
         return self._CostType
 
     @CostType.setter
@@ -2435,6 +2894,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Url(self):
+        """Source
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -2443,6 +2905,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Env(self):
+        """Environment
+        :rtype: str
+        """
         return self._Env
 
     @Env.setter
@@ -2451,6 +2916,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Status(self):
+        """HTTP status code.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -2459,6 +2927,9 @@ class DescribeDataFetchProjectRequest(AbstractModel):
 
     @property
     def Ret(self):
+        """retcode
+        :rtype: str
+        """
         return self._Ret
 
     @Ret.setter
@@ -2519,6 +2990,9 @@ class DescribeDataFetchProjectResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned value
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -2527,6 +3001,9 @@ class DescribeDataFetchProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2619,6 +3096,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2627,6 +3107,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Type
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2635,6 +3118,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2643,6 +3129,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -2651,6 +3140,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
+        """Custom 2
+        :rtype: str
+        """
         return self._ExtSecond
 
     @ExtSecond.setter
@@ -2659,6 +3151,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Engine(self):
+        """Browser engine
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -2667,6 +3162,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Isp(self):
+        """ISP
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -2675,6 +3173,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def From(self):
+        """Source page
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -2683,6 +3184,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Level(self):
+        """Log level
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -2691,6 +3195,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Brand(self):
+        """Brand
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -2699,6 +3206,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Area(self):
+        """Region
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -2707,6 +3217,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def VersionNum(self):
+        """Version
+        :rtype: str
+        """
         return self._VersionNum
 
     @VersionNum.setter
@@ -2715,6 +3228,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """Platform
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -2723,6 +3239,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def ExtThird(self):
+        """Custom 3
+        :rtype: str
+        """
         return self._ExtThird
 
     @ExtThird.setter
@@ -2731,6 +3250,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
+        """Custom 1
+        :rtype: str
+        """
         return self._ExtFirst
 
     @ExtFirst.setter
@@ -2739,6 +3261,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def NetType(self):
+        """Network type
+        :rtype: str
+        """
         return self._NetType
 
     @NetType.setter
@@ -2747,6 +3272,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Device(self):
+        """Model
+        :rtype: str
+        """
         return self._Device
 
     @Device.setter
@@ -2755,6 +3283,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
+        """Whether it is outside the Chinese mainland
+        :rtype: str
+        """
         return self._IsAbroad
 
     @IsAbroad.setter
@@ -2763,6 +3294,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Os(self):
+        """OS
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -2771,6 +3305,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Browser(self):
+        """Browser
+        :rtype: str
+        """
         return self._Browser
 
     @Browser.setter
@@ -2779,6 +3316,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def CostType(self):
+        """Duration calculation method
+        :rtype: str
+        """
         return self._CostType
 
     @CostType.setter
@@ -2787,6 +3327,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Url(self):
+        """Source
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -2795,6 +3338,9 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Env(self):
+        """Environment
+        :rtype: str
+        """
         return self._Env
 
     @Env.setter
@@ -2853,6 +3399,9 @@ class DescribeDataFetchUrlInfoResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned value
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -2861,6 +3410,9 @@ class DescribeDataFetchUrlInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2962,6 +3514,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2970,6 +3525,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Type(self):
+        """`allcount`: performance view; `day`: 14-day data; `count40x`: HTTP status codes 40X view; `count50x`: HTTP status codes 50X view; `count5xand4x`: HTTP status codes 40X∑50X view; `top`: top resources view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -2978,6 +3536,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2986,6 +3547,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -2994,6 +3558,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
+        """Custom 2
+        :rtype: str
+        """
         return self._ExtSecond
 
     @ExtSecond.setter
@@ -3002,6 +3569,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Engine(self):
+        """Browser engine
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -3010,6 +3580,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Isp(self):
+        """ISP
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -3018,6 +3591,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def From(self):
+        """Source page
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -3026,6 +3602,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Level(self):
+        """Log level
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -3034,6 +3613,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Brand(self):
+        """Brand
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -3042,6 +3624,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Area(self):
+        """Region
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -3050,6 +3635,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def VersionNum(self):
+        """Version
+        :rtype: str
+        """
         return self._VersionNum
 
     @VersionNum.setter
@@ -3058,6 +3646,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """Platform
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -3066,6 +3657,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def ExtThird(self):
+        """Custom 3
+        :rtype: str
+        """
         return self._ExtThird
 
     @ExtThird.setter
@@ -3074,6 +3668,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
+        """Custom 1
+        :rtype: str
+        """
         return self._ExtFirst
 
     @ExtFirst.setter
@@ -3082,6 +3679,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def NetType(self):
+        """Network type
+        :rtype: str
+        """
         return self._NetType
 
     @NetType.setter
@@ -3090,6 +3690,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Device(self):
+        """Model
+        :rtype: str
+        """
         return self._Device
 
     @Device.setter
@@ -3098,6 +3701,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
+        """Whether it is outside the Chinese mainland
+        :rtype: str
+        """
         return self._IsAbroad
 
     @IsAbroad.setter
@@ -3106,6 +3712,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Os(self):
+        """OS
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -3114,6 +3723,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Browser(self):
+        """Browser
+        :rtype: str
+        """
         return self._Browser
 
     @Browser.setter
@@ -3122,6 +3734,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def CostType(self):
+        """Duration calculation method
+        :rtype: str
+        """
         return self._CostType
 
     @CostType.setter
@@ -3130,6 +3745,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Url(self):
+        """Source
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -3138,6 +3756,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Env(self):
+        """Environment
+        :rtype: str
+        """
         return self._Env
 
     @Env.setter
@@ -3146,6 +3767,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Status(self):
+        """HTTP status code.
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3154,6 +3778,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def Ret(self):
+        """retcode
+        :rtype: str
+        """
         return self._Ret
 
     @Ret.setter
@@ -3162,6 +3789,9 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def NetStatus(self):
+        """Network status
+        :rtype: str
+        """
         return self._NetStatus
 
     @NetStatus.setter
@@ -3223,6 +3853,9 @@ class DescribeDataFetchUrlResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned value
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -3231,6 +3864,9 @@ class DescribeDataFetchUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3263,6 +3899,9 @@ class DescribeDataLogUrlInfoRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -3271,6 +3910,9 @@ class DescribeDataLogUrlInfoRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Timestamp
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3279,6 +3921,9 @@ class DescribeDataLogUrlInfoRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """Timestamp
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3317,6 +3962,9 @@ class DescribeDataLogUrlInfoResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Response string
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -3325,6 +3973,9 @@ class DescribeDataLogUrlInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3411,6 +4062,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3419,6 +4073,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Type(self):
+        """`analysis`: exception analysis; `compare`: exception list comparison; `allcount`: performance view; `condition`: condition list; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3427,6 +4084,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3435,6 +4095,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -3443,6 +4106,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
+        """Custom 2
+        :rtype: str
+        """
         return self._ExtSecond
 
     @ExtSecond.setter
@@ -3451,6 +4117,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Engine(self):
+        """Browser engine
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -3459,6 +4128,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Isp(self):
+        """ISP
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -3467,6 +4139,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def From(self):
+        """Source page
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -3475,6 +4150,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Level(self):
+        """Log level
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -3483,6 +4161,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Brand(self):
+        """Brand
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -3491,6 +4172,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Area(self):
+        """Region
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -3499,6 +4183,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def VersionNum(self):
+        """Version
+        :rtype: str
+        """
         return self._VersionNum
 
     @VersionNum.setter
@@ -3507,6 +4194,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """Platform
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -3515,6 +4205,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtThird(self):
+        """Custom 3
+        :rtype: str
+        """
         return self._ExtThird
 
     @ExtThird.setter
@@ -3523,6 +4216,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
+        """Custom 1
+        :rtype: str
+        """
         return self._ExtFirst
 
     @ExtFirst.setter
@@ -3531,6 +4227,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def NetType(self):
+        """Network type
+        :rtype: str
+        """
         return self._NetType
 
     @NetType.setter
@@ -3539,6 +4238,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Device(self):
+        """Model
+        :rtype: str
+        """
         return self._Device
 
     @Device.setter
@@ -3547,6 +4249,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
+        """Whether it is outside the Chinese mainland
+        :rtype: str
+        """
         return self._IsAbroad
 
     @IsAbroad.setter
@@ -3555,6 +4260,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Os(self):
+        """OS
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -3563,6 +4271,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Browser(self):
+        """Browser
+        :rtype: str
+        """
         return self._Browser
 
     @Browser.setter
@@ -3571,6 +4282,9 @@ class DescribeDataLogUrlStatisticsRequest(AbstractModel):
 
     @property
     def Env(self):
+        """Environment
+        :rtype: str
+        """
         return self._Env
 
     @Env.setter
@@ -3627,6 +4341,9 @@ class DescribeDataLogUrlStatisticsResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned value
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -3635,6 +4352,9 @@ class DescribeDataLogUrlStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3727,6 +4447,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -3735,6 +4458,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -3743,6 +4469,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -3751,6 +4480,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Type(self):
+        """`pagepv`: PV view; `allcount`: performance view; `falls`: page loading waterfall plot; `samp`: FMP, `day`: 14-day data, `nettype`: network/platform view; `performance`: top underperformed pages view; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3759,6 +4491,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Level(self):
+        """Log level
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -3767,6 +4502,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Isp(self):
+        """ISP
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -3775,6 +4513,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Area(self):
+        """Region
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -3783,6 +4524,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def NetType(self):
+        """Network type
+        :rtype: str
+        """
         return self._NetType
 
     @NetType.setter
@@ -3791,6 +4535,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """Platform
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -3799,6 +4546,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Device(self):
+        """Model
+        :rtype: str
+        """
         return self._Device
 
     @Device.setter
@@ -3807,6 +4557,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def VersionNum(self):
+        """Version
+        :rtype: str
+        """
         return self._VersionNum
 
     @VersionNum.setter
@@ -3815,6 +4568,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
+        """Custom 1
+        :rtype: str
+        """
         return self._ExtFirst
 
     @ExtFirst.setter
@@ -3823,6 +4579,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
+        """Custom 2
+        :rtype: str
+        """
         return self._ExtSecond
 
     @ExtSecond.setter
@@ -3831,6 +4590,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def ExtThird(self):
+        """Custom 3
+        :rtype: str
+        """
         return self._ExtThird
 
     @ExtThird.setter
@@ -3839,6 +4601,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
+        """Whether it is outside the Chinese mainland
+        :rtype: str
+        """
         return self._IsAbroad
 
     @IsAbroad.setter
@@ -3847,6 +4612,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Browser(self):
+        """Browser
+        :rtype: str
+        """
         return self._Browser
 
     @Browser.setter
@@ -3855,6 +4623,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Os(self):
+        """OS
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -3863,6 +4634,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Engine(self):
+        """Browser engine
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -3871,6 +4645,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Brand(self):
+        """Brand
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -3879,6 +4656,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def From(self):
+        """Source page
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -3887,6 +4667,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def CostType(self):
+        """Duration calculation method
+        :rtype: str
+        """
         return self._CostType
 
     @CostType.setter
@@ -3895,6 +4678,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def Env(self):
+        """Environment variable
+        :rtype: str
+        """
         return self._Env
 
     @Env.setter
@@ -3903,6 +4689,9 @@ class DescribeDataPerformancePageRequest(AbstractModel):
 
     @property
     def NetStatus(self):
+        """Network status
+        :rtype: str
+        """
         return self._NetStatus
 
     @NetStatus.setter
@@ -3961,6 +4750,9 @@ class DescribeDataPerformancePageResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned value
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -3969,6 +4761,9 @@ class DescribeDataPerformancePageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4058,6 +4853,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4066,6 +4864,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Type(self):
+        """`allcount`; performance view; `falls`: page loading waterfall plot; `samp`: FMP, `day`: 14-day data, `nettype`: network/platform view; `performance`: top underperformed pages view; `condition`: condition list; `area`: request speed distribution; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -4074,6 +4875,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4082,6 +4886,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -4090,6 +4897,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
+        """Custom 2
+        :rtype: str
+        """
         return self._ExtSecond
 
     @ExtSecond.setter
@@ -4098,6 +4908,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Engine(self):
+        """Browser engine
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -4106,6 +4919,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Isp(self):
+        """ISP
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -4114,6 +4930,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def From(self):
+        """Source page
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -4122,6 +4941,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Level(self):
+        """Log level
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -4130,6 +4952,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Brand(self):
+        """Brand
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -4138,6 +4963,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Area(self):
+        """Region
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -4146,6 +4974,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def VersionNum(self):
+        """Version
+        :rtype: str
+        """
         return self._VersionNum
 
     @VersionNum.setter
@@ -4154,6 +4985,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """Platform
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -4162,6 +4996,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def ExtThird(self):
+        """Custom 3
+        :rtype: str
+        """
         return self._ExtThird
 
     @ExtThird.setter
@@ -4170,6 +5007,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
+        """Custom 1
+        :rtype: str
+        """
         return self._ExtFirst
 
     @ExtFirst.setter
@@ -4178,6 +5018,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def NetType(self):
+        """Network type
+        :rtype: str
+        """
         return self._NetType
 
     @NetType.setter
@@ -4186,6 +5029,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Device(self):
+        """Model
+        :rtype: str
+        """
         return self._Device
 
     @Device.setter
@@ -4194,6 +5040,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
+        """Whether it is outside the Chinese mainland
+        :rtype: str
+        """
         return self._IsAbroad
 
     @IsAbroad.setter
@@ -4202,6 +5051,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Os(self):
+        """OS
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -4210,6 +5062,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Browser(self):
+        """Browser
+        :rtype: str
+        """
         return self._Browser
 
     @Browser.setter
@@ -4218,6 +5073,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def CostType(self):
+        """Duration calculation
+        :rtype: str
+        """
         return self._CostType
 
     @CostType.setter
@@ -4226,6 +5084,9 @@ class DescribeDataPerformanceProjectRequest(AbstractModel):
 
     @property
     def Env(self):
+        """Environment
+        :rtype: str
+        """
         return self._Env
 
     @Env.setter
@@ -4283,6 +5144,9 @@ class DescribeDataPerformanceProjectResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned value
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -4291,6 +5155,9 @@ class DescribeDataPerformanceProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4377,6 +5244,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4385,6 +5255,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Type
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -4393,6 +5266,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4401,6 +5277,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -4409,6 +5288,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
+        """Custom 2
+        :rtype: str
+        """
         return self._ExtSecond
 
     @ExtSecond.setter
@@ -4417,6 +5299,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Engine(self):
+        """Browser engine
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -4425,6 +5310,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Isp(self):
+        """ISP
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -4433,6 +5321,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def From(self):
+        """Source page
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -4441,6 +5332,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Level(self):
+        """Log level
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -4449,6 +5343,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Brand(self):
+        """Brand
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -4457,6 +5354,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Area(self):
+        """Region
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -4465,6 +5365,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def VersionNum(self):
+        """Version
+        :rtype: str
+        """
         return self._VersionNum
 
     @VersionNum.setter
@@ -4473,6 +5376,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """Platform
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -4481,6 +5387,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def ExtThird(self):
+        """Custom 3
+        :rtype: str
+        """
         return self._ExtThird
 
     @ExtThird.setter
@@ -4489,6 +5398,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
+        """Custom 1
+        :rtype: str
+        """
         return self._ExtFirst
 
     @ExtFirst.setter
@@ -4497,6 +5409,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def NetType(self):
+        """Network type
+        :rtype: str
+        """
         return self._NetType
 
     @NetType.setter
@@ -4505,6 +5420,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Device(self):
+        """Model
+        :rtype: str
+        """
         return self._Device
 
     @Device.setter
@@ -4513,6 +5431,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
+        """Whether it is outside the Chinese mainland
+        :rtype: str
+        """
         return self._IsAbroad
 
     @IsAbroad.setter
@@ -4521,6 +5442,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Os(self):
+        """OS
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -4529,6 +5453,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Browser(self):
+        """Browser
+        :rtype: str
+        """
         return self._Browser
 
     @Browser.setter
@@ -4537,6 +5464,9 @@ class DescribeDataPvUrlInfoRequest(AbstractModel):
 
     @property
     def Env(self):
+        """Environment
+        :rtype: str
+        """
         return self._Env
 
     @Env.setter
@@ -4593,6 +5523,9 @@ class DescribeDataPvUrlInfoResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned value
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -4601,6 +5534,9 @@ class DescribeDataPvUrlInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4687,6 +5623,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4695,6 +5634,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Type(self):
+        """`allcount`; performance view; `day`: 14-day data, `vp`: performance; `ckuv`: UV; `ckpv`: PV; `condition`: condition list; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -4703,6 +5645,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4711,6 +5656,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -4719,6 +5667,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
+        """Custom 2
+        :rtype: str
+        """
         return self._ExtSecond
 
     @ExtSecond.setter
@@ -4727,6 +5678,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Engine(self):
+        """Browser engine
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -4735,6 +5689,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Isp(self):
+        """ISP
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -4743,6 +5700,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def From(self):
+        """Source page
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -4751,6 +5711,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Level(self):
+        """Log level
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -4759,6 +5722,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Brand(self):
+        """Brand
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -4767,6 +5733,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Area(self):
+        """Region
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -4775,6 +5744,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def VersionNum(self):
+        """Version
+        :rtype: str
+        """
         return self._VersionNum
 
     @VersionNum.setter
@@ -4783,6 +5755,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """Platform
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -4791,6 +5766,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtThird(self):
+        """Custom 3
+        :rtype: str
+        """
         return self._ExtThird
 
     @ExtThird.setter
@@ -4799,6 +5777,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
+        """Custom 1
+        :rtype: str
+        """
         return self._ExtFirst
 
     @ExtFirst.setter
@@ -4807,6 +5788,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def NetType(self):
+        """Network type
+        :rtype: str
+        """
         return self._NetType
 
     @NetType.setter
@@ -4815,6 +5799,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Device(self):
+        """Model
+        :rtype: str
+        """
         return self._Device
 
     @Device.setter
@@ -4823,6 +5810,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
+        """Whether it is outside the Chinese mainland
+        :rtype: str
+        """
         return self._IsAbroad
 
     @IsAbroad.setter
@@ -4831,6 +5821,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Os(self):
+        """OS
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -4839,6 +5832,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Browser(self):
+        """Browser
+        :rtype: str
+        """
         return self._Browser
 
     @Browser.setter
@@ -4847,6 +5843,9 @@ class DescribeDataPvUrlStatisticsRequest(AbstractModel):
 
     @property
     def Env(self):
+        """Environment
+        :rtype: str
+        """
         return self._Env
 
     @Env.setter
@@ -4903,6 +5902,9 @@ class DescribeDataPvUrlStatisticsResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned value
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -4911,6 +5913,9 @@ class DescribeDataPvUrlStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -4949,6 +5954,9 @@ class DescribeDataReportCountRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -4957,6 +5965,9 @@ class DescribeDataReportCountRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -4965,6 +5976,9 @@ class DescribeDataReportCountRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -4973,6 +5987,9 @@ class DescribeDataReportCountRequest(AbstractModel):
 
     @property
     def ReportType(self):
+        """Reporting type
+        :rtype: str
+        """
         return self._ReportType
 
     @ReportType.setter
@@ -4981,6 +5998,9 @@ class DescribeDataReportCountRequest(AbstractModel):
 
     @property
     def InstanceID(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceID
 
     @InstanceID.setter
@@ -5021,6 +6041,9 @@ class DescribeDataReportCountResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned value
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -5029,6 +6052,9 @@ class DescribeDataReportCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5058,6 +6084,9 @@ class DescribeDataRequest(AbstractModel):
 
     @property
     def Query(self):
+        """Query string
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -5066,6 +6095,9 @@ class DescribeDataRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -5103,6 +6135,9 @@ class DescribeDataResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Response string
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -5111,6 +6146,9 @@ class DescribeDataResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5203,6 +6241,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -5211,6 +6252,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Type(self):
+        """`allcount`: performance view; `data`: mini program; `component`: mini program-related components; `day`: 14-day data; `nettype`: network/platform view; `performance`: top underperformed pages view; `version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: version view; device view; ISP view; region view; browser view, and so on.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -5219,6 +6263,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5227,6 +6274,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -5235,6 +6285,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
+        """Custom 2
+        :rtype: str
+        """
         return self._ExtSecond
 
     @ExtSecond.setter
@@ -5243,6 +6296,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Engine(self):
+        """Browser engine
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -5251,6 +6307,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Isp(self):
+        """ISP
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -5259,6 +6318,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def From(self):
+        """Source page
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -5267,6 +6329,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Level(self):
+        """Log level
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -5275,6 +6340,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Brand(self):
+        """Brand
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -5283,6 +6351,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Area(self):
+        """Region
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -5291,6 +6362,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def VersionNum(self):
+        """Version
+        :rtype: str
+        """
         return self._VersionNum
 
     @VersionNum.setter
@@ -5299,6 +6373,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """Platform
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -5307,6 +6384,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtThird(self):
+        """Custom 3
+        :rtype: str
+        """
         return self._ExtThird
 
     @ExtThird.setter
@@ -5315,6 +6395,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
+        """Custom 1
+        :rtype: str
+        """
         return self._ExtFirst
 
     @ExtFirst.setter
@@ -5323,6 +6406,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def NetType(self):
+        """Network type
+        :rtype: str
+        """
         return self._NetType
 
     @NetType.setter
@@ -5331,6 +6417,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Device(self):
+        """Model
+        :rtype: str
+        """
         return self._Device
 
     @Device.setter
@@ -5339,6 +6428,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
+        """Whether it is outside the Chinese mainland
+        :rtype: str
+        """
         return self._IsAbroad
 
     @IsAbroad.setter
@@ -5347,6 +6439,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Os(self):
+        """OS
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -5355,6 +6450,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Browser(self):
+        """Browser
+        :rtype: str
+        """
         return self._Browser
 
     @Browser.setter
@@ -5363,6 +6461,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def CostType(self):
+        """Duration calculation
+        :rtype: str
+        """
         return self._CostType
 
     @CostType.setter
@@ -5371,6 +6472,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def Env(self):
+        """Environment
+        :rtype: str
+        """
         return self._Env
 
     @Env.setter
@@ -5379,6 +6483,9 @@ class DescribeDataSetUrlStatisticsRequest(AbstractModel):
 
     @property
     def PackageType(self):
+        """The obtained package.
+        :rtype: str
+        """
         return self._PackageType
 
     @PackageType.setter
@@ -5437,6 +6544,9 @@ class DescribeDataSetUrlStatisticsResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned value
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -5445,6 +6555,9 @@ class DescribeDataSetUrlStatisticsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5537,6 +6650,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -5545,6 +6661,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Type(self):
+        """`allcount`: performance view; `day`: 14-day data; `condition`: condition list; `area`: request speed distribution; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -5553,6 +6672,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5561,6 +6683,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -5569,6 +6694,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
+        """Custom 2
+        :rtype: str
+        """
         return self._ExtSecond
 
     @ExtSecond.setter
@@ -5577,6 +6705,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Engine(self):
+        """Browser engine
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -5585,6 +6716,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Isp(self):
+        """ISP
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -5593,6 +6727,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def From(self):
+        """Source page
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -5601,6 +6738,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Level(self):
+        """Log level
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -5609,6 +6749,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Brand(self):
+        """Brand
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -5617,6 +6760,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Area(self):
+        """Region
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -5625,6 +6771,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def VersionNum(self):
+        """Version
+        :rtype: str
+        """
         return self._VersionNum
 
     @VersionNum.setter
@@ -5633,6 +6782,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """Platform
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -5641,6 +6793,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def ExtThird(self):
+        """Custom 3
+        :rtype: str
+        """
         return self._ExtThird
 
     @ExtThird.setter
@@ -5649,6 +6804,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
+        """Custom 1
+        :rtype: str
+        """
         return self._ExtFirst
 
     @ExtFirst.setter
@@ -5657,6 +6815,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def NetType(self):
+        """Network type
+        :rtype: str
+        """
         return self._NetType
 
     @NetType.setter
@@ -5665,6 +6826,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Device(self):
+        """Model
+        :rtype: str
+        """
         return self._Device
 
     @Device.setter
@@ -5673,6 +6837,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
+        """Whether it is outside the Chinese mainland
+        :rtype: str
+        """
         return self._IsAbroad
 
     @IsAbroad.setter
@@ -5681,6 +6848,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Os(self):
+        """OS
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -5689,6 +6859,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Browser(self):
+        """Browser
+        :rtype: str
+        """
         return self._Browser
 
     @Browser.setter
@@ -5697,6 +6870,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def CostType(self):
+        """Duration calculation
+        :rtype: str
+        """
         return self._CostType
 
     @CostType.setter
@@ -5705,6 +6881,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Url(self):
+        """Source
+        :rtype: list of str
+        """
         return self._Url
 
     @Url.setter
@@ -5713,6 +6892,9 @@ class DescribeDataStaticProjectRequest(AbstractModel):
 
     @property
     def Env(self):
+        """Environment
+        :rtype: str
+        """
         return self._Env
 
     @Env.setter
@@ -5771,6 +6953,9 @@ class DescribeDataStaticProjectResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned value
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -5779,6 +6964,9 @@ class DescribeDataStaticProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -5871,6 +7059,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -5879,6 +7070,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Type(self):
+        """`top`: top resources view; `count40x`: HTTP status codes 40X view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -5887,6 +7081,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -5895,6 +7092,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -5903,6 +7103,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
+        """Custom 2
+        :rtype: str
+        """
         return self._ExtSecond
 
     @ExtSecond.setter
@@ -5911,6 +7114,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Engine(self):
+        """Browser engine
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -5919,6 +7125,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Isp(self):
+        """ISP
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -5927,6 +7136,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def From(self):
+        """Source page
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -5935,6 +7147,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Level(self):
+        """Log level
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -5943,6 +7158,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Brand(self):
+        """Brand
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -5951,6 +7169,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Area(self):
+        """Region
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -5959,6 +7180,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def VersionNum(self):
+        """Version
+        :rtype: str
+        """
         return self._VersionNum
 
     @VersionNum.setter
@@ -5967,6 +7191,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """Platform
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -5975,6 +7202,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def ExtThird(self):
+        """Custom 3
+        :rtype: str
+        """
         return self._ExtThird
 
     @ExtThird.setter
@@ -5983,6 +7213,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
+        """Custom 1
+        :rtype: str
+        """
         return self._ExtFirst
 
     @ExtFirst.setter
@@ -5991,6 +7224,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def NetType(self):
+        """Network type
+        :rtype: str
+        """
         return self._NetType
 
     @NetType.setter
@@ -5999,6 +7235,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Device(self):
+        """Model
+        :rtype: str
+        """
         return self._Device
 
     @Device.setter
@@ -6007,6 +7246,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
+        """Whether it is outside the Chinese mainland
+        :rtype: str
+        """
         return self._IsAbroad
 
     @IsAbroad.setter
@@ -6015,6 +7257,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Os(self):
+        """OS
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -6023,6 +7268,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Browser(self):
+        """Browser
+        :rtype: str
+        """
         return self._Browser
 
     @Browser.setter
@@ -6031,6 +7279,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def CostType(self):
+        """Duration calculation method
+        :rtype: str
+        """
         return self._CostType
 
     @CostType.setter
@@ -6039,6 +7290,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Url(self):
+        """Source
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -6047,6 +7301,9 @@ class DescribeDataStaticResourceRequest(AbstractModel):
 
     @property
     def Env(self):
+        """Environment
+        :rtype: str
+        """
         return self._Env
 
     @Env.setter
@@ -6105,6 +7362,9 @@ class DescribeDataStaticResourceResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned value
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -6113,6 +7373,9 @@ class DescribeDataStaticResourceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6205,6 +7468,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6213,6 +7479,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Type(self):
+        """`pagepv`: page view; `nettype`/`version`/`platform`/`isp`/`region`/`device`/`browser`/`ext1`/`ext2`/`ext3`/`ret`/`status`/`from`/`url`/`env`: network/platform view; version view; device view; ISP view; region view; browser view; custom view, and so on.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -6221,6 +7490,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6229,6 +7501,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -6237,6 +7512,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
+        """Custom 2
+        :rtype: str
+        """
         return self._ExtSecond
 
     @ExtSecond.setter
@@ -6245,6 +7523,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Engine(self):
+        """Browser engine
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -6253,6 +7534,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Isp(self):
+        """ISP
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -6261,6 +7545,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def From(self):
+        """Source page
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -6269,6 +7556,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Level(self):
+        """Log level
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -6277,6 +7567,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Brand(self):
+        """Brand
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -6285,6 +7578,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Area(self):
+        """Region
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -6293,6 +7589,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def VersionNum(self):
+        """Version
+        :rtype: str
+        """
         return self._VersionNum
 
     @VersionNum.setter
@@ -6301,6 +7600,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """Platform
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -6309,6 +7611,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def ExtThird(self):
+        """Custom 3
+        :rtype: str
+        """
         return self._ExtThird
 
     @ExtThird.setter
@@ -6317,6 +7622,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
+        """Custom 1
+        :rtype: str
+        """
         return self._ExtFirst
 
     @ExtFirst.setter
@@ -6325,6 +7633,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def NetType(self):
+        """Network type
+        :rtype: str
+        """
         return self._NetType
 
     @NetType.setter
@@ -6333,6 +7644,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Device(self):
+        """Model
+        :rtype: str
+        """
         return self._Device
 
     @Device.setter
@@ -6341,6 +7655,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
+        """Whether it is outside the Chinese mainland
+        :rtype: str
+        """
         return self._IsAbroad
 
     @IsAbroad.setter
@@ -6349,6 +7666,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Os(self):
+        """OS
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -6357,6 +7677,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Browser(self):
+        """Browser
+        :rtype: str
+        """
         return self._Browser
 
     @Browser.setter
@@ -6365,6 +7688,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def CostType(self):
+        """Duration calculation method
+        :rtype: str
+        """
         return self._CostType
 
     @CostType.setter
@@ -6373,6 +7699,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Url(self):
+        """Source
+        :rtype: str
+        """
         return self._Url
 
     @Url.setter
@@ -6381,6 +7710,9 @@ class DescribeDataStaticUrlRequest(AbstractModel):
 
     @property
     def Env(self):
+        """Environment
+        :rtype: str
+        """
         return self._Env
 
     @Env.setter
@@ -6439,6 +7771,9 @@ class DescribeDataStaticUrlResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned value
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -6447,6 +7782,9 @@ class DescribeDataStaticUrlResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6536,6 +7874,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -6544,6 +7885,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: int
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -6552,6 +7896,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -6560,6 +7907,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def ExtSecond(self):
+        """Custom 2
+        :rtype: str
+        """
         return self._ExtSecond
 
     @ExtSecond.setter
@@ -6568,6 +7918,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Engine(self):
+        """Browser engine
+        :rtype: str
+        """
         return self._Engine
 
     @Engine.setter
@@ -6576,6 +7929,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Isp(self):
+        """ISP
+        :rtype: str
+        """
         return self._Isp
 
     @Isp.setter
@@ -6584,6 +7940,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def From(self):
+        """Source page
+        :rtype: str
+        """
         return self._From
 
     @From.setter
@@ -6592,6 +7951,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Level(self):
+        """Log level
+        :rtype: str
+        """
         return self._Level
 
     @Level.setter
@@ -6600,6 +7962,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Type(self):
+        """No type yet
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -6608,6 +7973,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Brand(self):
+        """Brand
+        :rtype: str
+        """
         return self._Brand
 
     @Brand.setter
@@ -6616,6 +7984,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Area(self):
+        """Region
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -6624,6 +7995,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def VersionNum(self):
+        """Version
+        :rtype: str
+        """
         return self._VersionNum
 
     @VersionNum.setter
@@ -6632,6 +8006,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Platform(self):
+        """Platform
+        :rtype: str
+        """
         return self._Platform
 
     @Platform.setter
@@ -6640,6 +8017,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def ExtThird(self):
+        """Custom 3
+        :rtype: str
+        """
         return self._ExtThird
 
     @ExtThird.setter
@@ -6648,6 +8028,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def ExtFirst(self):
+        """Custom 1
+        :rtype: str
+        """
         return self._ExtFirst
 
     @ExtFirst.setter
@@ -6656,6 +8039,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def NetType(self):
+        """Network type
+        :rtype: str
+        """
         return self._NetType
 
     @NetType.setter
@@ -6664,6 +8050,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Device(self):
+        """Model
+        :rtype: str
+        """
         return self._Device
 
     @Device.setter
@@ -6672,6 +8061,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def IsAbroad(self):
+        """Whether it is outside the Chinese mainland
+        :rtype: str
+        """
         return self._IsAbroad
 
     @IsAbroad.setter
@@ -6680,6 +8072,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Os(self):
+        """OS
+        :rtype: str
+        """
         return self._Os
 
     @Os.setter
@@ -6688,6 +8083,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Browser(self):
+        """Browser
+        :rtype: str
+        """
         return self._Browser
 
     @Browser.setter
@@ -6696,6 +8094,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def CostType(self):
+        """Duration calculation
+        :rtype: str
+        """
         return self._CostType
 
     @CostType.setter
@@ -6704,6 +8105,9 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Env(self):
+        """Environment
+        :rtype: str
+        """
         return self._Env
 
     @Env.setter
@@ -6761,6 +8165,9 @@ class DescribeDataWebVitalsPageResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Returned value
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -6769,6 +8176,9 @@ class DescribeDataWebVitalsPageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6798,6 +8208,9 @@ class DescribeErrorRequest(AbstractModel):
 
     @property
     def Date(self):
+        """Date
+        :rtype: str
+        """
         return self._Date
 
     @Date.setter
@@ -6806,6 +8219,9 @@ class DescribeErrorRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -6849,6 +8265,9 @@ class DescribeErrorResponse(AbstractModel):
 
     @property
     def Content(self):
+        """Content
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -6857,6 +8276,9 @@ class DescribeErrorResponse(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -6865,6 +8287,9 @@ class DescribeErrorResponse(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -6873,6 +8298,9 @@ class DescribeErrorResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6901,6 +8329,9 @@ class DescribeLogExportsRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -6937,6 +8368,9 @@ class DescribeLogExportsResponse(AbstractModel):
 
     @property
     def LogExportSet(self):
+        """List of log export records
+        :rtype: list of LogExport
+        """
         return self._LogExportSet
 
     @LogExportSet.setter
@@ -6945,6 +8379,9 @@ class DescribeLogExportsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -6997,6 +8434,9 @@ class DescribeLogListRequest(AbstractModel):
 
     @property
     def Sort(self):
+        """Sorting order (required). Valid values: `desc`, `asc`.
+        :rtype: str
+        """
         return self._Sort
 
     @Sort.setter
@@ -7005,6 +8445,9 @@ class DescribeLogListRequest(AbstractModel):
 
     @property
     def ActionType(self):
+        """This parameter is required. Valid values: `searchlog`, `histogram`.
+        :rtype: str
+        """
         return self._ActionType
 
     @ActionType.setter
@@ -7013,6 +8456,9 @@ class DescribeLogListRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID (required)
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -7021,6 +8467,9 @@ class DescribeLogListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time (required)
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7029,6 +8478,9 @@ class DescribeLogListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of raw logs returned for a single query. This parameter is required. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7037,6 +8489,9 @@ class DescribeLogListRequest(AbstractModel):
 
     @property
     def Context(self):
+        """Context, which is used to load more logs. Pass through the last `Context` value returned to get more log content (up to 10,000 raw logs). It will expire after 1 hour
+        :rtype: str
+        """
         return self._Context
 
     @Context.setter
@@ -7045,6 +8500,9 @@ class DescribeLogListRequest(AbstractModel):
 
     @property
     def Query(self):
+        """Query statement, which is required and can contain up to 4,096 characters, such as "id:120001 AND type:\"log\"".
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -7053,6 +8511,9 @@ class DescribeLogListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time (required)
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7096,6 +8557,9 @@ class DescribeLogListResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Response string
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -7104,6 +8568,9 @@ class DescribeLogListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7130,6 +8597,9 @@ class DescribeOfflineLogConfigsRequest(AbstractModel):
 
     @property
     def ProjectKey(self):
+        """Unique project key for reporting
+        :rtype: str
+        """
         return self._ProjectKey
 
     @ProjectKey.setter
@@ -7169,6 +8639,9 @@ class DescribeOfflineLogConfigsResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """API call information
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -7177,6 +8650,9 @@ class DescribeOfflineLogConfigsResponse(AbstractModel):
 
     @property
     def UniqueIDSet(self):
+        """Array of unique user identifiers
+        :rtype: list of str
+        """
         return self._UniqueIDSet
 
     @UniqueIDSet.setter
@@ -7185,6 +8661,9 @@ class DescribeOfflineLogConfigsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7212,6 +8691,9 @@ class DescribeOfflineLogRecordsRequest(AbstractModel):
 
     @property
     def ProjectKey(self):
+        """Unique project key for reporting
+        :rtype: str
+        """
         return self._ProjectKey
 
     @ProjectKey.setter
@@ -7251,6 +8733,9 @@ class DescribeOfflineLogRecordsResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """API call information
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -7259,6 +8744,9 @@ class DescribeOfflineLogRecordsResponse(AbstractModel):
 
     @property
     def RecordSet(self):
+        """Array of record IDs
+        :rtype: list of str
+        """
         return self._RecordSet
 
     @RecordSet.setter
@@ -7267,6 +8755,9 @@ class DescribeOfflineLogRecordsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7297,6 +8788,9 @@ class DescribeOfflineLogsRequest(AbstractModel):
 
     @property
     def ProjectKey(self):
+        """Unique project key for reporting
+        :rtype: str
+        """
         return self._ProjectKey
 
     @ProjectKey.setter
@@ -7305,6 +8799,9 @@ class DescribeOfflineLogsRequest(AbstractModel):
 
     @property
     def FileIDs(self):
+        """List of offline log file IDs
+        :rtype: list of str
+        """
         return self._FileIDs
 
     @FileIDs.setter
@@ -7345,6 +8842,9 @@ class DescribeOfflineLogsResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """API call response
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -7353,6 +8853,9 @@ class DescribeOfflineLogsResponse(AbstractModel):
 
     @property
     def LogSet(self):
+        """Log list
+        :rtype: list of str
+        """
         return self._LogSet
 
     @LogSet.setter
@@ -7361,6 +8864,9 @@ class DescribeOfflineLogsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7388,6 +8894,9 @@ class DescribeProjectLimitsRequest(AbstractModel):
 
     @property
     def ProjectID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectID
 
     @ProjectID.setter
@@ -7424,6 +8933,9 @@ class DescribeProjectLimitsResponse(AbstractModel):
 
     @property
     def ProjectLimitSet(self):
+        """Array of reporting rates
+        :rtype: list of ProjectLimit
+        """
         return self._ProjectLimitSet
 
     @ProjectLimitSet.setter
@@ -7432,6 +8944,9 @@ class DescribeProjectLimitsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7472,6 +8987,9 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of items per page (integer)
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7480,6 +8998,9 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Page number (integer)
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -7488,6 +9009,9 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter parameter. Pass in {"Name": "IsDemo", "Values":["1"]} for the demo mode.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -7496,6 +9020,9 @@ class DescribeProjectsRequest(AbstractModel):
 
     @property
     def IsDemo(self):
+        """This parameter has been disused. You need to indicate whether the demo mode is used in `Filters`.
+        :rtype: int
+        """
         return self._IsDemo
 
     @IsDemo.setter
@@ -7543,6 +9070,9 @@ class DescribeProjectsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of items in the list
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -7551,6 +9081,9 @@ class DescribeProjectsResponse(AbstractModel):
 
     @property
     def ProjectSet(self):
+        """Project list
+        :rtype: list of RumProject
+        """
         return self._ProjectSet
 
     @ProjectSet.setter
@@ -7559,6 +9092,9 @@ class DescribeProjectsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7600,6 +9136,9 @@ class DescribePvListRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -7608,6 +9147,9 @@ class DescribePvListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7616,6 +9158,9 @@ class DescribePvListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7624,6 +9169,9 @@ class DescribePvListRequest(AbstractModel):
 
     @property
     def Dimension(self):
+        """Get day:d (leave this parameter empty if to get min)
+        :rtype: str
+        """
         return self._Dimension
 
     @Dimension.setter
@@ -7664,6 +9212,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectPvSet(self):
+        """PV list
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of RumPvInfo
+        """
         return self._ProjectPvSet
 
     @ProjectPvSet.setter
@@ -7672,6 +9224,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7706,6 +9261,9 @@ class DescribeReleaseFileSignRequest(AbstractModel):
 
     @property
     def Timeout(self):
+        """Timeout period. If it is not set, it will be 5 minutes by default
+        :rtype: int
+        """
         return self._Timeout
 
     @Timeout.setter
@@ -7714,6 +9272,9 @@ class DescribeReleaseFileSignRequest(AbstractModel):
 
     @property
     def FileType(self):
+        """Bucket type. Valid values: `1`: (Web, which is the default value), `2` (Application).
+        :rtype: int
+        """
         return self._FileType
 
     @FileType.setter
@@ -7763,6 +9324,9 @@ class DescribeReleaseFileSignResponse(AbstractModel):
 
     @property
     def SecretKey(self):
+        """Temporary key
+        :rtype: str
+        """
         return self._SecretKey
 
     @SecretKey.setter
@@ -7771,6 +9335,9 @@ class DescribeReleaseFileSignResponse(AbstractModel):
 
     @property
     def SecretID(self):
+        """Temporary key ID
+        :rtype: str
+        """
         return self._SecretID
 
     @SecretID.setter
@@ -7779,6 +9346,9 @@ class DescribeReleaseFileSignResponse(AbstractModel):
 
     @property
     def SessionToken(self):
+        """Temporary key token
+        :rtype: str
+        """
         return self._SessionToken
 
     @SessionToken.setter
@@ -7787,6 +9357,9 @@ class DescribeReleaseFileSignResponse(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start timestamp
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7795,6 +9368,9 @@ class DescribeReleaseFileSignResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
+        """Expiration timestamp
+        :rtype: int
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -7803,6 +9379,9 @@ class DescribeReleaseFileSignResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7836,6 +9415,9 @@ class DescribeReleaseFilesRequest(AbstractModel):
 
     @property
     def ProjectID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectID
 
     @ProjectID.setter
@@ -7844,6 +9426,9 @@ class DescribeReleaseFilesRequest(AbstractModel):
 
     @property
     def FileVersion(self):
+        """File version
+        :rtype: str
+        """
         return self._FileVersion
 
     @FileVersion.setter
@@ -7881,6 +9466,9 @@ class DescribeReleaseFilesResponse(AbstractModel):
 
     @property
     def Files(self):
+        """File information list
+        :rtype: list of ReleaseFile
+        """
         return self._Files
 
     @Files.setter
@@ -7889,6 +9477,9 @@ class DescribeReleaseFilesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -7941,6 +9532,9 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """Sorting order (required). Valid values: `desc`, `asc`.
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -7949,6 +9543,9 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time (required)
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -7957,6 +9554,9 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -7965,6 +9565,9 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def Page(self):
+        """Page number
+        :rtype: int
+        """
         return self._Page
 
     @Page.setter
@@ -7973,6 +9576,9 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def Query(self):
+        """Query statement, which is required and can contain up to 4,096 characters.
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -7981,6 +9587,9 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time (required)
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -7989,6 +9598,9 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID (required)
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -7997,6 +9609,9 @@ class DescribeRumGroupLogRequest(AbstractModel):
 
     @property
     def GroupField(self):
+        """Aggregate field
+        :rtype: str
+        """
         return self._GroupField
 
     @GroupField.setter
@@ -8040,6 +9655,9 @@ class DescribeRumGroupLogResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Response string
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -8048,6 +9666,9 @@ class DescribeRumGroupLogResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8089,6 +9710,9 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Export identifier name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -8097,6 +9721,9 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time (required)
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8105,6 +9732,9 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def Query(self):
+        """Query statement, which is required and can contain up to 4,096 characters.
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -8113,6 +9743,9 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time (required)
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8121,6 +9754,9 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID (required)
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -8129,6 +9765,9 @@ class DescribeRumLogExportRequest(AbstractModel):
 
     @property
     def Fields(self):
+        """Filter field
+        :rtype: list of str
+        """
         return self._Fields
 
     @Fields.setter
@@ -8170,6 +9809,9 @@ class DescribeRumLogExportResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Response string
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -8178,6 +9820,9 @@ class DescribeRumLogExportResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8210,6 +9855,9 @@ class DescribeRumLogExportsRequest(AbstractModel):
 
     @property
     def PageSize(self):
+        """Page size
+        :rtype: int
+        """
         return self._PageSize
 
     @PageSize.setter
@@ -8218,6 +9866,9 @@ class DescribeRumLogExportsRequest(AbstractModel):
 
     @property
     def PageNum(self):
+        """Page number
+        :rtype: int
+        """
         return self._PageNum
 
     @PageNum.setter
@@ -8226,6 +9877,9 @@ class DescribeRumLogExportsRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID (required)
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -8264,6 +9918,9 @@ class DescribeRumLogExportsResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Response string
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -8272,6 +9929,9 @@ class DescribeRumLogExportsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8316,6 +9976,9 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def OrderBy(self):
+        """Sorting order (required). Valid values: `desc`, `asc`.
+        :rtype: str
+        """
         return self._OrderBy
 
     @OrderBy.setter
@@ -8324,6 +9987,9 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time in milliseconds. It is in timestamp format and is required.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8332,6 +9998,9 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8340,6 +10009,9 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def Page(self):
+        """Page number
+        :rtype: int
+        """
         return self._Page
 
     @Page.setter
@@ -8348,6 +10020,9 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def Query(self):
+        """Query statement, which is required and can contain up to 4,096 characters.
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -8356,6 +10031,9 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time in milliseconds. It is in timestamp format and is required.
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8364,6 +10042,9 @@ class DescribeRumLogListRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID (required)
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -8406,6 +10087,9 @@ class DescribeRumLogListResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Response string
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -8414,6 +10098,9 @@ class DescribeRumLogListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8452,6 +10139,9 @@ class DescribeRumStatsLogListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time (required)
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8460,6 +10150,9 @@ class DescribeRumStatsLogListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """The number of raw logs returned for a single query. This parameter is required. Maximum value: `100`.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8468,6 +10161,9 @@ class DescribeRumStatsLogListRequest(AbstractModel):
 
     @property
     def Query(self):
+        """Query statement, which is required and can contain up to 4,096 characters.
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -8476,6 +10172,9 @@ class DescribeRumStatsLogListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time (required)
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8484,6 +10183,9 @@ class DescribeRumStatsLogListRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID (required)
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -8524,6 +10226,9 @@ class DescribeRumStatsLogListResponse(AbstractModel):
 
     @property
     def Result(self):
+        """Response string
+        :rtype: str
+        """
         return self._Result
 
     @Result.setter
@@ -8532,6 +10237,9 @@ class DescribeRumStatsLogListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8567,6 +10275,9 @@ class DescribeScoresRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8575,6 +10286,9 @@ class DescribeScoresRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8583,6 +10297,9 @@ class DescribeScoresRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -8591,6 +10308,9 @@ class DescribeScoresRequest(AbstractModel):
 
     @property
     def IsDemo(self):
+        """This parameter has been disused.
+        :rtype: int
+        """
         return self._IsDemo
 
     @IsDemo.setter
@@ -8630,6 +10350,9 @@ class DescribeScoresResponse(AbstractModel):
 
     @property
     def ScoreSet(self):
+        """Array
+        :rtype: list of ScoreInfo
+        """
         return self._ScoreSet
 
     @ScoreSet.setter
@@ -8638,6 +10361,9 @@ class DescribeScoresResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8681,6 +10407,9 @@ class DescribeTawAreasRequest(AbstractModel):
 
     @property
     def AreaIds(self):
+        """Region ID
+        :rtype: list of int
+        """
         return self._AreaIds
 
     @AreaIds.setter
@@ -8689,6 +10418,9 @@ class DescribeTawAreasRequest(AbstractModel):
 
     @property
     def AreaKeys(self):
+        """Region key
+        :rtype: list of str
+        """
         return self._AreaKeys
 
     @AreaKeys.setter
@@ -8697,6 +10429,9 @@ class DescribeTawAreasRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Pagination limit
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -8705,6 +10440,9 @@ class DescribeTawAreasRequest(AbstractModel):
 
     @property
     def AreaStatuses(self):
+        """Region status (1: valid; 2: invalid)
+        :rtype: list of int
+        """
         return self._AreaStatuses
 
     @AreaStatuses.setter
@@ -8713,6 +10451,9 @@ class DescribeTawAreasRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Pagination offset
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -8756,6 +10497,9 @@ class DescribeTawAreasResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of regions
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -8764,6 +10508,9 @@ class DescribeTawAreasResponse(AbstractModel):
 
     @property
     def AreaSet(self):
+        """Region list
+        :rtype: list of RumAreaInfo
+        """
         return self._AreaSet
 
     @AreaSet.setter
@@ -8772,6 +10519,9 @@ class DescribeTawAreasResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8813,6 +10563,9 @@ class DescribeUvListRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -8821,6 +10574,9 @@ class DescribeUvListRequest(AbstractModel):
 
     @property
     def EndTime(self):
+        """End time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -8829,6 +10585,9 @@ class DescribeUvListRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -8837,6 +10596,9 @@ class DescribeUvListRequest(AbstractModel):
 
     @property
     def Dimension(self):
+        """Get day:d min:m
+        :rtype: str
+        """
         return self._Dimension
 
     @Dimension.setter
@@ -8876,6 +10638,9 @@ class DescribeUvListResponse(AbstractModel):
 
     @property
     def ProjectUvSet(self):
+        """UV list
+        :rtype: list of RumUvInfo
+        """
         return self._ProjectUvSet
 
     @ProjectUvSet.setter
@@ -8884,6 +10649,9 @@ class DescribeUvListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8915,6 +10683,9 @@ class DescribeWhitelistsRequest(AbstractModel):
 
     @property
     def InstanceID(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceID
 
     @InstanceID.setter
@@ -8951,6 +10722,9 @@ class DescribeWhitelistsResponse(AbstractModel):
 
     @property
     def WhitelistSet(self):
+        """Allowlist list
+        :rtype: list of Whitelist
+        """
         return self._WhitelistSet
 
     @WhitelistSet.setter
@@ -8959,6 +10733,9 @@ class DescribeWhitelistsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -8996,6 +10773,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """One or more filter values.
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -9004,6 +10784,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """Filter name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9071,6 +10854,9 @@ class LogExport(AbstractModel):
 
     @property
     def CosPath(self):
+        """Log export path
+        :rtype: str
+        """
         return self._CosPath
 
     @CosPath.setter
@@ -9079,6 +10865,9 @@ class LogExport(AbstractModel):
 
     @property
     def Count(self):
+        """Number of logs to be exported
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -9087,6 +10876,9 @@ class LogExport(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Log export task creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -9095,6 +10887,9 @@ class LogExport(AbstractModel):
 
     @property
     def ExportID(self):
+        """Log export task ID
+        :rtype: str
+        """
         return self._ExportID
 
     @ExportID.setter
@@ -9103,6 +10898,9 @@ class LogExport(AbstractModel):
 
     @property
     def FileName(self):
+        """Log export filename
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -9111,6 +10909,9 @@ class LogExport(AbstractModel):
 
     @property
     def FileSize(self):
+        """Log file size
+        :rtype: int
+        """
         return self._FileSize
 
     @FileSize.setter
@@ -9119,6 +10920,9 @@ class LogExport(AbstractModel):
 
     @property
     def Format(self):
+        """Log export format
+        :rtype: str
+        """
         return self._Format
 
     @Format.setter
@@ -9127,6 +10931,9 @@ class LogExport(AbstractModel):
 
     @property
     def Order(self):
+        """Log export time sorting
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -9135,6 +10942,9 @@ class LogExport(AbstractModel):
 
     @property
     def Query(self):
+        """Log export query statement
+        :rtype: str
+        """
         return self._Query
 
     @Query.setter
@@ -9143,6 +10953,9 @@ class LogExport(AbstractModel):
 
     @property
     def StartTime(self):
+        """Log export start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -9151,6 +10964,9 @@ class LogExport(AbstractModel):
 
     @property
     def EndTime(self):
+        """Log export end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -9159,6 +10975,9 @@ class LogExport(AbstractModel):
 
     @property
     def Status(self):
+        """Log download status. Valid values: Queuing: queuing; Processing: exporting; Complete: completed; Failed: failed; Expired: expired (3-day validity period).
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -9209,6 +11028,9 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the instance to be modified
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9217,6 +11039,9 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
+        """New instance name (up to 255 characters)
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -9225,6 +11050,9 @@ class ModifyInstanceRequest(AbstractModel):
 
     @property
     def InstanceDesc(self):
+        """New instance description (up to 1,024 characters)
+        :rtype: str
+        """
         return self._InstanceDesc
 
     @InstanceDesc.setter
@@ -9260,6 +11088,9 @@ class ModifyInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9297,6 +11128,9 @@ class ModifyProjectLimitRequest(AbstractModel):
 
     @property
     def ProjectID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectID
 
     @ProjectID.setter
@@ -9305,6 +11139,9 @@ class ModifyProjectLimitRequest(AbstractModel):
 
     @property
     def ProjectInterface(self):
+        """Project API
+        :rtype: str
+        """
         return self._ProjectInterface
 
     @ProjectInterface.setter
@@ -9313,6 +11150,9 @@ class ModifyProjectLimitRequest(AbstractModel):
 
     @property
     def ReportRate(self):
+        """Reporting rate. 10 means 10%
+        :rtype: int
+        """
         return self._ReportRate
 
     @ReportRate.setter
@@ -9321,6 +11161,9 @@ class ModifyProjectLimitRequest(AbstractModel):
 
     @property
     def ReportType(self):
+        """Reporting type. 1: rate; 2: number of reported data entries
+        :rtype: int
+        """
         return self._ReportType
 
     @ReportType.setter
@@ -9329,6 +11172,9 @@ class ModifyProjectLimitRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Primary key ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -9370,6 +11216,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Msg(self):
+        """Returned message
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -9378,6 +11228,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9428,6 +11281,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -9436,6 +11292,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Project name (optional, not empty, and up to 200 characters)
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -9444,6 +11303,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def URL(self):
+        """Project webpage URL (optional and up to 256 characters)
+        :rtype: str
+        """
         return self._URL
 
     @URL.setter
@@ -9452,6 +11314,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Repo(self):
+        """Project repository address (optional and up to 256 characters)
+        :rtype: str
+        """
         return self._Repo
 
     @Repo.setter
@@ -9460,6 +11325,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def InstanceID(self):
+        """ID of the instance to which to move the project (optional)
+        :rtype: str
+        """
         return self._InstanceID
 
     @InstanceID.setter
@@ -9468,6 +11336,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Rate(self):
+        """Project sample rate (optional)
+        :rtype: str
+        """
         return self._Rate
 
     @Rate.setter
@@ -9476,6 +11347,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def EnableURLGroup(self):
+        """Whether to enable aggregation (optional)
+        :rtype: int
+        """
         return self._EnableURLGroup
 
     @EnableURLGroup.setter
@@ -9484,6 +11358,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Project type (valid values: "web", "mp", "android", "ios", "node", "hippy", "weex", "viola", "rn")
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -9492,6 +11369,9 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Desc(self):
+        """Project description (optional and up to 1,000 characters)
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -9539,6 +11419,9 @@ class ModifyProjectResponse(AbstractModel):
 
     @property
     def Msg(self):
+        """Operation information
+        :rtype: str
+        """
         return self._Msg
 
     @Msg.setter
@@ -9547,6 +11430,9 @@ class ModifyProjectResponse(AbstractModel):
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -9555,6 +11441,9 @@ class ModifyProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9594,6 +11483,9 @@ class ProjectLimit(AbstractModel):
 
     @property
     def ID(self):
+        """Primary key ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -9602,6 +11494,9 @@ class ProjectLimit(AbstractModel):
 
     @property
     def ProjectID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectID
 
     @ProjectID.setter
@@ -9610,6 +11505,9 @@ class ProjectLimit(AbstractModel):
 
     @property
     def ProjectInterface(self):
+        """API
+        :rtype: str
+        """
         return self._ProjectInterface
 
     @ProjectInterface.setter
@@ -9618,6 +11516,9 @@ class ProjectLimit(AbstractModel):
 
     @property
     def ReportRate(self):
+        """Reporting rate
+        :rtype: int
+        """
         return self._ReportRate
 
     @ReportRate.setter
@@ -9626,6 +11527,9 @@ class ProjectLimit(AbstractModel):
 
     @property
     def ReportType(self):
+        """Reporting type. 1: reporting rate; 2: reporting count limit
+        :rtype: int
+        """
         return self._ReportType
 
     @ReportType.setter
@@ -9676,6 +11580,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Version(self):
+        """File version
+        :rtype: str
+        """
         return self._Version
 
     @Version.setter
@@ -9684,6 +11591,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileKey(self):
+        """Unique file key
+        :rtype: str
+        """
         return self._FileKey
 
     @FileKey.setter
@@ -9692,6 +11602,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileName(self):
+        """Filename
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -9700,6 +11613,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileHash(self):
+        """File hash
+        :rtype: str
+        """
         return self._FileHash
 
     @FileHash.setter
@@ -9708,6 +11624,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ID(self):
+        """File ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -9745,6 +11665,9 @@ class ResumeInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the instance to be resumed
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -9778,6 +11701,9 @@ class ResumeInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9803,6 +11729,9 @@ class ResumeProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -9836,6 +11765,9 @@ class ResumeProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -9879,6 +11811,9 @@ class RumAreaInfo(AbstractModel):
 
     @property
     def AreaId(self):
+        """Region ID
+        :rtype: int
+        """
         return self._AreaId
 
     @AreaId.setter
@@ -9887,6 +11822,9 @@ class RumAreaInfo(AbstractModel):
 
     @property
     def AreaStatus(self):
+        """Region status (1: valid; 2: invalid)
+        :rtype: int
+        """
         return self._AreaStatus
 
     @AreaStatus.setter
@@ -9895,6 +11833,9 @@ class RumAreaInfo(AbstractModel):
 
     @property
     def AreaName(self):
+        """Region name
+        :rtype: str
+        """
         return self._AreaName
 
     @AreaName.setter
@@ -9903,6 +11844,9 @@ class RumAreaInfo(AbstractModel):
 
     @property
     def AreaKey(self):
+        """Region key
+        :rtype: str
+        """
         return self._AreaKey
 
     @AreaKey.setter
@@ -9911,6 +11855,9 @@ class RumAreaInfo(AbstractModel):
 
     @property
     def AreaRegionID(self):
+        """Region ID.
+        :rtype: str
+        """
         return self._AreaRegionID
 
     @AreaRegionID.setter
@@ -9919,6 +11866,9 @@ class RumAreaInfo(AbstractModel):
 
     @property
     def AreaRegionCode(self):
+        """Region code, such as “ap-xxx” (xxx is the region name).
+        :rtype: str
+        """
         return self._AreaRegionCode
 
     @AreaRegionCode.setter
@@ -9927,6 +11877,9 @@ class RumAreaInfo(AbstractModel):
 
     @property
     def AreaAbbr(self):
+        """Region abbreviation.
+        :rtype: str
+        """
         return self._AreaAbbr
 
     @AreaAbbr.setter
@@ -10020,6 +11973,9 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def Name(self):
+        """Project name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -10028,6 +11984,9 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def Creator(self):
+        """Creator ID
+        :rtype: str
+        """
         return self._Creator
 
     @Creator.setter
@@ -10036,6 +11995,9 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def InstanceID(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceID
 
     @InstanceID.setter
@@ -10044,6 +12006,9 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def Type(self):
+        """Project type
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -10052,6 +12017,9 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10060,6 +12028,10 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def Repo(self):
+        """Project repository address
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Repo
 
     @Repo.setter
@@ -10068,6 +12040,10 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def URL(self):
+        """Project URL
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._URL
 
     @URL.setter
@@ -10076,6 +12052,9 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def Rate(self):
+        """Project sample rate
+        :rtype: str
+        """
         return self._Rate
 
     @Rate.setter
@@ -10084,6 +12063,9 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def Key(self):
+        """Unique project key (12 characters)
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -10092,6 +12074,9 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def EnableURLGroup(self):
+        """Whether to enable URL aggregation
+        :rtype: int
+        """
         return self._EnableURLGroup
 
     @EnableURLGroup.setter
@@ -10100,6 +12085,9 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def InstanceName(self):
+        """Instance name
+        :rtype: str
+        """
         return self._InstanceName
 
     @InstanceName.setter
@@ -10108,6 +12096,9 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def ID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ID
 
     @ID.setter
@@ -10116,6 +12107,9 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def InstanceKey(self):
+        """Instance key
+        :rtype: str
+        """
         return self._InstanceKey
 
     @InstanceKey.setter
@@ -10124,6 +12118,10 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def Desc(self):
+        """Project description
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -10132,6 +12130,10 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def IsStar(self):
+        """Starred status. 1: yes; 0: no
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._IsStar
 
     @IsStar.setter
@@ -10140,6 +12142,10 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def ProjectStatus(self):
+        """Project status (`1`: Creating; `2`: Running; `3`: Abnormal; `4`: Restarting; `5`: Stopping; `6`: Stopped; `7`: Terminating; `8`: Terminated)
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ProjectStatus
 
     @ProjectStatus.setter
@@ -10148,6 +12154,10 @@ Note:  This field may return null, indicating that no valid values can be obtain
 
     @property
     def AccessPoint(self):
+        """Log access point, which can be ignored. 
+Note:  This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AccessPoint
 
     @AccessPoint.setter
@@ -10204,6 +12214,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -10212,6 +12225,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Pv(self):
+        """Number of PVs
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Pv
 
     @Pv.setter
@@ -10220,6 +12237,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10261,6 +12281,9 @@ class RumUvInfo(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -10269,6 +12292,9 @@ class RumUvInfo(AbstractModel):
 
     @property
     def Uv(self):
+        """Number of UVs
+        :rtype: str
+        """
         return self._Uv
 
     @Uv.setter
@@ -10277,6 +12303,9 @@ class RumUvInfo(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10352,6 +12381,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StaticDuration(self):
+        """duration
+        :rtype: str
+        """
         return self._StaticDuration
 
     @StaticDuration.setter
@@ -10360,6 +12392,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PagePv(self):
+        """pv
+        :rtype: str
+        """
         return self._PagePv
 
     @PagePv.setter
@@ -10368,6 +12403,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiFail(self):
+        """Failure
+        :rtype: str
+        """
         return self._ApiFail
 
     @ApiFail.setter
@@ -10376,6 +12414,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiNum(self):
+        """Request
+        :rtype: str
+        """
         return self._ApiNum
 
     @ApiNum.setter
@@ -10384,6 +12425,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StaticFail(self):
+        """fail
+        :rtype: str
+        """
         return self._StaticFail
 
     @StaticFail.setter
@@ -10392,6 +12436,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectID(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectID
 
     @ProjectID.setter
@@ -10400,6 +12447,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageUv(self):
+        """uv
+        :rtype: str
+        """
         return self._PageUv
 
     @PageUv.setter
@@ -10408,6 +12458,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApiDuration(self):
+        """Number of requests
+        :rtype: str
+        """
         return self._ApiDuration
 
     @ApiDuration.setter
@@ -10416,6 +12469,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Score(self):
+        """Score
+        :rtype: str
+        """
         return self._Score
 
     @Score.setter
@@ -10424,6 +12480,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageError(self):
+        """error
+        :rtype: str
+        """
         return self._PageError
 
     @PageError.setter
@@ -10432,6 +12491,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StaticNum(self):
+        """num
+        :rtype: str
+        """
         return self._StaticNum
 
     @StaticNum.setter
@@ -10440,6 +12502,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RecordNum(self):
+        """num
+        :rtype: int
+        """
         return self._RecordNum
 
     @RecordNum.setter
@@ -10448,6 +12513,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PageDuration(self):
+        """Duration
+        :rtype: str
+        """
         return self._PageDuration
 
     @PageDuration.setter
@@ -10456,6 +12524,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Time
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -10502,6 +12574,9 @@ class StopInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the instance to be stopped
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -10535,6 +12610,9 @@ class StopInstanceResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10560,6 +12638,9 @@ class StopProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID
+        :rtype: int
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -10593,6 +12674,9 @@ class StopProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -10621,6 +12705,9 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """Tag key
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -10629,6 +12716,9 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """Tag value
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter
@@ -10684,6 +12774,9 @@ class Whitelist(AbstractModel):
 
     @property
     def Remark(self):
+        """Remarks
+        :rtype: str
+        """
         return self._Remark
 
     @Remark.setter
@@ -10692,6 +12785,9 @@ class Whitelist(AbstractModel):
 
     @property
     def InstanceID(self):
+        """Instance ID
+        :rtype: str
+        """
         return self._InstanceID
 
     @InstanceID.setter
@@ -10700,6 +12796,9 @@ class Whitelist(AbstractModel):
 
     @property
     def Ttl(self):
+        """End time
+        :rtype: str
+        """
         return self._Ttl
 
     @Ttl.setter
@@ -10708,6 +12807,9 @@ class Whitelist(AbstractModel):
 
     @property
     def ID(self):
+        """Auto-Increment allowlist ID
+        :rtype: str
+        """
         return self._ID
 
     @ID.setter
@@ -10716,6 +12818,9 @@ class Whitelist(AbstractModel):
 
     @property
     def WhitelistUin(self):
+        """Unique business identifier
+        :rtype: str
+        """
         return self._WhitelistUin
 
     @WhitelistUin.setter
@@ -10724,6 +12829,9 @@ class Whitelist(AbstractModel):
 
     @property
     def CreateUser(self):
+        """Creator ID
+        :rtype: str
+        """
         return self._CreateUser
 
     @CreateUser.setter
@@ -10732,6 +12840,9 @@ class Whitelist(AbstractModel):
 
     @property
     def Aid(self):
+        """aid
+        :rtype: str
+        """
         return self._Aid
 
     @Aid.setter
@@ -10740,6 +12851,9 @@ class Whitelist(AbstractModel):
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter

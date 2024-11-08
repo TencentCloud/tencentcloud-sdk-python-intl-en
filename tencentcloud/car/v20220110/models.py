@@ -41,6 +41,9 @@ class ApplicationBaseInfo(AbstractModel):
 
     @property
     def WindowUseType(self):
+        """Application window usage mode (ApplicationDesktop: Captures the entire desktop; ApplicationWindow: Captures only the application window).
+        :rtype: str
+        """
         return self._WindowUseType
 
     @WindowUseType.setter
@@ -49,6 +52,9 @@ class ApplicationBaseInfo(AbstractModel):
 
     @property
     def WindowName(self):
+        """Application window name.
+        :rtype: str
+        """
         return self._WindowName
 
     @WindowName.setter
@@ -57,6 +63,9 @@ class ApplicationBaseInfo(AbstractModel):
 
     @property
     def WindowClassName(self):
+        """Application window class name.
+        :rtype: str
+        """
         return self._WindowClassName
 
     @WindowClassName.setter
@@ -65,6 +74,9 @@ class ApplicationBaseInfo(AbstractModel):
 
     @property
     def WindowCaptureMode(self):
+        """Application window capture mode (HOOK: default mode; DDA_CUT: compatible mode).
+        :rtype: str
+        """
         return self._WindowCaptureMode
 
     @WindowCaptureMode.setter
@@ -164,6 +176,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectId(self):
+        """Project ID.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -172,6 +187,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
+        """Project name.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -180,6 +198,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Description(self):
+        """Project description.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -188,6 +209,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Type(self):
+        """Concurrency type required for project operation.S1: concurrency for rendering small cloud applications.M1: concurrency for rendering medium cloud applications.L1: concurrency for rendering large cloud applications.L2: concurrency for rendering large cloud applications.XL2: concurrency for rendering extra large cloud applications.MM1_HD: concurrency for performance-based cloud ARM (HD).MM1_FHD: concurrency for performance-based cloud ARM (FHD).Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -196,6 +220,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationId(self):
+        """Cloud application ID.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -204,6 +231,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsPreload(self):
+        """Pre-launch.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._IsPreload
 
     @IsPreload.setter
@@ -212,6 +242,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Amount(self):
+        """Number of concurrencies already configured.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Amount
 
     @Amount.setter
@@ -220,6 +253,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Using(self):
+        """Number of concurrencies in use.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Using
 
     @Using.setter
@@ -228,6 +264,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationStatus(self):
+        """Application status. NoConcurrent: no concurrency pack configured; Online: activated. Cloud application status: applicationCreating: creating; applicationCreateFail: creation failed; applicationDeleting: deleting; applicationNoConfigured: startup parameters not configured.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ApplicationStatus
 
     @ApplicationStatus.setter
@@ -236,6 +275,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationParams(self):
+        """Application startup parameters.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ApplicationParams
 
     @ApplicationParams.setter
@@ -244,6 +288,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Creation time.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -252,6 +301,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationName(self):
+        """Application name.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ApplicationName
 
     @ApplicationName.setter
@@ -260,6 +314,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Resolution(self):
+        """Resolution, in the format of widthxheight, such as 1920x1080.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -268,6 +325,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectType(self):
+        """Project type.SHARED: shared by all applications.EXCLUSIVE (default value): dedicated for one application.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProjectType
 
     @ProjectType.setter
@@ -276,6 +336,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Purpose(self):
+        """Purpose.EXPERIENCE: Experience.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Purpose
 
     @Purpose.setter
@@ -284,6 +347,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationRegions(self):
+        """Application distribution area. Standard areas are as follows. ap-chinese-mainland: Chinese mainland; na-north-america: North America; eu-frankfurt: Frankfurt; ap-mumbai: Mumbai; ap-tokyo: Tokyo; ap-seoul: Seoul; ap-singapore: Singapore; ap-bangkok: Bangkok; ap-hongkong: Hong Kong (China). Fusion areas are as follows. me-middle-east-fusion: Middle East; na-north-america-fusion: North America; sa-south-america-fusion: South America; ap-tokyo-fusion: Tokyo; ap-seoul-fusion: Seoul; eu-frankfurt-fusion: Frankfurt; ap-singapore-fusion: Singapore; ap-hongkong-fusion: Hong Kong (China).Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._ApplicationRegions
 
     @ApplicationRegions.setter
@@ -292,6 +358,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConcurrentRegions(self):
+        """Concurrency area. Standard areas are as follows. ap-chinese-mainland: Chinese mainland; na-north-america: North America; eu-frankfurt: Frankfurt; ap-mumbai: Mumbai; ap-tokyo: Tokyo; ap-seoul: Seoul; ap-singapore: Singapore; ap-bangkok: Bangkok; ap-hongkong: Hong Kong (China). Fusion areas are as follows. me-middle-east-fusion: Middle East; na-north-america-fusion: North America; sa-south-america-fusion: South America; ap-tokyo-fusion: Tokyo; ap-seoul-fusion: Seoul; eu-frankfurt-fusion: Frankfurt; ap-singapore-fusion: Singapore; ap-hongkong-fusion: Hong Kong (China).Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._ConcurrentRegions
 
     @ConcurrentRegions.setter
@@ -300,6 +369,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ProjectCategory(self):
+        """Project category.DESKTOP: desktop (default value).MOBILE: mobile.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProjectCategory
 
     @ProjectCategory.setter
@@ -362,6 +434,9 @@ class ApplyConcurrentRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """Unique user ID, which is customized by you and is not parsed by CAR. Based on your needs, you can either define unique IDs for users or use timestamps to generate random IDs. Make sure the same ID is used when a user reconnects to your application.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -370,6 +445,9 @@ class ApplyConcurrentRequest(AbstractModel):
 
     @property
     def UserIp(self):
+        """Public IP address of the user's client, which is used for nearby scheduling.
+        :rtype: str
+        """
         return self._UserIp
 
     @UserIp.setter
@@ -378,6 +456,9 @@ class ApplyConcurrentRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID.
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -386,6 +467,9 @@ class ApplyConcurrentRequest(AbstractModel):
 
     @property
     def ApplicationVersionId(self):
+        """Application version ID. If the application of the current version is requested, you do not need to fill in this field. If the application of the other versions is requested, you need to specify the version through this field.
+        :rtype: str
+        """
         return self._ApplicationVersionId
 
     @ApplicationVersionId.setter
@@ -394,6 +478,9 @@ class ApplyConcurrentRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Application ID, which is used only by the multi-application project to specify applications. For a single-application project, this parameter is ignored, and the application bound to the project will be used.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -431,6 +518,9 @@ class ApplyConcurrentResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -469,6 +559,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def COSFileId(self):
+        """ID of the COS file.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._COSFileId
 
     @COSFileId.setter
@@ -477,6 +570,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def URL(self):
+        """Download URL.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._URL
 
     @URL.setter
@@ -485,6 +581,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Name(self):
+        """Name
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -493,6 +594,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Creation time.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -532,6 +638,9 @@ class BindConcurrentPackagesToProjectRequest(AbstractModel):
 
     @property
     def ConcurrentIds(self):
+        """Concurrency pack ID list.
+        :rtype: list of str
+        """
         return self._ConcurrentIds
 
     @ConcurrentIds.setter
@@ -540,6 +649,9 @@ class BindConcurrentPackagesToProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Cloud application project ID.
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -574,6 +686,9 @@ class BindConcurrentPackagesToProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -650,6 +765,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Project name, which is user-defined.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -658,6 +776,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Bound application ID.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -666,6 +787,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Concurrency type required for project operation.S1: concurrency for rendering small cloud applications.M1: concurrency for rendering medium cloud applications.L1: concurrency for rendering large cloud applications.L2: concurrency for rendering large cloud applications.XL2: concurrency for rendering extra large cloud applications.MM1_HD: concurrency for performance-based cloud ARM (HD).MM1_FHD: concurrency for performance-based cloud ARM (FHD).
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -674,6 +798,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def IsPreload(self):
+        """Whether to enable warm-up. The default value is false.
+        :rtype: bool
+        """
         return self._IsPreload
 
     @IsPreload.setter
@@ -682,6 +809,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def ApplicationParams(self):
+        """Application startup parameters.
+        :rtype: str
+        """
         return self._ApplicationParams
 
     @ApplicationParams.setter
@@ -690,6 +820,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def Resolution(self):
+        """Resolution, in the format of widthxheight, such as 1920x1080.
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -698,6 +831,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def ProjectType(self):
+        """Project type.SHARED: shared by all applications.EXCLUSIVE (default value): dedicated for one application.
+        :rtype: str
+        """
         return self._ProjectType
 
     @ProjectType.setter
@@ -706,6 +842,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def FPS(self):
+        """Frame rate.
+        :rtype: int
+        """
         return self._FPS
 
     @FPS.setter
@@ -714,6 +853,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def PreloadDuration(self):
+        """Waiting time for application pre-launch.
+        :rtype: str
+        """
         return self._PreloadDuration
 
     @PreloadDuration.setter
@@ -722,6 +864,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def ReconnectTimeout(self):
+        """Waiting time for reconnection.
+        :rtype: str
+        """
         return self._ReconnectTimeout
 
     @ReconnectTimeout.setter
@@ -730,6 +875,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def MinBitrate(self):
+        """Minimum bitrate, in Mbps.
+        :rtype: int
+        """
         return self._MinBitrate
 
     @MinBitrate.setter
@@ -738,6 +886,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def MaxBitrate(self):
+        """Maximum bitrate, in Mbps.
+        :rtype: int
+        """
         return self._MaxBitrate
 
     @MaxBitrate.setter
@@ -746,6 +897,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def UpstreamAudioOption(self):
+        """Upstream audio options.DisableMixIntoStreamPush: not mixing upstream audio in streaming.
+        :rtype: str
+        """
         return self._UpstreamAudioOption
 
     @UpstreamAudioOption.setter
@@ -754,6 +908,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def VideoEncodeConfig(self):
+        """Video encoding configuration.
+        :rtype: :class:`tencentcloud.car.v20220110.models.VideoEncodeConfig`
+        """
         return self._VideoEncodeConfig
 
     @VideoEncodeConfig.setter
@@ -762,6 +919,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def XRMaxWidth(self):
+        """Upper limit of the XR application resolution.If the project concurrency type is L or L2, the upper limit is 5000; if the project concurrency type is XL2, the upper limit is 6000.
+        :rtype: int
+        """
         return self._XRMaxWidth
 
     @XRMaxWidth.setter
@@ -770,6 +930,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def BackgroundImageCOSFileId(self):
+        """ID of the background image COS file.
+        :rtype: str
+        """
         return self._BackgroundImageCOSFileId
 
     @BackgroundImageCOSFileId.setter
@@ -778,6 +941,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def ProjectCategory(self):
+        """Project category.DESKTOP: desktop (default value).MOBILE: mobile.
+        :rtype: str
+        """
         return self._ProjectCategory
 
     @ProjectCategory.setter
@@ -786,6 +952,9 @@ class CreateApplicationProjectRequest(AbstractModel):
 
     @property
     def DisableVideoCodecs(self):
+        """Disabled code list.
+        :rtype: list of str
+        """
         return self._DisableVideoCodecs
 
     @DisableVideoCodecs.setter
@@ -841,6 +1010,9 @@ class CreateApplicationProjectResponse(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Generated project ID.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -849,6 +1021,9 @@ class CreateApplicationProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -878,6 +1053,9 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ApplicationName(self):
+        """Application name.
+        :rtype: str
+        """
         return self._ApplicationName
 
     @ApplicationName.setter
@@ -886,6 +1064,9 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ApplicationType(self):
+        """Application type (Application3D: cloud 3D; ApplicationXR: cloud XR; ApplicationAPK: cloud APK).
+        :rtype: str
+        """
         return self._ApplicationType
 
     @ApplicationType.setter
@@ -923,6 +1104,9 @@ class CreateApplicationResponse(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Application ID.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -931,6 +1115,9 @@ class CreateApplicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -960,6 +1147,9 @@ class CreateApplicationSnapshotRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Application ID.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -968,6 +1158,9 @@ class CreateApplicationSnapshotRequest(AbstractModel):
 
     @property
     def ApplicationDownloadUrl(self):
+        """Application download address (if the version is created by file upload, this parameter is an empty string).
+        :rtype: str
+        """
         return self._ApplicationDownloadUrl
 
     @ApplicationDownloadUrl.setter
@@ -1002,6 +1195,9 @@ class CreateApplicationSnapshotResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1036,6 +1232,9 @@ class CreateApplicationVersionRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Application ID.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -1044,6 +1243,9 @@ class CreateApplicationVersionRequest(AbstractModel):
 
     @property
     def ApplicationFileName(self):
+        """Application file name (desktop applications should be files in zip/rar/7z format, and mobile applications should be files in apk format).
+        :rtype: str
+        """
         return self._ApplicationFileName
 
     @ApplicationFileName.setter
@@ -1052,6 +1254,9 @@ class CreateApplicationVersionRequest(AbstractModel):
 
     @property
     def ApplicationVersionRegions(self):
+        """Region for application version distribution.
+        :rtype: list of str
+        """
         return self._ApplicationVersionRegions
 
     @ApplicationVersionRegions.setter
@@ -1060,6 +1265,9 @@ class CreateApplicationVersionRequest(AbstractModel):
 
     @property
     def ApplicationVersionUpdateMode(self):
+        """Application update method.
+        :rtype: str
+        """
         return self._ApplicationVersionUpdateMode
 
     @ApplicationVersionUpdateMode.setter
@@ -1099,6 +1307,9 @@ class CreateApplicationVersionResponse(AbstractModel):
 
     @property
     def Version(self):
+        """Application version data (new).
+        :rtype: :class:`tencentcloud.car.v20220110.models.UserApplicationVersion`
+        """
         return self._Version
 
     @Version.setter
@@ -1107,6 +1318,9 @@ class CreateApplicationVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1160,6 +1374,9 @@ Viewer: a user who can only watch the video in the room but cannot operate the a
 
     @property
     def UserId(self):
+        """Unique user ID, which is customized by you and is not parsed by CAR. Based on your needs, you can either define unique IDs for users or use timestamps to generate random IDs. Make sure the same ID is used when a user reconnects to your application.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -1168,6 +1385,9 @@ Viewer: a user who can only watch the video in the room but cannot operate the a
 
     @property
     def UserIp(self):
+        """Public IP address of the user's client, which is used for nearby scheduling.
+        :rtype: str
+        """
         return self._UserIp
 
     @UserIp.setter
@@ -1176,6 +1396,9 @@ Viewer: a user who can only watch the video in the room but cannot operate the a
 
     @property
     def ClientSession(self):
+        """Client-side session information, which is obtained from the SDK. If `RunMode` is `RunWithoutClient`, this parameter can be empty.
+        :rtype: str
+        """
         return self._ClientSession
 
     @ClientSession.setter
@@ -1184,6 +1407,9 @@ Viewer: a user who can only watch the video in the room but cannot operate the a
 
     @property
     def RunMode(self):
+        """On-cloud running mode.RunWithoutClient: Keeps the application running on the cloud even when there are no client connections.Empty string (default): Keeps the application running on the cloud only when there are client connections.
+        :rtype: str
+        """
         return self._RunMode
 
     @RunMode.setter
@@ -1192,6 +1418,12 @@ Viewer: a user who can only watch the video in the room but cannot operate the a
 
     @property
     def ApplicationParameters(self):
+        """Application startup parameters.This parameter is effective for multi-application projects.
+This parameter is effective for single-application projects with prelaunch disabled.This parameter is ineffective for single-application projects with prelaunch enabled.
+Note: When this parameter is effective, it will be appended to the startup parameters of application or project configuration in the console.
+For example, for a single-application project with prelaunch disabled, if its startup parameter `bar` is `0` for project configuration in the console and the `ApplicationParameters` parameter `foo` is `1`, the actual application startup parameters will be `bar=0 and foo=1`.
+        :rtype: str
+        """
         return self._ApplicationParameters
 
     @ApplicationParameters.setter
@@ -1200,6 +1432,11 @@ Viewer: a user who can only watch the video in the room but cannot operate the a
 
     @property
     def HostUserId(self):
+        """[Multi-person Interaction] Homeowner's user ID, which is required in multi-person interaction mode.
+If the user is the homeowner, HostUserID must be the same as UserID.
+If the user is not the homeowner, HostUserID must be the homeowner's HostUserID.
+        :rtype: str
+        """
         return self._HostUserId
 
     @HostUserId.setter
@@ -1208,6 +1445,11 @@ Viewer: a user who can only watch the video in the room but cannot operate the a
 
     @property
     def Role(self):
+        """[Multi-person Interaction] Role.
+Player: a user who can operate the application via keyboard, mouse, etc.
+Viewer: a user who can only watch the video in the room but cannot operate the application.
+        :rtype: str
+        """
         return self._Role
 
     @Role.setter
@@ -1250,6 +1492,9 @@ class CreateSessionResponse(AbstractModel):
 
     @property
     def ServerSession(self):
+        """Server-side session information, which is returned to the SDK.
+        :rtype: str
+        """
         return self._ServerSession
 
     @ServerSession.setter
@@ -1258,6 +1503,9 @@ class CreateSessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1284,6 +1532,9 @@ class DeleteApplicationProjectsRequest(AbstractModel):
 
     @property
     def ProjectIds(self):
+        """ID list of cloud application projects.
+        :rtype: list of str
+        """
         return self._ProjectIds
 
     @ProjectIds.setter
@@ -1317,6 +1568,9 @@ class DeleteApplicationProjectsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1342,6 +1596,9 @@ class DeleteApplicationRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Application ID.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -1375,6 +1632,9 @@ class DeleteApplicationResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1403,6 +1663,9 @@ class DeleteApplicationVersionRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Application ID.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -1411,6 +1674,9 @@ class DeleteApplicationVersionRequest(AbstractModel):
 
     @property
     def ApplicationVersionId(self):
+        """Application version ID.
+        :rtype: str
+        """
         return self._ApplicationVersionId
 
     @ApplicationVersionId.setter
@@ -1445,6 +1711,9 @@ class DeleteApplicationVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1473,6 +1742,9 @@ class DescribeApplicationFileInfoRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Application ID.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -1481,6 +1753,9 @@ class DescribeApplicationFileInfoRequest(AbstractModel):
 
     @property
     def FilePathList(self):
+        """Application file path list.
+        :rtype: list of str
+        """
         return self._FilePathList
 
     @FilePathList.setter
@@ -1519,6 +1794,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileInfoList(self):
+        """Application file data list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of UserApplicationFileInfo
+        """
         return self._FileInfoList
 
     @FileInfoList.setter
@@ -1527,6 +1806,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1567,6 +1849,9 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Application list offset.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1575,6 +1860,9 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Application quantity limit.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1583,6 +1871,9 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter criteria.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1591,6 +1882,9 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def ApplicationCategory(self):
+        """Application category (DESKTOP: desktop; MOBILE: mobile).
+        :rtype: str
+        """
         return self._ApplicationCategory
 
     @ApplicationCategory.setter
@@ -1641,6 +1935,9 @@ class DescribeApplicationListResponse(AbstractModel):
 
     @property
     def UserApplicationList(self):
+        """Application list information.
+        :rtype: list of UserApplicationInfo
+        """
         return self._UserApplicationList
 
     @UserApplicationList.setter
@@ -1649,6 +1946,9 @@ class DescribeApplicationListResponse(AbstractModel):
 
     @property
     def ApplicationTotal(self):
+        """Total number of applications.
+        :rtype: int
+        """
         return self._ApplicationTotal
 
     @ApplicationTotal.setter
@@ -1657,6 +1957,9 @@ class DescribeApplicationListResponse(AbstractModel):
 
     @property
     def UserMobileApplicationList(self):
+        """Mobile application list information.
+        :rtype: list of UserMobileApplicationInfo
+        """
         return self._UserMobileApplicationList
 
     @UserMobileApplicationList.setter
@@ -1665,6 +1968,9 @@ class DescribeApplicationListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1706,6 +2012,9 @@ class DescribeApplicationPathListRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Cloud application ID.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -1714,6 +2023,9 @@ class DescribeApplicationPathListRequest(AbstractModel):
 
     @property
     def ApplicationVersionId(self):
+        """Cloud application version ID.
+        :rtype: str
+        """
         return self._ApplicationVersionId
 
     @ApplicationVersionId.setter
@@ -1752,6 +2064,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PathList(self):
+        """Application .exe file path list.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._PathList
 
     @PathList.setter
@@ -1760,6 +2076,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1786,6 +2105,9 @@ class DescribeApplicationProjectAdvancedConfigRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Application project ID.
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -1857,6 +2179,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationParams(self):
+        """Application startup parameters.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ApplicationParams
 
     @ApplicationParams.setter
@@ -1865,6 +2192,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Resolution(self):
+        """Resolution, in the format of widthxheight, such as 1920x1080.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -1873,6 +2203,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FPS(self):
+        """Frame rate. Valid values: 0, 30, 60.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FPS
 
     @FPS.setter
@@ -1881,6 +2214,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MinBitrate(self):
+        """Minimum bitrate, in Mbps.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MinBitrate
 
     @MinBitrate.setter
@@ -1889,6 +2225,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxBitrate(self):
+        """Maximum bitrate, in Mbps.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxBitrate
 
     @MaxBitrate.setter
@@ -1897,6 +2236,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def PreloadDuration(self):
+        """Waiting time for application pre-launch.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._PreloadDuration
 
     @PreloadDuration.setter
@@ -1905,6 +2247,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ReconnectTimeout(self):
+        """Waiting time for reconnection.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ReconnectTimeout
 
     @ReconnectTimeout.setter
@@ -1913,6 +2258,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UpstreamAudioOption(self):
+        """Upstream audio options.DisableMixIntoStreamPush: not mixing upstream audio in streaming.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._UpstreamAudioOption
 
     @UpstreamAudioOption.setter
@@ -1921,6 +2269,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VideoEncodeConfig(self):
+        """Video encoding configuration.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.car.v20220110.models.VideoEncodeConfig`
+        """
         return self._VideoEncodeConfig
 
     @VideoEncodeConfig.setter
@@ -1929,6 +2280,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def XRMaxWidth(self):
+        """Upper limit of the XR application resolution.If the project concurrency type is L or L2, the upper limit is 5000; if the project concurrency type is XL2, the upper limit is 6000.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._XRMaxWidth
 
     @XRMaxWidth.setter
@@ -1937,6 +2291,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def BackgroundImage(self):
+        """Background image information.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.car.v20220110.models.BackgroundImage`
+        """
         return self._BackgroundImage
 
     @BackgroundImage.setter
@@ -1945,6 +2302,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def DisableVideoCodecs(self):
+        """Disabled code list.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._DisableVideoCodecs
 
     @DisableVideoCodecs.setter
@@ -1953,6 +2313,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2003,6 +2366,9 @@ class DescribeApplicationProjectsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Subscript.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2011,6 +2377,9 @@ class DescribeApplicationProjectsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of entries per page.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2019,6 +2388,9 @@ class DescribeApplicationProjectsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2027,6 +2399,9 @@ class DescribeApplicationProjectsRequest(AbstractModel):
 
     @property
     def ProjectCategory(self):
+        """Project category.DESKTOP: desktop (default value).MOBILE: mobile.
+        :rtype: str
+        """
         return self._ProjectCategory
 
     @ProjectCategory.setter
@@ -2076,6 +2451,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Projects(self):
+        """Project list.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ApplicationProject
+        """
         return self._Projects
 
     @Projects.setter
@@ -2084,6 +2462,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
+        """Total number.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2092,6 +2475,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2124,6 +2510,9 @@ class DescribeApplicationStatusRequest(AbstractModel):
 
     @property
     def ApplicationIdList(self):
+        """Application ID list.
+        :rtype: list of str
+        """
         return self._ApplicationIdList
 
     @ApplicationIdList.setter
@@ -2160,6 +2549,9 @@ class DescribeApplicationStatusResponse(AbstractModel):
 
     @property
     def StatusList(self):
+        """Application status list.
+        :rtype: list of UserApplicationStatus
+        """
         return self._StatusList
 
     @StatusList.setter
@@ -2168,6 +2560,9 @@ class DescribeApplicationStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2199,6 +2594,9 @@ class DescribeApplicationVersionRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Application version ID.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -2235,6 +2633,9 @@ class DescribeApplicationVersionResponse(AbstractModel):
 
     @property
     def Versions(self):
+        """List of application versions.
+        :rtype: list of UserApplicationVersion
+        """
         return self._Versions
 
     @Versions.setter
@@ -2243,6 +2644,9 @@ class DescribeApplicationVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2274,6 +2678,9 @@ class DescribeConcurrentCountRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID.
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2313,6 +2720,9 @@ class DescribeConcurrentCountResponse(AbstractModel):
 
     @property
     def Total(self):
+        """Total number of concurrencies.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2321,6 +2731,9 @@ class DescribeConcurrentCountResponse(AbstractModel):
 
     @property
     def Running(self):
+        """The number of concurrent executions, including all non-idle concurrent executions such as those in prelaunch, connected, waiting for reconnection, and to be cleaned up or recovered. Therefore, refreshing projects or disconnecting user connections with concurrency packages will affect this value.
+        :rtype: int
+        """
         return self._Running
 
     @Running.setter
@@ -2329,6 +2742,9 @@ class DescribeConcurrentCountResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2362,6 +2778,9 @@ class DescribeConcurrentPackagesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Subscript.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2370,6 +2789,9 @@ class DescribeConcurrentPackagesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of entries per page.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2378,6 +2800,9 @@ class DescribeConcurrentPackagesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter List
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -2426,6 +2851,11 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Total(self):
+        """Total number.
+
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Total
 
     @Total.setter
@@ -2434,6 +2864,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ConcurrentPackages(self):
+        """Concurrency pack list.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of ApplicationConcurrentPackage
+        """
         return self._ConcurrentPackages
 
     @ConcurrentPackages.setter
@@ -2442,6 +2875,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2486,6 +2922,9 @@ class DescribeConcurrentSummaryResponse(AbstractModel):
 
     @property
     def PrepaidConcurrentTotal(self):
+        """Total number of prepaid (monthly subscription) concurrencies.
+        :rtype: int
+        """
         return self._PrepaidConcurrentTotal
 
     @PrepaidConcurrentTotal.setter
@@ -2494,6 +2933,9 @@ class DescribeConcurrentSummaryResponse(AbstractModel):
 
     @property
     def HourlyRemainDuration(self):
+        """Remaining duration of an hourly package.
+        :rtype: str
+        """
         return self._HourlyRemainDuration
 
     @HourlyRemainDuration.setter
@@ -2502,6 +2944,9 @@ class DescribeConcurrentSummaryResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2532,6 +2977,9 @@ class DescribeCosCredentialRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Application ID.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -2540,6 +2988,9 @@ class DescribeCosCredentialRequest(AbstractModel):
 
     @property
     def ApplicationFileName(self):
+        """Application file name (the file must be a compressed package with a zip/rar/7z file name extension).
+        :rtype: str
+        """
         return self._ApplicationFileName
 
     @ApplicationFileName.setter
@@ -2598,6 +3049,9 @@ class DescribeCosCredentialResponse(AbstractModel):
 
     @property
     def SecretID(self):
+        """Cos SecretID
+        :rtype: str
+        """
         return self._SecretID
 
     @SecretID.setter
@@ -2606,6 +3060,9 @@ class DescribeCosCredentialResponse(AbstractModel):
 
     @property
     def SecretKey(self):
+        """Cos SecretKey
+        :rtype: str
+        """
         return self._SecretKey
 
     @SecretKey.setter
@@ -2614,6 +3071,9 @@ class DescribeCosCredentialResponse(AbstractModel):
 
     @property
     def SessionToken(self):
+        """Cos SessionToken
+        :rtype: str
+        """
         return self._SessionToken
 
     @SessionToken.setter
@@ -2622,6 +3082,9 @@ class DescribeCosCredentialResponse(AbstractModel):
 
     @property
     def CosBucket(self):
+        """Cos Bucket
+        :rtype: str
+        """
         return self._CosBucket
 
     @CosBucket.setter
@@ -2630,6 +3093,9 @@ class DescribeCosCredentialResponse(AbstractModel):
 
     @property
     def CosRegion(self):
+        """Cos Region
+        :rtype: str
+        """
         return self._CosRegion
 
     @CosRegion.setter
@@ -2638,6 +3104,9 @@ class DescribeCosCredentialResponse(AbstractModel):
 
     @property
     def Path(self):
+        """COS operation path.
+        :rtype: str
+        """
         return self._Path
 
     @Path.setter
@@ -2646,6 +3115,9 @@ class DescribeCosCredentialResponse(AbstractModel):
 
     @property
     def StartTime(self):
+        """Start time of the COS key.
+        :rtype: int
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2654,6 +3126,9 @@ class DescribeCosCredentialResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
+        """Expiration time of the COS key.
+        :rtype: int
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -2662,6 +3137,9 @@ class DescribeCosCredentialResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2695,6 +3173,9 @@ class DestroySessionRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """Unique user ID, which is customized by you and is not parsed by CAR. Based on your needs, you can either define unique IDs for users or use timestamps to generate random IDs. Make sure the same ID is used when a user reconnects to your application.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -2728,6 +3209,9 @@ class DestroySessionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2756,6 +3240,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """Filter field name (ApplicationId: application ID; ApplicationName: application name; ApplicationRunStatus: running status; ApplicationUpdateStatus: update status).
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2764,6 +3251,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """Filter value set (When the filter name is ApplicationRunStatus, the values can be [ApplicationDeleting: application deletion in progress; ApplicationCreateFail: application creation failed; ApplicationCreating: application creation in progress; ApplicationRunning: normal running; ApplicationNoConfigured: main execution program path not configured]. When the filter name is ApplicationUpdateStatus, the values can be [ApplicationUpdateCreating: version creation in progress; ApplicationUpdateCreateFail: version creation failed; ApplicationUpdateNoReleased: version to be released; ApplicationUpdateReleased: version release completed; ApplicationUpdateNormal: none]).
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -2816,6 +3306,9 @@ class ModifyApplicationBaseInfoRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Application ID.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -2824,6 +3317,9 @@ class ModifyApplicationBaseInfoRequest(AbstractModel):
 
     @property
     def ApplicationExePath(self):
+        """Application program execution path.
+        :rtype: str
+        """
         return self._ApplicationExePath
 
     @ApplicationExePath.setter
@@ -2832,6 +3328,9 @@ class ModifyApplicationBaseInfoRequest(AbstractModel):
 
     @property
     def ApplicationInterList(self):
+        """Application process list.
+        :rtype: str
+        """
         return self._ApplicationInterList
 
     @ApplicationInterList.setter
@@ -2840,6 +3339,9 @@ class ModifyApplicationBaseInfoRequest(AbstractModel):
 
     @property
     def ApplicationBaseInfo(self):
+        """Application basic data.
+        :rtype: :class:`tencentcloud.car.v20220110.models.ApplicationBaseInfo`
+        """
         return self._ApplicationBaseInfo
 
     @ApplicationBaseInfo.setter
@@ -2848,6 +3350,9 @@ class ModifyApplicationBaseInfoRequest(AbstractModel):
 
     @property
     def ApplicationParams(self):
+        """Application startup parameters.
+        :rtype: str
+        """
         return self._ApplicationParams
 
     @ApplicationParams.setter
@@ -2856,6 +3361,9 @@ class ModifyApplicationBaseInfoRequest(AbstractModel):
 
     @property
     def ApplicationName(self):
+        """Application name.
+        :rtype: str
+        """
         return self._ApplicationName
 
     @ApplicationName.setter
@@ -2864,6 +3372,9 @@ class ModifyApplicationBaseInfoRequest(AbstractModel):
 
     @property
     def ApplicationStores(self):
+        """Application repository information list.
+        :rtype: list of UserApplicationStore
+        """
         return self._ApplicationStores
 
     @ApplicationStores.setter
@@ -2910,6 +3421,9 @@ class ModifyApplicationBaseInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2983,6 +3497,9 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Project ID returned by cloud.
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -2991,6 +3508,9 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Project name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2999,6 +3519,9 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def Type(self):
+        """Concurrency type required for project operation.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -3007,6 +3530,9 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def IsPreload(self):
+        """Whether to Enable Pre-launch.
+        :rtype: bool
+        """
         return self._IsPreload
 
     @IsPreload.setter
@@ -3015,6 +3541,9 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def ApplicationParams(self):
+        """Application startup parameters.
+        :rtype: str
+        """
         return self._ApplicationParams
 
     @ApplicationParams.setter
@@ -3023,6 +3552,9 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def Description(self):
+        """Cloud application project description.
+        :rtype: str
+        """
         return self._Description
 
     @Description.setter
@@ -3031,6 +3563,9 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def Resolution(self):
+        """Resolution, in the format of widthxheight, such as 1920x1080.
+        :rtype: str
+        """
         return self._Resolution
 
     @Resolution.setter
@@ -3039,6 +3574,9 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def FPS(self):
+        """Frame rate.
+        :rtype: int
+        """
         return self._FPS
 
     @FPS.setter
@@ -3047,6 +3585,9 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def PreloadDuration(self):
+        """Waiting time for application pre-launch.
+        :rtype: str
+        """
         return self._PreloadDuration
 
     @PreloadDuration.setter
@@ -3055,6 +3596,9 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def ReconnectTimeout(self):
+        """Waiting time for reconnection.
+        :rtype: str
+        """
         return self._ReconnectTimeout
 
     @ReconnectTimeout.setter
@@ -3063,6 +3607,9 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def MinBitrate(self):
+        """Minimum bitrate, in Mbps.
+        :rtype: int
+        """
         return self._MinBitrate
 
     @MinBitrate.setter
@@ -3071,6 +3618,9 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def MaxBitrate(self):
+        """Maximum bitrate, in Mbps.
+        :rtype: int
+        """
         return self._MaxBitrate
 
     @MaxBitrate.setter
@@ -3079,6 +3629,9 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def UpstreamAudioOption(self):
+        """Upstream audio options.DisableMixIntoStreamPush: not mixing upstream audio in streaming.
+        :rtype: str
+        """
         return self._UpstreamAudioOption
 
     @UpstreamAudioOption.setter
@@ -3087,6 +3640,9 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def VideoEncodeConfig(self):
+        """Video encoding configuration.
+        :rtype: :class:`tencentcloud.car.v20220110.models.VideoEncodeConfig`
+        """
         return self._VideoEncodeConfig
 
     @VideoEncodeConfig.setter
@@ -3095,6 +3651,9 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def XRMaxWidth(self):
+        """Upper limit of the XR application resolution.If the project concurrency type is L or L2, the upper limit is 5000; if the project concurrency type is XL2, the upper limit is 6000.
+        :rtype: int
+        """
         return self._XRMaxWidth
 
     @XRMaxWidth.setter
@@ -3103,6 +3662,9 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def BackgroundImageCOSFileId(self):
+        """ID of the background image COS file.
+        :rtype: str
+        """
         return self._BackgroundImageCOSFileId
 
     @BackgroundImageCOSFileId.setter
@@ -3111,6 +3673,9 @@ class ModifyApplicationProjectRequest(AbstractModel):
 
     @property
     def DisableVideoCodecs(self):
+        """Disabled code list.
+        :rtype: list of str
+        """
         return self._DisableVideoCodecs
 
     @DisableVideoCodecs.setter
@@ -3162,6 +3727,9 @@ class ModifyApplicationProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3193,6 +3761,9 @@ class ModifyApplicationVersionRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Application ID.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -3201,6 +3772,9 @@ class ModifyApplicationVersionRequest(AbstractModel):
 
     @property
     def ApplicationVersionId(self):
+        """Application version ID.
+        :rtype: str
+        """
         return self._ApplicationVersionId
 
     @ApplicationVersionId.setter
@@ -3209,6 +3783,9 @@ class ModifyApplicationVersionRequest(AbstractModel):
 
     @property
     def ApplicationVersionName(self):
+        """Application version name.
+        :rtype: str
+        """
         return self._ApplicationVersionName
 
     @ApplicationVersionName.setter
@@ -3244,6 +3821,9 @@ class ModifyApplicationVersionResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3272,6 +3852,9 @@ class ModifyConcurrentPackageRequest(AbstractModel):
 
     @property
     def ConcurrentId(self):
+        """Concurrency pack ID.
+        :rtype: str
+        """
         return self._ConcurrentId
 
     @ConcurrentId.setter
@@ -3280,6 +3863,9 @@ class ModifyConcurrentPackageRequest(AbstractModel):
 
     @property
     def Name(self):
+        """Concurrency pack name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -3314,6 +3900,9 @@ class ModifyConcurrentPackageResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3342,6 +3931,9 @@ class ModifyMobileApplicationInfoRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Application ID.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -3350,6 +3942,9 @@ class ModifyMobileApplicationInfoRequest(AbstractModel):
 
     @property
     def ApplicationName(self):
+        """Application name.
+        :rtype: str
+        """
         return self._ApplicationName
 
     @ApplicationName.setter
@@ -3384,6 +3979,9 @@ class ModifyMobileApplicationInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3409,6 +4007,9 @@ class ResetConcurrentPackagesRequest(AbstractModel):
 
     @property
     def ConcurrentPackageIds(self):
+        """Concurrency pack ID array.
+        :rtype: list of str
+        """
         return self._ConcurrentPackageIds
 
     @ConcurrentPackageIds.setter
@@ -3442,6 +4043,9 @@ class ResetConcurrentPackagesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3470,6 +4074,9 @@ class SetApplicationVersionOnlineRequest(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Application ID.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -3478,6 +4085,9 @@ class SetApplicationVersionOnlineRequest(AbstractModel):
 
     @property
     def ApplicationVersionId(self):
+        """Application version ID.
+        :rtype: str
+        """
         return self._ApplicationVersionId
 
     @ApplicationVersionId.setter
@@ -3515,6 +4125,9 @@ class SetApplicationVersionOnlineResponse(AbstractModel):
 
     @property
     def Versions(self):
+        """List of application versions.
+        :rtype: list of UserApplicationVersion
+        """
         return self._Versions
 
     @Versions.setter
@@ -3523,6 +4136,9 @@ class SetApplicationVersionOnlineResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3557,6 +4173,9 @@ class StartPublishStreamRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """Unique user ID, which is customized by you and is not parsed by CAR. It will be used as the `StreamId` for streaming. For example, if the bound streaming domain is **abc.livepush.myqcloud.com**, the streaming address will be **rtmp://abc.livepush.myqcloud.com/live/UserId?txSecret=xxx&txTime=xxx**.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -3565,6 +4184,9 @@ class StartPublishStreamRequest(AbstractModel):
 
     @property
     def PublishStreamArgs(self):
+        """Streaming parameter, which is a custom parameter carried during streaming.
+        :rtype: str
+        """
         return self._PublishStreamArgs
 
     @PublishStreamArgs.setter
@@ -3599,6 +4221,9 @@ class StartPublishStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3627,6 +4252,9 @@ class StartPublishStreamWithURLRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """Unique user ID, which is customized by you and is not parsed by CAR.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -3635,6 +4263,9 @@ class StartPublishStreamWithURLRequest(AbstractModel):
 
     @property
     def PublishStreamURL(self):
+        """Streaming address. Only RTMP is supported for streaming currently.
+        :rtype: str
+        """
         return self._PublishStreamURL
 
     @PublishStreamURL.setter
@@ -3669,6 +4300,9 @@ class StartPublishStreamWithURLResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3694,6 +4328,9 @@ class StopPublishStreamRequest(AbstractModel):
 
     @property
     def UserId(self):
+        """Unique user ID, which is customized by you and is not parsed by CAR. Based on your needs, you can either define unique IDs for users or use timestamps to generate random IDs. Make sure the same ID is used when a user reconnects to your application.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -3727,6 +4364,9 @@ class StopPublishStreamResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3755,6 +4395,9 @@ class UnbindConcurrentPackagesFromProjectRequest(AbstractModel):
 
     @property
     def ConcurrentIds(self):
+        """Concurrency pack ID list.
+        :rtype: list of str
+        """
         return self._ConcurrentIds
 
     @ConcurrentIds.setter
@@ -3763,6 +4406,9 @@ class UnbindConcurrentPackagesFromProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
+        """Cloud application project ID.
+        :rtype: str
+        """
         return self._ProjectId
 
     @ProjectId.setter
@@ -3797,6 +4443,9 @@ class UnbindConcurrentPackagesFromProjectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, generated by the server, will be returned for every request (if the request fails to reach the server for other reasons, the request will not obtain a RequestId). RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3827,6 +4476,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilePath(self):
+        """Application file path.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FilePath
 
     @FilePath.setter
@@ -3835,6 +4488,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def FileState(self):
+        """File status. NO_EXIST: The file does not exist; EXIST: The file exists.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FileState
 
     @FileState.setter
@@ -3908,6 +4565,9 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Application ID.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -3916,6 +4576,9 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationName(self):
+        """Application name.
+        :rtype: str
+        """
         return self._ApplicationName
 
     @ApplicationName.setter
@@ -3924,6 +4587,9 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationType(self):
+        """Application type (cloud 3D: Application3D; cloud XR: ApplicationXR; cloud Web: ApplicationWeb).
+        :rtype: str
+        """
         return self._ApplicationType
 
     @ApplicationType.setter
@@ -3932,6 +4598,9 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationExePath(self):
+        """Application program execution path.
+        :rtype: str
+        """
         return self._ApplicationExePath
 
     @ApplicationExePath.setter
@@ -3940,6 +4609,9 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationInterList(self):
+        """Application process list.
+        :rtype: str
+        """
         return self._ApplicationInterList
 
     @ApplicationInterList.setter
@@ -3948,6 +4620,9 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationParams(self):
+        """Application startup parameters.
+        :rtype: str
+        """
         return self._ApplicationParams
 
     @ApplicationParams.setter
@@ -3956,6 +4631,9 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationRunStatus(self):
+        """Application running status (ApplicationDeleting: application deletion in progress; ApplicationCreateFail: application creation failed; ApplicationCreating: application creation in progress; ApplicationRunning: normal running; ApplicationNoConfigured: main execution program path not configured).
+        :rtype: str
+        """
         return self._ApplicationRunStatus
 
     @ApplicationRunStatus.setter
@@ -3964,6 +4642,9 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationUpdateStatus(self):
+        """Application update status (ApplicationUpdateCreating: version creation in progress; ApplicationUpdateCreateFail: version creation failed; ApplicationUpdateNoReleased: version to be released; ApplicationUpdateReleased: version release completed; ApplicationUpdateNormal: none).
+        :rtype: str
+        """
         return self._ApplicationUpdateStatus
 
     @ApplicationUpdateStatus.setter
@@ -3972,6 +4653,9 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationCreateTime(self):
+        """Application creation time.
+        :rtype: str
+        """
         return self._ApplicationCreateTime
 
     @ApplicationCreateTime.setter
@@ -3980,6 +4664,9 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationVersions(self):
+        """List of application versions.
+        :rtype: list of UserApplicationVersion
+        """
         return self._ApplicationVersions
 
     @ApplicationVersions.setter
@@ -3988,6 +4675,9 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationBaseInfo(self):
+        """Application basic data.
+        :rtype: :class:`tencentcloud.car.v20220110.models.ApplicationBaseInfo`
+        """
         return self._ApplicationBaseInfo
 
     @ApplicationBaseInfo.setter
@@ -3996,6 +4686,9 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationUpdateProgress(self):
+        """Application update progress.
+        :rtype: int
+        """
         return self._ApplicationUpdateProgress
 
     @ApplicationUpdateProgress.setter
@@ -4004,6 +4697,9 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationNature(self):
+        """Application nature (PUBLIC: public application; PRIVATE: user application).
+        :rtype: str
+        """
         return self._ApplicationNature
 
     @ApplicationNature.setter
@@ -4012,6 +4708,9 @@ class UserApplicationInfo(AbstractModel):
 
     @property
     def ApplicationStores(self):
+        """Application repository list.
+        :rtype: list of UserApplicationStore
+        """
         return self._ApplicationStores
 
     @ApplicationStores.setter
@@ -4079,6 +4778,9 @@ class UserApplicationStatus(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Application ID.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -4087,6 +4789,9 @@ class UserApplicationStatus(AbstractModel):
 
     @property
     def ApplicationRunStatus(self):
+        """Application running status (ApplicationDeleting: application deletion in progress; ApplicationCreateFail: application creation failed; ApplicationCreating: application creation in progress; ApplicationRunning: normal running; ApplicationNoConfigured: main execution program path not configured; ApplicationNoPackage: no available package).
+        :rtype: str
+        """
         return self._ApplicationRunStatus
 
     @ApplicationRunStatus.setter
@@ -4095,6 +4800,9 @@ class UserApplicationStatus(AbstractModel):
 
     @property
     def ApplicationUpdateStatus(self):
+        """Application update status (ApplicationUpdateCreating: version creation in progress; ApplicationUpdateCreateFail: version creation failed; ApplicationUpdateNoReleased: version to be released; ApplicationUpdateReleased: version release completed; ApplicationUpdateNormal: none).
+        :rtype: str
+        """
         return self._ApplicationUpdateStatus
 
     @ApplicationUpdateStatus.setter
@@ -4103,6 +4811,9 @@ class UserApplicationStatus(AbstractModel):
 
     @property
     def ApplicationUpdateProgress(self):
+        """Application update progress.
+        :rtype: int
+        """
         return self._ApplicationUpdateProgress
 
     @ApplicationUpdateProgress.setter
@@ -4156,6 +4867,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosBucket(self):
+        """COS bucket name.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CosBucket
 
     @CosBucket.setter
@@ -4164,6 +4879,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CosRegion(self):
+        """COS bucket region.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CosRegion
 
     @CosRegion.setter
@@ -4172,6 +4891,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StoreType(self):
+        """Repository type. LOG: application logs; ARCHIVE: application archive.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StoreType
 
     @StoreType.setter
@@ -4180,6 +4903,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StoreState(self):
+        """Repository status. ON: enabled; OFF: disabled.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StoreState
 
     @StoreState.setter
@@ -4188,6 +4915,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def StorePath(self):
+        """Repository path.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StorePath
 
     @StorePath.setter
@@ -4267,6 +4998,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationVersionId(self):
+        """Application version ID.
+        :rtype: str
+        """
         return self._ApplicationVersionId
 
     @ApplicationVersionId.setter
@@ -4275,6 +5009,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationVersionSize(self):
+        """Application version size.
+        :rtype: int
+        """
         return self._ApplicationVersionSize
 
     @ApplicationVersionSize.setter
@@ -4283,6 +5020,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationVersionStatus(self):
+        """Application version status (Uploading: uploading; Creating: in creation; CreateFailed: creation failed; Deleting: deleting; Inuse: current version; Normal: to be released; Usable: available).
+        :rtype: str
+        """
         return self._ApplicationVersionStatus
 
     @ApplicationVersionStatus.setter
@@ -4291,6 +5031,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationVersionName(self):
+        """Application version name.
+        :rtype: str
+        """
         return self._ApplicationVersionName
 
     @ApplicationVersionName.setter
@@ -4299,6 +5042,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """Application version creation time.
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -4307,6 +5053,30 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationVersionRegions(self):
+        """Region for application version distribution (
+Standard zone:
+ap-chinese-mainland: Chinese mainland
+na-north-america: North America
+eu-frankfurt: Frankfurt
+ap-mumbai: Mumbai
+ap-tokyo: Tokyo
+ap-seoul: Seoul
+ap-singapore: Singapore
+ap-bangkok: Bangkok
+ap-hongkong: Hong Kong (China)
+Integration zone:
+me-middle-east-fusion: Middle East
+na-north-america-fusion: North America
+sa-south-america-fusion: South America
+ap-tokyo-fusion: Tokyo
+ap-seoul-fusion: Seoul
+eu-frankfurt-fusion: Frankfurt
+ap-singapore-fusion: Singapore
+ap-hongkong-fusion: Hong Kong (China)
+).
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._ApplicationVersionRegions
 
     @ApplicationVersionRegions.setter
@@ -4315,6 +5085,12 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def ApplicationVersionUpdateMode(self):
+        """Application version update method.
+FULL: full update.
+INCREMENT: incremental update.
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ApplicationVersionUpdateMode
 
     @ApplicationVersionUpdateMode.setter
@@ -4375,6 +5151,9 @@ class UserMobileApplicationInfo(AbstractModel):
 
     @property
     def ApplicationId(self):
+        """Application ID.
+        :rtype: str
+        """
         return self._ApplicationId
 
     @ApplicationId.setter
@@ -4383,6 +5162,9 @@ class UserMobileApplicationInfo(AbstractModel):
 
     @property
     def ApplicationName(self):
+        """Application name.
+        :rtype: str
+        """
         return self._ApplicationName
 
     @ApplicationName.setter
@@ -4391,6 +5173,9 @@ class UserMobileApplicationInfo(AbstractModel):
 
     @property
     def ApplicationType(self):
+        """Application type (cloud APK: application APK).
+        :rtype: str
+        """
         return self._ApplicationType
 
     @ApplicationType.setter
@@ -4399,6 +5184,9 @@ class UserMobileApplicationInfo(AbstractModel):
 
     @property
     def ApplicationRunStatus(self):
+        """Application running status (ApplicationRunning: normal running; ApplicationNoPackage: no available package).
+        :rtype: str
+        """
         return self._ApplicationRunStatus
 
     @ApplicationRunStatus.setter
@@ -4407,6 +5195,9 @@ class UserMobileApplicationInfo(AbstractModel):
 
     @property
     def ApplicationUpdateStatus(self):
+        """Application update status (ApplicationUpdateCreating: version creation in progress; ApplicationUpdateCreateFail: version creation failed; ApplicationUpdateNoReleased: version to be released; ApplicationUpdateReleased: version release completed; ApplicationUpdateNormal: none).
+        :rtype: str
+        """
         return self._ApplicationUpdateStatus
 
     @ApplicationUpdateStatus.setter
@@ -4415,6 +5206,9 @@ class UserMobileApplicationInfo(AbstractModel):
 
     @property
     def ApplicationCreateTime(self):
+        """Application creation time.
+        :rtype: str
+        """
         return self._ApplicationCreateTime
 
     @ApplicationCreateTime.setter
@@ -4423,6 +5217,9 @@ class UserMobileApplicationInfo(AbstractModel):
 
     @property
     def ApplicationVersions(self):
+        """List of application versions.
+        :rtype: list of UserApplicationVersion
+        """
         return self._ApplicationVersions
 
     @ApplicationVersions.setter
@@ -4431,6 +5228,9 @@ class UserMobileApplicationInfo(AbstractModel):
 
     @property
     def ApplicationNature(self):
+        """Application nature (PUBLIC: public application; PRIVATE: user application).
+        :rtype: str
+        """
         return self._ApplicationNature
 
     @ApplicationNature.setter
@@ -4476,6 +5276,9 @@ class VideoEncodeConfig(AbstractModel):
 
     @property
     def StreamPushGOPSeconds(self):
+        """Streaming GOP length, in seconds.Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._StreamPushGOPSeconds
 
     @StreamPushGOPSeconds.setter

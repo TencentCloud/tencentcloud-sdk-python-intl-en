@@ -32,6 +32,9 @@ class AcceptDirectConnectTunnelRequest(AbstractModel):
 
     @property
     def DirectConnectTunnelId(self):
+        """The connection owner accepts an application for sharing the dedicated tunnel
+        :rtype: str
+        """
         return self._DirectConnectTunnelId
 
     @DirectConnectTunnelId.setter
@@ -65,6 +68,9 @@ class AcceptDirectConnectTunnelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -125,6 +131,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AccessPointName(self):
+        """Access point name.
+        :rtype: str
+        """
         return self._AccessPointName
 
     @AccessPointName.setter
@@ -133,6 +142,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AccessPointId(self):
+        """Unique access point ID.
+        :rtype: str
+        """
         return self._AccessPointId
 
     @AccessPointId.setter
@@ -141,6 +153,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def State(self):
+        """Access point status. Valid values: available, unavailable.
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -149,6 +164,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Location(self):
+        """Access point location.
+        :rtype: str
+        """
         return self._Location
 
     @Location.setter
@@ -157,6 +175,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LineOperator(self):
+        """List of ISPs supported by access point.
+        :rtype: list of str
+        """
         return self._LineOperator
 
     @LineOperator.setter
@@ -165,6 +186,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RegionId(self):
+        """ID of the region that manages the access point.
+        :rtype: str
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -173,6 +197,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AvailablePortType(self):
+        """Available port type at the access point. Valid values: 1000BASE-T: gigabit electrical port; 1000BASE-LX: 10 km gigabit single-mode optical port; 1000BASE-ZX: 80 km gigabit single-mode optical port; 10GBASE-LR: 10 km 10-gigabit single-mode optical port; 10GBASE-ZR: 80 km 10-gigabit single-mode optical port; 10GBASE-LH: 40 km 10-gigabit single-mode optical port; 100GBASE-LR4: 10 km 100-gigabit single-mode optical portfiber optic port.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: list of str
+        """
         return self._AvailablePortType
 
     @AvailablePortType.setter
@@ -181,6 +209,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Coordinate(self):
+        """Latitude and longitude of the access point
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.dc.v20180410.models.Coordinate`
+        """
         return self._Coordinate
 
     @Coordinate.setter
@@ -189,6 +221,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def City(self):
+        """City where the access point is located
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._City
 
     @City.setter
@@ -197,6 +233,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Area(self):
+        """Access point region
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -205,6 +245,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AccessPointType(self):
+        """Access point type. Valid values: `VXLAN`, `QCPL`, and `QCAR`.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AccessPointType
 
     @AccessPointType.setter
@@ -260,6 +304,9 @@ class ApplyInternetAddressRequest(AbstractModel):
 
     @property
     def MaskLen(self):
+        """Mask length of a CIDR block
+        :rtype: int
+        """
         return self._MaskLen
 
     @MaskLen.setter
@@ -268,6 +315,12 @@ class ApplyInternetAddressRequest(AbstractModel):
 
     @property
     def AddrType(self):
+        """Address type. Valid values: 0: BGP
+1: China Telecom
+2: China Mobile
+3: China Unicom
+        :rtype: int
+        """
         return self._AddrType
 
     @AddrType.setter
@@ -276,6 +329,10 @@ class ApplyInternetAddressRequest(AbstractModel):
 
     @property
     def AddrProto(self):
+        """Address protocol. Valid values: 0: IPv4
+1: IPv6
+        :rtype: int
+        """
         return self._AddrProto
 
     @AddrProto.setter
@@ -315,6 +372,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceId(self):
+        """ID of the internet tunnel’s public IP address
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -323,6 +384,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -352,6 +416,9 @@ class BFDInfo(AbstractModel):
 
     @property
     def ProbeFailedTimes(self):
+        """Number of health checks
+        :rtype: int
+        """
         return self._ProbeFailedTimes
 
     @ProbeFailedTimes.setter
@@ -360,6 +427,9 @@ class BFDInfo(AbstractModel):
 
     @property
     def Interval(self):
+        """Health check interval
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -397,6 +467,9 @@ class BgpPeer(AbstractModel):
 
     @property
     def Asn(self):
+        """User-side BGP Asn.
+        :rtype: int
+        """
         return self._Asn
 
     @Asn.setter
@@ -405,6 +478,9 @@ class BgpPeer(AbstractModel):
 
     @property
     def AuthKey(self):
+        """User-side BGP key.
+        :rtype: str
+        """
         return self._AuthKey
 
     @AuthKey.setter
@@ -442,6 +518,9 @@ class Coordinate(AbstractModel):
 
     @property
     def Lat(self):
+        """Latitude
+        :rtype: float
+        """
         return self._Lat
 
     @Lat.setter
@@ -450,6 +529,9 @@ class Coordinate(AbstractModel):
 
     @property
     def Lng(self):
+        """Longitude
+        :rtype: float
+        """
         return self._Lng
 
     @Lng.setter
@@ -533,6 +615,9 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
 
     @property
     def DirectConnectName(self):
+        """Connection name.
+        :rtype: str
+        """
         return self._DirectConnectName
 
     @DirectConnectName.setter
@@ -541,6 +626,10 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
 
     @property
     def AccessPointId(self):
+        """Access point of connection.
+You can call `DescribeAccessPoints` to get the region ID. The selected access point must exist and be available.
+        :rtype: str
+        """
         return self._AccessPointId
 
     @AccessPointId.setter
@@ -549,6 +638,9 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
 
     @property
     def LineOperator(self):
+        """ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs).
+        :rtype: str
+        """
         return self._LineOperator
 
     @LineOperator.setter
@@ -557,6 +649,9 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
 
     @property
     def PortType(self):
+        """Port type of connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface), 1000Base-LX (1-Gigabit single-module optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-module optical Ethernet interface; 10 KM). Default value: 1000Base-LX.
+        :rtype: str
+        """
         return self._PortType
 
     @PortType.setter
@@ -565,6 +660,9 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
 
     @property
     def CircuitCode(self):
+        """Circuit code of a connection, which is provided by the ISP or connection provider.
+        :rtype: str
+        """
         return self._CircuitCode
 
     @CircuitCode.setter
@@ -573,6 +671,9 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
 
     @property
     def Location(self):
+        """Local IDC location.
+        :rtype: str
+        """
         return self._Location
 
     @Location.setter
@@ -581,6 +682,9 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
 
     @property
     def Bandwidth(self):
+        """Connection port bandwidth in Mbps. Value range: [2,10240]. Default value: 1000.
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -589,6 +693,9 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
 
     @property
     def RedundantDirectConnectId(self):
+        """ID of redundant connection.
+        :rtype: str
+        """
         return self._RedundantDirectConnectId
 
     @RedundantDirectConnectId.setter
@@ -597,6 +704,9 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
 
     @property
     def Vlan(self):
+        """VLAN for connection debugging, which is enabled and automatically assigned by default.
+        :rtype: int
+        """
         return self._Vlan
 
     @Vlan.setter
@@ -605,6 +715,9 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
 
     @property
     def TencentAddress(self):
+        """Tencent-side IP address for connection debugging, which is automatically assigned by default.
+        :rtype: str
+        """
         return self._TencentAddress
 
     @TencentAddress.setter
@@ -613,6 +726,9 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
 
     @property
     def CustomerAddress(self):
+        """User-side IP address for connection debugging, which is automatically assigned by default.
+        :rtype: str
+        """
         return self._CustomerAddress
 
     @CustomerAddress.setter
@@ -621,6 +737,9 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
 
     @property
     def CustomerName(self):
+        """Name of connection applicant, which is obtained from the account system by default.
+        :rtype: str
+        """
         return self._CustomerName
 
     @CustomerName.setter
@@ -629,6 +748,9 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
 
     @property
     def CustomerContactMail(self):
+        """Email address of connection applicant, which is obtained from the account system by default.
+        :rtype: str
+        """
         return self._CustomerContactMail
 
     @CustomerContactMail.setter
@@ -637,6 +759,9 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
 
     @property
     def CustomerContactNumber(self):
+        """Contact number of connection applicant, which is obtained from the account system by default.
+        :rtype: str
+        """
         return self._CustomerContactNumber
 
     @CustomerContactNumber.setter
@@ -645,6 +770,9 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
 
     @property
     def FaultReportContactPerson(self):
+        """Fault reporting contact person.
+        :rtype: str
+        """
         return self._FaultReportContactPerson
 
     @FaultReportContactPerson.setter
@@ -653,6 +781,9 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
 
     @property
     def FaultReportContactNumber(self):
+        """Fault reporting contact number.
+        :rtype: str
+        """
         return self._FaultReportContactNumber
 
     @FaultReportContactNumber.setter
@@ -661,6 +792,9 @@ You can call `DescribeAccessPoints` to get the region ID. The selected access po
 
     @property
     def SignLaw(self):
+        """Whether the connection applicant has signed the service agreement. Default value: true.
+        :rtype: bool
+        """
         return self._SignLaw
 
     @SignLaw.setter
@@ -713,6 +847,9 @@ class CreateDirectConnectResponse(AbstractModel):
 
     @property
     def DirectConnectIdSet(self):
+        """Connection ID.
+        :rtype: list of str
+        """
         return self._DirectConnectIdSet
 
     @DirectConnectIdSet.setter
@@ -721,6 +858,9 @@ class CreateDirectConnectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -813,6 +953,9 @@ Default value: Non-zero.
 
     @property
     def DirectConnectId(self):
+        """Direct Connect ID, such as `dc-kd7d06of`.
+        :rtype: str
+        """
         return self._DirectConnectId
 
     @DirectConnectId.setter
@@ -821,6 +964,9 @@ Default value: Non-zero.
 
     @property
     def DirectConnectTunnelName(self):
+        """Dedicated tunnel name.
+        :rtype: str
+        """
         return self._DirectConnectTunnelName
 
     @DirectConnectTunnelName.setter
@@ -829,6 +975,10 @@ Default value: Non-zero.
 
     @property
     def DirectConnectOwnerAccount(self):
+        """Connection owner, who is the current customer by default.
+The developer account ID should be entered for shared connections.
+        :rtype: str
+        """
         return self._DirectConnectOwnerAccount
 
     @DirectConnectOwnerAccount.setter
@@ -837,6 +987,12 @@ Default value: Non-zero.
 
     @property
     def NetworkType(self):
+        """Network type. Valid values: VPC, BMVPC, CCN. Default value: VPC.
+VPC: Virtual Private Cloud.
+BMVPC: BM VPC.
+CCN: Cloud Connect Network.
+        :rtype: str
+        """
         return self._NetworkType
 
     @NetworkType.setter
@@ -845,6 +1001,9 @@ Default value: Non-zero.
 
     @property
     def NetworkRegion(self):
+        """Network region.
+        :rtype: str
+        """
         return self._NetworkRegion
 
     @NetworkRegion.setter
@@ -853,6 +1012,9 @@ Default value: Non-zero.
 
     @property
     def VpcId(self):
+        """Unified VPC ID or BMVPC ID.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -861,6 +1023,9 @@ Default value: Non-zero.
 
     @property
     def DirectConnectGatewayId(self):
+        """Direct connect gateway ID, such as `dcg-d545ddf`.
+        :rtype: str
+        """
         return self._DirectConnectGatewayId
 
     @DirectConnectGatewayId.setter
@@ -869,6 +1034,10 @@ Default value: Non-zero.
 
     @property
     def Bandwidth(self):
+        """Direct Connect bandwidth in Mbps.
+Default value: connection bandwidth value.
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -877,6 +1046,11 @@ Default value: Non-zero.
 
     @property
     def RouteType(self):
+        """BGP: BGP routing.
+STATIC: Static routing.
+Default value: BGP routing.
+        :rtype: str
+        """
         return self._RouteType
 
     @RouteType.setter
@@ -885,6 +1059,9 @@ Default value: Non-zero.
 
     @property
     def BgpPeer(self):
+        """BgpPeer, which is BGP information on the user side and includes Asn and AuthKey.
+        :rtype: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
+        """
         return self._BgpPeer
 
     @BgpPeer.setter
@@ -893,6 +1070,9 @@ Default value: Non-zero.
 
     @property
     def RouteFilterPrefixes(self):
+        """Static routing, i.e., IP range of the user's IDC.
+        :rtype: list of RouteFilterPrefix
+        """
         return self._RouteFilterPrefixes
 
     @RouteFilterPrefixes.setter
@@ -901,6 +1081,11 @@ Default value: Non-zero.
 
     @property
     def Vlan(self):
+        """VLAN. Value range: 0-3,000.
+0: sub-interface not enabled.
+Default value: Non-zero.
+        :rtype: int
+        """
         return self._Vlan
 
     @Vlan.setter
@@ -909,6 +1094,9 @@ Default value: Non-zero.
 
     @property
     def TencentAddress(self):
+        """TencentAddress: Tencent-side IP address.
+        :rtype: str
+        """
         return self._TencentAddress
 
     @TencentAddress.setter
@@ -917,6 +1105,9 @@ Default value: Non-zero.
 
     @property
     def CustomerAddress(self):
+        """CustomerAddress: User-side IP address.
+        :rtype: str
+        """
         return self._CustomerAddress
 
     @CustomerAddress.setter
@@ -925,6 +1116,9 @@ Default value: Non-zero.
 
     @property
     def TencentBackupAddress(self):
+        """TencentBackupAddress, i.e., Tencent-side standby IP address
+        :rtype: str
+        """
         return self._TencentBackupAddress
 
     @TencentBackupAddress.setter
@@ -933,6 +1127,9 @@ Default value: Non-zero.
 
     @property
     def CloudAttachId(self):
+        """Cloud Attached Connection Service ID
+        :rtype: str
+        """
         return self._CloudAttachId
 
     @CloudAttachId.setter
@@ -941,6 +1138,9 @@ Default value: Non-zero.
 
     @property
     def BfdEnable(self):
+        """Whether to enable BFD
+        :rtype: int
+        """
         return self._BfdEnable
 
     @BfdEnable.setter
@@ -949,6 +1149,9 @@ Default value: Non-zero.
 
     @property
     def NqaEnable(self):
+        """Whether to enable NQA
+        :rtype: int
+        """
         return self._NqaEnable
 
     @NqaEnable.setter
@@ -957,6 +1160,9 @@ Default value: Non-zero.
 
     @property
     def BfdInfo(self):
+        """BFD configuration information
+        :rtype: :class:`tencentcloud.dc.v20180410.models.BFDInfo`
+        """
         return self._BfdInfo
 
     @BfdInfo.setter
@@ -965,6 +1171,9 @@ Default value: Non-zero.
 
     @property
     def NqaInfo(self):
+        """NQA configuration information
+        :rtype: :class:`tencentcloud.dc.v20180410.models.NQAInfo`
+        """
         return self._NqaInfo
 
     @NqaInfo.setter
@@ -1031,6 +1240,9 @@ class CreateDirectConnectTunnelResponse(AbstractModel):
 
     @property
     def DirectConnectTunnelIdSet(self):
+        """Dedicated tunnel ID.
+        :rtype: list of str
+        """
         return self._DirectConnectTunnelIdSet
 
     @DirectConnectTunnelIdSet.setter
@@ -1039,6 +1251,9 @@ class CreateDirectConnectTunnelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1065,6 +1280,9 @@ class DeleteDirectConnectRequest(AbstractModel):
 
     @property
     def DirectConnectId(self):
+        """Connection ID.
+        :rtype: str
+        """
         return self._DirectConnectId
 
     @DirectConnectId.setter
@@ -1098,6 +1316,9 @@ class DeleteDirectConnectResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1123,6 +1344,9 @@ class DeleteDirectConnectTunnelRequest(AbstractModel):
 
     @property
     def DirectConnectTunnelId(self):
+        """Dedicated tunnel ID.
+        :rtype: str
+        """
         return self._DirectConnectTunnelId
 
     @DirectConnectTunnelId.setter
@@ -1156,6 +1380,9 @@ class DeleteDirectConnectTunnelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1189,6 +1416,11 @@ You can call `DescribeRegions` to get the region ID.
 
     @property
     def RegionId(self):
+        """Access point region, which can be queried through `DescribeRegions`.
+
+You can call `DescribeRegions` to get the region ID.
+        :rtype: str
+        """
         return self._RegionId
 
     @RegionId.setter
@@ -1197,6 +1429,9 @@ You can call `DescribeRegions` to get the region ID.
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1205,6 +1440,9 @@ You can call `DescribeRegions` to get the region ID.
 
     @property
     def Limit(self):
+        """Number of results to be returned. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1246,6 +1484,9 @@ class DescribeAccessPointsResponse(AbstractModel):
 
     @property
     def AccessPointSet(self):
+        """Access point information.
+        :rtype: list of AccessPoint
+        """
         return self._AccessPointSet
 
     @AccessPointSet.setter
@@ -1254,6 +1495,9 @@ class DescribeAccessPointsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible access points.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1262,6 +1506,9 @@ class DescribeAccessPointsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1307,6 +1554,13 @@ This parameter does not support specifying `DirectConnectTunnelIds` and `Filters
 
     @property
     def Filters(self):
+        """Filter conditions:
+This parameter does not support specifying `DirectConnectTunnelIds` and `Filters` at the same time.
+<li> direct-connect-tunnel-name: Dedicated tunnel name.</li>
+<li> direct-connect-tunnel-id: Dedicated tunnel instance ID, such as `dcx-abcdefgh`.</li>
+<li>direct-connect-id: Connection instance ID, such as `dc-abcdefgh`.</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1315,6 +1569,9 @@ This parameter does not support specifying `DirectConnectTunnelIds` and `Filters
 
     @property
     def DirectConnectTunnelIds(self):
+        """Array of dedicated tunnel IDs.
+        :rtype: list of str
+        """
         return self._DirectConnectTunnelIds
 
     @DirectConnectTunnelIds.setter
@@ -1323,6 +1580,9 @@ This parameter does not support specifying `DirectConnectTunnelIds` and `Filters
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1331,6 +1591,9 @@ This parameter does not support specifying `DirectConnectTunnelIds` and `Filters
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1378,6 +1641,9 @@ class DescribeDirectConnectTunnelsResponse(AbstractModel):
 
     @property
     def DirectConnectTunnelSet(self):
+        """List of dedicated tunnels.
+        :rtype: list of DirectConnectTunnel
+        """
         return self._DirectConnectTunnelSet
 
     @DirectConnectTunnelSet.setter
@@ -1386,6 +1652,9 @@ class DescribeDirectConnectTunnelsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible dedicated tunnels.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1394,6 +1663,9 @@ class DescribeDirectConnectTunnelsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1435,6 +1707,9 @@ class DescribeDirectConnectsRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions:
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1443,6 +1718,9 @@ class DescribeDirectConnectsRequest(AbstractModel):
 
     @property
     def DirectConnectIds(self):
+        """Array of connection IDs.
+        :rtype: list of str
+        """
         return self._DirectConnectIds
 
     @DirectConnectIds.setter
@@ -1451,6 +1729,9 @@ class DescribeDirectConnectsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1459,6 +1740,9 @@ class DescribeDirectConnectsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1510,6 +1794,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def DirectConnectSet(self):
+        """List of connections.
+        :rtype: list of DirectConnect
+        """
         return self._DirectConnectSet
 
     @DirectConnectSet.setter
@@ -1518,6 +1805,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def TotalCount(self):
+        """Number of eligible connection lists.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1526,6 +1816,10 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def AllSignLaw(self):
+        """Whether all connections under the account have the service agreement signed.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: bool
+        """
         return self._AllSignLaw
 
     @AllSignLaw.setter
@@ -1534,6 +1828,9 @@ Note: this field may return `null`, indicating that no valid value is obtained.
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1593,6 +1890,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Ipv6PrefixLen(self):
+        """Minimum prefix length allowed for a public IPv6 address
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Ipv6PrefixLen
 
     @Ipv6PrefixLen.setter
@@ -1601,6 +1902,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Ipv4BgpQuota(self):
+        """Quota of BGP IPv4 addresses
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Ipv4BgpQuota
 
     @Ipv4BgpQuota.setter
@@ -1609,6 +1914,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Ipv4OtherQuota(self):
+        """Quota of non-BGP IPv4 addresses
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Ipv4OtherQuota
 
     @Ipv4OtherQuota.setter
@@ -1617,6 +1926,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Ipv4BgpNum(self):
+        """Used number of BGP IPv4 addresses
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Ipv4BgpNum
 
     @Ipv4BgpNum.setter
@@ -1625,6 +1938,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Ipv4OtherNum(self):
+        """Used number of non-BGP IPv4 addresses
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Ipv4OtherNum
 
     @Ipv4OtherNum.setter
@@ -1633,6 +1950,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1674,6 +1994,9 @@ class DescribeInternetAddressRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1682,6 +2005,9 @@ class DescribeInternetAddressRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of returned results. Default value: 20. Maximum value: 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1690,6 +2016,14 @@ class DescribeInternetAddressRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter conditions:
+<li>AddrType, address type. Valid values: 0: BGP; 1: China Telecom; 2: China Mobile; 3: China Unicom</li>
+<li>AddrProto, address protocol. Valid values: 0: IPv4; 1: IPv6</li>
+<li>Status, address status. Valid values: 0: in use; 1: disabled; 2: returned</li>
+<li>Subnet, public IP address array</li>
+<InstanceIds>Public IP address ID array</li>
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1737,6 +2071,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TotalCount(self):
+        """Number of public IP addresses for internet tunnels
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1745,6 +2082,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Subnets(self):
+        """List of the public IP addresses for internet tunnels
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of InternetAddressDetail
+        """
         return self._Subnets
 
     @Subnets.setter
@@ -1753,6 +2094,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1798,6 +2142,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TotalCount(self):
+        """Number of public IP address statistics for internet tunnels
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1806,6 +2153,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InternetAddressStatistics(self):
+        """List of the public IP address statistics for internet tunnels
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of InternetAddressStatistics
+        """
         return self._InternetAddressStatistics
 
     @InternetAddressStatistics.setter
@@ -1814,6 +2165,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1967,6 +2321,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DirectConnectId(self):
+        """Connection ID.
+        :rtype: str
+        """
         return self._DirectConnectId
 
     @DirectConnectId.setter
@@ -1975,6 +2332,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DirectConnectName(self):
+        """Connection name.
+        :rtype: str
+        """
         return self._DirectConnectName
 
     @DirectConnectName.setter
@@ -1983,6 +2343,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AccessPointId(self):
+        """Access point ID of a connection.
+        :rtype: str
+        """
         return self._AccessPointId
 
     @AccessPointId.setter
@@ -1991,6 +2354,17 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def State(self):
+        """Connection status.
+PENDING: Applying. 
+REJECTED: Application rejected.   
+TOPAY: Payment pending. 
+PAID: Paid. 
+ALLOCATED: Constructing.   
+AVAILABLE: Available.  
+DELETING: Deleting.
+DELETED: Deleted.
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -1999,6 +2373,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTime(self):
+        """Connection creation time.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -2007,6 +2384,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EnabledTime(self):
+        """Connection activation time.
+        :rtype: str
+        """
         return self._EnabledTime
 
     @EnabledTime.setter
@@ -2015,6 +2395,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LineOperator(self):
+        """ISP that provides connections. Valid values: ChinaTelecom (China Telecom), ChinaMobile (China Mobile), ChinaUnicom (China Unicom), In-houseWiring (in-house wiring), ChinaOther (other Chinese ISPs), InternationalOperator (international ISPs).
+        :rtype: str
+        """
         return self._LineOperator
 
     @LineOperator.setter
@@ -2023,6 +2406,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Location(self):
+        """Location of a local IDC.
+        :rtype: str
+        """
         return self._Location
 
     @Location.setter
@@ -2031,6 +2417,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Bandwidth(self):
+        """Connection port bandwidth in Mbps.
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -2039,6 +2428,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PortType(self):
+        """User-side port type of a connection. Valid values: 100Base-T (100-Megabit electrical Ethernet interface), 1000Base-T (1-Gigabit electrical Ethernet interface; it is the default value), 1000Base-LX (1-Gigabit single-mode optical Ethernet interface; 10 KM), 10GBase-T (10-Gigabit electrical Ethernet interface), 10GBase-LR (10-Gigabit single-mode optical Ethernet interface; 10 KM).
+        :rtype: str
+        """
         return self._PortType
 
     @PortType.setter
@@ -2047,6 +2439,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CircuitCode(self):
+        """Circuit code of a connection, which is provided by the ISP or service provider.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CircuitCode
 
     @CircuitCode.setter
@@ -2055,6 +2451,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RedundantDirectConnectId(self):
+        """ID of a redundant connection.
+        :rtype: str
+        """
         return self._RedundantDirectConnectId
 
     @RedundantDirectConnectId.setter
@@ -2063,6 +2462,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Vlan(self):
+        """VLAN for connection debugging, which is enabled and automatically assigned by default.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Vlan
 
     @Vlan.setter
@@ -2071,6 +2474,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TencentAddress(self):
+        """Tencent-side IP address for connection debugging.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TencentAddress
 
     @TencentAddress.setter
@@ -2079,6 +2486,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CustomerAddress(self):
+        """User-side IP address for connection debugging.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CustomerAddress
 
     @CustomerAddress.setter
@@ -2087,6 +2498,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CustomerName(self):
+        """Name of the connection applicant, which is obtained from the account system by default.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CustomerName
 
     @CustomerName.setter
@@ -2095,6 +2510,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CustomerContactMail(self):
+        """Email address of the connection applicant, which is obtained from the account system by default.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CustomerContactMail
 
     @CustomerContactMail.setter
@@ -2103,6 +2522,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CustomerContactNumber(self):
+        """Contact number of the connection applicant, which is obtained from the account system by default.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CustomerContactNumber
 
     @CustomerContactNumber.setter
@@ -2111,6 +2534,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ExpiredTime(self):
+        """Connection expiration time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -2119,6 +2546,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ChargeType(self):
+        """Connection billing mode. NON_RECURRING_CHARGE: One-time charge for accessing service
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ChargeType
 
     @ChargeType.setter
@@ -2127,6 +2558,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FaultReportContactPerson(self):
+        """Fault reporting contact person.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FaultReportContactPerson
 
     @FaultReportContactPerson.setter
@@ -2135,6 +2570,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def FaultReportContactNumber(self):
+        """Fault reporting contact number.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._FaultReportContactNumber
 
     @FaultReportContactNumber.setter
@@ -2143,6 +2582,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagSet(self):
+        """Tag key-value pair
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -2151,6 +2594,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AccessPointType(self):
+        """Access point type of a connection.
+        :rtype: str
+        """
         return self._AccessPointType
 
     @AccessPointType.setter
@@ -2159,6 +2605,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IdcCity(self):
+        """IDC city.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._IdcCity
 
     @IdcCity.setter
@@ -2167,6 +2617,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ChargeState(self):
+        """Billing status
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ChargeState
 
     @ChargeState.setter
@@ -2175,6 +2629,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def StartTime(self):
+        """Connection activation time.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2183,6 +2641,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SignLaw(self):
+        """Whether the connection has the service agreement signed.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: bool
+        """
         return self._SignLaw
 
     @SignLaw.setter
@@ -2191,6 +2653,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def LocalZone(self):
+        """Whether the connection is an edge zone.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: bool
+        """
         return self._LocalZone
 
     @LocalZone.setter
@@ -2199,6 +2665,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VlanZeroDirectConnectTunnelCount(self):
+        """Number of dedicated tunnels with disabled VLAN in the connection
+Note: this field may return `null`, indicating that no valid value can be found.
+        :rtype: int
+        """
         return self._VlanZeroDirectConnectTunnelCount
 
     @VlanZeroDirectConnectTunnelCount.setter
@@ -2207,6 +2677,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OtherVlanDirectConnectTunnelCount(self):
+        """Number of dedicated tunnels with enabled VLAN in the connection
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._OtherVlanDirectConnectTunnelCount
 
     @OtherVlanDirectConnectTunnelCount.setter
@@ -2215,6 +2689,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MinBandwidth(self):
+        """Minimum bandwidth of the connection
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MinBandwidth
 
     @MinBandwidth.setter
@@ -2391,6 +2869,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DirectConnectTunnelId(self):
+        """Dedicated tunnel ID.
+        :rtype: str
+        """
         return self._DirectConnectTunnelId
 
     @DirectConnectTunnelId.setter
@@ -2399,6 +2880,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DirectConnectId(self):
+        """Connection ID.
+        :rtype: str
+        """
         return self._DirectConnectId
 
     @DirectConnectId.setter
@@ -2407,6 +2891,18 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def State(self):
+        """Dedicated tunnel status.
+AVAILABLE: Ready or connected.
+PENDING: Applying.
+ALLOCATING: Configuring.
+ALLOCATED: Configured.
+ALTERING: Modifying.
+DELETING: Deleting.
+DELETED: Deleted.
+COMFIRMING: To be accepted.
+REJECTED: Rejected.
+        :rtype: str
+        """
         return self._State
 
     @State.setter
@@ -2415,6 +2911,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DirectConnectOwnerAccount(self):
+        """Connection owner, i.e., developer account ID.
+        :rtype: str
+        """
         return self._DirectConnectOwnerAccount
 
     @DirectConnectOwnerAccount.setter
@@ -2423,6 +2922,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OwnerAccount(self):
+        """Dedicated tunnel owner, i.e., developer account ID.
+        :rtype: str
+        """
         return self._OwnerAccount
 
     @OwnerAccount.setter
@@ -2431,6 +2933,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NetworkType(self):
+        """Network type. Valid values: VPC, BMVPC, CCN.
+ VPC: Virtual Private Cloud; BMVPC: BM VPC; CCN: Cloud Connect Network.
+        :rtype: str
+        """
         return self._NetworkType
 
     @NetworkType.setter
@@ -2439,6 +2945,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NetworkRegion(self):
+        """Network of the VPC region, such as `ap-guangzhou`.
+        :rtype: str
+        """
         return self._NetworkRegion
 
     @NetworkRegion.setter
@@ -2447,6 +2956,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VpcId(self):
+        """Unified VPC ID or BMVPC ID.
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -2455,6 +2967,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DirectConnectGatewayId(self):
+        """Direct connect gateway ID.
+        :rtype: str
+        """
         return self._DirectConnectGatewayId
 
     @DirectConnectGatewayId.setter
@@ -2463,6 +2978,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouteType(self):
+        """BGP: BGP routing; STATIC: Static routing. Default value: BGP routing.
+        :rtype: str
+        """
         return self._RouteType
 
     @RouteType.setter
@@ -2471,6 +2989,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BgpPeer(self):
+        """User-side BGP, including Asn and AuthKey.
+        :rtype: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
+        """
         return self._BgpPeer
 
     @BgpPeer.setter
@@ -2479,6 +3000,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RouteFilterPrefixes(self):
+        """User-side IP range.
+        :rtype: list of RouteFilterPrefix
+        """
         return self._RouteFilterPrefixes
 
     @RouteFilterPrefixes.setter
@@ -2487,6 +3011,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Vlan(self):
+        """VLAN of a dedicated tunnel.
+        :rtype: int
+        """
         return self._Vlan
 
     @Vlan.setter
@@ -2495,6 +3022,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TencentAddress(self):
+        """TencentAddress: Tencent-side IP address.
+        :rtype: str
+        """
         return self._TencentAddress
 
     @TencentAddress.setter
@@ -2503,6 +3033,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CustomerAddress(self):
+        """CustomerAddress: User-side IP address.
+        :rtype: str
+        """
         return self._CustomerAddress
 
     @CustomerAddress.setter
@@ -2511,6 +3044,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DirectConnectTunnelName(self):
+        """Dedicated tunnel name.
+        :rtype: str
+        """
         return self._DirectConnectTunnelName
 
     @DirectConnectTunnelName.setter
@@ -2519,6 +3055,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTime(self):
+        """Creation time of a dedicated tunnel.
+        :rtype: str
+        """
         return self._CreatedTime
 
     @CreatedTime.setter
@@ -2527,6 +3066,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Bandwidth(self):
+        """Bandwidth value of a dedicated tunnel.
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -2535,6 +3077,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagSet(self):
+        """Tag value of a dedicated tunnel.
+        :rtype: list of Tag
+        """
         return self._TagSet
 
     @TagSet.setter
@@ -2543,6 +3088,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NetDetectId(self):
+        """Associated custom network probe ID
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NetDetectId
 
     @NetDetectId.setter
@@ -2551,6 +3100,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EnableBGPCommunity(self):
+        """BGP community switch
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._EnableBGPCommunity
 
     @EnableBGPCommunity.setter
@@ -2559,6 +3112,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def NatType(self):
+        """Whether it is a NAT tunnel
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._NatType
 
     @NatType.setter
@@ -2567,6 +3124,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VpcRegion(self):
+        """VPC region abbreviation, such as `gz`, `cd`.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VpcRegion
 
     @VpcRegion.setter
@@ -2575,6 +3136,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BfdEnable(self):
+        """Whether to enable BFD
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._BfdEnable
 
     @BfdEnable.setter
@@ -2583,6 +3148,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AccessPointType(self):
+        """Access point type of a dedicated tunnel.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._AccessPointType
 
     @AccessPointType.setter
@@ -2591,6 +3160,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DirectConnectGatewayName(self):
+        """Direct connect gateway name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DirectConnectGatewayName
 
     @DirectConnectGatewayName.setter
@@ -2599,6 +3172,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def VpcName(self):
+        """VPC name.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._VpcName
 
     @VpcName.setter
@@ -2607,6 +3184,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TencentBackupAddress(self):
+        """Backup IP address on the Tencent side.
+        :rtype: str
+        """
         return self._TencentBackupAddress
 
     @TencentBackupAddress.setter
@@ -2615,6 +3195,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SignLaw(self):
+        """Whether the connection associated with the dedicated tunnel has the service agreement signed.
+Note: this field may return `null`, indicating that no valid value is obtained.
+        :rtype: bool
+        """
         return self._SignLaw
 
     @SignLaw.setter
@@ -2623,6 +3207,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CloudAttachId(self):
+        """Cloud Attached Connection Service ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CloudAttachId
 
     @CloudAttachId.setter
@@ -2697,6 +3285,9 @@ class DisableInternetAddressRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the internet tunnel’s public IP address
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2730,6 +3321,9 @@ class DisableInternetAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2755,6 +3349,9 @@ class EnableInternetAddressRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the internet tunnel’s public IP address
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2788,6 +3385,9 @@ class EnableInternetAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2816,6 +3416,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """Fields to be filtered.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -2824,6 +3427,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """Filter values of the field.
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -2907,6 +3513,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceId(self):
+        """Internet tunnel’s IP address ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -2915,6 +3525,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Subnet(self):
+        """Internet tunnel’s network address
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Subnet
 
     @Subnet.setter
@@ -2923,6 +3537,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MaskLen(self):
+        """Mask length of a network address
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaskLen
 
     @MaskLen.setter
@@ -2931,6 +3549,13 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AddrType(self):
+        """Address type. Valid values: 0: BGP
+1: China Telecom
+2: China Mobile
+3: China Unicom
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._AddrType
 
     @AddrType.setter
@@ -2939,6 +3564,11 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Address status. Valid values: 0: in use
+1: disabled
+2: returned
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2947,6 +3577,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ApplyTime(self):
+        """Applied at
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ApplyTime
 
     @ApplyTime.setter
@@ -2955,6 +3589,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def StopTime(self):
+        """Disabled at
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StopTime
 
     @StopTime.setter
@@ -2963,6 +3601,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ReleaseTime(self):
+        """Returned at
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._ReleaseTime
 
     @ReleaseTime.setter
@@ -2971,6 +3613,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Region(self):
+        """Region
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -2979,6 +3625,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AppId(self):
+        """User ID
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._AppId
 
     @AppId.setter
@@ -2987,6 +3637,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AddrProto(self):
+        """Address protocol. Valid values: 0: IPv4; 1: IPv6
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._AddrProto
 
     @AddrProto.setter
@@ -2995,6 +3649,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ReserveTime(self):
+        """Retention period of a released IP address, in days
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ReserveTime
 
     @ReserveTime.setter
@@ -3044,6 +3702,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Region(self):
+        """Region
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -3052,6 +3714,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubnetNum(self):
+        """Number of public IP addresses for internet tunnels
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._SubnetNum
 
     @SubnetNum.setter
@@ -3122,6 +3788,9 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
 
     @property
     def DirectConnectId(self):
+        """Connection ID.
+        :rtype: str
+        """
         return self._DirectConnectId
 
     @DirectConnectId.setter
@@ -3130,6 +3799,9 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
 
     @property
     def DirectConnectName(self):
+        """Connection name.
+        :rtype: str
+        """
         return self._DirectConnectName
 
     @DirectConnectName.setter
@@ -3138,6 +3810,9 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
 
     @property
     def CircuitCode(self):
+        """Circuit code of a connection, which is provided by the ISP or connection provider.
+        :rtype: str
+        """
         return self._CircuitCode
 
     @CircuitCode.setter
@@ -3146,6 +3821,9 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
 
     @property
     def Vlan(self):
+        """VLAN for connection debugging.
+        :rtype: int
+        """
         return self._Vlan
 
     @Vlan.setter
@@ -3154,6 +3832,9 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
 
     @property
     def TencentAddress(self):
+        """Tencent-side IP address for connection debugging.
+        :rtype: str
+        """
         return self._TencentAddress
 
     @TencentAddress.setter
@@ -3162,6 +3843,9 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
 
     @property
     def CustomerAddress(self):
+        """User-side IP address for connection debugging.
+        :rtype: str
+        """
         return self._CustomerAddress
 
     @CustomerAddress.setter
@@ -3170,6 +3854,9 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
 
     @property
     def CustomerName(self):
+        """Name of connection applicant, which is obtained from the account system by default.
+        :rtype: str
+        """
         return self._CustomerName
 
     @CustomerName.setter
@@ -3178,6 +3865,9 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
 
     @property
     def CustomerContactMail(self):
+        """Email address of connection applicant, which is obtained from the account system by default.
+        :rtype: str
+        """
         return self._CustomerContactMail
 
     @CustomerContactMail.setter
@@ -3186,6 +3876,9 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
 
     @property
     def CustomerContactNumber(self):
+        """Contact number of connection applicant, which is obtained from the account system by default.
+        :rtype: str
+        """
         return self._CustomerContactNumber
 
     @CustomerContactNumber.setter
@@ -3194,6 +3887,9 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
 
     @property
     def FaultReportContactPerson(self):
+        """Fault reporting contact person.
+        :rtype: str
+        """
         return self._FaultReportContactPerson
 
     @FaultReportContactPerson.setter
@@ -3202,6 +3898,9 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
 
     @property
     def FaultReportContactNumber(self):
+        """Fault reporting contact number.
+        :rtype: str
+        """
         return self._FaultReportContactNumber
 
     @FaultReportContactNumber.setter
@@ -3210,6 +3909,9 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
 
     @property
     def SignLaw(self):
+        """Whether the connection applicant has signed the service agreement.
+        :rtype: bool
+        """
         return self._SignLaw
 
     @SignLaw.setter
@@ -3218,6 +3920,9 @@ class ModifyDirectConnectAttributeRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """Connection’s bandwidth
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -3263,6 +3968,9 @@ class ModifyDirectConnectAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3309,6 +4017,9 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
 
     @property
     def DirectConnectTunnelId(self):
+        """Dedicated tunnel ID.
+        :rtype: str
+        """
         return self._DirectConnectTunnelId
 
     @DirectConnectTunnelId.setter
@@ -3317,6 +4028,9 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
 
     @property
     def DirectConnectTunnelName(self):
+        """Dedicated tunnel name.
+        :rtype: str
+        """
         return self._DirectConnectTunnelName
 
     @DirectConnectTunnelName.setter
@@ -3325,6 +4039,9 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
 
     @property
     def BgpPeer(self):
+        """User-side BGP, including Asn and AuthKey.
+        :rtype: :class:`tencentcloud.dc.v20180410.models.BgpPeer`
+        """
         return self._BgpPeer
 
     @BgpPeer.setter
@@ -3333,6 +4050,9 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
 
     @property
     def RouteFilterPrefixes(self):
+        """User-side IP range.
+        :rtype: list of RouteFilterPrefix
+        """
         return self._RouteFilterPrefixes
 
     @RouteFilterPrefixes.setter
@@ -3341,6 +4061,9 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
 
     @property
     def TencentAddress(self):
+        """Tencent-side IP address.
+        :rtype: str
+        """
         return self._TencentAddress
 
     @TencentAddress.setter
@@ -3349,6 +4072,9 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
 
     @property
     def CustomerAddress(self):
+        """User-side IP address.
+        :rtype: str
+        """
         return self._CustomerAddress
 
     @CustomerAddress.setter
@@ -3357,6 +4083,9 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
+        """Bandwidth value of a dedicated tunnel in Mbps.
+        :rtype: int
+        """
         return self._Bandwidth
 
     @Bandwidth.setter
@@ -3365,6 +4094,9 @@ class ModifyDirectConnectTunnelAttributeRequest(AbstractModel):
 
     @property
     def TencentBackupAddress(self):
+        """Tencent-side standby IP address
+        :rtype: str
+        """
         return self._TencentBackupAddress
 
     @TencentBackupAddress.setter
@@ -3412,6 +4144,9 @@ class ModifyDirectConnectTunnelAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3443,6 +4178,9 @@ class NQAInfo(AbstractModel):
 
     @property
     def ProbeFailedTimes(self):
+        """Number of health checks
+        :rtype: int
+        """
         return self._ProbeFailedTimes
 
     @ProbeFailedTimes.setter
@@ -3451,6 +4189,9 @@ class NQAInfo(AbstractModel):
 
     @property
     def Interval(self):
+        """Health check interval
+        :rtype: int
+        """
         return self._Interval
 
     @Interval.setter
@@ -3459,6 +4200,9 @@ class NQAInfo(AbstractModel):
 
     @property
     def DestinationIp(self):
+        """IP address for the health check
+        :rtype: str
+        """
         return self._DestinationIp
 
     @DestinationIp.setter
@@ -3494,6 +4238,9 @@ class RejectDirectConnectTunnelRequest(AbstractModel):
 
     @property
     def DirectConnectTunnelId(self):
+        """None.
+        :rtype: str
+        """
         return self._DirectConnectTunnelId
 
     @DirectConnectTunnelId.setter
@@ -3527,6 +4274,9 @@ class RejectDirectConnectTunnelResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3552,6 +4302,9 @@ class ReleaseInternetAddressRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of the internet tunnel’s public IP address
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3585,6 +4338,9 @@ class ReleaseInternetAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3610,6 +4366,9 @@ class RouteFilterPrefix(AbstractModel):
 
     @property
     def Cidr(self):
+        """User-side IP range.
+        :rtype: str
+        """
         return self._Cidr
 
     @Cidr.setter
@@ -3648,6 +4407,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Key(self):
+        """Tag key
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -3656,6 +4419,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Value(self):
+        """Tag value
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter

@@ -60,6 +60,13 @@ It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-
 
     @property
     def RoleArn(self):
+        """Resource descriptions of a role, which can be obtained by clicking the role name in the [CAM console](https://console.cloud.tencent.com/cam/role).
+General role:
+qcs::cam::uin/12345678:role/4611686018427397919, qcs::cam::uin/12345678:roleName/testRoleName
+Service role:
+qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920, qcs::cam::uin/12345678:role/tencentcloudServiceRoleName/testServiceRoleName
+        :rtype: str
+        """
         return self._RoleArn
 
     @RoleArn.setter
@@ -68,6 +75,10 @@ It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-
 
     @property
     def RoleSessionName(self):
+        """User-defined temporary session name.
+It can contain 2-128 letters, digits, and symbols (=,.@_-). Regex: [\w+=,.@_-]*
+        :rtype: str
+        """
         return self._RoleSessionName
 
     @RoleSessionName.setter
@@ -76,6 +87,9 @@ It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-
 
     @property
     def DurationSeconds(self):
+        """Specifies the validity period of credentials in seconds. Default value: 7200. Maximum value: 43200
+        :rtype: int
+        """
         return self._DurationSeconds
 
     @DurationSeconds.setter
@@ -84,6 +98,13 @@ It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-
 
     @property
     def Policy(self):
+        """Policy description
+Note:
+1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://intl.cloud.tencent.com/document/api/598/33159?from_cn_redirect=1#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
+2. For the policy syntax, please see CAM's [Syntax Logic](https://intl.cloud.tencent.com/document/product/598/10603?from_cn_redirect=1).
+3. The policy cannot contain the `principal` element.
+        :rtype: str
+        """
         return self._Policy
 
     @Policy.setter
@@ -92,6 +113,10 @@ It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-
 
     @property
     def ExternalId(self):
+        """External role ID, which can be obtained by clicking the role name in the [CAM console](https://console.cloud.tencent.com/cam/role).
+It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-]*
+        :rtype: str
+        """
         return self._ExternalId
 
     @ExternalId.setter
@@ -100,6 +125,9 @@ It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-
 
     @property
     def Tags(self):
+        """List of session tags. Up to 50 tags are allowed. The tag keys can not duplicate.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -108,6 +136,9 @@ It can contain 2-128 letters, digits, and symbols (=,.@:/-). Regex: [\w+=,.@:\/-
 
     @property
     def SourceIdentity(self):
+        """UIN of the initiator
+        :rtype: str
+        """
         return self._SourceIdentity
 
     @SourceIdentity.setter
@@ -161,6 +192,9 @@ class AssumeRoleResponse(AbstractModel):
 
     @property
     def Credentials(self):
+        """Temporary security credentials
+        :rtype: :class:`tencentcloud.sts.v20180813.models.Credentials`
+        """
         return self._Credentials
 
     @Credentials.setter
@@ -169,6 +203,9 @@ class AssumeRoleResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
+        """Credentials expiration time. A Unix timestamp will be returned which is accurate to the second
+        :rtype: int
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -177,6 +214,9 @@ class AssumeRoleResponse(AbstractModel):
 
     @property
     def Expiration(self):
+        """Credentials expiration time in UTC time in ISO 8601 format.
+        :rtype: str
+        """
         return self._Expiration
 
     @Expiration.setter
@@ -185,6 +225,9 @@ class AssumeRoleResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -227,6 +270,9 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
 
     @property
     def SAMLAssertion(self):
+        """Base64-encoded SAML assertion
+        :rtype: str
+        """
         return self._SAMLAssertion
 
     @SAMLAssertion.setter
@@ -235,6 +281,9 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
 
     @property
     def PrincipalArn(self):
+        """Principal access description name
+        :rtype: str
+        """
         return self._PrincipalArn
 
     @PrincipalArn.setter
@@ -243,6 +292,9 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
 
     @property
     def RoleArn(self):
+        """Role access description name
+        :rtype: str
+        """
         return self._RoleArn
 
     @RoleArn.setter
@@ -251,6 +303,9 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
 
     @property
     def RoleSessionName(self):
+        """Session name
+        :rtype: str
+        """
         return self._RoleSessionName
 
     @RoleSessionName.setter
@@ -259,6 +314,9 @@ class AssumeRoleWithSAMLRequest(AbstractModel):
 
     @property
     def DurationSeconds(self):
+        """The validity period of the temporary credentials in seconds. Default value: 7,200s. Maximum value: 43,200s.
+        :rtype: int
+        """
         return self._DurationSeconds
 
     @DurationSeconds.setter
@@ -305,6 +363,9 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
 
     @property
     def Credentials(self):
+        """An object consists of the `Token`, `TmpSecretId`, and `TmpSecretId`
+        :rtype: :class:`tencentcloud.sts.v20180813.models.Credentials`
+        """
         return self._Credentials
 
     @Credentials.setter
@@ -313,6 +374,9 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
+        """Credentials expiration time. A Unix timestamp will be returned which is accurate to the second
+        :rtype: int
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -321,6 +385,9 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
 
     @property
     def Expiration(self):
+        """Credentials expiration time in UTC time in ISO 8601 format.
+        :rtype: str
+        """
         return self._Expiration
 
     @Expiration.setter
@@ -329,6 +396,9 @@ class AssumeRoleWithSAMLResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -371,6 +441,9 @@ class AssumeRoleWithWebIdentityRequest(AbstractModel):
 
     @property
     def ProviderId(self):
+        """Identity provider name
+        :rtype: str
+        """
         return self._ProviderId
 
     @ProviderId.setter
@@ -379,6 +452,9 @@ class AssumeRoleWithWebIdentityRequest(AbstractModel):
 
     @property
     def WebIdentityToken(self):
+        """OIDC token issued by the IdP
+        :rtype: str
+        """
         return self._WebIdentityToken
 
     @WebIdentityToken.setter
@@ -387,6 +463,9 @@ class AssumeRoleWithWebIdentityRequest(AbstractModel):
 
     @property
     def RoleArn(self):
+        """Role access description name
+        :rtype: str
+        """
         return self._RoleArn
 
     @RoleArn.setter
@@ -395,6 +474,9 @@ class AssumeRoleWithWebIdentityRequest(AbstractModel):
 
     @property
     def RoleSessionName(self):
+        """Session name
+        :rtype: str
+        """
         return self._RoleSessionName
 
     @RoleSessionName.setter
@@ -403,6 +485,9 @@ class AssumeRoleWithWebIdentityRequest(AbstractModel):
 
     @property
     def DurationSeconds(self):
+        """The validity period of the temporary credential in seconds. Default value: 7,200s. Maximum value: 43,200s.
+        :rtype: int
+        """
         return self._DurationSeconds
 
     @DurationSeconds.setter
@@ -449,6 +534,9 @@ class AssumeRoleWithWebIdentityResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
+        """Expiration time of the temporary credential (timestamp)
+        :rtype: int
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -457,6 +545,9 @@ class AssumeRoleWithWebIdentityResponse(AbstractModel):
 
     @property
     def Expiration(self):
+        """Expiration time of the temporary credential
+        :rtype: str
+        """
         return self._Expiration
 
     @Expiration.setter
@@ -465,6 +556,9 @@ class AssumeRoleWithWebIdentityResponse(AbstractModel):
 
     @property
     def Credentials(self):
+        """Temporary credential
+        :rtype: :class:`tencentcloud.sts.v20180813.models.Credentials`
+        """
         return self._Credentials
 
     @Credentials.setter
@@ -473,6 +567,9 @@ class AssumeRoleWithWebIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -509,6 +606,9 @@ class Credentials(AbstractModel):
 
     @property
     def Token(self):
+        """Token, which contains up to 4,096 bytes depending on the associated policies.
+        :rtype: str
+        """
         return self._Token
 
     @Token.setter
@@ -517,6 +617,9 @@ class Credentials(AbstractModel):
 
     @property
     def TmpSecretId(self):
+        """Temporary credentials key ID, which contains up to 1,024 bytes.
+        :rtype: str
+        """
         return self._TmpSecretId
 
     @TmpSecretId.setter
@@ -525,6 +628,9 @@ class Credentials(AbstractModel):
 
     @property
     def TmpSecretKey(self):
+        """Temporary credentials key, which contains up to 1,024 bytes.
+        :rtype: str
+        """
         return self._TmpSecretKey
 
     @TmpSecretKey.setter
@@ -586,6 +692,9 @@ class GetCallerIdentityResponse(AbstractModel):
 
     @property
     def Arn(self):
+        """ARN of the current caller.
+        :rtype: str
+        """
         return self._Arn
 
     @Arn.setter
@@ -594,6 +703,9 @@ class GetCallerIdentityResponse(AbstractModel):
 
     @property
     def AccountId(self):
+        """Root account UIN of the current caller.
+        :rtype: str
+        """
         return self._AccountId
 
     @AccountId.setter
@@ -602,6 +714,12 @@ class GetCallerIdentityResponse(AbstractModel):
 
     @property
     def UserId(self):
+        """User ID.
+1. If the caller is a Tencent Cloud account, the UIN of the current account is returned.
+2. If the caller is a role, `roleId:roleSessionName` is returned.
+3. If the caller is a federated user, `uin:federatedUserName` is returned.
+        :rtype: str
+        """
         return self._UserId
 
     @UserId.setter
@@ -610,6 +728,11 @@ class GetCallerIdentityResponse(AbstractModel):
 
     @property
     def PrincipalId(self):
+        """Account UIN.
+1. If the caller is a Tencent Cloud account, the UIN of the current account is returned.
+2. If the caller is a role, the UIN of the account that applies for the role is returned.
+        :rtype: str
+        """
         return self._PrincipalId
 
     @PrincipalId.setter
@@ -618,6 +741,9 @@ class GetCallerIdentityResponse(AbstractModel):
 
     @property
     def Type(self):
+        """Identity type.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -626,6 +752,9 @@ class GetCallerIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -666,6 +795,9 @@ Note:
 
     @property
     def Name(self):
+        """The customizable name of the caller, consisting of letters
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -674,6 +806,13 @@ Note:
 
     @property
     def Policy(self):
+        """Policy description
+Note:
+1. The policy needs to be URL-encoded (if you request a TencentCloud API through the GET method, all parameters must be URL-encoded again in accordance with [Signature v3](https://intl.cloud.tencent.com/document/api/598/33159?from_cn_redirect=1#1.-.E6.8B.BC.E6.8E.A5.E8.A7.84.E8.8C.83.E8.AF.B7.E6.B1.82.E4.B8.B2) before the request is sent).
+2. For the policy syntax, please see CAM's [Syntax Logic](https://intl.cloud.tencent.com/document/product/598/10603?from_cn_redirect=1).
+3. The policy cannot contain the `principal` element.
+        :rtype: str
+        """
         return self._Policy
 
     @Policy.setter
@@ -682,6 +821,9 @@ Note:
 
     @property
     def DurationSeconds(self):
+        """The validity period of temporary credentials in seconds. Default value: 1,800s. Maximum value for a root account: 7,200s. Maximum value for a sub-account: 129,600s.
+        :rtype: int
+        """
         return self._DurationSeconds
 
     @DurationSeconds.setter
@@ -727,6 +869,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Credentials(self):
+        """Temporary credentials
+        :rtype: :class:`tencentcloud.sts.v20180813.models.Credentials`
+        """
         return self._Credentials
 
     @Credentials.setter
@@ -735,6 +880,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ExpiredTime(self):
+        """Temporary credentials expiration time. A Unix timestamp will be returned which is accurate to the second
+        :rtype: int
+        """
         return self._ExpiredTime
 
     @ExpiredTime.setter
@@ -743,6 +891,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Expiration(self):
+        """Credentials expiration time in UTC time in ISO 8601 format.
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Expiration
 
     @Expiration.setter
@@ -751,6 +903,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -784,6 +939,9 @@ class Tag(AbstractModel):
 
     @property
     def Key(self):
+        """Tag key. It’s up to 128 characters and case-sensitive.
+        :rtype: str
+        """
         return self._Key
 
     @Key.setter
@@ -792,6 +950,9 @@ class Tag(AbstractModel):
 
     @property
     def Value(self):
+        """Tag value. It’s up to 256 characters and case-sensitive.
+        :rtype: str
+        """
         return self._Value
 
     @Value.setter

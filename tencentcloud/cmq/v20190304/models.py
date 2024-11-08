@@ -32,6 +32,9 @@ class ClearQueueRequest(AbstractModel):
 
     @property
     def QueueName(self):
+        """Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -65,6 +68,9 @@ class ClearQueueResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -93,6 +99,9 @@ class ClearSubscriptionFilterTagsRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -101,6 +110,9 @@ class ClearSubscriptionFilterTagsRequest(AbstractModel):
 
     @property
     def SubscriptionName(self):
+        """Subscription name, which is unique in the same topic under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._SubscriptionName
 
     @SubscriptionName.setter
@@ -135,6 +147,9 @@ class ClearSubscriptionFilterTagsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -202,6 +217,9 @@ class CreateQueueRequest(AbstractModel):
 
     @property
     def QueueName(self):
+        """Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -210,6 +228,9 @@ class CreateQueueRequest(AbstractModel):
 
     @property
     def MaxMsgHeapNum(self):
+        """Maximum number of heaped messages. The value range is 1,000,000–10,000,000 during the beta test and can be 1,000,000–1,000,000,000 after the product is officially released. The default value is 10,000,000 during the beta test and will be 100,000,000 after the product is officially released.
+        :rtype: int
+        """
         return self._MaxMsgHeapNum
 
     @MaxMsgHeapNum.setter
@@ -218,6 +239,9 @@ class CreateQueueRequest(AbstractModel):
 
     @property
     def PollingWaitSeconds(self):
+        """Long polling wait time for message reception. Value range: 0–30 seconds. Default value: 0.
+        :rtype: int
+        """
         return self._PollingWaitSeconds
 
     @PollingWaitSeconds.setter
@@ -226,6 +250,9 @@ class CreateQueueRequest(AbstractModel):
 
     @property
     def VisibilityTimeout(self):
+        """Message visibility timeout period. Value range: 1–43200 seconds (i.e., 12 hours). Default value: 30.
+        :rtype: int
+        """
         return self._VisibilityTimeout
 
     @VisibilityTimeout.setter
@@ -234,6 +261,9 @@ class CreateQueueRequest(AbstractModel):
 
     @property
     def MaxMsgSize(self):
+        """Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.
+        :rtype: int
+        """
         return self._MaxMsgSize
 
     @MaxMsgSize.setter
@@ -242,6 +272,9 @@ class CreateQueueRequest(AbstractModel):
 
     @property
     def MsgRetentionSeconds(self):
+        """Message retention period. Value range: 60–1296000 seconds (i.e., 1 minute–15 days). Default value: 345600 (i.e., 4 days).
+        :rtype: int
+        """
         return self._MsgRetentionSeconds
 
     @MsgRetentionSeconds.setter
@@ -250,6 +283,9 @@ class CreateQueueRequest(AbstractModel):
 
     @property
     def RewindSeconds(self):
+        """Whether to enable the message rewinding feature for a queue. Value range: 0–msgRetentionSeconds, where 0 means not to enable this feature, while `msgRetentionSeconds` indicates that the maximum rewindable period is the message retention period of the queue.
+        :rtype: int
+        """
         return self._RewindSeconds
 
     @RewindSeconds.setter
@@ -258,6 +294,9 @@ class CreateQueueRequest(AbstractModel):
 
     @property
     def Transaction(self):
+        """1: transaction queue, 0: general queue
+        :rtype: int
+        """
         return self._Transaction
 
     @Transaction.setter
@@ -266,6 +305,9 @@ class CreateQueueRequest(AbstractModel):
 
     @property
     def FirstQueryInterval(self):
+        """First lookback interval
+        :rtype: int
+        """
         return self._FirstQueryInterval
 
     @FirstQueryInterval.setter
@@ -274,6 +316,9 @@ class CreateQueueRequest(AbstractModel):
 
     @property
     def MaxQueryCount(self):
+        """Maximum number of lookbacks
+        :rtype: int
+        """
         return self._MaxQueryCount
 
     @MaxQueryCount.setter
@@ -282,6 +327,9 @@ class CreateQueueRequest(AbstractModel):
 
     @property
     def DeadLetterQueueName(self):
+        """Dead letter queue name
+        :rtype: str
+        """
         return self._DeadLetterQueueName
 
     @DeadLetterQueueName.setter
@@ -290,6 +338,9 @@ class CreateQueueRequest(AbstractModel):
 
     @property
     def Policy(self):
+        """Dead letter policy. 0: message has been consumed multiple times but not deleted, 1: `Time-To-Live` has elapsed
+        :rtype: int
+        """
         return self._Policy
 
     @Policy.setter
@@ -298,6 +349,9 @@ class CreateQueueRequest(AbstractModel):
 
     @property
     def MaxReceiveCount(self):
+        """Maximum receipt times. Value range: 1–1000
+        :rtype: int
+        """
         return self._MaxReceiveCount
 
     @MaxReceiveCount.setter
@@ -306,6 +360,9 @@ class CreateQueueRequest(AbstractModel):
 
     @property
     def MaxTimeToLive(self):
+        """Maximum period in seconds before an unconsumed message expires, which is required if `policy` is 1. Value range: 300–43200. This value should be smaller than `msgRetentionSeconds` (maximum message retention period)
+        :rtype: int
+        """
         return self._MaxTimeToLive
 
     @MaxTimeToLive.setter
@@ -314,6 +371,9 @@ class CreateQueueRequest(AbstractModel):
 
     @property
     def Trace(self):
+        """Whether to enable message trace. true: yes, false: no. If this field is not set, the feature will not be enabled
+        :rtype: bool
+        """
         return self._Trace
 
     @Trace.setter
@@ -364,6 +424,9 @@ class CreateQueueResponse(AbstractModel):
 
     @property
     def QueueId(self):
+        """`queueId` of a successfully created queue
+        :rtype: str
+        """
         return self._QueueId
 
     @QueueId.setter
@@ -372,6 +435,9 @@ class CreateQueueResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -419,6 +485,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -427,6 +496,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def SubscriptionName(self):
+        """Subscription name, which is unique in the same topic under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._SubscriptionName
 
     @SubscriptionName.setter
@@ -435,6 +507,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Protocol(self):
+        """Subscription protocol. Currently, two protocols are supported: http and queue. To use the `http` protocol, you need to build your own web server to receive messages. With the `queue` protocol, messages are automatically pushed to a CMQ queue and you can pull them concurrently.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -443,6 +518,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Endpoint(self):
+        """`Endpoint` for notification receipt, which is distinguished by `Protocol`. For `http`, `Endpoint` must begin with `http://` and `host` can be a domain name or IP. For `Queue`, enter `QueueName`. Please note that currently the push service cannot push messages to a VPC; therefore, if a VPC domain name or address is entered for `Endpoint`, pushed messages will not be received. Currently, messages can be pushed only to the public network and basic network.
+        :rtype: str
+        """
         return self._Endpoint
 
     @Endpoint.setter
@@ -451,6 +529,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def NotifyStrategy(self):
+        """CMQ push server retry policy in case an error occurs while pushing a message to `Endpoint`. Valid values: 1. BACKOFF_RETRY: backoff retry, which is to retry at a fixed interval, discard the message after a certain number of retries, and continue to push the next message; 2. EXPONENTIAL_DECAY_RETRY: exponential decay retry, which is to retry at an exponentially increasing interval, such as 1s, 2s, 4s, 8s, and so on. As a message can be retained in a topic for one day, failed messages will be discarded at most after one day of retry. Default value: EXPONENTIAL_DECAY_RETRY.
+        :rtype: str
+        """
         return self._NotifyStrategy
 
     @NotifyStrategy.setter
@@ -459,6 +540,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def FilterTag(self):
+        """Message body tag (used for message filtering). The number of tags cannot exceed 5, and each tag can contain up to 16 characters. It is used in conjunction with the `MsgTag` parameter of `(Batch)PublishMessage`. Rules: 1. If `FilterTag` is not set, no matter whether `MsgTag` is set, the subscription will receive all messages published to the topic; 2. If the `FilterTag` array has a value, only when at least one of the values in the array also exists in the `MsgTag` array (i.e., `FilterTag` and `MsgTag` have an intersection) can the subscription receive messages published to the topic; 3. If the `FilterTag` array has a value, but `MsgTag` is not set, then no message published to the topic will be received, which can be considered as a special case of rule 2 as `FilterTag` and `MsgTag` do not intersect in this case. The overall design idea of rules is based on the intention of the subscriber.
+        :rtype: list of str
+        """
         return self._FilterTag
 
     @FilterTag.setter
@@ -467,6 +551,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def BindingKey(self):
+        """The number of `BindingKey` cannot exceed 5, and the length of each `BindingKey` cannot exceed 64 bytes. This field indicates the filtering policy for subscribing to and receiving messages. Each `BindingKey` can contain up to 15 `.`, i.e., up to 16 phrases.
+        :rtype: list of str
+        """
         return self._BindingKey
 
     @BindingKey.setter
@@ -475,6 +562,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def NotifyContentFormat(self):
+        """Push content format. Valid values: 1. JSON, 2. SIMPLIFIED, i.e., the raw format. If `Protocol` is `queue`, this value must be `SIMPLIFIED`. If `Protocol` is `http`, both options are acceptable, and the default value is `JSON`.
+        :rtype: str
+        """
         return self._NotifyContentFormat
 
     @NotifyContentFormat.setter
@@ -518,6 +608,9 @@ class CreateSubscribeResponse(AbstractModel):
 
     @property
     def SubscriptionId(self):
+        """SubscriptionId
+        :rtype: str
+        """
         return self._SubscriptionId
 
     @SubscriptionId.setter
@@ -526,6 +619,9 @@ class CreateSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -564,6 +660,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -572,6 +671,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def MaxMsgSize(self):
+        """Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.
+        :rtype: int
+        """
         return self._MaxMsgSize
 
     @MaxMsgSize.setter
@@ -580,6 +682,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def FilterType(self):
+        """Message match policy for a specified topic.
+        :rtype: int
+        """
         return self._FilterType
 
     @FilterType.setter
@@ -588,6 +693,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def MsgRetentionSeconds(self):
+        """Message retention period. Value range: 60–86400 seconds (i.e., 1 minute–1 day). Default value: 86400.
+        :rtype: int
+        """
         return self._MsgRetentionSeconds
 
     @MsgRetentionSeconds.setter
@@ -596,6 +704,9 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Trace(self):
+        """Whether to enable message trace. true: yes, false: no. If this field is left empty, the feature will not be enabled.
+        :rtype: bool
+        """
         return self._Trace
 
     @Trace.setter
@@ -636,6 +747,9 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def TopicId(self):
+        """TopicName
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -644,6 +758,9 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -687,6 +804,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeadLetterQueueName(self):
+        """DeadLetterQueueName
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DeadLetterQueueName
 
     @DeadLetterQueueName.setter
@@ -695,6 +816,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeadLetterQueue(self):
+        """DeadLetterQueue
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DeadLetterQueue
 
     @DeadLetterQueue.setter
@@ -703,6 +828,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Policy(self):
+        """Policy
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Policy
 
     @Policy.setter
@@ -711,6 +840,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxTimeToLive(self):
+        """MaxTimeToLive
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxTimeToLive
 
     @MaxTimeToLive.setter
@@ -719,6 +852,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxReceiveCount(self):
+        """MaxReceiveCount
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxReceiveCount
 
     @MaxReceiveCount.setter
@@ -761,6 +898,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueueId(self):
+        """QueueId
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._QueueId
 
     @QueueId.setter
@@ -769,6 +910,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueueName(self):
+        """QueueName
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -803,6 +948,9 @@ class DeleteQueueRequest(AbstractModel):
 
     @property
     def QueueName(self):
+        """Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -836,6 +984,9 @@ class DeleteQueueResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -864,6 +1015,9 @@ class DeleteSubscribeRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -872,6 +1026,9 @@ class DeleteSubscribeRequest(AbstractModel):
 
     @property
     def SubscriptionName(self):
+        """Subscription name, which is unique in the same topic under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._SubscriptionName
 
     @SubscriptionName.setter
@@ -906,6 +1063,9 @@ class DeleteSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -931,6 +1091,9 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -964,6 +1127,9 @@ class DeleteTopicResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -998,6 +1164,9 @@ class DescribeDeadLetterSourceQueuesRequest(AbstractModel):
 
     @property
     def DeadLetterQueueName(self):
+        """Dead letter queue name
+        :rtype: str
+        """
         return self._DeadLetterQueueName
 
     @DeadLetterQueueName.setter
@@ -1006,6 +1175,9 @@ class DescribeDeadLetterSourceQueuesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Starting position of topic list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1014,6 +1186,9 @@ class DescribeDeadLetterSourceQueuesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Number of topics to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1022,6 +1197,9 @@ class DescribeDeadLetterSourceQueuesRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filters source queue name of dead letter queue. Currently, only filtering by `SourceQueueName` is supported
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1069,6 +1247,9 @@ class DescribeDeadLetterSourceQueuesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible queues
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1077,6 +1258,9 @@ class DescribeDeadLetterSourceQueuesResponse(AbstractModel):
 
     @property
     def QueueSet(self):
+        """Source queues of dead letter queue
+        :rtype: list of DeadLetterSource
+        """
         return self._QueueSet
 
     @QueueSet.setter
@@ -1085,6 +1269,9 @@ class DescribeDeadLetterSourceQueuesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1129,6 +1316,9 @@ class DescribeQueueDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Starting position of queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1137,6 +1327,9 @@ class DescribeQueueDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1145,6 +1338,9 @@ class DescribeQueueDetailRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter parameter. Currently, filtering by `QueueName` is supported, and only one keyword is allowed
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1153,6 +1349,9 @@ class DescribeQueueDetailRequest(AbstractModel):
 
     @property
     def TagKey(self):
+        """Tag search
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -1161,6 +1360,9 @@ class DescribeQueueDetailRequest(AbstractModel):
 
     @property
     def QueueName(self):
+        """Exact match by `QueueName`
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -1209,6 +1411,9 @@ class DescribeQueueDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of queues
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1217,6 +1422,9 @@ class DescribeQueueDetailResponse(AbstractModel):
 
     @property
     def QueueSet(self):
+        """Queue list
+        :rtype: list of QueueSet
+        """
         return self._QueueSet
 
     @QueueSet.setter
@@ -1225,6 +1433,9 @@ class DescribeQueueDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1266,6 +1477,9 @@ class DescribeSubscriptionDetailRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -1274,6 +1488,9 @@ class DescribeSubscriptionDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Starting position of topic list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1282,6 +1499,9 @@ class DescribeSubscriptionDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of topics to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1290,6 +1510,9 @@ class DescribeSubscriptionDetailRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Filter parameter. Currently, only filtering by `SubscriptionName` is supported, and only one keyword is allowed.
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1338,6 +1561,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TotalCount(self):
+        """Total number
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1346,6 +1572,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubscriptionSet(self):
+        """Subscription attribute set
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Subscription
+        """
         return self._SubscriptionSet
 
     @SubscriptionSet.setter
@@ -1354,6 +1584,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1398,6 +1631,9 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Starting position of queue list to be returned on the current page in case of paginated return. If a value is entered, `limit` is required. If this parameter is left empty, 0 will be used by default.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1406,6 +1642,9 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of queues to be returned per page in case of paginated return. If this parameter is not passed in, 20 will be used by default. Maximum value: 50.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1414,6 +1653,9 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def Filters(self):
+        """Currently, only filtering by `TopicName` is supported, and only one filter value can be entered
+        :rtype: list of Filter
+        """
         return self._Filters
 
     @Filters.setter
@@ -1422,6 +1664,9 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def TagKey(self):
+        """Tag match
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -1430,6 +1675,9 @@ class DescribeTopicDetailRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Exact match by `TopicName`
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -1478,6 +1726,9 @@ class DescribeTopicDetailResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """TotalCount
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1486,6 +1737,9 @@ class DescribeTopicDetailResponse(AbstractModel):
 
     @property
     def TopicSet(self):
+        """TopicSet
+        :rtype: list of TopicSet
+        """
         return self._TopicSet
 
     @TopicSet.setter
@@ -1494,6 +1748,9 @@ class DescribeTopicDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1529,6 +1786,9 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
+        """Filter parameter name
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -1537,6 +1797,9 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
+        """Value
+        :rtype: list of str
+        """
         return self._Values
 
     @Values.setter
@@ -1610,6 +1873,9 @@ class ModifyQueueAttributeRequest(AbstractModel):
 
     @property
     def QueueName(self):
+        """Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -1618,6 +1884,9 @@ class ModifyQueueAttributeRequest(AbstractModel):
 
     @property
     def MaxMsgHeapNum(self):
+        """Maximum number of heaped messages. The value range is 1,000,000–10,000,000 during the beta test and can be 1,000,000–1,000,000,000 after the product is officially released. The default value is 10,000,000 during the beta test and will be 100,000,000 after the product is officially released.
+        :rtype: int
+        """
         return self._MaxMsgHeapNum
 
     @MaxMsgHeapNum.setter
@@ -1626,6 +1895,9 @@ class ModifyQueueAttributeRequest(AbstractModel):
 
     @property
     def PollingWaitSeconds(self):
+        """Long polling wait time for message reception. Value range: 0–30 seconds. Default value: 0.
+        :rtype: int
+        """
         return self._PollingWaitSeconds
 
     @PollingWaitSeconds.setter
@@ -1634,6 +1906,9 @@ class ModifyQueueAttributeRequest(AbstractModel):
 
     @property
     def VisibilityTimeout(self):
+        """Message visibility timeout period. Value range: 1–43200 seconds (i.e., 12 hours). Default value: 30.
+        :rtype: int
+        """
         return self._VisibilityTimeout
 
     @VisibilityTimeout.setter
@@ -1642,6 +1917,9 @@ class ModifyQueueAttributeRequest(AbstractModel):
 
     @property
     def MaxMsgSize(self):
+        """Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.
+        :rtype: int
+        """
         return self._MaxMsgSize
 
     @MaxMsgSize.setter
@@ -1650,6 +1928,9 @@ class ModifyQueueAttributeRequest(AbstractModel):
 
     @property
     def MsgRetentionSeconds(self):
+        """Message retention period. Value range: 60–1296000 seconds (i.e., 1 minute–15 days). Default value: 345600 (i.e., 4 days).
+        :rtype: int
+        """
         return self._MsgRetentionSeconds
 
     @MsgRetentionSeconds.setter
@@ -1658,6 +1939,9 @@ class ModifyQueueAttributeRequest(AbstractModel):
 
     @property
     def RewindSeconds(self):
+        """Maximum message rewindable period. Value range: 0–msgRetentionSeconds (maximum message retention period of a queue). 0 means not to enable message rewinding.
+        :rtype: int
+        """
         return self._RewindSeconds
 
     @RewindSeconds.setter
@@ -1666,6 +1950,9 @@ class ModifyQueueAttributeRequest(AbstractModel):
 
     @property
     def FirstQueryInterval(self):
+        """First query time
+        :rtype: int
+        """
         return self._FirstQueryInterval
 
     @FirstQueryInterval.setter
@@ -1674,6 +1961,9 @@ class ModifyQueueAttributeRequest(AbstractModel):
 
     @property
     def MaxQueryCount(self):
+        """Maximum number of queries
+        :rtype: int
+        """
         return self._MaxQueryCount
 
     @MaxQueryCount.setter
@@ -1682,6 +1972,9 @@ class ModifyQueueAttributeRequest(AbstractModel):
 
     @property
     def DeadLetterQueueName(self):
+        """Dead letter queue name
+        :rtype: str
+        """
         return self._DeadLetterQueueName
 
     @DeadLetterQueueName.setter
@@ -1690,6 +1983,9 @@ class ModifyQueueAttributeRequest(AbstractModel):
 
     @property
     def MaxTimeToLive(self):
+        """Maximum period in seconds before an unconsumed message expires, which is required if `MaxTimeToLivepolicy` is 1. Value range: 300–43200. This value should be smaller than `MsgRetentionSeconds` (maximum message retention period)
+        :rtype: int
+        """
         return self._MaxTimeToLive
 
     @MaxTimeToLive.setter
@@ -1698,6 +1994,9 @@ class ModifyQueueAttributeRequest(AbstractModel):
 
     @property
     def MaxReceiveCount(self):
+        """Maximum number of receipts
+        :rtype: int
+        """
         return self._MaxReceiveCount
 
     @MaxReceiveCount.setter
@@ -1706,6 +2005,9 @@ class ModifyQueueAttributeRequest(AbstractModel):
 
     @property
     def Policy(self):
+        """Dead letter queue policy
+        :rtype: int
+        """
         return self._Policy
 
     @Policy.setter
@@ -1714,6 +2016,9 @@ class ModifyQueueAttributeRequest(AbstractModel):
 
     @property
     def Trace(self):
+        """Whether to enable message trace. true: yes, false: no. If this field is left empty, the feature will not be enabled.
+        :rtype: bool
+        """
         return self._Trace
 
     @Trace.setter
@@ -1760,6 +2065,9 @@ class ModifyQueueAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1802,6 +2110,9 @@ class ModifySubscriptionAttributeRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -1810,6 +2121,9 @@ class ModifySubscriptionAttributeRequest(AbstractModel):
 
     @property
     def SubscriptionName(self):
+        """Subscription name, which is unique in the same topic under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._SubscriptionName
 
     @SubscriptionName.setter
@@ -1818,6 +2132,11 @@ class ModifySubscriptionAttributeRequest(AbstractModel):
 
     @property
     def NotifyStrategy(self):
+        """CMQ push server retry policy in case an error occurs while pushing a message to `Endpoint`. Valid values:
+1. BACKOFF_RETRY: backoff retry, which is to retry at a fixed interval, discard the message after a certain number of retries, and continue to push the next message.
+2. EXPONENTIAL_DECAY_RETRY: exponential decay retry, which is to retry at an exponentially increasing interval, such as 1s, 2s, 4s, 8s, and so on. As a message can be retained in a topic for one day, failed messages will be discarded at most after one day of retry. Default value: EXPONENTIAL_DECAY_RETRY.
+        :rtype: str
+        """
         return self._NotifyStrategy
 
     @NotifyStrategy.setter
@@ -1826,6 +2145,9 @@ class ModifySubscriptionAttributeRequest(AbstractModel):
 
     @property
     def NotifyContentFormat(self):
+        """Push content format. Valid values: 1. JSON, 2. SIMPLIFIED, i.e., the raw format. If `Protocol` is `queue`, this value must be `SIMPLIFIED`. If `Protocol` is `HTTP`, both options are acceptable, and the default value is `JSON`.
+        :rtype: str
+        """
         return self._NotifyContentFormat
 
     @NotifyContentFormat.setter
@@ -1834,6 +2156,9 @@ class ModifySubscriptionAttributeRequest(AbstractModel):
 
     @property
     def FilterTags(self):
+        """Message body tag (used for message filtering). The number of tags cannot exceed 5, and each tag can contain up to 16 characters. It is used in conjunction with the `MsgTag` parameter of `(Batch)PublishMessage`. Rules: 1. If `FilterTag` is not set, no matter whether `MsgTag` is set, the subscription will receive all messages published to the topic; 2. If the `FilterTag` array has a value, only when at least one of the values in the array also exists in the `MsgTag` array (i.e., `FilterTag` and `MsgTag` have an intersection) can the subscription receive messages published to the topic; 3. If the `FilterTag` array has a value, but `MsgTag` is not set, then no message published to the topic will be received, which can be considered as a special case of rule 2 as `FilterTag` and `MsgTag` do not intersect in this case. The overall design idea of rules is based on the intention of the subscriber.
+        :rtype: list of str
+        """
         return self._FilterTags
 
     @FilterTags.setter
@@ -1842,6 +2167,9 @@ class ModifySubscriptionAttributeRequest(AbstractModel):
 
     @property
     def BindingKey(self):
+        """The number of `BindingKey` cannot exceed 5, and the length of each `BindingKey` cannot exceed 64 bytes. This field indicates the filtering policy for subscribing to and receiving messages. Each `BindingKey` can contain up to 15 `.`, i.e., up to 16 phrases.
+        :rtype: list of str
+        """
         return self._BindingKey
 
     @BindingKey.setter
@@ -1880,6 +2208,9 @@ class ModifySubscriptionAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1914,6 +2245,9 @@ class ModifyTopicAttributeRequest(AbstractModel):
 
     @property
     def TopicName(self):
+        """Topic name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -1922,6 +2256,9 @@ class ModifyTopicAttributeRequest(AbstractModel):
 
     @property
     def MaxMsgSize(self):
+        """Maximum message length. Value range: 1024–65536 bytes (i.e., 1–64 KB). Default value: 65536.
+        :rtype: int
+        """
         return self._MaxMsgSize
 
     @MaxMsgSize.setter
@@ -1930,6 +2267,9 @@ class ModifyTopicAttributeRequest(AbstractModel):
 
     @property
     def MsgRetentionSeconds(self):
+        """Message retention period. Value range: 60–86400 seconds (i.e., 1 minute–1 day). Default value: 86400.
+        :rtype: int
+        """
         return self._MsgRetentionSeconds
 
     @MsgRetentionSeconds.setter
@@ -1938,6 +2278,9 @@ class ModifyTopicAttributeRequest(AbstractModel):
 
     @property
     def Trace(self):
+        """Whether to enable message trace. true: yes, false: no. If this field is left empty, the feature will not be enabled.
+        :rtype: bool
+        """
         return self._Trace
 
     @Trace.setter
@@ -1974,6 +2317,9 @@ class ModifyTopicAttributeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2094,6 +2440,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueueId(self):
+        """QueueId
+        :rtype: str
+        """
         return self._QueueId
 
     @QueueId.setter
@@ -2102,6 +2451,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def QueueName(self):
+        """QueueName
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -2110,6 +2462,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Qps(self):
+        """Qps
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Qps
 
     @Qps.setter
@@ -2118,6 +2474,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Bps(self):
+        """Bps
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Bps
 
     @Bps.setter
@@ -2126,6 +2486,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxDelaySeconds(self):
+        """MaxDelaySeconds
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxDelaySeconds
 
     @MaxDelaySeconds.setter
@@ -2134,6 +2498,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxMsgHeapNum(self):
+        """MaxMsgHeapNum
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxMsgHeapNum
 
     @MaxMsgHeapNum.setter
@@ -2142,6 +2510,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def PollingWaitSeconds(self):
+        """PollingWaitSeconds
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._PollingWaitSeconds
 
     @PollingWaitSeconds.setter
@@ -2150,6 +2522,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MsgRetentionSeconds(self):
+        """MsgRetentionSeconds
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MsgRetentionSeconds
 
     @MsgRetentionSeconds.setter
@@ -2158,6 +2534,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def VisibilityTimeout(self):
+        """VisibilityTimeout
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._VisibilityTimeout
 
     @VisibilityTimeout.setter
@@ -2166,6 +2546,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxMsgSize(self):
+        """MaxMsgSize
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxMsgSize
 
     @MaxMsgSize.setter
@@ -2174,6 +2558,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RewindSeconds(self):
+        """RewindSeconds
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RewindSeconds
 
     @RewindSeconds.setter
@@ -2182,6 +2570,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """CreateTime
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2190,6 +2582,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastModifyTime(self):
+        """LastModifyTime
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._LastModifyTime
 
     @LastModifyTime.setter
@@ -2198,6 +2594,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ActiveMsgNum(self):
+        """ActiveMsgNum
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ActiveMsgNum
 
     @ActiveMsgNum.setter
@@ -2206,6 +2606,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def InactiveMsgNum(self):
+        """InactiveMsgNum
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._InactiveMsgNum
 
     @InactiveMsgNum.setter
@@ -2214,6 +2618,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DelayMsgNum(self):
+        """DelayMsgNum
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._DelayMsgNum
 
     @DelayMsgNum.setter
@@ -2222,6 +2630,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RewindMsgNum(self):
+        """RewindMsgNum
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._RewindMsgNum
 
     @RewindMsgNum.setter
@@ -2230,6 +2642,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MinMsgTime(self):
+        """MinMsgTime
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MinMsgTime
 
     @MinMsgTime.setter
@@ -2238,6 +2654,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Transaction(self):
+        """Transaction
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._Transaction
 
     @Transaction.setter
@@ -2246,6 +2666,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeadLetterSource(self):
+        """DeadLetterSource
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of DeadLetterSource
+        """
         return self._DeadLetterSource
 
     @DeadLetterSource.setter
@@ -2254,6 +2678,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DeadLetterPolicy(self):
+        """DeadLetterPolicy
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.DeadLetterPolicy`
+        """
         return self._DeadLetterPolicy
 
     @DeadLetterPolicy.setter
@@ -2262,6 +2690,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TransactionPolicy(self):
+        """TransactionPolicy
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: :class:`tencentcloud.cmq.v20190304.models.TransactionPolicy`
+        """
         return self._TransactionPolicy
 
     @TransactionPolicy.setter
@@ -2270,6 +2702,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateUin(self):
+        """Creator `uin`
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CreateUin
 
     @CreateUin.setter
@@ -2278,6 +2714,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """Tag
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2286,6 +2726,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Trace(self):
+        """Message trace flag. true: enabled, false: not enabled
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._Trace
 
     @Trace.setter
@@ -2360,6 +2804,9 @@ class RewindQueueRequest(AbstractModel):
 
     @property
     def QueueName(self):
+        """Queue name, which is unique under the same account in an individual region. It is a string of up to 64 characters, which must begin with a letter and can contain letters, digits, and dashes (`-`).
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -2368,6 +2815,9 @@ class RewindQueueRequest(AbstractModel):
 
     @property
     def StartConsumeTime(self):
+        """After this time is set, the `(Batch)receiveMessage` API will consume the messages received after this timestamp in the order in which they are produced.
+        :rtype: int
+        """
         return self._StartConsumeTime
 
     @StartConsumeTime.setter
@@ -2402,6 +2852,9 @@ class RewindQueueResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2472,6 +2925,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubscriptionName(self):
+        """SubscriptionName
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SubscriptionName
 
     @SubscriptionName.setter
@@ -2480,6 +2937,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubscriptionId(self):
+        """SubscriptionId
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SubscriptionId
 
     @SubscriptionId.setter
@@ -2488,6 +2949,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicOwner(self):
+        """TopicOwner
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._TopicOwner
 
     @TopicOwner.setter
@@ -2496,6 +2961,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MsgCount(self):
+        """MsgCount
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MsgCount
 
     @MsgCount.setter
@@ -2504,6 +2973,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastModifyTime(self):
+        """LastModifyTime
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._LastModifyTime
 
     @LastModifyTime.setter
@@ -2512,6 +2985,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """CreateTime
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2520,6 +2997,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def BindingKey(self):
+        """BindingKey
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._BindingKey
 
     @BindingKey.setter
@@ -2528,6 +3009,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Endpoint(self):
+        """Endpoint
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Endpoint
 
     @Endpoint.setter
@@ -2536,6 +3021,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilterTags(self):
+        """FilterTags
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._FilterTags
 
     @FilterTags.setter
@@ -2544,6 +3033,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Protocol(self):
+        """Protocol
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Protocol
 
     @Protocol.setter
@@ -2552,6 +3045,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotifyStrategy(self):
+        """NotifyStrategy
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NotifyStrategy
 
     @NotifyStrategy.setter
@@ -2560,6 +3057,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def NotifyContentFormat(self):
+        """NotifyContentFormat
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._NotifyContentFormat
 
     @NotifyContentFormat.setter
@@ -2609,6 +3110,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagKey(self):
+        """Tag key
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -2617,6 +3122,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TagValue(self):
+        """Tag value
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -2696,6 +3205,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicId(self):
+        """TopicId
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TopicId
 
     @TopicId.setter
@@ -2704,6 +3217,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TopicName(self):
+        """TopicName
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TopicName
 
     @TopicName.setter
@@ -2712,6 +3229,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MsgRetentionSeconds(self):
+        """MsgRetentionSeconds
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MsgRetentionSeconds
 
     @MsgRetentionSeconds.setter
@@ -2720,6 +3241,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxMsgSize(self):
+        """MaxMsgSize
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxMsgSize
 
     @MaxMsgSize.setter
@@ -2728,6 +3253,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Qps(self):
+        """Qps
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Qps
 
     @Qps.setter
@@ -2736,6 +3265,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FilterType(self):
+        """FilterType
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FilterType
 
     @FilterType.setter
@@ -2744,6 +3277,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateTime(self):
+        """CreateTime
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2752,6 +3289,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def LastModifyTime(self):
+        """LastModifyTime
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._LastModifyTime
 
     @LastModifyTime.setter
@@ -2760,6 +3301,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MsgCount(self):
+        """MsgCount
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MsgCount
 
     @MsgCount.setter
@@ -2768,6 +3313,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def CreateUin(self):
+        """CreateUin
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CreateUin
 
     @CreateUin.setter
@@ -2776,6 +3325,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Tags(self):
+        """Tags
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of Tag
+        """
         return self._Tags
 
     @Tags.setter
@@ -2784,6 +3337,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Trace(self):
+        """Whether to enable message trace for a topic. true: yes, false: no
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: bool
+        """
         return self._Trace
 
     @Trace.setter
@@ -2838,6 +3395,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def FirstQueryInterval(self):
+        """FirstQueryInterval
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._FirstQueryInterval
 
     @FirstQueryInterval.setter
@@ -2846,6 +3407,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def MaxQueryCount(self):
+        """MaxQueryCount
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._MaxQueryCount
 
     @MaxQueryCount.setter
@@ -2880,6 +3445,9 @@ class UnbindDeadLetterRequest(AbstractModel):
 
     @property
     def QueueName(self):
+        """Source queue name of dead letter policy. Calling this API will clear the dead letter queue policy of this queue.
+        :rtype: str
+        """
         return self._QueueName
 
     @QueueName.setter
@@ -2913,6 +3481,9 @@ class UnbindDeadLetterResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter

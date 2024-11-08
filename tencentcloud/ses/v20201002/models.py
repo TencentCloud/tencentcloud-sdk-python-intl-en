@@ -35,6 +35,9 @@ class Attachment(AbstractModel):
 
     @property
     def FileName(self):
+        """Attachment name, which cannot exceed 255 characters. Some attachment types are not supported. For details, see [Attachment Types](https://intl.cloud.tencent.com/document/product/1288/51951?from_cn_redirect=1).
+        :rtype: str
+        """
         return self._FileName
 
     @FileName.setter
@@ -43,6 +46,9 @@ class Attachment(AbstractModel):
 
     @property
     def Content(self):
+        """Base64-encoded attachment content. You can send attachments of up to 4 MB in the total size. Note: The TencentCloud API supports a request packet of up to 8 MB in size, and the size of the attachment content will increase by 1.5 times after Base64 encoding. Therefore, you need to keep the total size of all attachments below 4 MB. If the entire request exceeds 8 MB, the API will return an error.
+        :rtype: str
+        """
         return self._Content
 
     @Content.setter
@@ -112,6 +118,11 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def FromEmailAddress(self):
+        """Sender address. Enter a sender address such as `noreply@mail.qcloud.com`. To display the sender name, enter the address in the following format:
+sender &lt;email address&gt;. For example:
+Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
+        :rtype: str
+        """
         return self._FromEmailAddress
 
     @FromEmailAddress.setter
@@ -120,6 +131,9 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def ReceiverId(self):
+        """Recipient group ID
+        :rtype: int
+        """
         return self._ReceiverId
 
     @ReceiverId.setter
@@ -128,6 +142,9 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def Subject(self):
+        """Email subject
+        :rtype: str
+        """
         return self._Subject
 
     @Subject.setter
@@ -136,6 +153,9 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def TaskType(self):
+        """Task type. `1`: immediate; `2`: scheduled; `3`: recurring
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -144,6 +164,9 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def ReplyToAddresses(self):
+        """Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will fail to be sent.
+        :rtype: str
+        """
         return self._ReplyToAddresses
 
     @ReplyToAddresses.setter
@@ -152,6 +175,9 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def Template(self):
+        """Template when emails are sent using a template
+        :rtype: :class:`tencentcloud.ses.v20201002.models.Template`
+        """
         return self._Template
 
     @Template.setter
@@ -160,6 +186,9 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def Simple(self):
+        """Disused
+        :rtype: :class:`tencentcloud.ses.v20201002.models.Simple`
+        """
         return self._Simple
 
     @Simple.setter
@@ -168,6 +197,9 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def Attachments(self):
+        """Attachment parameters to set when you need to send attachments. This parameter is currently unavailable.
+        :rtype: list of Attachment
+        """
         return self._Attachments
 
     @Attachments.setter
@@ -176,6 +208,9 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def CycleParam(self):
+        """Parameter required for a recurring sending task
+        :rtype: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
+        """
         return self._CycleParam
 
     @CycleParam.setter
@@ -184,6 +219,9 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def TimedParam(self):
+        """Parameter required for a scheduled sending task
+        :rtype: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
+        """
         return self._TimedParam
 
     @TimedParam.setter
@@ -192,6 +230,9 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def Unsubscribe(self):
+        """Unsubscribe link option. `0`: Do not add unsubscribe link; `1`: English `2`: Simplified Chinese; `3`: Traditional Chinese; `4`: Spanish; `5`: French; `6`: German; `7`: Japanese; `8`: Korean; `9`: Arabic; `10`: Thai
+        :rtype: str
+        """
         return self._Unsubscribe
 
     @Unsubscribe.setter
@@ -200,6 +241,9 @@ Tencent Cloud team &lt;noreply@mail.qcloud.com&gt;
 
     @property
     def ADLocation(self):
+        """Whether to add an ad tag. `0`: Add no tag; `1`: Add before the subject; `2`: Add after the subject.
+        :rtype: int
+        """
         return self._ADLocation
 
     @ADLocation.setter
@@ -260,6 +304,9 @@ class BatchSendEmailResponse(AbstractModel):
 
     @property
     def TaskId(self):
+        """Sending task ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -268,6 +315,9 @@ class BatchSendEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -297,6 +347,9 @@ class BlackEmailAddress(AbstractModel):
 
     @property
     def BounceTime(self):
+        """Time when the email address is blocklisted.
+        :rtype: str
+        """
         return self._BounceTime
 
     @BounceTime.setter
@@ -305,6 +358,9 @@ class BlackEmailAddress(AbstractModel):
 
     @property
     def EmailAddress(self):
+        """Blocklisted email address.
+        :rtype: str
+        """
         return self._EmailAddress
 
     @EmailAddress.setter
@@ -342,6 +398,9 @@ class CreateEmailAddressRequest(AbstractModel):
 
     @property
     def EmailAddress(self):
+        """Your sender address. (You can create up to 10 sender addresses for each domain.)
+        :rtype: str
+        """
         return self._EmailAddress
 
     @EmailAddress.setter
@@ -350,6 +409,9 @@ class CreateEmailAddressRequest(AbstractModel):
 
     @property
     def EmailSenderName(self):
+        """Sender name.
+        :rtype: str
+        """
         return self._EmailSenderName
 
     @EmailSenderName.setter
@@ -384,6 +446,9 @@ class CreateEmailAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -409,6 +474,9 @@ class CreateEmailIdentityRequest(AbstractModel):
 
     @property
     def EmailIdentity(self):
+        """Your sender domain. You are advised to use a third-level domain, for example, mail.qcloud.com.
+        :rtype: str
+        """
         return self._EmailIdentity
 
     @EmailIdentity.setter
@@ -451,6 +519,9 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     @property
     def IdentityType(self):
+        """Verification type. The value is fixed to `DOMAIN`.
+        :rtype: str
+        """
         return self._IdentityType
 
     @IdentityType.setter
@@ -459,6 +530,9 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     @property
     def VerifiedForSendingStatus(self):
+        """Verification passed or not.
+        :rtype: bool
+        """
         return self._VerifiedForSendingStatus
 
     @VerifiedForSendingStatus.setter
@@ -467,6 +541,9 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     @property
     def Attributes(self):
+        """DNS information that needs to be configured.
+        :rtype: list of DNSAttributes
+        """
         return self._Attributes
 
     @Attributes.setter
@@ -475,6 +552,9 @@ class CreateEmailIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -511,6 +591,9 @@ class CreateEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
+        """Template name.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -519,6 +602,9 @@ class CreateEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateContent(self):
+        """Template content.
+        :rtype: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
+        """
         return self._TemplateContent
 
     @TemplateContent.setter
@@ -558,6 +644,9 @@ class CreateEmailTemplateResponse(AbstractModel):
 
     @property
     def TemplateID(self):
+        """Template ID
+        :rtype: int
+        """
         return self._TemplateID
 
     @TemplateID.setter
@@ -566,6 +655,9 @@ class CreateEmailTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -595,6 +687,9 @@ class CreateReceiverDetailRequest(AbstractModel):
 
     @property
     def ReceiverId(self):
+        """Recipient group ID
+        :rtype: int
+        """
         return self._ReceiverId
 
     @ReceiverId.setter
@@ -603,6 +698,9 @@ class CreateReceiverDetailRequest(AbstractModel):
 
     @property
     def Emails(self):
+        """Email address
+        :rtype: list of str
+        """
         return self._Emails
 
     @Emails.setter
@@ -637,6 +735,9 @@ class CreateReceiverDetailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -665,6 +766,9 @@ class CreateReceiverRequest(AbstractModel):
 
     @property
     def ReceiversName(self):
+        """Recipient group name
+        :rtype: str
+        """
         return self._ReceiversName
 
     @ReceiversName.setter
@@ -673,6 +777,9 @@ class CreateReceiverRequest(AbstractModel):
 
     @property
     def Desc(self):
+        """Recipient group description
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -710,6 +817,9 @@ class CreateReceiverResponse(AbstractModel):
 
     @property
     def ReceiverId(self):
+        """Recipient group ID, by which recipient email addresses are uploaded
+        :rtype: int
+        """
         return self._ReceiverId
 
     @ReceiverId.setter
@@ -718,6 +828,9 @@ class CreateReceiverResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -750,6 +863,9 @@ class CycleEmailParam(AbstractModel):
 
     @property
     def BeginTime(self):
+        """Start time of the task
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -758,6 +874,9 @@ class CycleEmailParam(AbstractModel):
 
     @property
     def IntervalTime(self):
+        """Task recurrence in hours
+        :rtype: int
+        """
         return self._IntervalTime
 
     @IntervalTime.setter
@@ -766,6 +885,9 @@ class CycleEmailParam(AbstractModel):
 
     @property
     def TermCycle(self):
+        """Specifies whether to end the cycle. This parameter is used to update the task. Valid values: 0: No; 1: Yes.
+        :rtype: int
+        """
         return self._TermCycle
 
     @TermCycle.setter
@@ -813,6 +935,9 @@ class DNSAttributes(AbstractModel):
 
     @property
     def Type(self):
+        """Record types: CNAME, A, TXT, and MX.
+        :rtype: str
+        """
         return self._Type
 
     @Type.setter
@@ -821,6 +946,9 @@ class DNSAttributes(AbstractModel):
 
     @property
     def SendDomain(self):
+        """Domain name.
+        :rtype: str
+        """
         return self._SendDomain
 
     @SendDomain.setter
@@ -829,6 +957,9 @@ class DNSAttributes(AbstractModel):
 
     @property
     def ExpectedValue(self):
+        """Expected value.
+        :rtype: str
+        """
         return self._ExpectedValue
 
     @ExpectedValue.setter
@@ -837,6 +968,9 @@ class DNSAttributes(AbstractModel):
 
     @property
     def CurrentValue(self):
+        """Currently configured value.
+        :rtype: str
+        """
         return self._CurrentValue
 
     @CurrentValue.setter
@@ -845,6 +979,9 @@ class DNSAttributes(AbstractModel):
 
     @property
     def Status(self):
+        """Approved or not. The default value is `false`.
+        :rtype: bool
+        """
         return self._Status
 
     @Status.setter
@@ -882,6 +1019,9 @@ class DeleteBlackListRequest(AbstractModel):
 
     @property
     def EmailAddressList(self):
+        """List of email addresses to be unblocklisted. Enter at least one address.
+        :rtype: list of str
+        """
         return self._EmailAddressList
 
     @EmailAddressList.setter
@@ -915,6 +1055,9 @@ class DeleteBlackListResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -940,6 +1083,9 @@ class DeleteEmailAddressRequest(AbstractModel):
 
     @property
     def EmailAddress(self):
+        """Sender address.
+        :rtype: str
+        """
         return self._EmailAddress
 
     @EmailAddress.setter
@@ -973,6 +1119,9 @@ class DeleteEmailAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -998,6 +1147,9 @@ class DeleteEmailIdentityRequest(AbstractModel):
 
     @property
     def EmailIdentity(self):
+        """Sender domain.
+        :rtype: str
+        """
         return self._EmailIdentity
 
     @EmailIdentity.setter
@@ -1031,6 +1183,9 @@ class DeleteEmailIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1056,6 +1211,9 @@ class DeleteEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateID(self):
+        """Template ID
+        :rtype: int
+        """
         return self._TemplateID
 
     @TemplateID.setter
@@ -1089,6 +1247,9 @@ class DeleteEmailTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1114,6 +1275,9 @@ class DeleteReceiverRequest(AbstractModel):
 
     @property
     def ReceiverId(self):
+        """Recipient group ID, which is returned when a recipient group is created.
+        :rtype: int
+        """
         return self._ReceiverId
 
     @ReceiverId.setter
@@ -1147,6 +1311,9 @@ class DeleteReceiverResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1184,6 +1351,9 @@ class EmailIdentity(AbstractModel):
 
     @property
     def IdentityName(self):
+        """Sender domain.
+        :rtype: str
+        """
         return self._IdentityName
 
     @IdentityName.setter
@@ -1192,6 +1362,9 @@ class EmailIdentity(AbstractModel):
 
     @property
     def IdentityType(self):
+        """Verification type. The value is fixed to `DOMAIN`.
+        :rtype: str
+        """
         return self._IdentityType
 
     @IdentityType.setter
@@ -1200,6 +1373,9 @@ class EmailIdentity(AbstractModel):
 
     @property
     def SendingEnabled(self):
+        """Verification passed or not.
+        :rtype: bool
+        """
         return self._SendingEnabled
 
     @SendingEnabled.setter
@@ -1208,6 +1384,9 @@ class EmailIdentity(AbstractModel):
 
     @property
     def CurrentReputationLevel(self):
+        """Current reputation level
+        :rtype: int
+        """
         return self._CurrentReputationLevel
 
     @CurrentReputationLevel.setter
@@ -1216,6 +1395,9 @@ class EmailIdentity(AbstractModel):
 
     @property
     def DailyQuota(self):
+        """Maximum number of messages sent per day
+        :rtype: int
+        """
         return self._DailyQuota
 
     @DailyQuota.setter
@@ -1261,6 +1443,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EmailAddress(self):
+        """Sender address.
+        :rtype: str
+        """
         return self._EmailAddress
 
     @EmailAddress.setter
@@ -1269,6 +1454,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EmailSenderName(self):
+        """Sender name.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._EmailSenderName
 
     @EmailSenderName.setter
@@ -1277,6 +1466,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreatedTimestamp(self):
+        """Creation time.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._CreatedTimestamp
 
     @CreatedTimestamp.setter
@@ -1312,6 +1505,9 @@ class GetEmailIdentityRequest(AbstractModel):
 
     @property
     def EmailIdentity(self):
+        """Sender domain.
+        :rtype: str
+        """
         return self._EmailIdentity
 
     @EmailIdentity.setter
@@ -1354,6 +1550,9 @@ class GetEmailIdentityResponse(AbstractModel):
 
     @property
     def IdentityType(self):
+        """Verification type. The value is fixed to `DOMAIN`.
+        :rtype: str
+        """
         return self._IdentityType
 
     @IdentityType.setter
@@ -1362,6 +1561,9 @@ class GetEmailIdentityResponse(AbstractModel):
 
     @property
     def VerifiedForSendingStatus(self):
+        """Verification passed or not.
+        :rtype: bool
+        """
         return self._VerifiedForSendingStatus
 
     @VerifiedForSendingStatus.setter
@@ -1370,6 +1572,9 @@ class GetEmailIdentityResponse(AbstractModel):
 
     @property
     def Attributes(self):
+        """DNS configuration details.
+        :rtype: list of DNSAttributes
+        """
         return self._Attributes
 
     @Attributes.setter
@@ -1378,6 +1583,9 @@ class GetEmailIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1411,6 +1619,9 @@ class GetEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateID(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateID
 
     @TemplateID.setter
@@ -1453,6 +1664,9 @@ class GetEmailTemplateResponse(AbstractModel):
 
     @property
     def TemplateContent(self):
+        """Template content.
+        :rtype: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
+        """
         return self._TemplateContent
 
     @TemplateContent.setter
@@ -1461,6 +1675,9 @@ class GetEmailTemplateResponse(AbstractModel):
 
     @property
     def TemplateStatus(self):
+        """Template status. Valid values: `0` (approved); `1` (pending approval); `2` (rejected).
+        :rtype: int
+        """
         return self._TemplateStatus
 
     @TemplateStatus.setter
@@ -1469,6 +1686,9 @@ class GetEmailTemplateResponse(AbstractModel):
 
     @property
     def TemplateName(self):
+        """Template name
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -1477,6 +1697,9 @@ class GetEmailTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1519,6 +1742,9 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     @property
     def RequestDate(self):
+        """Date sent. This parameter is required. You can only query the sending status for a single date at a time.
+        :rtype: str
+        """
         return self._RequestDate
 
     @RequestDate.setter
@@ -1527,6 +1753,9 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: `0`.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1535,6 +1764,9 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Maximum number of pulled entries. Maximum value: `100`.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1543,6 +1775,9 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     @property
     def MessageId(self):
+        """The `MessageId` field returned by the `SendMail` API.
+        :rtype: str
+        """
         return self._MessageId
 
     @MessageId.setter
@@ -1551,6 +1786,9 @@ class GetSendEmailStatusRequest(AbstractModel):
 
     @property
     def ToEmailAddress(self):
+        """Recipient email address.
+        :rtype: str
+        """
         return self._ToEmailAddress
 
     @ToEmailAddress.setter
@@ -1591,6 +1829,9 @@ class GetSendEmailStatusResponse(AbstractModel):
 
     @property
     def EmailStatusList(self):
+        """Status of sent emails
+        :rtype: list of SendEmailStatus
+        """
         return self._EmailStatusList
 
     @EmailStatusList.setter
@@ -1599,6 +1840,9 @@ class GetSendEmailStatusResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1639,6 +1883,9 @@ class GetStatisticsReportRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """Start date.
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -1647,6 +1894,9 @@ class GetStatisticsReportRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """End date.
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -1655,6 +1905,9 @@ class GetStatisticsReportRequest(AbstractModel):
 
     @property
     def Domain(self):
+        """Sender domain.
+        :rtype: str
+        """
         return self._Domain
 
     @Domain.setter
@@ -1663,6 +1916,9 @@ class GetStatisticsReportRequest(AbstractModel):
 
     @property
     def ReceivingMailboxType(self):
+        """Recipient address type, for example, gmail.com.
+        :rtype: str
+        """
         return self._ReceivingMailboxType
 
     @ReceivingMailboxType.setter
@@ -1705,6 +1961,9 @@ class GetStatisticsReportResponse(AbstractModel):
 
     @property
     def DailyVolumes(self):
+        """Daily email sending statistics.
+        :rtype: list of Volume
+        """
         return self._DailyVolumes
 
     @DailyVolumes.setter
@@ -1713,6 +1972,9 @@ class GetStatisticsReportResponse(AbstractModel):
 
     @property
     def OverallVolume(self):
+        """Overall email sending statistics.
+        :rtype: :class:`tencentcloud.ses.v20201002.models.Volume`
+        """
         return self._OverallVolume
 
     @OverallVolume.setter
@@ -1721,6 +1983,9 @@ class GetStatisticsReportResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1770,6 +2035,9 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def StartDate(self):
+        """Start date in the format of `YYYY-MM-DD`
+        :rtype: str
+        """
         return self._StartDate
 
     @StartDate.setter
@@ -1778,6 +2046,9 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def EndDate(self):
+        """End date in the format of `YYYY-MM-DD`
+        :rtype: str
+        """
         return self._EndDate
 
     @EndDate.setter
@@ -1786,6 +2057,9 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Common parameter. It must be used with `Offset`.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1794,6 +2068,9 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Common parameter. It must be used with `Limit`. Maximum value of `Limit`: `100`.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1802,6 +2079,9 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def EmailAddress(self):
+        """You can specify an email address to query.
+        :rtype: str
+        """
         return self._EmailAddress
 
     @EmailAddress.setter
@@ -1810,6 +2090,9 @@ class ListBlackEmailAddressRequest(AbstractModel):
 
     @property
     def TaskID(self):
+        """You can specify a task ID to query.
+        :rtype: str
+        """
         return self._TaskID
 
     @TaskID.setter
@@ -1854,6 +2137,9 @@ class ListBlackEmailAddressResponse(AbstractModel):
 
     @property
     def BlackList(self):
+        """List of blocklisted addresses.
+        :rtype: list of BlackEmailAddress
+        """
         return self._BlackList
 
     @BlackList.setter
@@ -1862,6 +2148,9 @@ class ListBlackEmailAddressResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of blocklisted addresses.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1870,6 +2159,9 @@ class ListBlackEmailAddressResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1912,6 +2204,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EmailSenders(self):
+        """Details of sender addresses.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of EmailSender
+        """
         return self._EmailSenders
 
     @EmailSenders.setter
@@ -1920,6 +2216,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1966,6 +2265,9 @@ class ListEmailIdentitiesResponse(AbstractModel):
 
     @property
     def EmailIdentities(self):
+        """List of sender domains.
+        :rtype: list of EmailIdentity
+        """
         return self._EmailIdentities
 
     @EmailIdentities.setter
@@ -1974,6 +2276,9 @@ class ListEmailIdentitiesResponse(AbstractModel):
 
     @property
     def MaxReputationLevel(self):
+        """Maximum reputation level
+        :rtype: int
+        """
         return self._MaxReputationLevel
 
     @MaxReputationLevel.setter
@@ -1982,6 +2287,9 @@ class ListEmailIdentitiesResponse(AbstractModel):
 
     @property
     def MaxDailyQuota(self):
+        """Maximum number of emails sent per domain name
+        :rtype: int
+        """
         return self._MaxDailyQuota
 
     @MaxDailyQuota.setter
@@ -1990,6 +2298,9 @@ class ListEmailIdentitiesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2026,6 +2337,9 @@ class ListEmailTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of templates to get. This parameter is used for pagination.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2034,6 +2348,9 @@ class ListEmailTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Template offset to get. This parameter is used for pagination.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2074,6 +2391,9 @@ class ListEmailTemplatesResponse(AbstractModel):
 
     @property
     def TemplatesMetadata(self):
+        """List of email templates.
+        :rtype: list of TemplatesMetadata
+        """
         return self._TemplatesMetadata
 
     @TemplatesMetadata.setter
@@ -2082,6 +2402,9 @@ class ListEmailTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number of templates
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2090,6 +2413,9 @@ class ListEmailTemplatesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2131,6 +2457,9 @@ class ListReceiversRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset, starting from 0. The value is an integer.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2139,6 +2468,9 @@ class ListReceiversRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of records to query. The value is an integer not exceeding 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2147,6 +2479,9 @@ class ListReceiversRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Group status (`1`: to be uploaded; `2` uploading; `3` uploaded). To query groups in all states, do not pass in this parameter.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2155,6 +2490,9 @@ class ListReceiversRequest(AbstractModel):
 
     @property
     def KeyWord(self):
+        """Group name keyword for fuzzy query
+        :rtype: str
+        """
         return self._KeyWord
 
     @KeyWord.setter
@@ -2197,6 +2535,9 @@ class ListReceiversResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2205,6 +2546,9 @@ class ListReceiversResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Data record
+        :rtype: list of ReceiverData
+        """
         return self._Data
 
     @Data.setter
@@ -2213,6 +2557,9 @@ class ListReceiversResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2257,6 +2604,9 @@ class ListSendTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset, starting from 0. The value is an integer. `0` means to skip 0 entries.
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -2265,6 +2615,9 @@ class ListSendTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of records to query. The value is an integer not exceeding 100.
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -2273,6 +2626,9 @@ class ListSendTasksRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Task status. `1`: to start; `5`: sending; `6`: sending suspended today; `7`: sending error; `10`: sent. To query tasks in all states, do not pass in this parameter.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2281,6 +2637,9 @@ class ListSendTasksRequest(AbstractModel):
 
     @property
     def ReceiverId(self):
+        """Recipient group ID
+        :rtype: int
+        """
         return self._ReceiverId
 
     @ReceiverId.setter
@@ -2289,6 +2648,9 @@ class ListSendTasksRequest(AbstractModel):
 
     @property
     def TaskType(self):
+        """Task type. `1`: immediate; `2`: scheduled; `3`: recurring. To query tasks of all types, do not pass in this parameter.
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -2332,6 +2694,9 @@ class ListSendTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Total number
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -2340,6 +2705,9 @@ class ListSendTasksResponse(AbstractModel):
 
     @property
     def Data(self):
+        """Data record
+        :rtype: list of SendTaskData
+        """
         return self._Data
 
     @Data.setter
@@ -2348,6 +2716,9 @@ class ListSendTasksResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2397,6 +2768,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ReceiverId(self):
+        """Recipient group ID
+        :rtype: int
+        """
         return self._ReceiverId
 
     @ReceiverId.setter
@@ -2405,6 +2779,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ReceiversName(self):
+        """Recipient group name
+        :rtype: str
+        """
         return self._ReceiversName
 
     @ReceiversName.setter
@@ -2413,6 +2790,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Count(self):
+        """Total number of recipient email addresses
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -2421,6 +2801,10 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Desc(self):
+        """Recipient group description
+Note: This field may return `null`, indicating that no valid value can be found.
+        :rtype: str
+        """
         return self._Desc
 
     @Desc.setter
@@ -2429,6 +2813,10 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ReceiversStatus(self):
+        """Group status (`1`: to be uploaded; `2` uploading; `3` uploaded)
+Note: This field may return `null`, indicating that no valid value can be found.
+        :rtype: int
+        """
         return self._ReceiversStatus
 
     @ReceiversStatus.setter
@@ -2437,6 +2825,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def CreateTime(self):
+        """Creation time, such as 2021-09-28 16:40:35
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2507,6 +2898,11 @@ Sender <email address>
 
     @property
     def FromEmailAddress(self):
+        """Sender address. Enter a sender address, for example, noreply@mail.qcloud.com.
+To display the sender name, enter the address in the following format: 
+Sender <email address>
+        :rtype: str
+        """
         return self._FromEmailAddress
 
     @FromEmailAddress.setter
@@ -2515,6 +2911,9 @@ Sender <email address>
 
     @property
     def Destination(self):
+        """Recipient email addresses. You can send an email to up to 50 recipients at a time. Note: the email content will display all recipient addresses. To send one-to-one emails to several recipients, please call the API multiple times to send the emails.
+        :rtype: list of str
+        """
         return self._Destination
 
     @Destination.setter
@@ -2523,6 +2922,9 @@ Sender <email address>
 
     @property
     def Subject(self):
+        """Email subject.
+        :rtype: str
+        """
         return self._Subject
 
     @Subject.setter
@@ -2531,6 +2933,9 @@ Sender <email address>
 
     @property
     def ReplyToAddresses(self):
+        """Reply-to address. You can enter a valid personal email address that can receive emails. If this parameter is left empty, reply emails will fail to be sent.
+        :rtype: str
+        """
         return self._ReplyToAddresses
 
     @ReplyToAddresses.setter
@@ -2539,6 +2944,9 @@ Sender <email address>
 
     @property
     def Cc(self):
+        """
+        :rtype: list of str
+        """
         return self._Cc
 
     @Cc.setter
@@ -2547,6 +2955,9 @@ Sender <email address>
 
     @property
     def Bcc(self):
+        """
+        :rtype: list of str
+        """
         return self._Bcc
 
     @Bcc.setter
@@ -2555,6 +2966,9 @@ Sender <email address>
 
     @property
     def Template(self):
+        """Template parameters for template-based sending. As `Simple` has been disused, `Template` is required.
+        :rtype: :class:`tencentcloud.ses.v20201002.models.Template`
+        """
         return self._Template
 
     @Template.setter
@@ -2563,6 +2977,9 @@ Sender <email address>
 
     @property
     def Simple(self):
+        """Disused
+        :rtype: :class:`tencentcloud.ses.v20201002.models.Simple`
+        """
         return self._Simple
 
     @Simple.setter
@@ -2571,6 +2988,9 @@ Sender <email address>
 
     @property
     def Attachments(self):
+        """Parameters for the attachments to be sent. The TencentCloud API supports a request packet of up to 8 MB in size, and the size of the attachment content will increase by 1.5 times after Base64 encoding. Therefore, you need to keep the total size of all attachments below 4 MB. If the entire request exceeds 8 MB, the API will return an error.
+        :rtype: list of Attachment
+        """
         return self._Attachments
 
     @Attachments.setter
@@ -2579,6 +2999,9 @@ Sender <email address>
 
     @property
     def Unsubscribe(self):
+        """Unsubscribe link option. `0`: Do not add unsubscribe link; `1`: English `2`: Simplified Chinese; `3`: Traditional Chinese; `4`: Spanish; `5`: French; `6`: German; `7`: Japanese; `8`: Korean; `9`: Arabic; `10`: Thai
+        :rtype: str
+        """
         return self._Unsubscribe
 
     @Unsubscribe.setter
@@ -2587,6 +3010,9 @@ Sender <email address>
 
     @property
     def TriggerType(self):
+        """Email triggering type. `0` (default): non-trigger-based, suitable for marketing emails and non-immediate emails; `1`: trigger-based, suitable for immediate emails such as emails containing verification codes. If the size of an email exceeds a specified value, the system will automatically choose the non-trigger-based type.
+        :rtype: int
+        """
         return self._TriggerType
 
     @TriggerType.setter
@@ -2642,6 +3068,9 @@ class SendEmailResponse(AbstractModel):
 
     @property
     def MessageId(self):
+        """Unique ID generated when receiving the message
+        :rtype: str
+        """
         return self._MessageId
 
     @MessageId.setter
@@ -2650,6 +3079,9 @@ class SendEmailResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2738,6 +3170,9 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def MessageId(self):
+        """The `MessageId` field returned by the `SendEmail` API
+        :rtype: str
+        """
         return self._MessageId
 
     @MessageId.setter
@@ -2746,6 +3181,9 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def ToEmailAddress(self):
+        """Recipient email address
+        :rtype: str
+        """
         return self._ToEmailAddress
 
     @ToEmailAddress.setter
@@ -2754,6 +3192,9 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def FromEmailAddress(self):
+        """Sender email address
+        :rtype: str
+        """
         return self._FromEmailAddress
 
     @FromEmailAddress.setter
@@ -2762,6 +3203,33 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def SendStatus(self):
+        """Tencent Cloud processing status
+0: Successful.
+1001: Internal system exception.
+1002: Internal system exception.
+1003: Internal system exception.
+1003: Internal system exception.
+1004: Email sending timed out.
+1005: Internal system exception.
+1006: You have sent too many emails to the same address in a short period.
+1007: The email address is in the blocklist.
+1008: The sender domain is rejected by the recipient.
+1009: Internal system exception.
+1010: The daily email sending limit is exceeded.
+1011: You have no permission to send custom content. Use a template.
+1013: The sender domain is unsubscribed from by the recipient.
+2001: No results were found.
+3007: The template ID is invalid or the template is unavailable.
+3008: The sender domain is temporarily blocked by the recipient domain.
+3009: You have no permission to use this template.
+3010: The format of the `TemplateData` field is incorrect. 
+3014: The email cannot be sent because the sender domain is not verified.
+3020: The recipient email address is in the blocklist.
+3024: Failed to precheck the email address format.
+3030: Email sending is restricted temporarily due to a high bounce rate.
+3033: The account has insufficient balance or overdue payment.
+        :rtype: int
+        """
         return self._SendStatus
 
     @SendStatus.setter
@@ -2770,6 +3238,14 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def DeliverStatus(self):
+        """Recipient processing status
+0: Tencent Cloud has accepted the request and added it to the send queue.
+1: The email is delivered successfully. `DeliverTime` indicates the time when the email is delivered successfully.
+2: The email is discarded. `DeliverMessage` indicates the reason for discarding.
+3: The recipient's ESP rejects the email, probably because the email address does not exist or due to other reasons.
+8: The email is delayed by the ESP. `DeliverMessage` indicates the reason for delay.
+        :rtype: int
+        """
         return self._DeliverStatus
 
     @DeliverStatus.setter
@@ -2778,6 +3254,9 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def DeliverMessage(self):
+        """Description of the recipient processing status
+        :rtype: str
+        """
         return self._DeliverMessage
 
     @DeliverMessage.setter
@@ -2786,6 +3265,9 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def RequestTime(self):
+        """Timestamp when the request arrives at Tencent Cloud
+        :rtype: int
+        """
         return self._RequestTime
 
     @RequestTime.setter
@@ -2794,6 +3276,9 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def DeliverTime(self):
+        """Timestamp when Tencent Cloud delivers the email
+        :rtype: int
+        """
         return self._DeliverTime
 
     @DeliverTime.setter
@@ -2802,6 +3287,9 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def UserOpened(self):
+        """Whether the recipient has opened the email
+        :rtype: bool
+        """
         return self._UserOpened
 
     @UserOpened.setter
@@ -2810,6 +3298,9 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def UserClicked(self):
+        """Whether the recipient has clicked the links in the email
+        :rtype: bool
+        """
         return self._UserClicked
 
     @UserClicked.setter
@@ -2818,6 +3309,9 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def UserUnsubscribed(self):
+        """Whether the recipient has unsubscribed from the email sent by the sender
+        :rtype: bool
+        """
         return self._UserUnsubscribed
 
     @UserUnsubscribed.setter
@@ -2826,6 +3320,9 @@ class SendEmailStatus(AbstractModel):
 
     @property
     def UserComplainted(self):
+        """Whether the recipient has reported the sender
+        :rtype: bool
+        """
         return self._UserComplainted
 
     @UserComplainted.setter
@@ -2919,6 +3416,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def TaskId(self):
+        """Task ID
+        :rtype: int
+        """
         return self._TaskId
 
     @TaskId.setter
@@ -2927,6 +3427,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def FromEmailAddress(self):
+        """Sender address
+        :rtype: str
+        """
         return self._FromEmailAddress
 
     @FromEmailAddress.setter
@@ -2935,6 +3438,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ReceiverId(self):
+        """Recipient group ID
+        :rtype: int
+        """
         return self._ReceiverId
 
     @ReceiverId.setter
@@ -2943,6 +3449,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def TaskStatus(self):
+        """Task status. `1`: to start; `5`: sending; `6`: sending suspended today; `7`: sending error; `10`: sent
+        :rtype: int
+        """
         return self._TaskStatus
 
     @TaskStatus.setter
@@ -2951,6 +3460,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def TaskType(self):
+        """Task type. `1`: immediate; `2`: scheduled; `3`: recurring
+        :rtype: int
+        """
         return self._TaskType
 
     @TaskType.setter
@@ -2959,6 +3471,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def RequestCount(self):
+        """Number of emails requested to be sent
+        :rtype: int
+        """
         return self._RequestCount
 
     @RequestCount.setter
@@ -2967,6 +3482,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def SendCount(self):
+        """Number of emails sent
+        :rtype: int
+        """
         return self._SendCount
 
     @SendCount.setter
@@ -2975,6 +3493,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def CacheCount(self):
+        """Number of emails cached
+        :rtype: int
+        """
         return self._CacheCount
 
     @CacheCount.setter
@@ -2983,6 +3504,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def CreateTime(self):
+        """Task creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2991,6 +3515,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def UpdateTime(self):
+        """Task update time
+        :rtype: str
+        """
         return self._UpdateTime
 
     @UpdateTime.setter
@@ -2999,6 +3526,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Subject(self):
+        """Email subject
+        :rtype: str
+        """
         return self._Subject
 
     @Subject.setter
@@ -3007,6 +3537,10 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def Template(self):
+        """Template and template data
+Note: This field may return `null`, indicating that no valid value can be found.
+        :rtype: :class:`tencentcloud.ses.v20201002.models.Template`
+        """
         return self._Template
 
     @Template.setter
@@ -3015,6 +3549,10 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def CycleParam(self):
+        """Parameters of a recurring task
+Note: This field may return `null`, indicating that no valid value can be found.
+        :rtype: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
+        """
         return self._CycleParam
 
     @CycleParam.setter
@@ -3023,6 +3561,10 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def TimedParam(self):
+        """Parameters of a scheduled task
+Note: This field may return `null`, indicating that no valid value can be found.
+        :rtype: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
+        """
         return self._TimedParam
 
     @TimedParam.setter
@@ -3031,6 +3573,10 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ErrMsg(self):
+        """Task exception information
+Note: This field may return `null`, indicating that no valid value can be found.
+        :rtype: str
+        """
         return self._ErrMsg
 
     @ErrMsg.setter
@@ -3039,6 +3585,9 @@ Note: This field may return `null`, indicating that no valid value can be found.
 
     @property
     def ReceiversName(self):
+        """Recipient group name
+        :rtype: str
+        """
         return self._ReceiversName
 
     @ReceiversName.setter
@@ -3096,6 +3645,9 @@ class Simple(AbstractModel):
 
     @property
     def Html(self):
+        """HTML code after base64 encoding. To ensure correct display, this parameter should include all code information and cannot contain external CSS.
+        :rtype: str
+        """
         return self._Html
 
     @Html.setter
@@ -3104,6 +3656,9 @@ class Simple(AbstractModel):
 
     @property
     def Text(self):
+        """Plain text content after base64 encoding. If HTML is not involved, the plain text will be displayed in the email. Otherwise, this parameter represents the plain text style of the email.
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -3143,6 +3698,9 @@ Example: {"name":"xxx","age":"xx"}
 
     @property
     def TemplateID(self):
+        """Template ID. If you don’t have any template, please create one.
+        :rtype: int
+        """
         return self._TemplateID
 
     @TemplateID.setter
@@ -3151,6 +3709,11 @@ Example: {"name":"xxx","age":"xx"}
 
     @property
     def TemplateData(self):
+        """Variable parameters in the template. Please use `json.dump` to format the JSON object into a string type. The object is a set of key-value pairs. Each key denotes a variable, which is represented by {{key}}. The key will be replaced with the corresponding value (represented by {{value}}) when sending the email.
+Note: The parameter value cannot be data of a complex type such as HTML.
+Example: {"name":"xxx","age":"xx"}
+        :rtype: str
+        """
         return self._TemplateData
 
     @TemplateData.setter
@@ -3188,6 +3751,9 @@ class TemplateContent(AbstractModel):
 
     @property
     def Html(self):
+        """HTML code after base64 encoding.
+        :rtype: str
+        """
         return self._Html
 
     @Html.setter
@@ -3196,6 +3762,9 @@ class TemplateContent(AbstractModel):
 
     @property
     def Text(self):
+        """Text content after base64 encoding.
+        :rtype: str
+        """
         return self._Text
 
     @Text.setter
@@ -3242,6 +3811,9 @@ class TemplatesMetadata(AbstractModel):
 
     @property
     def CreatedTimestamp(self):
+        """Creation time.
+        :rtype: int
+        """
         return self._CreatedTimestamp
 
     @CreatedTimestamp.setter
@@ -3250,6 +3822,9 @@ class TemplatesMetadata(AbstractModel):
 
     @property
     def TemplateName(self):
+        """Template name.
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -3258,6 +3833,9 @@ class TemplatesMetadata(AbstractModel):
 
     @property
     def TemplateStatus(self):
+        """Template status. 1: under review; 0: approved; 2: rejected; other values: unavailable.
+        :rtype: int
+        """
         return self._TemplateStatus
 
     @TemplateStatus.setter
@@ -3266,6 +3844,9 @@ class TemplatesMetadata(AbstractModel):
 
     @property
     def TemplateID(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateID
 
     @TemplateID.setter
@@ -3274,6 +3855,9 @@ class TemplatesMetadata(AbstractModel):
 
     @property
     def ReviewReason(self):
+        """Review reply
+        :rtype: str
+        """
         return self._ReviewReason
 
     @ReviewReason.setter
@@ -3311,6 +3895,9 @@ class TimedEmailParam(AbstractModel):
 
     @property
     def BeginTime(self):
+        """Start time of a scheduled sending task
+        :rtype: str
+        """
         return self._BeginTime
 
     @BeginTime.setter
@@ -3344,6 +3931,9 @@ class UpdateEmailIdentityRequest(AbstractModel):
 
     @property
     def EmailIdentity(self):
+        """Domain to be verified.
+        :rtype: str
+        """
         return self._EmailIdentity
 
     @EmailIdentity.setter
@@ -3386,6 +3976,9 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def IdentityType(self):
+        """Verification type. The value is fixed to `DOMAIN`.
+        :rtype: str
+        """
         return self._IdentityType
 
     @IdentityType.setter
@@ -3394,6 +3987,9 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def VerifiedForSendingStatus(self):
+        """Verification passed or not.
+        :rtype: bool
+        """
         return self._VerifiedForSendingStatus
 
     @VerifiedForSendingStatus.setter
@@ -3402,6 +3998,9 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def Attributes(self):
+        """DNS information that needs to be configured.
+        :rtype: list of DNSAttributes
+        """
         return self._Attributes
 
     @Attributes.setter
@@ -3410,6 +4009,9 @@ class UpdateEmailIdentityResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3446,6 +4048,9 @@ class UpdateEmailSmtpPassWordRequest(AbstractModel):
 
     @property
     def Password(self):
+        """SMTP password. Length limit: 64.
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -3454,6 +4059,9 @@ class UpdateEmailSmtpPassWordRequest(AbstractModel):
 
     @property
     def EmailAddress(self):
+        """Email address. Length limit: 128.
+        :rtype: str
+        """
         return self._EmailAddress
 
     @EmailAddress.setter
@@ -3488,6 +4096,9 @@ class UpdateEmailSmtpPassWordResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3519,6 +4130,9 @@ class UpdateEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateContent(self):
+        """Template content.
+        :rtype: :class:`tencentcloud.ses.v20201002.models.TemplateContent`
+        """
         return self._TemplateContent
 
     @TemplateContent.setter
@@ -3527,6 +4141,9 @@ class UpdateEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateID(self):
+        """Template ID.
+        :rtype: int
+        """
         return self._TemplateID
 
     @TemplateID.setter
@@ -3535,6 +4152,9 @@ class UpdateEmailTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
+        """Template name
+        :rtype: str
+        """
         return self._TemplateName
 
     @TemplateName.setter
@@ -3572,6 +4192,9 @@ class UpdateEmailTemplateResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3620,6 +4243,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SendDate(self):
+        """Date
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SendDate
 
     @SendDate.setter
@@ -3628,6 +4255,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestCount(self):
+        """Number of email requests.
+        :rtype: int
+        """
         return self._RequestCount
 
     @RequestCount.setter
@@ -3636,6 +4266,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AcceptedCount(self):
+        """Number of email requests accepted by Tencent Cloud.
+        :rtype: int
+        """
         return self._AcceptedCount
 
     @AcceptedCount.setter
@@ -3644,6 +4277,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DeliveredCount(self):
+        """Number of delivered emails.
+        :rtype: int
+        """
         return self._DeliveredCount
 
     @DeliveredCount.setter
@@ -3652,6 +4288,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OpenedCount(self):
+        """Number of users (deduplicated) who opened emails.
+        :rtype: int
+        """
         return self._OpenedCount
 
     @OpenedCount.setter
@@ -3660,6 +4299,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ClickedCount(self):
+        """Number of recipients who clicked on links in emails.
+        :rtype: int
+        """
         return self._ClickedCount
 
     @ClickedCount.setter
@@ -3668,6 +4310,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def BounceCount(self):
+        """Number of bounced emails.
+        :rtype: int
+        """
         return self._BounceCount
 
     @BounceCount.setter
@@ -3676,6 +4321,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UnsubscribeCount(self):
+        """Number of users who canceled subscriptions.
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._UnsubscribeCount
 
     @UnsubscribeCount.setter

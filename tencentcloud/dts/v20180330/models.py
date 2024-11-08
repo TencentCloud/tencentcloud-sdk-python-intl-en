@@ -47,6 +47,9 @@ class ActivateSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """Subscription instance ID.
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -55,6 +58,9 @@ class ActivateSubscribeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Database Instance ID
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -63,6 +69,9 @@ class ActivateSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeObjectType(self):
+        """Data subscription type. 0: full instance subscription, 1: data subscription, 2: structure subscription, 3: data subscription and structure subscription
+        :rtype: int
+        """
         return self._SubscribeObjectType
 
     @SubscribeObjectType.setter
@@ -71,6 +80,9 @@ class ActivateSubscribeRequest(AbstractModel):
 
     @property
     def Objects(self):
+        """Subscription object
+        :rtype: :class:`tencentcloud.dts.v20180330.models.SubscribeObject`
+        """
         return self._Objects
 
     @Objects.setter
@@ -79,6 +91,9 @@ class ActivateSubscribeRequest(AbstractModel):
 
     @property
     def UniqSubnetId(self):
+        """Subnet of data subscription service, which is the subnet of the database instance by default.
+        :rtype: str
+        """
         return self._UniqSubnetId
 
     @UniqSubnetId.setter
@@ -87,6 +102,9 @@ class ActivateSubscribeRequest(AbstractModel):
 
     @property
     def Vport(self):
+        """Subscription service port. Default value: 7507
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -130,6 +148,9 @@ class ActivateSubscribeResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """Data subscription configuration task ID.
+        :rtype: str
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -138,6 +159,9 @@ class ActivateSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -167,6 +191,9 @@ class CompleteMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -175,6 +202,9 @@ class CompleteMigrateJobRequest(AbstractModel):
 
     @property
     def CompleteMode(self):
+        """The way to complete the task, which is supported only for legacy MySQL migration task. waitForSync: wait for the source-replica lag to become 0 before stopping; immediately: complete immediately without waiting for source-replica sync. Default value: waitForSync
+        :rtype: str
+        """
         return self._CompleteMode
 
     @CompleteMode.setter
@@ -209,6 +239,9 @@ class CompleteMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -240,6 +273,9 @@ class ConsistencyParams(AbstractModel):
 
     @property
     def SelectRowsPerTable(self):
+        """Data content check parameter, which refers to the proportion of the rows selected for data comparison in all the rows of the table. Value: an integer between 1 and 100.
+        :rtype: int
+        """
         return self._SelectRowsPerTable
 
     @SelectRowsPerTable.setter
@@ -248,6 +284,9 @@ class ConsistencyParams(AbstractModel):
 
     @property
     def TablesSelectAll(self):
+        """Data content check parameter, which refers to the proportion of the tables selected for data detection in all the tables. Value: an integer between 1 and 100.
+        :rtype: int
+        """
         return self._TablesSelectAll
 
     @TablesSelectAll.setter
@@ -256,6 +295,9 @@ class ConsistencyParams(AbstractModel):
 
     @property
     def TablesSelectCount(self):
+        """Data quantity check parameter, which checks whether the numbers of rows are identical. It refers to the proportion of the tables selected for quantity check in all the tables. Value: an integer between 1 and 100.
+        :rtype: int
+        """
         return self._TablesSelectCount
 
     @TablesSelectCount.setter
@@ -291,6 +333,9 @@ class CreateMigrateCheckJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -324,6 +369,9 @@ class CreateMigrateCheckJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -386,6 +434,9 @@ For databases with a database-schema-table structure:
 
     @property
     def JobName(self):
+        """Data migration task name
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -394,6 +445,9 @@ For databases with a database-schema-table structure:
 
     @property
     def MigrateOption(self):
+        """Migration task configuration options
+        :rtype: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
+        """
         return self._MigrateOption
 
     @MigrateOption.setter
@@ -402,6 +456,9 @@ For databases with a database-schema-table structure:
 
     @property
     def SrcDatabaseType(self):
+        """Source instance database type, which currently supports MySQL, Redis, MongoDB, PostgreSQL, MariaDB, Percona, and SQL Server. For more information on the supported types in a specific region, see the migration task creation page in the console.
+        :rtype: str
+        """
         return self._SrcDatabaseType
 
     @SrcDatabaseType.setter
@@ -410,6 +467,9 @@ For databases with a database-schema-table structure:
 
     @property
     def SrcAccessType(self):
+        """Source instance access type. Valid values: extranet (public network), cvm (CVM-based self-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance), ccn (CCN instance)
+        :rtype: str
+        """
         return self._SrcAccessType
 
     @SrcAccessType.setter
@@ -418,6 +478,9 @@ For databases with a database-schema-table structure:
 
     @property
     def SrcInfo(self):
+        """Source instance information, which is correlated with the migration task type
+        :rtype: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
+        """
         return self._SrcInfo
 
     @SrcInfo.setter
@@ -426,6 +489,9 @@ For databases with a database-schema-table structure:
 
     @property
     def DstDatabaseType(self):
+        """Target instance access type, which currently supports MySQL, Redis, MongoDB, PostgreSQL, MariaDB, and Percona, SQL Server, and TDSQL-C for MySQL. For more information on the supported types in a specific region, see the migration task creation page in the console.
+        :rtype: str
+        """
         return self._DstDatabaseType
 
     @DstDatabaseType.setter
@@ -434,6 +500,9 @@ For databases with a database-schema-table structure:
 
     @property
     def DstAccessType(self):
+        """Target instance access type, which currently only supports cdb (TencentDB instance)
+        :rtype: str
+        """
         return self._DstAccessType
 
     @DstAccessType.setter
@@ -442,6 +511,9 @@ For databases with a database-schema-table structure:
 
     @property
     def DstInfo(self):
+        """Destination instance information
+        :rtype: :class:`tencentcloud.dts.v20180330.models.DstInfo`
+        """
         return self._DstInfo
 
     @DstInfo.setter
@@ -450,6 +522,13 @@ For databases with a database-schema-table structure:
 
     @property
     def DatabaseInfo(self):
+        """Information of the source table to be migrated, which is described in JSON string format. It is required if MigrateOption.MigrateObject is 2 (migrating the specified table).
+For databases with a database-table structure:
+[{"Database":"db1","Table":["table1","table2"]},{"Database":"db2"}]
+For databases with a database-schema-table structure:
+[{"Database":"db1","Schema":"s1","Table":["table1","table2"]},{"Database":"db1","Schema":"s2","Table":["table1","table2"]},{"Database":"db2","Schema":"s1","Table":["table1","table2"]},{"Database":"db3"},{"Database":"db4","Schema":"s1"}]
+        :rtype: str
+        """
         return self._DatabaseInfo
 
     @DatabaseInfo.setter
@@ -458,6 +537,9 @@ For databases with a database-schema-table structure:
 
     @property
     def Tags(self):
+        """Tag of the instance to be migrated.
+        :rtype: list of TagItem
+        """
         return self._Tags
 
     @Tags.setter
@@ -466,6 +548,9 @@ For databases with a database-schema-table structure:
 
     @property
     def SrcNodeType(self):
+        """Source instance type. `simple`: Primary/Secondary node; `cluster`: Cluster node. If this field is left empty, the value defaults to primary/secondary node.
+        :rtype: str
+        """
         return self._SrcNodeType
 
     @SrcNodeType.setter
@@ -474,6 +559,9 @@ For databases with a database-schema-table structure:
 
     @property
     def SrcInfoMulti(self):
+        """Source instance information, which is correlated with the migration task type.
+        :rtype: list of SrcInfo
+        """
         return self._SrcInfoMulti
 
     @SrcInfoMulti.setter
@@ -537,6 +625,9 @@ class CreateMigrateJobResponse(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -545,6 +636,9 @@ class CreateMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -589,6 +683,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Subscribed database type. Currently, MySQL is supported
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -597,6 +694,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def PayType(self):
+        """Instance billing mode, which is always 1 (hourly billing),
+        :rtype: int
+        """
         return self._PayType
 
     @PayType.setter
@@ -605,6 +705,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Duration(self):
+        """Purchase duration in months, which is required if `PayType` is 0. Maximum value: 120 (this field is not required of global site users and is better to be hidden)
+        :rtype: int
+        """
         return self._Duration
 
     @Duration.setter
@@ -613,6 +716,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Count(self):
+        """Quantity. Default value: 1. Maximum value: 10
+        :rtype: int
+        """
         return self._Count
 
     @Count.setter
@@ -621,6 +727,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def AutoRenew(self):
+        """Whether to auto-renew. Default value: 0. This flag does not take effect for hourly billed instances (this field should be hidden from global site users)
+        :rtype: int
+        """
         return self._AutoRenew
 
     @AutoRenew.setter
@@ -629,6 +738,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Tags(self):
+        """Instance resource tags
+        :rtype: list of TagItem
+        """
         return self._Tags
 
     @Tags.setter
@@ -637,6 +749,9 @@ class CreateSubscribeRequest(AbstractModel):
 
     @property
     def Name(self):
+        """A custom instance name.
+        :rtype: str
+        """
         return self._Name
 
     @Name.setter
@@ -685,6 +800,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubscribeIds(self):
+        """Data subscription instance ID array
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._SubscribeIds
 
     @SubscribeIds.setter
@@ -693,6 +812,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -719,6 +841,9 @@ class DeleteMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -752,6 +877,9 @@ class DeleteMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -777,6 +905,9 @@ class DescribeAsyncRequestInfoRequest(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """Task ID
+        :rtype: str
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -816,6 +947,9 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     @property
     def Info(self):
+        """Task execution result information
+        :rtype: str
+        """
         return self._Info
 
     @Info.setter
@@ -824,6 +958,9 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     @property
     def Status(self):
+        """Task execution status. Valid values: success, failed, running
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -832,6 +969,9 @@ class DescribeAsyncRequestInfoResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -859,6 +999,9 @@ class DescribeMigrateCheckJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -907,6 +1050,9 @@ class DescribeMigrateCheckJobResponse(AbstractModel):
 
     @property
     def Status(self):
+        """Check task status: unavailable, starting, running, finished
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -915,6 +1061,9 @@ class DescribeMigrateCheckJobResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
+        """Task error code
+        :rtype: int
+        """
         return self._ErrorCode
 
     @ErrorCode.setter
@@ -923,6 +1072,9 @@ class DescribeMigrateCheckJobResponse(AbstractModel):
 
     @property
     def ErrorMessage(self):
+        """Task error message
+        :rtype: str
+        """
         return self._ErrorMessage
 
     @ErrorMessage.setter
@@ -931,6 +1083,9 @@ class DescribeMigrateCheckJobResponse(AbstractModel):
 
     @property
     def Progress(self):
+        """Check task progress. For example, "30" means 30% completed
+        :rtype: str
+        """
         return self._Progress
 
     @Progress.setter
@@ -939,6 +1094,9 @@ class DescribeMigrateCheckJobResponse(AbstractModel):
 
     @property
     def CheckFlag(self):
+        """Whether the check succeeds. 0: no; 1: yes; 3: not checked
+        :rtype: int
+        """
         return self._CheckFlag
 
     @CheckFlag.setter
@@ -947,6 +1105,9 @@ class DescribeMigrateCheckJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -995,6 +1156,9 @@ class DescribeMigrateJobsRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -1003,6 +1167,9 @@ class DescribeMigrateJobsRequest(AbstractModel):
 
     @property
     def JobName(self):
+        """Data migration task name
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -1011,6 +1178,9 @@ class DescribeMigrateJobsRequest(AbstractModel):
 
     @property
     def Order(self):
+        """Sort by field. Value range: JobId, Status, JobName, MigrateType, RunMode, CreateTime
+        :rtype: str
+        """
         return self._Order
 
     @Order.setter
@@ -1019,6 +1189,9 @@ class DescribeMigrateJobsRequest(AbstractModel):
 
     @property
     def OrderSeq(self):
+        """Sorting order. Value range: ASC (ascending), DESC (descending)
+        :rtype: str
+        """
         return self._OrderSeq
 
     @OrderSeq.setter
@@ -1027,6 +1200,9 @@ class DescribeMigrateJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Offset. Default value: 0
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1035,6 +1211,9 @@ class DescribeMigrateJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of the returned instances. Value range: [1, 100]. Default value: 20
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1043,6 +1222,9 @@ class DescribeMigrateJobsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
+        """Tag filter.
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -1093,6 +1275,9 @@ class DescribeMigrateJobsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of tasks
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1101,6 +1286,9 @@ class DescribeMigrateJobsResponse(AbstractModel):
 
     @property
     def JobList(self):
+        """Array of task details
+        :rtype: list of MigrateJobInfo
+        """
         return self._JobList
 
     @JobList.setter
@@ -1109,6 +1297,9 @@ class DescribeMigrateJobsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1153,6 +1344,9 @@ class DescribeRegionConfResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of purchasable regions
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1161,6 +1355,9 @@ class DescribeRegionConfResponse(AbstractModel):
 
     @property
     def Items(self):
+        """Purchasable region details
+        :rtype: list of SubscribeRegionConf
+        """
         return self._Items
 
     @Items.setter
@@ -1169,6 +1366,9 @@ class DescribeRegionConfResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1201,6 +1401,9 @@ class DescribeSubscribeConfRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """Subscription instance ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -1321,6 +1524,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubscribeId(self):
+        """Subscription instance ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -1329,6 +1535,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubscribeName(self):
+        """Subscription instance name
+        :rtype: str
+        """
         return self._SubscribeName
 
     @SubscribeName.setter
@@ -1337,6 +1546,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ChannelId(self):
+        """Subscription channel
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -1345,6 +1557,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Product(self):
+        """Subscribed database type
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1353,6 +1568,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceId(self):
+        """Subscribed instance
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1361,6 +1579,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceStatus(self):
+        """Subscribed instance status. Valid values: running, offline, isolate
+        :rtype: str
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -1369,6 +1590,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubsStatus(self):
+        """Subscription instance status. Valid values: unconfigure, configuring, configured
+        :rtype: str
+        """
         return self._SubsStatus
 
     @SubsStatus.setter
@@ -1377,6 +1601,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Subscription instance lifecycle status. Valid values: normal, isolating, isolated, offlining
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -1385,6 +1612,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateTime(self):
+        """Subscription instance creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -1393,6 +1623,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsolateTime(self):
+        """Subscription instance isolation time
+        :rtype: str
+        """
         return self._IsolateTime
 
     @IsolateTime.setter
@@ -1401,6 +1634,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ExpireTime(self):
+        """Subscription instance expiration time
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -1409,6 +1645,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OfflineTime(self):
+        """Subscription instance deactivation time
+        :rtype: str
+        """
         return self._OfflineTime
 
     @OfflineTime.setter
@@ -1417,6 +1656,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ConsumeStartTime(self):
+        """Consumption starting time point of subscription instance
+        :rtype: str
+        """
         return self._ConsumeStartTime
 
     @ConsumeStartTime.setter
@@ -1425,6 +1667,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PayType(self):
+        """Subscription instance billing mode. 1: hourly billing
+        :rtype: int
+        """
         return self._PayType
 
     @PayType.setter
@@ -1433,6 +1678,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Vip(self):
+        """Subscription channel VIP
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -1441,6 +1689,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Vport(self):
+        """Subscription channel port
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -1449,6 +1700,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UniqVpcId(self):
+        """Subscription channel `VpcId`
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -1457,6 +1711,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UniqSubnetId(self):
+        """Subscription channel `SubnetId`
+        :rtype: str
+        """
         return self._UniqSubnetId
 
     @UniqSubnetId.setter
@@ -1465,6 +1722,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SdkConsumedTime(self):
+        """Current SDK consumption time point
+        :rtype: str
+        """
         return self._SdkConsumedTime
 
     @SdkConsumedTime.setter
@@ -1473,6 +1733,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SdkHost(self):
+        """Subscription SDK IP address
+        :rtype: str
+        """
         return self._SdkHost
 
     @SdkHost.setter
@@ -1481,6 +1744,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubscribeObjectType(self):
+        """Subscription object type. 0: full instance subscription, 1: DDL data subscription, 2: DML structure subscription, 3: DDL data subscription + DML structure subscription
+        :rtype: int
+        """
         return self._SubscribeObjectType
 
     @SubscribeObjectType.setter
@@ -1489,6 +1755,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubscribeObjects(self):
+        """Subscription object, which is an empty array if `SubscribeObjectType` is 0
+        :rtype: list of SubscribeObject
+        """
         return self._SubscribeObjects
 
     @SubscribeObjects.setter
@@ -1497,6 +1766,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ModifyTime(self):
+        """Modification time
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -1505,6 +1777,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Region(self):
+        """Region
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1513,6 +1788,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Tags(self):
+        """Tags of the subscription
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of TagItem
+        """
         return self._Tags
 
     @Tags.setter
@@ -1521,6 +1800,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AutoRenewFlag(self):
+        """Whether auto-renewal is enabled. 0: do not enable, 1: enable
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -1529,6 +1812,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubscribeVersion(self):
+        """Data subscription edition. `txdts`: Legacy edition; `kafka`: Kafka edition.
+        :rtype: str
+        """
         return self._SubscribeVersion
 
     @SubscribeVersion.setter
@@ -1537,6 +1823,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Errors(self):
+        """Error message.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of SubsErr
+        """
         return self._Errors
 
     @Errors.setter
@@ -1545,6 +1835,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1649,6 +1942,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -1657,6 +1953,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def SubscribeName(self):
+        """Data subscription instance name
+        :rtype: str
+        """
         return self._SubscribeName
 
     @SubscribeName.setter
@@ -1665,6 +1964,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
+        """ID of bound database instance
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1673,6 +1975,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def ChannelId(self):
+        """Data subscription instance channel ID
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -1681,6 +1986,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def PayType(self):
+        """Billing mode filter. Default value: 1 (pay-as-you-go)
+        :rtype: str
+        """
         return self._PayType
 
     @PayType.setter
@@ -1689,6 +1997,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def Product(self):
+        """Subscribed database product, such as MySQL
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -1697,6 +2008,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def Status(self):
+        """Data subscription instance status. Valid values: creating, normal, isolating, isolated, offlining
+        :rtype: list of str
+        """
         return self._Status
 
     @Status.setter
@@ -1705,6 +2019,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def SubsStatus(self):
+        """Data subscription instance configuration status. Valid values: unconfigure, configuring, configured
+        :rtype: list of str
+        """
         return self._SubsStatus
 
     @SubsStatus.setter
@@ -1713,6 +2030,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def Offset(self):
+        """Starting offset of returned results
+        :rtype: int
+        """
         return self._Offset
 
     @Offset.setter
@@ -1721,6 +2041,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def Limit(self):
+        """Number of results to be returned at a time
+        :rtype: int
+        """
         return self._Limit
 
     @Limit.setter
@@ -1729,6 +2052,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
+        """Sorting order. Valid values: DESC, ASC. Default value: DESC, indicating descending by creation time
+        :rtype: str
+        """
         return self._OrderDirection
 
     @OrderDirection.setter
@@ -1737,6 +2063,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def TagFilters(self):
+        """Tag filtering condition
+        :rtype: list of TagFilter
+        """
         return self._TagFilters
 
     @TagFilters.setter
@@ -1745,6 +2074,9 @@ class DescribeSubscribesRequest(AbstractModel):
 
     @property
     def SubscribeVersion(self):
+        """Subscription instance edition. `txdts`: legacy data subscription; `kafka`: data subscription in Kafka edition
+        :rtype: str
+        """
         return self._SubscribeVersion
 
     @SubscribeVersion.setter
@@ -1801,6 +2133,9 @@ class DescribeSubscribesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
+        """Number of eligible instances.
+        :rtype: int
+        """
         return self._TotalCount
 
     @TotalCount.setter
@@ -1809,6 +2144,9 @@ class DescribeSubscribesResponse(AbstractModel):
 
     @property
     def Items(self):
+        """Information list of data subscription instances
+        :rtype: list of SubscribeInfo
+        """
         return self._Items
 
     @Items.setter
@@ -1817,6 +2155,9 @@ class DescribeSubscribesResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -1867,6 +2208,9 @@ class DstInfo(AbstractModel):
 
     @property
     def InstanceId(self):
+        """Target instance ID, such as cdb-jd92ijd8
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -1875,6 +2219,9 @@ class DstInfo(AbstractModel):
 
     @property
     def Region(self):
+        """Target instance region, such as ap-guangzhou
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -1883,6 +2230,9 @@ class DstInfo(AbstractModel):
 
     @property
     def Ip(self):
+        """Target instance VIP, which has been disused and does not need to be entered
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -1891,6 +2241,9 @@ class DstInfo(AbstractModel):
 
     @property
     def Port(self):
+        """Target instance Vport, which has been disused and does not need to be entered
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -1899,6 +2252,9 @@ class DstInfo(AbstractModel):
 
     @property
     def ReadOnly(self):
+        """Only valid for MySQL currently. For instance-level migration, the value range is: 1 (read-only), 0 (read/write)
+        :rtype: int
+        """
         return self._ReadOnly
 
     @ReadOnly.setter
@@ -1907,6 +2263,9 @@ class DstInfo(AbstractModel):
 
     @property
     def User(self):
+        """Target database account
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -1915,6 +2274,9 @@ class DstInfo(AbstractModel):
 
     @property
     def Password(self):
+        """Target database password
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -1957,6 +2319,9 @@ class ErrorInfo(AbstractModel):
 
     @property
     def ErrorLog(self):
+        """Specific error log, including error code and error message
+        :rtype: str
+        """
         return self._ErrorLog
 
     @ErrorLog.setter
@@ -1965,6 +2330,9 @@ class ErrorInfo(AbstractModel):
 
     @property
     def HelpDoc(self):
+        """Help document URL corresponding to error
+        :rtype: str
+        """
         return self._HelpDoc
 
     @HelpDoc.setter
@@ -1999,6 +2367,9 @@ class IsolateSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """Subscription instance ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -2032,6 +2403,9 @@ class IsolateSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2075,6 +2449,9 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def StepAll(self):
+        """Total number of steps
+        :rtype: int
+        """
         return self._StepAll
 
     @StepAll.setter
@@ -2083,6 +2460,9 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def StepNow(self):
+        """Current step
+        :rtype: int
+        """
         return self._StepNow
 
     @StepNow.setter
@@ -2091,6 +2471,9 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def Progress(self):
+        """Overall progress, such as "10"
+        :rtype: str
+        """
         return self._Progress
 
     @Progress.setter
@@ -2099,6 +2482,9 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def CurrentStepProgress(self):
+        """Progress of current step, such as "1"
+        :rtype: str
+        """
         return self._CurrentStepProgress
 
     @CurrentStepProgress.setter
@@ -2107,6 +2493,9 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def MasterSlaveDistance(self):
+        """Master/slave lag in MB, which is valid during incremental sync and currently supported by TencentDB for Redis and MySQL
+        :rtype: int
+        """
         return self._MasterSlaveDistance
 
     @MasterSlaveDistance.setter
@@ -2115,6 +2504,9 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def SecondsBehindMaster(self):
+        """Master/slave lag in seconds, which is valid during incremental sync and currently supported by TencentDB for MySQL
+        :rtype: int
+        """
         return self._SecondsBehindMaster
 
     @SecondsBehindMaster.setter
@@ -2123,6 +2515,9 @@ class MigrateDetailInfo(AbstractModel):
 
     @property
     def StepInfo(self):
+        """Step information
+        :rtype: list of MigrateStepDetailInfo
+        """
         return self._StepInfo
 
     @StepInfo.setter
@@ -2220,6 +2615,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -2228,6 +2626,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def JobName(self):
+        """Data migration task name
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -2236,6 +2637,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def MigrateOption(self):
+        """Migration task configuration options
+        :rtype: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
+        """
         return self._MigrateOption
 
     @MigrateOption.setter
@@ -2244,6 +2648,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SrcDatabaseType(self):
+        """Source instance database type: MySQL, Redis, MongoDB, PostgreSQL, MariaDB, Percona
+        :rtype: str
+        """
         return self._SrcDatabaseType
 
     @SrcDatabaseType.setter
@@ -2252,6 +2659,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SrcAccessType(self):
+        """Source instance access type. Value range: extranet (public network), cvm (CVM-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance), ccn (CCN instances)
+        :rtype: str
+        """
         return self._SrcAccessType
 
     @SrcAccessType.setter
@@ -2260,6 +2670,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SrcInfo(self):
+        """Source instance information, which is correlated with the migration task type
+        :rtype: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
+        """
         return self._SrcInfo
 
     @SrcInfo.setter
@@ -2268,6 +2681,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DstDatabaseType(self):
+        """Target instance access type: MySQL, Redis, MongoDB, PostgreSQL, MariaDB, Percona
+        :rtype: str
+        """
         return self._DstDatabaseType
 
     @DstDatabaseType.setter
@@ -2276,6 +2692,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DstAccessType(self):
+        """Target instance access type, which currently only supports cdb (TencentDB instance)
+        :rtype: str
+        """
         return self._DstAccessType
 
     @DstAccessType.setter
@@ -2284,6 +2703,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DstInfo(self):
+        """Target instance information
+        :rtype: :class:`tencentcloud.dts.v20180330.models.DstInfo`
+        """
         return self._DstInfo
 
     @DstInfo.setter
@@ -2292,6 +2714,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def DatabaseInfo(self):
+        """Information of the source table to be migrated. If the entire instance is to be migrated, this field should be []
+        :rtype: str
+        """
         return self._DatabaseInfo
 
     @DatabaseInfo.setter
@@ -2300,6 +2725,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateTime(self):
+        """Task creation/submission time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -2308,6 +2736,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def StartTime(self):
+        """Task start time
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2316,6 +2747,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def EndTime(self):
+        """Task end time
+        :rtype: str
+        """
         return self._EndTime
 
     @EndTime.setter
@@ -2324,6 +2758,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Task status. Value range: 1 (Creating), 3 (Checking), 4 (CheckPass), 5 (CheckNotPass), 7 (Running), 8 (ReadyComplete), 9 (Success), 10 (Failed), 11 (Stopping), 12 (Completing)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2332,6 +2769,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Detail(self):
+        """Task details
+        :rtype: :class:`tencentcloud.dts.v20180330.models.MigrateDetailInfo`
+        """
         return self._Detail
 
     @Detail.setter
@@ -2340,6 +2780,9 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ErrorInfo(self):
+        """Prompt message for task error, which is not null or empty when an error occurs with the task
+        :rtype: list of ErrorInfo
+        """
         return self._ErrorInfo
 
     @ErrorInfo.setter
@@ -2348,6 +2791,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Tags(self):
+        """Tag
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of TagItem
+        """
         return self._Tags
 
     @Tags.setter
@@ -2356,6 +2803,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SrcInfoMulti(self):
+        """Information of the source instance, a cluster edition instance whose access type is not `cdb`.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of SrcInfo
+        """
         return self._SrcInfoMulti
 
     @SrcInfoMulti.setter
@@ -2465,6 +2916,9 @@ MySQL currently does not support configuring additional parameters.
 
     @property
     def RunMode(self):
+        """Task operation mode. Value range: 1 (immediate execution), 2 (scheduled execution)
+        :rtype: int
+        """
         return self._RunMode
 
     @RunMode.setter
@@ -2473,6 +2927,9 @@ MySQL currently does not support configuring additional parameters.
 
     @property
     def ExpectTime(self):
+        """Expected execution time in the format of yyyy-mm-dd hh:mm:ss. If runMode=2, this field is required
+        :rtype: str
+        """
         return self._ExpectTime
 
     @ExpectTime.setter
@@ -2481,6 +2938,9 @@ MySQL currently does not support configuring additional parameters.
 
     @property
     def MigrateType(self):
+        """Data migration type. Value range: 1 (structural migration), 2 (full migration), 3 (full + incremental migration)
+        :rtype: int
+        """
         return self._MigrateType
 
     @MigrateType.setter
@@ -2489,6 +2949,9 @@ MySQL currently does not support configuring additional parameters.
 
     @property
     def MigrateObject(self):
+        """Migration subject. 1: entire instance; 2: specified table
+        :rtype: int
+        """
         return self._MigrateObject
 
     @MigrateObject.setter
@@ -2497,6 +2960,9 @@ MySQL currently does not support configuring additional parameters.
 
     @property
     def ConsistencyType(self):
+        """Parameter of spot data consistency check. 1: not configured; 2: full check; 3: spot check; 4: check inconsistent tables only; 5: no check
+        :rtype: int
+        """
         return self._ConsistencyType
 
     @ConsistencyType.setter
@@ -2505,6 +2971,9 @@ MySQL currently does not support configuring additional parameters.
 
     @property
     def IsOverrideRoot(self):
+        """Whether to overwrite the target database with the root account of the source database. Value range: 0 (no), 1 (yes). This value should be 0 for table or structural migration
+        :rtype: int
+        """
         return self._IsOverrideRoot
 
     @IsOverrideRoot.setter
@@ -2513,6 +2982,24 @@ MySQL currently does not support configuring additional parameters.
 
     @property
     def ExternParams(self):
+        """Additional parameters for different databases, which are described in JSON format. 
+The following parameters can be defined for Redis: 
+{ 
+	"ClientOutputBufferHardLimit":512, 	Hard capacity limit of slave buffer (MB) 
+	"ClientOutputBufferSoftLimit":512, 	Soft capacity limit of slave buffer (MB) 
+	"ClientOutputBufferPersistTime":60, Soft limit duration of slave buffer (s) 
+	"ReplBacklogSize":512, 	Circular buffer capacity limit (MB) 
+	"ReplTimeout":120, 		Replication timeout period (s) 
+}
+The following parameters can be defined for MongoDB: 
+{
+	'SrcAuthDatabase':'admin', 
+	'SrcAuthFlag': "1", 
+	'SrcAuthMechanism':"SCRAM-SHA-1"
+}
+MySQL currently does not support configuring additional parameters.
+        :rtype: str
+        """
         return self._ExternParams
 
     @ExternParams.setter
@@ -2521,6 +3008,9 @@ MySQL currently does not support configuring additional parameters.
 
     @property
     def ConsistencyParams(self):
+        """Only used for "spot data consistency check". It is required if ConsistencyType is spot check
+        :rtype: :class:`tencentcloud.dts.v20180330.models.ConsistencyParams`
+        """
         return self._ConsistencyParams
 
     @ConsistencyParams.setter
@@ -2576,6 +3066,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepNo(self):
+        """Step number
+        :rtype: int
+        """
         return self._StepNo
 
     @StepNo.setter
@@ -2584,6 +3077,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepName(self):
+        """Step name
+        :rtype: str
+        """
         return self._StepName
 
     @StepName.setter
@@ -2592,6 +3088,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StepId(self):
+        """Step ID
+        :rtype: str
+        """
         return self._StepId
 
     @StepId.setter
@@ -2600,6 +3099,9 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Step status. Value range: 0 (default), 1 (succeeded), 2 (failed), 3 (in progress), 4 (not started)
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -2608,6 +3110,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def StartTime(self):
+        """Start time of current step in the format of `yyyy-mm-dd hh:mm:ss`. This field is meaningless if it does not exist or is empty
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._StartTime
 
     @StartTime.setter
@@ -2679,6 +3185,9 @@ This field does not need to be set when the entire instance is to be migrated
 
     @property
     def JobId(self):
+        """ID of the data migration task to be modified
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -2687,6 +3196,9 @@ This field does not need to be set when the entire instance is to be migrated
 
     @property
     def JobName(self):
+        """Data migration task name
+        :rtype: str
+        """
         return self._JobName
 
     @JobName.setter
@@ -2695,6 +3207,9 @@ This field does not need to be set when the entire instance is to be migrated
 
     @property
     def MigrateOption(self):
+        """Migration task configuration options
+        :rtype: :class:`tencentcloud.dts.v20180330.models.MigrateOption`
+        """
         return self._MigrateOption
 
     @MigrateOption.setter
@@ -2703,6 +3218,9 @@ This field does not need to be set when the entire instance is to be migrated
 
     @property
     def SrcAccessType(self):
+        """Source instance access type. Valid values: extranet (public network), cvm (CVM-based self-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance)
+        :rtype: str
+        """
         return self._SrcAccessType
 
     @SrcAccessType.setter
@@ -2711,6 +3229,9 @@ This field does not need to be set when the entire instance is to be migrated
 
     @property
     def SrcInfo(self):
+        """Source instance information, which is correlated with the migration task type
+        :rtype: :class:`tencentcloud.dts.v20180330.models.SrcInfo`
+        """
         return self._SrcInfo
 
     @SrcInfo.setter
@@ -2719,6 +3240,9 @@ This field does not need to be set when the entire instance is to be migrated
 
     @property
     def DstAccessType(self):
+        """Target instance access type. Valid values: extranet (public network), cvm (CVM-based self-created instance), dcg (Direct Connect-enabled instance), vpncloud (Tencent Cloud VPN-enabled instance), cdb (TencentDB instance). Currently, only `cdb` is supported
+        :rtype: str
+        """
         return self._DstAccessType
 
     @DstAccessType.setter
@@ -2727,6 +3251,9 @@ This field does not need to be set when the entire instance is to be migrated
 
     @property
     def DstInfo(self):
+        """Target instance information. The region where the target instance is located cannot be modified.
+        :rtype: :class:`tencentcloud.dts.v20180330.models.DstInfo`
+        """
         return self._DstInfo
 
     @DstInfo.setter
@@ -2735,6 +3262,16 @@ This field does not need to be set when the entire instance is to be migrated
 
     @property
     def DatabaseInfo(self):
+        """When migrating the specified table, you need to set the information of the source database table to be migrated, which should be described in JSON string format. Below are examples.
+
+For databases with a database-table structure:
+[{"Database":"db1","Table":["table1","table2"]},{"Database":"db2"}]
+For databases with a database-schema-table structure:
+[{"Database":"db1","Schema":"s1","Table":["table1","table2"]},{"Database":"db1","Schema":"s2","Table":["table1","table2"]},{"Database":"db2","Schema":"s1","Table":["table1","table2"]},{"Database":"db3"},{"Database":"db4","Schema":"s1"}]
+
+This field does not need to be set when the entire instance is to be migrated
+        :rtype: str
+        """
         return self._DatabaseInfo
 
     @DatabaseInfo.setter
@@ -2743,6 +3280,9 @@ This field does not need to be set when the entire instance is to be migrated
 
     @property
     def SrcNodeType(self):
+        """Source instance type. `simple`: Primary/Secondary node; `cluster`: Cluster node. If this field is left empty, the value defaults to primary/secondary node.
+        :rtype: str
+        """
         return self._SrcNodeType
 
     @SrcNodeType.setter
@@ -2751,6 +3291,9 @@ This field does not need to be set when the entire instance is to be migrated
 
     @property
     def SrcInfoMulti(self):
+        """Source instance information, which is correlated with the migration task type.
+        :rtype: list of SrcInfo
+        """
         return self._SrcInfoMulti
 
     @SrcInfoMulti.setter
@@ -2804,6 +3347,9 @@ class ModifyMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2832,6 +3378,9 @@ class ModifySubscribeConsumeTimeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -2840,6 +3389,9 @@ class ModifySubscribeConsumeTimeRequest(AbstractModel):
 
     @property
     def ConsumeStartTime(self):
+        """Consumption starting time point in the format of `Y-m-d h:m:s`, i.e., the starting time point for data subscription. Value range: within the last 24 hours
+        :rtype: str
+        """
         return self._ConsumeStartTime
 
     @ConsumeStartTime.setter
@@ -2874,6 +3426,9 @@ class ModifySubscribeConsumeTimeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2902,6 +3457,9 @@ class ModifySubscribeNameRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -2910,6 +3468,9 @@ class ModifySubscribeNameRequest(AbstractModel):
 
     @property
     def SubscribeName(self):
+        """Data subscription instance name. Length limit: [1,60]
+        :rtype: str
+        """
         return self._SubscribeName
 
     @SubscribeName.setter
@@ -2944,6 +3505,9 @@ class ModifySubscribeNameResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -2975,6 +3539,9 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -2983,6 +3550,9 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def SubscribeObjectType(self):
+        """Data subscription type. Valid values: 0 (full instance subscription), 1 (data subscription), 2 (structure subscription), 3 (data subscription + structure subscription)
+        :rtype: int
+        """
         return self._SubscribeObjectType
 
     @SubscribeObjectType.setter
@@ -2991,6 +3561,9 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def Objects(self):
+        """Information of subscribed table
+        :rtype: list of SubscribeObject
+        """
         return self._Objects
 
     @Objects.setter
@@ -3034,6 +3607,9 @@ class ModifySubscribeObjectsResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
+        """Async task ID
+        :rtype: str
+        """
         return self._AsyncRequestId
 
     @AsyncRequestId.setter
@@ -3042,6 +3618,9 @@ class ModifySubscribeObjectsResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3077,6 +3656,9 @@ class ModifySubscribeVipVportRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -3085,6 +3667,9 @@ class ModifySubscribeVipVportRequest(AbstractModel):
 
     @property
     def DstUniqSubnetId(self):
+        """Specified destination subnet. If this parameter is passed in, `DstIp` must be in the destination subnet
+        :rtype: str
+        """
         return self._DstUniqSubnetId
 
     @DstUniqSubnetId.setter
@@ -3093,6 +3678,9 @@ class ModifySubscribeVipVportRequest(AbstractModel):
 
     @property
     def DstIp(self):
+        """Target IP. Either this field or `DstPort` must be passed in
+        :rtype: str
+        """
         return self._DstIp
 
     @DstIp.setter
@@ -3101,6 +3689,9 @@ class ModifySubscribeVipVportRequest(AbstractModel):
 
     @property
     def DstPort(self):
+        """Target port. Value range: [1025-65535]
+        :rtype: int
+        """
         return self._DstPort
 
     @DstPort.setter
@@ -3137,6 +3728,9 @@ class ModifySubscribeVipVportResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3162,6 +3756,9 @@ class OfflineIsolatedSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -3195,6 +3792,9 @@ class OfflineIsolatedSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3220,6 +3820,9 @@ class ResetSubscribeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -3253,6 +3856,9 @@ class ResetSubscribeResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3324,6 +3930,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def AccessKey(self):
+        """Alibaba Cloud AccessKey, which is applicable if the source database is an Alibaba Cloud ApsaraDB for RDS 5.6 instance
+        :rtype: str
+        """
         return self._AccessKey
 
     @AccessKey.setter
@@ -3332,6 +3941,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Ip(self):
+        """Instance IP address
+        :rtype: str
+        """
         return self._Ip
 
     @Ip.setter
@@ -3340,6 +3952,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Port(self):
+        """Instance port
+        :rtype: int
+        """
         return self._Port
 
     @Port.setter
@@ -3348,6 +3963,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def User(self):
+        """Instance username
+        :rtype: str
+        """
         return self._User
 
     @User.setter
@@ -3356,6 +3974,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Password(self):
+        """Instance password
+        :rtype: str
+        """
         return self._Password
 
     @Password.setter
@@ -3364,6 +3985,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def RdsInstanceId(self):
+        """Alibaba Cloud ApsaraDB for RDS instance ID, which is applicable if the source database is an Alibaba Cloud ApsaraDB for RDS 5.6/5.7 instance
+        :rtype: str
+        """
         return self._RdsInstanceId
 
     @RdsInstanceId.setter
@@ -3372,6 +3996,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CvmInstanceId(self):
+        """Short CVM instance ID in the format of `ins-olgl39y8`. It is the same as the instance ID displayed on the CVM Console page. For CVM-based self-created instances, this field needs to be passed in
+        :rtype: str
+        """
         return self._CvmInstanceId
 
     @CvmInstanceId.setter
@@ -3380,6 +4007,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqDcgId(self):
+        """Direct Connect gateway ID in the format of dcg-0rxtqqxb
+        :rtype: str
+        """
         return self._UniqDcgId
 
     @UniqDcgId.setter
@@ -3388,6 +4018,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def VpcId(self):
+        """VPC ID in the format of vpc-92jblxto
+        :rtype: str
+        """
         return self._VpcId
 
     @VpcId.setter
@@ -3396,6 +4029,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def SubnetId(self):
+        """VPC Subnet ID in the format of subnet-3paxmkdz
+        :rtype: str
+        """
         return self._SubnetId
 
     @SubnetId.setter
@@ -3404,6 +4040,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def UniqVpnGwId(self):
+        """VPN gateway ID in the format of vpngw-9ghexg7q
+        :rtype: str
+        """
         return self._UniqVpnGwId
 
     @UniqVpnGwId.setter
@@ -3412,6 +4051,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def InstanceId(self):
+        """Database instance ID in the format of cdb-powiqx8q
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3420,6 +4062,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
+        """Region name, such as ap-guangzhou
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -3428,6 +4073,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def Supplier(self):
+        """For Alibaba Cloud ApsaraDB for RDS instances, enter "aliyun"; otherwise, enter "others"
+        :rtype: str
+        """
         return self._Supplier
 
     @Supplier.setter
@@ -3436,6 +4084,10 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def CcnId(self):
+        """CCN instance ID, such as ccn-afp6kltc
+Note: This field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._CcnId
 
     @CcnId.setter
@@ -3444,6 +4096,9 @@ Note: This field may return null, indicating that no valid values can be obtaine
 
     @property
     def EngineVersion(self):
+        """Database version. This parameter is valid only when the instance is an RDS instance. Value: 5.6 or 5.7. Default value: 5.6
+        :rtype: str
+        """
         return self._EngineVersion
 
     @EngineVersion.setter
@@ -3492,6 +4147,9 @@ class StartMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3525,6 +4183,9 @@ class StartMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3550,6 +4211,9 @@ class StopMigrateJobRequest(AbstractModel):
 
     @property
     def JobId(self):
+        """Data migration task ID
+        :rtype: str
+        """
         return self._JobId
 
     @JobId.setter
@@ -3583,6 +4247,9 @@ class StopMigrateJobResponse(AbstractModel):
 
     @property
     def RequestId(self):
+        """The unique request ID, which is returned for each request. RequestId is required for locating a problem.
+        :rtype: str
+        """
         return self._RequestId
 
     @RequestId.setter
@@ -3609,6 +4276,10 @@ Note: This field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Message(self):
+        """Error message.
+Note: This field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Message
 
     @Message.setter
@@ -3714,6 +4385,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubscribeId(self):
+        """Data subscription instance ID
+        :rtype: str
+        """
         return self._SubscribeId
 
     @SubscribeId.setter
@@ -3722,6 +4396,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubscribeName(self):
+        """Data subscription instance name
+        :rtype: str
+        """
         return self._SubscribeName
 
     @SubscribeName.setter
@@ -3730,6 +4407,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ChannelId(self):
+        """ID of channel bound to data subscription instance
+        :rtype: str
+        """
         return self._ChannelId
 
     @ChannelId.setter
@@ -3738,6 +4418,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Product(self):
+        """Name of product bound to data subscription instance
+        :rtype: str
+        """
         return self._Product
 
     @Product.setter
@@ -3746,6 +4429,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceId(self):
+        """ID of database instance bound to data subscription instance
+        :rtype: str
+        """
         return self._InstanceId
 
     @InstanceId.setter
@@ -3754,6 +4440,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def InstanceStatus(self):
+        """Status of database instance bound to data subscription instance
+        :rtype: str
+        """
         return self._InstanceStatus
 
     @InstanceStatus.setter
@@ -3762,6 +4451,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubsStatus(self):
+        """Data subscription instance configuration status. Valid values: unconfigure, configuring, configured
+        :rtype: str
+        """
         return self._SubsStatus
 
     @SubsStatus.setter
@@ -3770,6 +4462,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ModifyTime(self):
+        """Last modified time
+        :rtype: str
+        """
         return self._ModifyTime
 
     @ModifyTime.setter
@@ -3778,6 +4473,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def CreateTime(self):
+        """Creation time
+        :rtype: str
+        """
         return self._CreateTime
 
     @CreateTime.setter
@@ -3786,6 +4484,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def IsolateTime(self):
+        """Isolation time
+        :rtype: str
+        """
         return self._IsolateTime
 
     @IsolateTime.setter
@@ -3794,6 +4495,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ExpireTime(self):
+        """Expiration time
+        :rtype: str
+        """
         return self._ExpireTime
 
     @ExpireTime.setter
@@ -3802,6 +4506,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def OfflineTime(self):
+        """Deactivation time
+        :rtype: str
+        """
         return self._OfflineTime
 
     @OfflineTime.setter
@@ -3810,6 +4517,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def ConsumeStartTime(self):
+        """Last modified consumption starting time point. If it has never been modified, this field is 0
+        :rtype: str
+        """
         return self._ConsumeStartTime
 
     @ConsumeStartTime.setter
@@ -3818,6 +4528,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Region(self):
+        """Data subscription instance region
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -3826,6 +4539,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def PayType(self):
+        """Billing mode. 1: pay-as-you-go
+        :rtype: int
+        """
         return self._PayType
 
     @PayType.setter
@@ -3834,6 +4550,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Vip(self):
+        """Data subscription instance VIP
+        :rtype: str
+        """
         return self._Vip
 
     @Vip.setter
@@ -3842,6 +4561,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Vport(self):
+        """Data subscription instance Vport
+        :rtype: int
+        """
         return self._Vport
 
     @Vport.setter
@@ -3850,6 +4572,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UniqVpcId(self):
+        """Unique ID of the VPC where the data subscription instance VIP resides
+        :rtype: str
+        """
         return self._UniqVpcId
 
     @UniqVpcId.setter
@@ -3858,6 +4583,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def UniqSubnetId(self):
+        """Unique ID of the subnet where the data subscription instance VIP resides
+        :rtype: str
+        """
         return self._UniqSubnetId
 
     @UniqSubnetId.setter
@@ -3866,6 +4594,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Status(self):
+        """Data subscription instance status. Valid values: creating, normal, isolating, isolated, offlining, offline
+        :rtype: str
+        """
         return self._Status
 
     @Status.setter
@@ -3874,6 +4605,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SdkConsumedTime(self):
+        """Timestamp of the last message confirmed by the SDK. If the SDK keeps consuming, this field can also be used as the current consumption time point of the SDK
+        :rtype: str
+        """
         return self._SdkConsumedTime
 
     @SdkConsumedTime.setter
@@ -3882,6 +4616,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def Tags(self):
+        """Tag
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: list of TagItem
+        """
         return self._Tags
 
     @Tags.setter
@@ -3890,6 +4628,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def AutoRenewFlag(self):
+        """Whether auto-renewal is enabled. 0: do not enable; 1: enable
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._AutoRenewFlag
 
     @AutoRenewFlag.setter
@@ -3898,6 +4640,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def SubscribeVersion(self):
+        """Subscription instance edition. ·`txdts`: legacy data subscription; `kafka`: data subscription in Kafka edition
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._SubscribeVersion
 
     @SubscribeVersion.setter
@@ -3968,6 +4714,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def ObjectsType(self):
+        """Data subscription object type. 0: database, 1: database table
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._ObjectsType
 
     @ObjectsType.setter
@@ -3976,6 +4726,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def DatabaseName(self):
+        """Name of subscribed database
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._DatabaseName
 
     @DatabaseName.setter
@@ -3984,6 +4738,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def TableNames(self):
+        """Array of table names in subscribed database
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: list of str
+        """
         return self._TableNames
 
     @TableNames.setter
@@ -4036,6 +4794,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def RegionName(self):
+        """Region name, such as Guangzhou
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._RegionName
 
     @RegionName.setter
@@ -4044,6 +4806,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Region(self):
+        """Region ID, such as ap-guangzhou
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Region
 
     @Region.setter
@@ -4052,6 +4818,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Area(self):
+        """Region name, such as South China
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._Area
 
     @Area.setter
@@ -4060,6 +4830,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def IsDefaultRegion(self):
+        """Whether it is the default region. 0: no, 1: yes
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._IsDefaultRegion
 
     @IsDefaultRegion.setter
@@ -4068,6 +4842,10 @@ Note: this field may return null, indicating that no valid values can be obtaine
 
     @property
     def Status(self):
+        """Purchasable status of current region. 1: normal, 2: beta test, 3: not purchasable
+Note: this field may return null, indicating that no valid values can be obtained.
+        :rtype: int
+        """
         return self._Status
 
     @Status.setter
@@ -4108,6 +4886,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagKey(self):
+        """Tag key value
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -4116,6 +4897,9 @@ class TagFilter(AbstractModel):
 
     @property
     def TagValue(self):
+        """Tag value
+        :rtype: list of str
+        """
         return self._TagValue
 
     @TagValue.setter
@@ -4154,6 +4938,9 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagKey(self):
+        """Tag key value
+        :rtype: str
+        """
         return self._TagKey
 
     @TagKey.setter
@@ -4162,6 +4949,10 @@ Note: this field may return `null`, indicating that no valid values can be obtai
 
     @property
     def TagValue(self):
+        """Tag value
+Note: this field may return `null`, indicating that no valid values can be obtained.
+        :rtype: str
+        """
         return self._TagValue
 
     @TagValue.setter
