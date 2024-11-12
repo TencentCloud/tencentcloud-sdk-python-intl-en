@@ -230,6 +230,9 @@ INVALIDPARAMETERVALUE_INVALIDINSTANCEINTERNETCHARGETYPE = 'InvalidParameterValue
 # Operation failed: the status of the instance does not allow this operation.
 INVALIDPARAMETERVALUE_INVALIDINSTANCESTATE = 'InvalidParameterValue.InvalidInstanceState'
 
+# Invalid original bandwidth value.
+INVALIDPARAMETERVALUE_INVALIDOLDBANDWIDTH = 'InvalidParameterValue.InvalidOldBandwidth'
+
 # This Tag is invalid.
 INVALIDPARAMETERVALUE_INVALIDTAG = 'InvalidParameterValue.InvalidTag'
 

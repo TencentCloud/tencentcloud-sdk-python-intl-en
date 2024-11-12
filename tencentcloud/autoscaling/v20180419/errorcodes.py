@@ -251,6 +251,9 @@ INVALIDPARAMETERVALUE_LIMITEXCEEDED = 'InvalidParameterValue.LimitExceeded'
 # Target group listeners are not supported.
 INVALIDPARAMETERVALUE_LISTENERTARGETTYPENOTSUPPORTED = 'InvalidParameterValue.ListenerTargetTypeNotSupported'
 
+# The maximum additional quantity is too large.
+INVALIDPARAMETERVALUE_MAXSURGETOOLARGE = 'InvalidParameterValue.MaxSurgeTooLarge'
+
 # The bandwidth package ID is required.
 INVALIDPARAMETERVALUE_MISSINGBANDWIDTHPACKAGEID = 'InvalidParameterValue.MissingBandwidthPackageId'
 

@@ -4697,6 +4697,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyBandwidthPackageBandwidth(self, request):
+        """This API is used to adjust the bandwidth of a [bandwidth package](https://www.tencentcloud.com/document/product/684/15245).
+
+        :param request: Request instance for ModifyBandwidthPackageBandwidth.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyBandwidthPackageBandwidthRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyBandwidthPackageBandwidthResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBandwidthPackageBandwidth", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBandwidthPackageBandwidthResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCcnAttachedInstancesAttribute(self, request):
         """This API is used to modify CCN-associated instance attributes. Currently, only the `description` can be modified.
 
